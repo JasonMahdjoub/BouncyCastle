@@ -16,67 +16,53 @@ import org.bouncycastle.asn1.cms.ContentInfo;
  * }
  * </pre>
  */
-public class TaggedContentInfo
-    extends ASN1Object
-{
-    private final BodyPartID bodyPartID;
-    private final ContentInfo contentInfo;
+public class TaggedContentInfo extends ASN1Object {
+	private final BodyPartID bodyPartID;
+	private final ContentInfo contentInfo;
 
-    public TaggedContentInfo(BodyPartID bodyPartID, ContentInfo contentInfo)
-    {
-        this.bodyPartID = bodyPartID;
-        this.contentInfo = contentInfo;
-    }
+	public TaggedContentInfo(BodyPartID bodyPartID, ContentInfo contentInfo) {
+		this.bodyPartID = bodyPartID;
+		this.contentInfo = contentInfo;
+	}
 
-    private TaggedContentInfo(ASN1Sequence seq)
-    {
-        if (seq.size() != 2)
-        {
-            throw new IllegalArgumentException("incorrect sequence size");
-        }
-        this.bodyPartID = BodyPartID.getInstance(seq.getObjectAt(0));
-        this.contentInfo = ContentInfo.getInstance(seq.getObjectAt(1));
-    }
+	private TaggedContentInfo(ASN1Sequence seq) {
+		if (seq.size() != 2) {
+			throw new IllegalArgumentException("incorrect sequence size");
+		}
+		this.bodyPartID = BodyPartID.getInstance(seq.getObjectAt(0));
+		this.contentInfo = ContentInfo.getInstance(seq.getObjectAt(1));
+	}
 
-    public static TaggedContentInfo getInstance(Object o)
-    {
-        if (o instanceof TaggedContentInfo)
-        {
-            return (TaggedContentInfo)o;
-        }
+	public static TaggedContentInfo getInstance(Object o) {
+		if (o instanceof TaggedContentInfo) {
+			return (TaggedContentInfo) o;
+		}
 
-        if (o != null)
-        {
-            return new TaggedContentInfo(ASN1Sequence.getInstance(o));
-        }
+		if (o != null) {
+			return new TaggedContentInfo(ASN1Sequence.getInstance(o));
+		}
 
-        return null;
-    }
+		return null;
+	}
 
-    public static TaggedContentInfo getInstance(
-        ASN1TaggedObject obj,
-        boolean explicit)
-    {
-        return getInstance(ASN1Sequence.getInstance(obj, explicit));
-    }
+	public static TaggedContentInfo getInstance(ASN1TaggedObject obj, boolean explicit) {
+		return getInstance(ASN1Sequence.getInstance(obj, explicit));
+	}
 
-    public ASN1Primitive toASN1Primitive()
-    {
-        ASN1EncodableVector v = new ASN1EncodableVector();
+	public ASN1Primitive toASN1Primitive() {
+		ASN1EncodableVector v = new ASN1EncodableVector();
 
-        v.add(bodyPartID);
-        v.add(contentInfo);
+		v.add(bodyPartID);
+		v.add(contentInfo);
 
-        return new DERSequence(v);
-    }
+		return new DERSequence(v);
+	}
 
-    public BodyPartID getBodyPartID()
-    {
-        return bodyPartID;
-    }
+	public BodyPartID getBodyPartID() {
+		return bodyPartID;
+	}
 
-    public ContentInfo getContentInfo()
-    {
-        return contentInfo;
-    }
+	public ContentInfo getContentInfo() {
+		return contentInfo;
+	}
 }

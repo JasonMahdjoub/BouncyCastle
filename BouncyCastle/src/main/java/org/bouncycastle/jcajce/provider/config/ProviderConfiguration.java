@@ -7,13 +7,12 @@ import javax.crypto.spec.DHParameterSpec;
 
 import org.bouncycastle.jce.spec.ECParameterSpec;
 
-public interface ProviderConfiguration
-{
-    ECParameterSpec getEcImplicitlyCa();
+public interface ProviderConfiguration {
+	ECParameterSpec getEcImplicitlyCa();
 
-    DHParameterSpec getDHDefaultParameters(int keySize);
+	DHParameterSpec getDHDefaultParameters(int keySize);
 
-    Set getAcceptableNamedCurves();
+	Set getAcceptableNamedCurves();
 
-    Map getAdditionalECParameters();
+	Map getAdditionalECParameters();
 }

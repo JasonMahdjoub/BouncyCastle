@@ -39,11 +39,10 @@ public final class XMSSMTPrivateKeyParameters implements XMSSStoreableObjectInte
 			int publicSeedSize = n;
 			int rootSize = n;
 			/*
-			int totalSize = indexSize + secretKeySize + secretKeyPRFSize + publicSeedSize + rootSize;
-			if (privateKey.length != totalSize) {
-				throw new ParseException("private key has wrong size", 0);
-			}
-			*/
+			 * int totalSize = indexSize + secretKeySize + secretKeyPRFSize + publicSeedSize
+			 * + rootSize; if (privateKey.length != totalSize) { throw new
+			 * ParseException("private key has wrong size", 0); }
+			 */
 			int position = 0;
 			index = XMSSUtil.bytesToXBigEndian(privateKey, position, indexSize);
 			if (!XMSSUtil.isIndexValid(totalHeight, index)) {
@@ -214,49 +213,36 @@ public final class XMSSMTPrivateKeyParameters implements XMSSStoreableObjectInte
 	}
 
 	/*
-	protected void increaseIndex(XMSSMT mt) {
-		if (mt == null) {
-			throw new NullPointerException("mt == null");
-		}
-		ZonedDateTime currentTime = ZonedDateTime.now(ZoneOffset.UTC);
-		long differenceHours = Duration.between(lastUsage, currentTime).toHours();
-		if (differenceHours >= 24) {
-			mt.getXMSS().setPublicSeed(getPublicSeed());
-
-			Map<Integer, BDS> bdsStates = mt.getBDS();
-			int xmssHeight = params.getXMSS().getParams().getHeight();
-			long keyIncreaseCount = differenceHours * indexIncreaseCountPerHour;
-			long oldGlobalIndex = getIndex();
-			long newGlobalIndex = oldGlobalIndex + keyIncreaseCount;
-			long oldIndexTree = XMSSUtil.getTreeIndex(oldGlobalIndex, xmssHeight);
-			long newIndexTree = XMSSUtil.getTreeIndex(newGlobalIndex, xmssHeight);
-			int newIndexLeaf = XMSSUtil.getLeafIndex(newGlobalIndex, xmssHeight);
-
-			// adjust bds instances
-			for (int layer = 0; layer < params.getLayers(); layer++) {
-				OTSHashAddress otsHashAddress = new OTSHashAddress();
-				otsHashAddress.setLayerAddress(layer);
-				otsHashAddress.setTreeAddress(newIndexTree);
-
-				if (newIndexLeaf != 0) {
-					if (oldIndexTree != newIndexTree || bdsStates.get(layer) == null) {
-						bdsStates.put(layer, new BDS(mt.getXMSS()));
-						bdsStates.get(layer).initialize(otsHashAddress);
-					}
-					for (int indexLeaf = bdsStates.get(layer).getIndex(); indexLeaf < newIndexLeaf; indexLeaf++) {
-						if (indexLeaf < ((1 << xmssHeight) - 1)) {
-							bdsStates.get(layer).nextAuthenticationPath(otsHashAddress);
-						}
-					}
-				}
-				oldIndexTree = XMSSUtil.getTreeIndex(oldIndexTree, xmssHeight);
-				newIndexLeaf = XMSSUtil.getLeafIndex(newIndexTree, xmssHeight);
-				newIndexTree = XMSSUtil.getTreeIndex(newIndexTree, xmssHeight);
-			}
-			setIndex(newGlobalIndex);
-		}
-	}
-	*/
+	 * protected void increaseIndex(XMSSMT mt) { if (mt == null) { throw new
+	 * NullPointerException("mt == null"); } ZonedDateTime currentTime =
+	 * ZonedDateTime.now(ZoneOffset.UTC); long differenceHours =
+	 * Duration.between(lastUsage, currentTime).toHours(); if (differenceHours >=
+	 * 24) { mt.getXMSS().setPublicSeed(getPublicSeed());
+	 * 
+	 * Map<Integer, BDS> bdsStates = mt.getBDS(); int xmssHeight =
+	 * params.getXMSS().getParams().getHeight(); long keyIncreaseCount =
+	 * differenceHours * indexIncreaseCountPerHour; long oldGlobalIndex =
+	 * getIndex(); long newGlobalIndex = oldGlobalIndex + keyIncreaseCount; long
+	 * oldIndexTree = XMSSUtil.getTreeIndex(oldGlobalIndex, xmssHeight); long
+	 * newIndexTree = XMSSUtil.getTreeIndex(newGlobalIndex, xmssHeight); int
+	 * newIndexLeaf = XMSSUtil.getLeafIndex(newGlobalIndex, xmssHeight);
+	 * 
+	 * // adjust bds instances for (int layer = 0; layer < params.getLayers();
+	 * layer++) { OTSHashAddress otsHashAddress = new OTSHashAddress();
+	 * otsHashAddress.setLayerAddress(layer);
+	 * otsHashAddress.setTreeAddress(newIndexTree);
+	 * 
+	 * if (newIndexLeaf != 0) { if (oldIndexTree != newIndexTree ||
+	 * bdsStates.get(layer) == null) { bdsStates.put(layer, new BDS(mt.getXMSS()));
+	 * bdsStates.get(layer).initialize(otsHashAddress); } for (int indexLeaf =
+	 * bdsStates.get(layer).getIndex(); indexLeaf < newIndexLeaf; indexLeaf++) { if
+	 * (indexLeaf < ((1 << xmssHeight) - 1)) {
+	 * bdsStates.get(layer).nextAuthenticationPath(otsHashAddress); } } }
+	 * oldIndexTree = XMSSUtil.getTreeIndex(oldIndexTree, xmssHeight); newIndexLeaf
+	 * = XMSSUtil.getLeafIndex(newIndexTree, xmssHeight); newIndexTree =
+	 * XMSSUtil.getTreeIndex(newIndexTree, xmssHeight); } setIndex(newGlobalIndex);
+	 * } }
+	 */
 
 	public long getIndex() {
 		return index;
@@ -277,7 +263,7 @@ public final class XMSSMTPrivateKeyParameters implements XMSSStoreableObjectInte
 	public byte[] getRoot() {
 		return XMSSUtil.cloneArray(root);
 	}
-	
+
 	public Map<Integer, BDS> getBDSState() {
 		return bdsState;
 	}

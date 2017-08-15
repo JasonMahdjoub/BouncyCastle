@@ -13,59 +13,47 @@ import org.bouncycastle.asn1.ASN1Primitive;
  *       BodyPartID ::= INTEGER(0..bodyIdMax)
  * </pre>
  */
-public class BodyPartID
-    extends ASN1Object
-{
-    public static final long bodyIdMax = 4294967295L;
+public class BodyPartID extends ASN1Object {
+	public static final long bodyIdMax = 4294967295L;
 
-    private final long id;
+	private final long id;
 
-    public BodyPartID(long id)
-    {
-        if (id < 0 || id > bodyIdMax)
-        {
-            throw new IllegalArgumentException("id out of range");
-        }
+	public BodyPartID(long id) {
+		if (id < 0 || id > bodyIdMax) {
+			throw new IllegalArgumentException("id out of range");
+		}
 
-        this.id = id;
-    }
+		this.id = id;
+	}
 
-    private static long convert(BigInteger value)
-    {
-        if (value.bitLength() > 32)
-        {
-            throw new IllegalArgumentException("id out of range");
-        }
-        return value.longValue();
-    }
+	private static long convert(BigInteger value) {
+		if (value.bitLength() > 32) {
+			throw new IllegalArgumentException("id out of range");
+		}
+		return value.longValue();
+	}
 
-    private BodyPartID(ASN1Integer id)
-    {
-        this(convert(id.getValue()));
-    }
+	private BodyPartID(ASN1Integer id) {
+		this(convert(id.getValue()));
+	}
 
-    public static BodyPartID getInstance(Object o)
-    {
-        if (o instanceof BodyPartID)
-        {
-            return (BodyPartID)o;
-        }
+	public static BodyPartID getInstance(Object o) {
+		if (o instanceof BodyPartID) {
+			return (BodyPartID) o;
+		}
 
-        if (o != null)
-        {
-            return new BodyPartID(ASN1Integer.getInstance(o));
-        }
+		if (o != null) {
+			return new BodyPartID(ASN1Integer.getInstance(o));
+		}
 
-        return null;
-    }
+		return null;
+	}
 
-    public long getID()
-    {
-        return id;
-    }
+	public long getID() {
+		return id;
+	}
 
-    public ASN1Primitive toASN1Primitive()
-    {
-        return new ASN1Integer(id);
-    }
+	public ASN1Primitive toASN1Primitive() {
+		return new ASN1Integer(id);
+	}
 }

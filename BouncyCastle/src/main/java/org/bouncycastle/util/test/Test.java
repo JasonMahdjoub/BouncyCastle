@@ -1,8 +1,7 @@
 package org.bouncycastle.util.test;
 
-public interface Test
-{
-    String getName();
+public interface Test {
+	String getName();
 
-    TestResult perform();
+	TestResult perform();
 }

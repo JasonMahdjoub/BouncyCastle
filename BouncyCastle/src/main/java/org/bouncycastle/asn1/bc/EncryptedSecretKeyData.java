@@ -18,56 +18,44 @@ import org.bouncycastle.util.Arrays;
  *     }
  * </pre>
  */
-public class EncryptedSecretKeyData
-    extends ASN1Object
-{
-    private final AlgorithmIdentifier keyEncryptionAlgorithm;
-    private final ASN1OctetString encryptedKeyData;
+public class EncryptedSecretKeyData extends ASN1Object {
+	private final AlgorithmIdentifier keyEncryptionAlgorithm;
+	private final ASN1OctetString encryptedKeyData;
 
-    public EncryptedSecretKeyData(AlgorithmIdentifier keyEncryptionAlgorithm, byte[] encryptedKeyData)
-    {
-        this.keyEncryptionAlgorithm = keyEncryptionAlgorithm;
-        this.encryptedKeyData = new DEROctetString(Arrays.clone(encryptedKeyData));
-    }
+	public EncryptedSecretKeyData(AlgorithmIdentifier keyEncryptionAlgorithm, byte[] encryptedKeyData) {
+		this.keyEncryptionAlgorithm = keyEncryptionAlgorithm;
+		this.encryptedKeyData = new DEROctetString(Arrays.clone(encryptedKeyData));
+	}
 
-    private EncryptedSecretKeyData(ASN1Sequence seq)
-    {
-        this.keyEncryptionAlgorithm = AlgorithmIdentifier.getInstance(seq.getObjectAt(0));
-        this.encryptedKeyData = ASN1OctetString.getInstance(seq.getObjectAt(1));
-    }
+	private EncryptedSecretKeyData(ASN1Sequence seq) {
+		this.keyEncryptionAlgorithm = AlgorithmIdentifier.getInstance(seq.getObjectAt(0));
+		this.encryptedKeyData = ASN1OctetString.getInstance(seq.getObjectAt(1));
+	}
 
-    public static EncryptedSecretKeyData getInstance(Object o)
-    {
-        if (o instanceof EncryptedSecretKeyData)
-        {
-            return (EncryptedSecretKeyData)o;
-        }
-        else if (o != null)
-        {
-            return new EncryptedSecretKeyData(ASN1Sequence.getInstance(o));
-        }
+	public static EncryptedSecretKeyData getInstance(Object o) {
+		if (o instanceof EncryptedSecretKeyData) {
+			return (EncryptedSecretKeyData) o;
+		} else if (o != null) {
+			return new EncryptedSecretKeyData(ASN1Sequence.getInstance(o));
+		}
 
-        return null;
-    }
+		return null;
+	}
 
+	public AlgorithmIdentifier getKeyEncryptionAlgorithm() {
+		return keyEncryptionAlgorithm;
+	}
 
-    public AlgorithmIdentifier getKeyEncryptionAlgorithm()
-    {
-        return keyEncryptionAlgorithm;
-    }
+	public byte[] getEncryptedKeyData() {
+		return Arrays.clone(encryptedKeyData.getOctets());
+	}
 
-    public byte[] getEncryptedKeyData()
-    {
-        return Arrays.clone(encryptedKeyData.getOctets());
-    }
+	public ASN1Primitive toASN1Primitive() {
+		ASN1EncodableVector v = new ASN1EncodableVector();
 
-    public ASN1Primitive toASN1Primitive()
-    {
-        ASN1EncodableVector v = new ASN1EncodableVector();
+		v.add(keyEncryptionAlgorithm);
+		v.add(encryptedKeyData);
 
-        v.add(keyEncryptionAlgorithm);
-        v.add(encryptedKeyData);
-
-        return new DERSequence(v);
-    }
+		return new DERSequence(v);
+	}
 }

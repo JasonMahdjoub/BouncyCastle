@@ -45,7 +45,8 @@ public final class XMSSMTSignature implements XMSSStoreableObjectInterface {
 			reducedSignatures = new ArrayList<XMSSReducedSignature>();
 			while (position < signature.length) {
 				XMSSReducedSignature xmssSig = new XMSSReducedSignature.Builder(params.getXMSS().getParams())
-						.withReducedSignature(XMSSUtil.extractBytesAtOffset(signature, position, reducedSignatureSizeSingle))
+						.withReducedSignature(
+								XMSSUtil.extractBytesAtOffset(signature, position, reducedSignatureSizeSingle))
 						.build();
 				reducedSignatures.add(xmssSig);
 				position += reducedSignatureSizeSingle;
@@ -72,7 +73,7 @@ public final class XMSSMTSignature implements XMSSStoreableObjectInterface {
 	}
 
 	public static class Builder {
-		
+
 		/* mandatory */
 		private final XMSSMTParameters params;
 		/* optional */
@@ -80,22 +81,22 @@ public final class XMSSMTSignature implements XMSSStoreableObjectInterface {
 		private byte[] random = null;
 		private List<XMSSReducedSignature> reducedSignatures = null;
 		private byte[] signature = null;
-		
+
 		public Builder(XMSSMTParameters params) {
 			super();
 			this.params = params;
 		}
-		
+
 		public Builder withIndex(long val) {
 			index = val;
 			return this;
 		}
-		
+
 		public Builder withRandom(byte[] val) {
 			random = XMSSUtil.cloneArray(val);
 			return this;
 		}
-		
+
 		public Builder withReducedSignatures(List<XMSSReducedSignature> val) {
 			reducedSignatures = val;
 			return this;

@@ -38,18 +38,19 @@ public abstract class XMSSAddress {
 			layerAddress = val;
 			return getThis();
 		}
-		
+
 		protected T withTreeAddress(long val) {
 			treeAddress = val;
 			return getThis();
 		}
-		
+
 		protected T withKeyAndMask(int val) {
 			keyAndMask = val;
 			return getThis();
 		}
-		
+
 		protected abstract XMSSAddress build();
+
 		protected abstract T getThis();
 	}
 

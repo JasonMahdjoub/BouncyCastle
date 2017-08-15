@@ -20,7 +20,7 @@ public final class OTSHashAddress extends XMSSAddress {
 		chainAddress = builder.chainAddress;
 		hashAddress = builder.hashAddress;
 	}
-	
+
 	protected static class Builder extends XMSSAddress.Builder<Builder> {
 
 		/* optional */
@@ -31,22 +31,22 @@ public final class OTSHashAddress extends XMSSAddress {
 		protected Builder() {
 			super(TYPE);
 		}
-		
+
 		protected Builder withOTSAddress(int val) {
 			otsAddress = val;
 			return this;
 		}
-		
+
 		protected Builder withChainAddress(int val) {
 			chainAddress = val;
 			return this;
 		}
-		
+
 		protected Builder withHashAddress(int val) {
 			hashAddress = val;
 			return this;
 		}
-		
+
 		@Override
 		protected XMSSAddress build() {
 			return new OTSHashAddress(this);
@@ -70,11 +70,11 @@ public final class OTSHashAddress extends XMSSAddress {
 	protected int getOTSAddress() {
 		return otsAddress;
 	}
-	
+
 	protected int getChainAddress() {
 		return chainAddress;
 	}
-	
+
 	protected int getHashAddress() {
 		return hashAddress;
 	}

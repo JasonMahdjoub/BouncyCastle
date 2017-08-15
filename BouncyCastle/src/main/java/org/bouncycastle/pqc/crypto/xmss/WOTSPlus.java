@@ -354,8 +354,8 @@ public final class WOTSPlus {
 	}
 
 	/**
-	 * Calculates a new public key based on the state of secretKeySeed,
-	 * publicSeed and otsHashAddress.
+	 * Calculates a new public key based on the state of secretKeySeed, publicSeed
+	 * and otsHashAddress.
 	 *
 	 * @param otsHashAddress
 	 *            OTS hash address for randomization.

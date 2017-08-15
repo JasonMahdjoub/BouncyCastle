@@ -65,36 +65,36 @@ public class XMSSReducedSignature implements XMSSStoreableObjectInterface {
 			}
 		}
 	}
-	
+
 	public static class Builder {
-		
+
 		/* mandatory */
 		private final XMSSParameters params;
 		/* optional */
 		private WOTSPlusSignature wotsPlusSignature = null;
 		private List<XMSSNode> authPath = null;
 		private byte[] reducedSignature = null;
-		
+
 		public Builder(XMSSParameters params) {
 			super();
 			this.params = params;
 		}
-		
+
 		public Builder withWOTSPlusSignature(WOTSPlusSignature val) {
 			wotsPlusSignature = val;
 			return this;
 		}
-		
+
 		public Builder withAuthPath(List<XMSSNode> val) {
 			authPath = val;
 			return this;
 		}
-		
+
 		public Builder withReducedSignature(byte[] val) {
 			reducedSignature = XMSSUtil.cloneArray(val);
 			return this;
 		}
-		
+
 		public XMSSReducedSignature build() throws ParseException {
 			return new XMSSReducedSignature(this);
 		}

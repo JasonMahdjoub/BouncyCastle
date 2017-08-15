@@ -24,8 +24,7 @@ public final class XMSSPrivateKeyParameters implements XMSSStoreableObjectInterf
 	 */
 	private final byte[] secretKeySeed;
 	/**
-	 * Secret for the randomization of message digests during signature
-	 * creation.
+	 * Secret for the randomization of message digests during signature creation.
 	 */
 	private final byte[] secretKeyPRF;
 	/**
@@ -61,11 +60,10 @@ public final class XMSSPrivateKeyParameters implements XMSSStoreableObjectInterf
 			int publicSeedSize = n;
 			int rootSize = n;
 			/*
-			int totalSize = indexSize + secretKeySize + secretKeyPRFSize + publicSeedSize + rootSize;
-			if (privateKey.length != totalSize) {
-				throw new ParseException("private key has wrong size", 0);
-			}
-			*/
+			 * int totalSize = indexSize + secretKeySize + secretKeyPRFSize + publicSeedSize
+			 * + rootSize; if (privateKey.length != totalSize) { throw new
+			 * ParseException("private key has wrong size", 0); }
+			 */
 			int position = 0;
 			index = Pack.bigEndianToInt(privateKey, position);
 			if (!XMSSUtil.isIndexValid(height, index)) {
@@ -162,7 +160,7 @@ public final class XMSSPrivateKeyParameters implements XMSSStoreableObjectInterf
 			secretKeySeed = XMSSUtil.cloneArray(val);
 			return this;
 		}
-		
+
 		public Builder withSecretKeyPRF(byte[] val) {
 			secretKeyPRF = XMSSUtil.cloneArray(val);
 			return this;
@@ -249,7 +247,7 @@ public final class XMSSPrivateKeyParameters implements XMSSStoreableObjectInterf
 	public byte[] getRoot() {
 		return XMSSUtil.cloneArray(root);
 	}
-	
+
 	public BDS getBDSState() {
 		return bdsState;
 	}

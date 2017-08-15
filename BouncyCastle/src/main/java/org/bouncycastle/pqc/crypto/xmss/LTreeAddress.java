@@ -9,7 +9,7 @@ import org.bouncycastle.pqc.crypto.xmss.XMSSUtil;
 public final class LTreeAddress extends XMSSAddress {
 
 	private static final int TYPE = 0x01;
-	
+
 	private final int lTreeAddress;
 	private final int treeHeight;
 	private final int treeIndex;
@@ -20,7 +20,7 @@ public final class LTreeAddress extends XMSSAddress {
 		treeHeight = builder.treeHeight;
 		treeIndex = builder.treeIndex;
 	}
-	
+
 	protected static class Builder extends XMSSAddress.Builder<Builder> {
 
 		/* optional */
@@ -31,22 +31,22 @@ public final class LTreeAddress extends XMSSAddress {
 		protected Builder() {
 			super(TYPE);
 		}
-		
+
 		protected Builder withLTreeAddress(int val) {
 			lTreeAddress = val;
 			return this;
 		}
-		
+
 		protected Builder withTreeHeight(int val) {
 			treeHeight = val;
 			return this;
 		}
-		
+
 		protected Builder withTreeIndex(int val) {
 			treeIndex = val;
 			return this;
 		}
-		
+
 		@Override
 		protected XMSSAddress build() {
 			return new LTreeAddress(this);
@@ -70,11 +70,11 @@ public final class LTreeAddress extends XMSSAddress {
 	protected int getLTreeAddress() {
 		return lTreeAddress;
 	}
-	
+
 	protected int getTreeHeight() {
 		return treeHeight;
 	}
-	
+
 	protected int getTreeIndex() {
 		return treeIndex;
 	}

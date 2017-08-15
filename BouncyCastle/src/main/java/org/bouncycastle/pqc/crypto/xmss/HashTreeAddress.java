@@ -21,7 +21,7 @@ public final class HashTreeAddress extends XMSSAddress {
 		treeHeight = builder.treeHeight;
 		treeIndex = builder.treeIndex;
 	}
-	
+
 	protected static class Builder extends XMSSAddress.Builder<Builder> {
 
 		/* optional */
@@ -31,17 +31,17 @@ public final class HashTreeAddress extends XMSSAddress {
 		protected Builder() {
 			super(TYPE);
 		}
-		
+
 		protected Builder withTreeHeight(int val) {
 			treeHeight = val;
 			return this;
 		}
-		
+
 		protected Builder withTreeIndex(int val) {
 			treeIndex = val;
 			return this;
 		}
-		
+
 		@Override
 		protected XMSSAddress build() {
 			return new HashTreeAddress(this);

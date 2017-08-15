@@ -18,55 +18,44 @@ import org.bouncycastle.util.Arrays;
  *     }
  * </pre>
  */
-public class SecretKeyData
-    extends ASN1Object
-{
-    private final ASN1ObjectIdentifier keyAlgorithm;
-    private final ASN1OctetString keyBytes;
+public class SecretKeyData extends ASN1Object {
+	private final ASN1ObjectIdentifier keyAlgorithm;
+	private final ASN1OctetString keyBytes;
 
-    public SecretKeyData(ASN1ObjectIdentifier keyAlgorithm, byte[] keyBytes)
-    {
-        this.keyAlgorithm = keyAlgorithm;
-        this.keyBytes = new DEROctetString(Arrays.clone(keyBytes));
-    }
+	public SecretKeyData(ASN1ObjectIdentifier keyAlgorithm, byte[] keyBytes) {
+		this.keyAlgorithm = keyAlgorithm;
+		this.keyBytes = new DEROctetString(Arrays.clone(keyBytes));
+	}
 
-    private SecretKeyData(ASN1Sequence seq)
-    {
-        this.keyAlgorithm = ASN1ObjectIdentifier.getInstance(seq.getObjectAt(0));
-        this.keyBytes = ASN1OctetString.getInstance(seq.getObjectAt(1));
-    }
+	private SecretKeyData(ASN1Sequence seq) {
+		this.keyAlgorithm = ASN1ObjectIdentifier.getInstance(seq.getObjectAt(0));
+		this.keyBytes = ASN1OctetString.getInstance(seq.getObjectAt(1));
+	}
 
-    public static SecretKeyData getInstance(Object o)
-    {
-        if (o instanceof SecretKeyData)
-        {
-            return (SecretKeyData)o;
-        }
-        else if (o != null)
-        {
-            return new SecretKeyData(ASN1Sequence.getInstance(o));
-        }
+	public static SecretKeyData getInstance(Object o) {
+		if (o instanceof SecretKeyData) {
+			return (SecretKeyData) o;
+		} else if (o != null) {
+			return new SecretKeyData(ASN1Sequence.getInstance(o));
+		}
 
-        return null;
-    }
+		return null;
+	}
 
-    public byte[] getKeyBytes()
-    {
-        return Arrays.clone(keyBytes.getOctets());
-    }
+	public byte[] getKeyBytes() {
+		return Arrays.clone(keyBytes.getOctets());
+	}
 
-    public ASN1ObjectIdentifier getKeyAlgorithm()
-    {
-        return keyAlgorithm;
-    }
+	public ASN1ObjectIdentifier getKeyAlgorithm() {
+		return keyAlgorithm;
+	}
 
-    public ASN1Primitive toASN1Primitive()
-    {
-        ASN1EncodableVector v = new ASN1EncodableVector();
+	public ASN1Primitive toASN1Primitive() {
+		ASN1EncodableVector v = new ASN1EncodableVector();
 
-        v.add(keyAlgorithm);
-        v.add(keyBytes);
+		v.add(keyAlgorithm);
+		v.add(keyBytes);
 
-        return new DERSequence(v);
-    }
+		return new DERSequence(v);
+	}
 }

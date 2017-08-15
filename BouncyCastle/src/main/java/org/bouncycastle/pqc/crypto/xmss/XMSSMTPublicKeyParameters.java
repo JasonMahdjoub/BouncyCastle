@@ -33,8 +33,8 @@ public final class XMSSMTPublicKeyParameters implements XMSSStoreableObjectInter
 			int position = 0;
 			/*
 			 * oid = XMSSUtil.bytesToIntBigEndian(in, position); if (oid !=
-			 * params.getOid().getOid()) { throw new ParseException("wrong oid",
-			 * 0); } position += oidSize;
+			 * params.getOid().getOid()) { throw new ParseException("wrong oid", 0); }
+			 * position += oidSize;
 			 */
 			root = XMSSUtil.extractBytesAtOffset(publicKey, position, rootSize);
 			position += rootSize;
@@ -108,8 +108,7 @@ public final class XMSSMTPublicKeyParameters implements XMSSStoreableObjectInter
 		int position = 0;
 		/* copy oid */
 		/*
-		 * XMSSUtil.intToBytesBigEndianOffset(out, oid, position); position +=
-		 * oidSize;
+		 * XMSSUtil.intToBytesBigEndianOffset(out, oid, position); position += oidSize;
 		 */
 		/* copy root */
 		XMSSUtil.copyBytesAtOffset(out, root, position);

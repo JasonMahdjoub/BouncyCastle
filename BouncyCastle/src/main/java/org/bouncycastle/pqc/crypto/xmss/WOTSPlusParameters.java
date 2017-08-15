@@ -24,8 +24,8 @@ public final class WOTSPlusParameters {
 	 */
 	private final int winternitzParameter;
 	/**
-	 * The number of n-byte string elements in a WOTS+ secret key, public key,
-	 * and signature.
+	 * The number of n-byte string elements in a WOTS+ secret key, public key, and
+	 * signature.
 	 */
 	private final int len;
 	/**

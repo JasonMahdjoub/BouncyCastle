@@ -19,59 +19,49 @@ import org.bouncycastle.asn1.x509.GeneralName;
  *           serialNumber    INTEGER }
  * </pre>
  */
-public class GetCert extends ASN1Object
-{
-    private final GeneralName issuerName;
-    private final BigInteger serialNumber;
+public class GetCert extends ASN1Object {
+	private final GeneralName issuerName;
+	private final BigInteger serialNumber;
 
-    private GetCert(ASN1Sequence seq)
-    {
-        if (seq.size() != 2)
-        {
-            throw new IllegalArgumentException("incorrect sequence size");
-        }
-        this.issuerName = GeneralName.getInstance(seq.getObjectAt(0));
-        this.serialNumber = ASN1Integer.getInstance(seq.getObjectAt(1)).getValue();
-    }
+	private GetCert(ASN1Sequence seq) {
+		if (seq.size() != 2) {
+			throw new IllegalArgumentException("incorrect sequence size");
+		}
+		this.issuerName = GeneralName.getInstance(seq.getObjectAt(0));
+		this.serialNumber = ASN1Integer.getInstance(seq.getObjectAt(1)).getValue();
+	}
 
-    public GetCert(GeneralName issuerName, BigInteger serialNumber)
-    {
-        this.issuerName = issuerName;
-        this.serialNumber = serialNumber;
-    }
+	public GetCert(GeneralName issuerName, BigInteger serialNumber) {
+		this.issuerName = issuerName;
+		this.serialNumber = serialNumber;
+	}
 
-    public static GetCert getInstance(Object o)
-    {
-        if (o instanceof GetCert)
-        {
-            return (GetCert)o;
-        }
+	public static GetCert getInstance(Object o) {
+		if (o instanceof GetCert) {
+			return (GetCert) o;
+		}
 
-        if (o != null)
-        {
-            return new GetCert(ASN1Sequence.getInstance(o));
-        }
+		if (o != null) {
+			return new GetCert(ASN1Sequence.getInstance(o));
+		}
 
-        return null;
-    }
+		return null;
+	}
 
-    public GeneralName getIssuerName()
-    {
-        return issuerName;
-    }
+	public GeneralName getIssuerName() {
+		return issuerName;
+	}
 
-    public BigInteger getSerialNumber()
-    {
-        return serialNumber;
-    }
+	public BigInteger getSerialNumber() {
+		return serialNumber;
+	}
 
-    public ASN1Primitive toASN1Primitive()
-    {
-        ASN1EncodableVector v = new ASN1EncodableVector();
+	public ASN1Primitive toASN1Primitive() {
+		ASN1EncodableVector v = new ASN1EncodableVector();
 
-        v.add(issuerName);
-        v.add(new ASN1Integer(serialNumber));
+		v.add(issuerName);
+		v.add(new ASN1Integer(serialNumber));
 
-        return new DERSequence(v);
-    }
+		return new DERSequence(v);
+	}
 }

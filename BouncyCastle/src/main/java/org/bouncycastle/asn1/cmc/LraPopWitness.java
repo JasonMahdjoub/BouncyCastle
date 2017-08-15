@@ -16,68 +16,55 @@ import org.bouncycastle.asn1.DERSequence;
  * }
  * </pre>
  */
-public class LraPopWitness
-    extends ASN1Object
-{
-    private final BodyPartID pkiDataBodyid;
-    private final ASN1Sequence bodyIds;
+public class LraPopWitness extends ASN1Object {
+	private final BodyPartID pkiDataBodyid;
+	private final ASN1Sequence bodyIds;
 
-    public LraPopWitness(BodyPartID pkiDataBodyid, ASN1Sequence bodyIds)
-    {
-        this.pkiDataBodyid = pkiDataBodyid;
-        this.bodyIds = bodyIds;
-    }
+	public LraPopWitness(BodyPartID pkiDataBodyid, ASN1Sequence bodyIds) {
+		this.pkiDataBodyid = pkiDataBodyid;
+		this.bodyIds = bodyIds;
+	}
 
-    private LraPopWitness(ASN1Sequence seq)
-    {
-        if (seq.size() != 2)
-        {
-            throw new IllegalArgumentException("incorrect sequence size");
-        }
-        this.pkiDataBodyid = BodyPartID.getInstance(seq.getObjectAt(0));
-        this.bodyIds = ASN1Sequence.getInstance(seq.getObjectAt(1));
-    }
+	private LraPopWitness(ASN1Sequence seq) {
+		if (seq.size() != 2) {
+			throw new IllegalArgumentException("incorrect sequence size");
+		}
+		this.pkiDataBodyid = BodyPartID.getInstance(seq.getObjectAt(0));
+		this.bodyIds = ASN1Sequence.getInstance(seq.getObjectAt(1));
+	}
 
-    public static LraPopWitness getInstance(Object o)
-    {
-        if (o instanceof LraPopWitness)
-        {
-            return (LraPopWitness)o;
-        }
+	public static LraPopWitness getInstance(Object o) {
+		if (o instanceof LraPopWitness) {
+			return (LraPopWitness) o;
+		}
 
-        if (o != null)
-        {
-            return new LraPopWitness(ASN1Sequence.getInstance(o));
-        }
+		if (o != null) {
+			return new LraPopWitness(ASN1Sequence.getInstance(o));
+		}
 
-        return null;
-    }
+		return null;
+	}
 
-    public BodyPartID getPkiDataBodyid()
-    {
-        return pkiDataBodyid;
-    }
+	public BodyPartID getPkiDataBodyid() {
+		return pkiDataBodyid;
+	}
 
+	public BodyPartID[] getBodyIds() {
+		BodyPartID[] rv = new BodyPartID[bodyIds.size()];
 
-    public BodyPartID[] getBodyIds()
-    {
-        BodyPartID[] rv = new BodyPartID[bodyIds.size()];
+		for (int i = 0; i != bodyIds.size(); i++) {
+			rv[i] = BodyPartID.getInstance(bodyIds.getObjectAt(i));
+		}
 
-        for (int i = 0; i != bodyIds.size(); i++)
-        {
-            rv[i] = BodyPartID.getInstance(bodyIds.getObjectAt(i));
-        }
+		return rv;
+	}
 
-        return rv;
-    }
+	public ASN1Primitive toASN1Primitive() {
+		ASN1EncodableVector v = new ASN1EncodableVector();
 
-    public ASN1Primitive toASN1Primitive()
-    {
-        ASN1EncodableVector v = new ASN1EncodableVector();
+		v.add(pkiDataBodyid);
+		v.add(bodyIds);
 
-        v.add(pkiDataBodyid);
-        v.add(bodyIds);
-
-        return new DERSequence(v);
-    }
+		return new DERSequence(v);
+	}
 }

@@ -12,7 +12,7 @@ public final class XMSSPublicKeyParameters implements XMSSStoreableObjectInterfa
 	 * XMSS parameters object.
 	 */
 	private final XMSSParameters params;
-	//private final int oid;
+	// private final int oid;
 	private final byte[] root;
 	private final byte[] publicSeed;
 
@@ -38,8 +38,8 @@ public final class XMSSPublicKeyParameters implements XMSSStoreableObjectInterfa
 			/*
 			 * oid = XMSSUtil.bytesToIntBigEndian(publicKey, position); if (oid !=
 			 * xmss.getParams().getOid().getOid()) { throw new
-			 * ParseException("public key not compatible with current instance parameters"
-			 * , 0); } position += oidSize;
+			 * ParseException("public key not compatible with current instance parameters" ,
+			 * 0); } position += oidSize;
 			 */
 			root = XMSSUtil.extractBytesAtOffset(publicKey, position, rootSize);
 			position += rootSize;
@@ -68,34 +68,34 @@ public final class XMSSPublicKeyParameters implements XMSSStoreableObjectInterfa
 	}
 
 	public static class Builder {
-		
+
 		/* mandatory */
 		private final XMSSParameters params;
 		/* optional */
 		private byte[] root = null;
 		private byte[] publicSeed = null;
 		private byte[] publicKey = null;
-		
+
 		public Builder(XMSSParameters params) {
 			super();
 			this.params = params;
 		}
-		
+
 		public Builder withRoot(byte[] val) {
 			root = XMSSUtil.cloneArray(val);
 			return this;
 		}
-		
+
 		public Builder withPublicSeed(byte[] val) {
 			publicSeed = XMSSUtil.cloneArray(val);
 			return this;
 		}
-		
+
 		public Builder withPublicKey(byte[] val) {
 			publicKey = XMSSUtil.cloneArray(val);
 			return this;
 		}
-		
+
 		public XMSSPublicKeyParameters build() throws ParseException {
 			return new XMSSPublicKeyParameters(this);
 		}
@@ -113,8 +113,7 @@ public final class XMSSPublicKeyParameters implements XMSSStoreableObjectInterfa
 		int position = 0;
 		/* copy oid */
 		/*
-		 * XMSSUtil.intToBytesBigEndianOffset(out, oid, position); position +=
-		 * oidSize;
+		 * XMSSUtil.intToBytesBigEndianOffset(out, oid, position); position += oidSize;
 		 */
 		/* copy root */
 		XMSSUtil.copyBytesAtOffset(out, root, position);

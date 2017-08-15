@@ -205,8 +205,7 @@ public final class BDS implements Serializable {
 					.withHashAddress(otsHashAddress.getHashAddress()).withKeyAndMask(otsHashAddress.getKeyAndMask())
 					.build();
 			/*
-			 * import WOTSPlusSecretKey as its needed to calculate the public
-			 * key on the fly
+			 * import WOTSPlusSecretKey as its needed to calculate the public key on the fly
 			 */
 			wotsPlus.importKeys(xmss.getWOTSPlusSecretKey(otsHashAddress), xmss.getPublicSeed());
 			WOTSPlusPublicKeyParameters wotsPlusPublicKey = wotsPlus.getPublicKey(otsHashAddress);
@@ -292,8 +291,7 @@ public final class BDS implements Serializable {
 					.withHashAddress(otsHashAddress.getHashAddress()).withKeyAndMask(otsHashAddress.getKeyAndMask())
 					.build();
 			/*
-			 * import WOTSPlusSecretKey as its needed to calculate the public
-			 * key on the fly
+			 * import WOTSPlusSecretKey as its needed to calculate the public key on the fly
 			 */
 			wotsPlus.importKeys(xmss.getWOTSPlusSecretKey(otsHashAddress), xmss.getPublicSeed());
 			WOTSPlusPublicKeyParameters wotsPlusPublicKey = wotsPlus.getPublicKey(otsHashAddress);

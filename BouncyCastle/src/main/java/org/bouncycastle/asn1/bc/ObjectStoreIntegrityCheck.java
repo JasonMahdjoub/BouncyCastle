@@ -15,71 +15,50 @@ import org.bouncycastle.asn1.ASN1Sequence;
  * }
  * </pre>
  */
-public class ObjectStoreIntegrityCheck
-    extends ASN1Object
-    implements ASN1Choice
-{
-    public static final int PBKD_MAC_CHECK = 0;
+public class ObjectStoreIntegrityCheck extends ASN1Object implements ASN1Choice {
+	public static final int PBKD_MAC_CHECK = 0;
 
-    private final int type;
-    private final ASN1Object integrityCheck;
+	private final int type;
+	private final ASN1Object integrityCheck;
 
-    public ObjectStoreIntegrityCheck(PbkdMacIntegrityCheck macIntegrityCheck)
-    {
-        this((ASN1Encodable)macIntegrityCheck);
-    }
+	public ObjectStoreIntegrityCheck(PbkdMacIntegrityCheck macIntegrityCheck) {
+		this((ASN1Encodable) macIntegrityCheck);
+	}
 
-    private ObjectStoreIntegrityCheck(ASN1Encodable obj)
-    {
-        if (obj instanceof ASN1Sequence || obj instanceof  PbkdMacIntegrityCheck)
-        {
-            this.type = PBKD_MAC_CHECK;
-            this.integrityCheck = PbkdMacIntegrityCheck.getInstance(obj);
-        }
-        else
-        {
-            throw new IllegalArgumentException("Unknown check object in integrity check.");
-        }
-    }
+	private ObjectStoreIntegrityCheck(ASN1Encodable obj) {
+		if (obj instanceof ASN1Sequence || obj instanceof PbkdMacIntegrityCheck) {
+			this.type = PBKD_MAC_CHECK;
+			this.integrityCheck = PbkdMacIntegrityCheck.getInstance(obj);
+		} else {
+			throw new IllegalArgumentException("Unknown check object in integrity check.");
+		}
+	}
 
-    public static ObjectStoreIntegrityCheck getInstance(Object o)
-    {
-        if (o instanceof ObjectStoreIntegrityCheck)
-        {
-            return (ObjectStoreIntegrityCheck)o;
-        }
-        else if (o instanceof byte[])
-        {
-            try
-            {
-                return new ObjectStoreIntegrityCheck(ASN1Primitive.fromByteArray((byte[])o));
-            }
-            catch (IOException e)
-            {
-                throw new IllegalArgumentException("Unable to parse integrity check details.");
-            }
-        }
-        else if (o != null)
-        {
-            return new ObjectStoreIntegrityCheck((ASN1Encodable)(o));
-        }
+	public static ObjectStoreIntegrityCheck getInstance(Object o) {
+		if (o instanceof ObjectStoreIntegrityCheck) {
+			return (ObjectStoreIntegrityCheck) o;
+		} else if (o instanceof byte[]) {
+			try {
+				return new ObjectStoreIntegrityCheck(ASN1Primitive.fromByteArray((byte[]) o));
+			} catch (IOException e) {
+				throw new IllegalArgumentException("Unable to parse integrity check details.");
+			}
+		} else if (o != null) {
+			return new ObjectStoreIntegrityCheck((ASN1Encodable) (o));
+		}
 
-        return null;
-    }
+		return null;
+	}
 
+	public int getType() {
+		return type;
+	}
 
-    public int getType()
-    {
-        return type;
-    }
+	public ASN1Object getIntegrityCheck() {
+		return integrityCheck;
+	}
 
-    public ASN1Object getIntegrityCheck()
-    {
-        return integrityCheck;
-    }
-
-    public ASN1Primitive toASN1Primitive()
-    {
-        return integrityCheck.toASN1Primitive();
-    }
+	public ASN1Primitive toASN1Primitive() {
+		return integrityCheck.toASN1Primitive();
+	}
 }
