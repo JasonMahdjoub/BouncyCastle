@@ -52,10 +52,10 @@ public class HMacTest
     static byte[] outputKck384 = Hex.decode("892dfdf5d51e4679bf320cd16d4c9dc6f749744608e003add7fba894acff87361efa4e5799be06b6461f43b60ae97048");
     static byte[] outputKck512 = Hex.decode("8852c63be8cfc21541a4ee5e5a9a852fc2f7a9adec2ff3a13718ab4ed81aaea0b87b7eb397323548e261a64e7fc75198f6663a11b22cd957f7c8ec858a1c7755");
 
-    static byte[] outputSha3_224 = Hex.decode("3b16546bbc7be2706a031dcafd56373d9884367641d8c59af3c860f7");
+    /*static byte[] outputSha3_224 = Hex.decode("3b16546bbc7be2706a031dcafd56373d9884367641d8c59af3c860f7");
     static byte[] outputSha3_256 = Hex.decode("ba85192310dffa96e2a3a40e69774351140bb7185e1202cdcc917589f95e16bb");
     static byte[] outputSha3_384 = Hex.decode("68d2dcf7fd4ddd0a2240c8a437305f61fb7334cfb5d0226e1bc27dc10a2e723a20d370b47743130e26ac7e3d532886bd");
-    static byte[] outputSha3_512 = Hex.decode("eb3fbd4b2eaab8f5c504bd3a41465aacec15770a7cabac531e482f860b5ec7ba47ccb2c6f2afce8f88d22b6dc61380f23a668fd3888bb80537c0a0b86407689e");
+    static byte[] outputSha3_512 = Hex.decode("eb3fbd4b2eaab8f5c504bd3a41465aacec15770a7cabac531e482f860b5ec7ba47ccb2c6f2afce8f88d22b6dc61380f23a668fd3888bb80537c0a0b86407689e");*/
 
     static byte[] outputGost2012_256 = Hex.decode("f03422dfa37a507ca126ce01b8eba6b7fdda8f8a60dd8f2703e3a372120b8294");
     static byte[] outputGost2012_512 = Hex.decode("86b6a06bfa9f1974aff6ccd7fa3f835f0bd850395d6084efc47b9dda861a2cdf0dcaf959160733d5269f6567966dd7a9f932a77cd6f080012cd476f1c2cc31bb");
@@ -210,10 +210,10 @@ public class HMacTest
         testHMac("HMac-KECCAK288", 288, outputKck288);
         testHMac("HMac-KECCAK384", 384, outputKck384);
         testHMac("HMac-KECCAK512", 512, outputKck512);
-        testHMac("HMac-SHA3-224", 224, outputSha3_224);
+        /*testHMac("HMac-SHA3-224", 224, outputSha3_224);
         testHMac("HMac-SHA3-256", 256, outputSha3_256);
         testHMac("HMac-SHA3-384", 384, outputSha3_384);
-        testHMac("HMac-SHA3-512", 512, outputSha3_512);
+        testHMac("HMac-SHA3-512", 512, outputSha3_512);*/
 
         testHMac("HMac-GOST3411-2012-256", 256, outputGost2012_256);
         testHMac("HMac-GOST3411-2012-512", 512, outputGost2012_512);
@@ -238,10 +238,10 @@ public class HMacTest
         testHMac("HMac/KECCAK288", 288, outputKck288);
         testHMac("HMac/KECCAK384", 384, outputKck384);
         testHMac("HMac/KECCAK512", 512, outputKck512);
-        testHMac("HMac/SHA3-224", 224, outputSha3_224);
+        /*testHMac("HMac/SHA3-224", 224, outputSha3_224);
         testHMac("HMac/SHA3-256", 256, outputSha3_256);
         testHMac("HMac/SHA3-384", 384, outputSha3_384);
-        testHMac("HMac/SHA3-512", 512, outputSha3_512);
+        testHMac("HMac/SHA3-512", 512, outputSha3_512);*/
         testHMac("HMac/GOST3411-2012-256", 256, outputGost2012_256);
         testHMac("HMac/GOST3411-2012-512", 512, outputGost2012_512);
 
@@ -255,10 +255,10 @@ public class HMacTest
         testHMac(IANAObjectIdentifiers.hmacRIPEMD160.getId(), 160, outputRipeMD160);
         testHMac(IANAObjectIdentifiers.hmacTIGER.getId(), 192, outputTiger);
 
-        testHMac(NISTObjectIdentifiers.id_hmacWithSHA3_224.getId(), 224, outputSha3_224);
+        /*testHMac(NISTObjectIdentifiers.id_hmacWithSHA3_224.getId(), 224, outputSha3_224);
         testHMac(NISTObjectIdentifiers.id_hmacWithSHA3_256.getId(), 256, outputSha3_256);
         testHMac(NISTObjectIdentifiers.id_hmacWithSHA3_384.getId(), 384, outputSha3_384);
-        testHMac(NISTObjectIdentifiers.id_hmacWithSHA3_512.getId(), 512, outputSha3_512);
+        testHMac(NISTObjectIdentifiers.id_hmacWithSHA3_512.getId(), 512, outputSha3_512);*/
 
         testHMac(RosstandartObjectIdentifiers.id_tc26_hmac_gost_3411_12_256.getId(), 256, outputGost2012_256);
         testHMac(RosstandartObjectIdentifiers.id_tc26_hmac_gost_3411_12_512.getId(), 512, outputGost2012_512);

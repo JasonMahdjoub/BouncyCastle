@@ -11,6 +11,7 @@ buildscript {
 }
 
 allprojects {
+
    apply plugin: 'java'
    apply plugin: 'idea'
    apply plugin: 'net.saliman.cobertura'
@@ -39,11 +40,14 @@ task printProperties << {
 }
 
 subprojects {
+	compileJava.options.fork = true
+	compileJava.options.forkOptions.executable = "${javac}"
+
     apply plugin: 'eclipse'
 
     sourceCompatibility = 1.5
     targetCompatibility = 1.5
-    version = '1.58'
+    version = '1.59a'
 	
     test {
         systemProperty 'bc.test.data.home', bcTestDataHome
