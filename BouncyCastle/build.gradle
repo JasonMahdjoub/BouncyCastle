@@ -29,6 +29,14 @@ allprojects {
         testRuntime "org.slf4j:slf4j-log4j12:1.7.5"
         testRuntime "log4j:log4j:1.2.17"
    }
+    sourceCompatibility = 1.5
+    targetCompatibility = 1.5
+
+	compileJava.options.fork = true
+	compileJava.options.forkOptions.executable = "${jdk}/bin/javac"
+	compileJava.options.bootClasspath=fileTree(include: ['*.jar'], dir: "${jdk}/jre/lib").join(File.pathSeparator)
+	compileJava.options.extensionDirs = "${jdk}/jre/lib/ext/"
+   
 }
 
 ext {
@@ -41,7 +49,9 @@ task printProperties << {
 
 subprojects {
 	compileJava.options.fork = true
-	compileJava.options.forkOptions.executable = "${javac}"
+	compileJava.options.forkOptions.executable = "${jdk}/bin/javac"
+	compileJava.options.bootClasspath=fileTree(include: ['*.jar'], dir: "${jdk}/jre/lib").join(File.pathSeparator)
+	compileJava.options.extensionDirs = "${jdk}/jre/lib/ext/"
 
     apply plugin: 'eclipse'
 
