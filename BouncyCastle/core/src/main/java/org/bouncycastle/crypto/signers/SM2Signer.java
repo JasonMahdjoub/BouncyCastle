@@ -1,11 +1,19 @@
 package org.bouncycastle.crypto.signers;
 
+import java.io.IOException;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
+import org.bouncycastle.asn1.ASN1EncodableVector;
+import org.bouncycastle.asn1.ASN1Encoding;
+import org.bouncycastle.asn1.ASN1Integer;
+import org.bouncycastle.asn1.ASN1Primitive;
+import org.bouncycastle.asn1.ASN1Sequence;
+import org.bouncycastle.asn1.DERSequence;
 import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.DSA;
+import org.bouncycastle.crypto.CryptoException;
 import org.bouncycastle.crypto.Digest;
+import org.bouncycastle.crypto.Signer;
 import org.bouncycastle.crypto.digests.SM3Digest;
 import org.bouncycastle.crypto.params.ECDomainParameters;
 import org.bouncycastle.crypto.params.ECKeyParameters;
@@ -13,30 +21,33 @@ import org.bouncycastle.crypto.params.ECPrivateKeyParameters;
 import org.bouncycastle.crypto.params.ECPublicKeyParameters;
 import org.bouncycastle.crypto.params.ParametersWithID;
 import org.bouncycastle.crypto.params.ParametersWithRandom;
+import org.bouncycastle.math.ec.ECAlgorithms;
 import org.bouncycastle.math.ec.ECConstants;
 import org.bouncycastle.math.ec.ECFieldElement;
 import org.bouncycastle.math.ec.ECMultiplier;
 import org.bouncycastle.math.ec.ECPoint;
 import org.bouncycastle.math.ec.FixedPointCombMultiplier;
-import org.bouncycastle.util.BigIntegers;
+import org.bouncycastle.util.Arrays;
+import org.bouncycastle.util.encoders.Hex;
 
+/**
+ * The SM2 Digital Signature algorithm.
+ */
 public class SM2Signer
-    implements DSA, ECConstants
+    implements Signer, ECConstants
 {
     private final DSAKCalculator kCalculator = new RandomDSAKCalculator();
+    private final SM3Digest digest = new SM3Digest();
 
-    private byte[] userID;
-
-    private int curveLength;
     private ECDomainParameters ecParams;
     private ECPoint pubPoint;
     private ECKeyParameters ecKey;
-
-    private SecureRandom random;
+    private byte[] z;
 
     public void init(boolean forSigning, CipherParameters param)
     {
         CipherParameters baseParam;
+        byte[] userID;
 
         if (param instanceof ParametersWithID)
         {
@@ -46,7 +57,7 @@ public class SM2Signer
         else
         {
             baseParam = param;
-            userID = new byte[0];
+            userID = Hex.decode("31323334353637383132333435363738"); // the default value
         }
 
         if (forSigning)
@@ -65,7 +76,7 @@ public class SM2Signer
                 ecParams = ecKey.getParameters();
                 kCalculator.init(ecParams.getN(), new SecureRandom());
             }
-            pubPoint = ecParams.getG().multiply(((ECPrivateKeyParameters)ecKey).getD()).normalize();
+            pubPoint = createBasePointMultiplier().multiply(ecParams.getG(), ((ECPrivateKeyParameters)ecKey).getD()).normalize();
         }
         else
         {
@@ -74,21 +85,52 @@ public class SM2Signer
             pubPoint = ((ECPublicKeyParameters)ecKey).getQ();
         }
 
-        curveLength = (ecParams.getCurve().getFieldSize() + 7) / 8;
+        z = getZ(userID);
+        
+        digest.update(z, 0, z.length);
     }
 
-    public BigInteger[] generateSignature(byte[] message)
+    public void update(byte b)
     {
-        SM3Digest digest = new SM3Digest();
+        digest.update(b);
+    }
 
-        byte[] z = getZ(digest);
+    public void update(byte[] in, int off, int len)
+    {
+        digest.update(in, off, len);
+    }
 
-        digest.update(z, 0, z.length);
-        digest.update(message, 0, message.length);
+    public boolean verifySignature(byte[] signature)
+    {
+        try
+        {
+            BigInteger[] rs = derDecode(signature);
+            if (rs != null)
+            {
+                return verifySignature(rs[0], rs[1]);
+            }
+        }
+        catch (IOException e)
+        {
+        }
 
-        byte[] eHash = new byte[digest.getDigestSize()];
+        return false;
+    }
 
-        digest.doFinal(eHash, 0);
+    public void reset()
+    {
+        digest.reset();
+
+        if (z != null)
+        {
+            digest.update(z, 0, z.length);
+        }
+    }
+
+    public byte[] generateSignature()
+        throws CryptoException
+    {
+        byte[] eHash = digestDoFinal();
 
         BigInteger n = ecParams.getN();
         BigInteger e = calculateE(eHash);
@@ -124,10 +166,17 @@ public class SM2Signer
         while (s.equals(ZERO));
 
         // A7
-        return new BigInteger[]{ r, s };
+        try
+        {
+            return derEncode(r, s);
+        }
+        catch (IOException ex)
+        {
+            throw new CryptoException("unable to encode signature: " + ex.getMessage(), ex);
+        }
     }
 
-    public boolean verifySignature(byte[] message, BigInteger r, BigInteger s)
+    private boolean verifySignature(BigInteger r, BigInteger s)
     {
         BigInteger n = ecParams.getN();
 
@@ -144,19 +193,8 @@ public class SM2Signer
             return false;
         }
 
-        ECPoint q = ((ECPublicKeyParameters)ecKey).getQ();
-
-        SM3Digest digest = new SM3Digest();
-
-        byte[] z = getZ(digest);
-
-        digest.update(z, 0, z.length);
-        digest.update(message, 0, message.length);
-
-        byte[] eHash = new byte[digest.getDigestSize()];
-
         // B3
-        digest.doFinal(eHash, 0);
+        byte[] eHash = digestDoFinal();
 
         // B4
         BigInteger e = calculateE(eHash);
@@ -167,19 +205,35 @@ public class SM2Signer
         {
             return false;
         }
-        else
-        {
-            // B6
-            ECPoint x1y1 = ecParams.getG().multiply(s);
-            x1y1 = x1y1.add(q.multiply(t)).normalize();
 
-            // B7
-            return r.equals(e.add(x1y1.getAffineXCoord().toBigInteger()).mod(n));
+        // B6
+        ECPoint q = ((ECPublicKeyParameters)ecKey).getQ();
+        ECPoint x1y1 = ECAlgorithms.sumOfTwoMultiplies(ecParams.getG(), s, q, t).normalize();
+        if (x1y1.isInfinity())
+        {
+            return false;
         }
+
+        // B7
+        BigInteger expectedR = e.add(x1y1.getAffineXCoord().toBigInteger()).mod(n);
+
+        return expectedR.equals(r);
     }
 
-    private byte[] getZ(Digest digest)
+    private byte[] digestDoFinal()
     {
+        byte[] result = new byte[digest.getDigestSize()];
+        digest.doFinal(result, 0);
+
+        reset();
+        
+        return result;
+    }
+
+    private byte[] getZ(byte[] userID)
+    {
+        digest.reset();
+
         addUserID(digest, userID);
 
         addFieldElement(digest, ecParams.getCurve().getA());
@@ -189,11 +243,11 @@ public class SM2Signer
         addFieldElement(digest, pubPoint.getAffineXCoord());
         addFieldElement(digest, pubPoint.getAffineYCoord());
 
-        byte[] rv = new byte[digest.getDigestSize()];
+        byte[] result = new byte[digest.getDigestSize()];
 
-        digest.doFinal(rv, 0);
+        digest.doFinal(result, 0);
 
-        return rv;
+        return result;
     }
 
     private void addUserID(Digest digest, byte[] userID)
@@ -206,7 +260,7 @@ public class SM2Signer
 
     private void addFieldElement(Digest digest, ECFieldElement v)
     {
-        byte[] p = BigIntegers.asUnsignedByteArray(curveLength, v.toBigInteger());
+        byte[] p = v.getEncoded();
         digest.update(p, 0, p.length);
     }
 
@@ -218,5 +272,36 @@ public class SM2Signer
     protected BigInteger calculateE(byte[] message)
     {
         return new BigInteger(1, message);
+    }
+
+    protected BigInteger[] derDecode(byte[] encoding)
+        throws IOException
+    {
+        ASN1Sequence seq = ASN1Sequence.getInstance(ASN1Primitive.fromByteArray(encoding));
+        if (seq.size() != 2)
+        {
+            return null;
+        }
+
+        BigInteger r = ASN1Integer.getInstance(seq.getObjectAt(0)).getValue();
+        BigInteger s = ASN1Integer.getInstance(seq.getObjectAt(1)).getValue();
+
+        byte[] expectedEncoding = derEncode(r, s);
+        if (!Arrays.constantTimeAreEqual(expectedEncoding, encoding))
+        {
+            return null;
+        }
+
+        return new BigInteger[]{ r, s };
+    }
+
+    protected byte[] derEncode(BigInteger r, BigInteger s)
+        throws IOException
+    {
+
+        ASN1EncodableVector v = new ASN1EncodableVector();
+        v.add(new ASN1Integer(r));
+        v.add(new ASN1Integer(s));
+        return new DERSequence(v).getEncoded(ASN1Encoding.DER);
     }
 }

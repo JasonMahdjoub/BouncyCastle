@@ -74,6 +74,48 @@ public class DRBG
     // to the JVM's seed generator.
     private static SecureRandom createInitialEntropySource()
     {
+        boolean hasGetInstanceStrong = AccessController.doPrivileged(new PrivilegedAction<Boolean>()
+        {
+            public Boolean run()
+            {
+                try
+                {
+                    Class def = SecureRandom.class;
+
+                    return def.getMethod("getInstanceStrong") != null;
+                }
+                catch (Exception e)
+                {
+                    return false;
+                }
+            }
+        });
+
+        if (hasGetInstanceStrong)
+        {
+            return AccessController.doPrivileged(new PrivilegedAction<SecureRandom>()
+            {
+                public SecureRandom run()
+                {
+                    try
+                    {
+                        return (SecureRandom)SecureRandom.class.getMethod("getInstanceStrong").invoke(null);
+                    }
+                    catch (Exception e)
+                    {
+                        return createCoreSecureRandom();
+                    }
+                }
+            });
+        }
+        else
+        {
+            return createCoreSecureRandom();
+        }
+    }
+
+    private static SecureRandom createCoreSecureRandom()
+    {
         if (initialEntropySourceAndSpi != null)
         {
             return new CoreSecureRandom();
@@ -259,7 +301,7 @@ public class DRBG
                 if (seedAvailable.getAndSet(false))
                 {
                     samples.set(0);
-                    drbg.reseed(null);
+                    drbg.reseed((byte[])null);    // need for Java 1.9
                 }
             }
 

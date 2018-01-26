@@ -1,6 +1,7 @@
 package org.bouncycastle.jsse.provider;
 
 import java.io.IOException;
+import java.lang.reflect.Constructor;
 import java.security.AccessController;
 import java.security.Principal;
 import java.security.PrivateKey;
@@ -334,6 +335,26 @@ abstract class JsseUtils
         }
     }
 
+    static Constructor getDeclaredConstructor(final Class clazz, final Class<?>... parameterTypes)
+    {
+        return AccessController.doPrivileged(new PrivilegedAction<Constructor>()
+        {
+            public Constructor run()
+            {
+                try
+                {
+                    return clazz.getDeclaredConstructor(parameterTypes);
+                }
+                catch (Exception e)
+                {
+                    // ignore - maybe log?
+                }
+
+                return null;
+            }
+        });
+    }
+
     static Class loadClass(Class sourceClass, final String className)
     {
         try
@@ -400,5 +421,18 @@ abstract class JsseUtils
             }
         }
         return null;
+    }
+
+    static String stripQuotes(String s)
+    {
+        if (s != null)
+        {
+            int sLast = s.length() - 1;
+            if (sLast > 0 && s.charAt(0) == '"' && s.charAt(sLast) == '"')
+            {
+                return s.substring(1, sLast);
+            }
+        }
+        return s;
     }
 }

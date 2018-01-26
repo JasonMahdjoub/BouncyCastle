@@ -28,7 +28,7 @@ class ProvSSLSocketDirect
     protected final ContextData contextData;
 
     protected ProvSSLParameters sslParameters;
-    protected boolean enableSessionCreation = false;
+    protected boolean enableSessionCreation = true;
     protected boolean useClientMode = true;
 
     protected boolean initialHandshakeBegun = false;
@@ -165,7 +165,7 @@ class ProvSSLSocketDirect
     {
         BCSSLConnection connection = getConnection();
 
-        return connection == null ? ProvSSLSession.NULL_SESSION : connection.getSession();
+        return connection == null ? ProvSSLSessionImpl.NULL_SESSION.getExportSession() : connection.getSession();
     }
 
     @Override
@@ -315,6 +315,11 @@ class ProvSSLSocketDirect
             }
         }
         return null;
+    }
+
+    public int getPeerPort()
+    {
+        return getPort();
     }
 
     public boolean isClientTrusted(X509Certificate[] chain, String authType)

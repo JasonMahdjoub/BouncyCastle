@@ -13,10 +13,8 @@ import java.security.KeyStoreSpi;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.security.PrivateKey;
-import java.security.Provider;
 import java.security.PublicKey;
 import java.security.SecureRandom;
-import java.security.Security;
 import java.security.UnrecoverableKeyException;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateEncodingException;
@@ -37,6 +35,8 @@ import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.PBEParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
+import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
+import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
 import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.Digest;
 import org.bouncycastle.crypto.PBEParametersGenerator;
@@ -441,9 +441,9 @@ public class BcKeyStoreSpi
             switch (keyType)
             {
             case KEY_PRIVATE:
-                return helper.createKeyFactory(algorithm).generatePrivate(spec);
+                return BouncyCastleProvider.getPrivateKey(PrivateKeyInfo.getInstance(enc));
             case KEY_PUBLIC:
-                return  helper.createKeyFactory(algorithm).generatePublic(spec);
+                return  BouncyCastleProvider.getPublicKey(SubjectPublicKeyInfo.getInstance(enc));
             case KEY_SECRET:
                 return  helper.createSecretKeyFactory(algorithm).generateSecret(spec);
             default:
@@ -729,7 +729,7 @@ public class BcKeyStoreSpi
                     table.put(alias, new StoreEntry(alias, date, type, b, chain));
                     break;
             default:
-                    throw new RuntimeException("Unknown object type in store.");
+                    throw new IOException("Unknown object type in store.");
             }
 
             type = dIn.read();
@@ -781,7 +781,7 @@ public class BcKeyStoreSpi
                     dOut.write(b);
                     break;
             default:
-                    throw new RuntimeException("Unknown object type in store.");
+                    throw new IOException("Unknown object type in store.");
             }
         }
 
@@ -1043,18 +1043,6 @@ public class BcKeyStoreSpi
             cOut.write(dig);
     
             cOut.close();
-        }
-    }
-
-    static Provider getBouncyCastleProvider()
-    {
-        if (Security.getProvider("BC") != null)
-        {
-            return Security.getProvider("BC");
-        }
-        else
-        {
-            return new BouncyCastleProvider();
         }
     }
 

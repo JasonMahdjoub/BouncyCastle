@@ -561,12 +561,12 @@ public abstract class TlsProtocol
         return len;
     }
 
-    protected void safeCheckRecordHeader(byte[] recordHeader)
+    protected RecordPreview safePreviewRecordHeader(byte[] recordHeader)
         throws IOException
     {
         try
         {
-            recordStream.checkRecordHeader(recordHeader);
+            return recordStream.previewRecordHeader(recordHeader, appDataReady);
         }
         catch (TlsFatalAlert e)
         {
@@ -626,6 +626,30 @@ public abstract class TlsProtocol
         throw new TlsNoCloseNotifyException();
     }
 
+    protected boolean safeReadFullRecord(byte[] record)
+        throws IOException
+    {
+        try
+        {
+            return recordStream.readFullRecord(record);
+        }
+        catch (TlsFatalAlert e)
+        {
+            handleException(e.getAlertDescription(), "Failed to process record", e);
+            throw e;
+        }
+        catch (IOException e)
+        {
+            handleException(AlertDescription.internal_error, "Failed to process record", e);
+            throw e;
+        }
+        catch (RuntimeException e)
+        {
+            handleException(AlertDescription.internal_error, "Failed to process record", e);
+            throw new TlsFatalAlert(AlertDescription.internal_error, e);
+        }
+    }
+
     protected void safeWriteRecord(short type, byte[] buf, int offset, int len)
         throws IOException
     {
@@ -665,7 +689,7 @@ public abstract class TlsProtocol
      *            The buffer containing application data to send
      * @param offset
      *            The offset at which the application data begins
-     * @param length
+     * @param len
      *            The number of bytes of application data
      * @throws IllegalStateException
      *             If called before the initial handshake has completed.
@@ -812,6 +836,76 @@ public abstract class TlsProtocol
         throw new TlsNoCloseNotifyException();
     }
 
+    public RecordPreview previewInputRecord(byte[] recordHeader) throws IOException
+    {
+        if (blocking)
+        {
+            throw new IllegalStateException("Cannot use previewInputRecord() in blocking mode!");
+        }
+        if (inputBuffers.available() != 0)
+        {
+            throw new IllegalStateException("Can only use previewInputRecord() for record-aligned input.");
+        }
+
+        if (closed)
+        {
+            throw new IOException("Connection is closed, cannot accept any more input");
+        }
+
+        return safePreviewRecordHeader(recordHeader);
+    }
+
+    public RecordPreview previewOutputRecord(int applicationDataSize) throws IOException
+    {
+        if (blocking)
+        {
+            throw new IllegalStateException("Cannot use previewOutputRecord() in blocking mode!");
+        }
+        if (outputBuffer.getBuffer().available() != 0)
+        {
+            throw new IllegalStateException("Can only use previewOutputRecord() for record-aligned output.");
+        }
+
+        if (closed)
+        {
+            throw new IOException("Connection is closed, cannot produce any more output");
+        }
+
+        if (applicationDataSize < 1)
+        {
+            return new RecordPreview(0, 0);
+        }
+
+        if (this.appDataSplitEnabled)
+        {
+            switch (appDataSplitMode)
+            {
+                case ADS_MODE_0_N_FIRSTONLY:
+                case ADS_MODE_0_N:
+                {
+                    RecordPreview a = recordStream.previewOutputRecord(0);
+                    RecordPreview b = recordStream.previewOutputRecord(applicationDataSize);
+                    return RecordPreview.combine(a, b);
+                }
+                case ADS_MODE_1_Nsub1:
+                default:
+                {
+                    RecordPreview a = recordStream.previewOutputRecord(1);
+                    if (applicationDataSize > 1)
+                    {
+                        RecordPreview b = recordStream.previewOutputRecord(applicationDataSize - 1);
+                        a = RecordPreview.combine(a, b);
+                    }
+                    return a;
+                }
+            }
+        }
+        else
+        {
+            return recordStream.previewOutputRecord(applicationDataSize);
+        }
+    }
+
     /**
      * Offer input from an arbitrary source. Only allowed in non-blocking mode.<br>
      * <br>
@@ -841,20 +935,33 @@ public abstract class TlsProtocol
         {
             throw new IOException("Connection is closed, cannot accept any more input");
         }
-        
+
+        // Fast path if the input is arriving one record at a time
+        if (inputBuffers.available() == 0 && safeReadFullRecord(input))
+        {
+            if (closed)
+            {
+                if (connection_state != CS_END)
+                {
+                    // NOTE: Any close during the handshake should have raised an exception.
+                    throw new TlsFatalAlert(AlertDescription.internal_error);
+                }
+            }
+            return;
+        }
+
         inputBuffers.addBytes(input);
 
         // loop while there are enough bytes to read the length of the next record
-        while (inputBuffers.available() >= RecordStream.TLS_HEADER_SIZE)
+        while (inputBuffers.available() >= RecordFormat.FRAGMENT_OFFSET)
         {
-            byte[] recordHeader = new byte[RecordStream.TLS_HEADER_SIZE];
+            byte[] recordHeader = new byte[RecordFormat.FRAGMENT_OFFSET];
             inputBuffers.peek(recordHeader);
 
-            int totalLength = TlsUtils.readUint16(recordHeader, RecordStream.TLS_HEADER_LENGTH_OFFSET) + RecordStream.TLS_HEADER_SIZE;
-            if (inputBuffers.available() < totalLength)
+            RecordPreview preview = safePreviewRecordHeader(recordHeader);
+            if (inputBuffers.available() < preview.getRecordSize())
             {
                 // not enough bytes to read a whole record
-                safeCheckRecordHeader(recordHeader);
                 break;
             }
 
@@ -870,6 +977,11 @@ public abstract class TlsProtocol
                 break;
             }
         }
+    }
+
+    public int getApplicationDataLimit()
+    {
+        return recordStream.getPlaintextLimit();
     }
 
     /**

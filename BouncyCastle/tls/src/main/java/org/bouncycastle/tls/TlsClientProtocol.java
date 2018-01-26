@@ -28,14 +28,12 @@ public class TlsClientProtocol
     /**
      * Constructor for non-blocking mode.<br>
      * <br>
-     * When data is received, use {@link #offerInput(java.nio.ByteBuffer)} to
-     * provide the received ciphertext, then use
-     * {@link #readInput(byte[], int, int)} to read the corresponding cleartext.<br>
+     * When data is received, use {@link #offerInput(byte[])} to provide the received ciphertext,
+     * then use {@link #readInput(byte[], int, int)} to read the corresponding cleartext.<br>
      * <br>
-     * Similarly, when data needs to be sent, use
-     * {@link #offerOutput(byte[], int, int)} to provide the cleartext, then use
-     * {@link #readOutput(byte[], int, int)} to get the corresponding
-     * ciphertext.
+     * Similarly, when data needs to be sent, use {@link #writeApplicationData(byte[], int, int)} to
+     * provide the cleartext, then use {@link #readOutput(byte[], int, int)} to get the
+     * corresponding ciphertext.
      */
     public TlsClientProtocol()
     {
@@ -141,6 +139,7 @@ public class TlsClientProtocol
             processFinishedMessage(buf);
             this.connection_state = CS_SERVER_FINISHED;
 
+            sendChangeCipherSpecMessage();
             sendFinishedMessage();
             this.connection_state = CS_CLIENT_FINISHED;
 
@@ -263,8 +262,6 @@ public class TlsClientProtocol
                 {
                     this.securityParameters.masterSecret = getContext().getCrypto().adoptSecret(sessionParameters.getMasterSecret());
                     this.recordStream.setPendingConnectionState(getPeer().getCompression(), getPeer().getCipher());
-
-                    sendChangeCipherSpecMessage();
                 }
                 else
                 {
@@ -471,7 +468,7 @@ public class TlsClientProtocol
 
                 assertEmpty(buf);
 
-                this.keyExchange.validateCertificateRequest(this.certificateRequest);
+                this.certificateRequest = TlsUtils.validateCertificateRequest(this.certificateRequest, this.keyExchange);
 
                 /*
                  * TODO Give the client a chance to immediately select the CertificateVerify hash
@@ -583,8 +580,9 @@ public class TlsClientProtocol
     protected void receiveServerHelloMessage(ByteArrayInputStream buf)
         throws IOException
     {
+        ProtocolVersion server_version = TlsUtils.readVersion(buf);
+
         {
-            ProtocolVersion server_version = TlsUtils.readVersion(buf);
             if (!TlsUtils.isTLSv10(server_version))
             {
                 throw new TlsFatalAlert(AlertDescription.illegal_parameter);
@@ -742,7 +740,8 @@ public class TlsClientProtocol
         if (this.resumedSession)
         {
             if (selectedCipherSuite != this.sessionParameters.getCipherSuite()
-                || selectedCompressionMethod != this.sessionParameters.getCompressionAlgorithm())
+                || selectedCompressionMethod != this.sessionParameters.getCompressionAlgorithm()
+                || !server_version.equals(this.sessionParameters.getNegotiatedVersion()))
             {
                 throw new TlsFatalAlert(AlertDescription.illegal_parameter);
             }

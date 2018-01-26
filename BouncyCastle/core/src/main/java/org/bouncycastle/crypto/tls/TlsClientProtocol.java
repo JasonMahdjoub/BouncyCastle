@@ -39,15 +39,13 @@ public class TlsClientProtocol
     /**
      * Constructor for non-blocking mode.<br>
      * <br>
-     * When data is received, use {@link #offerInput(java.nio.ByteBuffer)} to
-     * provide the received ciphertext, then use
-     * {@link #readInput(byte[], int, int)} to read the corresponding cleartext.<br>
+     * When data is received, use {@link #offerInput(byte[])} to provide the received ciphertext,
+     * then use {@link #readInput(byte[], int, int)} to read the corresponding cleartext.<br>
      * <br>
-     * Similarly, when data needs to be sent, use
-     * {@link #offerOutput(byte[], int, int)} to provide the cleartext, then use
-     * {@link #readOutput(byte[], int, int)} to get the corresponding
+     * Similarly, when data needs to be sent, use {@link #offerOutput(byte[], int, int)} to provide
+     * the cleartext, then use {@link #readOutput(byte[], int, int)} to get the corresponding
      * ciphertext.
-     * 
+     *
      * @param secureRandom
      *            Random number generator for various cryptographic functions
      */
@@ -146,6 +144,7 @@ public class TlsClientProtocol
             processFinishedMessage(buf);
             this.connection_state = CS_SERVER_FINISHED;
 
+            sendChangeCipherSpecMessage();
             sendFinishedMessage();
             this.connection_state = CS_CLIENT_FINISHED;
 
@@ -269,8 +268,6 @@ public class TlsClientProtocol
                 {
                     this.securityParameters.masterSecret = Arrays.clone(this.sessionParameters.getMasterSecret());
                     this.recordStream.setPendingConnectionState(getPeer().getCompression(), getPeer().getCipher());
-
-                    sendChangeCipherSpecMessage();
                 }
                 else
                 {

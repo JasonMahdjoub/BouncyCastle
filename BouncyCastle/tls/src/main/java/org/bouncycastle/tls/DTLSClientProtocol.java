@@ -528,7 +528,7 @@ public class DTLSClientProtocol
 
         TlsProtocol.assertEmpty(buf);
 
-        state.keyExchange.validateCertificateRequest(state.certificateRequest);
+        state.certificateRequest = TlsUtils.validateCertificateRequest(state.certificateRequest, state.keyExchange);
     }
 
     protected void processCertificateStatus(ClientHandshakeState state, byte[] body)
@@ -617,10 +617,8 @@ public class DTLSClientProtocol
 
         ByteArrayInputStream buf = new ByteArrayInputStream(body);
 
-        {
-            ProtocolVersion server_version = TlsUtils.readVersion(buf);
-            reportServerVersion(state, server_version);
-        }
+        ProtocolVersion server_version = TlsUtils.readVersion(buf);
+        reportServerVersion(state, server_version);
 
         securityParameters.serverRandom = TlsUtils.readFully(32, buf);
 
@@ -754,7 +752,8 @@ public class DTLSClientProtocol
         if (state.resumedSession)
         {
             if (selectedCipherSuite != state.sessionParameters.getCipherSuite()
-                || selectedCompressionMethod != state.sessionParameters.getCompressionAlgorithm())
+                || selectedCompressionMethod != state.sessionParameters.getCompressionAlgorithm()
+                || !server_version.equals(state.sessionParameters.getNegotiatedVersion()))
             {
                 throw new TlsFatalAlert(AlertDescription.illegal_parameter);
             }

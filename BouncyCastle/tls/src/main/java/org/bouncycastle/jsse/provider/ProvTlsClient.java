@@ -13,7 +13,6 @@ import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.net.ssl.SSLSession;
 import javax.net.ssl.X509KeyManager;
 import javax.security.auth.x500.X500Principal;
 
@@ -45,7 +44,9 @@ import org.bouncycastle.tls.crypto.TlsCryptoParameters;
 import org.bouncycastle.tls.crypto.impl.jcajce.JcaDefaultTlsCredentialedSigner;
 import org.bouncycastle.tls.crypto.impl.jcajce.JcaTlsCrypto;
 import org.bouncycastle.tls.crypto.impl.jcajce.JceDefaultTlsCredentialedAgreement;
+import org.bouncycastle.util.Arrays;
 import org.bouncycastle.util.IPAddress;
+import org.bouncycastle.util.encoders.Hex;
 
 class ProvTlsClient
     extends DefaultTlsClient
@@ -58,6 +59,7 @@ class ProvTlsClient
     protected final ProvTlsManager manager;
     protected final ProvSSLParameters sslParameters;
 
+    protected ProvSSLSessionImpl sslSession = null;
     protected boolean handshakeComplete = false;
 
     ProvTlsClient(ProvTlsManager manager)
@@ -72,6 +74,12 @@ class ProvTlsClient
     protected CertificateStatusRequest getCertificateStatusRequest()
     {
         return null;
+    }
+
+    @Override
+    protected Vector getSupportedGroups(boolean offeringDH, boolean offeringEC)
+    {
+        return SupportedGroups.getClientSupportedGroups(manager.getContext().isFips(), offeringDH, offeringEC);
     }
 
     @Override
@@ -294,50 +302,6 @@ class ProvTlsClient
             :   super.getCompressionMethods();
     }
 
-    @Override
-    public Hashtable getClientExtensions() throws IOException
-    {
-        Hashtable clientExtensions = TlsExtensionsUtils.ensureExtensionsInitialised(super.getClientExtensions());
-
-        if (provEnableSNIExtension)
-        {
-            List<BCSNIServerName> sniServerNames = manager.getProvSSLParameters().getServerNames();
-            if (sniServerNames == null)
-            {
-                String peerHost = manager.getPeerHost();
-                if (peerHost != null && peerHost.indexOf('.') > 0 && !IPAddress.isValid(peerHost))
-                {
-                    Vector serverNames = new Vector(1);
-                    serverNames.addElement(new ServerName(NameType.host_name, peerHost));
-                    TlsExtensionsUtils.addServerNameExtension(clientExtensions, new ServerNameList(serverNames));
-                }
-            }
-            else if (sniServerNames.isEmpty())
-            {
-                // NOTE: We follow SunJSSE behaviour and disable SNI in this case
-            }
-            else
-            {
-                Vector serverNames = new Vector(sniServerNames.size());
-                for (BCSNIServerName sniServerName : sniServerNames)
-                {
-                    /*
-                     * TODO[jsse] Add support for constructing ServerName using
-                     * BCSNIServerName.getEncoded() directly, then remove the 'host_name' limitation
-                     * (although it's currently the only defined type).
-                     */
-                    if (sniServerName.getType() == NameType.host_name)
-                    {
-                        serverNames.addElement(new ServerName((short)sniServerName.getType(), new String(sniServerName.getEncoded(), "ASCII")));
-                    }
-                }
-                TlsExtensionsUtils.addServerNameExtension(clientExtensions, new ServerNameList(serverNames));
-            }
-        }
-
-        return clientExtensions;
-    }
-
 //    public TlsKeyExchange getKeyExchange() throws IOException
 //    {
 //        // TODO[jsse] Check that all key exchanges used in JSSE supportedCipherSuites are handled
@@ -359,7 +323,23 @@ class ProvTlsClient
     @Override
     public TlsSession getSessionToResume()
     {
-        // TODO[jsse] Search for a suitable session in the client session context
+        ProvSSLSessionContext sessionContext = manager.getContextData().getClientSessionContext();
+        this.sslSession = sessionContext.getSessionImpl(manager.getPeerHost(), manager.getPeerPort());
+
+        if (sslSession != null)
+        {
+            TlsSession sessionToResume = sslSession.getTlsSession();
+            if (sessionToResume != null)
+            {
+                return sessionToResume;
+            }
+        }
+
+        if (!manager.getEnableSessionCreation())
+        {
+            throw new IllegalStateException("No resumable sessions and session creation is disabled");
+        }
+
         return null;
     }
 
@@ -405,11 +385,32 @@ class ProvTlsClient
     {
         this.handshakeComplete = true;
 
-        ProvSSLSessionContext sessionContext = manager.getContextData().getClientSessionContext();
-        SSLSession session = sessionContext.reportSession(context.getSession());
-        ProvSSLConnection connection = new ProvSSLConnection(context, session);
+        TlsSession handshakeSession = context.getSession();
 
-        manager.notifyHandshakeComplete(connection);
+        if (sslSession == null || sslSession.getTlsSession() != handshakeSession)
+        {
+            sslSession = manager.getContextData().getClientSessionContext().reportSession(handshakeSession,
+                manager.getPeerHost(), manager.getPeerPort());
+        }
+
+        manager.notifyHandshakeComplete(new ProvSSLConnection(context, sslSession));
+    }
+
+    @Override
+    public void notifySecureRenegotiation(boolean secureRenegotiation) throws IOException
+    {
+        if (!secureRenegotiation)
+        {
+            boolean allowLegacyHelloMessages = PropertyUtils.getBooleanSystemProperty("sun.security.ssl.allowLegacyHelloMessages", true);
+            if (!allowLegacyHelloMessages)
+            {
+                /*
+                 * RFC 5746 3.4/3.6. In this case, some clients/servers may want to terminate the handshake instead
+                 * of continuing; see Section 4.1/4.3 for discussion.
+                 */
+                throw new TlsFatalAlert(AlertDescription.handshake_failure);
+            }
+        }
     }
 
     @Override
@@ -438,5 +439,28 @@ class ProvTlsClient
             }
         }
         throw new TlsFatalAlert(AlertDescription.protocol_version);
+    }
+
+    @Override
+    public void notifySessionID(byte[] sessionID)
+    {
+        super.notifySessionID(sessionID);
+
+        if (sessionID == null || sessionID.length == 0)
+        {
+            LOG.fine("Server did not specify a session ID");
+        }
+        else if (sslSession != null && Arrays.areEqual(sessionID, sslSession.getId()))
+        {
+            LOG.fine("Server resumed session: " + Hex.toHexString(sessionID));
+        }
+        else if (!manager.getEnableSessionCreation())
+        {
+            throw new IllegalStateException("Server did not resume session and session creation is disabled");
+        }
+        else
+        {
+            LOG.fine("Server specified new session: " + Hex.toHexString(sessionID));
+        }
     }
 }

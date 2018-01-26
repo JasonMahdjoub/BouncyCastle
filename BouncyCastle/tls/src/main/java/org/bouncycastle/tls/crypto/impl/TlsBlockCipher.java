@@ -110,6 +110,38 @@ public class TlsBlockCipher
         }
     }
 
+    public int getCiphertextLimit(int plaintextLimit)
+    {
+        int blockSize = encryptCipher.getBlockSize();
+        int macSize = writeMac.getSize();
+
+        int ciphertextLimit = plaintextLimit;
+
+        // An explicit IV consumes 1 block
+        if (useExplicitIV)
+        {
+            ciphertextLimit += blockSize;
+        }
+
+        int maxPadding = useExtraPadding ? 255 : blockSize;
+
+        // Leave room for the MAC and (block-aligning) padding
+        if (encryptThenMAC)
+        {
+            ciphertextLimit += maxPadding;
+            ciphertextLimit -= (ciphertextLimit % blockSize);
+            ciphertextLimit += macSize;
+        }
+        else
+        {
+            ciphertextLimit += macSize;
+            ciphertextLimit += maxPadding;
+            ciphertextLimit -= (ciphertextLimit % blockSize);
+        }
+
+        return ciphertextLimit;
+    }
+
     public int getPlaintextLimit(int ciphertextLimit)
     {
         int blockSize = encryptCipher.getBlockSize();

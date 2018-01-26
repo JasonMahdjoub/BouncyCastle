@@ -16,13 +16,19 @@ import javax.net.ssl.X509TrustManager;
 
 import org.bouncycastle.jsse.BCSSLConnection;
 import org.bouncycastle.jsse.BCSSLEngine;
+import org.bouncycastle.tls.AlertDescription;
+import org.bouncycastle.tls.RecordFormat;
+import org.bouncycastle.tls.RecordPreview;
 import org.bouncycastle.tls.TlsClientProtocol;
+import org.bouncycastle.tls.TlsFatalAlert;
 import org.bouncycastle.tls.TlsProtocol;
 import org.bouncycastle.tls.TlsServerProtocol;
 
 /*
- * TODO[jsse] Currently doesn't properly support NIO usage, or conform very well with SSLEngine javadoc
- * - e.g. "The wrap() and unwrap() methods may execute concurrently of each other." is not true yet.
+ * TODO[jsse] Known limitations (relative to SSLEngine javadoc): 1. The wrap() and unwrap() methods
+ * are synchronized, so will not execute concurrently with each other. 2. Never delegates tasks i.e.
+ * getDelegatedTasks() will always return null; CPU-intensive parts of the handshake will execute
+ * during wrap/unwrap calls.
  */
 class ProvSSLEngine
     extends SSLEngine
@@ -32,7 +38,7 @@ class ProvSSLEngine
     protected final ContextData contextData;
 
     protected ProvSSLParameters sslParameters;
-    protected boolean enableSessionCreation = false;
+    protected boolean enableSessionCreation = true;
     protected boolean useClientMode = true;
 
     protected boolean initialHandshakeBegun = false;
@@ -110,6 +116,10 @@ class ProvSSLEngine
                 serverProtocol.accept(server);
                 this.handshakeStatus = HandshakeStatus.NEED_UNWRAP;
             }
+        }
+        catch (SSLException e)
+        {
+            throw e;
         }
         catch (IOException e)
         {
@@ -198,7 +208,7 @@ class ProvSSLEngine
     @Override
     public synchronized SSLSession getSession()
     {
-        return connection == null ? ProvSSLSession.NULL_SESSION : connection.getSession();
+        return connection == null ? ProvSSLSessionImpl.NULL_SESSION.getExportSession() : connection.getSession();
     }
 
     @Override
@@ -316,82 +326,87 @@ class ProvSSLEngine
             beginHandshake();
         }
 
+        Status resultStatus = Status.OK;
         int bytesConsumed = 0, bytesProduced = 0;
 
-        if (!protocol.isClosed())
-        {
-            /*
-             * Limit the net data that we will process in one call
-             * TODO[jsse] Ideally, we'd be processing exactly one record at a time
-             */
-            int srcLimit = ProvSSLSession.NULL_SESSION.getApplicationBufferSize() + 5;
-
-            int count = Math.min(src.remaining(), srcLimit);
-            if (count > 0)
-            {
-                byte[] buf = new byte[count];
-                src.get(buf);
-
-                try
-                {
-                    protocol.offerInput(buf);
-                }
-                catch (IOException e)
-                {
-                    /*
-                     * TODO[jsse] 'deferredException' is a workaround for Apache Tomcat's (as of
-                     * 8.5.13) SecureNioChannel behaviour when exceptions are thrown from SSLEngine.
-                     * In the case of SSLEngine.wrap throwing, Tomcat will call wrap again, allowing
-                     * any buffered outbound alert to be flushed. For unwrap, this doesn't happen.
-                     * So we pretend this unwrap was OK and ask for NEED_WRAP, then throw in wrap.
-                     * 
-                     * Note that the SSLEngine javadoc clearly describes a process of flushing via
-                     * wrap calls after any closure events, to include thrown exceptions.
-                     */
-                    //throw new SSLException(e);
-                    if (this.deferredException == null)
-                    {
-                        this.deferredException = new SSLException(e);
-                    }
-
-                    handshakeStatus = HandshakeStatus.NEED_WRAP;
-
-                    return new SSLEngineResult(Status.OK, HandshakeStatus.NEED_WRAP, bytesConsumed, bytesProduced);
-                }
-
-                bytesConsumed += count;
-                srcLimit -= count;
-            }
-        }
-
-        int inputAvailable = protocol.getAvailableInputBytes();
-        for (int dstIndex = 0; dstIndex < length && inputAvailable > 0; ++dstIndex)
-        {
-            ByteBuffer dst = dsts[dstIndex];
-            int count = Math.min(dst.remaining(), inputAvailable);
-
-            byte[] input = new byte[count];
-            int numRead = protocol.readInput(input, 0, count);
-            assert numRead == count;
-
-            dst.put(input);
-
-            bytesProduced += count;
-            inputAvailable -= count;
-        }
-
-        Status resultStatus = Status.OK;
-        if (inputAvailable > 0)
-        {
-            resultStatus = Status.BUFFER_OVERFLOW;
-        }
-        else if (protocol.isClosed())
+        if (protocol.isClosed())
         {
             resultStatus = Status.CLOSED;
         }
-        else if (bytesConsumed == 0)
+        else
         {
-            resultStatus = Status.BUFFER_UNDERFLOW;
+            try
+            {
+                RecordPreview preview = getRecordPreview(src);
+                if (preview == null || src.remaining() < preview.getRecordSize())
+                {
+                    resultStatus = Status.BUFFER_UNDERFLOW;
+                }
+                else if (hasInsufficientSpace(dsts, offset, length, preview.getApplicationDataLimit()))
+                {
+                    resultStatus = Status.BUFFER_OVERFLOW;
+                }
+                else
+                {
+                    byte[] record = new byte[preview.getRecordSize()];
+                    src.get(record);
+
+                    protocol.offerInput(record);
+                    bytesConsumed += record.length;
+
+                    int appDataAvailable = protocol.getAvailableInputBytes();
+                    for (int dstIndex = 0; dstIndex < length && appDataAvailable > 0; ++dstIndex)
+                    {
+                        ByteBuffer dst = dsts[offset + dstIndex];
+                        int count = Math.min(dst.remaining(), appDataAvailable);
+                        if (count > 0)
+                        {
+                            byte[] appData = new byte[count];
+                            int numRead = protocol.readInput(appData, 0, count);
+                            assert numRead == count;
+                
+                            dst.put(appData);
+                
+                            bytesProduced += count;
+                            appDataAvailable -= count;
+                        }
+                    }
+
+                    // We pre-checked the output would fit, so there should be nothing left over.
+                    if (appDataAvailable != 0)
+                    {
+                        // TODO[tls] Expose a method to fail the connection externally
+                        throw new TlsFatalAlert(AlertDescription.record_overflow);
+                    }
+                }
+            }
+            catch (IOException e)
+            {
+                /*
+                 * TODO[jsse] 'deferredException' is a workaround for Apache Tomcat's (as of
+                 * 8.5.13) SecureNioChannel behaviour when exceptions are thrown from
+                 * SSLEngine during the handshake. In the case of SSLEngine.wrap throwing,
+                 * Tomcat will call wrap again, allowing any buffered outbound alert to be
+                 * flushed. For unwrap, this doesn't happen. So we pretend this unwrap was
+                 * OK and ask for NEED_WRAP, then throw in wrap.
+                 * 
+                 * Note that the SSLEngine javadoc clearly describes a process of flushing
+                 * via wrap calls after any closure events, to include thrown exceptions.
+                 */
+                if (handshakeStatus != HandshakeStatus.NEED_UNWRAP)
+                {
+                    throw new SSLException(e);
+                }
+
+                if (this.deferredException == null)
+                {
+                    this.deferredException = new SSLException(e);
+                }
+
+                handshakeStatus = HandshakeStatus.NEED_WRAP;
+
+                return new SSLEngineResult(Status.OK, HandshakeStatus.NEED_WRAP, bytesConsumed, bytesProduced);
+            }
         }
 
         /*
@@ -454,35 +469,55 @@ class ProvSSLEngine
             {
                 resultStatus = Status.CLOSED;
             }
-            else
+            else if (protocol.getAvailableOutputBytes() > 0)
             {
                 /*
-                 * Limit the app data that we will process in one call
+                 * Handle any buffered handshake data fully before sending application data.
                  */
-                int srcLimit = ProvSSLSession.NULL_SESSION.getApplicationBufferSize();
-
-                for (int srcIndex = 0; srcIndex < length && srcLimit > 0; ++srcIndex)
+            }
+            else
+            {
+                try
                 {
-                    ByteBuffer src = srcs[srcIndex];
-                    int count = Math.min(src.remaining(), srcLimit);
-                    if (count > 0)
+                    /*
+                     * Generate at most one maximum-sized application data record per call.
+                     */
+                    int srcRemaining = getTotalRemaining(srcs, offset, length, protocol.getApplicationDataLimit());
+                    if (srcRemaining > 0)
                     {
-                        byte[] input = new byte[count];
-                        src.get(input);
-        
-                        try
-                        {
-                            protocol.writeApplicationData(input, 0, count);
-                        }
-                        catch (IOException e)
-                        {
-                            // TODO[jsse] Throw a subclass of SSLException?
-                            throw new SSLException(e);
-                        }
+                        RecordPreview preview = protocol.previewOutputRecord(srcRemaining);
 
-                        bytesConsumed += count;
-                        srcLimit -= count;
+                        int srcLimit = preview.getApplicationDataLimit();
+                        int dstLimit = preview.getRecordSize();
+
+                        if (dst.remaining() < dstLimit)
+                        {
+                            resultStatus = Status.BUFFER_OVERFLOW;
+                        }
+                        else
+                        {
+                            for (int srcIndex = 0; srcIndex < length && srcLimit > 0; ++srcIndex)
+                            {
+                                ByteBuffer src = srcs[offset + srcIndex];
+                                int count = Math.min(src.remaining(), srcLimit);
+                                if (count > 0)
+                                {
+                                    byte[] input = new byte[count];
+                                    src.get(input);
+    
+                                    protocol.writeApplicationData(input, 0, count);
+    
+                                    bytesConsumed += count;
+                                    srcLimit -= count;
+                                }
+                            }
+                        }
                     }
+                }
+                catch (IOException e)
+                {
+                    // TODO[jsse] Throw a subclass of SSLException?
+                    throw new SSLException(e);
                 }
             }
         }
@@ -505,8 +540,7 @@ class ProvSSLEngine
                 bytesProduced += count;
                 outputAvailable -= count;
             }
-
-            if (outputAvailable > 0)
+            else
             {
                 resultStatus = Status.BUFFER_OVERFLOW;
             }
@@ -546,6 +580,11 @@ class ProvSSLEngine
     public String getPeerHost()
     {
         return super.getPeerHost();
+    }
+
+    public int getPeerPort()
+    {
+        return super.getPeerPort();
     }
 
     public boolean isClientTrusted(X509Certificate[] chain, String authType)
@@ -589,5 +628,43 @@ class ProvSSLEngine
     public synchronized void notifyHandshakeComplete(ProvSSLConnection connection)
     {
         this.connection = connection;
+    }
+
+    private RecordPreview getRecordPreview(ByteBuffer src)
+        throws IOException
+    {
+        if (src.remaining() < RecordFormat.FRAGMENT_OFFSET)
+        {
+            return null;
+        }
+
+        byte[] recordHeader = new byte[RecordFormat.FRAGMENT_OFFSET];
+
+        int position = src.position();
+        src.get(recordHeader);
+        src.position(position);
+
+        return protocol.previewInputRecord(recordHeader);
+    }
+
+    private int getTotalRemaining(ByteBuffer[] bufs, int off, int len, int limit)
+    {
+        int result = 0;
+        for (int i = 0; i < len; ++i)
+        {
+            ByteBuffer buf = bufs[off + i];
+            int next = buf.remaining();
+            if (next >= (limit - result))
+            {
+                return limit;
+            }
+            result += next;
+        }
+        return result;
+    }
+
+    private boolean hasInsufficientSpace(ByteBuffer[] dsts, int off, int len, int amount)
+    {
+        return getTotalRemaining(dsts, off, len, amount) < amount;
     }
 }
