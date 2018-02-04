@@ -25,10 +25,13 @@ allprojects {
    apply plugin: 'maven-publish'
    group='org.bouncycastle'
    
-   compileJava.options.fork = true
-   compileJava.options.forkOptions.executable = "${jdk}/bin/javac"
-    compileJava.options.bootClasspath=fileTree(include: ['*.jar'], dir: "${jdk}/jre/lib").join(File.pathSeparator)
-	compileJava.options.extensionDirs = "${jdk}/jre/lib/ext/"
+   if (jdk!=null)
+   {
+   		compileJava.options.fork = true
+   		compileJava.options.forkOptions.executable = "${jdk}/bin/javac"
+    		compileJava.options.bootClasspath=fileTree(include: ['*.jar'], dir: "${jdk}/jre/lib").join(File.pathSeparator)
+		compileJava.options.extensionDirs = "${jdk}/jre/lib/ext/"
+	}
 	
    repositories {
        mavenCentral()
@@ -57,10 +60,13 @@ task printProperties << {
 }
 
 subprojects {
-    compileJava.options.fork = true
-	compileJava.options.forkOptions.executable = "${jdk}/bin/javac"
-	compileJava.options.bootClasspath=fileTree(include: ['*.jar'], dir: "${jdk}/jre/lib").join(File.pathSeparator)
-	compileJava.options.extensionDirs = "${jdk}/jre/lib/ext/"
+	if (jdk!=null)
+	{
+    		compileJava.options.fork = true
+		compileJava.options.forkOptions.executable = "${jdk}/bin/javac"
+		compileJava.options.bootClasspath=fileTree(include: ['*.jar'], dir: "${jdk}/jre/lib").join(File.pathSeparator)
+		compileJava.options.extensionDirs = "${jdk}/jre/lib/ext/"
+	}
 
     apply plugin: 'eclipse'
 
