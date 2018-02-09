@@ -124,14 +124,15 @@ public class BcPublicKeyDataDecryptorFactory
                 return PGPPad.unpadSessionData(c.unwrap(keyEnc, 0, keyEnc.length));
             }
         }
-        catch (IOException e)
-        {
-            throw new PGPException("exception creating user keying material: " + e.getMessage(), e);
-        }
         catch (InvalidCipherTextException e)
         {
             throw new PGPException("exception encrypting session info: " + e.getMessage(), e);
         }
+        catch (IOException e)
+        {
+            throw new PGPException("exception creating user keying material: " + e.getMessage(), e);
+        }
+        
 
     }
 
