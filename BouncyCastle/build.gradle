@@ -60,9 +60,20 @@ allprojects {
 		}
 	}
 	
-   repositories {
-       mavenCentral()
-   }
+	repositories {
+
+
+	   	maven {
+	       		url "${artifactory_Url}/gradle-release"
+	       		if (user!="")
+	       		{
+		       		credentials {
+		              username "${artifactory_user}"
+		              password "${artifactory_password}"
+		            }
+		         }
+	   	} 
+	}
 
    dependencies {
         testCompile group: 'junit', name: 'junit', version: '4.11'
@@ -124,11 +135,11 @@ subprojects {
 	    from "../../LICENSE"
 	}
 
-	task javadocJar(type: Jar, dependsOn: javadoc) {
+	/*task javadocJar(type: Jar, dependsOn: javadoc) {
 	    classifier = 'javadoc'
 	    from javadoc.destinationDir
 	    from "../../LICENSE"
-	}
+	}*/
 	publishing {
 		publications {
 		      maven(MavenPublication) {
@@ -141,7 +152,7 @@ subprojects {
 		        }
 				from components.java
             	artifact sourcesJar
-            	artifact javadocJar		        
+            	//artifact javadocJar		        
 	      	  }
 	    }
 		repositories {
