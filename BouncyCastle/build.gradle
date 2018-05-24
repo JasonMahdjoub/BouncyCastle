@@ -35,12 +35,13 @@ if (propFile.canRead())
 	if (props!=null && props.containsKey('artifactory_password'))
 		pwd="${artifactory_password}"	
 }
-
+def javaVersion=1.7
 allprojects {
    apply plugin: 'java'
    apply plugin: 'idea'
    apply plugin: 'net.saliman.cobertura'
    apply plugin: 'maven-publish'
+	apply plugin: 'idea'
    group='org.bouncycastle'
    
 	if (propFile.canRead())
@@ -84,9 +85,16 @@ allprojects {
    }
    
    
-	
-	sourceCompatibility = 1.7
-    targetCompatibility = 1.7
+
+	sourceCompatibility = javaVersion
+    targetCompatibility = javaVersion
+
+}
+idea {
+    project {
+        jdkName = javaVersion
+        languageLevel = javaVersion
+    }
 }
 
 ext {
