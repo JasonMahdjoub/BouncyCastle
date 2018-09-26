@@ -85,7 +85,7 @@
     <session id="-952926467">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.6" value="1" />
           <entry key="project.opened" value="2" />
@@ -136,11 +136,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="6">
-              <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="41" selection-end-column="32" />
+              <caret line="38" selection-start-line="38" selection-end-line="41" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -154,7 +154,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/gradle.properties">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="45">
@@ -198,7 +198,7 @@
         <entry file="file://$PROJECT_DIR$/prov/src/test/java/org/bouncycastle/jce/provider/test/nist/NistCertPathReviewerTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="348">
-              <caret line="688" column="4" lean-forward="true" selection-start-line="688" selection-start-column="4" selection-end-line="688" selection-end-column="4" />
+              <caret line="688" column="4" selection-start-line="688" selection-start-column="4" selection-end-line="688" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -1967,7 +1967,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="15307730677000" />
+        <entry key="$PROJECT_DIR$" value="15307731194000" />
         <entry key="$PROJECT_DIR$/.gradle" value="0" />
         <entry key="$PROJECT_DIR$/build.gradle" value="1271479254" />
         <entry key="$PROJECT_DIR$/gradle.properties" value="1342044601" />
@@ -2335,7 +2335,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537995741479" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537998388456" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.20071259" />
@@ -2502,7 +2502,14 @@
       <option name="project" value="LOCAL" />
       <updated>1537995416334</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Compile with open JDK 11">
+      <created>1537995793482</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1537995793482</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -2548,6 +2555,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="69" y="23" width="1611" height="1027" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2555768" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -2560,7 +2568,7 @@
       <window_info anchor="bottom" id="Messages" weight="0.32941177" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32941177" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32941177" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -2677,7 +2685,14 @@
     <entry file="file://$PROJECT_DIR$/prov/src/test/java/org/bouncycastle/jce/provider/test/nist/NistCertPathReviewerTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="348">
-          <caret line="688" column="4" lean-forward="true" selection-start-line="688" selection-start-column="4" selection-end-line="688" selection-end-column="4" />
+          <caret line="688" column="4" selection-start-line="688" selection-start-column="4" selection-end-line="688" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6">
+          <caret line="38" selection-start-line="38" selection-end-line="41" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -2685,13 +2700,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" selection-start-line="3" selection-end-line="4" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6">
-          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="41" selection-end-column="32" />
         </state>
       </provider>
     </entry>
