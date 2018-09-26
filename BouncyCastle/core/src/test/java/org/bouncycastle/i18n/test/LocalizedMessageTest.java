@@ -7,11 +7,13 @@ import org.bouncycastle.i18n.MissingEntryException;
 import org.bouncycastle.i18n.filter.HTMLFilter;
 import org.bouncycastle.i18n.filter.TrustedInput;
 import org.bouncycastle.util.encoders.Hex;
+import org.junit.Assert;
 
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
@@ -60,21 +62,29 @@ public class LocalizedMessageTest extends TestCase
         Date testDate = new Date(1155820320000l);
         args = new Object[] { new TrustedInput(testDate) };
         msg = new LocalizedMessage(TEST_RESOURCE, timeTestId, args);
-        assertEquals("It's 1:12:00 PM GMT at Aug 17, 2006.", msg.getEntry(
-                "text", Locale.ENGLISH, TimeZone.getTimeZone("GMT")));
+        String m=msg.getEntry(
+                "text", Locale.ENGLISH, TimeZone.getTimeZone("GMT"));
+        Assert.assertTrue("foud : "+m, "It's 1:12:00 PM Greenwich Mean Time at Aug 17, 2006.".equals(m)
+                || "It's 1:12:00 PM GMT at Aug 17, 2006.".equals(m));
+        //assertEquals("It's 1:12:00 PM GMT at Aug 17, 2006.", msg);
         // NOTE: Older JDKs appear to use '.' as the time separator for German locale
-        assertEquals("Es ist 13:12 Uhr GMT am 17.08.2006.", msg.getEntry(
-                "text", Locale.GERMAN, TimeZone.getTimeZone("GMT")).replace("13.12", "13:12"));
+        m=msg.getEntry(
+                "text", Locale.GERMAN, TimeZone.getTimeZone("GMT")).replace("13.12", "13:12");
+        Assert.assertTrue("expected : "+m, "Es ist 13:12 Uhr GMT am 17.08.2006.".equals(m) || "Es ist 13:12:00 Mittlere Greenwich-Zeit am 17.08.2006.".equals(m) );
 
         // test time with filter
         args = new Object[] { new TrustedInput(testDate) };
         msg = new LocalizedMessage(TEST_RESOURCE, timeTestId, args);
         msg.setFilter(new HTMLFilter());
-        assertEquals("It's 1:12:00 PM GMT at Aug 17, 2006.", msg.getEntry(
-                "text", Locale.ENGLISH, TimeZone.getTimeZone("GMT")));
+        m=msg.getEntry(
+                "text", Locale.ENGLISH, TimeZone.getTimeZone("GMT"));
+        Assert.assertTrue("expected : "+m, "It's 1:12:00 PM Greenwich Mean Time at Aug 17, 2006.".equals(m) || "It's 1:12:00 PM GMT at Aug 17, 2006.".equals(m) );
+
         // NOTE: Older JDKs appear to use '.' as the time separator for German locale
-        assertEquals("Es ist 13:12 Uhr GMT am 17.08.2006.", msg.getEntry(
-                "text", Locale.GERMAN, TimeZone.getTimeZone("GMT")).replace("13.12", "13:12"));
+        m=msg.getEntry(
+                "text", Locale.GERMAN, TimeZone.getTimeZone("GMT")).replace("13.12", "13:12");
+        Assert.assertTrue("expected : "+m, "Es ist 13:12 Uhr GMT am 17.08.2006.".equals(m) || "Es ist 13:12:00 Mittlere Greenwich-Zeit am 17.08.2006.".equals(m) );
+
         
         // test number
         args = new Object[] { new TrustedInput(new Float(0.2))  };
@@ -129,7 +139,7 @@ public class LocalizedMessageTest extends TestCase
         try
         {
 //            String expectedUtf8 = "some umlauts äöüèéà";
-            String expectedUtf8 = new String(Hex.decode("736f6d6520756d6c6175747320c3a4c3b6c3bcc3a8c3a9c3a0"), "UTF-8");
+            String expectedUtf8 = new String(Hex.decode("736f6d6520756d6c6175747320c3a4c3b6c3bcc3a8c3a9c3a0"), StandardCharsets.UTF_8);
             msg = new LocalizedMessage(UTF8_TEST_RESOURCE, utf8TestId, "UTF-8");
             assertEquals(expectedUtf8, msg.getEntry("text", Locale.GERMAN, TimeZone.getDefault()));
         }

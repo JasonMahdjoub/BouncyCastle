@@ -6,7 +6,7 @@ buildscript {
    }
 
    dependencies {
-        classpath "net.saliman:gradle-cobertura-plugin:2.2.8"
+        classpath "net.saliman:gradle-cobertura-plugin:2.5.4"
    }
 }
 
@@ -35,7 +35,12 @@ if (propFile.canRead())
 	if (props!=null && props.containsKey('artifactory_password'))
 		pwd="${artifactory_password}"	
 }
-def javaVersion=1.7
+apply plugin: 'java-library'
+
+def javaVersion=7
+sourceCompatibility = javaVersion
+targetCompatibility= javaVersion
+
 allprojects {
    apply plugin: 'java'
    apply plugin: 'idea'
@@ -43,24 +48,12 @@ allprojects {
    apply plugin: 'maven-publish'
 	apply plugin: 'idea'
    group='org.bouncycastle'
-   
-	if (propFile.canRead())
-	{
-	
-	    if (props!=null && props.containsKey('jdk'))
-	    {
-			compileJava.options.fork = true
-			compileJava.options.forkOptions.executable = "${jdk}/bin/javac"
-			compileJava.options.bootClasspath=fileTree(include: ['*.jar'], dir: "${jdk}/jre/lib").join(File.pathSeparator)
-			compileJava.options.extensionDirs = "${jdk}/jre/lib/ext/"
-		
-			compileTestJava.options.fork = true
-			compileTestJava.options.forkOptions.executable = "${jdk}/bin/javac"
-			compileTestJava.options.bootClasspath=fileTree(include: ['*.jar'], dir: "${jdk}/jre/lib").join(File.pathSeparator)
-			compileTestJava.options.extensionDirs = "${jdk}/jre/lib/ext/"
-		}
-	}
-	
+
+	compileJava.options.compilerArgs.addAll(['--release', javaVersion])
+	if (project.hasProperty('javaHomeVersion') && javaHomeVersion.toFloat()>1.8)
+		javadoc.options.addStringOption("html5", "-quiet")
+
+
 	repositories {
 
 
@@ -83,12 +76,6 @@ allprojects {
         testRuntime "org.slf4j:slf4j-log4j12:1.7.5"
         testRuntime "log4j:log4j:1.2.17"
    }
-   
-   
-
-	sourceCompatibility = javaVersion
-    targetCompatibility = javaVersion
-
 }
 idea {
     project {
