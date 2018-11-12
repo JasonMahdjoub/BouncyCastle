@@ -3,11 +3,8 @@ package org.bouncycastle.crypto.test;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
-import org.bouncycastle.crypto.AsymmetricBlockCipher;
-import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
-import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.DataLengthException;
-import org.bouncycastle.crypto.InvalidCipherTextException;
+import org.bouncycastle.crypto.*;
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.digests.SHA1Digest;
 import org.bouncycastle.crypto.encodings.OAEPEncoding;
 import org.bouncycastle.crypto.encodings.PKCS1Encoding;
@@ -156,7 +153,7 @@ public class RSATest
 
             fail("oversized signature block not recognised");
         }
-        catch (InvalidCipherTextException e)
+        catch (BCInvalidCipherTextException e)
         {
             if (!e.getMessage().equals("block incorrect size"))
             {
@@ -172,7 +169,7 @@ public class RSATest
             data = eng.processBlock(overSized, 0, overSized.length);
             isTrue("not fallback", Arrays.areEqual(Hex.decode("feedbeeffeedbeeffeedbeef"), data));
         }
-        catch (InvalidCipherTextException e)
+        catch (BCInvalidCipherTextException e)
         {
             fail("RSA: failed - exception " + e.toString(), e);
         }
@@ -188,7 +185,7 @@ public class RSATest
         {
             data = eng.processBlock(overSized, 0, overSized.length);
         }
-        catch (InvalidCipherTextException e)
+        catch (BCInvalidCipherTextException e)
         {
             fail("RSA: failed - exception " + e.toString(), e);
         }
@@ -243,7 +240,7 @@ public class RSATest
 
             fail("missing data block not recognised");
         }
-        catch (InvalidCipherTextException e)
+        catch (BCInvalidCipherTextException e)
         {
             if (!e.getMessage().equals(expectedMessage))
             {
@@ -303,7 +300,7 @@ public class RSATest
         {
             isTrue("message mismatch", "input data too long".equals(e.getMessage()));
         }
-        catch (InvalidCipherTextException e)
+        catch (BCInvalidCipherTextException e)
         {
             fail("failed - exception " + e.toString(), e);
         }

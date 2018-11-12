@@ -2,9 +2,9 @@ package org.bouncycastle.pqc.crypto.mceliece;
 
 import java.security.SecureRandom;
 
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
-import org.bouncycastle.crypto.InvalidCipherTextException;
 import org.bouncycastle.crypto.params.ParametersWithRandom;
 import org.bouncycastle.pqc.crypto.MessageEncryptor;
 import org.bouncycastle.pqc.math.linearalgebra.GF2Matrix;
@@ -158,10 +158,10 @@ public class McElieceCipher
      *
      * @param input the cipher text
      * @return the plain text
-     * @throws InvalidCipherTextException if the cipher text is invalid.
+     * @throws BCInvalidCipherTextException if the cipher text is invalid.
      */
     public byte[] messageDecrypt(byte[] input)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         if (forEncryption)
         {
@@ -209,7 +209,7 @@ public class McElieceCipher
     }
 
     private byte[] computeMessage(GF2Vector mr)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         byte[] mrBytes = mr.getEncoded();
         // find first non-zero byte
@@ -222,7 +222,7 @@ public class McElieceCipher
         // check if padding byte is valid
         if (index<0 || mrBytes[index] != 0x01)
         {
-            throw new InvalidCipherTextException("Bad Padding: invalid ciphertext");
+            throw new BCInvalidCipherTextException("Bad Padding: invalid ciphertext");
         }
 
         // extract and return message

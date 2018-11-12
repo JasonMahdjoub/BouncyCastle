@@ -24,7 +24,7 @@ import javax.crypto.spec.RC5ParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
 import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
-import org.bouncycastle.crypto.InvalidCipherTextException;
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.Wrapper;
 import org.bouncycastle.jcajce.util.BCJcaJceHelper;
 import org.bouncycastle.jcajce.util.JcaJceHelper;
@@ -150,7 +150,7 @@ public abstract class BaseCipherSpi
                 encoded = wrapEngine.unwrap(wrappedKey, 0, wrappedKey.length);
             }
         }
-        catch (InvalidCipherTextException e)
+        catch (BCInvalidCipherTextException e)
         {
             throw new InvalidKeyException(e.getMessage());
         }

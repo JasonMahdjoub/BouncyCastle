@@ -2,8 +2,8 @@ package org.bouncycastle.crypto.test;
 
 import java.security.SecureRandom;
 
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.BlockCipher;
-import org.bouncycastle.crypto.InvalidCipherTextException;
 import org.bouncycastle.crypto.engines.AESEngine;
 import org.bouncycastle.crypto.engines.DESEngine;
 import org.bouncycastle.crypto.modes.GCMBlockCipher;
@@ -314,7 +314,7 @@ public class GCMTest
         return new AESEngine();
     }
 
-    private void testExceptions() throws InvalidCipherTextException
+    private void testExceptions() throws BCInvalidCipherTextException
     {
         GCMBlockCipher gcm = new GCMBlockCipher(createAESEngine());
 
@@ -375,7 +375,7 @@ public class GCMTest
     }
 
     private void runTestCase(String[] testVector)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         for (int macLength = 12; macLength <= 16; ++macLength)
         {
@@ -384,7 +384,7 @@ public class GCMTest
     }
 
     private void runTestCase(String[] testVector, int macLength)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         int pos = 0;
         String testName = testVector[pos++];
@@ -418,7 +418,7 @@ public class GCMTest
         byte[]          P,
         byte[]          C,
         byte[]          T)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         byte[] fa = new byte[A.length / 2];
         byte[] la = new byte[A.length - (A.length / 2)];
@@ -441,7 +441,7 @@ public class GCMTest
         byte[]          P,
         byte[]          C,
         byte[]          T)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         AEADParameters parameters = new AEADParameters(new KeyParameter(K), T.length * 8, IV, A);
         GCMBlockCipher encCipher = initCipher(encM, true, parameters);
@@ -479,7 +479,7 @@ public class GCMTest
         byte[]          P,
         byte[]          C,
         byte[]          T)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         byte[] enc = new byte[encCipher.getOutputSize(P.length)];
         if (SA != null)
@@ -536,7 +536,7 @@ public class GCMTest
     }
 
     private void randomTests()
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         SecureRandom srng = new SecureRandom();
         srng.setSeed(Times.nanoTime());
@@ -548,7 +548,7 @@ public class GCMTest
     }
 
     private void randomTests(SecureRandom srng, GCMMultiplier m)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         for (int i = 0; i < 10; ++i)
         {
@@ -557,7 +557,7 @@ public class GCMTest
     }
 
     private void randomTest(SecureRandom srng, GCMMultiplier m)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         int kLength = 16 + 8 * (Math.abs(srng.nextInt()) % 3);
         byte[] K = new byte[kLength];

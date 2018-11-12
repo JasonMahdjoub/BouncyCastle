@@ -6,7 +6,7 @@ import java.security.SecureRandom;
 import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
 import org.bouncycastle.crypto.BufferedBlockCipher;
 import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.InvalidCipherTextException;
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.KeyEncoder;
 import org.bouncycastle.crypto.KeyGenerationParameters;
 import org.bouncycastle.crypto.agreement.ECDHBasicAgreement;
@@ -220,7 +220,7 @@ public class ECIESTest
             i2.processBlock(out1, 0, out1.length - 1);
             fail("no exception");
         }
-        catch (InvalidCipherTextException ex)
+        catch (BCInvalidCipherTextException ex)
         {
             if (!"Length of input must be greater than the MAC and V combined".equals(ex.getMessage()))
             {
@@ -259,7 +259,7 @@ public class ECIESTest
             i2.processBlock(out1, 0, out1.length - 1);
             fail("no exception");
         }
-        catch (InvalidCipherTextException ex)
+        catch (BCInvalidCipherTextException ex)
         {
             if (!"Length of input must be greater than the MAC and V combined".equals(ex.getMessage()))
             {

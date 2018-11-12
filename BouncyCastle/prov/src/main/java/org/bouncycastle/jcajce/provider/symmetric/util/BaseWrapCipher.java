@@ -29,8 +29,8 @@ import javax.crypto.spec.RC5ParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
 import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.InvalidCipherTextException;
 import org.bouncycastle.crypto.Wrapper;
 import org.bouncycastle.crypto.params.KeyParameter;
 import org.bouncycastle.crypto.params.ParametersWithIV;
@@ -337,7 +337,7 @@ public abstract class BaseWrapCipher
                 {
                     return wrapEngine.unwrap(wrapStream.getBuf(), 0, wrapStream.size());
                 }
-                catch (InvalidCipherTextException e)
+                catch (BCInvalidCipherTextException e)
                 {
                     throw new BadPaddingException(e.getMessage());
                 }
@@ -378,7 +378,7 @@ public abstract class BaseWrapCipher
                 {
                     enc = wrapEngine.unwrap(wrapStream.getBuf(), 0, wrapStream.size());
                 }
-                catch (InvalidCipherTextException e)
+                catch (BCInvalidCipherTextException e)
                 {
                     throw new BadPaddingException(e.getMessage());
                 }
@@ -444,7 +444,7 @@ public abstract class BaseWrapCipher
                 encoded = wrapEngine.unwrap(wrappedKey, 0, wrappedKey.length);
             }
         }
-        catch (InvalidCipherTextException e)
+        catch (BCInvalidCipherTextException e)
         {
             throw new InvalidKeyException(e.getMessage());
         }

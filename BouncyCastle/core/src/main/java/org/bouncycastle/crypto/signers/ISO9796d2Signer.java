@@ -1,11 +1,7 @@
 package org.bouncycastle.crypto.signers;
 
-import org.bouncycastle.crypto.AsymmetricBlockCipher;
-import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.CryptoException;
-import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.InvalidCipherTextException;
-import org.bouncycastle.crypto.SignerWithRecovery;
+import org.bouncycastle.crypto.*;
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.params.RSAKeyParameters;
 import org.bouncycastle.util.Arrays;
 
@@ -173,18 +169,18 @@ public class ISO9796d2Signer
     }
 
     public void updateWithRecoveredMessage(byte[] signature)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         byte[]      block = cipher.processBlock(signature, 0, signature.length);
 
         if (((block[0] & 0xC0) ^ 0x40) != 0)
         {
-            throw new InvalidCipherTextException("malformed signature");
+            throw new BCInvalidCipherTextException("malformed signature");
         }
 
         if (((block[block.length - 1] & 0xF) ^ 0xC) != 0)
         {
-            throw new InvalidCipherTextException("malformed signature");
+            throw new BCInvalidCipherTextException("malformed signature");
         }
 
         int     delta = 0;
@@ -239,7 +235,7 @@ public class ISO9796d2Signer
         //
         if ((off - mStart) <= 0)
         {
-            throw new InvalidCipherTextException("malformed block");
+            throw new BCInvalidCipherTextException("malformed block");
         }
 
         //

@@ -1,9 +1,9 @@
 package org.bouncycastle.crypto.test;
 
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.BlockCipher;
 import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.DataLengthException;
-import org.bouncycastle.crypto.InvalidCipherTextException;
 import org.bouncycastle.crypto.engines.AESEngine;
 import org.bouncycastle.crypto.engines.AESFastEngine;
 import org.bouncycastle.crypto.engines.AESLightEngine;
@@ -94,13 +94,13 @@ public class BlockCipherResetTest
     }
 
     private void testModeReset(String test, BlockCipher cipher1, BlockCipher cipher2, CipherParameters params)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         testReset(test, false, cipher1, cipher2, params);
     }
 
     private void testReset(String test, BlockCipher cipher1, BlockCipher cipher2, CipherParameters params)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         testReset(test, true, cipher1, cipher2, params);
     }
@@ -110,7 +110,7 @@ public class BlockCipherResetTest
                            BlockCipher cipher1,
                            BlockCipher cipher2,
                            CipherParameters params)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         cipher1.init(true, params);
 
@@ -136,7 +136,7 @@ public class BlockCipherResetTest
                             boolean encrypt,
                             byte[] pretext,
                             byte[] posttext)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         // Do initial run
         byte[] output = new byte[posttext.length];
@@ -188,7 +188,7 @@ public class BlockCipherResetTest
     }
 
     private static void crypt(BlockCipher cipher1, boolean encrypt, byte[] plaintext, byte[] output)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         cipher1.processBlock(plaintext, 0, output, 0);
         if ((cipher1.getAlgorithmName().indexOf("PGPCFBwithIV") > -1) && !encrypt)

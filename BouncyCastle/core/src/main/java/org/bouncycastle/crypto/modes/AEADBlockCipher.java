@@ -1,9 +1,9 @@
 package org.bouncycastle.crypto.modes;
 
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.BlockCipher;
 import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.DataLengthException;
-import org.bouncycastle.crypto.InvalidCipherTextException;
 
 /**
  * A block cipher mode that includes authenticated encryption with a streaming mode and optional associated data.
@@ -96,10 +96,10 @@ public interface AEADBlockCipher
      * @param outOff offset into out to start copying the data at.
      * @return number of bytes written into out.
      * @throws IllegalStateException if the cipher is in an inappropriate state.
-     * @throws org.bouncycastle.crypto.InvalidCipherTextException if the MAC fails to match.
+     * @throws BCInvalidCipherTextException if the MAC fails to match.
      */
     public int doFinal(byte[] out, int outOff)
-        throws IllegalStateException, InvalidCipherTextException;
+        throws IllegalStateException, BCInvalidCipherTextException;
 
     /**
      * Return the value of the MAC associated with the last stream processed.

@@ -7,7 +7,7 @@ import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.CryptoException;
 import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
 import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.InvalidCipherTextException;
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.SignerWithRecovery;
 import org.bouncycastle.crypto.params.ParametersWithRandom;
 import org.bouncycastle.crypto.params.ParametersWithSalt;
@@ -219,7 +219,7 @@ public class ISO9796d2PSSSigner
     }
 
     public void updateWithRecoveredMessage(byte[] signature)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         byte[] block = cipher.processBlock(signature, 0, signature.length);
 

@@ -119,7 +119,7 @@ public class OAEPEncoding
         byte[]  in,
         int     inOff,
         int     inLen)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         if (forEncryption)
         {
@@ -135,7 +135,7 @@ public class OAEPEncoding
         byte[]  in,
         int     inOff,
         int     inLen)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         if (inLen > getInputBlockSize())
         {
@@ -200,14 +200,14 @@ public class OAEPEncoding
     }
 
     /**
-     * @exception InvalidCipherTextException if the decrypted block turns out to
+     * @exception BCInvalidCipherTextException if the decrypted block turns out to
      * be badly formatted.
      */
     public byte[] decodeBlock(
         byte[]  in,
         int     inOff,
         int     inLen)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         byte[]  data = engine.processBlock(in, inOff, inLen);
         byte[]  block = new byte[engine.getOutputBlockSize()];
@@ -277,7 +277,7 @@ public class OAEPEncoding
         if (defHashWrong | shortData | dataStartWrong)
         {
             Arrays.fill(block, (byte)0);
-            throw new InvalidCipherTextException("data wrong");
+            throw new BCInvalidCipherTextException("data wrong");
         }
 
         //

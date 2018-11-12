@@ -4,14 +4,8 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.math.BigInteger;
 
-import org.bouncycastle.crypto.BasicAgreement;
-import org.bouncycastle.crypto.BufferedBlockCipher;
-import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.DerivationFunction;
-import org.bouncycastle.crypto.EphemeralKeyPair;
-import org.bouncycastle.crypto.InvalidCipherTextException;
-import org.bouncycastle.crypto.KeyParser;
-import org.bouncycastle.crypto.Mac;
+import org.bouncycastle.crypto.*;
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.generators.EphemeralKeyPairGenerator;
 import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
 import org.bouncycastle.crypto.params.IESParameters;
@@ -170,7 +164,7 @@ public class IESEngine
         byte[] in,
         int inOff,
         int inLen)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         byte[] C = null, K = null, K1 = null, K2 = null;
         int len;
@@ -267,7 +261,7 @@ public class IESEngine
         byte[] in_enc,
         int inOff,
         int inLen)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         byte[] M, K, K1, K2;
         int len = 0;
@@ -275,7 +269,7 @@ public class IESEngine
         // Ensure that the length of the input is greater than the MAC in bytes
         if (inLen < V.length + mac.getMacSize())
         {
-            throw new InvalidCipherTextException("Length of input must be greater than the MAC and V combined");
+            throw new BCInvalidCipherTextException("Length of input must be greater than the MAC and V combined");
         }
 
         // note order is important: set up keys, do simple encryptions, check mac, do final encryption.
@@ -362,7 +356,7 @@ public class IESEngine
 
         if (!Arrays.constantTimeAreEqual(T1, T2))
         {
-            throw new InvalidCipherTextException("invalid MAC");
+            throw new BCInvalidCipherTextException("invalid MAC");
         }
 
         if (cipher == null)
@@ -382,7 +376,7 @@ public class IESEngine
         byte[] in,
         int inOff,
         int inLen)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         if (forEncryption)
         {
@@ -406,11 +400,11 @@ public class IESEngine
                 }
                 catch (IOException e)
                 {
-                    throw new InvalidCipherTextException("unable to recover ephemeral public key: " + e.getMessage(), e);
+                    throw new BCInvalidCipherTextException("unable to recover ephemeral public key: " + e.getMessage(), e);
                 }
                 catch (IllegalArgumentException e)
                 {
-                    throw new InvalidCipherTextException("unable to recover ephemeral public key: " + e.getMessage(), e);
+                    throw new BCInvalidCipherTextException("unable to recover ephemeral public key: " + e.getMessage(), e);
                 }
 
                 int encLength = (inLen - bIn.available());

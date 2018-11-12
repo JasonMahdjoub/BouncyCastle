@@ -107,7 +107,7 @@ public class RFC3211WrapEngine
         byte[]  in,
         int     inOff,
         int     inLen)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         if (forWrapping)
         {
@@ -118,7 +118,7 @@ public class RFC3211WrapEngine
 
         if (inLen < 2 * blockSize)
         {
-            throw new InvalidCipherTextException("input too short");
+            throw new BCInvalidCipherTextException("input too short");
         }
         
         byte[] cekBlock = new byte[inLen];
@@ -149,7 +149,7 @@ public class RFC3211WrapEngine
 
         if ((cekBlock[0] & 0xff) > cekBlock.length - 4)
         {
-            throw new InvalidCipherTextException("wrapped key corrupted");
+            throw new BCInvalidCipherTextException("wrapped key corrupted");
         }
 
         byte[] key = new byte[cekBlock[0] & 0xff];
@@ -165,7 +165,7 @@ public class RFC3211WrapEngine
         }
         if (nonEqual != 0)
         {
-            throw new InvalidCipherTextException("wrapped key fails checksum");
+            throw new BCInvalidCipherTextException("wrapped key fails checksum");
         }
 
         return key;

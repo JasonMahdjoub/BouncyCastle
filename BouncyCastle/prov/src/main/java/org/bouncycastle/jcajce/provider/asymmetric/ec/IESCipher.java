@@ -18,9 +18,9 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.ShortBufferException;
 
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.BlockCipher;
 import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.InvalidCipherTextException;
 import org.bouncycastle.crypto.KeyEncoder;
 import org.bouncycastle.crypto.agreement.ECDHBasicAgreement;
 import org.bouncycastle.crypto.engines.AESEngine;
@@ -474,7 +474,7 @@ public class IESCipher
 
                 return engine.processBlock(in, 0, in.length);
             }
-            catch (InvalidCipherTextException e)
+            catch (BCInvalidCipherTextException e)
             {
                 throw new BadBlockException("unable to process block", e);
             }

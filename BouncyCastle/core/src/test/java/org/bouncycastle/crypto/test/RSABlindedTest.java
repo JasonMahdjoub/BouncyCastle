@@ -2,7 +2,7 @@ package org.bouncycastle.crypto.test;
 
 import org.bouncycastle.crypto.AsymmetricBlockCipher;
 import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
-import org.bouncycastle.crypto.InvalidCipherTextException;
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.encodings.OAEPEncoding;
 import org.bouncycastle.crypto.encodings.PKCS1Encoding;
 import org.bouncycastle.crypto.engines.RSABlindedEngine;
@@ -73,7 +73,7 @@ public class RSABlindedTest
 
             fail("oversized signature block not recognised");
         }
-        catch (InvalidCipherTextException e)
+        catch (BCInvalidCipherTextException e)
         {
             if (!e.getMessage().equals("block incorrect size"))
             {
@@ -92,7 +92,7 @@ public class RSABlindedTest
         {
             data = eng.processBlock(data, 0, data.length);
         }
-        catch (InvalidCipherTextException e)
+        catch (BCInvalidCipherTextException e)
         {
             fail("RSA: failed - exception " + e.toString(), e);
         }
@@ -147,7 +147,7 @@ public class RSABlindedTest
 
             fail("missing data block not recognised");
         }
-        catch (InvalidCipherTextException e)
+        catch (BCInvalidCipherTextException e)
         {
             if (!e.getMessage().equals(expectedMessage))
             {

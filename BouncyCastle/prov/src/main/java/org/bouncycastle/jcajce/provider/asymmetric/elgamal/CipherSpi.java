@@ -26,7 +26,7 @@ import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import org.bouncycastle.crypto.AsymmetricBlockCipher;
 import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.InvalidCipherTextException;
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.encodings.ISO9796d1Encoding;
 import org.bouncycastle.crypto.encodings.OAEPEncoding;
 import org.bouncycastle.crypto.encodings.PKCS1Encoding;
@@ -408,7 +408,7 @@ public class CipherSpi
         {
             return cipher.processBlock(bOut.getBuf(), 0, bOut.size());
         }
-        catch (InvalidCipherTextException e)
+        catch (BCInvalidCipherTextException e)
         {
             throw new BadBlockException("unable to decrypt block", e);
         }

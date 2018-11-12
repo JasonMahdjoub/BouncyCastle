@@ -4,34 +4,34 @@ package org.bouncycastle.crypto;
  * this exception is thrown whenever we find something we don't expect in a
  * message.
  */
-public class InvalidCipherTextException 
+public class BCInvalidCipherTextException
     extends CryptoException
 {
     /**
      * base constructor.
      */
-    public InvalidCipherTextException()
+    public BCInvalidCipherTextException()
     {
     }
 
     /**
-     * create a InvalidCipherTextException with the given message.
+     * create a BCInvalidCipherTextException with the given message.
      *
      * @param message the message to be carried with the exception.
      */
-    public InvalidCipherTextException(
+    public BCInvalidCipherTextException(
         String  message)
     {
         super(message);
     }
 
     /**
-     * create a InvalidCipherTextException with the given message.
+     * create a BCInvalidCipherTextException with the given message.
      *
      * @param message the message to be carried with the exception.
      * @param cause the root cause of the exception.
      */
-    public InvalidCipherTextException(
+    public BCInvalidCipherTextException(
         String  message,
         Throwable cause)
     {

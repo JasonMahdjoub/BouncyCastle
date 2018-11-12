@@ -5,8 +5,8 @@ import java.security.SecureRandom;
 import org.bouncycastle.asn1.ASN1ObjectIdentifier;
 import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.crypto.AsymmetricBlockCipher;
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.InvalidCipherTextException;
 import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
 import org.bouncycastle.crypto.params.ParametersWithRandom;
 import org.bouncycastle.operator.AsymmetricKeyWrapper;
@@ -50,7 +50,7 @@ public abstract class BcAsymmetricKeyWrapper
             keyEncryptionCipher.init(true, params);
             return keyEncryptionCipher.processBlock(keyEnc, 0, keyEnc.length);
         }
-        catch (InvalidCipherTextException e)
+        catch (BCInvalidCipherTextException e)
         {
             throw new OperatorException("unable to encrypt contents key", e);
         }

@@ -15,7 +15,7 @@ import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import org.bouncycastle.asn1.x509.X509ObjectIdentifiers;
 import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.InvalidCipherTextException;
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.params.ParametersWithRandom;
 import org.bouncycastle.crypto.util.DigestFactory;
 import org.bouncycastle.pqc.crypto.mceliece.McElieceCCA2KeyParameters;
@@ -94,7 +94,7 @@ public class McElieceKobaraImaiCipherSpi
 
                 return unpad(cipher.messageDecrypt(inputOfDecr));
             }
-            catch (InvalidCipherTextException e)
+            catch (BCInvalidCipherTextException e)
             {
                 throw new BadPaddingException(e.getMessage());
             }

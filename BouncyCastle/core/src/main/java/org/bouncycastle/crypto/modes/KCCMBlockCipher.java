@@ -2,11 +2,8 @@ package org.bouncycastle.crypto.modes;
 
 import java.io.ByteArrayOutputStream;
 
-import org.bouncycastle.crypto.BlockCipher;
-import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.DataLengthException;
-import org.bouncycastle.crypto.InvalidCipherTextException;
-import org.bouncycastle.crypto.OutputLengthException;
+import org.bouncycastle.crypto.*;
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.params.AEADParameters;
 import org.bouncycastle.crypto.params.ParametersWithIV;
 import org.bouncycastle.util.Arrays;
@@ -244,7 +241,7 @@ public class KCCMBlockCipher
     }
 
     public int processPacket(byte[] in, int inOff, int len, byte[] out, int outOff)
-        throws IllegalStateException, InvalidCipherTextException
+        throws IllegalStateException, BCInvalidCipherTextException
     {
         if (in.length - inOff < len)
         {
@@ -358,7 +355,7 @@ public class KCCMBlockCipher
 
             if (!Arrays.constantTimeAreEqual(mac, calculatedMac))
             {
-                throw new InvalidCipherTextException("mac check failed");
+                throw new BCInvalidCipherTextException("mac check failed");
             }
 
             reset();
@@ -401,7 +398,7 @@ public class KCCMBlockCipher
     }
 
     public int doFinal(byte[] out, int outOff)
-        throws IllegalStateException, InvalidCipherTextException
+        throws IllegalStateException, BCInvalidCipherTextException
     {
         int len = processPacket(data.getBuffer(), 0, data.size(), out, outOff);
 

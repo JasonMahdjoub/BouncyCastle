@@ -3,7 +3,7 @@ package org.bouncycastle.crypto.tls;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import org.bouncycastle.crypto.InvalidCipherTextException;
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.encodings.PKCS1Encoding;
 import org.bouncycastle.crypto.engines.RSABlindedEngine;
 import org.bouncycastle.crypto.params.ParametersWithRandom;
@@ -39,7 +39,7 @@ public class TlsRSAUtils
                 TlsUtils.writeOpaque16(encryptedPreMasterSecret, output);
             }
         }
-        catch (InvalidCipherTextException e)
+        catch (BCInvalidCipherTextException e)
         {
             /*
              * This should never happen, only during decryption.

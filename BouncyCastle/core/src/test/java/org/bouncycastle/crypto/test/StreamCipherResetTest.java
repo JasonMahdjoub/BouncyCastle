@@ -2,8 +2,8 @@ package org.bouncycastle.crypto.test;
 
 import java.security.SecureRandom;
 
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.InvalidCipherTextException;
 import org.bouncycastle.crypto.StreamCipher;
 import org.bouncycastle.crypto.engines.ChaChaEngine;
 import org.bouncycastle.crypto.engines.Grain128Engine;
@@ -62,7 +62,7 @@ public class StreamCipherResetTest
     }
 
     private void testReset(StreamCipher cipher1, StreamCipher cipher2, CipherParameters params)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         cipher1.init(true, params);
 
@@ -85,7 +85,7 @@ public class StreamCipherResetTest
                             boolean encrypt,
                             byte[] pretext,
                             byte[] posttext)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         // Do initial run
         byte[] output = new byte[posttext.length];

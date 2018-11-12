@@ -2,12 +2,8 @@ package org.bouncycastle.crypto.modes;
 
 import java.io.ByteArrayOutputStream;
 
-import org.bouncycastle.crypto.BlockCipher;
-import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.DataLengthException;
-import org.bouncycastle.crypto.InvalidCipherTextException;
-import org.bouncycastle.crypto.Mac;
-import org.bouncycastle.crypto.OutputLengthException;
+import org.bouncycastle.crypto.*;
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.macs.CBCBlockCipherMac;
 import org.bouncycastle.crypto.params.AEADParameters;
 import org.bouncycastle.crypto.params.ParametersWithIV;
@@ -141,7 +137,7 @@ public class CCMBlockCipher
     }
 
     public int doFinal(byte[] out, int outOff)
-        throws IllegalStateException, InvalidCipherTextException
+        throws IllegalStateException, BCInvalidCipherTextException
     {
         int len = processPacket(data.getBuffer(), 0, data.size(), out, outOff);
 
@@ -197,10 +193,10 @@ public class CCMBlockCipher
      * @param inLen length of the data in the input array.
      * @return a byte array containing the processed input..
      * @throws IllegalStateException if the cipher is not appropriately set up.
-     * @throws InvalidCipherTextException if the input data is truncated or the mac check fails.
+     * @throws BCInvalidCipherTextException if the input data is truncated or the mac check fails.
      */
     public byte[] processPacket(byte[] in, int inOff, int inLen)
-        throws IllegalStateException, InvalidCipherTextException
+        throws IllegalStateException, BCInvalidCipherTextException
     {
         byte[] output;
 
@@ -212,7 +208,7 @@ public class CCMBlockCipher
         {
             if (inLen < macSize)
             {
-                throw new InvalidCipherTextException("data too short");
+                throw new BCInvalidCipherTextException("data too short");
             }
             output = new byte[inLen - macSize];
         }
@@ -232,11 +228,11 @@ public class CCMBlockCipher
      * @param outOff offset into output array to start putting processed bytes.
      * @return the number of bytes added to output.
      * @throws IllegalStateException if the cipher is not appropriately set up.
-     * @throws InvalidCipherTextException if the input data is truncated or the mac check fails.
+     * @throws BCInvalidCipherTextException if the input data is truncated or the mac check fails.
      * @throws DataLengthException if output buffer too short.
      */
     public int processPacket(byte[] in, int inOff, int inLen, byte[] output, int outOff)
-        throws IllegalStateException, InvalidCipherTextException, DataLengthException
+        throws IllegalStateException, BCInvalidCipherTextException, DataLengthException
     {
         // TODO: handle null keyParam (e.g. via RepeatedKeySpec)
         // Need to keep the CTR and CBC Mac parts around and reset
@@ -302,7 +298,7 @@ public class CCMBlockCipher
         {
             if (inLen < macSize)
             {
-                throw new InvalidCipherTextException("data too short");
+                throw new BCInvalidCipherTextException("data too short");
             }
             outputLen = inLen - macSize;
             if (output.length < (outputLen + outOff))
@@ -340,7 +336,7 @@ public class CCMBlockCipher
 
             if (!Arrays.constantTimeAreEqual(macBlock, calculatedMacBlock))
             {
-                throw new InvalidCipherTextException("mac check in CCM failed");
+                throw new BCInvalidCipherTextException("mac check in CCM failed");
             }
         }
 

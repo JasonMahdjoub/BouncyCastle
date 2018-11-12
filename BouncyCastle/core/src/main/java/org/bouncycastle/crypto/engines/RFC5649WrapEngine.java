@@ -1,8 +1,8 @@
 package org.bouncycastle.crypto.engines;
 
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.BlockCipher;
 import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.InvalidCipherTextException;
 import org.bouncycastle.crypto.Wrapper;
 import org.bouncycastle.crypto.params.KeyParameter;
 import org.bouncycastle.crypto.params.ParametersWithIV;
@@ -140,7 +140,7 @@ public class RFC5649WrapEngine
     }
 
     public byte[] unwrap(byte[] in, int inOff, int inLen)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         if (forWrapping)
         {
@@ -151,12 +151,12 @@ public class RFC5649WrapEngine
 
         if ((n * 8) != inLen)
         {
-            throw new InvalidCipherTextException("unwrap data must be a multiple of 8 bytes");
+            throw new BCInvalidCipherTextException("unwrap data must be a multiple of 8 bytes");
         }
 
         if (n == 1)
         {
-            throw new InvalidCipherTextException("unwrap data must be at least 16 bytes");
+            throw new BCInvalidCipherTextException("unwrap data must be at least 16 bytes");
         }
 
         byte[] relevantCiphertext = new byte[inLen];
@@ -233,7 +233,7 @@ public class RFC5649WrapEngine
 
         if (!isValid)
         {
-            throw new InvalidCipherTextException("checksum failed");
+            throw new BCInvalidCipherTextException("checksum failed");
         }
 
         // Extract the plaintext from the padded plaintext

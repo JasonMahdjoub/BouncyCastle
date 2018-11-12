@@ -220,10 +220,10 @@ public class RC2WrapEngine
     * @param inOff offset into in array that the wrapped key starts at.
     * @param inLen length of wrapped key data.
     * @return the unwrapped bytes.
-    * @throws InvalidCipherTextException
+    * @throws BCInvalidCipherTextException
     */
    public byte[] unwrap(byte[] in, int inOff, int inLen)
-            throws InvalidCipherTextException
+            throws BCInvalidCipherTextException
     {
 
         if (forWrapping)
@@ -233,12 +233,12 @@ public class RC2WrapEngine
 
         if (in == null)
         {
-            throw new InvalidCipherTextException("Null pointer as ciphertext");
+            throw new BCInvalidCipherTextException("Null pointer as ciphertext");
         }
 
         if (inLen % engine.getBlockSize() != 0)
         {
-            throw new InvalidCipherTextException("Ciphertext not multiple of "
+            throw new BCInvalidCipherTextException("Ciphertext not multiple of "
                     + engine.getBlockSize());
         }
 
@@ -324,13 +324,13 @@ public class RC2WrapEngine
         // return error.
         if (!checkCMSKeyChecksum(result, CKStoBeVerified))
         {
-            throw new InvalidCipherTextException(
+            throw new BCInvalidCipherTextException(
                     "Checksum inside ciphertext is corrupted");
         }
 
         if ((result.length - ((result[0] & 0xff) + 1)) > 7)
         {
-            throw new InvalidCipherTextException("too many pad bytes ("
+            throw new BCInvalidCipherTextException("too many pad bytes ("
                     + (result.length - ((result[0] & 0xff) + 1)) + ")");
         }
 

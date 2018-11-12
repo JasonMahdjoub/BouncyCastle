@@ -2,7 +2,7 @@ package org.bouncycastle.crypto.paddings;
 
 import java.security.SecureRandom;
 
-import org.bouncycastle.crypto.InvalidCipherTextException;
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 
 /**
  * A padder that adds Trailing-Bit-Compliment padding to a block.
@@ -74,7 +74,7 @@ public class TBCPadding
      * return the number of pad bytes present in the block.
      */
     public int padCount(byte[] in)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         byte code = in[in.length - 1];
 

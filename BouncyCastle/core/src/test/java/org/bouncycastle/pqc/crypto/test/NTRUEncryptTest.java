@@ -5,8 +5,8 @@ import java.security.SecureRandom;
 
 import junit.framework.TestCase;
 import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.DataLengthException;
-import org.bouncycastle.crypto.InvalidCipherTextException;
 import org.bouncycastle.pqc.crypto.ntru.NTRUEncryptionKeyGenerationParameters;
 import org.bouncycastle.pqc.crypto.ntru.NTRUEncryptionKeyPairGenerator;
 import org.bouncycastle.pqc.crypto.ntru.NTRUEncryptionPrivateKeyParameters;
@@ -24,7 +24,7 @@ public class NTRUEncryptTest
     extends TestCase
 {
     public void testEncryptDecrypt()
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         NTRUEncryptionKeyGenerationParameters params = NTRUEncryptionKeyGenerationParameters.APR2011_743.clone();
         // set df1..df3 and dr1..dr3 so params can be used for SIMPLE as well as PRODUCT
@@ -87,7 +87,7 @@ public class NTRUEncryptTest
 
     // encrypts and decrypts text
     private void testText(NTRUEngine ntru, AsymmetricCipherKeyPair  kp, NTRUEncryptionKeyGenerationParameters params)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         byte[] plainText = "text to encrypt".getBytes();
 
@@ -104,7 +104,7 @@ public class NTRUEncryptTest
 
     // tests an empty message
     private void testEmpty(NTRUEngine ntru, AsymmetricCipherKeyPair kp, NTRUEncryptionKeyGenerationParameters params)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         byte[] plainText = "".getBytes();
 
@@ -121,7 +121,7 @@ public class NTRUEncryptTest
 
     // tests a message of the maximum allowed length
     private void testMaxLength(NTRUEngine ntru, AsymmetricCipherKeyPair kp, NTRUEncryptionKeyGenerationParameters params)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         byte[] plainText = new byte[params.maxMsgLenBytes];
         System.arraycopy("secret encrypted text".getBytes(), 0, plainText, 0, 21);
@@ -159,7 +159,7 @@ public class NTRUEncryptTest
         {
             assertEquals("Message too long: " + plainText.length + ">" + params.maxMsgLenBytes, ex.getMessage());
         }
-        catch (InvalidCipherTextException e)
+        catch (BCInvalidCipherTextException e)
         {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
@@ -186,7 +186,7 @@ public class NTRUEncryptTest
 
             fail("An exception should have been thrown!");
         }
-        catch (InvalidCipherTextException ex)
+        catch (BCInvalidCipherTextException ex)
         {
             assertEquals("Invalid message encoding", ex.getMessage());
         }
@@ -194,7 +194,7 @@ public class NTRUEncryptTest
 
     // encrypts and decrypts text using an encoded key pair (fastFp=false, simple ternary polynomials)
     public void testEncodedKeysSlow()
-        throws IOException, InvalidCipherTextException
+        throws IOException, BCInvalidCipherTextException
     {
         byte[] plainText = "secret encrypted text".getBytes();
 
@@ -251,7 +251,7 @@ public class NTRUEncryptTest
 
     // encrypts and decrypts text using an encoded key pair (fastFp=true)
     public void testEncodedKeysFast()
-        throws IOException, InvalidCipherTextException
+        throws IOException, BCInvalidCipherTextException
     {
         byte[] plainText = "secret encrypted text".getBytes();
 

@@ -4,7 +4,7 @@ import org.bouncycastle.asn1.ASN1ObjectIdentifier;
 import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.crypto.AsymmetricBlockCipher;
-import org.bouncycastle.crypto.InvalidCipherTextException;
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
 import org.bouncycastle.operator.AsymmetricKeyUnwrapper;
 import org.bouncycastle.operator.GenericKey;
@@ -41,7 +41,7 @@ public abstract class BcAsymmetricKeyUnwrapper
                 return new GenericKey(encryptedKeyAlgorithm, key);
             }
         }
-        catch (InvalidCipherTextException e)
+        catch (BCInvalidCipherTextException e)
         {
             throw new OperatorException("unable to recover secret key: " + e.getMessage(), e);
         }

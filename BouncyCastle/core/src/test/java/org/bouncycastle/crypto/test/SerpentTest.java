@@ -1,6 +1,6 @@
 package org.bouncycastle.crypto.test;
 
-import org.bouncycastle.crypto.InvalidCipherTextException;
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.engines.SerpentEngine;
 import org.bouncycastle.crypto.modes.CBCBlockCipher;
 import org.bouncycastle.crypto.modes.EAXBlockCipher;
@@ -90,7 +90,7 @@ public class SerpentTest
     }
 
     private void doEax(byte[] key, byte[] iv, byte[] pt, byte[] aad, int tagLength, byte[] expected)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         EAXBlockCipher c = new EAXBlockCipher(new SerpentEngine());
 

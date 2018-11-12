@@ -3,7 +3,7 @@ package org.bouncycastle.crypto.engines;
 import org.bouncycastle.crypto.BlockCipher;
 import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.DataLengthException;
-import org.bouncycastle.crypto.InvalidCipherTextException;
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.Wrapper;
 import org.bouncycastle.crypto.params.KeyParameter;
 import org.bouncycastle.crypto.params.ParametersWithIV;
@@ -137,7 +137,7 @@ public class RFC3394WrapEngine
         byte[]  in,
         int     inOff,
         int     inLen)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         if (forWrapping)
         {
@@ -148,7 +148,7 @@ public class RFC3394WrapEngine
 
         if ((n * 8) != inLen)
         {
-            throw new InvalidCipherTextException("unwrap data must be a multiple of 8 bytes");
+            throw new BCInvalidCipherTextException("unwrap data must be a multiple of 8 bytes");
         }
 
         byte[]  block = new byte[inLen - iv.length];
@@ -187,7 +187,7 @@ public class RFC3394WrapEngine
 
         if (!Arrays.constantTimeAreEqual(a, iv))
         {
-            throw new InvalidCipherTextException("checksum failed");
+            throw new BCInvalidCipherTextException("checksum failed");
         }
 
         return block;

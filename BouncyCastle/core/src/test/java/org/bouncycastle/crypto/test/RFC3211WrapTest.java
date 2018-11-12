@@ -2,8 +2,8 @@ package org.bouncycastle.crypto.test;
 
 import java.security.SecureRandom;
 
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.BlockCipher;
-import org.bouncycastle.crypto.InvalidCipherTextException;
 import org.bouncycastle.crypto.Wrapper;
 import org.bouncycastle.crypto.engines.DESEngine;
 import org.bouncycastle.crypto.engines.DESedeEngine;
@@ -62,7 +62,7 @@ public class RFC3211WrapTest
     }
 
     private void testCorruption()
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         byte[] kek = Hex.decode("D1DAA78615F287E6");
         byte[] iv = Hex.decode("EFE598EF21B33D6D");
@@ -80,7 +80,7 @@ public class RFC3211WrapTest
 
             fail("bad length not detected");
         }
-        catch (InvalidCipherTextException e)
+        catch (BCInvalidCipherTextException e)
         {
             if (!e.getMessage().equals("wrapped key corrupted"))
             {
@@ -108,7 +108,7 @@ public class RFC3211WrapTest
 
             fail("bad checksum not detected");
         }
-        catch (InvalidCipherTextException e)
+        catch (BCInvalidCipherTextException e)
         {
             if (!e.getMessage().equals("wrapped key fails checksum"))
             {
@@ -160,7 +160,7 @@ public class RFC3211WrapTest
         {
             // expected
         }
-        catch (InvalidCipherTextException e)
+        catch (BCInvalidCipherTextException e)
         {
             fail("unexpected exception: " + e, e);
         }
@@ -189,7 +189,7 @@ public class RFC3211WrapTest
 
             fail("failed unwrap short test.");
         }
-        catch (InvalidCipherTextException e)
+        catch (BCInvalidCipherTextException e)
         {
             // expected
         }

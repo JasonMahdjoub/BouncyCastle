@@ -15,13 +15,8 @@ import org.bouncycastle.asn1.bc.BCObjectIdentifiers;
 import org.bouncycastle.asn1.cms.CCMParameters;
 import org.bouncycastle.asn1.cms.GCMParameters;
 import org.bouncycastle.asn1.nist.NISTObjectIdentifiers;
-import org.bouncycastle.crypto.BlockCipher;
-import org.bouncycastle.crypto.BufferedBlockCipher;
-import org.bouncycastle.crypto.CipherKeyGenerator;
-import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.DataLengthException;
-import org.bouncycastle.crypto.InvalidCipherTextException;
-import org.bouncycastle.crypto.Mac;
+import org.bouncycastle.crypto.*;
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.engines.AESEngine;
 import org.bouncycastle.crypto.engines.AESWrapEngine;
 import org.bouncycastle.crypto.engines.AESWrapPadEngine;
@@ -192,7 +187,7 @@ public final class AES
                 {
                     return ccm.doFinal(out, 0);
                 }
-                catch (InvalidCipherTextException e)
+                catch (BCInvalidCipherTextException e)
                 {
                     throw new IllegalStateException("exception on doFinal(): " + e.toString());
                 }

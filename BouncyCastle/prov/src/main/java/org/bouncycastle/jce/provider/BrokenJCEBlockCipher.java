@@ -423,7 +423,7 @@ public class BrokenJCEBlockCipher
         {
             throw new IllegalBlockSizeException(e.getMessage());
         }
-        catch (InvalidCipherTextException e)
+        catch (BCInvalidCipherTextException e)
         {
             throw new BadPaddingException(e.getMessage());
         }
@@ -458,7 +458,7 @@ public class BrokenJCEBlockCipher
         {
             throw new IllegalBlockSizeException(e.getMessage());
         }
-        catch (InvalidCipherTextException e)
+        catch (BCInvalidCipherTextException e)
         {
             throw new BadPaddingException(e.getMessage());
         }

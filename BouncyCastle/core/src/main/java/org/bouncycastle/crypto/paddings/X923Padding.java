@@ -2,7 +2,7 @@ package org.bouncycastle.crypto.paddings;
 
 import java.security.SecureRandom;
 
-import org.bouncycastle.crypto.InvalidCipherTextException;
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 
 /**
  * A padder that adds X9.23 padding to a block - if a SecureRandom is
@@ -66,13 +66,13 @@ public class X923Padding
      * return the number of pad bytes present in the block.
      */
     public int padCount(byte[] in)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         int count = in[in.length - 1] & 0xff;
 
         if (count > in.length)
         {
-            throw new InvalidCipherTextException("pad block corrupted");
+            throw new BCInvalidCipherTextException("pad block corrupted");
         }
 
         return count;

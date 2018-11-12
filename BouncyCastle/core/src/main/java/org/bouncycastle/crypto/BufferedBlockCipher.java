@@ -257,14 +257,14 @@ public class BufferedBlockCipher
      * the output, or the input is not block size aligned and should be.
      * @exception IllegalStateException if the underlying cipher is not
      * initialised.
-     * @exception InvalidCipherTextException if padding is expected and not found.
+     * @exception BCInvalidCipherTextException if padding is expected and not found.
      * @exception DataLengthException if the input is not block size
      * aligned.
      */
     public int doFinal(
         byte[]  out,
         int     outOff)
-        throws DataLengthException, IllegalStateException, InvalidCipherTextException
+        throws DataLengthException, IllegalStateException, BCInvalidCipherTextException
     {
         try
         {

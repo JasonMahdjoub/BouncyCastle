@@ -9,8 +9,7 @@ import org.bouncycastle.crypto.BlockCipher;
 import org.bouncycastle.crypto.CryptoException;
 import org.bouncycastle.crypto.Digest;
 import org.bouncycastle.crypto.ExtendedDigest;
-import org.bouncycastle.crypto.InvalidCipherTextException;
-import org.bouncycastle.crypto.Mac;
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.RuntimeCryptoException;
 import org.bouncycastle.crypto.StreamCipher;
 import org.bouncycastle.crypto.agreement.srp.SRP6Client;
@@ -61,7 +60,6 @@ import org.bouncycastle.tls.crypto.TlsECConfig;
 import org.bouncycastle.tls.crypto.TlsECDomain;
 import org.bouncycastle.tls.crypto.TlsHMAC;
 import org.bouncycastle.tls.crypto.TlsHash;
-import org.bouncycastle.tls.crypto.TlsMAC;
 import org.bouncycastle.tls.crypto.TlsNonceGenerator;
 import org.bouncycastle.tls.crypto.TlsSRP6Client;
 import org.bouncycastle.tls.crypto.TlsSRP6Server;
@@ -206,7 +204,7 @@ public class BcTlsCrypto
                     encoding.init(true, new ParametersWithRandom(pubKeyRSA, getSecureRandom()));
                     return encoding.processBlock(input, inOff, length);
                 }
-                catch (InvalidCipherTextException e)
+                catch (BCInvalidCipherTextException e)
                 {
                     /*
                      * This should never happen, only during decryption.
@@ -731,7 +729,7 @@ public class BcTlsCrypto
             {
                 return len + cipher.doFinal(output, outputOffset + len);
             }
-            catch (InvalidCipherTextException e)
+            catch (BCInvalidCipherTextException e)
             {
                 // TODO:
                 throw new RuntimeCryptoException(e.toString());

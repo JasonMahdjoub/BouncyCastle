@@ -1,8 +1,8 @@
 package org.bouncycastle.crypto.test;
 
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.DataLengthException;
-import org.bouncycastle.crypto.InvalidCipherTextException;
 import org.bouncycastle.crypto.OutputLengthException;
 import org.bouncycastle.crypto.modes.AEADBlockCipher;
 import org.bouncycastle.crypto.params.AEADParameters;
@@ -15,7 +15,7 @@ import org.bouncycastle.util.test.TestFailedException;
 public class AEADTestUtil
 {
     public static void testTampering(Test test, AEADBlockCipher cipher, CipherParameters params)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         byte[] plaintext = new byte[1000];
         for (int i = 0; i < plaintext.length; i++)
@@ -44,7 +44,7 @@ public class AEADTestUtil
             throw new TestFailedException(
                 new SimpleTestResult(false, test + " : tampering of ciphertext not detected."));
         }
-        catch (InvalidCipherTextException e)
+        catch (BCInvalidCipherTextException e)
         {
             // Expected
         }
@@ -60,7 +60,7 @@ public class AEADTestUtil
             cipher.doFinal(output, 0);
             fail(test, "tampering of ciphertext not detected.");
         }
-        catch (InvalidCipherTextException e)
+        catch (BCInvalidCipherTextException e)
         {
             // Expected
         }
@@ -77,7 +77,7 @@ public class AEADTestUtil
     }
 
     public static void testReset(Test test, AEADBlockCipher cipher1, AEADBlockCipher cipher2, CipherParameters params)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         cipher1.init(true, params);
 
@@ -101,7 +101,7 @@ public class AEADTestUtil
                                    boolean encrypt,
                                    byte[] pretext,
                                    byte[] posttext)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         // Do initial run
         byte[] output = new byte[posttext.length];
@@ -184,7 +184,7 @@ public class AEADTestUtil
     }
 
     private static void crypt(AEADBlockCipher cipher, byte[] plaintext, byte[] output)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         int len = cipher.processBytes(plaintext, 0, plaintext.length, output, 0);
         cipher.doFinal(output, len);
@@ -192,7 +192,7 @@ public class AEADTestUtil
 
     public static void testOutputSizes(Test test, AEADBlockCipher cipher, AEADParameters params)
         throws IllegalStateException,
-        InvalidCipherTextException
+            BCInvalidCipherTextException
     {
         int maxPlaintext = cipher.getUnderlyingCipher().getBlockSize() * 10;
         byte[] plaintext = new byte[maxPlaintext];
@@ -280,7 +280,7 @@ public class AEADTestUtil
 
     public static void testBufferSizeChecks(Test test, AEADBlockCipher cipher, AEADParameters params)
         throws IllegalStateException,
-        InvalidCipherTextException
+            BCInvalidCipherTextException
     {
         int blockSize = cipher.getUnderlyingCipher().getBlockSize();
         int maxPlaintext = (blockSize * 10);
@@ -421,7 +421,7 @@ public class AEADTestUtil
             cipher.doFinal(new byte[0], 0);
             fail(test, "Decrypt doFinal should check ciphertext length");
         }
-        catch (InvalidCipherTextException e)
+        catch (BCInvalidCipherTextException e)
         {
             // Expected
         }
@@ -452,7 +452,7 @@ public class AEADTestUtil
                         cipher.doFinal(new byte[cipher.getOutputSize(0) - 1], 0);
                         fail(test, "Decrypt doFinal should check ciphertext length");
                     }
-                    catch (InvalidCipherTextException e)
+                    catch (BCInvalidCipherTextException e)
                     {
                         // Expected
                     }

@@ -3,7 +3,7 @@ package org.bouncycastle.crypto.test;
 import java.math.BigInteger;
 
 import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
-import org.bouncycastle.crypto.InvalidCipherTextException;
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.engines.SM2Engine;
 import org.bouncycastle.crypto.generators.ECKeyPairGenerator;
 import org.bouncycastle.crypto.params.ECDomainParameters;
@@ -80,7 +80,7 @@ public class SM2EngineTest
             sm2Engine.processBlock(enc, 0, enc.length);
             fail("no exception");
         }
-        catch (InvalidCipherTextException e)
+        catch (BCInvalidCipherTextException e)
         {
             isTrue("wrong exception", "invalid cipher text".equals(e.getMessage()));
         }

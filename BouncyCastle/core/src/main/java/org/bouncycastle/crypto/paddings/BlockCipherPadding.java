@@ -2,7 +2,7 @@ package org.bouncycastle.crypto.paddings;
 
 import java.security.SecureRandom;
 
-import org.bouncycastle.crypto.InvalidCipherTextException;
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 
 /**
  * Block cipher padders are expected to conform to this interface
@@ -40,9 +40,9 @@ public interface BlockCipherPadding
 
     /**
      * return the number of pad bytes present in the block.
-     * @exception InvalidCipherTextException if the padding is badly formed
+     * @exception BCInvalidCipherTextException if the padding is badly formed
      * or invalid.
      */
     public int padCount(byte[] in)
-        throws InvalidCipherTextException;
+        throws BCInvalidCipherTextException;
 }

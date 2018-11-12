@@ -2,7 +2,7 @@ package org.bouncycastle.crypto.test;
 
 import java.security.SecureRandom;
 
-import org.bouncycastle.crypto.InvalidCipherTextException;
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.engines.AESEngine;
 import org.bouncycastle.crypto.modes.AEADBlockCipher;
 import org.bouncycastle.crypto.modes.EAXBlockCipher;
@@ -135,7 +135,7 @@ public class EAXTest
 
             fail("invalid cipher text not picked up");
         }
-        catch (InvalidCipherTextException e)
+        catch (BCInvalidCipherTextException e)
         {
             // expected
         }
@@ -169,7 +169,7 @@ public class EAXTest
         byte[] p,
         byte[] t,
         byte[] c)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         byte[] fa = new byte[a.length / 2];
         byte[] la = new byte[a.length - (a.length / 2)];
@@ -192,7 +192,7 @@ public class EAXTest
         byte[] p,
         byte[] t,
         byte[] c)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         EAXBlockCipher encEax = new EAXBlockCipher(new AESEngine());
         EAXBlockCipher decEax = new EAXBlockCipher(new AESEngine());
@@ -222,7 +222,7 @@ public class EAXTest
         byte[] p,
         byte[] t,
         byte[] c)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         byte[] enc = new byte[c.length];
 
@@ -271,7 +271,7 @@ public class EAXTest
         AEADBlockCipher eax,
         byte[] k,
         byte[] n)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         byte[] p = Strings.toByteArray("hello world!!");
 
@@ -302,7 +302,7 @@ public class EAXTest
     }
 
     private void randomTests()
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         SecureRandom srng = new SecureRandom();
         for (int i = 0; i < 10; ++i)
@@ -313,7 +313,7 @@ public class EAXTest
 
     private void randomTest(
         SecureRandom srng)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         int DAT_LEN = srng.nextInt() >>> 22; // Note: JDK1.0 compatibility
         byte[] nonce = new byte[NONCE_LEN];

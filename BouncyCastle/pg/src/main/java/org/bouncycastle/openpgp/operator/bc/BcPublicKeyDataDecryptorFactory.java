@@ -6,11 +6,8 @@ import org.bouncycastle.asn1.x9.ECNamedCurveTable;
 import org.bouncycastle.asn1.x9.X9ECParameters;
 import org.bouncycastle.bcpg.ECDHPublicBCPGKey;
 import org.bouncycastle.bcpg.ECSecretBCPGKey;
-import org.bouncycastle.crypto.AsymmetricBlockCipher;
-import org.bouncycastle.crypto.BlockCipher;
-import org.bouncycastle.crypto.BufferedAsymmetricBlockCipher;
-import org.bouncycastle.crypto.InvalidCipherTextException;
-import org.bouncycastle.crypto.Wrapper;
+import org.bouncycastle.crypto.*;
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
 import org.bouncycastle.crypto.params.ElGamalPrivateKeyParameters;
 import org.bouncycastle.crypto.params.KeyParameter;
@@ -128,7 +125,7 @@ public class BcPublicKeyDataDecryptorFactory
         {
             throw new PGPException("exception creating user keying material: " + e.getMessage(), e);
         }
-        catch (InvalidCipherTextException e)
+        catch (BCInvalidCipherTextException e)
         {
             throw new PGPException("exception decrypting session info: " + e.getMessage(), e);
         }

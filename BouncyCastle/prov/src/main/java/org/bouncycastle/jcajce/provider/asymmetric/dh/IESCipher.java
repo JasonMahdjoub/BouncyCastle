@@ -21,8 +21,8 @@ import javax.crypto.interfaces.DHKey;
 import javax.crypto.interfaces.DHPrivateKey;
 import javax.crypto.interfaces.DHPublicKey;
 
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.InvalidCipherTextException;
 import org.bouncycastle.crypto.KeyEncoder;
 import org.bouncycastle.crypto.agreement.DHBasicAgreement;
 import org.bouncycastle.crypto.engines.AESEngine;
@@ -477,7 +477,7 @@ public class IESCipher
 
                 return engine.processBlock(in, 0, in.length);
             }
-            catch (InvalidCipherTextException e)
+            catch (BCInvalidCipherTextException e)
             {
                 throw new BadBlockException("unable to process block", e);
             }

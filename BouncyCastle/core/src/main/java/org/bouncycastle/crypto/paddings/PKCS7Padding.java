@@ -2,7 +2,7 @@ package org.bouncycastle.crypto.paddings;
 
 import java.security.SecureRandom;
 
-import org.bouncycastle.crypto.InvalidCipherTextException;
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 
 /**
  * A padder that adds PKCS7/PKCS5 padding to a block.
@@ -54,7 +54,7 @@ public class PKCS7Padding
      * return the number of pad bytes present in the block.
      */
     public int padCount(byte[] in)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         int count = in[in.length - 1] & 0xff;
         byte countAsbyte = (byte)count;
@@ -69,7 +69,7 @@ public class PKCS7Padding
 
         if (failed)
         {
-            throw new InvalidCipherTextException("pad block corrupted");
+            throw new BCInvalidCipherTextException("pad block corrupted");
         }
 
         return count;

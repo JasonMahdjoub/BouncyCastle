@@ -2,8 +2,8 @@ package org.bouncycastle.crypto.test;
 
 import java.security.SecureRandom;
 
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.BlockCipher;
-import org.bouncycastle.crypto.InvalidCipherTextException;
 import org.bouncycastle.crypto.engines.AESEngine;
 import org.bouncycastle.crypto.engines.DESEngine;
 import org.bouncycastle.crypto.modes.AEADBlockCipher;
@@ -138,7 +138,7 @@ public class OCBTest
         testExceptions();
     }
 
-    private void testExceptions() throws InvalidCipherTextException
+    private void testExceptions() throws BCInvalidCipherTextException
     {
         AEADBlockCipher ocb = createOCBCipher();
 
@@ -173,7 +173,7 @@ public class OCBTest
     }
 
     private void runTestCase(String testName, String[] testVector, int macLengthBits, byte[] K)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         int pos = 0;
         byte[] N = Hex.decode(testVector[pos++]);
@@ -218,7 +218,7 @@ public class OCBTest
 
     private void checkTestCase(AEADBlockCipher encCipher, AEADBlockCipher decCipher, String testName,
         int macLengthBytes, byte[] P, byte[] C)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         byte[] tag = Arrays.copyOfRange(C, C.length - macLengthBytes, C.length);
 
@@ -266,7 +266,7 @@ public class OCBTest
     }
 
     private void runLongerTestCase(int keyLen, int tagLen, String expectedOutputHex)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         byte[] expectedOutput = Hex.decode(expectedOutputHex);
         byte[] keyBytes = new byte[keyLen / 8];
@@ -314,7 +314,7 @@ public class OCBTest
 
     private int updateCiphers(AEADBlockCipher c1, AEADBlockCipher c2, byte[] S, int i,
         boolean includeAAD, boolean includePlaintext)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         int inputLen = includePlaintext ? i : 0;
         int outputLen = c2.getOutputSize(inputLen);
@@ -341,7 +341,7 @@ public class OCBTest
     }
 
     private void randomTests()
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         SecureRandom srng = new SecureRandom();
         srng.setSeed(Times.nanoTime());
@@ -352,7 +352,7 @@ public class OCBTest
     }
 
     private void randomTest(SecureRandom srng)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         int kLength = 16 + 8 * (Math.abs(srng.nextInt()) % 3);
         byte[] K = new byte[kLength];

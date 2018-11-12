@@ -4,8 +4,8 @@ import java.io.FilterOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.BufferedBlockCipher;
-import org.bouncycastle.crypto.InvalidCipherTextException;
 import org.bouncycastle.crypto.StreamCipher;
 import org.bouncycastle.crypto.modes.AEADBlockCipher;
 
@@ -250,7 +250,7 @@ public class CipherOutputStream
                 streamCipher.reset();
             }
         }
-        catch (final InvalidCipherTextException e)
+        catch (final BCInvalidCipherTextException e)
         {
             error = new InvalidCipherTextIOException("Error finalising cipher data", e);
         }

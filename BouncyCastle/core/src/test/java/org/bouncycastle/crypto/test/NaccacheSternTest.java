@@ -5,7 +5,7 @@ import java.security.SecureRandom;
 import java.util.Vector;
 
 import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
-import org.bouncycastle.crypto.InvalidCipherTextException;
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.engines.NaccacheSternEngine;
 import org.bouncycastle.crypto.generators.NaccacheSternKeyPairGenerator;
 import org.bouncycastle.crypto.params.NaccacheSternKeyGenerationParameters;
@@ -274,7 +274,7 @@ public class NaccacheSternTest
         {
             // expected
         }
-        catch (InvalidCipherTextException e)
+        catch (BCInvalidCipherTextException e)
         {
             fail("failed initialisation check");
         }
@@ -305,7 +305,7 @@ public class NaccacheSternTest
         {
             data = cryptEng.processData(data);
         }
-        catch (InvalidCipherTextException e)
+        catch (BCInvalidCipherTextException e)
         {
             if (debug)
             {
@@ -326,7 +326,7 @@ public class NaccacheSternTest
         {
             data = decryptEng.processData(data);
         }
-        catch (InvalidCipherTextException e)
+        catch (BCInvalidCipherTextException e)
         {
             if (debug)
             {

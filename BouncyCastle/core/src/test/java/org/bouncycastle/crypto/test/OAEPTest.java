@@ -10,7 +10,7 @@ import org.bouncycastle.asn1.pkcs.RSAPrivateKey;
 import org.bouncycastle.asn1.pkcs.RSAPublicKey;
 import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
 import org.bouncycastle.crypto.AsymmetricBlockCipher;
-import org.bouncycastle.crypto.InvalidCipherTextException;
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.digests.SHA1Digest;
 import org.bouncycastle.crypto.digests.SHA256Digest;
 import org.bouncycastle.crypto.encodings.OAEPEncoding;
@@ -357,7 +357,7 @@ public class OAEPTest
         byte[] seed,
         byte[] input,
         byte[] output)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         AsymmetricBlockCipher cipher = new OAEPEncoding(new RSAEngine());
 

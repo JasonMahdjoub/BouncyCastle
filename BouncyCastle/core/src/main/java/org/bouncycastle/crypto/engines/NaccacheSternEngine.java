@@ -7,7 +7,7 @@ import org.bouncycastle.util.Arrays;
 import org.bouncycastle.crypto.AsymmetricBlockCipher;
 import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.DataLengthException;
-import org.bouncycastle.crypto.InvalidCipherTextException;
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.params.NaccacheSternKeyParameters;
 import org.bouncycastle.crypto.params.NaccacheSternPrivateKeyParameters;
 import org.bouncycastle.crypto.params.ParametersWithRandom;
@@ -131,7 +131,7 @@ public class NaccacheSternEngine
      * @see org.bouncycastle.crypto.AsymmetricBlockCipher#processBlock(byte[],
      *      int, int)
      */
-    public byte[] processBlock(byte[] in, int inOff, int len) throws InvalidCipherTextException
+    public byte[] processBlock(byte[] in, int inOff, int len) throws BCInvalidCipherTextException
     {
         if (key == null)
         {
@@ -147,7 +147,7 @@ public class NaccacheSternEngine
             // At decryption make sure that we receive padded data blocks
             if (len < getInputBlockSize())
             {
-                throw new InvalidCipherTextException("BlockLength does not match modulus for Naccache-Stern cipher.\n");
+                throw new BCInvalidCipherTextException("BlockLength does not match modulus for Naccache-Stern cipher.\n");
             }
         }
 
@@ -190,7 +190,7 @@ public class NaccacheSternEngine
                     {
                         System.out.println("Prime is " + primes.elementAt(i) + ", lookup table has size " + al.size());
                     }
-                    throw new InvalidCipherTextException("Error in lookup Array for "
+                    throw new BCInvalidCipherTextException("Error in lookup Array for "
                                     + ((BigInteger)primes.elementAt(i)).intValue()
                                     + ": Size mismatch. Expected ArrayList with length "
                                     + ((BigInteger)primes.elementAt(i)).intValue() + " but found ArrayList of length "
@@ -212,7 +212,7 @@ public class NaccacheSternEngine
                             System.out.println(lookup[i].elementAt(j));
                         }
                     }
-                    throw new InvalidCipherTextException("Lookup failed");
+                    throw new BCInvalidCipherTextException("Lookup failed");
                 }
                 plain.addElement(BigInteger.valueOf(lookedup));
             }
@@ -280,10 +280,10 @@ public class NaccacheSternEngine
      * @param block2
      *            the second encrypted block
      * @return encrypt((block1 + block2) mod sigma)
-     * @throws InvalidCipherTextException
+     * @throws BCInvalidCipherTextException
      */
     public byte[] addCryptedBlocks(byte[] block1, byte[] block2)
-            throws InvalidCipherTextException
+            throws BCInvalidCipherTextException
     {
         // check for correct blocksize
         if (forEncryption)
@@ -291,7 +291,7 @@ public class NaccacheSternEngine
             if ((block1.length > getOutputBlockSize())
                     || (block2.length > getOutputBlockSize()))
             {
-                throw new InvalidCipherTextException(
+                throw new BCInvalidCipherTextException(
                         "BlockLength too large for simple addition.\n");
             }
         }
@@ -300,7 +300,7 @@ public class NaccacheSternEngine
             if ((block1.length > getInputBlockSize())
                     || (block2.length > getInputBlockSize()))
             {
-                throw new InvalidCipherTextException(
+                throw new BCInvalidCipherTextException(
                         "BlockLength too large for simple addition.\n");
             }
         }
@@ -333,9 +333,9 @@ public class NaccacheSternEngine
      *
      * @param data the data to be processed
      * @return the data after it went through the NaccacheSternEngine.
-     * @throws InvalidCipherTextException 
+     * @throws BCInvalidCipherTextException
      */
-    public byte[] processData(byte[] data) throws InvalidCipherTextException
+    public byte[] processData(byte[] data) throws BCInvalidCipherTextException
     {
         if (debug)
         {
@@ -383,7 +383,7 @@ public class NaccacheSternEngine
                     {
                         System.out.println("cipher returned null");
                     }
-                    throw new InvalidCipherTextException("cipher returned null");
+                    throw new BCInvalidCipherTextException("cipher returned null");
                 }
             }
             byte[] ret = new byte[retpos];

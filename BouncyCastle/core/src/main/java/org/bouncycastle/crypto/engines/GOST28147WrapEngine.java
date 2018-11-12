@@ -1,7 +1,7 @@
 package org.bouncycastle.crypto.engines;
 
 import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.InvalidCipherTextException;
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.Wrapper;
 import org.bouncycastle.crypto.macs.GOST28147Mac;
 import org.bouncycastle.crypto.params.KeyParameter;
@@ -66,7 +66,7 @@ public class GOST28147WrapEngine
     }
 
     public byte[] unwrap(byte[] input, int inOff, int inLen)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         byte[] decKey = new byte[inLen - mac.getMacSize()];
 

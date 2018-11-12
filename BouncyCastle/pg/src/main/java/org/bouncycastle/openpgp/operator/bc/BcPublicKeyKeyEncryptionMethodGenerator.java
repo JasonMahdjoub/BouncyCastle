@@ -9,7 +9,7 @@ import org.bouncycastle.bcpg.ECDHPublicBCPGKey;
 import org.bouncycastle.bcpg.MPInteger;
 import org.bouncycastle.crypto.AsymmetricBlockCipher;
 import org.bouncycastle.crypto.EphemeralKeyPair;
-import org.bouncycastle.crypto.InvalidCipherTextException;
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.KeyEncoder;
 import org.bouncycastle.crypto.Wrapper;
 import org.bouncycastle.crypto.generators.ECKeyPairGenerator;
@@ -126,7 +126,7 @@ public class BcPublicKeyKeyEncryptionMethodGenerator
                 return rv;
             }
         }
-        catch (InvalidCipherTextException e)
+        catch (BCInvalidCipherTextException e)
         {
             throw new PGPException("exception encrypting session info: " + e.getMessage(), e);
         }

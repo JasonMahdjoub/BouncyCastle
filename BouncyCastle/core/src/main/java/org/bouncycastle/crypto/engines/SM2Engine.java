@@ -3,9 +3,9 @@ package org.bouncycastle.crypto.engines;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.InvalidCipherTextException;
 import org.bouncycastle.crypto.digests.SM3Digest;
 import org.bouncycastle.crypto.params.ECDomainParameters;
 import org.bouncycastle.crypto.params.ECKeyParameters;
@@ -77,7 +77,7 @@ public class SM2Engine
         byte[] in,
         int inOff,
         int inLen)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         if (forEncryption)
         {
@@ -95,7 +95,7 @@ public class SM2Engine
     }
 
     private byte[] encrypt(byte[] in, int inOff, int inLen)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         byte[] c2 = new byte[inLen];
 
@@ -131,7 +131,7 @@ public class SM2Engine
     }
 
     private byte[] decrypt(byte[] in, int inOff, int inLen)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         byte[] c1 = new byte[curveLength * 2 + 1];
 
@@ -142,7 +142,7 @@ public class SM2Engine
         ECPoint s = c1P.multiply(ecParams.getH());
         if (s.isInfinity())
         {
-            throw new InvalidCipherTextException("[h]C1 at infinity");
+            throw new BCInvalidCipherTextException("[h]C1 at infinity");
         }
 
         c1P = c1P.multiply(((ECPrivateKeyParameters)ecKey).getD()).normalize();
@@ -173,7 +173,7 @@ public class SM2Engine
         if (check != 0)
         {
             Arrays.fill(c2, (byte)0);
-            throw new InvalidCipherTextException("invalid cipher text");
+            throw new BCInvalidCipherTextException("invalid cipher text");
         }
 
         return c2;

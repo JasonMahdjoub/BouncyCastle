@@ -1,6 +1,6 @@
 package org.bouncycastle.crypto.test;
 
-import org.bouncycastle.crypto.InvalidCipherTextException;
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.engines.AESEngine;
 import org.bouncycastle.crypto.engines.DESEngine;
 import org.bouncycastle.crypto.modes.CCMBlockCipher;
@@ -123,7 +123,7 @@ public class CCMTest
 
             fail("invalid cipher text not picked up");
         }
-        catch (InvalidCipherTextException e)
+        catch (BCInvalidCipherTextException e)
         {
             // expected
         }
@@ -181,7 +181,7 @@ public class CCMTest
         byte[] p,
         byte[] t,
         byte[] c)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         byte[] fa = new byte[a.length / 2];
         byte[] la = new byte[a.length - (a.length / 2)];
@@ -206,7 +206,7 @@ public class CCMTest
         byte[] p,
         byte[] t,
         byte[] c)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         KeyParameter keyParam = (k == null) ? null : new KeyParameter(k);
 
@@ -262,7 +262,7 @@ public class CCMTest
         CCMBlockCipher ccm,
         byte[] k,
         byte[] n)
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         byte[] p = Strings.toByteArray("hello world!!");
 

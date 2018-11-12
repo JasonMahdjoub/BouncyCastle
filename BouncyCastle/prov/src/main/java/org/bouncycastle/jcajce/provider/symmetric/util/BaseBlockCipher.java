@@ -1236,7 +1236,7 @@ public class BaseBlockCipher
             {
                 return cipher.doFinal(out, outOff);
             }
-            catch (InvalidCipherTextException e)
+            catch (BCInvalidCipherTextException e)
             {
                 throw new BadPaddingException(e.getMessage());
             }
@@ -1331,7 +1331,7 @@ public class BaseBlockCipher
             {
                 return cipher.doFinal(out, outOff);
             }
-            catch (InvalidCipherTextException e)
+            catch (BCInvalidCipherTextException e)
             {
                 if (aeadBadTagConstructor != null)
                 {

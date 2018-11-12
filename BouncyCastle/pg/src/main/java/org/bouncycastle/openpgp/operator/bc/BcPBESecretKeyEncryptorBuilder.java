@@ -4,7 +4,7 @@ import java.security.SecureRandom;
 
 import org.bouncycastle.crypto.BlockCipher;
 import org.bouncycastle.crypto.BufferedBlockCipher;
-import org.bouncycastle.crypto.InvalidCipherTextException;
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.openpgp.PGPException;
 import org.bouncycastle.openpgp.operator.PBESecretKeyEncryptor;
 import org.bouncycastle.openpgp.operator.PGPDigestCalculator;
@@ -127,7 +127,7 @@ public class BcPBESecretKeyEncryptorBuilder
 
                     return out;
                 }
-                catch (InvalidCipherTextException e)
+                catch (BCInvalidCipherTextException e)
                 {
                     throw new PGPException("decryption failed: " + e.getMessage(), e);
                 }

@@ -1,10 +1,7 @@
 package org.bouncycastle.crypto.modes;
 
-import org.bouncycastle.crypto.BlockCipher;
-import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.DataLengthException;
-import org.bouncycastle.crypto.InvalidCipherTextException;
-import org.bouncycastle.crypto.OutputLengthException;
+import org.bouncycastle.crypto.*;
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.modes.gcm.BasicGCMExponentiator;
 import org.bouncycastle.crypto.modes.gcm.GCMExponentiator;
 import org.bouncycastle.crypto.modes.gcm.GCMMultiplier;
@@ -384,7 +381,7 @@ public class GCMBlockCipher
     }
 
     public int doFinal(byte[] out, int outOff)
-        throws IllegalStateException, InvalidCipherTextException
+        throws IllegalStateException, BCInvalidCipherTextException
     {
         checkStatus();
 
@@ -406,7 +403,7 @@ public class GCMBlockCipher
         {
             if (extra < macSize)
             {
-                throw new InvalidCipherTextException("data too short");
+                throw new BCInvalidCipherTextException("data too short");
             }
             extra -= macSize;
 
@@ -494,7 +491,7 @@ public class GCMBlockCipher
             System.arraycopy(bufBlock, extra, msgMac, 0, macSize);
             if (!Arrays.constantTimeAreEqual(this.macBlock, msgMac))
             {
-                throw new InvalidCipherTextException("mac check in GCM failed");
+                throw new BCInvalidCipherTextException("mac check in GCM failed");
             }
         }
 

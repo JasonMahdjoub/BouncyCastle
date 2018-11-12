@@ -138,10 +138,10 @@ public class BufferedAsymmetricBlockCipher
      *
      * @return the result of the encryption/decryption process on the
      * buffer.
-     * @exception InvalidCipherTextException if we are given a garbage block.
+     * @exception BCInvalidCipherTextException if we are given a garbage block.
      */
     public byte[] doFinal()
-        throws InvalidCipherTextException
+        throws BCInvalidCipherTextException
     {
         byte[] out = cipher.processBlock(buf, 0, bufOff);
 

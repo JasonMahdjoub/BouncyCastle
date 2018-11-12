@@ -200,10 +200,10 @@ public class DESedeWrapEngine
     * @param inOff off set into in that the data starts at.
     * @param inLen  length of the data.
     * @return the unwrapped bytes.
-    * @throws InvalidCipherTextException
+    * @throws BCInvalidCipherTextException
     */
     public byte[] unwrap(byte[] in, int inOff, int inLen)
-           throws InvalidCipherTextException 
+           throws BCInvalidCipherTextException
     {
         if (forWrapping)
         {
@@ -212,13 +212,13 @@ public class DESedeWrapEngine
         
         if (in == null)
         {
-            throw new InvalidCipherTextException("Null pointer as ciphertext");
+            throw new BCInvalidCipherTextException("Null pointer as ciphertext");
         }
 
         final int blockSize = engine.getBlockSize();
         if (inLen % blockSize != 0)
         {
-            throw new InvalidCipherTextException("Ciphertext not multiple of " + blockSize);
+            throw new BCInvalidCipherTextException("Ciphertext not multiple of " + blockSize);
         }
 
       /*
@@ -286,7 +286,7 @@ public class DESedeWrapEngine
       // with the CKS extracted in the above step. If they are not equal, return error.
       if (!checkCMSKeyChecksum(result, CKStoBeVerified)) 
       {
-         throw new InvalidCipherTextException(
+         throw new BCInvalidCipherTextException(
             "Checksum inside ciphertext is corrupted");
       }
 
