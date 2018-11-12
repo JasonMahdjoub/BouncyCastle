@@ -1,9 +1,10 @@
 package org.bouncycastle.crypto.signers;
 
-import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
-import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.DSA;
-import org.bouncycastle.crypto.DataLengthException;
+import java.math.BigInteger;
+import java.security.SecureRandom;
+
+import org.bouncycastle.crypto.*;
+import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
 import org.bouncycastle.crypto.generators.ECKeyPairGenerator;
 import org.bouncycastle.crypto.params.ECKeyGenerationParameters;
 import org.bouncycastle.crypto.params.ECKeyParameters;
@@ -13,9 +14,6 @@ import org.bouncycastle.crypto.params.ParametersWithRandom;
 import org.bouncycastle.math.ec.ECAlgorithms;
 import org.bouncycastle.math.ec.ECConstants;
 import org.bouncycastle.math.ec.ECPoint;
-
-import java.math.BigInteger;
-import java.security.SecureRandom;
 
 /**
  * EC-NR as described in IEEE 1363-2000
@@ -44,7 +42,7 @@ public class ECNRSigner
             }
             else
             {
-                this.random = new SecureRandom();
+                this.random = BCCryptoServicesRegistrar.getSecureRandom();
                 this.key = (ECPrivateKeyParameters)param;
             }
         }

@@ -1,12 +1,10 @@
 package org.bouncycastle.crypto;
 
-import java.io.IOException;
-
 /**
  * the foundation class for the hard exceptions thrown by the crypto packages.
  */
 public class CryptoException 
-    extends IOException
+    extends Exception
 {
     private Throwable cause;
 

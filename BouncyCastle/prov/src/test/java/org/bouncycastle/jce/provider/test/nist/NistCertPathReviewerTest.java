@@ -129,7 +129,7 @@ public class NistCertPathReviewerTest
                 new String[] { TRUST_ANCHOR_ROOT_CRL, "BadnotBeforeDateCACRL" },
                 1,
                 "CertPathReviewer.certificateNotYetValid",
-                "Could not validate the certificate. Certificate is not valid until Jan 1, 2047 12:01:00 PM GMT.");
+                "Could not validate the certificate. Certificate is not valid until Jan 1, 2047 12:01:00 PM Greenwich Mean Time.");
     }
     
     public void testInvalidEENotBeforeDateTest2()
@@ -140,7 +140,7 @@ public class NistCertPathReviewerTest
                 new String[] { TRUST_ANCHOR_ROOT_CRL, GOOD_CA_CRL },
                 0,
                 "CertPathReviewer.certificateNotYetValid",
-                "Could not validate the certificate. Certificate is not valid until Jan 1, 2047 12:01:00 PM GMT.");
+                "Could not validate the certificate. Certificate is not valid until Jan 1, 2047 12:01:00 PM Greenwich Mean Time.");
     }
     
     public void testValidPre2000UTCNotBeforeDateTest3()
@@ -167,7 +167,7 @@ public class NistCertPathReviewerTest
                 new String[] { TRUST_ANCHOR_ROOT_CRL, "BadnotAfterDateCACRL" },
                 1,
                 "CertPathReviewer.certificateExpired",
-                "Could not validate the certificate. Certificate expired on Jan 1, 2002 12:01:00 PM GMT.");
+                "Could not validate the certificate. Certificate expired on Jan 1, 2002 12:01:00 PM Greenwich Mean Time.");
     }
     
     public void testInvalidEENotAfterDateTest6()
@@ -178,7 +178,7 @@ public class NistCertPathReviewerTest
                 new String[] { TRUST_ANCHOR_ROOT_CRL, GOOD_CA_CRL },
                 0,
                 "CertPathReviewer.certificateExpired",
-                "Could not validate the certificate. Certificate expired on Jan 1, 2002 12:01:00 PM GMT.");
+                "Could not validate the certificate. Certificate expired on Jan 1, 2002 12:01:00 PM Greenwich Mean Time.");
     }
     
     public void testInvalidValidPre2000UTCNotAfterDateTest7()
@@ -189,7 +189,7 @@ public class NistCertPathReviewerTest
                 new String[] { TRUST_ANCHOR_ROOT_CRL, GOOD_CA_CRL },
                 0,
                 "CertPathReviewer.certificateExpired",
-                "Could not validate the certificate. Certificate expired on Jan 1, 1999 12:01:00 PM GMT.");
+                "Could not validate the certificate. Certificate expired on Jan 1, 1999 12:01:00 PM Greenwich Mean Time.");
     }
     
     public void testInvalidNegativeSerialNumberTest15()
@@ -200,7 +200,7 @@ public class NistCertPathReviewerTest
                 new String[] { TRUST_ANCHOR_ROOT_CRL, "NegativeSerialNumberCACRL" },
                 0,
                 "CertPathReviewer.certRevoked",
-                "The certificate was revoked at Apr 19, 2001 2:57:20 PM GMT. Reason: Key Compromise.");
+                "The certificate was revoked at Apr 19, 2001 2:57:20 PM Greenwich Mean Time. Reason: Key Compromise.");
     }
     
     //
@@ -626,6 +626,7 @@ public class NistCertPathReviewerTest
         }
         catch (Exception e)
         {
+            e.printStackTrace();
             throw new IllegalStateException("exception loading certificate " + certName + ": " + e);
         }
     }

@@ -85,7 +85,7 @@ public class LocalizedMessageTest extends TestCase
                 "text", Locale.GERMAN, TimeZone.getTimeZone("GMT")).replace("13.12", "13:12");
         Assert.assertTrue("expected : "+m, "Es ist 13:12 Uhr GMT am 17.08.2006.".equals(m) || "Es ist 13:12:00 Mittlere Greenwich-Zeit am 17.08.2006.".equals(m) );
 
-        
+
         // test number
         args = new Object[] { new TrustedInput(new Float(0.2))  };
         msg = new LocalizedMessage(TEST_RESOURCE, "number", args);
@@ -97,9 +97,9 @@ public class LocalizedMessageTest extends TestCase
         msg = new LocalizedMessage(TEST_RESOURCE,filterTestId,args);
         msg.setFilter(new HTMLFilter());
         assertEquals("The following part should contain no HTML tags: "
-                + "&#60script&#62doBadThings&#40&#41&#60/script&#62",
+                        + "&#60script&#62doBadThings&#40&#41&#60/script&#62",
                 msg.getEntry("text",Locale.ENGLISH, TimeZone.getDefault()));
-        
+
         // test missing entry
         msg = new LocalizedMessage(TEST_RESOURCE, missingTestId);
         try
@@ -112,7 +112,7 @@ public class LocalizedMessageTest extends TestCase
         {
 //            System.out.println(e.getDebugMsg());
         }
-        
+
         // test missing entry
         try
         {
@@ -132,9 +132,9 @@ public class LocalizedMessageTest extends TestCase
         }
         catch (MalformedURLException e)
         {
-            
+
         }
-        
+
         // test utf8
         try
         {
@@ -145,15 +145,15 @@ public class LocalizedMessageTest extends TestCase
         }
         catch (UnsupportedEncodingException e)
         {
-            
+
         }
 
     }
-    
+
     public void testLocalizedArgs()
     {
         LocaleString ls = new LocaleString(TEST_RESOURCE, "name");
-        
+
         // without filter
         Object[] args = new Object[] { ls };
         LocalizedMessage msg = new LocalizedMessage(TEST_RESOURCE, argsTestId, args);
@@ -161,14 +161,14 @@ public class LocalizedMessageTest extends TestCase
                 TimeZone.getDefault()));
         assertEquals("Mein Name ist Hans.", msg.getEntry("text",
                 Locale.GERMAN, TimeZone.getDefault()));
-        
+
         // with filter
         msg.setFilter(new HTMLFilter());
         assertEquals("My name is John.", msg.getEntry("text", Locale.ENGLISH,
                 TimeZone.getDefault()));
         assertEquals("Mein Name ist Hans.", msg.getEntry("text",
                 Locale.GERMAN, TimeZone.getDefault()));
-        
+
         // add extra args
         LocaleString lsExtra = new LocaleString(TEST_RESOURCE, "hello.text");
         msg.setExtraArguments(new Object[] {" ", lsExtra});
@@ -176,7 +176,7 @@ public class LocalizedMessageTest extends TestCase
                 TimeZone.getDefault()));
         assertEquals("Mein Name ist Hans. Hallo Welt.", msg.getEntry("text",
                 Locale.GERMAN, TimeZone.getDefault()));
-        
+
         // missing localized arg
         try
         {

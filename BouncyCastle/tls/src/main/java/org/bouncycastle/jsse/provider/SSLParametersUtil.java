@@ -3,8 +3,14 @@ package org.bouncycastle.jsse.provider;
 import java.lang.reflect.Method;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
+import java.util.Collection;
+import java.util.List;
 
 import javax.net.ssl.SSLParameters;
+
+import org.bouncycastle.jsse.BCSNIMatcher;
+import org.bouncycastle.jsse.BCSNIServerName;
+import org.bouncycastle.jsse.BCSSLParameters;
 
 abstract class SSLParametersUtil
 {
@@ -14,6 +20,8 @@ abstract class SSLParametersUtil
     private static final Method setEndpointIdentificationAlgorithm;
     private static final Method getServerNames;
     private static final Method setServerNames;
+    private static final Method getSNIMatchers;
+    private static final Method setSNIMatchers;
     private static final Method getUseCipherSuitesOrder;
     private static final Method setUseCipherSuitesOrder;
 
@@ -120,100 +128,174 @@ abstract class SSLParametersUtil
     static
     {
         Class<?> sslParametersClazz = getClassPrivileged("javax.net.ssl.SSLParameters");
-        
+
         Method[] methods = getMethodsPrivileged(sslParametersClazz);
-        
+
         getAlgorithmConstraints = findMethod(methods, "getAlgorithmConstraints");
         setAlgorithmConstraints = findMethod(methods, "setAlgorithmConstraints");
         getEndpointIdentificationAlgorithm = findMethod(methods, "getEndpointIdentificationAlgorithm");
         setEndpointIdentificationAlgorithm = findMethod(methods, "setEndpointIdentificationAlgorithm");
         getServerNames = findMethod(methods, "getServerNames");
         setServerNames = findMethod(methods, "setServerNames");
+        getSNIMatchers = findMethod(methods, "getSNIMatchers");
+        setSNIMatchers = findMethod(methods, "setSNIMatchers");
         getUseCipherSuitesOrder = findMethod(methods, "getUseCipherSuitesOrder");
         setUseCipherSuitesOrder = findMethod(methods, "setUseCipherSuitesOrder");
     }
 
-    static SSLParameters toSSLParameters(final ProvSSLParameters provSslParameters)
+    static BCSSLParameters getParameters(ProvSSLParameters prov)
     {
-        final SSLParameters r = new SSLParameters();
-        r.setCipherSuites(provSslParameters.getCipherSuites());
-        r.setProtocols(provSslParameters.getProtocols());
-        // From JDK 1.7
-        if (setAlgorithmConstraints != null)
-        {
-            invokeSetterPrivileged(r, setAlgorithmConstraints, provSslParameters.getAlgorithmConstraints());
-        }
-        if (setEndpointIdentificationAlgorithm != null)
-        {
-            invokeSetterPrivileged(r, setEndpointIdentificationAlgorithm, provSslParameters.getEndpointIdentificationAlgorithm());
-        }
-        // From JDK 1.8
-        /*if (setServerNames != null)
-        {
-            invokeSetterPrivileged(r, setServerNames, JsseUtils_8.exportSNIServerNames(provSslParameters.getServerNames()));
-        }*/
-        // TODO[jsse] From JDK 1.8
-//        r.setSNIMatchers(p.getSNIMatchers());
-        if (setUseCipherSuitesOrder != null)
-        {
-            invokeSetterPrivileged(r, setUseCipherSuitesOrder, provSslParameters.getUseCipherSuitesOrder());
-        }
+        BCSSLParameters ssl = new BCSSLParameters(prov.getCipherSuites(), prov.getProtocols());
 
         // NOTE: The client-auth setters each clear the other client-auth property, so only one can be set
-        if (provSslParameters.getNeedClientAuth())
+        if (prov.getNeedClientAuth())
         {
-            r.setNeedClientAuth(true);
+            ssl.setNeedClientAuth(true);
         }
-        else if (provSslParameters.getWantClientAuth())
+        else if (prov.getWantClientAuth())
         {
-            r.setWantClientAuth(true);
+            ssl.setWantClientAuth(true);
         }
         else
         {
-            r.setWantClientAuth(false);
+            ssl.setWantClientAuth(false);
         }
-        return r;
+
+        ssl.setServerNames(prov.getServerNames());
+        ssl.setSNIMatchers(prov.getSNIMatchers());
+
+        return ssl;
     }
 
-    static ProvSSLParameters toProvSSLParameters(final SSLParameters sslParameters)
+    static SSLParameters getSSLParameters(ProvSSLParameters prov)
     {
-        final ProvSSLParameters r = new ProvSSLParameters();
-        r.setCipherSuites(sslParameters.getCipherSuites());
-        r.setProtocols(sslParameters.getProtocols());
-        // From JDK 1.7
-        if (getAlgorithmConstraints != null)
-        {
-            r.setAlgorithmConstraints(invokeGetterPrivileged(sslParameters, getAlgorithmConstraints));
-        }
-        if (getEndpointIdentificationAlgorithm != null)
-        {
-            r.setEndpointIdentificationAlgorithm((String)invokeGetterPrivileged(sslParameters, getEndpointIdentificationAlgorithm));
-        }
-        // From JDK 1.8
-        /*if (getServerNames != null)
-        {
-            r.setServerNames(JsseUtils_8.importSNIServerNames(invokeGetterPrivileged(sslParameters, getServerNames)));
-        }*/
-        // TODO[jsse] From JDK 1.8
-//        r.setSNIMatchers(p.getSNIMatchers());
-        if (getUseCipherSuitesOrder != null)
-        {
-            r.setUseCipherSuitesOrder((Boolean)invokeGetterPrivileged(sslParameters, getUseCipherSuitesOrder));
-        }
+        SSLParameters ssl = new SSLParameters(prov.getCipherSuites(), prov.getProtocols());
 
         // NOTE: The client-auth setters each clear the other client-auth property, so only one can be set
-        if (sslParameters.getNeedClientAuth())
+        if (prov.getNeedClientAuth())
         {
-            r.setNeedClientAuth(true);
+            ssl.setNeedClientAuth(true);
         }
-        else if (sslParameters.getWantClientAuth())
+        else if (prov.getWantClientAuth())
         {
-            r.setWantClientAuth(true);
+            ssl.setWantClientAuth(true);
         }
         else
         {
-            r.setWantClientAuth(false);
+            ssl.setWantClientAuth(false);
         }
-        return r;
+
+        // From JDK 1.7
+
+        if (setAlgorithmConstraints != null)
+        {
+            invokeSetterPrivileged(ssl, setAlgorithmConstraints, prov.getAlgorithmConstraints());
+        }
+
+        if (setEndpointIdentificationAlgorithm != null)
+        {
+            invokeSetterPrivileged(ssl, setEndpointIdentificationAlgorithm, prov.getEndpointIdentificationAlgorithm());
+        }
+
+        // From JDK 1.8
+
+        if (setUseCipherSuitesOrder != null)
+        {
+            invokeSetterPrivileged(ssl, setUseCipherSuitesOrder, prov.getUseCipherSuitesOrder());
+        }
+
+
+        return ssl;
+    }
+
+    static void setParameters(ProvSSLParameters prov, BCSSLParameters ssl)
+    {
+        String[] cipherSuites = ssl.getCipherSuites();
+        if (cipherSuites != null)
+        {
+            prov.setCipherSuites(cipherSuites);
+        }
+
+        String[] protocols = ssl.getProtocols();
+        if (protocols != null)
+        {
+            prov.setProtocols(protocols);
+        }
+
+        // NOTE: The client-auth setters each clear the other client-auth property, so only one can be set
+        if (ssl.getNeedClientAuth())
+        {
+            prov.setNeedClientAuth(true);
+        }
+        else if (ssl.getWantClientAuth())
+        {
+            prov.setWantClientAuth(true);
+        }
+        else
+        {
+            prov.setWantClientAuth(false);
+        }
+
+        List<BCSNIServerName> serverNames = ssl.getServerNames();
+        if (serverNames != null)
+        {
+            prov.setServerNames(serverNames);
+        }
+
+        Collection<BCSNIMatcher> sniMatchers = ssl.getSNIMatchers();
+        if (sniMatchers != null)
+        {
+            prov.setSNIMatchers(sniMatchers);
+        }
+    }
+
+    static void setSSLParameters(ProvSSLParameters prov, SSLParameters ssl)
+    {
+        String[] cipherSuites = ssl.getCipherSuites();
+        if (cipherSuites != null)
+        {
+            prov.setCipherSuites(cipherSuites);
+        }
+
+        String[] protocols = ssl.getProtocols();
+        if (protocols != null)
+        {
+            prov.setProtocols(protocols);
+        }
+
+        // NOTE: The client-auth setters each clear the other client-auth property, so only one can be set
+        if (ssl.getNeedClientAuth())
+        {
+            prov.setNeedClientAuth(true);
+        }
+        else if (ssl.getWantClientAuth())
+        {
+            prov.setWantClientAuth(true);
+        }
+        else
+        {
+            prov.setWantClientAuth(false);
+        }
+
+        // From JDK 1.7
+
+        if (getAlgorithmConstraints != null)
+        {
+            prov.setAlgorithmConstraints(invokeGetterPrivileged(ssl, getAlgorithmConstraints));
+        }
+
+        if (getEndpointIdentificationAlgorithm != null)
+        {
+            prov.setEndpointIdentificationAlgorithm((String)invokeGetterPrivileged(ssl, getEndpointIdentificationAlgorithm));
+        }
+
+        // From JDK 1.8
+
+        if (getUseCipherSuitesOrder != null)
+        {
+            prov.setUseCipherSuitesOrder((Boolean)invokeGetterPrivileged(ssl, getUseCipherSuitesOrder));
+        }
+
+
     }
 }

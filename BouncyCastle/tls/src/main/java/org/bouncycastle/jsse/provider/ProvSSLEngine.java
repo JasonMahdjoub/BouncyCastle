@@ -16,6 +16,7 @@ import javax.net.ssl.X509TrustManager;
 
 import org.bouncycastle.jsse.BCSSLConnection;
 import org.bouncycastle.jsse.BCSSLEngine;
+import org.bouncycastle.jsse.BCSSLParameters;
 import org.bouncycastle.tls.AlertDescription;
 import org.bouncycastle.tls.RecordFormat;
 import org.bouncycastle.tls.RecordPreview;
@@ -36,10 +37,10 @@ class ProvSSLEngine
 {
     protected final ProvSSLContextSpi context;
     protected final ContextData contextData;
+    protected final ProvSSLParameters sslParameters;
 
-    protected ProvSSLParameters sslParameters;
     protected boolean enableSessionCreation = true;
-    protected boolean useClientMode = true;
+    protected boolean useClientMode = false;
 
     protected boolean initialHandshakeBegun = false;
     protected HandshakeStatus handshakeStatus = HandshakeStatus.NOT_HANDSHAKING; 
@@ -56,7 +57,7 @@ class ProvSSLEngine
 
         this.context = context;
         this.contextData = contextData;
-        this.sslParameters = ProvSSLParameters.extractDefaultParameters(context);
+        this.sslParameters = context.getDefaultParameters(!useClientMode);
     }
 
     protected ProvSSLEngine(ProvSSLContextSpi context, ContextData contextData, String host, int port)
@@ -65,7 +66,7 @@ class ProvSSLEngine
 
         this.context = context;
         this.contextData = contextData;
-        this.sslParameters = ProvSSLParameters.extractDefaultParameters(context);;
+        this.sslParameters = context.getDefaultParameters(!useClientMode);
     }
 
     public ProvSSLContextSpi getContext()
@@ -99,7 +100,7 @@ class ProvSSLEngine
                 TlsClientProtocol clientProtocol = new TlsClientProtocol();
                 this.protocol = clientProtocol;
 
-                ProvTlsClient client = new ProvTlsClient(this);
+                ProvTlsClient client = new ProvTlsClient(this, sslParameters.copy());
                 this.protocolPeer = client;
 
                 clientProtocol.connect(client);
@@ -110,7 +111,7 @@ class ProvSSLEngine
                 TlsServerProtocol serverProtocol = new TlsServerProtocol();
                 this.protocol = serverProtocol;
 
-                ProvTlsServer server = new ProvTlsServer(this);
+                ProvTlsServer server = new ProvTlsServer(this, sslParameters.copy());
                 this.protocolPeer = server;
 
                 serverProtocol.accept(server);
@@ -205,6 +206,11 @@ class ProvSSLEngine
         return sslParameters.getNeedClientAuth();
     }
 
+    public synchronized BCSSLParameters getParameters()
+    {
+        return SSLParametersUtil.getParameters(sslParameters);
+    }
+
     @Override
     public synchronized SSLSession getSession()
     {
@@ -214,12 +220,7 @@ class ProvSSLEngine
     @Override
     public synchronized SSLParameters getSSLParameters()
     {
-        return SSLParametersUtil.toSSLParameters(sslParameters);
-    }
-
-    public synchronized ProvSSLParameters getProvSSLParameters()
-    {
-        return sslParameters;
+        return SSLParametersUtil.getSSLParameters(sslParameters);
     }
 
     @Override
@@ -261,22 +262,12 @@ class ProvSSLEngine
     @Override
     public synchronized void setEnabledCipherSuites(String[] suites)
     {
-        if (!context.isSupportedCipherSuites(suites))
-        {
-            throw new IllegalArgumentException("'suites' cannot be null, or contain unsupported cipher suites");
-        }
-
         sslParameters.setCipherSuites(suites);
     }
 
     @Override
     public synchronized void setEnabledProtocols(String[] protocols)
     {
-        if (!context.isSupportedProtocols(protocols))
-        {
-            throw new IllegalArgumentException("'protocols' cannot be null, or contain unsupported protocols");
-        }
-
         sslParameters.setProtocols(protocols);
     }
 
@@ -292,21 +283,33 @@ class ProvSSLEngine
         sslParameters.setNeedClientAuth(need);
     }
 
+    public synchronized void setParameters(BCSSLParameters parameters)
+    {
+        SSLParametersUtil.setParameters(this.sslParameters, parameters);
+    }
+
     @Override
     public synchronized void setSSLParameters(SSLParameters sslParameters)
     {
-        this.sslParameters = SSLParametersUtil.toProvSSLParameters(sslParameters);
+        SSLParametersUtil.setSSLParameters(this.sslParameters, sslParameters);
     }
 
     @Override
     public synchronized void setUseClientMode(boolean mode)
     {
-        if (initialHandshakeBegun && mode != this.useClientMode)
+        if (this.useClientMode == mode)
+        {
+            return;
+        }
+
+        if (initialHandshakeBegun)
         {
             throw new IllegalArgumentException("Mode cannot be changed after the initial handshake has begun");
         }
 
         this.useClientMode = mode;
+
+        context.updateDefaultProtocols(sslParameters, !useClientMode);
     }
 
     @Override

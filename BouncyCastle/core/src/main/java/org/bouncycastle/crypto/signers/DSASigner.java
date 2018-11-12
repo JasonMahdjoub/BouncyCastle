@@ -3,6 +3,7 @@ package org.bouncycastle.crypto.signers;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
+import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
 import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.DSA;
 import org.bouncycastle.crypto.params.DSAKeyParameters;
@@ -162,7 +163,7 @@ public class DSASigner
 
     protected SecureRandom initSecureRandom(boolean needed, SecureRandom provided)
     {
-        return !needed ? null : (provided != null) ? provided : new SecureRandom();
+        return !needed ? null : (provided != null) ? provided : BCCryptoServicesRegistrar.getSecureRandom();
     }
 
     private BigInteger getRandomizer(BigInteger q, SecureRandom provided)
@@ -170,6 +171,6 @@ public class DSASigner
         // Calculate a random multiple of q to add to k. Note that g^q = 1 (mod p), so adding multiple of q to k does not change r.
         int randomBits = 7;
 
-        return new BigInteger(randomBits, provided != null ? provided : new SecureRandom()).add(BigInteger.valueOf(128)).multiply(q);
+        return new BigInteger(randomBits, provided != null ? provided : BCCryptoServicesRegistrar.getSecureRandom()).add(BigInteger.valueOf(128)).multiply(q);
     }
 }

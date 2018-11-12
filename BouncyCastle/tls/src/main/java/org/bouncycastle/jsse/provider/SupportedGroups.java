@@ -14,9 +14,10 @@ abstract class SupportedGroups
 {
     private static Logger LOG = Logger.getLogger(SupportedGroups.class.getName());
 
-    private static final String PROPERTY_NAME = "jdk.tls.namedGroups";
+    private static final String PROPERTY_NAMEDGROUPS = "jdk.tls.namedGroups";
 
-    private static final boolean provDisableChar2 = PropertyUtils.getBooleanSystemProperty("org.bouncycastle.jsse.ec.disableChar2", false);
+    private static final boolean provDisableChar2 = PropertyUtils.getBooleanSystemProperty("org.bouncycastle.jsse.ec.disableChar2", false)
+        || PropertyUtils.getBooleanSystemProperty("org.bouncycastle.ec.disable_f2m", false);
     private static final int[] provJdkTlsNamedGroups = getJdkTlsNamedGroups(provDisableChar2);
 
     /*
@@ -59,7 +60,7 @@ abstract class SupportedGroups
 
     private static int[] getJdkTlsNamedGroups(boolean provDisableChar2)
     {
-        String prop = PropertyUtils.getStringSystemProperty("jdk.tls.namedGroups");
+        String prop = PropertyUtils.getStringSystemProperty(PROPERTY_NAMEDGROUPS);
         if (prop == null)
         {
             return null;
@@ -74,14 +75,14 @@ abstract class SupportedGroups
             if (name.length() < 1)
                 continue;
 
-            int namedGroup = NamedGroup.getByName(name.trim());
+            int namedGroup = NamedGroup.getByName(name);
             if (namedGroup < 0)
             {
-                LOG.warning("'" + PROPERTY_NAME + "' contains unrecognised NamedGroup: " + name);
+                LOG.warning("'" + PROPERTY_NAMEDGROUPS + "' contains unrecognised NamedGroup: " + name);
             }
             else if (provDisableChar2 && NamedGroup.isChar2Curve(namedGroup))
             {
-                LOG.warning("'" + PROPERTY_NAME + "' contains disabled characteristic-2 curve: " + name);
+                LOG.warning("'" + PROPERTY_NAMEDGROUPS + "' contains disabled characteristic-2 curve: " + name);
             }
             else
             {
@@ -94,7 +95,7 @@ abstract class SupportedGroups
         }
         if (result.length < 1)
         {
-            LOG.severe("'" + PROPERTY_NAME + "' contained no usable NamedGroup values");
+            LOG.severe("'" + PROPERTY_NAMEDGROUPS + "' contained no usable NamedGroup values");
         }
         return result;
     }

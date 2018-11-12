@@ -7,6 +7,7 @@ import java.security.SecureRandom;
 import java.security.spec.AlgorithmParameterSpec;
 
 import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
+import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
 import org.bouncycastle.pqc.crypto.mceliece.McElieceKeyGenerationParameters;
 import org.bouncycastle.pqc.crypto.mceliece.McElieceKeyPairGenerator;
 import org.bouncycastle.pqc.crypto.mceliece.McElieceParameters;
@@ -31,7 +32,7 @@ public class McElieceKeyPairGeneratorSpi
         super.initialize(params);
         McElieceKeyGenParameterSpec ecc = (McElieceKeyGenParameterSpec)params;
 
-        McElieceKeyGenerationParameters mccKGParams = new McElieceKeyGenerationParameters(new SecureRandom(), new McElieceParameters(ecc.getM(), ecc.getT()));
+        McElieceKeyGenerationParameters mccKGParams = new McElieceKeyGenerationParameters(BCCryptoServicesRegistrar.getSecureRandom(), new McElieceParameters(ecc.getM(), ecc.getT()));
         kpg.init(mccKGParams);
     }
 

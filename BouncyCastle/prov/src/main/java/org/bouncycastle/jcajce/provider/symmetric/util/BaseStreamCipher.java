@@ -19,6 +19,7 @@ import javax.crypto.spec.RC2ParameterSpec;
 import javax.crypto.spec.RC5ParameterSpec;
 
 import org.bouncycastle.crypto.CipherParameters;
+import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
 import org.bouncycastle.crypto.DataLengthException;
 import org.bouncycastle.crypto.StreamCipher;
 import org.bouncycastle.crypto.params.KeyParameter;
@@ -231,7 +232,7 @@ public class BaseStreamCipher
 
             if (ivRandom == null)
             {
-                ivRandom = new SecureRandom();
+                ivRandom = BCCryptoServicesRegistrar.getSecureRandom();
             }
 
             if ((opmode == Cipher.ENCRYPT_MODE) || (opmode == Cipher.WRAP_MODE))

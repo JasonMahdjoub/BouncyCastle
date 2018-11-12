@@ -7,6 +7,7 @@ import java.security.spec.AlgorithmParameterSpec;
 
 import javax.crypto.spec.IvParameterSpec;
 
+import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
 import org.bouncycastle.crypto.BlockCipher;
 import org.bouncycastle.crypto.BufferedBlockCipher;
 import org.bouncycastle.crypto.CipherKeyGenerator;
@@ -24,7 +25,6 @@ import org.bouncycastle.jcajce.provider.symmetric.util.BaseKeyGenerator;
 import org.bouncycastle.jcajce.provider.symmetric.util.BaseMac;
 import org.bouncycastle.jcajce.provider.symmetric.util.BlockCipherProvider;
 import org.bouncycastle.jcajce.provider.symmetric.util.IvAlgorithmParameters;
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
 public final class RC6
 {
@@ -127,7 +127,7 @@ public final class RC6
 
             if (random == null)
             {
-                random = new SecureRandom();
+                random = BCCryptoServicesRegistrar.getSecureRandom();
             }
 
             random.nextBytes(iv);

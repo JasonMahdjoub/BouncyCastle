@@ -30,7 +30,7 @@ public class AllTests
             suite.addTestSuite(TrustManagerFactoryTest.class);
         }
 
-        suite.addTest(CipherSuitesTestSuite.suite());
+        //suite.addTest(CipherSuitesTestSuite.suite());
 
         return new BCTestSetup(suite);
     }

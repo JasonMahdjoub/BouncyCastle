@@ -2,7 +2,6 @@ package org.bouncycastle.crypto.signers;
 
 import java.io.IOException;
 import java.math.BigInteger;
-import java.security.SecureRandom;
 
 import org.bouncycastle.asn1.ASN1EncodableVector;
 import org.bouncycastle.asn1.ASN1Encoding;
@@ -10,10 +9,8 @@ import org.bouncycastle.asn1.ASN1Integer;
 import org.bouncycastle.asn1.ASN1Primitive;
 import org.bouncycastle.asn1.ASN1Sequence;
 import org.bouncycastle.asn1.DERSequence;
-import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.CryptoException;
-import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.Signer;
+import org.bouncycastle.crypto.*;
+import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
 import org.bouncycastle.crypto.digests.SM3Digest;
 import org.bouncycastle.crypto.params.ECDomainParameters;
 import org.bouncycastle.crypto.params.ECKeyParameters;
@@ -74,7 +71,7 @@ public class SM2Signer
             {
                 ecKey = (ECKeyParameters)baseParam;
                 ecParams = ecKey.getParameters();
-                kCalculator.init(ecParams.getN(), new SecureRandom());
+                kCalculator.init(ecParams.getN(), BCCryptoServicesRegistrar.getSecureRandom());
             }
             pubPoint = createBasePointMultiplier().multiply(ecParams.getG(), ((ECPrivateKeyParameters)ecKey).getD()).normalize();
         }

@@ -2,10 +2,8 @@ package org.bouncycastle.crypto.engines;
 
 import java.security.SecureRandom;
 
-import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.InvalidCipherTextException;
-import org.bouncycastle.crypto.Wrapper;
+import org.bouncycastle.crypto.*;
+import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
 import org.bouncycastle.crypto.modes.CBCBlockCipher;
 import org.bouncycastle.crypto.params.KeyParameter;
 import org.bouncycastle.crypto.params.ParametersWithIV;
@@ -75,7 +73,7 @@ public class DESedeWrapEngine
         }
         else
         {
-            sr = new SecureRandom();
+            sr = BCCryptoServicesRegistrar.getSecureRandom();
         }
 
         if (param instanceof KeyParameter)

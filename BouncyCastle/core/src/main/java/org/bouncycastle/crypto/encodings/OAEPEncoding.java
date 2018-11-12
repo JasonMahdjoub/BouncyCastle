@@ -2,11 +2,8 @@ package org.bouncycastle.crypto.encodings;
 
 import java.security.SecureRandom;
 
-import org.bouncycastle.crypto.AsymmetricBlockCipher;
-import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.DataLengthException;
-import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.InvalidCipherTextException;
+import org.bouncycastle.crypto.*;
+import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
 import org.bouncycastle.crypto.params.ParametersWithRandom;
 import org.bouncycastle.crypto.util.DigestFactory;
 import org.bouncycastle.util.Arrays;
@@ -82,7 +79,7 @@ public class OAEPEncoding
         }
         else
         {   
-            this.random = new SecureRandom();
+            this.random = BCCryptoServicesRegistrar.getSecureRandom();
         }
 
         engine.init(forEncryption, param);

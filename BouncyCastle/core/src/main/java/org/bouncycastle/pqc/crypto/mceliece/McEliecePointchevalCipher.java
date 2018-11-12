@@ -2,6 +2,7 @@ package org.bouncycastle.pqc.crypto.mceliece;
 
 import java.security.SecureRandom;
 
+import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
 import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.Digest;
 import org.bouncycastle.crypto.InvalidCipherTextException;
@@ -59,7 +60,7 @@ public class McEliecePointchevalCipher
             }
             else
             {
-                this.sr = new SecureRandom();
+                this.sr = BCCryptoServicesRegistrar.getSecureRandom();
                 this.key = (McElieceCCA2PublicKeyParameters)param;
                 this.initCipherEncrypt((McElieceCCA2PublicKeyParameters)key);
             }
@@ -110,7 +111,7 @@ public class McEliecePointchevalCipher
 
     private void initCipherEncrypt(McElieceCCA2PublicKeyParameters pubKey)
     {
-        this.sr = sr != null ? sr : new SecureRandom();
+        this.sr = sr != null ? sr : BCCryptoServicesRegistrar.getSecureRandom();
         this.messDigest = Utils.getDigest(pubKey.getDigest());
         n = pubKey.getN();
         k = pubKey.getK();

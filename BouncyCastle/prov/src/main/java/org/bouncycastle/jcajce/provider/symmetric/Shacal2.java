@@ -9,6 +9,7 @@ import javax.crypto.spec.IvParameterSpec;
 
 import org.bouncycastle.crypto.BlockCipher;
 import org.bouncycastle.crypto.CipherKeyGenerator;
+import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
 import org.bouncycastle.crypto.engines.Shacal2Engine;
 import org.bouncycastle.crypto.macs.CMac;
 import org.bouncycastle.crypto.modes.CBCBlockCipher;
@@ -85,7 +86,7 @@ public final class Shacal2
 
             if (random == null)
             {
-                random = new SecureRandom();
+                random = BCCryptoServicesRegistrar.getSecureRandom();
             }
 
             random.nextBytes(iv);

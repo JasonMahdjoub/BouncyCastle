@@ -3,6 +3,7 @@ package org.bouncycastle.crypto.signers;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
+import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
 import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.DSA;
 import org.bouncycastle.crypto.params.GOST3410KeyParameters;
@@ -36,7 +37,7 @@ public class GOST3410Signer
                 }
                 else
                 {
-                    this.random = new SecureRandom();
+                    this.random = BCCryptoServicesRegistrar.getSecureRandom();
                     this.key = (GOST3410PrivateKeyParameters)param;
                 }
             }

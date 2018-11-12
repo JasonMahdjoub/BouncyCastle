@@ -34,8 +34,9 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import org.bouncycastle.asn1.ASN1Encodable;
 import org.bouncycastle.asn1.ASN1Encoding;
-import org.bouncycastle.asn1.x509.X509Extension;
+import org.bouncycastle.asn1.x509.Extension;
 import org.bouncycastle.cert.jcajce.JcaCertStore;
+import org.bouncycastle.cert.jcajce.JcaX509ExtensionUtils;
 import org.bouncycastle.cms.SignerInformation;
 import org.bouncycastle.cms.jcajce.JcaSimpleSignerInfoGeneratorBuilder;
 import org.bouncycastle.i18n.ErrorBundle;
@@ -44,7 +45,6 @@ import org.bouncycastle.mail.smime.validator.SignedMailValidator;
 import org.bouncycastle.util.Store;
 import org.bouncycastle.util.encoders.Base64;
 import org.bouncycastle.x509.PKIXCertPathReviewer;
-import org.bouncycastle.x509.extension.X509ExtensionUtil;
 
 public class SignedMailValidatorTest extends TestCase
 {
@@ -184,36 +184,36 @@ public class SignedMailValidatorTest extends TestCase
         assertFalse(result.isValidSignature());
         assertContainsMessage(result.getErrors(),
                 "SignedMailValidator.certNotYetValid",
-                "The message was signed at Aug 28, 2006 3:04:01 PM GMT. But the certificate is not valid before Dec 28, 2006 2:19:31 PM GMT.");
-        
+                "The message was signed at Aug 28, 2006 3:04:01 PM Greenwich Mean Time. But the certificate is not valid before Dec 28, 2006 2:19:31 PM Greenwich Mean Time.");
+
         PKIXCertPathReviewer review = result.getCertPathReview();
         assertFalse(review.isValidCertPath());
         assertContainsMessage(
                 review.getErrors(0),
                 "CertPathReviewer.certificateNotYetValid",
-                "Could not validate the certificate. Certificate is not valid until Dec 28, 2006 2:19:31 PM GMT.");
+                "Could not validate the certificate. Certificate is not valid until Dec 28, 2006 2:19:31 PM Greenwich Mean Time.");
     }
-    
+
     public void testExpired() throws Exception
     {
         String message = "validator.expired.eml";
         PKIXParameters params = createDefaultParams();
         SignedMailValidator.ValidationResult result = doTest(message, params);
-        
+
         assertTrue(result.isVerifiedSignature());
         assertFalse(result.isValidSignature());
         assertContainsMessage(result.getErrors(),
                 "SignedMailValidator.certExpired",
-                "The message was signed at Sep 1, 2006 9:08:35 AM GMT. But the certificate expired at Sep 1, 2006 8:39:20 AM GMT.");
-        
+                "The message was signed at Sep 1, 2006 9:08:35 AM Greenwich Mean Time. But the certificate expired at Sep 1, 2006 8:39:20 AM Greenwich Mean Time.");
+
         PKIXCertPathReviewer review = result.getCertPathReview();
         assertFalse(review.isValidCertPath());
         assertContainsMessage(
                 review.getErrors(0),
                 "CertPathReviewer.certificateExpired",
-                "Could not validate the certificate. Certificate expired on Sep 1, 2006 8:39:20 AM GMT.");
+                "Could not validate the certificate. Certificate expired on Sep 1, 2006 8:39:20 AM Greenwich Mean Time.");
     }
-    
+
     public void testRevoked() throws Exception
     {
         String message = "validator.revoked.eml";
@@ -223,33 +223,33 @@ public class SignedMailValidatorTest extends TestCase
         CertStore crls = CertStore.getInstance("Collection",new CollectionCertStoreParameters(crlList));
         params.addCertStore(crls);
         params.setRevocationEnabled(true);
-        
+
         SignedMailValidator.ValidationResult result = doTest(message, params);
-        
+
         assertTrue(result.isVerifiedSignature());
         assertFalse(result.isValidSignature());
-        
+
         PKIXCertPathReviewer review = result.getCertPathReview();
         assertFalse(review.isValidCertPath());
         assertContainsMessage(
                 review.getErrors(0),
                 "CertPathReviewer.certRevoked",
-                "The certificate was revoked at Sep 1, 2006 9:30:00 AM GMT. Reason: Key Compromise.");
+                "The certificate was revoked at Sep 1, 2006 9:30:00 AM Greenwich Mean Time. Reason: Key Compromise.");
     }
-    
+
     public void testLongValidity() throws Exception
     {
         String message = "validator.longValidity.eml";
         PKIXParameters params = createDefaultParams();
-        
+
         SignedMailValidator.ValidationResult result = doTest(message, params);
-        
+
         assertTrue(result.isVerifiedSignature());
         assertTrue(result.isValidSignature());
-        
+
         assertContainsMessage(result.getNotifications(),
                 "SignedMailValidator.longValidity",
-                "Warning: The signing certificate has a very long validity period: from Sep 1, 2006 11:00:00 AM GMT until Aug 8, 2106 11:00:00 AM GMT.");
+                "Warning: The signing certificate has a very long validity period: from Sep 1, 2006 11:00:00 AM Greenwich Mean Time until Aug 8, 2106 11:00:00 AM Greenwich Mean Time.");
     }
 
     public void testSelfSignedCert()
@@ -301,16 +301,16 @@ public class SignedMailValidatorTest extends TestCase
 
         Address fromUser = new InternetAddress("\"Eric H. Echidna\"<eric@bouncycastle.org>");
         Address toUser = new InternetAddress("example@bouncycastle.org");
-         
+
         msg.setFrom(fromUser);
         msg.setRecipient(Message.RecipientType.TO, toUser);
         msg.setContent(signedMsg, signedMsg.getContentType());
 
         msg.saveChanges();
-        
+
         PKIXParameters params = new PKIXParameters(trustanchors);
         params.setRevocationEnabled(false);
-        
+
         SignedMailValidator validator = new SignedMailValidator(msg, params);
         SignerInformation signer = (SignerInformation) validator
                 .getSignerInformationStore().getSigners().iterator().next();
@@ -344,7 +344,7 @@ public class SignedMailValidatorTest extends TestCase
 //                "CertPathReviewer.conflictingTrustAnchors",
 //                "Warning: corrupt trust root store: There are 2 trusted public keys for the CA \"CN=SignedMailValidatorTest Root, C=CH\" - please ensure with CA which is the correct key.");
 //    }
-    
+
     public void testCircular() throws Exception
     {
         String message = "circular.eml";
@@ -356,7 +356,7 @@ public class SignedMailValidatorTest extends TestCase
         assertFalse(result.getCertPathReview().isValidCertPath());
         assertTrue("cert path size", result.getCertPathReview().getCertPathSize() > 2);
     }
-    
+
     public void testExtendedReviewer() throws Exception
     {
         try
@@ -370,12 +370,12 @@ public class SignedMailValidatorTest extends TestCase
 
             SignedMailValidator validator = new SignedMailValidator(msg, createDefaultParams(), String.class);
             fail();
-        } 
+        }
         catch (IllegalArgumentException e)
         {
             assertTrue(e.getMessage().startsWith("certPathReviewerClass is not a subclass of"));
         }
-        
+
         // Get a Session object with the default properties.
         Properties props = System.getProperties();
         Session session = Session.getDefaultInstance(props, null);
@@ -392,20 +392,20 @@ public class SignedMailValidatorTest extends TestCase
                 "SignedMailValidator.shortSigningKey",
                 "Warning: The signing key is only 512 bits long.");
     }
-    
+
     public void testCreateCertPath() throws Exception
     {
         // load trust anchor
         Set trustanchors = new HashSet();
         TrustAnchor ta = getTrustAnchor("certpath_root.crt");
         trustanchors.add(ta);
-        
+
         X509Certificate rootCert = ta.getTrustedCert();
         X509Certificate interCert1 = loadCert("certpath_inter1.crt");
         X509Certificate interCert2 = loadCert("certpath_inter2.crt");
         X509Certificate endCert1 = loadCert("certpath_end1.crt");
         X509Certificate endCert2 = loadCert("certpath_end2.crt");
-        
+
         // init cert stores
         List certStores = new ArrayList();
         List certList = new ArrayList();
@@ -413,14 +413,14 @@ public class SignedMailValidatorTest extends TestCase
         certList.add(interCert2);
         CertStore store = CertStore.getInstance("Collection", new CollectionCertStoreParameters(certList));
         certStores.add(store);
-        
+
         // first path
         CertPath path = SignedMailValidator.createCertPath(endCert1, trustanchors, certStores);
         assertTrue("path size is not 3", path.getCertificates().size() == 3);
         assertEquals("different end certificate", path.getCertificates().get(0), endCert1);
         assertEquals("different intermediate certificate", path.getCertificates().get(1), interCert1);
         assertEquals("different root certificate", path.getCertificates().get(2), rootCert);
-        
+
         // second path
         path = SignedMailValidator.createCertPath(endCert2, trustanchors, certStores);
         assertTrue("path size is not 3", path.getCertificates().size() == 3);
@@ -428,7 +428,7 @@ public class SignedMailValidatorTest extends TestCase
         assertEquals("different intermediate certificate", path.getCertificates().get(1), interCert2);
         assertEquals("different root certificate", path.getCertificates().get(2), rootCert);
     }
-    
+
     private SignedMailValidator.ValidationResult doTest(String message,
             PKIXParameters params) throws Exception
     {
@@ -457,7 +457,7 @@ public class SignedMailValidatorTest extends TestCase
             {
                 found = true;
                 assertEquals(text, message.getText(Locale.ENGLISH, TimeZone
-                        .getTimeZone("GMT")).replace("Greenwich Mean Time", "GMT"));
+                        .getTimeZone("GMT")));
                 break;
             }
         }
@@ -480,12 +480,12 @@ public class SignedMailValidatorTest extends TestCase
         if (cert != null)
         {
             byte[] ncBytes = cert
-                    .getExtensionValue(X509Extension.nameConstraints.getId());
+                    .getExtensionValue(Extension.nameConstraints.getId());
 
             if (ncBytes != null)
             {
-                ASN1Encodable extValue = X509ExtensionUtil
-                        .fromExtensionValue(ncBytes);
+                ASN1Encodable extValue = JcaX509ExtensionUtils
+                        .parseExtensionValue(ncBytes);
                 return new TrustAnchor(cert, extValue.toASN1Primitive().getEncoded(ASN1Encoding.DER));
             }
             return new TrustAnchor(cert, null);
@@ -502,12 +502,12 @@ public class SignedMailValidatorTest extends TestCase
         cert = (X509Certificate) cf.generateCertificate(in);
         return cert;
     }
-    
+
     private X509CRL loadCRL(String crlfile) throws Exception
     {
         X509CRL crl = null;
         InputStream in = this.getClass().getResourceAsStream(crlfile);
-        
+
         CertificateFactory cf = CertificateFactory.getInstance("x.509", "BC");
         crl = (X509CRL) cf.generateCRL(in);
         return crl;
@@ -521,7 +521,7 @@ public class SignedMailValidatorTest extends TestCase
                     .addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
         }
     }
-    
+
     public static void main(String[] args) throws Exception
     {
         junit.textui.TestRunner.run(suite());
