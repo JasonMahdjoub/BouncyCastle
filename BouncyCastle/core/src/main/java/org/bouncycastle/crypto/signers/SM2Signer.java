@@ -1,14 +1,7 @@
 package org.bouncycastle.crypto.signers;
 
-import java.io.IOException;
 import java.math.BigInteger;
 
-import org.bouncycastle.asn1.ASN1EncodableVector;
-import org.bouncycastle.asn1.ASN1Encoding;
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.DERSequence;
 import org.bouncycastle.crypto.*;
 import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
 import org.bouncycastle.crypto.digests.SM3Digest;
@@ -24,7 +17,6 @@ import org.bouncycastle.math.ec.ECFieldElement;
 import org.bouncycastle.math.ec.ECMultiplier;
 import org.bouncycastle.math.ec.ECPoint;
 import org.bouncycastle.math.ec.FixedPointCombMultiplier;
-import org.bouncycastle.util.Arrays;
 import org.bouncycastle.util.encoders.Hex;
 
 /**
@@ -35,11 +27,22 @@ public class SM2Signer
 {
     private final DSAKCalculator kCalculator = new RandomDSAKCalculator();
     private final SM3Digest digest = new SM3Digest();
+    private final DSAEncoding encoding;
 
     private ECDomainParameters ecParams;
     private ECPoint pubPoint;
     private ECKeyParameters ecKey;
     private byte[] z;
+
+    public SM2Signer()
+    {
+        this(StandardDSAEncoding.INSTANCE);
+    }
+
+    public SM2Signer(DSAEncoding encoding)
+    {
+        this.encoding = encoding;
+    }
 
     public void init(boolean forSigning, CipherParameters param)
     {
@@ -101,13 +104,11 @@ public class SM2Signer
     {
         try
         {
-            BigInteger[] rs = derDecode(signature);
-            if (rs != null)
-            {
-                return verifySignature(rs[0], rs[1]);
-            }
+            BigInteger[] rs = encoding.decode(ecParams.getN(), signature);
+
+            return verifySignature(rs[0], rs[1]);
         }
-        catch (IOException e)
+        catch (Exception e)
         {
         }
 
@@ -165,9 +166,9 @@ public class SM2Signer
         // A7
         try
         {
-            return derEncode(r, s);
+            return encoding.encode(ecParams.getN(), r, s);
         }
-        catch (IOException ex)
+        catch (Exception ex)
         {
             throw new CryptoException("unable to encode signature: " + ex.getMessage(), ex);
         }
@@ -269,36 +270,5 @@ public class SM2Signer
     protected BigInteger calculateE(byte[] message)
     {
         return new BigInteger(1, message);
-    }
-
-    protected BigInteger[] derDecode(byte[] encoding)
-        throws IOException
-    {
-        ASN1Sequence seq = ASN1Sequence.getInstance(ASN1Primitive.fromByteArray(encoding));
-        if (seq.size() != 2)
-        {
-            return null;
-        }
-
-        BigInteger r = ASN1Integer.getInstance(seq.getObjectAt(0)).getValue();
-        BigInteger s = ASN1Integer.getInstance(seq.getObjectAt(1)).getValue();
-
-        byte[] expectedEncoding = derEncode(r, s);
-        if (!Arrays.constantTimeAreEqual(expectedEncoding, encoding))
-        {
-            return null;
-        }
-
-        return new BigInteger[]{ r, s };
-    }
-
-    protected byte[] derEncode(BigInteger r, BigInteger s)
-        throws IOException
-    {
-
-        ASN1EncodableVector v = new ASN1EncodableVector();
-        v.add(new ASN1Integer(r));
-        v.add(new ASN1Integer(s));
-        return new DERSequence(v).getEncoded(ASN1Encoding.DER);
     }
 }

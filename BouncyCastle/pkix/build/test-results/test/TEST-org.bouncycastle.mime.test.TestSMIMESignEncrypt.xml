@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.bouncycastle.mime.test.TestSMIMESignEncrypt" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-05-14T11:39:44" hostname="Garage2" time="0.083">
+  <properties/>
+  <testcase name="testSignThenEncrypt" classname="org.bouncycastle.mime.test.TestSMIMESignEncrypt" time="0.083"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

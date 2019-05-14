@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.bouncycastle.mime.test.QuotedPrintableTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2019-05-14T11:39:44" hostname="Garage2" time="0.001">
+  <properties/>
+  <testcase name="testInvalid_1" classname="org.bouncycastle.mime.test.QuotedPrintableTest" time="0.0"/>
+  <testcase name="testInvalid_2" classname="org.bouncycastle.mime.test.QuotedPrintableTest" time="0.001"/>
+  <testcase name="testInvalid_3" classname="org.bouncycastle.mime.test.QuotedPrintableTest" time="0.0"/>
+  <testcase name="testQuotedPrintable" classname="org.bouncycastle.mime.test.QuotedPrintableTest" time="0.0"/>
+  <testcase name="testCRLFHandling" classname="org.bouncycastle.mime.test.QuotedPrintableTest" time="0.0"/>
+  <testcase name="testLFHandling" classname="org.bouncycastle.mime.test.QuotedPrintableTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

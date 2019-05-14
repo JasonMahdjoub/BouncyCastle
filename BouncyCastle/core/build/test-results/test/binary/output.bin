@@ -1,0 +1,622 @@
+üû############### test: 1
+üû
+test okay
+üû
+üû############### test: 2
+üû
+test okay
+üû
+üû############### test: 3
+üû
+test okay
+üû
+üû############### test: 4
+üû
+test okay
+üû
+üû############### test: 5
+üû
+test okay
+üû
+üû############### test: 6
+üû
+test okay
+üû
+üû############### test: 7
+üû
+test okay
+üû
+üû############### test: 8
+üû
+test okay
+üû
+üû############### test: 9
+üû
+test okay
+üû
+üû############### test: 10
+üû
+test okay
+üû
+üû############### test: 1
+üû
+test okay
+üû
+üû############### test: 2
+üû
+test okay
+üû
+üû############### test: 3
+üû
+test okay
+üû
+üû############### test: 4
+üû
+test okay
+üû
+üû############### test: 5
+üû
+test okay
+üû
+üû############### test: 6
+üû
+test okay
+üû
+üû############### test: 7
+üû
+test okay
+üû
+üû############### test: 8
+üû
+test okay
+üû
+üû############### test: 9
+üû
+test okay
+üû
+üû############### test: 10
+üû
+test okay
+üû
+üû############### test: 1
+üû
+test okay
+üû
+üû############### test: 2
+üû
+test okay
+üû
+üû############### test: 3
+üû
+test okay
+üû
+üû############### test: 4
+üû
+test okay
+üû
+üû############### test: 5
+üû
+test okay
+üû
+üû############### test: 6
+üû
+test okay
+üû
+üû############### test: 7
+üû
+test okay
+üû
+üû############### test: 8
+üû
+test okay
+üû
+üû############### test: 9
+üû
+test okay
+üû
+üû############### test: 10
+üû
+test okay
+üû
+˜ˆ"(+6ms) Sending 177 byte datagram:
+˜ˆ4    16 FE FF 00 00 00 00 00-00 00 00 00 A4 01 00 00
+˜ˆ4    98 00 00 00 00 00 00 00-98 FE FD 1A 13 7A 04 56
+˜ˆ4    E3 EA EF 64 A1 7E 29 5A-D3 04 A2 55 5D 75 E3 A5
+˜ˆ4    01 DD E2 98 57 3C 48 DB-AE 2B DC 00 00 00 14 C0
+˜ˆ4    2B C0 23 C0 09 C0 2F C0-27 C0 13 00 9C 00 3C 00
+˜ˆ4    2F 00 FF 01 00 00 5A 00-04 00 00 00 17 00 00 00
+˜ˆ4    16 00 00 00 15 00 0F 00-00 00 00 00 00 00 00 00
+˜ˆ4    00 00 00 00 00 00 00 0A-00 06 00 04 00 17 00 18
+˜ˆ4    00 0D 00 20 00 1E 02 01-03 01 04 01 05 01 06 01
+˜ˆ4    02 02 03 02 04 02 05 02-06 02 02 03 03 03 04 03
+˜ˆ4    05 03 06 03 00 01 00 01-01 00 0B 00 04 03 00 01
+˜ˆ    02
+˜ˆ#(+10ms) Received 87 byte datagram:
+˜ˆ4    16 FE FD 00 00 00 00 00-00 00 00 00 4A 02 00 00
+˜ˆ4    3E 00 00 00 00 00 00 00-3E FE FD BA FC C9 47 FC
+˜ˆ4    29 24 DE 18 31 67 1C 35-D9 DE F7 8C 4C 43 FD D5
+˜ˆ4    68 7E 5A 4C 5F A5 34 82-86 F6 31 00 C0 2F 00 00
+˜ˆ4    16 00 17 00 00 FF 01 00-01 00 00 01 00 01 01 00
+˜ˆ    0B 00 04 03 00 01 02
+˜ˆNegotiated DTLS 1.2
+˜ˆ$(+18ms) Received 525 byte datagram:
+˜ˆ4    16 FE FD 00 00 00 00 00-00 00 01 02 00 0B 00 07
+˜ˆ4    12 00 01 00 00 00 00 01-F4 00 07 0F 00 03 9E 30
+˜ˆ4    82 03 9A 30 82 02 52 A0-03 02 01 02 02 04 52 A2
+˜ˆ4    9C E0 30 0D 06 09 2A 86-48 86 F7 0D 01 01 0B 05
+˜ˆ4    00 30 23 31 21 30 1F 06-03 55 04 03 13 18 42 6F
+˜ˆ4    75 6E 63 79 43 61 73 74-6C 65 20 54 4C 53 20 54
+˜ˆ4    65 73 74 20 43 41 30 1E-17 0D 31 33 31 32 30 37
+˜ˆ4    30 33 35 38 32 34 5A 17-0D 33 33 31 32 30 32 30
+˜ˆ4    33 35 38 32 34 5A 30 23-31 21 30 1F 06 03 55 04
+˜ˆ4    03 13 18 42 6F 75 6E 63-79 43 61 73 74 6C 65 20
+˜ˆ4    54 65 73 74 20 53 65 72-76 65 72 30 82 01 52 30
+˜ˆ4    0D 06 09 2A 86 48 86 F7-0D 01 01 01 05 00 03 82
+˜ˆ4    01 3F 00 30 82 01 3A 02-82 01 31 00 B3 2F CF 37
+˜ˆ4    9E 0F ED 99 07 DB 71 47-8E D8 19 BB 3A 72 19 AF
+˜ˆ4    38 F9 86 4E 33 7B 27 8A-47 A6 EB AD 28 F7 45 AC
+˜ˆ4    4E AB 8C 32 D5 CD 78 04-0F 18 01 54 A6 ED 90 C6
+˜ˆ4    8E 35 EA 88 28 96 AA AD-4D 76 09 CF DA AC A7 F7
+˜ˆ4    83 BF 39 4D 08 93 7B 1C-A6 F9 16 0D BC 1E 20 9C
+˜ˆ4    74 CC 76 01 1D 37 AA 51-A4 C4 8D D6 B0 23 F1 16
+˜ˆ4    C5 FC DF 3A F3 F3 06 52-BE B3 BB 8E 34 B5 FD 67
+˜ˆ4    C9 5B 5B D8 99 EF A4 92-D6 1C 83 DD 3E E6 92 74
+˜ˆ4    E6 11 00 23 01 54 FE 68-7D 2A 75 51 55 D9 C8 34
+˜ˆ4    27 02 A9 D9 F0 A4 0D 5F-00 F5 CB C2 A3 58 75 1A
+˜ˆ4    25 69 CC DA 40 52 35 9A-5F 18 6C E8 02 9D E7 F3
+˜ˆ4    BB 17 92 B7 DA B3 FF B4-E4 04 84 D5 BC 17 F7 00
+˜ˆ4    7E 5F 50 6E 94 7B 33 71-99 AF 39 A3 B6 F5 3F 84
+˜ˆ4    09 36 25 86 03 BB B0 87-B8 80 06 92 11 EF BF 79
+˜ˆ4    16 4F 1E 6C E4 94 0F D9-59 F6 2A A8 D0 2C D7 04
+˜ˆ4    30 22 C0 97 B7 BB 34 8B-04 84 E5 17 4C 5B CA F7
+˜ˆ4    87 F8 82 E3 EE C2 A9 6B-40 A4 57 EE 72 67 50 A6
+˜ˆ4    07 8D BA 96 5B AE 06 56-31 6E 2D B0 7C 08 0D F1
+˜ˆ4    AA DF 42 D9 D3 A1 B9 7F-9B E0 A5 AD 02 03 01 00
+˜ˆ+    01 A3 76 30 74 30 0C 06-03 55 1D 13 01
+˜ˆ$(+20ms) Received 525 byte datagram:
+˜ˆ4    16 FE FD 00 00 00 00 00-00 00 02 02 00 0B 00 07
+˜ˆ4    12 00 01 00 01 F4 00 01-F4 01 FF 04 02 30 00 30
+˜ˆ4    13 06 03 55 1D 25 04 0C-30 0A 06 08 2B 06 01 05
+˜ˆ4    05 07 03 01 30 0F 06 03-55 1D 0F 01 01 FF 04 05
+˜ˆ4    03 03 07 A0 00 30 1D 06-03 55 1D 0E 04 16 04 14
+˜ˆ4    94 82 C6 06 DF 04 CE 16-2D 94 DA CE 3E B8 5F C2
+˜ˆ4    2D 2C E9 B9 30 1F 06 03-55 1D 23 04 18 30 16 80
+˜ˆ4    14 F6 63 AF AF A3 E2 EF-EE 0E E5 B2 B1 46 28 6A
+˜ˆ4    78 29 32 1E E9 30 0D 06-09 2A 86 48 86 F7 0D 01
+˜ˆ4    01 0B 05 00 03 82 01 31-00 C4 1D 30 B3 A5 58 A5
+˜ˆ4    89 C6 1E 88 3F BB 11 95-62 A3 A5 66 72 BB 8D DE
+˜ˆ4    48 E7 EF 12 95 65 8D 6F-15 69 1C 49 0B C5 1D 86
+˜ˆ4    91 71 B1 74 BA 32 5E F0-10 C5 02 06 45 4D 1C 63
+˜ˆ4    31 86 8F C6 24 C5 D4 05-5E CE B1 04 AF D1 EB 75
+˜ˆ4    A3 8E 5B 9A 43 7E 28 A8-AC 49 54 5E 4A 07 23 E8
+˜ˆ4    3A E9 FC 14 5C 51 CC 9B-3E D7 09 68 35 B5 B7 18
+˜ˆ4    7F B2 E1 D6 A6 95 66 B6-42 24 64 81 7F DC 84 76
+˜ˆ4    A8 57 A4 0D D0 8B A2 5B-A2 10 EB DB 36 7D D8 8D
+˜ˆ4    49 D0 2E 6E 84 A3 4A 41-C6 0A 5B 5B 93 05 DF FD
+˜ˆ4    7D 51 C9 0F D6 C2 EB B3-9B C5 93 57 6D 0C 16 7F
+˜ˆ4    6A 0A 48 F4 8D 29 B2 FF-BA 3A C8 E8 B2 FA DD A6
+˜ˆ4    32 0F 1E 3C 26 A1 9F A8-62 D2 9C E1 0D F4 BF 32
+˜ˆ4    C2 56 D1 86 CB 35 D6 05-9F 99 E8 06 E6 66 92 4F
+˜ˆ4    0D 0B 6E 97 9D B6 5C A1-36 BC 4F 06 03 7F 97 FD
+˜ˆ4    15 D5 01 90 7C 6B CE 83-5A DC EA 27 53 BA 0F E2
+˜ˆ4    8E C8 0F 73 C1 ED 42 3B-E5 49 E5 F3 24 8D 23 57
+˜ˆ4    63 A5 83 CC 45 EA C8 A1-01 3F CB 64 92 F4 81 CA
+˜ˆ4    23 39 E3 A0 97 B4 D0 DB-13 00 5E 3E D6 10 7F 6D
+˜ˆ4    B7 9A 92 B9 E9 74 C5 AB-89 00 03 6B 30 82 03 67
+˜ˆ4    30 82 02 1F A0 03 02 01-02 02 04 52 A2 9C CB 30
+˜ˆ4    0D 06 09 2A 86 48 86 F7-0D 01 01 0B 05 00 30 23
+˜ˆ4    31 21 30 1F 06 03 55 04-03 13 18 42 6F 75 6E 63
+˜ˆ+    79 43 61 73 74 6C 65 20-54 4C 53 20 54
+˜ˆ$(+21ms) Received 525 byte datagram:
+˜ˆ4    16 FE FD 00 00 00 00 00-00 00 03 02 00 0B 00 07
+˜ˆ4    12 00 01 00 03 E8 00 01-F4 65 73 74 20 43 41 30
+˜ˆ4    1E 17 0D 31 33 31 32 30-37 30 33 35 38 30 33 5A
+˜ˆ4    17 0D 33 33 31 32 30 32-30 33 35 38 30 33 5A 30
+˜ˆ4    23 31 21 30 1F 06 03 55-04 03 13 18 42 6F 75 6E
+˜ˆ4    63 79 43 61 73 74 6C 65-20 54 4C 53 20 54 65 73
+˜ˆ4    74 20 43 41 30 82 01 52-30 0D 06 09 2A 86 48 86
+˜ˆ4    F7 0D 01 01 01 05 00 03-82 01 3F 00 30 82 01 3A
+˜ˆ4    02 82 01 31 00 CC 87 37-9C 1F 91 BB 1E EC 79 23
+˜ˆ4    C0 78 7E D0 D8 29 07 C1-12 91 81 94 50 76 62 F6
+˜ˆ4    E7 DC 92 1B B4 4A 67 63-7B AD 26 89 16 19 D6 D3
+˜ˆ4    63 9A 17 9F C6 A6 49 16-45 3F D6 49 94 10 CF AC
+˜ˆ4    0C A8 A7 FF D4 7E E2 74-03 59 F6 C0 38 85 1D 47
+˜ˆ4    0F 31 CD 43 83 AE EE 1F-8E 1F 1A 26 F9 F6 D9 CE
+˜ˆ4    57 86 B4 C3 8C 45 D7 C1-55 80 F1 FE FB 65 72 FD
+˜ˆ4    96 3F 56 34 80 21 F3 1D-53 79 F3 9E 1D 69 EF 8E
+˜ˆ4    1D B0 48 D3 AA 3E 1E B8-98 DC CB D0 82 BE 95 BB
+˜ˆ4    03 48 B4 66 E5 F3 B6 49-0D 66 F7 15 9E C9 02 AE
+˜ˆ4    FB 87 2A C8 40 66 83 E8-76 D2 16 D4 6E BA 7A F6
+˜ˆ4    50 08 64 08 24 72 F2 01-20 22 7D 01 5E D5 CF 15
+˜ˆ4    94 9F 14 E1 9E 73 41 E2-5E DB A0 E3 31 11 79 22
+˜ˆ4    B6 09 5A 5E 37 20 56 2B-0D F1 42 E3 1F BD 12 75
+˜ˆ4    4A 74 4D A0 F7 90 FD 99-39 16 03 05 FC FF 2E 5E
+˜ˆ4    5B 33 C1 8F BB 9A B8 B7-5C DF A0 8F 7C 97 27 E9
+˜ˆ4    0D 2C 84 6C 4C 6E 7F 8E-8F 6F E6 AC 5F 1C AB D8
+˜ˆ4    57 05 ED 1C B9 12 C7 F0-5E E4 EB 01 B1 CD 5C F1
+˜ˆ4    E3 08 B3 33 2B 02 28 9A-17 61 59 C4 C3 D0 0F DE
+˜ˆ4    E4 99 A9 73 43 02 03 01-00 01 A3 43 30 41 30 0F
+˜ˆ4    06 03 55 1D 13 01 01 FF-04 05 30 03 01 01 FF 30
+˜ˆ4    0F 06 03 55 1D 0F 01 01-FF 04 05 03 03 07 04 00
+˜ˆ4    30 1D 06 03 55 1D 0E 04-16 04 14 F6 63 AF AF A3
+˜ˆ4    E2 EF EE 0E E5 B2 B1 46-28 6A 78 29 32 1E E9 30
+˜ˆ+    0D 06 09 2A 86 48 86 F7-0D 01 01 0B 05
+˜ˆ$(+21ms) Received 335 byte datagram:
+˜ˆ4    16 FE FD 00 00 00 00 00-00 00 04 01 42 0B 00 07
+˜ˆ4    12 00 01 00 05 DC 00 01-36 00 03 82 01 31 00 AC
+˜ˆ4    8C 88 59 A3 63 1C E3 5E-94 01 0F 97 6F 44 8E F1
+˜ˆ4    66 7E FD BC 7D E5 A3 5D-D7 44 15 E3 FE C6 CF 5C
+˜ˆ4    35 D6 22 FD B5 88 B7 EE-B5 79 FF 44 61 AC AB CA
+˜ˆ4    62 3D 71 C6 E5 46 37 72-96 51 EA 03 AA E9 03 B5
+˜ˆ4    74 9F 75 2B 45 62 00 90-45 41 D9 21 86 D7 DB 86
+˜ˆ4    A1 98 E2 3B E3 D2 F1 8E-EB 37 A7 1B F5 AB 8C 7D
+˜ˆ4    BA 9C 24 FB F1 2E 0B E9-9A 05 E9 8D 04 7D 05 E5
+˜ˆ4    B8 FE 74 BC 48 AD 4D A6-7A C7 FA EE 9E 0F 61 D8
+˜ˆ4    94 3C AD 82 A2 45 15 42-03 EB 60 05 62 BF 08 D8
+˜ˆ4    50 F4 B5 F2 93 71 94 D2-62 8B 8A 4D 00 90 41 52
+˜ˆ4    D7 B0 B4 35 67 8F 20 F1-2C FC AC 6F F6 24 C4 15
+˜ˆ4    A7 00 37 DC 15 1E 36 5C-31 89 D8 B5 66 8F 35 7D
+˜ˆ4    0B 59 5F 2C D9 5D 83 30-9C 6B 9A 00 84 72 85 E0
+˜ˆ4    27 19 72 12 6B F2 AB 0A-63 07 ED 80 88 84 15 22
+˜ˆ4    E5 9C C0 FA A0 05 0A 0A-1D 38 53 DB 32 5C 5D 5F
+˜ˆ4    9B 32 13 2C E9 C1 AF 68-87 6F 3F 1B 6D 76 E4 2C
+˜ˆ4    3F 7E 3D 19 C9 94 22 55-7A CC 52 6A F8 77 0C 8D
+˜ˆ4    F6 BC 85 93 48 92 E1 81-A5 4C DD 45 09 EE D7 EB
+˜ˆ1    D8 4E 4C 33 79 53 8F 10-80 59 2F 38 3D 7B 69
+˜ˆ:DTLS client received server certificate chain of length 2
+˜ˆñ    fingerprint:SHA-256 D4:25:89:8B:69:5E:19:B3:E3:81:F0:4E:B7:C6:1C:E5:3B:AB:B8:06:97:A2:E8:BB:35:BF:D1:CC:19:66:55:84 (CN=BouncyCastle Test Server)
+˜ˆñ    fingerprint:SHA-256 F2:B0:0A:FB:DC:2F:36:FF:60:52:AC:26:C8:E6:1A:89:92:77:9B:F4:1C:9D:A0:4C:25:58:3D:35:A5:C1:DC:C0 (CN=BouncyCastle TLS Test CA)
+˜ˆ$(+25ms) Received 402 byte datagram:
+˜ˆ4    16 FE FD 00 00 00 00 00-00 00 05 01 85 0C 00 01
+˜ˆ4    79 00 02 00 00 00 00 01-79 03 00 17 41 04 6C DF
+˜ˆ4    BC 0B 63 39 F7 78 1A 64-68 07 0B 31 49 47 40 60
+˜ˆ4    96 D1 94 CE 5A 26 FB B3-66 6A D4 B6 ED A9 2F 77
+˜ˆ4    69 50 8E D5 6B 2B A6 D3-58 89 61 3A ED E5 F5 99
+˜ˆ4    70 5B 6B 26 9B 11 1C AC-62 2A AD 06 96 05 02 01
+˜ˆ4    01 30 18 77 C5 3B 66 7C-44 2E AC 6B E5 E4 82 12
+˜ˆ4    DB 10 AC 3F 6D B8 B6 1B-5C 07 03 F1 9B 02 F2 11
+˜ˆ4    39 D2 88 9E 46 0C 33 1E-D8 F6 2C 9F D0 CA 16 ED
+˜ˆ4    82 C8 D5 32 FD 43 E5 8C-63 8F 6C A1 49 DB 43 3A
+˜ˆ4    76 C0 76 35 48 EF 7A B3-BF 59 4F FD B8 07 2F 7C
+˜ˆ4    D2 5E 8E E5 6A AB 5D BF-00 CA DB FC 4B D3 D6 C0
+˜ˆ4    C4 82 95 1F AA BD 5F 57-1B 22 E3 AD 5E 15 D3 66
+˜ˆ4    63 EA CD 55 22 3F 6F 30-F3 DB 59 17 E1 67 F1 60
+˜ˆ4    67 28 E9 0B EE 45 23 BC-2B FC B6 76 DF 46 64 42
+˜ˆ4    83 E9 EF 3C 27 1C C3 9F-27 FA 85 CF F7 CA F9 0D
+˜ˆ4    60 F4 FF 9F 9F A0 1F A1-6E F0 73 E3 88 E7 4C 69
+˜ˆ4    FF 42 8E 05 D3 F2 4C A6-F9 5F 08 F1 8C 89 23 AA
+˜ˆ4    21 C3 4B AC 88 1D 2F 2B-F1 5C CF B4 FF 91 B3 16
+˜ˆ4    9D EE F5 E2 7B 53 0D 17-9B 1C 17 75 81 6D F4 9C
+˜ˆ4    AF 90 0F 1A EE F4 04 2B-B0 0D 7B 62 64 4A CC 65
+˜ˆ4    23 75 97 0B 3F D5 71 E9-F0 3D 93 52 5C 7A 8C 59
+˜ˆ4    BD 42 68 97 9C DF 0D E3-D8 11 90 30 2C 93 17 00
+˜ˆ4    8B E3 19 65 5A 0C 62 D5-7D C2 A1 94 54 FD 4B 69
+˜ˆ4    4D 00 10 BE 66 40 99 00-D2 16 47 9F 09 13 5D 73
+˜ˆ
+    ED 5D
+˜ˆ$(+26ms) Received 102 byte datagram:
+˜ˆ4    16 FE FD 00 00 00 00 00-00 00 06 00 59 0D 00 00
+˜ˆ4    4D 00 03 00 00 00 00 00-4D 03 01 02 40 00 1E 02
+˜ˆ4    01 03 01 04 01 05 01 06-01 02 02 03 02 04 02 05
+˜ˆ4    02 06 02 02 03 03 03 04-03 05 03 06 03 00 27 00
+˜ˆ4    25 30 23 31 21 30 1F 06-03 55 04 03 13 18 42 6F
+˜ˆ4    75 6E 63 79 43 61 73 74-6C 65 20 54 4C 53 20 54
+˜ˆ    65 73 74 20 43 41
+˜ˆ#(+26ms) Received 25 byte datagram:
+˜ˆ4    16 FE FD 00 00 00 00 00-00 00 07 00 0C 0E 00 00
+˜ˆ    00 00 04 00 00 00 00 00-00
+˜ˆ#(+27ms) Sending 525 byte datagram:
+˜ˆ4    16 FE FD 00 00 00 00 00-00 00 01 02 00 0B 00 07
+˜ˆ4    12 00 01 00 00 00 00 01-F4 00 07 0F 00 03 9E 30
+˜ˆ4    82 03 9A 30 82 02 52 A0-03 02 01 02 02 04 52 A2
+˜ˆ4    9C DA 30 0D 06 09 2A 86-48 86 F7 0D 01 01 0B 05
+˜ˆ4    00 30 23 31 21 30 1F 06-03 55 04 03 13 18 42 6F
+˜ˆ4    75 6E 63 79 43 61 73 74-6C 65 20 54 4C 53 20 54
+˜ˆ4    65 73 74 20 43 41 30 1E-17 0D 31 33 31 32 30 37
+˜ˆ4    30 33 35 38 31 38 5A 17-0D 33 33 31 32 30 32 30
+˜ˆ4    33 35 38 31 38 5A 30 23-31 21 30 1F 06 03 55 04
+˜ˆ4    03 13 18 42 6F 75 6E 63-79 43 61 73 74 6C 65 20
+˜ˆ4    54 65 73 74 20 43 6C 69-65 6E 74 30 82 01 52 30
+˜ˆ4    0D 06 09 2A 86 48 86 F7-0D 01 01 01 05 00 03 82
+˜ˆ4    01 3F 00 30 82 01 3A 02-82 01 31 00 D8 73 2D 76
+˜ˆ4    93 50 F9 B1 D7 DB A0 56-FE 16 90 2F 8D 97 40 AA
+˜ˆ4    59 6F BD 4A 44 2B 54 9D-85 59 6D 83 53 AE 24 5C
+˜ˆ4    B7 D3 48 B3 E2 1F 9B B7-25 50 7F E1 2D 33 44 DF
+˜ˆ4    16 07 A0 18 46 FE AB 97-97 53 70 25 3E EB AB 8B
+˜ˆ4    C1 67 69 B6 88 78 55 DC-69 15 F2 68 5F 6C 80 27
+˜ˆ4    ED 4C 3A E1 E8 70 F9 44-BF 0A FB CD 71 C5 FC 80
+˜ˆ4    0F 5A 0A 33 6A 45 DA 97-11 C5 86 C0 A4 68 5B 40
+˜ˆ4    F4 90 4A 12 5F 37 2D 0A-A7 68 E6 1D 26 C1 C3 D1
+˜ˆ4    F8 35 55 33 04 22 14 35-D2 F8 B9 2A 84 BD DE 17
+˜ˆ4    65 AC 79 B4 21 B8 58 8C-36 2F 90 4A 13 BA BE 05
+˜ˆ4    88 7A 51 AF 8F B9 23 98-45 6D B4 43 AC 44 35 31
+˜ˆ4    1C 05 6D BF B9 0C 8E 6B-22 ED 00 32 7A C2 E6 CB
+˜ˆ4    21 6D ED 11 7A 04 B6 19-66 F5 5B 8F 2C FE 02 E8
+˜ˆ4    2B F8 C5 E6 63 69 E8 1F-F1 31 90 A7 EB 85 A2 EF
+˜ˆ4    76 A9 77 A8 40 35 C4 A3-45 C6 2E CB 2C 9F 01 53
+˜ˆ4    53 FD 8C 9D 52 A3 B9 D8-5F 83 FC 09 E9 72 EA 8A
+˜ˆ4    BF 19 E7 B5 6C F7 61 2C-AE B5 2B E4 7F C1 FF 62
+˜ˆ4    2F BD 24 AE 4C 6E 77 B8-66 22 59 AF 7F 43 1A D1
+˜ˆ4    D1 C7 DC 73 3A 76 F8 D8-69 9E 7F 27 02 03 01 00
+˜ˆ+    01 A3 76 30 74 30 0C 06-03 55 1D 13 01
+˜ˆ#(+28ms) Sending 525 byte datagram:
+˜ˆ4    16 FE FD 00 00 00 00 00-00 00 02 02 00 0B 00 07
+˜ˆ4    12 00 01 00 01 F4 00 01-F4 01 FF 04 02 30 00 30
+˜ˆ4    13 06 03 55 1D 25 04 0C-30 0A 06 08 2B 06 01 05
+˜ˆ4    05 07 03 02 30 0F 06 03-55 1D 0F 01 01 FF 04 05
+˜ˆ4    03 03 07 A0 00 30 1D 06-03 55 1D 0E 04 16 04 14
+˜ˆ4    FA F6 54 11 05 F9 B7 E4-86 09 EE 38 62 0B CC 9A
+˜ˆ4    23 26 F0 D9 30 1F 06 03-55 1D 23 04 18 30 16 80
+˜ˆ4    14 F6 63 AF AF A3 E2 EF-EE 0E E5 B2 B1 46 28 6A
+˜ˆ4    78 29 32 1E E9 30 0D 06-09 2A 86 48 86 F7 0D 01
+˜ˆ4    01 0B 05 00 03 82 01 31-00 8D 7B B3 BB 5E 56 DD
+˜ˆ4    21 13 D6 69 E3 4F BE 02-42 B5 93 7F F3 EC 20 85
+˜ˆ4    B2 0F B2 4B CF B5 56 01-71 E6 65 39 5E 03 59 30
+˜ˆ4    C8 1A 01 2A 35 3C 27 7D-67 11 45 40 F5 C9 D7 C3
+˜ˆ4    13 E1 88 C8 EA 45 88 0B-94 59 B2 9B 13 0B 00 AA
+˜ˆ4    EE 3C A0 F1 BC 37 E8 C1-D3 34 55 13 62 07 E0 31
+˜ˆ4    B8 56 3E B5 07 46 E3 AA-D2 21 B8 FB 02 55 47 A9
+˜ˆ4    57 B8 7C FF C9 AA 8C 54-D8 B2 E3 2C 41 7A BA 3B
+˜ˆ4    FB 36 22 3D 9F 8F 2A 31-1C BD 0C 5F 70 6F 9D 22
+˜ˆ4    0A 6D 47 AA 65 36 41 5E-66 2A 53 54 2B 12 AE 2B
+˜ˆ4    7A 8A E4 AD AA 64 7B 26-98 F7 9F 13 E4 47 E8 3C
+˜ˆ4    68 07 CF 09 E8 82 C6 B4-8B 34 91 41 8F 92 79 00
+˜ˆ4    64 9F 90 1C E0 8C 5E 48-13 FC FE B4 E8 1C 9A 51
+˜ˆ4    70 B7 03 80 21 D4 67 FC-55 2B EE 0D 45 15 98 7E
+˜ˆ4    5B 2E C0 88 1E EA 53 81-1C A1 6D 47 A5 C5 C9 B9
+˜ˆ4    1B 8A 0E B4 F3 14 7E CB-F3 CC EE 9E BB FC 9F D5
+˜ˆ4    C9 48 C0 F1 76 73 FA 90-DC 08 BF CF 47 99 82 56
+˜ˆ4    C6 D4 E8 3B AF 0F B0 04-E2 18 0E 83 89 45 0F 93
+˜ˆ4    E1 6A 20 7A 8F D2 48 17-5C C4 9C 38 31 46 4A 55
+˜ˆ4    EA 87 8A 1C BE D0 38 00-F1 00 03 6B 30 82 03 67
+˜ˆ4    30 82 02 1F A0 03 02 01-02 02 04 52 A2 9C CB 30
+˜ˆ4    0D 06 09 2A 86 48 86 F7-0D 01 01 0B 05 00 30 23
+˜ˆ4    31 21 30 1F 06 03 55 04-03 13 18 42 6F 75 6E 63
+˜ˆ+    79 43 61 73 74 6C 65 20-54 4C 53 20 54
+˜ˆ#(+29ms) Sending 525 byte datagram:
+˜ˆ4    16 FE FD 00 00 00 00 00-00 00 03 02 00 0B 00 07
+˜ˆ4    12 00 01 00 03 E8 00 01-F4 65 73 74 20 43 41 30
+˜ˆ4    1E 17 0D 31 33 31 32 30-37 30 33 35 38 30 33 5A
+˜ˆ4    17 0D 33 33 31 32 30 32-30 33 35 38 30 33 5A 30
+˜ˆ4    23 31 21 30 1F 06 03 55-04 03 13 18 42 6F 75 6E
+˜ˆ4    63 79 43 61 73 74 6C 65-20 54 4C 53 20 54 65 73
+˜ˆ4    74 20 43 41 30 82 01 52-30 0D 06 09 2A 86 48 86
+˜ˆ4    F7 0D 01 01 01 05 00 03-82 01 3F 00 30 82 01 3A
+˜ˆ4    02 82 01 31 00 CC 87 37-9C 1F 91 BB 1E EC 79 23
+˜ˆ4    C0 78 7E D0 D8 29 07 C1-12 91 81 94 50 76 62 F6
+˜ˆ4    E7 DC 92 1B B4 4A 67 63-7B AD 26 89 16 19 D6 D3
+˜ˆ4    63 9A 17 9F C6 A6 49 16-45 3F D6 49 94 10 CF AC
+˜ˆ4    0C A8 A7 FF D4 7E E2 74-03 59 F6 C0 38 85 1D 47
+˜ˆ4    0F 31 CD 43 83 AE EE 1F-8E 1F 1A 26 F9 F6 D9 CE
+˜ˆ4    57 86 B4 C3 8C 45 D7 C1-55 80 F1 FE FB 65 72 FD
+˜ˆ4    96 3F 56 34 80 21 F3 1D-53 79 F3 9E 1D 69 EF 8E
+˜ˆ4    1D B0 48 D3 AA 3E 1E B8-98 DC CB D0 82 BE 95 BB
+˜ˆ4    03 48 B4 66 E5 F3 B6 49-0D 66 F7 15 9E C9 02 AE
+˜ˆ4    FB 87 2A C8 40 66 83 E8-76 D2 16 D4 6E BA 7A F6
+˜ˆ4    50 08 64 08 24 72 F2 01-20 22 7D 01 5E D5 CF 15
+˜ˆ4    94 9F 14 E1 9E 73 41 E2-5E DB A0 E3 31 11 79 22
+˜ˆ4    B6 09 5A 5E 37 20 56 2B-0D F1 42 E3 1F BD 12 75
+˜ˆ4    4A 74 4D A0 F7 90 FD 99-39 16 03 05 FC FF 2E 5E
+˜ˆ4    5B 33 C1 8F BB 9A B8 B7-5C DF A0 8F 7C 97 27 E9
+˜ˆ4    0D 2C 84 6C 4C 6E 7F 8E-8F 6F E6 AC 5F 1C AB D8
+˜ˆ4    57 05 ED 1C B9 12 C7 F0-5E E4 EB 01 B1 CD 5C F1
+˜ˆ4    E3 08 B3 33 2B 02 28 9A-17 61 59 C4 C3 D0 0F DE
+˜ˆ4    E4 99 A9 73 43 02 03 01-00 01 A3 43 30 41 30 0F
+˜ˆ4    06 03 55 1D 13 01 01 FF-04 05 30 03 01 01 FF 30
+˜ˆ4    0F 06 03 55 1D 0F 01 01-FF 04 05 03 03 07 04 00
+˜ˆ4    30 1D 06 03 55 1D 0E 04-16 04 14 F6 63 AF AF A3
+˜ˆ4    E2 EF EE 0E E5 B2 B1 46-28 6A 78 29 32 1E E9 30
+˜ˆ+    0D 06 09 2A 86 48 86 F7-0D 01 01 0B 05
+˜ˆ#(+29ms) Sending 335 byte datagram:
+˜ˆ4    16 FE FD 00 00 00 00 00-00 00 04 01 42 0B 00 07
+˜ˆ4    12 00 01 00 05 DC 00 01-36 00 03 82 01 31 00 AC
+˜ˆ4    8C 88 59 A3 63 1C E3 5E-94 01 0F 97 6F 44 8E F1
+˜ˆ4    66 7E FD BC 7D E5 A3 5D-D7 44 15 E3 FE C6 CF 5C
+˜ˆ4    35 D6 22 FD B5 88 B7 EE-B5 79 FF 44 61 AC AB CA
+˜ˆ4    62 3D 71 C6 E5 46 37 72-96 51 EA 03 AA E9 03 B5
+˜ˆ4    74 9F 75 2B 45 62 00 90-45 41 D9 21 86 D7 DB 86
+˜ˆ4    A1 98 E2 3B E3 D2 F1 8E-EB 37 A7 1B F5 AB 8C 7D
+˜ˆ4    BA 9C 24 FB F1 2E 0B E9-9A 05 E9 8D 04 7D 05 E5
+˜ˆ4    B8 FE 74 BC 48 AD 4D A6-7A C7 FA EE 9E 0F 61 D8
+˜ˆ4    94 3C AD 82 A2 45 15 42-03 EB 60 05 62 BF 08 D8
+˜ˆ4    50 F4 B5 F2 93 71 94 D2-62 8B 8A 4D 00 90 41 52
+˜ˆ4    D7 B0 B4 35 67 8F 20 F1-2C FC AC 6F F6 24 C4 15
+˜ˆ4    A7 00 37 DC 15 1E 36 5C-31 89 D8 B5 66 8F 35 7D
+˜ˆ4    0B 59 5F 2C D9 5D 83 30-9C 6B 9A 00 84 72 85 E0
+˜ˆ4    27 19 72 12 6B F2 AB 0A-63 07 ED 80 88 84 15 22
+˜ˆ4    E5 9C C0 FA A0 05 0A 0A-1D 38 53 DB 32 5C 5D 5F
+˜ˆ4    9B 32 13 2C E9 C1 AF 68-87 6F 3F 1B 6D 76 E4 2C
+˜ˆ4    3F 7E 3D 19 C9 94 22 55-7A CC 52 6A F8 77 0C 8D
+˜ˆ4    F6 BC 85 93 48 92 E1 81-A5 4C DD 45 09 EE D7 EB
+˜ˆ1    D8 4E 4C 33 79 53 8F 10-80 59 2F 38 3D 7B 69
+˜ˆ"(+30ms) Sending 91 byte datagram:
+˜ˆ4    16 FE FD 00 00 00 00 00-00 00 05 00 4E 10 00 00
+˜ˆ4    42 00 02 00 00 00 00 00-42 41 04 85 DE DF 0B 00
+˜ˆ4    FA 79 7B 46 E3 0F CA F5-BB 64 7F D5 F2 77 18 CD
+˜ˆ4    67 D0 60 93 DD DC 19 B9-81 00 88 1C 38 54 61 68
+˜ˆ4    2D CE 5A C8 E3 4D 3D 57-50 73 DD 9E D8 71 E7 35
+˜ˆ%    02 48 46 9D EE 95 5A 6A-A1 74 5F
+˜ˆ:DTLS server received client certificate chain of length 2
+˜ˆñ    fingerprint:SHA-256 F5:DD:37:DF:9B:E7:DA:87:7C:6C:D6:61:5A:61:18:AE:B3:6A:A3:3A:B4:5B:33:53:05:4A:7B:FC:B9:D5:A7:DA (CN=BouncyCastle Test Client)
+˜ˆñ    fingerprint:SHA-256 F2:B0:0A:FB:DC:2F:36:FF:60:52:AC:26:C8:E6:1A:89:92:77:9B:F4:1C:9D:A0:4C:25:58:3D:35:A5:C1:DC:C0 (CN=BouncyCastle TLS Test CA)
+˜ˆ#(+34ms) Sending 333 byte datagram:
+˜ˆ4    16 FE FD 00 00 00 00 00-00 00 06 01 40 0F 00 01
+˜ˆ4    34 00 03 00 00 00 00 01-34 02 01 01 30 91 1E F8
+˜ˆ4    11 7C 46 68 72 9F 21 A5-D4 CF 38 E8 A7 B5 DE FF
+˜ˆ4    94 23 06 16 D2 30 02 64-18 95 D7 D4 31 96 BD 52
+˜ˆ4    A8 36 FF E2 9E BA 38 5A-71 0D 75 6C 0A 38 12 08
+˜ˆ4    06 D9 35 34 BD D9 61 15-7C 86 CC 1A 8D E2 37 92
+˜ˆ4    48 23 70 A2 36 94 6C D4-6D 7B F2 76 AB 66 42 4A
+˜ˆ4    B1 E8 62 B7 82 4A C4 E6-83 37 8E DE 98 D5 C1 97
+˜ˆ4    96 99 70 EA 2B 20 4A 43-5A 31 C3 CE 3C 80 B6 47
+˜ˆ4    2B 2A 1E 2E 8E 80 3D 9A-4C DF AD F2 8B E1 4C 2E
+˜ˆ4    3F 25 95 B6 5E FD 07 66-A3 93 BE F4 3B 64 58 51
+˜ˆ4    4C F9 A1 ED 3E 6F 34 AC-E3 A0 D0 FB EE B8 BF 0B
+˜ˆ4    68 10 1A 02 3A B6 42 EA-38 58 F1 9E 8D BD 47 C9
+˜ˆ4    C8 EC 0B 59 8F 42 94 EA-34 85 DD E2 CB 52 15 E3
+˜ˆ4    80 6D 7A 88 4E 8F 67 C8-C6 EB A0 98 47 9C 8F E9
+˜ˆ4    5F 5B 8B A2 C2 0E C8 2A-C6 47 30 AA BA 4D DD 87
+˜ˆ4    EA E9 2A 16 D2 AE 74 3C-3A C6 55 B9 08 C6 D6 6B
+˜ˆ4    DB A4 18 9C A0 58 7B 72-00 75 F6 50 C2 3B 7D 57
+˜ˆ4    2A 1D 7A D1 1F F9 29 C8-4D 64 26 93 5B AD A6 1A
+˜ˆ4    03 6D 59 AD 57 DC 9A 6F-33 D9 F8 AD 21 82 E4 5E
+˜ˆ+    F2 70 0D A5 CB 38 86 9F-71 CD 21 B4 D4
+˜ˆ"(+35ms) Sending 14 byte datagram:
+˜ˆ.    14 FE FD 00 00 00 00 00-00 00 07 00 01 01
+˜ˆ"(+35ms) Sending 61 byte datagram:
+˜ˆ4    16 FE FD 00 01 00 00 00-00 00 00 00 30 00 01 00
+˜ˆ4    00 00 00 00 00 7C F9 35-33 B8 C0 97 83 B1 55 CB
+˜ˆ4    5E C8 C4 FF C5 8D A9 FA-C5 43 85 A5 3B C3 8B 8A
+˜ˆ+    37 3D B2 F3 C8 29 AE 3F-6C 9A 5A A8 59
+˜ˆ#(+36ms) Received 14 byte datagram:
+˜ˆ.    14 FE FD 00 00 00 00 00-00 00 08 00 01 01
+˜ˆ#(+36ms) Received 61 byte datagram:
+˜ˆ4    16 FE FD 00 01 00 00 00-00 00 00 00 30 00 01 00
+˜ˆ4    00 00 00 00 00 59 4E 29-76 BF 7A 47 87 EB F6 F0
+˜ˆ4    95 6D C6 73 23 4E 68 82-A3 9F 8D DE 80 16 A7 78
+˜ˆ+    8B 7F 40 27 EE FA 34 BA-97 52 AE 0F 04
+˜ˆ"(+36ms) Sending 38 byte datagram:
+˜ˆ4    17 FE FD 00 01 00 00 00-00 00 01 00 19 00 01 00
+˜ˆ4    00 00 00 00 01 62 4B 1C-AC 03 12 9B 8E 77 EC DD
+˜ˆ    62 3C 79 70 58 9E
+˜ˆ"(+36ms) Sending 39 byte datagram:
+˜ˆ4    17 FE FD 00 01 00 00 00-00 00 02 00 1A 00 01 00
+˜ˆ4    00 00 00 00 02 DE 0C 40-96 CF E3 FB 2E 78 F6 62
+˜ˆ    3A C4 EC 2C 1B 97 67
+˜ˆ"(+36ms) Sending 40 byte datagram:
+˜ˆ4    17 FE FD 00 01 00 00 00-00 00 03 00 1B 00 01 00
+˜ˆ4    00 00 00 00 03 1B 37 36-28 AC B0 88 AD CE D5 FE
+˜ˆ    76 65 7A E4 F8 10 F6 2D
+˜ˆ"(+37ms) Sending 41 byte datagram:
+˜ˆ4    17 FE FD 00 01 00 00 00-00 00 04 00 1C 00 01 00
+˜ˆ4    00 00 00 00 04 15 47 86-EE D8 90 42 63 B8 40 EC
+˜ˆ    0B 1F 64 3B B1 8F 76 CB-72
+˜ˆ"(+37ms) Sending 42 byte datagram:
+˜ˆ4    17 FE FD 00 01 00 00 00-00 00 05 00 1D 00 01 00
+˜ˆ4    00 00 00 00 05 26 9D DC-98 2B 47 9D 51 C7 C9 CC
+˜ˆ"    9F 2A 99 E7 06 68 21 1E-3F 19
+˜ˆ"(+37ms) Sending 43 byte datagram:
+˜ˆ4    17 FE FD 00 01 00 00 00-00 00 06 00 1E 00 01 00
+˜ˆ4    00 00 00 00 06 46 BD 46-4B 5B 51 76 A9 2F 30 E4
+˜ˆ%    A5 4B 8A 8A 52 30 DD 2F-8A 32 86
+˜ˆ"(+37ms) Sending 44 byte datagram:
+˜ˆ4    17 FE FD 00 01 00 00 00-00 00 07 00 1F 00 01 00
+˜ˆ4    00 00 00 00 07 23 79 15-99 AA 0D 49 EA 0D 94 97
+˜ˆ(    C1 31 1C 07 0D 33 EB B3-73 B5 66 47
+˜ˆ"(+37ms) Sending 45 byte datagram:
+˜ˆ4    17 FE FD 00 01 00 00 00-00 00 08 00 20 00 01 00
+˜ˆ4    00 00 00 00 08 76 68 6F-D1 FA 18 2A 68 0F 13 4F
+˜ˆ+    66 FC DB 20 4D 71 EC A4-FA 3A 24 A7 E1
+˜ˆ"(+37ms) Sending 46 byte datagram:
+˜ˆ4    17 FE FD 00 01 00 00 00-00 00 09 00 21 00 01 00
+˜ˆ4    00 00 00 00 09 D5 17 6A-7E CC 2C 43 F3 59 81 5B
+˜ˆ.    EA 2A 74 3C C6 5B 6C 19-BC 48 3B E5 EA D5
+˜ˆ"(+37ms) Sending 47 byte datagram:
+˜ˆ4    17 FE FD 00 01 00 00 00-00 00 0A 00 22 00 01 00
+˜ˆ4    00 00 00 00 0A 79 1C 7A-F0 41 00 E6 00 64 89 05
+˜ˆ1    A9 B4 77 51 99 B2 ED F0-39 06 EA 83 A6 20 C6
+˜ˆ#(+38ms) Received 38 byte datagram:
+˜ˆ4    17 FE FD 00 01 00 00 00-00 00 01 00 19 00 01 00
+˜ˆ4    00 00 00 00 01 C9 9D FF-85 83 FB E3 AB 1E D9 19
+˜ˆ    D1 FB 0F 62 4F C8
+˜ˆ#(+38ms) Received 39 byte datagram:
+˜ˆ4    17 FE FD 00 01 00 00 00-00 00 02 00 1A 00 01 00
+˜ˆ4    00 00 00 00 02 9D D0 B2-C8 98 10 DF 73 C3 2E F8
+˜ˆ    83 76 96 1D 58 34 9A
+˜ˆ#(+38ms) Received 40 byte datagram:
+˜ˆ4    17 FE FD 00 01 00 00 00-00 00 03 00 1B 00 01 00
+˜ˆ4    00 00 00 00 03 FF 23 14-8E CB E2 4C DB B5 2B B0
+˜ˆ    44 61 ED 00 E7 C6 91 3A
+˜ˆ#(+38ms) Received 41 byte datagram:
+˜ˆ4    17 FE FD 00 01 00 00 00-00 00 04 00 1C 00 01 00
+˜ˆ4    00 00 00 00 04 1A 60 90-FC A1 39 86 A1 BB 56 42
+˜ˆ    9D B9 A2 70 FC 1C 84 2F-A3
+˜ˆ#(+38ms) Received 42 byte datagram:
+˜ˆ4    17 FE FD 00 01 00 00 00-00 00 05 00 1D 00 01 00
+˜ˆ4    00 00 00 00 05 AB 55 D2-4E 8B A4 A0 AD 4A 8B 2D
+˜ˆ"    A5 94 24 25 D4 EB 7E 16-C7 8F
+˜ˆ#(+38ms) Received 43 byte datagram:
+˜ˆ4    17 FE FD 00 01 00 00 00-00 00 06 00 1E 00 01 00
+˜ˆ4    00 00 00 00 06 3A 25 6F-EE 57 27 5F 70 64 16 85
+˜ˆ%    0D 84 51 A7 AB 6B AE 15-BF 9A 0F
+˜ˆ#(+38ms) Received 44 byte datagram:
+˜ˆ4    17 FE FD 00 01 00 00 00-00 00 07 00 1F 00 01 00
+˜ˆ4    00 00 00 00 07 5C 14 16-D1 F7 0B B8 18 59 92 C7
+˜ˆ(    47 CF 7E D2 EF 1D 7C D2-3C 99 24 FE
+˜ˆ#(+38ms) Received 45 byte datagram:
+˜ˆ4    17 FE FD 00 01 00 00 00-00 00 08 00 20 00 01 00
+˜ˆ4    00 00 00 00 08 A7 E9 73-AB 61 23 F9 A7 75 AA 29
+˜ˆ+    24 B5 A4 85 D1 0C C6 5D-7E 80 30 0D D0
+˜ˆ#(+38ms) Received 46 byte datagram:
+˜ˆ4    17 FE FD 00 01 00 00 00-00 00 09 00 21 00 01 00
+˜ˆ4    00 00 00 00 09 CD 7D BB-B6 DF 52 C6 74 CC F4 00
+˜ˆ.    17 80 6D 80 56 03 52 F6-08 46 56 C7 78 AC
+˜ˆ#(+39ms) Received 47 byte datagram:
+˜ˆ4    17 FE FD 00 01 00 00 00-00 00 0A 00 22 00 01 00
+˜ˆ4    00 00 00 00 0A C6 6A 38-21 B3 17 43 A3 E8 AE 9F
+˜ˆ1    0E 90 EA 95 1D 39 2E CC-41 57 79 23 58 71 65
+˜ˆ6DTLS client raised alert: warning(1), close_notify(0)
+˜ˆ#(+139ms) Sending 39 byte datagram:
+˜ˆ4    15 FE FD 00 01 00 00 00-00 00 0B 00 1A 00 01 00
+˜ˆ4    00 00 00 00 0B 9D 2D D7-78 AD 38 15 F2 FE 23 E9
+˜ˆ    23 75 6E 69 E3 84 D4
+˜ˆ8DTLS server received alert: warning(1), close_notify(0)
+˜ˆ6DTLS server raised alert: warning(1), close_notify(0)
+˚˙TLS server negotiated TLS 1.2
+˚˙TLS client negotiated TLS 1.2
+˚˙9TLS client received server certificate chain of length 2
+˚˙ñ    fingerprint:SHA-256 D4:25:89:8B:69:5E:19:B3:E3:81:F0:4E:B7:C6:1C:E5:3B:AB:B8:06:97:A2:E8:BB:35:BF:D1:CC:19:66:55:84 (CN=BouncyCastle Test Server)
+˚˙ñ    fingerprint:SHA-256 F2:B0:0A:FB:DC:2F:36:FF:60:52:AC:26:C8:E6:1A:89:92:77:9B:F4:1C:9D:A0:4C:25:58:3D:35:A5:C1:DC:C0 (CN=BouncyCastle TLS Test CA)
+˚˙9TLS server received client certificate chain of length 2
+˚˙ñ    fingerprint:SHA-256 F5:DD:37:DF:9B:E7:DA:87:7C:6C:D6:61:5A:61:18:AE:B3:6A:A3:3A:B4:5B:33:53:05:4A:7B:FC:B9:D5:A7:DA (CN=BouncyCastle Test Client)
+˚˙ñ    fingerprint:SHA-256 F2:B0:0A:FB:DC:2F:36:FF:60:52:AC:26:C8:E6:1A:89:92:77:9B:F4:1C:9D:A0:4C:25:58:3D:35:A5:C1:DC:C0 (CN=BouncyCastle TLS Test CA)
+˚˙5TLS client raised alert: warning(1), close_notify(0)
+˚˙> Connection closed
+˚˙7TLS server received alert: warning(1), close_notify(0)
+˚˙5TLS server raised alert: warning(1), close_notify(0)
+˚˙> Connection closed
+˝¸TLS server negotiated TLS 1.2
+˝¸TLS client negotiated TLS 1.2
+˝¸9TLS client received server certificate chain of length 2
+˝¸ñ    fingerprint:SHA-256 D4:25:89:8B:69:5E:19:B3:E3:81:F0:4E:B7:C6:1C:E5:3B:AB:B8:06:97:A2:E8:BB:35:BF:D1:CC:19:66:55:84 (CN=BouncyCastle Test Server)
+˝¸ñ    fingerprint:SHA-256 F2:B0:0A:FB:DC:2F:36:FF:60:52:AC:26:C8:E6:1A:89:92:77:9B:F4:1C:9D:A0:4C:25:58:3D:35:A5:C1:DC:C0 (CN=BouncyCastle TLS Test CA)
+˝¸9TLS server received client certificate chain of length 2
+˝¸ñ    fingerprint:SHA-256 F5:DD:37:DF:9B:E7:DA:87:7C:6C:D6:61:5A:61:18:AE:B3:6A:A3:3A:B4:5B:33:53:05:4A:7B:FC:B9:D5:A7:DA (CN=BouncyCastle Test Client)
+˝¸ñ    fingerprint:SHA-256 F2:B0:0A:FB:DC:2F:36:FF:60:52:AC:26:C8:E6:1A:89:92:77:9B:F4:1C:9D:A0:4C:25:58:3D:35:A5:C1:DC:C0 (CN=BouncyCastle TLS Test CA)
+˝¸5TLS client raised alert: warning(1), close_notify(0)
+˝¸> Connection closed
+˝¸7TLS server received alert: warning(1), close_notify(0)
+˝¸5TLS server raised alert: warning(1), close_notify(0)
+˝¸> Connection closed
+˝˛TLS server negotiated TLS 1.2
+˝˛TLS client negotiated TLS 1.2
+˝˛9TLS client received server certificate chain of length 2
+˝˛ñ    fingerprint:SHA-256 D4:25:89:8B:69:5E:19:B3:E3:81:F0:4E:B7:C6:1C:E5:3B:AB:B8:06:97:A2:E8:BB:35:BF:D1:CC:19:66:55:84 (CN=BouncyCastle Test Server)
+˝˛ñ    fingerprint:SHA-256 F2:B0:0A:FB:DC:2F:36:FF:60:52:AC:26:C8:E6:1A:89:92:77:9B:F4:1C:9D:A0:4C:25:58:3D:35:A5:C1:DC:C0 (CN=BouncyCastle TLS Test CA)
+˝˛9TLS server received client certificate chain of length 2
+˝˛ñ    fingerprint:SHA-256 F5:DD:37:DF:9B:E7:DA:87:7C:6C:D6:61:5A:61:18:AE:B3:6A:A3:3A:B4:5B:33:53:05:4A:7B:FC:B9:D5:A7:DA (CN=BouncyCastle Test Client)
+˝˛ñ    fingerprint:SHA-256 F2:B0:0A:FB:DC:2F:36:FF:60:52:AC:26:C8:E6:1A:89:92:77:9B:F4:1C:9D:A0:4C:25:58:3D:35:A5:C1:DC:C0 (CN=BouncyCastle TLS Test CA)
+˝˛5TLS client raised alert: warning(1), close_notify(0)
+˝˛> Connection closed
+˝˛7TLS server received alert: warning(1), close_notify(0)
+˝˛5TLS server raised alert: warning(1), close_notify(0)
+˝˛> Connection closed
+Äˇ"TLS-PSK server negotiated TLS 1.2
+Äˇ"TLS-PSK client negotiated TLS 1.2
+Äˇ<TLS-PSK server completed handshake for PSK identity: client
+Äˇ9TLS-PSK client raised alert: warning(1), close_notify(0)
+Äˇ> Connection closed
+Äˇ;TLS-PSK server received alert: warning(1), close_notify(0)
+Äˇ9TLS-PSK server raised alert: warning(1), close_notify(0)
+Äˇ> Connection closed
+ÇÅ"TLS-SRP server negotiated TLS 1.2
+ÇÅ"TLS-SRP client negotiated TLS 1.2
+ÇÅ=TLS-SRP client received server certificate chain of length 2
+ÇÅñ    fingerprint:SHA-256 D4:25:89:8B:69:5E:19:B3:E3:81:F0:4E:B7:C6:1C:E5:3B:AB:B8:06:97:A2:E8:BB:35:BF:D1:CC:19:66:55:84 (CN=BouncyCastle Test Server)
+ÇÅñ    fingerprint:SHA-256 F2:B0:0A:FB:DC:2F:36:FF:60:52:AC:26:C8:E6:1A:89:92:77:9B:F4:1C:9D:A0:4C:25:58:3D:35:A5:C1:DC:C0 (CN=BouncyCastle TLS Test CA)
+ÇÅ<TLS-SRP server completed handshake for SRP identity: client
+ÇÅ9TLS-SRP client raised alert: warning(1), close_notify(0)
+ÇÅ> Connection closed
+ÇÅ;TLS-SRP server received alert: warning(1), close_notify(0)
+ÇÅ9TLS-SRP server raised alert: warning(1), close_notify(0)
+ÇÅ> Connection closed

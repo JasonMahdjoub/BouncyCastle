@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.bouncycastle.pqc.crypto.test.XMSSPrivateKeyTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-05-14T11:36:14" hostname="Garage2" time="0.003">
+  <properties/>
+  <testcase name="testPrivateKeyParsing" classname="org.bouncycastle.pqc.crypto.test.XMSSPrivateKeyTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

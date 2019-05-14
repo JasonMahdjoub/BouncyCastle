@@ -4,8 +4,8 @@ import java.math.BigInteger;
 import java.security.SecureRandom;
 
 import org.bouncycastle.crypto.AsymmetricBlockCipher;
-import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.DataLengthException;
 import org.bouncycastle.crypto.params.ElGamalKeyParameters;
 import org.bouncycastle.crypto.params.ElGamalPrivateKeyParameters;
@@ -179,11 +179,11 @@ public class ElGamalEngine
             ElGamalPublicKeyParameters  pub = (ElGamalPublicKeyParameters)key;
 
             int                         pBitLength = p.bitLength();
-            BigInteger                  k = new BigInteger(pBitLength, random);
+            BigInteger                  k = BigIntegers.createRandomBigInteger(pBitLength, random);
 
             while (k.equals(ZERO) || (k.compareTo(p.subtract(TWO)) > 0))
             {
-                k = new BigInteger(pBitLength, random);
+                k = BigIntegers.createRandomBigInteger(pBitLength, random);
             }
 
             BigInteger  g = key.getParameters().getG();

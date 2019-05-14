@@ -234,7 +234,7 @@ public class PaddedBlockCipher
             //
             int count = buf[blockSize - 1] & 0xff;
 
-            if ((count < 0) || (count > blockSize))
+            if (count > blockSize)
             {
                 throw new BCInvalidCipherTextException("pad block corrupted");
             }

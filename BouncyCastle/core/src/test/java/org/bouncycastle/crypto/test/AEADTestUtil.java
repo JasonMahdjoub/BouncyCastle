@@ -192,7 +192,7 @@ public class AEADTestUtil
 
     public static void testOutputSizes(Test test, AEADBlockCipher cipher, AEADParameters params)
         throws IllegalStateException,
-            BCInvalidCipherTextException
+			BCInvalidCipherTextException
     {
         int maxPlaintext = cipher.getUnderlyingCipher().getBlockSize() * 10;
         byte[] plaintext = new byte[maxPlaintext];
@@ -280,7 +280,7 @@ public class AEADTestUtil
 
     public static void testBufferSizeChecks(Test test, AEADBlockCipher cipher, AEADParameters params)
         throws IllegalStateException,
-            BCInvalidCipherTextException
+			BCInvalidCipherTextException
     {
         int blockSize = cipher.getUnderlyingCipher().getBlockSize();
         int maxPlaintext = (blockSize * 10);

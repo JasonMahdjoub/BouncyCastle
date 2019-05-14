@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.bouncycastle.math.ec.test.ECPointTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2019-05-14T11:38:41" hostname="Garage2" time="9.002">
+  <properties/>
+  <testcase name="testThreeTimes" classname="org.bouncycastle.math.ec.test.ECPointTest" time="0.001"/>
+  <testcase name="testAdd" classname="org.bouncycastle.math.ec.test.ECPointTest" time="0.001"/>
+  <testcase name="testAddSubtractMultiplySimple" classname="org.bouncycastle.math.ec.test.ECPointTest" time="0.016"/>
+  <testcase name="testTwice" classname="org.bouncycastle.math.ec.test.ECPointTest" time="0.0"/>
+  <testcase name="testAllPoints" classname="org.bouncycastle.math.ec.test.ECPointTest" time="0.004"/>
+  <testcase name="testAddSubtractMultiplyTwiceEncoding" classname="org.bouncycastle.math.ec.test.ECPointTest" time="8.98"/>
+  <testcase name="testPointCreationConsistency" classname="org.bouncycastle.math.ec.test.ECPointTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

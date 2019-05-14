@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.bouncycastle.pqc.math.ntru.polynomial.test.IntegerPolynomialTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2019-05-14T11:35:48" hostname="Garage2" time="0.539">
+  <properties/>
+  <testcase name="testResultant" classname="org.bouncycastle.pqc.math.ntru.polynomial.test.IntegerPolynomialTest" time="0.053"/>
+  <testcase name="testMult" classname="org.bouncycastle.pqc.math.ntru.polynomial.test.IntegerPolynomialTest" time="0.0"/>
+  <testcase name="testFromToBinary3Sves" classname="org.bouncycastle.pqc.math.ntru.polynomial.test.IntegerPolynomialTest" time="0.001"/>
+  <testcase name="testFromToBinary" classname="org.bouncycastle.pqc.math.ntru.polynomial.test.IntegerPolynomialTest" time="0.002"/>
+  <testcase name="testFromToBinary3Tight" classname="org.bouncycastle.pqc.math.ntru.polynomial.test.IntegerPolynomialTest" time="0.028"/>
+  <testcase name="testInvertF3" classname="org.bouncycastle.pqc.math.ntru.polynomial.test.IntegerPolynomialTest" time="0.0"/>
+  <testcase name="testInvertFq" classname="org.bouncycastle.pqc.math.ntru.polynomial.test.IntegerPolynomialTest" time="0.1"/>
+  <testcase name="testResultantMod" classname="org.bouncycastle.pqc.math.ntru.polynomial.test.IntegerPolynomialTest" time="0.354"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

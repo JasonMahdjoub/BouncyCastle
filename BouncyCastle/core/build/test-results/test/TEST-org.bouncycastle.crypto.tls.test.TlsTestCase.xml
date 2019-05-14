@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.bouncycastle.crypto.tls.test.TlsTestCase" tests="33" skipped="0" failures="0" errors="0" timestamp="2019-05-14T11:39:21" hostname="Garage2" time="0.277">
+  <properties/>
+  <testcase name="testDummy" classname="org.bouncycastle.crypto.tls.test.TlsTestCase" time="0.0"/>
+  <testcase name="FallbackGood" classname="org.bouncycastle.crypto.tls.test.TlsTestCase" time="0.013"/>
+  <testcase name="FallbackBad" classname="org.bouncycastle.crypto.tls.test.TlsTestCase" time="0.001"/>
+  <testcase name="FallbackNone" classname="org.bouncycastle.crypto.tls.test.TlsTestCase" time="0.011"/>
+  <testcase name="SSL30_GoodDefault" classname="org.bouncycastle.crypto.tls.test.TlsTestCase" time="0.014"/>
+  <testcase name="SSL30_BadCertificateVerifySignature" classname="org.bouncycastle.crypto.tls.test.TlsTestCase" time="0.01"/>
+  <testcase name="SSL30_BadClientCertificate" classname="org.bouncycastle.crypto.tls.test.TlsTestCase" time="0.013"/>
+  <testcase name="SSL30_BadMandatoryCertReqDeclined" classname="org.bouncycastle.crypto.tls.test.TlsTestCase" time="0.008"/>
+  <testcase name="SSL30_GoodNoCertReq" classname="org.bouncycastle.crypto.tls.test.TlsTestCase" time="0.007"/>
+  <testcase name="SSL30_GoodOptionalCertReqDeclined" classname="org.bouncycastle.crypto.tls.test.TlsTestCase" time="0.009"/>
+  <testcase name="TLS10_GoodDefault" classname="org.bouncycastle.crypto.tls.test.TlsTestCase" time="0.01"/>
+  <testcase name="TLS10_BadCertificateVerifySignature" classname="org.bouncycastle.crypto.tls.test.TlsTestCase" time="0.009"/>
+  <testcase name="TLS10_BadClientCertificate" classname="org.bouncycastle.crypto.tls.test.TlsTestCase" time="0.01"/>
+  <testcase name="TLS10_BadMandatoryCertReqDeclined" classname="org.bouncycastle.crypto.tls.test.TlsTestCase" time="0.008"/>
+  <testcase name="TLS10_GoodNoCertReq" classname="org.bouncycastle.crypto.tls.test.TlsTestCase" time="0.007"/>
+  <testcase name="TLS10_GoodOptionalCertReqDeclined" classname="org.bouncycastle.crypto.tls.test.TlsTestCase" time="0.007"/>
+  <testcase name="TLS11_GoodDefault" classname="org.bouncycastle.crypto.tls.test.TlsTestCase" time="0.009"/>
+  <testcase name="TLS11_BadCertificateVerifySignature" classname="org.bouncycastle.crypto.tls.test.TlsTestCase" time="0.009"/>
+  <testcase name="TLS11_BadClientCertificate" classname="org.bouncycastle.crypto.tls.test.TlsTestCase" time="0.009"/>
+  <testcase name="TLS11_BadMandatoryCertReqDeclined" classname="org.bouncycastle.crypto.tls.test.TlsTestCase" time="0.006"/>
+  <testcase name="TLS11_GoodNoCertReq" classname="org.bouncycastle.crypto.tls.test.TlsTestCase" time="0.009"/>
+  <testcase name="TLS11_GoodOptionalCertReqDeclined" classname="org.bouncycastle.crypto.tls.test.TlsTestCase" time="0.005"/>
+  <testcase name="TLS12_GoodDefault" classname="org.bouncycastle.crypto.tls.test.TlsTestCase" time="0.012"/>
+  <testcase name="TLS12_BadCertificateVerifyHashAlg" classname="org.bouncycastle.crypto.tls.test.TlsTestCase" time="0.007"/>
+  <testcase name="TLS12_BadCertificateVerifySigAlg" classname="org.bouncycastle.crypto.tls.test.TlsTestCase" time="0.01"/>
+  <testcase name="TLS12_BadCertificateVerifySigAlgMismatch" classname="org.bouncycastle.crypto.tls.test.TlsTestCase" time="0.01"/>
+  <testcase name="TLS12_BadCertificateVerifySignature" classname="org.bouncycastle.crypto.tls.test.TlsTestCase" time="0.009"/>
+  <testcase name="TLS12_BadClientCertificate" classname="org.bouncycastle.crypto.tls.test.TlsTestCase" time="0.011"/>
+  <testcase name="TLS12_BadMandatoryCertReqDeclined" classname="org.bouncycastle.crypto.tls.test.TlsTestCase" time="0.006"/>
+  <testcase name="TLS12_BadServerKeyExchangeSigAlg" classname="org.bouncycastle.crypto.tls.test.TlsTestCase" time="0.006"/>
+  <testcase name="TLS12_BadServerKeyExchangeSigAlg2" classname="org.bouncycastle.crypto.tls.test.TlsTestCase" time="0.005"/>
+  <testcase name="TLS12_GoodNoCertReq" classname="org.bouncycastle.crypto.tls.test.TlsTestCase" time="0.007"/>
+  <testcase name="TLS12_GoodOptionalCertReqDeclined" classname="org.bouncycastle.crypto.tls.test.TlsTestCase" time="0.008"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

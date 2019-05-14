@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.bouncycastle.pqc.crypto.test.XMSSUtilTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2019-05-14T11:37:07" hostname="Garage2" time="0.001">
+  <properties/>
+  <testcase name="testBytesToIntBigEndianException" classname="org.bouncycastle.pqc.crypto.test.XMSSUtilTest" time="0.001"/>
+  <testcase name="testLog2" classname="org.bouncycastle.pqc.crypto.test.XMSSUtilTest" time="0.0"/>
+  <testcase name="testBytesToLongBigEndianException" classname="org.bouncycastle.pqc.crypto.test.XMSSUtilTest" time="0.0"/>
+  <testcase name="testLongToBytesBigEndianOffsetException" classname="org.bouncycastle.pqc.crypto.test.XMSSUtilTest" time="0.0"/>
+  <testcase name="testLongToBytesBigEndian" classname="org.bouncycastle.pqc.crypto.test.XMSSUtilTest" time="0.0"/>
+  <testcase name="testBytesToIntBigEndian" classname="org.bouncycastle.pqc.crypto.test.XMSSUtilTest" time="0.0"/>
+  <testcase name="testBytesToLongBigEndian" classname="org.bouncycastle.pqc.crypto.test.XMSSUtilTest" time="0.0"/>
+  <testcase name="testLongToBytesBigEndianOffset" classname="org.bouncycastle.pqc.crypto.test.XMSSUtilTest" time="0.0"/>
+  <testcase name="testIntToBytesBigEndian" classname="org.bouncycastle.pqc.crypto.test.XMSSUtilTest" time="0.0"/>
+  <testcase name="testCalculateTau" classname="org.bouncycastle.pqc.crypto.test.XMSSUtilTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

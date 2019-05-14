@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.bouncycastle.pqc.jcajce.provider.test.XMSSTest" tests="16" skipped="0" failures="0" errors="0" timestamp="2019-05-14T11:40:25" hostname="Garage2" time="46.504">
+  <properties/>
+  <testcase name="testPrehashWithWithout" classname="org.bouncycastle.pqc.jcajce.provider.test.XMSSTest" time="0.328"/>
+  <testcase name="testExhaustion" classname="org.bouncycastle.pqc.jcajce.provider.test.XMSSTest" time="0.032"/>
+  <testcase name="testXMSSShake256Signature" classname="org.bouncycastle.pqc.jcajce.provider.test.XMSSTest" time="0.277"/>
+  <testcase name="testPrivateKeyRecovery" classname="org.bouncycastle.pqc.jcajce.provider.test.XMSSTest" time="0.012"/>
+  <testcase name="testXMSSSha256KeyFactory" classname="org.bouncycastle.pqc.jcajce.provider.test.XMSSTest" time="3.117"/>
+  <testcase name="testXMSSShake128Signature" classname="org.bouncycastle.pqc.jcajce.provider.test.XMSSTest" time="0.093"/>
+  <testcase name="testXMSSShake256KeyFactory" classname="org.bouncycastle.pqc.jcajce.provider.test.XMSSTest" time="8.322"/>
+  <testcase name="testKeyRebuild" classname="org.bouncycastle.pqc.jcajce.provider.test.XMSSTest" time="6.26"/>
+  <testcase name="testKeyExtraction" classname="org.bouncycastle.pqc.jcajce.provider.test.XMSSTest" time="3.106"/>
+  <testcase name="testXMSSSha512Signature" classname="org.bouncycastle.pqc.jcajce.provider.test.XMSSTest" time="7.946"/>
+  <testcase name="testXMSSSha256SignatureMultiple" classname="org.bouncycastle.pqc.jcajce.provider.test.XMSSTest" time="3.112"/>
+  <testcase name="testPublicKeyRecovery" classname="org.bouncycastle.pqc.jcajce.provider.test.XMSSTest" time="0.001"/>
+  <testcase name="testXMSSSha256Signature" classname="org.bouncycastle.pqc.jcajce.provider.test.XMSSTest" time="3.1"/>
+  <testcase name="testXMSSShake128KeyFactory" classname="org.bouncycastle.pqc.jcajce.provider.test.XMSSTest" time="2.504"/>
+  <testcase name="testReserialization" classname="org.bouncycastle.pqc.jcajce.provider.test.XMSSTest" time="0.339"/>
+  <testcase name="testXMSSSha512KeyFactory" classname="org.bouncycastle.pqc.jcajce.provider.test.XMSSTest" time="7.954"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

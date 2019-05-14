@@ -4,8 +4,8 @@ import java.security.SecureRandom;
 import java.util.Random;
 
 import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
-import org.bouncycastle.crypto.Digest;
 import org.bouncycastle.crypto.BCInvalidCipherTextException;
+import org.bouncycastle.crypto.Digest;
 import org.bouncycastle.crypto.digests.SHA256Digest;
 import org.bouncycastle.crypto.params.ParametersWithRandom;
 import org.bouncycastle.pqc.crypto.mceliece.McElieceCipher;

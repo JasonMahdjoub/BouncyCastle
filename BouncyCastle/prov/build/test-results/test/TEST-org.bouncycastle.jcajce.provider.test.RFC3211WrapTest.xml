@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.bouncycastle.jcajce.provider.test.RFC3211WrapTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2019-05-14T11:43:14" hostname="Garage2" time="0.002">
+  <properties/>
+  <testcase name="testAESRFC3211Exception" classname="org.bouncycastle.jcajce.provider.test.RFC3211WrapTest" time="0.0"/>
+  <testcase name="testTDESRFC3211Bounds" classname="org.bouncycastle.jcajce.provider.test.RFC3211WrapTest" time="0.001"/>
+  <testcase name="testAESRFC3211Bounds" classname="org.bouncycastle.jcajce.provider.test.RFC3211WrapTest" time="0.0"/>
+  <testcase name="testTDESRFC3211" classname="org.bouncycastle.jcajce.provider.test.RFC3211WrapTest" time="0.0"/>
+  <testcase name="testTDESRFC3211Exception" classname="org.bouncycastle.jcajce.provider.test.RFC3211WrapTest" time="0.0"/>
+  <testcase name="testAESRFC3211" classname="org.bouncycastle.jcajce.provider.test.RFC3211WrapTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

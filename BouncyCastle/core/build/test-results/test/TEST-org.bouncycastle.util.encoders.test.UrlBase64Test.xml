@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.bouncycastle.util.encoders.test.UrlBase64Test" tests="3" skipped="0" failures="0" errors="0" timestamp="2019-05-14T11:35:47" hostname="Garage2" time="0.038">
+  <properties/>
+  <testcase name="testSamples" classname="org.bouncycastle.util.encoders.test.UrlBase64Test" time="0.001"/>
+  <testcase name="testInvalidInput" classname="org.bouncycastle.util.encoders.test.UrlBase64Test" time="0.0"/>
+  <testcase name="testEncode" classname="org.bouncycastle.util.encoders.test.UrlBase64Test" time="0.036"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

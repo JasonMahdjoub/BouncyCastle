@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.bouncycastle.crypto.tls.test.TlsPSKProtocolTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-05-14T11:39:21" hostname="Garage2" time="0.005">
+  <properties/>
+  <testcase name="testClientServer" classname="org.bouncycastle.crypto.tls.test.TlsPSKProtocolTest" time="0.005"/>
+  <system-out><![CDATA[TLS-PSK server negotiated TLS 1.2
+TLS-PSK client negotiated TLS 1.2
+TLS-PSK server completed handshake for PSK identity: client
+TLS-PSK client raised alert: warning(1), close_notify(0)
+> Connection closed
+TLS-PSK server received alert: warning(1), close_notify(0)
+TLS-PSK server raised alert: warning(1), close_notify(0)
+> Connection closed
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.bouncycastle.cms.test.NewEnvelopedDataStreamTest" tests="26" skipped="0" failures="0" errors="0" timestamp="2019-05-14T11:39:58" hostname="Garage2" time="1.279">
+  <properties/>
+  <testcase name="testKeyTransAES128" classname="org.bouncycastle.cms.test.NewEnvelopedDataStreamTest" time="0.313"/>
+  <testcase name="testKeyTransAES128BufferedStream" classname="org.bouncycastle.cms.test.NewEnvelopedDataStreamTest" time="0.002"/>
+  <testcase name="testUnprotectedAttributes" classname="org.bouncycastle.cms.test.NewEnvelopedDataStreamTest" time="0.001"/>
+  <testcase name="testKeyTransAES128Der" classname="org.bouncycastle.cms.test.NewEnvelopedDataStreamTest" time="0.001"/>
+  <testcase name="testWorkingData" classname="org.bouncycastle.cms.test.NewEnvelopedDataStreamTest" time="0.001"/>
+  <testcase name="testKeyTransAES128Throughput" classname="org.bouncycastle.cms.test.NewEnvelopedDataStreamTest" time="0.008"/>
+  <testcase name="testOriginatorInfo" classname="org.bouncycastle.cms.test.NewEnvelopedDataStreamTest" time="0.0"/>
+  <testcase name="testKeyTransAES128Buffered" classname="org.bouncycastle.cms.test.NewEnvelopedDataStreamTest" time="0.002"/>
+  <testcase name="testTwoAESKEK" classname="org.bouncycastle.cms.test.NewEnvelopedDataStreamTest" time="0.001"/>
+  <testcase name="testECKeyAgree" classname="org.bouncycastle.cms.test.NewEnvelopedDataStreamTest" time="0.004"/>
+  <testcase name="testAESKEK" classname="org.bouncycastle.cms.test.NewEnvelopedDataStreamTest" time="0.001"/>
+  <testcase name="testKeyTransAES128AndOriginatorInfo" classname="org.bouncycastle.cms.test.NewEnvelopedDataStreamTest" time="0.001"/>
+  <testcase name="testKeyTransCAST5SunJCE" classname="org.bouncycastle.cms.test.NewEnvelopedDataStreamTest" time="0.001"/>
+  <testcase name="testKeyTransAES128" classname="org.bouncycastle.cms.test.NewEnvelopedDataStreamTest" time="0.003"/>
+  <testcase name="testKeyTransAES128BufferedStream" classname="org.bouncycastle.cms.test.NewEnvelopedDataStreamTest" time="0.002"/>
+  <testcase name="testUnprotectedAttributes" classname="org.bouncycastle.cms.test.NewEnvelopedDataStreamTest" time="0.001"/>
+  <testcase name="testKeyTransAES128Der" classname="org.bouncycastle.cms.test.NewEnvelopedDataStreamTest" time="0.001"/>
+  <testcase name="testWorkingData" classname="org.bouncycastle.cms.test.NewEnvelopedDataStreamTest" time="0.0"/>
+  <testcase name="testKeyTransAES128Throughput" classname="org.bouncycastle.cms.test.NewEnvelopedDataStreamTest" time="0.003"/>
+  <testcase name="testOriginatorInfo" classname="org.bouncycastle.cms.test.NewEnvelopedDataStreamTest" time="0.001"/>
+  <testcase name="testKeyTransAES128Buffered" classname="org.bouncycastle.cms.test.NewEnvelopedDataStreamTest" time="0.002"/>
+  <testcase name="testTwoAESKEK" classname="org.bouncycastle.cms.test.NewEnvelopedDataStreamTest" time="0.0"/>
+  <testcase name="testECKeyAgree" classname="org.bouncycastle.cms.test.NewEnvelopedDataStreamTest" time="0.004"/>
+  <testcase name="testAESKEK" classname="org.bouncycastle.cms.test.NewEnvelopedDataStreamTest" time="0.001"/>
+  <testcase name="testKeyTransAES128AndOriginatorInfo" classname="org.bouncycastle.cms.test.NewEnvelopedDataStreamTest" time="0.001"/>
+  <testcase name="testKeyTransCAST5SunJCE" classname="org.bouncycastle.cms.test.NewEnvelopedDataStreamTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

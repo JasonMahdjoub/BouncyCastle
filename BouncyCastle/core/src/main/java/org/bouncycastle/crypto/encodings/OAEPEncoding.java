@@ -3,7 +3,7 @@ package org.bouncycastle.crypto.encodings;
 import java.security.SecureRandom;
 
 import org.bouncycastle.crypto.*;
-import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.params.ParametersWithRandom;
 import org.bouncycastle.crypto.util.DigestFactory;
 import org.bouncycastle.util.Arrays;
@@ -217,10 +217,17 @@ public class OAEPEncoding
         // on encryption, we need to make sure our decrypted block comes back
         // the same size.
         //
+        boolean wrongData = (block.length < (2 * defHash.length) + 1);
 
-        System.arraycopy(data, 0, block, block.length - data.length, data.length);
-
-        boolean shortData = (block.length < (2 * defHash.length) + 1);
+        if (data.length <= block.length)
+        {
+            System.arraycopy(data, 0, block, block.length - data.length, data.length);
+        }
+        else
+        {
+            System.arraycopy(data, 0, block, 0, block.length);
+            wrongData = true;
+        }
 
         //
         // unmask the seed.
@@ -274,7 +281,7 @@ public class OAEPEncoding
 
         start++;
 
-        if (defHashWrong | shortData | dataStartWrong)
+        if (defHashWrong | wrongData | dataStartWrong)
         {
             Arrays.fill(block, (byte)0);
             throw new BCInvalidCipherTextException("data wrong");

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.bouncycastle.cert.crmf.test.AllTests" tests="13" skipped="0" failures="0" errors="0" timestamp="2019-05-14T11:39:55" hostname="Garage2" time="1.504">
+  <properties/>
+  <testcase name="testEncryptedValue" classname="org.bouncycastle.cert.crmf.test.AllTests" time="0.017"/>
+  <testcase name="testEncryptedValuePassphrase" classname="org.bouncycastle.cert.crmf.test.AllTests" time="0.012"/>
+  <testcase name="testBcEncryptedValueWithKey" classname="org.bouncycastle.cert.crmf.test.AllTests" time="0.01"/>
+  <testcase name="testProofOfPossessionWithSender" classname="org.bouncycastle.cert.crmf.test.AllTests" time="0.012"/>
+  <testcase name="testProofOfPossessionWithTemplate" classname="org.bouncycastle.cert.crmf.test.AllTests" time="0.014"/>
+  <testcase name="testEncryptedValueWithKey" classname="org.bouncycastle.cert.crmf.test.AllTests" time="0.008"/>
+  <testcase name="testBasicMessage" classname="org.bouncycastle.cert.crmf.test.AllTests" time="0.012"/>
+  <testcase name="testBasicMessageWithArchiveControl" classname="org.bouncycastle.cert.crmf.test.AllTests" time="0.012"/>
+  <testcase name="testEncryptedValuePassphraseWithPadding" classname="org.bouncycastle.cert.crmf.test.AllTests" time="0.016"/>
+  <testcase name="testKeySizes" classname="org.bouncycastle.cert.crmf.test.AllTests" time="0.004"/>
+  <testcase name="testEncryptedValueOAEP1" classname="org.bouncycastle.cert.crmf.test.AllTests" time="0.284"/>
+  <testcase name="testEncryptedValueOAEP2" classname="org.bouncycastle.cert.crmf.test.AllTests" time="1.083"/>
+  <testcase name="testProofOfPossessionWithoutSender" classname="org.bouncycastle.cert.crmf.test.AllTests" time="0.018"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

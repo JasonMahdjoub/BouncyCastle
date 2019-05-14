@@ -104,7 +104,7 @@ subprojects {
     sourceCompatibility = JavaVersionSource
     targetCompatibility = JavaVersionTarget
 
-    version = '1.60-DMRECOMPILE'
+    version = '1.61-DMRECOMPILE'
 
 	compileJava.options.compilerArgs.addAll(['--release', JavaVersionTarget] as Collection<? extends String>)
 	if (project.hasProperty('javaHomeVersion') && JavaVersionTarget.toFloat()>1.8)
@@ -157,7 +157,7 @@ subprojects {
 
 }
 
-test.dependsOn([':core:test', ':prov:test', ':tls:test', ':pkix:test', ':mail:test', 'pg:test'])
+test.dependsOn([':core:test', ':prov:test', ':pkix:test', ':mail:test', 'pg:test'])
 
 cobertura {
    coverageDirs = [

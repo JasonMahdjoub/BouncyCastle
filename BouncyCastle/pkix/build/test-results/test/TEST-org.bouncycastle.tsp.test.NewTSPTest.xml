@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.bouncycastle.tsp.test.NewTSPTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2019-05-14T11:40:02" hostname="Garage2" time="0.237">
+  <properties/>
+  <testcase name="testSM2withSM3" classname="org.bouncycastle.tsp.test.NewTSPTest" time="0.007"/>
+  <testcase name="testGeneral" classname="org.bouncycastle.tsp.test.NewTSPTest" time="0.073"/>
+  <testcase name="testCertOrdering" classname="org.bouncycastle.tsp.test.NewTSPTest" time="0.157"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

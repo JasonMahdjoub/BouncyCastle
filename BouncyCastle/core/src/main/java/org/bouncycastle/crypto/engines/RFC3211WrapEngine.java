@@ -3,10 +3,11 @@ package org.bouncycastle.crypto.engines;
 import java.security.SecureRandom;
 
 import org.bouncycastle.crypto.*;
-import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.modes.CBCBlockCipher;
 import org.bouncycastle.crypto.params.ParametersWithIV;
 import org.bouncycastle.crypto.params.ParametersWithRandom;
+import org.bouncycastle.util.Arrays;
 
 /**
  * an implementation of the RFC 3211 Key Wrap
@@ -36,6 +37,12 @@ public class RFC3211WrapEngine
             ParametersWithRandom p = (ParametersWithRandom)param;
 
             rand = p.getRandom();
+
+            if (!(p.getParameters() instanceof ParametersWithIV))
+            {
+                throw new IllegalArgumentException("RFC3211Wrap requires an IV");
+            }
+
             this.param = (ParametersWithIV)p.getParameters();
         }
         else
@@ -43,6 +50,11 @@ public class RFC3211WrapEngine
             if (forWrapping)
             {
                 rand = BCCryptoServicesRegistrar.getSecureRandom();
+            }
+
+            if (!(param instanceof ParametersWithIV))
+            {
+                throw new IllegalArgumentException("RFC3211Wrap requires an IV");
             }
 
             this.param = (ParametersWithIV)param;
@@ -64,6 +76,11 @@ public class RFC3211WrapEngine
             throw new IllegalStateException("not set for wrapping");
         }
 
+        if (inLen > 255 || inLen < 0)
+        {
+            throw new IllegalArgumentException("input must be from 0 to 255 bytes");
+        }
+        
         engine.init(true, param);
 
         int blockSize = engine.getBlockSize();
@@ -79,9 +96,6 @@ public class RFC3211WrapEngine
         }
 
         cekBlock[0] = (byte)inLen;
-        cekBlock[1] = (byte)~in[inOff];
-        cekBlock[2] = (byte)~in[inOff + 1];
-        cekBlock[3] = (byte)~in[inOff + 2];
 
         System.arraycopy(in, inOff, cekBlock, 4, inLen);
 
@@ -90,6 +104,10 @@ public class RFC3211WrapEngine
         rand.nextBytes(pad);
         System.arraycopy(pad, 0, cekBlock, inLen + 4, pad.length);
 
+        cekBlock[1] = (byte)~cekBlock[4];
+        cekBlock[2] = (byte)~cekBlock[4 + 1];
+        cekBlock[3] = (byte)~cekBlock[4 + 2];
+        
         for (int i = 0; i < cekBlock.length; i += blockSize)
         {
             engine.processBlock(cekBlock, i, cekBlock, i);
@@ -147,25 +165,33 @@ public class RFC3211WrapEngine
             engine.processBlock(cekBlock, i, cekBlock, i);
         }
 
-        if ((cekBlock[0] & 0xff) > cekBlock.length - 4)
+        boolean invalidLength = ((cekBlock[0] & 0xff) > cekBlock.length - 4);
+
+        byte[] key;
+        if (invalidLength)
         {
-            throw new BCInvalidCipherTextException("wrapped key corrupted");
+            key = new byte[cekBlock.length - 4];
+        }
+        else
+        {
+            key = new byte[cekBlock[0] & 0xff];
         }
 
-        byte[] key = new byte[cekBlock[0] & 0xff];
-
-        System.arraycopy(cekBlock, 4, key, 0, cekBlock[0]);
-
+        System.arraycopy(cekBlock, 4, key, 0, key.length);
+        
         // Note: Using constant time comparison
         int nonEqual = 0;
         for (int i = 0; i != 3; i++)
         {
             byte check = (byte)~cekBlock[1 + i];
-            nonEqual |= (check ^ key[i]);
+            nonEqual |= (check ^ cekBlock[4 + i]);
         }
-        if (nonEqual != 0)
+
+        Arrays.clear(cekBlock);
+
+        if (nonEqual != 0 | invalidLength)
         {
-            throw new BCInvalidCipherTextException("wrapped key fails checksum");
+            throw new BCInvalidCipherTextException("wrapped key corrupted");
         }
 
         return key;

@@ -2,6 +2,8 @@ package org.bouncycastle.crypto.engines;
 
 import java.math.BigInteger;
 import java.util.Vector;
+
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.util.Arrays;
 
 import org.bouncycastle.crypto.AsymmetricBlockCipher;

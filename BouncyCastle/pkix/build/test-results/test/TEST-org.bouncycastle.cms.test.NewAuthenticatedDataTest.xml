@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.bouncycastle.cms.test.NewAuthenticatedDataTest" tests="22" skipped="0" failures="0" errors="0" timestamp="2019-05-14T11:39:58" hostname="Garage2" time="1.333">
+  <properties/>
+  <testcase name="testKeyTransDESede" classname="org.bouncycastle.cms.test.NewAuthenticatedDataTest" time="0.004"/>
+  <testcase name="testEncoding" classname="org.bouncycastle.cms.test.NewAuthenticatedDataTest" time="0.001"/>
+  <testcase name="testCMSAlgorithmProtection" classname="org.bouncycastle.cms.test.NewAuthenticatedDataTest" time="0.001"/>
+  <testcase name="testAES256CCM" classname="org.bouncycastle.cms.test.NewAuthenticatedDataTest" time="0.001"/>
+  <testcase name="testKeyTransRC2" classname="org.bouncycastle.cms.test.NewAuthenticatedDataTest" time="0.001"/>
+  <testcase name="testOriginatorInfo" classname="org.bouncycastle.cms.test.NewAuthenticatedDataTest" time="0.001"/>
+  <testcase name="testKEKDESede" classname="org.bouncycastle.cms.test.NewAuthenticatedDataTest" time="0.001"/>
+  <testcase name="testKeyTransDESedeWithDigest" classname="org.bouncycastle.cms.test.NewAuthenticatedDataTest" time="0.001"/>
+  <testcase name="testECKeyAgree" classname="org.bouncycastle.cms.test.NewAuthenticatedDataTest" time="0.004"/>
+  <testcase name="testKEKDESedeWithDigest" classname="org.bouncycastle.cms.test.NewAuthenticatedDataTest" time="0.001"/>
+  <testcase name="testPasswordAES256" classname="org.bouncycastle.cms.test.NewAuthenticatedDataTest" time="0.0"/>
+  <testcase name="testKeyTransDESede" classname="org.bouncycastle.cms.test.NewAuthenticatedDataTest" time="0.004"/>
+  <testcase name="testEncoding" classname="org.bouncycastle.cms.test.NewAuthenticatedDataTest" time="0.001"/>
+  <testcase name="testCMSAlgorithmProtection" classname="org.bouncycastle.cms.test.NewAuthenticatedDataTest" time="0.0"/>
+  <testcase name="testAES256CCM" classname="org.bouncycastle.cms.test.NewAuthenticatedDataTest" time="0.001"/>
+  <testcase name="testKeyTransRC2" classname="org.bouncycastle.cms.test.NewAuthenticatedDataTest" time="0.001"/>
+  <testcase name="testOriginatorInfo" classname="org.bouncycastle.cms.test.NewAuthenticatedDataTest" time="0.001"/>
+  <testcase name="testKEKDESede" classname="org.bouncycastle.cms.test.NewAuthenticatedDataTest" time="0.0"/>
+  <testcase name="testKeyTransDESedeWithDigest" classname="org.bouncycastle.cms.test.NewAuthenticatedDataTest" time="0.001"/>
+  <testcase name="testECKeyAgree" classname="org.bouncycastle.cms.test.NewAuthenticatedDataTest" time="0.004"/>
+  <testcase name="testKEKDESedeWithDigest" classname="org.bouncycastle.cms.test.NewAuthenticatedDataTest" time="0.0"/>
+  <testcase name="testPasswordAES256" classname="org.bouncycastle.cms.test.NewAuthenticatedDataTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

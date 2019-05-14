@@ -33,9 +33,9 @@ public class LocalizedMessage
     protected ClassLoader loader = null;
 
     /**
-     * Constructs a new LocalizedMessage using <code>resource</code> as the base name for the 
-     * RessourceBundle and <code>id</code> as the message bundle id the resource file. 
-     * @param resource base name of the resource file 
+     * Constructs a new LocalizedMessage using <code>resource</code> as the base name for the
+     * RessourceBundle and <code>id</code> as the message bundle id the resource file.
+     * @param resource base name of the resource file
      * @param id the id of the corresponding bundle in the resource file
      * @throws NullPointerException if <code>resource</code> or <code>id</code> is <code>null</code>
      */
@@ -51,9 +51,9 @@ public class LocalizedMessage
     }
 
     /**
-     * Constructs a new LocalizedMessage using <code>resource</code> as the base name for the 
-     * RessourceBundle and <code>id</code> as the message bundle id the resource file. 
-     * @param resource base name of the resource file 
+     * Constructs a new LocalizedMessage using <code>resource</code> as the base name for the
+     * RessourceBundle and <code>id</code> as the message bundle id the resource file.
+     * @param resource base name of the resource file
      * @param id the id of the corresponding bundle in the resource file
      * @param encoding the encoding of the resource file
      * @throws NullPointerException if <code>resource</code> or <code>id</code> is <code>null</code>
@@ -76,9 +76,9 @@ public class LocalizedMessage
     }
 
     /**
-     * Constructs a new LocalizedMessage using <code>resource</code> as the base name for the 
-     * RessourceBundle and <code>id</code> as the message bundle id the resource file. 
-     * @param resource base name of the resource file 
+     * Constructs a new LocalizedMessage using <code>resource</code> as the base name for the
+     * RessourceBundle and <code>id</code> as the message bundle id the resource file.
+     * @param resource base name of the resource file
      * @param id the id of the corresponding bundle in the resource file
      * @param arguments an array containing the arguments for the message
      * @throws NullPointerException if <code>resource</code> or <code>id</code> is <code>null</code>
@@ -95,9 +95,9 @@ public class LocalizedMessage
     }
 
     /**
-     * Constructs a new LocalizedMessage using <code>resource</code> as the base name for the 
-     * RessourceBundle and <code>id</code> as the message bundle id the resource file. 
-     * @param resource base name of the resource file 
+     * Constructs a new LocalizedMessage using <code>resource</code> as the base name for the
+     * RessourceBundle and <code>id</code> as the message bundle id the resource file.
+     * @param resource base name of the resource file
      * @param id the id of the corresponding bundle in the resource file
      * @param encoding the encoding of the resource file
      * @param arguments an array containing the arguments for the message
@@ -121,7 +121,7 @@ public class LocalizedMessage
     }
 
     /**
-     * Reads the entry <code>id + "." + key</code> from the resource file and returns a 
+     * Reads the entry <code>id + "." + key</code> from the resource file and returns a
      * formated message for the given Locale and TimeZone.
      * @param key second part of the entry id
      * @param loc the used {@link Locale}

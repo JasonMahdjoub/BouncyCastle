@@ -2,8 +2,8 @@ package org.bouncycastle.crypto.test;
 
 import java.security.SecureRandom;
 
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.BlockCipher;
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.Wrapper;
 import org.bouncycastle.crypto.engines.DESEngine;
 import org.bouncycastle.crypto.engines.DESedeEngine;
@@ -110,7 +110,7 @@ public class RFC3211WrapTest
         }
         catch (BCInvalidCipherTextException e)
         {
-            if (!e.getMessage().equals("wrapped key fails checksum"))
+            if (!e.getMessage().equals("wrapped key corrupted"))
             {
                 fail("wrong exception");
             }

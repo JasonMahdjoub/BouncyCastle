@@ -25,8 +25,13 @@ import javax.crypto.spec.RC2ParameterSpec;
 import javax.crypto.spec.RC5ParameterSpec;
 
 import org.bouncycastle.asn1.cms.GCMParameters;
-import org.bouncycastle.crypto.*;
+import org.bouncycastle.crypto.BlockCipher;
+import org.bouncycastle.crypto.BufferedBlockCipher;
+import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.crypto.DataLengthException;
+import org.bouncycastle.crypto.BCInvalidCipherTextException;
+import org.bouncycastle.crypto.OutputLengthException;
 import org.bouncycastle.crypto.engines.DSTU7624Engine;
 import org.bouncycastle.crypto.modes.AEADBlockCipher;
 import org.bouncycastle.crypto.modes.CBCBlockCipher;
@@ -1352,23 +1357,6 @@ public class BaseBlockCipher
                 }
                 throw new BadPaddingException(e.getMessage());
             }
-        }
-    }
-
-    private static class InvalidKeyOrParametersException
-        extends InvalidKeyException
-    {
-        private final Throwable cause;
-
-        InvalidKeyOrParametersException(String msg, Throwable cause)
-        {
-             super(msg);
-            this.cause = cause;
-        }
-
-        public Throwable getCause()
-        {
-            return cause;
         }
     }
 }

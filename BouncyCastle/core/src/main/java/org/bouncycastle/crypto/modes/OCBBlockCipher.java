@@ -339,7 +339,7 @@ public class OCBBlockCipher
 
     public int doFinal(byte[] output, int outOff)
         throws IllegalStateException,
-            BCInvalidCipherTextException
+			BCInvalidCipherTextException
     {
         /*
          * For decryption, get the tag from the end of the message
