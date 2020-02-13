@@ -6,12 +6,11 @@ import java.security.SecureRandom;
 import java.util.Hashtable;
 import java.util.Vector;
 
-import org.bouncycastle.asn1.ASN1EncodableVector;
-import org.bouncycastle.asn1.ASN1Encoding;
-import org.bouncycastle.asn1.DERBitString;
-import org.bouncycastle.asn1.DERSequence;
-import org.bouncycastle.asn1.x509.Certificate;
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.bouncycastle.bcasn1.ASN1EncodableVector;
+import org.bouncycastle.bcasn1.ASN1Encoding;
+import org.bouncycastle.bcasn1.DERBitString;
+import org.bouncycastle.bcasn1.DERSequence;
+import org.bouncycastle.bcasn1.x509.Certificate;
 import org.bouncycastle.tls.AlertDescription;
 import org.bouncycastle.tls.AlertLevel;
 import org.bouncycastle.tls.CertificateRequest;
@@ -32,9 +31,8 @@ import org.bouncycastle.tls.crypto.TlsCertificate;
 import org.bouncycastle.tls.crypto.TlsCrypto;
 import org.bouncycastle.tls.crypto.TlsStreamSigner;
 import org.bouncycastle.tls.crypto.impl.bc.BcTlsCrypto;
-import org.bouncycastle.tls.crypto.impl.jcajce.JcaTlsCryptoProvider;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.encoders.Hex;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 class TlsTestClientImpl
     extends DefaultTlsClient
@@ -64,35 +62,20 @@ class TlsTestClientImpl
         return firstFatalAlertDescription;
     }
 
+    public boolean shouldCheckSigAlgOfPeerCerts()
+    {
+        return config.clientCheckSigAlgOfServerCerts;
+    }
+
     public TlsCrypto getCrypto()
     {
         switch (config.clientCrypto)
         {
         case TlsTestConfig.CRYPTO_JCA:
-            return new JcaTlsCryptoProvider().setProvider(new BouncyCastleProvider()).create(new SecureRandom(), new SecureRandom());
+            return TlsTestSuite.JCA_CRYPTO;
         default:
-            return new BcTlsCrypto(new SecureRandom());
+            return TlsTestSuite.BC_CRYPTO;
         }
-    }
-
-    public ProtocolVersion getClientVersion()
-    {
-        if (config.clientOfferVersion != null)
-        {
-            return config.clientOfferVersion;
-        }
-
-        return super.getClientVersion();
-    }
-
-    public ProtocolVersion getMinimumVersion()
-    {
-        if (config.clientMinimumVersion != null)
-        {
-            return config.clientMinimumVersion;
-        }
-
-        return super.getMinimumVersion();
     }
 
     public Hashtable getClientExtensions() throws IOException
@@ -200,7 +183,10 @@ class TlsTestClientImpl
                 boolean isEmpty = serverCertificate == null || serverCertificate.getCertificate() == null
                     || serverCertificate.getCertificate().isEmpty();
                 if (isEmpty || !TlsTestUtils.isCertificateOneOf(context.getCrypto(), chain[0],
-                    new String[]{ "x509-server-dsa.pem", "x509-server-ecdsa.pem", "x509-server-rsa-enc.pem", "x509-server-rsa-sign.pem" }))
+                    new String[]
+                    { "x509-server-dsa.pem", "x509-server-ecdh.pem", "x509-server-ecdsa.pem", "x509-server-ed25519.pem",
+                        "x509-server-rsa_pss_256.pem", "x509-server-rsa_pss_384.pem", "x509-server-rsa_pss_512.pem",
+                        "x509-server-rsa-enc.pem", "x509-server-rsa-sign.pem" }))
                 {
                     throw new TlsFatalAlert(AlertDescription.bad_certificate);
                 }
@@ -319,6 +305,16 @@ class TlsTestClientImpl
         bs[bit >>> 3] ^= (1 << (bit & 7));
 
         return bs;
+    }
+
+    protected ProtocolVersion[] getSupportedVersions()
+    {
+        if (null != config.clientSupportedVersions)
+        {
+            return config.clientSupportedVersions;
+        }
+
+        return super.getSupportedVersions();
     }
 
     protected String hex(byte[] data)

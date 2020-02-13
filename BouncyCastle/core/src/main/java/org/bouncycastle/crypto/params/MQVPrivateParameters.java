@@ -1,6 +1,8 @@
 package org.bouncycastle.crypto.params;
 
 import org.bouncycastle.crypto.CipherParameters;
+import org.bouncycastle.math.ec.ECPoint;
+import org.bouncycastle.math.ec.FixedPointCombMultiplier;
 
 public class MQVPrivateParameters
     implements CipherParameters
@@ -10,16 +12,16 @@ public class MQVPrivateParameters
     private ECPublicKeyParameters ephemeralPublicKey;
 
     public MQVPrivateParameters(
-        ECPrivateKeyParameters  staticPrivateKey,
-        ECPrivateKeyParameters  ephemeralPrivateKey)
+        ECPrivateKeyParameters staticPrivateKey,
+        ECPrivateKeyParameters ephemeralPrivateKey)
     {
         this(staticPrivateKey, ephemeralPrivateKey, null);
     }
 
     public MQVPrivateParameters(
-        ECPrivateKeyParameters  staticPrivateKey,
-        ECPrivateKeyParameters  ephemeralPrivateKey,
-        ECPublicKeyParameters   ephemeralPublicKey)
+        ECPrivateKeyParameters staticPrivateKey,
+        ECPrivateKeyParameters ephemeralPrivateKey,
+        ECPublicKeyParameters ephemeralPublicKey)
     {
         if (staticPrivateKey == null)
         {
@@ -38,9 +40,9 @@ public class MQVPrivateParameters
 
         if (ephemeralPublicKey == null)
         {
-            ephemeralPublicKey = new ECPublicKeyParameters(
-                parameters.getG().multiply(ephemeralPrivateKey.getD()),
-                parameters);
+            ECPoint q = new FixedPointCombMultiplier().multiply(parameters.getG(), ephemeralPrivateKey.getD());
+
+            ephemeralPublicKey = new ECPublicKeyParameters(q, parameters);
         }
         else if (!parameters.equals(ephemeralPublicKey.getParameters()))
         {

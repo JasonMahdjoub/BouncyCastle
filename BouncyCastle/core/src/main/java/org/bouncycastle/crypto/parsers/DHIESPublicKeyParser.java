@@ -8,7 +8,7 @@ import org.bouncycastle.crypto.KeyParser;
 import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
 import org.bouncycastle.crypto.params.DHParameters;
 import org.bouncycastle.crypto.params.DHPublicKeyParameters;
-import org.bouncycastle.util.io.Streams;
+import org.bouncycastle.bcutil.io.Streams;
 
 public class DHIESPublicKeyParser
     implements KeyParser

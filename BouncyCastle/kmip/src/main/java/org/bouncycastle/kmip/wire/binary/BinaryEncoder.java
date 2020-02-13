@@ -11,7 +11,7 @@ import org.bouncycastle.kmip.wire.KMIPEncodable;
 import org.bouncycastle.kmip.wire.KMIPEncoder;
 import org.bouncycastle.kmip.wire.KMIPItem;
 import org.bouncycastle.kmip.wire.KMIPType;
-import org.bouncycastle.util.Strings;
+import org.bouncycastle.bcutil.Strings;
 
 public class BinaryEncoder
     implements KMIPEncoder

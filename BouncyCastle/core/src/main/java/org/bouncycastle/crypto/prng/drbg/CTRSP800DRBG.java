@@ -3,8 +3,8 @@ package org.bouncycastle.crypto.prng.drbg;
 import org.bouncycastle.crypto.BlockCipher;
 import org.bouncycastle.crypto.params.KeyParameter;
 import org.bouncycastle.crypto.prng.EntropySource;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.encoders.Hex;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 /**
  * A SP800-90A CTR DRBG.
@@ -157,7 +157,7 @@ public class CTRSP800DRBG
 
     // -- Internal state migration ---
     
-    private static final byte[] K_BITS = Hex.decode("000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F");
+    private static final byte[] K_BITS = Hex.decodeStrict("000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F");
 
     // 1. If (number_of_bits_to_return > max_number_of_bits), then return an
     // ERROR_FLAG.

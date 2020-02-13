@@ -2,7 +2,7 @@ package org.bouncycastle.est;
 
 import org.bouncycastle.cert.X509CRLHolder;
 import org.bouncycastle.cert.X509CertificateHolder;
-import org.bouncycastle.util.Store;
+import org.bouncycastle.bcutil.Store;
 
 /**
  * Holder class for a SimplePKIResponse containing the details making up /cacerts response.

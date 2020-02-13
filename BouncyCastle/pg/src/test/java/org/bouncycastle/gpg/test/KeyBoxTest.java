@@ -22,8 +22,8 @@ import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.openpgp.PGPPublicKey;
 import org.bouncycastle.openpgp.PGPPublicKeyRing;
 import org.bouncycastle.openpgp.operator.bc.BcKeyFingerprintCalculator;
-import org.bouncycastle.util.io.Streams;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.io.Streams;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class KeyBoxTest
     extends SimpleTest
@@ -366,6 +366,7 @@ public class KeyBoxTest
 
     }
 
+
     public void performTest()
         throws Exception
     {
@@ -379,5 +380,6 @@ public class KeyBoxTest
         testSuccessfulLoad();
         testInducedChecksumFailed();
     }
+
 
 }

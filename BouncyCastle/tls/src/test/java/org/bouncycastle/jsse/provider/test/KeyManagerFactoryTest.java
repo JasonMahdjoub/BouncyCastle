@@ -17,7 +17,7 @@ import javax.net.ssl.X509ExtendedKeyManager;
 import javax.security.auth.x500.X500Principal;
 
 import junit.framework.TestCase;
-import org.bouncycastle.asn1.x500.X500Name;
+import org.bouncycastle.bcasn1.x500.X500Name;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.jsse.provider.BouncyCastleJsseProvider;
 

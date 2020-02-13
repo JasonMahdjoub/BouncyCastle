@@ -4,7 +4,7 @@ import java.io.ByteArrayInputStream;
 
 import junit.framework.TestCase;
 import org.bouncycastle.mime.Headers;
-import org.bouncycastle.util.Strings;
+import org.bouncycastle.bcutil.Strings;
 
 public class MimeParserTest
     extends TestCase

@@ -32,8 +32,8 @@ import java.util.Set;
 import java.util.Vector;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.encoders.Base64;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.encoders.Base64;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class CertPathTest
     extends SimpleTest

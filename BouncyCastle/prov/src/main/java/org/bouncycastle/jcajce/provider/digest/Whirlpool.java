@@ -1,6 +1,6 @@
 package org.bouncycastle.jcajce.provider.digest;
 
-import org.bouncycastle.asn1.iso.ISOIECObjectIdentifiers;
+import org.bouncycastle.bcasn1.iso.ISOIECObjectIdentifiers;
 import org.bouncycastle.crypto.CipherKeyGenerator;
 import org.bouncycastle.crypto.digests.WhirlpoolDigest;
 import org.bouncycastle.crypto.macs.HMac;
@@ -35,7 +35,7 @@ public class Whirlpool
     }
 
     /**
-     * Tiger HMac
+     * Whirlpool HMac
      */
     public static class HashMac
         extends BaseMac

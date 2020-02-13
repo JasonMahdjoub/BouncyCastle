@@ -12,8 +12,8 @@ import org.bouncycastle.crypto.digests.SHA256Digest;
 import org.bouncycastle.math.Primes;
 import org.bouncycastle.math.Primes.MROutput;
 import org.bouncycastle.math.Primes.STOutput;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.BigIntegers;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.BigIntegers;
 
 public class PrimesTest extends TestCase
 {

@@ -4,7 +4,7 @@ import java.math.BigInteger;
 import java.security.SecureRandom;
 
 import org.bouncycastle.tls.crypto.TlsHash;
-import org.bouncycastle.util.BigIntegers;
+import org.bouncycastle.bcutil.BigIntegers;
 
 class SRP6Util
 {

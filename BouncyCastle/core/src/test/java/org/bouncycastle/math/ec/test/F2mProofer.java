@@ -10,11 +10,11 @@ import java.util.Iterator;
 import java.util.Properties;
 import java.util.Set;
 
-import org.bouncycastle.asn1.sec.SECNamedCurves;
-import org.bouncycastle.asn1.x9.X9ECParameters;
+import org.bouncycastle.bcasn1.sec.SECNamedCurves;
+import org.bouncycastle.bcasn1.x9.X9ECParameters;
 import org.bouncycastle.math.ec.ECFieldElement;
 import org.bouncycastle.math.ec.ECPoint;
-import org.bouncycastle.util.BigIntegers;
+import org.bouncycastle.bcutil.BigIntegers;
 
 public class F2mProofer
 {

@@ -6,8 +6,8 @@ import java.lang.*;
 import javax.microedition.midlet.MIDlet;
 import javax.microedition.lcdui.*;
 
-import org.bouncycastle.util.test.*;
-import org.bouncycastle.util.encoders.*;
+import org.bouncycastle.bcutil.test.*;
+import org.bouncycastle.bcutil.encoders.*;
 
 import org.bouncycastle.crypto.*;
 import org.bouncycastle.crypto.paddings.*;

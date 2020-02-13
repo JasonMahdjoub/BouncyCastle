@@ -5,24 +5,25 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.DERNull;
-import org.bouncycastle.asn1.bc.BCObjectIdentifiers;
-import org.bouncycastle.asn1.bsi.BSIObjectIdentifiers;
-import org.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
-import org.bouncycastle.asn1.eac.EACObjectIdentifiers;
-import org.bouncycastle.asn1.gm.GMObjectIdentifiers;
-import org.bouncycastle.asn1.nist.NISTObjectIdentifiers;
-import org.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
-import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.asn1.pkcs.RSASSAPSSparams;
-import org.bouncycastle.asn1.rosstandart.RosstandartObjectIdentifiers;
-import org.bouncycastle.asn1.teletrust.TeleTrusTObjectIdentifiers;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x9.X9ObjectIdentifiers;
-import org.bouncycastle.util.Strings;
+import org.bouncycastle.bcasn1.ASN1Encodable;
+import org.bouncycastle.bcasn1.ASN1Integer;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.DERNull;
+import org.bouncycastle.bcasn1.bc.DMBCObjectIdentifiers;
+import org.bouncycastle.bcasn1.bsi.BSIObjectIdentifiers;
+import org.bouncycastle.bcasn1.cryptopro.CryptoProObjectIdentifiers;
+import org.bouncycastle.bcasn1.eac.EACObjectIdentifiers;
+import org.bouncycastle.bcasn1.edec.EdECObjectIdentifiers;
+import org.bouncycastle.bcasn1.gm.GMObjectIdentifiers;
+import org.bouncycastle.bcasn1.nist.NISTObjectIdentifiers;
+import org.bouncycastle.bcasn1.oiw.OIWObjectIdentifiers;
+import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
+import org.bouncycastle.bcasn1.pkcs.RSASSAPSSparams;
+import org.bouncycastle.bcasn1.rosstandart.RosstandartObjectIdentifiers;
+import org.bouncycastle.bcasn1.teletrust.TeleTrusTObjectIdentifiers;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.x9.X9ObjectIdentifiers;
+import org.bouncycastle.bcutil.Strings;
 
 public class DefaultSignatureAlgorithmIdentifierFinder
     implements SignatureAlgorithmIdentifierFinder
@@ -125,45 +126,52 @@ public class DefaultSignatureAlgorithmIdentifierFinder
         algorithms.put("SHA256WITHCVC-ECDSA", EACObjectIdentifiers.id_TA_ECDSA_SHA_256);
         algorithms.put("SHA384WITHCVC-ECDSA", EACObjectIdentifiers.id_TA_ECDSA_SHA_384);
         algorithms.put("SHA512WITHCVC-ECDSA", EACObjectIdentifiers.id_TA_ECDSA_SHA_512);
-        algorithms.put("SHA3-512WITHSPHINCS256", BCObjectIdentifiers.sphincs256_with_SHA3_512);
-        algorithms.put("SHA512WITHSPHINCS256", BCObjectIdentifiers.sphincs256_with_SHA512);
+        algorithms.put("SHA3-512WITHSPHINCS256", DMBCObjectIdentifiers.sphincs256_with_SHA3_512);
+        algorithms.put("SHA512WITHSPHINCS256", DMBCObjectIdentifiers.sphincs256_with_SHA512);
+
+        algorithms.put("ED25519", EdECObjectIdentifiers.id_Ed25519);
+        algorithms.put("ED448", EdECObjectIdentifiers.id_Ed448);
+
+//        algorithms.put("RIPEMD160WITHSM2", GMObjectIdentifiers.sm2sign_with_rmd160);
+//        algorithms.put("SHA1WITHSM2", GMObjectIdentifiers.sm2sign_with_sha1);
+//        algorithms.put("SHA224WITHSM2", GMObjectIdentifiers.sm2sign_with_sha224);
+        algorithms.put("SHA256WITHSM2", GMObjectIdentifiers.sm2sign_with_sha256);
+//        algorithms.put("SHA384WITHSM2", GMObjectIdentifiers.sm2sign_with_sha384);
+//        algorithms.put("SHA512WITHSM2", GMObjectIdentifiers.sm2sign_with_sha512);
         algorithms.put("SM3WITHSM2", GMObjectIdentifiers.sm2sign_with_sm3);
 
-        algorithms.put("SHA256WITHXMSS", BCObjectIdentifiers.xmss_SHA256ph);
-        algorithms.put("SHA512WITHXMSS", BCObjectIdentifiers.xmss_SHA512ph);
-        algorithms.put("SHAKE128WITHXMSS", BCObjectIdentifiers.xmss_SHAKE128ph);
-        algorithms.put("SHAKE256WITHXMSS", BCObjectIdentifiers.xmss_SHAKE256ph);
+        algorithms.put("SHA256WITHXMSS", DMBCObjectIdentifiers.xmss_SHA256ph);
+        algorithms.put("SHA512WITHXMSS", DMBCObjectIdentifiers.xmss_SHA512ph);
+        algorithms.put("SHAKE128WITHXMSS", DMBCObjectIdentifiers.xmss_SHAKE128ph);
+        algorithms.put("SHAKE256WITHXMSS", DMBCObjectIdentifiers.xmss_SHAKE256ph);
 
-        algorithms.put("SHA256WITHXMSSMT", BCObjectIdentifiers.xmss_mt_SHA256ph);
-        algorithms.put("SHA512WITHXMSSMT", BCObjectIdentifiers.xmss_mt_SHA512ph);
-        algorithms.put("SHAKE128WITHXMSSMT", BCObjectIdentifiers.xmss_mt_SHAKE128ph);
-        algorithms.put("SHAKE256WITHXMSSMT", BCObjectIdentifiers.xmss_mt_SHAKE256ph);
+        algorithms.put("SHA256WITHXMSSMT", DMBCObjectIdentifiers.xmss_mt_SHA256ph);
+        algorithms.put("SHA512WITHXMSSMT", DMBCObjectIdentifiers.xmss_mt_SHA512ph);
+        algorithms.put("SHAKE128WITHXMSSMT", DMBCObjectIdentifiers.xmss_mt_SHAKE128ph);
+        algorithms.put("SHAKE256WITHXMSSMT", DMBCObjectIdentifiers.xmss_mt_SHAKE256ph);
 
-        algorithms.put("SHA256WITHXMSS-SHA256", BCObjectIdentifiers.xmss_SHA256ph);
-        algorithms.put("SHA512WITHXMSS-SHA512", BCObjectIdentifiers.xmss_SHA512ph);
-        algorithms.put("SHAKE128WITHXMSS-SHAKE128", BCObjectIdentifiers.xmss_SHAKE128ph);
-        algorithms.put("SHAKE256WITHXMSS-SHAKE256", BCObjectIdentifiers.xmss_SHAKE256ph);
+        algorithms.put("SHA256WITHXMSS-SHA256", DMBCObjectIdentifiers.xmss_SHA256ph);
+        algorithms.put("SHA512WITHXMSS-SHA512", DMBCObjectIdentifiers.xmss_SHA512ph);
+        algorithms.put("SHAKE128WITHXMSS-SHAKE128", DMBCObjectIdentifiers.xmss_SHAKE128ph);
+        algorithms.put("SHAKE256WITHXMSS-SHAKE256", DMBCObjectIdentifiers.xmss_SHAKE256ph);
 
-        algorithms.put("SHA256WITHXMSSMT-SHA256", BCObjectIdentifiers.xmss_mt_SHA256ph);
-        algorithms.put("SHA512WITHXMSSMT-SHA512", BCObjectIdentifiers.xmss_mt_SHA512ph);
-        algorithms.put("SHAKE128WITHXMSSMT-SHAKE128", BCObjectIdentifiers.xmss_mt_SHAKE128ph);
-        algorithms.put("SHAKE256WITHXMSSMT-SHAKE256", BCObjectIdentifiers.xmss_mt_SHAKE256ph);
+        algorithms.put("SHA256WITHXMSSMT-SHA256", DMBCObjectIdentifiers.xmss_mt_SHA256ph);
+        algorithms.put("SHA512WITHXMSSMT-SHA512", DMBCObjectIdentifiers.xmss_mt_SHA512ph);
+        algorithms.put("SHAKE128WITHXMSSMT-SHAKE128", DMBCObjectIdentifiers.xmss_mt_SHAKE128ph);
+        algorithms.put("SHAKE256WITHXMSSMT-SHAKE256", DMBCObjectIdentifiers.xmss_mt_SHAKE256ph);
 
-        algorithms.put("XMSS-SHA256", BCObjectIdentifiers.xmss_SHA256);
-        algorithms.put("XMSS-SHA512", BCObjectIdentifiers.xmss_SHA512);
-        algorithms.put("XMSS-SHAKE128", BCObjectIdentifiers.xmss_SHAKE128);
-        algorithms.put("XMSS-SHAKE256", BCObjectIdentifiers.xmss_SHAKE256);
+        algorithms.put("XMSS-SHA256", DMBCObjectIdentifiers.xmss_SHA256);
+        algorithms.put("XMSS-SHA512", DMBCObjectIdentifiers.xmss_SHA512);
+        algorithms.put("XMSS-SHAKE128", DMBCObjectIdentifiers.xmss_SHAKE128);
+        algorithms.put("XMSS-SHAKE256", DMBCObjectIdentifiers.xmss_SHAKE256);
 
-        algorithms.put("XMSSMT-SHA256", BCObjectIdentifiers.xmss_mt_SHA256);
-        algorithms.put("XMSSMT-SHA512", BCObjectIdentifiers.xmss_mt_SHA512);
-        algorithms.put("XMSSMT-SHAKE128", BCObjectIdentifiers.xmss_mt_SHAKE128);
-        algorithms.put("XMSSMT-SHAKE256", BCObjectIdentifiers.xmss_mt_SHAKE256);
+        algorithms.put("XMSSMT-SHA256", DMBCObjectIdentifiers.xmss_mt_SHA256);
+        algorithms.put("XMSSMT-SHA512", DMBCObjectIdentifiers.xmss_mt_SHA512);
+        algorithms.put("XMSSMT-SHAKE128", DMBCObjectIdentifiers.xmss_mt_SHAKE128);
+        algorithms.put("XMSSMT-SHAKE256", DMBCObjectIdentifiers.xmss_mt_SHAKE256);
 
-        algorithms.put("QTESLA-I", BCObjectIdentifiers.qTESLA_I);
-        algorithms.put("QTESLA-III-SIZE", BCObjectIdentifiers.qTESLA_III_size);
-        algorithms.put("QTESLA-III-SPEED", BCObjectIdentifiers.qTESLA_III_speed);
-        algorithms.put("QTESLA-P-I", BCObjectIdentifiers.qTESLA_p_I);
-        algorithms.put("QTESLA-P-III", BCObjectIdentifiers.qTESLA_p_III);
+        algorithms.put("QTESLA-P-I", DMBCObjectIdentifiers.qTESLA_p_I);
+        algorithms.put("QTESLA-P-III", DMBCObjectIdentifiers.qTESLA_p_III);
 
         //
         // According to RFC 3279, the ASN.1 encoding SHALL (id-dsa-with-sha1) or MUST (ecdsa-with-SHA*) omit the parameters field.
@@ -199,43 +207,50 @@ public class DefaultSignatureAlgorithmIdentifierFinder
         //
         // SPHINCS-256
         //
-        noParams.add(BCObjectIdentifiers.sphincs256_with_SHA512);
-        noParams.add(BCObjectIdentifiers.sphincs256_with_SHA3_512);
+        noParams.add(DMBCObjectIdentifiers.sphincs256_with_SHA512);
+        noParams.add(DMBCObjectIdentifiers.sphincs256_with_SHA3_512);
 
         //
         // XMSS
         //
-        noParams.add(BCObjectIdentifiers.xmss_SHA256ph);
-        noParams.add(BCObjectIdentifiers.xmss_SHA512ph);
-        noParams.add(BCObjectIdentifiers.xmss_SHAKE128ph);
-        noParams.add(BCObjectIdentifiers.xmss_SHAKE256ph);
-        noParams.add(BCObjectIdentifiers.xmss_mt_SHA256ph);
-        noParams.add(BCObjectIdentifiers.xmss_mt_SHA512ph);
-        noParams.add(BCObjectIdentifiers.xmss_mt_SHAKE128ph);
-        noParams.add(BCObjectIdentifiers.xmss_mt_SHAKE256ph);
+        noParams.add(DMBCObjectIdentifiers.xmss_SHA256ph);
+        noParams.add(DMBCObjectIdentifiers.xmss_SHA512ph);
+        noParams.add(DMBCObjectIdentifiers.xmss_SHAKE128ph);
+        noParams.add(DMBCObjectIdentifiers.xmss_SHAKE256ph);
+        noParams.add(DMBCObjectIdentifiers.xmss_mt_SHA256ph);
+        noParams.add(DMBCObjectIdentifiers.xmss_mt_SHA512ph);
+        noParams.add(DMBCObjectIdentifiers.xmss_mt_SHAKE128ph);
+        noParams.add(DMBCObjectIdentifiers.xmss_mt_SHAKE256ph);
 
-        noParams.add(BCObjectIdentifiers.xmss_SHA256);
-        noParams.add(BCObjectIdentifiers.xmss_SHA512);
-        noParams.add(BCObjectIdentifiers.xmss_SHAKE128);
-        noParams.add(BCObjectIdentifiers.xmss_SHAKE256);
-        noParams.add(BCObjectIdentifiers.xmss_mt_SHA256);
-        noParams.add(BCObjectIdentifiers.xmss_mt_SHA512);
-        noParams.add(BCObjectIdentifiers.xmss_mt_SHAKE128);
-        noParams.add(BCObjectIdentifiers.xmss_mt_SHAKE256);
+        noParams.add(DMBCObjectIdentifiers.xmss_SHA256);
+        noParams.add(DMBCObjectIdentifiers.xmss_SHA512);
+        noParams.add(DMBCObjectIdentifiers.xmss_SHAKE128);
+        noParams.add(DMBCObjectIdentifiers.xmss_SHAKE256);
+        noParams.add(DMBCObjectIdentifiers.xmss_mt_SHA256);
+        noParams.add(DMBCObjectIdentifiers.xmss_mt_SHA512);
+        noParams.add(DMBCObjectIdentifiers.xmss_mt_SHAKE128);
+        noParams.add(DMBCObjectIdentifiers.xmss_mt_SHAKE256);
 
         //
         // qTESLA
         //
-        noParams.add(BCObjectIdentifiers.qTESLA_I);
-        noParams.add(BCObjectIdentifiers.qTESLA_III_size);
-        noParams.add(BCObjectIdentifiers.qTESLA_III_speed);
-        noParams.add(BCObjectIdentifiers.qTESLA_p_I);
-        noParams.add(BCObjectIdentifiers.qTESLA_p_III);
+        noParams.add(DMBCObjectIdentifiers.qTESLA_p_I);
+        noParams.add(DMBCObjectIdentifiers.qTESLA_p_III);
 
         //
         // SM2
         //
+//        noParams.add(GMObjectIdentifiers.sm2sign_with_rmd160);
+//        noParams.add(GMObjectIdentifiers.sm2sign_with_sha1);
+//        noParams.add(GMObjectIdentifiers.sm2sign_with_sha224);
+        noParams.add(GMObjectIdentifiers.sm2sign_with_sha256);
+//        noParams.add(GMObjectIdentifiers.sm2sign_with_sha384);
+//        noParams.add(GMObjectIdentifiers.sm2sign_with_sha512);
         noParams.add(GMObjectIdentifiers.sm2sign_with_sm3);
+
+        // EdDSA
+        noParams.add(EdECObjectIdentifiers.id_Ed25519);
+        noParams.add(EdECObjectIdentifiers.id_Ed448);
 
         //
         // PKCS 1.5 encrypted  algorithms
@@ -318,6 +333,13 @@ public class DefaultSignatureAlgorithmIdentifierFinder
         digestOids.put(CryptoProObjectIdentifiers.gostR3411_94_with_gostR3410_2001, CryptoProObjectIdentifiers.gostR3411);
         digestOids.put(RosstandartObjectIdentifiers.id_tc26_signwithdigest_gost_3410_12_256, RosstandartObjectIdentifiers.id_tc26_gost_3411_12_256);
         digestOids.put(RosstandartObjectIdentifiers.id_tc26_signwithdigest_gost_3410_12_512, RosstandartObjectIdentifiers.id_tc26_gost_3411_12_512);
+
+//        digestOids.put(GMObjectIdentifiers.sm2sign_with_rmd160, TeleTrusTObjectIdentifiers.ripemd160);
+//        digestOids.put(GMObjectIdentifiers.sm2sign_with_sha1, OIWObjectIdentifiers.idSHA1);
+//        digestOids.put(GMObjectIdentifiers.sm2sign_with_sha224, NISTObjectIdentifiers.id_sha224);
+        digestOids.put(GMObjectIdentifiers.sm2sign_with_sha256, NISTObjectIdentifiers.id_sha256);
+//        digestOids.put(GMObjectIdentifiers.sm2sign_with_sha384, NISTObjectIdentifiers.id_sha384);
+//        digestOids.put(GMObjectIdentifiers.sm2sign_with_sha512, NISTObjectIdentifiers.id_sha512);
         digestOids.put(GMObjectIdentifiers.sm2sign_with_sm3, GMObjectIdentifiers.sm3);
     }
 

@@ -32,9 +32,9 @@ import java.util.Set;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1Encoding;
-import org.bouncycastle.asn1.x509.X509Extension;
+import org.bouncycastle.bcasn1.ASN1Encodable;
+import org.bouncycastle.bcasn1.ASN1Encoding;
+import org.bouncycastle.bcasn1.x509.X509Extension;
 import org.bouncycastle.x509.extension.X509ExtensionUtil;
 
 /**

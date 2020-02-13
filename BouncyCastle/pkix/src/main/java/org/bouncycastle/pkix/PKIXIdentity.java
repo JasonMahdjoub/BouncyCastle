@@ -1,7 +1,7 @@
 package org.bouncycastle.pkix;
 
-import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
-import org.bouncycastle.asn1.x509.SubjectKeyIdentifier;
+import org.bouncycastle.bcasn1.pkcs.PrivateKeyInfo;
+import org.bouncycastle.bcasn1.x509.SubjectKeyIdentifier;
 import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.cms.KeyTransRecipientId;
 import org.bouncycastle.cms.RecipientId;

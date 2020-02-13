@@ -7,8 +7,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.cms.CMSObjectIdentifiers;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.cms.CMSObjectIdentifiers;
 
 /**
  * a holding class for a file of data to be processed.

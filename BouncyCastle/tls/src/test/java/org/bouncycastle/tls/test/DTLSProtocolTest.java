@@ -7,7 +7,7 @@ import org.bouncycastle.tls.DTLSClientProtocol;
 import org.bouncycastle.tls.DTLSServerProtocol;
 import org.bouncycastle.tls.DTLSTransport;
 import org.bouncycastle.tls.DatagramTransport;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 public class DTLSProtocolTest
     extends TestCase

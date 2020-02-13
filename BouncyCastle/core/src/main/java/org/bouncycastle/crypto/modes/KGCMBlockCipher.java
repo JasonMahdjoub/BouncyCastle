@@ -3,7 +3,7 @@ package org.bouncycastle.crypto.modes;
 import java.io.ByteArrayOutputStream;
 
 import org.bouncycastle.crypto.*;
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
+import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.modes.kgcm.KGCMMultiplier;
 import org.bouncycastle.crypto.modes.kgcm.Tables16kKGCMMultiplier_512;
 import org.bouncycastle.crypto.modes.kgcm.Tables4kKGCMMultiplier_128;
@@ -11,8 +11,8 @@ import org.bouncycastle.crypto.modes.kgcm.Tables8kKGCMMultiplier_256;
 import org.bouncycastle.crypto.params.AEADParameters;
 import org.bouncycastle.crypto.params.KeyParameter;
 import org.bouncycastle.crypto.params.ParametersWithIV;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Pack;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.Pack;
 
 /**
  * Implementation of DSTU7624 GCM mode
@@ -191,12 +191,12 @@ public class KGCMBlockCipher
     }
 
     public int doFinal(byte[] out, int outOff)
-        throws IllegalStateException, BCInvalidCipherTextException
+        throws IllegalStateException, InvalidCipherTextException
     {
         int len = data.size();
         if (!forEncryption && len < macSize)
         {
-            throw new BCInvalidCipherTextException("data too short");
+            throw new InvalidCipherTextException("data too short");
         }
 
         // TODO Total blocks restriction in GCM mode (extend limit naturally for larger block sizes?)
@@ -269,7 +269,7 @@ public class KGCMBlockCipher
 
             if (!Arrays.constantTimeAreEqual(mac, calculatedMac))
             {
-                throw new BCInvalidCipherTextException("mac verification failed");
+                throw new InvalidCipherTextException("mac verification failed");
             }
 
             reset();

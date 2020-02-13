@@ -51,7 +51,7 @@ public class BufferedAsymmetricBlockCipher
      */
     public void init(
         boolean             forEncryption,
-        CipherParameters    params)
+        CipherParameters params)
     {
         reset();
 
@@ -138,10 +138,10 @@ public class BufferedAsymmetricBlockCipher
      *
      * @return the result of the encryption/decryption process on the
      * buffer.
-     * @exception BCInvalidCipherTextException if we are given a garbage block.
+     * @exception InvalidCipherTextException if we are given a garbage block.
      */
     public byte[] doFinal()
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         byte[] out = cipher.processBlock(buf, 0, bufOff);
 

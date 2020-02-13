@@ -2,9 +2,9 @@ package org.bouncycastle.cert.selector;
 
 import java.io.IOException;
 
-import org.bouncycastle.asn1.ASN1Encoding;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.util.Pack;
+import org.bouncycastle.bcasn1.ASN1Encoding;
+import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
+import org.bouncycastle.bcutil.Pack;
 
 class MSOutlookKeyIdCalculator
 {

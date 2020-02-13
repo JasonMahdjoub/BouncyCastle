@@ -1,13 +1,13 @@
 package org.bouncycastle.crypto.test;
 
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.crypto.Digest;
 import org.bouncycastle.crypto.digests.GOST3411Digest;
 import org.bouncycastle.crypto.generators.PKCS5S1ParametersGenerator;
 import org.bouncycastle.crypto.macs.HMac;
 import org.bouncycastle.crypto.params.KeyParameter;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Strings;
-import org.bouncycastle.util.encoders.Hex;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.Strings;
 
 public class GOST3411DigestTest
     extends DigestTest

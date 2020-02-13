@@ -9,8 +9,8 @@ import junit.framework.TestCase;
 
 import org.bouncycastle.crypto.tls.TlsClientProtocol;
 import org.bouncycastle.crypto.tls.TlsServerProtocol;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.io.Streams;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.io.Streams;
 
 public class TlsPSKProtocolTest
     extends TestCase

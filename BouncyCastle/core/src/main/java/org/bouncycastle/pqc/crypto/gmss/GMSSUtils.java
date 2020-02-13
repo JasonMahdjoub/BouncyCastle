@@ -3,7 +3,7 @@ package org.bouncycastle.pqc.crypto.gmss;
 import java.util.Enumeration;
 import java.util.Vector;
 
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 class GMSSUtils
 {

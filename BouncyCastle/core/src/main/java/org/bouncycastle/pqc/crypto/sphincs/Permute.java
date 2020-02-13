@@ -1,6 +1,6 @@
 package org.bouncycastle.pqc.crypto.sphincs;
 
-import org.bouncycastle.util.Pack;
+import org.bouncycastle.bcutil.Pack;
 
 class Permute
 {

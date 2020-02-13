@@ -6,12 +6,12 @@ import java.security.cert.CertStoreException;
 import java.security.cert.Certificate;
 import java.util.Collection;
 
-import org.bouncycastle.util.Selector;
+import org.bouncycastle.bcutil.Selector;
 
 /**
  * This class is a Selector implementation for certificates.
  * 
- * @see org.bouncycastle.util.Selector
+ * @see org.bouncycastle.bcutil.Selector
  */
 public class PKIXCertStoreSelector
     implements Selector

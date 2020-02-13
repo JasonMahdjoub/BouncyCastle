@@ -2,7 +2,10 @@ package org.bouncycastle.jce.provider.test;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.security.AlgorithmParameters;
@@ -13,6 +16,7 @@ import java.security.NoSuchProviderException;
 import java.security.PublicKey;
 import java.security.Security;
 import java.security.cert.CRL;
+import java.security.cert.CRLException;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
@@ -21,26 +25,27 @@ import java.security.cert.X509Certificate;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.RSAPrivateCrtKeySpec;
 import java.security.spec.RSAPublicKeySpec;
+import java.security.spec.X509EncodedKeySpec;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-import org.bouncycastle.asn1.ASN1EncodableVector;
-import org.bouncycastle.asn1.ASN1InputStream;
-import org.bouncycastle.asn1.DERSet;
-import org.bouncycastle.asn1.DERTaggedObject;
-import org.bouncycastle.asn1.cms.CMSObjectIdentifiers;
-import org.bouncycastle.asn1.cms.ContentInfo;
-import org.bouncycastle.asn1.cms.SignedData;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
+import org.bouncycastle.bcasn1.ASN1EncodableVector;
+import org.bouncycastle.bcasn1.ASN1InputStream;
+import org.bouncycastle.bcasn1.DERSet;
+import org.bouncycastle.bcasn1.DERTaggedObject;
+import org.bouncycastle.bcasn1.cms.CMSObjectIdentifiers;
+import org.bouncycastle.bcasn1.cms.ContentInfo;
+import org.bouncycastle.bcasn1.cms.SignedData;
+import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
 import org.bouncycastle.jce.interfaces.ECPublicKey;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.Strings;
-import org.bouncycastle.util.encoders.Base64;
-import org.bouncycastle.util.io.Streams;
-import org.bouncycastle.util.test.SimpleTest;
-import org.bouncycastle.util.test.TestFailedException;
+import org.bouncycastle.bcutil.Strings;
+import org.bouncycastle.bcutil.encoders.Base64;
+import org.bouncycastle.bcutil.io.Streams;
+import org.bouncycastle.bcutil.test.SimpleTest;
+import org.bouncycastle.bcutil.test.TestFailedException;
 
 public class CertTest
     extends SimpleTest
@@ -1153,6 +1158,34 @@ public class CertTest
 
     }
 
+    public void checkCertificate(
+        int id,
+        byte[] bytes,
+        PublicKey pubKey)
+    {
+        ByteArrayInputStream bIn;
+        String dump = "";
+
+        try
+        {
+            bIn = new ByteArrayInputStream(bytes);
+
+            CertificateFactory fact = CertificateFactory.getInstance("X.509", "BC");
+
+            Certificate cert = fact.generateCertificate(bIn);
+
+            PublicKey k = cert.getPublicKey();
+
+            cert.verify(pubKey);
+            //            System.out.println(cert);
+        }
+        catch (Exception e)
+        {
+            fail(dump + Strings.lineSeparator() + getName() + ": " + id + " failed - exception " + e.toString(), e);
+        }
+
+    }
+
     public void checkNameCertificate(
         int id,
         byte[] bytes)
@@ -1541,6 +1574,27 @@ public class CertTest
         x509.verify(x509.getPublicKey(), "BC");
     }
 
+    private void testCertificateSerialization()
+        throws Exception
+    {
+        CertificateFactory certFact = CertificateFactory.getInstance("X.509", "BC");
+
+        ByteArrayOutputStream bOut = new ByteArrayOutputStream();
+        ObjectOutputStream oOut = new ObjectOutputStream(bOut);
+
+        X509Certificate x509 = (X509Certificate)certFact.generateCertificate(new ByteArrayInputStream(gostRFC4491_2001));
+
+        oOut.writeObject(x509);
+        
+        oOut.close();
+
+        ObjectInputStream oIn = new ObjectInputStream(new ByteArrayInputStream(bOut.toByteArray()));
+
+        x509 = (X509Certificate)oIn.readObject();
+
+        x509.verify(x509.getPublicKey(), "BC");
+    }
+
     private void checkComparison(byte[] encCert)
         throws NoSuchProviderException, CertificateException
     {
@@ -1666,10 +1720,24 @@ public class CertTest
     {
         CertificateFactory certFact = CertificateFactory.getInstance("X.509", "BC");
 
-        Collection crls = certFact.generateCRLs(this.getClass().getResourceAsStream("cert_chain.txt"));
-        isTrue("multi crl", crls.isEmpty());
-        CRL crl = certFact.generateCRL(this.getClass().getResourceAsStream("cert_chain.txt"));
-        isTrue("single crl", crl == null);
+        try
+        {
+            certFact.generateCRLs(this.getClass().getResourceAsStream("cert_chain.txt"));
+            fail("multi crl - no exception");
+        }
+        catch (CRLException e)
+        {
+            // ignore
+        }
+        try
+        {
+            certFact.generateCRL(this.getClass().getResourceAsStream("cert_chain.txt"));
+            fail("single crl - no exception");
+        }
+        catch (CRLException e)
+        {
+            // ignore
+        }
     }
 
     private void pemFileTestWithNl()
@@ -1719,7 +1787,8 @@ public class CertTest
         checkCertificate(6, oldEcdsa);
         checkCertificate(7, cert7);
         checkCertificate(8, sm_sign);
-        checkCertificate(9, x25519Cert);
+        checkCertificate(9, x25519Cert,
+            KeyFactory.getInstance("EdDSA").generatePublic(new X509EncodedKeySpec(Base64.decode("MCowBQYDK2VwAyEAGb9ECWmEzf6FQbrBZ9w7lshQhqowtrbLDFw4rXAxZuE="))));
 
         checkComparison(cert1);
 
@@ -1769,6 +1838,7 @@ public class CertTest
         invalidCRLs();
 
         testForgedSignature();
+        testCertificateSerialization();
 
         checkCertificate(18, emptyDNCert);
 

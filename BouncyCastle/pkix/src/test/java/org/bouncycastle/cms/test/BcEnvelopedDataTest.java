@@ -22,17 +22,18 @@ import javax.crypto.SecretKey;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.DEROctetString;
-import org.bouncycastle.asn1.DERSet;
-import org.bouncycastle.asn1.DERUTF8String;
-import org.bouncycastle.asn1.cms.Attribute;
-import org.bouncycastle.asn1.cms.AttributeTable;
-import org.bouncycastle.asn1.misc.MiscObjectIdentifiers;
-import org.bouncycastle.asn1.nist.NISTObjectIdentifiers;
-import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.ASN1Sequence;
+import org.bouncycastle.bcasn1.DEROctetString;
+import org.bouncycastle.bcasn1.DERSet;
+import org.bouncycastle.bcasn1.DERUTF8String;
+import org.bouncycastle.bcasn1.cms.Attribute;
+import org.bouncycastle.bcasn1.cms.AttributeTable;
+import org.bouncycastle.bcasn1.misc.BCMiscObjectIdentifiers;
+import org.bouncycastle.bcasn1.nist.NISTObjectIdentifiers;
+import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
+import org.bouncycastle.bcasn1.pkcs.PrivateKeyInfo;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.cert.jcajce.JcaX509CertificateHolder;
 import org.bouncycastle.cms.CMSAlgorithm;
 import org.bouncycastle.cms.CMSEnvelopedData;
@@ -64,8 +65,7 @@ import org.bouncycastle.operator.bc.BcAESSymmetricKeyUnwrapper;
 import org.bouncycastle.operator.bc.BcAESSymmetricKeyWrapper;
 import org.bouncycastle.operator.bc.BcSymmetricKeyUnwrapper;
 import org.bouncycastle.operator.bc.BcSymmetricKeyWrapper;
-import org.bouncycastle.util.encoders.Base64;
-import org.bouncycastle.util.encoders.Hex;
+import org.bouncycastle.bcutil.encoders.Base64;
 
 public class BcEnvelopedDataTest
     extends TestCase
@@ -491,7 +491,7 @@ public class BcEnvelopedDataTest
     public void testKeyTransCAST5()
         throws Exception
     {
-        tryKeyTrans(CMSAlgorithm.CAST5_CBC, MiscObjectIdentifiers.cast5CBC, 16, ASN1Sequence.class);
+        tryKeyTrans(CMSAlgorithm.CAST5_CBC, BCMiscObjectIdentifiers.cast5CBC, 16, ASN1Sequence.class);
     }
 
     public void testKeyTransRC2()

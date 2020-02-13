@@ -23,10 +23,10 @@ import java.util.Vector;
 import org.bouncycastle.jce.cert.CertPath;
 import org.bouncycastle.jce.cert.CertificateFactory;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTestResult;
-import org.bouncycastle.util.test.Test;
-import org.bouncycastle.util.test.TestResult;
+import org.bouncycastle.bcutil.encoders.Hex;
+import org.bouncycastle.bcutil.test.SimpleTestResult;
+import org.bouncycastle.bcutil.test.Test;
+import org.bouncycastle.bcutil.test.TestResult;
 
 public class CertPathTest
     implements Test

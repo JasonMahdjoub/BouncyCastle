@@ -1,8 +1,8 @@
 package org.bouncycastle.cms;
 
-import org.bouncycastle.asn1.DEROctetString;
-import org.bouncycastle.asn1.cms.IssuerAndSerialNumber;
-import org.bouncycastle.asn1.cms.SignerIdentifier;
+import org.bouncycastle.bcasn1.DEROctetString;
+import org.bouncycastle.bcasn1.cms.IssuerAndSerialNumber;
+import org.bouncycastle.bcasn1.cms.SignerIdentifier;
 import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.operator.ContentSigner;
 import org.bouncycastle.operator.DigestCalculatorProvider;

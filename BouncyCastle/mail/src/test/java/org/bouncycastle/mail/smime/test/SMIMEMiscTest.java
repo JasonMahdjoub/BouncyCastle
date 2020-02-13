@@ -23,11 +23,11 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
 import junit.framework.TestCase;
-import org.bouncycastle.asn1.ASN1EncodableVector;
-import org.bouncycastle.asn1.cms.AttributeTable;
-import org.bouncycastle.asn1.smime.SMIMECapabilitiesAttribute;
-import org.bouncycastle.asn1.smime.SMIMECapability;
-import org.bouncycastle.asn1.smime.SMIMECapabilityVector;
+import org.bouncycastle.bcasn1.ASN1EncodableVector;
+import org.bouncycastle.bcasn1.cms.AttributeTable;
+import org.bouncycastle.bcasn1.smime.SMIMECapabilitiesAttribute;
+import org.bouncycastle.bcasn1.smime.SMIMECapability;
+import org.bouncycastle.bcasn1.smime.SMIMECapabilityVector;
 import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.cert.jcajce.JcaCertStore;
 import org.bouncycastle.cms.CMSAlgorithm;
@@ -52,7 +52,7 @@ import org.bouncycastle.mail.smime.SMIMESignedParser;
 import org.bouncycastle.mail.smime.SMIMEUtil;
 import org.bouncycastle.mail.smime.util.FileBackedMimeBodyPart;
 import org.bouncycastle.operator.jcajce.JcaDigestCalculatorProviderBuilder;
-import org.bouncycastle.util.Store;
+import org.bouncycastle.bcutil.Store;
 
 public class SMIMEMiscTest
     extends TestCase

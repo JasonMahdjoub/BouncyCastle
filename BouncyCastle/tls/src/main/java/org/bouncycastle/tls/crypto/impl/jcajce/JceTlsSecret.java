@@ -10,8 +10,8 @@ import org.bouncycastle.tls.TlsUtils;
 import org.bouncycastle.tls.crypto.TlsSecret;
 import org.bouncycastle.tls.crypto.impl.AbstractTlsCrypto;
 import org.bouncycastle.tls.crypto.impl.AbstractTlsSecret;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Strings;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.Strings;
 
 /**
  * JCE support class for handling TLS secrets and deriving key material and other secrets from them.
@@ -46,6 +46,11 @@ public class JceTlsSecret
         {
             throw new IllegalStateException(); // TODO
         }
+    }
+
+    protected TlsSecret adoptLocalSecret(byte[] data)
+    {
+        return crypto.adoptLocalSecret(data);
     }
 
     protected AbstractTlsCrypto getCrypto()
@@ -102,7 +107,8 @@ public class JceTlsSecret
     protected byte[] prf_1_2(int prfAlgorithm, byte[] secret, byte[] labelSeed, int length)
         throws GeneralSecurityException
     {
-        String digestName = crypto.getDigestName(TlsUtils.getHashAlgorithmForPRFAlgorithm(prfAlgorithm)).replace("-", "");
+
+        String digestName = crypto.getDigestName(TlsUtils.getHashAlgorithmForPRFAlgorithm(prfAlgorithm)).replaceAll("-", "");
         byte[] result = new byte[length];
         hmacHash(digestName, secret, 0, secret.length, labelSeed, result);
         return result;

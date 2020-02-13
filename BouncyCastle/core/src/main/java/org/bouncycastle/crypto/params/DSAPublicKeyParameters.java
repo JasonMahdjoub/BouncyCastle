@@ -12,7 +12,7 @@ public class DSAPublicKeyParameters
 
     public DSAPublicKeyParameters(
         BigInteger      y,
-        DSAParameters   params)
+        DSAParameters params)
     {
         super(false, params);
 

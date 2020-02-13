@@ -38,32 +38,32 @@ import java.util.Set;
 
 import javax.security.auth.x500.X500Principal;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1Enumerated;
-import org.bouncycastle.asn1.ASN1GeneralizedTime;
-import org.bouncycastle.asn1.ASN1InputStream;
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1OctetString;
-import org.bouncycastle.asn1.ASN1OutputStream;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.DEROctetString;
-import org.bouncycastle.asn1.DERSequence;
-import org.bouncycastle.asn1.isismtt.ISISMTTObjectIdentifiers;
-import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.asn1.x500.style.RFC4519Style;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x509.AuthorityKeyIdentifier;
-import org.bouncycastle.asn1.x509.CRLDistPoint;
-import org.bouncycastle.asn1.x509.CRLReason;
-import org.bouncycastle.asn1.x509.DistributionPoint;
-import org.bouncycastle.asn1.x509.DistributionPointName;
-import org.bouncycastle.asn1.x509.Extension;
-import org.bouncycastle.asn1.x509.GeneralName;
-import org.bouncycastle.asn1.x509.GeneralNames;
-import org.bouncycastle.asn1.x509.PolicyInformation;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
+import org.bouncycastle.bcasn1.ASN1Encodable;
+import org.bouncycastle.bcasn1.ASN1Enumerated;
+import org.bouncycastle.bcasn1.ASN1GeneralizedTime;
+import org.bouncycastle.bcasn1.ASN1InputStream;
+import org.bouncycastle.bcasn1.ASN1Integer;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.ASN1OctetString;
+import org.bouncycastle.bcasn1.ASN1OutputStream;
+import org.bouncycastle.bcasn1.ASN1Primitive;
+import org.bouncycastle.bcasn1.ASN1Sequence;
+import org.bouncycastle.bcasn1.DEROctetString;
+import org.bouncycastle.bcasn1.DERSequence;
+import org.bouncycastle.bcasn1.isismtt.ISISMTTObjectIdentifiers;
+import org.bouncycastle.bcasn1.x500.X500Name;
+import org.bouncycastle.bcasn1.x500.style.RFC4519Style;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.x509.AuthorityKeyIdentifier;
+import org.bouncycastle.bcasn1.x509.CRLDistPoint;
+import org.bouncycastle.bcasn1.x509.CRLReason;
+import org.bouncycastle.bcasn1.x509.DistributionPoint;
+import org.bouncycastle.bcasn1.x509.DistributionPointName;
+import org.bouncycastle.bcasn1.x509.Extension;
+import org.bouncycastle.bcasn1.x509.GeneralName;
+import org.bouncycastle.bcasn1.x509.GeneralNames;
+import org.bouncycastle.bcasn1.x509.PolicyInformation;
+import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
 import org.bouncycastle.jcajce.PKIXCRLStore;
 import org.bouncycastle.jcajce.PKIXCRLStoreSelector;
 import org.bouncycastle.jcajce.PKIXCertStore;
@@ -71,11 +71,10 @@ import org.bouncycastle.jcajce.PKIXCertStoreSelector;
 import org.bouncycastle.jcajce.PKIXExtendedParameters;
 import org.bouncycastle.jcajce.util.JcaJceHelper;
 import org.bouncycastle.jce.exception.ExtCertPathValidatorException;
-import org.bouncycastle.util.Selector;
-import org.bouncycastle.util.Store;
-import org.bouncycastle.util.StoreException;
+import org.bouncycastle.bcutil.Selector;
+import org.bouncycastle.bcutil.Store;
+import org.bouncycastle.bcutil.StoreException;
 import org.bouncycastle.x509.X509AttributeCertificate;
-import org.bouncycastle.x509.extension.X509ExtensionUtil;
 
 class CertPathValidatorUtilities
 {
@@ -163,16 +162,11 @@ class CertPathValidatorUtilities
         Exception invalidKeyEx = null;
 
         X509CertSelector certSelectX509 = new X509CertSelector();
-        X500Name certIssuer = PrincipalUtils.getEncodedIssuerPrincipal(cert);
 
-        try
-        {
-            certSelectX509.setSubject(certIssuer.getEncoded());
-        }
-        catch (IOException ex)
-        {
-            throw new AnnotatedException("Cannot set subject search criteria for trust anchor.", ex);
-        }
+        final X500Principal certIssuerPrincipal = cert.getIssuerX500Principal();
+        certSelectX509.setSubject(certIssuerPrincipal);
+
+        X500Name certIssuerName = null;
 
         Iterator iter = trustAnchors.iterator();
         while (iter.hasNext() && trust == null)
@@ -189,13 +183,20 @@ class CertPathValidatorUtilities
                     trust = null;
                 }
             }
-            else if (trust.getCAName() != null
+            else if (trust.getCA() != null
+                && trust.getCAName() != null
                 && trust.getCAPublicKey() != null)
             {
+                if (certIssuerName == null)
+                {
+                    certIssuerName = X500Name.getInstance(certIssuerPrincipal.getEncoded());
+                }
+
                 try
                 {
-                    X500Name caName = PrincipalUtils.getCA(trust);
-                    if (certIssuer.equals(caName))
+                    X500Name caName = X500Name.getInstance(trust.getCA().getEncoded());
+
+                    if (certIssuerName.equals(caName))
                     {
                         trustPublicKey = trust.getCAPublicKey();
                     }
@@ -334,10 +335,9 @@ class CertPathValidatorUtilities
         try
         {
             ASN1InputStream aIn = new ASN1InputStream(ext);
-            ASN1OctetString octs = (ASN1OctetString)aIn.readObject();
+            ASN1OctetString octs = ASN1OctetString.getInstance(aIn.readObject());
 
-            aIn = new ASN1InputStream(octs.getOctets());
-            return aIn.readObject();
+            return ASN1Primitive.fromByteArray(octs.getOctets());
         }
         catch (Exception e)
         {
@@ -381,10 +381,9 @@ class CertPathValidatorUtilities
         }
 
         ByteArrayOutputStream bOut = new ByteArrayOutputStream();
-        ASN1OutputStream aOut = new ASN1OutputStream(bOut);
+        ASN1OutputStream aOut = ASN1OutputStream.create(bOut);
 
         Enumeration e = qualifiers.getObjects();
-
         while (e.hasMoreElements())
         {
             try
@@ -916,7 +915,7 @@ class CertPathValidatorUtilities
             }
             else
             {
-                certIssuer = X500Name.getInstance(certificateIssuer.getEncoded());
+                certIssuer = PrincipalUtils.getX500Name(certificateIssuer);
             }
 
             if (! PrincipalUtils.getEncodedIssuerPrincipal(cert).equals(certIssuer))
@@ -941,6 +940,12 @@ class CertPathValidatorUtilities
         ASN1Enumerated reasonCode = null;
         if (crl_entry.hasExtensions())
         {
+            if (crl_entry.hasUnsupportedCriticalExtension())
+            {
+                throw new AnnotatedException(
+                      "CRL entry has unsupported critical extensions.");
+            }
+
             try
             {
                 reasonCode = ASN1Enumerated
@@ -956,26 +961,19 @@ class CertPathValidatorUtilities
             }
         }
 
-        // for reason keyCompromise, caCompromise, aACompromise or
-        // unspecified
-        if (!(validDate.getTime() < crl_entry.getRevocationDate().getTime())
-            || reasonCode == null
-            || reasonCode.getValue().intValue() == 0
-            || reasonCode.getValue().intValue() == 1
-            || reasonCode.getValue().intValue() == 2
-            || reasonCode.getValue().intValue() == 8)
-        {
+        int reasonCodeValue = (null == reasonCode)
+            ?   CRLReason.unspecified
+            :   reasonCode.intValueExact();
 
-            // (i) or (j) (1)
-            if (reasonCode != null)
-            {
-                certStatus.setCertStatus(reasonCode.getValue().intValue());
-            }
-            // (i) or (j) (2)
-            else
-            {
-                certStatus.setCertStatus(CRLReason.unspecified);
-            }
+        // for reason keyCompromise, caCompromise, aACompromise or unspecified
+        if (!(validDate.getTime() < crl_entry.getRevocationDate().getTime())
+            || reasonCodeValue == CRLReason.unspecified
+            || reasonCodeValue == CRLReason.keyCompromise
+            || reasonCodeValue == CRLReason.cACompromise
+            || reasonCodeValue == CRLReason.aACompromise)
+        {
+            // (i) or (j)
+            certStatus.setCertStatus(reasonCodeValue);
             certStatus.setRevocationDate(crl_entry.getRevocationDate());
         }
     }
@@ -1283,10 +1281,10 @@ class CertPathValidatorUtilities
         {
             selector.setSubject(PrincipalUtils.getIssuerPrincipal(cert).getEncoded());
         }
-        catch (IOException e)
+        catch (Exception e)
         {
             throw new AnnotatedException(
-                           "Subject criteria for certificate selector to find issuer certificate could not be set.", e);
+                "Subject criteria for certificate selector to find issuer certificate could not be set.", e);
         }
 
         try

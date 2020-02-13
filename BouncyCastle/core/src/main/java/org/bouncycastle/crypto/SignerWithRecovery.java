@@ -30,5 +30,5 @@ public interface SignerWithRecovery
      * @throws IllegalStateException
      */
     public void updateWithRecoveredMessage(byte[] signature)
-        throws BCInvalidCipherTextException;
+        throws InvalidCipherTextException;
 }

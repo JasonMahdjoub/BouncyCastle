@@ -15,10 +15,13 @@ import org.bouncycastle.crypto.params.DHKeyGenerationParameters;
 import org.bouncycastle.crypto.params.DHParameters;
 import org.bouncycastle.crypto.params.DHPrivateKeyParameters;
 import org.bouncycastle.crypto.params.DHPublicKeyParameters;
-import org.bouncycastle.util.BigIntegers;
-import org.bouncycastle.util.Integers;
-import org.bouncycastle.util.encoders.Hex;
+import org.bouncycastle.bcutil.BigIntegers;
+import org.bouncycastle.bcutil.Integers;
+import org.bouncycastle.bcutil.encoders.Hex;
 
+/**
+ * @deprecated Migrate to the (D)TLS API in org.bouncycastle.tls (bctls jar).
+ */
 public class TlsDHUtils
 {
     static final BigInteger TWO = BigInteger.valueOf(2);
@@ -30,7 +33,7 @@ public class TlsDHUtils
      */
     private static BigInteger fromHex(String hex)
     {
-        return new BigInteger(1, Hex.decode(hex));
+        return new BigInteger(1, Hex.decodeStrict(hex));
     }
 
     private static DHParameters fromSafeP(String hexP)
@@ -462,7 +465,7 @@ public class TlsDHUtils
     }
 
     public static DHPrivateKeyParameters generateEphemeralClientKeyExchange(SecureRandom random, DHParameters dhParams,
-        OutputStream output) throws IOException
+                                                                            OutputStream output) throws IOException
     {
         AsymmetricCipherKeyPair kp = generateDHKeyPair(random, dhParams);
 
@@ -473,7 +476,7 @@ public class TlsDHUtils
     }
 
     public static DHPrivateKeyParameters generateEphemeralServerKeyExchange(SecureRandom random, DHParameters dhParams,
-        OutputStream output) throws IOException
+                                                                            OutputStream output) throws IOException
     {
         AsymmetricCipherKeyPair kp = generateDHKeyPair(random, dhParams);
 

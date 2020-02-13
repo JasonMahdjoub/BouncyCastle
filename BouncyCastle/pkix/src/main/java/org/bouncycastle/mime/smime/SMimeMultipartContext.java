@@ -5,7 +5,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Map;
 
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.mime.CanonicalOutputStream;
 import org.bouncycastle.mime.Headers;
 import org.bouncycastle.mime.MimeContext;
@@ -13,8 +13,8 @@ import org.bouncycastle.mime.MimeMultipartContext;
 import org.bouncycastle.mime.MimeParserContext;
 import org.bouncycastle.operator.DigestCalculator;
 import org.bouncycastle.operator.OperatorCreationException;
-import org.bouncycastle.util.io.TeeInputStream;
-import org.bouncycastle.util.io.TeeOutputStream;
+import org.bouncycastle.bcutil.io.TeeInputStream;
+import org.bouncycastle.bcutil.io.TeeOutputStream;
 
 public class SMimeMultipartContext
     implements MimeMultipartContext

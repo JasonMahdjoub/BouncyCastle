@@ -20,8 +20,8 @@ import java.util.Hashtable;
 import org.bouncycastle.jce.X509Principal;
 import org.bouncycastle.x509.X509V3CertificateGenerator;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.encoders.Base64;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.encoders.Base64;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**
  * Exercise the various key stores, making sure we at least get back what we put in!

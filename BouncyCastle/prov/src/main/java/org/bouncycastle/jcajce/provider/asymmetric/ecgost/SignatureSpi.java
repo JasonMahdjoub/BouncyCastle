@@ -7,9 +7,9 @@ import java.security.PublicKey;
 import java.security.SignatureException;
 import java.security.spec.AlgorithmParameterSpec;
 
-import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.asn1.x509.X509ObjectIdentifiers;
+import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
+import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
+import org.bouncycastle.bcasn1.x509.X509ObjectIdentifiers;
 import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.DSAExt;
 import org.bouncycastle.crypto.Digest;
@@ -41,7 +41,7 @@ public class SignatureSpi
         PublicKey   publicKey)
         throws InvalidKeyException
     {
-        CipherParameters    param;
+        CipherParameters param;
 
         if (publicKey instanceof ECPublicKey)
         {
@@ -75,7 +75,7 @@ public class SignatureSpi
         PrivateKey  privateKey)
         throws InvalidKeyException
     {
-        CipherParameters    param;
+        CipherParameters param;
 
         if (privateKey instanceof ECKey)
         {

@@ -3,17 +3,23 @@ package org.bouncycastle.tls.test;
 import org.bouncycastle.tls.DTLSTransport;
 import org.bouncycastle.tls.DatagramTransport;
 import org.bouncycastle.tls.ProtocolVersion;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 import junit.framework.TestCase;
 
 public class DTLSTestCase extends TestCase
 {
-    private static void checkDTLSVersion(ProtocolVersion version)
+    private static void checkDTLSVersions(ProtocolVersion[] versions)
     {
-        if (version != null && !version.isDTLS())
+        if (versions != null)
         {
-            throw new IllegalStateException("Non-DTLS version");
+            for (int i = 0; i < versions.length; ++i)
+            {
+                if (!versions[i].isDTLS())
+                {
+                    throw new IllegalStateException("Non-DTLS version");
+                }
+            }
         }
     }
 
@@ -30,10 +36,8 @@ public class DTLSTestCase extends TestCase
     {
         super(name);
 
-        checkDTLSVersion(config.clientMinimumVersion);
-        checkDTLSVersion(config.clientOfferVersion);
-        checkDTLSVersion(config.serverMaximumVersion);
-        checkDTLSVersion(config.serverMinimumVersion);
+        checkDTLSVersions(config.clientSupportedVersions);
+        checkDTLSVersions(config.serverSupportedVersions);
 
         this.config = config;
     }

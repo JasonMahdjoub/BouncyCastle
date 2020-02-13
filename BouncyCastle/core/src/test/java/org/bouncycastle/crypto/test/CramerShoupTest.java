@@ -12,8 +12,8 @@ import org.bouncycastle.crypto.generators.CramerShoupKeyPairGenerator;
 import org.bouncycastle.crypto.generators.CramerShoupParametersGenerator;
 import org.bouncycastle.crypto.params.CramerShoupKeyGenerationParameters;
 import org.bouncycastle.crypto.params.CramerShoupParameters;
-import org.bouncycastle.util.BigIntegers;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.BigIntegers;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class CramerShoupTest
     extends SimpleTest

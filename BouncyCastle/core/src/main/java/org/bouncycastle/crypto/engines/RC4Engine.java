@@ -30,7 +30,7 @@ public class RC4Engine implements StreamCipher
      */
     public void init(
         boolean             forEncryption, 
-        CipherParameters     params
+        CipherParameters params
    )
     {
         if (params instanceof KeyParameter)

@@ -4,14 +4,14 @@ import junit.extensions.TestSetup;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import org.bouncycastle.util.test.SimpleTestResult;
+import org.bouncycastle.bcutil.test.SimpleTestResult;
 
 public class AllTests
     extends TestCase
 {   
     public void testCrypto()
     {   
-        org.bouncycastle.util.test.Test[] tests = RegressionTest.tests;
+        org.bouncycastle.bcutil.test.Test[] tests = RegressionTest.tests;
         
         for (int i = 0; i != tests.length; i++)
         {

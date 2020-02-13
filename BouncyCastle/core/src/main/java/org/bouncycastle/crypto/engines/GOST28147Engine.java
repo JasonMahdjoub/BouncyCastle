@@ -3,14 +3,14 @@ package org.bouncycastle.crypto.engines;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
-import org.bouncycastle.crypto.BlockCipher;
 import org.bouncycastle.crypto.CipherParameters;
+import org.bouncycastle.crypto.BlockCipher;
 import org.bouncycastle.crypto.DataLengthException;
 import org.bouncycastle.crypto.OutputLengthException;
 import org.bouncycastle.crypto.params.KeyParameter;
 import org.bouncycastle.crypto.params.ParametersWithSBox;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Strings;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.Strings;
 
 /**
  * implementation of GOST 28147-89
@@ -172,11 +172,11 @@ public class GOST28147Engine
      */
     public void init(
         boolean           forEncryption,
-        CipherParameters  params)
+        CipherParameters params)
     {
         if (params instanceof ParametersWithSBox)
         {
-            ParametersWithSBox   param = (ParametersWithSBox)params;
+            ParametersWithSBox param = (ParametersWithSBox)params;
 
             //
             // Set the S-Box

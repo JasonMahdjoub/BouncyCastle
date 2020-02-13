@@ -3,7 +3,7 @@ package org.bouncycastle.test.qtesla;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 
-import org.bouncycastle.util.test.FixedSecureRandom;
+import org.bouncycastle.bcutil.test.FixedSecureRandom;
 
 /**
  * Factory for producing FixedSecureRandom objects for use with testsing

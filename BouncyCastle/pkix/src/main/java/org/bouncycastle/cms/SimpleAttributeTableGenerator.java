@@ -1,6 +1,6 @@
 package org.bouncycastle.cms;
 
-import org.bouncycastle.asn1.cms.AttributeTable;
+import org.bouncycastle.bcasn1.cms.AttributeTable;
 
 import java.util.Map;
 

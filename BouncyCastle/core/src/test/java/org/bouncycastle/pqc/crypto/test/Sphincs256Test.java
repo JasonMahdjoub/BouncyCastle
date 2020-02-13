@@ -7,14 +7,11 @@ import org.bouncycastle.crypto.digests.SHA3Digest;
 import org.bouncycastle.crypto.digests.SHA512Digest;
 import org.bouncycastle.crypto.digests.SHA512tDigest;
 import org.bouncycastle.pqc.crypto.MessageSigner;
-import org.bouncycastle.pqc.crypto.sphincs.SPHINCS256KeyGenerationParameters;
-import org.bouncycastle.pqc.crypto.sphincs.SPHINCS256KeyPairGenerator;
-import org.bouncycastle.pqc.crypto.sphincs.SPHINCS256Signer;
-import org.bouncycastle.pqc.crypto.sphincs.SPHINCSPrivateKeyParameters;
+import org.bouncycastle.pqc.crypto.sphincs.*;
 import org.bouncycastle.pqc.crypto.sphincs.SPHINCSPublicKeyParameters;
-import org.bouncycastle.util.Strings;
-import org.bouncycastle.util.encoders.Base64;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.Strings;
+import org.bouncycastle.bcutil.encoders.Base64;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 
 public class Sphincs256Test

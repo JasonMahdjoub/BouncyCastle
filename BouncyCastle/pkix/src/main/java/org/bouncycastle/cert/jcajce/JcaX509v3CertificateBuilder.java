@@ -8,10 +8,10 @@ import java.util.Date;
 
 import javax.security.auth.x500.X500Principal;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.asn1.x509.Time;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.x500.X500Name;
+import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
+import org.bouncycastle.bcasn1.x509.Time;
 import org.bouncycastle.cert.X509v3CertificateBuilder;
 
 /**
@@ -95,6 +95,17 @@ public class JcaX509v3CertificateBuilder
     public JcaX509v3CertificateBuilder(X509Certificate issuerCert, BigInteger serial, Date notBefore, Date notAfter, X500Name subject, PublicKey publicKey)
     {
         this(X500Name.getInstance(issuerCert.getSubjectX500Principal().getEncoded()), serial, notBefore, notAfter, subject, publicKey);
+    }
+
+    /**
+     * Create a builder for a version 3 certificate, initialised with another certificate.
+     *
+     * @param template template certificate to base the new one on.
+     */
+    public JcaX509v3CertificateBuilder(X509Certificate template)
+        throws CertificateEncodingException
+    {
+         super(new JcaX509CertificateHolder(template));
     }
 
     /**

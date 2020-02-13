@@ -1,10 +1,7 @@
 package org.bouncycastle.crypto.test.speedy;
 
-import org.bouncycastle.crypto.BlockCipher;
+import org.bouncycastle.crypto.*;
 import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.DataLengthException;
-import org.bouncycastle.crypto.Mac;
-import org.bouncycastle.crypto.OutputLengthException;
 import org.bouncycastle.crypto.generators.Poly1305KeyGenerator;
 import org.bouncycastle.crypto.params.KeyParameter;
 import org.bouncycastle.crypto.params.ParametersWithIV;

@@ -9,11 +9,11 @@ import javax.crypto.interfaces.DHPublicKey;
 import javax.crypto.spec.DHParameterSpec;
 import javax.crypto.spec.DHPublicKeySpec;
 
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.oiw.ElGamalParameter;
-import org.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
+import org.bouncycastle.bcasn1.ASN1Integer;
+import org.bouncycastle.bcasn1.oiw.ElGamalParameter;
+import org.bouncycastle.bcasn1.oiw.OIWObjectIdentifiers;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
 import org.bouncycastle.crypto.params.ElGamalPublicKeyParameters;
 import org.bouncycastle.jcajce.provider.asymmetric.util.KeyUtil;
 import org.bouncycastle.jce.interfaces.ElGamalPublicKey;
@@ -57,7 +57,7 @@ public class JCEElGamalPublicKey
     }
     
     JCEElGamalPublicKey(
-        ElGamalPublicKeyParameters  params)
+        ElGamalPublicKeyParameters params)
     {
         this.y = params.getY();
         this.elSpec = new ElGamalParameterSpec(params.getParameters().getP(), params.getParameters().getG());

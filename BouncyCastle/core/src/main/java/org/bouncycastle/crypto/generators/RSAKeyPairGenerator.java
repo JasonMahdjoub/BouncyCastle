@@ -10,7 +10,7 @@ import org.bouncycastle.crypto.params.RSAKeyParameters;
 import org.bouncycastle.crypto.params.RSAPrivateCrtKeyParameters;
 import org.bouncycastle.math.Primes;
 import org.bouncycastle.math.ec.WNafUtil;
-import org.bouncycastle.util.BigIntegers;
+import org.bouncycastle.bcutil.BigIntegers;
 
 /**
  * an RSA key pair generator.

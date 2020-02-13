@@ -1,15 +1,15 @@
 package org.bouncycastle.jce.provider.test;
 
-import org.bouncycastle.asn1.ASN1EncodableVector;
-import org.bouncycastle.asn1.ASN1InputStream;
-import org.bouncycastle.asn1.DERSet;
-import org.bouncycastle.asn1.DERTaggedObject;
-import org.bouncycastle.asn1.cms.CMSObjectIdentifiers;
-import org.bouncycastle.asn1.cms.ContentInfo;
-import org.bouncycastle.asn1.cms.SignedData;
+import org.bouncycastle.bcasn1.ASN1EncodableVector;
+import org.bouncycastle.bcasn1.ASN1InputStream;
+import org.bouncycastle.bcasn1.DERSet;
+import org.bouncycastle.bcasn1.DERTaggedObject;
+import org.bouncycastle.bcasn1.cms.CMSObjectIdentifiers;
+import org.bouncycastle.bcasn1.cms.ContentInfo;
+import org.bouncycastle.bcasn1.cms.SignedData;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.encoders.Base64;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.encoders.Base64;
+import org.bouncycastle.bcutil.test.SimpleTest;
 import org.bouncycastle.x509.X509AttributeCertificate;
 import org.bouncycastle.x509.X509CertificatePair;
 import org.bouncycastle.x509.X509StreamParser;

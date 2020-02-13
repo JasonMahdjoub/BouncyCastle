@@ -10,7 +10,7 @@ import org.bouncycastle.crypto.ExtendedDigest;
 import org.bouncycastle.crypto.digests.SHA1Digest;
 import org.bouncycastle.crypto.digests.SHA512Digest;
 import org.bouncycastle.crypto.digests.ShortenedDigest;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class ShortenedDigestTest
     extends SimpleTest

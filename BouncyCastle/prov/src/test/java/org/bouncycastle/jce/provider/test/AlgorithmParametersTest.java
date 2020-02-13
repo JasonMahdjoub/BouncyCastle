@@ -10,12 +10,12 @@ import java.security.spec.InvalidParameterSpecException;
 
 import javax.crypto.spec.IvParameterSpec;
 
-import org.bouncycastle.asn1.sec.SECObjectIdentifiers;
+import org.bouncycastle.bcasn1.sec.SECObjectIdentifiers;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.encoders.Base64;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.encoders.Base64;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class AlgorithmParametersTest
     extends SimpleTest

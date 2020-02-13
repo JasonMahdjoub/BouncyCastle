@@ -30,7 +30,7 @@ import javax.net.ssl.SSLServerSocketFactory;
 import javax.security.cert.X509Certificate;
 
 import org.bouncycastle.cert.X509CertificateHolder;
-import org.bouncycastle.util.io.pem.PemReader;
+import org.bouncycastle.bcutil.io.pem.PemReader;
 
 /**
  * Accept a connection and responds with a pre baked message.

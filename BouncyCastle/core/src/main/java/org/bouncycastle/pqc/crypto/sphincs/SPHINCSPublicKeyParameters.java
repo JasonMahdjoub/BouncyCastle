@@ -1,6 +1,6 @@
 package org.bouncycastle.pqc.crypto.sphincs;
 
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 public class SPHINCSPublicKeyParameters
     extends SPHINCSKeyParameters

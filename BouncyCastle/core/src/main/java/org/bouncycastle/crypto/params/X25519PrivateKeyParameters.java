@@ -6,8 +6,8 @@ import java.io.InputStream;
 import java.security.SecureRandom;
 
 import org.bouncycastle.math.ec.rfc7748.X25519;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.io.Streams;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.io.Streams;
 
 public final class X25519PrivateKeyParameters
     extends AsymmetricKeyParameter

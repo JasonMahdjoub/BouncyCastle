@@ -7,9 +7,9 @@ import java.security.PublicKey;
 import java.security.SignatureException;
 import java.security.spec.AlgorithmParameterSpec;
 
-import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.asn1.x509.X509ObjectIdentifiers;
+import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
+import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
+import org.bouncycastle.bcasn1.x509.X509ObjectIdentifiers;
 import org.bouncycastle.crypto.DSAExt;
 import org.bouncycastle.crypto.Digest;
 import org.bouncycastle.crypto.digests.GOST3411_2012_256Digest;
@@ -44,7 +44,7 @@ public class ECGOST2012SignatureSpi256
         PublicKey   publicKey)
         throws InvalidKeyException
     {
-        ECKeyParameters    param;
+        ECKeyParameters param;
 
         if (publicKey instanceof ECPublicKey)
         {

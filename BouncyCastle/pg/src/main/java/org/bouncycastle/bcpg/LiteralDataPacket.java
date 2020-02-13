@@ -2,8 +2,8 @@ package org.bouncycastle.bcpg;
 
 import java.io.IOException;
 
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Strings;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.Strings;
 
 /**
  * Generic literal data packet.

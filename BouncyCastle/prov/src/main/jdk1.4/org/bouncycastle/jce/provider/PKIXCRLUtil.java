@@ -13,8 +13,8 @@ import java.util.List;
 import java.util.Set;
 
 import org.bouncycastle.jce.provider.AnnotatedException;
-import org.bouncycastle.util.Store;
-import org.bouncycastle.util.StoreException;
+import org.bouncycastle.bcutil.Store;
+import org.bouncycastle.bcutil.StoreException;
 
 import org.bouncycastle.x509.*;
 import org.bouncycastle.jcajce.*;

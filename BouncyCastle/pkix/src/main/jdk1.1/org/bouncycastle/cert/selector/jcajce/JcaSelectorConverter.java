@@ -2,8 +2,8 @@ package org.bouncycastle.cert.selector.jcajce;
 
 import java.security.cert.X509CertSelector;
 
-import org.bouncycastle.asn1.ASN1OctetString;
-import org.bouncycastle.asn1.x500.X500Name;
+import org.bouncycastle.bcasn1.ASN1OctetString;
+import org.bouncycastle.bcasn1.x500.X500Name;
 import org.bouncycastle.cert.selector.X509CertificateHolderSelector;
 
 public class JcaSelectorConverter

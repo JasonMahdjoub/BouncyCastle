@@ -7,7 +7,7 @@ import org.bouncycastle.bcpg.HashAlgorithmTags;
 import org.bouncycastle.bcpg.S2K;
 import org.bouncycastle.bcpg.SymmetricKeyAlgorithmTags;
 import org.bouncycastle.openpgp.PGPException;
-import org.bouncycastle.util.Strings;
+import org.bouncycastle.bcutil.Strings;
 
 /**
  * Basic utility class

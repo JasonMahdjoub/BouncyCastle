@@ -7,16 +7,16 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.bouncycastle.asn1.ASN1EncodableVector;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1OctetString;
-import org.bouncycastle.asn1.ASN1Set;
-import org.bouncycastle.asn1.BEROctetString;
-import org.bouncycastle.asn1.DERSet;
-import org.bouncycastle.asn1.cms.CMSObjectIdentifiers;
-import org.bouncycastle.asn1.cms.ContentInfo;
-import org.bouncycastle.asn1.cms.SignedData;
-import org.bouncycastle.asn1.cms.SignerInfo;
+import org.bouncycastle.bcasn1.ASN1EncodableVector;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.ASN1OctetString;
+import org.bouncycastle.bcasn1.ASN1Set;
+import org.bouncycastle.bcasn1.BEROctetString;
+import org.bouncycastle.bcasn1.DERSet;
+import org.bouncycastle.bcasn1.cms.CMSObjectIdentifiers;
+import org.bouncycastle.bcasn1.cms.ContentInfo;
+import org.bouncycastle.bcasn1.cms.SignedData;
+import org.bouncycastle.bcasn1.cms.SignerInfo;
 
 /**
  * general class for generating a pkcs7-signature message.

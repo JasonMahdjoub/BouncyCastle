@@ -7,7 +7,7 @@ import junit.framework.TestCase;
 import org.bouncycastle.tls.TlsClientProtocol;
 import org.bouncycastle.tls.TlsProtocol;
 import org.bouncycastle.tls.TlsServerProtocol;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 public class TlsProtocolNonBlockingTest
     extends TestCase
@@ -79,9 +79,9 @@ public class TlsProtocolNonBlockingTest
 
         if (fragment)
         {
+            byte[] buffer = new byte[1];
             while (from.getAvailableOutputBytes() > 0)
             {
-                byte[] buffer = new byte[1];
                 from.readOutput(buffer, 0, 1);
                 to.offerInput(buffer);
             }

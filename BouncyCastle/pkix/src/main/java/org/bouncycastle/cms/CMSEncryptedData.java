@@ -3,9 +3,9 @@ package org.bouncycastle.cms;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
-import org.bouncycastle.asn1.cms.ContentInfo;
-import org.bouncycastle.asn1.cms.EncryptedContentInfo;
-import org.bouncycastle.asn1.cms.EncryptedData;
+import org.bouncycastle.bcasn1.cms.ContentInfo;
+import org.bouncycastle.bcasn1.cms.EncryptedContentInfo;
+import org.bouncycastle.bcasn1.cms.EncryptedData;
 import org.bouncycastle.operator.InputDecryptor;
 import org.bouncycastle.operator.InputDecryptorProvider;
 

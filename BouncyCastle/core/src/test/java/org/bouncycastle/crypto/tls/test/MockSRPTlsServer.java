@@ -18,8 +18,8 @@ import org.bouncycastle.crypto.tls.TlsSRPIdentityManager;
 import org.bouncycastle.crypto.tls.TlsSRPLoginParameters;
 import org.bouncycastle.crypto.tls.TlsSignerCredentials;
 import org.bouncycastle.crypto.tls.TlsUtils;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Strings;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.Strings;
 
 class MockSRPTlsServer
     extends SRPTlsServer

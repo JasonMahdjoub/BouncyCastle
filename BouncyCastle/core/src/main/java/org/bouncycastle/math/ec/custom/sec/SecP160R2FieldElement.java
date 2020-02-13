@@ -5,11 +5,13 @@ import java.math.BigInteger;
 import org.bouncycastle.math.ec.ECFieldElement;
 import org.bouncycastle.math.raw.Mod;
 import org.bouncycastle.math.raw.Nat160;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 public class SecP160R2FieldElement extends ECFieldElement.AbstractFp
 {
-    public static final BigInteger Q = SecP160R2Curve.q;
+    public static final BigInteger Q = new BigInteger(1,
+        Hex.decodeStrict("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFAC73"));
 
     protected int[] x;
 

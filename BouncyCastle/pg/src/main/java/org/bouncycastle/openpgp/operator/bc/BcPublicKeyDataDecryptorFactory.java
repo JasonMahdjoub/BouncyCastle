@@ -2,14 +2,14 @@ package org.bouncycastle.openpgp.operator.bc;
 
 import java.io.IOException;
 
-import org.bouncycastle.asn1.x9.ECNamedCurveTable;
-import org.bouncycastle.asn1.x9.X9ECParameters;
+import org.bouncycastle.bcasn1.x9.ECNamedCurveTable;
+import org.bouncycastle.bcasn1.x9.X9ECParameters;
 import org.bouncycastle.bcpg.ECDHPublicBCPGKey;
 import org.bouncycastle.bcpg.ECSecretBCPGKey;
 import org.bouncycastle.crypto.AsymmetricBlockCipher;
 import org.bouncycastle.crypto.BlockCipher;
 import org.bouncycastle.crypto.BufferedAsymmetricBlockCipher;
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
+import org.bouncycastle.crypto.InvalidCipherTextException;
 import org.bouncycastle.crypto.Wrapper;
 import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
 import org.bouncycastle.crypto.params.ElGamalPrivateKeyParameters;
@@ -104,11 +104,15 @@ public class BcPublicKeyDataDecryptorFactory
                 byte[] enc = secKeyData[0];
 
                 int pLen = ((((enc[0] & 0xff) << 8) + (enc[1] & 0xff)) + 7) / 8;
+                if (pLen > enc.length)
+                {
+                    throw new PGPException("encoded length out of range");
+                }
                 byte[] pEnc = new byte[pLen];
 
                 System.arraycopy(enc, 2, pEnc, 0, pLen);
 
-                byte[] keyEnc = new byte[enc[pLen + 2]];
+                byte[] keyEnc = new byte[enc[pLen + 2] & 0xff];
 
                 System.arraycopy(enc, 2 + pLen + 1, keyEnc, 0, keyEnc.length);
 
@@ -128,7 +132,7 @@ public class BcPublicKeyDataDecryptorFactory
         {
             throw new PGPException("exception creating user keying material: " + e.getMessage(), e);
         }
-        catch (BCInvalidCipherTextException e)
+        catch (InvalidCipherTextException e)
         {
             throw new PGPException("exception decrypting session info: " + e.getMessage(), e);
         }

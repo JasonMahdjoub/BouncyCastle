@@ -8,7 +8,7 @@ import java.nio.charset.Charset;
 
 import org.bouncycastle.crypto.test.cavp.CAVPReader;
 import org.bouncycastle.crypto.test.cavp.KDFCounterTests;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class KDFCounterGeneratorTest
     extends SimpleTest

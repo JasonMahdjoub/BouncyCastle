@@ -4,27 +4,26 @@ import java.io.ByteArrayInputStream;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
-import org.bouncycastle.asn1.ASN1InputStream;
-import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
-import org.bouncycastle.asn1.pkcs.RSAPrivateKey;
-import org.bouncycastle.asn1.pkcs.RSAPublicKey;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
+import org.bouncycastle.bcasn1.ASN1InputStream;
+import org.bouncycastle.bcasn1.pkcs.PrivateKeyInfo;
+import org.bouncycastle.bcasn1.pkcs.RSAPrivateKey;
+import org.bouncycastle.bcasn1.pkcs.RSAPublicKey;
+import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.crypto.AsymmetricBlockCipher;
 import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
 import org.bouncycastle.crypto.AsymmetricCipherKeyPairGenerator;
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
+import org.bouncycastle.crypto.InvalidCipherTextException;
 import org.bouncycastle.crypto.digests.SHA1Digest;
 import org.bouncycastle.crypto.digests.SHA256Digest;
 import org.bouncycastle.crypto.encodings.OAEPEncoding;
 import org.bouncycastle.crypto.engines.RSAEngine;
 import org.bouncycastle.crypto.generators.RSAKeyPairGenerator;
+import org.bouncycastle.crypto.params.*;
 import org.bouncycastle.crypto.params.ParametersWithRandom;
-import org.bouncycastle.crypto.params.RSAKeyGenerationParameters;
 import org.bouncycastle.crypto.params.RSAKeyParameters;
-import org.bouncycastle.crypto.params.RSAPrivateCrtKeyParameters;
-import org.bouncycastle.util.BigIntegers;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.BigIntegers;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class OAEPTest
     extends SimpleTest
@@ -333,12 +332,12 @@ public class OAEPTest
 
         privStruct = RSAPrivateKey.getInstance(PrivateKeyInfo.getInstance(dIn.readObject()).parsePrivateKey());
 
-        RSAKeyParameters    pubParameters = new RSAKeyParameters(
+        RSAKeyParameters pubParameters = new RSAKeyParameters(
                                                     false,
                                                     pubStruct.getModulus(),
                                                     pubStruct.getPublicExponent());
 
-        RSAKeyParameters    privParameters = new RSAPrivateCrtKeyParameters(
+        RSAKeyParameters privParameters = new RSAPrivateCrtKeyParameters(
                                                     privStruct.getModulus(),
                                                     privStruct.getPublicExponent(),
                                                     privStruct.getPrivateExponent(),
@@ -362,7 +361,7 @@ public class OAEPTest
         byte[] seed,
         byte[] input,
         byte[] output)
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         AsymmetricBlockCipher cipher = new OAEPEncoding(new RSAEngine());
 
@@ -887,7 +886,7 @@ public class OAEPTest
                     ko = false; // size errors are picked up at start
                 }
             }
-            catch (BCInvalidCipherTextException exception)
+            catch (InvalidCipherTextException exception)
             {
                 ko = false;
             }

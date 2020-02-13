@@ -2,14 +2,11 @@ package org.bouncycastle.crypto.signers;
 
 import java.math.BigInteger;
 
-import org.bouncycastle.crypto.AsymmetricBlockCipher;
+import org.bouncycastle.crypto.*;
 import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.CryptoException;
-import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.Signer;
 import org.bouncycastle.crypto.params.RSAKeyParameters;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.BigIntegers;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.BigIntegers;
 
 /**
  * X9.31-1998 - signing using a hash.
@@ -44,7 +41,7 @@ public class X931Signer
 
     private Digest                      digest;
     private AsymmetricBlockCipher       cipher;
-    private RSAKeyParameters            kParam;
+    private RSAKeyParameters kParam;
 
     private int         trailer;
     private int         keyBits;
@@ -99,7 +96,7 @@ public class X931Signer
     
     public void init(
         boolean                 forSigning,
-        CipherParameters        param)
+        CipherParameters param)
     {
         kParam = (RSAKeyParameters)param;
 

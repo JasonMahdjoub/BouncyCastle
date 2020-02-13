@@ -4,14 +4,14 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Map;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.DEROctetString;
-import org.bouncycastle.asn1.DERSet;
-import org.bouncycastle.asn1.cms.Attribute;
-import org.bouncycastle.asn1.cms.AttributeTable;
-import org.bouncycastle.asn1.cms.CMSAlgorithmProtection;
-import org.bouncycastle.asn1.cms.CMSAttributes;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.DEROctetString;
+import org.bouncycastle.bcasn1.DERSet;
+import org.bouncycastle.bcasn1.cms.Attribute;
+import org.bouncycastle.bcasn1.cms.AttributeTable;
+import org.bouncycastle.bcasn1.cms.CMSAlgorithmProtection;
+import org.bouncycastle.bcasn1.cms.CMSAttributes;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 
 /**
  * Default authenticated attributes generator.

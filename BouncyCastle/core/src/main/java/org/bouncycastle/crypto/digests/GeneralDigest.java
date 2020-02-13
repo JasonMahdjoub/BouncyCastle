@@ -1,8 +1,8 @@
 package org.bouncycastle.crypto.digests;
 
 import org.bouncycastle.crypto.ExtendedDigest;
-import org.bouncycastle.util.Memoable;
-import org.bouncycastle.util.Pack;
+import org.bouncycastle.bcutil.Memoable;
+import org.bouncycastle.bcutil.Pack;
 
 /**
  * base implementation of MD4 family style digest as outlined in

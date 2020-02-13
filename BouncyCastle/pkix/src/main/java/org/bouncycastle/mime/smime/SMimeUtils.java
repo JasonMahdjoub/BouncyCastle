@@ -10,9 +10,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 import org.bouncycastle.cms.CMSAlgorithm;
-import org.bouncycastle.util.Strings;
+import org.bouncycastle.bcutil.Strings;
 
 class SMimeUtils
 {

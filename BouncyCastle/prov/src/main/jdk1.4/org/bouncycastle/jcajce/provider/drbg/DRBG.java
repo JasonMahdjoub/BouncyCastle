@@ -7,9 +7,9 @@ import org.bouncycastle.crypto.digests.SHA512Digest;
 import org.bouncycastle.crypto.prng.SP800SecureRandomBuilder;
 import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import org.bouncycastle.jcajce.provider.util.AsymmetricAlgorithmProvider;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Pack;
-import org.bouncycastle.util.Strings;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.Pack;
+import org.bouncycastle.bcutil.Strings;
 
 public class DRBG
 {

@@ -10,13 +10,13 @@ import javax.crypto.interfaces.DHPrivateKey;
 import javax.crypto.spec.DHParameterSpec;
 import javax.crypto.spec.DHPrivateKeySpec;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.oiw.ElGamalParameter;
-import org.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
-import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.ASN1Encodable;
+import org.bouncycastle.bcasn1.ASN1Integer;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.oiw.ElGamalParameter;
+import org.bouncycastle.bcasn1.oiw.OIWObjectIdentifiers;
+import org.bouncycastle.bcasn1.pkcs.PrivateKeyInfo;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.crypto.params.ElGamalPrivateKeyParameters;
 import org.bouncycastle.jcajce.provider.asymmetric.util.KeyUtil;
 import org.bouncycastle.jcajce.provider.asymmetric.util.PKCS12BagAttributeCarrierImpl;
@@ -80,7 +80,7 @@ public class JCEElGamalPrivateKey
     }
 
     JCEElGamalPrivateKey(
-        ElGamalPrivateKeyParameters  params)
+        ElGamalPrivateKeyParameters params)
     {
         this.x = params.getX();
         this.elSpec = new ElGamalParameterSpec(params.getParameters().getP(), params.getParameters().getG());

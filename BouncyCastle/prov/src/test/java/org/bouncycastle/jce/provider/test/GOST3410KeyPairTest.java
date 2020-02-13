@@ -15,7 +15,7 @@ import java.security.Signature;
 import java.security.spec.ECGenParameterSpec;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class GOST3410KeyPairTest
     extends SimpleTest

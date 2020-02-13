@@ -34,8 +34,8 @@ import org.bouncycastle.openssl.PEMKeyPair;
 import org.bouncycastle.openssl.PEMParser;
 import org.bouncycastle.openssl.jcajce.JcaPEMKeyConverter;
 import org.bouncycastle.operator.bc.BcDigestCalculatorProvider;
-import org.bouncycastle.util.encoders.Base64;
-import org.bouncycastle.util.io.Streams;
+import org.bouncycastle.bcutil.encoders.Base64;
+import org.bouncycastle.bcutil.io.Streams;
 
 public class TestSMIMEEnveloped
     extends TestCase
@@ -110,7 +110,7 @@ public class TestSMIMEEnveloped
                 assertNotNull(recipInfo);
 
                 byte[] content = recipInfo.getContent(new JceKeyTransEnvelopedRecipient(loadKey("key.pem")));
-                assertTrue(org.bouncycastle.util.Arrays.areEqual(testMessage, content));
+                assertTrue(org.bouncycastle.bcutil.Arrays.areEqual(testMessage, content));
 
                 dataParsed.markDone();
             }
@@ -157,7 +157,7 @@ public class TestSMIMEEnveloped
                 assertNotNull(recipInfo);
 
                 byte[] content = recipInfo.getContent(new JceKeyTransEnvelopedRecipient(_reciKP.getPrivate()));
-                assertTrue(org.bouncycastle.util.Arrays.areEqual(testMessage, content));
+                assertTrue(org.bouncycastle.bcutil.Arrays.areEqual(testMessage, content));
 
                 dataParsed.markDone();
             }

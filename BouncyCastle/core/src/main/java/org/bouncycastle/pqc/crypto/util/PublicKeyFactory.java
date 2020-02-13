@@ -5,11 +5,11 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.bouncycastle.asn1.ASN1InputStream;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
+import org.bouncycastle.bcasn1.ASN1InputStream;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.ASN1Primitive;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
 import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
 import org.bouncycastle.pqc.asn1.PQCObjectIdentifiers;
 import org.bouncycastle.pqc.asn1.SPHINCS256KeyParams;
@@ -34,9 +34,6 @@ public class PublicKeyFactory
 
     static
     {
-        converters.put(PQCObjectIdentifiers.qTESLA_I, new QTeslaConverter());
-        converters.put(PQCObjectIdentifiers.qTESLA_III_size, new QTeslaConverter());
-        converters.put(PQCObjectIdentifiers.qTESLA_III_speed, new QTeslaConverter());
         converters.put(PQCObjectIdentifiers.qTESLA_p_I, new QTeslaConverter());
         converters.put(PQCObjectIdentifiers.qTESLA_p_III, new QTeslaConverter());
         converters.put(PQCObjectIdentifiers.sphincs256, new SPHINCSConverter());

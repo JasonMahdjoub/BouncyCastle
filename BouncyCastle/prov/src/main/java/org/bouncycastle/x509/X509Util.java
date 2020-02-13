@@ -20,21 +20,21 @@ import java.util.Set;
 
 import javax.security.auth.x500.X500Principal;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1Encoding;
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.DERNull;
-import org.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
-import org.bouncycastle.asn1.nist.NISTObjectIdentifiers;
-import org.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
-import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.asn1.pkcs.RSASSAPSSparams;
-import org.bouncycastle.asn1.teletrust.TeleTrusTObjectIdentifiers;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x9.X9ObjectIdentifiers;
+import org.bouncycastle.bcasn1.ASN1Encodable;
+import org.bouncycastle.bcasn1.ASN1Encoding;
+import org.bouncycastle.bcasn1.ASN1Integer;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.DERNull;
+import org.bouncycastle.bcasn1.cryptopro.CryptoProObjectIdentifiers;
+import org.bouncycastle.bcasn1.nist.NISTObjectIdentifiers;
+import org.bouncycastle.bcasn1.oiw.OIWObjectIdentifiers;
+import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
+import org.bouncycastle.bcasn1.pkcs.RSASSAPSSparams;
+import org.bouncycastle.bcasn1.teletrust.TeleTrusTObjectIdentifiers;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.x9.X9ObjectIdentifiers;
 import org.bouncycastle.jce.X509Principal;
-import org.bouncycastle.util.Strings;
+import org.bouncycastle.bcutil.Strings;
 
 class X509Util
 {

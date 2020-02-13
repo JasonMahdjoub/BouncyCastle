@@ -1,18 +1,18 @@
 package org.bouncycastle.cms;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.DERNull;
-import org.bouncycastle.asn1.DEROctetString;
-import org.bouncycastle.asn1.cms.KeyAgreeRecipientInfo;
-import org.bouncycastle.asn1.cms.OriginatorIdentifierOrKey;
-import org.bouncycastle.asn1.cms.OriginatorPublicKey;
-import org.bouncycastle.asn1.cms.RecipientInfo;
-import org.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
-import org.bouncycastle.asn1.cryptopro.Gost2814789KeyWrapParameters;
-import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.ASN1Sequence;
+import org.bouncycastle.bcasn1.DERNull;
+import org.bouncycastle.bcasn1.DEROctetString;
+import org.bouncycastle.bcasn1.cms.KeyAgreeRecipientInfo;
+import org.bouncycastle.bcasn1.cms.OriginatorIdentifierOrKey;
+import org.bouncycastle.bcasn1.cms.OriginatorPublicKey;
+import org.bouncycastle.bcasn1.cms.RecipientInfo;
+import org.bouncycastle.bcasn1.cryptopro.CryptoProObjectIdentifiers;
+import org.bouncycastle.bcasn1.cryptopro.Gost2814789KeyWrapParameters;
+import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
 import org.bouncycastle.operator.GenericKey;
 
 public abstract class KeyAgreeRecipientInfoGenerator

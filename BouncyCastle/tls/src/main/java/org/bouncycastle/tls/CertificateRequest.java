@@ -6,9 +6,9 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Vector;
 
-import org.bouncycastle.asn1.ASN1Encoding;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.x500.X500Name;
+import org.bouncycastle.bcasn1.ASN1Encoding;
+import org.bouncycastle.bcasn1.ASN1Primitive;
+import org.bouncycastle.bcasn1.x500.X500Name;
 
 /**
  * Parsing and encoding of a <i>CertificateRequest</i> struct from RFC 4346.
@@ -82,19 +82,12 @@ public class CertificateRequest
     public void encode(OutputStream output)
         throws IOException
     {
-        if (certificateTypes == null || certificateTypes.length == 0)
-        {
-            TlsUtils.writeUint8(0, output);
-        }
-        else
-        {
-            TlsUtils.writeUint8ArrayWithUint8Length(certificateTypes, output);
-        }
+        TlsUtils.writeUint8ArrayWithUint8Length(certificateTypes, output);
 
         if (supportedSignatureAlgorithms != null)
         {
             // TODO Check whether SignatureAlgorithm.anonymous is allowed here
-            TlsUtils.encodeSupportedSignatureAlgorithms(supportedSignatureAlgorithms, false, output);
+            TlsUtils.encodeSupportedSignatureAlgorithms(supportedSignatureAlgorithms, output);
         }
 
         if (certificateAuthorities == null || certificateAuthorities.isEmpty())
@@ -153,18 +146,24 @@ public class CertificateRequest
         Vector supportedSignatureAlgorithms = null;
         if (TlsUtils.isTLSv12(context))
         {
-            // TODO Check whether SignatureAlgorithm.anonymous is allowed here
-            supportedSignatureAlgorithms = TlsUtils.parseSupportedSignatureAlgorithms(false, input);
+            supportedSignatureAlgorithms = TlsUtils.parseSupportedSignatureAlgorithms(input);
         }
 
-        Vector certificateAuthorities = new Vector();
-        byte[] certAuthData = TlsUtils.readOpaque16(input);
-        ByteArrayInputStream bis = new ByteArrayInputStream(certAuthData);
-        while (bis.available() > 0)
+        Vector certificateAuthorities = null;
         {
-            byte[] derEncoding = TlsUtils.readOpaque16(bis);
-            ASN1Primitive asn1 = TlsUtils.readDERObject(derEncoding);
-            certificateAuthorities.addElement(X500Name.getInstance(asn1));
+            byte[] certAuthData = TlsUtils.readOpaque16(input);
+            if (certAuthData.length > 0)
+            {
+                certificateAuthorities = new Vector();
+                ByteArrayInputStream bis = new ByteArrayInputStream(certAuthData);
+                do
+                {
+                    byte[] derEncoding = TlsUtils.readOpaque16(bis, 1);
+                    ASN1Primitive asn1 = TlsUtils.readDERObject(derEncoding);
+                    certificateAuthorities.addElement(X500Name.getInstance(asn1));
+                }
+                while (bis.available() > 0);
+            }
         }
 
         return new CertificateRequest(certificateTypes, supportedSignatureAlgorithms, certificateAuthorities);

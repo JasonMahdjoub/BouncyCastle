@@ -19,13 +19,13 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
 import junit.framework.TestCase;
-import org.bouncycastle.asn1.cms.GCMParameters;
+import org.bouncycastle.bcasn1.cms.GCMParameters;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.jcajce.spec.AEADParameterSpec;
 import org.bouncycastle.jcajce.spec.RepeatedSecretKeySpec;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class AEADTest extends SimpleTest
 {
@@ -455,7 +455,7 @@ public class AEADTest extends SimpleTest
             eax.init(Cipher.ENCRYPT_MODE, new RepeatedSecretKeySpec("AES"), spec);
             fail("no exception");
         }
-        catch (InvalidKeyException e)
+        catch (InvalidAlgorithmParameterException e)
         {
             isTrue("wrong message", "cannot reuse nonce for GCM encryption".equals(e.getMessage()));
         }
@@ -465,7 +465,7 @@ public class AEADTest extends SimpleTest
             eax.init(Cipher.ENCRYPT_MODE, new RepeatedSecretKeySpec("AES"), new IvParameterSpec(spec.getIV()));
             fail("no exception");
         }
-        catch (InvalidKeyException e)
+        catch (InvalidAlgorithmParameterException e)
         {
             isTrue("wrong message", "cannot reuse nonce for GCM encryption".equals(e.getMessage()));
         }
@@ -475,7 +475,7 @@ public class AEADTest extends SimpleTest
             eax.init(Cipher.ENCRYPT_MODE, new SecretKeySpec(K, "AES"), new IvParameterSpec(spec.getIV()));
             fail("no exception");
         }
-        catch (InvalidKeyException e)
+        catch (InvalidAlgorithmParameterException e)
         {
             isTrue("wrong message", "cannot reuse nonce for GCM encryption".equals(e.getMessage()));
         }

@@ -1,7 +1,10 @@
 package org.bouncycastle.crypto.modes;
 
-import org.bouncycastle.crypto.*;
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
+import org.bouncycastle.crypto.BlockCipher;
+import org.bouncycastle.crypto.BufferedBlockCipher;
+import org.bouncycastle.crypto.DataLengthException;
+import org.bouncycastle.crypto.InvalidCipherTextException;
+import org.bouncycastle.crypto.OutputLengthException;
 
 /**
  * A wrapper class that allows block ciphers to be used to process data in
@@ -181,12 +184,12 @@ public class PaddedBlockCipher
      * the output or we are decrypting and the input is not block size aligned.
      * @exception IllegalStateException if the underlying cipher is not
      * initialised.
-     * @exception BCInvalidCipherTextException if padding is expected and not found.
+     * @exception InvalidCipherTextException if padding is expected and not found.
      */
     public int doFinal(
         byte[]  out,
         int     outOff)
-        throws DataLengthException, IllegalStateException, BCInvalidCipherTextException
+        throws DataLengthException, IllegalStateException, InvalidCipherTextException
     {
         int blockSize = cipher.getBlockSize();
         int resultLen = 0;
@@ -236,7 +239,7 @@ public class PaddedBlockCipher
 
             if (count > blockSize)
             {
-                throw new BCInvalidCipherTextException("pad block corrupted");
+                throw new InvalidCipherTextException("pad block corrupted");
             }
 
             resultLen -= count;

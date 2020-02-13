@@ -17,20 +17,20 @@ import java.security.cert.X509Certificate;
 import java.util.Date;
 import java.util.Iterator;
 
-import org.bouncycastle.asn1.ASN1EncodableVector;
-import org.bouncycastle.asn1.ASN1InputStream;
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.DERBitString;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.DERSequence;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.asn1.x509.TBSCertificate;
-import org.bouncycastle.asn1.x509.Time;
-import org.bouncycastle.asn1.x509.V1TBSCertificateGenerator;
-import org.bouncycastle.asn1.x509.Certificate;
-import org.bouncycastle.asn1.x509.X509Name;
+import org.bouncycastle.bcasn1.ASN1EncodableVector;
+import org.bouncycastle.bcasn1.ASN1InputStream;
+import org.bouncycastle.bcasn1.ASN1Integer;
+import org.bouncycastle.bcasn1.ASN1Sequence;
+import org.bouncycastle.bcasn1.DERBitString;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.DERSequence;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
+import org.bouncycastle.bcasn1.x509.TBSCertificate;
+import org.bouncycastle.bcasn1.x509.Time;
+import org.bouncycastle.bcasn1.x509.V1TBSCertificateGenerator;
+import org.bouncycastle.bcasn1.x509.Certificate;
+import org.bouncycastle.bcasn1.x509.X509Name;
 import org.bouncycastle.jce.provider.X509CertificateObject;
 
 /**

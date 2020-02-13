@@ -3,15 +3,15 @@ package org.bouncycastle.dvcs;
 import java.io.IOException;
 import java.math.BigInteger;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.cms.ContentInfo;
-import org.bouncycastle.asn1.dvcs.DVCSObjectIdentifiers;
-import org.bouncycastle.asn1.dvcs.DVCSRequestInformationBuilder;
-import org.bouncycastle.asn1.dvcs.Data;
-import org.bouncycastle.asn1.x509.ExtensionsGenerator;
-import org.bouncycastle.asn1.x509.GeneralName;
-import org.bouncycastle.asn1.x509.GeneralNames;
+import org.bouncycastle.bcasn1.ASN1Encodable;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.cms.ContentInfo;
+import org.bouncycastle.bcasn1.dvcs.DVCSObjectIdentifiers;
+import org.bouncycastle.bcasn1.dvcs.DVCSRequestInformationBuilder;
+import org.bouncycastle.bcasn1.dvcs.Data;
+import org.bouncycastle.bcasn1.x509.ExtensionsGenerator;
+import org.bouncycastle.bcasn1.x509.GeneralName;
+import org.bouncycastle.bcasn1.x509.GeneralNames;
 import org.bouncycastle.cms.CMSSignedDataGenerator;
 
 /**
@@ -123,7 +123,7 @@ public abstract class DVCSRequestBuilder
             requestInformationBuilder.setExtensions(extGenerator.generate());
         }
 
-        org.bouncycastle.asn1.dvcs.DVCSRequest request = new org.bouncycastle.asn1.dvcs.DVCSRequest(requestInformationBuilder.build(), data);
+        org.bouncycastle.bcasn1.dvcs.DVCSRequest request = new org.bouncycastle.bcasn1.dvcs.DVCSRequest(requestInformationBuilder.build(), data);
 
         return new DVCSRequest(new ContentInfo(DVCSObjectIdentifiers.id_ct_DVCSRequestData, request));
     }

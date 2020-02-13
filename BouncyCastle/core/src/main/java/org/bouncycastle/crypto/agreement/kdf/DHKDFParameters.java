@@ -1,6 +1,6 @@
 package org.bouncycastle.crypto.agreement.kdf;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 import org.bouncycastle.crypto.DerivationParameters;
 
 public class DHKDFParameters

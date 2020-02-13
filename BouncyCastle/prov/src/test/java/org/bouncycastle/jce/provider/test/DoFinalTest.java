@@ -7,9 +7,9 @@ import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.test.SimpleTestResult;
-import org.bouncycastle.util.test.Test;
-import org.bouncycastle.util.test.TestResult;
+import org.bouncycastle.bcutil.test.SimpleTestResult;
+import org.bouncycastle.bcutil.test.Test;
+import org.bouncycastle.bcutil.test.TestResult;
 
 /**
  * check that doFinal is properly reseting the cipher.

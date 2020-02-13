@@ -6,22 +6,23 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
-import org.bouncycastle.asn1.ASN1Encoding;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.ocsp.BasicOCSPResponse;
-import org.bouncycastle.asn1.ocsp.ResponseData;
-import org.bouncycastle.asn1.ocsp.SingleResponse;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x509.Certificate;
-import org.bouncycastle.asn1.x509.Extension;
-import org.bouncycastle.asn1.x509.Extensions;
+import org.bouncycastle.bcasn1.ASN1Encoding;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.ASN1Sequence;
+import org.bouncycastle.bcasn1.ocsp.BasicOCSPResponse;
+import org.bouncycastle.bcasn1.ocsp.ResponseData;
+import org.bouncycastle.bcasn1.ocsp.SingleResponse;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.x509.Certificate;
+import org.bouncycastle.bcasn1.x509.Extension;
+import org.bouncycastle.bcasn1.x509.Extensions;
 import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.operator.ContentVerifier;
 import org.bouncycastle.operator.ContentVerifierProvider;
-import org.bouncycastle.util.Encodable;
+import org.bouncycastle.bcutil.Encodable;
 
 /**
+ * OCSP RFC 2560, RFC 6960
  * <pre>
  * BasicOCSPResponse       ::= SEQUENCE {
  *    tbsResponseData      ResponseData,
@@ -73,7 +74,7 @@ public class BasicOCSPResp
 
     public int getVersion()
     {
-        return data.getVersion().getValue().intValue() + 1;
+        return data.getVersion().intValueExact() + 1;
     }
 
     public RespID getResponderId()

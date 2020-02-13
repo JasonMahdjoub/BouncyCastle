@@ -3,21 +3,21 @@ package org.bouncycastle.cms;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1EncodableVector;
-import org.bouncycastle.asn1.ASN1OctetString;
-import org.bouncycastle.asn1.ASN1Set;
-import org.bouncycastle.asn1.cms.Attribute;
-import org.bouncycastle.asn1.cms.AttributeTable;
-import org.bouncycastle.asn1.cms.AuthenticatedData;
-import org.bouncycastle.asn1.cms.CMSAlgorithmProtection;
-import org.bouncycastle.asn1.cms.CMSAttributes;
-import org.bouncycastle.asn1.cms.ContentInfo;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.ASN1Encodable;
+import org.bouncycastle.bcasn1.ASN1EncodableVector;
+import org.bouncycastle.bcasn1.ASN1OctetString;
+import org.bouncycastle.bcasn1.ASN1Set;
+import org.bouncycastle.bcasn1.cms.Attribute;
+import org.bouncycastle.bcasn1.cms.AttributeTable;
+import org.bouncycastle.bcasn1.cms.AuthenticatedData;
+import org.bouncycastle.bcasn1.cms.CMSAlgorithmProtection;
+import org.bouncycastle.bcasn1.cms.CMSAttributes;
+import org.bouncycastle.bcasn1.cms.ContentInfo;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.operator.DigestCalculatorProvider;
 import org.bouncycastle.operator.OperatorCreationException;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Encodable;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.Encodable;
 
 /**
  * containing class for an CMS Authenticated Data object
@@ -150,6 +150,11 @@ public class CMSAuthenticatedData
                     public ASN1Set getAuthAttributes()
                     {
                         return authAttrs;
+                    }
+
+                    public boolean isAead()
+                    {
+                        return false;
                     }
                 });
             }

@@ -1,6 +1,6 @@
 package org.bouncycastle.crypto.modes.gcm;
 
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 public class BasicGCMExponentiator
     implements GCMExponentiator

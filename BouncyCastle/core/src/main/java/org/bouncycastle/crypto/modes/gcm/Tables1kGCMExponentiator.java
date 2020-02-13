@@ -2,7 +2,7 @@ package org.bouncycastle.crypto.modes.gcm;
 
 import java.util.Vector;
 
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 public class Tables1kGCMExponentiator
     implements GCMExponentiator

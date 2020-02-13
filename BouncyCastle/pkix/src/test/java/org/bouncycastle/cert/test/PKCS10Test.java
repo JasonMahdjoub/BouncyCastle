@@ -14,20 +14,21 @@ import java.security.spec.RSAPublicKeySpec;
 
 import javax.security.auth.x500.X500Principal;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.DEROctetString;
-import org.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
-import org.bouncycastle.asn1.pkcs.Attribute;
-import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.asn1.x500.X500NameBuilder;
-import org.bouncycastle.asn1.x500.style.BCStyle;
-import org.bouncycastle.asn1.x509.BasicConstraints;
-import org.bouncycastle.asn1.x509.Extension;
-import org.bouncycastle.asn1.x509.Extensions;
-import org.bouncycastle.asn1.x509.KeyUsage;
-import org.bouncycastle.asn1.x9.X9ECParameters;
-import org.bouncycastle.asn1.x9.X9ObjectIdentifiers;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.DEROctetString;
+import org.bouncycastle.bcasn1.cryptopro.CryptoProObjectIdentifiers;
+import org.bouncycastle.bcasn1.pkcs.Attribute;
+import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
+import org.bouncycastle.bcasn1.x500.X500Name;
+import org.bouncycastle.bcasn1.x500.X500NameBuilder;
+import org.bouncycastle.bcasn1.x500.style.BCStyle;
+import org.bouncycastle.bcasn1.x509.BasicConstraints;
+import org.bouncycastle.bcasn1.x509.Extension;
+import org.bouncycastle.bcasn1.x509.Extensions;
+import org.bouncycastle.bcasn1.x509.KeyUsage;
+import org.bouncycastle.bcasn1.x9.X9ECParameters;
+import org.bouncycastle.bcasn1.x9.X9ObjectIdentifiers;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.cert.jcajce.JcaX509ExtensionUtils;
 import org.bouncycastle.jce.ECGOST3410NamedCurveTable;
 import org.bouncycastle.jce.ECNamedCurveTable;
@@ -46,10 +47,9 @@ import org.bouncycastle.pkcs.PKCS10CertificationRequest;
 import org.bouncycastle.pkcs.PKCS10CertificationRequestBuilder;
 import org.bouncycastle.pkcs.jcajce.JcaPKCS10CertificationRequest;
 import org.bouncycastle.pkcs.jcajce.JcaPKCS10CertificationRequestBuilder;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.encoders.Base64;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.encoders.Base64;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**
  **/
@@ -266,7 +266,7 @@ public class PKCS10Test
     private void createECRequest(String algorithm, ASN1ObjectIdentifier algOid)
         throws Exception
     {
-        X9ECParameters x9 = org.bouncycastle.asn1.x9.ECNamedCurveTable.getByName("secp521r1");
+        X9ECParameters x9 = org.bouncycastle.bcasn1.x9.ECNamedCurveTable.getByName("secp521r1");
         ECCurve curve = x9.getCurve();
         ECParameterSpec spec = new ECParameterSpec(curve, x9.getG(), x9.getN(), x9.getH());
 
@@ -562,7 +562,7 @@ public class PKCS10Test
         // elliptic curve openSSL
         KeyPairGenerator g = KeyPairGenerator.getInstance("ECDSA", "BC");
 
-        X9ECParameters x9 = org.bouncycastle.asn1.x9.ECNamedCurveTable.getByName("prime239v1");
+        X9ECParameters x9 = org.bouncycastle.bcasn1.x9.ECNamedCurveTable.getByName("prime239v1");
         ECCurve curve = x9.getCurve();
         ECParameterSpec ecSpec = new ECParameterSpec(curve, x9.getG(), x9.getN(), x9.getH());
 

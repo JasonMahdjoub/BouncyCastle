@@ -22,9 +22,10 @@ import org.bouncycastle.crypto.prng.SP800SecureRandomBuilder;
 import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import org.bouncycastle.jcajce.provider.symmetric.util.ClassUtil;
 import org.bouncycastle.jcajce.provider.util.AsymmetricAlgorithmProvider;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Pack;
-import org.bouncycastle.util.Strings;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.Pack;
+import org.bouncycastle.bcutil.Properties;
+import org.bouncycastle.bcutil.Strings;
 
 public class DRBG
 {
@@ -41,8 +42,6 @@ public class DRBG
             {"com.android.org.conscrypt.OpenSSLProvider", "com.android.org.conscrypt.OpenSSLRandom"},
             {"org.conscrypt.OpenSSLProvider", "org.conscrypt.OpenSSLRandom"},
         };
-
-    private static final Object[] initialEntropySourceAndSpi = findSource();
 
     // Cascade through providers looking for match.
     private final static Object[] findSource()
@@ -68,7 +67,7 @@ public class DRBG
     private static class CoreSecureRandom
         extends SecureRandom
     {
-        CoreSecureRandom()
+        CoreSecureRandom(Object[] initialEntropySourceAndSpi)
         {
             super((SecureRandomSpi)initialEntropySourceAndSpi[1], (Provider)initialEntropySourceAndSpi[0]);
         }
@@ -120,9 +119,9 @@ public class DRBG
 
     private static SecureRandom createCoreSecureRandom()
     {
-        if (initialEntropySourceAndSpi != null)
+        if (Security.getProperty("securerandom.source") == null)
         {
-            return new CoreSecureRandom();
+            return new CoreSecureRandom(findSource());
         }
         else
         {
@@ -462,9 +461,57 @@ public class DRBG
                     this.numBytes = numBytes;
                 }
 
+                private void sleep(long ms)
+                {
+                    try
+                    {
+                        Thread.sleep(ms);
+                    }
+                    catch (InterruptedException e)
+                    {
+                        Thread.currentThread().interrupt();
+                    }
+                }
+
                 public void run()
                 {
-                    entropy.set(baseRandom.generateSeed(numBytes));
+                    long ms;
+                    String pause = Properties.getPropertyValue("org.bouncycastle.drbg.gather_pause_secs");
+
+                    if (pause != null)
+                    {
+                        try
+                        {
+                            ms = Long.parseLong(pause) * 1000;
+                        }
+                        catch (Exception e)
+                        {
+                            ms = 5000;
+                        }
+                    }
+                    else
+                    {
+                        ms = 5000;
+                    }
+
+                    byte[] seed = new byte[numBytes];
+                    for (int i = 0; i < byteLength / 8; i++)
+                    {
+                        // we need to be mindful that we may not be the only thread/process looking for entropy
+                        sleep(ms);
+                        byte[] rn = baseRandom.generateSeed(8);
+                        System.arraycopy(rn, 0, seed, i * 8, rn.length);
+                    }
+
+                    int extra = byteLength - ((byteLength / 8) * 8);
+                    if (extra != 0)
+                    {
+                        sleep(ms);
+                        byte[] rn = baseRandom.generateSeed(extra);
+                        System.arraycopy(rn, 0, seed, seed.length - rn.length, rn.length);
+                    }
+
+                    entropy.set(seed);
                     seedAvailable.set(true);
                 }
             }

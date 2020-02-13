@@ -1,7 +1,8 @@
 package org.bouncycastle.crypto.test;
 
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.crypto.*;
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
+import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.engines.AESEngine;
 import org.bouncycastle.crypto.engines.DESEngine;
 import org.bouncycastle.crypto.engines.SkipjackEngine;
@@ -11,8 +12,7 @@ import org.bouncycastle.crypto.modes.OldCTSBlockCipher;
 import org.bouncycastle.crypto.modes.SICBlockCipher;
 import org.bouncycastle.crypto.params.KeyParameter;
 import org.bouncycastle.crypto.params.ParametersWithIV;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**
  * CTS tester
@@ -29,7 +29,7 @@ public class CTSTest
     private void testCTS(
         int                 id,
         BlockCipher         cipher,
-        CipherParameters    params,
+        CipherParameters params,
         byte[]              input,
         byte[]              output)
         throws Exception
@@ -63,7 +63,7 @@ public class CTSTest
     private void testOldCTS(
             int                 id,
             BlockCipher         cipher,
-            CipherParameters    params,
+            CipherParameters params,
             byte[]              input,
             byte[]              output)
     throws Exception
@@ -94,7 +94,7 @@ public class CTSTest
         }
     }
 
-    private void testExceptions() throws BCInvalidCipherTextException
+    private void testExceptions() throws InvalidCipherTextException
     {
         BufferedBlockCipher engine = new CTSBlockCipher(new DESEngine());
         CipherParameters params = new KeyParameter(new byte[engine.getBlockSize()]);

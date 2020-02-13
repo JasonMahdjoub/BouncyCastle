@@ -7,10 +7,11 @@ import java.util.List;
 
 import org.bouncycastle.bcpg.BCPGInputStream;
 import org.bouncycastle.bcpg.InputStreamPacket;
+import org.bouncycastle.bcpg.Packet;
 import org.bouncycastle.bcpg.PacketTags;
 import org.bouncycastle.bcpg.PublicKeyEncSessionPacket;
 import org.bouncycastle.bcpg.SymmetricKeyEncSessionPacket;
-import org.bouncycastle.util.Iterable;
+import org.bouncycastle.bcutil.Iterable;
 
 /**
  * A holder for a list of PGP encryption method packets and the encrypted data associated with them.
@@ -52,7 +53,13 @@ public class PGPEncryptedDataList
             list.add(pIn.readPacket());
         }
 
-        data = (InputStreamPacket)pIn.readPacket();
+        Packet packet = pIn.readPacket();
+        if (!(packet instanceof InputStreamPacket))
+        {
+            throw new IOException("unexpected packet in stream: " + packet);
+        }
+
+        data = (InputStreamPacket)packet;
 
         for (int i = 0; i != list.size(); i++)
         {

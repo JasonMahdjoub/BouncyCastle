@@ -2,7 +2,7 @@ package org.bouncycastle.tls;
 
 import org.bouncycastle.tls.crypto.TlsCrypto;
 import org.bouncycastle.tls.crypto.TlsHash;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 /**
  * A combined hash, which implements md5(m) || sha1(m).

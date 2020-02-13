@@ -30,9 +30,9 @@ import org.bouncycastle.mime.smime.SMimeParserListener;
 import org.bouncycastle.mime.smime.SMimeParserProvider;
 import org.bouncycastle.operator.OperatorCreationException;
 import org.bouncycastle.operator.bc.BcDigestCalculatorProvider;
-import org.bouncycastle.util.Store;
-import org.bouncycastle.util.Strings;
-import org.bouncycastle.util.io.Streams;
+import org.bouncycastle.bcutil.Store;
+import org.bouncycastle.bcutil.Strings;
+import org.bouncycastle.bcutil.io.Streams;
 
 public class MultipartParserTest
     extends TestCase

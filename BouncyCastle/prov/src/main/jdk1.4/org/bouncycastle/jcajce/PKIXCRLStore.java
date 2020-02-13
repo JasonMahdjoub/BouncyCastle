@@ -3,9 +3,9 @@ package org.bouncycastle.jcajce;
 import java.security.cert.CRL;
 import java.util.Collection;
 
-import org.bouncycastle.util.Selector;
-import org.bouncycastle.util.Store;
-import org.bouncycastle.util.StoreException;
+import org.bouncycastle.bcutil.Selector;
+import org.bouncycastle.bcutil.Store;
+import org.bouncycastle.bcutil.StoreException;
 
 public interface PKIXCRLStore
     extends Store

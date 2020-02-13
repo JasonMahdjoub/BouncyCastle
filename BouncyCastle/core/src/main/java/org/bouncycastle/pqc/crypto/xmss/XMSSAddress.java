@@ -1,6 +1,6 @@
 package org.bouncycastle.pqc.crypto.xmss;
 
-import org.bouncycastle.util.Pack;
+import org.bouncycastle.bcutil.Pack;
 
 /**
  * XMSS address.

@@ -2,7 +2,7 @@ package org.bouncycastle.pqc.jcajce.spec;
 
 import java.security.spec.AlgorithmParameterSpec;
 
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 /**
  * This class provides methods for setting and getting the Rainbow-parameters

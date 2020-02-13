@@ -3,8 +3,8 @@ package org.bouncycastle.crypto.encodings;
 import java.math.BigInteger;
 
 import org.bouncycastle.crypto.AsymmetricBlockCipher;
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.CipherParameters;
+import org.bouncycastle.crypto.InvalidCipherTextException;
 import org.bouncycastle.crypto.params.ParametersWithRandom;
 import org.bouncycastle.crypto.params.RSAKeyParameters;
 
@@ -45,13 +45,13 @@ public class ISO9796d1Encoding
 
     public void init(
         boolean             forEncryption,
-        CipherParameters    param)
+        CipherParameters param)
     {
-        RSAKeyParameters  kParam = null;
+        RSAKeyParameters kParam = null;
 
         if (param instanceof ParametersWithRandom)
         {
-            ParametersWithRandom    rParam = (ParametersWithRandom)param;
+            ParametersWithRandom rParam = (ParametersWithRandom)param;
 
             kParam = (RSAKeyParameters)rParam.getParameters();
         }
@@ -131,7 +131,7 @@ public class ISO9796d1Encoding
         byte[]  in,
         int     inOff,
         int     inLen)
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         if (forEncryption)
         {
@@ -147,7 +147,7 @@ public class ISO9796d1Encoding
         byte[]  in,
         int     inOff,
         int     inLen)
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         byte[]  block = new byte[(bitSize + 7) / 8];
         int     r = padBits + 1;
@@ -198,13 +198,13 @@ public class ISO9796d1Encoding
     }
 
     /**
-     * @exception BCInvalidCipherTextException if the decrypted block is not a valid ISO 9796 bit string
+     * @exception InvalidCipherTextException if the decrypted block is not a valid ISO 9796 bit string
      */
     private byte[] decodeBlock(
         byte[]  in,
         int     inOff,
         int     inLen)
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         byte[]  block = engine.processBlock(in, inOff, inLen);
         int     r = 1;
@@ -222,14 +222,14 @@ public class ISO9796d1Encoding
         }
         else
         {
-            throw new BCInvalidCipherTextException("resulting integer iS or (modulus - iS) is not congruent to 6 mod 16");
+            throw new InvalidCipherTextException("resulting integer iS or (modulus - iS) is not congruent to 6 mod 16");
         }
 
         block = convertOutputDecryptOnly(iR);
 
         if ((block[block.length - 1] & 0x0f) != 0x6 )
         {
-            throw new BCInvalidCipherTextException("invalid forcing byte in block");
+            throw new InvalidCipherTextException("invalid forcing byte in block");
         }
 
         block[block.length - 1] = (byte)(((block[block.length - 1] & 0xff) >>> 4) | ((inverse[(block[block.length - 2] & 0xff) >> 4]) << 4));
@@ -254,7 +254,7 @@ public class ISO9796d1Encoding
                 }
                 else
                 {
-                    throw new BCInvalidCipherTextException("invalid tsums in block");
+                    throw new InvalidCipherTextException("invalid tsums in block");
                 }
             }
         }

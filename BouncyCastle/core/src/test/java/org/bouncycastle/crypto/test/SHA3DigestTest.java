@@ -7,10 +7,10 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.crypto.digests.SHA3Digest;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**
  * SHA3 Digest Test

@@ -4,7 +4,7 @@ import java.util.Hashtable;
 
 import org.bouncycastle.crypto.Digest;
 import org.bouncycastle.crypto.Mac;
-import org.bouncycastle.util.Integers;
+import org.bouncycastle.bcutil.Integers;
 
 class Utils
 {

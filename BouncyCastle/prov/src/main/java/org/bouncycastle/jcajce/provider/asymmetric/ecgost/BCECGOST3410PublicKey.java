@@ -10,19 +10,20 @@ import java.security.spec.ECPoint;
 import java.security.spec.ECPublicKeySpec;
 import java.security.spec.EllipticCurve;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1OctetString;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.DERBitString;
-import org.bouncycastle.asn1.DEROctetString;
-import org.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
-import org.bouncycastle.asn1.cryptopro.ECGOST3410NamedCurves;
-import org.bouncycastle.asn1.cryptopro.GOST3410PublicKeyAlgParameters;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.asn1.x9.X962Parameters;
-import org.bouncycastle.asn1.x9.X9ECParameters;
+import org.bouncycastle.bcasn1.ASN1Encodable;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.ASN1OctetString;
+import org.bouncycastle.bcasn1.ASN1Primitive;
+import org.bouncycastle.bcasn1.DERBitString;
+import org.bouncycastle.bcasn1.DEROctetString;
+import org.bouncycastle.bcasn1.cryptopro.CryptoProObjectIdentifiers;
+import org.bouncycastle.bcasn1.cryptopro.ECGOST3410NamedCurves;
+import org.bouncycastle.bcasn1.cryptopro.GOST3410PublicKeyAlgParameters;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
+import org.bouncycastle.bcasn1.x9.X962Parameters;
+import org.bouncycastle.bcasn1.x9.X9ECParameters;
+import org.bouncycastle.bcasn1.x9.X9ECPoint;
 import org.bouncycastle.crypto.params.ECDomainParameters;
 import org.bouncycastle.crypto.params.ECGOST3410Parameters;
 import org.bouncycastle.crypto.params.ECPublicKeyParameters;
@@ -45,7 +46,7 @@ public class BCECGOST3410PublicKey
     private String algorithm = "ECGOST3410";
     private boolean withCompression;
 
-    private transient ECPublicKeyParameters   ecPublicKey;
+    private transient ECPublicKeyParameters ecPublicKey;
     private transient ECParameterSpec ecSpec;
     private transient ASN1Encodable gostParams;
 
@@ -62,7 +63,7 @@ public class BCECGOST3410PublicKey
         ECPublicKeySpec spec)
     {
         this.ecSpec = spec.getParams();
-        this.ecPublicKey = new ECPublicKeyParameters(EC5Util.convertPoint(ecSpec, spec.getW(), false), EC5Util.getDomainParameters(null, spec.getParams()));
+        this.ecPublicKey = new ECPublicKeyParameters(EC5Util.convertPoint(ecSpec, spec.getW()), EC5Util.getDomainParameters(null, spec.getParams()));
     }
 
     public BCECGOST3410PublicKey(
@@ -168,7 +169,7 @@ public class BCECGOST3410PublicKey
     {
         this.algorithm = key.getAlgorithm();
         this.ecSpec = key.getParams();
-        this.ecPublicKey = new ECPublicKeyParameters(EC5Util.convertPoint(this.ecSpec, key.getW(), false), EC5Util.getDomainParameters(null, key.getParams()));
+        this.ecPublicKey = new ECPublicKeyParameters(EC5Util.convertPoint(this.ecSpec, key.getW()), EC5Util.getDomainParameters(null, key.getParams()));
     }
 
     BCECGOST3410PublicKey(
@@ -262,7 +263,7 @@ public class BCECGOST3410PublicKey
 
                 X9ECParameters ecP = new X9ECParameters(
                     curve,
-                    EC5Util.convertPoint(curve, ecSpec.getGenerator(), withCompression),
+                    new X9ECPoint(EC5Util.convertPoint(curve, ecSpec.getGenerator()), withCompression),
                     ecSpec.getOrder(),
                     BigInteger.valueOf(ecSpec.getCofactor()),
                     ecSpec.getCurve().getSeed());
@@ -273,8 +274,8 @@ public class BCECGOST3410PublicKey
 
         BigInteger bX = this.ecPublicKey.getQ().getAffineXCoord().toBigInteger();
         BigInteger bY = this.ecPublicKey.getQ().getAffineYCoord().toBigInteger();
-        byte[] encKey = new byte[64];
 
+        byte[] encKey = new byte[64];
         extractBytes(encKey, 0, bX);
         extractBytes(encKey, 32, bY);
 
@@ -318,7 +319,7 @@ public class BCECGOST3410PublicKey
             return null;
         }
 
-        return EC5Util.convertSpec(ecSpec, withCompression);
+        return EC5Util.convertSpec(ecSpec);
     }
 
     public ECPoint getW()
@@ -345,7 +346,7 @@ public class BCECGOST3410PublicKey
     {
         if (ecSpec != null)
         {
-            return EC5Util.convertSpec(ecSpec, withCompression);
+            return EC5Util.convertSpec(ecSpec);
         }
 
         return BouncyCastleProvider.CONFIGURATION.getEcImplicitlyCa();

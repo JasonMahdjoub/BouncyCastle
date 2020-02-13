@@ -9,8 +9,8 @@ import java.security.SignatureException;
 import java.security.SignatureSpi;
 import java.security.spec.AlgorithmParameterSpec;
 
-import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.asn1.x509.X509ObjectIdentifiers;
+import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
+import org.bouncycastle.bcasn1.x509.X509ObjectIdentifiers;
 import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.DSAExt;
 import org.bouncycastle.crypto.Digest;
@@ -42,7 +42,7 @@ public class DSASigner
         PublicKey   publicKey)
         throws InvalidKeyException
     {
-        CipherParameters    param = DSAUtil.generatePublicKeyParameter(publicKey);
+        CipherParameters param = DSAUtil.generatePublicKeyParameter(publicKey);
 
         digest.reset();
         signer.init(false, param);
@@ -61,7 +61,7 @@ public class DSASigner
         PrivateKey  privateKey)
         throws InvalidKeyException
     {
-        CipherParameters    param = DSAUtil.generatePrivateKeyParameter(privateKey);
+        CipherParameters param = DSAUtil.generatePrivateKeyParameter(privateKey);
 
         if (random != null)
         {

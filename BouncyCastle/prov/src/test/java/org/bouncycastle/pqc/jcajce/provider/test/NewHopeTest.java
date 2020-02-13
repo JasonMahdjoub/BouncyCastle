@@ -18,7 +18,7 @@ import javax.crypto.KeyAgreement;
 import junit.framework.TestCase;
 import org.bouncycastle.pqc.jcajce.interfaces.NHKey;
 import org.bouncycastle.pqc.jcajce.provider.BouncyCastlePQCProvider;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 /**
  * Test cases for the use of NewHope (NH) with the BCPQC provider.

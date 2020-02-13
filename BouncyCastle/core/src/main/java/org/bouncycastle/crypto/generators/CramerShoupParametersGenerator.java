@@ -6,7 +6,7 @@ import java.security.SecureRandom;
 import org.bouncycastle.crypto.digests.SHA256Digest;
 import org.bouncycastle.crypto.params.CramerShoupParameters;
 import org.bouncycastle.crypto.params.DHParameters;
-import org.bouncycastle.util.BigIntegers;
+import org.bouncycastle.bcutil.BigIntegers;
 
 public class CramerShoupParametersGenerator
 {

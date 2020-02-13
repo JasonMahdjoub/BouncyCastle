@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.jcajce.provider.test.RandomTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-05-14T11:42:22" hostname="Garage2" time="52.561">
-  <properties/>
-  <testcase name="testCheckRandom" classname="org.bouncycastle.jcajce.provider.test.RandomTest" time="0.005"/>
-  <testcase name="testCheckNonceIVRandom" classname="org.bouncycastle.jcajce.provider.test.RandomTest" time="52.556"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

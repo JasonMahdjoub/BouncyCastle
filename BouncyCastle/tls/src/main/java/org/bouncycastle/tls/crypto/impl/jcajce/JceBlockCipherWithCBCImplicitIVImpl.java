@@ -7,8 +7,8 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
+import org.bouncycastle.tls.TlsUtils;
 import org.bouncycastle.tls.crypto.impl.TlsBlockCipherImpl;
-import org.bouncycastle.util.Arrays;
 
 /**
  * A basic wrapper for a JCE Cipher class to provide the needed block cipher functionality for TLS where the
@@ -17,6 +17,8 @@ import org.bouncycastle.util.Arrays;
 public class JceBlockCipherWithCBCImplicitIVImpl
     implements TlsBlockCipherImpl
 {
+    private static final int BUF_SIZE = 32 * 1024;
+
     private final Cipher cipher;
     private final String algorithm;
     private final boolean isEncrypting;
@@ -44,7 +46,7 @@ public class JceBlockCipherWithCBCImplicitIVImpl
             throw new IllegalStateException("unexpected reinitialization of an implicit-IV cipher");
         }
 
-        nextIV = Arrays.copyOfRange(iv, ivOff, ivOff + ivLen);
+        nextIV = TlsUtils.copyOfRangeExact(iv, ivOff, ivOff + ivLen);
     }
 
     public int doFinal(byte[] input, int inputOffset, int inputLength, byte[] output, int outputOffset)
@@ -57,21 +59,32 @@ public class JceBlockCipherWithCBCImplicitIVImpl
 
             if (!isEncrypting)
             {
-                nextIV = Arrays.copyOfRange(input, inputOffset + inputLength - cipher.getBlockSize(), inputOffset + inputLength);
+                nextIV = TlsUtils.copyOfRangeExact(input, inputOffset + inputLength - cipher.getBlockSize(), inputOffset + inputLength);
             }
 
-            int len = cipher.doFinal(input, inputOffset, inputLength, output, outputOffset);
+            // to avoid performance issue in FIPS jar  1.0.0-1.0.2
+            int totLen = 0;
+            while (inputLength > BUF_SIZE)
+            {
+                totLen += cipher.update(input, inputOffset, BUF_SIZE, output, outputOffset + totLen);
+
+                inputOffset += BUF_SIZE;
+                inputLength -= BUF_SIZE;
+            }
+
+            totLen += cipher.update(input, inputOffset, inputLength, output, outputOffset + totLen);
+            totLen += cipher.doFinal(output, outputOffset + totLen);
 
             if (isEncrypting)
             {
-                nextIV = Arrays.copyOfRange(output, outputOffset + inputLength - cipher.getBlockSize(), outputOffset + inputLength);
+                nextIV = TlsUtils.copyOfRangeExact(output, outputOffset + totLen - cipher.getBlockSize(), outputOffset + totLen);
             }
 
-            return len;
+            return totLen;
         }
         catch (GeneralSecurityException e)
         {
-            throw new IllegalStateException(e);
+            throw Exceptions.illegalStateException(e.getMessage(), e);
         }
     }
 

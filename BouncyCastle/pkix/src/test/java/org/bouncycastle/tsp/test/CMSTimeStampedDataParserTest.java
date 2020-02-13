@@ -10,7 +10,7 @@ import org.bouncycastle.operator.DigestCalculatorProvider;
 import org.bouncycastle.operator.bc.BcDigestCalculatorProvider;
 import org.bouncycastle.tsp.TimeStampToken;
 import org.bouncycastle.tsp.cms.CMSTimeStampedDataParser;
-import org.bouncycastle.util.io.Streams;
+import org.bouncycastle.bcutil.io.Streams;
 
 public class CMSTimeStampedDataParserTest
     extends TestCase

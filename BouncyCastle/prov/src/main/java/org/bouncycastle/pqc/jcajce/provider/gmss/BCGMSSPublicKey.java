@@ -2,7 +2,7 @@ package org.bouncycastle.pqc.jcajce.provider.gmss;
 
 import java.security.PublicKey;
 
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.pqc.asn1.GMSSPublicKey;
 import org.bouncycastle.pqc.asn1.PQCObjectIdentifiers;
@@ -10,7 +10,7 @@ import org.bouncycastle.pqc.asn1.ParSet;
 import org.bouncycastle.pqc.crypto.gmss.GMSSParameters;
 import org.bouncycastle.pqc.crypto.gmss.GMSSPublicKeyParameters;
 import org.bouncycastle.pqc.jcajce.provider.util.KeyUtil;
-import org.bouncycastle.util.encoders.Hex;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 /**
  * This class implements the GMSS public key and is usually initiated by the <a

@@ -5,7 +5,7 @@ import org.bouncycastle.crypto.digests.SHA256Digest;
 import org.bouncycastle.crypto.digests.SHA512Digest;
 import org.bouncycastle.pqc.crypto.xmss.XMSSParameters;
 import org.bouncycastle.pqc.crypto.xmss.XMSSPublicKeyParameters;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 /**
  * Test cases for XMSSPublicKey class.
@@ -57,7 +57,7 @@ public class XMSSPublicKeyTest extends TestCase {
 
 		byte[] pkByte = pk.toByteArray();
 		/* check everything is 0 */
-		for (int i = 0; i < pkByte.length; i++) {
+		for (int i = 5; i < pkByte.length; i++) {
 			assertEquals(0x00, pkByte[i]);
 		}
 	}

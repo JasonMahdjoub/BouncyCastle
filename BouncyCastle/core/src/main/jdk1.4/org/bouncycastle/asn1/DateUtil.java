@@ -1,4 +1,4 @@
-package org.bouncycastle.asn1;
+package org.bouncycastle.bcasn1;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

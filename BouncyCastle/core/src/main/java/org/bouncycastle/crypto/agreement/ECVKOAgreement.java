@@ -4,13 +4,12 @@ import java.math.BigInteger;
 
 import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.params.ECDomainParameters;
+import org.bouncycastle.crypto.params.*;
 import org.bouncycastle.crypto.params.ECPrivateKeyParameters;
 import org.bouncycastle.crypto.params.ECPublicKeyParameters;
-import org.bouncycastle.crypto.params.ParametersWithUKM;
 import org.bouncycastle.math.ec.ECAlgorithms;
 import org.bouncycastle.math.ec.ECPoint;
-import org.bouncycastle.util.BigIntegers;
+import org.bouncycastle.bcutil.BigIntegers;
 
 /**
  * GOST VKO key agreement class - RFC 7836 Section 4.3
@@ -30,7 +29,7 @@ public class ECVKOAgreement
     public void init(
         CipherParameters key)
     {
-        ParametersWithUKM p = (ParametersWithUKM)key;
+        ParametersWithUKMBC p = (ParametersWithUKMBC)key;
 
         this.key = (ECPrivateKeyParameters)p.getParameters();
         this.ukm = toInteger(p.getUKM());

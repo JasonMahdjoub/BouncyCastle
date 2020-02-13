@@ -1,5 +1,6 @@
 package org.bouncycastle.crypto.prng.test;
 
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.crypto.digests.SHA1Digest;
 import org.bouncycastle.crypto.digests.SHA256Digest;
 import org.bouncycastle.crypto.digests.SHA384Digest;
@@ -7,8 +8,7 @@ import org.bouncycastle.crypto.digests.SHA512Digest;
 import org.bouncycastle.crypto.macs.HMac;
 import org.bouncycastle.crypto.prng.drbg.HMacSP800DRBG;
 import org.bouncycastle.crypto.prng.drbg.SP80090DRBG;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**
  * HMAC SP800-90 DRBG

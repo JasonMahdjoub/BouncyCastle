@@ -7,11 +7,13 @@ import org.bouncycastle.crypto.agreement.srp.SRP6VerifierGenerator;
 import org.bouncycastle.crypto.macs.HMac;
 import org.bouncycastle.crypto.params.KeyParameter;
 import org.bouncycastle.crypto.params.SRP6GroupParameters;
-import org.bouncycastle.util.Strings;
+import org.bouncycastle.bcutil.Strings;
 
 /**
  * An implementation of {@link TlsSRPIdentityManager} that simulates the existence of "unknown" identities
  * to obscure the fact that there is no verifier for them. 
+ *
+ * @deprecated Migrate to the (D)TLS API in org.bouncycastle.tls (bctls jar).
  */
 public class SimulatedTlsSRPIdentityManager
     implements TlsSRPIdentityManager

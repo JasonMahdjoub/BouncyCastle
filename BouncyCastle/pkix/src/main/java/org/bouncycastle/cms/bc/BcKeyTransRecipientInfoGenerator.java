@@ -1,6 +1,6 @@
 package org.bouncycastle.cms.bc;
 
-import org.bouncycastle.asn1.cms.IssuerAndSerialNumber;
+import org.bouncycastle.bcasn1.cms.IssuerAndSerialNumber;
 import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.cms.KeyTransRecipientInfoGenerator;
 import org.bouncycastle.operator.bc.BcAsymmetricKeyWrapper;

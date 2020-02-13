@@ -3,8 +3,8 @@ package org.bouncycastle.crypto.test;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.ASN1Sequence;
+import org.bouncycastle.bcasn1.ASN1Integer;
+import org.bouncycastle.bcasn1.ASN1Sequence;
 import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
 import org.bouncycastle.crypto.digests.SHA224Digest;
 import org.bouncycastle.crypto.digests.SHA256Digest;
@@ -20,14 +20,14 @@ import org.bouncycastle.crypto.params.DSAValidationParameters;
 import org.bouncycastle.crypto.params.ParametersWithRandom;
 import org.bouncycastle.crypto.signers.DSADigestSigner;
 import org.bouncycastle.crypto.signers.DSASigner;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.BigIntegers;
-import org.bouncycastle.util.Strings;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.FixedSecureRandom;
-import org.bouncycastle.util.test.SimpleTest;
-import org.bouncycastle.util.test.TestRandomBigInteger;
-import org.bouncycastle.util.test.TestRandomData;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.BigIntegers;
+import org.bouncycastle.bcutil.Strings;
+import org.bouncycastle.bcutil.encoders.Hex;
+import org.bouncycastle.bcutil.test.FixedSecureRandom;
+import org.bouncycastle.bcutil.test.SimpleTest;
+import org.bouncycastle.bcutil.test.TestRandomBigInteger;
+import org.bouncycastle.bcutil.test.TestRandomData;
 
 /**
  * Test based on FIPS 186-2, Appendix 5, an example of DSA, and FIPS 168-3 test vectors.

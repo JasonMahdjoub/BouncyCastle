@@ -7,28 +7,31 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
+import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1EncodableVector;
-import org.bouncycastle.asn1.ASN1GeneralizedTime;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.DERBitString;
-import org.bouncycastle.asn1.DERNull;
-import org.bouncycastle.asn1.DEROutputStream;
-import org.bouncycastle.asn1.DERSequence;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x509.AttributeCertificate;
-import org.bouncycastle.asn1.x509.AttributeCertificateInfo;
-import org.bouncycastle.asn1.x509.Certificate;
-import org.bouncycastle.asn1.x509.CertificateList;
-import org.bouncycastle.asn1.x509.Extensions;
-import org.bouncycastle.asn1.x509.ExtensionsGenerator;
-import org.bouncycastle.asn1.x509.TBSCertList;
-import org.bouncycastle.asn1.x509.TBSCertificate;
+import org.bouncycastle.bcasn1.ASN1Encodable;
+import org.bouncycastle.bcasn1.ASN1EncodableVector;
+import org.bouncycastle.bcasn1.ASN1Encoding;
+import org.bouncycastle.bcasn1.ASN1GeneralizedTime;
+import org.bouncycastle.bcasn1.ASN1Object;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.ASN1Primitive;
+import org.bouncycastle.bcasn1.DERBitString;
+import org.bouncycastle.bcasn1.DERNull;
+import org.bouncycastle.bcasn1.DERSequence;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.x509.AttributeCertificate;
+import org.bouncycastle.bcasn1.x509.AttributeCertificateInfo;
+import org.bouncycastle.bcasn1.x509.Certificate;
+import org.bouncycastle.bcasn1.x509.CertificateList;
+import org.bouncycastle.bcasn1.x509.Extension;
+import org.bouncycastle.bcasn1.x509.Extensions;
+import org.bouncycastle.bcasn1.x509.ExtensionsGenerator;
+import org.bouncycastle.bcasn1.x509.TBSCertList;
+import org.bouncycastle.bcasn1.x509.TBSCertificate;
 import org.bouncycastle.operator.ContentSigner;
 
 class CertUtils
@@ -47,6 +50,7 @@ class CertUtils
         }
         return p;
     }
+
 
     static X509CertificateHolder generateFullCert(ContentSigner signer, TBSCertificate tbsCert)
     {
@@ -84,14 +88,11 @@ class CertUtils
         }
     }
 
-    private static byte[] generateSig(ContentSigner signer, ASN1Encodable tbsObj)
+    private static byte[] generateSig(ContentSigner signer, ASN1Object tbsObj)
         throws IOException
     {
         OutputStream sOut = signer.getOutputStream();
-        DEROutputStream dOut = new DEROutputStream(sOut);
-
-        dOut.writeObject(tbsObj);
-
+        tbsObj.encodeTo(sOut, ASN1Encoding.DER);
         sOut.close();
 
         return signer.getSignature();
@@ -253,5 +254,62 @@ class CertUtils
         }
 
         return id1.getParameters().equals(id2.getParameters());
+    }
+
+    static ExtensionsGenerator doReplaceExtension(ExtensionsGenerator extGenerator, Extension ext)
+    {
+        boolean isReplaced = false;
+        Extensions exts = extGenerator.generate();
+        extGenerator = new ExtensionsGenerator();
+
+        for (Enumeration en = exts.oids(); en.hasMoreElements();)
+        {
+            ASN1ObjectIdentifier extOid = (ASN1ObjectIdentifier)en.nextElement();
+
+            if (extOid.equals(ext.getExtnId()))
+            {
+                isReplaced = true;
+                extGenerator.addExtension(ext);
+            }
+            else
+            {
+                extGenerator.addExtension(exts.getExtension(extOid));
+            }
+        }
+
+        if (!isReplaced)
+        {
+            throw new IllegalArgumentException("replace - original extension (OID = " + ext.getExtnId() + ") not found");
+        }
+
+        return extGenerator;
+    }
+
+    static ExtensionsGenerator doRemoveExtension(ExtensionsGenerator extGenerator, ASN1ObjectIdentifier  oid)
+    {
+        boolean isRemoved = false;
+        Extensions exts = extGenerator.generate();
+        extGenerator = new ExtensionsGenerator();
+
+        for (Enumeration en = exts.oids(); en.hasMoreElements();)
+        {
+            ASN1ObjectIdentifier extOid = (ASN1ObjectIdentifier)en.nextElement();
+
+            if (extOid.equals(oid))
+            {
+                isRemoved = true;
+            }
+            else
+            {
+                extGenerator.addExtension(exts.getExtension(extOid));
+            }
+        }
+
+        if (!isRemoved)
+        {
+            throw new IllegalArgumentException("remove - extension (OID = " + oid + ") not found");
+        }
+
+        return extGenerator;
     }
 }

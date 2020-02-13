@@ -12,10 +12,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.x9.ECNamedCurveTable;
-import org.bouncycastle.asn1.x9.X962Parameters;
-import org.bouncycastle.asn1.x9.X9ECParameters;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.x9.ECNamedCurveTable;
+import org.bouncycastle.bcasn1.x9.X962Parameters;
+import org.bouncycastle.bcasn1.x9.X9ECParameters;
 import org.bouncycastle.crypto.ec.CustomNamedCurves;
 import org.bouncycastle.crypto.params.ECDomainParameters;
 import org.bouncycastle.jcajce.provider.config.ProviderConfiguration;
@@ -27,7 +27,7 @@ import org.bouncycastle.math.ec.ECCurve;
 import org.bouncycastle.math.field.FiniteField;
 import org.bouncycastle.math.field.Polynomial;
 import org.bouncycastle.math.field.PolynomialExtensionField;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 public class EC5Util
 {
@@ -118,7 +118,7 @@ public class EC5Util
         }
         else
         {
-            domainParameters = ECUtil.getDomainParameters(configuration, convertSpec(params, false));
+            domainParameters = ECUtil.getDomainParameters(configuration, convertSpec(params));
         }
 
         return domainParameters;
@@ -261,64 +261,46 @@ public class EC5Util
         EllipticCurve ellipticCurve,
         org.bouncycastle.jce.spec.ECParameterSpec spec)
     {
+        ECPoint g = convertPoint(spec.getG());
+
         if (spec instanceof ECNamedCurveParameterSpec)
         {
-            return new ECNamedCurveSpec(
-                ((ECNamedCurveParameterSpec)spec).getName(),
-                ellipticCurve,
-                convertPoint(spec.getG()),
-                spec.getN(),
-                spec.getH());
+            String name = ((ECNamedCurveParameterSpec)spec).getName();
+
+            return new ECNamedCurveSpec(name, ellipticCurve, g, spec.getN(), spec.getH());
         }
         else
         {
-            return new ECParameterSpec(
-                ellipticCurve,
-                convertPoint(spec.getG()),
-                spec.getN(),
-                spec.getH().intValue());
+            return new ECParameterSpec(ellipticCurve, g, spec.getN(), spec.getH().intValue());
         }
     }
 
-    public static org.bouncycastle.jce.spec.ECParameterSpec convertSpec(
-        ECParameterSpec ecSpec,
-        boolean withCompression)
+    public static org.bouncycastle.jce.spec.ECParameterSpec convertSpec(ECParameterSpec ecSpec)
     {
         ECCurve curve = convertCurve(ecSpec.getCurve());
 
+        org.bouncycastle.math.ec.ECPoint g = convertPoint(curve, ecSpec.getGenerator());
+        BigInteger n = ecSpec.getOrder();
+        BigInteger h = BigInteger.valueOf(ecSpec.getCofactor());
+        byte[] seed = ecSpec.getCurve().getSeed();
+
         if (ecSpec instanceof ECNamedCurveSpec)
         {
-            return new org.bouncycastle.jce.spec.ECNamedCurveParameterSpec(
-                ((ECNamedCurveSpec)ecSpec).getName(),
-                curve,
-                convertPoint(curve, ecSpec.getGenerator(), withCompression),
-                ecSpec.getOrder(),
-                BigInteger.valueOf(ecSpec.getCofactor()),
-                ecSpec.getCurve().getSeed());
+            return new org.bouncycastle.jce.spec.ECNamedCurveParameterSpec(((ECNamedCurveSpec)ecSpec).getName(), curve,
+                g, n, h, seed);
         }
         else
         {
-            return new org.bouncycastle.jce.spec.ECParameterSpec(
-                curve,
-                convertPoint(curve, ecSpec.getGenerator(), withCompression),
-                ecSpec.getOrder(),
-                BigInteger.valueOf(ecSpec.getCofactor()),
-                ecSpec.getCurve().getSeed());
+            return new org.bouncycastle.jce.spec.ECParameterSpec(curve, g, n, h, seed);
         }
     }
 
-    public static org.bouncycastle.math.ec.ECPoint convertPoint(
-        ECParameterSpec ecSpec,
-        ECPoint point,
-        boolean withCompression)
+    public static org.bouncycastle.math.ec.ECPoint convertPoint(ECParameterSpec ecSpec, ECPoint point)
     {
-        return convertPoint(convertCurve(ecSpec.getCurve()), point, withCompression);
+        return convertPoint(convertCurve(ecSpec.getCurve()), point);
     }
 
-    public static org.bouncycastle.math.ec.ECPoint convertPoint(
-        ECCurve curve,
-        ECPoint point,
-        boolean withCompression)
+    public static org.bouncycastle.math.ec.ECPoint convertPoint(ECCurve curve, ECPoint point)
     {
         return curve.createPoint(point.getAffineX(), point.getAffineY());
     }

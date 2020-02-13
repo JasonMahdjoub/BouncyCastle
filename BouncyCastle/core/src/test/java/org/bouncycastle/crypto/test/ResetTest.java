@@ -1,12 +1,12 @@
 package org.bouncycastle.crypto.test;
 
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.crypto.BufferedBlockCipher;
 import org.bouncycastle.crypto.DataLengthException;
+import org.bouncycastle.crypto.InvalidCipherTextException;
 import org.bouncycastle.crypto.engines.DESEngine;
 import org.bouncycastle.crypto.params.KeyParameter;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class ResetTest
     extends SimpleTest
@@ -75,7 +75,7 @@ public class ResetTest
     }
 
     private void basicTrial(BufferedBlockCipher cipher, KeyParameter param)
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         cipher.init(true, param);
 

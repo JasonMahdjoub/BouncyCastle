@@ -5,39 +5,31 @@ import java.math.BigInteger;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1Set;
-import org.bouncycastle.asn1.DERBitString;
-import org.bouncycastle.asn1.DERNull;
-import org.bouncycastle.asn1.DEROctetString;
-import org.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
-import org.bouncycastle.asn1.cryptopro.GOST3410PublicKeyAlgParameters;
-import org.bouncycastle.asn1.edec.EdECObjectIdentifiers;
-import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
-import org.bouncycastle.asn1.pkcs.RSAPrivateKey;
-import org.bouncycastle.asn1.rosstandart.RosstandartObjectIdentifiers;
-import org.bouncycastle.asn1.sec.ECPrivateKey;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x509.DSAParameter;
-import org.bouncycastle.asn1.x9.X962Parameters;
-import org.bouncycastle.asn1.x9.X9ECParameters;
-import org.bouncycastle.asn1.x9.X9ObjectIdentifiers;
-import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
+import org.bouncycastle.bcasn1.ASN1Encodable;
+import org.bouncycastle.bcasn1.ASN1Integer;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.ASN1Set;
+import org.bouncycastle.bcasn1.DERBitString;
+import org.bouncycastle.bcasn1.DERNull;
+import org.bouncycastle.bcasn1.DEROctetString;
+import org.bouncycastle.bcasn1.cryptopro.CryptoProObjectIdentifiers;
+import org.bouncycastle.bcasn1.cryptopro.GOST3410PublicKeyAlgParameters;
+import org.bouncycastle.bcasn1.edec.EdECObjectIdentifiers;
+import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
+import org.bouncycastle.bcasn1.pkcs.PrivateKeyInfo;
+import org.bouncycastle.bcasn1.pkcs.RSAPrivateKey;
+import org.bouncycastle.bcasn1.rosstandart.RosstandartObjectIdentifiers;
+import org.bouncycastle.bcasn1.sec.ECPrivateKey;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.x509.DSAParameter;
+import org.bouncycastle.bcasn1.x9.X962Parameters;
+import org.bouncycastle.bcasn1.x9.X9ECParameters;
+import org.bouncycastle.bcasn1.x9.X9ECPoint;
+import org.bouncycastle.bcasn1.x9.X9ObjectIdentifiers;
+import org.bouncycastle.crypto.params.*;
 import org.bouncycastle.crypto.params.DSAParameters;
-import org.bouncycastle.crypto.params.DSAPrivateKeyParameters;
-import org.bouncycastle.crypto.params.ECDomainParameters;
-import org.bouncycastle.crypto.params.ECGOST3410Parameters;
-import org.bouncycastle.crypto.params.ECNamedDomainParameters;
-import org.bouncycastle.crypto.params.ECPrivateKeyParameters;
-import org.bouncycastle.crypto.params.Ed25519PrivateKeyParameters;
-import org.bouncycastle.crypto.params.Ed448PrivateKeyParameters;
-import org.bouncycastle.crypto.params.RSAKeyParameters;
-import org.bouncycastle.crypto.params.RSAPrivateCrtKeyParameters;
-import org.bouncycastle.crypto.params.X25519PrivateKeyParameters;
-import org.bouncycastle.crypto.params.X448PrivateKeyParameters;
+import org.bouncycastle.math.ec.ECPoint;
+import org.bouncycastle.math.ec.FixedPointCombMultiplier;
 
 /**
  * Factory to create ASN.1 private key info objects from lightweight private keys.
@@ -153,7 +145,7 @@ public class PrivateKeyInfoFactory
             {
                 X9ECParameters ecP = new X9ECParameters(
                     domainParams.getCurve(),
-                    domainParams.getG(),
+                    new X9ECPoint(domainParams.getG(), false),
                     domainParams.getN(),
                     domainParams.getH(),
                     domainParams.getSeed());
@@ -162,9 +154,14 @@ public class PrivateKeyInfoFactory
                 orderBitLength = domainParams.getN().bitLength();
             }
 
-            return new PrivateKeyInfo(new AlgorithmIdentifier(X9ObjectIdentifiers.id_ecPublicKey, params),
-                new ECPrivateKey(orderBitLength, priv.getD(),
-                    new DERBitString(domainParams.getG().multiply(priv.getD()).getEncoded(false)), params),
+            ECPoint q = new FixedPointCombMultiplier().multiply(domainParams.getG(), priv.getD());
+
+            // TODO Support point compression
+            DERBitString publicKey = new DERBitString(q.getEncoded(false));
+
+            return new PrivateKeyInfo(
+                new AlgorithmIdentifier(X9ObjectIdentifiers.id_ecPublicKey, params),
+                new ECPrivateKey(orderBitLength, priv.getD(), publicKey, params),
                 attributes);
         }
         else if (privateKey instanceof X448PrivateKeyParameters)

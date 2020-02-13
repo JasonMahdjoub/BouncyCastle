@@ -7,11 +7,11 @@ import org.bouncycastle.crypto.KeyGenerationParameters;
 public class ElGamalKeyGenerationParameters
     extends KeyGenerationParameters
 {
-    private ElGamalParameters    params;
+    private ElGamalParameters params;
 
     public ElGamalKeyGenerationParameters(
         SecureRandom        random,
-        ElGamalParameters   params)
+        ElGamalParameters params)
     {
         super(random, getStrength(params));
 

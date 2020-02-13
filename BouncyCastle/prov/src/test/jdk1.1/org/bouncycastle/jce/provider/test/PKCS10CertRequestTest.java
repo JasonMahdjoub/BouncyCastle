@@ -7,16 +7,16 @@ import java.security.KeyPairGenerator;
 import java.security.Security;
 import java.util.Hashtable;
 
-import org.bouncycastle.asn1.ASN1InputStream;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.DEROutputStream;
-import org.bouncycastle.asn1.x509.X509Name;
+import org.bouncycastle.bcasn1.ASN1InputStream;
+import org.bouncycastle.bcasn1.ASN1Sequence;
+import org.bouncycastle.bcasn1.DEROutputStream;
+import org.bouncycastle.bcasn1.x509.X509Name;
 import org.bouncycastle.jce.PKCS10CertificationRequest;
 import org.bouncycastle.jce.X509Principal;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.test.SimpleTestResult;
-import org.bouncycastle.util.test.Test;
-import org.bouncycastle.util.test.TestResult;
+import org.bouncycastle.bcutil.test.SimpleTestResult;
+import org.bouncycastle.bcutil.test.Test;
+import org.bouncycastle.bcutil.test.TestResult;
 
 /**
  **/

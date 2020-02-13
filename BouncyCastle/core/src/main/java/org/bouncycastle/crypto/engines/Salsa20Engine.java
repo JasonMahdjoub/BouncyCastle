@@ -1,14 +1,11 @@
 package org.bouncycastle.crypto.engines;
 
+import org.bouncycastle.crypto.*;
 import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.DataLengthException;
-import org.bouncycastle.crypto.MaxBytesExceededException;
-import org.bouncycastle.crypto.OutputLengthException;
-import org.bouncycastle.crypto.SkippingStreamCipher;
 import org.bouncycastle.crypto.params.KeyParameter;
 import org.bouncycastle.crypto.params.ParametersWithIV;
-import org.bouncycastle.util.Pack;
-import org.bouncycastle.util.Strings;
+import org.bouncycastle.bcutil.Pack;
+import org.bouncycastle.bcutil.Strings;
 
 /**
  * Implementation of Daniel J. Bernstein's Salsa20 stream cipher, Snuffle 2005
@@ -86,7 +83,7 @@ public class Salsa20Engine
      */
     public void init(
         boolean             forEncryption, 
-        CipherParameters     params)
+        CipherParameters params)
     {
         /* 
         * Salsa20 encryption and decryption is completely

@@ -3,7 +3,7 @@ package org.bouncycastle.crypto.digests;
 import java.io.ByteArrayOutputStream;
 
 import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 
 public class NullDigest

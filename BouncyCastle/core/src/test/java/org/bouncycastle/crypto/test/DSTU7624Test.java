@@ -2,6 +2,7 @@ package org.bouncycastle.crypto.test;
 
 import java.security.SecureRandom;
 
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.crypto.engines.DSTU7624Engine;
 import org.bouncycastle.crypto.engines.DSTU7624WrapEngine;
 import org.bouncycastle.crypto.macs.DSTU7624Mac;
@@ -17,9 +18,8 @@ import org.bouncycastle.crypto.modes.OFBBlockCipher;
 import org.bouncycastle.crypto.params.AEADParameters;
 import org.bouncycastle.crypto.params.KeyParameter;
 import org.bouncycastle.crypto.params.ParametersWithIV;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class DSTU7624Test
     extends CipherTest
@@ -160,6 +160,34 @@ public class DSTU7624Test
                 + Hex.toHexString(expectedMac)
                 + " got " + Hex.toHexString(mac));
         }
+
+        // check that reset correctly on doFinal()
+        dstu7624Mac.update(authtext, 0, authtext.length);
+        dstu7624Mac.doFinal(mac, 0);
+
+        if (!Arrays.areEqual(mac, expectedMac))
+        {
+            fail("Failed MAC test reset - expected "
+                + Hex.toHexString(expectedMac)
+                + " got " + Hex.toHexString(mac));
+        }
+
+        // check that init reset correctly
+        dstu7624Mac.init(new KeyParameter(key));
+        dstu7624Mac.init(new KeyParameter(key));
+        dstu7624Mac.update(authtext, 0, authtext.length);
+        dstu7624Mac.doFinal(mac, 0);
+
+        if (!Arrays.areEqual(mac, expectedMac))
+        {
+            fail("Failed MAC test double init - expected "
+                + Hex.toHexString(expectedMac)
+                + " got " + Hex.toHexString(mac));
+        }
+
+        // check simple reset
+        dstu7624Mac = new DSTU7624Mac(512, 128);
+        dstu7624Mac.reset();
     }
 
     private void KeyWrapTests()

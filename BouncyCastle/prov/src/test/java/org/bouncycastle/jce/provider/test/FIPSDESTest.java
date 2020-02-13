@@ -15,11 +15,11 @@ import javax.crypto.CipherOutputStream;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTestResult;
-import org.bouncycastle.util.test.Test;
-import org.bouncycastle.util.test.TestResult;
+import org.bouncycastle.bcutil.test.SimpleTestResult;
+import org.bouncycastle.bcutil.test.Test;
+import org.bouncycastle.bcutil.test.TestResult;
 
 /**
  * basic FIPS test class for a block cipher, just to make sure ECB/CBC/OFB/CFB are behaving

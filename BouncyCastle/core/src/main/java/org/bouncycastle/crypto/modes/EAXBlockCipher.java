@@ -1,15 +1,11 @@
 package org.bouncycastle.crypto.modes;
 
-import org.bouncycastle.crypto.BlockCipher;
+import org.bouncycastle.crypto.*;
 import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.DataLengthException;
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
-import org.bouncycastle.crypto.Mac;
-import org.bouncycastle.crypto.OutputLengthException;
 import org.bouncycastle.crypto.macs.CMac;
 import org.bouncycastle.crypto.params.AEADParameters;
 import org.bouncycastle.crypto.params.ParametersWithIV;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 /**
  * A Two-Pass Authenticated-Encryption Scheme Optimized for Simplicity and
@@ -236,7 +232,7 @@ public class EAXBlockCipher
     }
 
     public int doFinal(byte[] out, int outOff)
-        throws IllegalStateException, BCInvalidCipherTextException
+        throws IllegalStateException, InvalidCipherTextException
     {
         initCipher();
 
@@ -269,7 +265,7 @@ public class EAXBlockCipher
         {
             if (extra < macSize)
             {
-                throw new BCInvalidCipherTextException("data too short");
+                throw new InvalidCipherTextException("data too short");
             }
             if (out.length < (outOff + extra - macSize))
             {
@@ -288,7 +284,7 @@ public class EAXBlockCipher
 
             if (!verifyMac(bufBlock, extra - macSize))
             {
-                throw new BCInvalidCipherTextException("mac check in EAX failed");
+                throw new InvalidCipherTextException("mac check in EAX failed");
             }
 
             reset(false);

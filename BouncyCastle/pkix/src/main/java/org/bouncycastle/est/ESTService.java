@@ -13,12 +13,12 @@ import java.util.Set;
 import java.util.TimeZone;
 import java.util.regex.Pattern;
 
-import org.bouncycastle.asn1.ASN1InputStream;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.DERPrintableString;
-import org.bouncycastle.asn1.cms.ContentInfo;
-import org.bouncycastle.asn1.est.CsrAttrs;
-import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
+import org.bouncycastle.bcasn1.ASN1InputStream;
+import org.bouncycastle.bcasn1.ASN1Sequence;
+import org.bouncycastle.bcasn1.DERPrintableString;
+import org.bouncycastle.bcasn1.cms.ContentInfo;
+import org.bouncycastle.bcasn1.est.CsrAttrs;
+import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
 import org.bouncycastle.cert.X509CRLHolder;
 import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.cmc.CMCException;
@@ -26,9 +26,9 @@ import org.bouncycastle.cmc.SimplePKIResponse;
 import org.bouncycastle.operator.ContentSigner;
 import org.bouncycastle.pkcs.PKCS10CertificationRequest;
 import org.bouncycastle.pkcs.PKCS10CertificationRequestBuilder;
-import org.bouncycastle.util.Selector;
-import org.bouncycastle.util.Store;
-import org.bouncycastle.util.encoders.Base64;
+import org.bouncycastle.bcutil.Selector;
+import org.bouncycastle.bcutil.Store;
+import org.bouncycastle.bcutil.encoders.Base64;
 
 /**
  * ESTService provides unified access to an EST server which is defined as implementing
@@ -59,7 +59,7 @@ public class ESTService
     private final String server;
     private final ESTClientProvider clientProvider;
 
-    private static final Pattern pathInvalid = Pattern.compile("^[0-9a-zA-Z_\\-.~!$&'()*+,;=]+");
+    private static final Pattern pathInValid = Pattern.compile("^[0-9a-zA-Z_\\-.~!$&'()*+,;:=]+");
 
     ESTService(
         String serverAuthority, String label,
@@ -525,7 +525,7 @@ public class ESTService
                     if (resp.getContentLength() != null && resp.getContentLength() > 0)
                     {
                         ASN1InputStream ain = new ASN1InputStream(resp.getInputStream());
-                        ASN1Sequence seq = (ASN1Sequence)ain.readObject();
+                        ASN1Sequence seq = ASN1Sequence.getInstance(ain.readObject());
                         response = new CSRAttributesResponse(CsrAttrs.getInstance(seq));
                     }
                 }
@@ -630,7 +630,7 @@ public class ESTService
             throw new IllegalArgumentException("Label set but after trimming '/' is not zero length string.");
         }
 
-        if (!pathInvalid.matcher(label).matches())
+        if (!pathInValid.matcher(label).matches())
         {
             throw new IllegalArgumentException("Server path " + label + " contains invalid characters");
         }

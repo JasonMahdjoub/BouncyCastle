@@ -9,13 +9,13 @@ import java.security.spec.InvalidParameterSpecException;
 
 import javax.crypto.spec.IvParameterSpec;
 
-import org.bouncycastle.asn1.cms.CCMParameters;
-import org.bouncycastle.asn1.cms.GCMParameters;
-import org.bouncycastle.asn1.nsri.NSRIObjectIdentifiers;
+import org.bouncycastle.bcasn1.cms.CCMParameters;
+import org.bouncycastle.bcasn1.cms.GCMParameters;
+import org.bouncycastle.bcasn1.nsri.NSRIObjectIdentifiers;
+import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
 import org.bouncycastle.crypto.BlockCipher;
 import org.bouncycastle.crypto.BufferedBlockCipher;
 import org.bouncycastle.crypto.CipherKeyGenerator;
-import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
 import org.bouncycastle.crypto.engines.ARIAEngine;
 import org.bouncycastle.crypto.engines.ARIAWrapEngine;
 import org.bouncycastle.crypto.engines.ARIAWrapPadEngine;

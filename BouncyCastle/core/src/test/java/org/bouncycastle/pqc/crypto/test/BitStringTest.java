@@ -2,7 +2,7 @@ package org.bouncycastle.pqc.crypto.test;
 
 import junit.framework.TestCase;
 import org.bouncycastle.pqc.crypto.ntru.IndexGenerator.BitString;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 public class BitStringTest
     extends TestCase

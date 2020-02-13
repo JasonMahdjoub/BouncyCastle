@@ -6,10 +6,10 @@ import org.bouncycastle.crypto.modes.CFBBlockCipher;
 import org.bouncycastle.crypto.modes.OFBBlockCipher;
 import org.bouncycastle.crypto.params.KeyParameter;
 import org.bouncycastle.crypto.params.ParametersWithIV;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTestResult;
-import org.bouncycastle.util.test.Test;
-import org.bouncycastle.util.test.TestResult;
+import org.bouncycastle.bcutil.encoders.Hex;
+import org.bouncycastle.bcutil.test.SimpleTestResult;
+import org.bouncycastle.bcutil.test.Test;
+import org.bouncycastle.bcutil.test.TestResult;
 
 /**
  * CFB/OFB Mode test of IV padding.

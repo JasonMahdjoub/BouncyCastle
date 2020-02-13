@@ -15,27 +15,27 @@ import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 import java.util.TimeZone;
 
-public class LocalizedMessage
+public class LocalizedMessage 
 {
 
     protected final String id;
     protected final String resource;
-
+    
     // ISO-8859-1 is the default encoding
     public static final String DEFAULT_ENCODING = "ISO-8859-1";
     protected String encoding = DEFAULT_ENCODING;
-
+    
     protected FilteredArguments arguments;
     protected FilteredArguments extraArgs = null;
-
+    
     protected Filter filter = null;
-
+    
     protected ClassLoader loader = null;
-
+    
     /**
-     * Constructs a new LocalizedMessage using <code>resource</code> as the base name for the
-     * RessourceBundle and <code>id</code> as the message bundle id the resource file.
-     * @param resource base name of the resource file
+     * Constructs a new LocalizedMessage using <code>resource</code> as the base name for the 
+     * RessourceBundle and <code>id</code> as the message bundle id the resource file. 
+     * @param resource base name of the resource file 
      * @param id the id of the corresponding bundle in the resource file
      * @throws NullPointerException if <code>resource</code> or <code>id</code> is <code>null</code>
      */
@@ -49,11 +49,11 @@ public class LocalizedMessage
         this.resource = resource;
         arguments = new FilteredArguments();
     }
-
+    
     /**
-     * Constructs a new LocalizedMessage using <code>resource</code> as the base name for the
-     * RessourceBundle and <code>id</code> as the message bundle id the resource file.
-     * @param resource base name of the resource file
+     * Constructs a new LocalizedMessage using <code>resource</code> as the base name for the 
+     * RessourceBundle and <code>id</code> as the message bundle id the resource file. 
+     * @param resource base name of the resource file 
      * @param id the id of the corresponding bundle in the resource file
      * @param encoding the encoding of the resource file
      * @throws NullPointerException if <code>resource</code> or <code>id</code> is <code>null</code>
@@ -74,11 +74,11 @@ public class LocalizedMessage
         }
         this.encoding = encoding;
     }
-
+    
     /**
-     * Constructs a new LocalizedMessage using <code>resource</code> as the base name for the
-     * RessourceBundle and <code>id</code> as the message bundle id the resource file.
-     * @param resource base name of the resource file
+     * Constructs a new LocalizedMessage using <code>resource</code> as the base name for the 
+     * RessourceBundle and <code>id</code> as the message bundle id the resource file. 
+     * @param resource base name of the resource file 
      * @param id the id of the corresponding bundle in the resource file
      * @param arguments an array containing the arguments for the message
      * @throws NullPointerException if <code>resource</code> or <code>id</code> is <code>null</code>
@@ -93,11 +93,11 @@ public class LocalizedMessage
         this.resource = resource;
         this.arguments = new FilteredArguments(arguments);
     }
-
+    
     /**
-     * Constructs a new LocalizedMessage using <code>resource</code> as the base name for the
-     * RessourceBundle and <code>id</code> as the message bundle id the resource file.
-     * @param resource base name of the resource file
+     * Constructs a new LocalizedMessage using <code>resource</code> as the base name for the 
+     * RessourceBundle and <code>id</code> as the message bundle id the resource file. 
+     * @param resource base name of the resource file 
      * @param id the id of the corresponding bundle in the resource file
      * @param encoding the encoding of the resource file
      * @param arguments an array containing the arguments for the message
@@ -119,9 +119,9 @@ public class LocalizedMessage
         }
         this.encoding = encoding;
     }
-
+    
     /**
-     * Reads the entry <code>id + "." + key</code> from the resource file and returns a
+     * Reads the entry <code>id + "." + key</code> from the resource file and returns a 
      * formated message for the given Locale and TimeZone.
      * @param key second part of the entry id
      * @param loc the used {@link Locale}
@@ -136,7 +136,7 @@ public class LocalizedMessage
         {
             entry += "." + key;
         }
-
+        
         try
         {
             ResourceBundle bundle;
@@ -151,7 +151,7 @@ public class LocalizedMessage
             String result = bundle.getString(entry);
             if (!encoding.equals(DEFAULT_ENCODING))
             {
-                result = new String(result.getBytes(), encoding);
+                result = new String(result.getBytes(DEFAULT_ENCODING), encoding);
             }
             if (!arguments.isEmpty())
             {
@@ -166,7 +166,7 @@ public class LocalizedMessage
                     resource,
                     entry,
                     loc,
-                    loader != null ? loader : this.getClassLoader());
+                    loader != null ? loader : this.getClassLoader()); 
         }
         catch (UnsupportedEncodingException use)
         {
@@ -174,22 +174,22 @@ public class LocalizedMessage
             throw new RuntimeException(use);
         }
     }
-
+    
     protected String formatWithTimeZone(
             String template,
-            Object[] arguments,
+            Object[] arguments, 
             Locale locale,
-            TimeZone timezone)
+            TimeZone timezone) 
     {
         MessageFormat mf = new MessageFormat(" ");
         mf.setLocale(locale);
         mf.applyPattern(template);
-        if (!timezone.equals(TimeZone.getDefault()))
+        if (!timezone.equals(TimeZone.getDefault())) 
         {
             Format[] formats = mf.getFormats();
-            for (int i = 0; i < formats.length; i++)
+            for (int i = 0; i < formats.length; i++) 
             {
-                if (formats[i] instanceof DateFormat)
+                if (formats[i] instanceof DateFormat) 
                 {
                     DateFormat temp = (DateFormat) formats[i];
                     temp.setTimeZone(timezone);
@@ -199,7 +199,7 @@ public class LocalizedMessage
         }
         return mf.format(arguments);
     }
-
+    
     protected String addExtraArgs(String msg, Locale locale)
     {
         if (extraArgs != null)
@@ -214,7 +214,7 @@ public class LocalizedMessage
         }
         return msg;
     }
-
+    
     /**
      * Sets the {@link Filter} that is used to filter the arguments of this message
      * @param filter the {@link Filter} to use. <code>null</code> to disable filtering.
@@ -228,7 +228,7 @@ public class LocalizedMessage
         }
         this.filter = filter;
     }
-
+    
     /**
      * Returns the current filter.
      * @return the current filter
@@ -237,17 +237,17 @@ public class LocalizedMessage
     {
         return filter;
     }
-
+    
     /**
      * Set the {@link ClassLoader} which loads the resource files. If it is set to <code>null</code>
-     * then the default {@link ClassLoader} is used.
+     * then the default {@link ClassLoader} is used. 
      * @param loader the {@link ClassLoader} which loads the resource files
      */
     public void setClassLoader(ClassLoader loader)
     {
         this.loader = loader;
     }
-
+    
     /**
      * Returns the {@link ClassLoader} which loads the resource files or <code>null</code>
      * if the default ClassLoader is used.
@@ -257,7 +257,7 @@ public class LocalizedMessage
     {
         return loader;
     }
-
+    
     /**
      * Returns the id of the message in the resource bundle.
      * @return the id of the message
@@ -266,7 +266,7 @@ public class LocalizedMessage
     {
         return id;
     }
-
+    
     /**
      * Returns the name of the resource bundle for this message
      * @return name of the resource file
@@ -275,7 +275,7 @@ public class LocalizedMessage
     {
         return resource;
     }
-
+    
     /**
      * Returns an <code>Object[]</code> containing the message arguments.
      * @return the message arguments
@@ -284,18 +284,18 @@ public class LocalizedMessage
     {
         return arguments.getArguments();
     }
-
+    
     /**
-     *
+     * 
      * @param extraArg
      */
     public void setExtraArgument(Object extraArg)
     {
         setExtraArguments(new Object[] {extraArg});
     }
-
+    
     /**
-     *
+     * 
      * @param extraArgs
      */
     public void setExtraArguments(Object[] extraArgs)
@@ -310,35 +310,35 @@ public class LocalizedMessage
             this.extraArgs = null;
         }
     }
-
+    
     /**
-     *
+     * 
      * @return
      */
     public Object[] getExtraArgs()
     {
         return (extraArgs == null) ? null : extraArgs.getArguments();
     }
-
+    
     protected class FilteredArguments
     {
         protected static final int NO_FILTER = 0;
         protected static final int FILTER = 1;
         protected static final int FILTER_URL = 2;
-
+        
         protected Filter filter = null;
-
+        
         protected boolean[] isLocaleSpecific;
         protected int[] argFilterType;
         protected Object[] arguments;
         protected Object[] unpackedArgs;
         protected Object[] filteredArgs;
-
+        
         FilteredArguments()
         {
             this(new Object[0]);
         }
-
+        
         FilteredArguments(Object[] args)
         {
             this.arguments = args;
@@ -370,22 +370,22 @@ public class LocalizedMessage
                     this.unpackedArgs[i] = args[i];
                     argFilterType[i] = FILTER;
                 }
-
+                
                 // locale specific
                 this.isLocaleSpecific[i] = (this.unpackedArgs[i] instanceof LocaleString);
             }
         }
-
+        
         public boolean isEmpty()
         {
             return unpackedArgs.length == 0;
         }
-
+        
         public Object[] getArguments()
         {
             return arguments;
         }
-
+        
         public Object[] getFilteredArgs(Locale locale)
         {
             Object[] result = new Object[unpackedArgs.length];
@@ -415,7 +415,7 @@ public class LocalizedMessage
             }
             return result;
         }
-
+        
         private Object filter(int type, Object obj)
         {
             if (filter != null)
@@ -423,14 +423,14 @@ public class LocalizedMessage
                 Object o = (null == obj) ? "null" : obj;
                 switch (type)
                 {
-                    case NO_FILTER:
-                        return o;
-                    case FILTER:
-                        return filter.doFilter(o.toString());
-                    case FILTER_URL:
-                        return filter.doFilterUrl(o.toString());
-                    default:
-                        return null;
+                case NO_FILTER:
+                    return o;
+                case FILTER:
+                    return filter.doFilter(o.toString());
+                case FILTER_URL:
+                    return filter.doFilterUrl(o.toString());
+                default:
+                    return null;
                 }
             }
             else
@@ -455,9 +455,9 @@ public class LocalizedMessage
             }
             this.filter = filter;
         }
-
+        
     }
-
+    
     public String toString()
     {
         StringBuffer sb = new StringBuffer();

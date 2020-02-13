@@ -2,10 +2,10 @@ package org.bouncycastle.pqc.crypto.mceliece;
 
 import java.security.SecureRandom;
 
-import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.CipherParameters;
+import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
 import org.bouncycastle.crypto.Digest;
+import org.bouncycastle.crypto.InvalidCipherTextException;
 import org.bouncycastle.crypto.digests.SHA1Digest;
 import org.bouncycastle.crypto.params.ParametersWithRandom;
 import org.bouncycastle.crypto.prng.DigestRandomGenerator;
@@ -159,7 +159,7 @@ public class McElieceFujisakiCipher
     }
 
     public byte[] messageDecrypt(byte[] input)
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         if (forEncryption)
         {
@@ -210,7 +210,7 @@ public class McElieceFujisakiCipher
         // check that Conv(H(m||r)) = z
         if (!hrmVec.equals(z))
         {
-            throw new BCInvalidCipherTextException("Bad Padding: invalid ciphertext");
+            throw new InvalidCipherTextException("Bad Padding: invalid ciphertext");
         }
 
         // return plaintext m

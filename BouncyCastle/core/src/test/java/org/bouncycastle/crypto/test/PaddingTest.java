@@ -2,6 +2,7 @@ package org.bouncycastle.crypto.test;
 
 import java.security.SecureRandom;
 
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.crypto.engines.DESEngine;
 import org.bouncycastle.crypto.paddings.BlockCipherPadding;
 import org.bouncycastle.crypto.paddings.ISO10126d2Padding;
@@ -12,9 +13,8 @@ import org.bouncycastle.crypto.paddings.TBCPadding;
 import org.bouncycastle.crypto.paddings.X923Padding;
 import org.bouncycastle.crypto.paddings.ZeroBytePadding;
 import org.bouncycastle.crypto.params.KeyParameter;
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.crypto.InvalidCipherTextException;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**
  * General Padding tests.
@@ -155,7 +155,7 @@ public class PaddingTest
 
             fail("invalid padding not detected");
         }
-        catch (BCInvalidCipherTextException e)
+        catch (InvalidCipherTextException e)
         {
             if (!"pad block corrupted".equals(e.getMessage()))
             {

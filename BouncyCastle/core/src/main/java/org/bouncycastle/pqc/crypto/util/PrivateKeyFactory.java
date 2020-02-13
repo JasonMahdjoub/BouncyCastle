@@ -3,18 +3,19 @@ package org.bouncycastle.pqc.crypto.util;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.bouncycastle.asn1.ASN1InputStream;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1OctetString;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.bc.BCObjectIdentifiers;
-import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.ASN1InputStream;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.ASN1OctetString;
+import org.bouncycastle.bcasn1.ASN1Primitive;
+import org.bouncycastle.bcasn1.bc.DMBCObjectIdentifiers;
+import org.bouncycastle.bcasn1.pkcs.PrivateKeyInfo;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
 import org.bouncycastle.pqc.asn1.PQCObjectIdentifiers;
 import org.bouncycastle.pqc.asn1.SPHINCS256KeyParams;
 import org.bouncycastle.pqc.asn1.XMSSKeyParams;
 import org.bouncycastle.pqc.asn1.XMSSMTKeyParams;
+import org.bouncycastle.pqc.asn1.XMSSMTPrivateKey;
 import org.bouncycastle.pqc.asn1.XMSSPrivateKey;
 import org.bouncycastle.pqc.crypto.newhope.NHPrivateKeyParameters;
 import org.bouncycastle.pqc.crypto.qtesla.QTESLAPrivateKeyParameters;
@@ -26,7 +27,7 @@ import org.bouncycastle.pqc.crypto.xmss.XMSSMTPrivateKeyParameters;
 import org.bouncycastle.pqc.crypto.xmss.XMSSParameters;
 import org.bouncycastle.pqc.crypto.xmss.XMSSPrivateKeyParameters;
 import org.bouncycastle.pqc.crypto.xmss.XMSSUtil;
-import org.bouncycastle.util.Pack;
+import org.bouncycastle.bcutil.Pack;
 
 /**
  * Factory for creating private key objects from PKCS8 PrivateKeyInfo objects.
@@ -70,22 +71,22 @@ public class PrivateKeyFactory
         AlgorithmIdentifier algId = keyInfo.getPrivateKeyAlgorithm();
         ASN1ObjectIdentifier algOID = algId.getAlgorithm();
 
-        if (algOID.on(BCObjectIdentifiers.qTESLA))
+        if (algOID.on(DMBCObjectIdentifiers.qTESLA))
         {
             ASN1OctetString qTESLAPriv = ASN1OctetString.getInstance(keyInfo.parsePrivateKey());
 
             return new QTESLAPrivateKeyParameters(Utils.qTeslaLookupSecurityCategory(keyInfo.getPrivateKeyAlgorithm()), qTESLAPriv.getOctets());
         }
-        else if (algOID.equals(BCObjectIdentifiers.sphincs256))
+        else if (algOID.equals(DMBCObjectIdentifiers.sphincs256))
         {
             return new SPHINCSPrivateKeyParameters(ASN1OctetString.getInstance(keyInfo.parsePrivateKey()).getOctets(),
                 Utils.sphincs256LookupTreeAlgName(SPHINCS256KeyParams.getInstance(keyInfo.getPrivateKeyAlgorithm().getParameters())));
         }
-        else if (algOID.equals(BCObjectIdentifiers.newHope))
+        else if (algOID.equals(DMBCObjectIdentifiers.newHope))
         {
             return new NHPrivateKeyParameters(convert(ASN1OctetString.getInstance(keyInfo.parsePrivateKey()).getOctets()));
         }
-        else if (algOID.equals(BCObjectIdentifiers.xmss))
+        else if (algOID.equals(DMBCObjectIdentifiers.xmss))
         {
             XMSSKeyParams keyParams = XMSSKeyParams.getInstance(keyInfo.getPrivateKeyAlgorithm().getParameters());
             ASN1ObjectIdentifier treeDigest = keyParams.getTreeDigest().getAlgorithm();
@@ -101,6 +102,11 @@ public class PrivateKeyFactory
                     .withSecretKeyPRF(xmssPrivateKey.getSecretKeyPRF())
                     .withPublicSeed(xmssPrivateKey.getPublicSeed())
                     .withRoot(xmssPrivateKey.getRoot());
+
+                if (xmssPrivateKey.getVersion() != 0)
+                {
+                    keyBuilder.withMaxIndex(xmssPrivateKey.getMaxIndex());
+                }
 
                 if (xmssPrivateKey.getBdsState() != null)
                 {
@@ -122,7 +128,7 @@ public class PrivateKeyFactory
 
             try
             {
-                XMSSPrivateKey xmssMtPrivateKey = XMSSPrivateKey.getInstance(keyInfo.parsePrivateKey());
+                XMSSMTPrivateKey xmssMtPrivateKey = XMSSMTPrivateKey.getInstance(keyInfo.parsePrivateKey());
 
                 XMSSMTPrivateKeyParameters.Builder keyBuilder = new XMSSMTPrivateKeyParameters
                     .Builder(new XMSSMTParameters(keyParams.getHeight(), keyParams.getLayers(), Utils.getDigest(treeDigest)))
@@ -131,6 +137,11 @@ public class PrivateKeyFactory
                     .withSecretKeyPRF(xmssMtPrivateKey.getSecretKeyPRF())
                     .withPublicSeed(xmssMtPrivateKey.getPublicSeed())
                     .withRoot(xmssMtPrivateKey.getRoot());
+
+                if (xmssMtPrivateKey.getVersion() != 0)
+                {
+                    keyBuilder.withMaxIndex(xmssMtPrivateKey.getMaxIndex());
+                }
 
                 if (xmssMtPrivateKey.getBdsState() != null)
                 {

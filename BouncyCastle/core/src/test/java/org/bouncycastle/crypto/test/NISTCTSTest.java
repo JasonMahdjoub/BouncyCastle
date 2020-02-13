@@ -1,16 +1,13 @@
 package org.bouncycastle.crypto.test;
 
-import org.bouncycastle.crypto.BlockCipher;
-import org.bouncycastle.crypto.BufferedBlockCipher;
+import org.bouncycastle.bcutil.encoders.Hex;
+import org.bouncycastle.crypto.*;
 import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.DataLengthException;
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.engines.AESEngine;
 import org.bouncycastle.crypto.modes.NISTCTSBlockCipher;
 import org.bouncycastle.crypto.params.KeyParameter;
 import org.bouncycastle.crypto.params.ParametersWithIV;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**
  * CTS tester
@@ -46,7 +43,7 @@ public class NISTCTSTest
         int                 id,
         int                 type,
         BlockCipher         cipher,
-        CipherParameters    params,
+        CipherParameters params,
         byte[]              input,
         byte[]              output)
         throws Exception
@@ -77,7 +74,7 @@ public class NISTCTSTest
         }
     }
 
-    private void testExceptions() throws BCInvalidCipherTextException
+    private void testExceptions() throws InvalidCipherTextException
     {
         BufferedBlockCipher engine = new NISTCTSBlockCipher(NISTCTSBlockCipher.CS1, new AESEngine());
         CipherParameters params = new KeyParameter(new byte[engine.getBlockSize()]);

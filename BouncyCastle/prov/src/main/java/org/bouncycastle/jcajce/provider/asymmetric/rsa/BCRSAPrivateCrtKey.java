@@ -1,18 +1,21 @@
 package org.bouncycastle.jcajce.provider.asymmetric.rsa;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.math.BigInteger;
 import java.security.interfaces.RSAPrivateCrtKey;
 import java.security.spec.RSAPrivateCrtKeySpec;
 
-import org.bouncycastle.asn1.DERNull;
-import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
-import org.bouncycastle.asn1.pkcs.RSAPrivateKey;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.DERNull;
+import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
+import org.bouncycastle.bcasn1.pkcs.PrivateKeyInfo;
+import org.bouncycastle.bcasn1.pkcs.RSAPrivateKey;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.crypto.params.RSAPrivateCrtKeyParameters;
 import org.bouncycastle.jcajce.provider.asymmetric.util.KeyUtil;
-import org.bouncycastle.util.Strings;
+import org.bouncycastle.jcajce.provider.asymmetric.util.PKCS12BagAttributeCarrierImpl;
+import org.bouncycastle.bcutil.Strings;
 
 /**
  * A provider representation for a RSA private key, with CRT factors included.
@@ -56,6 +59,10 @@ public class BCRSAPrivateCrtKey
     BCRSAPrivateCrtKey(
         RSAPrivateCrtKeySpec spec)
     {
+        super(new RSAPrivateCrtKeyParameters(spec.getModulus(),
+                                spec.getPublicExponent(), spec.getPrivateExponent(),
+                                spec.getPrimeP(), spec.getPrimeQ(), spec.getPrimeExponentP(), spec.getPrimeExponentQ(), spec.getCrtCoefficient()));
+
         this.modulus = spec.getModulus();
         this.publicExponent = spec.getPublicExponent();
         this.privateExponent = spec.getPrivateExponent();
@@ -74,6 +81,10 @@ public class BCRSAPrivateCrtKey
     BCRSAPrivateCrtKey(
         RSAPrivateCrtKey key)
     {
+        super(new RSAPrivateCrtKeyParameters(key.getModulus(),
+                                key.getPublicExponent(), key.getPrivateExponent(),
+                                key.getPrimeP(), key.getPrimeQ(), key.getPrimeExponentP(), key.getPrimeExponentQ(), key.getCrtCoefficient()));
+
         this.modulus = key.getModulus();
         this.publicExponent = key.getPublicExponent();
         this.privateExponent = key.getPrivateExponent();
@@ -100,6 +111,10 @@ public class BCRSAPrivateCrtKey
     BCRSAPrivateCrtKey(
         RSAPrivateKey key)
     {
+        super(new RSAPrivateCrtKeyParameters(key.getModulus(),
+                                key.getPublicExponent(), key.getPrivateExponent(),
+                                key.getPrime1(), key.getPrime2(), key.getExponent1(), key.getExponent2(), key.getCoefficient()));
+
         this.modulus = key.getModulus();
         this.publicExponent = key.getPublicExponent();
         this.privateExponent = key.getPrivateExponent();
@@ -220,6 +235,26 @@ public class BCRSAPrivateCrtKey
          && this.getPrimeExponentP().equals(key.getPrimeExponentP())
          && this.getPrimeExponentQ().equals(key.getPrimeExponentQ())
          && this.getCrtCoefficient().equals(key.getCrtCoefficient());
+    }
+
+    private void readObject(
+        ObjectInputStream in)
+        throws IOException, ClassNotFoundException
+    {
+        in.defaultReadObject();
+
+        this.attrCarrier = new PKCS12BagAttributeCarrierImpl();
+        this.rsaPrivateKey = new RSAPrivateCrtKeyParameters(this.getModulus(),
+                                        this.getPublicExponent(), this.getPrivateExponent(),
+                                        this.getPrimeP(), this.getPrimeQ(),
+                                        this.getPrimeExponentP(), this.getPrimeExponentQ(), this.getCrtCoefficient());
+    }
+
+    private void writeObject(
+        ObjectOutputStream out)
+        throws IOException
+    {
+        out.defaultWriteObject();
     }
 
     public String toString()

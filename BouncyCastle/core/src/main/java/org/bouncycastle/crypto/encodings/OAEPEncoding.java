@@ -3,10 +3,10 @@ package org.bouncycastle.crypto.encodings;
 import java.security.SecureRandom;
 
 import org.bouncycastle.crypto.*;
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
+import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.params.ParametersWithRandom;
 import org.bouncycastle.crypto.util.DigestFactory;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 /**
  * Optimal Asymmetric Encryption Padding (OAEP) - see PKCS 1 V 2.
@@ -69,11 +69,11 @@ public class OAEPEncoding
 
     public void init(
         boolean             forEncryption,
-        CipherParameters    param)
+        CipherParameters param)
     {
         if (param instanceof ParametersWithRandom)
         {
-            ParametersWithRandom  rParam = (ParametersWithRandom)param;
+            ParametersWithRandom rParam = (ParametersWithRandom)param;
 
             this.random = rParam.getRandom();
         }
@@ -119,7 +119,7 @@ public class OAEPEncoding
         byte[]  in,
         int     inOff,
         int     inLen)
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         if (forEncryption)
         {
@@ -135,7 +135,7 @@ public class OAEPEncoding
         byte[]  in,
         int     inOff,
         int     inLen)
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         if (inLen > getInputBlockSize())
         {
@@ -200,14 +200,14 @@ public class OAEPEncoding
     }
 
     /**
-     * @exception BCInvalidCipherTextException if the decrypted block turns out to
+     * @exception InvalidCipherTextException if the decrypted block turns out to
      * be badly formatted.
      */
     public byte[] decodeBlock(
         byte[]  in,
         int     inOff,
         int     inLen)
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         byte[]  data = engine.processBlock(in, inOff, inLen);
         byte[]  block = new byte[engine.getOutputBlockSize()];
@@ -284,7 +284,7 @@ public class OAEPEncoding
         if (defHashWrong | wrongData | dataStartWrong)
         {
             Arrays.fill(block, (byte)0);
-            throw new BCInvalidCipherTextException("data wrong");
+            throw new InvalidCipherTextException("data wrong");
         }
 
         //

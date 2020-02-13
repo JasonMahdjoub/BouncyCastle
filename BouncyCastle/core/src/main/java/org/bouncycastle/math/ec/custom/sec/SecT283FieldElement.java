@@ -5,7 +5,7 @@ import java.math.BigInteger;
 import org.bouncycastle.math.ec.ECFieldElement;
 import org.bouncycastle.math.raw.Nat;
 import org.bouncycastle.math.raw.Nat320;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 public class SecT283FieldElement extends ECFieldElement.AbstractF2m
 {
@@ -158,6 +158,18 @@ public class SecT283FieldElement extends ECFieldElement.AbstractF2m
         long[] z = Nat320.create64();
         SecT283Field.squareN(x, pow, z);
         return new SecT283FieldElement(z);
+    }
+
+    public ECFieldElement halfTrace()
+    {
+        long[] z = Nat320.create64();
+        SecT283Field.halfTrace(x, z);
+        return new SecT283FieldElement(z); 
+    }
+
+    public boolean hasFastTrace()
+    {
+        return true;
     }
 
     public int trace()

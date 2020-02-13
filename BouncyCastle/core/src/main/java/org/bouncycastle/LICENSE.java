@@ -1,6 +1,6 @@
 package org.bouncycastle;
 
-import org.bouncycastle.util.Strings;
+import org.bouncycastle.bcutil.Strings;
 
 /**
  * The Bouncy Castle License

@@ -4,7 +4,7 @@ import java.security.SecureRandom;
 
 import org.bouncycastle.pqc.crypto.rainbow.util.GF2Field;
 import org.bouncycastle.pqc.crypto.rainbow.util.RainbowUtil;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 
 /**

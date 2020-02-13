@@ -3,12 +3,12 @@ package org.bouncycastle.cms;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.bouncycastle.asn1.cms.OriginatorInfo;
-import org.bouncycastle.asn1.kisa.KISAObjectIdentifiers;
-import org.bouncycastle.asn1.nist.NISTObjectIdentifiers;
-import org.bouncycastle.asn1.ntt.NTTObjectIdentifiers;
-import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.asn1.x9.X9ObjectIdentifiers;
+import org.bouncycastle.bcasn1.cms.OriginatorInfo;
+import org.bouncycastle.bcasn1.kisa.KISAObjectIdentifiers;
+import org.bouncycastle.bcasn1.nist.NISTObjectIdentifiers;
+import org.bouncycastle.bcasn1.ntt.NTTObjectIdentifiers;
+import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
+import org.bouncycastle.bcasn1.x9.X9ObjectIdentifiers;
 
 /**
  * General class for generating a CMS enveloped-data message.
@@ -39,7 +39,6 @@ public class CMSEnvelopedGenerator
     public static final String  ECDH_SHA1KDF    = X9ObjectIdentifiers.dhSinglePass_stdDH_sha1kdf_scheme.getId();
     public static final String  ECMQV_SHA1KDF   = X9ObjectIdentifiers.mqvSinglePass_sha1kdf_scheme.getId();
 
-    final List oldRecipientInfoGenerators = new ArrayList();
     final List recipientInfoGenerators = new ArrayList();
 
     protected CMSAttributeTableGenerator unprotectedAttributeGenerator = null;
@@ -49,7 +48,7 @@ public class CMSEnvelopedGenerator
     /**
      * base constructor
      */
-    public CMSEnvelopedGenerator()
+    protected CMSEnvelopedGenerator()
     {
     }
 

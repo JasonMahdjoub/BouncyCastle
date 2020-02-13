@@ -5,7 +5,7 @@ import java.io.InputStream;
 
 import org.bouncycastle.bcpg.HashAlgorithmTags;
 import org.bouncycastle.bcpg.S2K;
-import org.bouncycastle.util.io.Streams;
+import org.bouncycastle.bcutil.io.Streams;
 
 /**
  * Utility functions for looking a S-expression keys. This class will move when it finds a better home!
@@ -85,7 +85,7 @@ class SXprUtils
         int ch = in.read();
         if (ch != '(')
         {
-            throw new IOException("unknown character encountered");
+            throw new IOException("unknown character encountered: " + (char)ch);
         }
     }
 

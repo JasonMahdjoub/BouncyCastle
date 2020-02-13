@@ -1,14 +1,13 @@
 package org.bouncycastle.tls;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.math.BigInteger;
 import java.util.Hashtable;
 
-import org.bouncycastle.util.BigIntegers;
-import org.bouncycastle.util.Integers;
+import org.bouncycastle.bcutil.BigIntegers;
+import org.bouncycastle.bcutil.Integers;
 
 public class TlsSRPUtils
 {
@@ -42,17 +41,12 @@ public class TlsSRPUtils
             throw new IllegalArgumentException("'extensionData' cannot be null");
         }
 
-        ByteArrayInputStream buf = new ByteArrayInputStream(extensionData);
-        byte[] identity = TlsUtils.readOpaque8(buf);
-
-        TlsProtocol.assertEmpty(buf);
-
-        return identity;
+        return TlsUtils.decodeOpaque8(extensionData, 1);
     }
 
     public static BigInteger readSRPParameter(InputStream input) throws IOException
     {
-        return new BigInteger(1, TlsUtils.readOpaque16(input));
+        return new BigInteger(1, TlsUtils.readOpaque16(input, 1));
     }
 
     public static void writeSRPParameter(BigInteger x, OutputStream output) throws IOException

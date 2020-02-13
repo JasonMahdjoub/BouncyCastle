@@ -62,7 +62,7 @@ public class DSAParameters
             return false;
         }
 
-        DSAParameters    pm = (DSAParameters)obj;
+        DSAParameters pm = (DSAParameters)obj;
 
         return (pm.getP().equals(p) && pm.getQ().equals(q) && pm.getG().equals(g));
     }

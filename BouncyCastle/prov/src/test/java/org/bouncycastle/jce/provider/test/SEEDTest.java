@@ -1,8 +1,8 @@
 package org.bouncycastle.jce.provider.test;
 
-import org.bouncycastle.asn1.kisa.KISAObjectIdentifiers;
+import org.bouncycastle.bcasn1.kisa.KISAObjectIdentifiers;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.encoders.Hex;
 
 import javax.crypto.Cipher;
 import javax.crypto.CipherInputStream;

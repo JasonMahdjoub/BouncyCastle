@@ -11,7 +11,7 @@ import org.bouncycastle.pqc.math.ntru.polynomial.Polynomial;
 import org.bouncycastle.pqc.math.ntru.polynomial.ProductFormPolynomial;
 import org.bouncycastle.pqc.math.ntru.polynomial.SparseTernaryPolynomial;
 import org.bouncycastle.pqc.math.ntru.polynomial.TernaryPolynomial;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 /**
  * Encrypts, decrypts data and generates key pairs.<br>
@@ -72,7 +72,7 @@ public class NTRUEngine
     }
 
     public byte[] processBlock(byte[] in, int inOff, int len)
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         byte[] tmp = new byte[len];
 
@@ -358,10 +358,10 @@ public class NTRUEngine
      * @param data The message to decrypt
      * @param privKey   the corresponding private key
      * @return the decrypted message
-     * @throws BCInvalidCipherTextException if  the encrypted data is invalid, or <code>maxLenBytes</code> is greater than 255
+     * @throws InvalidCipherTextException if  the encrypted data is invalid, or <code>maxLenBytes</code> is greater than 255
      */
     private byte[] decrypt(byte[] data, NTRUEncryptionPrivateKeyParameters privKey)
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         Polynomial priv_t = privKey.t;
         IntegerPolynomial priv_fp = privKey.fp;
@@ -388,15 +388,15 @@ public class NTRUEngine
 
         if (ci.count(-1) < dm0)
         {
-            throw new BCInvalidCipherTextException("Less than dm0 coefficients equal -1");
+            throw new InvalidCipherTextException("Less than dm0 coefficients equal -1");
         }
         if (ci.count(0) < dm0)
         {
-            throw new BCInvalidCipherTextException("Less than dm0 coefficients equal 0");
+            throw new InvalidCipherTextException("Less than dm0 coefficients equal 0");
         }
         if (ci.count(1) < dm0)
         {
-            throw new BCInvalidCipherTextException("Less than dm0 coefficients equal 1");
+            throw new InvalidCipherTextException("Less than dm0 coefficients equal 1");
         }
 
         IntegerPolynomial cR = (IntegerPolynomial)e.clone();
@@ -416,7 +416,7 @@ public class NTRUEngine
         int cl = cM[bLen] & 0xFF;   // llen=1, so read one byte
         if (cl > maxMsgLenBytes)
         {
-            throw new BCInvalidCipherTextException("Message too long: " + cl + ">" + maxMsgLenBytes);
+            throw new InvalidCipherTextException("Message too long: " + cl + ">" + maxMsgLenBytes);
         }
         byte[] cm = new byte[cl];
         System.arraycopy(cM, bLen + 1, cm, 0, cl);
@@ -424,7 +424,7 @@ public class NTRUEngine
         System.arraycopy(cM, bLen + 1 + cl, p0, 0, p0.length);
         if (!Arrays.constantTimeAreEqual(p0, new byte[p0.length]))
         {
-           throw new BCInvalidCipherTextException("The message is not followed by zeroes");
+           throw new InvalidCipherTextException("The message is not followed by zeroes");
         }
 
         // sData = OID|m|b|hTrunc
@@ -437,7 +437,7 @@ public class NTRUEngine
         cRPrime.modPositive(q);
         if (!cRPrime.equals(cR))
         {
-            throw new BCInvalidCipherTextException("Invalid message encoding");
+            throw new InvalidCipherTextException("Invalid message encoding");
         }
 
         return cm;

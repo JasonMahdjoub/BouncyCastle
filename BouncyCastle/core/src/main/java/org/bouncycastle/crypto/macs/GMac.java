@@ -2,7 +2,7 @@ package org.bouncycastle.crypto.macs;
 
 import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.DataLengthException;
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
+import org.bouncycastle.crypto.InvalidCipherTextException;
 import org.bouncycastle.crypto.Mac;
 import org.bouncycastle.crypto.modes.GCMBlockCipher;
 import org.bouncycastle.crypto.params.AEADParameters;
@@ -101,7 +101,7 @@ public class GMac implements Mac
         {
             return cipher.doFinal(out, outOff);
         }
-        catch (BCInvalidCipherTextException e)
+        catch (InvalidCipherTextException e)
         {
             // Impossible in encrypt mode
             throw new IllegalStateException(e.toString());

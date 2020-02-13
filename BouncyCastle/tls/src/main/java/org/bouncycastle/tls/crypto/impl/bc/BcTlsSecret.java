@@ -9,8 +9,8 @@ import org.bouncycastle.tls.TlsUtils;
 import org.bouncycastle.tls.crypto.TlsSecret;
 import org.bouncycastle.tls.crypto.impl.AbstractTlsCrypto;
 import org.bouncycastle.tls.crypto.impl.AbstractTlsSecret;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Strings;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.Strings;
 
 /**
  * BC light-weight support class for handling TLS secrets and deriving key material and other secrets from them.
@@ -38,6 +38,11 @@ public class BcTlsSecret
             :   prf_1_2(prfAlgorithm, data, labelSeed, length);
 
         return crypto.adoptLocalSecret(result);
+    }
+
+    protected TlsSecret adoptLocalSecret(byte[] data)
+    {
+        return crypto.adoptLocalSecret(data);
     }
 
     protected AbstractTlsCrypto getCrypto()

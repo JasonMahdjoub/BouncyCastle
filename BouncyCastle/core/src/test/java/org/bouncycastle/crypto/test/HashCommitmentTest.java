@@ -2,6 +2,7 @@ package org.bouncycastle.crypto.test;
 
 import java.security.SecureRandom;
 
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.crypto.Commitment;
 import org.bouncycastle.crypto.Committer;
 import org.bouncycastle.crypto.DataLengthException;
@@ -9,9 +10,8 @@ import org.bouncycastle.crypto.commitments.GeneralHashCommitter;
 import org.bouncycastle.crypto.commitments.HashCommitter;
 import org.bouncycastle.crypto.digests.SHA1Digest;
 import org.bouncycastle.crypto.digests.SHA256Digest;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class HashCommitmentTest
     extends SimpleTest

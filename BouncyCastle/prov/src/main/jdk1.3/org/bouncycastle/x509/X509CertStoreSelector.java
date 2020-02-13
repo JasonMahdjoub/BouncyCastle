@@ -1,6 +1,6 @@
 package org.bouncycastle.x509;
 
-import org.bouncycastle.util.Selector;
+import org.bouncycastle.bcutil.Selector;
 
 import java.io.IOException;
 import java.security.cert.Certificate;
@@ -10,7 +10,7 @@ import java.security.cert.X509Certificate;
 /**
  * This class is a Selector implementation for X.509 certificates.
  * 
- * @see org.bouncycastle.util.Selector
+ * @see org.bouncycastle.bcutil.Selector
  * @see org.bouncycastle.x509.X509Store
  * @see org.bouncycastle.jce.provider.X509StoreCertCollection
  */

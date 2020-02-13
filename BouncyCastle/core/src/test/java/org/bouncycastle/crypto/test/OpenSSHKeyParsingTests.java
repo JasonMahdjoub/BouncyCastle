@@ -11,10 +11,10 @@ import org.bouncycastle.crypto.signers.ECDSASigner;
 import org.bouncycastle.crypto.signers.Ed25519Signer;
 import org.bouncycastle.crypto.util.OpenSSHPrivateKeyUtil;
 import org.bouncycastle.crypto.util.OpenSSHPublicKeyUtil;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.encoders.Base64;
-import org.bouncycastle.util.io.pem.PemReader;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.encoders.Base64;
+import org.bouncycastle.bcutil.io.pem.PemReader;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class OpenSSHKeyParsingTests
     extends SimpleTest

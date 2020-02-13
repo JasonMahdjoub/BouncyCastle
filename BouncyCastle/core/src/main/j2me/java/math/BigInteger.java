@@ -4,7 +4,7 @@ import java.util.Random;
 import java.util.Stack;
 import java.util.Vector;
 
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 public class BigInteger
 {

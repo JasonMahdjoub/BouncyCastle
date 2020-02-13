@@ -12,8 +12,8 @@ public class SM2KeyExchangePublicParameters
     private final ECPublicKeyParameters ephemeralPublicKey;
 
     public SM2KeyExchangePublicParameters(
-        ECPublicKeyParameters   staticPublicKey,
-        ECPublicKeyParameters   ephemeralPublicKey)
+        ECPublicKeyParameters staticPublicKey,
+        ECPublicKeyParameters ephemeralPublicKey)
     {
         if (staticPublicKey == null)
         {

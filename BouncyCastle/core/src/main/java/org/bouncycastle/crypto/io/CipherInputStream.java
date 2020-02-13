@@ -5,11 +5,11 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import org.bouncycastle.crypto.BufferedBlockCipher;
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
+import org.bouncycastle.crypto.InvalidCipherTextException;
 import org.bouncycastle.crypto.SkippingCipher;
 import org.bouncycastle.crypto.StreamCipher;
 import org.bouncycastle.crypto.modes.AEADBlockCipher;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 /**
  * A CipherInputStream is composed of an InputStream and a cipher so that read() methods return data
@@ -195,7 +195,7 @@ public class CipherInputStream
                 maxBuf = 0; // a stream cipher
             }
         }
-        catch (final BCInvalidCipherTextException e)
+        catch (final InvalidCipherTextException e)
         {
             throw new InvalidCipherTextIOException("Error finalising cipher", e);
         }

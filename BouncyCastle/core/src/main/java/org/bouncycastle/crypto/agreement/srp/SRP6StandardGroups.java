@@ -3,13 +3,13 @@ package org.bouncycastle.crypto.agreement.srp;
 import java.math.BigInteger;
 
 import org.bouncycastle.crypto.params.SRP6GroupParameters;
-import org.bouncycastle.util.encoders.Hex;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 public class SRP6StandardGroups
 {
     private static BigInteger fromHex(String hex)
     {
-        return new BigInteger(1, Hex.decode(hex));
+        return new BigInteger(1, Hex.decodeStrict(hex));
     }
 
     private static SRP6GroupParameters fromNG(String hexN, String hexG)

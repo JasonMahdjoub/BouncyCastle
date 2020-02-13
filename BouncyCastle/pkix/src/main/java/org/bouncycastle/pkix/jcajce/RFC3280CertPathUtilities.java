@@ -19,26 +19,27 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1EncodableVector;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.DERSequence;
-import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.asn1.x509.BasicConstraints;
-import org.bouncycastle.asn1.x509.CRLDistPoint;
-import org.bouncycastle.asn1.x509.CRLReason;
-import org.bouncycastle.asn1.x509.DistributionPoint;
-import org.bouncycastle.asn1.x509.DistributionPointName;
-import org.bouncycastle.asn1.x509.Extension;
-import org.bouncycastle.asn1.x509.GeneralName;
-import org.bouncycastle.asn1.x509.GeneralNames;
-import org.bouncycastle.asn1.x509.IssuingDistributionPoint;
+import org.bouncycastle.bcasn1.ASN1Encodable;
+import org.bouncycastle.bcasn1.ASN1EncodableVector;
+import org.bouncycastle.bcasn1.ASN1Primitive;
+import org.bouncycastle.bcasn1.ASN1Sequence;
+import org.bouncycastle.bcasn1.DERSequence;
+import org.bouncycastle.bcasn1.x500.X500Name;
+import org.bouncycastle.bcasn1.x509.BasicConstraints;
+import org.bouncycastle.bcasn1.x509.CRLDistPoint;
+import org.bouncycastle.bcasn1.x509.CRLReason;
+import org.bouncycastle.bcasn1.x509.DistributionPoint;
+import org.bouncycastle.bcasn1.x509.DistributionPointName;
+import org.bouncycastle.bcasn1.x509.Extension;
+import org.bouncycastle.bcasn1.x509.GeneralName;
+import org.bouncycastle.bcasn1.x509.GeneralNames;
+import org.bouncycastle.bcasn1.x509.IssuingDistributionPoint;
 import org.bouncycastle.jcajce.PKIXCRLStoreSelector;
 import org.bouncycastle.jcajce.PKIXCertStoreSelector;
 import org.bouncycastle.jcajce.PKIXExtendedBuilderParameters;
 import org.bouncycastle.jcajce.PKIXExtendedParameters;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.jcajce.util.JcaJceHelper;
+import org.bouncycastle.bcutil.Arrays;
 
 class RFC3280CertPathUtilities
 {
@@ -400,7 +401,7 @@ class RFC3280CertPathUtilities
         PublicKey defaultCRLSignKey,
         PKIXExtendedParameters paramsPKIX,
         List certPathCerts,
-        PKIXJcaJceHelper helper)
+        JcaJceHelper helper)
         throws AnnotatedException
     {
         // (f)
@@ -863,7 +864,7 @@ class RFC3280CertPathUtilities
         CertStatus certStatus,
         ReasonsMask reasonMask,
         List certPathCerts,
-        PKIXJcaJceHelper helper)
+        JcaJceHelper helper)
         throws AnnotatedException, CRLNotFoundException
     {
         Date currentDate = new Date(System.currentTimeMillis());

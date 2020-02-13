@@ -3,7 +3,7 @@ package org.bouncycastle.crypto.paddings;
 import java.security.SecureRandom;
 
 import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
+import org.bouncycastle.crypto.InvalidCipherTextException;
 
 /**
  * A padder that adds ISO10126-2 padding to a block.
@@ -66,13 +66,13 @@ public class ISO10126d2Padding
      * return the number of pad bytes present in the block.
      */
     public int padCount(byte[] in)
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         int count = in[in.length - 1] & 0xff;
 
         if (count > in.length)
         {
-            throw new BCInvalidCipherTextException("pad block corrupted");
+            throw new InvalidCipherTextException("pad block corrupted");
         }
 
         return count;

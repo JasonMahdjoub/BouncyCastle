@@ -19,19 +19,19 @@ import javax.crypto.KeyAgreement;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 
-import org.bouncycastle.asn1.ASN1Encoding;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1OctetString;
-import org.bouncycastle.asn1.DERNull;
-import org.bouncycastle.asn1.cms.ecc.ECCCMSSharedInfo;
-import org.bouncycastle.asn1.cms.ecc.MQVuserKeyingMaterial;
-import org.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
-import org.bouncycastle.asn1.cryptopro.Gost2814789EncryptedKey;
-import org.bouncycastle.asn1.cryptopro.Gost2814789KeyWrapParameters;
-import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.asn1.x9.X9ObjectIdentifiers;
+import org.bouncycastle.bcasn1.ASN1Encoding;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.ASN1OctetString;
+import org.bouncycastle.bcasn1.DERNull;
+import org.bouncycastle.bcasn1.cms.ecc.ECCCMSSharedInfo;
+import org.bouncycastle.bcasn1.cms.ecc.MQVuserKeyingMaterial;
+import org.bouncycastle.bcasn1.cryptopro.CryptoProObjectIdentifiers;
+import org.bouncycastle.bcasn1.cryptopro.Gost2814789EncryptedKey;
+import org.bouncycastle.bcasn1.cryptopro.Gost2814789KeyWrapParameters;
+import org.bouncycastle.bcasn1.pkcs.PrivateKeyInfo;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
+import org.bouncycastle.bcasn1.x9.X9ObjectIdentifiers;
 import org.bouncycastle.cms.CMSException;
 import org.bouncycastle.cms.KeyAgreeRecipient;
 import org.bouncycastle.jcajce.spec.GOST28147WrapParameterSpec;
@@ -39,8 +39,8 @@ import org.bouncycastle.jcajce.spec.MQVParameterSpec;
 import org.bouncycastle.jcajce.spec.UserKeyingMaterialSpec;
 import org.bouncycastle.operator.DefaultSecretKeySizeProvider;
 import org.bouncycastle.operator.SecretKeySizeProvider;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Pack;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.Pack;
 
 public abstract class JceKeyAgreeRecipient
     implements KeyAgreeRecipient
@@ -61,7 +61,7 @@ public abstract class JceKeyAgreeRecipient
 
     public JceKeyAgreeRecipient(PrivateKey recipientKey)
     {
-        this.recipientKey = recipientKey;
+        this.recipientKey = CMSUtils.cleanPrivateKey(recipientKey);
     }
 
     /**
@@ -124,6 +124,8 @@ public abstract class JceKeyAgreeRecipient
         PublicKey senderPublicKey, ASN1OctetString userKeyingMaterial, PrivateKey receiverPrivateKey, KeyMaterialGenerator kmGen)
         throws CMSException, GeneralSecurityException, IOException
     {
+        receiverPrivateKey = CMSUtils.cleanPrivateKey(receiverPrivateKey);
+
         if (CMSUtils.isMQV(keyEncAlg.getAlgorithm()))
         {
             MQVuserKeyingMaterial ukm = MQVuserKeyingMaterial.getInstance(userKeyingMaterial.getOctets());
@@ -197,7 +199,7 @@ public abstract class JceKeyAgreeRecipient
         }
     }
 
-    private Key unwrapSessionKey(ASN1ObjectIdentifier wrapAlg, SecretKey agreedKey, ASN1ObjectIdentifier contentEncryptionAlgorithm, byte[] encryptedContentEncryptionKey)
+    protected Key unwrapSessionKey(ASN1ObjectIdentifier wrapAlg, SecretKey agreedKey, ASN1ObjectIdentifier contentEncryptionAlgorithm, byte[] encryptedContentEncryptionKey)
         throws CMSException, InvalidKeyException, NoSuchAlgorithmException
     {
         Cipher keyCipher = helper.createCipher(wrapAlg);

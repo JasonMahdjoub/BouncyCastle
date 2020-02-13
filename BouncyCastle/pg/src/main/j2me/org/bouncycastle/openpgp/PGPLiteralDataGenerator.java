@@ -6,7 +6,7 @@ import java.util.Date;
 
 import org.bouncycastle.bcpg.BCPGOutputStream;
 import org.bouncycastle.bcpg.PacketTags;
-import org.bouncycastle.util.Strings;
+import org.bouncycastle.bcutil.Strings;
 
 /**
  * Class for producing literal data packets.

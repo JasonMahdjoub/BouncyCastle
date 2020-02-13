@@ -19,8 +19,8 @@ import java.util.HashSet;
 import javax.crypto.Cipher;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.encoders.Hex;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class RSATest
     extends SimpleTest

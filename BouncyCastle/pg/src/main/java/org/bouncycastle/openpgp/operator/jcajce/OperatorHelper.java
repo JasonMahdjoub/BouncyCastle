@@ -11,7 +11,6 @@ import java.security.NoSuchProviderException;
 import java.security.Signature;
 
 import javax.crypto.Cipher;
-import javax.crypto.CipherInputStream;
 import javax.crypto.KeyAgreement;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
@@ -20,6 +19,7 @@ import javax.crypto.spec.SecretKeySpec;
 import org.bouncycastle.bcpg.HashAlgorithmTags;
 import org.bouncycastle.bcpg.PublicKeyAlgorithmTags;
 import org.bouncycastle.bcpg.SymmetricKeyAlgorithmTags;
+import org.bouncycastle.jcajce.io.CipherInputStream;
 import org.bouncycastle.jcajce.util.JcaJceHelper;
 import org.bouncycastle.openpgp.PGPException;
 import org.bouncycastle.openpgp.PGPPublicKey;
@@ -80,13 +80,13 @@ class OperatorHelper
         String digestName = getDigestName(algorithm);
         try
         {
-            dig = helper.createDigest(digestName);
+            dig = helper.createMessageDigest(digestName);
         }
         catch (NoSuchAlgorithmException e)
         {
             if (algorithm >= HashAlgorithmTags.SHA256 && algorithm <= HashAlgorithmTags.SHA224)
             {
-                dig = helper.createDigest("SHA" + digestName.substring(4));
+                dig = helper.createMessageDigest("SHA" + digestName.substring(4));
             }
             else
             {

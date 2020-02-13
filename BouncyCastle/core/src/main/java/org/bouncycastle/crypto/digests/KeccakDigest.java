@@ -1,8 +1,8 @@
 package org.bouncycastle.crypto.digests;
 
 import org.bouncycastle.crypto.ExtendedDigest;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Pack;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.Pack;
 
 /**
  * implementation of Keccak based on following KeccakNISTInterface.c from http://keccak.noekeon.org/

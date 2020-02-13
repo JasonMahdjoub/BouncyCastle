@@ -1,10 +1,18 @@
 dependencies {
     compile project(':core')
 }
+sourceSets {
+    main {
+        java {
+            srcDir "../src"
+            exclude "com/example/abc/tst/**"
+        }
+    }
+}
 
 cobertura {
    coverageDirs = [
        "${rootProject.projectDir}/core/build/classes/main",
        "${rootProject.projectDir}/prov/build/classes/main"
-  ] 
+  ]
 }

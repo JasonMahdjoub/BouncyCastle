@@ -5,7 +5,7 @@ import java.io.ByteArrayOutputStream;
 
 import junit.framework.TestCase;
 import org.bouncycastle.mime.BoundaryLimitedInputStream;
-import org.bouncycastle.util.io.Streams;
+import org.bouncycastle.bcutil.io.Streams;
 
 public class TestBoundaryLimitedInputStream
     extends TestCase

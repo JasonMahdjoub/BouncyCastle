@@ -3,7 +3,7 @@ package org.bouncycastle.cms.jcajce;
 import java.math.BigInteger;
 import java.security.cert.X509Certificate;
 
-import org.bouncycastle.asn1.x500.X500Name;
+import org.bouncycastle.bcasn1.x500.X500Name;
 import org.bouncycastle.cms.SignerId;
 import org.bouncycastle.jce.PrincipalUtil;
 import org.bouncycastle.jce.X509Principal;

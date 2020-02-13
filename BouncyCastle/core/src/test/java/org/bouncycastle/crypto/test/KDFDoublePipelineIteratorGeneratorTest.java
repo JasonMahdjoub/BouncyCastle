@@ -9,7 +9,7 @@ import java.nio.charset.Charset;
 import org.bouncycastle.crypto.test.cavp.CAVPReader;
 import org.bouncycastle.crypto.test.cavp.KDFDoublePipelineCounterTests;
 import org.bouncycastle.crypto.test.cavp.KDFDoublePipelineIterationNoCounterTests;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class KDFDoublePipelineIteratorGeneratorTest
     extends SimpleTest

@@ -4,7 +4,7 @@ import java.security.SecureRandom;
 import java.security.Security;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**
  * This test needs to be run with -Djava.security.debug=provider

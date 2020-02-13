@@ -13,31 +13,31 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1EncodableVector;
-import org.bouncycastle.asn1.ASN1Generator;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1OctetStringParser;
-import org.bouncycastle.asn1.ASN1SequenceParser;
-import org.bouncycastle.asn1.ASN1Set;
-import org.bouncycastle.asn1.ASN1SetParser;
-import org.bouncycastle.asn1.ASN1StreamParser;
-import org.bouncycastle.asn1.BERSequenceGenerator;
-import org.bouncycastle.asn1.BERSetParser;
-import org.bouncycastle.asn1.BERTaggedObject;
-import org.bouncycastle.asn1.BERTags;
-import org.bouncycastle.asn1.DERSet;
-import org.bouncycastle.asn1.DERTaggedObject;
-import org.bouncycastle.asn1.cms.CMSObjectIdentifiers;
-import org.bouncycastle.asn1.cms.ContentInfoParser;
-import org.bouncycastle.asn1.cms.SignedDataParser;
-import org.bouncycastle.asn1.cms.SignerInfo;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.ASN1Encodable;
+import org.bouncycastle.bcasn1.ASN1EncodableVector;
+import org.bouncycastle.bcasn1.ASN1Generator;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.ASN1OctetStringParser;
+import org.bouncycastle.bcasn1.ASN1SequenceParser;
+import org.bouncycastle.bcasn1.ASN1Set;
+import org.bouncycastle.bcasn1.ASN1SetParser;
+import org.bouncycastle.bcasn1.ASN1StreamParser;
+import org.bouncycastle.bcasn1.BERSequenceGenerator;
+import org.bouncycastle.bcasn1.BERSetParser;
+import org.bouncycastle.bcasn1.BERTaggedObject;
+import org.bouncycastle.bcasn1.BERTags;
+import org.bouncycastle.bcasn1.DERSet;
+import org.bouncycastle.bcasn1.DERTaggedObject;
+import org.bouncycastle.bcasn1.cms.CMSObjectIdentifiers;
+import org.bouncycastle.bcasn1.cms.ContentInfoParser;
+import org.bouncycastle.bcasn1.cms.SignedDataParser;
+import org.bouncycastle.bcasn1.cms.SignerInfo;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.operator.DigestCalculator;
 import org.bouncycastle.operator.DigestCalculatorProvider;
 import org.bouncycastle.operator.OperatorCreationException;
-import org.bouncycastle.util.Store;
-import org.bouncycastle.util.io.Streams;
+import org.bouncycastle.bcutil.Store;
+import org.bouncycastle.bcutil.io.Streams;
 
 /**
  * Parsing class for an CMS Signed Data object from an input stream.
@@ -239,7 +239,7 @@ public class CMSSignedDataParser
      */
     public int getVersion()
     {
-        return _signedData.getVersion().getValue().intValue();
+        return _signedData.getVersion().intValueExact();
     }
 
     /**

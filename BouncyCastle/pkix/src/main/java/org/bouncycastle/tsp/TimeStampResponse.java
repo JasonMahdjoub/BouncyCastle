@@ -4,18 +4,18 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1Encoding;
-import org.bouncycastle.asn1.ASN1InputStream;
-import org.bouncycastle.asn1.DLSequence;
-import org.bouncycastle.asn1.cmp.PKIFailureInfo;
-import org.bouncycastle.asn1.cmp.PKIFreeText;
-import org.bouncycastle.asn1.cmp.PKIStatus;
-import org.bouncycastle.asn1.cms.Attribute;
-import org.bouncycastle.asn1.cms.ContentInfo;
-import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.asn1.tsp.TimeStampResp;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcasn1.ASN1Encodable;
+import org.bouncycastle.bcasn1.ASN1Encoding;
+import org.bouncycastle.bcasn1.ASN1InputStream;
+import org.bouncycastle.bcasn1.DLSequence;
+import org.bouncycastle.bcasn1.cmp.PKIFailureInfo;
+import org.bouncycastle.bcasn1.cmp.PKIFreeText;
+import org.bouncycastle.bcasn1.cmp.PKIStatus;
+import org.bouncycastle.bcasn1.cms.Attribute;
+import org.bouncycastle.bcasn1.cms.ContentInfo;
+import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
+import org.bouncycastle.bcasn1.tsp.TimeStampResp;
+import org.bouncycastle.bcutil.Arrays;
 
 /**
  * Base class for an RFC 3161 Time Stamp Response object.
@@ -210,13 +210,21 @@ public class TimeStampResponse
     }
 
     /**
-     * return the ASN.1 encoded representation of this object.
+     * return the ASN.1 encoded representation of this object for the specific encoding type.
+     *
+     * @param encoding encoding style ("DER", "DL", "BER")
      */
     public byte[] getEncoded(String encoding) throws IOException
     {
         if (ASN1Encoding.DL.equals(encoding))
         {
-            return new DLSequence(new ASN1Encodable[] { resp.getStatus(), timeStampToken.toCMSSignedData().toASN1Structure() }).getEncoded(encoding);
+            if (timeStampToken == null)
+            {
+                return new DLSequence(resp.getStatus()).getEncoded(encoding);
+            }
+
+            return new DLSequence(new ASN1Encodable[] { resp.getStatus(),
+                timeStampToken.toCMSSignedData().toASN1Structure() }).getEncoded(encoding);
         }
         return resp.getEncoded(encoding);
     }

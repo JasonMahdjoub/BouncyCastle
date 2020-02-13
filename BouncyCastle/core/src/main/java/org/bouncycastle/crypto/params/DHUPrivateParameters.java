@@ -13,15 +13,15 @@ public class DHUPrivateParameters
     private DHPublicKeyParameters ephemeralPublicKey;
 
     public DHUPrivateParameters(
-        DHPrivateKeyParameters  staticPrivateKey,
-        DHPrivateKeyParameters  ephemeralPrivateKey)
+        DHPrivateKeyParameters staticPrivateKey,
+        DHPrivateKeyParameters ephemeralPrivateKey)
     {
         this(staticPrivateKey, ephemeralPrivateKey, null);
     }
 
     public DHUPrivateParameters(
-        DHPrivateKeyParameters  staticPrivateKey,
-        DHPrivateKeyParameters  ephemeralPrivateKey,
+        DHPrivateKeyParameters staticPrivateKey,
+        DHPrivateKeyParameters ephemeralPrivateKey,
         DHPublicKeyParameters   ephemeralPublicKey)
     {
         if (staticPrivateKey == null)

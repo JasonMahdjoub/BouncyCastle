@@ -13,8 +13,8 @@ import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.openpgp.PGPLiteralData;
 import org.bouncycastle.openpgp.PGPLiteralDataGenerator;
 import org.bouncycastle.openpgp.jcajce.JcaPGPObjectFactory;
-import org.bouncycastle.util.test.SimpleTest;
-import org.bouncycastle.util.test.UncloseableOutputStream;
+import org.bouncycastle.bcutil.test.SimpleTest;
+import org.bouncycastle.bcutil.test.UncloseableOutputStream;
 
 public class PGPPacketTest
     extends SimpleTest

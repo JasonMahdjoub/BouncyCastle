@@ -1,11 +1,11 @@
 package org.bouncycastle.crypto.engines;
 
-import org.bouncycastle.crypto.BlockCipher;
 import org.bouncycastle.crypto.CipherParameters;
+import org.bouncycastle.crypto.BlockCipher;
 import org.bouncycastle.crypto.DataLengthException;
 import org.bouncycastle.crypto.OutputLengthException;
 import org.bouncycastle.crypto.params.KeyParameter;
-import org.bouncycastle.util.Pack;
+import org.bouncycastle.bcutil.Pack;
 
 /**
  * an implementation of the AES (Rijndael), from FIPS-197.
@@ -334,7 +334,7 @@ public class AESLightEngine
      */
     public void init(
         boolean           forEncryption,
-        CipherParameters  params)
+        CipherParameters params)
     {
         if (params instanceof KeyParameter)
         {

@@ -1,6 +1,6 @@
 package org.bouncycastle.dvcs;
 
-import org.bouncycastle.asn1.dvcs.TargetEtcChain;
+import org.bouncycastle.bcasn1.dvcs.TargetEtcChain;
 
 public class TargetChain
 {

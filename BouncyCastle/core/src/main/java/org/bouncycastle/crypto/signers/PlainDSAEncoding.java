@@ -2,8 +2,8 @@ package org.bouncycastle.crypto.signers;
 
 import java.math.BigInteger;
 
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.BigIntegers;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.BigIntegers;
 
 public class PlainDSAEncoding
     implements DSAEncoding

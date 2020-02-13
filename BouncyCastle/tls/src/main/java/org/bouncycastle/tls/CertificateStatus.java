@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import org.bouncycastle.asn1.ASN1Encoding;
-import org.bouncycastle.asn1.ocsp.OCSPResponse;
+import org.bouncycastle.bcasn1.ASN1Encoding;
+import org.bouncycastle.bcasn1.ocsp.OCSPResponse;
 
 public class CertificateStatus
 {
@@ -81,7 +81,7 @@ public class CertificateStatus
         {
         case CertificateStatusType.ocsp:
         {
-            byte[] derEncoding = TlsUtils.readOpaque24(input);
+            byte[] derEncoding = TlsUtils.readOpaque24(input, 1);
             response = OCSPResponse.getInstance(TlsUtils.readDERObject(derEncoding));
             break;
         }

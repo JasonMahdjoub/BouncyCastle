@@ -12,8 +12,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.encoders.Hex;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 /**
  * Utils for XMSS implementation.

@@ -14,10 +14,10 @@ import java.security.spec.RSAPrivateCrtKeySpec;
 import java.security.spec.RSAPrivateKeySpec;
 import java.security.spec.RSAPublicKeySpec;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
-import org.bouncycastle.asn1.pkcs.RSAPrivateKey;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.pkcs.PrivateKeyInfo;
+import org.bouncycastle.bcasn1.pkcs.RSAPrivateKey;
+import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
 import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.params.RSAKeyParameters;
 import org.bouncycastle.crypto.params.RSAPrivateCrtKeyParameters;
@@ -25,8 +25,8 @@ import org.bouncycastle.crypto.util.OpenSSHPrivateKeyUtil;
 import org.bouncycastle.crypto.util.OpenSSHPublicKeyUtil;
 import org.bouncycastle.jcajce.provider.asymmetric.util.BaseKeyFactorySpi;
 import org.bouncycastle.jcajce.provider.asymmetric.util.ExtendedInvalidKeySpecException;
-import org.bouncycastle.jce.spec.OpenSSHPrivateKeySpec;
-import org.bouncycastle.jce.spec.OpenSSHPublicKeySpec;
+import org.bouncycastle.jcajce.spec.OpenSSHPrivateKeySpec;
+import org.bouncycastle.jcajce.spec.OpenSSHPublicKeySpec;
 
 public class KeyFactorySpi
     extends BaseKeyFactorySpi
@@ -86,6 +86,44 @@ public class KeyFactorySpi
             try
             {
                 return new OpenSSHPrivateKeySpec(OpenSSHPrivateKeyUtil.encodePrivateKey(new RSAPrivateCrtKeyParameters(
+                    ((RSAPrivateCrtKey)key).getModulus(),
+                    ((RSAPrivateCrtKey)key).getPublicExponent(),
+                    ((RSAPrivateCrtKey)key).getPrivateExponent(),
+                    ((RSAPrivateCrtKey)key).getPrimeP(),
+                    ((RSAPrivateCrtKey)key).getPrimeQ(),
+                    ((RSAPrivateCrtKey)key).getPrimeExponentP(),
+                    ((RSAPrivateCrtKey)key).getPrimeExponentQ(),
+                    ((RSAPrivateCrtKey)key).getCrtCoefficient()
+                )));
+            }
+            catch (IOException e)
+            {
+                throw new IllegalArgumentException("unable to produce encoding: " + e.getMessage());
+            }
+        }
+        else if (spec.isAssignableFrom(org.bouncycastle.jce.spec.OpenSSHPublicKeySpec.class) && key instanceof RSAPublicKey)
+        {
+            try
+            {
+                return new org.bouncycastle.jce.spec.OpenSSHPublicKeySpec(
+                    OpenSSHPublicKeyUtil.encodePublicKey(
+                        new RSAKeyParameters(
+                            false,
+                            ((RSAPublicKey)key).getModulus(),
+                            ((RSAPublicKey)key).getPublicExponent())
+                    )
+                );
+            }
+            catch (IOException e)
+            {
+                throw new IllegalArgumentException("unable to produce encoding: " + e.getMessage());
+            }
+        }
+        else if (spec.isAssignableFrom(org.bouncycastle.jce.spec.OpenSSHPrivateKeySpec.class) && key instanceof RSAPrivateCrtKey)
+        {
+            try
+            {
+                return new org.bouncycastle.jce.spec.OpenSSHPrivateKeySpec(OpenSSHPrivateKeyUtil.encodePrivateKey(new RSAPrivateCrtKeyParameters(
                     ((RSAPrivateCrtKey)key).getModulus(),
                     ((RSAPrivateCrtKey)key).getPublicExponent(),
                     ((RSAPrivateCrtKey)key).getPrivateExponent(),

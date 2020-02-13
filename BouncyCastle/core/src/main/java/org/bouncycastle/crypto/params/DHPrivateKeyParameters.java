@@ -9,7 +9,7 @@ public class DHPrivateKeyParameters
 
     public DHPrivateKeyParameters(
         BigInteger      x,
-        DHParameters    params)
+        DHParameters params)
     {
         super(true, params);
 
@@ -34,7 +34,7 @@ public class DHPrivateKeyParameters
             return false;
         }
 
-        DHPrivateKeyParameters  other = (DHPrivateKeyParameters)obj;
+        DHPrivateKeyParameters other = (DHPrivateKeyParameters)obj;
 
         return other.getX().equals(this.x) && super.equals(obj);
     }

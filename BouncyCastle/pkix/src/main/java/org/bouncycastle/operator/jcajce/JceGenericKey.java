@@ -2,7 +2,7 @@ package org.bouncycastle.operator.jcajce;
 
 import java.security.Key;
 
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.operator.GenericKey;
 
 public class JceGenericKey

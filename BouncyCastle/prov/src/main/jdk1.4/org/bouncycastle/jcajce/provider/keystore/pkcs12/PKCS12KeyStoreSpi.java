@@ -45,46 +45,47 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.PBEParameterSpec;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1EncodableVector;
-import org.bouncycastle.asn1.ASN1Encoding;
-import org.bouncycastle.asn1.ASN1InputStream;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1OctetString;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.ASN1Set;
-import org.bouncycastle.asn1.BEROctetString;
-import org.bouncycastle.asn1.BEROutputStream;
-import org.bouncycastle.asn1.DERBMPString;
-import org.bouncycastle.asn1.DERNull;
-import org.bouncycastle.asn1.DEROctetString;
-import org.bouncycastle.asn1.DEROutputStream;
-import org.bouncycastle.asn1.DERSequence;
-import org.bouncycastle.asn1.DERSet;
-import org.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
-import org.bouncycastle.asn1.cryptopro.GOST28147Parameters;
-import org.bouncycastle.asn1.nist.NISTObjectIdentifiers;
-import org.bouncycastle.asn1.ntt.NTTObjectIdentifiers;
-import org.bouncycastle.asn1.pkcs.AuthenticatedSafe;
-import org.bouncycastle.asn1.pkcs.CertBag;
-import org.bouncycastle.asn1.pkcs.ContentInfo;
-import org.bouncycastle.asn1.pkcs.EncryptedData;
-import org.bouncycastle.asn1.pkcs.MacData;
-import org.bouncycastle.asn1.pkcs.PBES2Parameters;
-import org.bouncycastle.asn1.pkcs.PBKDF2Params;
-import org.bouncycastle.asn1.pkcs.PKCS12PBEParams;
-import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.asn1.pkcs.Pfx;
-import org.bouncycastle.asn1.pkcs.SafeBag;
-import org.bouncycastle.asn1.util.ASN1Dump;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x509.AuthorityKeyIdentifier;
-import org.bouncycastle.asn1.x509.DigestInfo;
-import org.bouncycastle.asn1.x509.Extension;
-import org.bouncycastle.asn1.x509.SubjectKeyIdentifier;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.asn1.x509.X509ObjectIdentifiers;
+import org.bouncycastle.bcasn1.ASN1Encodable;
+import org.bouncycastle.bcasn1.ASN1EncodableVector;
+import org.bouncycastle.bcasn1.ASN1Encoding;
+import org.bouncycastle.bcasn1.ASN1InputStream;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.ASN1OctetString;
+import org.bouncycastle.bcasn1.ASN1OutputStream;
+import org.bouncycastle.bcasn1.ASN1Primitive;
+import org.bouncycastle.bcasn1.ASN1Sequence;
+import org.bouncycastle.bcasn1.ASN1Set;
+import org.bouncycastle.bcasn1.BEROctetString;
+import org.bouncycastle.bcasn1.BEROutputStream;
+import org.bouncycastle.bcasn1.DERBMPString;
+import org.bouncycastle.bcasn1.DERNull;
+import org.bouncycastle.bcasn1.DEROctetString;
+import org.bouncycastle.bcasn1.DEROutputStream;
+import org.bouncycastle.bcasn1.DERSequence;
+import org.bouncycastle.bcasn1.DERSet;
+import org.bouncycastle.bcasn1.cryptopro.CryptoProObjectIdentifiers;
+import org.bouncycastle.bcasn1.cryptopro.GOST28147Parameters;
+import org.bouncycastle.bcasn1.nist.NISTObjectIdentifiers;
+import org.bouncycastle.bcasn1.ntt.NTTObjectIdentifiers;
+import org.bouncycastle.bcasn1.pkcs.AuthenticatedSafe;
+import org.bouncycastle.bcasn1.pkcs.CertBag;
+import org.bouncycastle.bcasn1.pkcs.ContentInfo;
+import org.bouncycastle.bcasn1.pkcs.EncryptedData;
+import org.bouncycastle.bcasn1.pkcs.MacData;
+import org.bouncycastle.bcasn1.pkcs.PBES2Parameters;
+import org.bouncycastle.bcasn1.pkcs.PBKDF2Params;
+import org.bouncycastle.bcasn1.pkcs.PKCS12PBEParams;
+import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
+import org.bouncycastle.bcasn1.pkcs.Pfx;
+import org.bouncycastle.bcasn1.pkcs.SafeBag;
+import org.bouncycastle.bcasn1.util.ASN1Dump;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.x509.AuthorityKeyIdentifier;
+import org.bouncycastle.bcasn1.x509.DigestInfo;
+import org.bouncycastle.bcasn1.x509.Extension;
+import org.bouncycastle.bcasn1.x509.SubjectKeyIdentifier;
+import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
+import org.bouncycastle.bcasn1.x509.X509ObjectIdentifiers;
 import org.bouncycastle.crypto.CryptoServicesRegistrar;
 import org.bouncycastle.crypto.Digest;
 import org.bouncycastle.crypto.digests.SHA1Digest;
@@ -96,10 +97,10 @@ import org.bouncycastle.jcajce.util.JcaJceHelper;
 import org.bouncycastle.jce.interfaces.BCKeyStore;
 import org.bouncycastle.jce.interfaces.PKCS12BagAttributeCarrier;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Integers;
-import org.bouncycastle.util.Strings;
-import org.bouncycastle.util.encoders.Hex;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.Integers;
+import org.bouncycastle.bcutil.Strings;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 public class PKCS12KeyStoreSpi
     extends KeyStoreSpi
@@ -859,7 +860,7 @@ public class PKCS12KeyStoreSpi
                         SafeBag b = SafeBag.getInstance(seq.getObjectAt(j));
                         if (b.getBagId().equals(pkcs8ShroudedKeyBag))
                         {
-                            org.bouncycastle.asn1.pkcs.EncryptedPrivateKeyInfo eIn = org.bouncycastle.asn1.pkcs.EncryptedPrivateKeyInfo.getInstance(b.getBagValue());
+                            org.bouncycastle.bcasn1.pkcs.EncryptedPrivateKeyInfo eIn = org.bouncycastle.bcasn1.pkcs.EncryptedPrivateKeyInfo.getInstance(b.getBagValue());
                             PrivateKey privKey = unwrapKey(eIn.getEncryptionAlgorithm(), eIn.getEncryptedData(), password, wrongPKCS12Zero);
 
                             //
@@ -958,7 +959,7 @@ public class PKCS12KeyStoreSpi
                         }
                         else if (b.getBagId().equals(pkcs8ShroudedKeyBag))
                         {
-                            org.bouncycastle.asn1.pkcs.EncryptedPrivateKeyInfo eIn = org.bouncycastle.asn1.pkcs.EncryptedPrivateKeyInfo.getInstance(b.getBagValue());
+                            org.bouncycastle.bcasn1.pkcs.EncryptedPrivateKeyInfo eIn = org.bouncycastle.bcasn1.pkcs.EncryptedPrivateKeyInfo.getInstance(b.getBagValue());
                             PrivateKey privKey = unwrapKey(eIn.getEncryptionAlgorithm(), eIn.getEncryptedData(), password, wrongPKCS12Zero);
 
                             //
@@ -1020,7 +1021,7 @@ public class PKCS12KeyStoreSpi
                         }
                         else if (b.getBagId().equals(keyBag))
                         {
-                            org.bouncycastle.asn1.pkcs.PrivateKeyInfo kInfo = org.bouncycastle.asn1.pkcs.PrivateKeyInfo.getInstance(b.getBagValue());
+                            org.bouncycastle.bcasn1.pkcs.PrivateKeyInfo kInfo = org.bouncycastle.bcasn1.pkcs.PrivateKeyInfo.getInstance(b.getBagValue());
                             PrivateKey privKey = BouncyCastleProvider.getPrivateKey(kInfo);
 
                             //
@@ -1237,7 +1238,7 @@ public class PKCS12KeyStoreSpi
             PKCS12PBEParams kParams = new PKCS12PBEParams(kSalt, MIN_ITERATIONS);
             byte[] kBytes = wrapKey(keyAlgorithm.getId(), privKey, kParams, password);
             AlgorithmIdentifier kAlgId = new AlgorithmIdentifier(keyAlgorithm, kParams.toASN1Primitive());
-            org.bouncycastle.asn1.pkcs.EncryptedPrivateKeyInfo kInfo = new org.bouncycastle.asn1.pkcs.EncryptedPrivateKeyInfo(kAlgId, kBytes);
+            org.bouncycastle.bcasn1.pkcs.EncryptedPrivateKeyInfo kInfo = new org.bouncycastle.bcasn1.pkcs.EncryptedPrivateKeyInfo(kAlgId, kBytes);
             boolean attrSet = false;
             ASN1EncodableVector kName = new ASN1EncodableVector();
 
@@ -1547,7 +1548,7 @@ public class PKCS12KeyStoreSpi
         AuthenticatedSafe auth = new AuthenticatedSafe(info);
 
         ByteArrayOutputStream bOut = new ByteArrayOutputStream();
-        DEROutputStream asn1Out;
+        ASN1OutputStream asn1Out;
         if (useDEREncoding)
         {
             asn1Out = new DEROutputStream(bOut);

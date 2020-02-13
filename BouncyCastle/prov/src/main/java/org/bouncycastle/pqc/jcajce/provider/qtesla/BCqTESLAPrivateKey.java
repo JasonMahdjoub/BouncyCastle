@@ -5,8 +5,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.security.PrivateKey;
 
-import org.bouncycastle.asn1.ASN1Set;
-import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
+import org.bouncycastle.bcasn1.ASN1Set;
+import org.bouncycastle.bcasn1.pkcs.PrivateKeyInfo;
 import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.pqc.crypto.qtesla.QTESLAPrivateKeyParameters;
 import org.bouncycastle.pqc.crypto.qtesla.QTESLASecurityCategory;
@@ -14,7 +14,7 @@ import org.bouncycastle.pqc.crypto.util.PrivateKeyFactory;
 import org.bouncycastle.pqc.crypto.util.PrivateKeyInfoFactory;
 import org.bouncycastle.pqc.jcajce.interfaces.QTESLAKey;
 import org.bouncycastle.pqc.jcajce.spec.QTESLAParameterSpec;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 public class BCqTESLAPrivateKey
     implements PrivateKey, QTESLAKey

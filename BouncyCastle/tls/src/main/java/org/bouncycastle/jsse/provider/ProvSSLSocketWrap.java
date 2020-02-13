@@ -9,18 +9,24 @@ import java.net.Socket;
 import java.net.SocketAddress;
 import java.net.SocketException;
 import java.nio.channels.SocketChannel;
+import java.security.Principal;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.net.ssl.SSLParameters;
 import javax.net.ssl.SSLSession;
-import javax.net.ssl.X509TrustManager;
+import javax.net.ssl.SSLSocket;
 
+import org.bouncycastle.jsse.BCApplicationProtocolSelector;
+import org.bouncycastle.jsse.BCExtendedSSLSession;
 import org.bouncycastle.jsse.BCSSLConnection;
 import org.bouncycastle.jsse.BCSSLParameters;
+import org.bouncycastle.tls.AlertDescription;
 import org.bouncycastle.tls.TlsClientProtocol;
+import org.bouncycastle.tls.TlsFatalAlert;
 import org.bouncycastle.tls.TlsProtocol;
 import org.bouncycastle.tls.TlsServerProtocol;
 
@@ -28,7 +34,7 @@ class ProvSSLSocketWrap
     extends ProvSSLSocketBase
     implements ProvTlsManager
 {
-    private static Logger LOG = Logger.getLogger(ProvSSLSocketWrap.class.getName());
+    private static final Logger LOG = Logger.getLogger(ProvSSLSocketWrap.class.getName());
 
     private static Socket checkSocket(Socket s) throws SocketException
     {
@@ -50,46 +56,46 @@ class ProvSSLSocketWrap
     protected final ContextData contextData;
     protected final Socket wrapSocket;
     protected final InputStream consumed;
-    protected final String host;
     protected final boolean autoClose;
     protected final ProvSSLParameters sslParameters;
 
+    protected String peerHost = null;
+    protected String peerHostSNI = null;
     protected boolean enableSessionCreation = true;
     protected boolean useClientMode;
 
     protected TlsProtocol protocol = null;
     protected ProvTlsPeer protocolPeer = null;
-    protected BCSSLConnection connection = null;
-    protected SSLSession handshakeSession = null;
+    protected ProvSSLConnection connection = null;
+    protected ProvSSLSessionHandshake handshakeSession = null;
 
     protected ProvSSLSocketWrap(ProvSSLContextSpi context, ContextData contextData, Socket s, InputStream consumed, boolean autoClose)
         throws IOException
     {
-        super();
-
         this.context = context;
         this.contextData = contextData;
         this.wrapSocket = checkSocket(s);
         this.consumed = consumed;
-        this.host = null;
         this.autoClose = autoClose;
         this.useClientMode = false;
         this.sslParameters = context.getDefaultParameters(!useClientMode);
+
+        notifyConnected();
     }
 
     protected ProvSSLSocketWrap(ProvSSLContextSpi context, ContextData contextData, Socket s, String host, int port, boolean autoClose)
         throws IOException
     {
-        super();
-
         this.context = context;
         this.contextData = contextData;
         this.wrapSocket = checkSocket(s);
         this.consumed = null;
-        this.host = host;
+        this.peerHost = host;
         this.autoClose = autoClose;
         this.useClientMode = true;
         this.sslParameters = context.getDefaultParameters(!useClientMode);
+
+        notifyConnected();
     }
 
     public ProvSSLContextSpi getContext()
@@ -102,11 +108,44 @@ class ProvSSLSocketWrap
         return contextData;
     }
 
-    
     @Override
     public void bind(SocketAddress bindpoint) throws IOException
     {
         throw new SocketException("Wrapped socket should already be bound");
+    }
+
+    public void checkClientTrusted(X509Certificate[] chain, String authType) throws IOException
+    {
+        try
+        {
+            contextData.getX509TrustManager().checkClientTrusted(chain.clone(), authType, this);
+        }
+        catch (CertificateException e)
+        {
+            throw new TlsFatalAlert(AlertDescription.certificate_unknown, e);
+        }
+    }
+
+    public void checkServerTrusted(X509Certificate[] chain, String authType) throws IOException
+    {
+        try
+        {
+            contextData.getX509TrustManager().checkServerTrusted(chain.clone(), authType, this);
+        }
+        catch (CertificateException e)
+        {
+            throw new TlsFatalAlert(AlertDescription.certificate_unknown, e);
+        }
+    }
+
+    public String chooseClientAlias(String[] keyType, Principal[] issuers)
+    {
+        return contextData.getX509KeyManager().chooseClientAlias(keyType, issuers, this);
+    }
+
+    public String chooseServerAlias(String keyType, Principal[] issuers)
+    {
+        return contextData.getX509KeyManager().chooseServerAlias(keyType, issuers, this);
     }
 
     @Override
@@ -142,6 +181,39 @@ class ProvSSLSocketWrap
     public void connect(SocketAddress endpoint, int timeout) throws IOException
     {
         throw new SocketException("Wrapped socket should already be connected");
+    }
+
+    @Override
+    protected void finalize() throws Throwable
+    {
+        try
+        {
+            close();
+        }
+        catch (IOException e)
+        {
+            // Ignore
+        }
+        finally
+        {
+            super.finalize();
+        }
+    }
+
+    // An SSLSocket method from JDK 9, but also a BCSSLSocket method
+    public synchronized String getApplicationProtocol()
+    {
+        return null == connection ? null : connection.getApplicationProtocol();
+    }
+
+    public synchronized BCApplicationProtocolSelector<SSLSocket> getBCHandshakeApplicationProtocolSelector()
+    {
+        return sslParameters.getSocketAPSelector();
+    }
+
+    public synchronized BCExtendedSSLSession getBCHandshakeSession()
+    {
+        return handshakeSession;
     }
 
     @Override
@@ -182,10 +254,16 @@ class ProvSSLSocketWrap
         return enableSessionCreation;
     }
 
+    // An SSLSocket method from JDK 9, but also a BCSSLSocket method
+    public synchronized String getHandshakeApplicationProtocol()
+    {
+        return null == handshakeSession ? null : handshakeSession.getApplicationProtocol();
+    }
+
     @Override
     public synchronized SSLSession getHandshakeSession()
     {
-        return handshakeSession;
+        return null == handshakeSession ? null : handshakeSession.getExportSSLSession();
     }
 
     @Override
@@ -269,9 +347,11 @@ class ProvSSLSocketWrap
     @Override
     public synchronized SSLSession getSession()
     {
-        BCSSLConnection connection = getConnection();
+        getConnection();
 
-        return connection == null ? ProvSSLSessionImpl.NULL_SESSION.getExportSession() : connection.getSession();
+        ProvSSLSession sslSession = (null == connection) ? ProvSSLSession.NULL_SESSION : connection.getSession();
+
+        return sslSession.getExportSSLSession();
     }
 
     @Override
@@ -363,6 +443,11 @@ class ProvSSLSocketWrap
         return wrapSocket.isOutputShutdown();
     }
 
+    public synchronized void setBCHandshakeApplicationProtocolSelector(BCApplicationProtocolSelector<SSLSocket> selector)
+    {
+        sslParameters.setSocketAPSelector(selector);
+    }
+
     @Override
     public synchronized void setEnabledCipherSuites(String[] suites)
     {
@@ -379,6 +464,12 @@ class ProvSSLSocketWrap
     public synchronized void setEnableSessionCreation(boolean flag)
     {
         this.enableSessionCreation = flag;
+    }
+
+    public synchronized void setHost(String host)
+    {
+        this.peerHost = host;
+        this.peerHostSNI = host;
     }
 
     @Override
@@ -453,21 +544,19 @@ class ProvSSLSocketWrap
     }
 
     @Override
-    public synchronized void setUseClientMode(boolean mode)
+    public synchronized void setUseClientMode(boolean useClientMode)
     {
-        if (this.useClientMode == mode)
-        {
-            return;
-        }
-
-        if (protocol != null)
+        if (null != protocol)
         {
             throw new IllegalArgumentException("Mode cannot be changed after the initial handshake has begun");
         }
 
-        this.useClientMode = mode;
+        if (this.useClientMode != useClientMode)
+        {
+            context.updateDefaultProtocols(sslParameters, !useClientMode);
 
-        context.updateDefaultProtocols(sslParameters, !useClientMode);
+            this.useClientMode = useClientMode;
+        }
     }
 
     @Override
@@ -486,9 +575,6 @@ class ProvSSLSocketWrap
     {
         if (protocol == null)
         {
-            // TODO[jsse] Check for session to re-use and apply to handshake
-            // TODO[jsse] Allocate this.handshakeSession and update it during handshake
-
             InputStream input = wrapSocket.getInputStream();
             if (consumed != null)
             {
@@ -503,7 +589,7 @@ class ProvSSLSocketWrap
                 clientProtocol.setResumableHandshake(resumable);
                 this.protocol = clientProtocol;
 
-                ProvTlsClient client = new ProvTlsClient(this, sslParameters.copy());
+                ProvTlsClient client = new ProvTlsClient(this, sslParameters);
                 this.protocolPeer = client;
 
                 clientProtocol.connect(client);
@@ -514,7 +600,7 @@ class ProvSSLSocketWrap
                 serverProtocol.setResumableHandshake(resumable);
                 this.protocol = serverProtocol;
 
-                ProvTlsServer server = new ProvTlsServer(this, sslParameters.copy());
+                ProvTlsServer server = new ProvTlsServer(this, sslParameters);
                 this.protocolPeer = server;
 
                 serverProtocol.accept(server);
@@ -538,11 +624,14 @@ class ProvSSLSocketWrap
         return wrapSocket.toString();
     }
 
-    public String getPeerHost()
+    public synchronized String getPeerHost()
     {
-        // TODO[jsse] See SunJSSE for some attempt at implicit host name determination
+        return peerHost;
+    }
 
-        return host;
+    public synchronized String getPeerHostSNI()
+    {
+        return peerHostSNI;
     }
 
     public int getPeerPort()
@@ -550,47 +639,25 @@ class ProvSSLSocketWrap
         return getPort();
     }
 
-    public boolean isClientTrusted(X509Certificate[] chain, String authType)
-    {
-        // TODO[jsse] Consider X509ExtendedTrustManager and/or HostnameVerifier functionality
-
-        X509TrustManager tm = contextData.getTrustManager();
-        if (tm != null)
-        {
-            try
-            {
-                tm.checkClientTrusted(chain, authType);
-                return true;
-            }
-            catch (CertificateException e)
-            {
-            }
-        }
-        return false;
-    }
-
-    public boolean isServerTrusted(X509Certificate[] chain, String authType)
-    {
-        // TODO[jsse] Consider X509ExtendedTrustManager and/or HostnameVerifier functionality
-
-        X509TrustManager tm = contextData.getTrustManager();
-        if (tm != null)
-        {
-            try
-            {
-                tm.checkServerTrusted(chain, authType);
-                return true;
-            }
-            catch (CertificateException e)
-            {
-            }
-        }
-        return false;
-    }
-
     public synchronized void notifyHandshakeComplete(ProvSSLConnection connection)
     {
+        if (null != handshakeSession && !handshakeSession.isValid())
+        {
+            connection.getSession().invalidate();
+        }
+
+        this.handshakeSession = null;
         this.connection = connection;
+    }
+
+    public synchronized void notifyHandshakeSession(ProvSSLSessionHandshake handshakeSession)
+    {
+        this.handshakeSession = handshakeSession;
+    }
+
+    public synchronized String selectApplicationProtocol(List<String> protocols)
+    {
+        return sslParameters.getSocketAPSelector().select(this, protocols);
     }
 
     synchronized void handshakeIfNecessary(boolean resumable) throws IOException
@@ -599,6 +666,44 @@ class ProvSSLSocketWrap
         {
             startHandshake(resumable);
         }
+    }
+
+    synchronized void notifyConnected()
+    {
+        if (null != peerHost && peerHost.length() > 0)
+        {
+            this.peerHostSNI = peerHost;
+            return;
+        }
+
+        InetAddress peerAddress = getInetAddress();
+        if (null == peerAddress)
+        {
+            return;
+        }
+
+        /*
+         * TODO[jsse] If we could somehow access the 'originalHostName' of peerAddress, it would be
+         * usable as a default SNI host_name.
+         */
+//        String originalHostName = null;
+//        if (null != originalHostName)
+//        {
+//            this.peerHost = originalHostName;
+//            this.peerHostSNI = originalHostName;
+//            return;
+//        }
+
+        if (useClientMode && provJdkTlsTrustNameService)
+        {
+            this.peerHost = peerAddress.getHostName();
+        }
+        else
+        {
+            this.peerHost = peerAddress.getHostAddress();
+        }
+
+        this.peerHostSNI = null;
     }
 
     class AppDataInput extends InputStream

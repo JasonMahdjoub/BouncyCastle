@@ -1,0 +1,79 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "org.bouncycastle",
+    "module": "bc-prov",
+    "version": "1.64-DMRECOMPILE",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "6.1",
+      "buildId": "zu7qo3wfazauhfmxkoaxiulm54"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 7,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "org.bouncycastle",
+          "module": "bc-core",
+          "version": {
+            "requires": "1.64-DMRECOMPILE"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "bc-prov-1.64-DMRECOMPILE.jar",
+          "url": "bc-prov-1.64-DMRECOMPILE.jar",
+          "size": 1785928,
+          "sha512": "c2bfa03c7031fcb9a85ac900b29ad21ad735c6e0b23bec1cab1de49a40ec60be72a93afeb059ac701b2fa05cd1d553799d88849d61fafba9c11085a4b05dbaa8",
+          "sha256": "1b7bae15200431530419c8e3aa8d8199f2a21520ebef32706783d54d3c8522db",
+          "sha1": "033f0cd43afc96191a6ed74c8d41c9992498a4a5",
+          "md5": "2e6fc7caa940326fdf7c6e6f0bc8d2a0"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 7,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "org.bouncycastle",
+          "module": "bc-core",
+          "version": {
+            "requires": "1.64-DMRECOMPILE"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "bc-prov-1.64-DMRECOMPILE.jar",
+          "url": "bc-prov-1.64-DMRECOMPILE.jar",
+          "size": 1785928,
+          "sha512": "c2bfa03c7031fcb9a85ac900b29ad21ad735c6e0b23bec1cab1de49a40ec60be72a93afeb059ac701b2fa05cd1d553799d88849d61fafba9c11085a4b05dbaa8",
+          "sha256": "1b7bae15200431530419c8e3aa8d8199f2a21520ebef32706783d54d3c8522db",
+          "sha1": "033f0cd43afc96191a6ed74c8d41c9992498a4a5",
+          "md5": "2e6fc7caa940326fdf7c6e6f0bc8d2a0"
+        }
+      ]
+    }
+  ]
+}

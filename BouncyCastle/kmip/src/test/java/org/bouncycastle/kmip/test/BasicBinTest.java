@@ -19,8 +19,8 @@ import org.bouncycastle.kmip.wire.KMIPLong;
 import org.bouncycastle.kmip.wire.KMIPStructure;
 import org.bouncycastle.kmip.wire.KMIPTextString;
 import org.bouncycastle.kmip.wire.binary.BinaryEncoder;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.encoders.Hex;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 public class BasicBinTest
     extends TestCase

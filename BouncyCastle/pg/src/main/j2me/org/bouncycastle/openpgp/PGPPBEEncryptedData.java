@@ -9,7 +9,7 @@ import org.bouncycastle.bcpg.SymmetricEncIntegrityPacket;
 import org.bouncycastle.bcpg.SymmetricKeyEncSessionPacket;
 import org.bouncycastle.openpgp.operator.PBEDataDecryptorFactory;
 import org.bouncycastle.openpgp.operator.PGPDataDecryptor;
-import org.bouncycastle.util.io.TeeInputStream;
+import org.bouncycastle.bcutil.io.TeeInputStream;
 
 /**
  * A password based encryption object.

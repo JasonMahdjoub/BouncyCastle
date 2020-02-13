@@ -1,7 +1,7 @@
 package org.bouncycastle.pqc.math.linearalgebra;
 
 
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 /**
  * This class implements vectors over the finite field

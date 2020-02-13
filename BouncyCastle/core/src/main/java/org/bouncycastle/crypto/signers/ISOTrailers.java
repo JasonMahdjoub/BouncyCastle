@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.util.Integers;
+import org.bouncycastle.bcutil.Integers;
 
 public class ISOTrailers
 {

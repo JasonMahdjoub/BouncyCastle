@@ -5,8 +5,8 @@ import java.security.NoSuchProviderException;
 import java.security.Provider;
 import java.util.Collection;
 
-import org.bouncycastle.util.Selector;
-import org.bouncycastle.util.Store;
+import org.bouncycastle.bcutil.Selector;
+import org.bouncycastle.bcutil.Store;
 
 /**
  * @deprecated use CollectionStore - this class will be removed.

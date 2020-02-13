@@ -1,4 +1,4 @@
-package org.bouncycastle.util;
+package org.bouncycastle.bcutil;
 
 import java.math.BigInteger;
 import java.security.AccessControlException;

@@ -1,15 +1,13 @@
 package org.bouncycastle.pqc.asn1;
 
-import java.math.BigInteger;
-
-import org.bouncycastle.asn1.ASN1EncodableVector;
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.ASN1Object;
-import org.bouncycastle.asn1.ASN1OctetString;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.DEROctetString;
-import org.bouncycastle.asn1.DERSequence;
+import org.bouncycastle.bcasn1.ASN1EncodableVector;
+import org.bouncycastle.bcasn1.ASN1Integer;
+import org.bouncycastle.bcasn1.ASN1Object;
+import org.bouncycastle.bcasn1.ASN1OctetString;
+import org.bouncycastle.bcasn1.ASN1Primitive;
+import org.bouncycastle.bcasn1.ASN1Sequence;
+import org.bouncycastle.bcasn1.DEROctetString;
+import org.bouncycastle.bcasn1.DERSequence;
 import org.bouncycastle.pqc.math.linearalgebra.GF2Matrix;
 
 public class McEliecePublicKey
@@ -28,11 +26,9 @@ public class McEliecePublicKey
 
     private McEliecePublicKey(ASN1Sequence seq)
     {
-        BigInteger bigN = ((ASN1Integer)seq.getObjectAt(0)).getValue();
-        n = bigN.intValue();
+        n = ((ASN1Integer)seq.getObjectAt(0)).intValueExact();
 
-        BigInteger bigT = ((ASN1Integer)seq.getObjectAt(1)).getValue();
-        t = bigT.intValue();
+        t = ((ASN1Integer)seq.getObjectAt(1)).intValueExact();
 
         g = new GF2Matrix(((ASN1OctetString)seq.getObjectAt(2)).getOctets());
     }

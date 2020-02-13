@@ -1,6 +1,6 @@
 package org.bouncycastle.crypto.modes;
 
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 /**
  * Some methods for GOST 3412 cipher algorithm

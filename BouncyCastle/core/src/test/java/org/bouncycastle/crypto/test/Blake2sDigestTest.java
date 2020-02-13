@@ -2,11 +2,11 @@ package org.bouncycastle.crypto.test;
 
 import java.util.Random;
 
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.crypto.digests.Blake2sDigest;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Strings;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.Strings;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class Blake2sDigestTest
     extends SimpleTest

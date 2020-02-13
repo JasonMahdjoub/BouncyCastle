@@ -105,6 +105,7 @@ find $jdk11src -name "*.java" -exec scripts/useseccert.sh \{\} \;
     rm -rf org/bouncycastle/jce/provider/test/AlgorithmParametersTest.java
     rm -rf org/bouncycastle/jce/provider/test/EdECTest.java
     rm -rf org/bouncycastle/jce/provider/test/SM2CipherTest.java
+    rm -rf org/bouncycastle/jce/provider/test/ChaCha20Poly1305Test.java
     rm -rf org/bouncycastle/jce/spec/ECNamedCurveSpec.java
     rm -rf org/bouncycastle/util/encoders/test/*.java
     rm -rf org/bouncycastle/x509/PKIXCertPathReviewer.java
@@ -123,6 +124,7 @@ find $jdk11src -name "*.java" -exec scripts/useseccert.sh \{\} \;
     rm -rf org/bouncycastle/jce/provider/test/JceTestUtil.java
     rm -f  org/bouncycastle/math/ec/tools/F2mSqrtOptimizer.java
     rm -f  org/bouncycastle/math/ec/tools/TraceOptimizer.java
+    rm -f  org/bouncycastle/math/ec/tools/DiscoverEndomorphisms.java
     rm -rf org/bouncycastle/x509/PKIXAttrCert*.java
     rm -rf org/bouncycastle/jce/provider/RFC3281*.java
     rm -rf org/bouncycastle/jcajce/PKCS12StoreParameter.java
@@ -145,6 +147,7 @@ find $jdk11src -name "*.java" -exec scripts/useseccert.sh \{\} \;
     rm -rf org/bouncycastle/jcajce/provider/drbg
     rm org/bouncycastle/asn1/test/EnumeratedTest.java
     rm -rf org/bouncycastle/pqc/jcajce
+    rm -rf org/bouncycastle/pqc/crypto/qtesla/QTeslaKeyEncodingTests.java
     rm -r org/bouncycastle/crypto/test/speedy
     rm -r org/bouncycastle/crypto/test/cavp
     rm -r org/bouncycastle/crypto/test/KDFFeedbackGeneratorTest.java
@@ -190,6 +193,7 @@ find $jdk11src -name "*.java" -exec scripts/useseccert.sh \{\} \;
     rm -rf org/bouncycastle/pkix/jcajce/Revocation*
     rm -rf org/bouncycastle/pkix/test/Revocation*
     rm -rf org/bouncycastle/pkix/test/TestUtil*
+    rm org/bouncycastle/cms/jcajce/JceKeyTransAuthEnvelopedRecipient.java
     rm -rf org/bouncycastle/mime/
     rm -rf org/bouncycastle/tsp/test
     rm -rf org/bouncycastle/est/test
@@ -227,35 +231,35 @@ then
         (2>&1 javadoc -windowtitle "$WINDOWTITLE" -doctitle "$DOCTITLE" \
             -header "$HEADER" \
             -group "Lightweight Crypto Packages" "org.bouncycastle.crypto*" \
-            -group "ASN.1 Support Packages" "org.bouncycastle.asn1*" \
+            -group "ASN.1 Support Packages" "org.bouncycastle.bcasn1*" \
             -group "Math Support Packages" "org.bouncycastle.math*" \
-            -group "Utility Packages" "org.bouncycastle.util*" \
+            -group "Utility Packages" "org.bouncycastle.bcutil*" \
             -classpath classes:$JDK11PATH/lib/classes.zip \
             -d javadoc -sourcepath src \
-            org.bouncycastle.asn1 \
-            org.bouncycastle.asn1.bc \
-            org.bouncycastle.asn1.cmp \
-            org.bouncycastle.asn1.cms \
-            org.bouncycastle.asn1.cryptopro \
-            org.bouncycastle.asn1.esf \
-            org.bouncycastle.asn1.ess \
-            org.bouncycastle.asn1.gnu \
-            org.bouncycastle.asn1.iana \
-            org.bouncycastle.asn1.icao \
-            org.bouncycastle.asn1.misc \
-            org.bouncycastle.asn1.mozilla \
-            org.bouncycastle.asn1.nist \
-            org.bouncycastle.asn1.ocsp \
-            org.bouncycastle.asn1.oiw \
-            org.bouncycastle.asn1.pkcs \
-            org.bouncycastle.asn1.sec \
-            org.bouncycastle.asn1.smime \
-            org.bouncycastle.asn1.teletrust \
-            org.bouncycastle.asn1.test \
-            org.bouncycastle.asn1.tsp \
-            org.bouncycastle.asn1.util \
-            org.bouncycastle.asn1.x509 \
-            org.bouncycastle.asn1.x9 \
+            org.bouncycastle.bcasn1 \
+            org.bouncycastle.bcasn1.bc \
+            org.bouncycastle.bcasn1.cmp \
+            org.bouncycastle.bcasn1.cms \
+            org.bouncycastle.bcasn1.cryptopro \
+            org.bouncycastle.bcasn1.esf \
+            org.bouncycastle.bcasn1.ess \
+            org.bouncycastle.bcasn1.gnu \
+            org.bouncycastle.bcasn1.iana \
+            org.bouncycastle.bcasn1.icao \
+            org.bouncycastle.bcasn1.misc \
+            org.bouncycastle.bcasn1.mozilla \
+            org.bouncycastle.bcasn1.nist \
+            org.bouncycastle.bcasn1.ocsp \
+            org.bouncycastle.bcasn1.oiw \
+            org.bouncycastle.bcasn1.pkcs \
+            org.bouncycastle.bcasn1.sec \
+            org.bouncycastle.bcasn1.smime \
+            org.bouncycastle.bcasn1.teletrust \
+            org.bouncycastle.bcasn1.test \
+            org.bouncycastle.bcasn1.tsp \
+            org.bouncycastle.bcasn1.util \
+            org.bouncycastle.bcasn1.x509 \
+            org.bouncycastle.bcasn1.x9 \
             org.bouncycastle.math.ec \
             org.bouncycastle.crypto \
             org.bouncycastle.crypto.agreement \
@@ -275,8 +279,8 @@ then
             org.bouncycastle.crypto.test \
             org.bouncycastle.crypto.examples \
             org.bouncycastle.crypto.tls \
-            org.bouncycastle.util.encoders \
-            org.bouncycastle.util.test) > /dev/null \
+            org.bouncycastle.bcutil.encoders \
+            org.bouncycastle.bcutil.test) > /dev/null \
 
         PATH=$JDK11PATH/bin:$PATH
         export PATH
@@ -325,7 +329,7 @@ javac -d ../../../classes -classpath ../../../classes:../../../src:$JDK11PATH/li
 
         echo "lightweight regression test"
         java -mx868m -classpath classes:$JDK11PATH/lib/classes.zip -Dbc.test.data.home=/home/dgh/bc/java/crypto/test/data org.bouncycastle.crypto.test.RegressionTest
-        java -classpath classes:$JDK11PATH/lib/classes.zip -Dbc.test.data.home=/home/dgh/bc/java/crypto/test/data org.bouncycastle.asn1.test.RegressionTest
+        java -classpath classes:$JDK11PATH/lib/classes.zip -Dbc.test.data.home=/home/dgh/bc/java/crypto/test/data org.bouncycastle.bcasn1.test.RegressionTest
     )
     (2>&1 find $artifacts/lcrypto-jdk11-$base -name CVS -exec rm -rf \{\} \; ) > /dev/null
 fi
@@ -349,9 +353,9 @@ then
         -group "Cleanroom JCE" "javax.crypto*" \
         -group "JCE Utility and Extension Packages" "org.bouncycastle.jce*" \
         -group "OCSP and OpenSSL PEM Support Packages" "org.bouncycastle.ocsp*:org.bouncycastle.openssl*" \
-        -group "ASN.1 Support Packages" "org.bouncycastle.asn1*" \
+        -group "ASN.1 Support Packages" "org.bouncycastle.bcasn1*" \
         -group "Lightweight Crypto Packages" "org.bouncycastle.crypto*" \
-        -group "Utility Packages" "org.bouncycastle.util*:org.bouncycastle.math*" \
+        -group "Utility Packages" "org.bouncycastle.bcutil*:org.bouncycastle.math*" \
         -group "JCE Provider and Test Classes" "org.bouncycastle.jce.provider*" \
         -classpath classes \
         -d docs -sourcepath src \
@@ -359,29 +363,29 @@ then
         javax.crypto  \
         javax.crypto.interfaces \
         javax.crypto.spec \
-        org.bouncycastle.asn1 \
-        org.bouncycastle.asn1.cmp \
-        org.bouncycastle.asn1.cms \
-        org.bouncycastle.asn1.cryptopro \
-        org.bouncycastle.asn1.esf \
-        org.bouncycastle.asn1.ess \
-        org.bouncycastle.asn1.gnu \
-        org.bouncycastle.asn1.iana \
-        org.bouncycastle.asn1.icao \
-        org.bouncycastle.asn1.misc \
-        org.bouncycastle.asn1.mozilla \
-        org.bouncycastle.asn1.nist \
-        org.bouncycastle.asn1.ocsp \
-        org.bouncycastle.asn1.oiw \
-        org.bouncycastle.asn1.pkcs \
-        org.bouncycastle.asn1.sec \
-        org.bouncycastle.asn1.smime \
-        org.bouncycastle.asn1.teletrust \
-        org.bouncycastle.asn1.test \
-        org.bouncycastle.asn1.tsp \
-        org.bouncycastle.asn1.util \
-        org.bouncycastle.asn1.x509 \
-        org.bouncycastle.asn1.x9 \
+        org.bouncycastle.bcasn1 \
+        org.bouncycastle.bcasn1.cmp \
+        org.bouncycastle.bcasn1.cms \
+        org.bouncycastle.bcasn1.cryptopro \
+        org.bouncycastle.bcasn1.esf \
+        org.bouncycastle.bcasn1.ess \
+        org.bouncycastle.bcasn1.gnu \
+        org.bouncycastle.bcasn1.iana \
+        org.bouncycastle.bcasn1.icao \
+        org.bouncycastle.bcasn1.misc \
+        org.bouncycastle.bcasn1.mozilla \
+        org.bouncycastle.bcasn1.nist \
+        org.bouncycastle.bcasn1.ocsp \
+        org.bouncycastle.bcasn1.oiw \
+        org.bouncycastle.bcasn1.pkcs \
+        org.bouncycastle.bcasn1.sec \
+        org.bouncycastle.bcasn1.smime \
+        org.bouncycastle.bcasn1.teletrust \
+        org.bouncycastle.bcasn1.test \
+        org.bouncycastle.bcasn1.tsp \
+        org.bouncycastle.bcasn1.util \
+        org.bouncycastle.bcasn1.x509 \
+        org.bouncycastle.bcasn1.x9 \
         org.bouncycastle.math.ec \
         org.bouncycastle.crypto \
         org.bouncycastle.crypto.agreement \
@@ -416,8 +420,8 @@ then
         org.bouncycastle.x509 \
         org.bouncycastle.x509.examples \
         org.bouncycastle.x509.extension \
-        org.bouncycastle.util.encoders \
-        org.bouncycastle.util.test) > /dev/null \
+        org.bouncycastle.bcutil.encoders \
+        org.bouncycastle.bcutil.test) > /dev/null \
 
     PATH=$JDK11PATH/bin:$PATH
     export PATH
@@ -539,6 +543,7 @@ then
     tar cf - index.html LICENSE.html CONTRIBUTORS.html docs | (cd $artifacts/bcpg-jdk11-$base; tar xf -)
     ((cd pg/src/main/java && tar cf - * ) | (cd $artifacts/bcpg-jdk11-$base/src && tar xf -))
     ((cd pg/src/main/jdk1.4 && tar cf - * ) | (cd $artifacts/bcpg-jdk11-$base/src && tar xf -))
+    ((cd pg/src/main/jdk1.3 && tar cf - * ) | (cd $artifacts/bcpg-jdk11-$base/src && tar xf -))
     ((cd pg/src/main/jdk1.1 && tar cf - * ) | (cd $artifacts/bcpg-jdk11-$base/src && tar xf -))
     ((cd pg/src/test/java && tar cf - * ) | (cd $artifacts/bcpg-jdk11-$base/src && tar xf -))
     ((cd pg/src/test/jdk1.4 && tar cf - * ) | (cd $artifacts/bcpg-jdk11-$base/src && tar xf -))
@@ -589,6 +594,13 @@ then
         org.bouncycastle.openpgp.test > /dev/null \
 
     echo "compiling"
+
+
+    ed src/org/bouncycastle/bcpg/SignatureSubpacketInputStream.java <<%
+g/private.*final.*;/s/final//
+w
+q
+%
 
     ed src/org/bouncycastle/bcpg/ArmoredOutputStream.java <<%
 /@RELEASE_NAME@/s//$version/

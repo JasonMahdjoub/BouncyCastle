@@ -4,18 +4,18 @@ import java.math.BigInteger;
 import java.util.Date;
 import java.util.Enumeration;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1GeneralizedTime;
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.asn1.x509.Extensions;
-import org.bouncycastle.asn1.x509.ExtensionsGenerator;
-import org.bouncycastle.asn1.x509.TBSCertList;
-import org.bouncycastle.asn1.x509.Time;
-import org.bouncycastle.asn1.x509.V2TBSCertListGenerator;
-import org.bouncycastle.asn1.x509.X509Extensions;
+import org.bouncycastle.bcasn1.ASN1Encodable;
+import org.bouncycastle.bcasn1.ASN1GeneralizedTime;
+import org.bouncycastle.bcasn1.ASN1Integer;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.ASN1Sequence;
+import org.bouncycastle.bcasn1.x500.X500Name;
+import org.bouncycastle.bcasn1.x509.Extensions;
+import org.bouncycastle.bcasn1.x509.ExtensionsGenerator;
+import org.bouncycastle.bcasn1.x509.TBSCertList;
+import org.bouncycastle.bcasn1.x509.Time;
+import org.bouncycastle.bcasn1.x509.V2TBSCertListGenerator;
+import org.bouncycastle.bcasn1.x509.X509Extensions;
 import org.bouncycastle.operator.ContentSigner;
 
 /**

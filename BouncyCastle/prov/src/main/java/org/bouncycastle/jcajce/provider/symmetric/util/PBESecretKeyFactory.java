@@ -6,7 +6,7 @@ import java.security.spec.KeySpec;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.PBEKeySpec;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 import org.bouncycastle.crypto.CipherParameters;
 
 public class PBESecretKeyFactory

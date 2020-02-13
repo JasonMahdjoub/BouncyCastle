@@ -4,7 +4,7 @@ import java.io.FilterOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import org.bouncycastle.util.encoders.Base64;
+import org.bouncycastle.bcutil.encoders.Base64;
 
 public class Base64OutputStream
     extends FilterOutputStream

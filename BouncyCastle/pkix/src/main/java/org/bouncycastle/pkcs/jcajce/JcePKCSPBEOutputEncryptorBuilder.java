@@ -1,31 +1,32 @@
 package org.bouncycastle.pkcs.jcajce;
 
 import java.io.OutputStream;
+import java.security.AlgorithmParameters;
 import java.security.Provider;
 import java.security.SecureRandom;
 
 import javax.crypto.Cipher;
-import javax.crypto.CipherOutputStream;
 import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.bc.BCObjectIdentifiers;
-import org.bouncycastle.asn1.misc.MiscObjectIdentifiers;
-import org.bouncycastle.asn1.misc.ScryptParams;
-import org.bouncycastle.asn1.pkcs.EncryptionScheme;
-import org.bouncycastle.asn1.pkcs.KeyDerivationFunc;
-import org.bouncycastle.asn1.pkcs.PBES2Parameters;
-import org.bouncycastle.asn1.pkcs.PBKDF2Params;
-import org.bouncycastle.asn1.pkcs.PKCS12PBEParams;
-import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.ASN1Primitive;
+import org.bouncycastle.bcasn1.bc.DMBCObjectIdentifiers;
+import org.bouncycastle.bcasn1.misc.BCMiscObjectIdentifiers;
+import org.bouncycastle.bcasn1.misc.ScryptParams;
+import org.bouncycastle.bcasn1.pkcs.EncryptionScheme;
+import org.bouncycastle.bcasn1.pkcs.KeyDerivationFunc;
+import org.bouncycastle.bcasn1.pkcs.PBES2Parameters;
+import org.bouncycastle.bcasn1.pkcs.PBKDF2Params;
+import org.bouncycastle.bcasn1.pkcs.PKCS12PBEParams;
+import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.crypto.util.PBKDF2Config;
 import org.bouncycastle.crypto.util.PBKDFConfig;
 import org.bouncycastle.crypto.util.ScryptConfig;
 import org.bouncycastle.jcajce.PKCS12KeyWithParameters;
+import org.bouncycastle.jcajce.io.CipherOutputStream;
 import org.bouncycastle.jcajce.spec.ScryptKeySpec;
 import org.bouncycastle.jcajce.util.DefaultJcaJceHelper;
 import org.bouncycastle.jcajce.util.JcaJceHelper;
@@ -180,7 +181,7 @@ public class JcePKCSPBEOutputEncryptorBuilder
             {
                 PBKDFConfig pbkDef = (pbkdf == null) ? pbkdfBuilder.build() : pbkdf;
 
-                if (MiscObjectIdentifiers.id_scrypt.equals(pbkDef.getAlgorithm()))
+                if (BCMiscObjectIdentifiers.id_scrypt.equals(pbkDef.getAlgorithm()))
                 {
                     ScryptConfig skdf = (ScryptConfig)pbkDef;
 
@@ -205,7 +206,7 @@ public class JcePKCSPBEOutputEncryptorBuilder
                     cipher.init(Cipher.ENCRYPT_MODE, key, random);
 
                     PBES2Parameters algParams = new PBES2Parameters(
-                        new KeyDerivationFunc(MiscObjectIdentifiers.id_scrypt, params),
+                        new KeyDerivationFunc(BCMiscObjectIdentifiers.id_scrypt, params),
                         new EncryptionScheme(keyEncAlgorithm, ASN1Primitive.fromByteArray(cipher.getParameters().getEncoded())));
 
                     encryptionAlg = new AlgorithmIdentifier(algorithm, algParams);
@@ -227,9 +228,22 @@ public class JcePKCSPBEOutputEncryptorBuilder
 
                     cipher.init(Cipher.ENCRYPT_MODE, key, random);
 
-                    PBES2Parameters algParams = new PBES2Parameters(
-                        new KeyDerivationFunc(PKCSObjectIdentifiers.id_PBKDF2, new PBKDF2Params(salt, pkdf.getIterationCount(), pkdf.getPRF())),
-                        new EncryptionScheme(keyEncAlgorithm, ASN1Primitive.fromByteArray(cipher.getParameters().getEncoded())));
+                    AlgorithmParameters algP = cipher.getParameters();
+
+                    PBES2Parameters algParams;
+
+                    if (algP != null)
+                    {
+                        algParams = new PBES2Parameters(
+                            new KeyDerivationFunc(PKCSObjectIdentifiers.id_PBKDF2, new PBKDF2Params(salt, pkdf.getIterationCount(), pkdf.getPRF())),
+                            new EncryptionScheme(keyEncAlgorithm, ASN1Primitive.fromByteArray(cipher.getParameters().getEncoded())));
+                    }
+                    else
+                    {
+                        algParams = new PBES2Parameters(
+                            new KeyDerivationFunc(PKCSObjectIdentifiers.id_PBKDF2, new PBKDF2Params(salt, pkdf.getIterationCount(), pkdf.getPRF())),
+                            new EncryptionScheme(keyEncAlgorithm));
+                    }
 
                     encryptionAlg = new AlgorithmIdentifier(algorithm, algParams);
                 }
@@ -273,8 +287,8 @@ public class JcePKCSPBEOutputEncryptorBuilder
     private boolean isPKCS12(ASN1ObjectIdentifier algorithm)
     {
         return algorithm.on(PKCSObjectIdentifiers.pkcs_12PbeIds)
-            || algorithm.on(BCObjectIdentifiers.bc_pbe_sha1_pkcs12)
-            || algorithm.on(BCObjectIdentifiers.bc_pbe_sha256_pkcs12);
+            || algorithm.on(DMBCObjectIdentifiers.bc_pbe_sha1_pkcs12)
+            || algorithm.on(DMBCObjectIdentifiers.bc_pbe_sha256_pkcs12);
     }
 
     /**

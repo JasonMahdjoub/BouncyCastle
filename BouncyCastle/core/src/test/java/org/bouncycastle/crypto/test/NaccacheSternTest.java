@@ -4,15 +4,15 @@ import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.util.Vector;
 
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
+import org.bouncycastle.crypto.InvalidCipherTextException;
 import org.bouncycastle.crypto.engines.NaccacheSternEngine;
 import org.bouncycastle.crypto.generators.NaccacheSternKeyPairGenerator;
 import org.bouncycastle.crypto.params.NaccacheSternKeyGenerationParameters;
 import org.bouncycastle.crypto.params.NaccacheSternKeyParameters;
 import org.bouncycastle.crypto.params.NaccacheSternPrivateKeyParameters;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**
  * Test case for NaccacheStern cipher. For details on this cipher, please see
@@ -274,7 +274,7 @@ public class NaccacheSternTest
         {
             // expected
         }
-        catch (BCInvalidCipherTextException e)
+        catch (InvalidCipherTextException e)
         {
             fail("failed initialisation check");
         }
@@ -305,7 +305,7 @@ public class NaccacheSternTest
         {
             data = cryptEng.processData(data);
         }
-        catch (BCInvalidCipherTextException e)
+        catch (InvalidCipherTextException e)
         {
             if (debug)
             {
@@ -326,7 +326,7 @@ public class NaccacheSternTest
         {
             data = decryptEng.processData(data);
         }
-        catch (BCInvalidCipherTextException e)
+        catch (InvalidCipherTextException e)
         {
             if (debug)
             {

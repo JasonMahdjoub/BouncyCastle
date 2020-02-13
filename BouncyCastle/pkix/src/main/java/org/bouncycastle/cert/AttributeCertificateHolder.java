@@ -5,20 +5,20 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x509.GeneralName;
-import org.bouncycastle.asn1.x509.GeneralNames;
-import org.bouncycastle.asn1.x509.Holder;
-import org.bouncycastle.asn1.x509.IssuerSerial;
-import org.bouncycastle.asn1.x509.ObjectDigestInfo;
+import org.bouncycastle.bcasn1.ASN1Integer;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.ASN1Sequence;
+import org.bouncycastle.bcasn1.x500.X500Name;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.x509.GeneralName;
+import org.bouncycastle.bcasn1.x509.GeneralNames;
+import org.bouncycastle.bcasn1.x509.Holder;
+import org.bouncycastle.bcasn1.x509.IssuerSerial;
+import org.bouncycastle.bcasn1.x509.ObjectDigestInfo;
 import org.bouncycastle.operator.DigestCalculator;
 import org.bouncycastle.operator.DigestCalculatorProvider;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Selector;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.Selector;
 
 /**
  * The Holder object.
@@ -137,8 +137,7 @@ public class AttributeCertificateHolder
     {
         if (holder.getObjectDigestInfo() != null)
         {
-            return holder.getObjectDigestInfo().getDigestedObjectType()
-                .getValue().intValue();
+            return holder.getObjectDigestInfo().getDigestedObjectType().intValueExact();
         }
         return -1;
     }
@@ -291,7 +290,7 @@ public class AttributeCertificateHolder
 
         if (holder.getBaseCertificateID() != null)
         {
-            return holder.getBaseCertificateID().getSerial().getValue().equals(x509Cert.getSerialNumber())
+            return holder.getBaseCertificateID().getSerial().hasValue(x509Cert.getSerialNumber())
                 && matchesDN(x509Cert.getIssuer(), holder.getBaseCertificateID().getIssuer());
         }
 

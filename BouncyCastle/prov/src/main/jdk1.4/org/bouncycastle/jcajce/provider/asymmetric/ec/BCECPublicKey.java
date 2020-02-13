@@ -4,20 +4,19 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1OctetString;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.DERBitString;
-import org.bouncycastle.asn1.DERNull;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.DEROctetString;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.asn1.x9.X962Parameters;
-import org.bouncycastle.asn1.x9.X9ECParameters;
-import org.bouncycastle.asn1.x9.X9ECPoint;
-import org.bouncycastle.asn1.x9.X9IntegerConverter;
-import org.bouncycastle.asn1.x9.X9ObjectIdentifiers;
+import org.bouncycastle.bcasn1.ASN1OctetString;
+import org.bouncycastle.bcasn1.ASN1Primitive;
+import org.bouncycastle.bcasn1.DERBitString;
+import org.bouncycastle.bcasn1.DERNull;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.DEROctetString;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
+import org.bouncycastle.bcasn1.x9.X962Parameters;
+import org.bouncycastle.bcasn1.x9.X9ECParameters;
+import org.bouncycastle.bcasn1.x9.X9ECPoint;
+import org.bouncycastle.bcasn1.x9.X9IntegerConverter;
+import org.bouncycastle.bcasn1.x9.X9ObjectIdentifiers;
 import org.bouncycastle.crypto.params.ECDomainParameters;
 import org.bouncycastle.crypto.params.ECPublicKeyParameters;
 import org.bouncycastle.jcajce.provider.asymmetric.util.ECUtil;
@@ -31,8 +30,7 @@ import org.bouncycastle.jce.spec.ECParameterSpec;
 import org.bouncycastle.jce.spec.ECPublicKeySpec;
 import org.bouncycastle.math.ec.ECCurve;
 import org.bouncycastle.math.ec.ECPoint;
-import org.bouncycastle.util.Strings;
-import org.bouncycastle.jcajce.provider.asymmetric.util.ECUtil;
+import org.bouncycastle.bcutil.Strings;
 
 public class BCECPublicKey
     implements ECPublicKey, ECPointEncoder
@@ -238,12 +236,14 @@ public class BCECPublicKey
 
     public byte[] getEncoded()
     {
-        X962Parameters  params = ECUtils.getDomainParametersFromName(ecSpec, withCompression);
-        ASN1OctetString p = ASN1OctetString.getInstance(new X9ECPoint(ecPublicKey.getQ(), withCompression).toASN1Primitive());
+        AlgorithmIdentifier algId = new AlgorithmIdentifier(
+            X9ObjectIdentifiers.id_ecPublicKey,
+            ECUtils.getDomainParametersFromName(ecSpec, withCompression));
 
-        SubjectPublicKeyInfo info = new SubjectPublicKeyInfo(new AlgorithmIdentifier(X9ObjectIdentifiers.id_ecPublicKey, params), p.getOctets());
-        
-        return KeyUtil.getEncodedSubjectPublicKeyInfo(info);
+        byte[] pubKeyOctets = ecPublicKey.getQ().getEncoded(withCompression);
+
+        // stored curve is null if ImplicitlyCa
+        return KeyUtil.getEncodedSubjectPublicKeyInfo(algId, pubKeyOctets);
     }
 
     public ECParameterSpec getParams()

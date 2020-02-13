@@ -33,12 +33,11 @@ import org.bouncycastle.crypto.modes.CFBBlockCipher;
 import org.bouncycastle.crypto.modes.CTSBlockCipher;
 import org.bouncycastle.crypto.modes.OFBBlockCipher;
 import org.bouncycastle.crypto.paddings.PaddedBufferedBlockCipher;
-import org.bouncycastle.crypto.params.KeyParameter;
+import org.bouncycastle.crypto.params.*;
 import org.bouncycastle.crypto.params.ParametersWithIV;
-import org.bouncycastle.crypto.params.RC2Parameters;
 import org.bouncycastle.crypto.params.RC5Parameters;
 import org.bouncycastle.jcajce.provider.symmetric.util.BCPBEKey;
-import org.bouncycastle.util.Strings;
+import org.bouncycastle.bcutil.Strings;
 
 public class BrokenJCEBlockCipher
     implements BrokenPBE
@@ -55,7 +54,7 @@ public class BrokenJCEBlockCipher
                                     };
  
     private BufferedBlockCipher     cipher;
-    private ParametersWithIV        ivParam;
+    private ParametersWithIV ivParam;
 
     private int                     pbeType = PKCS12;
     private int                     pbeHash = SHA1;
@@ -222,7 +221,7 @@ public class BrokenJCEBlockCipher
         SecureRandom            random) 
     throws InvalidKeyException, InvalidAlgorithmParameterException
     {
-        CipherParameters        param;
+        CipherParameters param;
 
         //
         // a note on iv's - if ivLength is zero the IV gets ignored (we don't use it).
@@ -423,7 +422,7 @@ public class BrokenJCEBlockCipher
         {
             throw new IllegalBlockSizeException(e.getMessage());
         }
-        catch (BCInvalidCipherTextException e)
+        catch (InvalidCipherTextException e)
         {
             throw new BadPaddingException(e.getMessage());
         }
@@ -458,7 +457,7 @@ public class BrokenJCEBlockCipher
         {
             throw new IllegalBlockSizeException(e.getMessage());
         }
-        catch (BCInvalidCipherTextException e)
+        catch (InvalidCipherTextException e)
         {
             throw new BadPaddingException(e.getMessage());
         }

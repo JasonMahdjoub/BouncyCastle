@@ -9,7 +9,7 @@ public class ElGamalPrivateKeyParameters
 
     public ElGamalPrivateKeyParameters(
         BigInteger      x,
-        ElGamalParameters    params)
+        ElGamalParameters params)
     {
         super(true, params);
 
@@ -29,7 +29,7 @@ public class ElGamalPrivateKeyParameters
             return false;
         }
 
-        ElGamalPrivateKeyParameters  pKey = (ElGamalPrivateKeyParameters)obj;
+        ElGamalPrivateKeyParameters pKey = (ElGamalPrivateKeyParameters)obj;
 
         if (!pKey.getX().equals(x))
         {

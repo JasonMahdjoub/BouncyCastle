@@ -3,7 +3,7 @@ package org.bouncycastle.crypto.digests;
 import org.bouncycastle.crypto.ExtendedDigest;
 import org.bouncycastle.crypto.engines.ThreefishEngine;
 import org.bouncycastle.crypto.params.SkeinParameters;
-import org.bouncycastle.util.Memoable;
+import org.bouncycastle.bcutil.Memoable;
 
 /**
  * Implementation of the Skein parameterised hash function in 256, 512 and 1024 bit block sizes,

@@ -3,13 +3,13 @@ package org.bouncycastle.cert;
 import java.math.BigInteger;
 import java.util.Date;
 
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.asn1.x509.ExtensionsGenerator;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.asn1.x509.Time;
-import org.bouncycastle.asn1.x509.V1TBSCertificateGenerator;
-import org.bouncycastle.asn1.x509.V3TBSCertificateGenerator;
+import org.bouncycastle.bcasn1.ASN1Integer;
+import org.bouncycastle.bcasn1.x500.X500Name;
+import org.bouncycastle.bcasn1.x509.ExtensionsGenerator;
+import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
+import org.bouncycastle.bcasn1.x509.Time;
+import org.bouncycastle.bcasn1.x509.V1TBSCertificateGenerator;
+import org.bouncycastle.bcasn1.x509.V3TBSCertificateGenerator;
 import org.bouncycastle.operator.ContentSigner;
 
 

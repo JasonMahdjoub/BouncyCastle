@@ -13,9 +13,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import org.bouncycastle.asn1.*;
-import org.bouncycastle.asn1.x509.AuthorityKeyIdentifier;
-import org.bouncycastle.asn1.x509.Extension;
+import org.bouncycastle.bcasn1.*;
+import org.bouncycastle.bcasn1.x509.AuthorityKeyIdentifier;
+import org.bouncycastle.bcasn1.x509.Extension;
 
 /**
  * Implements the PKIX CertPathBuilding algorithem for BouncyCastle.

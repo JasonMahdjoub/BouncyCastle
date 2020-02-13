@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.pqc.math.ntru.polynomial.test.ProductFormPolynomialTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-05-14T11:35:48" hostname="Garage2" time="0.005">
-  <properties/>
-  <testcase name="testMult" classname="org.bouncycastle.pqc.math.ntru.polynomial.test.ProductFormPolynomialTest" time="0.004"/>
-  <testcase name="testFromToBinary" classname="org.bouncycastle.pqc.math.ntru.polynomial.test.ProductFormPolynomialTest" time="0.001"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

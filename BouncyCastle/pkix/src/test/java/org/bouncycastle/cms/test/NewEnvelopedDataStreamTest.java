@@ -17,17 +17,15 @@ import java.util.Iterator;
 
 import javax.crypto.SecretKey;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-import org.bouncycastle.asn1.ASN1InputStream;
-import org.bouncycastle.asn1.DEROutputStream;
-import org.bouncycastle.asn1.DERSet;
-import org.bouncycastle.asn1.DERUTF8String;
-import org.bouncycastle.asn1.cms.Attribute;
-import org.bouncycastle.asn1.cms.AttributeTable;
-import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.asn1.x500.X500Name;
+import org.bouncycastle.bcasn1.ASN1Encoding;
+import org.bouncycastle.bcasn1.ASN1InputStream;
+import org.bouncycastle.bcasn1.DERSet;
+import org.bouncycastle.bcasn1.DERUTF8String;
+import org.bouncycastle.bcasn1.cms.Attribute;
+import org.bouncycastle.bcasn1.cms.AttributeTable;
+import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
+import org.bouncycastle.bcasn1.x500.X500Name;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.cms.CMSAlgorithm;
 import org.bouncycastle.cms.CMSEnvelopedDataGenerator;
@@ -50,8 +48,11 @@ import org.bouncycastle.cms.jcajce.JceKeyAgreeRecipientInfoGenerator;
 import org.bouncycastle.cms.jcajce.JceKeyTransEnvelopedRecipient;
 import org.bouncycastle.cms.jcajce.JceKeyTransRecipientInfoGenerator;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.encoders.Base64;
-import org.bouncycastle.util.encoders.Hex;
+import org.bouncycastle.bcutil.encoders.Base64;
+
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
 
 public class NewEnvelopedDataStreamTest
     extends TestCase
@@ -398,9 +399,7 @@ public class NewEnvelopedDataStreamTest
 
         bOut.reset();
 
-        DEROutputStream dOut = new DEROutputStream(bOut);
-
-        dOut.writeObject(aIn.readObject());
+        aIn.readObject().encodeTo(bOut, ASN1Encoding.DER);
 
         verifyData(bOut, CMSEnvelopedDataGenerator.AES128_CBC, data);
     }

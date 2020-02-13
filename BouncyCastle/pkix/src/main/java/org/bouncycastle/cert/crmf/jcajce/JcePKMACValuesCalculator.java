@@ -7,7 +7,7 @@ import java.security.Provider;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.cert.crmf.CRMFException;
 import org.bouncycastle.cert.crmf.PKMACValuesCalculator;
 import org.bouncycastle.jcajce.util.DefaultJcaJceHelper;

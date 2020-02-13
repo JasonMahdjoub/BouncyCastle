@@ -12,12 +12,12 @@ import java.util.Date;
 
 import javax.crypto.KeyGenerator;
 
-import org.bouncycastle.asn1.x509.AuthorityKeyIdentifier;
-import org.bouncycastle.asn1.x509.BasicConstraints;
-import org.bouncycastle.asn1.x509.SubjectKeyIdentifier;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.asn1.x509.X509Extensions;
-import org.bouncycastle.asn1.x509.X509Name;
+import org.bouncycastle.bcasn1.x509.AuthorityKeyIdentifier;
+import org.bouncycastle.bcasn1.x509.BasicConstraints;
+import org.bouncycastle.bcasn1.x509.SubjectKeyIdentifier;
+import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
+import org.bouncycastle.bcasn1.x509.X509Extensions;
+import org.bouncycastle.bcasn1.x509.X509Name;
 import org.bouncycastle.cert.bc.BcX509ExtensionUtils;
 import org.bouncycastle.x509.X509V3CertificateGenerator;
 

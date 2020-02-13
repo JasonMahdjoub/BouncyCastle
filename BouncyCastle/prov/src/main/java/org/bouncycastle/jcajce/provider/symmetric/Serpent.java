@@ -1,6 +1,6 @@
 package org.bouncycastle.jcajce.provider.symmetric;
 
-import org.bouncycastle.asn1.gnu.GNUObjectIdentifiers;
+import org.bouncycastle.bcasn1.gnu.GNUObjectIdentifiers;
 import org.bouncycastle.crypto.BlockCipher;
 import org.bouncycastle.crypto.BufferedBlockCipher;
 import org.bouncycastle.crypto.CipherKeyGenerator;

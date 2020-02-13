@@ -10,7 +10,7 @@ import org.bouncycastle.bcpg.SymmetricEncIntegrityPacket;
 import org.bouncycastle.bcpg.SymmetricKeyAlgorithmTags;
 import org.bouncycastle.openpgp.operator.PGPDataDecryptor;
 import org.bouncycastle.openpgp.operator.PublicKeyDataDecryptorFactory;
-import org.bouncycastle.util.io.TeeInputStream;
+import org.bouncycastle.bcutil.io.TeeInputStream;
 
 /**
  * A public key encrypted data object.

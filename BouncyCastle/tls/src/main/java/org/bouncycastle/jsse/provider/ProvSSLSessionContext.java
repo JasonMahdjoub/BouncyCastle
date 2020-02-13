@@ -22,10 +22,10 @@ import org.bouncycastle.tls.crypto.TlsCrypto;
 class ProvSSLSessionContext
     implements SSLSessionContext
 {
-    private static Logger LOG = Logger.getLogger(ProvSSLSessionContext.class.getName());
+    private static final Logger LOG = Logger.getLogger(ProvSSLSessionContext.class.getName());
 
     private static final int provSessionCacheSize = PropertyUtils
-        .getIntegerSystemProperty("javax.net.ssl.sessionCacheSize", 0, 0, Integer.MAX_VALUE);
+        .getIntegerSystemProperty("javax.net.ssl.sessionCacheSize", 20480, 0, Integer.MAX_VALUE);
 
     // NOTE: This is configured as a simple LRU cache using the "access order" constructor
     @SuppressWarnings("serial")
@@ -42,7 +42,7 @@ class ProvSSLSessionContext
         }
     };
     protected final Map<String, SessionEntry> sessionsByPeer = new HashMap<String, SessionEntry>();
-    protected final ReferenceQueue<ProvSSLSessionImpl> sessionsQueue = new ReferenceQueue<ProvSSLSessionImpl>();
+    protected final ReferenceQueue<ProvSSLSession> sessionsQueue = new ReferenceQueue<ProvSSLSession>();
 
     protected final ProvSSLContextSpi sslContext;
     protected final TlsCrypto crypto;
@@ -66,19 +66,19 @@ class ProvSSLSessionContext
         return crypto;
     }
 
-    synchronized ProvSSLSessionImpl getSessionImpl(byte[] sessionID)
+    synchronized ProvSSLSession getSessionImpl(byte[] sessionID)
     {
         processQueue();
 
         return accessSession(mapGet(sessionsByID, makeSessionID(sessionID)));
     }
 
-    synchronized ProvSSLSessionImpl getSessionImpl(String hostName, int port)
+    synchronized ProvSSLSession getSessionImpl(String hostName, int port)
     {
         processQueue();
 
         SessionEntry sessionEntry = mapGet(sessionsByPeer, makePeerKey(hostName, port));
-        ProvSSLSessionImpl session = accessSession(sessionEntry);
+        ProvSSLSession session = accessSession(sessionEntry);
         if (session != null)
         {
             // NOTE: For the current simple cache implementation, need to 'access' the sessionByIDs entry
@@ -87,22 +87,39 @@ class ProvSSLSessionContext
         return session;
     }
 
-    synchronized ProvSSLSessionImpl reportSession(TlsSession tlsSession, String peerHost, int peerPort)
+    synchronized void removeSession(byte[] sessionID)
+    {
+        SessionEntry sessionEntry = mapRemove(sessionsByID, makeSessionID(sessionID));
+        if (null != sessionEntry)
+        {
+            removeSessionByPeer(sessionEntry);
+        }
+    }
+
+    synchronized ProvSSLSession reportSession(String peerHost, int peerPort, TlsSession tlsSession,
+        JsseSessionParameters jsseSessionParameters)
     {
         processQueue();
 
-        SessionID sessionID = new SessionID(tlsSession.getSessionID());
-        SessionEntry sessionEntry = sessionsByID.get(sessionID);
-        ProvSSLSessionImpl session = sessionEntry == null ? null : sessionEntry.get();
+        SessionID sessionID = makeSessionID(tlsSession.getSessionID());
+        SessionEntry sessionEntry = mapGet(sessionsByID, sessionID);
 
-        if (session == null || session.getTlsSession() != tlsSession)
+        ProvSSLSession session = sessionEntry == null ? null : sessionEntry.get();
+        if (null == session || session.getTlsSession() != tlsSession)
         {
-            session = new ProvSSLSessionImpl(this, tlsSession, peerHost, peerPort);
-            sessionEntry = new SessionEntry(sessionID, session, sessionsQueue);
-            sessionsByID.put(sessionID, sessionEntry);
+            session = new ProvSSLSession(this, peerHost, peerPort, tlsSession, jsseSessionParameters);
+
+            if (null != sessionID)
+            {
+                sessionEntry = new SessionEntry(sessionID, session, sessionsQueue);
+                sessionsByID.put(sessionID, sessionEntry);
+            }
         }
 
-        mapAdd(sessionsByPeer, sessionEntry.getPeerKey(), sessionEntry);
+        if (null != sessionEntry)
+        {
+            mapAdd(sessionsByPeer, sessionEntry.getPeerKey(), sessionEntry);
+        }
 
         return session;
     }
@@ -190,11 +207,11 @@ class ProvSSLSessionContext
         removeAllExpiredSessions();
     }
 
-    private ProvSSLSessionImpl accessSession(SessionEntry sessionEntry)
+    private ProvSSLSession accessSession(SessionEntry sessionEntry)
     {
         if (sessionEntry != null)
         {
-            ProvSSLSessionImpl session = sessionEntry.get();
+            ProvSSLSession session = sessionEntry.get();
             if (session != null)
             {
                 long currentTimeMillis = System.currentTimeMillis();
@@ -217,7 +234,7 @@ class ProvSSLSessionContext
 
     private boolean invalidateIfCreatedBefore(SessionEntry sessionEntry, long creationTimeLimit)
     {
-        ProvSSLSessionImpl session = sessionEntry.get();
+        ProvSSLSession session = sessionEntry.get();
         if (session == null)
         {
             return true;
@@ -276,7 +293,7 @@ class ProvSSLSessionContext
         return mapRemove(sessionsByPeer, sessionEntry.getPeerKey(), sessionEntry);
     }
 
-    private static String makePeerKey(ProvSSLSessionImpl session)
+    private static String makePeerKey(ProvSSLSession session)
     {
         return session == null ? null : makePeerKey(session.getPeerHost(), session.getPeerPort());
     }
@@ -312,6 +329,15 @@ class ProvSSLSessionContext
         return key == null ? null : map.get(key);
     }
 
+    private static <K, V> V mapRemove(Map<K, V> map, K key)
+    {
+        if (map == null)
+        {
+            throw new NullPointerException();
+        }
+        return key == null ? null : map.remove(key);
+    }
+
     private static <K, V> boolean mapRemove(Map<K, V> map, K key, V value)
     {
         if (map == null || value == null)
@@ -335,12 +361,12 @@ class ProvSSLSessionContext
     }
 
     private static final class SessionEntry
-        extends SoftReference<ProvSSLSessionImpl>
+        extends SoftReference<ProvSSLSession>
     {
         private final SessionID sessionID;
         private final String peerKey;
 
-        SessionEntry(SessionID sessionID, ProvSSLSessionImpl session, ReferenceQueue<ProvSSLSessionImpl> queue)
+        SessionEntry(SessionID sessionID, ProvSSLSession session, ReferenceQueue<ProvSSLSession> queue)
         {
             super(session, queue);
 

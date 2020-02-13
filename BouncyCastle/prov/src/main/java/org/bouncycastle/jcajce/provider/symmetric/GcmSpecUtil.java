@@ -5,10 +5,10 @@ import java.lang.reflect.Method;
 import java.security.spec.AlgorithmParameterSpec;
 import java.security.spec.InvalidParameterSpecException;
 
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.cms.GCMParameters;
+import org.bouncycastle.bcasn1.ASN1Primitive;
+import org.bouncycastle.bcasn1.cms.GCMParameters;
 import org.bouncycastle.jcajce.provider.symmetric.util.ClassUtil;
-import org.bouncycastle.util.Integers;
+import org.bouncycastle.bcutil.Integers;
 
 class GcmSpecUtil
 {

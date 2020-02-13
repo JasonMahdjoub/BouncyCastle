@@ -1,6 +1,6 @@
 package org.bouncycastle.crypto.params;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 
 public class ECGOST3410Parameters
     extends ECNamedDomainParameters

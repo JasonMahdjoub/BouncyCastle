@@ -18,12 +18,12 @@ import javax.mail.internet.ContentType;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMultipart;
 
-import org.bouncycastle.asn1.cms.IssuerAndSerialNumber;
+import org.bouncycastle.bcasn1.cms.IssuerAndSerialNumber;
 import org.bouncycastle.cert.jcajce.JcaX509CertificateHolder;
 import org.bouncycastle.cms.CMSTypedStream;
 import org.bouncycastle.mail.smime.util.CRLFOutputStream;
 import org.bouncycastle.mail.smime.util.FileBackedMimeBodyPart;
-import org.bouncycastle.util.Strings;
+import org.bouncycastle.bcutil.Strings;
 
 public class SMIMEUtil
 {

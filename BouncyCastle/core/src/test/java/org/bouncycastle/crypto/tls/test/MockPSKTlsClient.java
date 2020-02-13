@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Hashtable;
 
-import org.bouncycastle.asn1.x509.Certificate;
+import org.bouncycastle.bcasn1.x509.Certificate;
 import org.bouncycastle.crypto.tls.AlertDescription;
 import org.bouncycastle.crypto.tls.AlertLevel;
 import org.bouncycastle.crypto.tls.BasicTlsPSKIdentity;
@@ -16,8 +16,9 @@ import org.bouncycastle.crypto.tls.TlsAuthentication;
 import org.bouncycastle.crypto.tls.TlsExtensionsUtils;
 import org.bouncycastle.crypto.tls.TlsPSKIdentity;
 import org.bouncycastle.crypto.tls.TlsSession;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.encoders.Hex;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.Strings;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 class MockPSKTlsClient
     extends PSKTlsClient
@@ -26,7 +27,7 @@ class MockPSKTlsClient
 
     MockPSKTlsClient(TlsSession session)
     {
-        this(session, new BasicTlsPSKIdentity("client", new byte[16]));
+        this(session, new BasicTlsPSKIdentity("client", Strings.toUTF8ByteArray("TLS_TEST_PSK")));
     }
 
     MockPSKTlsClient(TlsSession session, TlsPSKIdentity pskIdentity)

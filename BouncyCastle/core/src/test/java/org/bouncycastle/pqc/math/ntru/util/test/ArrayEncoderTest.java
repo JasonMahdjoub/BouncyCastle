@@ -7,7 +7,7 @@ import junit.framework.TestCase;
 import org.bouncycastle.pqc.math.ntru.polynomial.DenseTernaryPolynomial;
 import org.bouncycastle.pqc.math.ntru.polynomial.test.PolynomialGenerator;
 import org.bouncycastle.pqc.math.ntru.util.ArrayEncoder;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 public class ArrayEncoderTest
     extends TestCase

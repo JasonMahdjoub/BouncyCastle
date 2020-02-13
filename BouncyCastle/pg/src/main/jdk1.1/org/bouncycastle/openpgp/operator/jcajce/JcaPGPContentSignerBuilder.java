@@ -16,7 +16,7 @@ import org.bouncycastle.openpgp.PGPPrivateKey;
 import org.bouncycastle.openpgp.operator.PGPContentSigner;
 import org.bouncycastle.openpgp.operator.PGPContentSignerBuilder;
 import org.bouncycastle.openpgp.operator.PGPDigestCalculator;
-import org.bouncycastle.util.io.TeeOutputStream;
+import org.bouncycastle.bcutil.io.TeeOutputStream;
 
 public class JcaPGPContentSignerBuilder
     implements PGPContentSignerBuilder

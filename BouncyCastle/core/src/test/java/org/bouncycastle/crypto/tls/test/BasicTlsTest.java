@@ -21,8 +21,8 @@ import org.bouncycastle.crypto.tls.TlsClient;
 import org.bouncycastle.crypto.tls.TlsClientProtocol;
 import org.bouncycastle.crypto.tls.TlsFatalAlert;
 import org.bouncycastle.crypto.tls.TlsKeyExchange;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.encoders.Hex;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 public class BasicTlsTest
     extends TestCase
@@ -170,7 +170,7 @@ public class BasicTlsTest
 
         keyExchange
             .processServerCertificate(new Certificate(
-                new org.bouncycastle.asn1.x509.Certificate[]{org.bouncycastle.asn1.x509.Certificate
+                new org.bouncycastle.bcasn1.x509.Certificate[]{org.bouncycastle.bcasn1.x509.Certificate
                     .getInstance(encCert)}));
     }
 

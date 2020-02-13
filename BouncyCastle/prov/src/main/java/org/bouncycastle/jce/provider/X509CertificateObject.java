@@ -1,6 +1,5 @@
 package org.bouncycastle.jce.provider;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.net.InetAddress;
@@ -32,39 +31,38 @@ import java.util.Set;
 
 import javax.security.auth.x500.X500Principal;
 
-import org.bouncycastle.asn1.ASN1BitString;
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1Encoding;
-import org.bouncycastle.asn1.ASN1InputStream;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1OutputStream;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.ASN1String;
-import org.bouncycastle.asn1.DERBitString;
-import org.bouncycastle.asn1.DERIA5String;
-import org.bouncycastle.asn1.DERNull;
-import org.bouncycastle.asn1.DEROctetString;
-import org.bouncycastle.asn1.misc.MiscObjectIdentifiers;
-import org.bouncycastle.asn1.misc.NetscapeCertType;
-import org.bouncycastle.asn1.misc.NetscapeRevocationURL;
-import org.bouncycastle.asn1.misc.VerisignCzagExtension;
-import org.bouncycastle.asn1.util.ASN1Dump;
-import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.asn1.x500.style.RFC4519Style;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x509.BasicConstraints;
-import org.bouncycastle.asn1.x509.Extension;
-import org.bouncycastle.asn1.x509.Extensions;
-import org.bouncycastle.asn1.x509.GeneralName;
-import org.bouncycastle.asn1.x509.KeyUsage;
+import org.bouncycastle.bcasn1.ASN1BitString;
+import org.bouncycastle.bcasn1.ASN1Encodable;
+import org.bouncycastle.bcasn1.ASN1Encoding;
+import org.bouncycastle.bcasn1.ASN1InputStream;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.ASN1Primitive;
+import org.bouncycastle.bcasn1.ASN1Sequence;
+import org.bouncycastle.bcasn1.ASN1String;
+import org.bouncycastle.bcasn1.DERBitString;
+import org.bouncycastle.bcasn1.DERIA5String;
+import org.bouncycastle.bcasn1.DERNull;
+import org.bouncycastle.bcasn1.DEROctetString;
+import org.bouncycastle.bcasn1.misc.BCMiscObjectIdentifiers;
+import org.bouncycastle.bcasn1.misc.NetscapeCertType;
+import org.bouncycastle.bcasn1.misc.NetscapeRevocationURL;
+import org.bouncycastle.bcasn1.misc.VerisignCzagExtension;
+import org.bouncycastle.bcasn1.util.ASN1Dump;
+import org.bouncycastle.bcasn1.x500.X500Name;
+import org.bouncycastle.bcasn1.x500.style.RFC4519Style;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.x509.BasicConstraints;
+import org.bouncycastle.bcasn1.x509.Extension;
+import org.bouncycastle.bcasn1.x509.Extensions;
+import org.bouncycastle.bcasn1.x509.GeneralName;
+import org.bouncycastle.bcasn1.x509.KeyUsage;
 import org.bouncycastle.jcajce.provider.asymmetric.util.PKCS12BagAttributeCarrierImpl;
 import org.bouncycastle.jce.X509Principal;
 import org.bouncycastle.jce.interfaces.PKCS12BagAttributeCarrier;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Integers;
-import org.bouncycastle.util.Strings;
-import org.bouncycastle.util.encoders.Hex;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.Integers;
+import org.bouncycastle.bcutil.Strings;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 /**
  * @deprecated Do not use this class directly - either use org.bouncycastle.cert (bcpkix) or CertificateFactory.
@@ -73,7 +71,7 @@ public class X509CertificateObject
     extends X509Certificate
     implements PKCS12BagAttributeCarrier
 {
-    private org.bouncycastle.asn1.x509.Certificate    c;
+    private org.bouncycastle.bcasn1.x509.Certificate    c;
     private BasicConstraints            basicConstraints;
     private boolean[]                   keyUsage;
     private boolean                     hashValueSet;
@@ -82,7 +80,7 @@ public class X509CertificateObject
     private PKCS12BagAttributeCarrier   attrCarrier = new PKCS12BagAttributeCarrierImpl();
 
     public X509CertificateObject(
-        org.bouncycastle.asn1.x509.Certificate    c)
+        org.bouncycastle.bcasn1.x509.Certificate    c)
         throws CertificateParsingException
     {
         this.c = c;
@@ -162,26 +160,14 @@ public class X509CertificateObject
 
     public Principal getIssuerDN()
     {
-        try
-        {
-            return new X509Principal(X500Name.getInstance(c.getIssuer().getEncoded()));
-        }
-        catch (IOException e)
-        {
-            return null;
-        }
+        return new X509Principal(c.getIssuer());
     }
 
     public X500Principal getIssuerX500Principal()
     {
         try
         {
-            ByteArrayOutputStream   bOut = new ByteArrayOutputStream();
-            ASN1OutputStream        aOut = new ASN1OutputStream(bOut);
-
-            aOut.writeObject(c.getIssuer());
-
-            return new X500Principal(bOut.toByteArray());
+            return new X500Principal(c.getIssuer().getEncoded());
         }
         catch (IOException e)
         {
@@ -191,19 +177,14 @@ public class X509CertificateObject
 
     public Principal getSubjectDN()
     {
-        return new X509Principal(X500Name.getInstance(c.getSubject().toASN1Primitive()));
+        return new X509Principal(c.getSubject());
     }
 
     public X500Principal getSubjectX500Principal()
     {
         try
         {
-            ByteArrayOutputStream   bOut = new ByteArrayOutputStream();
-            ASN1OutputStream        aOut = new ASN1OutputStream(bOut);
-
-            aOut.writeObject(c.getSubject());
-
-            return new X500Principal(bOut.toByteArray());
+            return new X500Principal(c.getSubject().getEncoded());
         }
         catch (IOException e)
         {
@@ -715,15 +696,15 @@ public class X509CertificateObject
                         {
                             buf.append(KeyUsage.getInstance(dIn.readObject())).append(nl);
                         }
-                        else if (oid.equals(MiscObjectIdentifiers.netscapeCertType))
+                        else if (oid.equals(BCMiscObjectIdentifiers.netscapeCertType))
                         {
                             buf.append(new NetscapeCertType((DERBitString)dIn.readObject())).append(nl);
                         }
-                        else if (oid.equals(MiscObjectIdentifiers.netscapeRevocationURL))
+                        else if (oid.equals(BCMiscObjectIdentifiers.netscapeRevocationURL))
                         {
                             buf.append(new NetscapeRevocationURL((DERIA5String)dIn.readObject())).append(nl);
                         }
-                        else if (oid.equals(MiscObjectIdentifiers.verisignCzagExtension))
+                        else if (oid.equals(BCMiscObjectIdentifiers.verisignCzagExtension))
                         {
                             buf.append(new VerisignCzagExtension((DERIA5String)dIn.readObject())).append(nl);
                         }

@@ -2,9 +2,9 @@ package org.bouncycastle.cms;
 
 import java.io.IOException;
 
-import org.bouncycastle.asn1.cms.KEKIdentifier;
-import org.bouncycastle.asn1.cms.KEKRecipientInfo;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.cms.KEKIdentifier;
+import org.bouncycastle.bcasn1.cms.KEKRecipientInfo;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 
 /**
  * the RecipientInfo class for a recipient who has been sent a message

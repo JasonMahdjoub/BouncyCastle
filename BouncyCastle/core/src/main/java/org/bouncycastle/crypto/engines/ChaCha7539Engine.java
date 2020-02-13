@@ -1,6 +1,6 @@
 package org.bouncycastle.crypto.engines;
 
-import org.bouncycastle.util.Pack;
+import org.bouncycastle.bcutil.Pack;
 
 /**
  * Implementation of Daniel J. Bernstein's ChaCha stream cipher.
@@ -17,7 +17,7 @@ public class ChaCha7539Engine extends Salsa20Engine
 
     public String getAlgorithmName()
     {
-        return "ChaCha7539-" + rounds;
+        return "ChaCha7539";
     }
 
     protected int getNonceSize()

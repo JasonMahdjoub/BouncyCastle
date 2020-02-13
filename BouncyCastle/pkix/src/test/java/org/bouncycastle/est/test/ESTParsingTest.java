@@ -4,19 +4,19 @@ import java.math.BigInteger;
 import java.util.Collection;
 
 import junit.framework.TestCase;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1String;
-import org.bouncycastle.asn1.pkcs.Attribute;
-import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.asn1.x9.X9ObjectIdentifiers;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.ASN1String;
+import org.bouncycastle.bcasn1.pkcs.Attribute;
+import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
+import org.bouncycastle.bcasn1.x500.X500Name;
+import org.bouncycastle.bcasn1.x9.X9ObjectIdentifiers;
 import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.cert.selector.X509CertificateHolderSelector;
 import org.bouncycastle.cmc.SimplePKIResponse;
 import org.bouncycastle.est.CSRAttributesResponse;
 import org.bouncycastle.pkcs.PKCS10CertificationRequest;
-import org.bouncycastle.util.Store;
-import org.bouncycastle.util.encoders.Base64;
+import org.bouncycastle.bcutil.Store;
+import org.bouncycastle.bcutil.encoders.Base64;
 
 public class ESTParsingTest
     extends TestCase

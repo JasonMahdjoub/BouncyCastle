@@ -4,9 +4,9 @@ package org.bouncycastle.test.est;
 import javax.net.ssl.X509TrustManager;
 
 import junit.framework.TestCase;
-import org.bouncycastle.asn1.ASN1InputStream;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.cms.ContentInfo;
+import org.bouncycastle.bcasn1.ASN1InputStream;
+import org.bouncycastle.bcasn1.ASN1Sequence;
+import org.bouncycastle.bcasn1.cms.ContentInfo;
 import org.bouncycastle.cmc.SimplePKIResponse;
 import org.bouncycastle.est.CACertsResponse;
 import org.bouncycastle.est.CSRAttributesResponse;
@@ -15,8 +15,8 @@ import org.bouncycastle.est.ESTServiceBuilder;
 import org.bouncycastle.est.jcajce.JcaJceUtils;
 import org.bouncycastle.est.jcajce.JsseESTServiceBuilder;
 import org.bouncycastle.est.jcajce.SSLSocketFactoryCreator;
-import org.bouncycastle.util.encoders.Base64;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.encoders.Base64;
+import org.bouncycastle.bcutil.test.SimpleTest;
 import org.junit.Assert;
 import org.junit.Test;
 

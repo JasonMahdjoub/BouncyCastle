@@ -1,6 +1,6 @@
-package org.bouncycastle.asn1.eac;
+package org.bouncycastle.bcasn1.eac;
 
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 /**
  * EAC encoding date object

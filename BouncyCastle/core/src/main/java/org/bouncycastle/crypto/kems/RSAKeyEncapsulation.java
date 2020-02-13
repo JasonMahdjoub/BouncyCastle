@@ -9,7 +9,7 @@ import org.bouncycastle.crypto.KeyEncapsulation;
 import org.bouncycastle.crypto.params.KDFParameters;
 import org.bouncycastle.crypto.params.KeyParameter;
 import org.bouncycastle.crypto.params.RSAKeyParameters;
-import org.bouncycastle.util.BigIntegers;
+import org.bouncycastle.bcutil.BigIntegers;
 
 /**
  * The RSA Key Encapsulation Mechanism (RSA-KEM) from ISO 18033-2.

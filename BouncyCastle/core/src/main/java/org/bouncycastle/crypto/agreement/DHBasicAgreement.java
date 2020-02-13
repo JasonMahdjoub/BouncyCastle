@@ -2,12 +2,9 @@ package org.bouncycastle.crypto.agreement;
 
 import java.math.BigInteger;
 
-import org.bouncycastle.crypto.BasicAgreement;
 import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
-import org.bouncycastle.crypto.params.DHParameters;
-import org.bouncycastle.crypto.params.DHPrivateKeyParameters;
-import org.bouncycastle.crypto.params.DHPublicKeyParameters;
+import org.bouncycastle.crypto.BasicAgreement;
+import org.bouncycastle.crypto.params.*;
 import org.bouncycastle.crypto.params.ParametersWithRandom;
 
 /**
@@ -22,11 +19,11 @@ public class DHBasicAgreement
 {
     private static final BigInteger ONE = BigInteger.valueOf(1);
 
-    private DHPrivateKeyParameters  key;
-    private DHParameters            dhParams;
+    private DHPrivateKeyParameters key;
+    private DHParameters dhParams;
 
     public void init(
-        CipherParameters    param)
+        CipherParameters param)
     {
         AsymmetricKeyParameter  kParam;
 
@@ -59,7 +56,7 @@ public class DHBasicAgreement
      * message in the agreement sequence. 
      */
     public BigInteger calculateAgreement(
-        CipherParameters   pubKey)
+        CipherParameters pubKey)
     {
         DHPublicKeyParameters   pub = (DHPublicKeyParameters)pubKey;
 

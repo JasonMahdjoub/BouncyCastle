@@ -1,6 +1,7 @@
 package org.bouncycastle.crypto.test;
 
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
+import org.bouncycastle.bcutil.encoders.Hex;
+import org.bouncycastle.crypto.InvalidCipherTextException;
 import org.bouncycastle.crypto.engines.SerpentEngine;
 import org.bouncycastle.crypto.modes.CBCBlockCipher;
 import org.bouncycastle.crypto.modes.EAXBlockCipher;
@@ -9,10 +10,9 @@ import org.bouncycastle.crypto.paddings.PaddedBufferedBlockCipher;
 import org.bouncycastle.crypto.params.AEADParameters;
 import org.bouncycastle.crypto.params.KeyParameter;
 import org.bouncycastle.crypto.params.ParametersWithIV;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Strings;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.Strings;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**
  * Test vectors based on the NESSIE submission
@@ -90,7 +90,7 @@ public class SerpentTest
     }
 
     private void doEax(byte[] key, byte[] iv, byte[] pt, byte[] aad, int tagLength, byte[] expected)
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         EAXBlockCipher c = new EAXBlockCipher(new SerpentEngine());
 

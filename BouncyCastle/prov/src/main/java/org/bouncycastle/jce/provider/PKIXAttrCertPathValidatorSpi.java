@@ -1,8 +1,6 @@
 package org.bouncycastle.jce.provider;
 
 import java.security.InvalidAlgorithmParameterException;
-import java.security.Provider;
-import java.security.Security;
 import java.security.cert.CertPath;
 import java.security.cert.CertPathParameters;
 import java.security.cert.CertPathValidatorException;
@@ -18,7 +16,7 @@ import org.bouncycastle.jcajce.PKIXExtendedParameters;
 import org.bouncycastle.jcajce.util.BCJcaJceHelper;
 import org.bouncycastle.jcajce.util.JcaJceHelper;
 import org.bouncycastle.jce.exception.ExtCertPathValidatorException;
-import org.bouncycastle.util.Selector;
+import org.bouncycastle.bcutil.Selector;
 import org.bouncycastle.x509.ExtendedPKIXParameters;
 import org.bouncycastle.x509.X509AttributeCertStoreSelector;
 import org.bouncycastle.x509.X509AttributeCertificate;

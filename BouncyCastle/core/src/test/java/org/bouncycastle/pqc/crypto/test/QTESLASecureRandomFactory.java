@@ -3,7 +3,7 @@ package org.bouncycastle.pqc.crypto.test;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 
-import org.bouncycastle.util.test.FixedSecureRandom;
+import org.bouncycastle.bcutil.test.FixedSecureRandom;
 
 /**
  * Factory for producing FixedSecureRandom objects for use with testsing
@@ -44,6 +44,15 @@ class QTESLASecureRandomFactory
         return new FixedSecureRandom(burn);
     }
 
+
+    public static FixedSecureRandom getFixedNoDiscard(byte[] seed, int strength)
+    {
+        QTESLASecureRandomFactory teslaRNG = new QTESLASecureRandomFactory(seed, null);
+        teslaRNG.init(strength);
+        byte[] burn = new byte[strength / 8];
+        teslaRNG.nextBytes(burn);
+        return new FixedSecureRandom(burn);
+    }
 
     private QTESLASecureRandomFactory(byte[] seed, byte[] personalization)
     {

@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.cert.test.AllTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-05-14T11:39:45" hostname="Garage2" time="9.695">
-  <properties/>
-  <testcase name="testSimpleTests" classname="org.bouncycastle.cert.test.AllTests" time="9.695"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

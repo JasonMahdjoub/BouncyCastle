@@ -15,7 +15,7 @@ import org.bouncycastle.mime.MimeIOException;
 import org.bouncycastle.mime.MimeWriter;
 import org.bouncycastle.mime.encoding.Base64OutputStream;
 import org.bouncycastle.operator.OutputEncryptor;
-import org.bouncycastle.util.Strings;
+import org.bouncycastle.bcutil.Strings;
 
 /**
  * Writer for SMIME Enveloped objects.
@@ -58,6 +58,19 @@ public class SMIMEEnvelopedWriter
             {
                 headers.put(stdHeaders[i], stdValues[i]);
             }
+        }
+
+        /**
+         * Set the underlying string size for encapsulated data
+         *
+         * @param bufferSize length of octet strings to buffer the data.
+         */
+        public Builder setBufferSize(
+            int bufferSize)
+        {
+            this.envGen.setBufferSize(bufferSize);
+
+            return this;
         }
 
         public Builder setUnprotectedAttributeGenerator(CMSAttributeTableGenerator unprotectedAttributeGenerator)

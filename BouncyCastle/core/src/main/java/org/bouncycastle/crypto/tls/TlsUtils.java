@@ -9,16 +9,16 @@ import java.io.OutputStream;
 import java.util.Hashtable;
 import java.util.Vector;
 
-import org.bouncycastle.asn1.ASN1Encoding;
-import org.bouncycastle.asn1.ASN1InputStream;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.nist.NISTObjectIdentifiers;
-import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.asn1.x509.Extensions;
-import org.bouncycastle.asn1.x509.KeyUsage;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.asn1.x509.X509ObjectIdentifiers;
+import org.bouncycastle.bcasn1.ASN1Encoding;
+import org.bouncycastle.bcasn1.ASN1InputStream;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.ASN1Primitive;
+import org.bouncycastle.bcasn1.nist.NISTObjectIdentifiers;
+import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
+import org.bouncycastle.bcasn1.x509.Extensions;
+import org.bouncycastle.bcasn1.x509.KeyUsage;
+import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
+import org.bouncycastle.bcasn1.x509.X509ObjectIdentifiers;
 import org.bouncycastle.crypto.Digest;
 import org.bouncycastle.crypto.digests.MD5Digest;
 import org.bouncycastle.crypto.digests.SHA1Digest;
@@ -27,20 +27,19 @@ import org.bouncycastle.crypto.digests.SHA256Digest;
 import org.bouncycastle.crypto.digests.SHA384Digest;
 import org.bouncycastle.crypto.digests.SHA512Digest;
 import org.bouncycastle.crypto.macs.HMac;
-import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
-import org.bouncycastle.crypto.params.DSAPublicKeyParameters;
+import org.bouncycastle.crypto.params.*;
 import org.bouncycastle.crypto.params.ECPublicKeyParameters;
-import org.bouncycastle.crypto.params.KeyParameter;
-import org.bouncycastle.crypto.params.RSAKeyParameters;
 import org.bouncycastle.crypto.util.PublicKeyFactory;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Integers;
-import org.bouncycastle.util.Shorts;
-import org.bouncycastle.util.Strings;
-import org.bouncycastle.util.io.Streams;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.Integers;
+import org.bouncycastle.bcutil.Shorts;
+import org.bouncycastle.bcutil.Strings;
+import org.bouncycastle.bcutil.io.Streams;
 
 /**
  * Some helper functions for MicroTLS.
+ *
+ * @deprecated Migrate to the (D)TLS API in org.bouncycastle.tls (bctls jar).
  */
 public class TlsUtils
 {
@@ -1033,7 +1032,7 @@ public class TlsUtils
         }
     }
 
-    static void validateKeyUsage(org.bouncycastle.asn1.x509.Certificate c, int keyUsageBits)
+    static void validateKeyUsage(org.bouncycastle.bcasn1.x509.Certificate c, int keyUsageBits)
         throws IOException
     {
         Extensions exts = c.getTBSCertificate().getExtensions();
@@ -1279,7 +1278,7 @@ public class TlsUtils
             return -1;
         }
 
-        org.bouncycastle.asn1.x509.Certificate x509Cert = clientCertificate.getCertificateAt(0);
+        org.bouncycastle.bcasn1.x509.Certificate x509Cert = clientCertificate.getCertificateAt(0);
         SubjectPublicKeyInfo keyInfo = x509Cert.getSubjectPublicKeyInfo();
         try
         {

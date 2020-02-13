@@ -1,7 +1,7 @@
 package org.bouncycastle.tls;
 
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Strings;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.Strings;
 
 /**
  * A basic PSK Identity holder.
@@ -39,7 +39,6 @@ public class BasicTlsPSKIdentity
 
     public byte[] getPSK()
     {
-        return psk;
+        return Arrays.clone(psk);
     }
-
 }

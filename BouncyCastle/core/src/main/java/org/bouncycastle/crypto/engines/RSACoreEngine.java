@@ -5,9 +5,8 @@ import java.math.BigInteger;
 import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.DataLengthException;
 import org.bouncycastle.crypto.params.ParametersWithRandom;
-import org.bouncycastle.crypto.params.RSAKeyParameters;
-import org.bouncycastle.crypto.params.RSAPrivateCrtKeyParameters;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.crypto.params.RSAKeyParameters;import org.bouncycastle.crypto.params.RSAPrivateCrtKeyParameters;
+import org.bouncycastle.bcutil.Arrays;
 
 /**
  * this does your basic RSA algorithm.
@@ -29,7 +28,7 @@ class RSACoreEngine
     {
         if (param instanceof ParametersWithRandom)
         {
-            ParametersWithRandom    rParam = (ParametersWithRandom)param;
+            ParametersWithRandom rParam = (ParametersWithRandom)param;
 
             key = (RSAKeyParameters)rParam.getParameters();
         }

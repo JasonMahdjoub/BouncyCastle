@@ -1,4 +1,4 @@
-package org.bouncycastle.util;
+package org.bouncycastle.bcutil;
 
 import java.security.AccessController;
 import java.security.PrivilegedAction;

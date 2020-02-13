@@ -1,17 +1,16 @@
 package org.bouncycastle.pqc.asn1;
 
-import java.math.BigInteger;
 import java.util.Vector;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1EncodableVector;
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.ASN1Object;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.DEROctetString;
-import org.bouncycastle.asn1.DERSequence;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.ASN1Encodable;
+import org.bouncycastle.bcasn1.ASN1EncodableVector;
+import org.bouncycastle.bcasn1.ASN1Integer;
+import org.bouncycastle.bcasn1.ASN1Object;
+import org.bouncycastle.bcasn1.ASN1Primitive;
+import org.bouncycastle.bcasn1.ASN1Sequence;
+import org.bouncycastle.bcasn1.DEROctetString;
+import org.bouncycastle.bcasn1.DERSequence;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.pqc.crypto.gmss.GMSSLeaf;
 import org.bouncycastle.pqc.crypto.gmss.GMSSParameters;
 import org.bouncycastle.pqc.crypto.gmss.GMSSRootCalc;
@@ -1295,15 +1294,8 @@ public class GMSSPrivateKey
 
     private static int checkBigIntegerInIntRange(ASN1Encodable a)
     {
-        BigInteger b = ((ASN1Integer)a).getValue();
-        if ((b.compareTo(BigInteger.valueOf(Integer.MAX_VALUE)) > 0) ||
-            (b.compareTo(BigInteger.valueOf(Integer.MIN_VALUE)) < 0))
-        {
-            throw new IllegalArgumentException("BigInteger not in Range: " + b.toString());
-        }
-        return b.intValue();
+        return ((ASN1Integer)a).intValueExact();
     }
-
 
     public ASN1Primitive toASN1Primitive()
     {

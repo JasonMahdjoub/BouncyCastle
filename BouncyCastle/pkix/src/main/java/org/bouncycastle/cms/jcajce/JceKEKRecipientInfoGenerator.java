@@ -5,7 +5,7 @@ import java.security.SecureRandom;
 
 import javax.crypto.SecretKey;
 
-import org.bouncycastle.asn1.cms.KEKIdentifier;
+import org.bouncycastle.bcasn1.cms.KEKIdentifier;
 import org.bouncycastle.cms.KEKRecipientInfoGenerator;
 import org.bouncycastle.operator.jcajce.JceSymmetricKeyWrapper;
 

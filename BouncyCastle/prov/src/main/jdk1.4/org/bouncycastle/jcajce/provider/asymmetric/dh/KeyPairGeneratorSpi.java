@@ -18,7 +18,7 @@ import org.bouncycastle.crypto.params.DHPrivateKeyParameters;
 import org.bouncycastle.crypto.params.DHPublicKeyParameters;
 import org.bouncycastle.jcajce.provider.asymmetric.util.PrimeCertaintyCalculator;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.Integers;
+import org.bouncycastle.bcutil.Integers;
 
 public class KeyPairGeneratorSpi
     extends java.security.KeyPairGenerator

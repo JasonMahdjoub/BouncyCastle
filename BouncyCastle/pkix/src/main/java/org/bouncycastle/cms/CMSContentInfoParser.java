@@ -3,9 +3,9 @@ package org.bouncycastle.cms;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.bouncycastle.asn1.ASN1SequenceParser;
-import org.bouncycastle.asn1.ASN1StreamParser;
-import org.bouncycastle.asn1.cms.ContentInfoParser;
+import org.bouncycastle.bcasn1.ASN1SequenceParser;
+import org.bouncycastle.bcasn1.ASN1StreamParser;
+import org.bouncycastle.bcasn1.cms.ContentInfoParser;
 
 public class CMSContentInfoParser
 {

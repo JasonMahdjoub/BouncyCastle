@@ -2,14 +2,13 @@ package org.bouncycastle.crypto.engines;
 
 import java.security.SecureRandom;
 
-import org.bouncycastle.crypto.*;
-import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.crypto.*;import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.modes.CBCBlockCipher;
 import org.bouncycastle.crypto.params.KeyParameter;
 import org.bouncycastle.crypto.params.ParametersWithIV;
 import org.bouncycastle.crypto.params.ParametersWithRandom;
 import org.bouncycastle.crypto.util.DigestFactory;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 /**
  * Wrap keys according to
@@ -200,10 +199,10 @@ public class DESedeWrapEngine
     * @param inOff off set into in that the data starts at.
     * @param inLen  length of the data.
     * @return the unwrapped bytes.
-    * @throws BCInvalidCipherTextException
+    * @throws InvalidCipherTextException
     */
     public byte[] unwrap(byte[] in, int inOff, int inLen)
-           throws BCInvalidCipherTextException
+           throws InvalidCipherTextException 
     {
         if (forWrapping)
         {
@@ -212,13 +211,13 @@ public class DESedeWrapEngine
         
         if (in == null)
         {
-            throw new BCInvalidCipherTextException("Null pointer as ciphertext");
+            throw new InvalidCipherTextException("Null pointer as ciphertext");
         }
 
         final int blockSize = engine.getBlockSize();
         if (inLen % blockSize != 0)
         {
-            throw new BCInvalidCipherTextException("Ciphertext not multiple of " + blockSize);
+            throw new InvalidCipherTextException("Ciphertext not multiple of " + blockSize);
         }
 
       /*
@@ -286,7 +285,7 @@ public class DESedeWrapEngine
       // with the CKS extracted in the above step. If they are not equal, return error.
       if (!checkCMSKeyChecksum(result, CKStoBeVerified)) 
       {
-         throw new BCInvalidCipherTextException(
+         throw new InvalidCipherTextException(
             "Checksum inside ciphertext is corrupted");
       }
 

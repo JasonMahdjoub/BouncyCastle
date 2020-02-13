@@ -1,10 +1,7 @@
 package org.bouncycastle.crypto.tls;
 
-import org.bouncycastle.crypto.AsymmetricBlockCipher;
+import org.bouncycastle.crypto.*;
 import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.CryptoException;
-import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.Signer;
 import org.bouncycastle.crypto.digests.NullDigest;
 import org.bouncycastle.crypto.encodings.PKCS1Encoding;
 import org.bouncycastle.crypto.engines.RSABlindedEngine;
@@ -14,6 +11,9 @@ import org.bouncycastle.crypto.params.RSAKeyParameters;
 import org.bouncycastle.crypto.signers.GenericSigner;
 import org.bouncycastle.crypto.signers.RSADigestSigner;
 
+/**
+ * @deprecated Migrate to the (D)TLS API in org.bouncycastle.tls (bctls jar).
+ */
 public class TlsRSASigner
     extends AbstractTlsSigner
 {

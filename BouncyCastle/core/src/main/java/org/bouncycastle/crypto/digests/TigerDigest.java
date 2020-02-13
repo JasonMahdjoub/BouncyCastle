@@ -1,7 +1,7 @@
 package org.bouncycastle.crypto.digests;
 
 import org.bouncycastle.crypto.ExtendedDigest;
-import org.bouncycastle.util.Memoable;
+import org.bouncycastle.bcutil.Memoable;
 
 /**
  * implementation of Tiger based on:

@@ -3,11 +3,12 @@ package org.bouncycastle.crypto.test;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.x9.ECNamedCurveTable;
-import org.bouncycastle.asn1.x9.X9ECParameters;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.x9.ECNamedCurveTable;
+import org.bouncycastle.bcasn1.x9.X9ECParameters;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.crypto.*;
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
+import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.agreement.ECDHBasicAgreement;
 import org.bouncycastle.crypto.digests.SHA1Digest;
 import org.bouncycastle.crypto.digests.SHA512Digest;
@@ -20,22 +21,13 @@ import org.bouncycastle.crypto.kems.ECIESKeyEncapsulation;
 import org.bouncycastle.crypto.macs.HMac;
 import org.bouncycastle.crypto.modes.CBCBlockCipher;
 import org.bouncycastle.crypto.paddings.PaddedBufferedBlockCipher;
-import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
-import org.bouncycastle.crypto.params.ECDomainParameters;
-import org.bouncycastle.crypto.params.ECKeyGenerationParameters;
-import org.bouncycastle.crypto.params.ECNamedDomainParameters;
-import org.bouncycastle.crypto.params.ECPrivateKeyParameters;
-import org.bouncycastle.crypto.params.ECPublicKeyParameters;
-import org.bouncycastle.crypto.params.IESParameters;
-import org.bouncycastle.crypto.params.IESWithCipherParameters;
-import org.bouncycastle.crypto.params.KeyParameter;
+import org.bouncycastle.crypto.params.*;
 import org.bouncycastle.crypto.params.ParametersWithIV;
 import org.bouncycastle.crypto.parsers.ECIESPublicKeyParser;
 import org.bouncycastle.math.ec.ECConstants;
 import org.bouncycastle.math.ec.ECCurve;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**
  * test for ECIES - Elliptic Curve Integrated Encryption Scheme
@@ -224,7 +216,7 @@ public class ECIESTest
             i2.processBlock(out1, 0, out1.length - 1);
             fail("no exception");
         }
-        catch (BCInvalidCipherTextException ex)
+        catch (InvalidCipherTextException ex)
         {
             if (!"Length of input must be greater than the MAC and V combined".equals(ex.getMessage()))
             {
@@ -263,7 +255,7 @@ public class ECIESTest
             i2.processBlock(out1, 0, out1.length - 1);
             fail("no exception");
         }
-        catch (BCInvalidCipherTextException ex)
+        catch (InvalidCipherTextException ex)
         {
             if (!"Length of input must be greater than the MAC and V combined".equals(ex.getMessage()))
             {
@@ -325,7 +317,7 @@ public class ECIESTest
 
         byte[]            d = new byte[] { 1, 2, 3, 4, 5, 6, 7, 8 };
         byte[]            e = new byte[] { 8, 7, 6, 5, 4, 3, 2, 1 };
-        CipherParameters  p = new IESParameters(d, e, 64);
+        CipherParameters p = new IESParameters(d, e, 64);
 
         i1.init(p2.getPublic(), p, ephKeyGen);
         i2.init(p2.getPrivate(), p, new ECIESPublicKeyParser(params));
@@ -398,7 +390,7 @@ public class ECIESTest
                                    new HMac(new SHA1Digest()));
         byte[]         d = new byte[] { 1, 2, 3, 4, 5, 6, 7, 8 };
         byte[]         e = new byte[] { 8, 7, 6, 5, 4, 3, 2, 1 };
-        IESParameters  p = new IESParameters(d, e, 64);
+        IESParameters p = new IESParameters(d, e, 64);
 
         i1.init(true, p1.getPrivate(), p2.getPublic(), p);
         i2.init(false, p2.getPrivate(), p1.getPublic(), p);

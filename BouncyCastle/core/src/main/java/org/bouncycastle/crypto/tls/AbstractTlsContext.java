@@ -5,7 +5,7 @@ import java.security.SecureRandom;
 import org.bouncycastle.crypto.Digest;
 import org.bouncycastle.crypto.prng.DigestRandomGenerator;
 import org.bouncycastle.crypto.prng.RandomGenerator;
-import org.bouncycastle.util.Times;
+import org.bouncycastle.bcutil.Times;
 
 abstract class AbstractTlsContext
     implements TlsContext

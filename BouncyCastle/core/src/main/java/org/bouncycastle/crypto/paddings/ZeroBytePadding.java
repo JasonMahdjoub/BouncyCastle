@@ -2,7 +2,7 @@ package org.bouncycastle.crypto.paddings;
 
 import java.security.SecureRandom;
 
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
+import org.bouncycastle.crypto.InvalidCipherTextException;
 
 /**
  * A padder that adds NULL byte padding to a block.
@@ -54,7 +54,7 @@ public class ZeroBytePadding
      * return the number of pad bytes present in the block.
      */
     public int padCount(byte[] in)
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         int count = in.length;
 

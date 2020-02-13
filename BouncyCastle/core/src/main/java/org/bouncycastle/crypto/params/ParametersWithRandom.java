@@ -2,17 +2,17 @@ package org.bouncycastle.crypto.params;
 
 import java.security.SecureRandom;
 
-import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
 import org.bouncycastle.crypto.CipherParameters;
+import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
 
 public class ParametersWithRandom
     implements CipherParameters
 {
     private SecureRandom        random;
-    private CipherParameters    parameters;
+    private CipherParameters parameters;
 
     public ParametersWithRandom(
-        CipherParameters    parameters,
+        CipherParameters parameters,
         SecureRandom        random)
     {
         this.random = random;
@@ -20,7 +20,7 @@ public class ParametersWithRandom
     }
 
     public ParametersWithRandom(
-        CipherParameters    parameters)
+        CipherParameters parameters)
     {
         this(parameters, BCCryptoServicesRegistrar.getSecureRandom());
     }

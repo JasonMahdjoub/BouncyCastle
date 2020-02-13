@@ -3,7 +3,7 @@ package org.bouncycastle.crypto.signers;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
-import org.bouncycastle.util.BigIntegers;
+import org.bouncycastle.bcutil.BigIntegers;
 
 public class RandomDSAKCalculator
     implements DSAKCalculator

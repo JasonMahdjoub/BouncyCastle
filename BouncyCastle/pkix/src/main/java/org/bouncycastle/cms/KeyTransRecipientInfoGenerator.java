@@ -1,10 +1,10 @@
 package org.bouncycastle.cms;
 
-import org.bouncycastle.asn1.DEROctetString;
-import org.bouncycastle.asn1.cms.IssuerAndSerialNumber;
-import org.bouncycastle.asn1.cms.KeyTransRecipientInfo;
-import org.bouncycastle.asn1.cms.RecipientIdentifier;
-import org.bouncycastle.asn1.cms.RecipientInfo;
+import org.bouncycastle.bcasn1.DEROctetString;
+import org.bouncycastle.bcasn1.cms.IssuerAndSerialNumber;
+import org.bouncycastle.bcasn1.cms.KeyTransRecipientInfo;
+import org.bouncycastle.bcasn1.cms.RecipientIdentifier;
+import org.bouncycastle.bcasn1.cms.RecipientInfo;
 import org.bouncycastle.operator.AsymmetricKeyWrapper;
 import org.bouncycastle.operator.GenericKey;
 import org.bouncycastle.operator.OperatorException;

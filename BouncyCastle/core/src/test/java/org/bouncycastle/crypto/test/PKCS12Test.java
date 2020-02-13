@@ -6,10 +6,10 @@ import org.bouncycastle.crypto.digests.SHA1Digest;
 import org.bouncycastle.crypto.generators.PKCS12ParametersGenerator;
 import org.bouncycastle.crypto.params.KeyParameter;
 import org.bouncycastle.crypto.params.ParametersWithIV;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTestResult;
-import org.bouncycastle.util.test.Test;
-import org.bouncycastle.util.test.TestResult;
+import org.bouncycastle.bcutil.encoders.Hex;
+import org.bouncycastle.bcutil.test.SimpleTestResult;
+import org.bouncycastle.bcutil.test.Test;
+import org.bouncycastle.bcutil.test.TestResult;
 
 /**
  * test for PKCS12 key generation - vectors from 
@@ -57,7 +57,7 @@ public class PKCS12Test
                 salt,
                 iCount);
 
-        CipherParameters  key = generator.generateDerivedParameters(24 * 8);
+        CipherParameters key = generator.generateDerivedParameters(24 * 8);
 
         if (isEqual(result, ((KeyParameter)key).getKey()))
         {
@@ -113,7 +113,7 @@ public class PKCS12Test
                 salt,
                 iCount);
 
-        CipherParameters  key = generator.generateDerivedMacParameters(160);
+        CipherParameters key = generator.generateDerivedMacParameters(160);
 
         if (isEqual(result, ((KeyParameter)key).getKey()))
         {

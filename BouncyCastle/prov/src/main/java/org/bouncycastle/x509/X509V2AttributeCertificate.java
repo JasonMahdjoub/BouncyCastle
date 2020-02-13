@@ -21,16 +21,16 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1Encoding;
-import org.bouncycastle.asn1.ASN1InputStream;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.DERBitString;
-import org.bouncycastle.asn1.x509.AttributeCertificate;
-import org.bouncycastle.asn1.x509.Extension;
-import org.bouncycastle.asn1.x509.Extensions;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcasn1.ASN1Encodable;
+import org.bouncycastle.bcasn1.ASN1Encoding;
+import org.bouncycastle.bcasn1.ASN1InputStream;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.ASN1Sequence;
+import org.bouncycastle.bcasn1.DERBitString;
+import org.bouncycastle.bcasn1.x509.AttributeCertificate;
+import org.bouncycastle.bcasn1.x509.Extension;
+import org.bouncycastle.bcasn1.x509.Extensions;
+import org.bouncycastle.bcutil.Arrays;
 
 /**
  * An implementation of a version 2 X.509 Attribute Certificate.
@@ -93,7 +93,7 @@ public class X509V2AttributeCertificate
     
     public int getVersion()
     {
-        return cert.getAcinfo().getVersion().getValue().intValue() + 1;
+        return cert.getAcinfo().getVersion().intValueExact() + 1;
     }
     
     public BigInteger getSerialNumber()

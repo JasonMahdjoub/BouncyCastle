@@ -9,7 +9,7 @@ public class DSAPrivateKeyParameters
 
     public DSAPrivateKeyParameters(
         BigInteger      x,
-        DSAParameters   params)
+        DSAParameters params)
     {
         super(true, params);
 

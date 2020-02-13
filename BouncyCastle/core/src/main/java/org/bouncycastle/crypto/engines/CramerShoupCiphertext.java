@@ -2,8 +2,8 @@ package org.bouncycastle.crypto.engines;
 
 import java.math.BigInteger;
 
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Pack;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.Pack;
 
 /**
  * Class, holding Cramer Shoup ciphertexts (u1, u2, e, v)

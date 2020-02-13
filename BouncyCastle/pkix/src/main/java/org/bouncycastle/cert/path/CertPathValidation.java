@@ -1,7 +1,7 @@
 package org.bouncycastle.cert.path;
 
 import org.bouncycastle.cert.X509CertificateHolder;
-import org.bouncycastle.util.Memoable;
+import org.bouncycastle.bcutil.Memoable;
 
 public interface CertPathValidation
     extends Memoable

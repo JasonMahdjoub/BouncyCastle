@@ -6,8 +6,8 @@ import java.io.PipedOutputStream;
 import java.security.SecureRandom;
 
 import org.bouncycastle.crypto.tls.ProtocolVersion;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.io.Streams;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.io.Streams;
 
 import junit.framework.TestCase;
 

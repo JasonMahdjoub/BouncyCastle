@@ -1,13 +1,10 @@
 package org.bouncycastle.crypto.modes;
 
-import org.bouncycastle.crypto.BlockCipher;
+import org.bouncycastle.crypto.*;
 import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.DataLengthException;
-import org.bouncycastle.crypto.SkippingStreamCipher;
-import org.bouncycastle.crypto.StreamBlockCipher;
 import org.bouncycastle.crypto.params.ParametersWithIV;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Pack;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.Pack;
 
 /**
  * Implements the Segmented Integer Counter (SIC) mode on top of a simple
@@ -44,7 +41,7 @@ public class SICBlockCipher
 
     public void init(
         boolean             forEncryption, //ignored by this CTR mode
-        CipherParameters    params)
+        CipherParameters params)
         throws IllegalArgumentException
     {
         if (params instanceof ParametersWithIV)

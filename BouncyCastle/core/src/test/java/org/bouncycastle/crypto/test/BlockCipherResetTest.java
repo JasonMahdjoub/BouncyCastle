@@ -1,9 +1,10 @@
 package org.bouncycastle.crypto.test;
 
-import org.bouncycastle.crypto.BlockCipher;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.crypto.CipherParameters;
+import org.bouncycastle.crypto.BlockCipher;
 import org.bouncycastle.crypto.DataLengthException;
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
+import org.bouncycastle.crypto.InvalidCipherTextException;
 import org.bouncycastle.crypto.engines.AESEngine;
 import org.bouncycastle.crypto.engines.AESFastEngine;
 import org.bouncycastle.crypto.engines.AESLightEngine;
@@ -28,9 +29,8 @@ import org.bouncycastle.crypto.modes.PGPCFBBlockCipher;
 import org.bouncycastle.crypto.modes.SICBlockCipher;
 import org.bouncycastle.crypto.params.KeyParameter;
 import org.bouncycastle.crypto.params.ParametersWithIV;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**
  * Test whether block ciphers implement reset contract on init, encrypt/decrypt and reset.
@@ -94,13 +94,13 @@ public class BlockCipherResetTest
     }
 
     private void testModeReset(String test, BlockCipher cipher1, BlockCipher cipher2, CipherParameters params)
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         testReset(test, false, cipher1, cipher2, params);
     }
 
     private void testReset(String test, BlockCipher cipher1, BlockCipher cipher2, CipherParameters params)
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         testReset(test, true, cipher1, cipher2, params);
     }
@@ -110,7 +110,7 @@ public class BlockCipherResetTest
                            BlockCipher cipher1,
                            BlockCipher cipher2,
                            CipherParameters params)
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         cipher1.init(true, params);
 
@@ -136,7 +136,7 @@ public class BlockCipherResetTest
                             boolean encrypt,
                             byte[] pretext,
                             byte[] posttext)
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         // Do initial run
         byte[] output = new byte[posttext.length];
@@ -188,7 +188,7 @@ public class BlockCipherResetTest
     }
 
     private static void crypt(BlockCipher cipher1, boolean encrypt, byte[] plaintext, byte[] output)
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         cipher1.processBlock(plaintext, 0, output, 0);
         if ((cipher1.getAlgorithmName().indexOf("PGPCFBwithIV") > -1) && !encrypt)

@@ -6,9 +6,9 @@ import java.security.spec.InvalidParameterSpecException;
 
 import javax.crypto.spec.DHParameterSpec;
 
-import org.bouncycastle.asn1.ASN1Encoding;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.oiw.ElGamalParameter;
+import org.bouncycastle.bcasn1.ASN1Encoding;
+import org.bouncycastle.bcasn1.ASN1Primitive;
+import org.bouncycastle.bcasn1.oiw.ElGamalParameter;
 import org.bouncycastle.jcajce.provider.symmetric.util.BaseAlgorithmParameters;
 import org.bouncycastle.jce.spec.ElGamalParameterSpec;
 

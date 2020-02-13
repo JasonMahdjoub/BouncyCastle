@@ -6,7 +6,7 @@ import org.bouncycastle.crypto.Xof;
 import org.bouncycastle.crypto.params.Ed448PrivateKeyParameters;
 import org.bouncycastle.crypto.params.Ed448PublicKeyParameters;
 import org.bouncycastle.math.ec.rfc8032.Ed448;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 public class Ed448phSigner
     implements Signer
@@ -76,6 +76,10 @@ public class Ed448phSigner
         if (forSigning || null == publicKey)
         {
             throw new IllegalStateException("Ed448phSigner not initialised for verification");
+        }
+        if (Ed448.SIGNATURE_SIZE != signature.length)
+        {
+            return false;
         }
 
         byte[] pk = publicKey.getEncoded();

@@ -1,6 +1,6 @@
 package org.bouncycastle.pqc.crypto.gmss;
 
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 /**
  * This class provides a specification for the GMSS parameters that are used by

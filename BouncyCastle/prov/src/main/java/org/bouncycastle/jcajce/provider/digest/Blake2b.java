@@ -1,6 +1,6 @@
 package org.bouncycastle.jcajce.provider.digest;
 
-import org.bouncycastle.asn1.misc.MiscObjectIdentifiers;
+import org.bouncycastle.bcasn1.misc.BCMiscObjectIdentifiers;
 import org.bouncycastle.crypto.digests.Blake2bDigest;
 import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 
@@ -99,16 +99,16 @@ public class Blake2b
         public void configure(ConfigurableProvider provider)
         {
             provider.addAlgorithm("MessageDigest.BLAKE2B-512", PREFIX + "$Blake2b512");
-            provider.addAlgorithm("Alg.Alias.MessageDigest." + MiscObjectIdentifiers.id_blake2b512, "BLAKE2B-512");
+            provider.addAlgorithm("Alg.Alias.MessageDigest." + BCMiscObjectIdentifiers.id_blake2b512, "BLAKE2B-512");
 
             provider.addAlgorithm("MessageDigest.BLAKE2B-384", PREFIX + "$Blake2b384");
-            provider.addAlgorithm("Alg.Alias.MessageDigest." + MiscObjectIdentifiers.id_blake2b384, "BLAKE2B-384");
+            provider.addAlgorithm("Alg.Alias.MessageDigest." + BCMiscObjectIdentifiers.id_blake2b384, "BLAKE2B-384");
 
             provider.addAlgorithm("MessageDigest.BLAKE2B-256", PREFIX + "$Blake2b256");
-            provider.addAlgorithm("Alg.Alias.MessageDigest." + MiscObjectIdentifiers.id_blake2b256, "BLAKE2B-256");
+            provider.addAlgorithm("Alg.Alias.MessageDigest." + BCMiscObjectIdentifiers.id_blake2b256, "BLAKE2B-256");
 
             provider.addAlgorithm("MessageDigest.BLAKE2B-160", PREFIX + "$Blake2b160");
-            provider.addAlgorithm("Alg.Alias.MessageDigest." + MiscObjectIdentifiers.id_blake2b160, "BLAKE2B-160");
+            provider.addAlgorithm("Alg.Alias.MessageDigest." + BCMiscObjectIdentifiers.id_blake2b160, "BLAKE2B-160");
         }
     }
 }

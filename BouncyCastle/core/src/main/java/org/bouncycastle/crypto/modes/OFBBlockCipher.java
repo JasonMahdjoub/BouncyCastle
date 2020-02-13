@@ -1,7 +1,7 @@
 package org.bouncycastle.crypto.modes;
 
-import org.bouncycastle.crypto.BlockCipher;
 import org.bouncycastle.crypto.CipherParameters;
+import org.bouncycastle.crypto.BlockCipher;
 import org.bouncycastle.crypto.DataLengthException;
 import org.bouncycastle.crypto.StreamBlockCipher;
 import org.bouncycastle.crypto.params.ParametersWithIV;
@@ -54,7 +54,7 @@ public class OFBBlockCipher
      */
     public void init(
         boolean             encrypting, //ignored by this OFB mode
-        CipherParameters    params)
+        CipherParameters params)
         throws IllegalArgumentException
     {
         if (params instanceof ParametersWithIV)

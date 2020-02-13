@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.bouncycastle.jce.provider.AnnotatedException;
-import org.bouncycastle.util.StoreException;
+import org.bouncycastle.bcutil.StoreException;
 
 class PKIXCRLUtil
 {

@@ -7,9 +7,12 @@ import java.io.OutputStream;
 import java.math.BigInteger;
 import java.util.Hashtable;
 
-import org.bouncycastle.util.BigIntegers;
-import org.bouncycastle.util.Integers;
+import org.bouncycastle.bcutil.BigIntegers;
+import org.bouncycastle.bcutil.Integers;
 
+/**
+ * @deprecated Migrate to the (D)TLS API in org.bouncycastle.tls (bctls jar).
+ */
 public class TlsSRPUtils
 {
     public static final Integer EXT_SRP = Integers.valueOf(ExtensionType.srp);

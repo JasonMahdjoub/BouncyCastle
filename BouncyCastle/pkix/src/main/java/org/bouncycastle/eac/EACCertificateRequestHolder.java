@@ -3,10 +3,10 @@ package org.bouncycastle.eac;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import org.bouncycastle.asn1.ASN1Encoding;
-import org.bouncycastle.asn1.ASN1ParsingException;
-import org.bouncycastle.asn1.eac.CVCertificateRequest;
-import org.bouncycastle.asn1.eac.PublicKeyDataObject;
+import org.bouncycastle.bcasn1.ASN1Encoding;
+import org.bouncycastle.bcasn1.ASN1ParsingException;
+import org.bouncycastle.bcasn1.eac.CVCertificateRequest;
+import org.bouncycastle.bcasn1.eac.PublicKeyDataObject;
 import org.bouncycastle.eac.operator.EACSignatureVerifier;
 
 public class EACCertificateRequestHolder

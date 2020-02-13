@@ -3,11 +3,10 @@ package org.bouncycastle.crypto.signers;
 import java.security.SecureRandom;
 
 import org.bouncycastle.crypto.*;
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
+import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
 import org.bouncycastle.crypto.params.ParametersWithRandom;
-import org.bouncycastle.crypto.params.ParametersWithSalt;
-import org.bouncycastle.crypto.params.RSAKeyParameters;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.crypto.params.ParametersWithSalt;import org.bouncycastle.crypto.params.RSAKeyParameters;
+import org.bouncycastle.bcutil.Arrays;
 
 /**
  * ISO9796-2 - mechanism using a hash function with recovery (scheme 2 and 3).
@@ -214,7 +213,7 @@ public class ISO9796d2PSSSigner
     }
 
     public void updateWithRecoveredMessage(byte[] signature)
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         byte[] block = cipher.processBlock(signature, 0, signature.length);
 

@@ -1,6 +1,6 @@
 package org.bouncycastle.pqc.math.ntru.polynomial;
 
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 /**
  * A polynomial class that combines two coefficients into one <code>long</code> value for

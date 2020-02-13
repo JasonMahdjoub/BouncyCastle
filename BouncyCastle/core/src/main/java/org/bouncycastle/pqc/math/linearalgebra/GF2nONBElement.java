@@ -4,7 +4,7 @@ package org.bouncycastle.pqc.math.linearalgebra;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 /**
  * This class implements an element of the finite field <i>GF(2<sup>n </sup>)</i>.

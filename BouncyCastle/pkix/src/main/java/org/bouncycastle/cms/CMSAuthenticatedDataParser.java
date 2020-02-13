@@ -4,24 +4,24 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1EncodableVector;
-import org.bouncycastle.asn1.ASN1OctetString;
-import org.bouncycastle.asn1.ASN1OctetStringParser;
-import org.bouncycastle.asn1.ASN1SequenceParser;
-import org.bouncycastle.asn1.ASN1Set;
-import org.bouncycastle.asn1.ASN1SetParser;
-import org.bouncycastle.asn1.BERTags;
-import org.bouncycastle.asn1.DERSet;
-import org.bouncycastle.asn1.cms.AttributeTable;
-import org.bouncycastle.asn1.cms.AuthenticatedDataParser;
-import org.bouncycastle.asn1.cms.CMSAttributes;
-import org.bouncycastle.asn1.cms.ContentInfoParser;
-import org.bouncycastle.asn1.cms.OriginatorInfo;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.ASN1Encodable;
+import org.bouncycastle.bcasn1.ASN1EncodableVector;
+import org.bouncycastle.bcasn1.ASN1OctetString;
+import org.bouncycastle.bcasn1.ASN1OctetStringParser;
+import org.bouncycastle.bcasn1.ASN1SequenceParser;
+import org.bouncycastle.bcasn1.ASN1Set;
+import org.bouncycastle.bcasn1.ASN1SetParser;
+import org.bouncycastle.bcasn1.BERTags;
+import org.bouncycastle.bcasn1.DERSet;
+import org.bouncycastle.bcasn1.cms.AttributeTable;
+import org.bouncycastle.bcasn1.cms.AuthenticatedDataParser;
+import org.bouncycastle.bcasn1.cms.CMSAttributes;
+import org.bouncycastle.bcasn1.cms.ContentInfoParser;
+import org.bouncycastle.bcasn1.cms.OriginatorInfo;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.operator.DigestCalculatorProvider;
 import org.bouncycastle.operator.OperatorCreationException;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 /**
  * Parsing class for an CMS Authenticated Data object from an input stream.
@@ -159,6 +159,11 @@ public class CMSAuthenticatedDataParser
                         {
                             throw new IllegalStateException("can't parse authenticated attributes!");
                         }
+                    }
+
+                    public boolean isAead()
+                    {
+                        return false;
                     }
                 });
             }

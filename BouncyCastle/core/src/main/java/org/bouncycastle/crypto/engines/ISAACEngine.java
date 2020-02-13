@@ -5,7 +5,7 @@ import org.bouncycastle.crypto.DataLengthException;
 import org.bouncycastle.crypto.OutputLengthException;
 import org.bouncycastle.crypto.StreamCipher;
 import org.bouncycastle.crypto.params.KeyParameter;
-import org.bouncycastle.util.Pack;
+import org.bouncycastle.bcutil.Pack;
 
 /**
  * Implementation of Bob Jenkin's ISAAC (Indirection Shift Accumulate Add and Count).
@@ -39,7 +39,7 @@ public class ISAACEngine
      */
     public void init(
         boolean             forEncryption, 
-        CipherParameters    params)
+        CipherParameters params)
     {
         if (!(params instanceof KeyParameter))
         {

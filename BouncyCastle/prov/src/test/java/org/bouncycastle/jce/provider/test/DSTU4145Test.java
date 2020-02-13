@@ -13,16 +13,16 @@ import java.security.Security;
 import java.security.Signature;
 import java.security.spec.ECGenParameterSpec;
 
-import org.bouncycastle.asn1.ASN1OctetString;
+import org.bouncycastle.bcasn1.ASN1OctetString;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.jce.spec.ECParameterSpec;
 import org.bouncycastle.jce.spec.ECPrivateKeySpec;
 import org.bouncycastle.jce.spec.ECPublicKeySpec;
 import org.bouncycastle.math.ec.ECCurve;
-import org.bouncycastle.util.Strings;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
-import org.bouncycastle.util.test.TestRandomBigInteger;
+import org.bouncycastle.bcutil.Strings;
+import org.bouncycastle.bcutil.test.SimpleTest;
+import org.bouncycastle.bcutil.test.TestRandomBigInteger;
 
 public class DSTU4145Test
     extends SimpleTest
@@ -58,7 +58,7 @@ public class DSTU4145Test
 
         ECParameterSpec spec = new ECParameterSpec(
             curve,
-            curve.createPoint(new BigInteger("BE6628EC3E67A91A4E470894FBA72B52C515F8AEE9", 16), new BigInteger("D9DEEDF655CF5412313C11CA566CDC71F4DA57DB45C", 16), false),
+            curve.createPoint(new BigInteger("BE6628EC3E67A91A4E470894FBA72B52C515F8AEE9", 16), new BigInteger("D9DEEDF655CF5412313C11CA566CDC71F4DA57DB45C", 16)),
             new BigInteger("800000000000000000000189B4E67606E3825BB2831", 16));
         
         SecureRandom k = new TestRandomBigInteger(Hex.decode("00137449348C1249971759D99C252FFE1E14D8B31F00"));
@@ -137,7 +137,7 @@ public class DSTU4145Test
 
         ECParameterSpec spec = new ECParameterSpec(
             curve,
-            curve.createPoint(new BigInteger("BE6628EC3E67A91A4E470894FBA72B52C515F8AEE9", 16), new BigInteger("D9DEEDF655CF5412313C11CA566CDC71F4DA57DB45C", 16), false),
+            curve.createPoint(new BigInteger("BE6628EC3E67A91A4E470894FBA72B52C515F8AEE9", 16), new BigInteger("D9DEEDF655CF5412313C11CA566CDC71F4DA57DB45C", 16)),
             new BigInteger("800000000000000000000189B4E67606E3825BB2831", 16));
 
         ECPrivateKeySpec priKey = new ECPrivateKeySpec(
@@ -145,7 +145,7 @@ public class DSTU4145Test
             spec);
 
         ECPublicKeySpec pubKey = new ECPublicKeySpec(
-            curve.createPoint(new BigInteger("22de541d48a75c1c3b8c7c107b2551c5093c6c096e1", 16), new BigInteger("1e5b602efc0269d61e64d97c9193d2788fa05c4b7fd5", 16), false),
+            curve.createPoint(new BigInteger("22de541d48a75c1c3b8c7c107b2551c5093c6c096e1", 16), new BigInteger("1e5b602efc0269d61e64d97c9193d2788fa05c4b7fd5", 16)),
             spec);
 
         Signature sgr = Signature.getInstance("DSTU4145", "BC");

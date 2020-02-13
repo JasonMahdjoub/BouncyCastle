@@ -1,9 +1,9 @@
 package org.bouncycastle.crypto.generators;
 
 import org.bouncycastle.crypto.DataLengthException;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Pack;
-import org.bouncycastle.util.Strings;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.Pack;
+import org.bouncycastle.bcutil.Strings;
 
 /**
  * Core of password hashing scheme Bcrypt,

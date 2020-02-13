@@ -7,10 +7,12 @@ import java.util.Vector;
 import org.bouncycastle.crypto.Digest;
 import org.bouncycastle.crypto.Signer;
 import org.bouncycastle.crypto.params.ECDomainParameters;
-import org.bouncycastle.util.io.TeeInputStream;
+import org.bouncycastle.bcutil.io.TeeInputStream;
 
 /**
  * (D)TLS ECDHE key exchange (see RFC 4492).
+ *
+ * @deprecated Migrate to the (D)TLS API in org.bouncycastle.tls (bctls jar).
  */
 public class TlsECDHEKeyExchange
     extends TlsECDHKeyExchange

@@ -1,9 +1,9 @@
 package org.bouncycastle.cert.crmf;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.DERUTF8String;
-import org.bouncycastle.asn1.crmf.CRMFObjectIdentifiers;
+import org.bouncycastle.bcasn1.ASN1Encodable;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.DERUTF8String;
+import org.bouncycastle.bcasn1.crmf.CRMFObjectIdentifiers;
 
 /**
  * Carrier for a registration token control.

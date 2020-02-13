@@ -5,7 +5,7 @@ import java.io.PrintStream;
 import java.security.SecureRandom;
 import java.util.Hashtable;
 
-import org.bouncycastle.asn1.x509.Certificate;
+import org.bouncycastle.bcasn1.x509.Certificate;
 import org.bouncycastle.tls.AlertDescription;
 import org.bouncycastle.tls.AlertLevel;
 import org.bouncycastle.tls.BasicTlsPSKIdentity;
@@ -19,8 +19,9 @@ import org.bouncycastle.tls.TlsServerCertificate;
 import org.bouncycastle.tls.TlsSession;
 import org.bouncycastle.tls.crypto.TlsCertificate;
 import org.bouncycastle.tls.crypto.impl.bc.BcTlsCrypto;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.encoders.Hex;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.Strings;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 class MockPSKTlsClient
     extends PSKTlsClient
@@ -29,7 +30,7 @@ class MockPSKTlsClient
 
     MockPSKTlsClient(TlsSession session)
     {
-        this(session, new BasicTlsPSKIdentity("client", new byte[16]));
+        this(session, new BasicTlsPSKIdentity("client", Strings.toUTF8ByteArray("TLS_TEST_PSK")));
     }
 
     MockPSKTlsClient(TlsSession session, TlsPSKIdentity pskIdentity)
@@ -89,11 +90,6 @@ class MockPSKTlsClient
         }
     }
 
-    public ProtocolVersion getMinimumVersion()
-    {
-        return ProtocolVersion.TLSv12;
-    }
-
     public Hashtable getClientExtensions() throws IOException
     {
         Hashtable clientExtensions = TlsExtensionsUtils.ensureExtensionsInitialised(super.getClientExtensions());
@@ -126,5 +122,10 @@ class MockPSKTlsClient
                 }
             }
         };
+    }
+
+    protected ProtocolVersion[] getSupportedVersions()
+    {
+        return ProtocolVersion.TLSv12.only();
     }
 }

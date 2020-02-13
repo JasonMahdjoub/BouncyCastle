@@ -25,7 +25,7 @@ import org.bouncycastle.cms.SignerInformation;
 import org.bouncycastle.cms.SignerInformationVerifier;
 import org.bouncycastle.operator.DigestCalculatorProvider;
 import org.bouncycastle.operator.OutputEncryptor;
-import org.bouncycastle.util.CollectionStore;
+import org.bouncycastle.bcutil.CollectionStore;
 
 /**
  * A tool kit of common tasks.

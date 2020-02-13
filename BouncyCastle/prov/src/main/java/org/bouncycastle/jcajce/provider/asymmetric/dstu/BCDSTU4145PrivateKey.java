@@ -10,26 +10,27 @@ import java.security.spec.ECPrivateKeySpec;
 import java.security.spec.EllipticCurve;
 import java.util.Enumeration;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1Encoding;
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.DERBitString;
-import org.bouncycastle.asn1.DERNull;
-import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
-import org.bouncycastle.asn1.ua.DSTU4145BinaryField;
-import org.bouncycastle.asn1.ua.DSTU4145ECBinary;
-import org.bouncycastle.asn1.ua.DSTU4145NamedCurves;
-import org.bouncycastle.asn1.ua.DSTU4145Params;
-import org.bouncycastle.asn1.ua.DSTU4145PointEncoder;
-import org.bouncycastle.asn1.ua.UAObjectIdentifiers;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.asn1.x9.X962Parameters;
-import org.bouncycastle.asn1.x9.X9ECParameters;
-import org.bouncycastle.asn1.x9.X9ObjectIdentifiers;
+import org.bouncycastle.bcasn1.ASN1Encodable;
+import org.bouncycastle.bcasn1.ASN1Encoding;
+import org.bouncycastle.bcasn1.ASN1Integer;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.ASN1Primitive;
+import org.bouncycastle.bcasn1.ASN1Sequence;
+import org.bouncycastle.bcasn1.DERBitString;
+import org.bouncycastle.bcasn1.DERNull;
+import org.bouncycastle.bcasn1.pkcs.PrivateKeyInfo;
+import org.bouncycastle.bcasn1.ua.DSTU4145BinaryField;
+import org.bouncycastle.bcasn1.ua.DSTU4145ECBinary;
+import org.bouncycastle.bcasn1.ua.DSTU4145NamedCurves;
+import org.bouncycastle.bcasn1.ua.DSTU4145Params;
+import org.bouncycastle.bcasn1.ua.DSTU4145PointEncoder;
+import org.bouncycastle.bcasn1.ua.UAObjectIdentifiers;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
+import org.bouncycastle.bcasn1.x9.X962Parameters;
+import org.bouncycastle.bcasn1.x9.X9ECParameters;
+import org.bouncycastle.bcasn1.x9.X9ECPoint;
+import org.bouncycastle.bcasn1.x9.X9ObjectIdentifiers;
 import org.bouncycastle.crypto.params.ECDomainParameters;
 import org.bouncycastle.crypto.params.ECPrivateKeyParameters;
 import org.bouncycastle.jcajce.provider.asymmetric.util.EC5Util;
@@ -286,7 +287,7 @@ public class BCDSTU4145PrivateKey
         }
         else
         {
-            org.bouncycastle.asn1.sec.ECPrivateKey ec = org.bouncycastle.asn1.sec.ECPrivateKey.getInstance(privKey);
+            org.bouncycastle.bcasn1.sec.ECPrivateKey ec = org.bouncycastle.bcasn1.sec.ECPrivateKey.getInstance(privKey);
 
             this.d = ec.getKey();
             this.publicKey = ec.getPublicKey();
@@ -352,7 +353,7 @@ public class BCDSTU4145PrivateKey
 
             X9ECParameters ecP = new X9ECParameters(
                 curve,
-                EC5Util.convertPoint(curve, ecSpec.getGenerator(), withCompression),
+                new X9ECPoint(EC5Util.convertPoint(curve, ecSpec.getGenerator()), withCompression),
                 ecSpec.getOrder(),
                 BigInteger.valueOf(ecSpec.getCofactor()),
                 ecSpec.getCurve().getSeed());
@@ -362,15 +363,15 @@ public class BCDSTU4145PrivateKey
         }
 
         PrivateKeyInfo info;
-        org.bouncycastle.asn1.sec.ECPrivateKey keyStructure;
+        org.bouncycastle.bcasn1.sec.ECPrivateKey keyStructure;
 
         if (publicKey != null)
         {
-            keyStructure = new org.bouncycastle.asn1.sec.ECPrivateKey(orderBitLength, this.getS(), publicKey, params);
+            keyStructure = new org.bouncycastle.bcasn1.sec.ECPrivateKey(orderBitLength, this.getS(), publicKey, params);
         }
         else
         {
-            keyStructure = new org.bouncycastle.asn1.sec.ECPrivateKey(orderBitLength, this.getS(), params);
+            keyStructure = new org.bouncycastle.bcasn1.sec.ECPrivateKey(orderBitLength, this.getS(), params);
         }
 
         try
@@ -405,14 +406,14 @@ public class BCDSTU4145PrivateKey
             return null;
         }
 
-        return EC5Util.convertSpec(ecSpec, withCompression);
+        return EC5Util.convertSpec(ecSpec);
     }
 
     org.bouncycastle.jce.spec.ECParameterSpec engineGetSpec()
     {
         if (ecSpec != null)
         {
-            return EC5Util.convertSpec(ecSpec, withCompression);
+            return EC5Util.convertSpec(ecSpec);
         }
 
         return BouncyCastleProvider.CONFIGURATION.getEcImplicitlyCa();

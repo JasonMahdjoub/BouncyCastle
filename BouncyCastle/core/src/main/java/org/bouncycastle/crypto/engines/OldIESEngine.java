@@ -4,7 +4,7 @@ import org.bouncycastle.crypto.BasicAgreement;
 import org.bouncycastle.crypto.BufferedBlockCipher;
 import org.bouncycastle.crypto.DerivationFunction;
 import org.bouncycastle.crypto.Mac;
-import org.bouncycastle.util.Pack;
+import org.bouncycastle.bcutil.Pack;
 
 /**
  * Support class for constructing integrated encryption ciphers

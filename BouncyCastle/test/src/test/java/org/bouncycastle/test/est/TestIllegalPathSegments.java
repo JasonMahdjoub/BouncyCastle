@@ -4,7 +4,7 @@ package org.bouncycastle.test.est;
 import org.bouncycastle.est.ESTService;
 import org.bouncycastle.est.jcajce.JcaJceUtils;
 import org.bouncycastle.est.jcajce.JsseESTServiceBuilder;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.test.SimpleTest;
 import org.junit.Test;
 
 public class TestIllegalPathSegments

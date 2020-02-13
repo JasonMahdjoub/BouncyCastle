@@ -5,11 +5,11 @@ import java.math.BigInteger;
 import org.bouncycastle.math.ec.ECFieldElement;
 import org.bouncycastle.math.raw.Mod;
 import org.bouncycastle.math.raw.Nat256;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 public class Curve25519FieldElement extends ECFieldElement.AbstractFp
 {
-    public static final BigInteger Q = Curve25519.q;
+    public static final BigInteger Q = Nat256.toBigInteger(Curve25519Field.P);
 
     // Calculated as ECConstants.TWO.modPow(Q.shiftRight(2), Q)
     private static final int[] PRECOMP_POW2 = new int[]{ 0x4a0ea0b0, 0xc4ee1b27, 0xad2fe478, 0x2f431806,

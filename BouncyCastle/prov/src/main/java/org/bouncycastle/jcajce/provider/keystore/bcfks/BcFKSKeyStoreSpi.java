@@ -49,40 +49,40 @@ import javax.security.auth.callback.CallbackHandler;
 import javax.security.auth.callback.PasswordCallback;
 import javax.security.auth.callback.UnsupportedCallbackException;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1Encoding;
-import org.bouncycastle.asn1.ASN1InputStream;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.DERNull;
-import org.bouncycastle.asn1.bc.EncryptedObjectStoreData;
-import org.bouncycastle.asn1.bc.EncryptedPrivateKeyData;
-import org.bouncycastle.asn1.bc.EncryptedSecretKeyData;
-import org.bouncycastle.asn1.bc.ObjectData;
-import org.bouncycastle.asn1.bc.ObjectDataSequence;
-import org.bouncycastle.asn1.bc.ObjectStore;
-import org.bouncycastle.asn1.bc.ObjectStoreData;
-import org.bouncycastle.asn1.bc.ObjectStoreIntegrityCheck;
-import org.bouncycastle.asn1.bc.PbkdMacIntegrityCheck;
-import org.bouncycastle.asn1.bc.SecretKeyData;
-import org.bouncycastle.asn1.bc.SignatureCheck;
-import org.bouncycastle.asn1.cms.CCMParameters;
-import org.bouncycastle.asn1.kisa.KISAObjectIdentifiers;
-import org.bouncycastle.asn1.misc.MiscObjectIdentifiers;
-import org.bouncycastle.asn1.misc.ScryptParams;
-import org.bouncycastle.asn1.nist.NISTObjectIdentifiers;
-import org.bouncycastle.asn1.nsri.NSRIObjectIdentifiers;
-import org.bouncycastle.asn1.ntt.NTTObjectIdentifiers;
-import org.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
-import org.bouncycastle.asn1.pkcs.EncryptedPrivateKeyInfo;
-import org.bouncycastle.asn1.pkcs.EncryptionScheme;
-import org.bouncycastle.asn1.pkcs.KeyDerivationFunc;
-import org.bouncycastle.asn1.pkcs.PBES2Parameters;
-import org.bouncycastle.asn1.pkcs.PBKDF2Params;
-import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x509.X509ObjectIdentifiers;
-import org.bouncycastle.asn1.x9.X9ObjectIdentifiers;
+import org.bouncycastle.bcasn1.ASN1Encodable;
+import org.bouncycastle.bcasn1.ASN1Encoding;
+import org.bouncycastle.bcasn1.ASN1InputStream;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.DERNull;
+import org.bouncycastle.bcasn1.bc.EncryptedObjectStoreData;
+import org.bouncycastle.bcasn1.bc.EncryptedPrivateKeyData;
+import org.bouncycastle.bcasn1.bc.EncryptedSecretKeyData;
+import org.bouncycastle.bcasn1.bc.ObjectData;
+import org.bouncycastle.bcasn1.bc.ObjectDataSequence;
+import org.bouncycastle.bcasn1.bc.ObjectStore;
+import org.bouncycastle.bcasn1.bc.ObjectStoreData;
+import org.bouncycastle.bcasn1.bc.ObjectStoreIntegrityCheck;
+import org.bouncycastle.bcasn1.bc.PbkdMacIntegrityCheck;
+import org.bouncycastle.bcasn1.bc.SecretKeyData;
+import org.bouncycastle.bcasn1.bc.SignatureCheck;
+import org.bouncycastle.bcasn1.cms.CCMParameters;
+import org.bouncycastle.bcasn1.kisa.KISAObjectIdentifiers;
+import org.bouncycastle.bcasn1.misc.BCMiscObjectIdentifiers;
+import org.bouncycastle.bcasn1.misc.ScryptParams;
+import org.bouncycastle.bcasn1.nist.NISTObjectIdentifiers;
+import org.bouncycastle.bcasn1.nsri.NSRIObjectIdentifiers;
+import org.bouncycastle.bcasn1.ntt.NTTObjectIdentifiers;
+import org.bouncycastle.bcasn1.oiw.OIWObjectIdentifiers;
+import org.bouncycastle.bcasn1.pkcs.EncryptedPrivateKeyInfo;
+import org.bouncycastle.bcasn1.pkcs.EncryptionScheme;
+import org.bouncycastle.bcasn1.pkcs.KeyDerivationFunc;
+import org.bouncycastle.bcasn1.pkcs.PBES2Parameters;
+import org.bouncycastle.bcasn1.pkcs.PBKDF2Params;
+import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
+import org.bouncycastle.bcasn1.pkcs.PrivateKeyInfo;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.x509.X509ObjectIdentifiers;
+import org.bouncycastle.bcasn1.x9.X9ObjectIdentifiers;
 import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
 import org.bouncycastle.crypto.PBEParametersGenerator;
 import org.bouncycastle.crypto.digests.SHA3Digest;
@@ -100,8 +100,8 @@ import org.bouncycastle.jcajce.util.BCJcaJceHelper;
 import org.bouncycastle.jcajce.util.DefaultJcaJceHelper;
 import org.bouncycastle.jcajce.util.JcaJceHelper;
 import org.bouncycastle.jce.interfaces.ECKey;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Strings;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.Strings;
 
 class BcFKSKeyStoreSpi
     extends KeyStoreSpi
@@ -246,7 +246,7 @@ class BcFKSKeyStoreSpi
             if (ent.getType().equals(PRIVATE_KEY) || ent.getType().equals(PROTECTED_PRIVATE_KEY))
             {
                 EncryptedPrivateKeyData encPrivData = EncryptedPrivateKeyData.getInstance(ent.getData());
-                org.bouncycastle.asn1.x509.Certificate[] certificates = encPrivData.getCertificateChain();
+                org.bouncycastle.bcasn1.x509.Certificate[] certificates = encPrivData.getCertificateChain();
                 Certificate[] chain = new X509Certificate[certificates.length];
 
                 for (int i = 0; i != chain.length; i++)
@@ -270,7 +270,7 @@ class BcFKSKeyStoreSpi
             if (ent.getType().equals(PRIVATE_KEY) || ent.getType().equals(PROTECTED_PRIVATE_KEY))
             {
                 EncryptedPrivateKeyData encPrivData = EncryptedPrivateKeyData.getInstance(ent.getData());
-                org.bouncycastle.asn1.x509.Certificate[] certificates = encPrivData.getCertificateChain();
+                org.bouncycastle.bcasn1.x509.Certificate[] certificates = encPrivData.getCertificateChain();
 
                 return decodeCertificate(certificates[0]);
             }
@@ -291,7 +291,7 @@ class BcFKSKeyStoreSpi
             {
                 CertificateFactory certFact = helper.createCertificateFactory("X.509");
 
-                return certFact.generateCertificate(new ByteArrayInputStream(org.bouncycastle.asn1.x509.Certificate.getInstance(cert).getEncoded()));
+                return certFact.generateCertificate(new ByteArrayInputStream(org.bouncycastle.bcasn1.x509.Certificate.getInstance(cert).getEncoded()));
             }
             catch (Exception e)
             {
@@ -304,7 +304,7 @@ class BcFKSKeyStoreSpi
             {
                 CertificateFactory certFact = CertificateFactory.getInstance("X.509");
 
-                return certFact.generateCertificate(new ByteArrayInputStream(org.bouncycastle.asn1.x509.Certificate.getInstance(cert).getEncoded()));
+                return certFact.generateCertificate(new ByteArrayInputStream(org.bouncycastle.bcasn1.x509.Certificate.getInstance(cert).getEncoded()));
             }
             catch (Exception e)
             {
@@ -495,10 +495,10 @@ class BcFKSKeyStoreSpi
     private EncryptedPrivateKeyData createPrivateKeySequence(EncryptedPrivateKeyInfo encryptedPrivateKeyInfo, Certificate[] chain)
         throws CertificateEncodingException
     {
-        org.bouncycastle.asn1.x509.Certificate[] certChain = new org.bouncycastle.asn1.x509.Certificate[chain.length];
+        org.bouncycastle.bcasn1.x509.Certificate[] certChain = new org.bouncycastle.bcasn1.x509.Certificate[chain.length];
         for (int i = 0; i != chain.length; i++)
         {
-            certChain[i] = org.bouncycastle.asn1.x509.Certificate.getInstance(chain[i].getEncoded());
+            certChain[i] = org.bouncycastle.bcasn1.x509.Certificate.getInstance(chain[i].getEncoded());
         }
 
         return new EncryptedPrivateKeyData(encryptedPrivateKeyInfo, certChain);
@@ -728,7 +728,7 @@ class BcFKSKeyStoreSpi
 
         int keySizeInBytes = defKeySize;
 
-        if (MiscObjectIdentifiers.id_scrypt.equals(pbkdAlgorithm.getAlgorithm()))
+        if (BCMiscObjectIdentifiers.id_scrypt.equals(pbkdAlgorithm.getAlgorithm()))
         {
             ScryptParams params = ScryptParams.getInstance(pbkdAlgorithm.getParameters());
 
@@ -930,10 +930,10 @@ class BcFKSKeyStoreSpi
 
                     if (certs != null)
                     {
-                        org.bouncycastle.asn1.x509.Certificate[] certificates = new org.bouncycastle.asn1.x509.Certificate[certs.length];
+                        org.bouncycastle.bcasn1.x509.Certificate[] certificates = new org.bouncycastle.bcasn1.x509.Certificate[certs.length];
                         for (int i = 0; i != certificates.length; i++)
                         {
-                            certificates[i] = org.bouncycastle.asn1.x509.Certificate.getInstance(certs[i].getEncoded());
+                            certificates[i] = org.bouncycastle.bcasn1.x509.Certificate.getInstance(certs[i].getEncoded());
                         }
                         signatureCheck = new SignatureCheck(signatureAlgorithm, certificates, sig.sign());
                     }
@@ -1004,7 +1004,7 @@ class BcFKSKeyStoreSpi
         EncryptedObjectStoreData encStoreData = getEncryptedObjectStoreData(hmacAlgorithm, password);
 
         // update the salt
-        if (MiscObjectIdentifiers.id_scrypt.equals(hmacPkbdAlgorithm.getAlgorithm()))
+        if (BCMiscObjectIdentifiers.id_scrypt.equals(hmacPkbdAlgorithm.getAlgorithm()))
         {
             ScryptParams sParams = ScryptParams.getInstance(hmacPkbdAlgorithm.getParameters());
 
@@ -1166,7 +1166,7 @@ class BcFKSKeyStoreSpi
             return false;
         }
 
-        if (MiscObjectIdentifiers.id_scrypt.equals(hmacPkbdAlgorithm.getAlgorithm()))
+        if (BCMiscObjectIdentifiers.id_scrypt.equals(hmacPkbdAlgorithm.getAlgorithm()))
         {
             if (!(storePBKDFConfig instanceof ScryptConfig))
             {
@@ -1270,7 +1270,7 @@ class BcFKSKeyStoreSpi
 
             try
             {
-                org.bouncycastle.asn1.x509.Certificate[] certificates = sigCheck.getCertificates();
+                org.bouncycastle.bcasn1.x509.Certificate[] certificates = sigCheck.getCertificates();
                 if (validator != null)
                 {
                     if (certificates == null)
@@ -1445,7 +1445,7 @@ class BcFKSKeyStoreSpi
 
     private KeyDerivationFunc generatePkbdAlgorithmIdentifier(PBKDFConfig pbkdfConfig, int keySizeInBytes)
     {
-        if (MiscObjectIdentifiers.id_scrypt.equals(pbkdfConfig.getAlgorithm()))
+        if (BCMiscObjectIdentifiers.id_scrypt.equals(pbkdfConfig.getAlgorithm()))
         {
             ScryptConfig scryptConfig = (ScryptConfig)pbkdfConfig;
 
@@ -1456,7 +1456,7 @@ class BcFKSKeyStoreSpi
                 pbkdSalt,
                 scryptConfig.getCostParameter(), scryptConfig.getBlockSize(), scryptConfig.getParallelizationParameter(), keySizeInBytes);
 
-            return new KeyDerivationFunc(MiscObjectIdentifiers.id_scrypt, params);
+            return new KeyDerivationFunc(BCMiscObjectIdentifiers.id_scrypt, params);
         }
         else
         {
@@ -1471,7 +1471,7 @@ class BcFKSKeyStoreSpi
 
     private KeyDerivationFunc generatePkbdAlgorithmIdentifier(KeyDerivationFunc baseAlg, int keySizeInBytes)
     {
-        if (MiscObjectIdentifiers.id_scrypt.equals(baseAlg.getAlgorithm()))
+        if (BCMiscObjectIdentifiers.id_scrypt.equals(baseAlg.getAlgorithm()))
         {
             ScryptParams oldParams = ScryptParams.getInstance(baseAlg.getParameters());
 
@@ -1482,7 +1482,7 @@ class BcFKSKeyStoreSpi
                 pbkdSalt,
                 oldParams.getCostParameter(), oldParams.getBlockSize(), oldParams.getParallelizationParameter(), BigInteger.valueOf(keySizeInBytes));
 
-            return new KeyDerivationFunc(MiscObjectIdentifiers.id_scrypt, params);
+            return new KeyDerivationFunc(BCMiscObjectIdentifiers.id_scrypt, params);
         }
         else
         {

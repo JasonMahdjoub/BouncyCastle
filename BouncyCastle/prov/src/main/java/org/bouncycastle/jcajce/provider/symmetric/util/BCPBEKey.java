@@ -5,7 +5,7 @@ import java.security.spec.KeySpec;
 import javax.crypto.interfaces.PBEKey;
 import javax.crypto.spec.PBEKeySpec;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.PBEParametersGenerator;
 import org.bouncycastle.crypto.params.KeyParameter;
@@ -20,7 +20,7 @@ public class BCPBEKey
     int                 digest;
     int                 keySize;
     int                 ivSize;
-    CipherParameters    param;
+    CipherParameters param;
     PBEKeySpec          pbeKeySpec;
     boolean             tryWrong = false;
 

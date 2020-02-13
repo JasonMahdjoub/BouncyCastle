@@ -2,11 +2,8 @@ package org.bouncycastle.crypto.signers;
 
 import java.math.BigInteger;
 
+import org.bouncycastle.crypto.*;
 import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.DSA;
-import org.bouncycastle.crypto.DSAExt;
-import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.Signer;
 import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
 import org.bouncycastle.crypto.params.ParametersWithRandom;
 
@@ -39,7 +36,7 @@ public class DSADigestSigner
 
     public void init(
         boolean           forSigning,
-        CipherParameters   parameters)
+        CipherParameters parameters)
     {
         this.forSigning = forSigning;
 

@@ -1,7 +1,7 @@
 package org.bouncycastle.tsp;
 
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.tsp.Accuracy;
+import org.bouncycastle.bcasn1.ASN1Integer;
+import org.bouncycastle.bcasn1.tsp.Accuracy;
 
 public class GenTimeAccuracy
 {
@@ -32,7 +32,7 @@ public class GenTimeAccuracy
     {
         if (time != null)
         {
-            return time.getValue().intValue();
+            return time.intValueExact();
         }
 
         return 0;

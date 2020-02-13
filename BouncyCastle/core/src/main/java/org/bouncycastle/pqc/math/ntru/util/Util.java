@@ -11,7 +11,7 @@ import org.bouncycastle.pqc.math.ntru.euclid.IntEuclidean;
 import org.bouncycastle.pqc.math.ntru.polynomial.DenseTernaryPolynomial;
 import org.bouncycastle.pqc.math.ntru.polynomial.SparseTernaryPolynomial;
 import org.bouncycastle.pqc.math.ntru.polynomial.TernaryPolynomial;
-import org.bouncycastle.util.Integers;
+import org.bouncycastle.bcutil.Integers;
 
 public class Util
 {

@@ -2,8 +2,8 @@ package org.bouncycastle.jce;
 
 import java.util.Enumeration;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.x9.X9ECParameters;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.x9.X9ECParameters;
 import org.bouncycastle.jce.spec.ECNamedCurveParameterSpec;
 
 /**
@@ -35,12 +35,12 @@ public class ECNamedCurveTable
 
             if (ecP == null)
             {
-                ecP = org.bouncycastle.asn1.x9.ECNamedCurveTable.getByName(name);
+                ecP = org.bouncycastle.bcasn1.x9.ECNamedCurveTable.getByName(name);
                 if (ecP == null)
                 {
                     try
                     {
-                        ecP = org.bouncycastle.asn1.x9.ECNamedCurveTable.getByOID(new ASN1ObjectIdentifier(name));
+                        ecP = org.bouncycastle.bcasn1.x9.ECNamedCurveTable.getByOID(new ASN1ObjectIdentifier(name));
                     }
                     catch (IllegalArgumentException e)
                     {
@@ -71,6 +71,6 @@ public class ECNamedCurveTable
      */
     public static Enumeration getNames()
     {
-        return org.bouncycastle.asn1.x9.ECNamedCurveTable.getNames();
+        return org.bouncycastle.bcasn1.x9.ECNamedCurveTable.getNames();
     }
 }

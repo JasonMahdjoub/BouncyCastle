@@ -1,7 +1,6 @@
 package org.bouncycastle.crypto.engines;
 
-import org.bouncycastle.crypto.BlockCipher;
-import org.bouncycastle.crypto.CipherParameters;
+import org.bouncycastle.crypto.CipherParameters;import org.bouncycastle.crypto.BlockCipher;
 import org.bouncycastle.crypto.DataLengthException;
 import org.bouncycastle.crypto.OutputLengthException;
 import org.bouncycastle.crypto.params.KeyParameter;
@@ -119,13 +118,13 @@ public class RC2Engine
      */
     public void init(
         boolean           encrypting,
-        CipherParameters  params)
+        CipherParameters params)
     {
         this.encrypting = encrypting;
 
         if (params instanceof RC2Parameters)
         {
-            RC2Parameters   param = (RC2Parameters)params;
+            RC2Parameters param = (RC2Parameters)params;
 
             workingKey = generateWorkingKey(param.getKey(),
                                             param.getEffectiveKeyBits());

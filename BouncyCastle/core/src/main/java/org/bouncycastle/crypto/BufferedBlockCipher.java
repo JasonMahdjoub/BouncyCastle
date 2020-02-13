@@ -79,7 +79,7 @@ public class BufferedBlockCipher
      */
     public void init(
         boolean             forEncryption,
-        CipherParameters    params)
+        CipherParameters params)
         throws IllegalArgumentException
     {
         this.forEncryption = forEncryption;
@@ -257,14 +257,14 @@ public class BufferedBlockCipher
      * the output, or the input is not block size aligned and should be.
      * @exception IllegalStateException if the underlying cipher is not
      * initialised.
-     * @exception BCInvalidCipherTextException if padding is expected and not found.
+     * @exception InvalidCipherTextException if padding is expected and not found.
      * @exception DataLengthException if the input is not block size
      * aligned.
      */
     public int doFinal(
         byte[]  out,
         int     outOff)
-        throws DataLengthException, IllegalStateException, BCInvalidCipherTextException
+        throws DataLengthException, IllegalStateException, InvalidCipherTextException
     {
         try
         {

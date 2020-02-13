@@ -9,9 +9,9 @@ import org.bouncycastle.crypto.params.DSAParameterGenerationParameters;
 import org.bouncycastle.crypto.params.DSAParameters;
 import org.bouncycastle.crypto.params.DSAValidationParameters;
 import org.bouncycastle.crypto.util.DigestFactory;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.BigIntegers;
-import org.bouncycastle.util.encoders.Hex;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.BigIntegers;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 /**
  * Generate suitable parameters for DSA, in line with FIPS 186-2, or FIPS 186-3.
@@ -352,7 +352,7 @@ public class DSAParametersGenerator
     {
 // A.2.3 Verifiable Canonical Generation of the Generator g
         BigInteger e = p.subtract(ONE).divide(q);
-        byte[] ggen = Hex.decode("6767656E");
+        byte[] ggen = Hex.decodeStrict("6767656E");
 
         // 7. U = domain_parameter_seed || "ggen" || index || count.
         byte[] U = new byte[seed.length + ggen.length + 1 + 2];

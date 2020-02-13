@@ -1,10 +1,10 @@
 package org.bouncycastle.crypto.test;
 
+import org.bouncycastle.bcutil.encoders.Hex;
+import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.BlockCipher;
 import org.bouncycastle.crypto.BufferedBlockCipher;
-import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**
  * a basic test that takes a cipher, key parameter, and an input
@@ -17,7 +17,7 @@ public class BlockCipherMonteCarloTest
     int                 id;
     int                 iterations;
     BlockCipher         engine;
-    CipherParameters    param;
+    CipherParameters param;
     byte[]              input;
     byte[]              output;
 
@@ -25,7 +25,7 @@ public class BlockCipherMonteCarloTest
         int                 id,
         int                 iterations,
         BlockCipher         engine,
-        CipherParameters    param,
+        CipherParameters param,
         String              input,
         String              output)
     {

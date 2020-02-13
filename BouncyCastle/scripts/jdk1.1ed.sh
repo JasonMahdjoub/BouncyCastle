@@ -288,6 +288,12 @@ w
 q
 %
 
+ed org/bouncycastle/asn1/bc/LinkedCertificate.java <<%
+g/private.*final.*;/s/final//
+w
+q
+%
+
 ed org/bouncycastle/crypto/modes/G3413CFBBlockCipher.java <<%
 g/private.*final.*;/s/final//
 w
@@ -355,6 +361,61 @@ q
 %
 
 ed org/bouncycastle/openpgp/operator/jcajce/JcaKeyFingerprintCalculator.java <<%
+g/private.*final.*;/s/final//
+w
+q
+%
+
+ed org/bouncycastle/asn1/ASN1Integer.java <<%
+g/private.*final.*;/s/final//
+w
+q
+%
+
+ed org/bouncycastle/jcajce/provider/asymmetric/x509/PEMUtil <<%
+g/private.*final.*;/s/final//
+w
+q
+%
+
+ed org/bouncycastle/crypto/generators/Argon2BytesGenerator.java <<%
+g/private.*final.*;/s/final//
+w
+q
+%
+
+ed org/bouncycastle/crypto/macs/Zuc128Mac.java <<%
+g/private.*final.*;/s/final//
+w
+q
+%
+
+ed org/bouncycastle/crypto/macs/Zuc256Mac.java <<%
+g/private.*final.*;/s/final//
+w
+q
+%
+
+ed org/bouncycastle/crypto/params/ECDomainParameters.java <<%
+g/private.*final.*;/s/final//
+w
+q
+%
+
+ed org/bouncycastle/jcajce/provider/asymmetric/x509/PEMUtil.java <<%
+g/private.*final.*;/s/final//
+w
+q
+%
+
+ed org/bouncycastle/jce/provider/test/ZucTest.java <<%
+g/private.*final.*;/s/final//
+g/(final /s/final//
+w
+q
+%
+
+ed org/bouncycastle/bcpg/SignatureSubpacketInputStream.java <<%
 g/private.*final.*;/s/final//
 w
 q

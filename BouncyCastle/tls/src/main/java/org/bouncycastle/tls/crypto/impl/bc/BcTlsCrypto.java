@@ -4,12 +4,12 @@ import java.io.IOException;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
-import org.bouncycastle.asn1.x509.KeyUsage;
+import org.bouncycastle.bcasn1.x509.KeyUsage;
 import org.bouncycastle.crypto.BlockCipher;
 import org.bouncycastle.crypto.CryptoException;
 import org.bouncycastle.crypto.Digest;
 import org.bouncycastle.crypto.ExtendedDigest;
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
+import org.bouncycastle.crypto.InvalidCipherTextException;
 import org.bouncycastle.crypto.RuntimeCryptoException;
 import org.bouncycastle.crypto.StreamCipher;
 import org.bouncycastle.crypto.agreement.srp.SRP6Client;
@@ -48,6 +48,7 @@ import org.bouncycastle.tls.EncryptionAlgorithm;
 import org.bouncycastle.tls.HashAlgorithm;
 import org.bouncycastle.tls.NamedGroup;
 import org.bouncycastle.tls.ProtocolVersion;
+import org.bouncycastle.tls.SignatureAlgorithm;
 import org.bouncycastle.tls.SignatureAndHashAlgorithm;
 import org.bouncycastle.tls.TlsFatalAlert;
 import org.bouncycastle.tls.TlsUtils;
@@ -73,7 +74,7 @@ import org.bouncycastle.tls.crypto.impl.TlsBlockCipher;
 import org.bouncycastle.tls.crypto.impl.TlsBlockCipherImpl;
 import org.bouncycastle.tls.crypto.impl.TlsEncryptor;
 import org.bouncycastle.tls.crypto.impl.TlsNullCipher;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 /**
  * Class for providing cryptographic services for TLS based on implementations in the BC light-weight API.
@@ -182,7 +183,15 @@ public class BcTlsCrypto
 
     public TlsECDomain createECDomain(TlsECConfig ecConfig)
     {
-        return new BcTlsECDomain(this, ecConfig);
+        switch (ecConfig.getNamedGroup())
+        {
+        case NamedGroup.x25519:
+            return new BcX25519Domain(this);
+        case NamedGroup.x448:
+            return new BcX448Domain(this);
+        default:
+            return new BcTlsECDomain(this, ecConfig);
+        }
     }
 
     protected TlsEncryptor createEncryptor(TlsCertificate certificate)
@@ -204,7 +213,7 @@ public class BcTlsCrypto
                     encoding.init(true, new ParametersWithRandom(pubKeyRSA, getSecureRandom()));
                     return encoding.processBlock(input, inOff, length);
                 }
-                catch (BCInvalidCipherTextException e)
+                catch (InvalidCipherTextException e)
                 {
                     /*
                      * This should never happen, only during decryption.
@@ -242,7 +251,9 @@ public class BcTlsCrypto
 
     public boolean hasAllRawSignatureAlgorithms()
     {
-        return true;
+        // TODO[RFC 8422] Revisit the need to buffer the handshake for "Intrinsic" hash signatures
+        return !hasSignatureAlgorithm(SignatureAlgorithm.ed25519)
+            && !hasSignatureAlgorithm(SignatureAlgorithm.ed448);
     }
 
     public boolean hasDHAgreement()
@@ -292,14 +303,30 @@ public class BcTlsCrypto
         return true;
     }
 
-    public boolean hasSignatureAlgorithm(int signatureAlgorithm)
+    public boolean hasSignatureAlgorithm(short signatureAlgorithm)
     {
-        return true;
+        switch (signatureAlgorithm)
+        {
+        case SignatureAlgorithm.rsa:
+        case SignatureAlgorithm.dsa:
+        case SignatureAlgorithm.ecdsa:
+        case SignatureAlgorithm.ed25519:
+        case SignatureAlgorithm.ed448:
+        case SignatureAlgorithm.rsa_pss_rsae_sha256:
+        case SignatureAlgorithm.rsa_pss_rsae_sha384:
+        case SignatureAlgorithm.rsa_pss_rsae_sha512:
+        case SignatureAlgorithm.rsa_pss_pss_sha256:
+        case SignatureAlgorithm.rsa_pss_pss_sha384:
+        case SignatureAlgorithm.rsa_pss_pss_sha512:
+            return true;
+        default:
+            return false;
+        }
     }
 
     public boolean hasSignatureAndHashAlgorithm(SignatureAndHashAlgorithm sigAndHashAlgorithm)
     {
-        return true;
+        return hasSignatureAlgorithm(sigAndHashAlgorithm.getSignature());
     }
 
     public boolean hasSRPAuthentication()
@@ -350,7 +377,7 @@ public class BcTlsCrypto
         case HashAlgorithm.sha512:
             return new SHA512Digest();
         default:
-            throw new IllegalArgumentException("unknown HashAlgorithm: " + HashAlgorithm.getText(hashAlgorithm));
+            throw new IllegalArgumentException("invalid HashAlgorithm: " + HashAlgorithm.getText(hashAlgorithm));
         }
     }
 
@@ -411,7 +438,7 @@ public class BcTlsCrypto
         case HashAlgorithm.sha512:
             return new SHA512Digest((SHA512Digest)hash);
         default:
-            throw new IllegalArgumentException("unknown HashAlgorithm: " + HashAlgorithm.getText(hashAlgorithm));
+            throw new IllegalArgumentException("invalid HashAlgorithm: " + HashAlgorithm.getText(hashAlgorithm));
         }
     }
 
@@ -570,9 +597,14 @@ public class BcTlsCrypto
         return new CBCBlockCipher(new SEEDEngine());
     }
 
+    public TlsHMAC createHMAC(short hashAlgorithm)
+    {
+        return new HMacOperator(createDigest(hashAlgorithm));
+    }
+
     public TlsHMAC createHMAC(int macAlgorithm)
     {
-        return new HMacOperator(createDigest(TlsUtils.getHashAlgorithmForHMACAlgorithm(macAlgorithm)));
+        return createHMAC(TlsUtils.getHashAlgorithmForHMACAlgorithm(macAlgorithm));
     }
 
     public TlsSRP6Client createSRP6Client(TlsSRPConfig srpConfig)
@@ -647,6 +679,11 @@ public class BcTlsCrypto
                 return verifierGenerator.generateVerifier(salt, identity, password);
             }
         };
+    }
+
+    public TlsSecret hkdfInit(short hashAlgorithm)
+    {
+        return adoptLocalSecret(new byte[HashAlgorithm.getOutputSize(hashAlgorithm)]);
     }
 
     private class BlockOperator
@@ -729,7 +766,7 @@ public class BcTlsCrypto
             {
                 return len + cipher.doFinal(output, outputOffset + len);
             }
-            catch (BCInvalidCipherTextException e)
+            catch (InvalidCipherTextException e)
             {
                 // TODO:
                 throw new RuntimeCryptoException(e.toString());
@@ -763,6 +800,11 @@ public class BcTlsCrypto
             hmac.doFinal(rv, 0);
 
             return rv;
+        }
+
+        public void calculateMAC(byte[] output, int outOff)
+        {
+            hmac.doFinal(output, outOff);
         }
 
         public int getInternalBlockSize()

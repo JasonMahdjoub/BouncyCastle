@@ -28,20 +28,17 @@ import javax.crypto.spec.RC2ParameterSpec;
 import javax.crypto.spec.RC5ParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
-import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
+import org.bouncycastle.bcasn1.pkcs.PrivateKeyInfo;
 import org.bouncycastle.crypto.CipherParameters;
+import org.bouncycastle.crypto.InvalidCipherTextException;
 import org.bouncycastle.crypto.Wrapper;
-import org.bouncycastle.crypto.params.KeyParameter;
+import org.bouncycastle.crypto.params.*;
 import org.bouncycastle.crypto.params.ParametersWithIV;
-import org.bouncycastle.crypto.params.ParametersWithRandom;
-import org.bouncycastle.crypto.params.ParametersWithSBox;
-import org.bouncycastle.crypto.params.ParametersWithUKM;
 import org.bouncycastle.jcajce.spec.GOST28147WrapParameterSpec;
 import org.bouncycastle.jcajce.util.BCJcaJceHelper;
 import org.bouncycastle.jcajce.util.JcaJceHelper;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 public abstract class BaseWrapCipher
     extends CipherSpi
@@ -171,7 +168,7 @@ public abstract class BaseWrapCipher
         SecureRandom            random)
     throws InvalidKeyException, InvalidAlgorithmParameterException
     {
-        CipherParameters        param;
+        CipherParameters param;
 
         if (key instanceof BCPBEKey)
         {
@@ -211,7 +208,7 @@ public abstract class BaseWrapCipher
             {
                 param = new ParametersWithSBox(param, sBox);
             }
-            param = new ParametersWithUKM(param, spec.getUKM());
+            param = new ParametersWithUKMBC(param, spec.getUKM());
         }
 
         if (param instanceof KeyParameter && ivSize != 0)
@@ -357,7 +354,10 @@ public abstract class BaseWrapCipher
             throw new IllegalStateException("not supported in a wrapping mode");
         }
 
-        wrapStream.write(input, inputOffset, inputLen);
+        if (input != null)
+        {
+            wrapStream.write(input, inputOffset, inputLen);
+        }
 
         try
         {
@@ -378,7 +378,7 @@ public abstract class BaseWrapCipher
                 {
                     return wrapEngine.unwrap(wrapStream.getBuf(), 0, wrapStream.size());
                 }
-                catch (BCInvalidCipherTextException e)
+                catch (InvalidCipherTextException e)
                 {
                     throw new BadPaddingException(e.getMessage());
                 }
@@ -426,7 +426,7 @@ public abstract class BaseWrapCipher
                 {
                     enc = wrapEngine.unwrap(wrapStream.getBuf(), 0, wrapStream.size());
                 }
-                catch (BCInvalidCipherTextException e)
+                catch (InvalidCipherTextException e)
                 {
                     throw new BadPaddingException(e.getMessage());
                 }
@@ -492,7 +492,7 @@ public abstract class BaseWrapCipher
                 encoded = wrapEngine.unwrap(wrappedKey, 0, wrappedKey.length);
             }
         }
-        catch (BCInvalidCipherTextException e)
+        catch (InvalidCipherTextException e)
         {
             throw new InvalidKeyException(e.getMessage());
         }

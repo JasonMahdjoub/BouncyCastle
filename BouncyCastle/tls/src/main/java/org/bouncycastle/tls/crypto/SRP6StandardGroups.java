@@ -2,7 +2,7 @@ package org.bouncycastle.tls.crypto;
 
 import java.math.BigInteger;
 
-import org.bouncycastle.util.encoders.Hex;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 /**
  * A selection of standard groups for SRP-6.

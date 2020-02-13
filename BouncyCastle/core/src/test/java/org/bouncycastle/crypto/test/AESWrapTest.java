@@ -1,16 +1,16 @@
 package org.bouncycastle.crypto.test;
 
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.crypto.DataLengthException;
+import org.bouncycastle.crypto.InvalidCipherTextException;
 import org.bouncycastle.crypto.Wrapper;
 import org.bouncycastle.crypto.engines.AESWrapEngine;
 import org.bouncycastle.crypto.engines.AESWrapPadEngine;
 import org.bouncycastle.crypto.params.KeyParameter;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
-import org.bouncycastle.util.test.TestFailedException;
-import org.bouncycastle.util.test.TestResult;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.test.SimpleTest;
+import org.bouncycastle.bcutil.test.TestFailedException;
+import org.bouncycastle.bcutil.test.TestResult;
 
 /**
  * Wrap Test
@@ -134,7 +134,7 @@ public class AESWrapTest
 
             fail("incorrect pad not detected");
         }
-        catch (BCInvalidCipherTextException e)
+        catch (InvalidCipherTextException e)
         {
             // ignore
         }
@@ -197,7 +197,7 @@ public class AESWrapTest
         {
             // expected
         }
-        catch (BCInvalidCipherTextException e)
+        catch (InvalidCipherTextException e)
         {
             fail("unexpected exception: " + e, e);
         }
@@ -226,7 +226,7 @@ public class AESWrapTest
 
             fail("failed unwrap short test.");
         }
-        catch (BCInvalidCipherTextException e)
+        catch (InvalidCipherTextException e)
         {
             // expected
         }

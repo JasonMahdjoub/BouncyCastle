@@ -9,10 +9,10 @@ import java.security.spec.InvalidParameterSpecException;
 
 import javax.crypto.spec.IvParameterSpec;
 
-import org.bouncycastle.asn1.misc.IDEACBCPar;
-import org.bouncycastle.asn1.misc.MiscObjectIdentifiers;
-import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bcasn1.misc.BCMiscObjectIdentifiers;
+import org.bouncycastle.bcasn1.misc.IDEACBCPar;
 import org.bouncycastle.crypto.CipherKeyGenerator;
+import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
 import org.bouncycastle.crypto.engines.IDEAEngine;
 import org.bouncycastle.crypto.macs.CBCBlockCipherMac;
 import org.bouncycastle.crypto.macs.CFBBlockCipherMac;
@@ -242,10 +242,10 @@ public final class IDEA
             provider.addAlgorithm("Alg.Alias.AlgorithmParameters.PBEWITHSHAANDIDEA", "PKCS12PBE");
             provider.addAlgorithm("Alg.Alias.AlgorithmParameters.PBEWITHSHAANDIDEA-CBC", "PKCS12PBE");
             provider.addAlgorithm("Cipher.IDEA", PREFIX + "$ECB");
-            provider.addAlgorithm("Cipher", MiscObjectIdentifiers.as_sys_sec_alg_ideaCBC, PREFIX + "$CBC");
+            provider.addAlgorithm("Cipher", BCMiscObjectIdentifiers.as_sys_sec_alg_ideaCBC, PREFIX + "$CBC");
             provider.addAlgorithm("Cipher.PBEWITHSHAANDIDEA-CBC", PREFIX + "$PBEWithSHAAndIDEA");
             provider.addAlgorithm("KeyGenerator.IDEA", PREFIX + "$KeyGen");
-            provider.addAlgorithm("KeyGenerator",  MiscObjectIdentifiers.as_sys_sec_alg_ideaCBC, PREFIX + "$KeyGen");
+            provider.addAlgorithm("KeyGenerator",  BCMiscObjectIdentifiers.as_sys_sec_alg_ideaCBC, PREFIX + "$KeyGen");
             provider.addAlgorithm("SecretKeyFactory.PBEWITHSHAANDIDEA-CBC", PREFIX + "$PBEWithSHAAndIDEAKeyGen");
             provider.addAlgorithm("Mac.IDEAMAC", PREFIX + "$Mac");
             provider.addAlgorithm("Alg.Alias.Mac.IDEA", "IDEAMAC");

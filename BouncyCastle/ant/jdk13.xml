@@ -89,6 +89,7 @@
                 <exclude name="**/jcajce/spec/DSTU4145ParameterSpec.java" />
             </fileset>
             <fileset dir="pkix/src/main/java">
+                <exclude name="**/JceKeyTransAuthEnvelopedRecipient.java"/>
                 <exclude name="**/cert/jcajce/JcaAttributeCertificateIssuer.java" />
                 <exclude name="**/pkix/jcajce/X509Revoc*.java" />
                 <exclude name="**/pkix/jcajce/Revoc*.java" />
@@ -147,9 +148,12 @@
                 <exclude name="**/ECDSA5Test.java" />
                 <exclude name="**/NamedCurveTest.java" />
                 <exclude name="**/nist/NistCertPathTest.java" />
+                <exclude name="**/nist/NistCertPathTest2.java" />
                 <exclude name="**/nist/NistCertPathReviewerTest.java" />
                 <exclude name="**/CRL5Test.java" />
                 <exclude name="**/DetDSA*.java" />
+                <exclude name="**/PKITSTest.java" />
+                <exclude name="**/NistCertPathReviewerTest.java" />
                 <exclude name="**/LocalizedMessageTest.java" />
                 <exclude name="**/X509LDAP*.java" />
                 <exclude name="**/tls/test/*.java" />
@@ -171,6 +175,7 @@
                 <exclude name="**/pqc/**/BitStringTest.java" />
                 <exclude name="**/jcajce/provider/test/*.java" />
                 <exclude name="**/jce/provider/test/JceTestUtil.java" />
+		<exclude name="**/ChaCha20Poly1305Test.java"/>
                 <exclude name="**/speedy/**" />
                 <exclude name="**/cavp/**" />
                 <exclude name="**/KDFFeedbackGeneratorTest.java" />
@@ -188,10 +193,14 @@
                 <exclude name="**/mime/test/*.java" />
                 <exclude name="**/pkix/**/RevocationTest.java" />
                 <exclude name="**/pkix/**/TestUtil.java" />
+                <exclude name="**/JournalingSecureRandomEncryptTest.java" />
+                <exclude name="**/cms/test/AnnotatedKeyTest.java"/>
+                <exclude name="**/bouncycastle/cms/test/AuthEnvelopedDataTest.java"/>
             </fileset>
             <fileset dir="mail/src/test/java">
                 <exclude name="**/SignedMailValidatorTest.java" />
                 <exclude name="**/DummyCertPathReviewer.java" />
+		<exclude name="**/JournalingSecureRandomEncryptTest.java"/>
             </fileset>
             <fileset dir="mail/src/test/resources" />
             <fileset dir="prov/src/main/resources" includes="**/*.properties" />
@@ -235,14 +244,19 @@
             </fileset>
             <fileset dir="pkix/src/main/jdk1.4" includes="**/*.java" />
             <fileset dir="pg/src/main/jdk1.4" includes="**/*.java" />
+            <fileset dir="pg/src/main/jdk1.3" includes="**/*.java" />
             <fileset dir="core/src/test/jdk1.4" includes="**/*.java" />
         </copy>
         <copy todir="${src.dir}" overwrite="true">
-            <fileset dir="prov/src/test/jdk1.4" includes="**/*.java" />
+            <fileset dir="prov/src/test/jdk1.4" includes="**/*.java" >
+                <exclude name="**/NistCertPathReviewerTest.java" />
+            </fileset>
             <fileset dir="pkix/src/test/jdk1.4" includes="**/*.java" >
                 <exclude name="**/mime/test/*.java" />
             </fileset>
-            <fileset dir="mail/src/test/jdk1.4" includes="**/*.java" />
+            <fileset dir="mail/src/test/jdk1.4" includes="**/*.java" >
+                <exclude name="**/SignedMailValidatorTest.java" />
+            </fileset>
         </copy>
         <copy todir="${src.dir}" overwrite="true">
             <fileset dir="core/src/main/jdk1.3" includes="**/*.java" />

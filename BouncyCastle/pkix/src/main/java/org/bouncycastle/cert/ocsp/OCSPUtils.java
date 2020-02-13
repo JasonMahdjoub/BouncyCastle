@@ -8,8 +8,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.bouncycastle.asn1.ASN1GeneralizedTime;
-import org.bouncycastle.asn1.x509.Extensions;
+import org.bouncycastle.bcasn1.ASN1GeneralizedTime;
+import org.bouncycastle.bcasn1.x509.Extensions;
 import org.bouncycastle.cert.X509CertificateHolder;
 
 class OCSPUtils

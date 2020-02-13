@@ -3,18 +3,18 @@ package org.bouncycastle.cms;
 import java.io.IOException;
 import java.util.List;
 
-import org.bouncycastle.asn1.ASN1OctetString;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.cms.IssuerAndSerialNumber;
-import org.bouncycastle.asn1.cms.KeyAgreeRecipientIdentifier;
-import org.bouncycastle.asn1.cms.KeyAgreeRecipientInfo;
-import org.bouncycastle.asn1.cms.OriginatorIdentifierOrKey;
-import org.bouncycastle.asn1.cms.OriginatorPublicKey;
-import org.bouncycastle.asn1.cms.RecipientEncryptedKey;
-import org.bouncycastle.asn1.cms.RecipientKeyIdentifier;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x509.SubjectKeyIdentifier;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
+import org.bouncycastle.bcasn1.ASN1OctetString;
+import org.bouncycastle.bcasn1.ASN1Sequence;
+import org.bouncycastle.bcasn1.cms.IssuerAndSerialNumber;
+import org.bouncycastle.bcasn1.cms.KeyAgreeRecipientIdentifier;
+import org.bouncycastle.bcasn1.cms.KeyAgreeRecipientInfo;
+import org.bouncycastle.bcasn1.cms.OriginatorIdentifierOrKey;
+import org.bouncycastle.bcasn1.cms.OriginatorPublicKey;
+import org.bouncycastle.bcasn1.cms.RecipientEncryptedKey;
+import org.bouncycastle.bcasn1.cms.RecipientKeyIdentifier;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.x509.SubjectKeyIdentifier;
+import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
 
 /**
  * the RecipientInfo class for a recipient who has been sent a message
@@ -123,7 +123,7 @@ public class KeyAgreeRecipientInformation
         throws CMSException, IOException
     {
         KeyAgreeRecipient agreeRecipient = (KeyAgreeRecipient)recipient;
-                AlgorithmIdentifier    recKeyAlgId = agreeRecipient.getPrivateKeyAlgorithmIdentifier();
+        AlgorithmIdentifier    recKeyAlgId = agreeRecipient.getPrivateKeyAlgorithmIdentifier();
 
         return ((KeyAgreeRecipient)recipient).getRecipientOperator(keyEncAlg, messageAlgorithm, getSenderPublicKeyInfo(recKeyAlgId,
                         info.getOriginator()), info.getUserKeyingMaterial(), encryptedKey.getOctets());

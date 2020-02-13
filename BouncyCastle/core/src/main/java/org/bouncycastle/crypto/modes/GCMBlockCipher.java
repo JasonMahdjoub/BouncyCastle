@@ -1,7 +1,7 @@
 package org.bouncycastle.crypto.modes;
 
 import org.bouncycastle.crypto.*;
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
+import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.modes.gcm.BasicGCMExponentiator;
 import org.bouncycastle.crypto.modes.gcm.GCMExponentiator;
 import org.bouncycastle.crypto.modes.gcm.GCMMultiplier;
@@ -10,8 +10,8 @@ import org.bouncycastle.crypto.modes.gcm.Tables4kGCMMultiplier;
 import org.bouncycastle.crypto.params.AEADParameters;
 import org.bouncycastle.crypto.params.KeyParameter;
 import org.bouncycastle.crypto.params.ParametersWithIV;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Pack;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.Pack;
 
 /**
  * Implements the Galois/Counter mode (GCM) detailed in
@@ -381,7 +381,7 @@ public class GCMBlockCipher
     }
 
     public int doFinal(byte[] out, int outOff)
-        throws IllegalStateException, BCInvalidCipherTextException
+        throws IllegalStateException, InvalidCipherTextException
     {
         checkStatus();
 
@@ -403,7 +403,7 @@ public class GCMBlockCipher
         {
             if (extra < macSize)
             {
-                throw new BCInvalidCipherTextException("data too short");
+                throw new InvalidCipherTextException("data too short");
             }
             extra -= macSize;
 
@@ -491,7 +491,7 @@ public class GCMBlockCipher
             System.arraycopy(bufBlock, extra, msgMac, 0, macSize);
             if (!Arrays.constantTimeAreEqual(this.macBlock, msgMac))
             {
-                throw new BCInvalidCipherTextException("mac check in GCM failed");
+                throw new InvalidCipherTextException("mac check in GCM failed");
             }
         }
 

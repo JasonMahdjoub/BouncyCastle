@@ -5,26 +5,22 @@ import java.security.SecureRandom;
 
 import junit.framework.TestCase;
 import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.DataLengthException;
-import org.bouncycastle.pqc.crypto.ntru.NTRUEncryptionKeyGenerationParameters;
-import org.bouncycastle.pqc.crypto.ntru.NTRUEncryptionKeyPairGenerator;
+import org.bouncycastle.crypto.InvalidCipherTextException;
+import org.bouncycastle.pqc.crypto.ntru.*;
 import org.bouncycastle.pqc.crypto.ntru.NTRUEncryptionPrivateKeyParameters;
-import org.bouncycastle.pqc.crypto.ntru.NTRUEncryptionPublicKeyParameters;
-import org.bouncycastle.pqc.crypto.ntru.NTRUEngine;
-import org.bouncycastle.pqc.crypto.ntru.NTRUParameters;
 import org.bouncycastle.pqc.math.ntru.polynomial.DenseTernaryPolynomial;
 import org.bouncycastle.pqc.math.ntru.polynomial.IntegerPolynomial;
 import org.bouncycastle.pqc.math.ntru.polynomial.Polynomial;
 import org.bouncycastle.pqc.math.ntru.polynomial.SparseTernaryPolynomial;
 import org.bouncycastle.pqc.math.ntru.polynomial.TernaryPolynomial;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 public class NTRUEncryptTest
     extends TestCase
 {
     public void testEncryptDecrypt()
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         NTRUEncryptionKeyGenerationParameters params = NTRUEncryptionKeyGenerationParameters.APR2011_743.clone();
         // set df1..df3 and dr1..dr3 so params can be used for SIMPLE as well as PRODUCT
@@ -87,7 +83,7 @@ public class NTRUEncryptTest
 
     // encrypts and decrypts text
     private void testText(NTRUEngine ntru, AsymmetricCipherKeyPair  kp, NTRUEncryptionKeyGenerationParameters params)
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         byte[] plainText = "text to encrypt".getBytes();
 
@@ -104,7 +100,7 @@ public class NTRUEncryptTest
 
     // tests an empty message
     private void testEmpty(NTRUEngine ntru, AsymmetricCipherKeyPair kp, NTRUEncryptionKeyGenerationParameters params)
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         byte[] plainText = "".getBytes();
 
@@ -121,7 +117,7 @@ public class NTRUEncryptTest
 
     // tests a message of the maximum allowed length
     private void testMaxLength(NTRUEngine ntru, AsymmetricCipherKeyPair kp, NTRUEncryptionKeyGenerationParameters params)
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         byte[] plainText = new byte[params.maxMsgLenBytes];
         System.arraycopy("secret encrypted text".getBytes(), 0, plainText, 0, 21);
@@ -159,7 +155,7 @@ public class NTRUEncryptTest
         {
             assertEquals("Message too long: " + plainText.length + ">" + params.maxMsgLenBytes, ex.getMessage());
         }
-        catch (BCInvalidCipherTextException e)
+        catch (InvalidCipherTextException e)
         {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
@@ -186,7 +182,7 @@ public class NTRUEncryptTest
 
             fail("An exception should have been thrown!");
         }
-        catch (BCInvalidCipherTextException ex)
+        catch (InvalidCipherTextException ex)
         {
             assertEquals("Invalid message encoding", ex.getMessage());
         }
@@ -194,7 +190,7 @@ public class NTRUEncryptTest
 
     // encrypts and decrypts text using an encoded key pair (fastFp=false, simple ternary polynomials)
     public void testEncodedKeysSlow()
-        throws IOException, BCInvalidCipherTextException
+        throws IOException, InvalidCipherTextException
     {
         byte[] plainText = "secret encrypted text".getBytes();
 
@@ -251,7 +247,7 @@ public class NTRUEncryptTest
 
     // encrypts and decrypts text using an encoded key pair (fastFp=true)
     public void testEncodedKeysFast()
-        throws IOException, BCInvalidCipherTextException
+        throws IOException, InvalidCipherTextException
     {
         byte[] plainText = "secret encrypted text".getBytes();
 

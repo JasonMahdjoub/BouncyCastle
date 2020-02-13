@@ -2,8 +2,11 @@ package org.bouncycastle.crypto.tls;
 
 import java.io.IOException;
 
-import org.bouncycastle.util.Strings;
+import org.bouncycastle.bcutil.Strings;
 
+/**
+ * @deprecated Migrate to the (D)TLS API in org.bouncycastle.tls (bctls jar).
+ */
 public final class ProtocolVersion
 {
     public static final ProtocolVersion SSLv3 = new ProtocolVersion(0x0300, "SSL 3.0");

@@ -5,12 +5,12 @@ import java.security.PrivilegedAction;
 import java.security.SecureRandom;
 
 import org.bouncycastle.crypto.AsymmetricBlockCipher;
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
-import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.crypto.CipherParameters;
+import org.bouncycastle.crypto.InvalidCipherTextException;
 import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
 import org.bouncycastle.crypto.params.ParametersWithRandom;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 /**
  * this does your basic PKCS 1 v1.5 padding - whether or not you should be using this
@@ -190,7 +190,7 @@ public class PKCS1Encoding
         byte[] in,
         int inOff,
         int inLen)
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         if (forEncryption)
         {
@@ -206,7 +206,7 @@ public class PKCS1Encoding
         byte[] in,
         int inOff,
         int inLen)
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         if (inLen > getInputBlockSize())
         {
@@ -305,14 +305,14 @@ public class PKCS1Encoding
      * @param inLen Length of the encrypted block.
      *              //@param pLen Length of the desired output.
      * @return The plaintext without padding, or a random value if the padding was incorrect.
-     * @throws BCInvalidCipherTextException
+     * @throws InvalidCipherTextException
      */
     private byte[] decodeBlockOrRandom(byte[] in, int inOff, int inLen)
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         if (!forPrivateKey)
         {
-            throw new BCInvalidCipherTextException("sorry, this method is only for decryption, not for signing");
+            throw new InvalidCipherTextException("sorry, this method is only for decryption, not for signing");
         }
 
         byte[] block = engine.processBlock(in, inOff, inLen);
@@ -350,13 +350,13 @@ public class PKCS1Encoding
     }
 
     /**
-     * @throws BCInvalidCipherTextException if the decrypted block is not in PKCS1 format.
+     * @throws InvalidCipherTextException if the decrypted block is not in PKCS1 format.
      */
     private byte[] decodeBlock(
         byte[] in,
         int inOff,
         int inLen)
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         /*
          * If the length of the expected plaintext is known, we use a constant-time decryption.
@@ -402,14 +402,14 @@ public class PKCS1Encoding
         if (badType | start < HEADER_LENGTH)
         {
             Arrays.fill(data, (byte)0);
-            throw new BCInvalidCipherTextException("block incorrect");
+            throw new InvalidCipherTextException("block incorrect");
         }
 
         // if we get this far, it's likely to be a genuine encoding error
         if (incorrectLength)
         {
             Arrays.fill(data, (byte)0);
-            throw new BCInvalidCipherTextException("block incorrect size");
+            throw new InvalidCipherTextException("block incorrect size");
         }
 
         byte[] result = new byte[data.length - start];
@@ -420,7 +420,7 @@ public class PKCS1Encoding
     }
 
     private int findStart(byte type, byte[] block)
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         int start = -1;
         boolean padErr = false;

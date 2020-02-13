@@ -1,11 +1,11 @@
 package org.bouncycastle.crypto.modes;
 
-import org.bouncycastle.crypto.BlockCipher;
 import org.bouncycastle.crypto.CipherParameters;
+import org.bouncycastle.crypto.BlockCipher;
 import org.bouncycastle.crypto.DataLengthException;
 import org.bouncycastle.crypto.StreamBlockCipher;
 import org.bouncycastle.crypto.params.ParametersWithIV;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 /**
  * implements a Cipher-FeedBack (CFB) mode on top of a simple cipher.
@@ -58,7 +58,7 @@ public class CFBBlockCipher
      */
     public void init(
         boolean             encrypting,
-        CipherParameters    params)
+        CipherParameters params)
         throws IllegalArgumentException
     {
         this.encrypting = encrypting;

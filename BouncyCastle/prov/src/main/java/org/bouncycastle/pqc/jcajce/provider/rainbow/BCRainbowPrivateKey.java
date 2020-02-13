@@ -4,9 +4,9 @@ import java.io.IOException;
 import java.security.PrivateKey;
 import java.util.Arrays;
 
-import org.bouncycastle.asn1.DERNull;
-import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.DERNull;
+import org.bouncycastle.bcasn1.pkcs.PrivateKeyInfo;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.pqc.asn1.PQCObjectIdentifiers;
 import org.bouncycastle.pqc.asn1.RainbowPrivateKey;
 import org.bouncycastle.pqc.crypto.rainbow.Layer;
@@ -187,11 +187,11 @@ public class BCRainbowPrivateKey
     {
         int hash = layers.length;
 
-        hash = hash * 37 + org.bouncycastle.util.Arrays.hashCode(A1inv);
-        hash = hash * 37 + org.bouncycastle.util.Arrays.hashCode(b1);
-        hash = hash * 37 + org.bouncycastle.util.Arrays.hashCode(A2inv);
-        hash = hash * 37 + org.bouncycastle.util.Arrays.hashCode(b2);
-        hash = hash * 37 + org.bouncycastle.util.Arrays.hashCode(vi);
+        hash = hash * 37 + org.bouncycastle.bcutil.Arrays.hashCode(A1inv);
+        hash = hash * 37 + org.bouncycastle.bcutil.Arrays.hashCode(b1);
+        hash = hash * 37 + org.bouncycastle.bcutil.Arrays.hashCode(A2inv);
+        hash = hash * 37 + org.bouncycastle.bcutil.Arrays.hashCode(b2);
+        hash = hash * 37 + org.bouncycastle.bcutil.Arrays.hashCode(vi);
 
         for (int i = layers.length - 1; i >= 0; i--)
         {

@@ -5,11 +5,8 @@ import java.math.BigInteger;
 import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
 import org.bouncycastle.crypto.AsymmetricCipherKeyPairGenerator;
 import org.bouncycastle.crypto.KeyGenerationParameters;
-import org.bouncycastle.crypto.params.DHParameters;
-import org.bouncycastle.crypto.params.ElGamalKeyGenerationParameters;
+import org.bouncycastle.crypto.params.*;
 import org.bouncycastle.crypto.params.ElGamalParameters;
-import org.bouncycastle.crypto.params.ElGamalPrivateKeyParameters;
-import org.bouncycastle.crypto.params.ElGamalPublicKeyParameters;
 
 /**
  * a ElGamal key pair generator.
@@ -32,7 +29,7 @@ public class ElGamalKeyPairGenerator
     {
         DHKeyGeneratorHelper helper = DHKeyGeneratorHelper.INSTANCE;
         ElGamalParameters egp = param.getParameters();
-        DHParameters dhp = new DHParameters(egp.getP(), egp.getG(), null, egp.getL());  
+        DHParameters dhp = new DHParameters(egp.getP(), egp.getG(), null, egp.getL());
 
         BigInteger x = helper.calculatePrivate(dhp, param.getRandom()); 
         BigInteger y = helper.calculatePublic(dhp, x);

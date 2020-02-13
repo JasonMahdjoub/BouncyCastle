@@ -1,9 +1,9 @@
 package org.bouncycastle.crypto.test;
 
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.StreamCipher;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**
  * a basic test that takes a stream cipher, key parameter, and an input
@@ -14,14 +14,14 @@ public class StreamCipherVectorTest
 {
     int                 id;
     StreamCipher        cipher;
-    CipherParameters    param;
+    CipherParameters param;
     byte[]              input;
     byte[]              output;
 
     public StreamCipherVectorTest(
         int                 id,
         StreamCipher        cipher,
-        CipherParameters    param,
+        CipherParameters param,
         String              input,
         String              output)
     {

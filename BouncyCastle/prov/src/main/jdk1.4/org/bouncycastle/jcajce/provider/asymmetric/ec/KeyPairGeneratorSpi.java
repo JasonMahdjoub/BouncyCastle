@@ -7,12 +7,12 @@ import java.security.SecureRandom;
 import java.security.spec.AlgorithmParameterSpec;
 import java.util.Hashtable;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.nist.NISTNamedCurves;
-import org.bouncycastle.asn1.sec.SECNamedCurves;
-import org.bouncycastle.asn1.teletrust.TeleTrusTNamedCurves;
-import org.bouncycastle.asn1.x9.X962NamedCurves;
-import org.bouncycastle.asn1.x9.X9ECParameters;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.nist.NISTNamedCurves;
+import org.bouncycastle.bcasn1.sec.SECNamedCurves;
+import org.bouncycastle.bcasn1.teletrust.TeleTrusTNamedCurves;
+import org.bouncycastle.bcasn1.x9.X962NamedCurves;
+import org.bouncycastle.bcasn1.x9.X9ECParameters;
 import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
 import org.bouncycastle.crypto.CryptoServicesRegistrar;
 import org.bouncycastle.crypto.generators.ECKeyPairGenerator;
@@ -26,7 +26,7 @@ import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.jce.spec.ECNamedCurveGenParameterSpec;
 import org.bouncycastle.jce.spec.ECNamedCurveParameterSpec;
 import org.bouncycastle.jce.spec.ECParameterSpec;
-import org.bouncycastle.util.Integers;
+import org.bouncycastle.bcutil.Integers;
 import org.bouncycastle.jcajce.provider.asymmetric.util.ECUtil;
 
 public abstract class KeyPairGeneratorSpi

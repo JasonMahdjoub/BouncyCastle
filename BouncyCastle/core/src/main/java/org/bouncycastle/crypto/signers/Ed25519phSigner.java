@@ -6,7 +6,7 @@ import org.bouncycastle.crypto.Signer;
 import org.bouncycastle.crypto.params.Ed25519PrivateKeyParameters;
 import org.bouncycastle.crypto.params.Ed25519PublicKeyParameters;
 import org.bouncycastle.math.ec.rfc8032.Ed25519;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 public class Ed25519phSigner
     implements Signer
@@ -76,6 +76,10 @@ public class Ed25519phSigner
         if (forSigning || null == publicKey)
         {
             throw new IllegalStateException("Ed25519phSigner not initialised for verification");
+        }
+        if (Ed25519.SIGNATURE_SIZE != signature.length)
+        {
+            return false;
         }
 
         byte[] pk = publicKey.getEncoded();

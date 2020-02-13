@@ -5,7 +5,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.math.BigInteger;
 
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 public class ServerSRPParams
 {
@@ -67,7 +67,7 @@ public class ServerSRPParams
     {
         BigInteger N = TlsSRPUtils.readSRPParameter(input);
         BigInteger g = TlsSRPUtils.readSRPParameter(input);
-        byte[] s = TlsUtils.readOpaque8(input);
+        byte[] s = TlsUtils.readOpaque8(input, 1);
         BigInteger B = TlsSRPUtils.readSRPParameter(input);
 
         return new ServerSRPParams(N, g, s, B);

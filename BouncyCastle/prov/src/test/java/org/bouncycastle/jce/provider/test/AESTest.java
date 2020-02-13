@@ -4,7 +4,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.IOException;
-import java.security.InvalidKeyException;
+import java.security.InvalidAlgorithmParameterException;
 import java.security.Key;
 import java.security.Security;
 
@@ -15,10 +15,10 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
-import org.bouncycastle.asn1.nist.NISTObjectIdentifiers;
+import org.bouncycastle.bcasn1.nist.NISTObjectIdentifiers;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.crypto.prng.FixedSecureRandom;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.encoders.Hex;
 
 /**
  * basic test class for the AES cipher vectors from FIPS-197
@@ -311,7 +311,7 @@ public class AESTest
             in.init(Cipher.ENCRYPT_MODE, key, new IvParameterSpec(N));
             fail("no exception on reuse");
         }
-        catch (InvalidKeyException e)
+        catch (InvalidAlgorithmParameterException e)
         {
             isTrue("wrong message", e.getMessage().equals("cannot reuse nonce for GCM encryption"));
         }

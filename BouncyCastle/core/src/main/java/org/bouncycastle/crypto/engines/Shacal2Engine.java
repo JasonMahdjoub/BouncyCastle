@@ -1,11 +1,10 @@
 package org.bouncycastle.crypto.engines;
 
-import org.bouncycastle.crypto.BlockCipher;
 import org.bouncycastle.crypto.CipherParameters;
+import org.bouncycastle.crypto.BlockCipher;
 import org.bouncycastle.crypto.DataLengthException;
 import org.bouncycastle.crypto.OutputLengthException;
 import org.bouncycastle.crypto.params.KeyParameter;
-import org.bouncycastle.util.encoders.Hex;
 
 /**
  * Block cipher Shacal2, designed by Helena Handschuh and David Naccache,
@@ -57,7 +56,7 @@ public class Shacal2Engine
 	    return BLOCK_SIZE;
 	}
 
-	public void init(boolean _forEncryption, CipherParameters  params)
+	public void init(boolean _forEncryption, CipherParameters params)
 		throws IllegalArgumentException
 	{
 		if (!(params instanceof KeyParameter))

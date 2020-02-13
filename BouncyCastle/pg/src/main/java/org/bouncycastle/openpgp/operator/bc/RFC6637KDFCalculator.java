@@ -4,10 +4,10 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import org.bouncycastle.bcpg.SymmetricKeyAlgorithmTags;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.math.ec.ECPoint;
 import org.bouncycastle.openpgp.PGPException;
 import org.bouncycastle.openpgp.operator.PGPDigestCalculator;
-import org.bouncycastle.util.encoders.Hex;
 
 /**
  * Calculator for the EC based KDF algorithm described in RFC 6637

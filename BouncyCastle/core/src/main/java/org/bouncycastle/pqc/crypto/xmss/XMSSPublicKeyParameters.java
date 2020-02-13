@@ -1,57 +1,76 @@
 package org.bouncycastle.pqc.crypto.xmss;
 
+import java.io.IOException;
+
+import org.bouncycastle.bcutil.Encodable;
+import org.bouncycastle.bcutil.Pack;
+
 /**
  * XMSS Public Key.
  */
 public final class XMSSPublicKeyParameters
     extends XMSSKeyParameters
-    implements XMSSStoreableObjectInterface
+    implements XMSSStoreableObjectInterface, Encodable
 {
 
     /**
      * XMSS parameters object.
      */
     private final XMSSParameters params;
-    //private final int oid;
+    private final int oid;
     private final byte[] root;
     private final byte[] publicSeed;
 
     private XMSSPublicKeyParameters(Builder builder)
     {
-        super(false, builder.params.getDigest().getAlgorithmName());
+        super(false, builder.params.getTreeDigest());
         params = builder.params;
         if (params == null)
         {
             throw new NullPointerException("params == null");
         }
-        int n = params.getDigestSize();
+        int n = params.getTreeDigestSize();
         byte[] publicKey = builder.publicKey;
         if (publicKey != null)
         {
             /* import */
-            // int oidSize = 4;
+            int oidSize = 4;
             int rootSize = n;
             int publicSeedSize = n;
-            // int totalSize = oidSize + rootSize + publicSeedSize;
-            int totalSize = rootSize + publicSeedSize;
-            if (publicKey.length != totalSize)
+            // updated key
+            int position = 0;
+            // pre-rfc final key without OID.
+            if (publicKey.length == rootSize + publicSeedSize)
+            {
+                oid = 0;
+                root = XMSSUtil.extractBytesAtOffset(publicKey, position, rootSize);
+                position += rootSize;
+                publicSeed = XMSSUtil.extractBytesAtOffset(publicKey, position, publicSeedSize);
+            }
+            else if (publicKey.length == oidSize + rootSize + publicSeedSize)
+            {
+                oid = Pack.bigEndianToInt(publicKey, 0);
+                position += oidSize;
+                root = XMSSUtil.extractBytesAtOffset(publicKey, position, rootSize);
+                position += rootSize;
+                publicSeed = XMSSUtil.extractBytesAtOffset(publicKey, position, publicSeedSize);
+            }
+            else
             {
                 throw new IllegalArgumentException("public key has wrong size");
             }
-            int position = 0;
-            /*
-             * oid = XMSSUtil.bytesToIntBigEndian(publicKey, position); if (oid !=
-             * xmss.getParams().getOid().getOid()) { throw new
-             * ParseException("public key not compatible with current instance parameters"
-             * , 0); } position += oidSize;
-             */
-            root = XMSSUtil.extractBytesAtOffset(publicKey, position, rootSize);
-            position += rootSize;
-            publicSeed = XMSSUtil.extractBytesAtOffset(publicKey, position, publicSeedSize);
         }
         else
         {
             /* set */
+            if (params.getOid() != null)
+            {
+                this.oid = params.getOid().getOid();
+            }
+            else
+            {
+                this.oid = 0;
+            }
             byte[] tmpRoot = builder.root;
             if (tmpRoot != null)
             {
@@ -79,6 +98,12 @@ public final class XMSSPublicKeyParameters
                 publicSeed = new byte[n];
             }
         }
+    }
+
+    public byte[] getEncoded()
+        throws IOException
+    {
+        return toByteArray();
     }
 
     public static class Builder
@@ -121,22 +146,30 @@ public final class XMSSPublicKeyParameters
         }
     }
 
+    /**
+     * @deprecated use getEncoded() - this method will become private.
+     */
     public byte[] toByteArray()
     {
         /* oid || root || seed */
-        int n = params.getDigestSize();
-        // int oidSize = 4;
+        int n = params.getTreeDigestSize();
+        int oidSize = 4;
         int rootSize = n;
         int publicSeedSize = n;
-        // int totalSize = oidSize + rootSize + publicSeedSize;
-        int totalSize = rootSize + publicSeedSize;
-        byte[] out = new byte[totalSize];
+
+        byte[] out;
         int position = 0;
         /* copy oid */
-        /*
-         * XMSSUtil.intToBytesBigEndianOffset(out, oid, position); position +=
-         * oidSize;
-         */
+        if (oid != 0)
+        {
+            out = new byte[oidSize + rootSize + publicSeedSize];
+            Pack.intToBigEndian(oid, out, position);
+            position += oidSize;
+        }
+        else
+        {
+            out = new byte[rootSize + publicSeedSize];
+        }
         /* copy root */
         XMSSUtil.copyBytesAtOffset(out, root, position);
         position += rootSize;

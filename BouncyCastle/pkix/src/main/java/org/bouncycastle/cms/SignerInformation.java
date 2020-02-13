@@ -7,32 +7,32 @@ import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.List;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1EncodableVector;
-import org.bouncycastle.asn1.ASN1Encoding;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1OctetString;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.ASN1Set;
-import org.bouncycastle.asn1.DERNull;
-import org.bouncycastle.asn1.DERSet;
-import org.bouncycastle.asn1.cms.Attribute;
-import org.bouncycastle.asn1.cms.AttributeTable;
-import org.bouncycastle.asn1.cms.CMSAlgorithmProtection;
-import org.bouncycastle.asn1.cms.CMSAttributes;
-import org.bouncycastle.asn1.cms.IssuerAndSerialNumber;
-import org.bouncycastle.asn1.cms.SignerIdentifier;
-import org.bouncycastle.asn1.cms.SignerInfo;
-import org.bouncycastle.asn1.cms.Time;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x509.DigestInfo;
+import org.bouncycastle.bcasn1.ASN1Encodable;
+import org.bouncycastle.bcasn1.ASN1EncodableVector;
+import org.bouncycastle.bcasn1.ASN1Encoding;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.ASN1OctetString;
+import org.bouncycastle.bcasn1.ASN1Primitive;
+import org.bouncycastle.bcasn1.ASN1Set;
+import org.bouncycastle.bcasn1.DERNull;
+import org.bouncycastle.bcasn1.DERSet;
+import org.bouncycastle.bcasn1.cms.Attribute;
+import org.bouncycastle.bcasn1.cms.AttributeTable;
+import org.bouncycastle.bcasn1.cms.CMSAlgorithmProtection;
+import org.bouncycastle.bcasn1.cms.CMSAttributes;
+import org.bouncycastle.bcasn1.cms.IssuerAndSerialNumber;
+import org.bouncycastle.bcasn1.cms.SignerIdentifier;
+import org.bouncycastle.bcasn1.cms.SignerInfo;
+import org.bouncycastle.bcasn1.cms.Time;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.x509.DigestInfo;
 import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.operator.ContentVerifier;
 import org.bouncycastle.operator.DigestCalculator;
 import org.bouncycastle.operator.OperatorCreationException;
 import org.bouncycastle.operator.RawContentVerifier;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.io.TeeOutputStream;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.io.TeeOutputStream;
 
 /**
  * an expanded SignerInfo block from a CMS Signed message
@@ -147,7 +147,7 @@ public class SignerInformation
      */
     public int getVersion()
     {
-        return info.getVersion().getValue().intValue();
+        return info.getVersion().intValueExact();
     }
 
     public AlgorithmIdentifier getDigestAlgorithmID()

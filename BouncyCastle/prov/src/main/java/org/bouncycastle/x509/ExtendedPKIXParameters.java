@@ -13,8 +13,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import org.bouncycastle.util.Selector;
-import org.bouncycastle.util.Store;
+import org.bouncycastle.bcutil.Selector;
+import org.bouncycastle.bcutil.Store;
 
 /**
  * This class extends the PKIXParameters with a validity model parameter.

@@ -1,0 +1,93 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "org.bouncycastle",
+    "module": "bc-pg",
+    "version": "1.64-DMRECOMPILE",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "6.1",
+      "buildId": "zu7qo3wfazauhfmxkoaxiulm54"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 7,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "org.bouncycastle",
+          "module": "bc-core",
+          "version": {
+            "requires": "1.64-DMRECOMPILE"
+          }
+        },
+        {
+          "group": "org.bouncycastle",
+          "module": "bc-prov",
+          "version": {
+            "requires": "1.64-DMRECOMPILE"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "bc-pg-1.64-DMRECOMPILE.jar",
+          "url": "bc-pg-1.64-DMRECOMPILE.jar",
+          "size": 391449,
+          "sha512": "87f50e3de8c72a02b1d0f626fac9f2a8c5ac371e834e36d7f2d1b94fb4c12b5a63469978ac62ce0f7c46edec9e0bb8e21fea8ad9e15b012ef1123b75d1a34b27",
+          "sha256": "faa9e554fd224ca80ef71cfc8087821a3610d0ff560c0ea33ab8c37fc0df3a74",
+          "sha1": "710dcd98232a261f13924da153ec8c0143c52ba8",
+          "md5": "ef265575cf1ab12a630b5363c50716d4"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 7,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "org.bouncycastle",
+          "module": "bc-core",
+          "version": {
+            "requires": "1.64-DMRECOMPILE"
+          }
+        },
+        {
+          "group": "org.bouncycastle",
+          "module": "bc-prov",
+          "version": {
+            "requires": "1.64-DMRECOMPILE"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "bc-pg-1.64-DMRECOMPILE.jar",
+          "url": "bc-pg-1.64-DMRECOMPILE.jar",
+          "size": 391449,
+          "sha512": "87f50e3de8c72a02b1d0f626fac9f2a8c5ac371e834e36d7f2d1b94fb4c12b5a63469978ac62ce0f7c46edec9e0bb8e21fea8ad9e15b012ef1123b75d1a34b27",
+          "sha256": "faa9e554fd224ca80ef71cfc8087821a3610d0ff560c0ea33ab8c37fc0df3a74",
+          "sha1": "710dcd98232a261f13924da153ec8c0143c52ba8",
+          "md5": "ef265575cf1ab12a630b5363c50716d4"
+        }
+      ]
+    }
+  ]
+}

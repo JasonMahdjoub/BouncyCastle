@@ -6,7 +6,7 @@ import java.security.Security;
 import java.security.Signature;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class SigNameTest
     extends SimpleTest

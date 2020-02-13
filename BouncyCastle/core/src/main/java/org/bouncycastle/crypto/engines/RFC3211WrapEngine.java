@@ -3,11 +3,11 @@ package org.bouncycastle.crypto.engines;
 import java.security.SecureRandom;
 
 import org.bouncycastle.crypto.*;
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
+import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.modes.CBCBlockCipher;
 import org.bouncycastle.crypto.params.ParametersWithIV;
 import org.bouncycastle.crypto.params.ParametersWithRandom;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 /**
  * an implementation of the RFC 3211 Key Wrap
@@ -125,7 +125,7 @@ public class RFC3211WrapEngine
         byte[]  in,
         int     inOff,
         int     inLen)
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         if (forWrapping)
         {
@@ -136,7 +136,7 @@ public class RFC3211WrapEngine
 
         if (inLen < 2 * blockSize)
         {
-            throw new BCInvalidCipherTextException("input too short");
+            throw new InvalidCipherTextException("input too short");
         }
         
         byte[] cekBlock = new byte[inLen];
@@ -191,7 +191,7 @@ public class RFC3211WrapEngine
 
         if (nonEqual != 0 | invalidLength)
         {
-            throw new BCInvalidCipherTextException("wrapped key corrupted");
+            throw new InvalidCipherTextException("wrapped key corrupted");
         }
 
         return key;

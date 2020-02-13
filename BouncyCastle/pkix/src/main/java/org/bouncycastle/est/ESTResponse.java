@@ -5,8 +5,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Set;
 
-import org.bouncycastle.util.Properties;
-import org.bouncycastle.util.Strings;
+import org.bouncycastle.bcutil.Properties;
+import org.bouncycastle.bcutil.Strings;
 
 /**
  * A basic http response.

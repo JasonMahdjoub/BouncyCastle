@@ -2,18 +2,15 @@ package org.bouncycastle.crypto.agreement;
 
 import java.math.BigInteger;
 
-import org.bouncycastle.crypto.BasicAgreement;
 import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.params.ECDomainParameters;
-import org.bouncycastle.crypto.params.ECPrivateKeyParameters;
-import org.bouncycastle.crypto.params.ECPublicKeyParameters;
-import org.bouncycastle.crypto.params.MQVPrivateParameters;
+import org.bouncycastle.crypto.BasicAgreement;
+import org.bouncycastle.crypto.params.*;
 import org.bouncycastle.crypto.params.MQVPublicParameters;
 import org.bouncycastle.math.ec.ECAlgorithms;
 import org.bouncycastle.math.ec.ECConstants;
 import org.bouncycastle.math.ec.ECCurve;
 import org.bouncycastle.math.ec.ECPoint;
-import org.bouncycastle.util.Properties;
+import org.bouncycastle.bcutil.Properties;
 
 public class ECMQVBasicAgreement
     implements BasicAgreement
@@ -63,11 +60,11 @@ public class ECMQVBasicAgreement
     // The ECMQV Primitive as described in SEC-1, 3.4
     private ECPoint calculateMqvAgreement(
         ECDomainParameters      parameters,
-        ECPrivateKeyParameters  d1U,
-        ECPrivateKeyParameters  d2U,
-        ECPublicKeyParameters   Q2U,
-        ECPublicKeyParameters   Q1V,
-        ECPublicKeyParameters   Q2V)
+        ECPrivateKeyParameters d1U,
+        ECPrivateKeyParameters d2U,
+        ECPublicKeyParameters Q2U,
+        ECPublicKeyParameters Q1V,
+        ECPublicKeyParameters Q2V)
     {
         BigInteger n = parameters.getN();
         int e = (n.bitLength() + 1) / 2;

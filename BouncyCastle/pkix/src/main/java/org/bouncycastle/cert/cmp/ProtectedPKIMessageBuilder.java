@@ -6,20 +6,20 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.bouncycastle.asn1.ASN1EncodableVector;
-import org.bouncycastle.asn1.ASN1Encoding;
-import org.bouncycastle.asn1.ASN1GeneralizedTime;
-import org.bouncycastle.asn1.DERBitString;
-import org.bouncycastle.asn1.DERSequence;
-import org.bouncycastle.asn1.cmp.CMPCertificate;
-import org.bouncycastle.asn1.cmp.InfoTypeAndValue;
-import org.bouncycastle.asn1.cmp.PKIBody;
-import org.bouncycastle.asn1.cmp.PKIFreeText;
-import org.bouncycastle.asn1.cmp.PKIHeader;
-import org.bouncycastle.asn1.cmp.PKIHeaderBuilder;
-import org.bouncycastle.asn1.cmp.PKIMessage;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x509.GeneralName;
+import org.bouncycastle.bcasn1.ASN1EncodableVector;
+import org.bouncycastle.bcasn1.ASN1Encoding;
+import org.bouncycastle.bcasn1.ASN1GeneralizedTime;
+import org.bouncycastle.bcasn1.DERBitString;
+import org.bouncycastle.bcasn1.DERSequence;
+import org.bouncycastle.bcasn1.cmp.CMPCertificate;
+import org.bouncycastle.bcasn1.cmp.InfoTypeAndValue;
+import org.bouncycastle.bcasn1.cmp.PKIBody;
+import org.bouncycastle.bcasn1.cmp.PKIFreeText;
+import org.bouncycastle.bcasn1.cmp.PKIHeader;
+import org.bouncycastle.bcasn1.cmp.PKIHeaderBuilder;
+import org.bouncycastle.bcasn1.cmp.PKIMessage;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.x509.GeneralName;
 import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.operator.ContentSigner;
 import org.bouncycastle.operator.MacCalculator;
@@ -197,6 +197,11 @@ public class ProtectedPKIMessageBuilder
     public ProtectedPKIMessage build(MacCalculator macCalculator)
         throws CMPException
     {
+        if (null == body)
+        {
+            throw new IllegalStateException("body must be set before building");
+        }
+
         finaliseHeader(macCalculator.getAlgorithmIdentifier());
 
         PKIHeader header = hdrBuilder.build();
@@ -223,6 +228,11 @@ public class ProtectedPKIMessageBuilder
     public ProtectedPKIMessage build(ContentSigner signer)
         throws CMPException
     {
+        if (null == body)
+        {
+            throw new IllegalStateException("body must be set before building");
+        }
+
         finaliseHeader(signer.getAlgorithmIdentifier());
 
         PKIHeader header = hdrBuilder.build();

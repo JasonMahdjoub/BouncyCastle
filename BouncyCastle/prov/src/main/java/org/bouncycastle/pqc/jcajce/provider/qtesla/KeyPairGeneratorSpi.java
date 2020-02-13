@@ -9,13 +9,10 @@ import java.util.Map;
 
 import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
 import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
-import org.bouncycastle.pqc.crypto.qtesla.QTESLAKeyGenerationParameters;
-import org.bouncycastle.pqc.crypto.qtesla.QTESLAKeyPairGenerator;
+import org.bouncycastle.pqc.crypto.qtesla.*;
 import org.bouncycastle.pqc.crypto.qtesla.QTESLAPrivateKeyParameters;
-import org.bouncycastle.pqc.crypto.qtesla.QTESLAPublicKeyParameters;
-import org.bouncycastle.pqc.crypto.qtesla.QTESLASecurityCategory;
 import org.bouncycastle.pqc.jcajce.spec.QTESLAParameterSpec;
-import org.bouncycastle.util.Integers;
+import org.bouncycastle.bcutil.Integers;
 
 public class KeyPairGeneratorSpi
     extends java.security.KeyPairGenerator
@@ -24,9 +21,6 @@ public class KeyPairGeneratorSpi
 
     static
     {
-        catLookup.put(QTESLASecurityCategory.getName(QTESLASecurityCategory.HEURISTIC_I), Integers.valueOf(QTESLASecurityCategory.HEURISTIC_I));
-        catLookup.put(QTESLASecurityCategory.getName(QTESLASecurityCategory.HEURISTIC_III_SIZE), Integers.valueOf(QTESLASecurityCategory.HEURISTIC_III_SIZE));
-        catLookup.put(QTESLASecurityCategory.getName(QTESLASecurityCategory.HEURISTIC_III_SPEED), Integers.valueOf(QTESLASecurityCategory.HEURISTIC_III_SPEED));
         catLookup.put(QTESLASecurityCategory.getName(QTESLASecurityCategory.PROVABLY_SECURE_I), Integers.valueOf(QTESLASecurityCategory.PROVABLY_SECURE_I));
         catLookup.put(QTESLASecurityCategory.getName(QTESLASecurityCategory.PROVABLY_SECURE_III), Integers.valueOf(QTESLASecurityCategory.PROVABLY_SECURE_III));
     }
@@ -71,7 +65,7 @@ public class KeyPairGeneratorSpi
     {
         if (!initialised)
         {
-            param = new QTESLAKeyGenerationParameters(QTESLASecurityCategory.PROVABLY_SECURE_I, random);
+            param = new QTESLAKeyGenerationParameters(QTESLASecurityCategory.PROVABLY_SECURE_III, random);
 
             engine.init(param);
             initialised = true;

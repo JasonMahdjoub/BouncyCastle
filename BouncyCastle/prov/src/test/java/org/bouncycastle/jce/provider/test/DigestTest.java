@@ -3,15 +3,16 @@ package org.bouncycastle.jce.provider.test;
 import java.security.MessageDigest;
 import java.security.Security;
 
-import org.bouncycastle.asn1.iso.ISOIECObjectIdentifiers;
-import org.bouncycastle.asn1.misc.MiscObjectIdentifiers;
-import org.bouncycastle.asn1.nist.NISTObjectIdentifiers;
-import org.bouncycastle.asn1.rosstandart.RosstandartObjectIdentifiers;
-import org.bouncycastle.asn1.teletrust.TeleTrusTObjectIdentifiers;
-import org.bouncycastle.asn1.ua.UAObjectIdentifiers;
+import org.bouncycastle.bcasn1.iso.ISOIECObjectIdentifiers;
+import org.bouncycastle.bcasn1.misc.BCMiscObjectIdentifiers;
+import org.bouncycastle.bcasn1.nist.NISTObjectIdentifiers;
+import org.bouncycastle.bcasn1.rosstandart.RosstandartObjectIdentifiers;
+import org.bouncycastle.bcasn1.teletrust.TeleTrusTObjectIdentifiers;
+import org.bouncycastle.bcasn1.ua.UAObjectIdentifiers;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.Strings;
+import org.bouncycastle.bcutil.encoders.Hex;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class DigestTest
     extends SimpleTest
@@ -59,18 +60,18 @@ public class DigestTest
         { "BLAKE2B-256", "bddd813c634239723171ef3fee98579b94964e3bb1cb3e427262c8c068d52319" },
         { "BLAKE2B-384", "6f56a82c8e7ef526dfe182eb5212f7db9df1317e57815dbda46083fc30f54ee6c66ba83be64b302d7cba6ce15bb556f4" },
         { "BLAKE2B-512", "ba80a53f981c4d0d6a2797b69f12f6e94c212f14685ac4b74b12bb6fdbffa2d17d87c5392aab792dc252d5de4533cc9518d38aa8dbf1925ab92386edd4009923" },
-        { MiscObjectIdentifiers.id_blake2b160.getId(), "384264f676f39536840523f284921cdc68b6846b" },
-        { MiscObjectIdentifiers.id_blake2b256.getId(), "bddd813c634239723171ef3fee98579b94964e3bb1cb3e427262c8c068d52319" },
-        { MiscObjectIdentifiers.id_blake2b384.getId(), "6f56a82c8e7ef526dfe182eb5212f7db9df1317e57815dbda46083fc30f54ee6c66ba83be64b302d7cba6ce15bb556f4" },
-        { MiscObjectIdentifiers.id_blake2b512.getId(), "ba80a53f981c4d0d6a2797b69f12f6e94c212f14685ac4b74b12bb6fdbffa2d17d87c5392aab792dc252d5de4533cc9518d38aa8dbf1925ab92386edd4009923" },
+        { BCMiscObjectIdentifiers.id_blake2b160.getId(), "384264f676f39536840523f284921cdc68b6846b" },
+        { BCMiscObjectIdentifiers.id_blake2b256.getId(), "bddd813c634239723171ef3fee98579b94964e3bb1cb3e427262c8c068d52319" },
+        { BCMiscObjectIdentifiers.id_blake2b384.getId(), "6f56a82c8e7ef526dfe182eb5212f7db9df1317e57815dbda46083fc30f54ee6c66ba83be64b302d7cba6ce15bb556f4" },
+        { BCMiscObjectIdentifiers.id_blake2b512.getId(), "ba80a53f981c4d0d6a2797b69f12f6e94c212f14685ac4b74b12bb6fdbffa2d17d87c5392aab792dc252d5de4533cc9518d38aa8dbf1925ab92386edd4009923" },
         { "BLAKE2S-128", "aa4938119b1dc7b87cbad0ffd200d0ae" },
         { "BLAKE2S-160", "5ae3b99be29b01834c3b508521ede60438f8de17" },
         { "BLAKE2S-224", "0b033fc226df7abde29f67a05d3dc62cf271ef3dfea4d387407fbd55" },
         { "BLAKE2S-256", "508c5e8c327c14e2e1a72ba34eeb452f37458b209ed63a294d999b4c86675982" },
-        { MiscObjectIdentifiers.id_blake2s128.getId(), "aa4938119b1dc7b87cbad0ffd200d0ae" },
-        { MiscObjectIdentifiers.id_blake2s160.getId(), "5ae3b99be29b01834c3b508521ede60438f8de17" },
-        { MiscObjectIdentifiers.id_blake2s224.getId(), "0b033fc226df7abde29f67a05d3dc62cf271ef3dfea4d387407fbd55" },
-        { MiscObjectIdentifiers.id_blake2s256.getId(), "508c5e8c327c14e2e1a72ba34eeb452f37458b209ed63a294d999b4c86675982" },
+        { BCMiscObjectIdentifiers.id_blake2s128.getId(), "aa4938119b1dc7b87cbad0ffd200d0ae" },
+        { BCMiscObjectIdentifiers.id_blake2s160.getId(), "5ae3b99be29b01834c3b508521ede60438f8de17" },
+        { BCMiscObjectIdentifiers.id_blake2s224.getId(), "0b033fc226df7abde29f67a05d3dc62cf271ef3dfea4d387407fbd55" },
+        { BCMiscObjectIdentifiers.id_blake2s256.getId(), "508c5e8c327c14e2e1a72ba34eeb452f37458b209ed63a294d999b4c86675982" },
         { "GOST3411-2012-256", "4e2919cf137ed41ec4fb6270c61826cc4fffb660341e0af3688cd0626d23b481" },
         { RosstandartObjectIdentifiers.id_tc26_gost_3411_12_256.getId(), "4e2919cf137ed41ec4fb6270c61826cc4fffb660341e0af3688cd0626d23b481" },
         { "GOST3411-2012-512", "28156e28317da7c98f4fe2bed6b542d0dab85bb224445fcedaf75d46e26d7eb8d5997f3e0915dd6b7f0aab08d9c8beb0d8c64bae2ab8b3c8c6bc53b3bf0db728" },
@@ -88,11 +89,9 @@ public class DigestTest
         return "Digest";
     }
 
-    void test(String algorithm)
+    void test(String algorithm, byte[] message)
         throws Exception
     {
-        byte[] message = "hello world".getBytes();
-
         MessageDigest digest = MessageDigest.getInstance(algorithm, provider);
 
         byte[] result = digest.digest(message);
@@ -157,6 +156,11 @@ public class DigestTest
             fail("Result object 5 not equal");
         }
 
+        // Haraka has a fixed length input
+        if (algorithm.startsWith("HARAKA"))
+        {
+            return;
+        }
         // test six, check reset() method with longer message
         digest.update(message);
         digest.update(message);
@@ -189,7 +193,7 @@ public class DigestTest
         byte[] result = digest.digest(abc);
         
         if (!MessageDigest.isEqual(result, Hex.decode(hash)))
-        {                  System.err.println(Hex.toHexString(result));
+        {
             fail("abc result not equal for " + algorithm);
         }
     }
@@ -199,10 +203,14 @@ public class DigestTest
     {
         for (int i = 0; i != abcVectors.length; i++)
         {
-            test(abcVectors[i][0]);
+            test(abcVectors[i][0], Strings.toByteArray("hello world"));
          
             abcTest(abcVectors[i][0], abcVectors[i][1]);
         }
+
+        test("HARAKA-256", Hex.decode("000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"));
+        test("HARAKA-512", Hex.decode("000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
+                                    + "202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f"));
     }
 
     public static void main(String[] args)

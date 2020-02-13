@@ -2,16 +2,13 @@ package org.bouncycastle.crypto.engines;
 
 import java.security.SecureRandom;
 
-import org.bouncycastle.crypto.CipherParameters;
+import org.bouncycastle.crypto.*;
 import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
-import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
-import org.bouncycastle.crypto.Wrapper;
 import org.bouncycastle.crypto.modes.CBCBlockCipher;
 import org.bouncycastle.crypto.params.ParametersWithIV;
 import org.bouncycastle.crypto.params.ParametersWithRandom;
 import org.bouncycastle.crypto.util.DigestFactory;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 /**
  * Wrap keys according to RFC 3217 - RC2 mechanism
@@ -223,10 +220,10 @@ public class RC2WrapEngine
     * @param inOff offset into in array that the wrapped key starts at.
     * @param inLen length of wrapped key data.
     * @return the unwrapped bytes.
-    * @throws BCInvalidCipherTextException
+    * @throws InvalidCipherTextException
     */
    public byte[] unwrap(byte[] in, int inOff, int inLen)
-            throws BCInvalidCipherTextException
+            throws InvalidCipherTextException
     {
 
         if (forWrapping)
@@ -236,12 +233,12 @@ public class RC2WrapEngine
 
         if (in == null)
         {
-            throw new BCInvalidCipherTextException("Null pointer as ciphertext");
+            throw new InvalidCipherTextException("Null pointer as ciphertext");
         }
 
         if (inLen % engine.getBlockSize() != 0)
         {
-            throw new BCInvalidCipherTextException("Ciphertext not multiple of "
+            throw new InvalidCipherTextException("Ciphertext not multiple of "
                     + engine.getBlockSize());
         }
 
@@ -327,13 +324,13 @@ public class RC2WrapEngine
         // return error.
         if (!checkCMSKeyChecksum(result, CKStoBeVerified))
         {
-            throw new BCInvalidCipherTextException(
+            throw new InvalidCipherTextException(
                     "Checksum inside ciphertext is corrupted");
         }
 
         if ((result.length - ((result[0] & 0xff) + 1)) > 7)
         {
-            throw new BCInvalidCipherTextException("too many pad bytes ("
+            throw new InvalidCipherTextException("too many pad bytes ("
                     + (result.length - ((result[0] & 0xff) + 1)) + ")");
         }
 

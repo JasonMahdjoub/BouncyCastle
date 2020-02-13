@@ -5,19 +5,19 @@ import java.security.InvalidKeyException;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.anssi.ANSSINamedCurves;
-import org.bouncycastle.asn1.cryptopro.ECGOST3410NamedCurves;
-import org.bouncycastle.asn1.gm.GMNamedCurves;
-import org.bouncycastle.asn1.nist.NISTNamedCurves;
-import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
-import org.bouncycastle.asn1.sec.SECNamedCurves;
-import org.bouncycastle.asn1.teletrust.TeleTrusTNamedCurves;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.asn1.x9.ECNamedCurveTable;
-import org.bouncycastle.asn1.x9.X962NamedCurves;
-import org.bouncycastle.asn1.x9.X962Parameters;
-import org.bouncycastle.asn1.x9.X9ECParameters;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.anssi.ANSSINamedCurves;
+import org.bouncycastle.bcasn1.cryptopro.ECGOST3410NamedCurves;
+import org.bouncycastle.bcasn1.gm.GMNamedCurves;
+import org.bouncycastle.bcasn1.nist.NISTNamedCurves;
+import org.bouncycastle.bcasn1.pkcs.PrivateKeyInfo;
+import org.bouncycastle.bcasn1.sec.SECNamedCurves;
+import org.bouncycastle.bcasn1.teletrust.TeleTrusTNamedCurves;
+import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
+import org.bouncycastle.bcasn1.x9.ECNamedCurveTable;
+import org.bouncycastle.bcasn1.x9.X962NamedCurves;
+import org.bouncycastle.bcasn1.x9.X962Parameters;
+import org.bouncycastle.bcasn1.x9.X9ECParameters;
 import org.bouncycastle.crypto.ec.CustomNamedCurves;
 import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
 import org.bouncycastle.crypto.params.ECDomainParameters;
@@ -32,9 +32,10 @@ import org.bouncycastle.jce.spec.ECNamedCurveParameterSpec;
 import org.bouncycastle.jce.spec.ECParameterSpec;
 import org.bouncycastle.math.ec.ECCurve;
 import org.bouncycastle.math.ec.ECPoint;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Fingerprint;
-import org.bouncycastle.util.Strings;
+import org.bouncycastle.math.ec.FixedPointCombMultiplier;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.Fingerprint;
+import org.bouncycastle.bcutil.Strings;
 
 /**
  * utility class for converting jce/jca ECDSA, ECDH, and ECDHC
@@ -351,7 +352,7 @@ public class ECUtil
         StringBuffer buf = new StringBuffer();
         String nl = Strings.lineSeparator();
 
-        org.bouncycastle.math.ec.ECPoint q = calculateQ(d, spec);
+        org.bouncycastle.math.ec.ECPoint q = new FixedPointCombMultiplier().multiply(spec.getG(), d).normalize();
 
         buf.append(algorithm);
         buf.append(" Private Key [").append(ECUtil.generateKeyFingerprint(q, spec)).append("]").append(nl);
@@ -359,11 +360,6 @@ public class ECUtil
         buf.append("            Y: ").append(q.getAffineYCoord().toBigInteger().toString(16)).append(nl);
 
         return buf.toString();
-    }
-
-    private static org.bouncycastle.math.ec.ECPoint calculateQ(BigInteger d, org.bouncycastle.jce.spec.ECParameterSpec spec)
-    {
-        return spec.getG().multiply(d).normalize();
     }
 
     public static String publicKeyToString(String algorithm, org.bouncycastle.math.ec.ECPoint q, org.bouncycastle.jce.spec.ECParameterSpec spec)

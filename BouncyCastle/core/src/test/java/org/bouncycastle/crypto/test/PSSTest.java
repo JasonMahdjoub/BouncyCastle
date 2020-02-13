@@ -3,15 +3,14 @@ package org.bouncycastle.crypto.test;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.crypto.digests.SHA1Digest;
 import org.bouncycastle.crypto.digests.SHA256Digest;
 import org.bouncycastle.crypto.engines.RSAEngine;
 import org.bouncycastle.crypto.params.ParametersWithRandom;
-import org.bouncycastle.crypto.params.RSAKeyParameters;
-import org.bouncycastle.crypto.params.RSAPrivateCrtKeyParameters;
+import org.bouncycastle.crypto.params.RSAKeyParameters;import org.bouncycastle.crypto.params.RSAPrivateCrtKeyParameters;
 import org.bouncycastle.crypto.signers.PSSSigner;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 /*
  * RSA PSS test vectors for PKCS#1 V2.1
@@ -214,8 +213,8 @@ public class PSSTest
 
     private void testSig(
         int                 id,
-        RSAKeyParameters    pub,
-        RSAKeyParameters    prv,
+        RSAKeyParameters pub,
+        RSAKeyParameters prv,
         byte[]              slt,
         byte[]              msg,
         byte[]              sig)

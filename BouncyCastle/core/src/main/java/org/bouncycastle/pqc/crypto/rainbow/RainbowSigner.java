@@ -2,8 +2,8 @@ package org.bouncycastle.pqc.crypto.rainbow;
 
 import java.security.SecureRandom;
 
-import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
 import org.bouncycastle.crypto.CipherParameters;
+import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
 import org.bouncycastle.crypto.params.ParametersWithRandom;
 import org.bouncycastle.pqc.crypto.MessageSigner;
 import org.bouncycastle.pqc.crypto.rainbow.util.ComputeInField;

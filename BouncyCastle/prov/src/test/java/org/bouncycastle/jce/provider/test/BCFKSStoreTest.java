@@ -29,27 +29,27 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
-import org.bouncycastle.asn1.bc.EncryptedObjectStoreData;
-import org.bouncycastle.asn1.bc.ObjectStore;
-import org.bouncycastle.asn1.bc.ObjectStoreIntegrityCheck;
-import org.bouncycastle.asn1.bc.PbkdMacIntegrityCheck;
-import org.bouncycastle.asn1.misc.MiscObjectIdentifiers;
-import org.bouncycastle.asn1.misc.ScryptParams;
-import org.bouncycastle.asn1.nist.NISTObjectIdentifiers;
-import org.bouncycastle.asn1.pkcs.PBES2Parameters;
-import org.bouncycastle.asn1.pkcs.PBKDF2Params;
-import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.bc.EncryptedObjectStoreData;
+import org.bouncycastle.bcasn1.bc.ObjectStore;
+import org.bouncycastle.bcasn1.bc.ObjectStoreIntegrityCheck;
+import org.bouncycastle.bcasn1.bc.PbkdMacIntegrityCheck;
+import org.bouncycastle.bcasn1.misc.BCMiscObjectIdentifiers;
+import org.bouncycastle.bcasn1.misc.ScryptParams;
+import org.bouncycastle.bcasn1.nist.NISTObjectIdentifiers;
+import org.bouncycastle.bcasn1.pkcs.PBES2Parameters;
+import org.bouncycastle.bcasn1.pkcs.PBKDF2Params;
+import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
+import org.bouncycastle.bcasn1.x500.X500Name;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.crypto.util.PBKDF2Config;
 import org.bouncycastle.crypto.util.PBKDFConfig;
 import org.bouncycastle.crypto.util.ScryptConfig;
 import org.bouncycastle.jcajce.BCFKSLoadStoreParameter;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.encoders.Base64;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.encoders.Base64;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**
  * Exercise the  BCFKS KeyStore,
@@ -1342,7 +1342,7 @@ public class BCFKSStoreTest
         PbkdMacIntegrityCheck check = PbkdMacIntegrityCheck.getInstance(integrityCheck.getIntegrityCheck());
 
         isTrue("wrong MAC", check.getMacAlgorithm().getAlgorithm().equals(PKCSObjectIdentifiers.id_hmacWithSHA512));
-        isTrue("wrong PBE", check.getPbkdAlgorithm().getAlgorithm().equals(MiscObjectIdentifiers.id_scrypt));
+        isTrue("wrong PBE", check.getPbkdAlgorithm().getAlgorithm().equals(BCMiscObjectIdentifiers.id_scrypt));
 
         ScryptParams sParams = ScryptParams.getInstance(check.getPbkdAlgorithm().getParameters());
 
@@ -1358,7 +1358,7 @@ public class BCFKSStoreTest
 
         PBES2Parameters pbeParams = PBES2Parameters.getInstance(encryptionAlgorithm.getParameters());
 
-        isTrue(pbeParams.getKeyDerivationFunc().getAlgorithm().equals(MiscObjectIdentifiers.id_scrypt));
+        isTrue(pbeParams.getKeyDerivationFunc().getAlgorithm().equals(BCMiscObjectIdentifiers.id_scrypt));
 
         sParams = ScryptParams.getInstance(pbeParams.getKeyDerivationFunc().getParameters());
 

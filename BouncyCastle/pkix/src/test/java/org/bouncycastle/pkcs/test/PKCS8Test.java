@@ -4,15 +4,15 @@ import java.math.BigInteger;
 import java.security.Security;
 
 import junit.framework.TestCase;
-import org.bouncycastle.asn1.DERNull;
-import org.bouncycastle.asn1.nist.NISTObjectIdentifiers;
-import org.bouncycastle.asn1.pkcs.EncryptedPrivateKeyInfo;
-import org.bouncycastle.asn1.pkcs.PBES2Parameters;
-import org.bouncycastle.asn1.pkcs.PBKDF2Params;
-import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
-import org.bouncycastle.asn1.pkcs.RSAPrivateKey;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.DERNull;
+import org.bouncycastle.bcasn1.nist.NISTObjectIdentifiers;
+import org.bouncycastle.bcasn1.pkcs.EncryptedPrivateKeyInfo;
+import org.bouncycastle.bcasn1.pkcs.PBES2Parameters;
+import org.bouncycastle.bcasn1.pkcs.PBKDF2Params;
+import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
+import org.bouncycastle.bcasn1.pkcs.PrivateKeyInfo;
+import org.bouncycastle.bcasn1.pkcs.RSAPrivateKey;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.crypto.util.PBKDFConfig;
 import org.bouncycastle.crypto.util.ScryptConfig;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
@@ -20,8 +20,8 @@ import org.bouncycastle.pkcs.PKCS8EncryptedPrivateKeyInfo;
 import org.bouncycastle.pkcs.PKCS8EncryptedPrivateKeyInfoBuilder;
 import org.bouncycastle.pkcs.jcajce.JcePKCSPBEInputDecryptorProviderBuilder;
 import org.bouncycastle.pkcs.jcajce.JcePKCSPBEOutputEncryptorBuilder;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.encoders.Base64;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.encoders.Base64;
 
 public class PKCS8Test
     extends TestCase
@@ -167,31 +167,112 @@ public class PKCS8Test
     }
 
     public void testSHA3_256Encryption()
-         throws Exception
-     {
-         PKCS8EncryptedPrivateKeyInfoBuilder bldr = new PKCS8EncryptedPrivateKeyInfoBuilder(pkInfo);
+        throws Exception
+    {
+        PKCS8EncryptedPrivateKeyInfoBuilder bldr = new PKCS8EncryptedPrivateKeyInfoBuilder(pkInfo);
 
-         PKCS8EncryptedPrivateKeyInfo encInfo = bldr.build(
-             new JcePKCSPBEOutputEncryptorBuilder(NISTObjectIdentifiers.id_aes256_CBC)
-                 .setPRF(new AlgorithmIdentifier(NISTObjectIdentifiers.id_hmacWithSHA3_256, DERNull.INSTANCE))
-                 .setProvider("BC")
-                 .build("hello".toCharArray()));
+        PKCS8EncryptedPrivateKeyInfo encInfo = bldr.build(
+            new JcePKCSPBEOutputEncryptorBuilder(NISTObjectIdentifiers.id_aes256_CBC)
+                .setPRF(new AlgorithmIdentifier(NISTObjectIdentifiers.id_hmacWithSHA3_256, DERNull.INSTANCE))
+                .setProvider("BC")
+                .build("hello".toCharArray()));
 
-         EncryptedPrivateKeyInfo encPkInfo = EncryptedPrivateKeyInfo.getInstance(encInfo.getEncoded());
+        EncryptedPrivateKeyInfo encPkInfo = EncryptedPrivateKeyInfo.getInstance(encInfo.getEncoded());
 
-         assertEquals(
-             new AlgorithmIdentifier(NISTObjectIdentifiers.id_hmacWithSHA3_256, DERNull.INSTANCE),
-             PBKDF2Params.getInstance(
-                 PBES2Parameters.getInstance(encPkInfo.getEncryptionAlgorithm().getParameters())
-                     .getKeyDerivationFunc().getParameters())
-                 .getPrf());
+        assertEquals(
+            new AlgorithmIdentifier(NISTObjectIdentifiers.id_hmacWithSHA3_256, DERNull.INSTANCE),
+            PBKDF2Params.getInstance(
+                PBES2Parameters.getInstance(encPkInfo.getEncryptionAlgorithm().getParameters())
+                    .getKeyDerivationFunc().getParameters())
+                .getPrf());
 
-         PrivateKeyInfo pkInfo = encInfo.decryptPrivateKeyInfo(new JcePKCSPBEInputDecryptorProviderBuilder().setProvider("BC").build("hello".toCharArray()));
+        PrivateKeyInfo pkInfo = encInfo.decryptPrivateKeyInfo(new JcePKCSPBEInputDecryptorProviderBuilder().setProvider("BC").build("hello".toCharArray()));
 
-         RSAPrivateKey k = RSAPrivateKey.getInstance(pkInfo.parsePrivateKey());
+        RSAPrivateKey k = RSAPrivateKey.getInstance(pkInfo.parsePrivateKey());
 
-         assertEquals(modulus, k.getModulus());
-     }
+        assertEquals(modulus, k.getModulus());
+    }
+
+    public void testKWPEncryption()
+        throws Exception
+    {
+        PKCS8EncryptedPrivateKeyInfoBuilder bldr = new PKCS8EncryptedPrivateKeyInfoBuilder(pkInfo);
+
+        PKCS8EncryptedPrivateKeyInfo encInfo = bldr.build(
+            new JcePKCSPBEOutputEncryptorBuilder(NISTObjectIdentifiers.id_aes128_wrap_pad)
+                .setPRF(new AlgorithmIdentifier(NISTObjectIdentifiers.id_hmacWithSHA3_256, DERNull.INSTANCE))
+                .setProvider("BC")
+                .build("hello".toCharArray()));
+
+        EncryptedPrivateKeyInfo encPkInfo = EncryptedPrivateKeyInfo.getInstance(encInfo.getEncoded());
+
+        assertEquals(
+            new AlgorithmIdentifier(NISTObjectIdentifiers.id_hmacWithSHA3_256, DERNull.INSTANCE),
+            PBKDF2Params.getInstance(
+                PBES2Parameters.getInstance(encPkInfo.getEncryptionAlgorithm().getParameters())
+                    .getKeyDerivationFunc().getParameters())
+                .getPrf());
+
+        PrivateKeyInfo pkInfo = encInfo.decryptPrivateKeyInfo(new JcePKCSPBEInputDecryptorProviderBuilder().setProvider("BC").build("hello".toCharArray()));
+
+        RSAPrivateKey k = RSAPrivateKey.getInstance(pkInfo.parsePrivateKey());
+
+        assertEquals(modulus, k.getModulus());
+    }
+
+    public void testCCMEncryption()
+        throws Exception
+    {
+        PKCS8EncryptedPrivateKeyInfoBuilder bldr = new PKCS8EncryptedPrivateKeyInfoBuilder(pkInfo);
+
+        PKCS8EncryptedPrivateKeyInfo encInfo = bldr.build(
+            new JcePKCSPBEOutputEncryptorBuilder(NISTObjectIdentifiers.id_aes192_CCM)
+                .setPRF(new AlgorithmIdentifier(NISTObjectIdentifiers.id_hmacWithSHA3_256, DERNull.INSTANCE))
+                .setProvider("BC")
+                .build("hello".toCharArray()));
+
+        EncryptedPrivateKeyInfo encPkInfo = EncryptedPrivateKeyInfo.getInstance(encInfo.getEncoded());
+
+        assertEquals(
+            new AlgorithmIdentifier(NISTObjectIdentifiers.id_hmacWithSHA3_256, DERNull.INSTANCE),
+            PBKDF2Params.getInstance(
+                PBES2Parameters.getInstance(encPkInfo.getEncryptionAlgorithm().getParameters())
+                    .getKeyDerivationFunc().getParameters())
+                .getPrf());
+
+        PrivateKeyInfo pkInfo = encInfo.decryptPrivateKeyInfo(new JcePKCSPBEInputDecryptorProviderBuilder().setProvider("BC").build("hello".toCharArray()));
+
+        RSAPrivateKey k = RSAPrivateKey.getInstance(pkInfo.parsePrivateKey());
+
+        assertEquals(modulus, k.getModulus());
+    }
+
+    public void testGCMEncryption()
+        throws Exception
+    {
+        PKCS8EncryptedPrivateKeyInfoBuilder bldr = new PKCS8EncryptedPrivateKeyInfoBuilder(pkInfo);
+
+        PKCS8EncryptedPrivateKeyInfo encInfo = bldr.build(
+            new JcePKCSPBEOutputEncryptorBuilder(NISTObjectIdentifiers.id_aes256_GCM)
+                .setPRF(new AlgorithmIdentifier(NISTObjectIdentifiers.id_hmacWithSHA3_256, DERNull.INSTANCE))
+                .setProvider("BC")
+                .build("hello".toCharArray()));
+
+        EncryptedPrivateKeyInfo encPkInfo = EncryptedPrivateKeyInfo.getInstance(encInfo.getEncoded());
+
+        assertEquals(
+            new AlgorithmIdentifier(NISTObjectIdentifiers.id_hmacWithSHA3_256, DERNull.INSTANCE),
+            PBKDF2Params.getInstance(
+                PBES2Parameters.getInstance(encPkInfo.getEncryptionAlgorithm().getParameters())
+                    .getKeyDerivationFunc().getParameters())
+                .getPrf());
+
+        PrivateKeyInfo pkInfo = encInfo.decryptPrivateKeyInfo(new JcePKCSPBEInputDecryptorProviderBuilder().setProvider("BC").build("hello".toCharArray()));
+
+        RSAPrivateKey k = RSAPrivateKey.getInstance(pkInfo.parsePrivateKey());
+
+        assertEquals(modulus, k.getModulus());
+    }
 
     public void testScryptEncryption()
         throws Exception

@@ -6,17 +6,15 @@ import java.security.SecureRandom;
 import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
 import org.bouncycastle.crypto.DSAExt;
-import org.bouncycastle.crypto.params.ECDomainParameters;
-import org.bouncycastle.crypto.params.ECKeyParameters;
-import org.bouncycastle.crypto.params.ECPrivateKeyParameters;
-import org.bouncycastle.crypto.params.ECPublicKeyParameters;
+import org.bouncycastle.crypto.params.*;
 import org.bouncycastle.crypto.params.ParametersWithRandom;
 import org.bouncycastle.math.ec.ECAlgorithms;
 import org.bouncycastle.math.ec.ECConstants;
 import org.bouncycastle.math.ec.ECMultiplier;
 import org.bouncycastle.math.ec.ECPoint;
 import org.bouncycastle.math.ec.FixedPointCombMultiplier;
-import org.bouncycastle.util.BigIntegers;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.BigIntegers;
 
 /**
  * GOST R 34.10-2012 Signature Algorithm
@@ -30,13 +28,13 @@ public class ECGOST3410_2012Signer
 
     public void init(
         boolean                 forSigning,
-        CipherParameters        param)
+        CipherParameters param)
     {
         if (forSigning)
         {
             if (param instanceof ParametersWithRandom)
             {
-                ParametersWithRandom    rParam = (ParametersWithRandom)param;
+                ParametersWithRandom rParam = (ParametersWithRandom)param;
 
                 this.random = rParam.getRandom();
                 this.key = (ECPrivateKeyParameters)rParam.getParameters();
@@ -68,11 +66,7 @@ public class ECGOST3410_2012Signer
     public BigInteger[] generateSignature(
         byte[] message)
     {
-        byte[] mRev = new byte[message.length]; // conversion is little-endian
-        for (int i = 0; i != mRev.length; i++)
-        {
-            mRev[i] = message[mRev.length - 1 - i];
-        }
+        byte[] mRev = Arrays.reverse(message); // conversion is little-endian
         BigInteger e = new BigInteger(1, mRev);
 
         ECDomainParameters ec = key.getParameters();
@@ -117,13 +111,7 @@ public class ECGOST3410_2012Signer
         BigInteger  r,
         BigInteger  s)
     {
-
-
-        byte[] mRev = new byte[message.length]; // conversion is little-endian
-        for (int i = 0; i != mRev.length; i++)
-        {
-            mRev[i] = message[mRev.length - 1 - i];
-        }
+        byte[] mRev = Arrays.reverse(message); // conversion is little-endian
         BigInteger e = new BigInteger(1, mRev);
         BigInteger n = key.getParameters().getN();
 

@@ -3,11 +3,10 @@ package org.bouncycastle.pqc.jcajce.provider.mceliece;
 import java.io.IOException;
 import java.security.PrivateKey;
 
-import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.pkcs.PrivateKeyInfo;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
-import org.bouncycastle.pqc.asn1.McEliecePrivateKey;
 import org.bouncycastle.pqc.asn1.PQCObjectIdentifiers;
 import org.bouncycastle.pqc.crypto.mceliece.McElieceKeyPairGenerator;
 import org.bouncycastle.pqc.crypto.mceliece.McEliecePrivateKeyParameters;
@@ -189,7 +188,7 @@ public class BCMcEliecePrivateKey
      */
     public byte[] getEncoded()
     {
-        McEliecePrivateKey privateKey = new McEliecePrivateKey(params.getN(), params.getK(), params.getField(), params.getGoppaPoly(), params.getP1(), params.getP2(), params.getSInv());
+        org.bouncycastle.pqc.asn1.McEliecePrivateKey privateKey = new org.bouncycastle.pqc.asn1.McEliecePrivateKey(params.getN(), params.getK(), params.getField(), params.getGoppaPoly(), params.getP1(), params.getP2(), params.getSInv());
         PrivateKeyInfo pki;
         try
         {

@@ -6,9 +6,9 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Vector;
 
-import org.bouncycastle.asn1.ASN1Encoding;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.x500.X500Name;
+import org.bouncycastle.bcasn1.ASN1Encoding;
+import org.bouncycastle.bcasn1.ASN1Primitive;
+import org.bouncycastle.bcasn1.x500.X500Name;
 
 /**
  * Parsing and encoding of a <i>CertificateRequest</i> struct from RFC 4346.
@@ -21,6 +21,8 @@ import org.bouncycastle.asn1.x500.X500Name;
  *
  * @see ClientCertificateType
  * @see X500Name
+ *
+ * @deprecated Migrate to the (D)TLS API in org.bouncycastle.tls (bctls jar).
  */
 public class CertificateRequest
 {

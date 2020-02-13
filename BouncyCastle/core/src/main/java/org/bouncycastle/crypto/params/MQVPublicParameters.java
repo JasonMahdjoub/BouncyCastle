@@ -9,8 +9,8 @@ public class MQVPublicParameters
     private ECPublicKeyParameters ephemeralPublicKey;
 
     public MQVPublicParameters(
-        ECPublicKeyParameters   staticPublicKey,
-        ECPublicKeyParameters   ephemeralPublicKey)
+        ECPublicKeyParameters staticPublicKey,
+        ECPublicKeyParameters ephemeralPublicKey)
     {
         if (staticPublicKey == null)
         {

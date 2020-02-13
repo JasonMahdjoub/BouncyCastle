@@ -6,7 +6,7 @@ import java.security.SecureRandom;
 import org.bouncycastle.crypto.tls.TlsClientProtocol;
 import org.bouncycastle.crypto.tls.TlsProtocol;
 import org.bouncycastle.crypto.tls.TlsServerProtocol;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 import junit.framework.TestCase;
 
@@ -80,9 +80,9 @@ public class TlsProtocolNonBlockingTest
 
         if (fragment)
         {
+            byte[] buffer = new byte[1];
             while (from.getAvailableOutputBytes() > 0)
             {
-                byte[] buffer = new byte[1];
                 from.readOutput(buffer, 0, 1);
                 to.offerInput(buffer);
             }

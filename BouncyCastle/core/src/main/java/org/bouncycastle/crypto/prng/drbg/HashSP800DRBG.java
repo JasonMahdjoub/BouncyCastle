@@ -4,8 +4,8 @@ import java.util.Hashtable;
 
 import org.bouncycastle.crypto.Digest;
 import org.bouncycastle.crypto.prng.EntropySource;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Integers;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.Integers;
 
 /**
  * A SP800-90A Hash DRBG.

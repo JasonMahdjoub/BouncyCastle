@@ -11,19 +11,19 @@ import java.util.Set;
 
 import javax.security.auth.x500.X500Principal;
 
-import org.bouncycastle.asn1.ASN1Encoding;
-import org.bouncycastle.asn1.ASN1Enumerated;
-import org.bouncycastle.asn1.ASN1InputStream;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.util.ASN1Dump;
-import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.asn1.x509.CRLReason;
-import org.bouncycastle.asn1.x509.Extension;
-import org.bouncycastle.asn1.x509.Extensions;
-import org.bouncycastle.asn1.x509.GeneralName;
-import org.bouncycastle.asn1.x509.GeneralNames;
-import org.bouncycastle.asn1.x509.TBSCertList;
-import org.bouncycastle.util.Strings;
+import org.bouncycastle.bcasn1.ASN1Encoding;
+import org.bouncycastle.bcasn1.ASN1Enumerated;
+import org.bouncycastle.bcasn1.ASN1InputStream;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.util.ASN1Dump;
+import org.bouncycastle.bcasn1.x500.X500Name;
+import org.bouncycastle.bcasn1.x509.CRLReason;
+import org.bouncycastle.bcasn1.x509.Extension;
+import org.bouncycastle.bcasn1.x509.Extensions;
+import org.bouncycastle.bcasn1.x509.GeneralName;
+import org.bouncycastle.bcasn1.x509.GeneralNames;
+import org.bouncycastle.bcasn1.x509.TBSCertList;
+import org.bouncycastle.bcutil.Strings;
 
 /**
  * The following extensions are listed in RFC 2459 as relevant to CRL Entries
@@ -36,8 +36,9 @@ class X509CRLEntryObject extends X509CRLEntry
     private TBSCertList.CRLEntry c;
 
     private X500Name certificateIssuer;
-    private int           hashValue;
-    private boolean       isHashValueSet;
+
+    private volatile boolean            hashValueSet;
+    private volatile int                hashValue;
 
     protected X509CRLEntryObject(TBSCertList.CRLEntry c)
     {
@@ -202,27 +203,35 @@ class X509CRLEntryObject extends X509CRLEntry
      */
     public int hashCode()
     {
-        if (!isHashValueSet)
+        if (!hashValueSet)
         {
             hashValue = super.hashCode();
-            isHashValueSet = true;
+            hashValueSet = true;
         }
 
         return hashValue;
     }
 
-    public boolean equals(Object o)
+    public boolean equals(Object other)
     {
-        if (o == this)
+        if (other == this)
         {
             return true;
         }
 
-        if (o instanceof X509CRLEntryObject)
+        if (other instanceof X509CRLEntryObject)
         {
-            X509CRLEntryObject other = (X509CRLEntryObject)o;
+            X509CRLEntryObject otherBC = (X509CRLEntryObject)other;
 
-            return this.c.equals(other.c);
+            if (this.hashValueSet && otherBC.hashValueSet)
+            {
+                if (this.hashValue != otherBC.hashValue)
+                {
+                    return false;
+                }
+            }
+
+            return this.c.equals(otherBC.c);
         }
 
         return super.equals(this);

@@ -13,11 +13,11 @@ import java.security.Security;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import org.bouncycastle.asn1.eac.CertificateHolderAuthorization;
-import org.bouncycastle.asn1.eac.CertificateHolderReference;
-import org.bouncycastle.asn1.eac.CertificationAuthorityReference;
-import org.bouncycastle.asn1.eac.EACObjectIdentifiers;
-import org.bouncycastle.asn1.eac.PackedDate;
+import org.bouncycastle.bcasn1.eac.CertificateHolderAuthorization;
+import org.bouncycastle.bcasn1.eac.CertificateHolderReference;
+import org.bouncycastle.bcasn1.eac.CertificationAuthorityReference;
+import org.bouncycastle.bcasn1.eac.EACObjectIdentifiers;
+import org.bouncycastle.bcasn1.eac.PackedDate;
 import org.bouncycastle.eac.EACCertificateBuilder;
 import org.bouncycastle.eac.EACCertificateHolder;
 import org.bouncycastle.eac.EACCertificateRequestHolder;
@@ -29,8 +29,8 @@ import org.bouncycastle.eac.operator.jcajce.JcaEACSignerBuilder;
 import org.bouncycastle.jce.ECNamedCurveTable;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.jce.spec.ECParameterSpec;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.io.Streams;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.io.Streams;
 
 public class AllTests
     extends TestCase

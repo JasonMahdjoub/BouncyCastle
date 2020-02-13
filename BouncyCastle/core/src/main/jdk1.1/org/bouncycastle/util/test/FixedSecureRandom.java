@@ -1,12 +1,12 @@
-package org.bouncycastle.util.test;
+package org.bouncycastle.bcutil.test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.security.Provider;
 import java.security.SecureRandom;
 
-import org.bouncycastle.util.Pack;
-import org.bouncycastle.util.encoders.Hex;
+import org.bouncycastle.bcutil.Pack;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 /**
  * A secure random that returns pre-seeded data to calls of nextBytes() or generateSeed().

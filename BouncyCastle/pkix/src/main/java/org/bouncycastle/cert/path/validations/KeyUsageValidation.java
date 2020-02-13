@@ -1,12 +1,12 @@
 package org.bouncycastle.cert.path.validations;
 
-import org.bouncycastle.asn1.x509.Extension;
-import org.bouncycastle.asn1.x509.KeyUsage;
+import org.bouncycastle.bcasn1.x509.Extension;
+import org.bouncycastle.bcasn1.x509.KeyUsage;
 import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.cert.path.CertPathValidation;
 import org.bouncycastle.cert.path.CertPathValidationContext;
 import org.bouncycastle.cert.path.CertPathValidationException;
-import org.bouncycastle.util.Memoable;
+import org.bouncycastle.bcutil.Memoable;
 
 public class KeyUsageValidation
     implements CertPathValidation

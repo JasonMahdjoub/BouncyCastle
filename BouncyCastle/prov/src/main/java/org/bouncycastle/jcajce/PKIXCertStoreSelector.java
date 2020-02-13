@@ -8,12 +8,12 @@ import java.security.cert.Certificate;
 import java.security.cert.X509CertSelector;
 import java.util.Collection;
 
-import org.bouncycastle.util.Selector;
+import org.bouncycastle.bcutil.Selector;
 
 /**
  * This class is a Selector implementation for certificates.
  * 
- * @see org.bouncycastle.util.Selector
+ * @see org.bouncycastle.bcutil.Selector
  */
 public class PKIXCertStoreSelector<T extends Certificate>
     implements Selector<T>

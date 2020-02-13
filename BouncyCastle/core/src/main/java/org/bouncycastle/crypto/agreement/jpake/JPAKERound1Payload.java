@@ -2,7 +2,7 @@ package org.bouncycastle.crypto.agreement.jpake;
 
 import java.math.BigInteger;
 
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 /**
  * The payload sent/received during the first round of a J-PAKE exchange.

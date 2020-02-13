@@ -14,7 +14,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.cms.CMSAlgorithm;
 import org.bouncycastle.cms.CMSException;
@@ -23,8 +23,8 @@ import org.bouncycastle.cms.SignerInfoGenerator;
 import org.bouncycastle.mime.Headers;
 import org.bouncycastle.mime.MimeWriter;
 import org.bouncycastle.mime.encoding.Base64OutputStream;
-import org.bouncycastle.util.Store;
-import org.bouncycastle.util.Strings;
+import org.bouncycastle.bcutil.Store;
+import org.bouncycastle.bcutil.Strings;
 
 /**
  * Writer for SMIME Signed objects.

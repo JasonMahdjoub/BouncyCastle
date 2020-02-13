@@ -5,8 +5,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.bouncycastle.crypto.DataLengthException;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Strings;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.Strings;
 
 /**
  * Password hashing scheme BCrypt,

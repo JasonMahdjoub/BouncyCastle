@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.math.BigInteger;
 import java.security.cert.X509CertSelector;
 
-import org.bouncycastle.asn1.DEROctetString;
-import org.bouncycastle.asn1.x500.X500Name;
+import org.bouncycastle.bcasn1.DEROctetString;
+import org.bouncycastle.bcasn1.x500.X500Name;
 import org.bouncycastle.cert.selector.X509CertificateHolderSelector;
 
 public class JcaX509CertSelectorConverter

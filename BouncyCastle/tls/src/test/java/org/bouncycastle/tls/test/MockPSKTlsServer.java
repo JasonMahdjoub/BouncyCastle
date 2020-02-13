@@ -11,7 +11,7 @@ import org.bouncycastle.tls.ProtocolVersion;
 import org.bouncycastle.tls.TlsCredentialedDecryptor;
 import org.bouncycastle.tls.TlsPSKIdentityManager;
 import org.bouncycastle.tls.crypto.impl.bc.BcTlsCrypto;
-import org.bouncycastle.util.Strings;
+import org.bouncycastle.bcutil.Strings;
 
 class MockPSKTlsServer
     extends PSKTlsServer
@@ -47,17 +47,12 @@ class MockPSKTlsServer
     {
         super.notifyHandshakeComplete();
 
-        byte[] pskIdentity = context.getSecurityParameters().getPSKIdentity();
+        byte[] pskIdentity = context.getSecurityParametersConnection().getPSKIdentity();
         if (pskIdentity != null)
         {
             String name = Strings.fromUTF8ByteArray(pskIdentity);
             System.out.println("TLS-PSK server completed handshake for PSK identity: " + name);
         }
-    }
-
-    protected ProtocolVersion getMinimumVersion()
-    {
-        return ProtocolVersion.TLSv12;
     }
 
     public ProtocolVersion getServerVersion() throws IOException
@@ -75,6 +70,11 @@ class MockPSKTlsServer
             "x509-server-key-rsa-enc.pem");
     }
 
+    protected ProtocolVersion[] getSupportedVersions()
+    {
+        return ProtocolVersion.TLSv12.only();
+    }
+
     static class MyIdentityManager
         implements TlsPSKIdentityManager
     {
@@ -90,7 +90,7 @@ class MockPSKTlsServer
                 String name = Strings.fromUTF8ByteArray(identity);
                 if (name.equals("client"))
                 {
-                    return new byte[16];
+                    return Strings.toUTF8ByteArray("TLS_TEST_PSK");
                 }
             }
             return null;

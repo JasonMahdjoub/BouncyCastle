@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import org.bouncycastle.tls.crypto.TlsHash;
-import org.bouncycastle.util.io.Streams;
+import org.bouncycastle.bcutil.io.Streams;
 
 class DigestInputBuffer extends ByteArrayOutputStream
 {

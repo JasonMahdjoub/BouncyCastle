@@ -1,6 +1,6 @@
 package org.bouncycastle.crypto.digests;
 
-import org.bouncycastle.util.Memoable;
+import org.bouncycastle.bcutil.Memoable;
 
 /**
  * implementation of GOST R 34.11-2012 512-bit

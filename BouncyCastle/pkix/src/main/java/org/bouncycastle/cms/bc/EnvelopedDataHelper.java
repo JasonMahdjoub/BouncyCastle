@@ -1,19 +1,14 @@
 package org.bouncycastle.cms.bc;
 
-import java.security.SecureRandom;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.nist.NISTObjectIdentifiers;
-import org.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
-import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.nist.NISTObjectIdentifiers;
+import org.bouncycastle.bcasn1.oiw.OIWObjectIdentifiers;
+import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.cms.CMSAlgorithm;
 import org.bouncycastle.cms.CMSException;
-import org.bouncycastle.crypto.CipherKeyGenerator;
 import org.bouncycastle.crypto.CipherParameters;
+import org.bouncycastle.crypto.CipherKeyGenerator;
 import org.bouncycastle.crypto.ExtendedDigest;
 import org.bouncycastle.crypto.Wrapper;
 import org.bouncycastle.crypto.digests.SHA1Digest;
@@ -32,6 +27,11 @@ import org.bouncycastle.crypto.util.CipherFactory;
 import org.bouncycastle.crypto.util.CipherKeyGeneratorFactory;
 import org.bouncycastle.operator.OperatorCreationException;
 import org.bouncycastle.operator.bc.BcDigestProvider;
+
+import java.security.SecureRandom;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 class EnvelopedDataHelper
 {
@@ -171,5 +171,11 @@ class EnvelopedDataHelper
         {
             throw new CMSException(e.getMessage(), e);
         }
+    }
+
+    boolean isAuthEnveloped(ASN1ObjectIdentifier algorithm) {
+        return NISTObjectIdentifiers.id_aes128_GCM.equals(algorithm)
+                || NISTObjectIdentifiers.id_aes192_GCM.equals(algorithm)
+                || NISTObjectIdentifiers.id_aes256_GCM.equals(algorithm);
     }
 }

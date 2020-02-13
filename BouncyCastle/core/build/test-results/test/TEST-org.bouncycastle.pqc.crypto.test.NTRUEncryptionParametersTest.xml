@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.pqc.crypto.test.NTRUEncryptionParametersTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2019-05-14T11:35:48" hostname="Garage2" time="0.0">
-  <properties/>
-  <testcase name="testLoadSave" classname="org.bouncycastle.pqc.crypto.test.NTRUEncryptionParametersTest" time="0.0"/>
-  <testcase name="testClone" classname="org.bouncycastle.pqc.crypto.test.NTRUEncryptionParametersTest" time="0.0"/>
-  <testcase name="testEqualsHashCode" classname="org.bouncycastle.pqc.crypto.test.NTRUEncryptionParametersTest" time="0.0"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

@@ -21,10 +21,10 @@ import org.bouncycastle.openpgp.examples.KeyBasedLargeFileProcessor;
 import org.bouncycastle.openpgp.examples.PBEFileProcessor;
 import org.bouncycastle.openpgp.examples.RSAKeyPairGenerator;
 import org.bouncycastle.openpgp.examples.SignedFileProcessor;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Strings;
-import org.bouncycastle.util.encoders.Base64;
-import org.bouncycastle.util.io.Streams;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.Strings;
+import org.bouncycastle.bcutil.encoders.Base64;
+import org.bouncycastle.bcutil.io.Streams;
 
 public class AllTests
     extends TestCase

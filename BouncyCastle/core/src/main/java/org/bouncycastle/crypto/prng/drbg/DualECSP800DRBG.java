@@ -2,15 +2,15 @@ package org.bouncycastle.crypto.prng.drbg;
 
 import java.math.BigInteger;
 
-import org.bouncycastle.asn1.nist.NISTNamedCurves;
+import org.bouncycastle.bcasn1.nist.NISTNamedCurves;
 import org.bouncycastle.crypto.Digest;
 import org.bouncycastle.crypto.prng.EntropySource;
 import org.bouncycastle.math.ec.ECCurve;
 import org.bouncycastle.math.ec.ECMultiplier;
 import org.bouncycastle.math.ec.ECPoint;
 import org.bouncycastle.math.ec.FixedPointCombMultiplier;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.BigIntegers;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.BigIntegers;
 
 /**
  * A SP800-90A Dual EC DRBG.

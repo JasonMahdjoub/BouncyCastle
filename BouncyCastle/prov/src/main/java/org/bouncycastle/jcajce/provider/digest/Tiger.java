@@ -1,6 +1,6 @@
 package org.bouncycastle.jcajce.provider.digest;
 
-import org.bouncycastle.asn1.iana.IANAObjectIdentifiers;
+import org.bouncycastle.bcasn1.iana.IANAObjectIdentifiers;
 import org.bouncycastle.crypto.CipherKeyGenerator;
 import org.bouncycastle.crypto.digests.TigerDigest;
 import org.bouncycastle.crypto.macs.HMac;

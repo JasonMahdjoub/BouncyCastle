@@ -1,11 +1,11 @@
 package org.bouncycastle.crypto.test;
 
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.crypto.DataLengthException;
 import org.bouncycastle.crypto.agreement.kdf.GSKKDFParameters;
 import org.bouncycastle.crypto.agreement.kdf.GSKKFDGenerator;
 import org.bouncycastle.crypto.digests.SHA256Digest;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class GSKKDFTest
     extends SimpleTest

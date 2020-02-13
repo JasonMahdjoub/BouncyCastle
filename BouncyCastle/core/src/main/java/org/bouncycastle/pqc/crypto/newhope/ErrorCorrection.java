@@ -1,6 +1,6 @@
 package org.bouncycastle.pqc.crypto.newhope;
 
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 class ErrorCorrection
 {

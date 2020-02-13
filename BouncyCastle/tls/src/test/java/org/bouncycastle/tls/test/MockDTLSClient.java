@@ -5,7 +5,7 @@ import java.io.PrintStream;
 import java.security.SecureRandom;
 import java.util.Hashtable;
 
-import org.bouncycastle.asn1.x509.Certificate;
+import org.bouncycastle.bcasn1.x509.Certificate;
 import org.bouncycastle.tls.AlertDescription;
 import org.bouncycastle.tls.AlertLevel;
 import org.bouncycastle.tls.CertificateRequest;
@@ -21,8 +21,8 @@ import org.bouncycastle.tls.TlsServerCertificate;
 import org.bouncycastle.tls.TlsSession;
 import org.bouncycastle.tls.crypto.TlsCertificate;
 import org.bouncycastle.tls.crypto.impl.bc.BcTlsCrypto;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.encoders.Hex;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 public class MockDTLSClient
     extends DefaultTlsClient
@@ -61,16 +61,6 @@ public class MockDTLSClient
         PrintStream out = (alertLevel == AlertLevel.fatal) ? System.err : System.out;
         out.println("DTLS client received alert: " + AlertLevel.getText(alertLevel)
             + ", " + AlertDescription.getText(alertDescription));
-    }
-
-    public ProtocolVersion getClientVersion()
-    {
-        return ProtocolVersion.DTLSv12;
-    }
-
-    public ProtocolVersion getMinimumVersion()
-    {
-        return ProtocolVersion.DTLSv10;
     }
 
     public Hashtable getClientExtensions() throws IOException
@@ -149,5 +139,10 @@ public class MockDTLSClient
 
             this.session = newSession;
         }
+    }
+
+    protected ProtocolVersion[] getSupportedVersions()
+    {
+        return ProtocolVersion.DTLSv12.downTo(ProtocolVersion.DTLSv10);
     }
 }

@@ -6,10 +6,9 @@ import java.security.cert.X509CRLEntry;
 import java.security.cert.X509Certificate;
 import java.io.IOException;
 
-import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.asn1.x509.TBSCertificateStructure;
-import org.bouncycastle.asn1.x509.TBSCertList;
+import org.bouncycastle.bcasn1.x500.X500Name;
+import org.bouncycastle.bcasn1.x509.TBSCertificateStructure;
+import org.bouncycastle.bcasn1.x509.TBSCertList;
 import org.bouncycastle.jce.X509Principal;
 import org.bouncycastle.x509.X509AttributeCertificate;
 

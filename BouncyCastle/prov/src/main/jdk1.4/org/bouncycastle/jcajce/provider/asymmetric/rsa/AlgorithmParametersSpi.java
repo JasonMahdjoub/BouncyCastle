@@ -6,10 +6,10 @@ import java.security.spec.AlgorithmParameterSpec;
 import java.security.spec.InvalidParameterSpecException;
 import java.security.spec.PSSParameterSpec;
 
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.DEROutputStream;
-import org.bouncycastle.asn1.pkcs.RSAESOAEPparams;
-import org.bouncycastle.asn1.pkcs.RSASSAPSSparams;
+import org.bouncycastle.bcasn1.ASN1Integer;
+import org.bouncycastle.bcasn1.DEROutputStream;
+import org.bouncycastle.bcasn1.pkcs.RSAESOAEPparams;
+import org.bouncycastle.bcasn1.pkcs.RSASSAPSSparams;
 
 public abstract class AlgorithmParametersSpi
     extends java.security.AlgorithmParametersSpi

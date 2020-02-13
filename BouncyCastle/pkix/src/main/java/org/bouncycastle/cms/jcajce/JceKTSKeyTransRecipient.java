@@ -7,17 +7,17 @@ import java.security.Provider;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.bouncycastle.asn1.ASN1Encoding;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.DEROctetString;
-import org.bouncycastle.asn1.cms.IssuerAndSerialNumber;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.ASN1Encoding;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.DEROctetString;
+import org.bouncycastle.bcasn1.cms.IssuerAndSerialNumber;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.cms.CMSException;
 import org.bouncycastle.cms.KeyTransRecipient;
 import org.bouncycastle.cms.KeyTransRecipientId;
 import org.bouncycastle.operator.OperatorException;
 import org.bouncycastle.operator.jcajce.JceKTSKeyUnwrapper;
-import org.bouncycastle.util.encoders.Hex;
 
 public abstract class JceKTSKeyTransRecipient
     implements KeyTransRecipient
@@ -35,7 +35,7 @@ public abstract class JceKTSKeyTransRecipient
 
     public JceKTSKeyTransRecipient(PrivateKey recipientKey, byte[] partyVInfo)
     {
-        this.recipientKey = recipientKey;
+        this.recipientKey = CMSUtils.cleanPrivateKey(recipientKey);
         this.partyVInfo = partyVInfo;
     }
 

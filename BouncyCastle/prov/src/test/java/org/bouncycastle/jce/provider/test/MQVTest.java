@@ -11,13 +11,13 @@ import java.security.spec.EllipticCurve;
 
 import javax.crypto.KeyAgreement;
 
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.jcajce.spec.MQVParameterSpec;
 import org.bouncycastle.jce.ECPointUtil;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.jce.spec.MQVPrivateKeySpec;
 import org.bouncycastle.jce.spec.MQVPublicKeySpec;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class MQVTest
     extends SimpleTest

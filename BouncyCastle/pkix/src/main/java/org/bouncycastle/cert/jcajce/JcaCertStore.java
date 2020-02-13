@@ -9,7 +9,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.bouncycastle.cert.X509CertificateHolder;
-import org.bouncycastle.util.CollectionStore;
+import org.bouncycastle.bcutil.CollectionStore;
 
 /**
  * Class for storing Certificates for later lookup.

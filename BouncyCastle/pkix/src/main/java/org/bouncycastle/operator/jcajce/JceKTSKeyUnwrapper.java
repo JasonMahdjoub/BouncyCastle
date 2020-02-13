@@ -8,9 +8,9 @@ import java.util.Map;
 
 import javax.crypto.Cipher;
 
-import org.bouncycastle.asn1.cms.GenericHybridParameters;
-import org.bouncycastle.asn1.cms.RsaKemParameters;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.cms.GenericHybridParameters;
+import org.bouncycastle.bcasn1.cms.RsaKemParameters;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.crypto.util.DEROtherInfo;
 import org.bouncycastle.jcajce.spec.KTSParameterSpec;
 import org.bouncycastle.jcajce.util.DefaultJcaJceHelper;
@@ -19,7 +19,7 @@ import org.bouncycastle.jcajce.util.ProviderJcaJceHelper;
 import org.bouncycastle.operator.AsymmetricKeyUnwrapper;
 import org.bouncycastle.operator.GenericKey;
 import org.bouncycastle.operator.OperatorException;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 public class JceKTSKeyUnwrapper
     extends AsymmetricKeyUnwrapper

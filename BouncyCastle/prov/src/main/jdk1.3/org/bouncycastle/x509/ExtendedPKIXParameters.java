@@ -1,7 +1,7 @@
 package org.bouncycastle.x509;
 
-import org.bouncycastle.util.Selector;
-import org.bouncycastle.util.Store;
+import org.bouncycastle.bcutil.Selector;
+import org.bouncycastle.bcutil.Store;
 
 import java.security.InvalidAlgorithmParameterException;
 import org.bouncycastle.jce.cert.CertSelector;

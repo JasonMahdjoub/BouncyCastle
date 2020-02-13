@@ -32,11 +32,11 @@ import java.util.Set;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1Encoding;
-import org.bouncycastle.asn1.ASN1OctetString;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.x509.Extension;
+import org.bouncycastle.bcasn1.ASN1Encodable;
+import org.bouncycastle.bcasn1.ASN1Encoding;
+import org.bouncycastle.bcasn1.ASN1OctetString;
+import org.bouncycastle.bcasn1.ASN1Primitive;
+import org.bouncycastle.bcasn1.x509.Extension;
 
 /**
  * NIST CertPath test data for RFC 3280
@@ -802,7 +802,7 @@ public class NistCertPathTest
         String crlName)
         throws Exception
     {
-        X509CRL crl = (X509CRL)certs.get(crlName);
+        X509CRL crl = (X509CRL)crls.get(crlName);
         
         if (crl != null)
         {

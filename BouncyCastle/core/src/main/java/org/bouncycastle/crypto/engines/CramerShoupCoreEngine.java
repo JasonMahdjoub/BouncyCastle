@@ -7,12 +7,9 @@ import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
 import org.bouncycastle.crypto.DataLengthException;
 import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.params.CramerShoupKeyParameters;
-import org.bouncycastle.crypto.params.CramerShoupPrivateKeyParameters;
-import org.bouncycastle.crypto.params.CramerShoupPublicKeyParameters;
-import org.bouncycastle.crypto.params.ParametersWithRandom;
-import org.bouncycastle.util.BigIntegers;
-import org.bouncycastle.util.Strings;
+import org.bouncycastle.crypto.params.*;import org.bouncycastle.crypto.params.CramerShoupKeyParameters;
+import org.bouncycastle.crypto.params.ParametersWithRandom;import org.bouncycastle.bcutil.BigIntegers;
+import org.bouncycastle.bcutil.Strings;
 
 /**
  * Essentially the Cramer-Shoup encryption / decryption algorithms according to

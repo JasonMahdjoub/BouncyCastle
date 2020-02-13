@@ -20,7 +20,8 @@ import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.PBEParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
-import org.bouncycastle.asn1.bc.BCObjectIdentifiers;
+import org.bouncycastle.bcasn1.bc.DMBCObjectIdentifiers;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.crypto.Digest;
 import org.bouncycastle.crypto.PBEParametersGenerator;
 import org.bouncycastle.crypto.digests.SHA1Digest;
@@ -33,10 +34,9 @@ import org.bouncycastle.jcajce.PKCS12Key;
 import org.bouncycastle.jcajce.PKCS12KeyWithParameters;
 import org.bouncycastle.jcajce.provider.symmetric.util.BCPBEKey;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Strings;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.Strings;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**
  * test out the various PBE modes, making sure the JCE implementations
@@ -283,12 +283,12 @@ public class PBETest
         new PKCS12Test("AES",    "PBEWithSHA256And256BitAES-CBC-BC", new SHA256Digest(), 256, 128),
         new PKCS12Test("Twofish","PBEWithSHAAndTwofish-CBC",         new SHA1Digest(),   256, 128),
         new PKCS12Test("IDEA",   "PBEWithSHAAndIDEA-CBC",            new SHA1Digest(),   128,  64),
-        new PKCS12Test("AES",    BCObjectIdentifiers.bc_pbe_sha1_pkcs12_aes128_cbc.getId(),   new SHA1Digest(),   128, 128),
-        new PKCS12Test("AES",    BCObjectIdentifiers.bc_pbe_sha1_pkcs12_aes192_cbc.getId(),   new SHA1Digest(),   192, 128),
-        new PKCS12Test("AES",    BCObjectIdentifiers.bc_pbe_sha1_pkcs12_aes256_cbc.getId(),   new SHA1Digest(),   256, 128),
-        new PKCS12Test("AES",    BCObjectIdentifiers.bc_pbe_sha256_pkcs12_aes128_cbc.getId(), new SHA256Digest(), 128, 128),
-        new PKCS12Test("AES",    BCObjectIdentifiers.bc_pbe_sha256_pkcs12_aes192_cbc.getId(), new SHA256Digest(), 192, 128),
-        new PKCS12Test("AES",    BCObjectIdentifiers.bc_pbe_sha256_pkcs12_aes256_cbc.getId(), new SHA256Digest(), 256, 128),
+        new PKCS12Test("AES",    DMBCObjectIdentifiers.bc_pbe_sha1_pkcs12_aes128_cbc.getId(),   new SHA1Digest(),   128, 128),
+        new PKCS12Test("AES",    DMBCObjectIdentifiers.bc_pbe_sha1_pkcs12_aes192_cbc.getId(),   new SHA1Digest(),   192, 128),
+        new PKCS12Test("AES",    DMBCObjectIdentifiers.bc_pbe_sha1_pkcs12_aes256_cbc.getId(),   new SHA1Digest(),   256, 128),
+        new PKCS12Test("AES",    DMBCObjectIdentifiers.bc_pbe_sha256_pkcs12_aes128_cbc.getId(), new SHA256Digest(), 128, 128),
+        new PKCS12Test("AES",    DMBCObjectIdentifiers.bc_pbe_sha256_pkcs12_aes192_cbc.getId(), new SHA256Digest(), 192, 128),
+        new PKCS12Test("AES",    DMBCObjectIdentifiers.bc_pbe_sha256_pkcs12_aes256_cbc.getId(), new SHA256Digest(), 256, 128),
     };
     
     private OpenSSLTest openSSLTests[] = {
@@ -302,6 +302,7 @@ public class PBETest
     private byte[] hMac1 = Hex.decode("bcc42174ccb04f425d9a5c8c4a95d6fd7c372911");
     private byte[] hMac2 = Hex.decode("cb1d8bdb6aca9e3fa8980d6eb41ab28a7eb2cfd6");
     private byte[] hMac3 = Hex.decode("514aa173a302c770689269aac08eb8698e5879ac");
+    private byte[] hMac4 = Hex.decode("d24b4eb0e5bd611d4ca88bd6428d14ee2e004c7e");
 
     private Cipher makePBECipherUsingParam(
         String  algorithm,
@@ -437,8 +438,6 @@ public class PBETest
             SecretKeyFactory    fact = SecretKeyFactory.getInstance(hmacName, "BC");
 
             key = fact.generateSecret(new PBEKeySpec("hello".toCharArray(), new byte[20], 100, 160));
-
-            mac = Mac.getInstance("HMAC-SHA1", "BC");
         }
         catch (Exception e)
         {
@@ -448,6 +447,8 @@ public class PBETest
 
         try
         {
+            mac = Mac.getInstance("HMAC-SHA1", "BC");
+
             mac.init(key);
         }
         catch (Exception e)
@@ -673,6 +674,7 @@ public class PBETest
         testPBEHMac("PBEWithHMacRIPEMD160", hMac2);
 
         testPBEonSecretKeyHmac("PBKDF2WithHmacSHA1", hMac3);
+        testPBEonSecretKeyHmac("PBKDF2WithHMacSM3", hMac4);
 
         testCipherNameWithWrap("PBEWITHSHA256AND128BITAES-CBC-BC", "AES/CBC/PKCS5Padding");
         testCipherNameWithWrap("PBEWITHSHAAND40BITRC4", "RC4");

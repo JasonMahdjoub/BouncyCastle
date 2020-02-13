@@ -5,18 +5,18 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.bouncycastle.asn1.ASN1OctetString;
-import org.bouncycastle.asn1.BEROctetString;
-import org.bouncycastle.asn1.DERIA5String;
-import org.bouncycastle.asn1.cms.CMSObjectIdentifiers;
-import org.bouncycastle.asn1.cms.ContentInfo;
-import org.bouncycastle.asn1.cms.Evidence;
-import org.bouncycastle.asn1.cms.TimeStampAndCRL;
-import org.bouncycastle.asn1.cms.TimeStampTokenEvidence;
-import org.bouncycastle.asn1.cms.TimeStampedData;
+import org.bouncycastle.bcasn1.ASN1OctetString;
+import org.bouncycastle.bcasn1.BEROctetString;
+import org.bouncycastle.bcasn1.DERIA5String;
+import org.bouncycastle.bcasn1.cms.CMSObjectIdentifiers;
+import org.bouncycastle.bcasn1.cms.ContentInfo;
+import org.bouncycastle.bcasn1.cms.Evidence;
+import org.bouncycastle.bcasn1.cms.TimeStampAndCRL;
+import org.bouncycastle.bcasn1.cms.TimeStampTokenEvidence;
+import org.bouncycastle.bcasn1.cms.TimeStampedData;
 import org.bouncycastle.cms.CMSException;
 import org.bouncycastle.tsp.TimeStampToken;
-import org.bouncycastle.util.io.Streams;
+import org.bouncycastle.bcutil.io.Streams;
 
 public class CMSTimeStampedDataGenerator
     extends CMSTimeStampedGenerator

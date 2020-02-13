@@ -1,11 +1,14 @@
 package org.bouncycastle.crypto.engines;
 
-import org.bouncycastle.crypto.*;
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
+import org.bouncycastle.crypto.BlockCipher;
+import org.bouncycastle.crypto.CipherParameters;
+import org.bouncycastle.crypto.DataLengthException;
+import org.bouncycastle.crypto.InvalidCipherTextException;
+import org.bouncycastle.crypto.Wrapper;
 import org.bouncycastle.crypto.params.KeyParameter;
 import org.bouncycastle.crypto.params.ParametersWithIV;
 import org.bouncycastle.crypto.params.ParametersWithRandom;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 /**
  * an implementation of the AES Key Wrapper from the NIST Key Wrap
@@ -50,7 +53,7 @@ public class RFC3394WrapEngine
 
     public void init(
         boolean             forWrapping,
-        CipherParameters    param)
+        CipherParameters param)
     {
         this.forWrapping = forWrapping;
 
@@ -134,7 +137,7 @@ public class RFC3394WrapEngine
         byte[]  in,
         int     inOff,
         int     inLen)
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         if (forWrapping)
         {
@@ -145,7 +148,7 @@ public class RFC3394WrapEngine
 
         if ((n * 8) != inLen)
         {
-            throw new BCInvalidCipherTextException("unwrap data must be a multiple of 8 bytes");
+            throw new InvalidCipherTextException("unwrap data must be a multiple of 8 bytes");
         }
 
         byte[]  block = new byte[inLen - iv.length];
@@ -184,7 +187,7 @@ public class RFC3394WrapEngine
 
         if (!Arrays.constantTimeAreEqual(a, iv))
         {
-            throw new BCInvalidCipherTextException("checksum failed");
+            throw new InvalidCipherTextException("checksum failed");
         }
 
         return block;

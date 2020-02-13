@@ -13,7 +13,7 @@ import org.bouncycastle.math.ec.ECCurve;
 import org.bouncycastle.math.field.FiniteField;
 import org.bouncycastle.math.field.Polynomial;
 import org.bouncycastle.math.field.PolynomialExtensionField;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 /**
  * specification signifying that the curve parameters can also be

@@ -3,9 +3,9 @@ package org.bouncycastle.jce.provider.test;
 import java.security.MessageDigest;
 import java.security.Security;
 
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class KeccakTest
     extends SimpleTest

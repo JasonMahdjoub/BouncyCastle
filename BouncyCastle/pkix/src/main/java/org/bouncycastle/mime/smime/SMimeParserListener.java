@@ -5,7 +5,7 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 import org.bouncycastle.cms.CMSEnvelopedDataParser;
 import org.bouncycastle.cms.CMSException;
 import org.bouncycastle.cms.CMSSignedData;
@@ -19,8 +19,8 @@ import org.bouncycastle.mime.MimeIOException;
 import org.bouncycastle.mime.MimeParserContext;
 import org.bouncycastle.mime.MimeParserListener;
 import org.bouncycastle.operator.DigestCalculator;
-import org.bouncycastle.util.Store;
-import org.bouncycastle.util.io.Streams;
+import org.bouncycastle.bcutil.Store;
+import org.bouncycastle.bcutil.io.Streams;
 
 public abstract class SMimeParserListener
     implements MimeParserListener

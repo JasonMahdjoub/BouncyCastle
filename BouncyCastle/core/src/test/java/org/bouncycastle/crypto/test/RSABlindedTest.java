@@ -1,8 +1,9 @@
 package org.bouncycastle.crypto.test;
 
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.crypto.AsymmetricBlockCipher;
 import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
+import org.bouncycastle.crypto.InvalidCipherTextException;
 import org.bouncycastle.crypto.encodings.OAEPEncoding;
 import org.bouncycastle.crypto.encodings.PKCS1Encoding;
 import org.bouncycastle.crypto.engines.RSABlindedEngine;
@@ -10,8 +11,7 @@ import org.bouncycastle.crypto.generators.RSAKeyPairGenerator;
 import org.bouncycastle.crypto.params.RSAKeyGenerationParameters;
 import org.bouncycastle.crypto.params.RSAKeyParameters;
 import org.bouncycastle.crypto.params.RSAPrivateCrtKeyParameters;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
@@ -73,7 +73,7 @@ public class RSABlindedTest
 
             fail("oversized signature block not recognised");
         }
-        catch (BCInvalidCipherTextException e)
+        catch (InvalidCipherTextException e)
         {
             if (!e.getMessage().equals("block incorrect size"))
             {
@@ -92,7 +92,7 @@ public class RSABlindedTest
         {
             data = eng.processBlock(data, 0, data.length);
         }
-        catch (BCInvalidCipherTextException e)
+        catch (InvalidCipherTextException e)
         {
             fail("RSA: failed - exception " + e.toString(), e);
         }
@@ -147,7 +147,7 @@ public class RSABlindedTest
 
             fail("missing data block not recognised");
         }
-        catch (BCInvalidCipherTextException e)
+        catch (InvalidCipherTextException e)
         {
             if (!e.getMessage().equals(expectedMessage))
             {
@@ -194,8 +194,8 @@ public class RSABlindedTest
 
     public void performTest()
     {
-        RSAKeyParameters    pubParameters = new RSAKeyParameters(false, mod, pubExp);
-        RSAKeyParameters    privParameters = new RSAPrivateCrtKeyParameters(mod, pubExp, privExp, p, q, pExp, qExp, crtCoef);
+        RSAKeyParameters pubParameters = new RSAKeyParameters(false, mod, pubExp);
+        RSAKeyParameters privParameters = new RSAPrivateCrtKeyParameters(mod, pubExp, privExp, p, q, pExp, qExp, crtCoef);
         byte[]              data = Hex.decode(edgeInput);
 
         //

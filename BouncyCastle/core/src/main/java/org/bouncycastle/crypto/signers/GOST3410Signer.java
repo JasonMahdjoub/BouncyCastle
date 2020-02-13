@@ -6,12 +6,9 @@ import java.security.SecureRandom;
 import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
 import org.bouncycastle.crypto.DSAExt;
-import org.bouncycastle.crypto.params.GOST3410KeyParameters;
-import org.bouncycastle.crypto.params.GOST3410Parameters;
-import org.bouncycastle.crypto.params.GOST3410PrivateKeyParameters;
-import org.bouncycastle.crypto.params.GOST3410PublicKeyParameters;
-import org.bouncycastle.crypto.params.ParametersWithRandom;
-import org.bouncycastle.util.BigIntegers;
+import org.bouncycastle.crypto.params.*;import org.bouncycastle.crypto.params.GOST3410KeyParameters;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.BigIntegers;
 
 /**
  * GOST R 34.10-94 Signature Algorithm
@@ -25,7 +22,7 @@ public class GOST3410Signer
 
         public void init(
             boolean                 forSigning,
-            CipherParameters        param)
+            CipherParameters param)
         {
             if (forSigning)
             {
@@ -63,14 +60,9 @@ public class GOST3410Signer
         public BigInteger[] generateSignature(
             byte[] message)
         {
-            byte[] mRev = new byte[message.length]; // conversion is little-endian
-            for (int i = 0; i != mRev.length; i++)
-            {
-                mRev[i] = message[mRev.length - 1 - i];
-            }
-            
+            byte[] mRev = Arrays.reverse(message); // conversion is little-endian
             BigInteger      m = new BigInteger(1, mRev);
-            GOST3410Parameters   params = key.getParameters();
+            GOST3410Parameters params = key.getParameters();
             BigInteger      k;
 
             do
@@ -103,12 +95,7 @@ public class GOST3410Signer
             BigInteger  r,
             BigInteger  s)
         {
-            byte[] mRev = new byte[message.length]; // conversion is little-endian
-            for (int i = 0; i != mRev.length; i++)
-            {
-                mRev[i] = message[mRev.length - 1 - i];
-            }
-            
+            byte[] mRev = Arrays.reverse(message); // conversion is little-endian
             BigInteger           m = new BigInteger(1, mRev);
             GOST3410Parameters params = key.getParameters();
             BigInteger           zero = BigInteger.valueOf(0);

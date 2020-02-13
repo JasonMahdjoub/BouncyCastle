@@ -5,16 +5,16 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.security.PrivateKey;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1Set;
-import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.ASN1Set;
+import org.bouncycastle.bcasn1.pkcs.PrivateKeyInfo;
 import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.pqc.asn1.XMSSKeyParams;
 import org.bouncycastle.pqc.crypto.util.PrivateKeyFactory;
 import org.bouncycastle.pqc.crypto.util.PrivateKeyInfoFactory;
 import org.bouncycastle.pqc.crypto.xmss.XMSSPrivateKeyParameters;
 import org.bouncycastle.pqc.jcajce.interfaces.XMSSPrivateKey;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 public class BCXMSSPrivateKey
     implements PrivateKey, XMSSPrivateKey
@@ -51,6 +51,11 @@ public class BCXMSSPrivateKey
     public long getUsagesRemaining()
     {
         return keyParams.getUsagesRemaining();
+    }
+
+    public XMSSPrivateKey extractKeyShard(int usageCount)
+    {
+        return new BCXMSSPrivateKey(this.treeDigest, keyParams.extractKeyShard(usageCount));
     }
 
     public String getAlgorithm()

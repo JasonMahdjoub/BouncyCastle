@@ -9,11 +9,11 @@ import java.security.spec.InvalidParameterSpecException;
 
 import javax.crypto.spec.IvParameterSpec;
 
-import org.bouncycastle.asn1.ASN1InputStream;
-import org.bouncycastle.asn1.misc.CAST5CBCParameters;
-import org.bouncycastle.asn1.misc.MiscObjectIdentifiers;
-import org.bouncycastle.crypto.CipherKeyGenerator;
+import org.bouncycastle.bcasn1.ASN1InputStream;
+import org.bouncycastle.bcasn1.misc.BCMiscObjectIdentifiers;
+import org.bouncycastle.bcasn1.misc.CAST5CBCParameters;
 import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.crypto.CipherKeyGenerator;
 import org.bouncycastle.crypto.engines.CAST5Engine;
 import org.bouncycastle.crypto.modes.CBCBlockCipher;
 import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
@@ -212,10 +212,10 @@ public final class CAST5
             provider.addAlgorithm("Alg.Alias.AlgorithmParameterGenerator.1.2.840.113533.7.66.10", "CAST5");
 
             provider.addAlgorithm("Cipher.CAST5", PREFIX + "$ECB");
-            provider.addAlgorithm("Cipher", MiscObjectIdentifiers.cast5CBC, PREFIX + "$CBC");
+            provider.addAlgorithm("Cipher", BCMiscObjectIdentifiers.cast5CBC, PREFIX + "$CBC");
 
             provider.addAlgorithm("KeyGenerator.CAST5", PREFIX + "$KeyGen");
-            provider.addAlgorithm("Alg.Alias.KeyGenerator", MiscObjectIdentifiers.cast5CBC, "CAST5");
+            provider.addAlgorithm("Alg.Alias.KeyGenerator", BCMiscObjectIdentifiers.cast5CBC, "CAST5");
 
         }
     }

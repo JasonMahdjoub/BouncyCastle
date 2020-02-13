@@ -2,8 +2,9 @@ package org.bouncycastle.crypto.test;
 
 import java.security.SecureRandom;
 
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.crypto.BlockCipher;
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
+import org.bouncycastle.crypto.InvalidCipherTextException;
 import org.bouncycastle.crypto.Wrapper;
 import org.bouncycastle.crypto.engines.DESEngine;
 import org.bouncycastle.crypto.engines.DESedeEngine;
@@ -13,9 +14,8 @@ import org.bouncycastle.crypto.params.KeyParameter;
 import org.bouncycastle.crypto.params.ParametersWithIV;
 import org.bouncycastle.crypto.params.ParametersWithRandom;
 import org.bouncycastle.crypto.prng.FixedSecureRandom;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**
  * Wrap Test based on RFC3211 test vectors
@@ -62,7 +62,7 @@ public class RFC3211WrapTest
     }
 
     private void testCorruption()
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         byte[] kek = Hex.decode("D1DAA78615F287E6");
         byte[] iv = Hex.decode("EFE598EF21B33D6D");
@@ -80,7 +80,7 @@ public class RFC3211WrapTest
 
             fail("bad length not detected");
         }
-        catch (BCInvalidCipherTextException e)
+        catch (InvalidCipherTextException e)
         {
             if (!e.getMessage().equals("wrapped key corrupted"))
             {
@@ -108,7 +108,7 @@ public class RFC3211WrapTest
 
             fail("bad checksum not detected");
         }
-        catch (BCInvalidCipherTextException e)
+        catch (InvalidCipherTextException e)
         {
             if (!e.getMessage().equals("wrapped key corrupted"))
             {
@@ -160,7 +160,7 @@ public class RFC3211WrapTest
         {
             // expected
         }
-        catch (BCInvalidCipherTextException e)
+        catch (InvalidCipherTextException e)
         {
             fail("unexpected exception: " + e, e);
         }
@@ -189,7 +189,7 @@ public class RFC3211WrapTest
 
             fail("failed unwrap short test.");
         }
-        catch (BCInvalidCipherTextException e)
+        catch (InvalidCipherTextException e)
         {
             // expected
         }

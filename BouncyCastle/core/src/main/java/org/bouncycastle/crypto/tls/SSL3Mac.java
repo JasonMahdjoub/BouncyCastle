@@ -4,7 +4,7 @@ import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.Digest;
 import org.bouncycastle.crypto.Mac;
 import org.bouncycastle.crypto.params.KeyParameter;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 /**
  * HMAC implementation based on original internet draft for HMAC (RFC 2104)
@@ -12,6 +12,8 @@ import org.bouncycastle.util.Arrays;
  * The difference is that padding is concatenated versus XORed with the key
  * <p>
  * H(K + opad, H(K + ipad, text))
+ *
+ * @deprecated Migrate to the (D)TLS API in org.bouncycastle.tls (bctls jar).
  */
 public class SSL3Mac
     implements Mac

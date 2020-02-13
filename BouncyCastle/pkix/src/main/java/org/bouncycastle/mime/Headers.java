@@ -11,8 +11,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import org.bouncycastle.util.Iterable;
-import org.bouncycastle.util.Strings;
+import org.bouncycastle.bcutil.Iterable;
+import org.bouncycastle.bcutil.Strings;
 
 public class Headers
     implements Iterable<String>

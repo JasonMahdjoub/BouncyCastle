@@ -8,8 +8,8 @@ import java.security.SecureRandom;
 import junit.framework.TestCase;
 import org.bouncycastle.tls.TlsClientProtocol;
 import org.bouncycastle.tls.TlsServerProtocol;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.io.Streams;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.io.Streams;
 
 public class TlsProtocolTest
     extends TestCase
@@ -19,8 +19,8 @@ public class TlsProtocolTest
     {
         SecureRandom secureRandom = new SecureRandom();
 
-        PipedInputStream clientRead = new PipedInputStream();
-        PipedInputStream serverRead = new PipedInputStream();
+        PipedInputStream clientRead = TlsTestUtils.createPipedInputStream();
+        PipedInputStream serverRead = TlsTestUtils.createPipedInputStream();
         PipedOutputStream clientWrite = new PipedOutputStream(serverRead);
         PipedOutputStream serverWrite = new PipedOutputStream(clientRead);
 

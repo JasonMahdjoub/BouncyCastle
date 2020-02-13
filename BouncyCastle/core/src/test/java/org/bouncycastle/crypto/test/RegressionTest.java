@@ -1,7 +1,7 @@
 package org.bouncycastle.crypto.test;
 
-import org.bouncycastle.util.test.Test;
-import org.bouncycastle.util.test.TestResult;
+import org.bouncycastle.bcutil.test.SimpleTest;
+import org.bouncycastle.bcutil.test.Test;
 
 public class RegressionTest
 {
@@ -107,6 +107,7 @@ public class RegressionTest
             new Salsa20Test(),
             new XSalsa20Test(),
             new ChaChaTest(),
+            new ChaCha20Poly1305Test(),
             new CMacTest(),
             new EAXTest(),
             new GCMTest(),
@@ -147,6 +148,7 @@ public class RegressionTest
             new X931SignerTest(),
             new Blake2bDigestTest(),
             new Blake2sDigestTest(),
+            new Blake2xsDigestTest(),
             new KeccakDigestTest(),
             new SHAKEDigestTest(),
             new SM2EngineTest(),
@@ -165,22 +167,16 @@ public class RegressionTest
             new Ed448Test(),
             new CSHAKETest(),
             new Argon2Test(),
-            new OpenSSHKeyParsingTests()
+            new OpenSSHKeyParsingTests(),
+            new EthereumIESTest(),
+            new BigIntegersTest(),
+            new ZucTest(),
+            new Haraka256DigestTest(),
+            new Haraka512DigestTest()
         };
 
-    public static void main(
-        String[] args)
+    public static void main(String[] args)
     {
-        for (int i = 0; i != tests.length; i++)
-        {
-            TestResult result = tests[i].perform();
-
-            if (result.getException() != null)
-            {
-                result.getException().printStackTrace();
-            }
-
-            System.out.println(result);
-        }
+        SimpleTest.runTests(tests);
     }
 }

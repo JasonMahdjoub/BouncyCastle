@@ -1,6 +1,6 @@
 package org.bouncycastle.jcajce.provider.asymmetric;
 
-import org.bouncycastle.asn1.ua.UAObjectIdentifiers;
+import org.bouncycastle.bcasn1.ua.UAObjectIdentifiers;
 import org.bouncycastle.jcajce.provider.asymmetric.dstu.KeyFactorySpi;
 import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import org.bouncycastle.jcajce.provider.util.AsymmetricAlgorithmProvider;

@@ -5,7 +5,7 @@ import org.bouncycastle.crypto.Digest;
 import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
 import org.bouncycastle.crypto.params.ParametersWithRandom;
 import org.bouncycastle.pqc.crypto.StateAwareMessageSigner;
-import org.bouncycastle.util.Memoable;
+import org.bouncycastle.bcutil.Memoable;
 
 /**
  * This class implements the GMSS signature scheme, but allows multiple signatures to be generated.

@@ -2,18 +2,18 @@ package org.bouncycastle.crypto.test;
 
 import java.security.SecureRandom;
 
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.BlockCipher;
+import org.bouncycastle.crypto.InvalidCipherTextException;
 import org.bouncycastle.crypto.engines.AESEngine;
 import org.bouncycastle.crypto.engines.DESEngine;
 import org.bouncycastle.crypto.modes.AEADBlockCipher;
 import org.bouncycastle.crypto.modes.OCBBlockCipher;
 import org.bouncycastle.crypto.params.AEADParameters;
 import org.bouncycastle.crypto.params.KeyParameter;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Times;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.Times;
+import org.bouncycastle.bcutil.encoders.Hex;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**
  * Test vectors from <a href="http://tools.ietf.org/html/rfc7253">RFC 7253 on The OCB
@@ -138,7 +138,7 @@ public class OCBTest
         testExceptions();
     }
 
-    private void testExceptions() throws BCInvalidCipherTextException
+    private void testExceptions() throws InvalidCipherTextException
     {
         AEADBlockCipher ocb = createOCBCipher();
 
@@ -173,7 +173,7 @@ public class OCBTest
     }
 
     private void runTestCase(String testName, String[] testVector, int macLengthBits, byte[] K)
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         int pos = 0;
         byte[] N = Hex.decode(testVector[pos++]);
@@ -218,7 +218,7 @@ public class OCBTest
 
     private void checkTestCase(AEADBlockCipher encCipher, AEADBlockCipher decCipher, String testName,
         int macLengthBytes, byte[] P, byte[] C)
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         byte[] tag = Arrays.copyOfRange(C, C.length - macLengthBytes, C.length);
 
@@ -266,7 +266,7 @@ public class OCBTest
     }
 
     private void runLongerTestCase(int keyLen, int tagLen, String expectedOutputHex)
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         byte[] expectedOutput = Hex.decode(expectedOutputHex);
         byte[] keyBytes = new byte[keyLen / 8];
@@ -314,7 +314,7 @@ public class OCBTest
 
     private int updateCiphers(AEADBlockCipher c1, AEADBlockCipher c2, byte[] S, int i,
         boolean includeAAD, boolean includePlaintext)
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         int inputLen = includePlaintext ? i : 0;
         int outputLen = c2.getOutputSize(inputLen);
@@ -341,7 +341,7 @@ public class OCBTest
     }
 
     private void randomTests()
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         SecureRandom srng = new SecureRandom();
         srng.setSeed(Times.nanoTime());
@@ -352,7 +352,7 @@ public class OCBTest
     }
 
     private void randomTest(SecureRandom srng)
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         int kLength = 16 + 8 * (Math.abs(srng.nextInt()) % 3);
         byte[] K = new byte[kLength];

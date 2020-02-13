@@ -10,14 +10,14 @@ import java.util.List;
 
 import javax.security.auth.x500.X500Principal;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.DERSequence;
-import org.bouncycastle.asn1.x509.AttCertIssuer;
-import org.bouncycastle.asn1.x509.GeneralName;
-import org.bouncycastle.asn1.x509.GeneralNames;
-import org.bouncycastle.asn1.x509.V2Form;
+import org.bouncycastle.bcasn1.ASN1Encodable;
+import org.bouncycastle.bcasn1.DERSequence;
+import org.bouncycastle.bcasn1.x509.AttCertIssuer;
+import org.bouncycastle.bcasn1.x509.GeneralName;
+import org.bouncycastle.bcasn1.x509.GeneralNames;
+import org.bouncycastle.bcasn1.x509.V2Form;
 import org.bouncycastle.jce.X509Principal;
-import org.bouncycastle.util.Selector;
+import org.bouncycastle.bcutil.Selector;
 
 /**
  * Carrying class for an attribute certificate issuer.
@@ -152,7 +152,7 @@ public class AttributeCertificateIssuer
             V2Form issuer = (V2Form)form;
             if (issuer.getBaseCertificateID() != null)
             {
-                return issuer.getBaseCertificateID().getSerial().getValue().equals(x509Cert.getSerialNumber())
+                return issuer.getBaseCertificateID().getSerial().hasValue(x509Cert.getSerialNumber())
                     && matchesDN(x509Cert.getIssuerX500Principal(), issuer.getBaseCertificateID().getIssuer());
             }
 

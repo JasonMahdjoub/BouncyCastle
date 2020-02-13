@@ -36,35 +36,35 @@ import java.util.Vector;
 
 import javax.security.auth.x500.X500Principal;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1Enumerated;
-import org.bouncycastle.asn1.ASN1InputStream;
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1OctetString;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.ASN1TaggedObject;
-import org.bouncycastle.asn1.DERIA5String;
-import org.bouncycastle.asn1.DEROctetString;
-import org.bouncycastle.asn1.x509.AccessDescription;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x509.AuthorityInformationAccess;
-import org.bouncycastle.asn1.x509.AuthorityKeyIdentifier;
-import org.bouncycastle.asn1.x509.BasicConstraints;
-import org.bouncycastle.asn1.x509.CRLDistPoint;
-import org.bouncycastle.asn1.x509.DistributionPoint;
-import org.bouncycastle.asn1.x509.DistributionPointName;
-import org.bouncycastle.asn1.x509.Extension;
-import org.bouncycastle.asn1.x509.GeneralName;
-import org.bouncycastle.asn1.x509.GeneralNames;
-import org.bouncycastle.asn1.x509.GeneralSubtree;
-import org.bouncycastle.asn1.x509.IssuingDistributionPoint;
-import org.bouncycastle.asn1.x509.NameConstraints;
-import org.bouncycastle.asn1.x509.PolicyInformation;
-import org.bouncycastle.asn1.x509.qualified.Iso4217CurrencyCode;
-import org.bouncycastle.asn1.x509.qualified.MonetaryValue;
-import org.bouncycastle.asn1.x509.qualified.QCStatement;
+import org.bouncycastle.bcasn1.ASN1Encodable;
+import org.bouncycastle.bcasn1.ASN1Enumerated;
+import org.bouncycastle.bcasn1.ASN1InputStream;
+import org.bouncycastle.bcasn1.ASN1Integer;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.ASN1OctetString;
+import org.bouncycastle.bcasn1.ASN1Primitive;
+import org.bouncycastle.bcasn1.ASN1Sequence;
+import org.bouncycastle.bcasn1.ASN1TaggedObject;
+import org.bouncycastle.bcasn1.DERIA5String;
+import org.bouncycastle.bcasn1.DEROctetString;
+import org.bouncycastle.bcasn1.x509.AccessDescription;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.x509.AuthorityInformationAccess;
+import org.bouncycastle.bcasn1.x509.AuthorityKeyIdentifier;
+import org.bouncycastle.bcasn1.x509.BasicConstraints;
+import org.bouncycastle.bcasn1.x509.CRLDistPoint;
+import org.bouncycastle.bcasn1.x509.DistributionPoint;
+import org.bouncycastle.bcasn1.x509.DistributionPointName;
+import org.bouncycastle.bcasn1.x509.Extension;
+import org.bouncycastle.bcasn1.x509.GeneralName;
+import org.bouncycastle.bcasn1.x509.GeneralNames;
+import org.bouncycastle.bcasn1.x509.GeneralSubtree;
+import org.bouncycastle.bcasn1.x509.IssuingDistributionPoint;
+import org.bouncycastle.bcasn1.x509.NameConstraints;
+import org.bouncycastle.bcasn1.x509.PolicyInformation;
+import org.bouncycastle.bcasn1.x509.qualified.Iso4217CurrencyCode;
+import org.bouncycastle.bcasn1.x509.qualified.MonetaryValue;
+import org.bouncycastle.bcasn1.x509.qualified.QCStatement;
 import org.bouncycastle.i18n.ErrorBundle;
 import org.bouncycastle.i18n.LocaleString;
 import org.bouncycastle.i18n.filter.TrustedInput;
@@ -74,7 +74,7 @@ import org.bouncycastle.jce.provider.AnnotatedException;
 import org.bouncycastle.jce.provider.PKIXNameConstraintValidator;
 import org.bouncycastle.jce.provider.PKIXNameConstraintValidatorException;
 import org.bouncycastle.jce.provider.PKIXPolicyNode;
-import org.bouncycastle.util.Integers;
+import org.bouncycastle.bcutil.Integers;
 
 /**
  * PKIXCertPathReviewer<br>
@@ -1545,14 +1545,14 @@ public class PKIXCertPathReviewer extends CertPathValidatorUtilities
                                 switch (constraint.getTagNo())
                                 {
                                 case 0:
-                                    tmpInt = ASN1Integer.getInstance(constraint, false).getValue().intValue();
+                                    tmpInt = ASN1Integer.getInstance(constraint, false).intValueExact();
                                     if (tmpInt < explicitPolicy)
                                     {
                                         explicitPolicy = tmpInt;
                                     }
                                     break;
                                 case 1:
-                                    tmpInt = ASN1Integer.getInstance(constraint, false).getValue().intValue();
+                                    tmpInt = ASN1Integer.getInstance(constraint, false).intValueExact();
                                     if (tmpInt < policyMapping)
                                     {
                                         policyMapping = tmpInt;
@@ -1578,7 +1578,7 @@ public class PKIXCertPathReviewer extends CertPathValidatorUtilities
                         
                         if (iap != null)
                         {
-                            int _inhibitAnyPolicy = iap.getValue().intValue();
+                            int _inhibitAnyPolicy = iap.intValueExact();
                         
                             if (_inhibitAnyPolicy < inhibitAnyPolicy)
                             {
@@ -1625,7 +1625,7 @@ public class PKIXCertPathReviewer extends CertPathValidatorUtilities
                         switch (constraint.getTagNo())
                         {
                         case 0:
-                            int tmpInt = ASN1Integer.getInstance(constraint, false).getValue().intValue();
+                            int tmpInt = ASN1Integer.getInstance(constraint, false).intValueExact();
                             if (tmpInt == 0)
                             {
                                 explicitPolicy = 0;
@@ -2209,7 +2209,7 @@ public class PKIXCertPathReviewer extends CertPathValidatorUtilities
                     }
                     if (reasonCode != null)
                     {
-                        reason = crlReasons[reasonCode.getValue().intValue()];
+                        reason = crlReasons[reasonCode.intValueExact()];
                     }
                 }
 

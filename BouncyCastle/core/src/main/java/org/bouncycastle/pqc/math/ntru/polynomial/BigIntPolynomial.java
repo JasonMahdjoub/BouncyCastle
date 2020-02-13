@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.List;
 
 import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 /**
  * A polynomial with {@link BigInteger} coefficients.<br>

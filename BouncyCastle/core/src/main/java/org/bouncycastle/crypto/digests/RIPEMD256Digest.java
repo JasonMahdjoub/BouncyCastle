@@ -1,7 +1,7 @@
 package org.bouncycastle.crypto.digests;
 
 
-import org.bouncycastle.util.Memoable;
+import org.bouncycastle.bcutil.Memoable;
 
 /**
  * implementation of RIPEMD256.

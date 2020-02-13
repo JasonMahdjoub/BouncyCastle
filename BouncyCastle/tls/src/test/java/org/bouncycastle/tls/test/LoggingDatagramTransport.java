@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 
 import org.bouncycastle.tls.DatagramTransport;
-import org.bouncycastle.util.Strings;
+import org.bouncycastle.bcutil.Strings;
 
 public class LoggingDatagramTransport
     implements DatagramTransport

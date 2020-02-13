@@ -17,7 +17,7 @@ import org.bouncycastle.bcpg.sig.IssuerKeyID;
 import org.bouncycastle.bcpg.sig.SignatureCreationTime;
 import org.bouncycastle.openpgp.operator.PGPContentSigner;
 import org.bouncycastle.openpgp.operator.PGPContentSignerBuilder;
-import org.bouncycastle.util.Strings;
+import org.bouncycastle.bcutil.Strings;
 
 /**
  * Generator for PGP Signatures.
@@ -175,7 +175,7 @@ public class PGPSignatureGenerator
     /**
      * Return the one pass header associated with the current signature.
      * 
-     * @param isNested
+     * @param isNested true if the signature is nested, false otherwise.
      * @return PGPOnePassSignature
      * @throws PGPException
      */

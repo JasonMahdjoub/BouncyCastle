@@ -6,11 +6,10 @@ import java.security.SecureRandom;
 import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
 import org.bouncycastle.crypto.AsymmetricCipherKeyPairGenerator;
 import org.bouncycastle.crypto.KeyGenerationParameters;
-import org.bouncycastle.crypto.params.CramerShoupKeyGenerationParameters;
+import org.bouncycastle.crypto.params.*;
 import org.bouncycastle.crypto.params.CramerShoupParameters;
-import org.bouncycastle.crypto.params.CramerShoupPrivateKeyParameters;
 import org.bouncycastle.crypto.params.CramerShoupPublicKeyParameters;
-import org.bouncycastle.util.BigIntegers;
+import org.bouncycastle.bcutil.BigIntegers;
 
 /**
  * a Cramer Shoup key pair generator

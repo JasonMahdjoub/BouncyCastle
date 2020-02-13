@@ -13,8 +13,8 @@ import java.util.Iterator;
 import java.util.Locale;
 import java.util.Map;
 
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Integers;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.Integers;
 
 /**
  * Parameters for the Skein hash function - a series of byte[] strings identified by integer tags.

@@ -10,7 +10,7 @@ import org.bouncycastle.crypto.DataLengthException;
 import org.bouncycastle.crypto.params.ParametersWithRandom;
 import org.bouncycastle.crypto.params.RSAKeyParameters;
 import org.bouncycastle.crypto.params.RSAPrivateCrtKeyParameters;
-import org.bouncycastle.util.BigIntegers;
+import org.bouncycastle.bcutil.BigIntegers;
 
 /**
  * this does your basic RSA algorithm with blinding
@@ -32,21 +32,37 @@ public class RSABlindedEngine
      */
     public void init(
         boolean             forEncryption,
-        CipherParameters    param)
+        CipherParameters param)
     {
         core.init(forEncryption, param);
 
         if (param instanceof ParametersWithRandom)
         {
-            ParametersWithRandom    rParam = (ParametersWithRandom)param;
+            ParametersWithRandom rParam = (ParametersWithRandom)param;
 
-            key = (RSAKeyParameters)rParam.getParameters();
-            random = rParam.getRandom();
+            this.key = (RSAKeyParameters)rParam.getParameters();
+
+            if (key instanceof RSAPrivateCrtKeyParameters)
+            {
+                this.random = rParam.getRandom();
+            }
+            else
+            {
+                this.random = null;
+            }
         }
         else
         {
-            key = (RSAKeyParameters)param;
-            random = BCCryptoServicesRegistrar.getSecureRandom();
+            this.key = (RSAKeyParameters)param;
+
+            if (key instanceof RSAPrivateCrtKeyParameters)
+            {
+                this.random = BCCryptoServicesRegistrar.getSecureRandom();
+            }
+            else
+            {
+                this.random = null;
+            }
         }
     }
 

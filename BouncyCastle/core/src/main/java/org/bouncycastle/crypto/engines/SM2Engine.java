@@ -3,31 +3,33 @@ package org.bouncycastle.crypto.engines;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.Digest;
+import org.bouncycastle.crypto.InvalidCipherTextException;
 import org.bouncycastle.crypto.digests.SM3Digest;
-import org.bouncycastle.crypto.params.ECDomainParameters;
-import org.bouncycastle.crypto.params.ECKeyParameters;
+import org.bouncycastle.crypto.params.*;
 import org.bouncycastle.crypto.params.ECPrivateKeyParameters;
-import org.bouncycastle.crypto.params.ECPublicKeyParameters;
-import org.bouncycastle.crypto.params.ParametersWithRandom;
-import org.bouncycastle.math.ec.ECConstants;
 import org.bouncycastle.math.ec.ECFieldElement;
 import org.bouncycastle.math.ec.ECMultiplier;
 import org.bouncycastle.math.ec.ECPoint;
 import org.bouncycastle.math.ec.FixedPointCombMultiplier;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.BigIntegers;
-import org.bouncycastle.util.Memoable;
-import org.bouncycastle.util.Pack;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.BigIntegers;
+import org.bouncycastle.bcutil.Memoable;
+import org.bouncycastle.bcutil.Pack;
 
 /**
  * SM2 public key encryption engine - based on https://tools.ietf.org/html/draft-shen-sm2-ecdsa-02.
  */
 public class SM2Engine
 {
+    public enum Mode
+    {
+        C1C2C3, C1C3C2;
+    }
+
     private final Digest digest;
+    private final Mode mode;
     
     private boolean forEncryption;
     private ECKeyParameters ecKey;
@@ -40,9 +42,24 @@ public class SM2Engine
         this(new SM3Digest());
     }
 
+    public SM2Engine(Mode mode)
+    {
+        this(new SM3Digest(), mode);
+    }
+
     public SM2Engine(Digest digest)
     {
+        this(digest, Mode.C1C2C3);
+    }
+
+    public SM2Engine(Digest digest, Mode mode)
+    {
+        if (mode == null)
+        {
+            throw new IllegalArgumentException("mode cannot be NULL");
+        }
         this.digest = digest;
+        this.mode = mode;
     }
 
     public void init(boolean forEncryption, CipherParameters param)
@@ -77,7 +94,7 @@ public class SM2Engine
         byte[] in,
         int inOff,
         int inLen)
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         if (forEncryption)
         {
@@ -100,7 +117,7 @@ public class SM2Engine
     }
 
     private byte[] encrypt(byte[] in, int inOff, int inLen)
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         byte[] c2 = new byte[inLen];
 
@@ -131,12 +148,18 @@ public class SM2Engine
         addFieldElement(digest, kPB.getAffineYCoord());
 
         digest.doFinal(c3, 0);
-        
-        return Arrays.concatenate(c1, c2, c3);
+
+        switch (mode)
+        {
+        case C1C3C2:
+            return Arrays.concatenate(c1, c3, c2);
+        default:
+            return Arrays.concatenate(c1, c2, c3);
+        }
     }
 
     private byte[] decrypt(byte[] in, int inOff, int inLen)
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         byte[] c1 = new byte[curveLength * 2 + 1];
 
@@ -147,14 +170,22 @@ public class SM2Engine
         ECPoint s = c1P.multiply(ecParams.getH());
         if (s.isInfinity())
         {
-            throw new BCInvalidCipherTextException("[h]C1 at infinity");
+            throw new InvalidCipherTextException("[h]C1 at infinity");
         }
 
         c1P = c1P.multiply(((ECPrivateKeyParameters)ecKey).getD()).normalize();
 
-        byte[] c2 = new byte[inLen - c1.length - digest.getDigestSize()];
+        int digestSize = this.digest.getDigestSize();
+        byte[] c2 = new byte[inLen - c1.length - digestSize];
 
-        System.arraycopy(in, inOff + c1.length, c2, 0, c2.length);
+        if (mode == Mode.C1C3C2)
+        {
+            System.arraycopy(in, inOff + c1.length + digestSize, c2, 0, c2.length);
+        }
+        else
+        {
+            System.arraycopy(in, inOff + c1.length, c2, 0, c2.length);
+        }
 
         kdf(digest, c1P, c2);
 
@@ -167,9 +198,19 @@ public class SM2Engine
         digest.doFinal(c3, 0);
 
         int check = 0;
-        for (int i = 0; i != c3.length; i++)
+        if (mode == Mode.C1C3C2)
         {
-            check |= c3[i] ^ in[inOff + c1.length + c2.length + i];
+            for (int i = 0; i != c3.length; i++)
+            {
+                check |= c3[i] ^ in[inOff + c1.length + i];
+            }
+        }
+        else
+        {
+            for (int i = 0; i != c3.length; i++)
+            {
+                check |= c3[i] ^ in[inOff + c1.length + c2.length + i];
+            }
         }
 
         Arrays.fill(c1, (byte)0);
@@ -178,7 +219,7 @@ public class SM2Engine
         if (check != 0)
         {
             Arrays.fill(c2, (byte)0);
-            throw new BCInvalidCipherTextException("invalid cipher text");
+            throw new InvalidCipherTextException("invalid cipher text");
         }
 
         return c2;
@@ -188,7 +229,7 @@ public class SM2Engine
     {
         for (int i = 0; i != encData.length; i++)
         {
-            if (encData[i] != in[inOff])
+            if (encData[i] != in[inOff + i])
             {
                 return false;
             }
@@ -255,7 +296,7 @@ public class SM2Engine
         {
             k = BigIntegers.createRandomBigInteger(qBitLength, random);
         }
-        while (k.equals(ECConstants.ZERO) || k.compareTo(ecParams.getN()) >= 0);
+        while (k.equals(BigIntegers.ZERO) || k.compareTo(ecParams.getN()) >= 0);
 
         return k;
     }

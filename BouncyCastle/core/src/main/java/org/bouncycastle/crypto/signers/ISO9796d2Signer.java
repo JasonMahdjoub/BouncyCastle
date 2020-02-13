@@ -1,9 +1,9 @@
 package org.bouncycastle.crypto.signers;
 
 import org.bouncycastle.crypto.*;
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
+import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.params.RSAKeyParameters;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 /**
  * ISO9796-2 - mechanism using a hash function with recovery (scheme 1)
@@ -91,9 +91,9 @@ public class ISO9796d2Signer
     
     public void init(
         boolean                 forSigning,
-        CipherParameters        param)
+        CipherParameters param)
     {
-        RSAKeyParameters  kParam = (RSAKeyParameters)param;
+        RSAKeyParameters kParam = (RSAKeyParameters)param;
 
         cipher.init(forSigning, kParam);
 
@@ -169,18 +169,18 @@ public class ISO9796d2Signer
     }
 
     public void updateWithRecoveredMessage(byte[] signature)
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         byte[]      block = cipher.processBlock(signature, 0, signature.length);
 
         if (((block[0] & 0xC0) ^ 0x40) != 0)
         {
-            throw new BCInvalidCipherTextException("malformed signature");
+            throw new InvalidCipherTextException("malformed signature");
         }
 
         if (((block[block.length - 1] & 0xF) ^ 0xC) != 0)
         {
-            throw new BCInvalidCipherTextException("malformed signature");
+            throw new InvalidCipherTextException("malformed signature");
         }
 
         int     delta = 0;
@@ -235,7 +235,7 @@ public class ISO9796d2Signer
         //
         if ((off - mStart) <= 0)
         {
-            throw new BCInvalidCipherTextException("malformed block");
+            throw new InvalidCipherTextException("malformed block");
         }
 
         //

@@ -40,21 +40,24 @@ import java.util.logging.Logger;
 
 import javax.security.auth.x500.X500Principal;
 
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.asn1.x509.CRLDistPoint;
-import org.bouncycastle.asn1.x509.DistributionPoint;
-import org.bouncycastle.asn1.x509.DistributionPointName;
-import org.bouncycastle.asn1.x509.Extension;
-import org.bouncycastle.asn1.x509.GeneralName;
-import org.bouncycastle.asn1.x509.GeneralNames;
+import org.bouncycastle.bcasn1.ASN1Primitive;
+import org.bouncycastle.bcasn1.x500.X500Name;
+import org.bouncycastle.bcasn1.x509.CRLDistPoint;
+import org.bouncycastle.bcasn1.x509.DistributionPoint;
+import org.bouncycastle.bcasn1.x509.DistributionPointName;
+import org.bouncycastle.bcasn1.x509.Extension;
+import org.bouncycastle.bcasn1.x509.GeneralName;
+import org.bouncycastle.bcasn1.x509.GeneralNames;
 import org.bouncycastle.jcajce.PKIXCRLStore;
 import org.bouncycastle.jcajce.PKIXExtendedParameters;
+import org.bouncycastle.jcajce.util.DefaultJcaJceHelper;
 import org.bouncycastle.jcajce.util.JcaJceHelper;
-import org.bouncycastle.util.CollectionStore;
-import org.bouncycastle.util.Iterable;
-import org.bouncycastle.util.Selector;
-import org.bouncycastle.util.Store;
+import org.bouncycastle.jcajce.util.NamedJcaJceHelper;
+import org.bouncycastle.jcajce.util.ProviderJcaJceHelper;
+import org.bouncycastle.bcutil.CollectionStore;
+import org.bouncycastle.bcutil.Iterable;
+import org.bouncycastle.bcutil.Selector;
+import org.bouncycastle.bcutil.Store;
 
 /**
  * X.509 Certificate Revocation Checker - still lacks OCSP support and support for delta CRLs.
@@ -266,7 +269,7 @@ public class X509RevocationChecker
     private final boolean isCheckEEOnly;
     private final List<Store<CRL>> crls;
     private final List<CertStore> crlCertStores;
-    private final PKIXJcaJceHelper helper;
+    private final JcaJceHelper helper;
     private final boolean canSoftFail;
     private final long failLogMaxTime;
     private final long failHardMaxTime;
@@ -287,15 +290,15 @@ public class X509RevocationChecker
 
         if (bldr.provider != null)
         {
-            this.helper = new PKIXProviderJcaJceHelper(bldr.provider);
+            this.helper = new ProviderJcaJceHelper(bldr.provider);
         }
         else if (bldr.providerName != null)
         {
-            helper = new PKIXNamedJcaJceHelper(bldr.providerName);
+            helper = new NamedJcaJceHelper(bldr.providerName);
         }
         else
         {
-            helper = new PKIXDefaultJcaJceHelper();
+            helper = new DefaultJcaJceHelper();
         }
     }
 
@@ -689,7 +692,7 @@ public class X509RevocationChecker
         X509Certificate sign,
         PublicKey workingPublicKey,
         List certPathCerts,
-        PKIXJcaJceHelper helper)
+        JcaJceHelper helper)
         throws AnnotatedException, CertPathValidatorException
     {
         AnnotatedException lastException = null;

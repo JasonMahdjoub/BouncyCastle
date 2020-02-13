@@ -2,7 +2,7 @@ package org.bouncycastle.dvcs;
 
 import java.io.IOException;
 
-import org.bouncycastle.asn1.ASN1Encoding;
+import org.bouncycastle.bcasn1.ASN1Encoding;
 import org.bouncycastle.cms.CMSException;
 import org.bouncycastle.cms.CMSProcessableByteArray;
 import org.bouncycastle.cms.CMSSignedData;

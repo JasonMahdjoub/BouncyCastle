@@ -7,7 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.bouncycastle.util.Iterable;
+import org.bouncycastle.bcutil.Iterable;
 
 public class SignerInformationStore
     implements Iterable<SignerInformation>

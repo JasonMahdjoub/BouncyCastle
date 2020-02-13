@@ -7,11 +7,11 @@ import org.bouncycastle.crypto.KeyGenerationParameters;
 public class DSAKeyGenerationParameters
     extends KeyGenerationParameters
 {
-    private DSAParameters    params;
+    private DSAParameters params;
 
     public DSAKeyGenerationParameters(
         SecureRandom    random,
-        DSAParameters   params)
+        DSAParameters params)
     {
         super(random, params.getP().bitLength() - 1);
 

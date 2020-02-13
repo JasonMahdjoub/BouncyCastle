@@ -23,8 +23,8 @@ import javax.mail.internet.MimeMessage;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
 import org.bouncycastle.cms.CMSAlgorithm;
 import org.bouncycastle.cms.CMSEnvelopedDataGenerator;
 import org.bouncycastle.cms.KeyTransRecipientId;
@@ -47,7 +47,7 @@ import org.bouncycastle.mail.smime.util.FileBackedMimeBodyPart;
 import org.bouncycastle.openssl.PEMKeyPair;
 import org.bouncycastle.openssl.PEMParser;
 import org.bouncycastle.openssl.jcajce.JcaPEMKeyConverter;
-import org.bouncycastle.util.encoders.Base64;
+import org.bouncycastle.bcutil.encoders.Base64;
 
 public class NewSMIMEEnvelopedTest 
     extends TestCase
@@ -334,7 +334,7 @@ public class NewSMIMEEnvelopedTest
 
         byte[] content = recipInfo.getContent(new JceKeyTransEnvelopedRecipient(loadKey("key.pem")));
 
-        assertTrue(org.bouncycastle.util.Arrays.areEqual(testMessage, content));
+        assertTrue(org.bouncycastle.bcutil.Arrays.areEqual(testMessage, content));
     }
 
     public void testAES192()
@@ -352,7 +352,7 @@ public class NewSMIMEEnvelopedTest
 
         byte[] content = recipInfo.getContent(new JceKeyTransEnvelopedRecipient(loadKey("key.pem")));
 
-        assertTrue(org.bouncycastle.util.Arrays.areEqual(testMessage, content));
+        assertTrue(org.bouncycastle.bcutil.Arrays.areEqual(testMessage, content));
     }
 
     public void testAES256()
@@ -370,7 +370,7 @@ public class NewSMIMEEnvelopedTest
 
         byte[] content = recipInfo.getContent(new JceKeyTransEnvelopedRecipient(loadKey("key.pem")));
 
-        assertTrue(org.bouncycastle.util.Arrays.areEqual(testMessage, content));
+        assertTrue(org.bouncycastle.bcutil.Arrays.areEqual(testMessage, content));
     }
 
     public void testCapEncrypt()

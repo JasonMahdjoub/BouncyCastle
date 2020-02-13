@@ -6,7 +6,7 @@ buildscript {
    }
 
    dependencies {
-        classpath "net.saliman:gradle-cobertura-plugin:2.5.4"
+        classpath "net.saliman:gradle-cobertura-plugin:3.0.0"
    }
 }
 
@@ -46,7 +46,6 @@ allprojects {
    apply plugin: 'idea'
    apply plugin: 'net.saliman.cobertura'
    apply plugin: 'maven-publish'
-	apply plugin: 'idea'
    group='org.bouncycastle'
 
 	compileJava.options.compilerArgs.addAll(['--release', JavaVersionTarget])
@@ -76,6 +75,7 @@ allprojects {
         testRuntime "org.slf4j:slf4j-log4j12:1.7.5"
         testRuntime "log4j:log4j:1.2.17"
    }
+
 }
 idea {
     project {
@@ -88,8 +88,10 @@ ext {
     bcTestDataHome = file('core/src/test/data').absolutePath
 }
 
-task printProperties << {
-    println bcTestDataHome
+task printProperties {
+	doLast {
+		println bcTestDataHome
+	}
 }
 
 subprojects {
@@ -100,11 +102,11 @@ subprojects {
 
 	}
 
-    apply plugin: 'eclipse'
+    apply plugin: 'idea'
     sourceCompatibility = JavaVersionSource
     targetCompatibility = JavaVersionTarget
 
-    version = '1.61-DMRECOMPILE'
+    version = '1.64-DMRECOMPILE'
 
 	compileJava.options.compilerArgs.addAll(['--release', JavaVersionTarget] as Collection<? extends String>)
 	if (project.hasProperty('javaHomeVersion') && JavaVersionTarget.toFloat()>1.8)
@@ -158,7 +160,6 @@ subprojects {
 }
 
 test.dependsOn([':core:test', ':prov:test', ':pkix:test', ':mail:test', 'pg:test'])
-
 cobertura {
    coverageDirs = [
         "${rootProject.projectDir}/core/build/classes/main",

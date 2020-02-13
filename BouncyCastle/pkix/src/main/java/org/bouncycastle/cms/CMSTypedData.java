@@ -1,6 +1,6 @@
 package org.bouncycastle.cms;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 
 public interface CMSTypedData
     extends CMSProcessable

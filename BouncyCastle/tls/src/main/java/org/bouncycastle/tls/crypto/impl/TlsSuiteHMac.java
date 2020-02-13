@@ -4,7 +4,7 @@ import org.bouncycastle.tls.TlsUtils;
 import org.bouncycastle.tls.crypto.TlsCryptoParameters;
 import org.bouncycastle.tls.crypto.TlsHMAC;
 import org.bouncycastle.tls.crypto.TlsMAC;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 /**
  * A generic TLS MAC implementation, acting as an HMAC based on some underlying Digest.
@@ -15,7 +15,7 @@ class TlsSuiteHMac
     static int getMacSize(TlsCryptoParameters cryptoParams, TlsMAC mac)
     {
         int macSize = mac.getMacLength();
-        if (cryptoParams.getSecurityParameters().isTruncatedHMac())
+        if (cryptoParams.getSecurityParametersHandshake().isTruncatedHMac())
         {
             macSize = Math.min(macSize, 10);
         }

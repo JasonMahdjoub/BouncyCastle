@@ -3,7 +3,7 @@ package org.bouncycastle.bcpg;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-import org.bouncycastle.util.Encodable;
+import org.bouncycastle.bcutil.Encodable;
 
 /**
  * Basic type for a PGP packet.

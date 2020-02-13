@@ -11,15 +11,15 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-import org.bouncycastle.asn1.ASN1InputStream;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.DEROctetString;
-import org.bouncycastle.asn1.x509.GeneralName;
-import org.bouncycastle.asn1.x509.Target;
-import org.bouncycastle.asn1.x509.TargetInformation;
-import org.bouncycastle.asn1.x509.Targets;
-import org.bouncycastle.asn1.x509.X509Extensions;
-import org.bouncycastle.util.Selector;
+import org.bouncycastle.bcasn1.ASN1InputStream;
+import org.bouncycastle.bcasn1.ASN1Primitive;
+import org.bouncycastle.bcasn1.DEROctetString;
+import org.bouncycastle.bcasn1.x509.GeneralName;
+import org.bouncycastle.bcasn1.x509.Target;
+import org.bouncycastle.bcasn1.x509.TargetInformation;
+import org.bouncycastle.bcasn1.x509.Targets;
+import org.bouncycastle.bcasn1.x509.X509Extensions;
+import org.bouncycastle.bcutil.Selector;
 
 /**
  * This class is an <code>Selector</code> like implementation to select

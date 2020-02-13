@@ -1,6 +1,6 @@
 package org.bouncycastle.jce.provider.test;
 
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.test.SimpleTest;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.jce.MultiCertStoreParameters;
 import org.bouncycastle.jce.PrincipalUtil;

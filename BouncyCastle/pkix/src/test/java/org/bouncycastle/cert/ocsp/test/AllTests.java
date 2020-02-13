@@ -6,7 +6,7 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.test.SimpleTestResult;
+import org.bouncycastle.bcutil.test.SimpleTestResult;
 
 public class AllTests
     extends TestCase
@@ -15,7 +15,7 @@ public class AllTests
     {   
         Security.addProvider(new BouncyCastleProvider());
         
-        org.bouncycastle.util.test.Test[] tests = new org.bouncycastle.util.test.Test[] { new OCSPTest() };
+        org.bouncycastle.bcutil.test.Test[] tests = new org.bouncycastle.bcutil.test.Test[] { new OCSPTest() };
         
         for (int i = 0; i != tests.length; i++)
         {

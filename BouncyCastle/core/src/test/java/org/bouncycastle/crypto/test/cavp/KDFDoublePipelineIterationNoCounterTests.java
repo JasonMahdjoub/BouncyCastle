@@ -8,10 +8,10 @@ import java.util.Properties;
 import org.bouncycastle.crypto.Mac;
 import org.bouncycastle.crypto.generators.KDFDoublePipelineIterationBytesGenerator;
 import org.bouncycastle.crypto.params.KDFDoublePipelineIterationParameters;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTestResult;
-import org.bouncycastle.util.test.TestFailedException;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.encoders.Hex;
+import org.bouncycastle.bcutil.test.SimpleTestResult;
+import org.bouncycastle.bcutil.test.TestFailedException;
 
 public final class KDFDoublePipelineIterationNoCounterTests
     implements CAVPListener

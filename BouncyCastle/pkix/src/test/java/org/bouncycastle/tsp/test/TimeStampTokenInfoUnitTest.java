@@ -6,14 +6,14 @@ import java.math.BigInteger;
 
 import junit.framework.Assert;
 import junit.framework.TestCase;
-import org.bouncycastle.asn1.ASN1InputStream;
-import org.bouncycastle.asn1.tsp.TSTInfo;
+import org.bouncycastle.bcasn1.ASN1InputStream;
+import org.bouncycastle.bcasn1.tsp.TSTInfo;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.tsp.GenTimeAccuracy;
 import org.bouncycastle.tsp.TSPAlgorithms;
 import org.bouncycastle.tsp.TSPException;
 import org.bouncycastle.tsp.TimeStampTokenInfo;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.encoders.Hex;
+import org.bouncycastle.bcutil.Arrays;
 
 public class TimeStampTokenInfoUnitTest
     extends TestCase
@@ -32,7 +32,7 @@ public class TimeStampTokenInfoUnitTest
 
     private static final byte[] tstInfoDudDate = Hex.decode(
         "303e02010106022a033021300906052b0e03021a050004140000000000000000000000000000000000000000"
-            + "020118180f32303056313130313038313732315a");
+            + "020118180f32303030563130313038313732315a");
 
     public void testTstInfo1()
         throws Exception

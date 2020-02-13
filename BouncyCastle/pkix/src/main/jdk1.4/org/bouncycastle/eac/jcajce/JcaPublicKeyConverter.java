@@ -9,11 +9,11 @@ import java.security.PublicKey;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.RSAPublicKeySpec;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.eac.EACObjectIdentifiers;
-import org.bouncycastle.asn1.eac.ECDSAPublicKey;
-import org.bouncycastle.asn1.eac.PublicKeyDataObject;
-import org.bouncycastle.asn1.eac.RSAPublicKey;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.eac.EACObjectIdentifiers;
+import org.bouncycastle.bcasn1.eac.ECDSAPublicKey;
+import org.bouncycastle.bcasn1.eac.PublicKeyDataObject;
+import org.bouncycastle.bcasn1.eac.RSAPublicKey;
 import org.bouncycastle.eac.EACException;
 import org.bouncycastle.jce.interfaces.ECPublicKey;
 import org.bouncycastle.jce.spec.ECParameterSpec;
@@ -131,10 +131,11 @@ public class JcaPublicKeyConverter
             return new ECDSAPublicKey(
                 usage,
                 ((ECCurve.Fp)params.getCurve()).getQ(),
-                ((ECFieldElement.Fp)params.getCurve().getA()).toBigInteger(), ((ECFieldElement.Fp)params.getCurve().getB()).toBigInteger(),
-                params.getG().getEncoded(),
+                ((ECFieldElement.Fp)params.getCurve().getA()).toBigInteger(),
+                ((ECFieldElement.Fp)params.getCurve().getB()).toBigInteger(),
+                params.getG().getEncoded(false),
                 params.getN(),
-                pubKey.getQ().getEncoded(),
+                pubKey.getQ().getEncoded(false),
                 params.getH().intValue());
         }
     }

@@ -1,6 +1,6 @@
 package org.bouncycastle.kmip.wire;
 
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 public class KMIPByteString
     implements KMIPItem

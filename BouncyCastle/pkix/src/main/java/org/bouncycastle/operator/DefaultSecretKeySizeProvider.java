@@ -4,15 +4,15 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
-import org.bouncycastle.asn1.kisa.KISAObjectIdentifiers;
-import org.bouncycastle.asn1.nist.NISTObjectIdentifiers;
-import org.bouncycastle.asn1.ntt.NTTObjectIdentifiers;
-import org.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
-import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.util.Integers;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.cryptopro.CryptoProObjectIdentifiers;
+import org.bouncycastle.bcasn1.kisa.KISAObjectIdentifiers;
+import org.bouncycastle.bcasn1.nist.NISTObjectIdentifiers;
+import org.bouncycastle.bcasn1.ntt.NTTObjectIdentifiers;
+import org.bouncycastle.bcasn1.oiw.OIWObjectIdentifiers;
+import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcutil.Integers;
 
 public class DefaultSecretKeySizeProvider
     implements SecretKeySizeProvider
@@ -29,7 +29,6 @@ public class DefaultSecretKeySizeProvider
 
         keySizes.put(PKCSObjectIdentifiers.des_EDE3_CBC, Integers.valueOf(192));
         keySizes.put(PKCSObjectIdentifiers.id_alg_CMS3DESwrap, Integers.valueOf(192));
-        keySizes.put(PKCSObjectIdentifiers.des_EDE3_CBC, Integers.valueOf(192));
 
         keySizes.put(PKCSObjectIdentifiers.pbeWithSHA1AndDES_CBC, Integers.valueOf(64));
         keySizes.put(PKCSObjectIdentifiers.pbeWithMD5AndDES_CBC, Integers.valueOf(64));
@@ -46,6 +45,9 @@ public class DefaultSecretKeySizeProvider
         keySizes.put(NISTObjectIdentifiers.id_aes128_wrap, Integers.valueOf(128));
         keySizes.put(NISTObjectIdentifiers.id_aes192_wrap, Integers.valueOf(192));
         keySizes.put(NISTObjectIdentifiers.id_aes256_wrap, Integers.valueOf(256));
+        keySizes.put(NISTObjectIdentifiers.id_aes128_wrap_pad, Integers.valueOf(128));
+        keySizes.put(NISTObjectIdentifiers.id_aes192_wrap_pad, Integers.valueOf(192));
+        keySizes.put(NISTObjectIdentifiers.id_aes256_wrap_pad, Integers.valueOf(256));
 
         keySizes.put(NTTObjectIdentifiers.id_camellia128_cbc, Integers.valueOf(128));
         keySizes.put(NTTObjectIdentifiers.id_camellia192_cbc, Integers.valueOf(192));

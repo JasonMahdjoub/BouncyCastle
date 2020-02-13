@@ -6,7 +6,7 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Vector;
 
-import org.bouncycastle.util.Integers;
+import org.bouncycastle.bcutil.Integers;
 
 class DTLSReliableHandshake
 {
@@ -103,6 +103,11 @@ class DTLSReliableHandshake
             {
                 for (;;)
                 {
+                    if (recordLayer.isClosed())
+                    {
+                        throw new TlsFatalAlert(AlertDescription.user_canceled);
+                    }
+
                     Message pending = getPendingMessage();
                     if (pending != null)
                     {

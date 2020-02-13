@@ -72,6 +72,7 @@ then
         rm src/org/bouncycastle/asn1/test/RevokeRequestTest.java
 	rm src/org/bouncycastle/asn1/test/LocaleTest.java
 	rm src/org/bouncycastle/tsp/DataGroup.java
+	rm src/org/bouncycastle/crypto/util/JournaledAlgorithm.java
         rm -rf src/org/bouncycastle/math/ec/rfc7748/test
         rm -rf src/org/bouncycastle/math/ec/rfc8032/test
         rm -rf src/org/bouncycastle/math/raw/test
@@ -83,6 +84,7 @@ then
         rm -rf src/org/bouncycastle/pqc/crypto/*/IndexGenerator*
         rm -rf src/org/bouncycastle/pqc/crypto/xmss
         rm -rf src/org/bouncycastle/pqc/crypto/test/XMSS*
+        rm src/org/bouncycastle/pqc/crypto/qtesla/QTeslaKeyEncodingTests.java
         rm -rf src/org/bouncycastle/gpg/keybox
         rm -rf src/org/bouncycastle/gpg/test
         rm src/org/bouncycastle/asn1/test/MonetaryValueUnitTest.java
@@ -116,6 +118,7 @@ then
         rm src/org/bouncycastle/cert/test/BcCertTest.java
         rm src/org/bouncycastle/cert/test/GOST3410_2012CMSTest.java
         rm src/org/bouncycastle/crypto/test/SCryptTest.java
+        rm src/org/bouncycastle/crypto/test/SM2EngineTest.java
         rm src/org/bouncycastle/crypto/examples/DESExample.java
         rm src/org/bouncycastle/pqc/crypto/test/EncryptionKeyTest.java
         rm -r src/org/bouncycastle/util/io/pem
@@ -161,7 +164,7 @@ then
     javadoc -windowtitle "$WINDOWTITLE" -doctitle "$DOCTITLE" \
       -header "$HEADER" \
     -group "Lightweight Crypto Packages" "org.bouncycastle.crypto*" \
-    -group "ASN.1 Support Packages" "org.bouncycastle.asn1*" \
+    -group "ASN.1 Support Packages" "org.bouncycastle.bcasn1*" \
     -group "OpenPGP Support Packages" "org.bouncycastle.bcpg*:org.bouncycastle.openpgp*" \
     -group "Basic Signing And Encryption" "org.bouncycastle.operator*" \
     -group "Certificate Generation And Handling Support Packages" "org.bouncycastle.cert*" \
@@ -170,34 +173,34 @@ then
     -group "TSP Support Packages" "org.bouncycastle.tsp*" \
     -group "PKCS Support Packages" "org.bouncycastle.pkcs*" \
     -group "Post-Quantum Crypto Packages" "org.bouncycastle.pqc*" \
-    -group "Utility Packages" "org.bouncycastle.util*:org.bouncycastle.math*" \
+    -group "Utility Packages" "org.bouncycastle.bcutil*:org.bouncycastle.math*" \
       -classpath classes \
       -d javadoc -sourcepath src -breakiterator \
-    org.bouncycastle.asn1 \
-    org.bouncycastle.asn1.cmp \
-    org.bouncycastle.asn1.cms \
-    org.bouncycastle.asn1.cryptopro \
-    org.bouncycastle.asn1.esf \
-    org.bouncycastle.asn1.ess \
-    org.bouncycastle.asn1.gnu \
-    org.bouncycastle.asn1.iana \
-    org.bouncycastle.asn1.icao \
-    org.bouncycastle.asn1.misc \
-    org.bouncycastle.asn1.mozilla \
-    org.bouncycastle.asn1.nist \
-    org.bouncycastle.asn1.ocsp \
-    org.bouncycastle.asn1.oiw \
-    org.bouncycastle.asn1.pkcs \
-    org.bouncycastle.asn1.sec \
-    org.bouncycastle.asn1.smime \
-    org.bouncycastle.asn1.teletrust \
-    org.bouncycastle.asn1.test \
-    org.bouncycastle.asn1.tsp \
-    org.bouncycastle.asn1.util \
-    org.bouncycastle.asn1.x500 \
-    org.bouncycastle.asn1.x500.style \
-    org.bouncycastle.asn1.x509 \
-    org.bouncycastle.asn1.x9 \
+    org.bouncycastle.bcasn1 \
+    org.bouncycastle.bcasn1.cmp \
+    org.bouncycastle.bcasn1.cms \
+    org.bouncycastle.bcasn1.cryptopro \
+    org.bouncycastle.bcasn1.esf \
+    org.bouncycastle.bcasn1.ess \
+    org.bouncycastle.bcasn1.gnu \
+    org.bouncycastle.bcasn1.iana \
+    org.bouncycastle.bcasn1.icao \
+    org.bouncycastle.bcasn1.misc \
+    org.bouncycastle.bcasn1.mozilla \
+    org.bouncycastle.bcasn1.nist \
+    org.bouncycastle.bcasn1.ocsp \
+    org.bouncycastle.bcasn1.oiw \
+    org.bouncycastle.bcasn1.pkcs \
+    org.bouncycastle.bcasn1.sec \
+    org.bouncycastle.bcasn1.smime \
+    org.bouncycastle.bcasn1.teletrust \
+    org.bouncycastle.bcasn1.test \
+    org.bouncycastle.bcasn1.tsp \
+    org.bouncycastle.bcasn1.util \
+    org.bouncycastle.bcasn1.x500 \
+    org.bouncycastle.bcasn1.x500.style \
+    org.bouncycastle.bcasn1.x509 \
+    org.bouncycastle.bcasn1.x9 \
     org.bouncycastle.bcpg \
     org.bouncycastle.bcpg.sig \
     org.bouncycastle.openpgp \
@@ -242,9 +245,9 @@ then
     org.bouncycastle.pqc.crypto.mceliece \
     org.bouncycastle.pqc.crypto.gmss \
     org.bouncycastle.pqc.math.linearalgebra \
-    org.bouncycastle.util \
-    org.bouncycastle.util.encoders \
-    org.bouncycastle.util.test > /dev/null \
+    org.bouncycastle.bcutil \
+    org.bouncycastle.bcutil.encoders \
+    org.bouncycastle.bcutil.test > /dev/null \
 
     )
 fi

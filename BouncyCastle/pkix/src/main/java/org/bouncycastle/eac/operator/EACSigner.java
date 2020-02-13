@@ -2,7 +2,7 @@ package org.bouncycastle.eac.operator;
 
 import java.io.OutputStream;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 
 public interface EACSigner
 {

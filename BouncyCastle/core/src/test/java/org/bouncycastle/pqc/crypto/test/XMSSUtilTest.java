@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 import junit.framework.TestCase;
 import org.bouncycastle.pqc.crypto.xmss.XMSSUtil;
-import org.bouncycastle.util.Pack;
+import org.bouncycastle.bcutil.Pack;
 
 /**
  * Test cases for XMSSUtil class.

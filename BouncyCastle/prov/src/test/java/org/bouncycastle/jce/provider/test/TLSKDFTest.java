@@ -5,11 +5,11 @@ import java.security.Security;
 import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
 
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.jcajce.spec.TLSKeyMaterialSpec;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class TLSKDFTest
     extends SimpleTest

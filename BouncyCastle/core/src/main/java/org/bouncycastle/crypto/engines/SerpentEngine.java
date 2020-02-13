@@ -1,6 +1,6 @@
 package org.bouncycastle.crypto.engines;
 
-import org.bouncycastle.util.Pack;
+import org.bouncycastle.bcutil.Pack;
 
 /**
  * Serpent is a 128-bit 32-round block cipher with variable key lengths,

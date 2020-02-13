@@ -5,21 +5,16 @@ import java.math.BigInteger;
 import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
 import org.bouncycastle.crypto.agreement.SM2KeyExchange;
 import org.bouncycastle.crypto.generators.ECKeyPairGenerator;
-import org.bouncycastle.crypto.params.ECDomainParameters;
-import org.bouncycastle.crypto.params.ECKeyGenerationParameters;
-import org.bouncycastle.crypto.params.ECPrivateKeyParameters;
-import org.bouncycastle.crypto.params.ECPublicKeyParameters;
-import org.bouncycastle.crypto.params.ParametersWithID;
+import org.bouncycastle.crypto.params.*;
 import org.bouncycastle.crypto.params.SM2KeyExchangePrivateParameters;
-import org.bouncycastle.crypto.params.SM2KeyExchangePublicParameters;
 import org.bouncycastle.math.ec.ECConstants;
 import org.bouncycastle.math.ec.ECCurve;
 import org.bouncycastle.math.ec.ECPoint;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Strings;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
-import org.bouncycastle.util.test.TestRandomBigInteger;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.Strings;
+import org.bouncycastle.bcutil.encoders.Hex;
+import org.bouncycastle.bcutil.test.SimpleTest;
+import org.bouncycastle.bcutil.test.TestRandomBigInteger;
 
 public class SM2KeyExchangeTest
     extends SimpleTest
@@ -85,26 +80,26 @@ public class SM2KeyExchangeTest
 
         SM2KeyExchange exch = new SM2KeyExchange();
 
-        exch.init(new ParametersWithID(new SM2KeyExchangePrivateParameters(true, aPriv, aePriv), Strings.toByteArray("ALICE123@YAHOO.COM")));
+        exch.init(new ParametersWithIDBC(new SM2KeyExchangePrivateParameters(true, aPriv, aePriv), Strings.toByteArray("ALICE123@YAHOO.COM")));
 
-        byte[] k1 = exch.calculateKey(128, new ParametersWithID(new SM2KeyExchangePublicParameters(bPub, bePub), Strings.toByteArray("BILL456@YAHOO.COM")));
+        byte[] k1 = exch.calculateKey(128, new ParametersWithIDBC(new SM2KeyExchangePublicParameters(bPub, bePub), Strings.toByteArray("BILL456@YAHOO.COM")));
 
         isTrue("key 1 wrong", Arrays.areEqual(Hex.decode("55b0ac62a6b927ba23703832c853ded4"), k1));
 
         exch = new SM2KeyExchange();
 
-        exch.init(new ParametersWithID(new SM2KeyExchangePrivateParameters(false, bPriv, bePriv), Strings.toByteArray("BILL456@YAHOO.COM")));
+        exch.init(new ParametersWithIDBC(new SM2KeyExchangePrivateParameters(false, bPriv, bePriv), Strings.toByteArray("BILL456@YAHOO.COM")));
 
-        byte[] k2 = exch.calculateKey(128, new ParametersWithID(new SM2KeyExchangePublicParameters(aPub, aePub), Strings.toByteArray("ALICE123@YAHOO.COM")));
+        byte[] k2 = exch.calculateKey(128, new ParametersWithIDBC(new SM2KeyExchangePublicParameters(aPub, aePub), Strings.toByteArray("ALICE123@YAHOO.COM")));
 
         isTrue("key 2 wrong", Arrays.areEqual(Hex.decode("55b0ac62a6b927ba23703832c853ded4"), k2));
 
         // with key confirmation
         exch = new SM2KeyExchange();
 
-        exch.init(new ParametersWithID(new SM2KeyExchangePrivateParameters(false, bPriv, bePriv), Strings.toByteArray("BILL456@YAHOO.COM")));
+        exch.init(new ParametersWithIDBC(new SM2KeyExchangePrivateParameters(false, bPriv, bePriv), Strings.toByteArray("BILL456@YAHOO.COM")));
 
-        byte[][] vals2 = exch.calculateKeyWithConfirmation(128, null, new ParametersWithID(new SM2KeyExchangePublicParameters(aPub, aePub), Strings.toByteArray("ALICE123@YAHOO.COM")));
+        byte[][] vals2 = exch.calculateKeyWithConfirmation(128, null, new ParametersWithIDBC(new SM2KeyExchangePublicParameters(aPub, aePub), Strings.toByteArray("ALICE123@YAHOO.COM")));
 
         isTrue("key 2 wrong", Arrays.areEqual(Hex.decode("55b0ac62a6b927ba23703832c853ded4"), k2));
       
@@ -113,9 +108,9 @@ public class SM2KeyExchangeTest
 
         exch = new SM2KeyExchange();
 
-        exch.init(new ParametersWithID(new SM2KeyExchangePrivateParameters(true, aPriv, aePriv), Strings.toByteArray("ALICE123@YAHOO.COM")));
+        exch.init(new ParametersWithIDBC(new SM2KeyExchangePrivateParameters(true, aPriv, aePriv), Strings.toByteArray("ALICE123@YAHOO.COM")));
 
-        byte[][] vals1 = exch.calculateKeyWithConfirmation(128, vals2[1], new ParametersWithID(new SM2KeyExchangePublicParameters(bPub, bePub), Strings.toByteArray("BILL456@YAHOO.COM")));
+        byte[][] vals1 = exch.calculateKeyWithConfirmation(128, vals2[1], new ParametersWithIDBC(new SM2KeyExchangePublicParameters(bPub, bePub), Strings.toByteArray("BILL456@YAHOO.COM")));
 
         isTrue("conf key 1 wrong", Arrays.areEqual(Hex.decode("55b0ac62a6b927ba23703832c853ded4"), vals1[0]));
         isTrue("conf tag 1 wrong", Arrays.areEqual(Hex.decode("23444DAF8ED7534366CB901C84B3BDBB63504F4065C1116C91A4C00697E6CF7A"), vals1[1]));
@@ -176,9 +171,9 @@ public class SM2KeyExchangeTest
 
         SM2KeyExchange exch = new SM2KeyExchange();
 
-        exch.init(new ParametersWithID(new SM2KeyExchangePrivateParameters(true, aPriv, aePriv), Strings.toByteArray("ALICE123@YAHOO.COM")));
+        exch.init(new ParametersWithIDBC(new SM2KeyExchangePrivateParameters(true, aPriv, aePriv), Strings.toByteArray("ALICE123@YAHOO.COM")));
 
-        byte[] k1 = exch.calculateKey(128, new ParametersWithID(new SM2KeyExchangePublicParameters(bPub, bePub), Strings.toByteArray("BILL456@YAHOO.COM")));
+        byte[] k1 = exch.calculateKey(128, new ParametersWithIDBC(new SM2KeyExchangePublicParameters(bPub, bePub), Strings.toByteArray("BILL456@YAHOO.COM")));
 
         // there appears to be typo for ZA in the draft
         //isTrue("F2m key 1 wrong", Arrays.areEqual(Hex.decode("4E587E5C66634F22D973A7D98BF8BE23"), k1));
@@ -186,9 +181,9 @@ public class SM2KeyExchangeTest
 
         exch = new SM2KeyExchange();
 
-        exch.init(new ParametersWithID(new SM2KeyExchangePrivateParameters(false, bPriv, bePriv), Strings.toByteArray("BILL456@YAHOO.COM")));
+        exch.init(new ParametersWithIDBC(new SM2KeyExchangePrivateParameters(false, bPriv, bePriv), Strings.toByteArray("BILL456@YAHOO.COM")));
 
-        byte[] k2 = exch.calculateKey(128, new ParametersWithID(new SM2KeyExchangePublicParameters(aPub, aePub), Strings.toByteArray("ALICE123@YAHOO.COM")));
+        byte[] k2 = exch.calculateKey(128, new ParametersWithIDBC(new SM2KeyExchangePublicParameters(aPub, aePub), Strings.toByteArray("ALICE123@YAHOO.COM")));
 
         //isTrue("F2m key 2 wrong", Arrays.areEqual(Hex.decode("4E587E5C66634F22D973A7D98BF8BE23"), k2));
         isTrue("F2m key 2 wrong", Arrays.areEqual(Hex.decode("8c2b03289aa7126555dc660cfc29fd74"), k2));
@@ -196,9 +191,9 @@ public class SM2KeyExchangeTest
         // with key confirmation
         exch = new SM2KeyExchange();
 
-        exch.init(new ParametersWithID(new SM2KeyExchangePrivateParameters(false, bPriv, bePriv), Strings.toByteArray("BILL456@YAHOO.COM")));
+        exch.init(new ParametersWithIDBC(new SM2KeyExchangePrivateParameters(false, bPriv, bePriv), Strings.toByteArray("BILL456@YAHOO.COM")));
 
-        byte[][] vals2 = exch.calculateKeyWithConfirmation(128, null, new ParametersWithID(new SM2KeyExchangePublicParameters(aPub, aePub), Strings.toByteArray("ALICE123@YAHOO.COM")));
+        byte[][] vals2 = exch.calculateKeyWithConfirmation(128, null, new ParametersWithIDBC(new SM2KeyExchangePublicParameters(aPub, aePub), Strings.toByteArray("ALICE123@YAHOO.COM")));
 
         isTrue("key 2 wrong", Arrays.areEqual(Hex.decode("8c2b03289aa7126555dc660cfc29fd74"), k2));
 
@@ -207,9 +202,9 @@ public class SM2KeyExchangeTest
 
         exch = new SM2KeyExchange();
 
-        exch.init(new ParametersWithID(new SM2KeyExchangePrivateParameters(true, aPriv, aePriv), Strings.toByteArray("ALICE123@YAHOO.COM")));
+        exch.init(new ParametersWithIDBC(new SM2KeyExchangePrivateParameters(true, aPriv, aePriv), Strings.toByteArray("ALICE123@YAHOO.COM")));
 
-        byte[][] vals1 = exch.calculateKeyWithConfirmation(128, vals2[1], new ParametersWithID(new SM2KeyExchangePublicParameters(bPub, bePub), Strings.toByteArray("BILL456@YAHOO.COM")));
+        byte[][] vals1 = exch.calculateKeyWithConfirmation(128, vals2[1], new ParametersWithIDBC(new SM2KeyExchangePublicParameters(bPub, bePub), Strings.toByteArray("BILL456@YAHOO.COM")));
 
         isTrue("conf key 1 wrong", Arrays.areEqual(Hex.decode("8c2b03289aa7126555dc660cfc29fd74"), vals1[0]));
         isTrue("conf tag 1 wrong", Arrays.areEqual(Hex.decode("52089e706911b58fd5e7c7b2ab5cf32bb61e481ef1e114a1e33d99eec84b5a4f"), vals1[1]));

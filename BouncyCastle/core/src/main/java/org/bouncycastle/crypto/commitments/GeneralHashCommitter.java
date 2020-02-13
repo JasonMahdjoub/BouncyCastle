@@ -7,7 +7,7 @@ import org.bouncycastle.crypto.Committer;
 import org.bouncycastle.crypto.DataLengthException;
 import org.bouncycastle.crypto.Digest;
 import org.bouncycastle.crypto.ExtendedDigest;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 /**
  * A basic hash-committer based on the one described in "Making Mix Nets Robust for Electronic Voting by Randomized Partial Checking",

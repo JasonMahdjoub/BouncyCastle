@@ -1,7 +1,7 @@
 package org.bouncycastle.crypto.macs;
 
-import org.bouncycastle.crypto.BlockCipher;
 import org.bouncycastle.crypto.CipherParameters;
+import org.bouncycastle.crypto.BlockCipher;
 import org.bouncycastle.crypto.Mac;
 import org.bouncycastle.crypto.modes.CBCBlockCipher;
 
@@ -65,7 +65,7 @@ public class BlockCipherMac
     }
 
     public void init(
-        CipherParameters    params)
+        CipherParameters params)
     {
         reset();
 

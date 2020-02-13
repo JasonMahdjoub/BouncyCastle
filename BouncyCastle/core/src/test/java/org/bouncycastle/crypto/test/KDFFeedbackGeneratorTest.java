@@ -9,7 +9,7 @@ import java.nio.charset.Charset;
 import org.bouncycastle.crypto.test.cavp.CAVPReader;
 import org.bouncycastle.crypto.test.cavp.KDFFeedbackCounterTests;
 import org.bouncycastle.crypto.test.cavp.KDFFeedbackNoCounterTests;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class KDFFeedbackGeneratorTest
     extends SimpleTest

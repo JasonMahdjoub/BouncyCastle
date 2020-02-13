@@ -1,15 +1,13 @@
 package org.bouncycastle.crypto.engines;
 
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.CipherParameters;
+import org.bouncycastle.crypto.InvalidCipherTextException;
 import org.bouncycastle.crypto.Wrapper;
 import org.bouncycastle.crypto.macs.GOST28147Mac;
-import org.bouncycastle.crypto.params.KeyParameter;
 import org.bouncycastle.crypto.params.ParametersWithIV;
 import org.bouncycastle.crypto.params.ParametersWithRandom;
-import org.bouncycastle.crypto.params.ParametersWithSBox;
-import org.bouncycastle.crypto.params.ParametersWithUKM;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.crypto.params.ParametersWithUKMBC;
+import org.bouncycastle.bcutil.Arrays;
 
 public class GOST28147WrapEngine
     implements Wrapper
@@ -25,23 +23,11 @@ public class GOST28147WrapEngine
             param = pr.getParameters();
         }
         
-        ParametersWithUKM pU = (ParametersWithUKM)param;
+        ParametersWithUKMBC pU = (ParametersWithUKMBC)param;
 
         cipher.init(forWrapping, pU.getParameters());
 
-        KeyParameter kParam;
-
-        if (pU.getParameters() instanceof ParametersWithSBox)
-        {
-            kParam = (KeyParameter)((ParametersWithSBox)pU.getParameters()).getParameters();
-        }
-        else
-        {
-            kParam = (KeyParameter)pU.getParameters();
-        }
-
-
-        mac.init(new ParametersWithIV(kParam, pU.getUKM()));
+        mac.init(new ParametersWithIV(pU.getParameters(), pU.getUKM()));
     }
 
     public String getAlgorithmName()
@@ -66,7 +52,7 @@ public class GOST28147WrapEngine
     }
 
     public byte[] unwrap(byte[] input, int inOff, int inLen)
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         byte[] decKey = new byte[inLen - mac.getMacSize()];
 

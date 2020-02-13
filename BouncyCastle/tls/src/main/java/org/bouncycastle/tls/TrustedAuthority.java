@@ -4,10 +4,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import org.bouncycastle.asn1.ASN1Encoding;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcasn1.ASN1Encoding;
+import org.bouncycastle.bcasn1.ASN1Primitive;
+import org.bouncycastle.bcasn1.x500.X500Name;
+import org.bouncycastle.bcutil.Arrays;
 
 public class TrustedAuthority
 {
@@ -115,7 +115,7 @@ public class TrustedAuthority
         }
         case IdentifierType.x509_name:
         {
-            byte[] derEncoding = TlsUtils.readOpaque16(input);
+            byte[] derEncoding = TlsUtils.readOpaque16(input, 1);
             ASN1Primitive asn1 = TlsUtils.readDERObject(derEncoding);
             identifier = X500Name.getInstance(asn1);
         }

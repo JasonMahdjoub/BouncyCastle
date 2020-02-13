@@ -2,11 +2,11 @@ package org.bouncycastle.crypto.test;
 
 import java.security.SecureRandom;
 
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.crypto.macs.SipHash;
 import org.bouncycastle.crypto.params.KeyParameter;
-import org.bouncycastle.util.Pack;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.Pack;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 /*
  * SipHash test values from "SipHash: a fast short-input PRF", by Jean-Philippe

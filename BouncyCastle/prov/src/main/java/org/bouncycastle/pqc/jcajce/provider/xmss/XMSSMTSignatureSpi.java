@@ -8,7 +8,7 @@ import java.security.Signature;
 import java.security.SignatureException;
 import java.security.spec.AlgorithmParameterSpec;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.Digest;
 import org.bouncycastle.crypto.digests.NullDigest;
@@ -115,7 +115,7 @@ public class XMSSMTSignatureSpi
         {
             if (e instanceof IllegalStateException)
             {
-                throw new SignatureException(e.getMessage());
+                throw new SignatureException(e.getMessage(), e);
             }
             throw new SignatureException(e.toString());
         }

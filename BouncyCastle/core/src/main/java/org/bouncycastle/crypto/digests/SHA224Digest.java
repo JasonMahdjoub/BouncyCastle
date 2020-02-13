@@ -1,8 +1,8 @@
 package org.bouncycastle.crypto.digests;
 
 
-import org.bouncycastle.util.Memoable;
-import org.bouncycastle.util.Pack;
+import org.bouncycastle.bcutil.Memoable;
+import org.bouncycastle.bcutil.Pack;
 
 
 /**

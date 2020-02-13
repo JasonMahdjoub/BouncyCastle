@@ -2,10 +2,11 @@ package org.bouncycastle.crypto.test;
 
 import java.security.SecureRandom;
 
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
+import org.bouncycastle.bcutil.encoders.Hex;
+import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.BlockCipher;
 import org.bouncycastle.crypto.BufferedBlockCipher;
-import org.bouncycastle.crypto.CipherParameters;
+import org.bouncycastle.crypto.InvalidCipherTextException;
 import org.bouncycastle.crypto.engines.AESEngine;
 import org.bouncycastle.crypto.modes.CBCBlockCipher;
 import org.bouncycastle.crypto.modes.CFBBlockCipher;
@@ -13,8 +14,7 @@ import org.bouncycastle.crypto.modes.OFBBlockCipher;
 import org.bouncycastle.crypto.modes.SICBlockCipher;
 import org.bouncycastle.crypto.params.KeyParameter;
 import org.bouncycastle.crypto.params.ParametersWithIV;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**
  * Test vectors from the NIST standard tests and Brian Gladman's vector set
@@ -123,7 +123,7 @@ public class AESTest
     }
 
     private void testNullSIC()
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         BufferedBlockCipher b = new BufferedBlockCipher(new SICBlockCipher(new AESEngine()));
         KeyParameter kp = new KeyParameter(Hex.decode("5F060D3716B345C253F6749ABAC10917"));
@@ -154,7 +154,7 @@ public class AESTest
     }
 
     private void testNullCBC()
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         BufferedBlockCipher b = new BufferedBlockCipher(new CBCBlockCipher(new AESEngine()));
         KeyParameter kp = new KeyParameter(Hex.decode("5F060D3716B345C253F6749ABAC10917"));
@@ -185,7 +185,7 @@ public class AESTest
     }
 
     private void testNullOFB()
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         BufferedBlockCipher b = new BufferedBlockCipher(new OFBBlockCipher(new AESEngine(), 128));
         KeyParameter kp = new KeyParameter(Hex.decode("5F060D3716B345C253F6749ABAC10917"));
@@ -216,7 +216,7 @@ public class AESTest
     }
 
     private void testNullCFB()
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         BufferedBlockCipher b = new BufferedBlockCipher(new CFBBlockCipher(new AESEngine(), 128));
         KeyParameter kp = new KeyParameter(Hex.decode("5F060D3716B345C253F6749ABAC10917"));

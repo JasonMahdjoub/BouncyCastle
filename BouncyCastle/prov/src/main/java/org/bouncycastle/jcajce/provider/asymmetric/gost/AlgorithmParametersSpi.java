@@ -4,11 +4,11 @@ import java.io.IOException;
 import java.security.spec.AlgorithmParameterSpec;
 import java.security.spec.InvalidParameterSpecException;
 
-import org.bouncycastle.asn1.ASN1Encoding;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.cryptopro.GOST3410PublicKeyAlgParameters;
+import org.bouncycastle.bcasn1.ASN1Encoding;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.ASN1Primitive;
+import org.bouncycastle.bcasn1.ASN1Sequence;
+import org.bouncycastle.bcasn1.cryptopro.GOST3410PublicKeyAlgParameters;
 import org.bouncycastle.jce.spec.GOST3410ParameterSpec;
 import org.bouncycastle.jce.spec.GOST3410PublicKeyParameterSetSpec;
 
@@ -102,7 +102,7 @@ public class AlgorithmParametersSpi
             ASN1Sequence seq = (ASN1Sequence)ASN1Primitive.fromByteArray(params);
 
             this.currentSpec = GOST3410ParameterSpec.fromPublicKeyAlg(
-                new GOST3410PublicKeyAlgParameters(seq));
+                GOST3410PublicKeyAlgParameters.getInstance(seq));
         }
         catch (ClassCastException e)
         {

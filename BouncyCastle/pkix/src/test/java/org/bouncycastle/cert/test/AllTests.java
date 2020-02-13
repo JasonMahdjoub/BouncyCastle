@@ -7,14 +7,14 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.test.SimpleTestResult;
+import org.bouncycastle.bcutil.test.SimpleTestResult;
 
 public class AllTests
     extends TestCase
 {
     public void testSimpleTests()
     {
-        org.bouncycastle.util.test.Test[] tests = new org.bouncycastle.util.test.Test[] { new CertTest(), new DANETest(), new PKCS10Test(), new AttrCertSelectorTest(), new AttrCertTest(), new X509ExtensionUtilsTest(), new CertPathLoopTest(), new GOST3410_2012CMSTest() };
+        org.bouncycastle.bcutil.test.Test[] tests = new org.bouncycastle.bcutil.test.Test[] { new CertTest(), new DANETest(), new PKCS10Test(), new AttrCertSelectorTest(), new AttrCertTest(), new X509ExtensionUtilsTest(), new CertPathLoopTest(), new GOST3410_2012CMSTest() };
 
         for (int i = 0; i != tests.length; i++)
         {

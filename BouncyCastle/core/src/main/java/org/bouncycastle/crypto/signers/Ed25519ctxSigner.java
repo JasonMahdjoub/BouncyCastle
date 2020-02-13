@@ -7,7 +7,7 @@ import org.bouncycastle.crypto.Signer;
 import org.bouncycastle.crypto.params.Ed25519PrivateKeyParameters;
 import org.bouncycastle.crypto.params.Ed25519PublicKeyParameters;
 import org.bouncycastle.math.ec.rfc8032.Ed25519;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 public class Ed25519ctxSigner
     implements Signer
@@ -91,6 +91,11 @@ public class Ed25519ctxSigner
 
         synchronized boolean verifySignature(Ed25519PublicKeyParameters publicKey, byte[] ctx, byte[] signature)
         {
+            if (Ed25519.SIGNATURE_SIZE != signature.length)
+            {
+                return false;
+            }
+
             byte[] pk = publicKey.getEncoded();
             boolean result = Ed25519.verify(signature, 0, pk, 0, ctx, buf, 0, count);
             reset();

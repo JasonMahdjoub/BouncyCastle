@@ -1,11 +1,11 @@
 package org.bouncycastle.crypto.test;
 
 
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.crypto.generators.Argon2BytesGenerator;
 import org.bouncycastle.crypto.params.Argon2Parameters;
-import org.bouncycastle.util.Strings;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.Strings;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**
  * Tests from https://tools.ietf.org/html/draft-irtf-cfrg-argon2-03
@@ -129,7 +129,6 @@ public class Argon2Test
      * @throws Exception
      */
     private void testVectorsFromInternetDraft()
-        throws Exception
     {
         byte[] ad = Hex.decode("040404040404040404040404");
         byte[] secret = Hex.decode("0303030303030303");
@@ -219,7 +218,6 @@ public class Argon2Test
     }
 
     public static void main(String[] args)
-        throws Exception
     {
         runTest(new Argon2Test());
     }

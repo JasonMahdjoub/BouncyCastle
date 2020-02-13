@@ -5,7 +5,7 @@ import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.DataLengthException;
 import org.bouncycastle.crypto.OutputLengthException;
 import org.bouncycastle.crypto.params.KeyParameter;
-import org.bouncycastle.util.Pack;
+import org.bouncycastle.bcutil.Pack;
 
 /**
  * a class that provides a basic DES engine.
@@ -34,7 +34,7 @@ public class DESEngine
      */
     public void init(
         boolean           encrypting,
-        CipherParameters  params)
+        CipherParameters params)
     {
         if (params instanceof KeyParameter)
         {

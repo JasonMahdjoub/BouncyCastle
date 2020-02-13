@@ -4,19 +4,18 @@ import java.math.BigInteger;
 import java.security.SecureRandom;
 
 import org.bouncycastle.crypto.*;
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
+import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.digests.SHA1Digest;
 import org.bouncycastle.crypto.encodings.OAEPEncoding;
 import org.bouncycastle.crypto.encodings.PKCS1Encoding;
 import org.bouncycastle.crypto.engines.RSAEngine;
 import org.bouncycastle.crypto.generators.RSAKeyPairGenerator;
+import org.bouncycastle.crypto.params.*;
 import org.bouncycastle.crypto.params.ParametersWithRandom;
-import org.bouncycastle.crypto.params.RSAKeyGenerationParameters;
 import org.bouncycastle.crypto.params.RSAKeyParameters;
-import org.bouncycastle.crypto.params.RSAPrivateCrtKeyParameters;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.encoders.Hex;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class RSATest
     extends SimpleTest
@@ -153,7 +152,7 @@ public class RSATest
 
             fail("oversized signature block not recognised");
         }
-        catch (BCInvalidCipherTextException e)
+        catch (InvalidCipherTextException e)
         {
             if (!e.getMessage().equals("block incorrect size"))
             {
@@ -169,7 +168,7 @@ public class RSATest
             data = eng.processBlock(overSized, 0, overSized.length);
             isTrue("not fallback", Arrays.areEqual(Hex.decode("feedbeeffeedbeeffeedbeef"), data));
         }
-        catch (BCInvalidCipherTextException e)
+        catch (InvalidCipherTextException e)
         {
             fail("RSA: failed - exception " + e.toString(), e);
         }
@@ -185,12 +184,60 @@ public class RSATest
         {
             data = eng.processBlock(overSized, 0, overSized.length);
         }
-        catch (BCInvalidCipherTextException e)
+        catch (InvalidCipherTextException e)
         {
             fail("RSA: failed - exception " + e.toString(), e);
         }
 
         System.getProperties().remove(PKCS1Encoding.NOT_STRICT_LENGTH_ENABLED_PROPERTY);
+    }
+
+    private void testUnsafeModulusAndWrongExp()
+    {
+        try
+        {
+            try
+            {
+                new RSAKeyParameters(false, mod, pubExp.multiply(BigInteger.valueOf(2)));
+
+                fail("no exception");
+            }
+            catch (IllegalArgumentException e)
+            {
+                isTrue("RSA publicExponent is even".equals(e.getMessage()));
+            }
+
+            try
+            {
+                new RSAKeyParameters(false, mod.multiply(BigInteger.valueOf(2)), pubExp);
+
+                fail("no exception");
+            }
+            catch (IllegalArgumentException e)
+            {
+                isTrue("RSA modulus is even".equals(e.getMessage()));
+            }
+
+            try
+            {
+                new RSAKeyParameters(false, mod.multiply(BigInteger.valueOf(3)), pubExp);
+
+                fail("no exception");
+            }
+            catch (IllegalArgumentException e)
+            {
+                isTrue("RSA modulus has a small prime factor".equals(e.getMessage()));
+            }
+
+            System.getProperties().put("org.bouncycastle.rsa.allow_unsafe_mod", "true");
+
+            // this should now work (sigh...)
+            new RSAKeyParameters(false, mod.multiply(BigInteger.valueOf(3)), pubExp);
+        }
+        finally
+        {
+            System.getProperties().remove("org.bouncycastle.rsa.allow_unsafe_mod");
+        }
     }
 
     private void testTruncatedPKCS1Block(RSAKeyParameters pubParameters, RSAKeyParameters privParameters)
@@ -240,7 +287,7 @@ public class RSATest
 
             fail("missing data block not recognised");
         }
-        catch (BCInvalidCipherTextException e)
+        catch (InvalidCipherTextException e)
         {
             if (!e.getMessage().equals(expectedMessage))
             {
@@ -300,7 +347,7 @@ public class RSATest
         {
             isTrue("message mismatch", "input data too long".equals(e.getMessage()));
         }
-        catch (BCInvalidCipherTextException e)
+        catch (InvalidCipherTextException e)
         {
             fail("failed - exception " + e.toString(), e);
         }
@@ -646,6 +693,7 @@ public class RSATest
         testTruncatedPKCS1Block(pubParameters, privParameters);
         testWrongPaddingPKCS1Block(pubParameters, privParameters);
         test_CVE_2017_15361();
+        testUnsafeModulusAndWrongExp();
 
         try
         {

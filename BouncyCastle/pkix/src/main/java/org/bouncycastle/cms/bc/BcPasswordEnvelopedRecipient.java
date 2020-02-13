@@ -2,7 +2,7 @@ package org.bouncycastle.cms.bc;
 
 import java.io.InputStream;
 
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.cms.CMSException;
 import org.bouncycastle.cms.RecipientOperator;
 import org.bouncycastle.crypto.BufferedBlockCipher;

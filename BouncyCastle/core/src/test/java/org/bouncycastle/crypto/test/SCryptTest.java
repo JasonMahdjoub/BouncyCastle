@@ -3,10 +3,10 @@ package org.bouncycastle.crypto.test;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.crypto.generators.SCrypt;
-import org.bouncycastle.util.Strings;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.Strings;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 /*
  * scrypt test vectors from "Stronger Key Derivation Via Sequential Memory-hard Functions" Appendix B.

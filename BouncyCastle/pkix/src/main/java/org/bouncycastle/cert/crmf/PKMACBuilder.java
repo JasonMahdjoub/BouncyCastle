@@ -4,16 +4,16 @@ import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.security.SecureRandom;
 
-import org.bouncycastle.asn1.DERNull;
-import org.bouncycastle.asn1.cmp.CMPObjectIdentifiers;
-import org.bouncycastle.asn1.cmp.PBMParameter;
-import org.bouncycastle.asn1.iana.IANAObjectIdentifiers;
-import org.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.DERNull;
+import org.bouncycastle.bcasn1.cmp.CMPObjectIdentifiers;
+import org.bouncycastle.bcasn1.cmp.PBMParameter;
+import org.bouncycastle.bcasn1.iana.IANAObjectIdentifiers;
+import org.bouncycastle.bcasn1.oiw.OIWObjectIdentifiers;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.operator.GenericKey;
 import org.bouncycastle.operator.MacCalculator;
 import org.bouncycastle.operator.RuntimeOperatorException;
-import org.bouncycastle.util.Strings;
+import org.bouncycastle.bcutil.Strings;
 
 public class PKMACBuilder
 {
@@ -91,7 +91,7 @@ public class PKMACBuilder
 
     public PKMACBuilder setParameters(PBMParameter parameters)
     {
-        checkIterationCountCeiling(parameters.getIterationCount().getValue().intValue());
+        checkIterationCountCeiling(parameters.getIterationCount().intValueExact());
 
         this.parameters = parameters;
 
@@ -155,7 +155,7 @@ public class PKMACBuilder
 
         calculator.setup(params.getOwf(), params.getMac());
 
-        int iter = params.getIterationCount().getValue().intValue();
+        int iter = params.getIterationCount().intValueExact();
         do
         {
             K = calculator.calculateDigest(K);

@@ -6,19 +6,19 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import org.bouncycastle.asn1.BERTags;
-import org.bouncycastle.asn1.DERIA5String;
-import org.bouncycastle.asn1.cms.AttributeTable;
-import org.bouncycastle.asn1.cms.CMSObjectIdentifiers;
-import org.bouncycastle.asn1.cms.ContentInfoParser;
-import org.bouncycastle.asn1.cms.TimeStampedDataParser;
+import org.bouncycastle.bcasn1.BERTags;
+import org.bouncycastle.bcasn1.DERIA5String;
+import org.bouncycastle.bcasn1.cms.AttributeTable;
+import org.bouncycastle.bcasn1.cms.CMSObjectIdentifiers;
+import org.bouncycastle.bcasn1.cms.ContentInfoParser;
+import org.bouncycastle.bcasn1.cms.TimeStampedDataParser;
 import org.bouncycastle.cms.CMSContentInfoParser;
 import org.bouncycastle.cms.CMSException;
 import org.bouncycastle.operator.DigestCalculator;
 import org.bouncycastle.operator.DigestCalculatorProvider;
 import org.bouncycastle.operator.OperatorCreationException;
 import org.bouncycastle.tsp.TimeStampToken;
-import org.bouncycastle.util.io.Streams;
+import org.bouncycastle.bcutil.io.Streams;
 
 public class CMSTimeStampedDataParser
     extends CMSContentInfoParser

@@ -3,9 +3,9 @@ package org.bouncycastle.openpgp.operator.bc;
 import java.security.SecureRandom;
 
 import org.bouncycastle.bcpg.S2K;
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.BlockCipher;
 import org.bouncycastle.crypto.BufferedBlockCipher;
+import org.bouncycastle.crypto.InvalidCipherTextException;
 import org.bouncycastle.openpgp.PGPException;
 import org.bouncycastle.openpgp.operator.PBEKeyEncryptionMethodGenerator;
 import org.bouncycastle.openpgp.operator.PGPDigestCalculator;
@@ -87,7 +87,7 @@ public class BcPBEKeyEncryptionMethodGenerator
 
             return out;
         }
-        catch (BCInvalidCipherTextException e)
+        catch (InvalidCipherTextException e)
         {
             throw new PGPException("encryption failed: " + e.getMessage(), e);
         }

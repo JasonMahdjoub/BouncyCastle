@@ -3,9 +3,9 @@ package org.bouncycastle.jcajce.provider.asymmetric.util;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
-import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.util.Strings;
+import org.bouncycastle.bcasn1.oiw.OIWObjectIdentifiers;
+import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
+import org.bouncycastle.bcutil.Strings;
 
 public class DESUtil
 {

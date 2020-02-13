@@ -2,13 +2,13 @@ package org.bouncycastle.crypto.engines;
 
 import java.util.ArrayList;
 
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.DataLengthException;
+import org.bouncycastle.crypto.InvalidCipherTextException;
 import org.bouncycastle.crypto.Wrapper;
 import org.bouncycastle.crypto.params.KeyParameter;
 import org.bouncycastle.crypto.params.ParametersWithRandom;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 /**
  * Implementation of DSTU7624 KEY WRAP mode
@@ -143,7 +143,7 @@ public class DSTU7624WrapEngine
     }
 
     public byte[] unwrap(byte[] in, int inOff, int inLen)
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         if (forWrapping)
         {
@@ -217,7 +217,7 @@ public class DSTU7624WrapEngine
         byte[] wrappedBuffer = new byte[buffer.length - engine.getBlockSize()];
         if (!Arrays.areEqual(checkSumArray, zeroArray))
         {
-            throw new BCInvalidCipherTextException("checksum failed");
+            throw new InvalidCipherTextException("checksum failed");
         }
         else
         {

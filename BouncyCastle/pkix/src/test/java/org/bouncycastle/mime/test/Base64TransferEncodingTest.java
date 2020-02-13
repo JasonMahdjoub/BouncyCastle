@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.security.SecureRandom;
 
 import junit.framework.TestCase;
-import org.bouncycastle.util.encoders.Base64;
+import org.bouncycastle.bcutil.encoders.Base64;
 
 public class Base64TransferEncodingTest
     extends TestCase

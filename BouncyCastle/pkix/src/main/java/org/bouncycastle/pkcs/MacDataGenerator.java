@@ -1,13 +1,12 @@
 package org.bouncycastle.pkcs;
 
 
-import java.io.IOException;
 import java.io.OutputStream;
 
-import org.bouncycastle.asn1.pkcs.MacData;
-import org.bouncycastle.asn1.pkcs.PKCS12PBEParams;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x509.DigestInfo;
+import org.bouncycastle.bcasn1.pkcs.MacData;
+import org.bouncycastle.bcasn1.pkcs.PKCS12PBEParams;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.x509.DigestInfo;
 import org.bouncycastle.operator.MacCalculator;
 
 class MacDataGenerator

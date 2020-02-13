@@ -4,10 +4,11 @@ import java.math.BigInteger;
 import java.security.InvalidKeyException;
 import java.security.PublicKey;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.DERNull;
-import org.bouncycastle.asn1.x9.X962Parameters;
-import org.bouncycastle.asn1.x9.X9ECParameters;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.DERNull;
+import org.bouncycastle.bcasn1.x9.X962Parameters;
+import org.bouncycastle.bcasn1.x9.X9ECParameters;
+import org.bouncycastle.bcasn1.x9.X9ECPoint;
 import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
 import org.bouncycastle.jcajce.provider.asymmetric.util.ECUtil;
 import org.bouncycastle.jce.spec.ECParameterSpec;
@@ -44,13 +45,10 @@ class ECUtils
         }
         else
         {
-            ECParameterSpec         p = (ECParameterSpec)ecSpec;
-
-            ECCurve curve = p.getG().getCurve();
-            ECPoint generator = curve.createPoint(p.getG().getAffineXCoord().toBigInteger(), p.getG().getAffineYCoord().toBigInteger(), withCompression);
+            ECParameterSpec p = (ECParameterSpec)ecSpec;
 
             X9ECParameters ecP = new X9ECParameters(
-                p.getCurve(), generator, p.getN(), p.getH(), p.getSeed());
+                p.getCurve(), new X9ECPoint(p.getG(), withCompression), p.getN(), p.getH(), p.getSeed());
 
             params = new X962Parameters(ecP);
         }

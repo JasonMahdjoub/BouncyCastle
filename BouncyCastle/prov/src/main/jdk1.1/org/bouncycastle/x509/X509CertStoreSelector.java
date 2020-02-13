@@ -1,6 +1,6 @@
 package org.bouncycastle.x509;
 
-import org.bouncycastle.util.Selector;
+import org.bouncycastle.bcutil.Selector;
 
 import java.security.cert.X509CertSelector;
 import java.security.cert.Certificate;

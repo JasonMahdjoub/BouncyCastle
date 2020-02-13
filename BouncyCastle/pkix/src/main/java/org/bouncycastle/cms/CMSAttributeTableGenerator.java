@@ -2,7 +2,7 @@ package org.bouncycastle.cms;
 
 import java.util.Map;
 
-import org.bouncycastle.asn1.cms.AttributeTable;
+import org.bouncycastle.bcasn1.cms.AttributeTable;
 
 /**
  * Note: The SIGNATURE parameter is only available when generating unsigned attributes.

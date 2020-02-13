@@ -3,7 +3,7 @@ package org.bouncycastle.pqc.math.ntru.polynomial;
 import java.security.SecureRandom;
 
 import org.bouncycastle.pqc.math.ntru.util.Util;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 /**
  * A <code>TernaryPolynomial</code> with a "high" number of nonzero coefficients.

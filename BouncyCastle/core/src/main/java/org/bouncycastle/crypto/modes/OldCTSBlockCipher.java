@@ -1,7 +1,10 @@
 package org.bouncycastle.crypto.modes;
 
-import org.bouncycastle.crypto.*;
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
+import org.bouncycastle.crypto.BlockCipher;
+import org.bouncycastle.crypto.BufferedBlockCipher;
+import org.bouncycastle.crypto.DataLengthException;
+import org.bouncycastle.crypto.InvalidCipherTextException;
+import org.bouncycastle.crypto.OutputLengthException;
 
 /**
  * A Cipher Text Stealing (CTS) mode cipher. CTS allows block ciphers to
@@ -183,13 +186,13 @@ public class OldCTSBlockCipher
      * the output.
      * @exception IllegalStateException if the underlying cipher is not
      * initialised.
-     * @exception BCInvalidCipherTextException if cipher text decrypts wrongly (in
+     * @exception org.bouncycastle.crypto.InvalidCipherTextException if cipher text decrypts wrongly (in
      * case the exception will never get thrown).
      */
     public int doFinal(
         byte[]  out,
         int     outOff)
-        throws DataLengthException, IllegalStateException, BCInvalidCipherTextException
+        throws DataLengthException, IllegalStateException, InvalidCipherTextException
     {
         if (bufOff + outOff > out.length)
         {

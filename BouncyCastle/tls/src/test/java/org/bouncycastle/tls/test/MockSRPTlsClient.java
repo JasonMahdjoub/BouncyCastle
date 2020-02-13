@@ -5,7 +5,7 @@ import java.io.PrintStream;
 import java.security.SecureRandom;
 import java.util.Hashtable;
 
-import org.bouncycastle.asn1.x509.Certificate;
+import org.bouncycastle.bcasn1.x509.Certificate;
 import org.bouncycastle.tls.AlertDescription;
 import org.bouncycastle.tls.AlertLevel;
 import org.bouncycastle.tls.ProtocolVersion;
@@ -13,21 +13,22 @@ import org.bouncycastle.tls.SRPTlsClient;
 import org.bouncycastle.tls.ServerOnlyTlsAuthentication;
 import org.bouncycastle.tls.TlsAuthentication;
 import org.bouncycastle.tls.TlsExtensionsUtils;
+import org.bouncycastle.tls.TlsSRPIdentity;
 import org.bouncycastle.tls.TlsServerCertificate;
 import org.bouncycastle.tls.TlsSession;
 import org.bouncycastle.tls.crypto.TlsCertificate;
 import org.bouncycastle.tls.crypto.impl.bc.BcTlsCrypto;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.encoders.Hex;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 class MockSRPTlsClient
     extends SRPTlsClient
 {
     TlsSession session;
 
-    MockSRPTlsClient(TlsSession session, byte[] identity, byte[] password)
+    MockSRPTlsClient(TlsSession session, TlsSRPIdentity srpIdentity)
     {
-        super(new BcTlsCrypto(new SecureRandom()), identity, password);
+        super(new BcTlsCrypto(new SecureRandom()), srpIdentity);
 
         this.session = session;
     }
@@ -82,11 +83,6 @@ class MockSRPTlsClient
         }
     }
 
-    public ProtocolVersion getMinimumVersion()
-    {
-        return ProtocolVersion.TLSv12;
-    }
-
     public Hashtable getClientExtensions() throws IOException
     {
         Hashtable clientExtensions = TlsExtensionsUtils.ensureExtensionsInitialised(super.getClientExtensions());
@@ -119,5 +115,10 @@ class MockSRPTlsClient
                 }
             }
         };
+    }
+
+    protected ProtocolVersion[] getSupportedVersions()
+    {
+        return ProtocolVersion.TLSv12.only();
     }
 }

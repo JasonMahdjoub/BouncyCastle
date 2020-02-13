@@ -3,9 +3,9 @@ package org.bouncycastle.tsp;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import org.bouncycastle.asn1.tsp.PartialHashtree;
+import org.bouncycastle.bcasn1.tsp.PartialHashtree;
 import org.bouncycastle.operator.DigestCalculator;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 public class PartialHashTreeProcessor
 {

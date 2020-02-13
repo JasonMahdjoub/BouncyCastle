@@ -10,7 +10,7 @@ import org.bouncycastle.crypto.tls.PSKTlsServer;
 import org.bouncycastle.crypto.tls.ProtocolVersion;
 import org.bouncycastle.crypto.tls.TlsEncryptionCredentials;
 import org.bouncycastle.crypto.tls.TlsPSKIdentityManager;
-import org.bouncycastle.util.Strings;
+import org.bouncycastle.bcutil.Strings;
 
 class MockPSKTlsServer
     extends PSKTlsServer
@@ -101,7 +101,7 @@ class MockPSKTlsServer
                 String name = Strings.fromUTF8ByteArray(identity);
                 if (name.equals("client"))
                 {
-                    return new byte[16];
+                    return Strings.toUTF8ByteArray("TLS_TEST_PSK");
                 }
             }
             return null;

@@ -12,8 +12,8 @@ import org.bouncycastle.pqc.crypto.rainbow.RainbowKeyGenerationParameters;
 import org.bouncycastle.pqc.crypto.rainbow.RainbowKeyPairGenerator;
 import org.bouncycastle.pqc.crypto.rainbow.RainbowParameters;
 import org.bouncycastle.pqc.crypto.rainbow.RainbowSigner;
-import org.bouncycastle.util.BigIntegers;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.BigIntegers;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 
 public class RainbowSignerTest

@@ -11,16 +11,16 @@ import java.security.Signature;
 import java.security.SignatureException;
 import java.security.spec.X509EncodedKeySpec;
 
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.DERBitString;
-import org.bouncycastle.asn1.DEROutputStream;
-import org.bouncycastle.asn1.mozilla.PublicKeyAndChallenge;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
+import org.bouncycastle.bcasn1.ASN1Encoding;
+import org.bouncycastle.bcasn1.ASN1Primitive;
+import org.bouncycastle.bcasn1.DERBitString;
+import org.bouncycastle.bcasn1.mozilla.PublicKeyAndChallenge;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
 import org.bouncycastle.operator.ContentVerifier;
 import org.bouncycastle.operator.ContentVerifierProvider;
 import org.bouncycastle.operator.OperatorCreationException;
-import org.bouncycastle.util.Encodable;
+import org.bouncycastle.bcutil.Encodable;
 
 /**
  * This is designed to parse the SignedPublicKeyAndChallenge created by the
@@ -41,14 +41,14 @@ import org.bouncycastle.util.Encodable;
 public class SignedPublicKeyAndChallenge
     implements Encodable
 {
-    protected final org.bouncycastle.asn1.mozilla.SignedPublicKeyAndChallenge          spkacSeq;
+    protected final org.bouncycastle.bcasn1.mozilla.SignedPublicKeyAndChallenge          spkacSeq;
 
     public SignedPublicKeyAndChallenge(byte[] bytes)
     {
-        spkacSeq = org.bouncycastle.asn1.mozilla.SignedPublicKeyAndChallenge.getInstance(bytes);
+        spkacSeq = org.bouncycastle.bcasn1.mozilla.SignedPublicKeyAndChallenge.getInstance(bytes);
     }
 
-    protected SignedPublicKeyAndChallenge(org.bouncycastle.asn1.mozilla.SignedPublicKeyAndChallenge struct)
+    protected SignedPublicKeyAndChallenge(org.bouncycastle.bcasn1.mozilla.SignedPublicKeyAndChallenge struct)
     {
         this.spkacSeq = struct;
     }
@@ -58,7 +58,7 @@ public class SignedPublicKeyAndChallenge
      *
      * @return a SignedPublicKeyAndChallenge object.
      */
-    public org.bouncycastle.asn1.mozilla.SignedPublicKeyAndChallenge toASN1Structure()
+    public org.bouncycastle.bcasn1.mozilla.SignedPublicKeyAndChallenge toASN1Structure()
     {
          return spkacSeq;
     }
@@ -82,10 +82,7 @@ public class SignedPublicKeyAndChallenge
         ContentVerifier verifier = verifierProvider.get(spkacSeq.getSignatureAlgorithm());
 
         OutputStream sOut = verifier.getOutputStream();
-        DEROutputStream dOut = new DEROutputStream(sOut);
-
-        dOut.writeObject(spkacSeq.getPublicKeyAndChallenge());
-
+        spkacSeq.getPublicKeyAndChallenge().encodeTo(sOut, ASN1Encoding.DER);
         sOut.close();
 
         return verifier.verify(spkacSeq.getSignature().getOctets());

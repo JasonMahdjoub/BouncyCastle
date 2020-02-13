@@ -1,7 +1,7 @@
 package org.bouncycastle.jce.provider.test;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.test.SimpleTest;
 import org.bouncycastle.x509.X509CertificatePair;
 
 import java.io.ByteArrayInputStream;

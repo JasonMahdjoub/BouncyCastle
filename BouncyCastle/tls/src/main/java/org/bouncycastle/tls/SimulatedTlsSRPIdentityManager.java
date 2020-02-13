@@ -8,7 +8,7 @@ import org.bouncycastle.tls.crypto.TlsCrypto;
 import org.bouncycastle.tls.crypto.TlsMAC;
 import org.bouncycastle.tls.crypto.TlsSRP6VerifierGenerator;
 import org.bouncycastle.tls.crypto.TlsSRPConfig;
-import org.bouncycastle.util.Strings;
+import org.bouncycastle.bcutil.Strings;
 
 /**
  * An implementation of {@link TlsSRPIdentityManager} that simulates the existence of "unknown" identities
@@ -69,6 +69,6 @@ public class SimulatedTlsSRPIdentityManager
         TlsSRPConfig srpConfig = new TlsSRPConfig();
         srpConfig.setExplicitNG(new BigInteger[]{ group.getN(), group.getG() });
 
-        return new TlsSRPLoginParameters(srpConfig, verifier, salt);
+        return new TlsSRPLoginParameters(identity, srpConfig, verifier, salt);
     }
 }

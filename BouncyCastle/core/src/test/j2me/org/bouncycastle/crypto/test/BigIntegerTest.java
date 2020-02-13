@@ -1,6 +1,6 @@
 package org.bouncycastle.crypto.test;
 
-import org.bouncycastle.util.test.*;
+import org.bouncycastle.bcutil.test.*;
 
 public class BigIntegerTest
 {

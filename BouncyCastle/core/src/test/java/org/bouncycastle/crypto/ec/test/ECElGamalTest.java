@@ -3,6 +3,7 @@ package org.bouncycastle.crypto.ec.test;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.crypto.ec.ECDecryptor;
 import org.bouncycastle.crypto.ec.ECElGamalDecryptor;
 import org.bouncycastle.crypto.ec.ECElGamalEncryptor;
@@ -15,8 +16,7 @@ import org.bouncycastle.crypto.params.ParametersWithRandom;
 import org.bouncycastle.math.ec.ECConstants;
 import org.bouncycastle.math.ec.ECCurve;
 import org.bouncycastle.math.ec.ECPoint;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class ECElGamalTest
     extends SimpleTest

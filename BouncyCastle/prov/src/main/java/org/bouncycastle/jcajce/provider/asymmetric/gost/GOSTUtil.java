@@ -3,9 +3,9 @@ package org.bouncycastle.jcajce.provider.asymmetric.gost;
 import java.math.BigInteger;
 
 import org.bouncycastle.crypto.params.GOST3410Parameters;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Fingerprint;
-import org.bouncycastle.util.Strings;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.Fingerprint;
+import org.bouncycastle.bcutil.Strings;
 
 class GOSTUtil
 {

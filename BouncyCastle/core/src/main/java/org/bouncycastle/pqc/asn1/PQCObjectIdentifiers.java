@@ -1,7 +1,7 @@
 package org.bouncycastle.pqc.asn1;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.bc.BCObjectIdentifiers;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.bc.DMBCObjectIdentifiers;
 
 /**
  * PQC:
@@ -48,39 +48,39 @@ public interface PQCObjectIdentifiers
     public static final ASN1ObjectIdentifier mcEliecePointcheval = new ASN1ObjectIdentifier("1.3.6.1.4.1.8301.3.1.3.4.2.2");
     public static final ASN1ObjectIdentifier mcElieceKobara_Imai = new ASN1ObjectIdentifier("1.3.6.1.4.1.8301.3.1.3.4.2.3");
 
-    public static final ASN1ObjectIdentifier sphincs256 = BCObjectIdentifiers.sphincs256;
-    public static final ASN1ObjectIdentifier sphincs256_with_BLAKE512 = BCObjectIdentifiers.sphincs256_with_BLAKE512;
-    public static final ASN1ObjectIdentifier sphincs256_with_SHA512 = BCObjectIdentifiers.sphincs256_with_SHA512;
-    public static final ASN1ObjectIdentifier sphincs256_with_SHA3_512 = BCObjectIdentifiers.sphincs256_with_SHA3_512;
+    public static final ASN1ObjectIdentifier sphincs256 = DMBCObjectIdentifiers.sphincs256;
+    public static final ASN1ObjectIdentifier sphincs256_with_BLAKE512 = DMBCObjectIdentifiers.sphincs256_with_BLAKE512;
+    public static final ASN1ObjectIdentifier sphincs256_with_SHA512 = DMBCObjectIdentifiers.sphincs256_with_SHA512;
+    public static final ASN1ObjectIdentifier sphincs256_with_SHA3_512 = DMBCObjectIdentifiers.sphincs256_with_SHA3_512;
 
-    public static final ASN1ObjectIdentifier newHope = BCObjectIdentifiers.newHope;
+    public static final ASN1ObjectIdentifier newHope = DMBCObjectIdentifiers.newHope;
 
     /**
      * XMSS
      */
-    public static final ASN1ObjectIdentifier xmss                      = BCObjectIdentifiers.xmss;
-    public static final ASN1ObjectIdentifier xmss_SHA256ph             = BCObjectIdentifiers.xmss_SHA256ph;
-    public static final ASN1ObjectIdentifier xmss_SHA512ph             = BCObjectIdentifiers.xmss_SHA512ph;
-    public static final ASN1ObjectIdentifier xmss_SHAKE128ph           = BCObjectIdentifiers.xmss_SHAKE128ph;
-    public static final ASN1ObjectIdentifier xmss_SHAKE256ph           = BCObjectIdentifiers.xmss_SHAKE256ph;
-    public static final ASN1ObjectIdentifier xmss_SHA256               = BCObjectIdentifiers.xmss_SHA256;
-    public static final ASN1ObjectIdentifier xmss_SHA512               = BCObjectIdentifiers.xmss_SHA512;
-    public static final ASN1ObjectIdentifier xmss_SHAKE128             = BCObjectIdentifiers.xmss_SHAKE128;
-    public static final ASN1ObjectIdentifier xmss_SHAKE256             = BCObjectIdentifiers.xmss_SHAKE256;
+    public static final ASN1ObjectIdentifier xmss                      = DMBCObjectIdentifiers.xmss;
+    public static final ASN1ObjectIdentifier xmss_SHA256ph             = DMBCObjectIdentifiers.xmss_SHA256ph;
+    public static final ASN1ObjectIdentifier xmss_SHA512ph             = DMBCObjectIdentifiers.xmss_SHA512ph;
+    public static final ASN1ObjectIdentifier xmss_SHAKE128ph           = DMBCObjectIdentifiers.xmss_SHAKE128ph;
+    public static final ASN1ObjectIdentifier xmss_SHAKE256ph           = DMBCObjectIdentifiers.xmss_SHAKE256ph;
+    public static final ASN1ObjectIdentifier xmss_SHA256               = DMBCObjectIdentifiers.xmss_SHA256;
+    public static final ASN1ObjectIdentifier xmss_SHA512               = DMBCObjectIdentifiers.xmss_SHA512;
+    public static final ASN1ObjectIdentifier xmss_SHAKE128             = DMBCObjectIdentifiers.xmss_SHAKE128;
+    public static final ASN1ObjectIdentifier xmss_SHAKE256             = DMBCObjectIdentifiers.xmss_SHAKE256;
 
 
     /**
      * XMSS^MT
      */
-    public static final ASN1ObjectIdentifier xmss_mt                   = BCObjectIdentifiers.xmss_mt;
-    public static final ASN1ObjectIdentifier xmss_mt_SHA256ph          = BCObjectIdentifiers.xmss_mt_SHA256ph;
-    public static final ASN1ObjectIdentifier xmss_mt_SHA512ph          = BCObjectIdentifiers.xmss_mt_SHA512ph;
-    public static final ASN1ObjectIdentifier xmss_mt_SHAKE128ph        = BCObjectIdentifiers.xmss_mt_SHAKE128ph;
-    public static final ASN1ObjectIdentifier xmss_mt_SHAKE256ph        = BCObjectIdentifiers.xmss_mt_SHAKE256ph;
-    public static final ASN1ObjectIdentifier xmss_mt_SHA256            = BCObjectIdentifiers.xmss_mt_SHA256;
-    public static final ASN1ObjectIdentifier xmss_mt_SHA512            = BCObjectIdentifiers.xmss_mt_SHA512;
-    public static final ASN1ObjectIdentifier xmss_mt_SHAKE128          = BCObjectIdentifiers.xmss_mt_SHAKE128;
-    public static final ASN1ObjectIdentifier xmss_mt_SHAKE256          = BCObjectIdentifiers.xmss_mt_SHAKE256;
+    public static final ASN1ObjectIdentifier xmss_mt                   = DMBCObjectIdentifiers.xmss_mt;
+    public static final ASN1ObjectIdentifier xmss_mt_SHA256ph          = DMBCObjectIdentifiers.xmss_mt_SHA256ph;
+    public static final ASN1ObjectIdentifier xmss_mt_SHA512ph          = DMBCObjectIdentifiers.xmss_mt_SHA512ph;
+    public static final ASN1ObjectIdentifier xmss_mt_SHAKE128ph        = DMBCObjectIdentifiers.xmss_mt_SHAKE128ph;
+    public static final ASN1ObjectIdentifier xmss_mt_SHAKE256ph        = DMBCObjectIdentifiers.xmss_mt_SHAKE256ph;
+    public static final ASN1ObjectIdentifier xmss_mt_SHA256            = DMBCObjectIdentifiers.xmss_mt_SHA256;
+    public static final ASN1ObjectIdentifier xmss_mt_SHA512            = DMBCObjectIdentifiers.xmss_mt_SHA512;
+    public static final ASN1ObjectIdentifier xmss_mt_SHAKE128          = DMBCObjectIdentifiers.xmss_mt_SHAKE128;
+    public static final ASN1ObjectIdentifier xmss_mt_SHAKE256          = DMBCObjectIdentifiers.xmss_mt_SHAKE256;
 
     // old OIDs.
     /**
@@ -120,10 +120,7 @@ public interface PQCObjectIdentifiers
     /**
      * qTESLA
      */
-    public static final ASN1ObjectIdentifier qTESLA = BCObjectIdentifiers.qTESLA;
-    public static final ASN1ObjectIdentifier qTESLA_I = BCObjectIdentifiers.qTESLA_I;
-    public static final ASN1ObjectIdentifier qTESLA_III_size = BCObjectIdentifiers.qTESLA_III_size;
-    public static final ASN1ObjectIdentifier qTESLA_III_speed = BCObjectIdentifiers.qTESLA_III_speed;
-    public static final ASN1ObjectIdentifier qTESLA_p_I = BCObjectIdentifiers.qTESLA_p_I;
-    public static final ASN1ObjectIdentifier qTESLA_p_III = BCObjectIdentifiers.qTESLA_p_III;
+    public static final ASN1ObjectIdentifier qTESLA = DMBCObjectIdentifiers.qTESLA;
+    public static final ASN1ObjectIdentifier qTESLA_p_I = DMBCObjectIdentifiers.qTESLA_p_I;
+    public static final ASN1ObjectIdentifier qTESLA_p_III = DMBCObjectIdentifiers.qTESLA_p_III;
 }

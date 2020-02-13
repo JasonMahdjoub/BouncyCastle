@@ -1,6 +1,6 @@
 package org.bouncycastle.jcajce.provider.util;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 
 public abstract class AsymmetricAlgorithmProvider

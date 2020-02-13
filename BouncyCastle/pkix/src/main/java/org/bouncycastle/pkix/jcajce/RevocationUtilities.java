@@ -35,37 +35,37 @@ import java.util.Set;
 
 import javax.security.auth.x500.X500Principal;
 
-import org.bouncycastle.asn1.ASN1Enumerated;
-import org.bouncycastle.asn1.ASN1GeneralizedTime;
-import org.bouncycastle.asn1.ASN1InputStream;
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1OctetString;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.DEROctetString;
-import org.bouncycastle.asn1.isismtt.ISISMTTObjectIdentifiers;
-import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.asn1.x500.style.RFC4519Style;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x509.AuthorityKeyIdentifier;
-import org.bouncycastle.asn1.x509.CRLDistPoint;
-import org.bouncycastle.asn1.x509.CRLReason;
-import org.bouncycastle.asn1.x509.DistributionPoint;
-import org.bouncycastle.asn1.x509.DistributionPointName;
-import org.bouncycastle.asn1.x509.Extension;
-import org.bouncycastle.asn1.x509.GeneralName;
-import org.bouncycastle.asn1.x509.GeneralNames;
-import org.bouncycastle.asn1.x509.IssuingDistributionPoint;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
+import org.bouncycastle.bcasn1.ASN1Enumerated;
+import org.bouncycastle.bcasn1.ASN1GeneralizedTime;
+import org.bouncycastle.bcasn1.ASN1InputStream;
+import org.bouncycastle.bcasn1.ASN1Integer;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.ASN1OctetString;
+import org.bouncycastle.bcasn1.ASN1Primitive;
+import org.bouncycastle.bcasn1.DEROctetString;
+import org.bouncycastle.bcasn1.isismtt.ISISMTTObjectIdentifiers;
+import org.bouncycastle.bcasn1.x500.X500Name;
+import org.bouncycastle.bcasn1.x500.style.RFC4519Style;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.x509.AuthorityKeyIdentifier;
+import org.bouncycastle.bcasn1.x509.CRLDistPoint;
+import org.bouncycastle.bcasn1.x509.CRLReason;
+import org.bouncycastle.bcasn1.x509.DistributionPoint;
+import org.bouncycastle.bcasn1.x509.DistributionPointName;
+import org.bouncycastle.bcasn1.x509.Extension;
+import org.bouncycastle.bcasn1.x509.GeneralName;
+import org.bouncycastle.bcasn1.x509.GeneralNames;
+import org.bouncycastle.bcasn1.x509.IssuingDistributionPoint;
+import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
 import org.bouncycastle.jcajce.PKIXCRLStore;
 import org.bouncycastle.jcajce.PKIXCRLStoreSelector;
 import org.bouncycastle.jcajce.PKIXCertStore;
 import org.bouncycastle.jcajce.PKIXCertStoreSelector;
 import org.bouncycastle.jcajce.PKIXExtendedParameters;
 import org.bouncycastle.jcajce.util.JcaJceHelper;
-import org.bouncycastle.util.Selector;
-import org.bouncycastle.util.Store;
-import org.bouncycastle.util.StoreException;
+import org.bouncycastle.bcutil.Selector;
+import org.bouncycastle.bcutil.Store;
+import org.bouncycastle.bcutil.StoreException;
 
 class RevocationUtilities
 {
@@ -153,7 +153,7 @@ class RevocationUtilities
         Exception invalidKeyEx = null;
 
         X509CertSelector certSelectX509 = new X509CertSelector();
-        X500Name certIssuer = X500Name.getInstance(cert.getIssuerX500Principal());
+        X500Name certIssuer = getIssuer(cert);
 
         try
         {
@@ -184,7 +184,7 @@ class RevocationUtilities
             {
                 try
                 {
-                    X500Name caName = X500Name.getInstance(trust.getCA().getEncoded());
+                    X500Name caName = getX500Name(trust.getCA());
                     if (certIssuer.equals(caName))
                     {
                         trustPublicKey = trust.getCAPublicKey();
@@ -487,14 +487,12 @@ class RevocationUtilities
                 {
                     try
                     {
-                        issuers.add(X500Name.getInstance(genNames[j].getName()
-                            .toASN1Primitive().getEncoded()));
+                        issuers.add(X500Name.getInstance(genNames[j].getName()));
                     }
-                    catch (IOException e)
+                    catch (IllegalArgumentException e)
                     {
                         throw new AnnotatedException(
-                            "CRL issuer information from distribution point cannot be decoded.",
-                            e);
+                            "CRL issuer information from distribution point cannot be decoded.", e);
                     }
                 }
             }
@@ -575,12 +573,6 @@ class RevocationUtilities
         }
     }
 
-    private static BigInteger getSerialNumber(
-        Object cert)
-    {
-        return ((X509Certificate)cert).getSerialNumber();
-    }
-
     protected static void getCertStatus(
         Date validDate,
         X509CRL crl,
@@ -588,8 +580,6 @@ class RevocationUtilities
         CertStatus certStatus)
         throws AnnotatedException
     {
-        X509CRLEntry crl_entry = null;
-
         boolean isIndirect;
         try
         {
@@ -600,86 +590,82 @@ class RevocationUtilities
             throw new AnnotatedException("Failed check for indirect CRL.", exception);
         }
 
-        if (isIndirect)
-        {
-            crl_entry = crl.getRevokedCertificate(getSerialNumber(cert));
+        X509Certificate x509Cert = (X509Certificate)cert;
+        X500Name x509CertIssuer = getIssuer(x509Cert);
 
-            if (crl_entry == null)
+        if (!isIndirect)
+        {
+            X500Name crlIssuer = getIssuer(crl);
+            if (!x509CertIssuer.equals(crlIssuer))
             {
                 return;
             }
+        }
 
+        X509CRLEntry crl_entry = crl.getRevokedCertificate(x509Cert.getSerialNumber());
+        if (null == crl_entry)
+        {
+            return;
+        }
+
+        if (isIndirect)
+        {
             X500Principal certificateIssuer = crl_entry.getCertificateIssuer();
 
-            X500Name certIssuer;
-            if (certificateIssuer == null)
+            X500Name expectedCertIssuer;
+            if (null == certificateIssuer)
             {
-                certIssuer = X500Name.getInstance(crl.getIssuerX500Principal());
+                expectedCertIssuer = getIssuer(crl);
             }
             else
             {
-                certIssuer = X500Name.getInstance(certificateIssuer.getEncoded());
+                expectedCertIssuer = getX500Name(certificateIssuer);
             }
 
-            if (!X500Name.getInstance(((X509Certificate)cert).getIssuerX500Principal().getEncoded()).equals(certIssuer))
-            {
-                return;
-            }
-        }
-        else if (!X500Name.getInstance(((X509Certificate)cert).getIssuerX500Principal().getEncoded()).equals(X500Name.getInstance(crl.getIssuerX500Principal().getEncoded())))
-        {
-            return;  // not for our issuer, ignore
-        }
-        else
-        {
-            crl_entry = crl.getRevokedCertificate(getSerialNumber(cert));
-
-            if (crl_entry == null)
+            if (!x509CertIssuer.equals(expectedCertIssuer))
             {
                 return;
             }
         }
 
-        ASN1Enumerated reasonCode = null;
+        int reasonCodeValue = CRLReason.unspecified;
+
         if (crl_entry.hasExtensions())
         {
             try
             {
-                reasonCode = ASN1Enumerated
-                    .getInstance(RevocationUtilities
-                        .getExtensionValue(crl_entry,
-                            Extension.reasonCode));
+                ASN1Primitive extValue = RevocationUtilities.getExtensionValue(crl_entry, Extension.reasonCode);
+                ASN1Enumerated reasonCode = ASN1Enumerated.getInstance(extValue);
+                if (null != reasonCode)
+                {
+                    reasonCodeValue = reasonCode.intValueExact();
+                }
             }
             catch (Exception e)
             {
-                throw new AnnotatedException(
-                    "Reason code CRL entry extension could not be decoded.",
-                    e);
+                throw new AnnotatedException("Reason code CRL entry extension could not be decoded.", e);
             }
         }
 
-        // for reason keyCompromise, caCompromise, aACompromise or
-        // unspecified
-        if (!(validDate.getTime() < crl_entry.getRevocationDate().getTime())
-            || reasonCode == null
-            || reasonCode.getValue().intValue() == 0
-            || reasonCode.getValue().intValue() == 1
-            || reasonCode.getValue().intValue() == 2
-            || reasonCode.getValue().intValue() == 8)
+        Date revocationDate = crl_entry.getRevocationDate();
+
+        if (validDate.before(revocationDate))
         {
-
-            // (i) or (j) (1)
-            if (reasonCode != null)
+            switch (reasonCodeValue)
             {
-                certStatus.setCertStatus(reasonCode.getValue().intValue());
+            case CRLReason.unspecified:
+            case CRLReason.keyCompromise:
+            case CRLReason.cACompromise:
+            case CRLReason.aACompromise:
+                break;
+            default:
+                return;
             }
-            // (i) or (j) (2)
-            else
-            {
-                certStatus.setCertStatus(CRLReason.unspecified);
-            }
-            certStatus.setRevocationDate(crl_entry.getRevocationDate());
         }
+
+        // (i) or (j)
+        certStatus.setCertStatus(reasonCodeValue);
+        certStatus.setRevocationDate(revocationDate);
     }
 
     /**
@@ -699,14 +685,12 @@ class RevocationUtilities
         // 5.2.4 (a)
         try
         {
-            baseDeltaSelect.addIssuerName(X500Name.getInstance(completeCRL.getIssuerX500Principal().getEncoded()).getEncoded());
+            baseDeltaSelect.addIssuerName(completeCRL.getIssuerX500Principal().getEncoded());
         }
         catch (IOException e)
         {
             throw new AnnotatedException("cannot extract issuer from CRL.", e);
         }
-
-
 
         BigInteger completeCRLNumber = null;
         try
@@ -801,8 +785,7 @@ class RevocationUtilities
         try
         {
             Set issuers = new HashSet();
-
-            issuers.add(X500Name.getInstance(((X509Certificate)cert).getIssuerX500Principal().getEncoded()));
+            issuers.add(getIssuer((X509Certificate)cert));
 
             RevocationUtilities.getCRLIssuersFromDistributionPoint(dp, issuers, baseCrlSelect);
         }
@@ -1056,9 +1039,10 @@ class RevocationUtilities
 //            }
 //            else
             {
-                X509Certificate xCert = (X509Certificate)cert;
+                X500Name certIssuer = getIssuer((X509Certificate)cert);
 
-                throw new CRLNotFoundException("No CRLs found for issuer \"" + RFC4519Style.INSTANCE.toString(X500Name.getInstance(((X509Certificate)xCert).getIssuerX500Principal().getEncoded())) + "\"");
+                throw new CRLNotFoundException(
+                    "No CRLs found for issuer \"" + RFC4519Style.INSTANCE.toString(certIssuer) + "\"");
             }
         }
     }
@@ -1077,5 +1061,20 @@ class RevocationUtilities
             throw new CRLException(
                     "exception reading IssuingDistributionPoint", e);
         }
+    }
+
+    private static X500Name getIssuer(X509Certificate cert)
+    {
+        return getX500Name(cert.getIssuerX500Principal());
+    }
+
+    private static X500Name getIssuer(X509CRL crl)
+    {
+        return getX500Name(crl.getIssuerX500Principal());
+    }
+
+    private static X500Name getX500Name(X500Principal principal)
+    {
+        return X500Name.getInstance(principal.getEncoded());
     }
 }

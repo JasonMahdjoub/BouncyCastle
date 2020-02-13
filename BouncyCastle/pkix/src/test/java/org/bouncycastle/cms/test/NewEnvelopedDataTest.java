@@ -34,32 +34,33 @@ import junit.framework.Assert;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import org.bouncycastle.asn1.ASN1InputStream;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1OctetString;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.DERNull;
-import org.bouncycastle.asn1.DEROctetString;
-import org.bouncycastle.asn1.DERSet;
-import org.bouncycastle.asn1.DERUTF8String;
-import org.bouncycastle.asn1.cms.Attribute;
-import org.bouncycastle.asn1.cms.AttributeTable;
-import org.bouncycastle.asn1.cms.CCMParameters;
-import org.bouncycastle.asn1.cms.ContentInfo;
-import org.bouncycastle.asn1.cms.EncryptedContentInfo;
-import org.bouncycastle.asn1.cms.EnvelopedData;
-import org.bouncycastle.asn1.cms.GCMParameters;
-import org.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
-import org.bouncycastle.asn1.kisa.KISAObjectIdentifiers;
-import org.bouncycastle.asn1.nist.NISTObjectIdentifiers;
-import org.bouncycastle.asn1.ntt.NTTObjectIdentifiers;
-import org.bouncycastle.asn1.pkcs.PBKDF2Params;
-import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.asn1.pkcs.RC2CBCParameter;
-import org.bouncycastle.asn1.rosstandart.RosstandartObjectIdentifiers;
-import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x509.Extension;
+import org.bouncycastle.bcasn1.ASN1InputStream;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.ASN1OctetString;
+import org.bouncycastle.bcasn1.ASN1Sequence;
+import org.bouncycastle.bcasn1.DERNull;
+import org.bouncycastle.bcasn1.DEROctetString;
+import org.bouncycastle.bcasn1.DERSet;
+import org.bouncycastle.bcasn1.DERUTF8String;
+import org.bouncycastle.bcasn1.cms.Attribute;
+import org.bouncycastle.bcasn1.cms.AttributeTable;
+import org.bouncycastle.bcasn1.cms.CCMParameters;
+import org.bouncycastle.bcasn1.cms.ContentInfo;
+import org.bouncycastle.bcasn1.cms.EncryptedContentInfo;
+import org.bouncycastle.bcasn1.cms.EnvelopedData;
+import org.bouncycastle.bcasn1.cms.GCMParameters;
+import org.bouncycastle.bcasn1.cryptopro.CryptoProObjectIdentifiers;
+import org.bouncycastle.bcasn1.kisa.KISAObjectIdentifiers;
+import org.bouncycastle.bcasn1.nist.NISTObjectIdentifiers;
+import org.bouncycastle.bcasn1.ntt.NTTObjectIdentifiers;
+import org.bouncycastle.bcasn1.pkcs.PBKDF2Params;
+import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
+import org.bouncycastle.bcasn1.pkcs.RC2CBCParameter;
+import org.bouncycastle.bcasn1.rosstandart.RosstandartObjectIdentifiers;
+import org.bouncycastle.bcasn1.x500.X500Name;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.x509.Extension;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.cert.jcajce.JcaX509CertificateConverter;
 import org.bouncycastle.cert.jcajce.JcaX509CertificateHolder;
@@ -100,9 +101,8 @@ import org.bouncycastle.openssl.PEMKeyPair;
 import org.bouncycastle.openssl.PEMParser;
 import org.bouncycastle.operator.OutputEncryptor;
 import org.bouncycastle.operator.jcajce.JcaAlgorithmParametersConverter;
-import org.bouncycastle.util.Strings;
-import org.bouncycastle.util.encoders.Base64;
-import org.bouncycastle.util.encoders.Hex;
+import org.bouncycastle.bcutil.Strings;
+import org.bouncycastle.bcutil.encoders.Base64;
 
 public class NewEnvelopedDataTest
     extends TestCase
@@ -531,6 +531,22 @@ public class NewEnvelopedDataTest
             "l43OVnBpGM+FjQ=="
     );
 
+    public byte[] github539_GostEnvData = Base64.decode(
+        "MIIBxQYJKoZIhvcNAQcDoIIBtjCCAbICAQAxggF8MIIBeAIBADCBojCBlDELMAkG\n" +
+            "A1UEBhMCUlUxFjAUBgNVBAgMDVN2ZXJkbG92c2theWExFTATBgNVBAcMDEVrYXRl\n" +
+            "cmluYnVyZzETMBEGA1UECgwKUm9zdGVsZWNvbTEMMAoGA1UECwwDUklUMQwwCgYD\n" +
+            "VQQDDANNTlAxJTAjBgkqhkiG9w0BCQEWFmdsdWtpaGtoLWFhQHVyYWwucnQucnUC\n" +
+            "CQDihx/vS7OqVzAfBggqhQMHAQEBATATBgcqhQMCAiMBBggqhQMHAQECAgSBrDCB\n" +
+            "qTAoBCCOzeVj2u7vVt05/1UjBxt51k06wrIhalqaFWacp5+8ywQEZwbtgaB9Bgkq\n" +
+            "hQMHAQIFAQGgZjAfBggqhQMHAQEBATATBgcqhQMCAiMBBggqhQMHAQECAgNDAARA\n" +
+            "qOyKoz/eS3Pyd1JadxSNEpereq4be7gRJVy8Qfg80CfchQf+gj5+loND0fm3vtiQ\n" +
+            "dHdylZWk3UInvTB3/QdHkQQIHQro/keNHKMwLQYJKoZIhvcNAQcBMB0GBiqFAwIC\n" +
+            "FTATBAgr82ldAd52+QYHKoUDAgIfAYABQA==");
+
+    public byte[] github539_PrivKey = Base64.decode(
+        "MEgCAQAwHwYIKoUDBwEBAQEwEwYHKoUDAgIjAQYIKoUDBwEBAgIEIgQg2Zw10hDxo6SHNVvUpfyXJesDZaEdoAidtV760MFrZBg="
+    );
+
     public NewEnvelopedDataTest()
     {
     }
@@ -918,9 +934,10 @@ public class NewEnvelopedDataTest
 
         edGen.addRecipientInfoGenerator(new JceKeyTransRecipientInfoGenerator(_reciCert).setAlgorithmMapping(PKCSObjectIdentifiers.rsaEncryption, "RSA/2/PKCS1Padding").setProvider(BC));
 
+        OutputEncryptor encryptor = new JceCMSContentEncryptorBuilder(CMSAlgorithm.DES_EDE3_CBC).setProvider(BC).build();
         CMSEnvelopedData ed = edGen.generate(
             new CMSProcessableByteArray(data),
-            new JceCMSContentEncryptorBuilder(CMSAlgorithm.DES_EDE3_CBC).setProvider(BC).build());
+            encryptor);
 
         RecipientInformationStore recipients = ed.getRecipientInfos();
 
@@ -951,6 +968,32 @@ public class NewEnvelopedDataTest
             fail("recipients not matched using general recipient ID.");
         }
         assertTrue(collection.iterator().next() instanceof RecipientInformation);
+
+        ed = edGen.generate(
+            new CMSProcessableByteArray(data),
+            new JceCMSContentEncryptorBuilder(encryptor.getAlgorithmIdentifier()).setProvider(BC).build());
+
+        recipients = ed.getRecipientInfos();
+
+        assertEquals(ed.getEncryptionAlgOID(), CMSEnvelopedDataGenerator.DES_EDE3_CBC);
+
+        c = recipients.getRecipients();
+
+        assertEquals(1, c.size());
+        assertEquals(encryptor.getAlgorithmIdentifier(), ed.getContentEncryptionAlgorithm());
+        
+        it = c.iterator();
+
+        while (it.hasNext())
+        {
+            RecipientInformation recipient = (RecipientInformation)it.next();
+
+            assertEquals(recipient.getKeyEncryptionAlgOID(), PKCSObjectIdentifiers.rsaEncryption.getId());
+
+            byte[] recData = recipient.getContent(new JceKeyTransEnvelopedRecipient(_reciKP.getPrivate()).setAlgorithmMapping(PKCSObjectIdentifiers.rsaEncryption, "RSA/2/PKCS1Padding").setProvider(BC));
+
+            assertEquals(true, Arrays.equals(data, recData));
+        }
     }
 
     public void testOriginatorInfoGeneration()
@@ -1443,7 +1486,7 @@ public class NewEnvelopedDataTest
         tryKekAlgorithmAEAD(CMSTestUtil.makeAESKey(128), NISTObjectIdentifiers.id_aes128_wrap, CMSAlgorithm.AES192_CCM, NISTObjectIdentifiers.id_aes192_CCM);
         tryKekAlgorithmAEAD(CMSTestUtil.makeAESKey(128), NISTObjectIdentifiers.id_aes128_wrap, CMSAlgorithm.AES256_CCM, NISTObjectIdentifiers.id_aes256_CCM);
 
-        tryKekAlgorithmAEAD(CMSTestUtil.makeAESKey(128), NISTObjectIdentifiers.id_aes128_wrap, CMSAlgorithm.AES128_CCM, NISTObjectIdentifiers.id_aes128_CCM, new CCMParameters(nonce, 13).getEncoded());
+        tryKekAlgorithmAEAD(CMSTestUtil.makeAESKey(128), NISTObjectIdentifiers.id_aes128_wrap, CMSAlgorithm.AES128_CCM, NISTObjectIdentifiers.id_aes128_CCM, new CCMParameters(nonce, 14).getEncoded());
     }
 
     public void testAES192KEK()
@@ -1609,15 +1652,22 @@ public class NewEnvelopedDataTest
         RecipientInformationStore recipients;
         Collection c;
         Iterator it;
-        ContentInfo eContentInfo = ContentInfo.getInstance(edData);
 
-        EnvelopedData envD = EnvelopedData.getInstance(eContentInfo.getContent());
+        // Locate the MAC within 'edData' and modify it to trigger failed authentication
+        {
+            ContentInfo eContentInfo = ContentInfo.getInstance(edData);
+            EnvelopedData envD = EnvelopedData.getInstance(eContentInfo.getContent());
+            EncryptedContentInfo eInfo = envD.getEncryptedContentInfo();
 
-        EncryptedContentInfo eInfo = envD.getEncryptedContentInfo();
+            int macPos = indexOf(edData, eInfo.getEncryptedContent().getOctets());
+            if (macPos < 0)
+            {
+                fail("MAC not locatable");
+            }
+            edData[macPos + 10] ^= 0xFF;
+        }
 
-        eInfo.getEncryptedContent().getOctets()[10] ^= 0xff;
-
-        ed = new CMSEnvelopedData(new ContentInfo(eContentInfo.getContentType(), new EnvelopedData(envD.getOriginatorInfo(), envD.getRecipientInfos(), eInfo, envD.getUnprotectedAttrs())).getEncoded());
+        ed = new CMSEnvelopedData(edData);
 
         recipients = ed.getRecipientInfos();
 
@@ -2191,12 +2241,43 @@ public class NewEnvelopedDataTest
 
         RecipientId id = new JceKeyTransRecipientId((X509Certificate)certFact.generateCertificate(new ByteArrayInputStream(gost3410_RecipCert)));
 
-        Collection collection = recipients.getRecipients(id);
+        Collection<RecipientInformation> collection = recipients.getRecipients(id);
         if (collection.size() != 1)
         {
             fail("recipients not matched using general recipient ID.");
         }
         assertTrue(collection.iterator().next() instanceof RecipientInformation);
+    }
+
+    public void testGithub539_Gost3410_2012_KeyTrans()
+        throws Exception
+    {
+        KeyFactory keyFact = KeyFactory.getInstance("ECGOST3410-2012", BC);
+
+        PrivateKey privKey = keyFact.generatePrivate(new PKCS8EncodedKeySpec(github539_PrivKey));
+
+        CMSEnvelopedData ed = new CMSEnvelopedData(github539_GostEnvData);
+
+        RecipientInformationStore recipients = ed.getRecipientInfos();
+
+        assertEquals(ed.getEncryptionAlgOID(), CryptoProObjectIdentifiers.gostR28147_gcfb.getId());
+
+        Collection c = recipients.getRecipients();
+
+        assertEquals(1, c.size());
+
+        Iterator it = c.iterator();
+
+        while (it.hasNext())
+        {
+            RecipientInformation recipient = (RecipientInformation)it.next();
+
+            assertEquals(recipient.getKeyEncryptionAlgOID(), RosstandartObjectIdentifiers.id_tc26_gost_3410_12_256.getId());
+
+            byte[] recData = recipient.getContent(new JceKeyTransEnvelopedRecipient(privKey).setProvider(BC));
+
+            assertEquals(".", Strings.fromByteArray(recData));
+        }
     }
 
     public void testGost3410_2012_KeyTrans()
@@ -2410,7 +2491,8 @@ public class NewEnvelopedDataTest
         }
         assertTrue(collection.iterator().next() instanceof RecipientInformation);
     }
-
+     /*
+     TODO: Something odd is going on with this one
     public void testGost3410_2012_512_KeyAgree()
         throws Exception
     {
@@ -2452,7 +2534,8 @@ public class NewEnvelopedDataTest
         }
         assertTrue(collection.iterator().next() instanceof RecipientInformation);
     }
-
+    */
+    
     public void testGost3410_2001_KeyAgree_Creation()
         throws Exception
     {
@@ -2640,6 +2723,34 @@ public class NewEnvelopedDataTest
             fail("recipients not matched using general recipient ID.");
         }
         assertTrue(collection.iterator().next() instanceof RecipientInformation);
+    }
+
+    private int indexOf(byte[] data, byte[] subData)
+    {
+        byte subData0 = subData[0];
+        for (int i = 0; i <= data.length - subData.length; ++i)
+        {
+            if (data[i] != subData0)
+            {
+                continue;
+            }
+
+            int matchPos = i;
+            for (int j = 1; j < subData.length; ++j)
+            {
+                if (data[i + j] != subData[j])
+                {
+                    matchPos = -1;
+                    break;
+                }
+            }
+
+            if (matchPos >= 0)
+            {
+                return matchPos;
+            }
+        }
+        return -1;
     }
 
     private void processInput(ECPrivateKey ecKey, byte[] expected, String input, AlgorithmIdentifier wrapAlg)

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.asn1.test.ParseTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2019-05-14T11:38:13" hostname="Garage2" time="0.0">
-  <properties/>
-  <testcase name="testLongTag" classname="org.bouncycastle.asn1.test.ParseTest" time="0.0"/>
-  <testcase name="testClassCast" classname="org.bouncycastle.asn1.test.ParseTest" time="0.0"/>
-  <testcase name="testDerExp" classname="org.bouncycastle.asn1.test.ParseTest" time="0.0"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

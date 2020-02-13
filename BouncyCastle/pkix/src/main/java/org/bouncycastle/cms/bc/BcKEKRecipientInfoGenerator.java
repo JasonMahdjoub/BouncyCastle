@@ -1,6 +1,6 @@
 package org.bouncycastle.cms.bc;
 
-import org.bouncycastle.asn1.cms.KEKIdentifier;
+import org.bouncycastle.bcasn1.cms.KEKIdentifier;
 import org.bouncycastle.cms.KEKRecipientInfoGenerator;
 import org.bouncycastle.operator.bc.BcSymmetricKeyWrapper;
 

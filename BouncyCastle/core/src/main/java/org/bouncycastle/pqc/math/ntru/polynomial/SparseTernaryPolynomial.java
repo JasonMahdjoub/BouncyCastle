@@ -7,7 +7,7 @@ import java.security.SecureRandom;
 
 import org.bouncycastle.pqc.math.ntru.util.ArrayEncoder;
 import org.bouncycastle.pqc.math.ntru.util.Util;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 /**
  * A <code>TernaryPolynomial</code> with a "low" number of nonzero coefficients.

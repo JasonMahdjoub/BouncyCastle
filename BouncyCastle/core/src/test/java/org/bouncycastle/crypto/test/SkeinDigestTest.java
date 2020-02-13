@@ -2,12 +2,12 @@ package org.bouncycastle.crypto.test;
 
 import java.io.IOException;
 
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.crypto.Digest;
 import org.bouncycastle.crypto.digests.SkeinDigest;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Memoable;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.Memoable;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class SkeinDigestTest
     extends SimpleTest

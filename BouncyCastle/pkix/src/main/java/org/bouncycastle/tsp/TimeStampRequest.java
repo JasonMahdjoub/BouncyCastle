@@ -12,12 +12,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import org.bouncycastle.asn1.ASN1InputStream;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.cmp.PKIFailureInfo;
-import org.bouncycastle.asn1.tsp.TimeStampReq;
-import org.bouncycastle.asn1.x509.Extension;
-import org.bouncycastle.asn1.x509.Extensions;
+import org.bouncycastle.bcasn1.ASN1InputStream;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.cmp.PKIFailureInfo;
+import org.bouncycastle.bcasn1.tsp.TimeStampReq;
+import org.bouncycastle.bcasn1.x509.Extension;
+import org.bouncycastle.bcasn1.x509.Extensions;
 
 /**
  * Base class for an RFC 3161 Time Stamp Request.
@@ -78,7 +78,7 @@ public class TimeStampRequest
 
     public int getVersion()
     {
-        return req.getVersion().getValue().intValue();
+        return req.getVersion().intValueExact();
     }
 
     public ASN1ObjectIdentifier getMessageImprintAlgOID()

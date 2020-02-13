@@ -1,7 +1,7 @@
 package org.bouncycastle.crypto.macs;
 
-import org.bouncycastle.crypto.BlockCipher;
 import org.bouncycastle.crypto.CipherParameters;
+import org.bouncycastle.crypto.BlockCipher;
 
 /**
  * A non-NIST variant which allows passing of an IV to the underlying CBC cipher.

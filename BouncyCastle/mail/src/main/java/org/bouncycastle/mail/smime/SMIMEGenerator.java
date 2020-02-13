@@ -16,7 +16,7 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 
 import org.bouncycastle.cms.CMSEnvelopedGenerator;
-import org.bouncycastle.util.Strings;
+import org.bouncycastle.bcutil.Strings;
 
 /**
  * super class of the various generators.
@@ -70,7 +70,13 @@ public class SMIMEGenerator
         //
         try
         {
-            MimeMessage     msg = new MimeMessage((Session)null);
+            MimeMessage     msg = new MimeMessage((Session) null) {
+                // avoid the call of updateMessageID to prevent
+                // DNS issues when trying to evaluate the local host's name
+                protected void updateMessageID() throws MessagingException {
+                    // do nothing
+                }
+            };
 
             Enumeration     e = content.getAllHeaders();
 

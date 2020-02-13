@@ -2,7 +2,7 @@ package org.bouncycastle.jce.spec;
 
 import java.security.spec.AlgorithmParameterSpec;
 
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 /**
  * Parameter spec for an integrated encryptor, as in IEEE P1363a

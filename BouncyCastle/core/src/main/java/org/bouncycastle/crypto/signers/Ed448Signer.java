@@ -7,7 +7,7 @@ import org.bouncycastle.crypto.Signer;
 import org.bouncycastle.crypto.params.Ed448PrivateKeyParameters;
 import org.bouncycastle.crypto.params.Ed448PublicKeyParameters;
 import org.bouncycastle.math.ec.rfc8032.Ed448;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 
 public class Ed448Signer
@@ -92,6 +92,11 @@ public class Ed448Signer
 
         synchronized boolean verifySignature(Ed448PublicKeyParameters publicKey, byte[] ctx, byte[] signature)
         {
+            if (Ed448.SIGNATURE_SIZE != signature.length)
+            {
+                return false;
+            }
+
             byte[] pk = publicKey.getEncoded();
             boolean result = Ed448.verify(signature, 0, pk, 0, ctx, buf, 0, count);
             reset();

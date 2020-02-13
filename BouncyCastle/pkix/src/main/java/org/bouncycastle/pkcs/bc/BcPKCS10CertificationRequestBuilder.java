@@ -2,7 +2,7 @@ package org.bouncycastle.pkcs.bc;
 
 import java.io.IOException;
 
-import org.bouncycastle.asn1.x500.X500Name;
+import org.bouncycastle.bcasn1.x500.X500Name;
 import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
 import org.bouncycastle.crypto.util.SubjectPublicKeyInfoFactory;
 import org.bouncycastle.pkcs.PKCS10CertificationRequestBuilder;

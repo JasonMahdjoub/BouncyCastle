@@ -1,6 +1,5 @@
 package org.bouncycastle.jce.provider;
 
-import java.math.BigInteger;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.PublicKey;
 import java.security.cert.CertPath;
@@ -20,14 +19,15 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x509.Extension;
-import org.bouncycastle.asn1.x509.TBSCertificate;
+import org.bouncycastle.bcasn1.ASN1Encodable;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.x500.X500Name;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.x509.Extension;
+import org.bouncycastle.bcasn1.x509.TBSCertificate;
 import org.bouncycastle.jcajce.PKIXExtendedBuilderParameters;
 import org.bouncycastle.jcajce.PKIXExtendedParameters;
+import org.bouncycastle.jcajce.interfaces.BCX509Certificate;
 import org.bouncycastle.jcajce.util.BCJcaJceHelper;
 import org.bouncycastle.jcajce.util.JcaJceHelper;
 import org.bouncycastle.jce.exception.ExtCertPathValidatorException;
@@ -41,9 +41,16 @@ public class PKIXCertPathValidatorSpi
         extends CertPathValidatorSpi
 {
     private final JcaJceHelper helper = new BCJcaJceHelper();
+    private final boolean isForCRLCheck;
 
     public PKIXCertPathValidatorSpi()
     {
+        this(false);
+    }
+
+    public PKIXCertPathValidatorSpi(boolean isForCRLCheck)
+    {
+        this.isForCRLCheck = isForCRLCheck;
     }
 
     public CertPathValidatorResult engineValidate(
@@ -232,7 +239,7 @@ public class PKIXCertPathValidatorSpi
                 workingPublicKey = trust.getCAPublicKey();
             }
         }
-        catch (IllegalArgumentException ex)
+        catch (RuntimeException ex)
         {
             throw new ExtCertPathValidatorException("Subject of trust anchor could not be (re)encoded.", ex, certPath,
                     -1);
@@ -313,10 +320,10 @@ public class PKIXCertPathValidatorSpi
             RFC3280CertPathUtilities.processCertA(certPath, paramsPKIX, index, workingPublicKey,
                 verificationAlreadyPerformed, workingIssuerName, sign, helper);
 
-            RFC3280CertPathUtilities.processCertBC(certPath, index, nameConstraintValidator);
+            RFC3280CertPathUtilities.processCertBC(certPath, index, nameConstraintValidator, isForCRLCheck);
 
             validPolicyTree = RFC3280CertPathUtilities.processCertD(certPath, index, acceptablePolicies,
-                    validPolicyTree, policyNodes, inhibitAnyPolicy);
+                    validPolicyTree, policyNodes, inhibitAnyPolicy, isForCRLCheck);
 
             validPolicyTree = RFC3280CertPathUtilities.processCertE(certPath, index, validPolicyTree);
 
@@ -475,6 +482,24 @@ public class PKIXCertPathValidatorSpi
     static void checkCertificate(X509Certificate cert)
         throws AnnotatedException
     {
+        if (cert instanceof BCX509Certificate)
+        {
+            RuntimeException cause = null;
+            try
+            {
+                if (null != ((BCX509Certificate)cert).getTBSCertificateNative())
+                {
+                    return;
+                }
+            }
+            catch (RuntimeException e)
+            {
+                cause = e;
+            }
+
+            throw new AnnotatedException("unable to process TBSCertificate", cause);
+        }
+
         try
         {
             TBSCertificate.getInstance(cert.getTBSCertificate());

@@ -7,11 +7,11 @@ import org.bouncycastle.crypto.KeyGenerationParameters;
 public class DHKeyGenerationParameters
     extends KeyGenerationParameters
 {
-    private DHParameters    params;
+    private DHParameters params;
 
     public DHKeyGenerationParameters(
         SecureRandom    random,
-        DHParameters    params)
+        DHParameters params)
     {
         super(random, getStrength(params));
 

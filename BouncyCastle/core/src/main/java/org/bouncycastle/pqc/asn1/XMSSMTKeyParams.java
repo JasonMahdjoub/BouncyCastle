@@ -1,12 +1,12 @@
 package org.bouncycastle.pqc.asn1;
 
-import org.bouncycastle.asn1.ASN1EncodableVector;
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.ASN1Object;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.DERSequence;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.ASN1EncodableVector;
+import org.bouncycastle.bcasn1.ASN1Integer;
+import org.bouncycastle.bcasn1.ASN1Object;
+import org.bouncycastle.bcasn1.ASN1Primitive;
+import org.bouncycastle.bcasn1.ASN1Sequence;
+import org.bouncycastle.bcasn1.DERSequence;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 
 /**
  * XMMSMTKeyParams
@@ -38,8 +38,8 @@ public class XMSSMTKeyParams
     private XMSSMTKeyParams(ASN1Sequence sequence)
     {
         this.version = ASN1Integer.getInstance(sequence.getObjectAt(0));
-        this.height = ASN1Integer.getInstance(sequence.getObjectAt(1)).getValue().intValue();
-        this.layers = ASN1Integer.getInstance(sequence.getObjectAt(2)).getValue().intValue();
+        this.height = ASN1Integer.getInstance(sequence.getObjectAt(1)).intValueExact();
+        this.layers = ASN1Integer.getInstance(sequence.getObjectAt(2)).intValueExact();
         this.treeDigest = AlgorithmIdentifier.getInstance(sequence.getObjectAt(3));
     }
 

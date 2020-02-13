@@ -3,26 +3,22 @@ package org.bouncycastle.crypto.signers;
 import java.io.IOException;
 import java.util.Hashtable;
 
-import org.bouncycastle.asn1.ASN1Encoding;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.DERNull;
-import org.bouncycastle.asn1.nist.NISTObjectIdentifiers;
-import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.asn1.teletrust.TeleTrusTObjectIdentifiers;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x509.DigestInfo;
-import org.bouncycastle.asn1.x509.X509ObjectIdentifiers;
-import org.bouncycastle.crypto.AsymmetricBlockCipher;
+import org.bouncycastle.bcasn1.ASN1Encoding;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.DERNull;
+import org.bouncycastle.bcasn1.nist.NISTObjectIdentifiers;
+import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
+import org.bouncycastle.bcasn1.teletrust.TeleTrusTObjectIdentifiers;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.x509.DigestInfo;
+import org.bouncycastle.bcasn1.x509.X509ObjectIdentifiers;
+import org.bouncycastle.crypto.*;
 import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.CryptoException;
-import org.bouncycastle.crypto.DataLengthException;
-import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.Signer;
 import org.bouncycastle.crypto.encodings.PKCS1Encoding;
 import org.bouncycastle.crypto.engines.RSABlindedEngine;
 import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
 import org.bouncycastle.crypto.params.ParametersWithRandom;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 public class RSADigestSigner
     implements Signer
@@ -39,6 +35,8 @@ public class RSADigestSigner
      */
     static
     {
+        // Null-digester is intentionally NOT on this mapping.
+        
         oidMap.put("RIPEMD128", TeleTrusTObjectIdentifiers.ripemd128);
         oidMap.put("RIPEMD160", TeleTrusTObjectIdentifiers.ripemd160);
         oidMap.put("RIPEMD256", TeleTrusTObjectIdentifiers.ripemd256);
@@ -72,7 +70,15 @@ public class RSADigestSigner
         ASN1ObjectIdentifier digestOid)
     {
         this.digest = digest;
-        this.algId = new AlgorithmIdentifier(digestOid, DERNull.INSTANCE);
+        if (digestOid != null)
+        {
+            this.algId = new AlgorithmIdentifier(digestOid, DERNull.INSTANCE);
+        }
+        else
+        {
+            // NULL digester, match behaviour with DigestSignatureSpi
+            this.algId = null;
+        }
     }
 
     /**
@@ -84,7 +90,7 @@ public class RSADigestSigner
     }
 
     /**
-     * initialise the signer for signing or verification.
+     * Initialize the signer for signing or verification.
      *
      * @param forSigning
      *            true if for signing, false otherwise
@@ -240,6 +246,20 @@ public class RSADigestSigner
         byte[] hash)
         throws IOException
     {
+        if (algId == null)
+        {
+            try
+            {
+                // check hash is at least right format
+                DigestInfo.getInstance(hash);
+                return hash;
+            }
+            catch (IllegalArgumentException e)
+            {
+                throw new IOException("malformed DigestInfo for NONEwithRSA hash: " + e.getMessage());
+            }
+        }
+
         DigestInfo dInfo = new DigestInfo(algId, hash);
 
         return dInfo.getEncoded(ASN1Encoding.DER);

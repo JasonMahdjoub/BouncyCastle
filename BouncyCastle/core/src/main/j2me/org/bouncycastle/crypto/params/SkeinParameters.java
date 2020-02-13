@@ -11,7 +11,7 @@ import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.digests.SkeinDigest;
 import org.bouncycastle.crypto.digests.SkeinEngine;
 import org.bouncycastle.crypto.macs.SkeinMac;
-import org.bouncycastle.util.Integers;
+import org.bouncycastle.bcutil.Integers;
 
 /**
  * Parameters for the Skein hash function - a series of byte[] strings identified by integer tags.

@@ -3,11 +3,11 @@ package org.bouncycastle.crypto.modes;
 import java.util.Vector;
 
 import org.bouncycastle.crypto.*;
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
+import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.params.AEADParameters;
 import org.bouncycastle.crypto.params.KeyParameter;
 import org.bouncycastle.crypto.params.ParametersWithIV;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 /**
  * An implementation of <a href="http://tools.ietf.org/html/rfc7253">RFC 7253 on The OCB
@@ -339,7 +339,7 @@ public class OCBBlockCipher
 
     public int doFinal(byte[] output, int outOff)
         throws IllegalStateException,
-			BCInvalidCipherTextException
+        InvalidCipherTextException
     {
         /*
          * For decryption, get the tag from the end of the message
@@ -349,7 +349,7 @@ public class OCBBlockCipher
         {
             if (mainBlockPos < macSize)
             {
-                throw new BCInvalidCipherTextException("data too short");
+                throw new InvalidCipherTextException("data too short");
             }
             mainBlockPos -= macSize;
             tag = new byte[macSize];
@@ -427,7 +427,7 @@ public class OCBBlockCipher
             // Compare the tag from the message with the calculated one
             if (!Arrays.constantTimeAreEqual(macBlock, tag))
             {
-                throw new BCInvalidCipherTextException("mac check in OCB failed");
+                throw new InvalidCipherTextException("mac check in OCB failed");
             }
         }
 

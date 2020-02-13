@@ -12,8 +12,8 @@ import org.bouncycastle.tls.crypto.impl.bc.BcTlsSecret;
 import org.bouncycastle.tls.crypto.impl.jcajce.JcaTlsCrypto;
 import org.bouncycastle.tls.crypto.impl.jcajce.JcaTlsCryptoProvider;
 import org.bouncycastle.tls.crypto.impl.jcajce.JceTlsSecret;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.encoders.Hex;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 public class PRFTest
     extends TestCase

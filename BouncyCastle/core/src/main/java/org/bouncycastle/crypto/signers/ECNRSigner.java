@@ -3,34 +3,37 @@ package org.bouncycastle.crypto.signers;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
-import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
+import org.bouncycastle.crypto.*;
 import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
-import org.bouncycastle.crypto.DSAExt;
-import org.bouncycastle.crypto.DataLengthException;
 import org.bouncycastle.crypto.generators.ECKeyPairGenerator;
-import org.bouncycastle.crypto.params.ECKeyGenerationParameters;
-import org.bouncycastle.crypto.params.ECKeyParameters;
+import org.bouncycastle.crypto.params.*;
 import org.bouncycastle.crypto.params.ECPrivateKeyParameters;
-import org.bouncycastle.crypto.params.ECPublicKeyParameters;
-import org.bouncycastle.crypto.params.ParametersWithRandom;
 import org.bouncycastle.math.ec.ECAlgorithms;
 import org.bouncycastle.math.ec.ECConstants;
 import org.bouncycastle.math.ec.ECPoint;
+import org.bouncycastle.bcutil.BigIntegers;
 
 /**
- * EC-NR as described in IEEE 1363-2000
+ * EC-NR as described in IEEE 1363-2000 - a signature algorithm for Elliptic Curve which
+ * also offers message recovery.
  */
 public class ECNRSigner
     implements DSAExt
 {
     private boolean             forSigning;
-    private ECKeyParameters     key;
+    private ECKeyParameters key;
     private SecureRandom        random;
 
+    /**
+     * Initialise the signer.
+     *
+     * @param forSigning true if we are generating a signature, false
+     * for verification or if we want to use the signer for message recovery.
+     * @param param key parameters for signature generation.
+     */
     public void init(
         boolean          forSigning, 
-        CipherParameters param) 
+        CipherParameters param)
     {
         this.forSigning = forSigning;
         
@@ -38,7 +41,7 @@ public class ECNRSigner
         {
             if (param instanceof ParametersWithRandom)
             {
-                ParametersWithRandom    rParam = (ParametersWithRandom)param;
+                ParametersWithRandom rParam = (ParametersWithRandom)param;
 
                 this.random = rParam.getRandom();
                 this.key = (ECPrivateKeyParameters)rParam.getParameters();
@@ -79,16 +82,14 @@ public class ECNRSigner
         }
         
         BigInteger n = getOrder();
-        int nBitLength = n.bitLength();
         
         BigInteger e = new BigInteger(1, digest);
-        int eBitLength = e.bitLength();
-        
-        ECPrivateKeyParameters  privKey = (ECPrivateKeyParameters)key;
-               
-        if (eBitLength > nBitLength) 
+
+        ECPrivateKeyParameters privKey = (ECPrivateKeyParameters)key;
+
+        if (e.compareTo(n) >= 0)
         {
-            throw new DataLengthException("input too large for ECNR key.");
+            throw new DataLengthException("input too large for ECNR key");
         }
 
         BigInteger r = null;
@@ -160,17 +161,49 @@ public class ECNRSigner
         {
             throw new DataLengthException("input too large for ECNR key.");
         }
-        
-        // r in the range [1,n-1]
-        if (r.compareTo(ECConstants.ONE) < 0 || r.compareTo(n) >= 0) 
+
+        BigInteger t = extractT(pubKey, r, s);
+
+        return t != null && t.equals(e.mod(n));
+    }
+
+    /**
+     * Returns the data used for the signature generation, assuming the public key passed
+     * to init() is correct.
+     *
+     * @return null if r and s are not valid.
+     */
+    public byte[] getRecoveredMessage(BigInteger r, BigInteger s)
+    {
+        if (this.forSigning)
         {
-            return false;
+            throw new IllegalStateException("not initialised for verifying/recovery");
+        }
+
+        BigInteger t = extractT((ECPublicKeyParameters)key, r, s);
+
+        if (t != null)
+        {
+            return BigIntegers.asUnsignedByteArray(t);
+        }
+
+        return null;
+    }
+
+    private BigInteger extractT(ECPublicKeyParameters pubKey, BigInteger r, BigInteger s)
+    {
+        BigInteger n = pubKey.getParameters().getN();
+
+        // r in the range [1,n-1]
+        if (r.compareTo(ECConstants.ONE) < 0 || r.compareTo(n) >= 0)
+        {
+            return null;
         }
 
         // s in the range [0,n-1]           NB: ECNR spec says 0
-        if (s.compareTo(ECConstants.ZERO) < 0 || s.compareTo(n) >= 0) 
+        if (s.compareTo(ECConstants.ZERO) < 0 || s.compareTo(n) >= 0)
         {
-            return false;
+            return null;
         }
 
         // compute P = sG + rW
@@ -183,12 +216,11 @@ public class ECNRSigner
         // components must be bogus.
         if (P.isInfinity())
         {
-            return false;
+            return null;
         }
 
         BigInteger x = P.getAffineXCoord().toBigInteger();
-        BigInteger t = r.subtract(x).mod(n);
 
-        return t.equals(e);
+        return r.subtract(x).mod(n);
     }
 }

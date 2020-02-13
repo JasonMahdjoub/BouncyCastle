@@ -7,18 +7,18 @@ import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
 
 import junit.framework.TestCase;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.cmp.PKIFailureInfo;
-import org.bouncycastle.asn1.cmp.PKIStatus;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.cmp.PKIFailureInfo;
+import org.bouncycastle.bcasn1.cmp.PKIStatus;
 import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.cms.jcajce.JcaSimpleSignerInfoVerifierBuilder;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.tsp.TSPAlgorithms;
 import org.bouncycastle.tsp.TimeStampRequest;
 import org.bouncycastle.tsp.TimeStampResponse;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Store;
-import org.bouncycastle.util.encoders.Base64;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.Store;
+import org.bouncycastle.bcutil.encoders.Base64;
 
 /**
  * Test Cases

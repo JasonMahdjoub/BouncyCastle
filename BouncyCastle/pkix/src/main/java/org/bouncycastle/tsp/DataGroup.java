@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.TreeSet;
 
 import org.bouncycastle.operator.DigestCalculator;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 /**
  * Representation of data groups according to the description provided in RFC4998.

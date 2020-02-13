@@ -3,6 +3,7 @@ package org.bouncycastle.pqc.crypto.test;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
 import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
 import org.bouncycastle.crypto.Digest;
@@ -12,18 +13,12 @@ import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
 import org.bouncycastle.crypto.params.ParametersWithRandom;
 import org.bouncycastle.pqc.crypto.DigestingMessageSigner;
 import org.bouncycastle.pqc.crypto.DigestingStateAwareMessageSigner;
-import org.bouncycastle.pqc.crypto.gmss.GMSSDigestProvider;
-import org.bouncycastle.pqc.crypto.gmss.GMSSKeyGenerationParameters;
-import org.bouncycastle.pqc.crypto.gmss.GMSSKeyPairGenerator;
-import org.bouncycastle.pqc.crypto.gmss.GMSSParameters;
+import org.bouncycastle.pqc.crypto.gmss.*;
 import org.bouncycastle.pqc.crypto.gmss.GMSSPrivateKeyParameters;
-import org.bouncycastle.pqc.crypto.gmss.GMSSSigner;
-import org.bouncycastle.pqc.crypto.gmss.GMSSStateAwareSigner;
-import org.bouncycastle.util.BigIntegers;
-import org.bouncycastle.util.Strings;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.FixedSecureRandom;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.BigIntegers;
+import org.bouncycastle.bcutil.Strings;
+import org.bouncycastle.bcutil.test.FixedSecureRandom;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 
 public class GMSSSignerTest

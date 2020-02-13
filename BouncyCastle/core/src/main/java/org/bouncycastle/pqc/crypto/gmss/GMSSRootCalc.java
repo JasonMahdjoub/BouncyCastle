@@ -4,9 +4,9 @@ import java.util.Enumeration;
 import java.util.Vector;
 
 import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Integers;
-import org.bouncycastle.util.encoders.Hex;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.Integers;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 
 /**

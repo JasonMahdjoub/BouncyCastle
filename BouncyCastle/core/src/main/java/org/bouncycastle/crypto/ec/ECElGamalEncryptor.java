@@ -3,8 +3,8 @@ package org.bouncycastle.crypto.ec;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
-import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
 import org.bouncycastle.crypto.CipherParameters;
+import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
 import org.bouncycastle.crypto.params.ECDomainParameters;
 import org.bouncycastle.crypto.params.ECPublicKeyParameters;
 import org.bouncycastle.crypto.params.ParametersWithRandom;
@@ -28,11 +28,11 @@ public class ECElGamalEncryptor
      * @param param the necessary EC key parameters.
      */
     public void init(
-        CipherParameters    param)
+        CipherParameters param)
     {
         if (param instanceof ParametersWithRandom)
         {
-            ParametersWithRandom    p = (ParametersWithRandom)param;
+            ParametersWithRandom p = (ParametersWithRandom)param;
 
             if (!(p.getParameters() instanceof ECPublicKeyParameters))
             {

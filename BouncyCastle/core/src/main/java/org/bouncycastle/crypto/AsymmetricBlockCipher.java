@@ -37,9 +37,9 @@ public interface AsymmetricBlockCipher
      * @param inOff offset into the in array where the data starts
      * @param len the length of the block to be processed.
      * @return the resulting byte array of the encryption/decryption process.
-     * @exception BCInvalidCipherTextException data decrypts improperly.
+     * @exception InvalidCipherTextException data decrypts improperly.
      * @exception DataLengthException the input data is too large for the cipher.
      */
     public byte[] processBlock(byte[] in, int inOff, int len)
-        throws BCInvalidCipherTextException;
+        throws InvalidCipherTextException;
 }

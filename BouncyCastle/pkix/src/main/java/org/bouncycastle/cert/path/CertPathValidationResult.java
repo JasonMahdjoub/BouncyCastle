@@ -3,7 +3,7 @@ package org.bouncycastle.cert.path;
 import java.util.Collections;
 import java.util.Set;
 
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 public class CertPathValidationResult
 {

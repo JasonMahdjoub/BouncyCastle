@@ -5,12 +5,12 @@ import java.security.interfaces.RSAPrivateCrtKey;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.asn1.x509.X509ObjectIdentifiers;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
+import org.bouncycastle.bcasn1.x509.X509ObjectIdentifiers;
 import org.bouncycastle.crypto.params.RSAKeyParameters;
 import org.bouncycastle.crypto.params.RSAPrivateCrtKeyParameters;
-import org.bouncycastle.util.Fingerprint;
+import org.bouncycastle.bcutil.Fingerprint;
 
 /**
  * utility class for converting java.security RSA objects into their
@@ -43,13 +43,22 @@ public class RSAUtil
     static RSAKeyParameters generatePublicKeyParameter(
         RSAPublicKey key)
     {
-        return new RSAKeyParameters(false, key.getModulus(), key.getPublicExponent());
+        if (key instanceof BCRSAPublicKey)
+        {
+            return ((BCRSAPublicKey)key).engineGetKeyParameters();
+        }
 
+        return new RSAKeyParameters(false, key.getModulus(), key.getPublicExponent());
     }
 
     static RSAKeyParameters generatePrivateKeyParameter(
         RSAPrivateKey key)
     {
+        if (key instanceof BCRSAPrivateKey)
+        {
+            return ((BCRSAPrivateKey)key).engineGetKeyParameters();
+        }
+
         if (key instanceof RSAPrivateCrtKey)
         {
             RSAPrivateCrtKey k = (RSAPrivateCrtKey)key;

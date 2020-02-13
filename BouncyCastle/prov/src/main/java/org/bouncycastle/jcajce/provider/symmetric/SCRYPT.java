@@ -5,7 +5,7 @@ import java.security.spec.KeySpec;
 
 import javax.crypto.SecretKey;
 
-import org.bouncycastle.asn1.misc.MiscObjectIdentifiers;
+import org.bouncycastle.bcasn1.misc.BCMiscObjectIdentifiers;
 import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.PasswordConverter;
 import org.bouncycastle.crypto.generators.SCrypt;
@@ -30,7 +30,7 @@ public class SCRYPT
 
         public BasePBKDF2(String name, int scheme)
         {
-            super(name, MiscObjectIdentifiers.id_scrypt);
+            super(name, BCMiscObjectIdentifiers.id_scrypt);
 
             this.scheme = scheme;
         }
@@ -96,7 +96,7 @@ public class SCRYPT
         public void configure(ConfigurableProvider provider)
         {
             provider.addAlgorithm("SecretKeyFactory.SCRYPT", PREFIX + "$ScryptWithUTF8");
-            provider.addAlgorithm("SecretKeyFactory", MiscObjectIdentifiers.id_scrypt, PREFIX + "$ScryptWithUTF8");
+            provider.addAlgorithm("SecretKeyFactory", BCMiscObjectIdentifiers.id_scrypt, PREFIX + "$ScryptWithUTF8");
         }
     }
 }

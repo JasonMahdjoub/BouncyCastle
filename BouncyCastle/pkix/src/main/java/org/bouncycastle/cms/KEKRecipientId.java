@@ -1,6 +1,6 @@
 package org.bouncycastle.cms;
 
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 public class KEKRecipientId
     extends RecipientId

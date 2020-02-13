@@ -7,13 +7,15 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Vector;
 
-import org.bouncycastle.asn1.ASN1Encoding;
-import org.bouncycastle.asn1.ocsp.ResponderID;
-import org.bouncycastle.asn1.x509.Extensions;
-import org.bouncycastle.util.io.Streams;
+import org.bouncycastle.bcasn1.ASN1Encoding;
+import org.bouncycastle.bcasn1.ocsp.ResponderID;
+import org.bouncycastle.bcasn1.x509.Extensions;
+import org.bouncycastle.bcutil.io.Streams;
 
 /**
  * RFC 3546 3.6
+ *
+ * @deprecated Migrate to the (D)TLS API in org.bouncycastle.tls (bctls jar).
  */
 public class OCSPStatusRequest
 {

@@ -22,14 +22,14 @@ import java.security.interfaces.DSAPrivateKey;
 import java.security.interfaces.RSAPrivateCrtKey;
 import java.security.interfaces.RSAPrivateKey;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.cms.CMSObjectIdentifiers;
-import org.bouncycastle.asn1.cms.ContentInfo;
-import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
-import org.bouncycastle.asn1.x509.KeyPurposeId;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.asn1.x9.ECNamedCurveTable;
-import org.bouncycastle.asn1.x9.X9ECParameters;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.cms.CMSObjectIdentifiers;
+import org.bouncycastle.bcasn1.cms.ContentInfo;
+import org.bouncycastle.bcasn1.pkcs.PrivateKeyInfo;
+import org.bouncycastle.bcasn1.x509.KeyPurposeId;
+import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
+import org.bouncycastle.bcasn1.x9.ECNamedCurveTable;
+import org.bouncycastle.bcasn1.x9.X9ECParameters;
 import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.openssl.CertificateTrustBlock;
@@ -45,7 +45,7 @@ import org.bouncycastle.openssl.jcajce.JceOpenSSLPKCS8DecryptorProviderBuilder;
 import org.bouncycastle.openssl.jcajce.JcePEMDecryptorProviderBuilder;
 import org.bouncycastle.operator.InputDecryptorProvider;
 import org.bouncycastle.pkcs.PKCS8EncryptedPrivateKeyInfo;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**
  * basic class for reading test.pem - the password is "secret"
@@ -248,8 +248,8 @@ public class ParserTest
         doOpenSslDsaTest("rc2_64_cbc");
         doOpenSslRsaTest("rc2_64_cbc");
 
-        doDudPasswordTest("7fd98", 0, "corrupted stream - out of bounds length found");
-        doDudPasswordTest("ef677", 1, "corrupted stream - out of bounds length found");
+        doDudPasswordTest("7fd98", 0, "corrupted stream - out of bounds length found: 599005160 >= 447");
+        doDudPasswordTest("ef677", 1, "corrupted stream - out of bounds length found: 2087569732 >= 447");
         doDudPasswordTest("800ce", 2, "unknown tag 26 encountered");
         doDudPasswordTest("b6cd8", 3, "DEF length 81 object truncated by 56");
         doDudPasswordTest("28ce09", 4, "DEF length 110 object truncated by 28");
@@ -265,7 +265,7 @@ public class ParserTest
         doDudPasswordTest("5a3d16", 14, "corrupted stream detected");
         doDudPasswordTest("8d0c97", 15, "corrupted stream detected");
         doDudPasswordTest("bc0daf", 16, "corrupted stream detected");
-        doDudPasswordTest("aaf9c4d",17, "corrupted stream - out of bounds length found");
+        doDudPasswordTest("aaf9c4d",17, "corrupted stream - out of bounds length found: 1580418590 >= 447");
 
         doNoPasswordTest();
         doNoECPublicKeyTest();
@@ -505,12 +505,11 @@ public class ParserTest
         catch (IOException e)
         {
             if (e.getCause() != null && !e.getCause().getMessage().endsWith(message))
-            {
+            {              System.err.println(e.getCause().getMessage());
                fail("issue " + index + " exception thrown, but wrong message");
             }
             else if (e.getCause() == null && !e.getMessage().equals(message))
             {
-                               e.printStackTrace();
                fail("issue " + index + " exception thrown, but wrong message");
             }
         }

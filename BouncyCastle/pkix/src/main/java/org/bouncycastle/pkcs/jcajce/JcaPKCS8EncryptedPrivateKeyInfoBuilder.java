@@ -2,7 +2,7 @@ package org.bouncycastle.pkcs.jcajce;
 
 import java.security.PrivateKey;
 
-import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
+import org.bouncycastle.bcasn1.pkcs.PrivateKeyInfo;
 import org.bouncycastle.pkcs.PKCS8EncryptedPrivateKeyInfoBuilder;
 
 public class JcaPKCS8EncryptedPrivateKeyInfoBuilder

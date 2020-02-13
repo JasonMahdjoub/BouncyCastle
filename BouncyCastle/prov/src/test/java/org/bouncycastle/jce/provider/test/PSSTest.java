@@ -15,14 +15,15 @@ import java.security.spec.PSSParameterSpec;
 import java.security.spec.RSAPrivateCrtKeySpec;
 import java.security.spec.RSAPublicKeySpec;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.nist.NISTObjectIdentifiers;
-import org.bouncycastle.asn1.x509.X509ObjectIdentifiers;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.nist.NISTObjectIdentifiers;
+import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
+import org.bouncycastle.bcasn1.x509.X509ObjectIdentifiers;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
-import org.bouncycastle.util.test.TestRandomData;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.test.SimpleTest;
+import org.bouncycastle.bcutil.test.TestRandomData;
 
 public class PSSTest
     extends SimpleTest
@@ -266,6 +267,18 @@ public class PSSTest
         
         s.setParameter(pss.getParameterSpec(PSSParameterSpec.class));
         
+        s.initVerify(pubKey);
+        s.update(msg1a);
+        if (!s.verify(sig1c))
+        {
+            fail("SHA512 signature verification failed");
+        }
+
+
+        s = Signature.getInstance(PKCSObjectIdentifiers.id_RSASSA_PSS.getId(), "BC");
+
+        s.setParameter(pss.getParameterSpec(PSSParameterSpec.class));
+
         s.initVerify(pubKey);
         s.update(msg1a);
         if (!s.verify(sig1c))

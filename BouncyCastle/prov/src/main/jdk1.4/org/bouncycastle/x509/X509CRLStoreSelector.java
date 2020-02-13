@@ -1,9 +1,9 @@
 package org.bouncycastle.x509;
 
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.x509.X509Extensions;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Selector;
+import org.bouncycastle.bcasn1.ASN1Integer;
+import org.bouncycastle.bcasn1.x509.X509Extensions;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.Selector;
 import org.bouncycastle.x509.extension.X509ExtensionUtil;
 
 import java.io.IOException;
@@ -16,7 +16,7 @@ import java.security.cert.X509CRLSelector;
  * This class is a Selector implementation for X.509 certificate revocation
  * lists.
  * 
- * @see org.bouncycastle.util.Selector
+ * @see org.bouncycastle.bcutil.Selector
  * @see org.bouncycastle.x509.X509Store
  * @see org.bouncycastle.jce.provider.X509StoreCRLCollection
  */

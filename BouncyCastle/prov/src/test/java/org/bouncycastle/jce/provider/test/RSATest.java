@@ -33,24 +33,24 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.OAEPParameterSpec;
 import javax.crypto.spec.PSource;
 
-import org.bouncycastle.asn1.ASN1Encoding;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.DERNull;
-import org.bouncycastle.asn1.DEROctetString;
-import org.bouncycastle.asn1.nist.NISTObjectIdentifiers;
-import org.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
-import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
-import org.bouncycastle.asn1.pkcs.RSAESOAEPparams;
-import org.bouncycastle.asn1.teletrust.TeleTrusTObjectIdentifiers;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x509.DigestInfo;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.asn1.x509.X509ObjectIdentifiers;
+import org.bouncycastle.bcasn1.ASN1Encoding;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.DERNull;
+import org.bouncycastle.bcasn1.DEROctetString;
+import org.bouncycastle.bcasn1.nist.NISTObjectIdentifiers;
+import org.bouncycastle.bcasn1.oiw.OIWObjectIdentifiers;
+import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
+import org.bouncycastle.bcasn1.pkcs.PrivateKeyInfo;
+import org.bouncycastle.bcasn1.pkcs.RSAESOAEPparams;
+import org.bouncycastle.bcasn1.teletrust.TeleTrusTObjectIdentifiers;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.bcasn1.x509.DigestInfo;
+import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
+import org.bouncycastle.bcasn1.x509.X509ObjectIdentifiers;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class RSATest
     extends SimpleTest
@@ -156,7 +156,7 @@ public class RSATest
         PrivateKeyInfo keyInfo = PrivateKeyInfo.getInstance(privKey.getEncoded());
         BigInteger zero = BigInteger.valueOf(0);
         PKCS8EncodedKeySpec noCrtSpec = new PKCS8EncodedKeySpec(new PrivateKeyInfo(keyInfo.getPrivateKeyAlgorithm(),
-                                                   new org.bouncycastle.asn1.pkcs.RSAPrivateKey(privKeySpec.getModulus(), privKeySpec.getPublicExponent(), privKeySpec.getPrivateExponent(), zero, zero, zero, zero, zero)).getEncoded());
+                                                   new org.bouncycastle.bcasn1.pkcs.RSAPrivateKey(privKeySpec.getModulus(), privKeySpec.getPublicExponent(), privKeySpec.getPrivateExponent(), zero, zero, zero, zero, zero)).getEncoded());
 
         PrivateKey noCrtKey = fact.generatePrivate(noCrtSpec);
         if (noCrtKey instanceof RSAPrivateCrtKey)

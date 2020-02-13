@@ -5,8 +5,8 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import org.bouncycastle.math.ec.rfc7748.X448;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.io.Streams;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.io.Streams;
 
 public final class X448PublicKeyParameters
     extends AsymmetricKeyParameter

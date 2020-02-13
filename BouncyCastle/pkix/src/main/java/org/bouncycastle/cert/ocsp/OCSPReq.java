@@ -1,23 +1,21 @@
 package org.bouncycastle.cert.ocsp;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.List;
 import java.util.Set;
 
-import org.bouncycastle.asn1.ASN1Encoding;
-import org.bouncycastle.asn1.ASN1Exception;
-import org.bouncycastle.asn1.ASN1InputStream;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1OutputStream;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.ocsp.OCSPRequest;
-import org.bouncycastle.asn1.ocsp.Request;
-import org.bouncycastle.asn1.x509.Certificate;
-import org.bouncycastle.asn1.x509.Extension;
-import org.bouncycastle.asn1.x509.Extensions;
-import org.bouncycastle.asn1.x509.GeneralName;
+import org.bouncycastle.bcasn1.ASN1Encoding;
+import org.bouncycastle.bcasn1.ASN1Exception;
+import org.bouncycastle.bcasn1.ASN1InputStream;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.ASN1Sequence;
+import org.bouncycastle.bcasn1.ocsp.OCSPRequest;
+import org.bouncycastle.bcasn1.ocsp.Request;
+import org.bouncycastle.bcasn1.x509.Certificate;
+import org.bouncycastle.bcasn1.x509.Extension;
+import org.bouncycastle.bcasn1.x509.Extensions;
+import org.bouncycastle.bcasn1.x509.GeneralName;
 import org.bouncycastle.cert.CertIOException;
 import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.operator.ContentVerifier;
@@ -103,7 +101,7 @@ public class OCSPReq
 
     public int getVersionNumber()
     {
-        return req.getTbsRequest().getVersion().getValue().intValue() + 1;
+        return req.getTbsRequest().getVersion().intValueExact() + 1;
     }
 
     public GeneralName getRequestorName()
@@ -246,14 +244,8 @@ public class OCSPReq
     /**
      * return the ASN.1 encoded representation of this object.
      */
-    public byte[] getEncoded()
-        throws IOException
+    public byte[] getEncoded() throws IOException
     {
-        ByteArrayOutputStream   bOut = new ByteArrayOutputStream();
-        ASN1OutputStream        aOut = new ASN1OutputStream(bOut);
-
-        aOut.writeObject(req);
-
-        return bOut.toByteArray();
+        return req.getEncoded();
     }
 }

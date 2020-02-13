@@ -6,7 +6,7 @@ import junit.framework.TestCase;
 import org.bouncycastle.pqc.math.ntru.polynomial.DenseTernaryPolynomial;
 import org.bouncycastle.pqc.math.ntru.polynomial.IntegerPolynomial;
 import org.bouncycastle.pqc.math.ntru.polynomial.LongPolynomial5;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 public class LongPolynomial5Test
     extends TestCase

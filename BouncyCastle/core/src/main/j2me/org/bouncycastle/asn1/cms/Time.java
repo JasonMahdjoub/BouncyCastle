@@ -1,14 +1,14 @@
-package org.bouncycastle.asn1.cms;
+package org.bouncycastle.bcasn1.cms;
 
 import java.util.Calendar;
 import java.util.Date;
 
-import org.bouncycastle.asn1.ASN1Choice;
-import org.bouncycastle.asn1.ASN1Object;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.ASN1TaggedObject;
-import org.bouncycastle.asn1.ASN1GeneralizedTime;
-import org.bouncycastle.asn1.ASN1UTCTime;
+import org.bouncycastle.bcasn1.ASN1Choice;
+import org.bouncycastle.bcasn1.ASN1Object;
+import org.bouncycastle.bcasn1.ASN1Primitive;
+import org.bouncycastle.bcasn1.ASN1TaggedObject;
+import org.bouncycastle.bcasn1.ASN1GeneralizedTime;
+import org.bouncycastle.bcasn1.ASN1UTCTime;
 
 public class Time
     extends ASN1Object

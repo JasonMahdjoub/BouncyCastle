@@ -11,7 +11,7 @@ import javax.mail.internet.MimeMultipart;
 
 import junit.framework.TestCase;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 public class SMIMETestUtil
 {

@@ -4,7 +4,7 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 
 import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.util.Shorts;
+import org.bouncycastle.bcutil.Shorts;
 
 /**
  * Buffers input until the hash algorithm is determined.

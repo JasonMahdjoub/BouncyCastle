@@ -1,12 +1,14 @@
 package org.bouncycastle.jsse.provider;
 
 import java.net.Socket;
-import java.security.GeneralSecurityException;
 import java.security.KeyStore;
 import java.security.KeyStore.PrivateKeyEntry;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
 import java.security.Principal;
 import java.security.PrivateKey;
 import java.security.PublicKey;
+import java.security.UnrecoverableKeyException;
 import java.security.cert.X509Certificate;
 import java.security.interfaces.DSAPublicKey;
 import java.security.interfaces.ECPublicKey;
@@ -21,10 +23,8 @@ import java.util.Set;
 import javax.net.ssl.SSLEngine;
 import javax.net.ssl.X509ExtendedKeyManager;
 
-import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.asn1.x509.Extensions;
-import org.bouncycastle.asn1.x509.KeyUsage;
-import org.bouncycastle.asn1.x509.TBSCertificate;
+import org.bouncycastle.bcasn1.x500.X500Name;
+import org.bouncycastle.bcasn1.x509.KeyUsage;
 
 class ProvX509KeyManagerSimple
     extends X509ExtendedKeyManager
@@ -32,22 +32,24 @@ class ProvX509KeyManagerSimple
     private final Map<String, Credential> credentials = new HashMap<String, Credential>();
 
     ProvX509KeyManagerSimple(KeyStore ks, char[] password)
-        throws GeneralSecurityException
+        throws KeyStoreException, NoSuchAlgorithmException, UnrecoverableKeyException
     {
-        if (ks != null)
+        if (null == ks)
         {
-            Enumeration<String> aliases = ks.aliases();
-            while (aliases.hasMoreElements())
+            return;
+        }
+
+        Enumeration<String> aliases = ks.aliases();
+        while (aliases.hasMoreElements())
+        {
+            String alias = aliases.nextElement();
+            if (ks.entryInstanceOf(alias, PrivateKeyEntry.class))
             {
-                String alias = aliases.nextElement();
-                if (ks.entryInstanceOf(alias, PrivateKeyEntry.class))
+                PrivateKey privateKey = (PrivateKey)ks.getKey(alias, password);
+                X509Certificate[] certificateChain = JsseUtils.getX509CertificateChain(ks.getCertificateChain(alias));
+                if (certificateChain != null && certificateChain.length > 0)
                 {
-                    PrivateKey privateKey = (PrivateKey)ks.getKey(alias, password);
-                    X509Certificate[] certificateChain = JsseUtils.getX509CertificateChain(ks.getCertificateChain(alias));
-                    if (certificateChain != null && certificateChain.length > 0)
-                    {
-                        credentials.put(alias, new Credential(privateKey, certificateChain));
-                    }
+                    credentials.put(alias, new Credential(privateKey, certificateChain));
                 }
             }
         }
@@ -205,29 +207,32 @@ class ProvX509KeyManagerSimple
         return false;
     }
 
-    private boolean isSuitableKeyUsage(int keyUsageBits, X509Certificate c)
+    static boolean isSuitableKeyUsage(int keyUsageBits, X509Certificate c)
     {
         try
         {
-            Extensions exts = TBSCertificate.getInstance(c.getTBSCertificate()).getExtensions();
-            if (exts != null)
+            boolean[] keyUsage = c.getKeyUsage();
+            if (null == keyUsage)
             {
-                KeyUsage ku = KeyUsage.fromExtensions(exts);
-                if (ku != null)
+                return true;
+            }
+
+            int bits = 0, count = Math.min(32, keyUsage.length);
+            for (int i = 0; i < count; ++i)
+            {
+                if (keyUsage[i])
                 {
-                    int bits = ku.getBytes()[0] & 0xff;
-                    if ((bits & keyUsageBits) != keyUsageBits)
-                    {
-                        return false;
-                    }
+                    int u = i & 7, v = i - u;
+                    bits |= (0x80 >>> u) << v;
                 }
             }
+
+            return (bits & keyUsageBits) == keyUsageBits;
         }
         catch (Exception e)
         {
             return false;
         }
-        return true;
     }
 
     private static class Credential

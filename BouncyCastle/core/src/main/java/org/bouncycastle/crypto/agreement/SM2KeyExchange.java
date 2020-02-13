@@ -5,17 +5,14 @@ import java.math.BigInteger;
 import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.Digest;
 import org.bouncycastle.crypto.digests.SM3Digest;
-import org.bouncycastle.crypto.params.ECDomainParameters;
-import org.bouncycastle.crypto.params.ECPrivateKeyParameters;
-import org.bouncycastle.crypto.params.ParametersWithID;
+import org.bouncycastle.crypto.params.*;
 import org.bouncycastle.crypto.params.SM2KeyExchangePrivateParameters;
-import org.bouncycastle.crypto.params.SM2KeyExchangePublicParameters;
 import org.bouncycastle.math.ec.ECAlgorithms;
 import org.bouncycastle.math.ec.ECFieldElement;
 import org.bouncycastle.math.ec.ECPoint;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Memoable;
-import org.bouncycastle.util.Pack;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.Memoable;
+import org.bouncycastle.bcutil.Pack;
 
 /**
  * SM2 Key Exchange protocol - based on https://tools.ietf.org/html/draft-shen-sm2-ecdsa-02
@@ -48,10 +45,10 @@ public class SM2KeyExchange
     {
         SM2KeyExchangePrivateParameters baseParam;
 
-        if (privParam instanceof ParametersWithID)
+        if (privParam instanceof ParametersWithIDBC)
         {
-            baseParam = (SM2KeyExchangePrivateParameters)((ParametersWithID)privParam).getParameters();
-            userID = ((ParametersWithID)privParam).getID();
+            baseParam = (SM2KeyExchangePrivateParameters)((ParametersWithIDBC)privParam).getParameters();
+            userID = ((ParametersWithIDBC)privParam).getID();
         }
         else
         {
@@ -74,10 +71,10 @@ public class SM2KeyExchange
         SM2KeyExchangePublicParameters otherPub;
         byte[] otherUserID;
 
-        if (pubParam instanceof ParametersWithID)
+        if (pubParam instanceof ParametersWithIDBC)
         {
-            otherPub = (SM2KeyExchangePublicParameters)((ParametersWithID)pubParam).getParameters();
-            otherUserID = ((ParametersWithID)pubParam).getID();
+            otherPub = (SM2KeyExchangePublicParameters)((ParametersWithIDBC)pubParam).getParameters();
+            otherUserID = ((ParametersWithIDBC)pubParam).getID();
         }
         else
         {
@@ -108,10 +105,10 @@ public class SM2KeyExchange
         SM2KeyExchangePublicParameters otherPub;
         byte[] otherUserID;
 
-        if (pubParam instanceof ParametersWithID)
+        if (pubParam instanceof ParametersWithIDBC)
         {
-            otherPub = (SM2KeyExchangePublicParameters)((ParametersWithID)pubParam).getParameters();
-            otherUserID = ((ParametersWithID)pubParam).getID();
+            otherPub = (SM2KeyExchangePublicParameters)((ParametersWithIDBC)pubParam).getParameters();
+            otherUserID = ((ParametersWithIDBC)pubParam).getID();
         }
         else
         {

@@ -1,10 +1,7 @@
 package org.bouncycastle.crypto.macs;
 
-import org.bouncycastle.crypto.BlockCipher;
+import org.bouncycastle.crypto.*;
 import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.DataLengthException;
-import org.bouncycastle.crypto.Mac;
-import org.bouncycastle.crypto.OutputLengthException;
 import org.bouncycastle.crypto.paddings.BlockCipherPadding;
 import org.bouncycastle.crypto.params.ParametersWithIV;
 
@@ -49,7 +46,7 @@ class MacCFBBlockCipher
      * inappropriate.
      */
     public void init(
-        CipherParameters    params)
+        CipherParameters params)
         throws IllegalArgumentException
     {
         if (params instanceof ParametersWithIV)
@@ -271,7 +268,7 @@ public class CFBBlockCipherMac
     }
 
     public void init(
-        CipherParameters    params)
+        CipherParameters params)
     {
         reset();
 

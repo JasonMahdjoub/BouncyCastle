@@ -1,7 +1,7 @@
 package org.bouncycastle.crypto.modes.gcm;
 
 import org.bouncycastle.math.raw.Interleave;
-import org.bouncycastle.util.Pack;
+import org.bouncycastle.bcutil.Pack;
 
 public abstract class GCMUtil
 {

@@ -3,10 +3,10 @@ package org.bouncycastle.math.ec.rfc8032.test;
 import java.security.SecureRandom;
 
 import junit.framework.TestCase;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.crypto.Digest;
 import org.bouncycastle.math.ec.rfc8032.Ed25519;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.encoders.Hex;
+import org.bouncycastle.bcutil.Arrays;
 
 public class Ed25519Test
     extends TestCase

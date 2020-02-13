@@ -122,7 +122,7 @@ Issuer: CN=estExampleCA
 Serial Number: 13965287907438568554
 Not Before: Thu Sep 08 03:19:39 AEST 2016
 Not After: Fri Sep 08 03:19:39 AEST 2017
-Signature Algorithm: org.bouncycastle.asn1.x509.AlgorithmIdentifier@ca7a8819
+Signature Algorithm: org.bouncycastle.bcasn1.x509.AlgorithmIdentifier@ca7a8819
 
 
 Do you accept these certificates (y,n) ? 
@@ -274,7 +274,7 @@ Issuer: CN=estExampleCA
 Serial Number: 8727
 Not Before: Tue Feb 07 16:00:25 AEDT 2017
 Not After: Wed Feb 07 16:00:25 AEDT 2018
-Signature Algorithm: org.bouncycastle.asn1.x509.AlgorithmIdentifier@ca7a8819
+Signature Algorithm: org.bouncycastle.bcasn1.x509.AlgorithmIdentifier@ca7a8819
 
 ```
 

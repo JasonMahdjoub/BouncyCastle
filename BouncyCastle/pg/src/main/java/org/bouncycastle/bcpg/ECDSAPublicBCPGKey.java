@@ -3,7 +3,7 @@ package org.bouncycastle.bcpg;
 import java.io.IOException;
 import java.math.BigInteger;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 import org.bouncycastle.math.ec.ECPoint;
 
 /**

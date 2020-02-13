@@ -8,8 +8,8 @@ import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.util.Hashtable;
 
-import org.bouncycastle.asn1.x9.ECNamedCurveTable;
-import org.bouncycastle.asn1.x9.X9ECParameters;
+import org.bouncycastle.bcasn1.x9.ECNamedCurveTable;
+import org.bouncycastle.bcasn1.x9.X9ECParameters;
 import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
 import org.bouncycastle.crypto.agreement.ECDHBasicAgreement;
 import org.bouncycastle.crypto.ec.CustomNamedCurves;
@@ -23,10 +23,13 @@ import org.bouncycastle.math.ec.ECCurve;
 import org.bouncycastle.math.ec.ECFieldElement;
 import org.bouncycastle.math.ec.ECPoint;
 import org.bouncycastle.math.field.PolynomialExtensionField;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.BigIntegers;
-import org.bouncycastle.util.Integers;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.BigIntegers;
+import org.bouncycastle.bcutil.Integers;
 
+/**
+ * @deprecated Migrate to the (D)TLS API in org.bouncycastle.tls (bctls jar).
+ */
 public class TlsECCUtils
 {
     public static final Integer EXT_elliptic_curves = Integers.valueOf(ExtensionType.elliptic_curves);
@@ -431,7 +434,7 @@ public class TlsECCUtils
     }
 
     public static ECPublicKeyParameters deserializeECPublicKey(short[] ecPointFormats, ECDomainParameters curve_params,
-        byte[] encoding) throws IOException
+                                                               byte[] encoding) throws IOException
     {
         try
         {
@@ -466,7 +469,7 @@ public class TlsECCUtils
     }
 
     public static ECPrivateKeyParameters generateEphemeralClientKeyExchange(SecureRandom random, short[] ecPointFormats,
-        ECDomainParameters ecParams, OutputStream output) throws IOException
+                                                                            ECDomainParameters ecParams, OutputStream output) throws IOException
     {
         AsymmetricCipherKeyPair kp = generateECKeyPair(random, ecParams);
 
@@ -478,7 +481,7 @@ public class TlsECCUtils
 
     // TODO Refactor around ServerECDHParams before making this public
     static ECPrivateKeyParameters generateEphemeralServerKeyExchange(SecureRandom random, int[] namedCurves,
-        short[] ecPointFormats, OutputStream output) throws IOException
+                                                                     short[] ecPointFormats, OutputStream output) throws IOException
     {
         /* First we try to find a supported named curve from the client's list. */
         int namedCurve = -1;

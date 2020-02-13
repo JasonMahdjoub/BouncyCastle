@@ -24,7 +24,7 @@ import javax.net.ssl.X509TrustManager;
 import junit.framework.TestCase;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.jsse.provider.BouncyCastleJsseProvider;
-import org.bouncycastle.util.encoders.Base64;
+import org.bouncycastle.bcutil.encoders.Base64;
 
 public class TrustManagerFactoryTest
     extends TestCase

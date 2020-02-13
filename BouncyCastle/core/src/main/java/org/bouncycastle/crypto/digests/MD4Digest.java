@@ -1,7 +1,7 @@
 package org.bouncycastle.crypto.digests;
 
 
-import org.bouncycastle.util.Memoable;
+import org.bouncycastle.bcutil.Memoable;
 
 /**
  * implementation of MD4 as RFC 1320 by R. Rivest, MIT Laboratory for

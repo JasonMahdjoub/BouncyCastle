@@ -4,7 +4,7 @@ import java.security.BasicPermission;
 import java.security.Permission;
 import java.util.StringTokenizer;
 
-import org.bouncycastle.util.Strings;
+import org.bouncycastle.bcutil.Strings;
 
 /**
  * A permission class to define what can be done with the ConfigurableProvider interface.

@@ -2,7 +2,7 @@ package org.bouncycastle.jcajce;
 
 import javax.crypto.interfaces.PBEKey;
 
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 /**
  * A password based key for use with PKCS#12 with full PBE parameters.

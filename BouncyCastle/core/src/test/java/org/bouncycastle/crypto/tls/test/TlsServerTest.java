@@ -8,8 +8,8 @@ import java.net.Socket;
 import java.security.SecureRandom;
 
 import org.bouncycastle.crypto.tls.TlsServerProtocol;
-import org.bouncycastle.util.io.Streams;
-import org.bouncycastle.util.io.TeeOutputStream;
+import org.bouncycastle.bcutil.io.Streams;
+import org.bouncycastle.bcutil.io.TeeOutputStream;
 
 /**
  * A simple test designed to conduct a TLS handshake with an external TLS client.

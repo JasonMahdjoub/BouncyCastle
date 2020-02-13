@@ -12,7 +12,7 @@ import java.util.List;
 
 import org.bouncycastle.cert.X509CRLHolder;
 import org.bouncycastle.cert.X509CertificateHolder;
-import org.bouncycastle.util.Store;
+import org.bouncycastle.bcutil.Store;
 
 /**
  * Builder to create a CertStore from certificate and CRL stores.

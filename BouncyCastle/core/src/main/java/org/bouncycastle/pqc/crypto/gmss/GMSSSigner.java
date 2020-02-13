@@ -11,7 +11,7 @@ import org.bouncycastle.pqc.crypto.gmss.util.GMSSRandom;
 import org.bouncycastle.pqc.crypto.gmss.util.GMSSUtil;
 import org.bouncycastle.pqc.crypto.gmss.util.WinternitzOTSVerify;
 import org.bouncycastle.pqc.crypto.gmss.util.WinternitzOTSignature;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 /**
  * This class implements the GMSS signature scheme.

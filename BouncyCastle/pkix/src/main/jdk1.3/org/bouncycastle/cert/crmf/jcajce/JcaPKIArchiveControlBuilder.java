@@ -2,9 +2,9 @@ package org.bouncycastle.cert.crmf.jcajce;
 
 import java.security.PrivateKey;
 
-import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
-import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.asn1.x509.GeneralName;
+import org.bouncycastle.bcasn1.pkcs.PrivateKeyInfo;
+import org.bouncycastle.bcasn1.x500.X500Name;
+import org.bouncycastle.bcasn1.x509.GeneralName;
 import org.bouncycastle.cert.crmf.PKIArchiveControlBuilder;
 
 public class JcaPKIArchiveControlBuilder

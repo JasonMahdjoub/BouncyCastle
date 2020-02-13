@@ -4,7 +4,7 @@ import junit.extensions.TestSetup;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import org.bouncycastle.util.test.SimpleTestResult;
+import org.bouncycastle.bcutil.test.SimpleTestResult;
 
 public class AllTests
     extends TestCase
@@ -26,6 +26,7 @@ public class AllTests
         suite.addTestSuite(NTRUSignatureKeyTest.class);
         suite.addTestSuite(NTRUSignerTest.class);
         suite.addTestSuite(NTRUSigningParametersTest.class);
+        suite.addTestSuite(QTESLATest.class);
         suite.addTestSuite(XMSSMTPrivateKeyTest.class);
         suite.addTestSuite(XMSSMTPublicKeyTest.class);
         suite.addTestSuite(XMSSMTSignatureTest.class);
@@ -47,7 +48,7 @@ public class AllTests
     {
         public void testPQC()
         {
-            org.bouncycastle.util.test.Test[] tests = RegressionTest.tests;
+            org.bouncycastle.bcutil.test.Test[] tests = RegressionTest.tests;
 
             for (int i = 0; i != tests.length; i++)
             {

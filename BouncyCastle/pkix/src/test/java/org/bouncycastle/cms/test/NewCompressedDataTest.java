@@ -11,8 +11,8 @@ import org.bouncycastle.cms.CMSException;
 import org.bouncycastle.cms.CMSProcessableByteArray;
 import org.bouncycastle.cms.jcajce.ZlibCompressor;
 import org.bouncycastle.cms.jcajce.ZlibExpanderProvider;
-import org.bouncycastle.util.encoders.Base64;
-import org.bouncycastle.util.io.StreamOverflowException;
+import org.bouncycastle.bcutil.encoders.Base64;
+import org.bouncycastle.bcutil.io.StreamOverflowException;
 
 public class NewCompressedDataTest
     extends TestCase

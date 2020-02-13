@@ -5,7 +5,7 @@ import java.util.Random;
 import junit.framework.TestCase;
 import org.bouncycastle.pqc.math.ntru.polynomial.IntegerPolynomial;
 import org.bouncycastle.pqc.math.ntru.polynomial.LongPolynomial2;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 public class LongPolynomial2Test
     extends TestCase

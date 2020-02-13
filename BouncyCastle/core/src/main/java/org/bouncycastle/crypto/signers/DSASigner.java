@@ -3,15 +3,12 @@ package org.bouncycastle.crypto.signers;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
-import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
 import org.bouncycastle.crypto.CipherParameters;
+import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
 import org.bouncycastle.crypto.DSAExt;
-import org.bouncycastle.crypto.params.DSAKeyParameters;
+import org.bouncycastle.crypto.params.*;
 import org.bouncycastle.crypto.params.DSAParameters;
-import org.bouncycastle.crypto.params.DSAPrivateKeyParameters;
-import org.bouncycastle.crypto.params.DSAPublicKeyParameters;
-import org.bouncycastle.crypto.params.ParametersWithRandom;
-import org.bouncycastle.util.BigIntegers;
+import org.bouncycastle.bcutil.BigIntegers;
 
 /**
  * The Digital Signature Algorithm - as described in "Handbook of Applied
@@ -45,7 +42,7 @@ public class DSASigner
 
     public void init(
         boolean                 forSigning,
-        CipherParameters        param)
+        CipherParameters param)
     {
         SecureRandom providedRandom = null;
 
@@ -86,7 +83,7 @@ public class DSASigner
     public BigInteger[] generateSignature(
         byte[] message)
     {
-        DSAParameters   params = key.getParameters();
+        DSAParameters params = key.getParameters();
         BigInteger      q = params.getQ();
         BigInteger      m = calculateE(q, message);
         BigInteger      x = ((DSAPrivateKeyParameters)key).getX();
@@ -122,7 +119,7 @@ public class DSASigner
         BigInteger  r,
         BigInteger  s)
     {
-        DSAParameters   params = key.getParameters();
+        DSAParameters params = key.getParameters();
         BigInteger      q = params.getQ();
         BigInteger      m = calculateE(q, message);
         BigInteger      zero = BigInteger.valueOf(0);

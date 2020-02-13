@@ -4,15 +4,15 @@ import java.security.SecureRandom;
 import java.util.Random;
 
 import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
 import org.bouncycastle.crypto.Digest;
+import org.bouncycastle.crypto.InvalidCipherTextException;
 import org.bouncycastle.crypto.digests.SHA256Digest;
 import org.bouncycastle.crypto.params.ParametersWithRandom;
 import org.bouncycastle.pqc.crypto.mceliece.McElieceCipher;
 import org.bouncycastle.pqc.crypto.mceliece.McElieceKeyGenerationParameters;
 import org.bouncycastle.pqc.crypto.mceliece.McElieceKeyPairGenerator;
 import org.bouncycastle.pqc.crypto.mceliece.McElieceParameters;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class McElieceCipherTest
     extends SimpleTest
@@ -28,7 +28,7 @@ public class McElieceCipherTest
 
 
     public void performTest()
-        throws BCInvalidCipherTextException
+        throws InvalidCipherTextException
     {
         int numPassesKPG = 1;
         int numPassesEncDec = 10;

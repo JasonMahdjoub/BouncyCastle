@@ -9,8 +9,8 @@ import java.security.cert.X509Certificate;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import org.bouncycastle.asn1.dvcs.CertEtcToken;
-import org.bouncycastle.asn1.dvcs.TargetEtcChain;
+import org.bouncycastle.bcasn1.dvcs.CertEtcToken;
+import org.bouncycastle.bcasn1.dvcs.TargetEtcChain;
 import org.bouncycastle.cert.jcajce.JcaX509CertificateHolder;
 import org.bouncycastle.cms.CMSSignedData;
 import org.bouncycastle.cms.CMSSignedDataGenerator;
@@ -39,8 +39,8 @@ import org.bouncycastle.operator.ContentSigner;
 import org.bouncycastle.operator.OperatorCreationException;
 import org.bouncycastle.operator.jcajce.JcaContentSignerBuilder;
 import org.bouncycastle.operator.jcajce.JcaDigestCalculatorProviderBuilder;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.io.Streams;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.io.Streams;
 
 public class AllTests
     extends TestCase

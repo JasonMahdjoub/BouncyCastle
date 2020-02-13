@@ -3,21 +3,21 @@ package org.bouncycastle.cert.cmp;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import org.bouncycastle.asn1.ASN1EncodableVector;
-import org.bouncycastle.asn1.ASN1Encoding;
-import org.bouncycastle.asn1.DERSequence;
-import org.bouncycastle.asn1.cmp.CMPCertificate;
-import org.bouncycastle.asn1.cmp.CMPObjectIdentifiers;
-import org.bouncycastle.asn1.cmp.PBMParameter;
-import org.bouncycastle.asn1.cmp.PKIBody;
-import org.bouncycastle.asn1.cmp.PKIHeader;
-import org.bouncycastle.asn1.cmp.PKIMessage;
+import org.bouncycastle.bcasn1.ASN1EncodableVector;
+import org.bouncycastle.bcasn1.ASN1Encoding;
+import org.bouncycastle.bcasn1.DERSequence;
+import org.bouncycastle.bcasn1.cmp.CMPCertificate;
+import org.bouncycastle.bcasn1.cmp.CMPObjectIdentifiers;
+import org.bouncycastle.bcasn1.cmp.PBMParameter;
+import org.bouncycastle.bcasn1.cmp.PKIBody;
+import org.bouncycastle.bcasn1.cmp.PKIHeader;
+import org.bouncycastle.bcasn1.cmp.PKIMessage;
 import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.cert.crmf.PKMACBuilder;
 import org.bouncycastle.operator.ContentVerifier;
 import org.bouncycastle.operator.ContentVerifierProvider;
 import org.bouncycastle.operator.MacCalculator;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 /**
  * Wrapper for a PKIMessage with protection attached to it.

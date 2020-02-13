@@ -15,22 +15,31 @@ import org.bouncycastle.tls.crypto.impl.TlsBlockCipherImpl;
 public class JceBlockCipherImpl
     implements TlsBlockCipherImpl
 {
+    private static final int BUF_SIZE = 32 * 1024;
+
     private final int cipherMode;
     private final Cipher cipher;
     private final String algorithm;
+    private final int keySize;
 
     private SecretKey key;
 
-    public JceBlockCipherImpl(Cipher cipher, String algorithm, boolean isEncrypting)
+    public JceBlockCipherImpl(Cipher cipher, String algorithm, int keySize, boolean isEncrypting)
         throws GeneralSecurityException
     {
         this.cipher = cipher;
         this.algorithm = algorithm;
+        this.keySize = keySize;
         this.cipherMode = (isEncrypting) ? Cipher.ENCRYPT_MODE : Cipher.DECRYPT_MODE;
     }
 
     public void setKey(byte[] key, int keyOff, int keyLen)
     {
+        if (keySize != keyLen)
+        {
+            throw new IllegalStateException();
+        }
+
         this.key = new SecretKeySpec(key, keyOff, keyLen, algorithm);
     }
 
@@ -42,7 +51,7 @@ public class JceBlockCipherImpl
         }
         catch (GeneralSecurityException e)
         {
-            throw new IllegalStateException(e);
+            throw Exceptions.illegalStateException(e.getMessage(), e);
         }
     }
 
@@ -50,11 +59,24 @@ public class JceBlockCipherImpl
     {
         try
         {
-            return cipher.doFinal(input, inputOffset, inputLength, output, outputOffset);
+            // to avoid performance issue in FIPS jar  1.0.0-1.0.2
+            int totLen = 0;
+            while (inputLength > BUF_SIZE)
+            {
+                totLen += cipher.update(input, inputOffset, BUF_SIZE, output, outputOffset + totLen);
+
+                inputOffset += BUF_SIZE;
+                inputLength -= BUF_SIZE;
+            }
+
+            totLen += cipher.update(input, inputOffset, inputLength, output, outputOffset + totLen);
+            totLen += cipher.doFinal(output, outputOffset + totLen);
+
+            return totLen;
         }
         catch (GeneralSecurityException e)
         {
-            throw new IllegalStateException(e);
+            throw Exceptions.illegalStateException(e.getMessage(), e);
         }
     }
 

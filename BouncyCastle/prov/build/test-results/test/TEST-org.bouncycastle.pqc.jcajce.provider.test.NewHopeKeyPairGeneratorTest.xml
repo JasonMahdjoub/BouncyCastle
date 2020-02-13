@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.pqc.jcajce.provider.test.NewHopeKeyPairGeneratorTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-05-14T11:40:24" hostname="Garage2" time="0.002">
-  <properties/>
-  <testcase name="testKeyFactory" classname="org.bouncycastle.pqc.jcajce.provider.test.NewHopeKeyPairGeneratorTest" time="0.0"/>
-  <testcase name="testKeyPairEncoding" classname="org.bouncycastle.pqc.jcajce.provider.test.NewHopeKeyPairGeneratorTest" time="0.002"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

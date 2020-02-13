@@ -3,10 +3,10 @@ package org.bouncycastle.crypto.modes;
 import java.io.ByteArrayOutputStream;
 
 import org.bouncycastle.crypto.*;
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
+import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.params.AEADParameters;
 import org.bouncycastle.crypto.params.ParametersWithIV;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 /**
  * Implementation of DSTU7624 CCM mode
@@ -241,7 +241,7 @@ public class KCCMBlockCipher
     }
 
     public int processPacket(byte[] in, int inOff, int len, byte[] out, int outOff)
-        throws IllegalStateException, BCInvalidCipherTextException
+        throws IllegalStateException, InvalidCipherTextException
     {
         if (in.length - inOff < len)
         {
@@ -355,7 +355,7 @@ public class KCCMBlockCipher
 
             if (!Arrays.constantTimeAreEqual(mac, calculatedMac))
             {
-                throw new BCInvalidCipherTextException("mac check failed");
+                throw new InvalidCipherTextException("mac check failed");
             }
 
             reset();
@@ -398,7 +398,7 @@ public class KCCMBlockCipher
     }
 
     public int doFinal(byte[] out, int outOff)
-        throws IllegalStateException, BCInvalidCipherTextException
+        throws IllegalStateException, InvalidCipherTextException
     {
         int len = processPacket(data.getBuffer(), 0, data.size(), out, outOff);
 

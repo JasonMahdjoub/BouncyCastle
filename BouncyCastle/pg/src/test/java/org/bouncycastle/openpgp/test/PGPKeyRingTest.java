@@ -23,6 +23,7 @@ import org.bouncycastle.bcpg.SymmetricKeyAlgorithmTags;
 import org.bouncycastle.bcpg.TrustPacket;
 import org.bouncycastle.bcpg.sig.Features;
 import org.bouncycastle.bcpg.sig.KeyFlags;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.jce.spec.ECNamedCurveGenParameterSpec;
 import org.bouncycastle.jce.spec.ElGamalParameterSpec;
@@ -38,6 +39,7 @@ import org.bouncycastle.openpgp.PGPSecretKey;
 import org.bouncycastle.openpgp.PGPSecretKeyRing;
 import org.bouncycastle.openpgp.PGPSignature;
 import org.bouncycastle.openpgp.PGPSignatureSubpacketGenerator;
+import org.bouncycastle.openpgp.PGPUtil;
 import org.bouncycastle.openpgp.jcajce.JcaPGPPublicKeyRing;
 import org.bouncycastle.openpgp.jcajce.JcaPGPPublicKeyRingCollection;
 import org.bouncycastle.openpgp.jcajce.JcaPGPSecretKeyRingCollection;
@@ -54,10 +56,10 @@ import org.bouncycastle.openpgp.operator.jcajce.JcaPGPKeyPair;
 import org.bouncycastle.openpgp.operator.jcajce.JcaPGPPrivateKey;
 import org.bouncycastle.openpgp.operator.jcajce.JcePBESecretKeyDecryptorBuilder;
 import org.bouncycastle.openpgp.operator.jcajce.JcePBESecretKeyEncryptorBuilder;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.encoders.Base64;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.encoders.Base64;
+import org.bouncycastle.bcutil.io.Streams;
+import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class PGPKeyRingTest
     extends SimpleTest
@@ -3293,6 +3295,19 @@ public class PGPKeyRingTest
         }
     }
 
+    private void testApacheRings()
+        throws Exception
+    {
+        byte[] data = Streams.readAll(this.getClass().getResourceAsStream("dsa-pubring.gpg"));
+        
+        isTrue(PGPUtil.isKeyBox(data));
+        isTrue(!PGPUtil.isKeyRing(data));
+
+        data = Streams.readAll(this.getClass().getResourceAsStream("rsa-pubring.gpg"));
+        isTrue(!PGPUtil.isKeyBox(data));
+        isTrue(PGPUtil.isKeyRing(data));
+    }
+
     public void performTest()
         throws Exception
     {
@@ -3326,6 +3341,7 @@ public class PGPKeyRingTest
             testEdDsaRing();
             testCurve25519Ring();
             testShouldProduceSubkeys();
+            testApacheRings();
         }
         catch (PGPException e)
         {

@@ -3,10 +3,10 @@ package org.bouncycastle.crypto.prng.test;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.crypto.BlockCipher;
 import org.bouncycastle.crypto.Digest;
 import org.bouncycastle.crypto.prng.EntropySource;
-import org.bouncycastle.util.encoders.Hex;
 
 public class DRBGTestVector
 {

@@ -1,8 +1,8 @@
 package org.bouncycastle.crypto.digests;
 
-import org.bouncycastle.util.Memoable;
-import org.bouncycastle.util.MemoableResetException;
-import org.bouncycastle.util.Pack;
+import org.bouncycastle.bcutil.Memoable;
+import org.bouncycastle.bcutil.MemoableResetException;
+import org.bouncycastle.bcutil.Pack;
 
 /**
  * FIPS 180-4 implementation of SHA-512/t

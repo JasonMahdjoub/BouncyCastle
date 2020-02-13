@@ -2,7 +2,7 @@ package org.bouncycastle.pkcs.bc;
 
 import java.io.IOException;
 
-import org.bouncycastle.asn1.pkcs.CertificationRequest;
+import org.bouncycastle.bcasn1.pkcs.CertificationRequest;
 import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
 import org.bouncycastle.crypto.util.PublicKeyFactory;
 import org.bouncycastle.pkcs.PKCS10CertificationRequest;

@@ -1,11 +1,7 @@
 package org.bouncycastle.crypto.paddings;
 
-import org.bouncycastle.crypto.BlockCipher;
-import org.bouncycastle.crypto.BufferedBlockCipher;
+import org.bouncycastle.crypto.*;
 import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.DataLengthException;
-import org.bouncycastle.crypto.BCInvalidCipherTextException;
-import org.bouncycastle.crypto.OutputLengthException;
 import org.bouncycastle.crypto.params.ParametersWithRandom;
 
 /**
@@ -59,7 +55,7 @@ public class PaddedBufferedBlockCipher
      */
     public void init(
         boolean             forEncryption,
-        CipherParameters    params)
+        CipherParameters params)
         throws IllegalArgumentException
     {
         this.forEncryption = forEncryption;
@@ -68,7 +64,7 @@ public class PaddedBufferedBlockCipher
 
         if (params instanceof ParametersWithRandom)
         {
-            ParametersWithRandom    p = (ParametersWithRandom)params;
+            ParametersWithRandom p = (ParametersWithRandom)params;
 
             padding.init(p.getRandom());
 
@@ -237,12 +233,12 @@ public class PaddedBufferedBlockCipher
      * the output or we are decrypting and the input is not block size aligned.
      * @exception IllegalStateException if the underlying cipher is not
      * initialised.
-     * @exception BCInvalidCipherTextException if padding is expected and not found.
+     * @exception InvalidCipherTextException if padding is expected and not found.
      */
     public int doFinal(
         byte[]  out,
         int     outOff)
-        throws DataLengthException, IllegalStateException, BCInvalidCipherTextException
+        throws DataLengthException, IllegalStateException, InvalidCipherTextException
     {
         int blockSize = cipher.getBlockSize();
         int resultLen = 0;

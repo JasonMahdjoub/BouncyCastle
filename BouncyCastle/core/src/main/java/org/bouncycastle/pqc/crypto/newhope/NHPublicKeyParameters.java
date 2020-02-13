@@ -1,7 +1,7 @@
 package org.bouncycastle.pqc.crypto.newhope;
 
 import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
-import org.bouncycastle.util.Arrays;
+import org.bouncycastle.bcutil.Arrays;
 
 public class NHPublicKeyParameters
     extends AsymmetricKeyParameter
