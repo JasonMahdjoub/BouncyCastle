@@ -4,12 +4,12 @@ import java.io.IOException;
 
 import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.Signer;
-import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
-import org.bouncycastle.crypto.signers.DSADigestSigner;
-import org.bouncycastle.crypto.signers.DSASigner;
-import org.bouncycastle.crypto.util.PublicKeyFactory;
+import org.bouncycastle.bccrypto.Digest;
+import org.bouncycastle.bccrypto.Signer;
+import org.bouncycastle.bccrypto.params.AsymmetricKeyParameter;
+import org.bouncycastle.bccrypto.signers.DSADigestSigner;
+import org.bouncycastle.bccrypto.signers.DSASigner;
+import org.bouncycastle.bccrypto.util.PublicKeyFactory;
 import org.bouncycastle.operator.DigestAlgorithmIdentifierFinder;
 import org.bouncycastle.operator.OperatorCreationException;
 

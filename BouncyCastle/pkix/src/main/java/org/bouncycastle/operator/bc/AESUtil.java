@@ -3,7 +3,7 @@ package org.bouncycastle.operator.bc;
 import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 import org.bouncycastle.bcasn1.nist.NISTObjectIdentifiers;
 import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.crypto.params.KeyParameter;
+import org.bouncycastle.bccrypto.params.KeyParameter;
 
 class AESUtil
 {

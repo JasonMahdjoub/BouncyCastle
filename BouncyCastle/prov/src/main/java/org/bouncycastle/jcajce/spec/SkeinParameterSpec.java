@@ -32,9 +32,9 @@ import org.bouncycastle.bcutil.Integers;
  * {@link org.bouncycastle.jcajce.spec.SkeinParameterSpec.Builder#setPersonalisation(byte[]) arbitrary} personalisation string.</li>
  * </ul>
  *
- * @see org.bouncycastle.crypto.digests.SkeinEngine
- * @see org.bouncycastle.crypto.digests.SkeinDigest
- * @see org.bouncycastle.crypto.macs.SkeinMac
+ * @see org.bouncycastle.bccrypto.digests.SkeinEngine
+ * @see org.bouncycastle.bccrypto.digests.SkeinDigest
+ * @see org.bouncycastle.bccrypto.macs.SkeinMac
  */
 public class SkeinParameterSpec
     implements AlgorithmParameterSpec

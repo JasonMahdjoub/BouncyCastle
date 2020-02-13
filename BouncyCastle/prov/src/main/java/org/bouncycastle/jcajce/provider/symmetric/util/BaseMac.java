@@ -16,11 +16,11 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.PBEParameterSpec;
 import javax.crypto.spec.RC2ParameterSpec;
 
-import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.Mac;
-import org.bouncycastle.crypto.macs.HMac;
-import org.bouncycastle.crypto.params.*;
-import org.bouncycastle.crypto.params.ParametersWithIV;
+import org.bouncycastle.bccrypto.CipherParameters;
+import org.bouncycastle.bccrypto.Mac;
+import org.bouncycastle.bccrypto.macs.HMac;
+import org.bouncycastle.bccrypto.params.*;
+import org.bouncycastle.bccrypto.params.ParametersWithIV;
 import org.bouncycastle.jcajce.PKCS12Key;
 import org.bouncycastle.jcajce.spec.AEADParameterSpec;
 import org.bouncycastle.jcajce.spec.SkeinParameterSpec;

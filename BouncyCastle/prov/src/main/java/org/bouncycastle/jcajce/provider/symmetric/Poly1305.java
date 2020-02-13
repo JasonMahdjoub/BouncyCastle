@@ -1,6 +1,6 @@
 package org.bouncycastle.jcajce.provider.symmetric;
 
-import org.bouncycastle.crypto.generators.Poly1305KeyGenerator;
+import org.bouncycastle.bccrypto.generators.Poly1305KeyGenerator;
 import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import org.bouncycastle.jcajce.provider.symmetric.util.BaseKeyGenerator;
 import org.bouncycastle.jcajce.provider.symmetric.util.BaseMac;
@@ -17,7 +17,7 @@ public class Poly1305
     {
         public Mac()
         {
-            super(new org.bouncycastle.crypto.macs.Poly1305());
+            super(new org.bouncycastle.bccrypto.macs.Poly1305());
         }
     }
 

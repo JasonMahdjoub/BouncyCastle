@@ -1,8 +1,8 @@
 package org.bouncycastle.pqc.crypto.xmss;
 
 import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
-import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.Xof;
+import org.bouncycastle.bccrypto.Digest;
+import org.bouncycastle.bccrypto.Xof;
 
 /**
  * Crypto functions for XMSS.

@@ -1,6 +1,6 @@
 package org.bouncycastle.pqc.crypto.gmss;
 
-import org.bouncycastle.crypto.Digest;
+import org.bouncycastle.bccrypto.Digest;
 import org.bouncycastle.pqc.crypto.gmss.util.GMSSRandom;
 import org.bouncycastle.bcutil.Arrays;
 import org.bouncycastle.bcutil.encoders.Hex;

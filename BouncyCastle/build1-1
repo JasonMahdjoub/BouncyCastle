@@ -230,9 +230,9 @@ then
 
         (2>&1 javadoc -windowtitle "$WINDOWTITLE" -doctitle "$DOCTITLE" \
             -header "$HEADER" \
-            -group "Lightweight Crypto Packages" "org.bouncycastle.crypto*" \
+            -group "Lightweight Crypto Packages" "org.bouncycastle.bccrypto*" \
             -group "ASN.1 Support Packages" "org.bouncycastle.bcasn1*" \
-            -group "Math Support Packages" "org.bouncycastle.math*" \
+            -group "Math Support Packages" "org.bouncycastle.bcmath*" \
             -group "Utility Packages" "org.bouncycastle.bcutil*" \
             -classpath classes:$JDK11PATH/lib/classes.zip \
             -d javadoc -sourcepath src \
@@ -260,25 +260,25 @@ then
             org.bouncycastle.bcasn1.util \
             org.bouncycastle.bcasn1.x509 \
             org.bouncycastle.bcasn1.x9 \
-            org.bouncycastle.math.ec \
-            org.bouncycastle.crypto \
-            org.bouncycastle.crypto.agreement \
-            org.bouncycastle.crypto.commitments \
-            org.bouncycastle.crypto.digests \
-            org.bouncycastle.crypto.encodings \
-            org.bouncycastle.crypto.ec \
-            org.bouncycastle.crypto.engines \
-            org.bouncycastle.crypto.generators \
-            org.bouncycastle.crypto.io \
-            org.bouncycastle.crypto.kems \
-            org.bouncycastle.crypto.macs \
-            org.bouncycastle.crypto.modes \
-            org.bouncycastle.crypto.paddings \
-            org.bouncycastle.crypto.params \
-            org.bouncycastle.crypto.signers \
-            org.bouncycastle.crypto.test \
-            org.bouncycastle.crypto.examples \
-            org.bouncycastle.crypto.tls \
+            org.bouncycastle.bcmath.ec \
+            org.bouncycastle.bccrypto \
+            org.bouncycastle.bccrypto.agreement \
+            org.bouncycastle.bccrypto.commitments \
+            org.bouncycastle.bccrypto.digests \
+            org.bouncycastle.bccrypto.encodings \
+            org.bouncycastle.bccrypto.ec \
+            org.bouncycastle.bccrypto.engines \
+            org.bouncycastle.bccrypto.generators \
+            org.bouncycastle.bccrypto.io \
+            org.bouncycastle.bccrypto.kems \
+            org.bouncycastle.bccrypto.macs \
+            org.bouncycastle.bccrypto.modes \
+            org.bouncycastle.bccrypto.paddings \
+            org.bouncycastle.bccrypto.params \
+            org.bouncycastle.bccrypto.signers \
+            org.bouncycastle.bccrypto.test \
+            org.bouncycastle.bccrypto.examples \
+            org.bouncycastle.bccrypto.tls \
             org.bouncycastle.bcutil.encoders \
             org.bouncycastle.bcutil.test) > /dev/null \
 
@@ -328,7 +328,7 @@ javac -d ../../../classes -classpath ../../../classes:../../../src:$JDK11PATH/li
         cp ../../../../core/src/test/resources/org/bouncycastle/crypto/test/*.txt classes/org/bouncycastle/crypto/test/
 
         echo "lightweight regression test"
-        java -mx868m -classpath classes:$JDK11PATH/lib/classes.zip -Dbc.test.data.home=/home/dgh/bc/java/crypto/test/data org.bouncycastle.crypto.test.RegressionTest
+        java -mx868m -classpath classes:$JDK11PATH/lib/classes.zip -Dbc.test.data.home=/home/dgh/bc/java/crypto/test/data org.bouncycastle.bccrypto.test.RegressionTest
         java -classpath classes:$JDK11PATH/lib/classes.zip -Dbc.test.data.home=/home/dgh/bc/java/crypto/test/data org.bouncycastle.bcasn1.test.RegressionTest
     )
     (2>&1 find $artifacts/lcrypto-jdk11-$base -name CVS -exec rm -rf \{\} \; ) > /dev/null
@@ -354,8 +354,8 @@ then
         -group "JCE Utility and Extension Packages" "org.bouncycastle.jce*" \
         -group "OCSP and OpenSSL PEM Support Packages" "org.bouncycastle.ocsp*:org.bouncycastle.openssl*" \
         -group "ASN.1 Support Packages" "org.bouncycastle.bcasn1*" \
-        -group "Lightweight Crypto Packages" "org.bouncycastle.crypto*" \
-        -group "Utility Packages" "org.bouncycastle.bcutil*:org.bouncycastle.math*" \
+        -group "Lightweight Crypto Packages" "org.bouncycastle.bccrypto*" \
+        -group "Utility Packages" "org.bouncycastle.bcutil*:org.bouncycastle.bcmath*" \
         -group "JCE Provider and Test Classes" "org.bouncycastle.jce.provider*" \
         -classpath classes \
         -d docs -sourcepath src \
@@ -386,25 +386,25 @@ then
         org.bouncycastle.bcasn1.util \
         org.bouncycastle.bcasn1.x509 \
         org.bouncycastle.bcasn1.x9 \
-        org.bouncycastle.math.ec \
-        org.bouncycastle.crypto \
-        org.bouncycastle.crypto.agreement \
-        org.bouncycastle.crypto.commitments \
-        org.bouncycastle.crypto.digests \
-        org.bouncycastle.crypto.encodings \
-        org.bouncycastle.crypto.ec \
-        org.bouncycastle.crypto.engines \
-        org.bouncycastle.crypto.generators \
-        org.bouncycastle.crypto.io \
-        org.bouncycastle.crypto.kems \
-        org.bouncycastle.crypto.macs \
-        org.bouncycastle.crypto.modes \
-        org.bouncycastle.crypto.paddings \
-        org.bouncycastle.crypto.params \
-        org.bouncycastle.crypto.signers \
-        org.bouncycastle.crypto.test \
-        org.bouncycastle.crypto.tls \
-        org.bouncycastle.crypto.examples \
+        org.bouncycastle.bcmath.ec \
+        org.bouncycastle.bccrypto \
+        org.bouncycastle.bccrypto.agreement \
+        org.bouncycastle.bccrypto.commitments \
+        org.bouncycastle.bccrypto.digests \
+        org.bouncycastle.bccrypto.encodings \
+        org.bouncycastle.bccrypto.ec \
+        org.bouncycastle.bccrypto.engines \
+        org.bouncycastle.bccrypto.generators \
+        org.bouncycastle.bccrypto.io \
+        org.bouncycastle.bccrypto.kems \
+        org.bouncycastle.bccrypto.macs \
+        org.bouncycastle.bccrypto.modes \
+        org.bouncycastle.bccrypto.paddings \
+        org.bouncycastle.bccrypto.params \
+        org.bouncycastle.bccrypto.signers \
+        org.bouncycastle.bccrypto.test \
+        org.bouncycastle.bccrypto.tls \
+        org.bouncycastle.bccrypto.examples \
         org.bouncycastle.jce \
         org.bouncycastle.jce.cert \
         org.bouncycastle.jce.interfaces \

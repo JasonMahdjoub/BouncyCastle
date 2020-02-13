@@ -3,11 +3,11 @@ package org.bouncycastle.tls.crypto.impl.bc;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.engines.RSAEngine;
-import org.bouncycastle.crypto.io.SignerOutputStream;
-import org.bouncycastle.crypto.params.RSAKeyParameters;
-import org.bouncycastle.crypto.signers.PSSSigner;
+import org.bouncycastle.bccrypto.Digest;
+import org.bouncycastle.bccrypto.engines.RSAEngine;
+import org.bouncycastle.bccrypto.io.SignerOutputStream;
+import org.bouncycastle.bccrypto.params.RSAKeyParameters;
+import org.bouncycastle.bccrypto.signers.PSSSigner;
 import org.bouncycastle.tls.DigitallySigned;
 import org.bouncycastle.tls.HashAlgorithm;
 import org.bouncycastle.tls.SignatureAlgorithm;

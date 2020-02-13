@@ -3,8 +3,8 @@ package org.bouncycastle.pkcs.bc;
 import java.io.IOException;
 
 import org.bouncycastle.bcasn1.pkcs.CertificationRequest;
-import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
-import org.bouncycastle.crypto.util.PublicKeyFactory;
+import org.bouncycastle.bccrypto.params.AsymmetricKeyParameter;
+import org.bouncycastle.bccrypto.util.PublicKeyFactory;
 import org.bouncycastle.pkcs.PKCS10CertificationRequest;
 import org.bouncycastle.pkcs.PKCSException;
 

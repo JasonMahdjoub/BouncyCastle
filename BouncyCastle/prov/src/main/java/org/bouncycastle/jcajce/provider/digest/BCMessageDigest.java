@@ -2,7 +2,7 @@ package org.bouncycastle.jcajce.provider.digest;
 
 import java.security.MessageDigest;
 
-import org.bouncycastle.crypto.Digest;
+import org.bouncycastle.bccrypto.Digest;
 
 public class BCMessageDigest
     extends MessageDigest

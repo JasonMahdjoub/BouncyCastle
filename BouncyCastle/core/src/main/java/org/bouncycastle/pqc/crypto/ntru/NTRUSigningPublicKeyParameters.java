@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
+import org.bouncycastle.bccrypto.params.AsymmetricKeyParameter;
 import org.bouncycastle.pqc.math.ntru.polynomial.IntegerPolynomial;
 
 /**

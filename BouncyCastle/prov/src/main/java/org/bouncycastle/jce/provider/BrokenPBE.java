@@ -4,17 +4,17 @@ import java.security.spec.AlgorithmParameterSpec;
 
 import javax.crypto.spec.PBEParameterSpec;
 
-import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.PBEParametersGenerator;
-import org.bouncycastle.crypto.digests.MD5Digest;
-import org.bouncycastle.crypto.digests.RIPEMD160Digest;
-import org.bouncycastle.crypto.digests.SHA1Digest;
-import org.bouncycastle.crypto.generators.PKCS12ParametersGenerator;
-import org.bouncycastle.crypto.generators.PKCS5S1ParametersGenerator;
-import org.bouncycastle.crypto.generators.PKCS5S2ParametersGenerator;
-import org.bouncycastle.crypto.params.KeyParameter;
-import org.bouncycastle.crypto.params.ParametersWithIV;
+import org.bouncycastle.bccrypto.CipherParameters;
+import org.bouncycastle.bccrypto.Digest;
+import org.bouncycastle.bccrypto.PBEParametersGenerator;
+import org.bouncycastle.bccrypto.digests.MD5Digest;
+import org.bouncycastle.bccrypto.digests.RIPEMD160Digest;
+import org.bouncycastle.bccrypto.digests.SHA1Digest;
+import org.bouncycastle.bccrypto.generators.PKCS12ParametersGenerator;
+import org.bouncycastle.bccrypto.generators.PKCS5S1ParametersGenerator;
+import org.bouncycastle.bccrypto.generators.PKCS5S2ParametersGenerator;
+import org.bouncycastle.bccrypto.params.KeyParameter;
+import org.bouncycastle.bccrypto.params.ParametersWithIV;
 import org.bouncycastle.jcajce.provider.symmetric.util.BCPBEKey;
 
 /**

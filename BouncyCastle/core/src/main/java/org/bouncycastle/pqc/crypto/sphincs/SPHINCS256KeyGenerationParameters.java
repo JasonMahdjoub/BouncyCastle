@@ -2,8 +2,8 @@ package org.bouncycastle.pqc.crypto.sphincs;
 
 import java.security.SecureRandom;
 
-import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.KeyGenerationParameters;
+import org.bouncycastle.bccrypto.Digest;
+import org.bouncycastle.bccrypto.KeyGenerationParameters;
 
 public class SPHINCS256KeyGenerationParameters
     extends KeyGenerationParameters

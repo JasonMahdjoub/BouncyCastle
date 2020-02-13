@@ -13,12 +13,12 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
-import org.bouncycastle.crypto.digests.SHA512Digest;
-import org.bouncycastle.crypto.macs.HMac;
-import org.bouncycastle.crypto.prng.EntropySource;
-import org.bouncycastle.crypto.prng.EntropySourceProvider;
-import org.bouncycastle.crypto.prng.SP800SecureRandom;
-import org.bouncycastle.crypto.prng.SP800SecureRandomBuilder;
+import org.bouncycastle.bccrypto.digests.SHA512Digest;
+import org.bouncycastle.bccrypto.macs.HMac;
+import org.bouncycastle.bccrypto.prng.EntropySource;
+import org.bouncycastle.bccrypto.prng.EntropySourceProvider;
+import org.bouncycastle.bccrypto.prng.SP800SecureRandom;
+import org.bouncycastle.bccrypto.prng.SP800SecureRandomBuilder;
 import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import org.bouncycastle.jcajce.provider.symmetric.util.ClassUtil;
 import org.bouncycastle.jcajce.provider.util.AsymmetricAlgorithmProvider;

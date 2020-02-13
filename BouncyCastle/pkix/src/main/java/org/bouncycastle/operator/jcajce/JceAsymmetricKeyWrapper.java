@@ -40,7 +40,7 @@ import org.bouncycastle.bcasn1.pkcs.RSAESOAEPparams;
 import org.bouncycastle.bcasn1.rosstandart.RosstandartObjectIdentifiers;
 import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
 import org.bouncycastle.jcajce.spec.GOST28147WrapParameterSpec;
 import org.bouncycastle.jcajce.spec.UserKeyingMaterialSpec;
 import org.bouncycastle.jcajce.util.DefaultJcaJceHelper;

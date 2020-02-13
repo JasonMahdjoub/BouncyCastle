@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.security.SecureRandom;
 
 import junit.framework.TestCase;
-import org.bouncycastle.crypto.digests.SHA256Digest;
+import org.bouncycastle.bccrypto.digests.SHA256Digest;
 import org.bouncycastle.pqc.crypto.util.PrivateKeyFactory;
 import org.bouncycastle.pqc.crypto.xmss.*;
 import org.bouncycastle.pqc.crypto.xmss.XMSSPrivateKeyParameters;

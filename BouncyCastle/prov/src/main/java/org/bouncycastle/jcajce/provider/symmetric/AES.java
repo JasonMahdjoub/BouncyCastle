@@ -15,21 +15,21 @@ import org.bouncycastle.bcasn1.bc.DMBCObjectIdentifiers;
 import org.bouncycastle.bcasn1.cms.CCMParameters;
 import org.bouncycastle.bcasn1.cms.GCMParameters;
 import org.bouncycastle.bcasn1.nist.NISTObjectIdentifiers;
-import org.bouncycastle.crypto.*;
-import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.engines.AESEngine;
-import org.bouncycastle.crypto.engines.AESWrapEngine;
-import org.bouncycastle.crypto.engines.AESWrapPadEngine;
-import org.bouncycastle.crypto.engines.RFC3211WrapEngine;
-import org.bouncycastle.crypto.engines.RFC5649WrapEngine;
-import org.bouncycastle.crypto.generators.Poly1305KeyGenerator;
-import org.bouncycastle.crypto.macs.CMac;
-import org.bouncycastle.crypto.macs.GMac;
-import org.bouncycastle.crypto.modes.CBCBlockCipher;
-import org.bouncycastle.crypto.modes.CCMBlockCipher;
-import org.bouncycastle.crypto.modes.CFBBlockCipher;
-import org.bouncycastle.crypto.modes.GCMBlockCipher;
-import org.bouncycastle.crypto.modes.OFBBlockCipher;
+import org.bouncycastle.bccrypto.*;
+import org.bouncycastle.bccrypto.CipherParameters;
+import org.bouncycastle.bccrypto.engines.AESEngine;
+import org.bouncycastle.bccrypto.engines.AESWrapEngine;
+import org.bouncycastle.bccrypto.engines.AESWrapPadEngine;
+import org.bouncycastle.bccrypto.engines.RFC3211WrapEngine;
+import org.bouncycastle.bccrypto.engines.RFC5649WrapEngine;
+import org.bouncycastle.bccrypto.generators.Poly1305KeyGenerator;
+import org.bouncycastle.bccrypto.macs.CMac;
+import org.bouncycastle.bccrypto.macs.GMac;
+import org.bouncycastle.bccrypto.modes.CBCBlockCipher;
+import org.bouncycastle.bccrypto.modes.CCMBlockCipher;
+import org.bouncycastle.bccrypto.modes.CFBBlockCipher;
+import org.bouncycastle.bccrypto.modes.GCMBlockCipher;
+import org.bouncycastle.bccrypto.modes.OFBBlockCipher;
 import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import org.bouncycastle.jcajce.provider.symmetric.util.BaseAlgorithmParameterGenerator;
 import org.bouncycastle.jcajce.provider.symmetric.util.BaseAlgorithmParameters;
@@ -214,7 +214,7 @@ public final class AES
     {
         public Poly1305()
         {
-            super(new org.bouncycastle.crypto.macs.Poly1305(new AESEngine()));
+            super(new org.bouncycastle.bccrypto.macs.Poly1305(new AESEngine()));
         }
     }
 

@@ -1,14 +1,14 @@
-package org.bouncycastle.crypto.digests;
+package org.bouncycastle.bccrypto.digests;
 
 import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Vector;
 
-import org.bouncycastle.crypto.DataLengthException;
-import org.bouncycastle.crypto.OutputLengthException;
-import org.bouncycastle.crypto.engines.ThreefishEngine;
-import org.bouncycastle.crypto.macs.SkeinMac;
-import org.bouncycastle.crypto.params.SkeinParameters;
+import org.bouncycastle.bccrypto.DataLengthException;
+import org.bouncycastle.bccrypto.OutputLengthException;
+import org.bouncycastle.bccrypto.engines.ThreefishEngine;
+import org.bouncycastle.bccrypto.macs.SkeinMac;
+import org.bouncycastle.bccrypto.params.SkeinParameters;
 import org.bouncycastle.bcutil.Arrays;
 import org.bouncycastle.bcutil.Memoable;
 

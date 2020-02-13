@@ -2,7 +2,7 @@ package org.bouncycastle.pqc.crypto.gmss;
 
 import java.util.Vector;
 
-import org.bouncycastle.crypto.Digest;
+import org.bouncycastle.bccrypto.Digest;
 import org.bouncycastle.pqc.crypto.gmss.util.GMSSRandom;
 import org.bouncycastle.bcutil.Integers;
 import org.bouncycastle.bcutil.encoders.Hex;

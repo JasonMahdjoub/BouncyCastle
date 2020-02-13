@@ -8,8 +8,8 @@ import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 import org.bouncycastle.bcasn1.x9.X9ECParameters;
 import org.bouncycastle.bcasn1.x9.X9ECParametersHolder;
 import org.bouncycastle.bcasn1.x9.X9ECPoint;
-import org.bouncycastle.math.ec.ECCurve;
-import org.bouncycastle.math.ec.WNafUtil;
+import org.bouncycastle.bcmath.ec.ECCurve;
+import org.bouncycastle.bcmath.ec.WNafUtil;
 import org.bouncycastle.bcutil.Strings;
 import org.bouncycastle.bcutil.encoders.Hex;
 

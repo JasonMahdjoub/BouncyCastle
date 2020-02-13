@@ -1,9 +1,9 @@
 package org.bouncycastle.tls.crypto.impl.bc;
 
-import org.bouncycastle.crypto.DSA;
-import org.bouncycastle.crypto.params.DSAPublicKeyParameters;
-import org.bouncycastle.crypto.signers.DSASigner;
-import org.bouncycastle.crypto.signers.HMacDSAKCalculator;
+import org.bouncycastle.bccrypto.DSA;
+import org.bouncycastle.bccrypto.params.DSAPublicKeyParameters;
+import org.bouncycastle.bccrypto.signers.DSASigner;
+import org.bouncycastle.bccrypto.signers.HMacDSAKCalculator;
 import org.bouncycastle.tls.SignatureAlgorithm;
 
 /**

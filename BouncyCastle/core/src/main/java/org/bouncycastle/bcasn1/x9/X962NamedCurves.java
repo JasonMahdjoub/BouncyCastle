@@ -5,8 +5,8 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 
 import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
-import org.bouncycastle.math.ec.ECCurve;
-import org.bouncycastle.math.ec.WNafUtil;
+import org.bouncycastle.bcmath.ec.ECCurve;
+import org.bouncycastle.bcmath.ec.WNafUtil;
 import org.bouncycastle.bcutil.Strings;
 import org.bouncycastle.bcutil.encoders.Hex;
 

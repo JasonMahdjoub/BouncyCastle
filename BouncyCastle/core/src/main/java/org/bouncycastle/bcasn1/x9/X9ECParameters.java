@@ -9,10 +9,10 @@ import org.bouncycastle.bcasn1.ASN1OctetString;
 import org.bouncycastle.bcasn1.ASN1Primitive;
 import org.bouncycastle.bcasn1.ASN1Sequence;
 import org.bouncycastle.bcasn1.DERSequence;
-import org.bouncycastle.math.ec.ECAlgorithms;
-import org.bouncycastle.math.ec.ECCurve;
-import org.bouncycastle.math.ec.ECPoint;
-import org.bouncycastle.math.field.PolynomialExtensionField;
+import org.bouncycastle.bcmath.ec.ECAlgorithms;
+import org.bouncycastle.bcmath.ec.ECCurve;
+import org.bouncycastle.bcmath.ec.ECPoint;
+import org.bouncycastle.bcmath.field.PolynomialExtensionField;
 import org.bouncycastle.bcutil.Arrays;
 
 /**

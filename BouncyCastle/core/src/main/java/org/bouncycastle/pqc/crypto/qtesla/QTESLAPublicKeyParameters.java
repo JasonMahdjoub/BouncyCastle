@@ -1,6 +1,6 @@
 package org.bouncycastle.pqc.crypto.qtesla;
 
-import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
+import org.bouncycastle.bccrypto.params.AsymmetricKeyParameter;
 import org.bouncycastle.bcutil.Arrays;
 
 /**

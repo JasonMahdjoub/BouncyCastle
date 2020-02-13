@@ -1,8 +1,8 @@
 package org.bouncycastle.pqc.crypto.sphincs;
 
-import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.params.ParametersWithRandom;
+import org.bouncycastle.bccrypto.CipherParameters;
+import org.bouncycastle.bccrypto.Digest;
+import org.bouncycastle.bccrypto.params.ParametersWithRandom;
 import org.bouncycastle.pqc.crypto.MessageSigner;
 import org.bouncycastle.bcutil.Pack;
 

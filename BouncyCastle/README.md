@@ -36,7 +36,7 @@ If you want to try create a build for yourself, using your own environment, the 
 
 To view some examples, look at the test programs in the packages:
 
-*   **org.bouncycastle.crypto.test**
+*   **org.bouncycastle.bccrypto.test**
 
 *   **org.bouncycastle.jce.provider.test**
 

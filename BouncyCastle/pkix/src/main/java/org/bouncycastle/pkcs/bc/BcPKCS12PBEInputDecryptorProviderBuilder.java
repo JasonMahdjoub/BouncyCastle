@@ -4,12 +4,12 @@ import java.io.InputStream;
 
 import org.bouncycastle.bcasn1.pkcs.PKCS12PBEParams;
 import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.ExtendedDigest;
-import org.bouncycastle.crypto.digests.SHA1Digest;
-import org.bouncycastle.crypto.generators.PKCS12ParametersGenerator;
-import org.bouncycastle.crypto.io.CipherInputStream;
-import org.bouncycastle.crypto.paddings.PaddedBufferedBlockCipher;
+import org.bouncycastle.bccrypto.CipherParameters;
+import org.bouncycastle.bccrypto.ExtendedDigest;
+import org.bouncycastle.bccrypto.digests.SHA1Digest;
+import org.bouncycastle.bccrypto.generators.PKCS12ParametersGenerator;
+import org.bouncycastle.bccrypto.io.CipherInputStream;
+import org.bouncycastle.bccrypto.paddings.PaddedBufferedBlockCipher;
 import org.bouncycastle.operator.GenericKey;
 import org.bouncycastle.operator.InputDecryptor;
 import org.bouncycastle.operator.InputDecryptorProvider;

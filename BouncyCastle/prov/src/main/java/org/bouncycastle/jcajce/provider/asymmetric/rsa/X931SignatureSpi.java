@@ -9,15 +9,15 @@ import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 import java.security.spec.AlgorithmParameterSpec;
 
-import org.bouncycastle.crypto.AsymmetricBlockCipher;
-import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.digests.RIPEMD128Digest;
-import org.bouncycastle.crypto.digests.RIPEMD160Digest;
-import org.bouncycastle.crypto.digests.WhirlpoolDigest;
-import org.bouncycastle.crypto.engines.RSABlindedEngine;
-import org.bouncycastle.crypto.signers.X931Signer;
-import org.bouncycastle.crypto.util.DigestFactory;
+import org.bouncycastle.bccrypto.AsymmetricBlockCipher;
+import org.bouncycastle.bccrypto.CipherParameters;
+import org.bouncycastle.bccrypto.Digest;
+import org.bouncycastle.bccrypto.digests.RIPEMD128Digest;
+import org.bouncycastle.bccrypto.digests.RIPEMD160Digest;
+import org.bouncycastle.bccrypto.digests.WhirlpoolDigest;
+import org.bouncycastle.bccrypto.engines.RSABlindedEngine;
+import org.bouncycastle.bccrypto.signers.X931Signer;
+import org.bouncycastle.bccrypto.util.DigestFactory;
 
 public class X931SignatureSpi
     extends SignatureSpi

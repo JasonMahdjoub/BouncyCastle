@@ -27,7 +27,7 @@ import org.bouncycastle.cms.CMSAlgorithm;
 import org.bouncycastle.cms.CMSException;
 import org.bouncycastle.cms.jcajce.JceCMSContentEncryptorBuilder;
 import org.bouncycastle.cms.jcajce.JceKeyTransRecipientInfoGenerator;
-import org.bouncycastle.crypto.util.JournalingSecureRandom;
+import org.bouncycastle.bccrypto.util.JournalingSecureRandom;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.mime.smime.SMIMEEnvelopedWriter;
 import org.bouncycastle.operator.OperatorCreationException;

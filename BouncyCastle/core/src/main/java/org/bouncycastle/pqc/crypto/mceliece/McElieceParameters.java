@@ -1,7 +1,7 @@
 package org.bouncycastle.pqc.crypto.mceliece;
 
-import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.Digest;
+import org.bouncycastle.bccrypto.CipherParameters;
+import org.bouncycastle.bccrypto.Digest;
 import org.bouncycastle.pqc.math.linearalgebra.PolynomialRingGF2;
 
 public class McElieceParameters

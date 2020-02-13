@@ -5,7 +5,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 import junit.framework.TestCase;
-import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
+import org.bouncycastle.bccrypto.AsymmetricCipherKeyPair;
 import org.bouncycastle.pqc.crypto.ntru.NTRUSigner;
 import org.bouncycastle.pqc.crypto.ntru.NTRUSigningKeyGenerationParameters;
 import org.bouncycastle.pqc.crypto.ntru.NTRUSigningKeyPairGenerator;

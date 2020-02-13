@@ -36,14 +36,14 @@ the classes directory.
 <p>
 To view examples, look at the test programs in the packages:
 <ul>
-	<li><b>org.bouncycastle.crypto.test</b>
+	<li><b>org.bouncycastle.bccrypto.test</b>
 	<li><b>org.bouncycastle.jce.provider.test</b>
 </ul>
 <p>
 To verify the packages, run the following Java programs with the
 appropriate classpath:
 <ul>
-	<li><b>java org.bouncycastle.crypto.test.RegressionTest</b>
+	<li><b>java org.bouncycastle.bccrypto.test.RegressionTest</b>
 	<li><b>java org.bouncycastle.jce.provider.test.RegressionTest</b>
 </ul>
 
@@ -420,9 +420,9 @@ standard Diffie-Hellman key agreement and standard key agreement with
 co-factors.
 </p>
 <p>
-The agreement APIs are in the <b>org.bouncycastle.crypto.agreement</b> package.
+The agreement APIs are in the <b>org.bouncycastle.bccrypto.agreement</b> package.
 Classes for generating Diffie-Hellman parameters can be found in the
-<b>org.bouncycastle.crypto.params</b> and <b>org.bouncycastle.crypto.generators</b> packages.
+<b>org.bouncycastle.bccrypto.params</b> and <b>org.bouncycastle.bccrypto.generators</b> packages.
 </p>
 
 <h4>Key Encapsulation Mechanisms</h4>
@@ -438,31 +438,31 @@ sub-classes
 
 <h4>Signers</h4>
 <p>
-DSA, ECDSA, ISO-9796-2, GOST-3410-94, GOST-3410-2001, GOST-3410-2012, DSTU-4145-2002, and RSA-PSS are supported by the <b>org.bouncycastle.crypto.signers</b>
+DSA, ECDSA, ISO-9796-2, GOST-3410-94, GOST-3410-2001, GOST-3410-2012, DSTU-4145-2002, and RSA-PSS are supported by the <b>org.bouncycastle.bccrypto.signers</b>
 package. Note: as these are light weight classes, if you need to use SHA1 or GOST-3411
 (as defined in the relevant standards) you'll also need to make use of the appropriate
 digest class in conjunction with these.
 Classes for generating DSA and ECDSA parameters can be found in the
-<b>org.bouncycastle.crypto.params</b> and <b>org.bouncycastle.crypto.generators</b> packages.
+<b>org.bouncycastle.bccrypto.params</b> and <b>org.bouncycastle.bccrypto.generators</b> packages.
 <p>
 
 <h3>5.4 Elliptic Curve Transforms.</h3>
 
 <p>
-    The org.bouncycastle.crypto.ec package contains implementations for a variety of EC cryptographic transforms such
+    The org.bouncycastle.bccrypto.ec package contains implementations for a variety of EC cryptographic transforms such
     as EC ElGamal.
 </p>
 
 <h3>5.5 TLS/DTLS</h3>
 
 <p>
-    The org.bouncycastle.crypto.tls package contains implementations for TLS 1.1, 1.2 and DTLS 1.0, 1.2.
+    The org.bouncycastle.bccrypto.tls package contains implementations for TLS 1.1, 1.2 and DTLS 1.0, 1.2.
 </p>
 
 <h3>5.6 Deterministic Random Bit Generators (DRBG) and SecureRandom wrappers</h3>
 
 <p>
-    The org.bouncycastle.crypto.prng package contains implementations for a variety of bit generators including those
+    The org.bouncycastle.bccrypto.prng package contains implementations for a variety of bit generators including those
     from SP 800-90A and X9.31, as well as builders for SecureRandom objects based around them.
 </p>
 <h3>5.7 ASN.1 package</h3>

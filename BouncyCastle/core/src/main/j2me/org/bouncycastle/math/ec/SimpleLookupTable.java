@@ -1,4 +1,4 @@
-package org.bouncycastle.math.ec;
+package org.bouncycastle.bcmath.ec;
 
 public class SimpleLookupTable
     extends AbstractECLookupTable

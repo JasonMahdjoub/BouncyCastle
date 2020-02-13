@@ -3,9 +3,9 @@ package org.bouncycastle.operator.bc;
 import java.security.SecureRandom;
 
 import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.crypto.Wrapper;
-import org.bouncycastle.crypto.params.KeyParameter;
-import org.bouncycastle.crypto.params.ParametersWithRandom;
+import org.bouncycastle.bccrypto.Wrapper;
+import org.bouncycastle.bccrypto.params.KeyParameter;
+import org.bouncycastle.bccrypto.params.ParametersWithRandom;
 import org.bouncycastle.operator.GenericKey;
 import org.bouncycastle.operator.OperatorException;
 import org.bouncycastle.operator.SymmetricKeyWrapper;

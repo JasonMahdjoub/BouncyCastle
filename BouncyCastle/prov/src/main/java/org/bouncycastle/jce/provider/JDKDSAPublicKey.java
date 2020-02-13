@@ -17,7 +17,7 @@ import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.bcasn1.x509.DSAParameter;
 import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
 import org.bouncycastle.bcasn1.x9.X9ObjectIdentifiers;
-import org.bouncycastle.crypto.params.DSAPublicKeyParameters;
+import org.bouncycastle.bccrypto.params.DSAPublicKeyParameters;
 import org.bouncycastle.bcutil.Strings;
 
 public class JDKDSAPublicKey

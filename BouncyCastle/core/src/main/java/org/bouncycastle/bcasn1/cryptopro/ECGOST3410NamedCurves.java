@@ -6,11 +6,11 @@ import java.util.Hashtable;
 
 import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 import org.bouncycastle.bcasn1.rosstandart.RosstandartObjectIdentifiers;
-import org.bouncycastle.crypto.params.ECDomainParameters;
-import org.bouncycastle.math.ec.ECConstants;
-import org.bouncycastle.math.ec.ECCurve;
-import org.bouncycastle.math.ec.ECPoint;
-import org.bouncycastle.math.ec.WNafUtil;
+import org.bouncycastle.bccrypto.params.ECDomainParameters;
+import org.bouncycastle.bcmath.ec.ECConstants;
+import org.bouncycastle.bcmath.ec.ECCurve;
+import org.bouncycastle.bcmath.ec.ECPoint;
+import org.bouncycastle.bcmath.ec.WNafUtil;
 
 /**
  * table of the available named parameters for GOST 3410-2001 / 2012.

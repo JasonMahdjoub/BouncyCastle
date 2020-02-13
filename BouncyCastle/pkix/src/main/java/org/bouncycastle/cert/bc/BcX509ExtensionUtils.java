@@ -9,10 +9,10 @@ import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.bcasn1.x509.AuthorityKeyIdentifier;
 import org.bouncycastle.bcasn1.x509.SubjectKeyIdentifier;
 import org.bouncycastle.cert.X509ExtensionUtils;
-import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.digests.SHA1Digest;
-import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
-import org.bouncycastle.crypto.util.SubjectPublicKeyInfoFactory;
+import org.bouncycastle.bccrypto.Digest;
+import org.bouncycastle.bccrypto.digests.SHA1Digest;
+import org.bouncycastle.bccrypto.params.AsymmetricKeyParameter;
+import org.bouncycastle.bccrypto.util.SubjectPublicKeyInfoFactory;
 import org.bouncycastle.operator.DigestCalculator;
 
 public class BcX509ExtensionUtils

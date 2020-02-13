@@ -2,7 +2,7 @@ package org.bouncycastle.jcajce;
 
 import javax.crypto.interfaces.PBEKey;
 
-import org.bouncycastle.crypto.CharToByteConverter;
+import org.bouncycastle.bccrypto.CharToByteConverter;
 import org.bouncycastle.bcutil.Arrays;
 
 /**

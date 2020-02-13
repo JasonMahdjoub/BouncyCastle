@@ -1,6 +1,6 @@
 package org.bouncycastle.pqc.crypto.ntru;
 
-import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
+import org.bouncycastle.bccrypto.params.AsymmetricKeyParameter;
 
 public class NTRUEncryptionKeyParameters
     extends AsymmetricKeyParameter

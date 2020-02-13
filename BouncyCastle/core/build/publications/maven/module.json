@@ -11,7 +11,7 @@
   "createdBy": {
     "gradle": {
       "version": "6.1",
-      "buildId": "zu7qo3wfazauhfmxkoaxiulm54"
+      "buildId": "ofq4ubzv5nevfagezcxvgqbac4"
     }
   },
   "variants": [
@@ -28,11 +28,11 @@
         {
           "name": "bc-core-1.64-DMRECOMPILE.jar",
           "url": "bc-core-1.64-DMRECOMPILE.jar",
-          "size": 3877987,
-          "sha512": "d4df9034e195bb4383aa37b54eadd8f861968192138e3c1009287821b34042156d902e1bba0d2e5131cdc611cb0bf727183bd48ab250a82e325c85beeb1697d6",
-          "sha256": "f8f1323b5bf58bacc0a4ecf8d89a0c19c3e9df27bc1d645b0f8ac9a4879fe3fc",
-          "sha1": "c07980e248419f1a5ba59da2ea3136544ce4cf08",
-          "md5": "db5ce0fca0cf7f35c9f25c088dec19a3"
+          "size": 3884212,
+          "sha512": "5d3c1bca2aaffefca69f3f9bb967c8e9a7868a1537d094bd88a89432d94ddd4155ee2af01c8e87fa180a71b50398201cb2b1aa7e1b8385ba1c0bd15a6c6f8d47",
+          "sha256": "7b4d23260c8a97b3720a0a8fb8a2a1b005798bf8f3e961d28712ce9c0f7d6f6f",
+          "sha1": "b0e5d2a8c97428ccce7ecb57c5e1325f8974ee13",
+          "md5": "a7a00fb52dd361c9a9b82877fdcabff3"
         }
       ]
     },
@@ -49,11 +49,11 @@
         {
           "name": "bc-core-1.64-DMRECOMPILE.jar",
           "url": "bc-core-1.64-DMRECOMPILE.jar",
-          "size": 3877987,
-          "sha512": "d4df9034e195bb4383aa37b54eadd8f861968192138e3c1009287821b34042156d902e1bba0d2e5131cdc611cb0bf727183bd48ab250a82e325c85beeb1697d6",
-          "sha256": "f8f1323b5bf58bacc0a4ecf8d89a0c19c3e9df27bc1d645b0f8ac9a4879fe3fc",
-          "sha1": "c07980e248419f1a5ba59da2ea3136544ce4cf08",
-          "md5": "db5ce0fca0cf7f35c9f25c088dec19a3"
+          "size": 3884212,
+          "sha512": "5d3c1bca2aaffefca69f3f9bb967c8e9a7868a1537d094bd88a89432d94ddd4155ee2af01c8e87fa180a71b50398201cb2b1aa7e1b8385ba1c0bd15a6c6f8d47",
+          "sha256": "7b4d23260c8a97b3720a0a8fb8a2a1b005798bf8f3e961d28712ce9c0f7d6f6f",
+          "sha1": "b0e5d2a8c97428ccce7ecb57c5e1325f8974ee13",
+          "md5": "a7a00fb52dd361c9a9b82877fdcabff3"
         }
       ]
     }

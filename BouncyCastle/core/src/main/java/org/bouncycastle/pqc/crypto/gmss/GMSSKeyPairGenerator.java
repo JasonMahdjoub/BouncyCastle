@@ -3,8 +3,8 @@ package org.bouncycastle.pqc.crypto.gmss;
 import java.security.SecureRandom;
 import java.util.Vector;
 
-import org.bouncycastle.crypto.*;
-import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.*;
+import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
 import org.bouncycastle.pqc.crypto.gmss.util.GMSSRandom;
 import org.bouncycastle.pqc.crypto.gmss.util.WinternitzOTSVerify;
 import org.bouncycastle.pqc.crypto.gmss.util.WinternitzOTSignature;

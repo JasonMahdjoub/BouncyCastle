@@ -3,7 +3,7 @@ package org.bouncycastle.bcpg;
 import java.io.IOException;
 
 import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
-import org.bouncycastle.math.ec.ECPoint;
+import org.bouncycastle.bcmath.ec.ECPoint;
 
 /**
  * base class for an ECDH Public Key.

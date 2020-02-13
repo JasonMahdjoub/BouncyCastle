@@ -28,7 +28,7 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKeyFactory;
 
 
-import org.bouncycastle.crypto.CryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 
 /**
  * {@link JcaJceHelper} that obtains all algorithms using a specific named provider.

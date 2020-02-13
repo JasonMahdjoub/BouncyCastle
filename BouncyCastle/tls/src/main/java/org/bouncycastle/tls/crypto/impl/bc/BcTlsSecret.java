@@ -1,8 +1,8 @@
 package org.bouncycastle.tls.crypto.impl.bc;
 
-import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.macs.HMac;
-import org.bouncycastle.crypto.params.KeyParameter;
+import org.bouncycastle.bccrypto.Digest;
+import org.bouncycastle.bccrypto.macs.HMac;
+import org.bouncycastle.bccrypto.params.KeyParameter;
 import org.bouncycastle.tls.HashAlgorithm;
 import org.bouncycastle.tls.PRFAlgorithm;
 import org.bouncycastle.tls.TlsUtils;

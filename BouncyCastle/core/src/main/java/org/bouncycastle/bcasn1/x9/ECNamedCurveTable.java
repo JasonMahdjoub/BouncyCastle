@@ -10,8 +10,8 @@ import org.bouncycastle.bcasn1.gm.GMNamedCurves;
 import org.bouncycastle.bcasn1.nist.NISTNamedCurves;
 import org.bouncycastle.bcasn1.sec.SECNamedCurves;
 import org.bouncycastle.bcasn1.teletrust.TeleTrusTNamedCurves;
-import org.bouncycastle.crypto.ec.CustomNamedCurves;
-import org.bouncycastle.crypto.params.ECDomainParameters;
+import org.bouncycastle.bccrypto.ec.CustomNamedCurves;
+import org.bouncycastle.bccrypto.params.ECDomainParameters;
 
 /**
  * A general class that reads all X9.62 style EC curve tables.

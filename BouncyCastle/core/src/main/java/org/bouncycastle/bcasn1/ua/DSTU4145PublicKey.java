@@ -4,7 +4,7 @@ import org.bouncycastle.bcasn1.ASN1Object;
 import org.bouncycastle.bcasn1.ASN1OctetString;
 import org.bouncycastle.bcasn1.ASN1Primitive;
 import org.bouncycastle.bcasn1.DEROctetString;
-import org.bouncycastle.math.ec.ECPoint;
+import org.bouncycastle.bcmath.ec.ECPoint;
 
 public class DSTU4145PublicKey
     extends ASN1Object

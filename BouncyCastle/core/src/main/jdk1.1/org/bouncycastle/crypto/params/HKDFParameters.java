@@ -1,6 +1,6 @@
-package org.bouncycastle.crypto.params;
+package org.bouncycastle.bccrypto.params;
 
-import org.bouncycastle.crypto.DerivationParameters;
+import org.bouncycastle.bccrypto.DerivationParameters;
 import org.bouncycastle.bcutil.Arrays;
 
 /**

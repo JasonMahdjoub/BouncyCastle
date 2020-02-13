@@ -8,7 +8,7 @@ import java.security.PrivateKey;
 import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 import org.bouncycastle.bcasn1.ASN1Set;
 import org.bouncycastle.bcasn1.pkcs.PrivateKeyInfo;
-import org.bouncycastle.crypto.CipherParameters;
+import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.pqc.asn1.XMSSMTKeyParams;
 import org.bouncycastle.pqc.crypto.util.PrivateKeyFactory;
 import org.bouncycastle.pqc.crypto.util.PrivateKeyInfoFactory;

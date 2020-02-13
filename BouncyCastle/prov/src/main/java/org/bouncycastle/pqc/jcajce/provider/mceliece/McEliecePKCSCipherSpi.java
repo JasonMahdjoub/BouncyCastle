@@ -13,8 +13,8 @@ import javax.crypto.IllegalBlockSizeException;
 
 import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
 import org.bouncycastle.bcasn1.x509.X509ObjectIdentifiers;
-import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.params.ParametersWithRandom;
+import org.bouncycastle.bccrypto.CipherParameters;
+import org.bouncycastle.bccrypto.params.ParametersWithRandom;
 import org.bouncycastle.pqc.crypto.mceliece.McElieceCipher;
 import org.bouncycastle.pqc.crypto.mceliece.McElieceKeyParameters;
 import org.bouncycastle.pqc.jcajce.provider.util.AsymmetricBlockCipher;

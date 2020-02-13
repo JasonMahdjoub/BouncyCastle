@@ -3,9 +3,9 @@ package org.bouncycastle.openpgp.operator.bc;
 import java.io.OutputStream;
 import java.security.SecureRandom;
 
-import org.bouncycastle.crypto.CryptoException;
-import org.bouncycastle.crypto.Signer;
-import org.bouncycastle.crypto.params.ParametersWithRandom;
+import org.bouncycastle.bccrypto.CryptoException;
+import org.bouncycastle.bccrypto.Signer;
+import org.bouncycastle.bccrypto.params.ParametersWithRandom;
 import org.bouncycastle.openpgp.PGPException;
 import org.bouncycastle.openpgp.PGPPrivateKey;
 import org.bouncycastle.openpgp.operator.PGPContentSigner;

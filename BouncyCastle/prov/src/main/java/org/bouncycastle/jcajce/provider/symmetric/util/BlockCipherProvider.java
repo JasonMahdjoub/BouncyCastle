@@ -1,6 +1,6 @@
 package org.bouncycastle.jcajce.provider.symmetric.util;
 
-import org.bouncycastle.crypto.BlockCipher;
+import org.bouncycastle.bccrypto.BlockCipher;
 
 public interface BlockCipherProvider
 {

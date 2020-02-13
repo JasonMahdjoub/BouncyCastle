@@ -1,4 +1,4 @@
-package org.bouncycastle.crypto.prng;
+package org.bouncycastle.bccrypto.prng;
 
 import java.security.SecureRandom;
 

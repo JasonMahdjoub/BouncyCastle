@@ -1,6 +1,6 @@
 package org.bouncycastle.pqc.crypto.xmss;
 
-import org.bouncycastle.crypto.Digest;
+import org.bouncycastle.bccrypto.Digest;
 
 /**
  * XMSS^MT Parameters.

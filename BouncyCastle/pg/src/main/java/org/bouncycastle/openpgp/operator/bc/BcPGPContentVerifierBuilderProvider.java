@@ -2,7 +2,7 @@ package org.bouncycastle.openpgp.operator.bc;
 
 import java.io.OutputStream;
 
-import org.bouncycastle.crypto.Signer;
+import org.bouncycastle.bccrypto.Signer;
 import org.bouncycastle.openpgp.PGPException;
 import org.bouncycastle.openpgp.PGPPublicKey;
 import org.bouncycastle.openpgp.operator.PGPContentVerifier;

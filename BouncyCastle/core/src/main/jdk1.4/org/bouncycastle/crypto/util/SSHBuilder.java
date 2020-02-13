@@ -1,4 +1,4 @@
-package org.bouncycastle.crypto.util;
+package org.bouncycastle.bccrypto.util;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

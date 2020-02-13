@@ -1,7 +1,7 @@
 package org.bouncycastle.jcajce.provider.asymmetric.edec;
 
-import org.bouncycastle.crypto.params.*;
-import org.bouncycastle.crypto.params.Ed448PublicKeyParameters;
+import org.bouncycastle.bccrypto.params.*;
+import org.bouncycastle.bccrypto.params.Ed448PublicKeyParameters;
 import org.bouncycastle.bcutil.Fingerprint;
 import org.bouncycastle.bcutil.Strings;
 import org.bouncycastle.bcutil.encoders.Hex;

@@ -7,17 +7,17 @@ import java.security.spec.AlgorithmParameterSpec;
 
 import javax.crypto.spec.IvParameterSpec;
 
-import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
-import org.bouncycastle.crypto.BlockCipher;
-import org.bouncycastle.crypto.BufferedBlockCipher;
-import org.bouncycastle.crypto.CipherKeyGenerator;
-import org.bouncycastle.crypto.engines.RC6Engine;
-import org.bouncycastle.crypto.generators.Poly1305KeyGenerator;
-import org.bouncycastle.crypto.macs.GMac;
-import org.bouncycastle.crypto.modes.CBCBlockCipher;
-import org.bouncycastle.crypto.modes.CFBBlockCipher;
-import org.bouncycastle.crypto.modes.GCMBlockCipher;
-import org.bouncycastle.crypto.modes.OFBBlockCipher;
+import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.BlockCipher;
+import org.bouncycastle.bccrypto.BufferedBlockCipher;
+import org.bouncycastle.bccrypto.CipherKeyGenerator;
+import org.bouncycastle.bccrypto.engines.RC6Engine;
+import org.bouncycastle.bccrypto.generators.Poly1305KeyGenerator;
+import org.bouncycastle.bccrypto.macs.GMac;
+import org.bouncycastle.bccrypto.modes.CBCBlockCipher;
+import org.bouncycastle.bccrypto.modes.CFBBlockCipher;
+import org.bouncycastle.bccrypto.modes.GCMBlockCipher;
+import org.bouncycastle.bccrypto.modes.OFBBlockCipher;
 import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import org.bouncycastle.jcajce.provider.symmetric.util.BaseAlgorithmParameterGenerator;
 import org.bouncycastle.jcajce.provider.symmetric.util.BaseBlockCipher;
@@ -88,7 +88,7 @@ public final class RC6
     {
         public Poly1305()
         {
-            super(new org.bouncycastle.crypto.macs.Poly1305(new RC6Engine()));
+            super(new org.bouncycastle.bccrypto.macs.Poly1305(new RC6Engine()));
         }
     }
 

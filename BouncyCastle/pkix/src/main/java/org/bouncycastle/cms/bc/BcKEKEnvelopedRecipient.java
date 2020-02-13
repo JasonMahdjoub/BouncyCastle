@@ -5,9 +5,9 @@ import java.io.InputStream;
 import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.cms.CMSException;
 import org.bouncycastle.cms.RecipientOperator;
-import org.bouncycastle.crypto.BufferedBlockCipher;
-import org.bouncycastle.crypto.StreamCipher;
-import org.bouncycastle.crypto.params.KeyParameter;
+import org.bouncycastle.bccrypto.BufferedBlockCipher;
+import org.bouncycastle.bccrypto.StreamCipher;
+import org.bouncycastle.bccrypto.params.KeyParameter;
 import org.bouncycastle.operator.InputDecryptor;
 import org.bouncycastle.operator.bc.BcSymmetricKeyUnwrapper;
 
@@ -37,11 +37,11 @@ public class BcKEKEnvelopedRecipient
             {
                 if (dataCipher instanceof BufferedBlockCipher)
                 {
-                    return new org.bouncycastle.crypto.io.CipherInputStream(dataOut, (BufferedBlockCipher)dataCipher);
+                    return new org.bouncycastle.bccrypto.io.CipherInputStream(dataOut, (BufferedBlockCipher)dataCipher);
                 }
                 else
                 {
-                    return new org.bouncycastle.crypto.io.CipherInputStream(dataOut, (StreamCipher)dataCipher);
+                    return new org.bouncycastle.bccrypto.io.CipherInputStream(dataOut, (StreamCipher)dataCipher);
                 }
             }
         });

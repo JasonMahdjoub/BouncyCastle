@@ -163,7 +163,7 @@ then
     cd $target;
     javadoc -windowtitle "$WINDOWTITLE" -doctitle "$DOCTITLE" \
       -header "$HEADER" \
-    -group "Lightweight Crypto Packages" "org.bouncycastle.crypto*" \
+    -group "Lightweight Crypto Packages" "org.bouncycastle.bccrypto*" \
     -group "ASN.1 Support Packages" "org.bouncycastle.bcasn1*" \
     -group "OpenPGP Support Packages" "org.bouncycastle.bcpg*:org.bouncycastle.openpgp*" \
     -group "Basic Signing And Encryption" "org.bouncycastle.operator*" \
@@ -173,7 +173,7 @@ then
     -group "TSP Support Packages" "org.bouncycastle.tsp*" \
     -group "PKCS Support Packages" "org.bouncycastle.pkcs*" \
     -group "Post-Quantum Crypto Packages" "org.bouncycastle.pqc*" \
-    -group "Utility Packages" "org.bouncycastle.bcutil*:org.bouncycastle.math*" \
+    -group "Utility Packages" "org.bouncycastle.bcutil*:org.bouncycastle.bcmath*" \
       -classpath classes \
       -d javadoc -sourcepath src -breakiterator \
     org.bouncycastle.bcasn1 \
@@ -218,27 +218,27 @@ then
     org.bouncycastle.tsp \
     org.bouncycastle.cms \
     org.bouncycastle.cms.bc \
-    org.bouncycastle.math.ec \
-    org.bouncycastle.crypto \
-    org.bouncycastle.crypto.agreement \
-    org.bouncycastle.crypto.commitments \
-    org.bouncycastle.crypto.digests \
-    org.bouncycastle.crypto.encodings \
-    org.bouncycastle.crypto.engines \
-    org.bouncycastle.crypto.generators \
-    org.bouncycastle.crypto.io \
-    org.bouncycastle.crypto.kems \
-    org.bouncycastle.crypto.macs \
-    org.bouncycastle.crypto.modes \
-    org.bouncycastle.crypto.params \
-    org.bouncycastle.crypto.parsers \
-    org.bouncycastle.crypto.paddings \
-    org.bouncycastle.crypto.signers \
-    org.bouncycastle.crypto.prng \
-    org.bouncycastle.crypto.tls \
-    org.bouncycastle.crypto.test \
-    org.bouncycastle.crypto.util \
-    org.bouncycastle.crypto.examples \
+    org.bouncycastle.bcmath.ec \
+    org.bouncycastle.bccrypto \
+    org.bouncycastle.bccrypto.agreement \
+    org.bouncycastle.bccrypto.commitments \
+    org.bouncycastle.bccrypto.digests \
+    org.bouncycastle.bccrypto.encodings \
+    org.bouncycastle.bccrypto.engines \
+    org.bouncycastle.bccrypto.generators \
+    org.bouncycastle.bccrypto.io \
+    org.bouncycastle.bccrypto.kems \
+    org.bouncycastle.bccrypto.macs \
+    org.bouncycastle.bccrypto.modes \
+    org.bouncycastle.bccrypto.params \
+    org.bouncycastle.bccrypto.parsers \
+    org.bouncycastle.bccrypto.paddings \
+    org.bouncycastle.bccrypto.signers \
+    org.bouncycastle.bccrypto.prng \
+    org.bouncycastle.bccrypto.tls \
+    org.bouncycastle.bccrypto.test \
+    org.bouncycastle.bccrypto.util \
+    org.bouncycastle.bccrypto.examples \
     org.bouncycastle.pqc.asn1 \
     org.bouncycastle.pqc.crypto \
     org.bouncycastle.pqc.crypto.rainbow \

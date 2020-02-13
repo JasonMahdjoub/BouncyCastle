@@ -1,7 +1,7 @@
 package org.bouncycastle.gpg.keybox.bc;
 
-import org.bouncycastle.crypto.digests.MD5Digest;
-import org.bouncycastle.crypto.digests.SHA1Digest;
+import org.bouncycastle.bccrypto.digests.MD5Digest;
+import org.bouncycastle.bccrypto.digests.SHA1Digest;
 import org.bouncycastle.gpg.keybox.BlobVerifier;
 import org.bouncycastle.bcutil.Arrays;
 

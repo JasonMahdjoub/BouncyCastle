@@ -2,10 +2,10 @@ package org.bouncycastle.pqc.crypto.test;
 
 import java.security.SecureRandom;
 
-import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
-import org.bouncycastle.crypto.digests.SHA3Digest;
-import org.bouncycastle.crypto.digests.SHA512Digest;
-import org.bouncycastle.crypto.digests.SHA512tDigest;
+import org.bouncycastle.bccrypto.AsymmetricCipherKeyPair;
+import org.bouncycastle.bccrypto.digests.SHA3Digest;
+import org.bouncycastle.bccrypto.digests.SHA512Digest;
+import org.bouncycastle.bccrypto.digests.SHA512tDigest;
 import org.bouncycastle.pqc.crypto.MessageSigner;
 import org.bouncycastle.pqc.crypto.sphincs.*;
 import org.bouncycastle.pqc.crypto.sphincs.SPHINCSPublicKeyParameters;

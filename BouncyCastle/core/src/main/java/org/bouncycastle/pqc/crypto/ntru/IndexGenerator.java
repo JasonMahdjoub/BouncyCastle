@@ -1,6 +1,6 @@
 package org.bouncycastle.pqc.crypto.ntru;
 
-import org.bouncycastle.crypto.Digest;
+import org.bouncycastle.bccrypto.Digest;
 import org.bouncycastle.bcutil.Arrays;
 
 /**

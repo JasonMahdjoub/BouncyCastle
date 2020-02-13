@@ -11,7 +11,7 @@ import javax.crypto.Cipher;
 import org.bouncycastle.bcasn1.cms.GenericHybridParameters;
 import org.bouncycastle.bcasn1.cms.RsaKemParameters;
 import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.crypto.util.DEROtherInfo;
+import org.bouncycastle.bccrypto.util.DEROtherInfo;
 import org.bouncycastle.jcajce.spec.KTSParameterSpec;
 import org.bouncycastle.jcajce.util.DefaultJcaJceHelper;
 import org.bouncycastle.jcajce.util.NamedJcaJceHelper;

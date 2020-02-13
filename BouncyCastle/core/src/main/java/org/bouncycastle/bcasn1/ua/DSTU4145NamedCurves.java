@@ -3,9 +3,9 @@ package org.bouncycastle.bcasn1.ua;
 import java.math.BigInteger;
 
 import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
-import org.bouncycastle.crypto.params.ECDomainParameters;
-import org.bouncycastle.math.ec.ECCurve;
-import org.bouncycastle.math.ec.ECPoint;
+import org.bouncycastle.bccrypto.params.ECDomainParameters;
+import org.bouncycastle.bcmath.ec.ECCurve;
+import org.bouncycastle.bcmath.ec.ECPoint;
 
 public class DSTU4145NamedCurves
 {

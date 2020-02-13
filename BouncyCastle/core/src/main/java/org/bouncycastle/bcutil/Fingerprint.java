@@ -1,7 +1,7 @@
 package org.bouncycastle.bcutil;
 
-import org.bouncycastle.crypto.digests.SHA512tDigest;
-import org.bouncycastle.crypto.digests.SHAKEDigest;
+import org.bouncycastle.bccrypto.digests.SHA512tDigest;
+import org.bouncycastle.bccrypto.digests.SHAKEDigest;
 
 /**
  * Basic 20 byte finger print class.

@@ -2,11 +2,11 @@ package org.bouncycastle.jcajce.provider.digest;
 
 import org.bouncycastle.bcasn1.nist.NISTObjectIdentifiers;
 import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.crypto.CipherKeyGenerator;
-import org.bouncycastle.crypto.digests.SHA512Digest;
-import org.bouncycastle.crypto.digests.SHA512tDigest;
-import org.bouncycastle.crypto.macs.HMac;
-import org.bouncycastle.crypto.macs.OldHMac;
+import org.bouncycastle.bccrypto.CipherKeyGenerator;
+import org.bouncycastle.bccrypto.digests.SHA512Digest;
+import org.bouncycastle.bccrypto.digests.SHA512tDigest;
+import org.bouncycastle.bccrypto.macs.HMac;
+import org.bouncycastle.bccrypto.macs.OldHMac;
 import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import org.bouncycastle.jcajce.provider.symmetric.util.BaseKeyGenerator;
 import org.bouncycastle.jcajce.provider.symmetric.util.BaseMac;

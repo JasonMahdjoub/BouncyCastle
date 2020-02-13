@@ -2,7 +2,7 @@ package org.bouncycastle.tls.crypto.impl.bc;
 
 import java.io.IOException;
 
-import org.bouncycastle.math.ec.rfc7748.X25519;
+import org.bouncycastle.bcmath.ec.rfc7748.X25519;
 import org.bouncycastle.tls.AlertDescription;
 import org.bouncycastle.tls.TlsFatalAlert;
 import org.bouncycastle.tls.crypto.TlsAgreement;

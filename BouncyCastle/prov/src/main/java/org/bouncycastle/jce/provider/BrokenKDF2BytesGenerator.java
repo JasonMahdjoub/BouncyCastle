@@ -1,11 +1,11 @@
 package org.bouncycastle.jce.provider;
 
-import org.bouncycastle.crypto.DataLengthException;
-import org.bouncycastle.crypto.DerivationFunction;
-import org.bouncycastle.crypto.DerivationParameters;
-import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.OutputLengthException;
-import org.bouncycastle.crypto.params.KDFParameters;
+import org.bouncycastle.bccrypto.DataLengthException;
+import org.bouncycastle.bccrypto.DerivationFunction;
+import org.bouncycastle.bccrypto.DerivationParameters;
+import org.bouncycastle.bccrypto.Digest;
+import org.bouncycastle.bccrypto.OutputLengthException;
+import org.bouncycastle.bccrypto.params.KDFParameters;
 
 /**
  * Generator for PBE derived keys and ivs as defined by IEEE P1363a

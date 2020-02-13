@@ -1,13 +1,13 @@
 package org.bouncycastle.jcajce.provider.symmetric;
 
-import org.bouncycastle.crypto.BufferedBlockCipher;
-import org.bouncycastle.crypto.CipherKeyGenerator;
-import org.bouncycastle.crypto.engines.GOST3412_2015Engine;
-import org.bouncycastle.crypto.macs.CMac;
-import org.bouncycastle.crypto.modes.G3413CBCBlockCipher;
-import org.bouncycastle.crypto.modes.G3413CFBBlockCipher;
-import org.bouncycastle.crypto.modes.G3413CTRBlockCipher;
-import org.bouncycastle.crypto.modes.G3413OFBBlockCipher;
+import org.bouncycastle.bccrypto.BufferedBlockCipher;
+import org.bouncycastle.bccrypto.CipherKeyGenerator;
+import org.bouncycastle.bccrypto.engines.GOST3412_2015Engine;
+import org.bouncycastle.bccrypto.macs.CMac;
+import org.bouncycastle.bccrypto.modes.G3413CBCBlockCipher;
+import org.bouncycastle.bccrypto.modes.G3413CFBBlockCipher;
+import org.bouncycastle.bccrypto.modes.G3413CTRBlockCipher;
+import org.bouncycastle.bccrypto.modes.G3413OFBBlockCipher;
 import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import org.bouncycastle.jcajce.provider.symmetric.util.BaseBlockCipher;
 import org.bouncycastle.jcajce.provider.symmetric.util.BaseKeyGenerator;

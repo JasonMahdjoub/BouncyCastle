@@ -2,9 +2,9 @@ package org.bouncycastle.jcajce.provider.digest;
 
 import org.bouncycastle.bcasn1.iana.IANAObjectIdentifiers;
 import org.bouncycastle.bcasn1.teletrust.TeleTrusTObjectIdentifiers;
-import org.bouncycastle.crypto.CipherKeyGenerator;
-import org.bouncycastle.crypto.digests.RIPEMD160Digest;
-import org.bouncycastle.crypto.macs.HMac;
+import org.bouncycastle.bccrypto.CipherKeyGenerator;
+import org.bouncycastle.bccrypto.digests.RIPEMD160Digest;
+import org.bouncycastle.bccrypto.macs.HMac;
 import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import org.bouncycastle.jcajce.provider.symmetric.util.BaseKeyGenerator;
 import org.bouncycastle.jcajce.provider.symmetric.util.BaseMac;

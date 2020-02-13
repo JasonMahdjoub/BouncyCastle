@@ -3,10 +3,10 @@ package org.bouncycastle.bcasn1.ua;
 import java.math.BigInteger;
 import java.util.Random;
 
-import org.bouncycastle.math.ec.ECConstants;
-import org.bouncycastle.math.ec.ECCurve;
-import org.bouncycastle.math.ec.ECFieldElement;
-import org.bouncycastle.math.ec.ECPoint;
+import org.bouncycastle.bcmath.ec.ECConstants;
+import org.bouncycastle.bcmath.ec.ECCurve;
+import org.bouncycastle.bcmath.ec.ECFieldElement;
+import org.bouncycastle.bcmath.ec.ECPoint;
 
 /**
  * DSTU4145 encodes points somewhat differently than X9.62

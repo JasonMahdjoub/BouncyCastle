@@ -861,10 +861,10 @@
         <compile-doc srcDir="${provider.target.src.dir}" docsDir="${artifacts.docs.dir}/bcprov">
             <docElements>
                 <package name="org.bouncycastle.bcasn1.*" />
-                <package name="org.bouncycastle.crypto.*" />
+                <package name="org.bouncycastle.bccrypto.*" />
                 <package name="org.bouncycastle.jce.*" />
                 <package name="org.bouncycastle.jcajce.*" />
-                <package name="org.bouncycastle.math.*" />
+                <package name="org.bouncycastle.bcmath.*" />
                 <package name="org.bouncycastle.pqc.*" />
                 <package name="org.bouncycastle.bcutil.*" />
                 <group title="ASN.1 Support Packages" packages="org.bouncycastle.asn1*" />
@@ -872,7 +872,7 @@
                 <group title="JCA/JCE Utility and Extension Packages" packages="org.bouncycastle.jce*,org.bouncycastle.jcajce*" />
                 <group title="Lightweight Crypto Packages" packages="org.bouncycastle.crypto*" />
                 <group title="Math and Utility Packages" packages="org.bouncycastle.util*:org.bouncycastle.math*" />
-                <group title="Test Packages" packages="org.bouncycastle.crypto.test*,org.bouncycastle.bcutil.utiltest,org.bouncycastle.bcasn1.test*,org.bouncycastle.bcutil.encoders.test*,org.bouncycastle.bcutil.io.test*,org.bouncycastle.bcutil.io.pem.test*,org.bouncycastle.math.ec.test*,org.bouncycastle.crypto.ec.test*,org.bouncycastle.crypto.prng.test*,org.bouncycastle.crypto.tls.test*,org.bouncycastle.crypto.agreement.test*,org.bouncycastle.jce.provider.test*" />
+                <group title="Test Packages" packages="org.bouncycastle.bccrypto.test*,org.bouncycastle.bcutil.utiltest,org.bouncycastle.bcasn1.test*,org.bouncycastle.bcutil.encoders.test*,org.bouncycastle.bcutil.io.test*,org.bouncycastle.bcutil.io.pem.test*,org.bouncycastle.bcmath.ec.test*,org.bouncycastle.bccrypto.ec.test*,org.bouncycastle.bccrypto.prng.test*,org.bouncycastle.bccrypto.tls.test*,org.bouncycastle.bccrypto.agreement.test*,org.bouncycastle.jce.provider.test*" />
                 <group title="Post-Quantum Lightweight Crypto Packages" packages="org.bouncycastle.pqc.crypto*" />
                 <group title="Post-Quantum ASN.1 Packages" packages="org.bouncycastle.pqc.asn1*" />
                 <group title="Post-Quantum Lightweight Math Packages" packages="org.bouncycastle.pqc.math*" />
@@ -899,7 +899,7 @@
         <compile-doc srcDir="${jce.target.src.dir}" docsDir="${artifacts.docs.dir}/jce">
             <docElements>
                 <package name="org.bouncycastle.bcasn1.*" />
-                <package name="org.bouncycastle.crypto.*" />
+                <package name="org.bouncycastle.bccrypto.*" />
                 <package name="org.bouncycastle.jce.*" />
                 <package name="org.bouncycastle.jcajce.*" />
                 <package name="org.bouncycastle.x509.*" />
@@ -1091,16 +1091,16 @@
         <compile-doc srcDir="${lcrypto.target.src.dir}" docsDir="${artifacts.docs.dir}/lcrypto">
             <docElements>
                 <package name="org.bouncycastle.bcasn1.*" />
-                <package name="org.bouncycastle.crypto.*" />
+                <package name="org.bouncycastle.bccrypto.*" />
                 <package name="org.bouncycastle.pqc.math.*" />
                 <package name="org.bouncycastle.pqc.crypto.*" />
                 <package name="org.bouncycastle.pqc.asn1.*" />
-                <package name="org.bouncycastle.math.*" />
+                <package name="org.bouncycastle.bcmath.*" />
                 <package name="org.bouncycastle.bcutil.*" />
                 <group title="Lightweight Crypto Packages" packages="org.bouncycastle.crypto*" />
                 <group title="ASN.1 Support Packages" packages="org.bouncycastle.asn1*" />
                 <group title="Utility Packages" packages="org.bouncycastle.util*:org.bouncycastle.math*" />
-                <group title="Test Packages" packages="org.bouncycastle.crypto.test*,org.bouncycastle.bcutil.utiltest,org.bouncycastle.bcasn1.test*,org.bouncycastle.bcutil.encoders.test*,org.bouncycastle.bcutil.io.test*,org.bouncycastle.bcutil.io.pem.test*,org.bouncycastle.math.ec.test*,org.bouncycastle.crypto.ec.test*,org.bouncycastle.crypto.prng.test*,org.bouncycastle.crypto.tls.test*,org.bouncycastle.crypto.agreement.test*" />
+                <group title="Test Packages" packages="org.bouncycastle.bccrypto.test*,org.bouncycastle.bcutil.utiltest,org.bouncycastle.bcasn1.test*,org.bouncycastle.bcutil.encoders.test*,org.bouncycastle.bcutil.io.test*,org.bouncycastle.bcutil.io.pem.test*,org.bouncycastle.bcmath.ec.test*,org.bouncycastle.bccrypto.ec.test*,org.bouncycastle.bccrypto.prng.test*,org.bouncycastle.bccrypto.tls.test*,org.bouncycastle.bccrypto.agreement.test*" />
                 <group title="Post-Quantum Lightweight Crypto Packages" packages="org.bouncycastle.pqc.crypto*" />
                 <group title="Post-Quantum Lightweight Math Packages" packages="org.bouncycastle.pqc.math*" />
                 <group title="Post-Quantum ASN.1 Packages" packages="org.bouncycastle.pqc.asn1*" />

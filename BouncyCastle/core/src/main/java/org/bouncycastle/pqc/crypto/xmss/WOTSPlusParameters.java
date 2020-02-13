@@ -1,7 +1,7 @@
 package org.bouncycastle.pqc.crypto.xmss;
 
 import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
-import org.bouncycastle.crypto.Digest;
+import org.bouncycastle.bccrypto.Digest;
 
 /**
  * WOTS+ Parameters.

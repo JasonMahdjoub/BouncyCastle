@@ -12,12 +12,12 @@ import org.bouncycastle.bcasn1.DEROctetString;
 import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
 import org.bouncycastle.bcasn1.ua.DSTU4145Params;
 import org.bouncycastle.bcasn1.x509.X509ObjectIdentifiers;
-import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.DSAExt;
-import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.digests.GOST3411Digest;
-import org.bouncycastle.crypto.params.ParametersWithRandom;
-import org.bouncycastle.crypto.signers.DSTU4145Signer;
+import org.bouncycastle.bccrypto.CipherParameters;
+import org.bouncycastle.bccrypto.DSAExt;
+import org.bouncycastle.bccrypto.Digest;
+import org.bouncycastle.bccrypto.digests.GOST3411Digest;
+import org.bouncycastle.bccrypto.params.ParametersWithRandom;
+import org.bouncycastle.bccrypto.signers.DSTU4145Signer;
 import org.bouncycastle.jcajce.provider.asymmetric.util.ECUtil;
 import org.bouncycastle.jce.interfaces.ECKey;
 

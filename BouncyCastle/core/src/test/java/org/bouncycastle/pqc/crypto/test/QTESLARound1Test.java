@@ -13,8 +13,8 @@ import java.util.Set;
 
 import junit.framework.TestCase;
 import org.bouncycastle.bcutil.encoders.Hex;
-import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
-import org.bouncycastle.crypto.params.ParametersWithRandom;
+import org.bouncycastle.bccrypto.AsymmetricCipherKeyPair;
+import org.bouncycastle.bccrypto.params.ParametersWithRandom;
 import org.bouncycastle.pqc.crypto.qteslarnd1.*;
 import org.bouncycastle.pqc.crypto.qteslarnd1.QTESLAPublicKeyParameters;
 import org.bouncycastle.bcutil.Arrays;

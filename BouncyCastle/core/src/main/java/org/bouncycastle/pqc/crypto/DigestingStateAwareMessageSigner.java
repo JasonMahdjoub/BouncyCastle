@@ -1,7 +1,7 @@
 package org.bouncycastle.pqc.crypto;
 
-import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
+import org.bouncycastle.bccrypto.Digest;
+import org.bouncycastle.bccrypto.params.AsymmetricKeyParameter;
 
 
 /**

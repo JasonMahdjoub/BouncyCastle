@@ -1,7 +1,7 @@
 package org.bouncycastle.pqc.crypto.test;
 
 import junit.framework.TestCase;
-import org.bouncycastle.crypto.digests.SHA256Digest;
+import org.bouncycastle.bccrypto.digests.SHA256Digest;
 import org.bouncycastle.pqc.crypto.xmss.XMSSMT;
 import org.bouncycastle.pqc.crypto.xmss.XMSSMTParameters;
 import org.bouncycastle.pqc.crypto.xmss.XMSSMTSignature;

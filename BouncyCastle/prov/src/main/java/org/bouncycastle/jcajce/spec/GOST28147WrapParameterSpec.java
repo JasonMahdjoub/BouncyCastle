@@ -7,7 +7,7 @@ import java.util.Map;
 import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 import org.bouncycastle.bcasn1.cryptopro.CryptoProObjectIdentifiers;
 import org.bouncycastle.bcasn1.rosstandart.RosstandartObjectIdentifiers;
-import org.bouncycastle.crypto.engines.GOST28147Engine;
+import org.bouncycastle.bccrypto.engines.GOST28147Engine;
 import org.bouncycastle.bcutil.Arrays;
 
 /**

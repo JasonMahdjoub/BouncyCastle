@@ -7,8 +7,8 @@ import java.util.Date;
 import org.bouncycastle.bcasn1.x500.X500Name;
 import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.cert.X509v3CertificateBuilder;
-import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
-import org.bouncycastle.crypto.util.SubjectPublicKeyInfoFactory;
+import org.bouncycastle.bccrypto.params.AsymmetricKeyParameter;
+import org.bouncycastle.bccrypto.util.SubjectPublicKeyInfoFactory;
 
 /**
  * JCA helper class to allow BC lightweight objects to be used in the construction of a Version 3 certificate.

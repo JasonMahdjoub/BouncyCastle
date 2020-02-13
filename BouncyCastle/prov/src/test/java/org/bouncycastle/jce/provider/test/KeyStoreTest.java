@@ -29,7 +29,7 @@ import org.bouncycastle.bcasn1.x9.X9ECParameters;
 import org.bouncycastle.jce.X509Principal;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.jce.spec.ECParameterSpec;
-import org.bouncycastle.math.ec.ECCurve;
+import org.bouncycastle.bcmath.ec.ECCurve;
 import org.bouncycastle.bcutil.encoders.Base64;
 import org.bouncycastle.bcutil.test.SimpleTest;
 import org.bouncycastle.x509.X509V3CertificateGenerator;

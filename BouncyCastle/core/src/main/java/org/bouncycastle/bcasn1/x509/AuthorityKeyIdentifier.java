@@ -13,8 +13,8 @@ import org.bouncycastle.bcasn1.ASN1TaggedObject;
 import org.bouncycastle.bcasn1.DEROctetString;
 import org.bouncycastle.bcasn1.DERSequence;
 import org.bouncycastle.bcasn1.DERTaggedObject;
-import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.digests.SHA1Digest;
+import org.bouncycastle.bccrypto.Digest;
+import org.bouncycastle.bccrypto.digests.SHA1Digest;
 import org.bouncycastle.bcutil.encoders.Hex;
 
 /**

@@ -43,7 +43,7 @@
             You should just remove the finalize method.
           -->
 
-        <Class name="org.bouncycastle.crypto.general.ElGamalPrivateKeyParameters"/>
+        <Class name="org.bouncycastle.bccrypto.general.ElGamalPrivateKeyParameters"/>
         <Method name="finalize"/>
         <Bug code="FI"/>
     </Match>
@@ -72,7 +72,7 @@
 
 
     <!-- removed unnecessary condition statement from org.bouncycastle.bcasn1.ASN1ApplicationSpecific.replaceTagNumber(int, byte[]) @212 -->
-    <!-- commented out if statement as it cannot fire:  org.bouncycastle.crypto.fips.BaseKDFBytesGenerator.generateBytes(byte[], int, int) @87 -->
+    <!-- commented out if statement as it cannot fire:  org.bouncycastle.bccrypto.fips.BaseKDFBytesGenerator.generateBytes(byte[], int, int) @87 -->
 
     <Match>
         <Class name="org.bouncycastle.bcasn1.ASN1OctetString"/>

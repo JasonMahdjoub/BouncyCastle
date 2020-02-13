@@ -10,8 +10,8 @@ import java.security.spec.AlgorithmParameterSpec;
 
 import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
 import org.bouncycastle.bcasn1.x509.X509ObjectIdentifiers;
-import org.bouncycastle.crypto.DSA;
-import org.bouncycastle.crypto.Digest;
+import org.bouncycastle.bccrypto.DSA;
+import org.bouncycastle.bccrypto.Digest;
 
 public abstract class DSABase
     extends Signature

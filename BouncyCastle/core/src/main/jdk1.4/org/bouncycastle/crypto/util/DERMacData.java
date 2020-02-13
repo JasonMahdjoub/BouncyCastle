@@ -1,4 +1,4 @@
-package org.bouncycastle.crypto.util;
+package org.bouncycastle.bccrypto.util;
 
 import org.bouncycastle.bcasn1.ASN1OctetString;
 import org.bouncycastle.bcasn1.DERTaggedObject;

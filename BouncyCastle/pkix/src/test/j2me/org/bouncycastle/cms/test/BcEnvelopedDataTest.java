@@ -13,8 +13,8 @@ import org.bouncycastle.cms.RecipientInformationStore;
 import org.bouncycastle.cms.bc.BcCMSContentEncryptorBuilder;
 import org.bouncycastle.cms.bc.BcRSAKeyTransEnvelopedRecipient;
 import org.bouncycastle.cms.bc.BcRSAKeyTransRecipientInfoGenerator;
-import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
-import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
+import org.bouncycastle.bccrypto.AsymmetricCipherKeyPair;
+import org.bouncycastle.bccrypto.params.AsymmetricKeyParameter;
 import org.bouncycastle.bcutil.Arrays;
 import org.bouncycastle.bcutil.test.SimpleTest;
 

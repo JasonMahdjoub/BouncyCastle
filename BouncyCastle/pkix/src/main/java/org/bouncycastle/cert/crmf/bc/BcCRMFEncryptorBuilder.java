@@ -6,10 +6,10 @@ import java.security.SecureRandom;
 import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.cert.crmf.CRMFException;
-import org.bouncycastle.crypto.CipherKeyGenerator;
-import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
-import org.bouncycastle.crypto.params.KeyParameter;
-import org.bouncycastle.crypto.util.CipherFactory;
+import org.bouncycastle.bccrypto.CipherKeyGenerator;
+import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.params.KeyParameter;
+import org.bouncycastle.bccrypto.util.CipherFactory;
 import org.bouncycastle.operator.GenericKey;
 import org.bouncycastle.operator.OutputEncryptor;
 

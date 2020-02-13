@@ -7,9 +7,9 @@ import java.security.spec.AlgorithmParameterSpec;
 
 import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
 import org.bouncycastle.bcasn1.x509.X509ObjectIdentifiers;
-import org.bouncycastle.crypto.DSAExt;
-import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.signers.DSAEncoding;
+import org.bouncycastle.bccrypto.DSAExt;
+import org.bouncycastle.bccrypto.Digest;
+import org.bouncycastle.bccrypto.signers.DSAEncoding;
 
 public abstract class DSABase
     extends SignatureSpi

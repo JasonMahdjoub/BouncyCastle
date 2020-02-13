@@ -1,7 +1,7 @@
 package org.bouncycastle.jcajce.provider.digest;
 
 import org.bouncycastle.bcasn1.misc.BCMiscObjectIdentifiers;
-import org.bouncycastle.crypto.digests.Blake2sDigest;
+import org.bouncycastle.bccrypto.digests.Blake2sDigest;
 import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 
 public class Blake2s

@@ -8,9 +8,9 @@ import java.security.spec.InvalidKeySpecException;
 
 import org.bouncycastle.bcasn1.edec.EdECObjectIdentifiers;
 import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
-import org.bouncycastle.crypto.params.X25519PublicKeyParameters;
-import org.bouncycastle.crypto.params.X448PublicKeyParameters;
+import org.bouncycastle.bccrypto.params.AsymmetricKeyParameter;
+import org.bouncycastle.bccrypto.params.X25519PublicKeyParameters;
+import org.bouncycastle.bccrypto.params.X448PublicKeyParameters;
 import org.bouncycastle.jcajce.interfaces.XDHKey;
 import org.bouncycastle.bcutil.Arrays;
 

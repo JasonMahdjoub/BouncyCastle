@@ -1,6 +1,6 @@
 package org.bouncycastle.pqc.crypto.gmss;
 
-import org.bouncycastle.crypto.Digest;
+import org.bouncycastle.bccrypto.Digest;
 
 public interface GMSSDigestProvider
 {

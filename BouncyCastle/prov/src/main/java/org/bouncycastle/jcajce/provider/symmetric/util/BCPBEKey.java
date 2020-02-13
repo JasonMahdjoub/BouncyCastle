@@ -6,10 +6,10 @@ import javax.crypto.interfaces.PBEKey;
 import javax.crypto.spec.PBEKeySpec;
 
 import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
-import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.PBEParametersGenerator;
-import org.bouncycastle.crypto.params.KeyParameter;
-import org.bouncycastle.crypto.params.ParametersWithIV;
+import org.bouncycastle.bccrypto.CipherParameters;
+import org.bouncycastle.bccrypto.PBEParametersGenerator;
+import org.bouncycastle.bccrypto.params.KeyParameter;
+import org.bouncycastle.bccrypto.params.ParametersWithIV;
 
 public class BCPBEKey
     implements PBEKey

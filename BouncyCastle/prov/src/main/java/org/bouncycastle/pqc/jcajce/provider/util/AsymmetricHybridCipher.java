@@ -10,7 +10,7 @@ import java.security.spec.AlgorithmParameterSpec;
 import javax.crypto.BadPaddingException;
 import javax.crypto.ShortBufferException;
 
-import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
 
 /**
  * The AsymmetricHybridCipher class extends CipherSpiExt.

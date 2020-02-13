@@ -2,7 +2,7 @@ package org.bouncycastle.pqc.crypto.newhope;
 
 import java.security.SecureRandom;
 
-import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
+import org.bouncycastle.bccrypto.params.AsymmetricKeyParameter;
 import org.bouncycastle.pqc.crypto.ExchangePair;
 import org.bouncycastle.pqc.crypto.ExchangePairGenerator;
 

@@ -3,7 +3,7 @@ package org.bouncycastle.openpgp.operator.bc;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import org.bouncycastle.crypto.Signer;
+import org.bouncycastle.bccrypto.Signer;
 
 class SignerOutputStream
     extends OutputStream

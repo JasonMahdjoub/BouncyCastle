@@ -2,7 +2,7 @@ package org.bouncycastle.pqc.crypto.qtesla;
 
 import java.security.SecureRandom;
 
-import org.bouncycastle.crypto.KeyGenerationParameters;
+import org.bouncycastle.bccrypto.KeyGenerationParameters;
 
 /**
  * qTESLA key-pair generation parameters.

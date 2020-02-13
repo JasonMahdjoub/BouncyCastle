@@ -1,4 +1,4 @@
-package org.bouncycastle.crypto.examples;
+package org.bouncycastle.bccrypto.examples;
 
 import java.io.*;
 import java.lang.*;
@@ -9,11 +9,11 @@ import javax.microedition.lcdui.*;
 import org.bouncycastle.bcutil.test.*;
 import org.bouncycastle.bcutil.encoders.*;
 
-import org.bouncycastle.crypto.*;
-import org.bouncycastle.crypto.paddings.*;
-import org.bouncycastle.crypto.engines.*;
-import org.bouncycastle.crypto.modes.*;
-import org.bouncycastle.crypto.params.*;
+import org.bouncycastle.bccrypto.*;
+import org.bouncycastle.bccrypto.paddings.*;
+import org.bouncycastle.bccrypto.engines.*;
+import org.bouncycastle.bccrypto.modes.*;
+import org.bouncycastle.bccrypto.params.*;
 
 /**
  * MIDP is a simple graphics application for the J2ME CLDC/MIDP.

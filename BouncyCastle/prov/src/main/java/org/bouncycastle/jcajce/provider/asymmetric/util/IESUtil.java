@@ -1,7 +1,7 @@
 package org.bouncycastle.jcajce.provider.asymmetric.util;
 
-import org.bouncycastle.crypto.BlockCipher;
-import org.bouncycastle.crypto.BufferedBlockCipher;
+import org.bouncycastle.bccrypto.BlockCipher;
+import org.bouncycastle.bccrypto.BufferedBlockCipher;
 import org.bouncycastle.jce.spec.IESParameterSpec;
 
 public class IESUtil

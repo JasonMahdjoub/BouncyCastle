@@ -3,7 +3,7 @@ package org.bouncycastle.openpgp.operator.bc;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import org.bouncycastle.crypto.Digest;
+import org.bouncycastle.bccrypto.Digest;
 import org.bouncycastle.openpgp.PGPException;
 import org.bouncycastle.openpgp.operator.PGPDigestCalculator;
 import org.bouncycastle.openpgp.operator.PGPDigestCalculatorProvider;

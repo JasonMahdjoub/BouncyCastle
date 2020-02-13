@@ -1,10 +1,10 @@
 package org.bouncycastle.jcajce.provider.symmetric;
 
 import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.crypto.CipherKeyGenerator;
-import org.bouncycastle.crypto.engines.ChaCha7539Engine;
-import org.bouncycastle.crypto.engines.ChaChaEngine;
-import org.bouncycastle.crypto.modes.ChaCha20Poly1305;
+import org.bouncycastle.bccrypto.CipherKeyGenerator;
+import org.bouncycastle.bccrypto.engines.ChaCha7539Engine;
+import org.bouncycastle.bccrypto.engines.ChaChaEngine;
+import org.bouncycastle.bccrypto.modes.ChaCha20Poly1305;
 import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import org.bouncycastle.jcajce.provider.symmetric.util.BaseBlockCipher;
 import org.bouncycastle.jcajce.provider.symmetric.util.BaseKeyGenerator;

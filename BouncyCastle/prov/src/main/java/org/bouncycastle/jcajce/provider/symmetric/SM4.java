@@ -7,14 +7,14 @@ import java.security.spec.AlgorithmParameterSpec;
 
 import javax.crypto.spec.IvParameterSpec;
 
-import org.bouncycastle.crypto.BlockCipher;
-import org.bouncycastle.crypto.CipherKeyGenerator;
-import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
-import org.bouncycastle.crypto.engines.SM4Engine;
-import org.bouncycastle.crypto.generators.Poly1305KeyGenerator;
-import org.bouncycastle.crypto.macs.CMac;
-import org.bouncycastle.crypto.macs.GMac;
-import org.bouncycastle.crypto.modes.GCMBlockCipher;
+import org.bouncycastle.bccrypto.BlockCipher;
+import org.bouncycastle.bccrypto.CipherKeyGenerator;
+import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.engines.SM4Engine;
+import org.bouncycastle.bccrypto.generators.Poly1305KeyGenerator;
+import org.bouncycastle.bccrypto.macs.CMac;
+import org.bouncycastle.bccrypto.macs.GMac;
+import org.bouncycastle.bccrypto.modes.GCMBlockCipher;
 import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import org.bouncycastle.jcajce.provider.symmetric.util.BaseAlgorithmParameterGenerator;
 import org.bouncycastle.jcajce.provider.symmetric.util.BaseBlockCipher;
@@ -76,7 +76,7 @@ public final class SM4
     {
         public Poly1305()
         {
-            super(new org.bouncycastle.crypto.macs.Poly1305(new SM4Engine()));
+            super(new org.bouncycastle.bccrypto.macs.Poly1305(new SM4Engine()));
         }
     }
 

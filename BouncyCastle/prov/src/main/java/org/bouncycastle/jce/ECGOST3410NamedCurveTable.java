@@ -4,7 +4,7 @@ import java.util.Enumeration;
 
 import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 import org.bouncycastle.bcasn1.cryptopro.ECGOST3410NamedCurves;
-import org.bouncycastle.crypto.params.ECDomainParameters;
+import org.bouncycastle.bccrypto.params.ECDomainParameters;
 import org.bouncycastle.jce.spec.ECNamedCurveParameterSpec;
 
 /**

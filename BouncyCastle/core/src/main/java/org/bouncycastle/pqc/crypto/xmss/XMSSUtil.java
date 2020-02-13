@@ -11,7 +11,7 @@ import java.io.ObjectStreamClass;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.bouncycastle.crypto.Digest;
+import org.bouncycastle.bccrypto.Digest;
 import org.bouncycastle.bcutil.Arrays;
 import org.bouncycastle.bcutil.encoders.Hex;
 

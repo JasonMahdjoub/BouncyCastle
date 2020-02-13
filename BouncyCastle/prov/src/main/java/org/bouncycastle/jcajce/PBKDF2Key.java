@@ -1,6 +1,6 @@
 package org.bouncycastle.jcajce;
 
-import org.bouncycastle.crypto.CharToByteConverter;
+import org.bouncycastle.bccrypto.CharToByteConverter;
 import org.bouncycastle.bcutil.Arrays;
 
 /**

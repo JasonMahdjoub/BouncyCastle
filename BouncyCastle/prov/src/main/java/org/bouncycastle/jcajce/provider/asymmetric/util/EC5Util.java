@@ -16,17 +16,17 @@ import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 import org.bouncycastle.bcasn1.x9.ECNamedCurveTable;
 import org.bouncycastle.bcasn1.x9.X962Parameters;
 import org.bouncycastle.bcasn1.x9.X9ECParameters;
-import org.bouncycastle.crypto.ec.CustomNamedCurves;
-import org.bouncycastle.crypto.params.ECDomainParameters;
+import org.bouncycastle.bccrypto.ec.CustomNamedCurves;
+import org.bouncycastle.bccrypto.params.ECDomainParameters;
 import org.bouncycastle.jcajce.provider.config.ProviderConfiguration;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.jce.spec.ECNamedCurveParameterSpec;
 import org.bouncycastle.jce.spec.ECNamedCurveSpec;
-import org.bouncycastle.math.ec.ECAlgorithms;
-import org.bouncycastle.math.ec.ECCurve;
-import org.bouncycastle.math.field.FiniteField;
-import org.bouncycastle.math.field.Polynomial;
-import org.bouncycastle.math.field.PolynomialExtensionField;
+import org.bouncycastle.bcmath.ec.ECAlgorithms;
+import org.bouncycastle.bcmath.ec.ECCurve;
+import org.bouncycastle.bcmath.field.FiniteField;
+import org.bouncycastle.bcmath.field.Polynomial;
+import org.bouncycastle.bcmath.field.PolynomialExtensionField;
 import org.bouncycastle.bcutil.Arrays;
 
 public class EC5Util
@@ -279,7 +279,7 @@ public class EC5Util
     {
         ECCurve curve = convertCurve(ecSpec.getCurve());
 
-        org.bouncycastle.math.ec.ECPoint g = convertPoint(curve, ecSpec.getGenerator());
+        org.bouncycastle.bcmath.ec.ECPoint g = convertPoint(curve, ecSpec.getGenerator());
         BigInteger n = ecSpec.getOrder();
         BigInteger h = BigInteger.valueOf(ecSpec.getCofactor());
         byte[] seed = ecSpec.getCurve().getSeed();
@@ -295,17 +295,17 @@ public class EC5Util
         }
     }
 
-    public static org.bouncycastle.math.ec.ECPoint convertPoint(ECParameterSpec ecSpec, ECPoint point)
+    public static org.bouncycastle.bcmath.ec.ECPoint convertPoint(ECParameterSpec ecSpec, ECPoint point)
     {
         return convertPoint(convertCurve(ecSpec.getCurve()), point);
     }
 
-    public static org.bouncycastle.math.ec.ECPoint convertPoint(ECCurve curve, ECPoint point)
+    public static org.bouncycastle.bcmath.ec.ECPoint convertPoint(ECCurve curve, ECPoint point)
     {
         return curve.createPoint(point.getAffineX(), point.getAffineY());
     }
 
-    public static ECPoint convertPoint(org.bouncycastle.math.ec.ECPoint point)
+    public static ECPoint convertPoint(org.bouncycastle.bcmath.ec.ECPoint point)
     {
         point = point.normalize();
 

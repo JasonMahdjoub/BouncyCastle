@@ -9,7 +9,7 @@ import java.security.spec.X509EncodedKeySpec;
 import javax.crypto.Cipher;
 
 import org.bouncycastle.bcutil.encoders.Hex;
-import org.bouncycastle.crypto.prng.FixedSecureRandom;
+import org.bouncycastle.bccrypto.prng.FixedSecureRandom;
 import org.bouncycastle.jce.interfaces.ECPrivateKey;
 import org.bouncycastle.jce.interfaces.ECPublicKey;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;

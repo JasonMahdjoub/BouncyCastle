@@ -8,16 +8,16 @@ import java.security.spec.AlgorithmParameterSpec;
 import javax.crypto.spec.IvParameterSpec;
 
 import org.bouncycastle.bcasn1.ntt.NTTObjectIdentifiers;
-import org.bouncycastle.crypto.BlockCipher;
-import org.bouncycastle.crypto.CipherKeyGenerator;
-import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
-import org.bouncycastle.crypto.engines.CamelliaEngine;
-import org.bouncycastle.crypto.engines.CamelliaWrapEngine;
-import org.bouncycastle.crypto.engines.RFC3211WrapEngine;
-import org.bouncycastle.crypto.generators.Poly1305KeyGenerator;
-import org.bouncycastle.crypto.macs.GMac;
-import org.bouncycastle.crypto.modes.CBCBlockCipher;
-import org.bouncycastle.crypto.modes.GCMBlockCipher;
+import org.bouncycastle.bccrypto.BlockCipher;
+import org.bouncycastle.bccrypto.CipherKeyGenerator;
+import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.engines.CamelliaEngine;
+import org.bouncycastle.bccrypto.engines.CamelliaWrapEngine;
+import org.bouncycastle.bccrypto.engines.RFC3211WrapEngine;
+import org.bouncycastle.bccrypto.generators.Poly1305KeyGenerator;
+import org.bouncycastle.bccrypto.macs.GMac;
+import org.bouncycastle.bccrypto.modes.CBCBlockCipher;
+import org.bouncycastle.bccrypto.modes.GCMBlockCipher;
 import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import org.bouncycastle.jcajce.provider.symmetric.util.BaseAlgorithmParameterGenerator;
 import org.bouncycastle.jcajce.provider.symmetric.util.BaseBlockCipher;
@@ -99,7 +99,7 @@ public final class Camellia
     {
         public Poly1305()
         {
-            super(new org.bouncycastle.crypto.macs.Poly1305(new CamelliaEngine()));
+            super(new org.bouncycastle.bccrypto.macs.Poly1305(new CamelliaEngine()));
         }
     }
 

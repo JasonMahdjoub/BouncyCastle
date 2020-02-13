@@ -1,6 +1,6 @@
 package org.bouncycastle.pqc.crypto.newhope;
 
-import org.bouncycastle.crypto.digests.SHAKEDigest;
+import org.bouncycastle.bccrypto.digests.SHAKEDigest;
 import org.bouncycastle.bcutil.Pack;
 
 class Poly

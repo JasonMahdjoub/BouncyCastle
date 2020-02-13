@@ -5,9 +5,9 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Arrays;
 
-import org.bouncycastle.crypto.params.Ed25519PrivateKeyParameters;
-import org.bouncycastle.crypto.params.Ed25519PublicKeyParameters;
-import org.bouncycastle.math.ec.rfc8032.Ed25519;
+import org.bouncycastle.bccrypto.params.Ed25519PrivateKeyParameters;
+import org.bouncycastle.bccrypto.params.Ed25519PublicKeyParameters;
+import org.bouncycastle.bcmath.ec.rfc8032.Ed25519;
 import org.bouncycastle.tls.HashAlgorithm;
 import org.bouncycastle.tls.SignatureAlgorithm;
 import org.bouncycastle.tls.SignatureAndHashAlgorithm;

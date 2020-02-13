@@ -2,8 +2,8 @@ package org.bouncycastle.bcutil.test;
 
 import java.security.SecureRandom;
 
-import org.bouncycastle.crypto.prng.EntropySource;
-import org.bouncycastle.crypto.prng.EntropySourceProvider;
+import org.bouncycastle.bccrypto.prng.EntropySource;
+import org.bouncycastle.bccrypto.prng.EntropySourceProvider;
 
 /**
  * A class for returning "quick entropy" for testing purposes.

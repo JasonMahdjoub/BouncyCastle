@@ -1,4 +1,4 @@
-package org.bouncycastle.crypto.tls;
+package org.bouncycastle.bccrypto.tls;
 
 import java.io.IOException;
 import javax.microedition.io.DatagramConnection;

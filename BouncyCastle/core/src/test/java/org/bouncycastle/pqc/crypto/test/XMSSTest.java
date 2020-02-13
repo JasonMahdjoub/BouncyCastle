@@ -7,8 +7,8 @@ import java.util.List;
 
 import junit.framework.TestCase;
 import org.bouncycastle.bcutil.encoders.Hex;
-import org.bouncycastle.crypto.digests.SHA256Digest;
-import org.bouncycastle.crypto.digests.SHA512Digest;
+import org.bouncycastle.bccrypto.digests.SHA256Digest;
+import org.bouncycastle.bccrypto.digests.SHA512Digest;
 import org.bouncycastle.pqc.crypto.xmss.XMSS;
 import org.bouncycastle.pqc.crypto.xmss.XMSSNode;
 import org.bouncycastle.pqc.crypto.xmss.XMSSParameters;

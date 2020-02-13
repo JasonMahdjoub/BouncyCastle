@@ -6,10 +6,10 @@ import java.security.spec.KeySpec;
 import javax.crypto.SecretKey;
 
 import org.bouncycastle.bcasn1.misc.BCMiscObjectIdentifiers;
-import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.PasswordConverter;
-import org.bouncycastle.crypto.generators.SCrypt;
-import org.bouncycastle.crypto.params.KeyParameter;
+import org.bouncycastle.bccrypto.CipherParameters;
+import org.bouncycastle.bccrypto.PasswordConverter;
+import org.bouncycastle.bccrypto.generators.SCrypt;
+import org.bouncycastle.bccrypto.params.KeyParameter;
 import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import org.bouncycastle.jcajce.provider.symmetric.util.BCPBEKey;
 import org.bouncycastle.jcajce.provider.symmetric.util.BaseSecretKeyFactory;

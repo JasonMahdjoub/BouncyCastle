@@ -1,4 +1,4 @@
-package org.bouncycastle.crypto.test;
+package org.bouncycastle.bccrypto.test;
 
 import org.bouncycastle.bcutil.test.SimpleTest;
 import org.bouncycastle.bcutil.test.Test;

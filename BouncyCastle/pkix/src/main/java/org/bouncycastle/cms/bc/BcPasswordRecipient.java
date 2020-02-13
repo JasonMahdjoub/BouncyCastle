@@ -5,12 +5,12 @@ import org.bouncycastle.bcasn1.pkcs.PBKDF2Params;
 import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.cms.CMSException;
 import org.bouncycastle.cms.PasswordRecipient;
-import org.bouncycastle.crypto.InvalidCipherTextException;
-import org.bouncycastle.crypto.PBEParametersGenerator;
-import org.bouncycastle.crypto.Wrapper;
-import org.bouncycastle.crypto.generators.PKCS5S2ParametersGenerator;
-import org.bouncycastle.crypto.params.KeyParameter;
-import org.bouncycastle.crypto.params.ParametersWithIV;
+import org.bouncycastle.bccrypto.InvalidCipherTextException;
+import org.bouncycastle.bccrypto.PBEParametersGenerator;
+import org.bouncycastle.bccrypto.Wrapper;
+import org.bouncycastle.bccrypto.generators.PKCS5S2ParametersGenerator;
+import org.bouncycastle.bccrypto.params.KeyParameter;
+import org.bouncycastle.bccrypto.params.ParametersWithIV;
 
 /**
  * the RecipientInfo class for a recipient who has been sent a message

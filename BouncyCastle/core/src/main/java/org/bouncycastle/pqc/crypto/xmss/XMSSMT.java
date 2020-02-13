@@ -3,7 +3,7 @@ package org.bouncycastle.pqc.crypto.xmss;
 import java.security.SecureRandom;
 import java.text.ParseException;
 
-import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
+import org.bouncycastle.bccrypto.AsymmetricCipherKeyPair;
 import org.bouncycastle.bcutil.Arrays;
 
 /**

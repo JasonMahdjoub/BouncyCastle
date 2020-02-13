@@ -11,12 +11,12 @@ import javax.crypto.spec.IvParameterSpec;
 
 import org.bouncycastle.bcasn1.misc.BCMiscObjectIdentifiers;
 import org.bouncycastle.bcasn1.misc.IDEACBCPar;
-import org.bouncycastle.crypto.CipherKeyGenerator;
-import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
-import org.bouncycastle.crypto.engines.IDEAEngine;
-import org.bouncycastle.crypto.macs.CBCBlockCipherMac;
-import org.bouncycastle.crypto.macs.CFBBlockCipherMac;
-import org.bouncycastle.crypto.modes.CBCBlockCipher;
+import org.bouncycastle.bccrypto.CipherKeyGenerator;
+import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.engines.IDEAEngine;
+import org.bouncycastle.bccrypto.macs.CBCBlockCipherMac;
+import org.bouncycastle.bccrypto.macs.CFBBlockCipherMac;
+import org.bouncycastle.bccrypto.modes.CBCBlockCipher;
 import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import org.bouncycastle.jcajce.provider.symmetric.util.BaseAlgorithmParameterGenerator;
 import org.bouncycastle.jcajce.provider.symmetric.util.BaseAlgorithmParameters;

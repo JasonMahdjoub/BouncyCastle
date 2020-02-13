@@ -1,6 +1,6 @@
 package org.bouncycastle.pqc.crypto;
 
-import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
+import org.bouncycastle.bccrypto.params.AsymmetricKeyParameter;
 
 /**
  * Interface for NewHope style key material exchange generators.

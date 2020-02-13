@@ -7,7 +7,7 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.PBEKeySpec;
 
 import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
-import org.bouncycastle.crypto.CipherParameters;
+import org.bouncycastle.bccrypto.CipherParameters;
 
 public class PBESecretKeyFactory
     extends BaseSecretKeyFactory

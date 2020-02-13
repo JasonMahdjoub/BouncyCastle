@@ -1,7 +1,7 @@
 package org.bouncycastle.pqc.crypto;
 
 
-import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
+import org.bouncycastle.bccrypto.params.AsymmetricKeyParameter;
 
 /**
  * Base interface for a PQC stateful signature algorithm.

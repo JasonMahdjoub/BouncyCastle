@@ -1,4 +1,4 @@
-package org.bouncycastle.crypto;
+package org.bouncycastle.bccrypto;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
@@ -7,10 +7,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.bouncycastle.bcasn1.x9.X9ECParameters;
-import org.bouncycastle.crypto.params.DHParameters;
-import org.bouncycastle.crypto.params.DHValidationParameters;
-import org.bouncycastle.crypto.params.DSAParameters;
-import org.bouncycastle.crypto.params.DSAValidationParameters;
+import org.bouncycastle.bccrypto.params.DHParameters;
+import org.bouncycastle.bccrypto.params.DHValidationParameters;
+import org.bouncycastle.bccrypto.params.DSAParameters;
+import org.bouncycastle.bccrypto.params.DSAValidationParameters;
 import org.bouncycastle.bcutil.encoders.Hex;
 
 /**

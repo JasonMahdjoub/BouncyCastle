@@ -2,7 +2,7 @@ package org.bouncycastle.pqc.crypto.mceliece;
 
 import java.security.SecureRandom;
 
-import org.bouncycastle.crypto.KeyGenerationParameters;
+import org.bouncycastle.bccrypto.KeyGenerationParameters;
 
 public class McElieceKeyGenerationParameters
     extends KeyGenerationParameters

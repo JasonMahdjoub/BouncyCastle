@@ -6,13 +6,13 @@ import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.SignatureException;
 
-import org.bouncycastle.crypto.CryptoException;
-import org.bouncycastle.crypto.Signer;
-import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
-import org.bouncycastle.crypto.params.Ed448PrivateKeyParameters;
-import org.bouncycastle.crypto.params.Ed448PublicKeyParameters;
-import org.bouncycastle.crypto.signers.Ed25519Signer;
-import org.bouncycastle.crypto.signers.Ed448Signer;
+import org.bouncycastle.bccrypto.CryptoException;
+import org.bouncycastle.bccrypto.Signer;
+import org.bouncycastle.bccrypto.params.AsymmetricKeyParameter;
+import org.bouncycastle.bccrypto.params.Ed448PrivateKeyParameters;
+import org.bouncycastle.bccrypto.params.Ed448PublicKeyParameters;
+import org.bouncycastle.bccrypto.signers.Ed25519Signer;
+import org.bouncycastle.bccrypto.signers.Ed448Signer;
 
 public class SignatureSpi
     extends java.security.SignatureSpi

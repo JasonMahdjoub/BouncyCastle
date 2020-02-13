@@ -1,4 +1,4 @@
-package org.bouncycastle.crypto.params;
+package org.bouncycastle.bccrypto.params;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -7,10 +7,10 @@ import java.util.Date;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
-import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.digests.SkeinDigest;
-import org.bouncycastle.crypto.digests.SkeinEngine;
-import org.bouncycastle.crypto.macs.SkeinMac;
+import org.bouncycastle.bccrypto.CipherParameters;
+import org.bouncycastle.bccrypto.digests.SkeinDigest;
+import org.bouncycastle.bccrypto.digests.SkeinEngine;
+import org.bouncycastle.bccrypto.macs.SkeinMac;
 import org.bouncycastle.bcutil.Integers;
 
 /**

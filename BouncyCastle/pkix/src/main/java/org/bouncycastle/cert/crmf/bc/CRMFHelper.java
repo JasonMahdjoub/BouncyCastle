@@ -5,12 +5,12 @@ import java.security.SecureRandom;
 import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.cert.crmf.CRMFException;
-import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.CipherKeyGenerator;
-import org.bouncycastle.crypto.params.KeyParameter;
-import org.bouncycastle.crypto.util.AlgorithmIdentifierFactory;
-import org.bouncycastle.crypto.util.CipherFactory;
-import org.bouncycastle.crypto.util.CipherKeyGeneratorFactory;
+import org.bouncycastle.bccrypto.CipherParameters;
+import org.bouncycastle.bccrypto.CipherKeyGenerator;
+import org.bouncycastle.bccrypto.params.KeyParameter;
+import org.bouncycastle.bccrypto.util.AlgorithmIdentifierFactory;
+import org.bouncycastle.bccrypto.util.CipherFactory;
+import org.bouncycastle.bccrypto.util.CipherKeyGeneratorFactory;
 
 class CRMFHelper
 {

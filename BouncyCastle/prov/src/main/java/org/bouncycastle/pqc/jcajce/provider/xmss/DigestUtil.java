@@ -2,11 +2,11 @@ package org.bouncycastle.pqc.jcajce.provider.xmss;
 
 import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 import org.bouncycastle.bcasn1.nist.NISTObjectIdentifiers;
-import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.Xof;
-import org.bouncycastle.crypto.digests.SHA256Digest;
-import org.bouncycastle.crypto.digests.SHA512Digest;
-import org.bouncycastle.crypto.digests.SHAKEDigest;
+import org.bouncycastle.bccrypto.Digest;
+import org.bouncycastle.bccrypto.Xof;
+import org.bouncycastle.bccrypto.digests.SHA256Digest;
+import org.bouncycastle.bccrypto.digests.SHA512Digest;
+import org.bouncycastle.bccrypto.digests.SHAKEDigest;
 import org.bouncycastle.pqc.jcajce.spec.XMSSParameterSpec;
 
 class DigestUtil

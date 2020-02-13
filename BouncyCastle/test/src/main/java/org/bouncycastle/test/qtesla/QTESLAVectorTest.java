@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.bouncycastle.crypto.params.ParametersWithRandom;
+import org.bouncycastle.bccrypto.params.ParametersWithRandom;
 import org.bouncycastle.pqc.crypto.qteslarnd1.QTESLAPrivateKeyParameters;
 import org.bouncycastle.pqc.crypto.qteslarnd1.QTESLAPublicKeyParameters;
 import org.bouncycastle.pqc.crypto.qteslarnd1.QTESLASecurityCategory;

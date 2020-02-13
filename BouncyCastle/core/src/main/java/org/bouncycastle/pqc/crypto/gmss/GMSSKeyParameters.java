@@ -1,6 +1,6 @@
 package org.bouncycastle.pqc.crypto.gmss;
 
-import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
+import org.bouncycastle.bccrypto.params.AsymmetricKeyParameter;
 
 public class GMSSKeyParameters
     extends AsymmetricKeyParameter

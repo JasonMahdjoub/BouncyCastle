@@ -2,8 +2,8 @@ package org.bouncycastle.bcasn1.x9;
 
 import java.math.BigInteger;
 
-import org.bouncycastle.math.ec.ECCurve;
-import org.bouncycastle.math.ec.ECFieldElement;
+import org.bouncycastle.bcmath.ec.ECCurve;
+import org.bouncycastle.bcmath.ec.ECFieldElement;
 
 /**
  * A class which converts integers to byte arrays, allowing padding and calculations

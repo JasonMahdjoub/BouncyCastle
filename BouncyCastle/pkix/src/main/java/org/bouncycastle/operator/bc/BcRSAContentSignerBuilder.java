@@ -1,9 +1,9 @@
 package org.bouncycastle.operator.bc;
 
 import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.Signer;
-import org.bouncycastle.crypto.signers.RSADigestSigner;
+import org.bouncycastle.bccrypto.Digest;
+import org.bouncycastle.bccrypto.Signer;
+import org.bouncycastle.bccrypto.signers.RSADigestSigner;
 import org.bouncycastle.operator.OperatorCreationException;
 
 public class BcRSAContentSignerBuilder

@@ -1,7 +1,7 @@
 package org.bouncycastle.jcajce.provider.digest;
 
 import org.bouncycastle.bcasn1.gm.GMObjectIdentifiers;
-import org.bouncycastle.crypto.digests.SM3Digest;
+import org.bouncycastle.bccrypto.digests.SM3Digest;
 import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 
 public class SM3

@@ -17,7 +17,7 @@ import org.bouncycastle.bcasn1.ASN1Sequence;
 import org.bouncycastle.bcasn1.nist.NISTNamedCurves;
 import org.bouncycastle.bcasn1.x9.X9ECParameters;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.math.ec.ECCurve;
+import org.bouncycastle.bcmath.ec.ECCurve;
 import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 

@@ -2,9 +2,9 @@ package org.bouncycastle.tls.crypto.impl.jcajce;
 
 import java.security.SecureRandom;
 
-import org.bouncycastle.crypto.digests.SHA512Digest;
-import org.bouncycastle.crypto.prng.SP800SecureRandom;
-import org.bouncycastle.crypto.prng.SP800SecureRandomBuilder;
+import org.bouncycastle.bccrypto.digests.SHA512Digest;
+import org.bouncycastle.bccrypto.prng.SP800SecureRandom;
+import org.bouncycastle.bccrypto.prng.SP800SecureRandomBuilder;
 import org.bouncycastle.tls.crypto.TlsNonceGenerator;
 
 class JcaNonceGenerator

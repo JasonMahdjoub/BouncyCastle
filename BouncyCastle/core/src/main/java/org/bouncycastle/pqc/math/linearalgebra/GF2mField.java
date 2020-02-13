@@ -2,7 +2,7 @@ package org.bouncycastle.pqc.math.linearalgebra;
 
 import java.security.SecureRandom;
 
-import org.bouncycastle.crypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
 
 /**
  * This class describes operations with elements from the finite field F =

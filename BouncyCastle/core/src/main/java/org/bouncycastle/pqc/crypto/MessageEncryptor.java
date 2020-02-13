@@ -1,8 +1,8 @@
 package org.bouncycastle.pqc.crypto;
 
 
-import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.InvalidCipherTextException;
+import org.bouncycastle.bccrypto.CipherParameters;
+import org.bouncycastle.bccrypto.InvalidCipherTextException;
 
 /**
  * Base interface for a PQC encryption algorithm.

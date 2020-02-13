@@ -3,8 +3,8 @@ package org.bouncycastle.jcajce.provider.drbg;
 import java.security.SecureRandom;
 import java.security.SecureRandomSpi;
 
-import org.bouncycastle.crypto.digests.SHA512Digest;
-import org.bouncycastle.crypto.prng.SP800SecureRandomBuilder;
+import org.bouncycastle.bccrypto.digests.SHA512Digest;
+import org.bouncycastle.bccrypto.prng.SP800SecureRandomBuilder;
 import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import org.bouncycastle.jcajce.provider.util.AsymmetricAlgorithmProvider;
 import org.bouncycastle.bcutil.Arrays;

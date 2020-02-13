@@ -11,8 +11,8 @@ import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
 import org.bouncycastle.bcasn1.rosstandart.RosstandartObjectIdentifiers;
 import org.bouncycastle.bcasn1.teletrust.TeleTrusTObjectIdentifiers;
 import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.crypto.ExtendedDigest;
-import org.bouncycastle.crypto.digests.*;
+import org.bouncycastle.bccrypto.ExtendedDigest;
+import org.bouncycastle.bccrypto.digests.*;
 import org.bouncycastle.operator.OperatorCreationException;
 
 public class BcDefaultDigestProvider

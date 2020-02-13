@@ -6,7 +6,7 @@ import org.bouncycastle.bcasn1.ASN1Object;
 import org.bouncycastle.bcasn1.ASN1OctetString;
 import org.bouncycastle.bcasn1.ASN1Primitive;
 import org.bouncycastle.bcasn1.DEROctetString;
-import org.bouncycastle.math.ec.ECFieldElement;
+import org.bouncycastle.bcmath.ec.ECFieldElement;
 
 /**
  * class for processing an FieldElement as a DER object.

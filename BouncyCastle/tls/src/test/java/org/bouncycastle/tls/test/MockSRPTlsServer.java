@@ -6,8 +6,8 @@ import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.util.Vector;
 
-import org.bouncycastle.crypto.agreement.srp.SRP6VerifierGenerator;
-import org.bouncycastle.crypto.digests.SHA1Digest;
+import org.bouncycastle.bccrypto.agreement.srp.SRP6VerifierGenerator;
+import org.bouncycastle.bccrypto.digests.SHA1Digest;
 import org.bouncycastle.tls.AlertDescription;
 import org.bouncycastle.tls.AlertLevel;
 import org.bouncycastle.tls.BasicTlsSRPIdentity;

@@ -6,7 +6,7 @@ import java.io.ObjectOutputStream;
 
 import org.bouncycastle.bcasn1.ASN1Set;
 import org.bouncycastle.bcasn1.pkcs.PrivateKeyInfo;
-import org.bouncycastle.crypto.CipherParameters;
+import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.pqc.crypto.newhope.NHPrivateKeyParameters;
 import org.bouncycastle.pqc.crypto.util.PrivateKeyFactory;
 import org.bouncycastle.pqc.crypto.util.PrivateKeyInfoFactory;

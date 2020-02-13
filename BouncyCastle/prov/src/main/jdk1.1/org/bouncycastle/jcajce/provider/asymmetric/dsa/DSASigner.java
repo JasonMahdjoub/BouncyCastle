@@ -19,16 +19,16 @@ import org.bouncycastle.bcasn1.DERSequence;
 import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
 import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
 import org.bouncycastle.bcasn1.x509.X509ObjectIdentifiers;
-import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.DSA;
-import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.digests.NullDigest;
-import org.bouncycastle.crypto.digests.SHA1Digest;
-import org.bouncycastle.crypto.digests.SHA224Digest;
-import org.bouncycastle.crypto.digests.SHA256Digest;
-import org.bouncycastle.crypto.digests.SHA384Digest;
-import org.bouncycastle.crypto.digests.SHA512Digest;
-import org.bouncycastle.crypto.params.ParametersWithRandom;
+import org.bouncycastle.bccrypto.CipherParameters;
+import org.bouncycastle.bccrypto.DSA;
+import org.bouncycastle.bccrypto.Digest;
+import org.bouncycastle.bccrypto.digests.NullDigest;
+import org.bouncycastle.bccrypto.digests.SHA1Digest;
+import org.bouncycastle.bccrypto.digests.SHA224Digest;
+import org.bouncycastle.bccrypto.digests.SHA256Digest;
+import org.bouncycastle.bccrypto.digests.SHA384Digest;
+import org.bouncycastle.bccrypto.digests.SHA512Digest;
+import org.bouncycastle.bccrypto.params.ParametersWithRandom;
 
 public class DSASigner
     extends Signature
@@ -229,7 +229,7 @@ public class DSASigner
     {
         public stdDSA()
         {
-            super(new SHA1Digest(), new org.bouncycastle.crypto.signers.DSASigner());
+            super(new SHA1Digest(), new org.bouncycastle.bccrypto.signers.DSASigner());
         }
     }
 
@@ -238,7 +238,7 @@ public class DSASigner
     {
         public dsa224()
         {
-            super(new SHA224Digest(), new org.bouncycastle.crypto.signers.DSASigner());
+            super(new SHA224Digest(), new org.bouncycastle.bccrypto.signers.DSASigner());
         }
     }
     
@@ -247,7 +247,7 @@ public class DSASigner
     {
         public dsa256()
         {
-            super(new SHA256Digest(), new org.bouncycastle.crypto.signers.DSASigner());
+            super(new SHA256Digest(), new org.bouncycastle.bccrypto.signers.DSASigner());
         }
     }
     
@@ -256,7 +256,7 @@ public class DSASigner
     {
         public dsa384()
         {
-            super(new SHA384Digest(), new org.bouncycastle.crypto.signers.DSASigner());
+            super(new SHA384Digest(), new org.bouncycastle.bccrypto.signers.DSASigner());
         }
     }
     
@@ -265,7 +265,7 @@ public class DSASigner
     {
         public dsa512()
         {
-            super(new SHA512Digest(), new org.bouncycastle.crypto.signers.DSASigner());
+            super(new SHA512Digest(), new org.bouncycastle.bccrypto.signers.DSASigner());
         }
     }
 
@@ -274,7 +274,7 @@ public class DSASigner
     {
         public noneDSA()
         {
-            super(new NullDigest(), new org.bouncycastle.crypto.signers.DSASigner());
+            super(new NullDigest(), new org.bouncycastle.bccrypto.signers.DSASigner());
         }
     }
 }

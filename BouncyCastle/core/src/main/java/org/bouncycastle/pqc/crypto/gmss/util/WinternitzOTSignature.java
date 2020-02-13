@@ -1,6 +1,6 @@
 package org.bouncycastle.pqc.crypto.gmss.util;
 
-import org.bouncycastle.crypto.Digest;
+import org.bouncycastle.bccrypto.Digest;
 
 /**
  * This class implements key pair generation and signature generation of the

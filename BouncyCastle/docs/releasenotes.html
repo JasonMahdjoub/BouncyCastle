@@ -391,7 +391,11 @@ Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2016, December 23
 <li>CVE-2016-1000338: DSA does not fully validate ASN.1 encoding of signature on verification. It is possible to inject extra elements in the sequence making up the signature and still have it validate, which in some cases may allow the introduction of "invisible" data into a signed structure.</li>
 <li>CVE-2016-1000339: AESFastEngine has a side channel leak if table accesses can be observed. The use of lookup large static lookup tables in AESFastEngine means that where data accesses by the CPU can be observed, it is possible to gain information about the key used to initialize the cipher. We now recommend not using AESFastEngine where this might be a concern. The BC provider is now using AESEngine by default.</li>
 <li>CVE-2016-1000340: Static ECDH vulnerable to carry propagation bug.
-Carry propagation bugs in the implementation of squaring for several raw math classes have been fixed (org.bouncycastle.math.raw.Nat???). These classes are used by our custom elliptic curve implementations (org.bouncycastle.math.ec.custom.**), so there was the possibility of rare (in general usage) spurious calculations for elliptic curve scalar multiplications. Such errors would have been detected with high probability by the output validation for our scalar multipliers.</li>
+    Carry propagation bugs in the implementation of squaring for several raw math classes have been fixed
+    (org.bouncycastle.bcmath.raw.Nat???). These classes are used by our custom elliptic curve implementations
+    (org.bouncycastle.bcmath.ec.custom.**), so there was the possibility of rare (in general usage) spurious
+    calculations for elliptic curve scalar multiplications. Such errors would have been detected with high probability
+    by the output validation for our scalar multipliers.</li>
 <li>CVE-2016-1000341: DSA signature generation vulnerable to timing attack. Where timings can be closely observed for the generation of signatures, the lack of blinding in 1.55 or earlier, may allow an attacker to gain information about the signatures k value and ultimately the private value as well.</li>
 <li>CVE-2016-1000342: ECDSA does not fully validate ASN.1 encoding of signature on verification. It is possible to inject extra elements in the sequence making up the signature and still have it validate, which in some cases may allow the introduction of "invisible" data into a signed structure.</li>
 <li>CVE-2016-1000343: DSA key pair generator generates a weak private key if used with default values. If the JCA key pair generator is not explicitly initialised with DSA parameters, 1.55 and earlier generates a private value assuming a 1024 bit key size. In earlier releases this can be dealt with by explicitly passing parameters to the key pair generator.</li>
@@ -609,7 +613,7 @@ Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2014, July 28
 <li>GCM and GMAC now support tag lengths down to 32 bits.</li>
 <li>Custom implementations for many of the SEC Fp curves have been added, resulting in drastically improved performance.
     The current list includes all secp***k1 and secp***r1 curves from 192 to 521 bits. They can be accessed via the
-    org.bouncycastle.crypto.ec.CustomNamedCurves class and are generally selected by other internal APIs in place of
+    org.bouncycastle.bccrypto.ec.CustomNamedCurves class and are generally selected by other internal APIs in place of
     the generic implementations.</li>
 <li>Automatic EC point validation added, both for decoded inputs and multiplier outputs.</li>
 <li>A SkippingCipher interface has been added for ciphers that can be moved into a specific state for a given byte address. The lightweight class StreamBlockCipher has been generalised to support any BlockCipher object that can support a streaming mode.</li>
@@ -673,7 +677,7 @@ Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2013, December 3
 </ul>
 <h3>2.15.4 Notes</h3>
 <ul>
-<li>org.bouncycastle.crypto.DerivationFunction is now a base interface, the getDigest() method appears on
+<li>org.bouncycastle.bccrypto.DerivationFunction is now a base interface, the getDigest() method appears on
     DigestDerivationFunction.</li>
 <li>Recent developments at NIST indicate the SHA-3 may be changed before final standardisation. Please bare this in mind if you are using it.</li>
 <li>Other recent developments have raised concerns about the DualECDRBG. We have left the class in place for now, but it is now possible to provide your own parameter values, rather than using the NIST defined ones, if you choose to do so.</li>
@@ -715,14 +719,14 @@ Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2013, May 31
 <li>A new interface Memoable has been added for objects that can copy in and out their state. The digest classes now support this. A special
 class NonMemoableDigest has been added which hides the Memoable interface where it should not be available.</li>
 <li>TDEA is now recognised as an alias for DESede.</li>
-<li>A new package org.bouncycastle.crypto.ec has been introduced to the light wieght API with a range of EC based
+<li>A new package org.bouncycastle.bccrypto.ec has been introduced to the light wieght API with a range of EC based
     cryptographic operators.</li>
 <li>The OpenPGP API now supports password changing on V3 keys if the appropriate PBEKeyEncryptor is used.</li>
 <li>The OpenPGP API now supports password changing on secret key rings where only the private keys for the subkeys have been exported.</li>
 <li>Support has been added to the lightweight API for RSA-KEM and ECIES-KEM.</li>
 <li>Support has been added for NIST SP 800-38D - GMAC to AES and other 128 bit block size algorithms.</li>
-<li>The org.bouncycastle.crypto.tls package has been extended to support client and server side TLS 1.1.</li>
-<li>The org.bouncycastle.crypto.tls package has been extended to support client and server side DTLS 1.0.</li>
+<li>The org.bouncycastle.bccrypto.tls package has been extended to support client and server side TLS 1.1.</li>
+<li>The org.bouncycastle.bccrypto.tls package has been extended to support client and server side DTLS 1.0.</li>
 <li>A basic commitment package has been introduced into the lightweight API containing a digest based commitment scheme.</li>
 <li>It is now possible to set the NotAfter and NotBefore date in the CRMF CertificateRequestMessageBuilder class.</li>
 </ul>
@@ -1955,7 +1959,7 @@ This has been fixed.
 <li>ISO9796-2 signatures have been added to the JCE and lightweight API.
 <li>A more general paddings packge for use with MACs and block ciphers had been aded to the lightweight API. MACs now allow you to specify padding.
 <li>X9.23 Padding has been added to the JCE and lightwieght API. The old
-    PaddedBlockCipher class is now deprecated see org.bouncycastle.crypto.paddings for details.
+    PaddedBlockCipher class is now deprecated see org.bouncycastle.bccrypto.paddings for details.
     <li>SHA-256, SHA-384, and SHA-512 are now added. Note: while the public review
 period has finished, these algorithms have not yet been standardised, in the
 event that final standardisation changes the algorithms these implementations

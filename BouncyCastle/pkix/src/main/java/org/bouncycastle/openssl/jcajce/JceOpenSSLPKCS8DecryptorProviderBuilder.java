@@ -16,7 +16,7 @@ import org.bouncycastle.bcasn1.pkcs.PBES2Parameters;
 import org.bouncycastle.bcasn1.pkcs.PBKDF2Params;
 import org.bouncycastle.bcasn1.pkcs.PKCS12PBEParams;
 import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.crypto.CharToByteConverter;
+import org.bouncycastle.bccrypto.CharToByteConverter;
 import org.bouncycastle.jcajce.PBKDF1KeyWithParameters;
 import org.bouncycastle.jcajce.PKCS12KeyWithParameters;
 import org.bouncycastle.jcajce.io.CipherInputStream;

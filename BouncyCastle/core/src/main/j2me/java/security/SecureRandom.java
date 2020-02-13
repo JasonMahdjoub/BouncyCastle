@@ -2,10 +2,10 @@ package java.security;
 
 import java.util.Random;
 
-import org.bouncycastle.crypto.digests.SHA1Digest;
-import org.bouncycastle.crypto.digests.SHA256Digest;
-import org.bouncycastle.crypto.prng.RandomGenerator;
-import org.bouncycastle.crypto.prng.DigestRandomGenerator;
+import org.bouncycastle.bccrypto.digests.SHA1Digest;
+import org.bouncycastle.bccrypto.digests.SHA256Digest;
+import org.bouncycastle.bccrypto.prng.RandomGenerator;
+import org.bouncycastle.bccrypto.prng.DigestRandomGenerator;
 
 /**
  * An implementation of SecureRandom specifically for the light-weight API, JDK

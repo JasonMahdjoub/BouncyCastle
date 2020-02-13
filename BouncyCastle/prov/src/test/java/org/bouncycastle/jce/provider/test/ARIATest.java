@@ -16,7 +16,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 import org.bouncycastle.bcasn1.nsri.NSRIObjectIdentifiers;
 import org.bouncycastle.bcutil.encoders.Hex;
-import org.bouncycastle.crypto.prng.FixedSecureRandom;
+import org.bouncycastle.bccrypto.prng.FixedSecureRandom;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
 /**
