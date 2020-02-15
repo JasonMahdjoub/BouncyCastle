@@ -5,7 +5,7 @@ import java.security.spec.ECFieldFp;
 import java.security.spec.ECPoint;
 import java.security.spec.EllipticCurve;
 
-import org.bouncycastle.jcajce.provider.asymmetric.util.EC5Util;
+import org.bouncycastle.bcjcajce.provider.asymmetric.util.EC5Util;
 import org.bouncycastle.bcmath.ec.ECCurve;
 
 /**

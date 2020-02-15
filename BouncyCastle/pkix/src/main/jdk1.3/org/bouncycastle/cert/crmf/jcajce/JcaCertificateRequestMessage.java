@@ -7,9 +7,9 @@ import org.bouncycastle.bcasn1.crmf.CertReqMsg;
 import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
 import org.bouncycastle.cert.crmf.CRMFException;
 import org.bouncycastle.cert.crmf.CertificateRequestMessage;
-import org.bouncycastle.jcajce.util.DefaultJcaJceHelper;
-import org.bouncycastle.jcajce.util.NamedJcaJceHelper;
-import org.bouncycastle.jcajce.util.ProviderJcaJceHelper;
+import org.bouncycastle.bcjcajce.util.DefaultJcaJceHelper;
+import org.bouncycastle.bcjcajce.util.NamedJcaJceHelper;
+import org.bouncycastle.bcjcajce.util.ProviderJcaJceHelper;
 
 public class JcaCertificateRequestMessage
     extends CertificateRequestMessage

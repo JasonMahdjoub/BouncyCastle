@@ -1,7 +1,7 @@
 package org.bouncycastle.pqc.jcajce.provider;
 
-import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
-import org.bouncycastle.jcajce.provider.util.AsymmetricAlgorithmProvider;
+import org.bouncycastle.bcjcajce.provider.config.ConfigurableProvider;
+import org.bouncycastle.bcjcajce.provider.util.AsymmetricAlgorithmProvider;
 import org.bouncycastle.pqc.asn1.PQCObjectIdentifiers;
 
 public class McEliece

@@ -9,7 +9,7 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
 import org.bouncycastle.bcutil.encoders.Hex;
-import org.bouncycastle.jcajce.spec.SkeinParameterSpec;
+import org.bouncycastle.bcjcajce.spec.SkeinParameterSpec;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.bcutil.test.SimpleTest;
 

@@ -12,7 +12,7 @@ import java.security.spec.PSSParameterSpec;
 import org.bouncycastle.bcasn1.DERNull;
 import org.bouncycastle.bcasn1.nist.NISTObjectIdentifiers;
 import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.jcajce.util.JcaJceHelper;
+import org.bouncycastle.bcjcajce.util.JcaJceHelper;
 import org.bouncycastle.tls.HashAlgorithm;
 
 //import java.security.spec.InvalidParameterSpecException;

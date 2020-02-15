@@ -8,7 +8,7 @@ import java.security.Signature;
 
 import org.bouncycastle.bcasn1.ASN1Integer;
 import org.bouncycastle.bcasn1.ASN1Sequence;
-import org.bouncycastle.jcajce.spec.SM2ParameterSpec;
+import org.bouncycastle.bcjcajce.spec.SM2ParameterSpec;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.jce.spec.ECParameterSpec;
 import org.bouncycastle.bcmath.ec.ECConstants;

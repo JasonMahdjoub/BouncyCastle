@@ -5,8 +5,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.security.Permission;
 
-import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
-import org.bouncycastle.jcajce.provider.config.ProviderConfigurationPermission;
+import org.bouncycastle.bcjcajce.provider.config.ConfigurableProvider;
+import org.bouncycastle.bcjcajce.provider.config.ProviderConfigurationPermission;
 import org.bouncycastle.jce.spec.ECParameterSpec;
 
 public class ProviderUtil

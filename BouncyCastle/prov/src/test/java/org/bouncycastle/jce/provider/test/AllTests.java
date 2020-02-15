@@ -43,7 +43,7 @@ public class AllTests
                     {
                         result.getException().printStackTrace();
                     }
-                    fail(result.toString());
+                    fail(tests[i]+":"+result.toString());
                 }
             }
         }

@@ -25,8 +25,8 @@ import java.util.Set;
 import javax.security.auth.x500.X500Principal;
 
 import org.bouncycastle.bcasn1.x509.Extension;
-import org.bouncycastle.jcajce.PKIXCertStoreSelector;
-import org.bouncycastle.jcajce.PKIXExtendedBuilderParameters;
+import org.bouncycastle.bcjcajce.PKIXCertStoreSelector;
+import org.bouncycastle.bcjcajce.PKIXExtendedBuilderParameters;
 import org.bouncycastle.jce.exception.ExtCertPathBuilderException;
 import org.bouncycastle.bcutil.Selector;
 import org.bouncycastle.bcutil.Store;

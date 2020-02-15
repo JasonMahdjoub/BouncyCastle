@@ -5,7 +5,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import org.bouncycastle.bcpg.HashAlgorithmTags;
-import org.bouncycastle.jcajce.io.OutputStreamFactory;
+import org.bouncycastle.bcjcajce.io.OutputStreamFactory;
 import org.bouncycastle.openpgp.operator.PGPDigestCalculator;
 
 class SHA1PGPDigestCalculator

@@ -15,7 +15,7 @@ import org.bouncycastle.bccrypto.generators.PKCS5S1ParametersGenerator;
 import org.bouncycastle.bccrypto.generators.PKCS5S2ParametersGenerator;
 import org.bouncycastle.bccrypto.params.KeyParameter;
 import org.bouncycastle.bccrypto.params.ParametersWithIV;
-import org.bouncycastle.jcajce.provider.symmetric.util.BCPBEKey;
+import org.bouncycastle.bcjcajce.provider.symmetric.util.BCPBEKey;
 
 /**
  * Generator for PBE derived keys and ivs as defined by PKCS 12 V1.0,

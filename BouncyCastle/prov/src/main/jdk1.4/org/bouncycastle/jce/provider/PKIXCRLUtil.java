@@ -17,7 +17,7 @@ import org.bouncycastle.bcutil.Store;
 import org.bouncycastle.bcutil.StoreException;
 
 import org.bouncycastle.x509.*;
-import org.bouncycastle.jcajce.*;
+import org.bouncycastle.bcjcajce.*;
 
 class PKIXCRLUtil
 {

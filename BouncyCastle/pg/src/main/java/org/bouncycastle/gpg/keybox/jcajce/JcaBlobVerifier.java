@@ -6,7 +6,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 
 import org.bouncycastle.gpg.keybox.BlobVerifier;
-import org.bouncycastle.jcajce.util.JcaJceHelper;
+import org.bouncycastle.bcjcajce.util.JcaJceHelper;
 import org.bouncycastle.bcutil.Arrays;
 
 public class JcaBlobVerifier

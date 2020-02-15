@@ -3,7 +3,7 @@
   "component": {
     "group": "org.bouncycastle",
     "module": "bc-pkix",
-    "version": "1.64-DMRECOMPILE",
+    "version": "1.64b-DMRECOMPILE",
     "attributes": {
       "org.gradle.status": "release"
     }
@@ -11,7 +11,7 @@
   "createdBy": {
     "gradle": {
       "version": "6.1",
-      "buildId": "ofq4ubzv5nevfagezcxvgqbac4"
+      "buildId": "sfc3onk3wzepfha6nzsh5demyy"
     }
   },
   "variants": [
@@ -29,26 +29,26 @@
           "group": "org.bouncycastle",
           "module": "bc-core",
           "version": {
-            "requires": "1.64-DMRECOMPILE"
+            "requires": "1.64b-DMRECOMPILE"
           }
         },
         {
           "group": "org.bouncycastle",
           "module": "bc-prov",
           "version": {
-            "requires": "1.64-DMRECOMPILE"
+            "requires": "1.64b-DMRECOMPILE"
           }
         }
       ],
       "files": [
         {
-          "name": "bc-pkix-1.64-DMRECOMPILE.jar",
-          "url": "bc-pkix-1.64-DMRECOMPILE.jar",
-          "size": 988932,
-          "sha512": "60526bd0665654e0a7d76c0504295fdfa044e535171d643309ec2e931fd60dd0cb3656899d3f975428ace2a8f9c270da676a904971ccc6cd423c1e94e1ef3806",
-          "sha256": "6736fb098ab48522d6d98ff1fcdfee725479dc4c681f66088f26f4a44ad02f95",
-          "sha1": "19b7d62ffab3fe4bbfb08213b0a458d8d2877d80",
-          "md5": "ea3df579edc16f3eaf1c7b46302ce6da"
+          "name": "bc-pkix-1.64b-DMRECOMPILE.jar",
+          "url": "bc-pkix-1.64b-DMRECOMPILE.jar",
+          "size": 988991,
+          "sha512": "5cacf8ba5e89c6b7404a92c98aa44af55f1f566f97c25b07ec00e1c8fa3d0f20854dd2dd019700627aaa7eeb6ba2d94902d117b56e874f2ba9d16c2a0093d216",
+          "sha256": "f0f4b695be31c85f9bbcc02a251f172140525eceae427f9a5c7f21190fa62a5e",
+          "sha1": "a895365c661d17272f34e2dc0f8634f1402958a7",
+          "md5": "5412818f85dcab6d154fc7e1485cd99a"
         }
       ]
     },
@@ -66,26 +66,26 @@
           "group": "org.bouncycastle",
           "module": "bc-core",
           "version": {
-            "requires": "1.64-DMRECOMPILE"
+            "requires": "1.64b-DMRECOMPILE"
           }
         },
         {
           "group": "org.bouncycastle",
           "module": "bc-prov",
           "version": {
-            "requires": "1.64-DMRECOMPILE"
+            "requires": "1.64b-DMRECOMPILE"
           }
         }
       ],
       "files": [
         {
-          "name": "bc-pkix-1.64-DMRECOMPILE.jar",
-          "url": "bc-pkix-1.64-DMRECOMPILE.jar",
-          "size": 988932,
-          "sha512": "60526bd0665654e0a7d76c0504295fdfa044e535171d643309ec2e931fd60dd0cb3656899d3f975428ace2a8f9c270da676a904971ccc6cd423c1e94e1ef3806",
-          "sha256": "6736fb098ab48522d6d98ff1fcdfee725479dc4c681f66088f26f4a44ad02f95",
-          "sha1": "19b7d62ffab3fe4bbfb08213b0a458d8d2877d80",
-          "md5": "ea3df579edc16f3eaf1c7b46302ce6da"
+          "name": "bc-pkix-1.64b-DMRECOMPILE.jar",
+          "url": "bc-pkix-1.64b-DMRECOMPILE.jar",
+          "size": 988991,
+          "sha512": "5cacf8ba5e89c6b7404a92c98aa44af55f1f566f97c25b07ec00e1c8fa3d0f20854dd2dd019700627aaa7eeb6ba2d94902d117b56e874f2ba9d16c2a0093d216",
+          "sha256": "f0f4b695be31c85f9bbcc02a251f172140525eceae427f9a5c7f21190fa62a5e",
+          "sha1": "a895365c661d17272f34e2dc0f8634f1402958a7",
+          "md5": "5412818f85dcab6d154fc7e1485cd99a"
         }
       ]
     }

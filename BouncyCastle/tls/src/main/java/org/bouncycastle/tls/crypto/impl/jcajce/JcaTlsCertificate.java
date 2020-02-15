@@ -23,7 +23,7 @@ import org.bouncycastle.bcasn1.x509.Extensions;
 import org.bouncycastle.bcasn1.x509.KeyUsage;
 import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
 import org.bouncycastle.bcasn1.x509.TBSCertificate;
-import org.bouncycastle.jcajce.util.JcaJceHelper;
+import org.bouncycastle.bcjcajce.util.JcaJceHelper;
 import org.bouncycastle.tls.AlertDescription;
 import org.bouncycastle.tls.ConnectionEnd;
 import org.bouncycastle.tls.KeyExchangeAlgorithm;

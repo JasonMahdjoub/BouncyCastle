@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.bouncycastle.bcmath.test.PrimesTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2020-02-14T17:16:29" hostname="Garage" time="0.477">
+  <properties/>
+  <testcase name="testMRProbablePrime" classname="org.bouncycastle.bcmath.test.PrimesTest" time="0.228"/>
+  <testcase name="testEnhancedMRProbablePrime" classname="org.bouncycastle.bcmath.test.PrimesTest" time="0.097"/>
+  <testcase name="testMRProbablePrimeToBase" classname="org.bouncycastle.bcmath.test.PrimesTest" time="0.039"/>
+  <testcase name="testHasAnySmallFactors" classname="org.bouncycastle.bcmath.test.PrimesTest" time="0.023"/>
+  <testcase name="testSTRandomPrime" classname="org.bouncycastle.bcmath.test.PrimesTest" time="0.09"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

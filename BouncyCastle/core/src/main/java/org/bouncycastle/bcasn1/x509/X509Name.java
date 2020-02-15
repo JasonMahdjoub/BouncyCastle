@@ -33,7 +33,7 @@ import org.bouncycastle.bcutil.encoders.Hex;
  *                                   type  OBJECT IDENTIFIER,
  *                                   value ANY }
  * </pre>
- * @deprecated use org.bouncycastle.asn1.x500.X500Name.
+ * @deprecated use org.bouncycastle.bcasn1.x500.X500Name.
  */
 public class X509Name
     extends ASN1Object

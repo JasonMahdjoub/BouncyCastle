@@ -110,7 +110,7 @@ public class ASN1Integer
      * Section 8.3.2.
      * </p>
      * <p>
-     * Users can set the 'org.bouncycastle.asn1.allow_unsafe_integer' to 'true'
+     * Users can set the 'org.bouncycastle.bcasn1.allow_unsafe_integer' to 'true'
      * and a looser validation will be applied. Users must recognise that this is
      * not ideal and may pave the way for an exploit based around a faulty encoding
      * in the future.
@@ -271,7 +271,7 @@ public class ASN1Integer
         default:
             return bytes[0] == (bytes[1] >> 7)
                 // Apply loose validation, see note in public constructor ASN1Integer(byte[])
-                && !Properties.isOverrideSet("org.bouncycastle.asn1.allow_unsafe_integer");
+                && !Properties.isOverrideSet("org.bouncycastle.bcasn1.allow_unsafe_integer");
         }
     }
 

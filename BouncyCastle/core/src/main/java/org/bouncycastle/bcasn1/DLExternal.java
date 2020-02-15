@@ -65,7 +65,7 @@ public class DLExternal
     }
 
     /* (non-Javadoc)
-     * @see org.bouncycastle.asn1.ASN1Primitive#encode(org.bouncycastle.asn1.DEROutputStream)
+     * @see org.bouncycastle.asn1.ASN1Primitive#encode(org.bouncycastle.bcasn1.DEROutputStream)
      */
     void encode(ASN1OutputStream out, boolean withTag) throws IOException
     {

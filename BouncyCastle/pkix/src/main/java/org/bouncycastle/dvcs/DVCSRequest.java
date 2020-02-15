@@ -94,7 +94,7 @@ public class DVCSRequest
     /**
      * Return the ASN.1 DVCSRequest structure making up the body of this request.
      *
-     * @return an org.bouncycastle.asn1.dvcs.DVCSRequest object.
+     * @return an org.bouncycastle.bcasn1.dvcs.DVCSRequest object.
      */
     public ASN1Encodable getContent()
     {

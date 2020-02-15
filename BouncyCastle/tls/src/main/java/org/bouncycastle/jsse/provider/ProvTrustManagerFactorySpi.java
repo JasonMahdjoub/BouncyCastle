@@ -25,7 +25,7 @@ import javax.net.ssl.ManagerFactoryParameters;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactorySpi;
 
-import org.bouncycastle.jcajce.util.JcaJceHelper;
+import org.bouncycastle.bcjcajce.util.JcaJceHelper;
 
 class ProvTrustManagerFactorySpi
     extends TrustManagerFactorySpi

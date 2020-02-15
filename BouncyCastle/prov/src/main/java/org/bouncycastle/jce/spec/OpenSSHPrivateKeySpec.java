@@ -3,10 +3,10 @@ package org.bouncycastle.jce.spec;
 /**
  * OpenSSHPrivateKeySpec holds and encoded OpenSSH private key.
  * The format of the key can be either ASN.1 or OpenSSH.
- * @deprecated use org.bouncycastle.jcajce.spec.OpenSSHPrivateKeySpec
+ * @deprecated use org.bouncycastle.bcjcajce.spec.OpenSSHPrivateKeySpec
  */
 public class OpenSSHPrivateKeySpec
-    extends org.bouncycastle.jcajce.spec.OpenSSHPrivateKeySpec
+    extends org.bouncycastle.bcjcajce.spec.OpenSSHPrivateKeySpec
 {
     /**
      * Accept an encoded key and determine the format.

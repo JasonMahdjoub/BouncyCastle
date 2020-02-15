@@ -17,7 +17,7 @@ import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
 import org.bouncycastle.bccrypto.Digest;
 import org.bouncycastle.bccrypto.digests.SHA256Digest;
-import org.bouncycastle.jcajce.provider.util.AsymmetricKeyInfoConverter;
+import org.bouncycastle.bcjcajce.provider.util.AsymmetricKeyInfoConverter;
 import org.bouncycastle.pqc.asn1.McEliecePrivateKey;
 import org.bouncycastle.pqc.asn1.McEliecePublicKey;
 import org.bouncycastle.pqc.asn1.PQCObjectIdentifiers;

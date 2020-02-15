@@ -149,7 +149,7 @@ public abstract class ASN1External
     }
 
     /* (non-Javadoc)
-     * @see org.bouncycastle.asn1.ASN1Primitive#asn1Equals(org.bouncycastle.asn1.ASN1Primitive)
+     * @see org.bouncycastle.asn1.ASN1Primitive#asn1Equals(org.bouncycastle.bcasn1.ASN1Primitive)
      */
     boolean asn1Equals(ASN1Primitive o)
     {

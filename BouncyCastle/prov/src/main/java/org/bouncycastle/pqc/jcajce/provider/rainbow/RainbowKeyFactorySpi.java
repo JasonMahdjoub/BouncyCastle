@@ -14,7 +14,7 @@ import java.security.spec.X509EncodedKeySpec;
 import org.bouncycastle.bcasn1.ASN1Primitive;
 import org.bouncycastle.bcasn1.pkcs.PrivateKeyInfo;
 import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.jcajce.provider.util.AsymmetricKeyInfoConverter;
+import org.bouncycastle.bcjcajce.provider.util.AsymmetricKeyInfoConverter;
 import org.bouncycastle.pqc.asn1.RainbowPrivateKey;
 import org.bouncycastle.pqc.asn1.RainbowPublicKey;
 import org.bouncycastle.pqc.jcajce.spec.RainbowPrivateKeySpec;

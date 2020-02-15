@@ -43,9 +43,9 @@ import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
 import org.bouncycastle.bcasn1.x9.X9ObjectIdentifiers;
 import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.cms.CMSException;
-import org.bouncycastle.jcajce.util.AlgorithmParametersUtils;
-import org.bouncycastle.jcajce.util.JcaJceHelper;
-import org.bouncycastle.jcajce.util.MessageDigestUtils;
+import org.bouncycastle.bcjcajce.util.AlgorithmParametersUtils;
+import org.bouncycastle.bcjcajce.util.JcaJceHelper;
+import org.bouncycastle.bcjcajce.util.MessageDigestUtils;
 import org.bouncycastle.operator.OperatorCreationException;
 import org.bouncycastle.bcutil.Integers;
 

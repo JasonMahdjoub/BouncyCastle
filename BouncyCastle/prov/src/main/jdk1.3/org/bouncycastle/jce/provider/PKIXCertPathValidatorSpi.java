@@ -22,10 +22,10 @@ import org.bouncycastle.bcasn1.ASN1Encodable;
 import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 import org.bouncycastle.bcasn1.x500.X500Name;
 import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.jcajce.PKIXExtendedBuilderParameters;
-import org.bouncycastle.jcajce.PKIXExtendedParameters;
-import org.bouncycastle.jcajce.util.BCJcaJceHelper;
-import org.bouncycastle.jcajce.util.JcaJceHelper;
+import org.bouncycastle.bcjcajce.PKIXExtendedBuilderParameters;
+import org.bouncycastle.bcjcajce.PKIXExtendedParameters;
+import org.bouncycastle.bcjcajce.util.BCJcaJceHelper;
+import org.bouncycastle.bcjcajce.util.JcaJceHelper;
 import org.bouncycastle.jce.exception.ExtCertPathValidatorException;
 import org.bouncycastle.x509.ExtendedPKIXParameters;
 

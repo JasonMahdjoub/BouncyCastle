@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.bouncycastle.cms.test.AuthEnvelopedDataTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2020-02-14T17:20:17" hostname="Garage" time="1.556">
+  <properties/>
+  <testcase name="testAttributes" classname="org.bouncycastle.cms.test.AuthEnvelopedDataTest" time="0.006"/>
+  <testcase name="testSample1" classname="org.bouncycastle.cms.test.AuthEnvelopedDataTest" time="0.0"/>
+  <testcase name="testAttributes" classname="org.bouncycastle.cms.test.AuthEnvelopedDataTest" time="0.004"/>
+  <testcase name="testSample1" classname="org.bouncycastle.cms.test.AuthEnvelopedDataTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

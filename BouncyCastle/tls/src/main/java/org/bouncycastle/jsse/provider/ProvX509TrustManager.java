@@ -29,7 +29,7 @@ import javax.net.ssl.SSLEngine;
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.X509TrustManager;
 
-import org.bouncycastle.jcajce.util.JcaJceHelper;
+import org.bouncycastle.bcjcajce.util.JcaJceHelper;
 import org.bouncycastle.jsse.BCExtendedSSLSession;
 import org.bouncycastle.jsse.BCSNIHostName;
 import org.bouncycastle.jsse.BCSNIServerName;

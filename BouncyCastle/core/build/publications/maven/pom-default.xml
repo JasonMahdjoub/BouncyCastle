@@ -8,7 +8,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.bouncycastle</groupId>
   <artifactId>bc-core</artifactId>
-  <version>1.64-DMRECOMPILE</version>
+  <version>1.64b-DMRECOMPILE</version>
   <name>core</name>
   <description/>
 </project>

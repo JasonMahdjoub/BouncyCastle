@@ -5,7 +5,7 @@ import java.security.PrivateKey;
 import javax.crypto.SecretKey;
 
 import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.jcajce.util.NamedJcaJceHelper;
+import org.bouncycastle.bcjcajce.util.NamedJcaJceHelper;
 import org.bouncycastle.operator.SymmetricKeyUnwrapper;
 import org.bouncycastle.operator.jcajce.JceAsymmetricKeyUnwrapper;
 import org.bouncycastle.operator.jcajce.JceKTSKeyUnwrapper;

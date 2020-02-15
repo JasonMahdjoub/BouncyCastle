@@ -21,7 +21,7 @@ import org.bouncycastle.bccrypto.engines.IESEngine;
 import org.bouncycastle.bccrypto.generators.KDF2BytesGenerator;
 import org.bouncycastle.bccrypto.macs.HMac;
 import org.bouncycastle.bccrypto.paddings.PaddedBufferedBlockCipher;
-import org.bouncycastle.jcajce.provider.asymmetric.dh.IESCipher;
+import org.bouncycastle.bcjcajce.provider.asymmetric.dh.IESCipher;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.jce.spec.IESParameterSpec;
 import org.bouncycastle.bcutil.Arrays;
@@ -86,8 +86,8 @@ public class DHIESTest
         byte[] encoding   = Hex.decode("303132333435363738393a3b3c3d3e3f");
 
         
-        IESCipher c1 = new org.bouncycastle.jcajce.provider.asymmetric.dh.IESCipher.IES();
-        IESCipher c2 = new org.bouncycastle.jcajce.provider.asymmetric.dh.IESCipher.IES();
+        IESCipher c1 = new org.bouncycastle.bcjcajce.provider.asymmetric.dh.IESCipher.IES();
+        IESCipher c2 = new org.bouncycastle.bcjcajce.provider.asymmetric.dh.IESCipher.IES();
         IESParameterSpec params = new IESParameterSpec(derivation,encoding,128);
 
         // Testing DHIES with default prime in streaming mode

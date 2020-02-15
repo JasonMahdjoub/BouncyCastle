@@ -39,7 +39,7 @@ import org.bouncycastle.bccrypto.params.ECDomainParameters;
 import org.bouncycastle.bccrypto.params.ECPublicKeyParameters;
 import org.bouncycastle.bccrypto.params.ParametersWithRandom;
 import org.bouncycastle.bccrypto.signers.ECGOST3410_2012Signer;
-import org.bouncycastle.jcajce.provider.asymmetric.util.ECUtil;
+import org.bouncycastle.bcjcajce.provider.asymmetric.util.ECUtil;
 import org.bouncycastle.jce.X509Principal;
 import org.bouncycastle.jce.interfaces.ECPrivateKey;
 import org.bouncycastle.jce.interfaces.ECPublicKey;
@@ -475,7 +475,7 @@ public class GOST3410Test
         encodedGost12Test(p);
 
 
-        g.initialize(new org.bouncycastle.jcajce.spec.GOST3410ParameterSpec("Tc26-Gost-3410-12-512-paramSetA"), new SecureRandom());
+        g.initialize(new org.bouncycastle.bcjcajce.spec.GOST3410ParameterSpec("Tc26-Gost-3410-12-512-paramSetA"), new SecureRandom());
 
         p = g.generateKeyPair();
 

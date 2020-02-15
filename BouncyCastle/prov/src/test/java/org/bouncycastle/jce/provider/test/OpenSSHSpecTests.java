@@ -7,8 +7,8 @@ import java.security.PublicKey;
 import java.security.SecureRandom;
 import java.security.Security;
 
-import org.bouncycastle.jcajce.spec.OpenSSHPrivateKeySpec;
-import org.bouncycastle.jcajce.spec.OpenSSHPublicKeySpec;
+import org.bouncycastle.bcjcajce.spec.OpenSSHPrivateKeySpec;
+import org.bouncycastle.bcjcajce.spec.OpenSSHPublicKeySpec;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.bcutil.Arrays;
 import org.bouncycastle.bcutil.encoders.Hex;

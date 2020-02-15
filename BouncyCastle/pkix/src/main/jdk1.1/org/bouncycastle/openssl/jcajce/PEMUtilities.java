@@ -22,7 +22,7 @@ import javax.crypto.spec.SecretKeySpec;
 import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 import org.bouncycastle.bcasn1.nist.NISTObjectIdentifiers;
 import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.jcajce.util.JcaJceHelper;
+import org.bouncycastle.bcjcajce.util.JcaJceHelper;
 import org.bouncycastle.openssl.EncryptionException;
 import org.bouncycastle.openssl.PEMException;
 import org.bouncycastle.bcutil.Integers;

@@ -10,10 +10,10 @@ import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 
 import org.bouncycastle.bcpg.SymmetricKeyAlgorithmTags;
-import org.bouncycastle.jcajce.io.CipherOutputStream;
-import org.bouncycastle.jcajce.util.DefaultJcaJceHelper;
-import org.bouncycastle.jcajce.util.NamedJcaJceHelper;
-import org.bouncycastle.jcajce.util.ProviderJcaJceHelper;
+import org.bouncycastle.bcjcajce.io.CipherOutputStream;
+import org.bouncycastle.bcjcajce.util.DefaultJcaJceHelper;
+import org.bouncycastle.bcjcajce.util.NamedJcaJceHelper;
+import org.bouncycastle.bcjcajce.util.ProviderJcaJceHelper;
 import org.bouncycastle.openpgp.PGPException;
 import org.bouncycastle.openpgp.operator.PGPDataEncryptor;
 import org.bouncycastle.openpgp.operator.PGPDataEncryptorBuilder;

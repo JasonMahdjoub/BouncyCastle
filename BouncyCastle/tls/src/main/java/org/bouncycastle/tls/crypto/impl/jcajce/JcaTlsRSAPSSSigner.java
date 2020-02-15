@@ -8,7 +8,7 @@ import java.security.Signature;
 import java.security.SignatureException;
 import java.security.spec.AlgorithmParameterSpec;
 
-import org.bouncycastle.jcajce.io.OutputStreamFactory;
+import org.bouncycastle.bcjcajce.io.OutputStreamFactory;
 import org.bouncycastle.tls.HashAlgorithm;
 import org.bouncycastle.tls.SignatureAlgorithm;
 import org.bouncycastle.tls.SignatureAndHashAlgorithm;

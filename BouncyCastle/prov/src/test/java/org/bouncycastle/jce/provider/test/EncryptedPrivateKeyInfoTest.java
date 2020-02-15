@@ -17,7 +17,7 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.PBEParameterSpec;
 
-import org.bouncycastle.jcajce.PKCS12KeyWithParameters;
+import org.bouncycastle.bcjcajce.PKCS12KeyWithParameters;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.bcutil.test.SimpleTest;
 import org.bouncycastle.bcutil.test.Test;

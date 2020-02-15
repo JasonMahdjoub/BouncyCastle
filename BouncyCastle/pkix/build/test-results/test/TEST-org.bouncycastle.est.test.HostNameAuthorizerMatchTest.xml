@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.bouncycastle.est.test.HostNameAuthorizerMatchTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2020-02-14T17:20:09" hostname="Garage" time="0.001">
+  <properties/>
+  <testcase name="testWildcardPublicSuffix" classname="org.bouncycastle.est.test.HostNameAuthorizerMatchTest" time="0.001"/>
+  <testcase name="testWildcardMatcher" classname="org.bouncycastle.est.test.HostNameAuthorizerMatchTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

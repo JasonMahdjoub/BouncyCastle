@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.bouncycastle.bcjcajce.provider.test.GeneralKeyTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2020-02-15T08:13:00" hostname="Garage" time="2.089">
+  <properties/>
+  <testcase name="testDSA" classname="org.bouncycastle.bcjcajce.provider.test.GeneralKeyTest" time="1.779"/>
+  <testcase name="testRSA" classname="org.bouncycastle.bcjcajce.provider.test.GeneralKeyTest" time="0.146"/>
+  <testcase name="testSM2" classname="org.bouncycastle.bcjcajce.provider.test.GeneralKeyTest" time="0.02"/>
+  <testcase name="testGost3410" classname="org.bouncycastle.bcjcajce.provider.test.GeneralKeyTest" time="0.007"/>
+  <testcase name="testEcgost3410_2012" classname="org.bouncycastle.bcjcajce.provider.test.GeneralKeyTest" time="0.05"/>
+  <testcase name="testDH" classname="org.bouncycastle.bcjcajce.provider.test.GeneralKeyTest" time="0.014"/>
+  <testcase name="testEC" classname="org.bouncycastle.bcjcajce.provider.test.GeneralKeyTest" time="0.014"/>
+  <testcase name="testEcgost3410" classname="org.bouncycastle.bcjcajce.provider.test.GeneralKeyTest" time="0.012"/>
+  <testcase name="testDstu4145" classname="org.bouncycastle.bcjcajce.provider.test.GeneralKeyTest" time="0.045"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.bouncycastle.bcmath.raw.test.InterleaveTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2020-02-14T17:16:29" hostname="Garage" time="0.009">
+  <properties/>
+  <testcase name="testExpand64To128" classname="org.bouncycastle.bcmath.raw.test.InterleaveTest" time="0.006"/>
+  <testcase name="testExpand8To16" classname="org.bouncycastle.bcmath.raw.test.InterleaveTest" time="0.001"/>
+  <testcase name="testExpand16To32" classname="org.bouncycastle.bcmath.raw.test.InterleaveTest" time="0.001"/>
+  <testcase name="testExpand32To64" classname="org.bouncycastle.bcmath.raw.test.InterleaveTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

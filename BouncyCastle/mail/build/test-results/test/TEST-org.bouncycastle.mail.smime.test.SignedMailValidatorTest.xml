@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.bouncycastle.mail.smime.test.SignedMailValidatorTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2020-02-14T17:20:00" hostname="Garage" time="0.099">
+  <properties/>
+  <testcase name="testExpired" classname="org.bouncycastle.mail.smime.test.SignedMailValidatorTest" time="0.037"/>
+  <testcase name="testNotYetValid" classname="org.bouncycastle.mail.smime.test.SignedMailValidatorTest" time="0.003"/>
+  <testcase name="testCreateCertPath" classname="org.bouncycastle.mail.smime.test.SignedMailValidatorTest" time="0.004"/>
+  <testcase name="testCircular" classname="org.bouncycastle.mail.smime.test.SignedMailValidatorTest" time="0.006"/>
+  <testcase name="testExtendedReviewer" classname="org.bouncycastle.mail.smime.test.SignedMailValidatorTest" time="0.003"/>
+  <testcase name="testSelfSignedCert" classname="org.bouncycastle.mail.smime.test.SignedMailValidatorTest" time="0.015"/>
+  <testcase name="testShortKey" classname="org.bouncycastle.mail.smime.test.SignedMailValidatorTest" time="0.002"/>
+  <testcase name="testMultiEmail" classname="org.bouncycastle.mail.smime.test.SignedMailValidatorTest" time="0.0"/>
+  <testcase name="testRevoked" classname="org.bouncycastle.mail.smime.test.SignedMailValidatorTest" time="0.015"/>
+  <testcase name="testKeyUsage" classname="org.bouncycastle.mail.smime.test.SignedMailValidatorTest" time="0.003"/>
+  <testcase name="testLongValidity" classname="org.bouncycastle.mail.smime.test.SignedMailValidatorTest" time="0.003"/>
+  <testcase name="testNoEmail" classname="org.bouncycastle.mail.smime.test.SignedMailValidatorTest" time="0.002"/>
+  <testcase name="testExtKeyUsage" classname="org.bouncycastle.mail.smime.test.SignedMailValidatorTest" time="0.004"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

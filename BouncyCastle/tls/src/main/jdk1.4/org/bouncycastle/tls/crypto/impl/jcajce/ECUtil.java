@@ -7,7 +7,7 @@ import org.bouncycastle.jce.spec.ECParameterSpec;
 
 import org.bouncycastle.jce.interfaces.ECPrivateKey;
 
-import org.bouncycastle.jcajce.util.JcaJceHelper;
+import org.bouncycastle.bcjcajce.util.JcaJceHelper;
 
 class ECUtil
 {

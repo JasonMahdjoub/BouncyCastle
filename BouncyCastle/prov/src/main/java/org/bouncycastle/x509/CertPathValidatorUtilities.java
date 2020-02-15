@@ -49,7 +49,7 @@ import org.bouncycastle.bcasn1.x509.IssuingDistributionPoint;
 import org.bouncycastle.bcasn1.x509.PolicyInformation;
 import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
 import org.bouncycastle.bcasn1.x509.X509Extension;
-import org.bouncycastle.jcajce.PKIXCertStoreSelector;
+import org.bouncycastle.bcjcajce.PKIXCertStoreSelector;
 import org.bouncycastle.jce.exception.ExtCertPathValidatorException;
 import org.bouncycastle.jce.provider.AnnotatedException;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
@@ -512,7 +512,7 @@ class CertPathValidatorUtilities
     {
         Set certs = new HashSet();
         Iterator iter = certStores.iterator();
-        org.bouncycastle.jcajce.provider.asymmetric.x509.CertificateFactory certFact = new org.bouncycastle.jcajce.provider.asymmetric.x509.CertificateFactory();
+        org.bouncycastle.bcjcajce.provider.asymmetric.x509.CertificateFactory certFact = new org.bouncycastle.bcjcajce.provider.asymmetric.x509.CertificateFactory();
 
         while (iter.hasNext())
         {

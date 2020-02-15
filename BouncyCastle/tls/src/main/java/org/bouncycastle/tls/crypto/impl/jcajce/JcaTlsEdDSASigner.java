@@ -7,7 +7,7 @@ import java.security.PrivateKey;
 import java.security.Signature;
 import java.security.SignatureException;
 
-import org.bouncycastle.jcajce.io.OutputStreamFactory;
+import org.bouncycastle.bcjcajce.io.OutputStreamFactory;
 import org.bouncycastle.tls.HashAlgorithm;
 import org.bouncycastle.tls.SignatureAndHashAlgorithm;
 import org.bouncycastle.tls.crypto.TlsCryptoException;

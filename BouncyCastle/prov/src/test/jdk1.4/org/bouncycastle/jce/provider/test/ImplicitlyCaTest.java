@@ -14,7 +14,7 @@ import org.bouncycastle.bcasn1.ASN1InputStream;
 import org.bouncycastle.bcasn1.DERNull;
 import org.bouncycastle.bcasn1.pkcs.PrivateKeyInfo;
 import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
+import org.bouncycastle.bcjcajce.provider.config.ConfigurableProvider;
 import org.bouncycastle.jce.interfaces.ECPrivateKey;
 import org.bouncycastle.jce.interfaces.ECPublicKey;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;

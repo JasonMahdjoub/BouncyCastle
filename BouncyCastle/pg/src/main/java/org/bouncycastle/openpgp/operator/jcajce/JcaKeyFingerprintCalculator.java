@@ -10,10 +10,10 @@ import org.bouncycastle.bcpg.BCPGKey;
 import org.bouncycastle.bcpg.MPInteger;
 import org.bouncycastle.bcpg.PublicKeyPacket;
 import org.bouncycastle.bcpg.RSAPublicBCPGKey;
-import org.bouncycastle.jcajce.util.DefaultJcaJceHelper;
-import org.bouncycastle.jcajce.util.JcaJceHelper;
-import org.bouncycastle.jcajce.util.NamedJcaJceHelper;
-import org.bouncycastle.jcajce.util.ProviderJcaJceHelper;
+import org.bouncycastle.bcjcajce.util.DefaultJcaJceHelper;
+import org.bouncycastle.bcjcajce.util.JcaJceHelper;
+import org.bouncycastle.bcjcajce.util.NamedJcaJceHelper;
+import org.bouncycastle.bcjcajce.util.ProviderJcaJceHelper;
 import org.bouncycastle.openpgp.PGPException;
 import org.bouncycastle.openpgp.operator.KeyFingerPrintCalculator;
 

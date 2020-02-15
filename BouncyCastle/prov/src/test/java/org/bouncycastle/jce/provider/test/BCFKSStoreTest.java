@@ -45,7 +45,7 @@ import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.util.PBKDF2Config;
 import org.bouncycastle.bccrypto.util.PBKDFConfig;
 import org.bouncycastle.bccrypto.util.ScryptConfig;
-import org.bouncycastle.jcajce.BCFKSLoadStoreParameter;
+import org.bouncycastle.bcjcajce.BCFKSLoadStoreParameter;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.bcutil.Arrays;
 import org.bouncycastle.bcutil.encoders.Base64;

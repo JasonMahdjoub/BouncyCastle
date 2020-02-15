@@ -21,8 +21,8 @@ import org.bouncycastle.bcasn1.x509.Certificate;
 import org.bouncycastle.bcasn1.x509.Extension;
 import org.bouncycastle.bcasn1.x9.X9ObjectIdentifiers;
 import org.bouncycastle.cms.CMSException;
-import org.bouncycastle.jcajce.util.AlgorithmParametersUtils;
-import org.bouncycastle.jcajce.util.AnnotatedPrivateKey;
+import org.bouncycastle.bcjcajce.util.AlgorithmParametersUtils;
+import org.bouncycastle.bcjcajce.util.AnnotatedPrivateKey;
 
 class CMSUtils
 {

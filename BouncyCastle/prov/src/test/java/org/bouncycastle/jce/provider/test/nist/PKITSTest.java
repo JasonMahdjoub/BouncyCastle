@@ -30,7 +30,7 @@ import org.bouncycastle.bcasn1.x509.BasicConstraints;
 import org.bouncycastle.bcasn1.x509.Extension;
 import org.bouncycastle.bcasn1.x509.KeyUsage;
 import org.bouncycastle.bcasn1.x509.TBSCertificate;
-import org.bouncycastle.jcajce.PKIXExtendedParameters;
+import org.bouncycastle.bcjcajce.PKIXExtendedParameters;
 
 /**
  * Utility class to support PKITS testing of the Cert Path library and associated functions.

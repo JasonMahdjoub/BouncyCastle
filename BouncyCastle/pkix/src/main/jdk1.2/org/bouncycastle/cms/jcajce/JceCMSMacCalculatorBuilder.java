@@ -18,7 +18,7 @@ import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
 import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.cms.CMSException;
-import org.bouncycastle.jcajce.io.MacOutputStream;
+import org.bouncycastle.bcjcajce.io.MacOutputStream;
 import org.bouncycastle.operator.GenericKey;
 import org.bouncycastle.operator.MacCalculator;
 

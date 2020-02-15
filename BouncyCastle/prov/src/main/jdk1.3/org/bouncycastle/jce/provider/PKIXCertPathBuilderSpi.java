@@ -18,11 +18,11 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.bouncycastle.bcasn1.x509.Extension;
-import org.bouncycastle.jcajce.PKIXCertStore;
-import org.bouncycastle.jcajce.PKIXCertStoreSelector;
-import org.bouncycastle.jcajce.PKIXExtendedBuilderParameters;
-import org.bouncycastle.jcajce.PKIXExtendedParameters;
-import org.bouncycastle.jcajce.provider.asymmetric.x509.CertificateFactory;
+import org.bouncycastle.bcjcajce.PKIXCertStore;
+import org.bouncycastle.bcjcajce.PKIXCertStoreSelector;
+import org.bouncycastle.bcjcajce.PKIXExtendedBuilderParameters;
+import org.bouncycastle.bcjcajce.PKIXExtendedParameters;
+import org.bouncycastle.bcjcajce.provider.asymmetric.x509.CertificateFactory;
 import org.bouncycastle.jce.exception.ExtCertPathBuilderException;
 import org.bouncycastle.jce.provider.AnnotatedException;
 import org.bouncycastle.x509.ExtendedPKIXBuilderParameters;

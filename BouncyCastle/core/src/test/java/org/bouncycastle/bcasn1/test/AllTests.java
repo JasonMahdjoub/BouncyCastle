@@ -19,7 +19,7 @@ public class AllTests
             
             if (!result.isSuccessful())
             {
-                fail(result.toString());
+                fail(tests[i]+":"+result.toString());
             }
         }
     }

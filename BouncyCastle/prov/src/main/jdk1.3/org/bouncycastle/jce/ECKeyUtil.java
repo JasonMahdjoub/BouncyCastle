@@ -21,7 +21,7 @@ import org.bouncycastle.bcasn1.x9.X962Parameters;
 import org.bouncycastle.bcasn1.x9.X9ECParameters;
 import org.bouncycastle.bcasn1.x9.X9ECPoint;
 import org.bouncycastle.bcasn1.x9.X9ObjectIdentifiers;
-import org.bouncycastle.jcajce.provider.asymmetric.util.ECUtil;
+import org.bouncycastle.bcjcajce.provider.asymmetric.util.ECUtil;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
 /**

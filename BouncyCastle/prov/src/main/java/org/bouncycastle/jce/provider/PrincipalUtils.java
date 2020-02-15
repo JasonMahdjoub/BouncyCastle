@@ -8,7 +8,7 @@ import javax.security.auth.x500.X500Principal;
 
 import org.bouncycastle.bcasn1.x500.X500Name;
 import org.bouncycastle.bcasn1.x500.X500NameStyle;
-import org.bouncycastle.jcajce.interfaces.BCX509Certificate;
+import org.bouncycastle.bcjcajce.interfaces.BCX509Certificate;
 import org.bouncycastle.x509.X509AttributeCertificate;
 
 class PrincipalUtils

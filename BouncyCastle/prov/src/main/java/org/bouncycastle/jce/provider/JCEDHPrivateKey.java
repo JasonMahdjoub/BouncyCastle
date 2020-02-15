@@ -22,7 +22,7 @@ import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.bcasn1.x9.DHDomainParameters;
 import org.bouncycastle.bcasn1.x9.X9ObjectIdentifiers;
 import org.bouncycastle.bccrypto.params.DHPrivateKeyParameters;
-import org.bouncycastle.jcajce.provider.asymmetric.util.PKCS12BagAttributeCarrierImpl;
+import org.bouncycastle.bcjcajce.provider.asymmetric.util.PKCS12BagAttributeCarrierImpl;
 import org.bouncycastle.jce.interfaces.PKCS12BagAttributeCarrier;
 
 public class JCEDHPrivateKey

@@ -30,7 +30,7 @@ import org.bouncycastle.bcasn1.sec.SECNamedCurves;
 import org.bouncycastle.bcasn1.teletrust.TeleTrusTNamedCurves;
 import org.bouncycastle.bcasn1.x509.Extension;
 import org.bouncycastle.bcasn1.x9.X962NamedCurves;
-import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
+import org.bouncycastle.bcjcajce.provider.config.ConfigurableProvider;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.jce.spec.ECNamedCurveSpec;
 import org.bouncycastle.bcutil.test.SimpleTest;

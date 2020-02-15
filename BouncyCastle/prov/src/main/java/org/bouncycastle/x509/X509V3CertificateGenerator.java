@@ -34,9 +34,9 @@ import org.bouncycastle.bcasn1.x509.Time;
 import org.bouncycastle.bcasn1.x509.V3TBSCertificateGenerator;
 import org.bouncycastle.bcasn1.x509.X509ExtensionsGenerator;
 import org.bouncycastle.bcasn1.x509.X509Name;
-import org.bouncycastle.jcajce.provider.asymmetric.x509.CertificateFactory;
-import org.bouncycastle.jcajce.util.BCJcaJceHelper;
-import org.bouncycastle.jcajce.util.JcaJceHelper;
+import org.bouncycastle.bcjcajce.provider.asymmetric.x509.CertificateFactory;
+import org.bouncycastle.bcjcajce.util.BCJcaJceHelper;
+import org.bouncycastle.bcjcajce.util.JcaJceHelper;
 import org.bouncycastle.jce.X509Principal;
 import org.bouncycastle.x509.extension.X509ExtensionUtil;
 

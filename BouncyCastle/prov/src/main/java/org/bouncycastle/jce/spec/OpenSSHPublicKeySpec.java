@@ -2,10 +2,10 @@ package org.bouncycastle.jce.spec;
 
 /**
  * Holds an OpenSSH encoded public key.
- * @deprecated use org.bouncycastle.jcajce.spec.OpenSSHPublicKeySpec
+ * @deprecated use org.bouncycastle.bcjcajce.spec.OpenSSHPublicKeySpec
  */
 public class OpenSSHPublicKeySpec
-    extends org.bouncycastle.jcajce.spec.OpenSSHPublicKeySpec
+    extends org.bouncycastle.bcjcajce.spec.OpenSSHPublicKeySpec
 {
     /**
      * Construct and instance and determine the OpenSSH public key type.

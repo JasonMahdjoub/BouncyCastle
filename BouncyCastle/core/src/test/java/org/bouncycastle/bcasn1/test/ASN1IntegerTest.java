@@ -26,7 +26,7 @@ public class ASN1IntegerTest
     public void performTest()
         throws Exception
     {
-        System.setProperty("org.bouncycastle.asn1.allow_unsafe_integer", "true");
+        System.setProperty("org.bouncycastle.bcasn1.allow_unsafe_integer", "true");
 
         ASN1Sequence.getInstance(suspectKey);
 
@@ -44,13 +44,13 @@ public class ASN1IntegerTest
         testLooseValidEncoding_FF_32BAligned_2not0();
         testOversizedEncoding();
         
-        System.setProperty("org.bouncycastle.asn1.allow_unsafe_integer", "true");
+        System.setProperty("org.bouncycastle.bcasn1.allow_unsafe_integer", "true");
 
         new ASN1Integer(Hex.decode("ffda47bfc776bcd269da4832626ac332adfca6dd835e8ecd83cd1ebe7d709b0e"));
 
         new ASN1Enumerated(Hex.decode("005a47bfc776bcd269da4832626ac332adfca6dd835e8ecd83cd1ebe7d709b0e"));
 
-        System.setProperty("org.bouncycastle.asn1.allow_unsafe_integer", "false");
+        System.setProperty("org.bouncycastle.bcasn1.allow_unsafe_integer", "false");
         
         try
         {
@@ -63,11 +63,11 @@ public class ASN1IntegerTest
             isEquals("malformed integer", e.getMessage());
         }
 
-        isTrue(!Properties.setThreadOverride("org.bouncycastle.asn1.allow_unsafe_integer", true));
+        isTrue(!Properties.setThreadOverride("org.bouncycastle.bcasn1.allow_unsafe_integer", true));
         
         new ASN1Integer(Hex.decode("ffda47bfc776bcd269da4832626ac332adfca6dd835e8ecd83cd1ebe7d709b"));
 
-        isTrue(Properties.removeThreadOverride("org.bouncycastle.asn1.allow_unsafe_integer"));
+        isTrue(Properties.removeThreadOverride("org.bouncycastle.bcasn1.allow_unsafe_integer"));
 
         try
         {
@@ -120,7 +120,7 @@ public class ASN1IntegerTest
     public void testValidEncodingSingleByte()
         throws Exception
     {
-        System.setProperty("org.bouncycastle.asn1.allow_unsafe_integer", "false");
+        System.setProperty("org.bouncycastle.bcasn1.allow_unsafe_integer", "false");
         //
         // Without property, single byte.
         //
@@ -132,7 +132,7 @@ public class ASN1IntegerTest
         //
         // With property set.
         //
-        System.setProperty("org.bouncycastle.asn1.allow_unsafe_integer", "true");
+        System.setProperty("org.bouncycastle.bcasn1.allow_unsafe_integer", "true");
 
         rawInt = Hex.decode("10");
         i = new ASN1Integer(rawInt);
@@ -143,7 +143,7 @@ public class ASN1IntegerTest
     public void testValidEncodingMultiByte()
         throws Exception
     {
-        System.setProperty("org.bouncycastle.asn1.allow_unsafe_integer", "false");
+        System.setProperty("org.bouncycastle.bcasn1.allow_unsafe_integer", "false");
         //
         // Without property, single byte.
         //
@@ -155,7 +155,7 @@ public class ASN1IntegerTest
         //
         // With property set.
         //
-        System.setProperty("org.bouncycastle.asn1.allow_unsafe_integer", "true");
+        System.setProperty("org.bouncycastle.bcasn1.allow_unsafe_integer", "true");
 
         rawInt = Hex.decode("10FF");
         i = new ASN1Integer(rawInt);
@@ -166,7 +166,7 @@ public class ASN1IntegerTest
     public void testInvalidEncoding_00()
         throws Exception
     {
-        System.setProperty("org.bouncycastle.asn1.allow_unsafe_integer", "false");
+        System.setProperty("org.bouncycastle.bcasn1.allow_unsafe_integer", "false");
         try
         {
             byte[] rawInt = Hex.decode("0010FF");
@@ -182,7 +182,7 @@ public class ASN1IntegerTest
     public void testInvalidEncoding_ff()
         throws Exception
     {
-        System.setProperty("org.bouncycastle.asn1.allow_unsafe_integer", "false");
+        System.setProperty("org.bouncycastle.bcasn1.allow_unsafe_integer", "false");
         try
         {
             byte[] rawInt = Hex.decode("FF81FF");
@@ -198,7 +198,7 @@ public class ASN1IntegerTest
     public void testInvalidEncoding_00_32bits()
         throws Exception
     {
-        System.setProperty("org.bouncycastle.asn1.allow_unsafe_integer", "false");
+        System.setProperty("org.bouncycastle.bcasn1.allow_unsafe_integer", "false");
         //
         // Check what would pass loose validation fails outside of loose validation.
         //
@@ -217,7 +217,7 @@ public class ASN1IntegerTest
     public void testInvalidEncoding_ff_32bits()
         throws Exception
     {
-        System.setProperty("org.bouncycastle.asn1.allow_unsafe_integer", "false");
+        System.setProperty("org.bouncycastle.bcasn1.allow_unsafe_integer", "false");
         //
         // Check what would pass loose validation fails outside of loose validation.
         //
@@ -240,7 +240,7 @@ public class ASN1IntegerTest
     public void testLooseInvalidValidEncoding_zero_32B()
         throws Exception
     {
-        System.setProperty("org.bouncycastle.asn1.allow_unsafe_integer", "false");
+        System.setProperty("org.bouncycastle.bcasn1.allow_unsafe_integer", "false");
         //
         // Should still fail as loose validation only permits 3 leading 0x00 bytes.
         //
@@ -281,12 +281,12 @@ public class ASN1IntegerTest
     public void testLooseValidEncoding_zero_32BAligned()
         throws Exception
     {
-        System.setProperty("org.bouncycastle.asn1.allow_unsafe_integer", "false");
+        System.setProperty("org.bouncycastle.bcasn1.allow_unsafe_integer", "false");
         //
         // Should pass as loose validation permits 3 leading 0x00 bytes.
         //
 
-        System.getProperties().put("org.bouncycastle.asn1.allow_unsafe_integer", "true");
+        System.getProperties().put("org.bouncycastle.bcasn1.allow_unsafe_integer", "true");
         byte[] rawInt = Hex.decode("00000010FF000000");
         ASN1Integer i = new ASN1Integer(rawInt);
         isEquals(72997666816L, BigIntegers.longValueExact(i.getValue()));
@@ -295,11 +295,11 @@ public class ASN1IntegerTest
     public void testLooseValidEncoding_FF_32BAligned()
         throws Exception
     {
-        System.setProperty("org.bouncycastle.asn1.allow_unsafe_integer", "false");
+        System.setProperty("org.bouncycastle.bcasn1.allow_unsafe_integer", "false");
         //
         // Should pass as loose validation permits 3
 
-        System.getProperties().put("org.bouncycastle.asn1.allow_unsafe_integer", "true");
+        System.getProperties().put("org.bouncycastle.bcasn1.allow_unsafe_integer", "true");
         byte[] rawInt = Hex.decode("FFFFFF10FF000000");
         ASN1Integer i = new ASN1Integer(rawInt);
         isEquals(-1026513960960L, BigIntegers.longValueExact(i.getValue()));
@@ -308,12 +308,12 @@ public class ASN1IntegerTest
     public void testLooseValidEncoding_FF_32BAligned_1not0()
         throws Exception
     {
-        System.setProperty("org.bouncycastle.asn1.allow_unsafe_integer", "false");
+        System.setProperty("org.bouncycastle.bcasn1.allow_unsafe_integer", "false");
         //
         // Should pass as loose validation permits 3 leading 0xFF bytes.
         //
 
-        System.getProperties().put("org.bouncycastle.asn1.allow_unsafe_integer", "true");
+        System.getProperties().put("org.bouncycastle.bcasn1.allow_unsafe_integer", "true");
         byte[] rawInt = Hex.decode("FFFEFF10FF000000");
         ASN1Integer i = new ASN1Integer(rawInt);
         isEquals(-282501490671616L, BigIntegers.longValueExact(i.getValue()));
@@ -322,12 +322,12 @@ public class ASN1IntegerTest
     public void testLooseValidEncoding_FF_32BAligned_2not0()
         throws Exception
     {
-        System.setProperty("org.bouncycastle.asn1.allow_unsafe_integer", "false");
+        System.setProperty("org.bouncycastle.bcasn1.allow_unsafe_integer", "false");
         //
         // Should pass as loose validation permits 3 leading 0xFF bytes.
         //
 
-        System.getProperties().put("org.bouncycastle.asn1.allow_unsafe_integer", "true");
+        System.getProperties().put("org.bouncycastle.bcasn1.allow_unsafe_integer", "true");
         byte[] rawInt = Hex.decode("FFFFFE10FF000000");
         ASN1Integer i = new ASN1Integer(rawInt);
         isEquals(-2126025588736L, BigIntegers.longValueExact(i.getValue()));
@@ -336,12 +336,12 @@ public class ASN1IntegerTest
     public void testOversizedEncoding()
         throws Exception
     {
-        System.setProperty("org.bouncycastle.asn1.allow_unsafe_integer", "false");
+        System.setProperty("org.bouncycastle.bcasn1.allow_unsafe_integer", "false");
         //
         // Should pass as loose validation permits 3 leading 0xFF bytes.
         //
 
-        System.getProperties().put("org.bouncycastle.asn1.allow_unsafe_integer", "true");
+        System.getProperties().put("org.bouncycastle.bcasn1.allow_unsafe_integer", "true");
         byte[] rawInt = Hex.decode("FFFFFFFE10FF000000000000");
         ASN1Integer i = new ASN1Integer(rawInt);
         isEquals(new BigInteger(Hex.decode("FFFFFFFE10FF000000000000")), i.getValue());

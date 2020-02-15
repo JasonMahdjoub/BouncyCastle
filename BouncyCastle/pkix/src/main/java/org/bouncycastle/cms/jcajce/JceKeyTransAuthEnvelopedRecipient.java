@@ -11,7 +11,7 @@ import javax.crypto.Cipher;
 import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.cms.CMSException;
 import org.bouncycastle.cms.RecipientOperator;
-import org.bouncycastle.jcajce.io.CipherInputStream;
+import org.bouncycastle.bcjcajce.io.CipherInputStream;
 import org.bouncycastle.operator.InputAEADDecryptor;
 
 public class JceKeyTransAuthEnvelopedRecipient

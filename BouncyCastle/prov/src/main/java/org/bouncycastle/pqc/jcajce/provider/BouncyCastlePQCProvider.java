@@ -13,10 +13,10 @@ import java.util.Map;
 import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 import org.bouncycastle.bcasn1.pkcs.PrivateKeyInfo;
 import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
-import org.bouncycastle.jcajce.provider.config.ProviderConfiguration;
-import org.bouncycastle.jcajce.provider.util.AlgorithmProvider;
-import org.bouncycastle.jcajce.provider.util.AsymmetricKeyInfoConverter;
+import org.bouncycastle.bcjcajce.provider.config.ConfigurableProvider;
+import org.bouncycastle.bcjcajce.provider.config.ProviderConfiguration;
+import org.bouncycastle.bcjcajce.provider.util.AlgorithmProvider;
+import org.bouncycastle.bcjcajce.provider.util.AsymmetricKeyInfoConverter;
 
 public class BouncyCastlePQCProvider
     extends Provider

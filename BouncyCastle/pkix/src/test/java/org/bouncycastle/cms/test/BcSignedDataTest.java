@@ -62,7 +62,7 @@ import org.bouncycastle.bccrypto.params.AsymmetricKeyParameter;
 import org.bouncycastle.bccrypto.signers.RSADigestSigner;
 import org.bouncycastle.bccrypto.util.PrivateKeyFactory;
 import org.bouncycastle.bccrypto.util.PublicKeyFactory;
-import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
+import org.bouncycastle.bcjcajce.provider.config.ConfigurableProvider;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.operator.BufferingContentSigner;
 import org.bouncycastle.operator.ContentSigner;

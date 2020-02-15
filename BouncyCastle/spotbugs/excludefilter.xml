@@ -3,28 +3,28 @@
 <FindBugsFilter>
     <Match>
         <!-- clone calls copy constructor -->
-        <Class name="org.bouncycastle.jcajce.PKIXCertStoreSelector"/>
+        <Class name="org.bouncycastle.bcjcajce.PKIXCertStoreSelector"/>
         <Method name="clone"/>
         <Bug code="CN"/>
     </Match>
 
     <Match>
         <!-- $$ Needs review, clone returns this, need reason. -->
-        <Class name="org.bouncycastle.jcajce.PKIXCRLStoreSelector"/>
+        <Class name="org.bouncycastle.bcjcajce.PKIXCRLStoreSelector"/>
         <Method name="clone"/>
         <Bug code="CN"/>
     </Match>
 
     <Match>
         <!-- $$ Needs review, clone returns this, need reason. -->
-        <Class name="org.bouncycastle.jcajce.PKIXExtendedParameters"/>
+        <Class name="org.bouncycastle.bcjcajce.PKIXExtendedParameters"/>
         <Method name="clone"/>
         <Bug code="CN"/>
     </Match>
 
     <Match>
         <!-- $$ Needs review, clone returns this, need reason. -->
-        <Class name="org.bouncycastle.jcajce.PKIXExtendedBuilderParameters"/>
+        <Class name="org.bouncycastle.bcjcajce.PKIXExtendedBuilderParameters"/>
         <Method name="clone"/>
         <Bug code="CN"/>
     </Match>
@@ -57,8 +57,8 @@
 
 
     <!-- Fixed: Added close in finally block to org.bouncycastle.bcasn1.ASN1Primitive.fromByteArray(byte[]) -->
-    <!--- Fixed: Added close in finally block to: org.bouncycastle.jcajce.provider.ProvJKS$JKSKeyStoreSpi.engineLoad(InputStream, char[]) -->
-    <!-- Added try / finally close blocks to streams.   org.bouncycastle.jcajce.provider ProvPKCS12 -->
+    <!--- Fixed: Added close in finally block to: org.bouncycastle.bcjcajce.provider.ProvJKS$JKSKeyStoreSpi.engineLoad(InputStream, char[]) -->
+    <!-- Added try / finally close blocks to streams.   org.bouncycastle.bcjcajce.provider ProvPKCS12 -->
 
     <!-- Added transient to fields in BouncyCastleFipsProvider -->
 
@@ -66,8 +66,8 @@
     <Match>
         <!-- Complaining about a transient 'this' -->
 
-        <Class name="org.bouncycastle.jcajce.provider.ProvRandom$1$1"/>
-        <Class name="org.bouncycastle.jcajce.provider.ProvRandom$2$1"/>
+        <Class name="org.bouncycastle.bcjcajce.provider.ProvRandom$1$1"/>
+        <Class name="org.bouncycastle.bcjcajce.provider.ProvRandom$2$1"/>
     </Match>
 
 

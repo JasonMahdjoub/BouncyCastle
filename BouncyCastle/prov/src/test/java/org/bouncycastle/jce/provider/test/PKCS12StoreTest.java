@@ -41,7 +41,7 @@ import org.bouncycastle.bcasn1.x500.X500NameBuilder;
 import org.bouncycastle.bcasn1.x500.style.BCStyle;
 import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.bcutil.encoders.Hex;
-import org.bouncycastle.jcajce.PKCS12StoreParameter;
+import org.bouncycastle.bcjcajce.PKCS12StoreParameter;
 import org.bouncycastle.jce.PKCS12Util;
 import org.bouncycastle.jce.interfaces.PKCS12BagAttributeCarrier;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
@@ -827,7 +827,7 @@ public class PKCS12StoreTest
         //
         bOut = new ByteArrayOutputStream();
 
-        storeParam = new org.bouncycastle.jcajce.provider.config.PKCS12StoreParameter(bOut, passwd, true);
+        storeParam = new org.bouncycastle.bcjcajce.provider.config.PKCS12StoreParameter(bOut, passwd, true);
 
         store.store(storeParam);
 
@@ -1529,7 +1529,7 @@ public class PKCS12StoreTest
         }
         catch (IOException e)
         {           
-            isTrue("illegal object in getInstance: org.bouncycastle.asn1.DLSequence".equals(e.getMessage()));
+            isTrue("illegal object in getInstance: org.bouncycastle.bcasn1.DLSequence".equals(e.getMessage()));
         }
     }
 

@@ -65,7 +65,7 @@ public class DVCSResponse
     /**
      * Return the ASN.1 DVCSResponse structure making up the body of this response.
      *
-     * @return an org.bouncycastle.asn1.dvcs.DVCSResponse object.
+     * @return an org.bouncycastle.bcasn1.dvcs.DVCSResponse object.
      */
     public ASN1Encodable getContent()
     {

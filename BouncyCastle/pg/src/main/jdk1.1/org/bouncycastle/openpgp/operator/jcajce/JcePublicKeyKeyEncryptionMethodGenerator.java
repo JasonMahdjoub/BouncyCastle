@@ -27,10 +27,10 @@ import org.bouncycastle.bcasn1.x9.X9ECPoint;
 import org.bouncycastle.bcpg.ECDHPublicBCPGKey;
 import org.bouncycastle.bcpg.MPInteger;
 import org.bouncycastle.bcpg.PublicKeyAlgorithmTags;
-import org.bouncycastle.jcajce.spec.UserKeyingMaterialSpec;
-import org.bouncycastle.jcajce.util.DefaultJcaJceHelper;
-import org.bouncycastle.jcajce.util.NamedJcaJceHelper;
-import org.bouncycastle.jcajce.util.ProviderJcaJceHelper;
+import org.bouncycastle.bcjcajce.spec.UserKeyingMaterialSpec;
+import org.bouncycastle.bcjcajce.util.DefaultJcaJceHelper;
+import org.bouncycastle.bcjcajce.util.NamedJcaJceHelper;
+import org.bouncycastle.bcjcajce.util.ProviderJcaJceHelper;
 import org.bouncycastle.bcmath.ec.ECPoint;
 import org.bouncycastle.openpgp.PGPException;
 import org.bouncycastle.openpgp.PGPPublicKey;
@@ -101,7 +101,7 @@ public class JcePublicKeyKeyEncryptionMethodGenerator
 
                 ecAlgParams.init(new X962Parameters(ecKey.getCurveOID()).getEncoded());
 
-                org.bouncycastle.jcajce.provider.asymmetric.ec.KeyPairGeneratorSpi.EC kpGen = (org.bouncycastle.jcajce.provider.asymmetric.ec.KeyPairGeneratorSpi.EC)helper.createKeyPairGenerator("EC");
+                org.bouncycastle.bcjcajce.provider.asymmetric.ec.KeyPairGeneratorSpi.EC kpGen = (org.bouncycastle.bcjcajce.provider.asymmetric.ec.KeyPairGeneratorSpi.EC)helper.createKeyPairGenerator("EC");
 
                 kpGen.initialize(ecAlgParams.getParameterSpec(AlgorithmParameterSpec.class), random);
 

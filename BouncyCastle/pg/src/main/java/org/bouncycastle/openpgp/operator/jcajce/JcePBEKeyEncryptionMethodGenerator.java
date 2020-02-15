@@ -13,9 +13,9 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
 import org.bouncycastle.bcpg.S2K;
-import org.bouncycastle.jcajce.util.DefaultJcaJceHelper;
-import org.bouncycastle.jcajce.util.NamedJcaJceHelper;
-import org.bouncycastle.jcajce.util.ProviderJcaJceHelper;
+import org.bouncycastle.bcjcajce.util.DefaultJcaJceHelper;
+import org.bouncycastle.bcjcajce.util.NamedJcaJceHelper;
+import org.bouncycastle.bcjcajce.util.ProviderJcaJceHelper;
 import org.bouncycastle.openpgp.PGPException;
 import org.bouncycastle.openpgp.PGPUtil;
 import org.bouncycastle.openpgp.operator.PBEKeyEncryptionMethodGenerator;

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.bouncycastle.jce.provider.test.rsa3.RSA3CertTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2020-02-15T08:13:35" hostname="Garage" time="0.006">
+  <properties/>
+  <testcase name="testA" classname="org.bouncycastle.jce.provider.test.rsa3.RSA3CertTest" time="0.003"/>
+  <testcase name="testB" classname="org.bouncycastle.jce.provider.test.rsa3.RSA3CertTest" time="0.0"/>
+  <testcase name="testC" classname="org.bouncycastle.jce.provider.test.rsa3.RSA3CertTest" time="0.0"/>
+  <testcase name="testD" classname="org.bouncycastle.jce.provider.test.rsa3.RSA3CertTest" time="0.0"/>
+  <testcase name="testE" classname="org.bouncycastle.jce.provider.test.rsa3.RSA3CertTest" time="0.001"/>
+  <testcase name="testF" classname="org.bouncycastle.jce.provider.test.rsa3.RSA3CertTest" time="0.0"/>
+  <testcase name="testG" classname="org.bouncycastle.jce.provider.test.rsa3.RSA3CertTest" time="0.0"/>
+  <testcase name="testH" classname="org.bouncycastle.jce.provider.test.rsa3.RSA3CertTest" time="0.0"/>
+  <testcase name="testI" classname="org.bouncycastle.jce.provider.test.rsa3.RSA3CertTest" time="0.001"/>
+  <testcase name="testJ" classname="org.bouncycastle.jce.provider.test.rsa3.RSA3CertTest" time="0.0"/>
+  <testcase name="testL" classname="org.bouncycastle.jce.provider.test.rsa3.RSA3CertTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

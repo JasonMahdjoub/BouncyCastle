@@ -19,7 +19,7 @@ import org.bouncycastle.bccrypto.engines.IESEngine;
 import org.bouncycastle.bccrypto.generators.KDF2BytesGenerator;
 import org.bouncycastle.bccrypto.macs.HMac;
 import org.bouncycastle.bccrypto.paddings.PaddedBufferedBlockCipher;
-import org.bouncycastle.jcajce.provider.asymmetric.ec.IESCipher;
+import org.bouncycastle.bcjcajce.provider.asymmetric.ec.IESCipher;
 import org.bouncycastle.jce.interfaces.ECPrivateKey;
 import org.bouncycastle.jce.interfaces.ECPublicKey;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
@@ -50,8 +50,8 @@ public class ECIESTest
         byte[] encoding   = Hex.decode("303132333435363738393a3b3c3d3e3f");
         
         
-        IESCipher c1 = new org.bouncycastle.jcajce.provider.asymmetric.ec.IESCipher.ECIES();
-        IESCipher c2 = new org.bouncycastle.jcajce.provider.asymmetric.ec.IESCipher.ECIES();
+        IESCipher c1 = new org.bouncycastle.bcjcajce.provider.asymmetric.ec.IESCipher.ECIES();
+        IESCipher c2 = new org.bouncycastle.bcjcajce.provider.asymmetric.ec.IESCipher.ECIES();
         IESParameterSpec params = new IESParameterSpec(derivation,encoding,128);
 
         // Testing ECIES with default curve in streaming mode
@@ -105,8 +105,8 @@ public class ECIESTest
             }
         }
 
-        c1 = new org.bouncycastle.jcajce.provider.asymmetric.ec.IESCipher.ECIESwithAESCBC();
-        c2 = new org.bouncycastle.jcajce.provider.asymmetric.ec.IESCipher.ECIESwithAESCBC();
+        c1 = new org.bouncycastle.bcjcajce.provider.asymmetric.ec.IESCipher.ECIESwithAESCBC();
+        c2 = new org.bouncycastle.bcjcajce.provider.asymmetric.ec.IESCipher.ECIESwithAESCBC();
         params = new IESParameterSpec(derivation, encoding, 128, 128, Hex.decode("000102030405060708090a0b0c0d0e0f"));
 
         // Testing ECIES with 256-bit curve using AES-CBC

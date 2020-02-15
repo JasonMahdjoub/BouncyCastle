@@ -11,7 +11,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import org.bouncycastle.jcajce.PKIXCRLStoreSelector;
+import org.bouncycastle.bcjcajce.PKIXCRLStoreSelector;
 import org.bouncycastle.bcutil.Store;
 import org.bouncycastle.bcutil.StoreException;
 
@@ -65,7 +65,7 @@ class PKIXCRLUtil
      * Return a Collection of all CRLs found in the X509Store's that are
      * matching the crlSelect criteriums.
      *
-     * @param crlSelect a {@link org.bouncycastle.jcajce.PKIXCRLStoreSelector} object that will be used
+     * @param crlSelect a {@link org.bouncycastle.bcjcajce.PKIXCRLStoreSelector} object that will be used
      *            to select the CRLs
      * @param crlStores a List containing only
      *            {@link Store} objects.

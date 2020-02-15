@@ -172,8 +172,8 @@ then
     mkdir $artifacts/lcrypto-jdk12-$base
     mkdir $artifacts/lcrypto-jdk12-$base/src
 
-    tar cf - index.html LICENSE.html CONTRIBUTORS.html docs | (cd $artifacts/lcrypto-jdk12-$base && tar xf -)
-    ((cd $jdk12src && tar cf - java org/bouncycastle/LICENSE.java \
+    tar cf - index.html BCLICENSE.html CONTRIBUTORS.html docs | (cd $artifacts/lcrypto-jdk12-$base && tar xf -)
+    ((cd $jdk12src && tar cf - java org/bouncycastle/BCLICENSE.java \
     org/bouncycastle/math org/bouncycastle/crypto org/bouncycastle/util org/bouncycastle/asn1 org/bouncycastle/pqc/math org/bouncycastle/pqc/crypto org/bouncycastle/pqc/asn1  ) | (cd $artifacts/lcrypto-jdk12-$base/src && tar xf -)) 
     (
         cd $artifacts/lcrypto-jdk12-$base;
@@ -260,8 +260,8 @@ then
 
     mkdir $artifacts/jce-jdk12-$base
     mkdir $artifacts/jce-jdk12-$base/src
-    tar cf - index.html LICENSE.html CONTRIBUTORS.html docs | (cd $artifacts/jce-jdk12-$base; tar xf -)
-    ((cd $jdk12src && tar cf - java javax org/bouncycastle/LICENSE.java org/bouncycastle/crypto org/bouncycastle/math org/bouncycastle/pqc org/bouncycastle/asn1 org/bouncycastle/jcajce org/bouncycastle/util org/bouncycastle/jce org/bouncycastle/x509 ) | (cd $artifacts/jce-jdk12-$base/src && tar xf -))
+    tar cf - index.html BCLICENSE.html CONTRIBUTORS.html docs | (cd $artifacts/jce-jdk12-$base; tar xf -)
+    ((cd $jdk12src && tar cf - java javax org/bouncycastle/BCLICENSE.java org/bouncycastle/crypto org/bouncycastle/math org/bouncycastle/pqc org/bouncycastle/asn1 org/bouncycastle/jcajce org/bouncycastle/util org/bouncycastle/jce org/bouncycastle/x509 ) | (cd $artifacts/jce-jdk12-$base/src && tar xf -))
 
     (
     cd $artifacts/jce-jdk12-$base; mkdir classes; mkdir javadoc;
@@ -329,9 +329,9 @@ then
         org.bouncycastle.jce.spec \
         org.bouncycastle.jce.examples \
         org.bouncycastle.jce.provider \
-        org.bouncycastle.jcajce.provider.asymmetric \
-        org.bouncycastle.jcajce.provider.asymmetric.ec \
-        org.bouncycastle.jcajce.provider.symmetric \
+        org.bouncycastle.bcjcajce.provider.asymmetric \
+        org.bouncycastle.bcjcajce.provider.asymmetric.ec \
+        org.bouncycastle.bcjcajce.provider.symmetric \
         org.bouncycastle.jce.provider.test \
         org.bouncycastle.ocsp \
         org.bouncycastle.ocsp.test \
@@ -383,7 +383,7 @@ then
 
     mkdir $artifacts/bcpkix-jdk12-$base
     mkdir $artifacts/bcpkix-jdk12-$base/src
-    tar cf - index.html LICENSE.html CONTRIBUTORS.html docs | (cd $artifacts/bcpkix-jdk12-$base; tar xf -)
+    tar cf - index.html BCLICENSE.html CONTRIBUTORS.html docs | (cd $artifacts/bcpkix-jdk12-$base; tar xf -)
     ((cd $jdk12src && tar cf - org/bouncycastle/cert org/bouncycastle/cms org/bouncycastle/pkcs org/bouncycastle/pkix org/bouncycastle/openssl org/bouncycastle/operator org/bouncycastle/mozilla org/bouncycastle/tsp org/bouncycastle/voms ) | (cd $artifacts/bcpkix-jdk12-$base/src && tar xf -))
     (
     cd $artifacts/bcpkix-jdk12-$base; mkdir classes; mkdir javadoc;
@@ -463,7 +463,7 @@ then
 
     mkdir $artifacts/bcpg-jdk12-$base
     mkdir $artifacts/bcpg-jdk12-$base/src
-    tar cf - index.html LICENSE.html CONTRIBUTORS.html docs | (cd $artifacts/bcpg-jdk12-$base; tar xf -)
+    tar cf - index.html BCLICENSE.html CONTRIBUTORS.html docs | (cd $artifacts/bcpg-jdk12-$base; tar xf -)
     ((cd pg/src/main/java && tar cf - * ) | (cd $artifacts/bcpg-jdk12-$base/src && tar xf -))
     ((cd pg/src/main/jdk1.4 && tar cf - * ) | (cd $artifacts/bcpg-jdk12-$base/src && tar xf -))
     ((cd pg/src/main/jdk1.3 && tar cf - * ) | (cd $artifacts/bcpg-jdk12-$base/src && tar xf -))

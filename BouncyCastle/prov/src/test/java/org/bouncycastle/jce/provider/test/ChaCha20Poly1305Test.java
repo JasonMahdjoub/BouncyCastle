@@ -13,7 +13,7 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
 import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.jcajce.spec.AEADParameterSpec;
+import org.bouncycastle.bcjcajce.spec.AEADParameterSpec;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.bcutil.Strings;
 import org.bouncycastle.bcutil.encoders.Hex;

@@ -17,7 +17,7 @@ import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.cms.CMSAlgorithm;
 import org.bouncycastle.cms.CMSException;
-import org.bouncycastle.jcajce.io.CipherOutputStream;
+import org.bouncycastle.bcjcajce.io.CipherOutputStream;
 import org.bouncycastle.operator.GenericKey;
 import org.bouncycastle.operator.OutputEncryptor;
 import org.bouncycastle.bcutil.Integers;

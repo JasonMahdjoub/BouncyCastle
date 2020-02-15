@@ -36,8 +36,8 @@ import org.bouncycastle.bcasn1.x509.V2TBSCertListGenerator;
 import org.bouncycastle.bcasn1.x509.X509Extensions;
 import org.bouncycastle.bcasn1.x509.X509ExtensionsGenerator;
 import org.bouncycastle.bcasn1.x509.X509Name;
-import org.bouncycastle.jcajce.util.BCJcaJceHelper;
-import org.bouncycastle.jcajce.util.JcaJceHelper;
+import org.bouncycastle.bcjcajce.util.BCJcaJceHelper;
+import org.bouncycastle.bcjcajce.util.JcaJceHelper;
 import org.bouncycastle.jce.X509Principal;
 import org.bouncycastle.jce.provider.X509CRLObject;
 

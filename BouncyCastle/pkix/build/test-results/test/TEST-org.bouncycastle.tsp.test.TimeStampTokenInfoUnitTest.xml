@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.bouncycastle.tsp.test.TimeStampTokenInfoUnitTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2020-02-14T17:20:21" hostname="Garage" time="0.001">
+  <properties/>
+  <testcase name="testTstInfo1" classname="org.bouncycastle.tsp.test.TimeStampTokenInfoUnitTest" time="0.0"/>
+  <testcase name="testTstInfo2" classname="org.bouncycastle.tsp.test.TimeStampTokenInfoUnitTest" time="0.0"/>
+  <testcase name="testTstInfo3" classname="org.bouncycastle.tsp.test.TimeStampTokenInfoUnitTest" time="0.0"/>
+  <testcase name="testTstInfoDudDate" classname="org.bouncycastle.tsp.test.TimeStampTokenInfoUnitTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

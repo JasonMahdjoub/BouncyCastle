@@ -20,7 +20,7 @@ import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
 import org.bouncycastle.bcasn1.x9.ECNamedCurveTable;
 import org.bouncycastle.bcasn1.x9.X9ECParameters;
 import org.bouncycastle.bcutil.encoders.Hex;
-import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
+import org.bouncycastle.bcjcajce.provider.config.ConfigurableProvider;
 import org.bouncycastle.jce.ECPointUtil;
 import org.bouncycastle.jce.interfaces.ECPrivateKey;
 import org.bouncycastle.jce.interfaces.ECPublicKey;

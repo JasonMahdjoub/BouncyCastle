@@ -36,7 +36,7 @@ import org.bouncycastle.bccrypto.paddings.PaddedBufferedBlockCipher;
 import org.bouncycastle.bccrypto.params.*;
 import org.bouncycastle.bccrypto.params.ParametersWithIV;
 import org.bouncycastle.bccrypto.params.RC5Parameters;
-import org.bouncycastle.jcajce.provider.symmetric.util.BCPBEKey;
+import org.bouncycastle.bcjcajce.provider.symmetric.util.BCPBEKey;
 import org.bouncycastle.bcutil.Strings;
 
 public class BrokenJCEBlockCipher

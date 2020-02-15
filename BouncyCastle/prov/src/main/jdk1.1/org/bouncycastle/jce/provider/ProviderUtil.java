@@ -1,6 +1,6 @@
 package org.bouncycastle.jce.provider;
 
-import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
+import org.bouncycastle.bcjcajce.provider.config.ConfigurableProvider;
 import org.bouncycastle.jce.spec.ECParameterSpec;
 
 import java.io.ByteArrayInputStream;

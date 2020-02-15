@@ -8,7 +8,7 @@ import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.PBEParametersGenerator;
 import org.bouncycastle.bccrypto.params.KeyParameter;
 import org.bouncycastle.bccrypto.params.ParametersWithIV;
-import org.bouncycastle.jcajce.provider.symmetric.util.PBE;
+import org.bouncycastle.bcjcajce.provider.symmetric.util.PBE;
 
 public class JCEPBEKey
     implements SecretKey

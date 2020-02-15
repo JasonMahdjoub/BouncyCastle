@@ -34,11 +34,11 @@ import org.bouncycastle.bcasn1.x509.Extension;
 import org.bouncycastle.bcasn1.x509.GeneralName;
 import org.bouncycastle.bcasn1.x509.GeneralNames;
 import org.bouncycastle.bcasn1.x509.IssuingDistributionPoint;
-import org.bouncycastle.jcajce.PKIXCRLStoreSelector;
-import org.bouncycastle.jcajce.PKIXCertStoreSelector;
-import org.bouncycastle.jcajce.PKIXExtendedBuilderParameters;
-import org.bouncycastle.jcajce.PKIXExtendedParameters;
-import org.bouncycastle.jcajce.util.JcaJceHelper;
+import org.bouncycastle.bcjcajce.PKIXCRLStoreSelector;
+import org.bouncycastle.bcjcajce.PKIXCertStoreSelector;
+import org.bouncycastle.bcjcajce.PKIXExtendedBuilderParameters;
+import org.bouncycastle.bcjcajce.PKIXExtendedParameters;
+import org.bouncycastle.bcjcajce.util.JcaJceHelper;
 import org.bouncycastle.bcutil.Arrays;
 
 class RFC3280CertPathUtilities

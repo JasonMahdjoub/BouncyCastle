@@ -14,10 +14,10 @@ import javax.crypto.spec.DHParameterSpec;
 import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.params.DSAParameters;
 import org.bouncycastle.bccrypto.params.DHParameters;
-import org.bouncycastle.jcajce.spec.DHDomainParameterSpec;
-import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
-import org.bouncycastle.jcajce.provider.config.ProviderConfiguration;
-import org.bouncycastle.jcajce.provider.config.ProviderConfigurationPermission;
+import org.bouncycastle.bcjcajce.spec.DHDomainParameterSpec;
+import org.bouncycastle.bcjcajce.provider.config.ConfigurableProvider;
+import org.bouncycastle.bcjcajce.provider.config.ProviderConfiguration;
+import org.bouncycastle.bcjcajce.provider.config.ProviderConfigurationPermission;
 import org.bouncycastle.jce.spec.ECParameterSpec;
 
 class BouncyCastleProviderConfiguration

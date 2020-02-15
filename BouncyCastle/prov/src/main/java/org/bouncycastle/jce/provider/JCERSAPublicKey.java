@@ -10,7 +10,7 @@ import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
 import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
 import org.bouncycastle.bccrypto.params.RSAKeyParameters;
-import org.bouncycastle.jcajce.provider.asymmetric.util.KeyUtil;
+import org.bouncycastle.bcjcajce.provider.asymmetric.util.KeyUtil;
 import org.bouncycastle.bcutil.Strings;
 
 public class JCERSAPublicKey

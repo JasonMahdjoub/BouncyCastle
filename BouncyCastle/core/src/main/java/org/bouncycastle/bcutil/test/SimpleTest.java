@@ -177,10 +177,12 @@ public abstract class SimpleTest
         }
         catch (TestFailedException e)
         {
+            e.printStackTrace();
             return e.getResult();
         }
         catch (Exception e)
         {
+            e.printStackTrace();
             return SimpleTestResult.failed(this, "Exception: " + e, e);
         }
     }

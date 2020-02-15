@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.bouncycastle.i18n.filter.test.HTMLFilterTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-02-14T17:17:04" hostname="Garage" time="0.0">
+  <properties/>
+  <testcase name="testDoFilter" classname="org.bouncycastle.i18n.filter.test.HTMLFilterTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

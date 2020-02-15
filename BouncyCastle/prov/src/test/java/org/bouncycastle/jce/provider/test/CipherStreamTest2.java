@@ -13,8 +13,8 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.spec.IvParameterSpec;
 
 import org.bouncycastle.bccrypto.io.InvalidCipherTextIOException;
-import org.bouncycastle.jcajce.io.CipherInputStream;
-import org.bouncycastle.jcajce.io.CipherOutputStream;
+import org.bouncycastle.bcjcajce.io.CipherInputStream;
+import org.bouncycastle.bcjcajce.io.CipherOutputStream;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.bcutil.Arrays;
 import org.bouncycastle.bcutil.test.SimpleTest;

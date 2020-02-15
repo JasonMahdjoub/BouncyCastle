@@ -13,11 +13,11 @@ import java.util.Map;
 import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 import org.bouncycastle.bcasn1.pkcs.PrivateKeyInfo;
 import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
-import org.bouncycastle.jcajce.provider.config.ProviderConfiguration;
-import org.bouncycastle.jcajce.provider.symmetric.util.ClassUtil;
-import org.bouncycastle.jcajce.provider.util.AlgorithmProvider;
-import org.bouncycastle.jcajce.provider.util.AsymmetricKeyInfoConverter;
+import org.bouncycastle.bcjcajce.provider.config.ConfigurableProvider;
+import org.bouncycastle.bcjcajce.provider.config.ProviderConfiguration;
+import org.bouncycastle.bcjcajce.provider.symmetric.util.ClassUtil;
+import org.bouncycastle.bcjcajce.provider.util.AlgorithmProvider;
+import org.bouncycastle.bcjcajce.provider.util.AsymmetricKeyInfoConverter;
 import org.bouncycastle.pqc.asn1.PQCObjectIdentifiers;
 import org.bouncycastle.pqc.jcajce.provider.mceliece.McElieceCCA2KeyFactorySpi;
 import org.bouncycastle.pqc.jcajce.provider.mceliece.McElieceKeyFactorySpi;
@@ -66,7 +66,7 @@ public final class BouncyCastleProvider extends Provider
     /*
      * Configurable symmetric ciphers
      */
-    private static final String SYMMETRIC_PACKAGE = "org.bouncycastle.jcajce.provider.symmetric.";
+    private static final String SYMMETRIC_PACKAGE = "org.bouncycastle.bcjcajce.provider.symmetric.";
 
     private static final String[] SYMMETRIC_GENERIC =
     {
@@ -89,7 +89,7 @@ public final class BouncyCastleProvider extends Provider
      /*
      * Configurable asymmetric ciphers
      */
-    private static final String ASYMMETRIC_PACKAGE = "org.bouncycastle.jcajce.provider.asymmetric.";
+    private static final String ASYMMETRIC_PACKAGE = "org.bouncycastle.bcjcajce.provider.asymmetric.";
 
     // this one is required for GNU class path - it needs to be loaded first as the
     // later ones configure it.
@@ -106,7 +106,7 @@ public final class BouncyCastleProvider extends Provider
     /*
      * Configurable digests
      */
-    private static final String DIGEST_PACKAGE = "org.bouncycastle.jcajce.provider.digest.";
+    private static final String DIGEST_PACKAGE = "org.bouncycastle.bcjcajce.provider.digest.";
     private static final String[] DIGESTS =
     {
         "GOST3411", "Keccak", "MD2", "MD4", "MD5", "SHA1", "RIPEMD128", "RIPEMD160", "RIPEMD256", "RIPEMD320", "SHA224",
@@ -117,7 +117,7 @@ public final class BouncyCastleProvider extends Provider
     /*
      * Configurable keystores
      */
-    private static final String KEYSTORE_PACKAGE = "org.bouncycastle.jcajce.provider.keystore.";
+    private static final String KEYSTORE_PACKAGE = "org.bouncycastle.bcjcajce.provider.keystore.";
     private static final String[] KEYSTORES =
     {
         "BC", "BCFKS", "PKCS12"
@@ -126,7 +126,7 @@ public final class BouncyCastleProvider extends Provider
     /*
      * Configurable secure random
      */
-    private static final String SECURE_RANDOM_PACKAGE = "org.bouncycastle.jcajce.provider.drbg.";
+    private static final String SECURE_RANDOM_PACKAGE = "org.bouncycastle.bcjcajce.provider.drbg.";
     private static final String[] SECURE_RANDOMS =
     {
         "DRBG"

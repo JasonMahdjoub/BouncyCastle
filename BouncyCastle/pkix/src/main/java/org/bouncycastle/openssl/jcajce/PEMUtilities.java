@@ -24,7 +24,7 @@ import org.bouncycastle.bcasn1.cryptopro.CryptoProObjectIdentifiers;
 import org.bouncycastle.bcasn1.nist.NISTObjectIdentifiers;
 import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
 import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.jcajce.util.JcaJceHelper;
+import org.bouncycastle.bcjcajce.util.JcaJceHelper;
 import org.bouncycastle.openssl.EncryptionException;
 import org.bouncycastle.openssl.PEMException;
 import org.bouncycastle.bcutil.Integers;

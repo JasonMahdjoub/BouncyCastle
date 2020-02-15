@@ -1,4 +1,4 @@
-package org.bouncycastle.jcajce.examples;
+package org.bouncycastle.bcjcajce.examples;
 
 import java.math.BigInteger;
 import java.security.KeyFactory;

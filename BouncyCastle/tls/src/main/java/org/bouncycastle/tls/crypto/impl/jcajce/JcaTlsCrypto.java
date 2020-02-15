@@ -15,7 +15,7 @@ import javax.crypto.KeyAgreement;
 import javax.crypto.spec.SecretKeySpec;
 
 import org.bouncycastle.bcasn1.x509.KeyUsage;
-import org.bouncycastle.jcajce.util.JcaJceHelper;
+import org.bouncycastle.bcjcajce.util.JcaJceHelper;
 import org.bouncycastle.tls.AlertDescription;
 import org.bouncycastle.tls.EncryptionAlgorithm;
 import org.bouncycastle.tls.HashAlgorithm;

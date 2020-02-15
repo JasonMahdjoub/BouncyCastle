@@ -18,7 +18,7 @@ import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
 import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.cms.CMSException;
 import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
-import org.bouncycastle.jcajce.io.CipherOutputStream;
+import org.bouncycastle.bcjcajce.io.CipherOutputStream;
 import org.bouncycastle.operator.DefaultSecretKeySizeProvider;
 import org.bouncycastle.operator.GenericKey;
 import org.bouncycastle.operator.OutputEncryptor;

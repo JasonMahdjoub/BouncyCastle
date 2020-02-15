@@ -55,7 +55,7 @@ import org.bouncycastle.bcasn1.x509.Extension;
 import org.bouncycastle.bcasn1.x509.Extensions;
 import org.bouncycastle.bcasn1.x509.GeneralName;
 import org.bouncycastle.bcasn1.x509.KeyUsage;
-import org.bouncycastle.jcajce.provider.asymmetric.util.PKCS12BagAttributeCarrierImpl;
+import org.bouncycastle.bcjcajce.provider.asymmetric.util.PKCS12BagAttributeCarrierImpl;
 import org.bouncycastle.jce.X509Principal;
 import org.bouncycastle.jce.provider.RFC3280CertPathUtilities;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;

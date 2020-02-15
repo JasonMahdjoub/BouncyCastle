@@ -106,7 +106,7 @@ subprojects {
     sourceCompatibility = JavaVersionSource
     targetCompatibility = JavaVersionTarget
 
-    version = '1.64-DMRECOMPILE'
+    version = '1.64b-DMRECOMPILE'
 
 	compileJava.options.compilerArgs.addAll(['--release', JavaVersionTarget] as Collection<? extends String>)
 	if (project.hasProperty('javaHomeVersion') && JavaVersionTarget.toFloat()>1.8)
@@ -123,13 +123,13 @@ subprojects {
     task sourcesJar(type: Jar, dependsOn: classes) {
 	    classifier = 'sources'
 	    from sourceSets.main.allSource
-	    from "../../LICENSE"
+	    from "../../BCLICENSE"
 	}
 
 	/*task javadocJar(type: Jar, dependsOn: javadoc) {
 	    classifier = 'javadoc'
 	    from javadoc.destinationDir
-	    from "../../LICENSE"
+	    from "../../BCLICENSE"
 	}*/
 	publishing {
 		publications {

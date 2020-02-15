@@ -52,12 +52,12 @@ import org.bouncycastle.bcasn1.x509.GeneralSubtree;
 import org.bouncycastle.bcasn1.x509.IssuingDistributionPoint;
 import org.bouncycastle.bcasn1.x509.NameConstraints;
 import org.bouncycastle.bcasn1.x509.PolicyInformation;
-import org.bouncycastle.jcajce.PKIXCRLStore;
-import org.bouncycastle.jcajce.PKIXCRLStoreSelector;
-import org.bouncycastle.jcajce.PKIXCertStoreSelector;
-import org.bouncycastle.jcajce.PKIXExtendedBuilderParameters;
-import org.bouncycastle.jcajce.PKIXExtendedParameters;
-import org.bouncycastle.jcajce.util.JcaJceHelper;
+import org.bouncycastle.bcjcajce.PKIXCRLStore;
+import org.bouncycastle.bcjcajce.PKIXCRLStoreSelector;
+import org.bouncycastle.bcjcajce.PKIXCertStoreSelector;
+import org.bouncycastle.bcjcajce.PKIXExtendedBuilderParameters;
+import org.bouncycastle.bcjcajce.PKIXExtendedParameters;
+import org.bouncycastle.bcjcajce.util.JcaJceHelper;
 import org.bouncycastle.jce.exception.ExtCertPathValidatorException;
 import org.bouncycastle.bcutil.Arrays;
 

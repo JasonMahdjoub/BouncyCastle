@@ -10,8 +10,8 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
 import org.bouncycastle.bcasn1.cms.GCMParameters;
-import org.bouncycastle.jcajce.spec.AEADParameterSpec;
-import org.bouncycastle.jcajce.util.JcaJceHelper;
+import org.bouncycastle.bcjcajce.spec.AEADParameterSpec;
+import org.bouncycastle.bcjcajce.util.JcaJceHelper;
 import org.bouncycastle.tls.crypto.impl.TlsAEADCipherImpl;
 
 /**

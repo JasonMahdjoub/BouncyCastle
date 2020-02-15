@@ -25,8 +25,8 @@ import org.bouncycastle.cms.jcajce.JceCMSContentEncryptorBuilder;
 import org.bouncycastle.cms.jcajce.JceKeyTransEnvelopedRecipient;
 import org.bouncycastle.cms.jcajce.JceKeyTransRecipientId;
 import org.bouncycastle.cms.jcajce.JceKeyTransRecipientInfoGenerator;
-import org.bouncycastle.jcajce.util.AnnotatedPrivateKey;
-import org.bouncycastle.jcajce.util.PrivateKeyAnnotator;
+import org.bouncycastle.bcjcajce.util.AnnotatedPrivateKey;
+import org.bouncycastle.bcjcajce.util.PrivateKeyAnnotator;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.operator.jcajce.JcaAlgorithmParametersConverter;
 
