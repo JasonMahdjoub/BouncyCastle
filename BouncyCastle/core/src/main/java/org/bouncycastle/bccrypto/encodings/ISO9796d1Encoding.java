@@ -45,13 +45,13 @@ public class ISO9796d1Encoding
 
     public void init(
         boolean             forEncryption,
-        CipherParameters param)
+        CipherParameters    param)
     {
-        RSAKeyParameters kParam = null;
+        RSAKeyParameters  kParam = null;
 
         if (param instanceof ParametersWithRandom)
         {
-            ParametersWithRandom rParam = (ParametersWithRandom)param;
+            ParametersWithRandom    rParam = (ParametersWithRandom)param;
 
             kParam = (RSAKeyParameters)rParam.getParameters();
         }

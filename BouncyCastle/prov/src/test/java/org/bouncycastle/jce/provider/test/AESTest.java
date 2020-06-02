@@ -16,9 +16,9 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
 import org.bouncycastle.bcasn1.nist.NISTObjectIdentifiers;
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.prng.FixedSecureRandom;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 /**
  * basic test class for the AES cipher vectors from FIPS-197

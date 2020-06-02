@@ -92,7 +92,7 @@ public class JCEDHPrivateKey
     }
 
     JCEDHPrivateKey(
-        DHPrivateKeyParameters params)
+        DHPrivateKeyParameters  params)
     {
         this.x = params.getX();
         this.dhSpec = new DHParameterSpec(params.getParameters().getP(), params.getParameters().getG(), params.getParameters().getL());

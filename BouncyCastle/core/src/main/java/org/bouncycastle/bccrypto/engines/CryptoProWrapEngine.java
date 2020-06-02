@@ -2,8 +2,11 @@ package org.bouncycastle.bccrypto.engines;
 
 import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.modes.GCFBBlockCipher;
-import org.bouncycastle.bccrypto.params.*;
+import org.bouncycastle.bccrypto.params.KeyParameter;
 import org.bouncycastle.bccrypto.params.ParametersWithIV;
+import org.bouncycastle.bccrypto.params.ParametersWithRandom;
+import org.bouncycastle.bccrypto.params.ParametersWithSBox;
+import org.bouncycastle.bccrypto.params.ParametersWithUKM;
 import org.bouncycastle.bcutil.Pack;
 
 public class CryptoProWrapEngine
@@ -17,7 +20,7 @@ public class CryptoProWrapEngine
             param = pr.getParameters();
         }
         
-        ParametersWithUKMBC pU = (ParametersWithUKMBC)param;
+        ParametersWithUKM pU = (ParametersWithUKM)param;
         byte[] sBox = null;
 
 
@@ -37,11 +40,11 @@ public class CryptoProWrapEngine
 
         if (sBox != null)
         {
-            super.init(forWrapping, new ParametersWithUKMBC(new ParametersWithSBox(kParam, sBox), pU.getUKM()));
+            super.init(forWrapping, new ParametersWithUKM(new ParametersWithSBox(kParam, sBox), pU.getUKM()));
         }
         else
         {
-            super.init(forWrapping, new ParametersWithUKMBC(kParam, pU.getUKM()));
+            super.init(forWrapping, new ParametersWithUKM(kParam, pU.getUKM()));
         }
     }
 

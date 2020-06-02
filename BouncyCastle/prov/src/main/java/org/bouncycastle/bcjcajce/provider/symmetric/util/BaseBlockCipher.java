@@ -27,8 +27,13 @@ import javax.crypto.spec.RC5ParameterSpec;
 import org.bouncycastle.bcasn1.DEROctetString;
 import org.bouncycastle.bcasn1.cms.GCMParameters;
 import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.bccrypto.*;
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.BlockCipher;
+import org.bouncycastle.bccrypto.BufferedBlockCipher;
+import org.bouncycastle.bccrypto.CipherParameters;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.DataLengthException;
+import org.bouncycastle.bccrypto.InvalidCipherTextException;
+import org.bouncycastle.bccrypto.OutputLengthException;
 import org.bouncycastle.bccrypto.engines.DSTU7624Engine;
 import org.bouncycastle.bccrypto.modes.AEADBlockCipher;
 import org.bouncycastle.bccrypto.modes.AEADCipher;
@@ -55,8 +60,13 @@ import org.bouncycastle.bccrypto.paddings.PaddedBufferedBlockCipher;
 import org.bouncycastle.bccrypto.paddings.TBCPadding;
 import org.bouncycastle.bccrypto.paddings.X923Padding;
 import org.bouncycastle.bccrypto.paddings.ZeroBytePadding;
-import org.bouncycastle.bccrypto.params.*;
+import org.bouncycastle.bccrypto.params.AEADParameters;
+import org.bouncycastle.bccrypto.params.KeyParameter;
 import org.bouncycastle.bccrypto.params.ParametersWithIV;
+import org.bouncycastle.bccrypto.params.ParametersWithRandom;
+import org.bouncycastle.bccrypto.params.ParametersWithSBox;
+import org.bouncycastle.bccrypto.params.RC2Parameters;
+import org.bouncycastle.bccrypto.params.RC5Parameters;
 import org.bouncycastle.bcjcajce.PBKDF1Key;
 import org.bouncycastle.bcjcajce.PBKDF1KeyWithParameters;
 import org.bouncycastle.bcjcajce.PKCS12Key;
@@ -90,8 +100,8 @@ public class BaseBlockCipher
     private BlockCipher             baseEngine;
     private BlockCipherProvider     engineProvider;
     private GenericBlockCipher      cipher;
-    private ParametersWithIV ivParam;
-    private AEADParameters aeadParams;
+    private ParametersWithIV        ivParam;
+    private AEADParameters          aeadParams;
 
     private int keySizeInBits;
     private int scheme = -1;
@@ -535,7 +545,7 @@ public class BaseBlockCipher
         SecureRandom            random)
         throws InvalidKeyException, InvalidAlgorithmParameterException
     {
-        CipherParameters param;
+        CipherParameters        param;
 
         this.pbeSpec = null;
         this.pbeAlgorithm = null;
@@ -865,7 +875,7 @@ public class BaseBlockCipher
 
             if (ivRandom == null)
             {
-                ivRandom = BCCryptoServicesRegistrar.getSecureRandom();
+                ivRandom = CryptoServicesRegistrar.getSecureRandom();
             }
 
             if ((opmode == Cipher.ENCRYPT_MODE) || (opmode == Cipher.WRAP_MODE))

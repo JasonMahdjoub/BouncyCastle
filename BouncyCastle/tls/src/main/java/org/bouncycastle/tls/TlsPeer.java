@@ -38,6 +38,8 @@ public interface TlsPeer
      */
     int getHandshakeTimeoutMillis();
 
+    boolean allowLegacyResumption();
+
     /**
      * This implementation supports RFC 7627 and will always negotiate the extended_master_secret
      * extension where possible. When connecting to a peer that does not offer/accept this
@@ -61,6 +63,8 @@ public interface TlsPeer
      *         checked, or <code>false</code> to skip those checks.
      */
     boolean shouldCheckSigAlgOfPeerCerts();
+
+    boolean shouldUseExtendedMasterSecret();
 
     /**
      * See RFC 5246 6.2.3.2. Controls whether block cipher encryption may randomly add extra padding

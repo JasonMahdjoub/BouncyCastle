@@ -18,8 +18,8 @@ import javax.crypto.spec.DESedeKeySpec;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**

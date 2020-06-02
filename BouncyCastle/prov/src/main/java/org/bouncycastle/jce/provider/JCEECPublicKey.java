@@ -96,7 +96,7 @@ public class JCEECPublicKey
     
     public JCEECPublicKey(
         String                  algorithm,
-        ECPublicKeyParameters params,
+        ECPublicKeyParameters   params,
         ECParameterSpec         spec)
     {
         ECDomainParameters      dp = params.getParameters();
@@ -118,7 +118,7 @@ public class JCEECPublicKey
 
     public JCEECPublicKey(
         String                  algorithm,
-        ECPublicKeyParameters params,
+        ECPublicKeyParameters   params,
         org.bouncycastle.jce.spec.ECParameterSpec         spec)
     {
         ECDomainParameters      dp = params.getParameters();
@@ -145,7 +145,7 @@ public class JCEECPublicKey
      */
     public JCEECPublicKey(
         String                  algorithm,
-        ECPublicKeyParameters params)
+        ECPublicKeyParameters   params)
     {
         this.algorithm = algorithm;
         this.q = params.getQ();

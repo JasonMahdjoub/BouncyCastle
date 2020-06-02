@@ -57,7 +57,7 @@ public class ElGamalParameters
             return false;
         }
 
-        ElGamalParameters pm = (ElGamalParameters)obj;
+        ElGamalParameters    pm = (ElGamalParameters)obj;
 
         return pm.getP().equals(p) && pm.getG().equals(g) && pm.getL() == l;
     }

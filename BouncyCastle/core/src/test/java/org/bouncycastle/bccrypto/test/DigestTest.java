@@ -1,10 +1,10 @@
 package org.bouncycastle.bccrypto.test;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.Digest;
 import org.bouncycastle.bccrypto.digests.EncodableDigest;
 import org.bouncycastle.bcutil.Arrays;
 import org.bouncycastle.bcutil.Memoable;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 public abstract class DigestTest

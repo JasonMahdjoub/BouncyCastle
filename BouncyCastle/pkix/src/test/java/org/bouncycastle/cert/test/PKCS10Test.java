@@ -1,5 +1,6 @@
 package org.bouncycastle.cert.test;
 
+import java.io.IOException;
 import java.math.BigInteger;
 import java.security.KeyFactory;
 import java.security.KeyPair;
@@ -18,6 +19,7 @@ import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 import org.bouncycastle.bcasn1.DEROctetString;
 import org.bouncycastle.bcasn1.cryptopro.CryptoProObjectIdentifiers;
 import org.bouncycastle.bcasn1.pkcs.Attribute;
+import org.bouncycastle.bcasn1.pkcs.CertificationRequest;
 import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
 import org.bouncycastle.bcasn1.x500.X500Name;
 import org.bouncycastle.bcasn1.x500.X500NameBuilder;
@@ -28,7 +30,6 @@ import org.bouncycastle.bcasn1.x509.Extensions;
 import org.bouncycastle.bcasn1.x509.KeyUsage;
 import org.bouncycastle.bcasn1.x9.X9ECParameters;
 import org.bouncycastle.bcasn1.x9.X9ObjectIdentifiers;
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.cert.jcajce.JcaX509ExtensionUtils;
 import org.bouncycastle.jce.ECGOST3410NamedCurveTable;
 import org.bouncycastle.jce.ECNamedCurveTable;
@@ -49,6 +50,7 @@ import org.bouncycastle.pkcs.jcajce.JcaPKCS10CertificationRequest;
 import org.bouncycastle.pkcs.jcajce.JcaPKCS10CertificationRequestBuilder;
 import org.bouncycastle.bcutil.Arrays;
 import org.bouncycastle.bcutil.encoders.Base64;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**
@@ -260,6 +262,27 @@ public class PKCS10Test
         if (!sig.verify(req.toASN1Structure().getSignature().getBytes()))
         {
             fail("signature not mapped correctly.");
+        }
+
+        // empty tests
+        try
+        {
+            new PKCS10CertificationRequest(new byte[0]);
+            fail("no exception");
+        }
+        catch (IOException e)
+        {
+            isEquals("empty data passed to constructor", e.getMessage());
+        }
+
+        try
+        {
+            new PKCS10CertificationRequest((CertificationRequest)null);
+            fail("no exception");
+        }
+        catch (NullPointerException e)
+        {
+            isEquals("certificationRequest cannot be null", e.getMessage());
         }
     }
 

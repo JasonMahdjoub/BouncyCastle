@@ -208,7 +208,7 @@ public class CipherSpi
         SecureRandom            random)
         throws InvalidKeyException, InvalidAlgorithmParameterException
     {
-        CipherParameters param;
+        CipherParameters        param;
 
         if (key instanceof DHPublicKey)
         {

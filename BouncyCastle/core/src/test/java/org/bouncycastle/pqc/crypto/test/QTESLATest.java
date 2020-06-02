@@ -13,13 +13,17 @@ import java.util.Set;
 
 import junit.framework.Assert;
 import junit.framework.TestCase;
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.AsymmetricCipherKeyPair;
 import org.bouncycastle.bccrypto.params.ParametersWithRandom;
-import org.bouncycastle.pqc.crypto.qtesla.*;
+import org.bouncycastle.pqc.crypto.qtesla.QTESLAKeyGenerationParameters;
+import org.bouncycastle.pqc.crypto.qtesla.QTESLAKeyPairGenerator;
 import org.bouncycastle.pqc.crypto.qtesla.QTESLAPrivateKeyParameters;
+import org.bouncycastle.pqc.crypto.qtesla.QTESLAPublicKeyParameters;
+import org.bouncycastle.pqc.crypto.qtesla.QTESLASecurityCategory;
+import org.bouncycastle.pqc.crypto.qtesla.QTESLASigner;
 import org.bouncycastle.bcutil.Arrays;
 import org.bouncycastle.bcutil.Integers;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 public class QTESLATest
     extends TestCase

@@ -2,8 +2,12 @@ package org.bouncycastle.pqc.crypto.ntru;
 
 import java.security.SecureRandom;
 
-import org.bouncycastle.bccrypto.*;
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.AsymmetricBlockCipher;
+import org.bouncycastle.bccrypto.CipherParameters;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.DataLengthException;
+import org.bouncycastle.bccrypto.Digest;
+import org.bouncycastle.bccrypto.InvalidCipherTextException;
 import org.bouncycastle.bccrypto.params.ParametersWithRandom;
 import org.bouncycastle.pqc.math.ntru.polynomial.DenseTernaryPolynomial;
 import org.bouncycastle.pqc.math.ntru.polynomial.IntegerPolynomial;
@@ -48,7 +52,7 @@ public class NTRUEngine
             }
             else
             {
-                this.random = BCCryptoServicesRegistrar.getSecureRandom();
+                this.random = CryptoServicesRegistrar.getSecureRandom();
                 this.pubKey = (NTRUEncryptionPublicKeyParameters)parameters;
             }
 

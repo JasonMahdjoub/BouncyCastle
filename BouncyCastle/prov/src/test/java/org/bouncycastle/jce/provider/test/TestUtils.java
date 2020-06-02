@@ -32,6 +32,7 @@ import org.bouncycastle.bcasn1.DERBitString;
 import org.bouncycastle.bcasn1.DERNull;
 import org.bouncycastle.bcasn1.DERSequence;
 import org.bouncycastle.bcasn1.cryptopro.CryptoProObjectIdentifiers;
+import org.bouncycastle.bcasn1.edec.EdECObjectIdentifiers;
 import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
 import org.bouncycastle.bcasn1.x500.X500Name;
 import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
@@ -74,6 +75,7 @@ class TestUtils
         algIds.put("SHA256withRSA", new AlgorithmIdentifier(PKCSObjectIdentifiers.sha256WithRSAEncryption, DERNull.INSTANCE));
         algIds.put("SHA1withECDSA", new AlgorithmIdentifier(X9ObjectIdentifiers.ecdsa_with_SHA1));
         algIds.put("SHA256withECDSA", new AlgorithmIdentifier(X9ObjectIdentifiers.ecdsa_with_SHA256));
+        algIds.put("Ed448", new AlgorithmIdentifier(EdECObjectIdentifiers.id_Ed448));
     }
 
     public static X509Certificate createSelfSignedCert(String dn, String sigName, KeyPair keyPair)

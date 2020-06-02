@@ -2,12 +2,12 @@ package org.bouncycastle.bccrypto.test;
 
 import java.util.ArrayList;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.Digest;
 import org.bouncycastle.bccrypto.digests.GOST3411_2012_256Digest;
 import org.bouncycastle.bccrypto.macs.HMac;
 import org.bouncycastle.bccrypto.params.KeyParameter;
 import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 public class GOST3411_2012_256DigestTest
     extends DigestTest

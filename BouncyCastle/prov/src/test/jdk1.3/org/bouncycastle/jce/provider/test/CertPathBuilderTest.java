@@ -139,7 +139,7 @@ public class CertPathBuilderTest
     }
     
     /* (non-Javadoc)
-     * @see org.bouncycastle.util.test.Test#perform()
+     * @see org.bouncycastle.bcutil.test.Test#perform()
      */
     public TestResult perform()
     {

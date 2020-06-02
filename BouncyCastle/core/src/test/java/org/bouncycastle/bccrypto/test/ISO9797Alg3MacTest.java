@@ -1,6 +1,5 @@
 package org.bouncycastle.bccrypto.test;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.BlockCipher;
 import org.bouncycastle.bccrypto.Mac;
 import org.bouncycastle.bccrypto.engines.DESEngine;
@@ -9,6 +8,7 @@ import org.bouncycastle.bccrypto.paddings.ISO7816d4Padding;
 import org.bouncycastle.bccrypto.params.KeyParameter;
 import org.bouncycastle.bccrypto.params.ParametersWithIV;
 import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class ISO9797Alg3MacTest

@@ -9,8 +9,6 @@ import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.spec.X509EncodedKeySpec;
 
-import javax.crypto.SecretKey;
-
 import org.bouncycastle.bcasn1.ASN1Encoding;
 import org.bouncycastle.bcasn1.edec.EdECObjectIdentifiers;
 import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;

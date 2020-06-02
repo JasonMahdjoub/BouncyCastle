@@ -57,7 +57,7 @@ public class PKCS12Test
                 salt,
                 iCount);
 
-        CipherParameters key = generator.generateDerivedParameters(24 * 8);
+        CipherParameters  key = generator.generateDerivedParameters(24 * 8);
 
         if (isEqual(result, ((KeyParameter)key).getKey()))
         {
@@ -113,7 +113,7 @@ public class PKCS12Test
                 salt,
                 iCount);
 
-        CipherParameters key = generator.generateDerivedMacParameters(160);
+        CipherParameters  key = generator.generateDerivedMacParameters(160);
 
         if (isEqual(result, ((KeyParameter)key).getKey()))
         {

@@ -8,13 +8,13 @@ import java.security.spec.X509EncodedKeySpec;
 
 import javax.crypto.Cipher;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.prng.FixedSecureRandom;
 import org.bouncycastle.jce.interfaces.ECPrivateKey;
 import org.bouncycastle.jce.interfaces.ECPublicKey;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.jce.spec.IESParameterSpec;
 import org.bouncycastle.bcutil.encoders.Base64;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**

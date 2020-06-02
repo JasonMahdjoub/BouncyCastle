@@ -3,8 +3,8 @@ package org.bouncycastle.bcutil.encoders.test;
 import java.util.Arrays;
 import java.util.Random;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.encoders.Base64;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class EncoderTest

@@ -6,11 +6,11 @@ import java.io.PrintWriter;
 import java.util.Properties;
 import java.util.regex.Matcher;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.Mac;
 import org.bouncycastle.bccrypto.generators.KDFCounterBytesGenerator;
 import org.bouncycastle.bccrypto.params.KDFCounterParameters;
 import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTestResult;
 import org.bouncycastle.bcutil.test.TestFailedException;
 

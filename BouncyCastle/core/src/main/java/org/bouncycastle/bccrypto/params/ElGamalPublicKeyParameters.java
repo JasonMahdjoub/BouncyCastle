@@ -9,7 +9,7 @@ public class ElGamalPublicKeyParameters
 
     public ElGamalPublicKeyParameters(
         BigInteger      y,
-        ElGamalParameters params)
+        ElGamalParameters    params)
     {
         super(false, params);
 
@@ -34,7 +34,7 @@ public class ElGamalPublicKeyParameters
             return false;
         }
 
-        ElGamalPublicKeyParameters other = (ElGamalPublicKeyParameters)obj;
+        ElGamalPublicKeyParameters   other = (ElGamalPublicKeyParameters)obj;
 
         return other.getY().equals(y) && super.equals(obj);
     }

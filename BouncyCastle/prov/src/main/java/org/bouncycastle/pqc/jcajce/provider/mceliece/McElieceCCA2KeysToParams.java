@@ -8,7 +8,7 @@ import org.bouncycastle.bccrypto.params.AsymmetricKeyParameter;
 
 /**
  * utility class for converting jce/jca McElieceCCA2 objects
- * objects into their org.bouncycastle.crypto counterparts.
+ * objects into their org.bouncycastle.bccrypto counterparts.
  */
 public class McElieceCCA2KeysToParams
 {

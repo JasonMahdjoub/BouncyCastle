@@ -19,8 +19,8 @@ import javax.crypto.spec.SecretKeySpec;
 
 import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 import org.bouncycastle.bcasn1.ua.UAObjectIdentifiers;
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 /**
  * basic test class for DSTU7624

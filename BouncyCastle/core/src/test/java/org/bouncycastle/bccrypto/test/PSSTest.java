@@ -3,13 +3,14 @@ package org.bouncycastle.bccrypto.test;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.digests.SHA1Digest;
 import org.bouncycastle.bccrypto.digests.SHA256Digest;
 import org.bouncycastle.bccrypto.engines.RSAEngine;
 import org.bouncycastle.bccrypto.params.ParametersWithRandom;
-import org.bouncycastle.bccrypto.params.RSAKeyParameters;import org.bouncycastle.bccrypto.params.RSAPrivateCrtKeyParameters;
+import org.bouncycastle.bccrypto.params.RSAKeyParameters;
+import org.bouncycastle.bccrypto.params.RSAPrivateCrtKeyParameters;
 import org.bouncycastle.bccrypto.signers.PSSSigner;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 /*
@@ -213,8 +214,8 @@ public class PSSTest
 
     private void testSig(
         int                 id,
-        RSAKeyParameters pub,
-        RSAKeyParameters prv,
+        RSAKeyParameters    pub,
+        RSAKeyParameters    prv,
         byte[]              slt,
         byte[]              msg,
         byte[]              sig)

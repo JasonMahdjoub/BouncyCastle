@@ -7,14 +7,16 @@ import java.security.PublicKey;
 import javax.crypto.interfaces.DHPrivateKey;
 import javax.crypto.interfaces.DHPublicKey;
 
-import org.bouncycastle.bccrypto.params.*;
-import org.bouncycastle.bccrypto.params.ElGamalParameters;import org.bouncycastle.bccrypto.params.ElGamalPrivateKeyParameters;
+import org.bouncycastle.bccrypto.params.AsymmetricKeyParameter;
+import org.bouncycastle.bccrypto.params.ElGamalParameters;
+import org.bouncycastle.bccrypto.params.ElGamalPrivateKeyParameters;
+import org.bouncycastle.bccrypto.params.ElGamalPublicKeyParameters;
 import org.bouncycastle.jce.interfaces.ElGamalPrivateKey;
 import org.bouncycastle.jce.interfaces.ElGamalPublicKey;
 
 /**
  * utility class for converting jce/jca ElGamal objects
- * objects into their org.bouncycastle.crypto counterparts.
+ * objects into their org.bouncycastle.bccrypto counterparts.
  */
 public class ElGamalUtil
 {

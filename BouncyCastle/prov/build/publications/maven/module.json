@@ -3,7 +3,7 @@
   "component": {
     "group": "org.bouncycastle",
     "module": "bc-prov",
-    "version": "1.64b-DMRECOMPILE",
+    "version": "1.65-DMRECOMPILE",
     "attributes": {
       "org.gradle.status": "release"
     }
@@ -11,7 +11,7 @@
   "createdBy": {
     "gradle": {
       "version": "6.1",
-      "buildId": "sfc3onk3wzepfha6nzsh5demyy"
+      "buildId": "dxh6w7z6xremxoxe7flzkgqoji"
     }
   },
   "variants": [
@@ -29,19 +29,19 @@
           "group": "org.bouncycastle",
           "module": "bc-core",
           "version": {
-            "requires": "1.64b-DMRECOMPILE"
+            "requires": "1.65-DMRECOMPILE"
           }
         }
       ],
       "files": [
         {
-          "name": "bc-prov-1.64b-DMRECOMPILE.jar",
-          "url": "bc-prov-1.64b-DMRECOMPILE.jar",
-          "size": 1794094,
-          "sha512": "63f79f51767e626bf87e660064baaaac283976b9e6f55ffa40835b4db6957a20479f2fad14543555754072c997d483623317f6dcc776cdc2901629e278f6335a",
-          "sha256": "c51515595f7066c3d0a0ea7bdfb73b63b4af0c6865f368fbcefbbc820f8e816a",
-          "sha1": "f45107e22d29e4a39b8d021d0153b57720724022",
-          "md5": "422c1e2a924dbf7c366cc023b28d8cc9"
+          "name": "bc-prov-1.65-DMRECOMPILE.jar",
+          "url": "bc-prov-1.65-DMRECOMPILE.jar",
+          "size": 1823636,
+          "sha512": "26572f83522fb224d51266a293a98968472afe207887a46f6ea92b0711dd2b344f593c3bd3d0bca04b89489ba5f7f231c8b7a8a6c6017c2b31ce91f3a629ef79",
+          "sha256": "14940322ccd759326bfbf8dedbee5d8977d900cfa67434cb9f896db7393dca06",
+          "sha1": "ef4cd5bb3f6a20ce2bebae0c1884a160917ca1cd",
+          "md5": "1373fa85dc57333989802028212b3386"
         }
       ]
     },
@@ -59,19 +59,19 @@
           "group": "org.bouncycastle",
           "module": "bc-core",
           "version": {
-            "requires": "1.64b-DMRECOMPILE"
+            "requires": "1.65-DMRECOMPILE"
           }
         }
       ],
       "files": [
         {
-          "name": "bc-prov-1.64b-DMRECOMPILE.jar",
-          "url": "bc-prov-1.64b-DMRECOMPILE.jar",
-          "size": 1794094,
-          "sha512": "63f79f51767e626bf87e660064baaaac283976b9e6f55ffa40835b4db6957a20479f2fad14543555754072c997d483623317f6dcc776cdc2901629e278f6335a",
-          "sha256": "c51515595f7066c3d0a0ea7bdfb73b63b4af0c6865f368fbcefbbc820f8e816a",
-          "sha1": "f45107e22d29e4a39b8d021d0153b57720724022",
-          "md5": "422c1e2a924dbf7c366cc023b28d8cc9"
+          "name": "bc-prov-1.65-DMRECOMPILE.jar",
+          "url": "bc-prov-1.65-DMRECOMPILE.jar",
+          "size": 1823636,
+          "sha512": "26572f83522fb224d51266a293a98968472afe207887a46f6ea92b0711dd2b344f593c3bd3d0bca04b89489ba5f7f231c8b7a8a6c6017c2b31ce91f3a629ef79",
+          "sha256": "14940322ccd759326bfbf8dedbee5d8977d900cfa67434cb9f896db7393dca06",
+          "sha1": "ef4cd5bb3f6a20ce2bebae0c1884a160917ca1cd",
+          "md5": "1373fa85dc57333989802028212b3386"
         }
       ]
     }

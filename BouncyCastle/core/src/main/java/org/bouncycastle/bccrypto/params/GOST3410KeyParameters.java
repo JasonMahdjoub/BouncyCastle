@@ -3,11 +3,11 @@ package org.bouncycastle.bccrypto.params;
 public class GOST3410KeyParameters
         extends AsymmetricKeyParameter
 {
-    private GOST3410Parameters params;
+    private GOST3410Parameters    params;
 
     public GOST3410KeyParameters(
         boolean         isPrivate,
-        GOST3410Parameters params)
+        GOST3410Parameters   params)
     {
         super(isPrivate);
 

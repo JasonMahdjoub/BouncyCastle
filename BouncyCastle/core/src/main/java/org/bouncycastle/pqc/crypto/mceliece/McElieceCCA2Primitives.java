@@ -48,7 +48,7 @@ final class McElieceCCA2Primitives
      * @return the message vector <tt>m</tt> and the error vector <tt>z</tt>
      */
     public static GF2Vector[] decryptionPrimitive(
-            McElieceCCA2PrivateKeyParameters privKey, GF2Vector c)
+        McElieceCCA2PrivateKeyParameters privKey, GF2Vector c)
     {
 
         // obtain values from private key

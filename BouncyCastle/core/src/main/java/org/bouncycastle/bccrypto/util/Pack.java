@@ -1,7 +1,7 @@
 package org.bouncycastle.bccrypto.util;
 
 /**
- * @deprecated use org.bouncycastle.util.pack
+ * @deprecated use org.bouncycastle.bcutil.pack
  */
 public abstract class Pack
 {

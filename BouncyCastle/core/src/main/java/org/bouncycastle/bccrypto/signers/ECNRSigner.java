@@ -3,11 +3,17 @@ package org.bouncycastle.bccrypto.signers;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
-import org.bouncycastle.bccrypto.*;
+import org.bouncycastle.bccrypto.AsymmetricCipherKeyPair;
 import org.bouncycastle.bccrypto.CipherParameters;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.DSAExt;
+import org.bouncycastle.bccrypto.DataLengthException;
 import org.bouncycastle.bccrypto.generators.ECKeyPairGenerator;
-import org.bouncycastle.bccrypto.params.*;
+import org.bouncycastle.bccrypto.params.ECKeyGenerationParameters;
+import org.bouncycastle.bccrypto.params.ECKeyParameters;
 import org.bouncycastle.bccrypto.params.ECPrivateKeyParameters;
+import org.bouncycastle.bccrypto.params.ECPublicKeyParameters;
+import org.bouncycastle.bccrypto.params.ParametersWithRandom;
 import org.bouncycastle.bcmath.ec.ECAlgorithms;
 import org.bouncycastle.bcmath.ec.ECConstants;
 import org.bouncycastle.bcmath.ec.ECPoint;
@@ -21,7 +27,7 @@ public class ECNRSigner
     implements DSAExt
 {
     private boolean             forSigning;
-    private ECKeyParameters key;
+    private ECKeyParameters     key;
     private SecureRandom        random;
 
     /**
@@ -33,7 +39,7 @@ public class ECNRSigner
      */
     public void init(
         boolean          forSigning, 
-        CipherParameters param)
+        CipherParameters param) 
     {
         this.forSigning = forSigning;
         
@@ -41,14 +47,14 @@ public class ECNRSigner
         {
             if (param instanceof ParametersWithRandom)
             {
-                ParametersWithRandom rParam = (ParametersWithRandom)param;
+                ParametersWithRandom    rParam = (ParametersWithRandom)param;
 
                 this.random = rParam.getRandom();
                 this.key = (ECPrivateKeyParameters)rParam.getParameters();
             }
             else
             {
-                this.random = BCCryptoServicesRegistrar.getSecureRandom();
+                this.random = CryptoServicesRegistrar.getSecureRandom();
                 this.key = (ECPrivateKeyParameters)param;
             }
         }
@@ -85,7 +91,7 @@ public class ECNRSigner
         
         BigInteger e = new BigInteger(1, digest);
 
-        ECPrivateKeyParameters privKey = (ECPrivateKeyParameters)key;
+        ECPrivateKeyParameters  privKey = (ECPrivateKeyParameters)key;
 
         if (e.compareTo(n) >= 0)
         {

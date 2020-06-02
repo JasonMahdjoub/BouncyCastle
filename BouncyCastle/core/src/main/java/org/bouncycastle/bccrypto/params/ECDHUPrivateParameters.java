@@ -15,16 +15,16 @@ public class ECDHUPrivateParameters
     private ECPublicKeyParameters ephemeralPublicKey;
 
     public ECDHUPrivateParameters(
-        ECPrivateKeyParameters staticPrivateKey,
-        ECPrivateKeyParameters ephemeralPrivateKey)
+        ECPrivateKeyParameters  staticPrivateKey,
+        ECPrivateKeyParameters  ephemeralPrivateKey)
     {
         this(staticPrivateKey, ephemeralPrivateKey, null);
     }
 
     public ECDHUPrivateParameters(
-        ECPrivateKeyParameters staticPrivateKey,
-        ECPrivateKeyParameters ephemeralPrivateKey,
-        ECPublicKeyParameters ephemeralPublicKey)
+        ECPrivateKeyParameters  staticPrivateKey,
+        ECPrivateKeyParameters  ephemeralPrivateKey,
+        ECPublicKeyParameters   ephemeralPublicKey)
     {
         if (staticPrivateKey == null)
         {

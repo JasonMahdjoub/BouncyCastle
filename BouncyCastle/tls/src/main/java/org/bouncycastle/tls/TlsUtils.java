@@ -30,6 +30,7 @@ import org.bouncycastle.tls.crypto.TlsCertificate;
 import org.bouncycastle.tls.crypto.TlsCipher;
 import org.bouncycastle.tls.crypto.TlsCrypto;
 import org.bouncycastle.tls.crypto.TlsCryptoParameters;
+import org.bouncycastle.tls.crypto.TlsCryptoUtils;
 import org.bouncycastle.tls.crypto.TlsDHConfig;
 import org.bouncycastle.tls.crypto.TlsECConfig;
 import org.bouncycastle.tls.crypto.TlsHash;
@@ -53,6 +54,7 @@ public class TlsUtils
 
     // Map OID strings to HashAlgorithm values
     private static final Hashtable CERT_SIG_ALG_OIDS = createCertSigAlgOIDs();
+    private static final Vector DEFAULT_SUPPORTED_SIG_ALGS = createDefaultSupportedSigAlgs();
 
     private static void addCertSigAlgOID(Hashtable h, ASN1ObjectIdentifier oid, short hashAlgorithm, short signatureAlgorithm)
     {
@@ -106,15 +108,39 @@ public class TlsUtils
         return h;
     }
 
+    private static Vector createDefaultSupportedSigAlgs()
+    {
+        Vector result = new Vector();
+        result.addElement(SignatureAndHashAlgorithm.ed25519);
+        result.addElement(SignatureAndHashAlgorithm.ed448);
+        result.addElement(SignatureAndHashAlgorithm.getInstance(HashAlgorithm.sha256, SignatureAlgorithm.ecdsa));
+        result.addElement(SignatureAndHashAlgorithm.getInstance(HashAlgorithm.sha384, SignatureAlgorithm.ecdsa));
+        result.addElement(SignatureAndHashAlgorithm.getInstance(HashAlgorithm.sha512, SignatureAlgorithm.ecdsa));
+        result.addElement(SignatureAndHashAlgorithm.rsa_pss_rsae_sha256);
+        result.addElement(SignatureAndHashAlgorithm.rsa_pss_rsae_sha384);
+        result.addElement(SignatureAndHashAlgorithm.rsa_pss_rsae_sha512);
+        result.addElement(SignatureAndHashAlgorithm.rsa_pss_pss_sha256);
+        result.addElement(SignatureAndHashAlgorithm.rsa_pss_pss_sha384);
+        result.addElement(SignatureAndHashAlgorithm.rsa_pss_pss_sha512);
+        result.addElement(SignatureAndHashAlgorithm.getInstance(HashAlgorithm.sha256, SignatureAlgorithm.rsa));
+        result.addElement(SignatureAndHashAlgorithm.getInstance(HashAlgorithm.sha384, SignatureAlgorithm.rsa));
+        result.addElement(SignatureAndHashAlgorithm.getInstance(HashAlgorithm.sha512, SignatureAlgorithm.rsa));
+        result.addElement(SignatureAndHashAlgorithm.getInstance(HashAlgorithm.sha256, SignatureAlgorithm.dsa));
+        result.addElement(SignatureAndHashAlgorithm.getInstance(HashAlgorithm.sha384, SignatureAlgorithm.dsa));
+        result.addElement(SignatureAndHashAlgorithm.getInstance(HashAlgorithm.sha512, SignatureAlgorithm.dsa));
+        result.addElement(SignatureAndHashAlgorithm.getInstance(HashAlgorithm.sha224, SignatureAlgorithm.ecdsa));
+        result.addElement(SignatureAndHashAlgorithm.getInstance(HashAlgorithm.sha224, SignatureAlgorithm.rsa));
+        result.addElement(SignatureAndHashAlgorithm.getInstance(HashAlgorithm.sha224, SignatureAlgorithm.dsa));
+        result.addElement(SignatureAndHashAlgorithm.getInstance(HashAlgorithm.sha1, SignatureAlgorithm.ecdsa));
+        result.addElement(SignatureAndHashAlgorithm.getInstance(HashAlgorithm.sha1, SignatureAlgorithm.rsa));
+        result.addElement(SignatureAndHashAlgorithm.getInstance(HashAlgorithm.sha1, SignatureAlgorithm.dsa));
+        return result;
+    }
+
     public static final byte[] EMPTY_BYTES = new byte[0];
     public static final short[] EMPTY_SHORTS = new short[0];
     public static final int[] EMPTY_INTS = new int[0];
     public static final long[] EMPTY_LONGS = new long[0];
-
-    /** @deprecated Use {@link TlsExtensionsUtils#EXT_signature_algorithms} instead. */
-    public static final Integer EXT_signature_algorithms = TlsExtensionsUtils.EXT_signature_algorithms;
-    /** @deprecated Use {@link TlsExtensionsUtils#EXT_signature_algorithms_cert} instead. */
-    public static final Integer EXT_signature_algorithms_cert = TlsExtensionsUtils.EXT_signature_algorithms_cert;
 
     protected static short MINIMUM_HASH_STRICT = HashAlgorithm.sha1;
     protected static short MINIMUM_HASH_PREFERRED = HashAlgorithm.sha256;
@@ -247,6 +273,11 @@ public class TlsUtils
     public static boolean isValidUint64(long i)
     {
         return true;
+    }
+
+    public static boolean isSSL(TlsContext context)
+    {
+        return context.getServerVersion().isSSL();
     }
 
     public static boolean isTLSv10(ProtocolVersion version)
@@ -679,6 +710,15 @@ public class TlsUtils
         };
     }
 
+    public static int readInt32(byte[] buf, int offset)
+    {
+        int n = buf[offset] << 24;
+        n |= (buf[++offset] & 0xff) << 16;
+        n |= (buf[++offset] & 0xff) << 8;
+        n |= (buf[++offset] & 0xff);
+        return n;
+    }
+
     public static short readUint8(InputStream input)
         throws IOException
     {
@@ -906,16 +946,8 @@ public class TlsUtils
     }
 
     public static ProtocolVersion readVersion(byte[] buf, int offset)
-        throws IOException
     {
-        try
-        {
-            return ProtocolVersion.get(buf[offset] & 0xFF, buf[offset + 1] & 0xFF);
-        }
-        catch (RuntimeException e)
-        {
-            throw new TlsFatalAlert(AlertDescription.decode_error, e);
-        }
+        return ProtocolVersion.get(buf[offset] & 0xFF, buf[offset + 1] & 0xFF);
     }
 
     public static ProtocolVersion readVersion(InputStream input)
@@ -928,14 +960,7 @@ public class TlsUtils
             throw new EOFException();
         }
 
-        try
-        {
-            return ProtocolVersion.get(i1, i2);
-        }
-        catch (RuntimeException e)
-        {
-            throw new TlsFatalAlert(AlertDescription.decode_error, e);
-        }
+        return ProtocolVersion.get(i1, i2);
     }
 
     public static ASN1Primitive readASN1Object(byte[] encoding) throws IOException
@@ -1077,27 +1102,11 @@ public class TlsUtils
     {
         TlsCrypto crypto = context.getCrypto();
 
-        SignatureAndHashAlgorithm[] intrinsicSigAlgs = { SignatureAndHashAlgorithm.ed25519,
-            SignatureAndHashAlgorithm.ed448, SignatureAndHashAlgorithm.rsa_pss_rsae_sha256,
-            SignatureAndHashAlgorithm.rsa_pss_rsae_sha384, SignatureAndHashAlgorithm.rsa_pss_rsae_sha512,
-            SignatureAndHashAlgorithm.rsa_pss_pss_sha256, SignatureAndHashAlgorithm.rsa_pss_pss_sha384,
-            SignatureAndHashAlgorithm.rsa_pss_pss_sha512 };
-        short[] hashAlgorithms = new short[]{ HashAlgorithm.sha1, HashAlgorithm.sha224, HashAlgorithm.sha256,
-            HashAlgorithm.sha384, HashAlgorithm.sha512 };
-        short[] signatureAlgorithms = new short[]{ SignatureAlgorithm.rsa, SignatureAlgorithm.dsa,
-            SignatureAlgorithm.ecdsa };
-
-        Vector result = new Vector();
-        for (int i = 0; i < intrinsicSigAlgs.length; ++i)
+        int count = DEFAULT_SUPPORTED_SIG_ALGS.size();
+        Vector result = new Vector(count);
+        for (int i = 0; i < count; ++i)
         {
-            addIfSupported(result, crypto, intrinsicSigAlgs[i]);
-        }
-        for (int i = 0; i < signatureAlgorithms.length; ++i)
-        {
-            for (int j = 0; j < hashAlgorithms.length; ++j)
-            {
-                addIfSupported(result, crypto, new SignatureAndHashAlgorithm(hashAlgorithms[j], signatureAlgorithms[i]));
-            }
+            addIfSupported(result, crypto, (SignatureAndHashAlgorithm)DEFAULT_SUPPORTED_SIG_ALGS.elementAt(i));
         }
         return result;
     }
@@ -1146,34 +1155,6 @@ public class TlsUtils
     public static boolean isSignatureAlgorithmsExtensionAllowed(ProtocolVersion version)
     {
         return ProtocolVersion.TLSv12.isEqualOrEarlierVersionOf(version.getEquivalentTLSVersion());
-    }
-
-    /** @deprecated Use {@link TlsExtensionsUtils#addSignatureAlgorithmsExtension(Hashtable, Vector)} instead. */
-    public static void addSignatureAlgorithmsExtension(Hashtable extensions, Vector supportedSignatureAlgorithms)
-        throws IOException
-    {
-        TlsExtensionsUtils.addSignatureAlgorithmsExtension(extensions, supportedSignatureAlgorithms);
-    }
-
-    /** @deprecated Use {@link TlsExtensionsUtils#getSignatureAlgorithmsExtension(Hashtable)} instead. */
-    public static Vector getSignatureAlgorithmsExtension(Hashtable extensions)
-        throws IOException
-    {
-        return TlsExtensionsUtils.getSignatureAlgorithmsExtension(extensions);
-    }
-
-    /** @deprecated Use {@link TlsExtensionsUtils#createSignatureAlgorithmsExtension(Vector)} instead. */
-    public static byte[] createSignatureAlgorithmsExtension(Vector supportedSignatureAlgorithms)
-        throws IOException
-    {
-        return TlsExtensionsUtils.createSignatureAlgorithmsExtension(supportedSignatureAlgorithms);
-    }
-
-    /** @deprecated Use {@link TlsExtensionsUtils#readSignatureAlgorithmsExtension(byte[])} instead. */
-    public static Vector readSignatureAlgorithmsExtension(byte[] extensionData)
-        throws IOException
-    {
-        return TlsExtensionsUtils.readSignatureAlgorithmsExtension(extensionData);
     }
 
     public static short getLegacyClientCertType(short signatureAlgorithm)
@@ -1248,7 +1229,7 @@ public class TlsUtils
         }
     }
 
-    static short getLegacySignatureAlgorithmServerCert(int keyExchangeAlgorithm)
+    public static short getLegacySignatureAlgorithmServerCert(int keyExchangeAlgorithm)
     {
         switch (keyExchangeAlgorithm)
         {
@@ -1273,6 +1254,15 @@ public class TlsUtils
         default:
             return -1;
         }
+    }
+
+    public static Vector getLegacySupportedSignatureAlgorithms()
+    {
+        Vector result = new Vector(3);
+        result.add(SignatureAndHashAlgorithm.getInstance(HashAlgorithm.sha1, SignatureAlgorithm.dsa));
+        result.add(SignatureAndHashAlgorithm.getInstance(HashAlgorithm.sha1, SignatureAlgorithm.ecdsa));
+        result.add(SignatureAndHashAlgorithm.getInstance(HashAlgorithm.sha1, SignatureAlgorithm.rsa));
+        return result;
     }
 
     public static void encodeSupportedSignatureAlgorithms(Vector supportedSignatureAlgorithms, OutputStream output)
@@ -1386,9 +1376,17 @@ public class TlsUtils
 
     public static TlsSecret PRF(TlsContext context, TlsSecret secret, String asciiLabel, byte[] seed, int length)
     {
-        int prfAlgorithm = context.getSecurityParametersHandshake().getPrfAlgorithm();
+        return PRF(context.getSecurityParametersHandshake(), secret, asciiLabel, seed, length);
+    }
 
-        return secret.deriveUsingPRF(prfAlgorithm, asciiLabel, seed, length);
+    public static boolean constantTimeAreEqual(int len, byte[] a, int aOff, byte[] b, int bOff)
+    {
+        int d = 0;
+        for (int i = 0; i < len; ++i)
+        {
+            d |= (a[aOff + i] ^ b[bOff + i]);
+        }
+        return 0 == d;
     }
 
     public static byte[] copyOfRangeExact(byte[] original, int from, int to)
@@ -1450,13 +1448,13 @@ public class TlsUtils
             return Arrays.concatenate(cr, sr);
         }
 
-        if (!TlsUtils.isValidUint16(context_value.length))
+        if (!isValidUint16(context_value.length))
         {
             throw new IllegalArgumentException("'context_value' must have length less than 2^16 (or be null)");
         }
 
         byte[] context_value_length = new byte[2];
-        TlsUtils.writeUint16(context_value.length, context_value_length, 0);
+        writeUint16(context_value.length, context_value_length, 0);
 
         return Arrays.concatenate(cr, sr, context_value_length, context_value);
     }
@@ -1478,24 +1476,64 @@ public class TlsUtils
             seed = concat(sp.getClientRandom(), sp.getServerRandom());
         }
 
-        return PRF(context, preMasterSecret, asciiLabel, seed, 48);
+        return PRF(sp, preMasterSecret, asciiLabel, seed, 48);
     }
 
-    static byte[] calculateTLSVerifyData(TlsContext context, TlsHandshakeHash handshakeHash, boolean isServer)
+    static byte[] calculateVerifyData(TlsContext context, TlsHandshakeHash handshakeHash, boolean isServer)
     {
+        SecurityParameters securityParameters = context.getSecurityParametersHandshake();
+
+        if (securityParameters.getNegotiatedVersion().isSSL())
+        {
+            return SSL3Utils.calculateVerifyData(handshakeHash, isServer);
+        }
+
         String asciiLabel = isServer ? ExporterLabel.server_finished : ExporterLabel.client_finished;
         byte[] prfHash = getCurrentPRFHash(handshakeHash);
 
-        return calculateTLSVerifyData(context, asciiLabel, prfHash);
-    }
-
-    static byte[] calculateTLSVerifyData(TlsContext context, String asciiLabel, byte[] prfHash)
-    {
-        SecurityParameters securityParameters = context.getSecurityParametersHandshake();
         TlsSecret master_secret = securityParameters.getMasterSecret();
         int verify_data_length = securityParameters.getVerifyDataLength();
 
-        return PRF(context, master_secret, asciiLabel, prfHash, verify_data_length).extract();
+        return PRF(securityParameters, master_secret, asciiLabel, prfHash, verify_data_length).extract();
+    }
+
+    static void establish13Secrets(TlsContext context) throws IOException
+    {
+        TlsCrypto crypto = context.getCrypto();
+        SecurityParameters securityParameters = context.getSecurityParametersHandshake();
+        short hash = getHashAlgorithmForPRFAlgorithm(securityParameters.getPrfAlgorithm());
+        int hashLen = HashAlgorithm.getOutputSize(hash);
+        byte[] zeroes = new byte[hashLen];
+
+        byte[] psk = securityParameters.getPSK();
+        if (null == psk)
+        {
+            psk = zeroes;
+        }
+
+        byte[] ecdhe = zeroes;
+        TlsSecret sharedSecret = securityParameters.getSharedSecret();
+        if (null != sharedSecret)
+        {
+            securityParameters.sharedSecret = null;
+            ecdhe = sharedSecret.extract();
+        }
+
+        byte[] transcriptHash = crypto.createHash(hash).calculateHash();
+
+        TlsSecret earlySecret = crypto
+            .hkdfInit(hash)
+            .hkdfExtract(hash, psk);
+        TlsSecret handshakeSecret = TlsCryptoUtils
+            .hkdfExpandLabel(earlySecret, hash, "derived", transcriptHash, hashLen)
+            .hkdfExtract(hash, ecdhe);
+        TlsSecret masterSecret = TlsCryptoUtils
+            .hkdfExpandLabel(handshakeSecret, hash, "derived", transcriptHash, hashLen)
+            .hkdfExtract(hash, zeroes);
+
+        securityParameters.earlySecret = earlySecret;
+        securityParameters.handshakeSecret = handshakeSecret;
+        securityParameters.masterSecret = masterSecret;
     }
 
     public static short getHashAlgorithmForHMACAlgorithm(int macAlgorithm)
@@ -1521,11 +1559,14 @@ public class TlsUtils
     {
         switch (prfAlgorithm)
         {
+        case PRFAlgorithm.ssl_prf_legacy:
         case PRFAlgorithm.tls_prf_legacy:
             throw new IllegalArgumentException("legacy PRF not a valid algorithm");
         case PRFAlgorithm.tls_prf_sha256:
+        case PRFAlgorithm.tls13_hkdf_sha256:
             return HashAlgorithm.sha256;
         case PRFAlgorithm.tls_prf_sha384:
+        case PRFAlgorithm.tls13_hkdf_sha384:
             return HashAlgorithm.sha384;
         default:
             throw new IllegalArgumentException("unknown PRFAlgorithm: " + PRFAlgorithm.getText(prfAlgorithm));
@@ -1629,7 +1670,7 @@ public class TlsUtils
             short clientCertType = getLegacyClientCertType(signatureAlgorithm);
             if (clientCertType < 0 || !Arrays.contains(certificateRequest.getCertificateTypes(), clientCertType))
             {
-                throw new TlsFatalAlert(AlertDescription.illegal_parameter);
+                throw new TlsFatalAlert(AlertDescription.unsupported_certificate);
             }
         }
         else
@@ -1641,7 +1682,7 @@ public class TlsUtils
                 throw new TlsFatalAlert(AlertDescription.illegal_parameter);
             }
 
-            verifySupportedSignatureAlgorithm(certificateRequest.getSupportedSignatureAlgorithms(), sigAndHashAlg);
+            verifySupportedSignatureAlgorithm(securityParameters.getServerSigAlgs(), sigAndHashAlg);
         }
 
         // Verify the CertificateVerify message contains a correct signature.
@@ -1736,8 +1777,7 @@ public class TlsUtils
                 throw new TlsFatalAlert(AlertDescription.illegal_parameter);
             }
 
-            Vector clientSigAlgs = securityParameters.getClientSigAlgs();
-            verifySupportedSignatureAlgorithm(clientSigAlgs, sigAndHashAlg);
+            verifySupportedSignatureAlgorithm(securityParameters.getClientSigAlgs(), sigAndHashAlg);
         }
 
         TlsVerifier verifier = serverCertificate.createVerifier(signatureAlgorithm);
@@ -1908,14 +1948,6 @@ public class TlsUtils
         case CipherSuite.TLS_RSA_WITH_AES_128_GCM_SHA256:
             return EncryptionAlgorithm.AES_128_GCM;
 
-        case CipherSuite.DRAFT_TLS_DHE_PSK_WITH_AES_128_OCB:
-        case CipherSuite.DRAFT_TLS_DHE_RSA_WITH_AES_128_OCB:
-        case CipherSuite.DRAFT_TLS_ECDHE_ECDSA_WITH_AES_128_OCB:
-        case CipherSuite.DRAFT_TLS_ECDHE_PSK_WITH_AES_128_OCB:
-        case CipherSuite.DRAFT_TLS_ECDHE_RSA_WITH_AES_128_OCB:
-        case CipherSuite.DRAFT_TLS_PSK_WITH_AES_128_OCB:
-            return EncryptionAlgorithm.AES_128_OCB_TAGLEN96;
-
         case CipherSuite.TLS_DH_anon_WITH_AES_256_CBC_SHA:
         case CipherSuite.TLS_DH_anon_WITH_AES_256_CBC_SHA256:
         case CipherSuite.TLS_DH_DSS_WITH_AES_256_CBC_SHA:
@@ -1980,14 +2012,6 @@ public class TlsUtils
         case CipherSuite.TLS_RSA_PSK_WITH_AES_256_GCM_SHA384:
         case CipherSuite.TLS_RSA_WITH_AES_256_GCM_SHA384:
             return EncryptionAlgorithm.AES_256_GCM;
-
-        case CipherSuite.DRAFT_TLS_DHE_PSK_WITH_AES_256_OCB:
-        case CipherSuite.DRAFT_TLS_DHE_RSA_WITH_AES_256_OCB:
-        case CipherSuite.DRAFT_TLS_ECDHE_ECDSA_WITH_AES_256_OCB:
-        case CipherSuite.DRAFT_TLS_ECDHE_PSK_WITH_AES_256_OCB:
-        case CipherSuite.DRAFT_TLS_ECDHE_RSA_WITH_AES_256_OCB:
-        case CipherSuite.DRAFT_TLS_PSK_WITH_AES_256_OCB:
-            return EncryptionAlgorithm.AES_256_OCB_TAGLEN96;
 
         case CipherSuite.TLS_DH_anon_WITH_ARIA_128_CBC_SHA256:
         case CipherSuite.TLS_DH_DSS_WITH_ARIA_128_CBC_SHA256:
@@ -2180,13 +2204,11 @@ public class TlsUtils
         case EncryptionAlgorithm.AES_128_CCM:
         case EncryptionAlgorithm.AES_128_CCM_8:
         case EncryptionAlgorithm.AES_128_GCM:
-        case EncryptionAlgorithm.AES_128_OCB_TAGLEN96:
         case EncryptionAlgorithm.AES_256_CCM:
         case EncryptionAlgorithm.AES_256_CCM_8:
         case EncryptionAlgorithm.AES_256_GCM:
         case EncryptionAlgorithm.ARIA_128_GCM:
         case EncryptionAlgorithm.ARIA_256_GCM:
-        case EncryptionAlgorithm.AES_256_OCB_TAGLEN96:
         case EncryptionAlgorithm.CAMELLIA_128_GCM:
         case EncryptionAlgorithm.CAMELLIA_256_GCM:
         case EncryptionAlgorithm.CHACHA20_POLY1305:
@@ -2305,12 +2327,10 @@ public class TlsUtils
         case CipherSuite.TLS_DHE_PSK_WITH_AES_128_CBC_SHA256:
         case CipherSuite.TLS_DHE_PSK_WITH_AES_128_CCM:
         case CipherSuite.TLS_DHE_PSK_WITH_AES_128_GCM_SHA256:
-        case CipherSuite.DRAFT_TLS_DHE_PSK_WITH_AES_128_OCB:
         case CipherSuite.TLS_DHE_PSK_WITH_AES_256_CBC_SHA:
         case CipherSuite.TLS_DHE_PSK_WITH_AES_256_CBC_SHA384:
         case CipherSuite.TLS_DHE_PSK_WITH_AES_256_CCM:
         case CipherSuite.TLS_DHE_PSK_WITH_AES_256_GCM_SHA384:
-        case CipherSuite.DRAFT_TLS_DHE_PSK_WITH_AES_256_OCB:
         case CipherSuite.TLS_DHE_PSK_WITH_ARIA_128_CBC_SHA256:
         case CipherSuite.TLS_DHE_PSK_WITH_ARIA_128_GCM_SHA256:
         case CipherSuite.TLS_DHE_PSK_WITH_ARIA_256_CBC_SHA384:
@@ -2333,13 +2353,11 @@ public class TlsUtils
         case CipherSuite.TLS_DHE_RSA_WITH_AES_128_CCM:
         case CipherSuite.TLS_DHE_RSA_WITH_AES_128_CCM_8:
         case CipherSuite.TLS_DHE_RSA_WITH_AES_128_GCM_SHA256:
-        case CipherSuite.DRAFT_TLS_DHE_RSA_WITH_AES_128_OCB:
         case CipherSuite.TLS_DHE_RSA_WITH_AES_256_CBC_SHA:
         case CipherSuite.TLS_DHE_RSA_WITH_AES_256_CBC_SHA256:
         case CipherSuite.TLS_DHE_RSA_WITH_AES_256_CCM:
         case CipherSuite.TLS_DHE_RSA_WITH_AES_256_CCM_8:
         case CipherSuite.TLS_DHE_RSA_WITH_AES_256_GCM_SHA384:
-        case CipherSuite.DRAFT_TLS_DHE_RSA_WITH_AES_256_OCB:
         case CipherSuite.TLS_DHE_RSA_WITH_ARIA_128_CBC_SHA256:
         case CipherSuite.TLS_DHE_RSA_WITH_ARIA_128_GCM_SHA256:
         case CipherSuite.TLS_DHE_RSA_WITH_ARIA_256_CBC_SHA384:
@@ -2402,13 +2420,11 @@ public class TlsUtils
         case CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_128_CCM:
         case CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_128_CCM_8:
         case CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:
-        case CipherSuite.DRAFT_TLS_ECDHE_ECDSA_WITH_AES_128_OCB:
         case CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:
         case CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384:
         case CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_256_CCM:
         case CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_256_CCM_8:
         case CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:
-        case CipherSuite.DRAFT_TLS_ECDHE_ECDSA_WITH_AES_256_OCB:
         case CipherSuite.TLS_ECDHE_ECDSA_WITH_ARIA_128_CBC_SHA256:
         case CipherSuite.TLS_ECDHE_ECDSA_WITH_ARIA_128_GCM_SHA256:
         case CipherSuite.TLS_ECDHE_ECDSA_WITH_ARIA_256_CBC_SHA384:
@@ -2427,11 +2443,9 @@ public class TlsUtils
         case CipherSuite.TLS_ECDHE_PSK_WITH_AES_128_CCM_8_SHA256:
         case CipherSuite.TLS_ECDHE_PSK_WITH_AES_128_CCM_SHA256:
         case CipherSuite.TLS_ECDHE_PSK_WITH_AES_128_GCM_SHA256:
-        case CipherSuite.DRAFT_TLS_ECDHE_PSK_WITH_AES_128_OCB:
         case CipherSuite.TLS_ECDHE_PSK_WITH_AES_256_CBC_SHA:
         case CipherSuite.TLS_ECDHE_PSK_WITH_AES_256_CBC_SHA384:
         case CipherSuite.TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384:
-        case CipherSuite.DRAFT_TLS_ECDHE_PSK_WITH_AES_256_OCB:
         case CipherSuite.TLS_ECDHE_PSK_WITH_ARIA_128_CBC_SHA256:
         case CipherSuite.TLS_ECDHE_PSK_WITH_ARIA_256_CBC_SHA384:
         case CipherSuite.TLS_ECDHE_PSK_WITH_CAMELLIA_128_CBC_SHA256:
@@ -2446,11 +2460,9 @@ public class TlsUtils
         case CipherSuite.TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA:
         case CipherSuite.TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256:
         case CipherSuite.TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:
-        case CipherSuite.DRAFT_TLS_ECDHE_RSA_WITH_AES_128_OCB:
         case CipherSuite.TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:
         case CipherSuite.TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384:
         case CipherSuite.TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:
-        case CipherSuite.DRAFT_TLS_ECDHE_RSA_WITH_AES_256_OCB:
         case CipherSuite.TLS_ECDHE_RSA_WITH_ARIA_128_CBC_SHA256:
         case CipherSuite.TLS_ECDHE_RSA_WITH_ARIA_128_GCM_SHA256:
         case CipherSuite.TLS_ECDHE_RSA_WITH_ARIA_256_CBC_SHA384:
@@ -2463,19 +2475,24 @@ public class TlsUtils
         case CipherSuite.TLS_ECDHE_RSA_WITH_NULL_SHA:
             return KeyExchangeAlgorithm.ECDHE_RSA;
 
+        case CipherSuite.TLS_AES_128_CCM_8_SHA256:
+        case CipherSuite.TLS_AES_128_CCM_SHA256:
+        case CipherSuite.TLS_AES_128_GCM_SHA256:
+        case CipherSuite.TLS_AES_256_GCM_SHA384:
+        case CipherSuite.TLS_CHACHA20_POLY1305_SHA256:
+            return KeyExchangeAlgorithm.NULL;
+
         case CipherSuite.TLS_PSK_WITH_3DES_EDE_CBC_SHA:
         case CipherSuite.TLS_PSK_WITH_AES_128_CBC_SHA:
         case CipherSuite.TLS_PSK_WITH_AES_128_CBC_SHA256:
         case CipherSuite.TLS_PSK_WITH_AES_128_CCM:
         case CipherSuite.TLS_PSK_WITH_AES_128_CCM_8:
         case CipherSuite.TLS_PSK_WITH_AES_128_GCM_SHA256:
-        case CipherSuite.DRAFT_TLS_PSK_WITH_AES_128_OCB:
         case CipherSuite.TLS_PSK_WITH_AES_256_CBC_SHA:
         case CipherSuite.TLS_PSK_WITH_AES_256_CBC_SHA384:
         case CipherSuite.TLS_PSK_WITH_AES_256_CCM:
         case CipherSuite.TLS_PSK_WITH_AES_256_CCM_8:
         case CipherSuite.TLS_PSK_WITH_AES_256_GCM_SHA384:
-        case CipherSuite.DRAFT_TLS_PSK_WITH_AES_256_OCB:
         case CipherSuite.TLS_PSK_WITH_ARIA_128_CBC_SHA256:
         case CipherSuite.TLS_PSK_WITH_ARIA_128_GCM_SHA256:
         case CipherSuite.TLS_PSK_WITH_ARIA_256_CBC_SHA384:
@@ -2552,11 +2569,6 @@ public class TlsUtils
         case CipherSuite.TLS_SRP_SHA_RSA_WITH_AES_256_CBC_SHA:
             return KeyExchangeAlgorithm.SRP_RSA;
 
-        case CipherSuite.TLS_AES_128_CCM_SHA256:
-        case CipherSuite.TLS_AES_128_CCM_8_SHA256:
-        case CipherSuite.TLS_AES_128_GCM_SHA256:
-        case CipherSuite.TLS_AES_256_GCM_SHA384:
-        case CipherSuite.TLS_CHACHA20_POLY1305_SHA256:
         default:
             return -1;
         }
@@ -2611,10 +2623,8 @@ public class TlsUtils
         case CipherSuite.TLS_DHE_DSS_WITH_CAMELLIA_256_GCM_SHA384:
         case CipherSuite.TLS_DHE_PSK_WITH_AES_128_CCM:
         case CipherSuite.TLS_DHE_PSK_WITH_AES_128_GCM_SHA256:
-        case CipherSuite.DRAFT_TLS_DHE_PSK_WITH_AES_128_OCB:
         case CipherSuite.TLS_DHE_PSK_WITH_AES_256_CCM:
         case CipherSuite.TLS_DHE_PSK_WITH_AES_256_GCM_SHA384:
-        case CipherSuite.DRAFT_TLS_DHE_PSK_WITH_AES_256_OCB:
         case CipherSuite.TLS_DHE_PSK_WITH_ARIA_128_GCM_SHA256:
         case CipherSuite.TLS_DHE_PSK_WITH_ARIA_256_GCM_SHA384:
         case CipherSuite.TLS_DHE_PSK_WITH_CAMELLIA_128_GCM_SHA256:
@@ -2623,11 +2633,9 @@ public class TlsUtils
         case CipherSuite.TLS_DHE_RSA_WITH_AES_128_CCM:
         case CipherSuite.TLS_DHE_RSA_WITH_AES_128_CCM_8:
         case CipherSuite.TLS_DHE_RSA_WITH_AES_128_GCM_SHA256:
-        case CipherSuite.DRAFT_TLS_DHE_RSA_WITH_AES_128_OCB:
         case CipherSuite.TLS_DHE_RSA_WITH_AES_256_CCM:
         case CipherSuite.TLS_DHE_RSA_WITH_AES_256_CCM_8:
         case CipherSuite.TLS_DHE_RSA_WITH_AES_256_GCM_SHA384:
-        case CipherSuite.DRAFT_TLS_DHE_RSA_WITH_AES_256_OCB:
         case CipherSuite.TLS_DHE_RSA_WITH_ARIA_128_GCM_SHA256:
         case CipherSuite.TLS_DHE_RSA_WITH_ARIA_256_GCM_SHA384:
         case CipherSuite.TLS_DHE_RSA_WITH_CAMELLIA_128_GCM_SHA256:
@@ -2648,11 +2656,9 @@ public class TlsUtils
         case CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_128_CCM:
         case CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_128_CCM_8:
         case CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:
-        case CipherSuite.DRAFT_TLS_ECDHE_ECDSA_WITH_AES_128_OCB:
         case CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_256_CCM:
         case CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_256_CCM_8:
         case CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:
-        case CipherSuite.DRAFT_TLS_ECDHE_ECDSA_WITH_AES_256_OCB:
         case CipherSuite.TLS_ECDHE_ECDSA_WITH_ARIA_128_GCM_SHA256:
         case CipherSuite.TLS_ECDHE_ECDSA_WITH_ARIA_256_GCM_SHA384:
         case CipherSuite.TLS_ECDHE_ECDSA_WITH_CAMELLIA_128_GCM_SHA256:
@@ -2661,14 +2667,10 @@ public class TlsUtils
         case CipherSuite.TLS_ECDHE_PSK_WITH_AES_128_CCM_8_SHA256:
         case CipherSuite.TLS_ECDHE_PSK_WITH_AES_128_CCM_SHA256:
         case CipherSuite.TLS_ECDHE_PSK_WITH_AES_128_GCM_SHA256:
-        case CipherSuite.DRAFT_TLS_ECDHE_PSK_WITH_AES_128_OCB:
         case CipherSuite.TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384:
-        case CipherSuite.DRAFT_TLS_ECDHE_PSK_WITH_AES_256_OCB:
         case CipherSuite.TLS_ECDHE_PSK_WITH_CHACHA20_POLY1305_SHA256:
         case CipherSuite.TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:
-        case CipherSuite.DRAFT_TLS_ECDHE_RSA_WITH_AES_128_OCB:
         case CipherSuite.TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:
-        case CipherSuite.DRAFT_TLS_ECDHE_RSA_WITH_AES_256_OCB:
         case CipherSuite.TLS_ECDHE_RSA_WITH_ARIA_128_GCM_SHA256:
         case CipherSuite.TLS_ECDHE_RSA_WITH_ARIA_256_GCM_SHA384:
         case CipherSuite.TLS_ECDHE_RSA_WITH_CAMELLIA_128_GCM_SHA256:
@@ -2679,11 +2681,9 @@ public class TlsUtils
         case CipherSuite.TLS_PSK_WITH_AES_128_CCM:
         case CipherSuite.TLS_PSK_WITH_AES_128_CCM_8:
         case CipherSuite.TLS_PSK_WITH_AES_128_GCM_SHA256:
-        case CipherSuite.DRAFT_TLS_PSK_WITH_AES_128_OCB:
         case CipherSuite.TLS_PSK_WITH_AES_256_CCM:
         case CipherSuite.TLS_PSK_WITH_AES_256_CCM_8:
         case CipherSuite.TLS_PSK_WITH_AES_256_GCM_SHA384:
-        case CipherSuite.DRAFT_TLS_PSK_WITH_AES_256_OCB:
         case CipherSuite.TLS_PSK_WITH_ARIA_128_GCM_SHA256:
         case CipherSuite.TLS_PSK_WITH_ARIA_256_GCM_SHA384:
         case CipherSuite.TLS_PSK_WITH_CAMELLIA_128_GCM_SHA256:
@@ -2955,10 +2955,8 @@ public class TlsUtils
         case CipherSuite.TLS_DHE_DSS_WITH_CAMELLIA_256_GCM_SHA384:
         case CipherSuite.TLS_DHE_PSK_WITH_AES_128_CCM:
         case CipherSuite.TLS_DHE_PSK_WITH_AES_128_GCM_SHA256:
-        case CipherSuite.DRAFT_TLS_DHE_PSK_WITH_AES_128_OCB:
         case CipherSuite.TLS_DHE_PSK_WITH_AES_256_CCM:
         case CipherSuite.TLS_DHE_PSK_WITH_AES_256_GCM_SHA384:
-        case CipherSuite.DRAFT_TLS_DHE_PSK_WITH_AES_256_OCB:
         case CipherSuite.TLS_DHE_PSK_WITH_ARIA_128_CBC_SHA256:
         case CipherSuite.TLS_DHE_PSK_WITH_ARIA_128_GCM_SHA256:
         case CipherSuite.TLS_DHE_PSK_WITH_ARIA_256_CBC_SHA384:
@@ -2970,12 +2968,10 @@ public class TlsUtils
         case CipherSuite.TLS_DHE_RSA_WITH_AES_128_CCM:
         case CipherSuite.TLS_DHE_RSA_WITH_AES_128_CCM_8:
         case CipherSuite.TLS_DHE_RSA_WITH_AES_128_GCM_SHA256:
-        case CipherSuite.DRAFT_TLS_DHE_RSA_WITH_AES_128_OCB:
         case CipherSuite.TLS_DHE_RSA_WITH_AES_256_CBC_SHA256:
         case CipherSuite.TLS_DHE_RSA_WITH_AES_256_CCM:
         case CipherSuite.TLS_DHE_RSA_WITH_AES_256_CCM_8:
         case CipherSuite.TLS_DHE_RSA_WITH_AES_256_GCM_SHA384:
-        case CipherSuite.DRAFT_TLS_DHE_RSA_WITH_AES_256_OCB:
         case CipherSuite.TLS_DHE_RSA_WITH_ARIA_128_CBC_SHA256:
         case CipherSuite.TLS_DHE_RSA_WITH_ARIA_128_GCM_SHA256:
         case CipherSuite.TLS_DHE_RSA_WITH_ARIA_256_CBC_SHA384:
@@ -3013,12 +3009,10 @@ public class TlsUtils
         case CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_128_CCM:
         case CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_128_CCM_8:
         case CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:
-        case CipherSuite.DRAFT_TLS_ECDHE_ECDSA_WITH_AES_128_OCB:
         case CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384:
         case CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_256_CCM:
         case CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_256_CCM_8:
         case CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:
-        case CipherSuite.DRAFT_TLS_ECDHE_ECDSA_WITH_AES_256_OCB:
         case CipherSuite.TLS_ECDHE_ECDSA_WITH_ARIA_128_CBC_SHA256:
         case CipherSuite.TLS_ECDHE_ECDSA_WITH_ARIA_128_GCM_SHA256:
         case CipherSuite.TLS_ECDHE_ECDSA_WITH_ARIA_256_CBC_SHA384:
@@ -3031,18 +3025,14 @@ public class TlsUtils
         case CipherSuite.TLS_ECDHE_PSK_WITH_AES_128_CCM_8_SHA256:
         case CipherSuite.TLS_ECDHE_PSK_WITH_AES_128_CCM_SHA256:
         case CipherSuite.TLS_ECDHE_PSK_WITH_AES_128_GCM_SHA256:
-        case CipherSuite.DRAFT_TLS_ECDHE_PSK_WITH_AES_128_OCB:
         case CipherSuite.TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384:
-        case CipherSuite.DRAFT_TLS_ECDHE_PSK_WITH_AES_256_OCB:
         case CipherSuite.TLS_ECDHE_PSK_WITH_ARIA_128_CBC_SHA256:
         case CipherSuite.TLS_ECDHE_PSK_WITH_ARIA_256_CBC_SHA384:
         case CipherSuite.TLS_ECDHE_PSK_WITH_CHACHA20_POLY1305_SHA256:
         case CipherSuite.TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256:
         case CipherSuite.TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:
-        case CipherSuite.DRAFT_TLS_ECDHE_RSA_WITH_AES_128_OCB:
         case CipherSuite.TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384:
         case CipherSuite.TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:
-        case CipherSuite.DRAFT_TLS_ECDHE_RSA_WITH_AES_256_OCB:
         case CipherSuite.TLS_ECDHE_RSA_WITH_ARIA_128_CBC_SHA256:
         case CipherSuite.TLS_ECDHE_RSA_WITH_ARIA_128_GCM_SHA256:
         case CipherSuite.TLS_ECDHE_RSA_WITH_ARIA_256_CBC_SHA384:
@@ -3057,11 +3047,9 @@ public class TlsUtils
         case CipherSuite.TLS_PSK_WITH_AES_128_CCM:
         case CipherSuite.TLS_PSK_WITH_AES_128_CCM_8:
         case CipherSuite.TLS_PSK_WITH_AES_128_GCM_SHA256:
-        case CipherSuite.DRAFT_TLS_PSK_WITH_AES_128_OCB:
         case CipherSuite.TLS_PSK_WITH_AES_256_CCM:
         case CipherSuite.TLS_PSK_WITH_AES_256_CCM_8:
         case CipherSuite.TLS_PSK_WITH_AES_256_GCM_SHA384:
-        case CipherSuite.DRAFT_TLS_PSK_WITH_AES_256_OCB:
         case CipherSuite.TLS_PSK_WITH_ARIA_128_CBC_SHA256:
         case CipherSuite.TLS_PSK_WITH_ARIA_128_GCM_SHA256:
         case CipherSuite.TLS_PSK_WITH_ARIA_256_CBC_SHA384:
@@ -3162,95 +3150,69 @@ public class TlsUtils
         return CipherType.stream == getCipherType(cipherSuite);
     }
 
+    /**
+     * @return Whether a server can select the specified cipher suite given the available signature
+     *         algorithms for ServerKeyExchange.
+     */
     public static boolean isValidCipherSuiteForSignatureAlgorithms(int cipherSuite, Vector sigAlgs)
     {
-        int keyExchangeAlgorithm = getKeyExchangeAlgorithm(cipherSuite);
+        final int keyExchangeAlgorithm = getKeyExchangeAlgorithm(cipherSuite);
 
         switch (keyExchangeAlgorithm)
         {
-        case KeyExchangeAlgorithm.DH_anon:
-        case KeyExchangeAlgorithm.ECDH_anon:
-            return true;
-
-        case KeyExchangeAlgorithm.DHE_RSA:
-        case KeyExchangeAlgorithm.ECDHE_RSA:
-        case KeyExchangeAlgorithm.SRP_RSA:
-            return sigAlgs.contains(Shorts.valueOf(SignatureAlgorithm.rsa))
-                || sigAlgs.contains(Shorts.valueOf(SignatureAlgorithm.rsa_pss_rsae_sha256))
-                || sigAlgs.contains(Shorts.valueOf(SignatureAlgorithm.rsa_pss_rsae_sha384))
-                || sigAlgs.contains(Shorts.valueOf(SignatureAlgorithm.rsa_pss_rsae_sha512))
-                || sigAlgs.contains(Shorts.valueOf(SignatureAlgorithm.rsa_pss_pss_sha256))
-                || sigAlgs.contains(Shorts.valueOf(SignatureAlgorithm.rsa_pss_pss_sha384))
-                || sigAlgs.contains(Shorts.valueOf(SignatureAlgorithm.rsa_pss_pss_sha512));
-
         case KeyExchangeAlgorithm.DHE_DSS:
-        case KeyExchangeAlgorithm.SRP_DSS:
-            return sigAlgs.contains(Shorts.valueOf(SignatureAlgorithm.dsa));
-
+        case KeyExchangeAlgorithm.DHE_RSA:
         case KeyExchangeAlgorithm.ECDHE_ECDSA:
-            return sigAlgs.contains(Shorts.valueOf(SignatureAlgorithm.ecdsa))
-                || sigAlgs.contains(Shorts.valueOf(SignatureAlgorithm.ed25519))
-                || sigAlgs.contains(Shorts.valueOf(SignatureAlgorithm.ed448));
+        case KeyExchangeAlgorithm.ECDHE_RSA:
+        case KeyExchangeAlgorithm.NULL:
+        case KeyExchangeAlgorithm.SRP_RSA:
+        case KeyExchangeAlgorithm.SRP_DSS:
+            break;
 
         default:
             return true;
         }
-    }
 
-    public static boolean isValidCipherSuiteForVersion(int cipherSuite, ProtocolVersion serverVersion)
-    {
-        return getMinimumVersion(cipherSuite).isEqualOrEarlierVersionOf(serverVersion.getEquivalentTLSVersion());
-    }
-
-    static boolean isValidSignatureAlgorithmForCertificateVerify(short signatureAlgorithm, short[] clientCertificateTypes)
-    {
-        for (int i = 0; i < clientCertificateTypes.length; ++i)
+        int count = sigAlgs.size();
+        for (int i = 0; i < count; ++i)
         {
-            if (isValidSignatureAlgorithmForClientCertType(signatureAlgorithm, clientCertificateTypes[i]))
+            Short sigAlg = (Short)sigAlgs.elementAt(i);
+            if (null != sigAlg)
             {
-                return true;
+                short signatureAlgorithm = sigAlg.shortValue();
+
+                if (isValidSignatureAlgorithmForServerKeyExchange(signatureAlgorithm, keyExchangeAlgorithm))
+                {
+                    return true;
+                }
             }
         }
 
         return false;
     }
 
-    static boolean isValidSignatureAlgorithmForClientCertType(short signatureAlgorithm, short clientCertificateType)
+    public static boolean isValidCipherSuiteForVersion(int cipherSuite, ProtocolVersion version)
     {
-        switch (clientCertificateType)
+        version = version.getEquivalentTLSVersion();
+
+        ProtocolVersion minimumVersion = getMinimumVersion(cipherSuite);
+        if (minimumVersion == version)
         {
-        case ClientCertificateType.rsa_sign:
-            switch (signatureAlgorithm)
-            {
-            case SignatureAlgorithm.rsa:
-            case SignatureAlgorithm.rsa_pss_rsae_sha256:
-            case SignatureAlgorithm.rsa_pss_rsae_sha384:
-            case SignatureAlgorithm.rsa_pss_rsae_sha512:
-            case SignatureAlgorithm.rsa_pss_pss_sha256:
-            case SignatureAlgorithm.rsa_pss_pss_sha384:
-            case SignatureAlgorithm.rsa_pss_pss_sha512:
-                return true;
-            default:
-                return false;
-            }
-
-        case ClientCertificateType.dss_sign:
-            return SignatureAlgorithm.dsa == signatureAlgorithm;
-
-        case ClientCertificateType.ecdsa_sign:
-            switch (signatureAlgorithm)
-            {
-            case SignatureAlgorithm.ecdsa:
-            case SignatureAlgorithm.ed25519:
-            case SignatureAlgorithm.ed448:
-                return true;
-            default:
-                return false;
-            }
-
-        default:
+            return true;
+        }
+        if (!minimumVersion.isEarlierVersionOf(version))
+        {
             return false;
         }
+        return ProtocolVersion.TLSv13.isEqualOrEarlierVersionOf(minimumVersion)
+            || ProtocolVersion.TLSv13.isLaterVersionOf(version);
+    }
+
+    static boolean isValidSignatureAlgorithmForCertificateVerify(short signatureAlgorithm, short[] clientCertificateTypes)
+    {
+        short clientCertificateType = SignatureAlgorithm.getClientCertificateType(signatureAlgorithm);
+
+        return clientCertificateType >= 0 &&  Arrays.contains(clientCertificateTypes, clientCertificateType);
     }
 
     static boolean isValidSignatureAlgorithmForServerKeyExchange(short signatureAlgorithm, int keyExchangeAlgorithm)
@@ -3296,6 +3258,13 @@ public class TlsUtils
         }
     }
 
+    public static boolean isValidSignatureSchemeForServerKeyExchange(int signatureScheme, int keyExchangeAlgorithm)
+    {
+        short signatureAlgorithm = SignatureScheme.getSignatureAlgorithm(signatureScheme);
+
+        return isValidSignatureAlgorithmForServerKeyExchange(signatureAlgorithm, keyExchangeAlgorithm);
+    }
+
     public static SignatureAndHashAlgorithm chooseSignatureAndHashAlgorithm(TlsContext context, Vector sigHashAlgs, short signatureAlgorithm)
         throws IOException
     {
@@ -3306,6 +3275,11 @@ public class TlsUtils
 
         if (sigHashAlgs == null)
         {
+            /*
+             * TODO[tls13] RFC 8446 4.2.3 Clients which desire the server to authenticate itself via
+             * a certificate MUST send the "signature_algorithms" extension.
+             */
+
             sigHashAlgs = getDefaultSignatureAlgorithms(signatureAlgorithm);
         }
 
@@ -3370,6 +3344,7 @@ public class TlsUtils
                 Short sigAlg = Shorts.valueOf(sigHashAlg.getSignature());
                 if (!v.contains(sigAlg))
                 {
+                    // TODO Check for crypto support before choosing (or pass in cached list?)
                     v.addElement(sigAlg);
                 }
             }
@@ -3637,65 +3612,28 @@ public class TlsUtils
         }
     }
 
-    private static TlsKeyExchange initKeyExchange(TlsContext context, TlsKeyExchange keyExchange) throws IOException
-    {
-        keyExchange.init(context);
-
-        /*
-         * Process the raw signature_algorithms extension sent by the client (if any) into an
-         * effective value based on the negotiated protocol version and/or the defaults for the
-         * selected key exchange.
-         */
-        SecurityParameters securityParameters = context.getSecurityParametersHandshake();
-
-        if (isSignatureAlgorithmsExtensionAllowed(context.getServerVersion()))
-        {
-            if (null == securityParameters.getClientSigAlgs())
-            {
-                short signatureAlgorithm = getLegacySignatureAlgorithmServerCert(
-                    securityParameters.getKeyExchangeAlgorithm());
-
-                securityParameters.clientSigAlgs = getDefaultSignatureAlgorithms(signatureAlgorithm);
-            }
-
-            if (null == securityParameters.getClientSigAlgsCert())
-            {
-                securityParameters.clientSigAlgsCert = securityParameters.getClientSigAlgs();
-            }
-        }
-        else
-        {
-            securityParameters.clientSigAlgs = null;
-            securityParameters.clientSigAlgsCert = null;
-        }
-
-        return keyExchange;
-    }
-
     static TlsKeyExchange initKeyExchangeClient(TlsClientContext context, TlsClient client) throws IOException
     {
         SecurityParameters securityParameters = context.getSecurityParametersHandshake();
-        int cipherSuite = securityParameters.getCipherSuite();
-        securityParameters.keyExchangeAlgorithm = getKeyExchangeAlgorithm(cipherSuite);
         TlsKeyExchange keyExchange = createKeyExchangeClient(client, securityParameters.getKeyExchangeAlgorithm());
-        return initKeyExchange(context, keyExchange);
+        keyExchange.init(context);
+        return keyExchange;
     }
 
     static TlsKeyExchange initKeyExchangeServer(TlsServerContext context, TlsServer server) throws IOException
     {
         SecurityParameters securityParameters = context.getSecurityParametersHandshake();
-        int cipherSuite = securityParameters.getCipherSuite();
-        securityParameters.keyExchangeAlgorithm = getKeyExchangeAlgorithm(cipherSuite);
         TlsKeyExchange keyExchange = createKeyExchangeServer(server, securityParameters.getKeyExchangeAlgorithm());
-        return initKeyExchange(context, keyExchange);
+        keyExchange.init(context);
+        return keyExchange;
     }
 
     static TlsCipher initCipher(TlsContext context) throws IOException
     {
         SecurityParameters securityParameters = context.getSecurityParametersHandshake();
         int cipherSuite = securityParameters.getCipherSuite();
-        int encryptionAlgorithm = TlsUtils.getEncryptionAlgorithm(cipherSuite);
-        int macAlgorithm = TlsUtils.getMACAlgorithm(cipherSuite);
+        int encryptionAlgorithm = getEncryptionAlgorithm(cipherSuite);
+        int macAlgorithm = getMACAlgorithm(cipherSuite);
 
         if (encryptionAlgorithm < 0 || macAlgorithm < 0)
         {
@@ -3706,9 +3644,11 @@ public class TlsUtils
         return masterSecret.createCipher(new TlsCryptoParameters(context), encryptionAlgorithm, macAlgorithm);
     }
 
-    static void checkSigAlgOfClientCerts(TlsContext context, Certificate clientCertificate, CertificateRequest certificateRequest) throws IOException
+    static void checkSigAlgOfClientCerts(TlsContext context, Certificate clientCertificate,
+        CertificateRequest certificateRequest) throws IOException
     {
-        Vector supportedSignatureAlgorithms = certificateRequest.getSupportedSignatureAlgorithms();
+        SecurityParameters securityParameters = context.getSecurityParametersHandshake();
+        Vector serverSigAlgsCert = securityParameters.getServerSigAlgsCert();
 
         for (int i = 0; i < clientCertificate.getLength(); ++i)
         {
@@ -3720,12 +3660,14 @@ public class TlsUtils
             {
                 // We don't recognize the 'signatureAlgorithm' of the certificate
             }
-            else if (null == supportedSignatureAlgorithms)
+            else if (null == serverSigAlgsCert)
             {
                 short[] certificateTypes = certificateRequest.getCertificateTypes();
                 for (int j = 0; j < certificateTypes.length; ++j)
                 {
-                    if (sigAndHashAlg.getSignature() == getLegacySignatureAlgorithmClientCert(certificateTypes[j]))
+                    short signatureAlgorithm = getLegacySignatureAlgorithmClientCert(certificateTypes[j]);
+
+                    if (sigAndHashAlg.getSignature() == signatureAlgorithm)
                     {
                         valid = true;
                         break;
@@ -3735,11 +3677,10 @@ public class TlsUtils
             else
             {
                 /*
-                 * RFC 5246 7.4.2. If the client provided a "signature_algorithms" extension, then
-                 * all certificates provided by the server MUST be signed by a hash/signature algorithm
-                 * pair that appears in that extension.
+                 * RFC 5246 7.4.4 Any certificates provided by the client MUST be signed using a
+                 * hash/signature algorithm pair found in supported_signature_algorithms.
                  */
-                valid = containsSignatureAlgorithm(supportedSignatureAlgorithms, sigAndHashAlg);
+                valid = containsSignatureAlgorithm(serverSigAlgsCert, sigAndHashAlg);
             }
 
             if (!valid)
@@ -3754,6 +3695,16 @@ public class TlsUtils
     {
         SecurityParameters securityParameters = context.getSecurityParametersHandshake();
         Vector clientSigAlgsCert = securityParameters.getClientSigAlgsCert();
+        Vector clientSigAlgs = securityParameters.getClientSigAlgs();
+
+        /*
+         * NOTE: For TLS 1.2, we'll check 'signature_algorithms' too (if it's distinct), since
+         * there's no way of knowing whether the server understood 'signature_algorithms_cert'.
+         */
+        if (clientSigAlgs == clientSigAlgsCert || isTLSv13(securityParameters.getNegotiatedVersion()))
+        {
+            clientSigAlgs = null;
+        }
 
         for (int i = 0; i < serverCertificate.getLength(); ++i)
         {
@@ -3783,7 +3734,8 @@ public class TlsUtils
                  * all certificates provided by the server MUST be signed by a hash/signature algorithm
                  * pair that appears in that extension.
                  */
-                valid = containsSignatureAlgorithm(clientSigAlgsCert, sigAndHashAlg);
+                valid = containsSignatureAlgorithm(clientSigAlgsCert, sigAndHashAlg)
+                    || (null != clientSigAlgs && containsSignatureAlgorithm(clientSigAlgs, sigAndHashAlg));
             }
 
             if (!valid)
@@ -3835,6 +3787,11 @@ public class TlsUtils
 
         if (clientCertificate.isEmpty())
         {
+            /*
+             * NOTE: We tolerate SSLv3 clients sending an empty chain, although "If no suitable
+             * certificate is available, the client should send a no_certificate alert instead".
+             */
+
             keyExchange.skipClientCredentials();
         }
         else
@@ -3921,6 +3878,7 @@ public class TlsUtils
             return null;
         }
 
+        // TODO Filter for unique sigAlgs/CAs only
         return new CertificateRequest(retained, certificateRequest.getSupportedSignatureAlgorithms(),
             certificateRequest.getCertificateAuthorities());
     }
@@ -4012,8 +3970,8 @@ public class TlsUtils
 
     private static void checkDowngradeMarker(byte[] randomBlock, byte[] downgradeMarker) throws IOException
     {
-        byte[] bytes = copyOfRangeExact(randomBlock, randomBlock.length - downgradeMarker.length, randomBlock.length);
-        if (Arrays.constantTimeAreEqual(bytes, downgradeMarker))
+        int len = downgradeMarker.length;
+        if (constantTimeAreEqual(len, downgradeMarker, 0, randomBlock, randomBlock.length - len))
         {
             throw new TlsFatalAlert(AlertDescription.illegal_parameter);
         }
@@ -4106,26 +4064,35 @@ public class TlsUtils
     static Hashtable addEarlyKeySharesToClientHello(TlsContext context, TlsClient client, Hashtable clientExtensions)
         throws IOException
     {
-        if (!TlsUtils.isTLSv13(context.getClientVersion()))
+        if (!isTLSv13(context.getClientVersion()))
         {
             return null;
+        }
+
+        Hashtable clientAgreements = new Hashtable();
+        Vector clientShares = new Vector();
+
+        collectEarlyKeyShares(context.getCrypto(), client, clientExtensions, clientAgreements, clientShares);
+
+        TlsExtensionsUtils.addKeyShareClientHello(clientExtensions, clientShares);
+
+        return clientAgreements;
+    }
+
+    private static void collectEarlyKeyShares(TlsCrypto crypto, TlsClient client, Hashtable clientExtensions,
+        Hashtable clientAgreements, Vector clientShares) throws IOException
+    {
+        Vector earlyGroups = client.getEarlyKeyShareGroups();
+        if (null == earlyGroups || earlyGroups.isEmpty())
+        {
+            return;
         }
 
         int[] offeredGroups = TlsExtensionsUtils.getSupportedGroupsExtension(clientExtensions);
         if (null == offeredGroups || offeredGroups.length < 1)
         {
-            return null;
+            return;
         }
-
-        Vector earlyGroups = client.getEarlyKeyShareGroups();
-        if (null == earlyGroups || earlyGroups.isEmpty())
-        {
-            return null;
-        }
-
-        TlsCrypto crypto = context.getCrypto();
-        Vector clientShares = new Vector();
-        Hashtable clientAgreements = new Hashtable();
 
         for (int i = 0; i < offeredGroups.length; ++i)
         {
@@ -4164,14 +4131,142 @@ public class TlsUtils
                 clientAgreements.put(offeredGroupElement, agreement);
             }
         }
+    }
 
-        if (clientAgreements.isEmpty())
+    static byte[] readEncryptedPMS(TlsContext context, InputStream input) throws IOException
+    {
+        if (isSSL(context))
         {
-            return null;
+            return SSL3Utils.readEncryptedPMS(input);
         }
 
-        TlsExtensionsUtils.addKeyShareClientHello(clientExtensions, clientShares);
+        return readOpaque16(input);
+    }
 
-        return clientAgreements;
+    static void writeEncryptedPMS(TlsContext context, byte[] encryptedPMS, OutputStream output) throws IOException
+    {
+        if (isSSL(context))
+        {
+            SSL3Utils.writeEncryptedPMS(encryptedPMS, output);
+        }
+        else
+        {
+            writeOpaque16(encryptedPMS, output);
+        }
+    }
+
+    static byte[] getSessionID(TlsSession tlsSession)
+    {
+        if (null != tlsSession)
+        {
+            byte[] sessionID = tlsSession.getSessionID();
+            if (null != sessionID
+                && sessionID.length > 0
+                && sessionID.length <= 32)
+            {
+                return sessionID;
+            }
+        }
+        return EMPTY_BYTES;
+    }
+
+    static void adjustTranscriptForRetry(TlsHandshakeHash handshakeHash)
+        throws IOException
+    {
+        byte[] clientHelloHash = getCurrentPRFHash(handshakeHash);
+        handshakeHash.reset();
+
+        int length = clientHelloHash.length;
+        checkUint8(length);
+
+        byte[] synthetic = new byte[4 + length];
+        writeUint8(HandshakeType.message_hash, synthetic, 0);
+        writeUint24(length, synthetic, 1);
+        System.arraycopy(clientHelloHash, 0, synthetic, 4, length);
+
+        handshakeHash.update(synthetic, 0, synthetic.length);
+    }
+
+    static TlsCredentials establishClientCredentials(TlsAuthentication clientAuthentication,
+        CertificateRequest certificateRequest) throws IOException
+    {
+        return validateCredentials(clientAuthentication.getClientCredentials(certificateRequest));
+    }
+
+    static void establishClientSigAlgs(SecurityParameters securityParameters, Hashtable clientExtensions)
+        throws IOException
+    {
+        securityParameters.clientSigAlgs = TlsExtensionsUtils.getSignatureAlgorithmsExtension(clientExtensions);
+        securityParameters.clientSigAlgsCert = TlsExtensionsUtils.getSignatureAlgorithmsCertExtension(clientExtensions);
+
+        /*
+         * TODO[tls13] RFC 8446 4.2.3 Clients which desire the server to authenticate itself via a
+         * certificate MUST send the "signature_algorithms" extension.
+         */
+    }
+
+    static TlsCredentials establishServerCredentials(TlsServer server) throws IOException
+    {
+        return validateCredentials(server.getCredentials());
+    }
+
+    static void establishServerSigAlgs(SecurityParameters securityParameters, CertificateRequest certificateRequest)
+        throws IOException
+    {
+        securityParameters.serverSigAlgs = certificateRequest.getSupportedSignatureAlgorithms();
+        // TODO[tls13] CertificateRequest can have sigAlgsCert extension
+        securityParameters.serverSigAlgsCert = null;
+
+        if (null == securityParameters.getServerSigAlgsCert())
+        {
+            securityParameters.serverSigAlgsCert = securityParameters.getServerSigAlgs();
+        }
+    }
+
+    static TlsCredentials validateCredentials(TlsCredentials credentials) throws IOException
+    {
+        if (null != credentials)
+        {
+            int count = 0;
+            count += (credentials instanceof TlsCredentialedAgreement) ? 1 : 0;
+            count += (credentials instanceof TlsCredentialedDecryptor) ? 1 : 0;
+            count += (credentials instanceof TlsCredentialedSigner) ? 1 : 0;
+            if (count != 1)
+            {
+                throw new TlsFatalAlert(AlertDescription.internal_error);
+            }
+        }
+        return credentials;
+    }
+
+    static void negotiatedCipherSuite(TlsContext context) throws IOException
+    {
+        SecurityParameters securityParameters = context.getSecurityParametersHandshake();
+        int cipherSuite = securityParameters.getCipherSuite();
+
+        securityParameters.keyExchangeAlgorithm = getKeyExchangeAlgorithm(cipherSuite);
+    }
+
+    static void negotiatedVersion(TlsContext context) throws IOException
+    {
+        SecurityParameters securityParameters = context.getSecurityParametersHandshake();
+        ProtocolVersion negotiatedVersion = securityParameters.getNegotiatedVersion();
+
+        if (!isSignatureAlgorithmsExtensionAllowed(negotiatedVersion))
+        {
+            securityParameters.clientSigAlgs = null;
+            securityParameters.clientSigAlgsCert = null;
+            return;
+        }
+
+        if (null == securityParameters.getClientSigAlgs())
+        {
+            securityParameters.clientSigAlgs = getLegacySupportedSignatureAlgorithms();
+        }
+
+        if (null == securityParameters.getClientSigAlgsCert())
+        {
+            securityParameters.clientSigAlgsCert = securityParameters.getClientSigAlgs();
+        }
     }
 }

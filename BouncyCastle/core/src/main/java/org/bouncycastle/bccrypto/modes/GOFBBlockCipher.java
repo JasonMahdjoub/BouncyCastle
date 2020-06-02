@@ -1,7 +1,7 @@
 package org.bouncycastle.bccrypto.modes;
 
-import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.BlockCipher;
+import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.DataLengthException;
 import org.bouncycastle.bccrypto.StreamBlockCipher;
 import org.bouncycastle.bccrypto.params.ParametersWithIV;
@@ -64,7 +64,7 @@ public class GOFBBlockCipher
      */
     public void init(
         boolean             encrypting, //ignored by this CTR mode
-        CipherParameters params)
+        CipherParameters    params)
         throws IllegalArgumentException
     {
         firstStep = true;

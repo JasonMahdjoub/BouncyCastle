@@ -1,6 +1,5 @@
 package org.bouncycastle.bccrypto.test;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.KeyGenerationParameters;
 import org.bouncycastle.bccrypto.engines.DESEngine;
 import org.bouncycastle.bccrypto.generators.DESKeyGenerator;
@@ -10,6 +9,7 @@ import org.bouncycastle.bccrypto.modes.OFBBlockCipher;
 import org.bouncycastle.bccrypto.params.DESParameters;
 import org.bouncycastle.bccrypto.params.KeyParameter;
 import org.bouncycastle.bccrypto.params.ParametersWithIV;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 import java.security.SecureRandom;

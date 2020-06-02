@@ -13,9 +13,11 @@ import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.DerivationFunction;
 import org.bouncycastle.bccrypto.agreement.ECVKOAgreement;
 import org.bouncycastle.bccrypto.digests.GOST3411_2012_256Digest;
-import org.bouncycastle.bccrypto.params.*;
+import org.bouncycastle.bccrypto.params.AsymmetricKeyParameter;
+import org.bouncycastle.bccrypto.params.ECDomainParameters;
 import org.bouncycastle.bccrypto.params.ECPrivateKeyParameters;
-import org.bouncycastle.bccrypto.params.ParametersWithUKMBC;import org.bouncycastle.bcjcajce.provider.asymmetric.util.BaseAgreementSpi;
+import org.bouncycastle.bccrypto.params.ParametersWithUKM;
+import org.bouncycastle.bcjcajce.provider.asymmetric.util.BaseAgreementSpi;
 import org.bouncycastle.bcjcajce.provider.asymmetric.util.ECUtil;
 import org.bouncycastle.bcjcajce.spec.UserKeyingMaterialSpec;
 import org.bouncycastle.jce.interfaces.ECPrivateKey;
@@ -123,7 +125,7 @@ public class KeyAgreementSpi
             ECPrivateKeyParameters privKey = (ECPrivateKeyParameters)ECUtil.generatePrivateKeyParameter((PrivateKey)key);
             this.parameters = privKey.getParameters();
             ukmParameters = (parameterSpec instanceof UserKeyingMaterialSpec) ? ((UserKeyingMaterialSpec)parameterSpec).getUserKeyingMaterial() : null;
-            agreement.init(new ParametersWithUKMBC(privKey, ukmParameters));
+            agreement.init(new ParametersWithUKM(privKey, ukmParameters));
         }
     }
 

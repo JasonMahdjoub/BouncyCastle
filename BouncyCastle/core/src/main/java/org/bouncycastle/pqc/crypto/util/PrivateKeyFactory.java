@@ -3,11 +3,13 @@ package org.bouncycastle.pqc.crypto.util;
 import java.io.IOException;
 import java.io.InputStream;
 
+import org.bouncycastle.bcasn1.ASN1BitString;
 import org.bouncycastle.bcasn1.ASN1InputStream;
 import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 import org.bouncycastle.bcasn1.ASN1OctetString;
 import org.bouncycastle.bcasn1.ASN1Primitive;
-import org.bouncycastle.bcasn1.bc.DMBCObjectIdentifiers;
+import org.bouncycastle.bcasn1.bc.BCObjectIdentifiers;
+import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
 import org.bouncycastle.bcasn1.pkcs.PrivateKeyInfo;
 import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.bccrypto.params.AsymmetricKeyParameter;
@@ -17,6 +19,8 @@ import org.bouncycastle.pqc.asn1.XMSSKeyParams;
 import org.bouncycastle.pqc.asn1.XMSSMTKeyParams;
 import org.bouncycastle.pqc.asn1.XMSSMTPrivateKey;
 import org.bouncycastle.pqc.asn1.XMSSPrivateKey;
+import org.bouncycastle.pqc.crypto.lms.HSSPrivateKeyParameters;
+import org.bouncycastle.pqc.crypto.lms.LMSPrivateKeyParameters;
 import org.bouncycastle.pqc.crypto.newhope.NHPrivateKeyParameters;
 import org.bouncycastle.pqc.crypto.qtesla.QTESLAPrivateKeyParameters;
 import org.bouncycastle.pqc.crypto.sphincs.SPHINCSPrivateKeyParameters;
@@ -27,6 +31,7 @@ import org.bouncycastle.pqc.crypto.xmss.XMSSMTPrivateKeyParameters;
 import org.bouncycastle.pqc.crypto.xmss.XMSSParameters;
 import org.bouncycastle.pqc.crypto.xmss.XMSSPrivateKeyParameters;
 import org.bouncycastle.pqc.crypto.xmss.XMSSUtil;
+import org.bouncycastle.bcutil.Arrays;
 import org.bouncycastle.bcutil.Pack;
 
 /**
@@ -71,22 +76,42 @@ public class PrivateKeyFactory
         AlgorithmIdentifier algId = keyInfo.getPrivateKeyAlgorithm();
         ASN1ObjectIdentifier algOID = algId.getAlgorithm();
 
-        if (algOID.on(DMBCObjectIdentifiers.qTESLA))
+        if (algOID.on(BCObjectIdentifiers.qTESLA))
         {
             ASN1OctetString qTESLAPriv = ASN1OctetString.getInstance(keyInfo.parsePrivateKey());
 
             return new QTESLAPrivateKeyParameters(Utils.qTeslaLookupSecurityCategory(keyInfo.getPrivateKeyAlgorithm()), qTESLAPriv.getOctets());
         }
-        else if (algOID.equals(DMBCObjectIdentifiers.sphincs256))
+        else if (algOID.equals(BCObjectIdentifiers.sphincs256))
         {
             return new SPHINCSPrivateKeyParameters(ASN1OctetString.getInstance(keyInfo.parsePrivateKey()).getOctets(),
                 Utils.sphincs256LookupTreeAlgName(SPHINCS256KeyParams.getInstance(keyInfo.getPrivateKeyAlgorithm().getParameters())));
         }
-        else if (algOID.equals(DMBCObjectIdentifiers.newHope))
+        else if (algOID.equals(BCObjectIdentifiers.newHope))
         {
             return new NHPrivateKeyParameters(convert(ASN1OctetString.getInstance(keyInfo.parsePrivateKey()).getOctets()));
         }
-        else if (algOID.equals(DMBCObjectIdentifiers.xmss))
+        else if (algOID.equals(PKCSObjectIdentifiers.id_alg_hss_lms_hashsig))
+        {
+            byte[] keyEnc = ASN1OctetString.getInstance(keyInfo.parsePrivateKey()).getOctets();
+            ASN1BitString pubKey = keyInfo.getPublicKeyData();
+
+            if (Pack.bigEndianToInt(keyEnc, 0) == 1)
+            {
+                if (pubKey != null)
+                {
+                    byte[] pubEnc = pubKey.getOctets();
+
+                    return LMSPrivateKeyParameters.getInstance(Arrays.copyOfRange(keyEnc, 4, keyEnc.length), Arrays.copyOfRange(pubEnc, 4, pubEnc.length));
+                }
+                return LMSPrivateKeyParameters.getInstance(Arrays.copyOfRange(keyEnc, 4, keyEnc.length));
+            }
+            else
+            {
+                return HSSPrivateKeyParameters.getInstance(Arrays.copyOfRange(keyEnc, 4, keyEnc.length));
+            }
+        }
+        else if (algOID.equals(BCObjectIdentifiers.xmss))
         {
             XMSSKeyParams keyParams = XMSSKeyParams.getInstance(keyInfo.getPrivateKeyAlgorithm().getParameters());
             ASN1ObjectIdentifier treeDigest = keyParams.getTreeDigest().getAlgorithm();

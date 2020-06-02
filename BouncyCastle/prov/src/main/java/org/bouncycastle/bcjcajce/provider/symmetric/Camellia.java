@@ -10,7 +10,7 @@ import javax.crypto.spec.IvParameterSpec;
 import org.bouncycastle.bcasn1.ntt.NTTObjectIdentifiers;
 import org.bouncycastle.bccrypto.BlockCipher;
 import org.bouncycastle.bccrypto.CipherKeyGenerator;
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.engines.CamelliaEngine;
 import org.bouncycastle.bccrypto.engines.CamelliaWrapEngine;
 import org.bouncycastle.bccrypto.engines.RFC3211WrapEngine;
@@ -170,7 +170,7 @@ public final class Camellia
 
             if (random == null)
             {
-                random = BCCryptoServicesRegistrar.getSecureRandom();
+                random = CryptoServicesRegistrar.getSecureRandom();
             }
 
             random.nextBytes(iv);

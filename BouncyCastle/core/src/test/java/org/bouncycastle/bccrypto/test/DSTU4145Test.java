@@ -3,13 +3,15 @@ package org.bouncycastle.bccrypto.test;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.CipherParameters;
-import org.bouncycastle.bccrypto.params.*;
+import org.bouncycastle.bccrypto.params.ECDomainParameters;
 import org.bouncycastle.bccrypto.params.ECPrivateKeyParameters;
-import org.bouncycastle.bccrypto.params.ParametersWithRandom;import org.bouncycastle.bccrypto.signers.DSTU4145Signer;
+import org.bouncycastle.bccrypto.params.ECPublicKeyParameters;
+import org.bouncycastle.bccrypto.params.ParametersWithRandom;
+import org.bouncycastle.bccrypto.signers.DSTU4145Signer;
 import org.bouncycastle.bcmath.ec.ECCurve;
 import org.bouncycastle.bcmath.ec.ECPoint;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 import org.bouncycastle.bcutil.test.TestRandomData;
 

@@ -2,7 +2,6 @@ package org.bouncycastle.bcmath.ec.custom.sec;
 
 import java.math.BigInteger;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcmath.ec.AbstractECLookupTable;
 import org.bouncycastle.bcmath.ec.ECConstants;
 import org.bouncycastle.bcmath.ec.ECCurve;
@@ -11,6 +10,7 @@ import org.bouncycastle.bcmath.ec.ECFieldElement;
 import org.bouncycastle.bcmath.ec.ECLookupTable;
 import org.bouncycastle.bcmath.ec.ECPoint;
 import org.bouncycastle.bcmath.raw.Nat192;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 public class SecT163R2Curve extends AbstractF2m
 {

@@ -32,8 +32,8 @@ public class AsymmetricCipherKeyPair
      * @deprecated use AsymmetricKeyParameter
      */
     public AsymmetricCipherKeyPair(
-        CipherParameters publicParam,
-        CipherParameters privateParam)
+        CipherParameters    publicParam,
+        CipherParameters    privateParam)
     {
         this.publicParam = (AsymmetricKeyParameter)publicParam;
         this.privateParam = (AsymmetricKeyParameter)privateParam;

@@ -2,8 +2,11 @@ package org.bouncycastle.bccrypto.engines;
 
 import java.security.SecureRandom;
 
-import org.bouncycastle.bccrypto.*;
+import org.bouncycastle.bccrypto.BlockCipher;
 import org.bouncycastle.bccrypto.CipherParameters;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.InvalidCipherTextException;
+import org.bouncycastle.bccrypto.Wrapper;
 import org.bouncycastle.bccrypto.modes.CBCBlockCipher;
 import org.bouncycastle.bccrypto.params.ParametersWithIV;
 import org.bouncycastle.bccrypto.params.ParametersWithRandom;
@@ -49,7 +52,7 @@ public class RFC3211WrapEngine
         {
             if (forWrapping)
             {
-                rand = BCCryptoServicesRegistrar.getSecureRandom();
+                rand = CryptoServicesRegistrar.getSecureRandom();
             }
 
             if (!(param instanceof ParametersWithIV))

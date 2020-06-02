@@ -42,7 +42,7 @@ public class DSASigner
         PublicKey   publicKey)
         throws InvalidKeyException
     {
-        CipherParameters param = DSAUtil.generatePublicKeyParameter(publicKey);
+        CipherParameters    param = DSAUtil.generatePublicKeyParameter(publicKey);
 
         digest.reset();
         signer.init(false, param);
@@ -61,7 +61,7 @@ public class DSASigner
         PrivateKey  privateKey)
         throws InvalidKeyException
     {
-        CipherParameters param = DSAUtil.generatePrivateKeyParameter(privateKey);
+        CipherParameters    param = DSAUtil.generatePrivateKeyParameter(privateKey);
 
         if (random != null)
         {

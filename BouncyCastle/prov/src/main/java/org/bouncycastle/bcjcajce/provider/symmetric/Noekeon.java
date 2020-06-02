@@ -9,7 +9,7 @@ import javax.crypto.spec.IvParameterSpec;
 
 import org.bouncycastle.bccrypto.BlockCipher;
 import org.bouncycastle.bccrypto.CipherKeyGenerator;
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.engines.NoekeonEngine;
 import org.bouncycastle.bccrypto.generators.Poly1305KeyGenerator;
 import org.bouncycastle.bccrypto.macs.GMac;
@@ -96,7 +96,7 @@ public final class Noekeon
 
             if (random == null)
             {
-                random = BCCryptoServicesRegistrar.getSecureRandom();
+                random = CryptoServicesRegistrar.getSecureRandom();
             }
 
             random.nextBytes(iv);

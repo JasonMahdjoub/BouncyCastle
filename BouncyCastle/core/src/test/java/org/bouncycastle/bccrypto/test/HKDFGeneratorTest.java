@@ -1,11 +1,11 @@
 package org.bouncycastle.bccrypto.test;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.Digest;
 import org.bouncycastle.bccrypto.digests.SHA1Digest;
 import org.bouncycastle.bccrypto.digests.SHA256Digest;
 import org.bouncycastle.bccrypto.generators.HKDFBytesGenerator;
 import org.bouncycastle.bccrypto.params.HKDFParameters;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**

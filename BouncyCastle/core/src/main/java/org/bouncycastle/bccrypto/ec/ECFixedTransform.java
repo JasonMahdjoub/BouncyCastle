@@ -31,7 +31,7 @@ public class ECFixedTransform
      * @param param the necessary EC key parameters.
      */
     public void init(
-        CipherParameters param)
+        CipherParameters    param)
     {
         if (!(param instanceof ECPublicKeyParameters))
         {

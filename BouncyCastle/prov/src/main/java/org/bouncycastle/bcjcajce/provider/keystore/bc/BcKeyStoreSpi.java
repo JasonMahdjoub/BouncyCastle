@@ -36,7 +36,7 @@ import javax.crypto.spec.SecretKeySpec;
 import org.bouncycastle.bcasn1.pkcs.PrivateKeyInfo;
 import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
 import org.bouncycastle.bccrypto.CipherParameters;
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.Digest;
 import org.bouncycastle.bccrypto.PBEParametersGenerator;
 import org.bouncycastle.bccrypto.digests.SHA1Digest;
@@ -88,7 +88,7 @@ public class BcKeyStoreSpi
 
     protected Hashtable       table = new Hashtable();
 
-    protected SecureRandom    random = BCCryptoServicesRegistrar.getSecureRandom();
+    protected SecureRandom    random = CryptoServicesRegistrar.getSecureRandom();
 
     protected int              version;
 

@@ -9,17 +9,17 @@ public class ParametersWithSalt
     implements CipherParameters
 {
     private byte[]              salt;
-    private CipherParameters parameters;
+    private CipherParameters    parameters;
 
     public ParametersWithSalt(
-        CipherParameters parameters,
+        CipherParameters    parameters,
         byte[]              salt)
     {
         this(parameters, salt, 0, salt.length);
     }
 
     public ParametersWithSalt(
-        CipherParameters parameters,
+        CipherParameters    parameters,
         byte[]              salt,
         int                 saltOff,
         int                 saltLen)

@@ -5,10 +5,10 @@ import java.io.IOException;
 
 import org.bouncycastle.bcutil.Arrays;
 import org.bouncycastle.bcutil.Strings;
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.encoders.Base64;
 import org.bouncycastle.bcutil.encoders.Base64Encoder;
 import org.bouncycastle.bcutil.encoders.DecoderException;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 public class Base64Test extends AbstractCoderTest
 {

@@ -79,7 +79,7 @@ public class BufferedBlockCipher
      */
     public void init(
         boolean             forEncryption,
-        CipherParameters params)
+        CipherParameters    params)
         throws IllegalArgumentException
     {
         this.forEncryption = forEncryption;

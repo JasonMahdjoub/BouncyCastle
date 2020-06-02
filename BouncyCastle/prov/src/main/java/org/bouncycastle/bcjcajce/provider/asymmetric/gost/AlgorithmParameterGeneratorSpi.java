@@ -5,14 +5,14 @@ import java.security.InvalidAlgorithmParameterException;
 import java.security.SecureRandom;
 import java.security.spec.AlgorithmParameterSpec;
 
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.generators.GOST3410ParametersGenerator;
 import org.bouncycastle.bccrypto.params.GOST3410Parameters;
 import org.bouncycastle.bcjcajce.provider.asymmetric.util.BaseAlgorithmParameterGeneratorSpi;
 import org.bouncycastle.jce.spec.GOST3410ParameterSpec;
 import org.bouncycastle.jce.spec.GOST3410PublicKeyParameterSetSpec;
 
-public abstract class AlgorithmParameterGeneratorSpi
+public class AlgorithmParameterGeneratorSpi
     extends BaseAlgorithmParameterGeneratorSpi
 {
     protected SecureRandom random;
@@ -44,7 +44,7 @@ public abstract class AlgorithmParameterGeneratorSpi
         }
         else
         {
-            pGen.init(strength, 2, BCCryptoServicesRegistrar.getSecureRandom());
+            pGen.init(strength, 2, CryptoServicesRegistrar.getSecureRandom());
         }
 
         GOST3410Parameters p = pGen.generateParameters();

@@ -43,7 +43,6 @@ import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
 import org.bouncycastle.bcasn1.x9.ECNamedCurveTable;
 import org.bouncycastle.bcasn1.x9.X9ECParameters;
 import org.bouncycastle.bcasn1.x9.X9ObjectIdentifiers;
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.cert.CertException;
 import org.bouncycastle.cert.X509CRLEntryHolder;
 import org.bouncycastle.cert.X509CRLHolder;
@@ -60,8 +59,15 @@ import org.bouncycastle.bccrypto.AsymmetricCipherKeyPairGenerator;
 import org.bouncycastle.bccrypto.generators.DSAKeyPairGenerator;
 import org.bouncycastle.bccrypto.generators.DSAParametersGenerator;
 import org.bouncycastle.bccrypto.generators.RSAKeyPairGenerator;
-import org.bouncycastle.bccrypto.params.*;
+import org.bouncycastle.bccrypto.params.AsymmetricKeyParameter;
+import org.bouncycastle.bccrypto.params.DSAKeyGenerationParameters;
+import org.bouncycastle.bccrypto.params.DSAParameters;
+import org.bouncycastle.bccrypto.params.ECDomainParameters;
+import org.bouncycastle.bccrypto.params.ECPrivateKeyParameters;
+import org.bouncycastle.bccrypto.params.ECPublicKeyParameters;
+import org.bouncycastle.bccrypto.params.RSAKeyGenerationParameters;
 import org.bouncycastle.bccrypto.params.RSAKeyParameters;
+import org.bouncycastle.bccrypto.params.RSAPrivateCrtKeyParameters;
 import org.bouncycastle.bccrypto.util.PublicKeyFactory;
 import org.bouncycastle.bccrypto.util.SubjectPublicKeyInfoFactory;
 import org.bouncycastle.bcmath.ec.ECCurve;
@@ -78,6 +84,7 @@ import org.bouncycastle.operator.bc.BcRSAContentSignerBuilder;
 import org.bouncycastle.operator.bc.BcRSAContentVerifierProviderBuilder;
 import org.bouncycastle.bcutil.Strings;
 import org.bouncycastle.bcutil.encoders.Base64;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 public class BcCertTest
     extends TestCase

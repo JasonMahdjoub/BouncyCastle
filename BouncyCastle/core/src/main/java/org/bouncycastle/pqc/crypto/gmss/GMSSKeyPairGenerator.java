@@ -3,8 +3,11 @@ package org.bouncycastle.pqc.crypto.gmss;
 import java.security.SecureRandom;
 import java.util.Vector;
 
-import org.bouncycastle.bccrypto.*;
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.AsymmetricCipherKeyPair;
+import org.bouncycastle.bccrypto.AsymmetricCipherKeyPairGenerator;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.Digest;
+import org.bouncycastle.bccrypto.KeyGenerationParameters;
 import org.bouncycastle.pqc.crypto.gmss.util.GMSSRandom;
 import org.bouncycastle.pqc.crypto.gmss.util.WinternitzOTSVerify;
 import org.bouncycastle.pqc.crypto.gmss.util.WinternitzOTSignature;
@@ -427,7 +430,7 @@ public class GMSSKeyPairGenerator
         this.nextNextSeeds = new byte[numLayer - 1][mdLength];
 
         // construct SecureRandom for initial seed generation
-        SecureRandom secRan = BCCryptoServicesRegistrar.getSecureRandom();
+        SecureRandom secRan = CryptoServicesRegistrar.getSecureRandom();
 
         // generation of initial seeds
         for (int i = 0; i < numLayer; i++)
@@ -449,7 +452,7 @@ public class GMSSKeyPairGenerator
         int[] defw = {3, 3, 3, 3};
         int[] defk = {2, 2, 2, 2};
 
-        KeyGenerationParameters kgp = new GMSSKeyGenerationParameters(BCCryptoServicesRegistrar.getSecureRandom(), new GMSSParameters(defh.length, defh, defw, defk));
+        KeyGenerationParameters kgp = new GMSSKeyGenerationParameters(CryptoServicesRegistrar.getSecureRandom(), new GMSSParameters(defh.length, defh, defw, defk));
         this.initialize(kgp);
 
     }

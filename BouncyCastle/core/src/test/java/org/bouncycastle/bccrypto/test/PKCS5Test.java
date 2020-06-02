@@ -10,8 +10,8 @@ import org.bouncycastle.bcasn1.pkcs.PBES2Parameters;
 import org.bouncycastle.bcasn1.pkcs.PBKDF2Params;
 import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
 import org.bouncycastle.bcasn1.pkcs.RC2CBCParameter;
-import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.BufferedBlockCipher;
+import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.PBEParametersGenerator;
 import org.bouncycastle.bccrypto.engines.DESEngine;
 import org.bouncycastle.bccrypto.engines.DESedeEngine;
@@ -21,8 +21,8 @@ import org.bouncycastle.bccrypto.modes.CBCBlockCipher;
 import org.bouncycastle.bccrypto.paddings.PaddedBufferedBlockCipher;
 import org.bouncycastle.bccrypto.params.KeyParameter;
 import org.bouncycastle.bccrypto.params.ParametersWithIV;
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.encoders.Base64;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**
@@ -151,7 +151,7 @@ public class PKCS5Test
                 salt,
                 iterationCount);
     
-            CipherParameters param;
+            CipherParameters    param;
     
             if (scheme.getAlgorithm().equals(PKCSObjectIdentifiers.RC2_CBC))
             {

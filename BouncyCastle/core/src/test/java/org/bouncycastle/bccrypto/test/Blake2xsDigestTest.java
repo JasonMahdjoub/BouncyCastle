@@ -1,7 +1,7 @@
 package org.bouncycastle.bccrypto.test;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.digests.Blake2xsDigest;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class Blake2xsDigestTest

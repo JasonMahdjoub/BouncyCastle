@@ -11,7 +11,7 @@ import java.security.spec.AlgorithmParameterSpec;
 import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.CryptoException;
 import org.bouncycastle.bccrypto.digests.SHA256Digest;
-import org.bouncycastle.bccrypto.params.ParametersWithIDBC;
+import org.bouncycastle.bccrypto.params.ParametersWithID;
 import org.bouncycastle.bccrypto.params.ParametersWithRandom;
 import org.bouncycastle.bccrypto.signers.SM2Signer;
 import org.bouncycastle.bcjcajce.provider.asymmetric.util.ECUtil;
@@ -41,7 +41,7 @@ public class GMSignatureSpi
 
         if (paramSpec != null)
         {
-            param = new ParametersWithIDBC(param, paramSpec.getID());
+            param = new ParametersWithID(param, paramSpec.getID());
         }
 
         signer.init(false, param);
@@ -60,7 +60,7 @@ public class GMSignatureSpi
 
         if (paramSpec != null)
         {
-            signer.init(true, new ParametersWithIDBC(param, paramSpec.getID()));
+            signer.init(true, new ParametersWithID(param, paramSpec.getID()));
         }
         else
         {

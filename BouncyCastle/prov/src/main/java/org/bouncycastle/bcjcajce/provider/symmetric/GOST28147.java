@@ -18,9 +18,9 @@ import org.bouncycastle.bcasn1.ASN1Sequence;
 import org.bouncycastle.bcasn1.cryptopro.CryptoProObjectIdentifiers;
 import org.bouncycastle.bcasn1.cryptopro.GOST28147Parameters;
 import org.bouncycastle.bcasn1.rosstandart.RosstandartObjectIdentifiers;
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.BufferedBlockCipher;
 import org.bouncycastle.bccrypto.CipherKeyGenerator;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.engines.CryptoProWrapEngine;
 import org.bouncycastle.bccrypto.engines.GOST28147Engine;
 import org.bouncycastle.bccrypto.engines.GOST28147WrapEngine;
@@ -159,7 +159,7 @@ public final class GOST28147
         {
             if (random == null)
             {
-                random = BCCryptoServicesRegistrar.getSecureRandom();
+                random = CryptoServicesRegistrar.getSecureRandom();
             }
 
             random.nextBytes(iv);

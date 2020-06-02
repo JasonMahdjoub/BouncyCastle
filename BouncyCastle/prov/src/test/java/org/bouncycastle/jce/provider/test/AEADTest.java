@@ -20,11 +20,11 @@ import javax.crypto.spec.SecretKeySpec;
 
 import junit.framework.TestCase;
 import org.bouncycastle.bcasn1.cms.GCMParameters;
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcjcajce.spec.AEADParameterSpec;
 import org.bouncycastle.bcjcajce.spec.RepeatedSecretKeySpec;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class AEADTest extends SimpleTest

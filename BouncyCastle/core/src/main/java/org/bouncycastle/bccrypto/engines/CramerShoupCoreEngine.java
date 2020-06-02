@@ -4,11 +4,14 @@ import java.math.BigInteger;
 import java.security.SecureRandom;
 
 import org.bouncycastle.bccrypto.CipherParameters;
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.DataLengthException;
 import org.bouncycastle.bccrypto.Digest;
-import org.bouncycastle.bccrypto.params.*;import org.bouncycastle.bccrypto.params.CramerShoupKeyParameters;
-import org.bouncycastle.bccrypto.params.ParametersWithRandom;import org.bouncycastle.bcutil.BigIntegers;
+import org.bouncycastle.bccrypto.params.CramerShoupKeyParameters;
+import org.bouncycastle.bccrypto.params.CramerShoupPrivateKeyParameters;
+import org.bouncycastle.bccrypto.params.CramerShoupPublicKeyParameters;
+import org.bouncycastle.bccrypto.params.ParametersWithRandom;
+import org.bouncycastle.bcutil.BigIntegers;
 import org.bouncycastle.bcutil.Strings;
 
 /**
@@ -287,7 +290,7 @@ public class CramerShoupCoreEngine
 
     protected SecureRandom initSecureRandom(boolean needed, SecureRandom provided)
     {
-        return !needed ? null : (provided != null) ? provided : BCCryptoServicesRegistrar.getSecureRandom();
+        return !needed ? null : (provided != null) ? provided : CryptoServicesRegistrar.getSecureRandom();
     }
 
     /**

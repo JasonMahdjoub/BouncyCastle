@@ -1,12 +1,12 @@
 package org.bouncycastle.bccrypto.test;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.Digest;
 import org.bouncycastle.bccrypto.Mac;
 import org.bouncycastle.bccrypto.digests.DSTU7564Digest;
 import org.bouncycastle.bccrypto.macs.DSTU7564Mac;
 import org.bouncycastle.bccrypto.params.KeyParameter;
 import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 public class DSTU7564Test
     extends DigestTest

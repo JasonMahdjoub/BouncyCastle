@@ -41,7 +41,6 @@ import javax.crypto.spec.DHPublicKeySpec;
 import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 import org.bouncycastle.bcasn1.bsi.BSIObjectIdentifiers;
 import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.agreement.DHStandardGroups;
 import org.bouncycastle.bcjcajce.provider.config.ConfigurableProvider;
 import org.bouncycastle.bcjcajce.spec.DHDomainParameterSpec;
@@ -56,6 +55,7 @@ import org.bouncycastle.jce.spec.ECNamedCurveParameterSpec;
 import org.bouncycastle.bcutil.Arrays;
 import org.bouncycastle.bcutil.Strings;
 import org.bouncycastle.bcutil.encoders.Base64;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class DHTest

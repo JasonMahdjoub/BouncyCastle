@@ -20,7 +20,7 @@ import org.bouncycastle.bcutil.Fingerprint;
 
 /**
  * utility class for converting jce/jca DSA objects
- * objects into their org.bouncycastle.crypto counterparts.
+ * objects into their org.bouncycastle.bccrypto counterparts.
  */
 public class DSAUtil
 {

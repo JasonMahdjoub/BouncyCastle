@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.StreamCipher;
 import org.bouncycastle.bccrypto.engines.HC128Engine;
@@ -13,6 +12,7 @@ import org.bouncycastle.bccrypto.engines.HC256Engine;
 import org.bouncycastle.bccrypto.params.KeyParameter;
 import org.bouncycastle.bccrypto.params.ParametersWithIV;
 import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**

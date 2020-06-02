@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.pqc.crypto.test.XMSSMTTest" tests="16" skipped="0" failures="0" errors="0" timestamp="2020-02-14T17:17:20" hostname="Garage" time="20.931">
+<testsuite name="org.bouncycastle.pqc.crypto.test.XMSSMTTest" tests="16" skipped="0" failures="0" errors="0" timestamp="2020-06-02T09:02:11" hostname="Garage" time="21.238">
   <properties/>
-  <testcase name="testGenKeyPairSHA256" classname="org.bouncycastle.pqc.crypto.test.XMSSMTTest" time="0.085"/>
-  <testcase name="testGenKeyPairSHA512" classname="org.bouncycastle.pqc.crypto.test.XMSSMTTest" time="0.289"/>
-  <testcase name="testVerifySignerSHA256" classname="org.bouncycastle.pqc.crypto.test.XMSSMTTest" time="0.259"/>
-  <testcase name="testVerifySignerSHA512" classname="org.bouncycastle.pqc.crypto.test.XMSSMTTest" time="0.765"/>
-  <testcase name="testVerifySignatureSHA256" classname="org.bouncycastle.pqc.crypto.test.XMSSMTTest" time="0.302"/>
-  <testcase name="testVerifySignatureSHA512" classname="org.bouncycastle.pqc.crypto.test.XMSSMTTest" time="0.942"/>
-  <testcase name="testImportKeysSHA256" classname="org.bouncycastle.pqc.crypto.test.XMSSMTTest" time="0.254"/>
-  <testcase name="testImportKeysSHA512" classname="org.bouncycastle.pqc.crypto.test.XMSSMTTest" time="0.788"/>
-  <testcase name="testBDSImport" classname="org.bouncycastle.pqc.crypto.test.XMSSMTTest" time="0.1"/>
-  <testcase name="testSignSHA256Complete1" classname="org.bouncycastle.pqc.crypto.test.XMSSMTTest" time="0.592"/>
-  <testcase name="testSignSHA256Complete2" classname="org.bouncycastle.pqc.crypto.test.XMSSMTTest" time="0.155"/>
-  <testcase name="testSignSHA256Complete3" classname="org.bouncycastle.pqc.crypto.test.XMSSMTTest" time="14.656"/>
-  <testcase name="testPublicSeed" classname="org.bouncycastle.pqc.crypto.test.XMSSMTTest" time="0.399"/>
-  <testcase name="testRandom" classname="org.bouncycastle.pqc.crypto.test.XMSSMTTest" time="1.006"/>
-  <testcase name="testSignSHA256" classname="org.bouncycastle.pqc.crypto.test.XMSSMTTest" time="0.151"/>
-  <testcase name="testSignSHA512" classname="org.bouncycastle.pqc.crypto.test.XMSSMTTest" time="0.184"/>
+  <testcase name="testGenKeyPairSHA256" classname="org.bouncycastle.pqc.crypto.test.XMSSMTTest" time="0.081"/>
+  <testcase name="testGenKeyPairSHA512" classname="org.bouncycastle.pqc.crypto.test.XMSSMTTest" time="0.585"/>
+  <testcase name="testVerifySignerSHA256" classname="org.bouncycastle.pqc.crypto.test.XMSSMTTest" time="0.243"/>
+  <testcase name="testVerifySignerSHA512" classname="org.bouncycastle.pqc.crypto.test.XMSSMTTest" time="0.764"/>
+  <testcase name="testVerifySignatureSHA256" classname="org.bouncycastle.pqc.crypto.test.XMSSMTTest" time="0.304"/>
+  <testcase name="testVerifySignatureSHA512" classname="org.bouncycastle.pqc.crypto.test.XMSSMTTest" time="0.943"/>
+  <testcase name="testImportKeysSHA256" classname="org.bouncycastle.pqc.crypto.test.XMSSMTTest" time="0.284"/>
+  <testcase name="testImportKeysSHA512" classname="org.bouncycastle.pqc.crypto.test.XMSSMTTest" time="0.803"/>
+  <testcase name="testBDSImport" classname="org.bouncycastle.pqc.crypto.test.XMSSMTTest" time="0.105"/>
+  <testcase name="testSignSHA256Complete1" classname="org.bouncycastle.pqc.crypto.test.XMSSMTTest" time="0.602"/>
+  <testcase name="testSignSHA256Complete2" classname="org.bouncycastle.pqc.crypto.test.XMSSMTTest" time="0.158"/>
+  <testcase name="testSignSHA256Complete3" classname="org.bouncycastle.pqc.crypto.test.XMSSMTTest" time="14.653"/>
+  <testcase name="testPublicSeed" classname="org.bouncycastle.pqc.crypto.test.XMSSMTTest" time="0.383"/>
+  <testcase name="testRandom" classname="org.bouncycastle.pqc.crypto.test.XMSSMTTest" time="0.995"/>
+  <testcase name="testSignSHA256" classname="org.bouncycastle.pqc.crypto.test.XMSSMTTest" time="0.158"/>
+  <testcase name="testSignSHA512" classname="org.bouncycastle.pqc.crypto.test.XMSSMTTest" time="0.176"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

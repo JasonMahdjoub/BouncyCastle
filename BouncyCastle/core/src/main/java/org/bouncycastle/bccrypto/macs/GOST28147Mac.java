@@ -82,7 +82,7 @@ public class GOST28147Mac
         CipherParameters child = null;
         if (params instanceof ParametersWithSBox)
         {
-            ParametersWithSBox param = (ParametersWithSBox)params;
+            ParametersWithSBox   param = (ParametersWithSBox)params;
 
             //
             // Set the S-Box

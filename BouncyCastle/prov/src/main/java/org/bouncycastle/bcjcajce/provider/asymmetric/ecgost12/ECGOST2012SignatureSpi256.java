@@ -44,7 +44,7 @@ public class ECGOST2012SignatureSpi256
         PublicKey   publicKey)
         throws InvalidKeyException
     {
-        ECKeyParameters param;
+        ECKeyParameters    param;
 
         if (publicKey instanceof ECPublicKey)
         {

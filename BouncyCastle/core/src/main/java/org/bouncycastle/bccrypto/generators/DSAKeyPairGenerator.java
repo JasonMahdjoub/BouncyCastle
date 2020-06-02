@@ -6,9 +6,11 @@ import java.security.SecureRandom;
 import org.bouncycastle.bccrypto.AsymmetricCipherKeyPair;
 import org.bouncycastle.bccrypto.AsymmetricCipherKeyPairGenerator;
 import org.bouncycastle.bccrypto.KeyGenerationParameters;
-import org.bouncycastle.bccrypto.params.*;
+import org.bouncycastle.bccrypto.params.DSAKeyGenerationParameters;
+import org.bouncycastle.bccrypto.params.DSAParameters;
 import org.bouncycastle.bccrypto.params.DSAPrivateKeyParameters;
-import org.bouncycastle.bccrypto.params.DSAPublicKeyParameters;import org.bouncycastle.bcmath.ec.WNafUtil;
+import org.bouncycastle.bccrypto.params.DSAPublicKeyParameters;
+import org.bouncycastle.bcmath.ec.WNafUtil;
 import org.bouncycastle.bcutil.BigIntegers;
 
 /**

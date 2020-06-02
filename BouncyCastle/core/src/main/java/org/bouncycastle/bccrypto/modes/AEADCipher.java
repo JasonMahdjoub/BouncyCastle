@@ -2,7 +2,7 @@ package org.bouncycastle.bccrypto.modes;
 
 import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.DataLengthException;
-import org.bouncycastle.bccrypto.InvalidCipherTextException;import org.bouncycastle.bccrypto.params.AEADParameters;
+import org.bouncycastle.bccrypto.InvalidCipherTextException;
 
 /**
  * A cipher mode that includes authenticated encryption with a streaming mode and optional associated data.
@@ -16,7 +16,7 @@ import org.bouncycastle.bccrypto.InvalidCipherTextException;import org.bouncycas
  * may be output prior to the call to {@link #doFinal(byte[], int)} that results in an authentication
  * failure. The higher level protocol utilising this cipher must ensure the plaintext data is handled 
  * appropriately until the end of data is reached and the entire ciphertext is authenticated.
- * @see AEADParameters
+ * @see org.bouncycastle.bccrypto.params.AEADParameters
  */
 public interface AEADCipher
 {

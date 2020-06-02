@@ -3,9 +3,9 @@ package org.bouncycastle.bcmath.ec.rfc7748.test;
 import java.security.SecureRandom;
 
 import junit.framework.TestCase;
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcmath.ec.rfc7748.X25519;
 import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 public class X25519Test
     extends TestCase

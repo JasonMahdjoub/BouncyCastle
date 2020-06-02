@@ -19,8 +19,11 @@ import javax.crypto.spec.RC2ParameterSpec;
 import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.Mac;
 import org.bouncycastle.bccrypto.macs.HMac;
-import org.bouncycastle.bccrypto.params.*;
+import org.bouncycastle.bccrypto.params.AEADParameters;
+import org.bouncycastle.bccrypto.params.KeyParameter;
 import org.bouncycastle.bccrypto.params.ParametersWithIV;
+import org.bouncycastle.bccrypto.params.RC2Parameters;
+import org.bouncycastle.bccrypto.params.SkeinParameters;
 import org.bouncycastle.bcjcajce.PKCS12Key;
 import org.bouncycastle.bcjcajce.spec.AEADParameterSpec;
 import org.bouncycastle.bcjcajce.spec.SkeinParameterSpec;
@@ -59,7 +62,7 @@ public class BaseMac
         AlgorithmParameterSpec  params)
         throws InvalidKeyException, InvalidAlgorithmParameterException
     {
-        CipherParameters param;
+        CipherParameters        param;
 
         if (key == null)
         {

@@ -1,7 +1,11 @@
 package org.bouncycastle.bccrypto.signers;
 
-import org.bouncycastle.bccrypto.*;
+import org.bouncycastle.bccrypto.AsymmetricBlockCipher;
 import org.bouncycastle.bccrypto.CipherParameters;
+import org.bouncycastle.bccrypto.CryptoException;
+import org.bouncycastle.bccrypto.Digest;
+import org.bouncycastle.bccrypto.InvalidCipherTextException;
+import org.bouncycastle.bccrypto.SignerWithRecovery;
 import org.bouncycastle.bccrypto.params.RSAKeyParameters;
 import org.bouncycastle.bcutil.Arrays;
 
@@ -91,9 +95,9 @@ public class ISO9796d2Signer
     
     public void init(
         boolean                 forSigning,
-        CipherParameters param)
+        CipherParameters        param)
     {
-        RSAKeyParameters kParam = (RSAKeyParameters)param;
+        RSAKeyParameters  kParam = (RSAKeyParameters)param;
 
         cipher.init(forSigning, kParam);
 

@@ -3,7 +3,7 @@ package org.bouncycastle.pqc.crypto.qtesla;
 import java.security.SecureRandom;
 
 import org.bouncycastle.bccrypto.CipherParameters;
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.params.ParametersWithRandom;
 import org.bouncycastle.pqc.crypto.MessageSigner;
 
@@ -50,7 +50,7 @@ public class QTESLASigner
             }
             else
             {
-                this.secureRandom = BCCryptoServicesRegistrar.getSecureRandom();
+                this.secureRandom = CryptoServicesRegistrar.getSecureRandom();
                 privateKey = (QTESLAPrivateKeyParameters)param;
             }
             publicKey = null;

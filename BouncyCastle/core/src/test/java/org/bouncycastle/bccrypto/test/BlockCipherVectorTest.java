@@ -1,9 +1,9 @@
 package org.bouncycastle.bccrypto.test;
 
-import org.bouncycastle.bcutil.encoders.Hex;
-import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.BlockCipher;
 import org.bouncycastle.bccrypto.BufferedBlockCipher;
+import org.bouncycastle.bccrypto.CipherParameters;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**
@@ -16,14 +16,14 @@ public class BlockCipherVectorTest
 {
     int                 id;
     BlockCipher         engine;
-    CipherParameters param;
+    CipherParameters    param;
     byte[]              input;
     byte[]              output;
 
     public BlockCipherVectorTest(
         int                 id,
         BlockCipher         engine,
-        CipherParameters param,
+        CipherParameters    param,
         String              input,
         String              output)
     {

@@ -64,7 +64,7 @@ public class McElieceCCA2PrivateKeyParameters
      * @param p                         the permutation
      * @param digest                    name of digest algorithm
      */
-    public McElieceCCA2PrivateKeyParameters(int n, int k, GF2mField field, PolynomialGF2mSmallM gp,
+    public McElieceCCA2PrivateKeyParameters(int n, int k, GF2mField field, PolynomialGF2mSmallM gp, 
                                             GF2Matrix canonicalCheckMatrix, Permutation p, String digest)
     {
         super(true, digest);

@@ -5,7 +5,7 @@ import java.util.logging.Logger;
 
 import org.bouncycastle.tls.NamedGroup;
 import org.bouncycastle.tls.NamedGroupRole;
-import org.bouncycastle.tls.crypto.TlsCrypto;
+import org.bouncycastle.tls.crypto.impl.jcajce.JcaTlsCrypto;
 import org.bouncycastle.bcutil.Arrays;
 import org.bouncycastle.bcutil.Strings;
 
@@ -87,7 +87,8 @@ abstract class SupportedGroups
         return result;
     }
 
-    static Vector getClientSupportedGroups(TlsCrypto crypto, boolean isFips, Vector namedGroupRoles)
+    static Vector<Integer> getClientSupportedGroups(JcaTlsCrypto crypto, boolean isFips,
+        Vector<Integer> namedGroupRoles)
     {
         int[] namedGroups = provJdkTlsNamedGroups != null ? provJdkTlsNamedGroups : defaultClientNamedGroups;
 
@@ -95,7 +96,7 @@ abstract class SupportedGroups
         boolean roleECDH = namedGroupRoles.contains(NamedGroupRole.ecdh);
         boolean roleECDSA = namedGroupRoles.contains(NamedGroupRole.ecdsa);
 
-        Vector result = new Vector();
+        Vector<Integer> result = new Vector<Integer>();
         for (int namedGroup : namedGroups)
         {
             if ((roleDH && NamedGroup.refersToASpecificFiniteField(namedGroup))
@@ -106,7 +107,7 @@ abstract class SupportedGroups
                 {
                     if (crypto.hasNamedGroup(namedGroup))
                     {
-                        result.addElement(namedGroup);
+                        result.add(namedGroup);
                     }
                 }
             }
@@ -279,7 +280,8 @@ abstract class SupportedGroups
         }
     }
 
-    static int getServerSelectedCurve(TlsCrypto crypto, boolean isFips, int minimumCurveBits, int[] clientSupportedGroups)
+    static int getServerSelectedCurve(JcaTlsCrypto crypto, boolean isFips, int minimumCurveBits,
+        int[] clientSupportedGroups)
     {
         /*
          * If supported groups wasn't explicitly configured, servers support all available curves
@@ -314,7 +316,8 @@ abstract class SupportedGroups
         return -1;
     }
 
-    static int getServerSelectedFiniteField(TlsCrypto crypto, boolean isFips, int minimumFiniteFieldBits, int[] clientSupportedGroups)
+    static int getServerSelectedFiniteField(JcaTlsCrypto crypto, boolean isFips, int minimumFiniteFieldBits,
+        int[] clientSupportedGroups)
     {
         /*
          * If supported groups wasn't explicitly configured, servers support all available finite fields.

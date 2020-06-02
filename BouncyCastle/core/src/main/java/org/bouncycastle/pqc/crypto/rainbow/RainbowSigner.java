@@ -3,7 +3,7 @@ package org.bouncycastle.pqc.crypto.rainbow;
 import java.security.SecureRandom;
 
 import org.bouncycastle.bccrypto.CipherParameters;
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.params.ParametersWithRandom;
 import org.bouncycastle.pqc.crypto.MessageSigner;
 import org.bouncycastle.pqc.crypto.rainbow.util.ComputeInField;
@@ -53,7 +53,7 @@ public class RainbowSigner
             else
             {
 
-                this.random = BCCryptoServicesRegistrar.getSecureRandom();
+                this.random = CryptoServicesRegistrar.getSecureRandom();
                 this.key = (RainbowPrivateKeyParameters)param;
             }
         }

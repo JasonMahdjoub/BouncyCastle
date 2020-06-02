@@ -5,7 +5,6 @@ import java.security.SecureRandom;
 
 import org.bouncycastle.bcasn1.oiw.OIWObjectIdentifiers;
 import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.AsymmetricCipherKeyPair;
 import org.bouncycastle.bccrypto.KeyGenerationParameters;
 import org.bouncycastle.bccrypto.util.DEROtherInfo;
@@ -15,6 +14,7 @@ import org.bouncycastle.pqc.crypto.newhope.NHExchangePairGenerator;
 import org.bouncycastle.pqc.crypto.newhope.NHKeyPairGenerator;
 import org.bouncycastle.pqc.crypto.newhope.NHOtherInfoGenerator;
 import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class NewHopeTest

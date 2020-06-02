@@ -14,7 +14,7 @@ import org.bouncycastle.bcutil.Fingerprint;
 
 /**
  * utility class for converting java.security RSA objects into their
- * org.bouncycastle.crypto counterparts.
+ * org.bouncycastle.bccrypto counterparts.
  */
 public class RSAUtil
 {

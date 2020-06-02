@@ -2,18 +2,21 @@ package org.bouncycastle.bccrypto.test;
 
 import java.math.BigInteger;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.AsymmetricCipherKeyPair;
 import org.bouncycastle.bccrypto.InvalidCipherTextException;
 import org.bouncycastle.bccrypto.engines.SM2Engine;
 import org.bouncycastle.bccrypto.generators.ECKeyPairGenerator;
-import org.bouncycastle.bccrypto.params.*;
+import org.bouncycastle.bccrypto.params.ECDomainParameters;
+import org.bouncycastle.bccrypto.params.ECKeyGenerationParameters;
+import org.bouncycastle.bccrypto.params.ECPrivateKeyParameters;
 import org.bouncycastle.bccrypto.params.ECPublicKeyParameters;
+import org.bouncycastle.bccrypto.params.ParametersWithRandom;
 import org.bouncycastle.bcmath.ec.ECConstants;
 import org.bouncycastle.bcmath.ec.ECCurve;
 import org.bouncycastle.bcmath.ec.ECPoint;
 import org.bouncycastle.bcutil.Arrays;
 import org.bouncycastle.bcutil.Strings;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 import org.bouncycastle.bcutil.test.TestRandomBigInteger;
 

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.openssl.test.AllTests" tests="4" skipped="0" failures="0" errors="0" timestamp="2020-02-14T17:20:19" hostname="Garage" time="0.514">
+<testsuite name="org.bouncycastle.openssl.test.AllTests" tests="4" skipped="0" failures="0" errors="0" timestamp="2020-06-02T09:05:15" hostname="Garage" time="0.586">
   <properties/>
-  <testcase name="testOpenSSL" classname="org.bouncycastle.openssl.test.AllTests" time="0.261"/>
-  <testcase name="testPKCS8Encrypted" classname="org.bouncycastle.openssl.test.AllTests" time="0.227"/>
+  <testcase name="testOpenSSL" classname="org.bouncycastle.openssl.test.AllTests" time="0.332"/>
+  <testcase name="testPKCS8Encrypted" classname="org.bouncycastle.openssl.test.AllTests" time="0.224"/>
   <testcase name="testVectors" classname="org.bouncycastle.openssl.test.AllTests" time="0.007"/>
-  <testcase name="testPKCS8PlainNew" classname="org.bouncycastle.openssl.test.AllTests" time="0.019"/>
+  <testcase name="testPKCS8PlainNew" classname="org.bouncycastle.openssl.test.AllTests" time="0.023"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

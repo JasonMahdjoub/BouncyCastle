@@ -1,10 +1,10 @@
 package org.bouncycastle.bccrypto.test;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.BlockCipher;
 import org.bouncycastle.bccrypto.engines.Shacal2Engine;
 import org.bouncycastle.bccrypto.params.KeyParameter;
 import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**

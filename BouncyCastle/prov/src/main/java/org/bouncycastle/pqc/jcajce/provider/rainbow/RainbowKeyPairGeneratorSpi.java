@@ -6,9 +6,12 @@ import java.security.SecureRandom;
 import java.security.spec.AlgorithmParameterSpec;
 
 import org.bouncycastle.bccrypto.AsymmetricCipherKeyPair;
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
-import org.bouncycastle.pqc.crypto.rainbow.*;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
+import org.bouncycastle.pqc.crypto.rainbow.RainbowKeyGenerationParameters;
+import org.bouncycastle.pqc.crypto.rainbow.RainbowKeyPairGenerator;
 import org.bouncycastle.pqc.crypto.rainbow.RainbowParameters;
+import org.bouncycastle.pqc.crypto.rainbow.RainbowPrivateKeyParameters;
+import org.bouncycastle.pqc.crypto.rainbow.RainbowPublicKeyParameters;
 import org.bouncycastle.pqc.jcajce.spec.RainbowParameterSpec;
 
 public class RainbowKeyPairGeneratorSpi
@@ -17,7 +20,7 @@ public class RainbowKeyPairGeneratorSpi
     RainbowKeyGenerationParameters param;
     RainbowKeyPairGenerator engine = new RainbowKeyPairGenerator();
     int strength = 1024;
-    SecureRandom random = BCCryptoServicesRegistrar.getSecureRandom();
+    SecureRandom random = CryptoServicesRegistrar.getSecureRandom();
     boolean initialised = false;
 
     public RainbowKeyPairGeneratorSpi()

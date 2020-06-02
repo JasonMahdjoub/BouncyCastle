@@ -16,11 +16,11 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
-import org.bouncycastle.bcutil.encoders.Hex;
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.bcutil.Arrays;
 import org.bouncycastle.bcutil.Strings;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**
@@ -195,7 +195,7 @@ public class GOST3412Test
 
         /* Create IV */
         byte[] myIV = new byte[pIVLen];
-        BCCryptoServicesRegistrar.getSecureRandom().nextBytes(myIV);
+        CryptoServicesRegistrar.getSecureRandom().nextBytes(myIV);
 
         /* Create a G3413CTR Cipher */
         Cipher myCipher = Cipher.getInstance("GOST3412-2015" + "/CTR/NoPadding", "BC");

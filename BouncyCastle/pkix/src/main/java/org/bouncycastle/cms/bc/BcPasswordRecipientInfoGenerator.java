@@ -4,7 +4,6 @@ import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 import org.bouncycastle.bcasn1.ASN1OctetString;
 import org.bouncycastle.bcasn1.pkcs.PBKDF2Params;
 import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.bccrypto.params.ParametersWithIV;
 import org.bouncycastle.cms.CMSException;
 import org.bouncycastle.cms.PasswordRecipient;
 import org.bouncycastle.cms.PasswordRecipientInfoGenerator;
@@ -12,6 +11,7 @@ import org.bouncycastle.bccrypto.PBEParametersGenerator;
 import org.bouncycastle.bccrypto.Wrapper;
 import org.bouncycastle.bccrypto.generators.PKCS5S2ParametersGenerator;
 import org.bouncycastle.bccrypto.params.KeyParameter;
+import org.bouncycastle.bccrypto.params.ParametersWithIV;
 import org.bouncycastle.operator.GenericKey;
 
 public class BcPasswordRecipientInfoGenerator

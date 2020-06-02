@@ -3,7 +3,7 @@
   "component": {
     "group": "org.bouncycastle",
     "module": "bc-core",
-    "version": "1.64b-DMRECOMPILE",
+    "version": "1.65-DMRECOMPILE",
     "attributes": {
       "org.gradle.status": "release"
     }
@@ -11,7 +11,7 @@
   "createdBy": {
     "gradle": {
       "version": "6.1",
-      "buildId": "sfc3onk3wzepfha6nzsh5demyy"
+      "buildId": "dxh6w7z6xremxoxe7flzkgqoji"
     }
   },
   "variants": [
@@ -26,13 +26,13 @@
       },
       "files": [
         {
-          "name": "bc-core-1.64b-DMRECOMPILE.jar",
-          "url": "bc-core-1.64b-DMRECOMPILE.jar",
-          "size": 3884241,
-          "sha512": "765715aaaf611f555457a5e326595b0e93c272177d5788f7119d828f0e0bd54286df9781f793253faa344b08b9db971ca819db3d7ffdd75d8c9cb07b12ab94d5",
-          "sha256": "48115c01fa0c9b65cd8f6dde43027d60e433925d1b65e825429362715444baca",
-          "sha1": "85d5584ed6d8def310c99bde68223342a0bfca79",
-          "md5": "74862f143479a1acfed3291cf22c0a69"
+          "name": "bc-core-1.65-DMRECOMPILE.jar",
+          "url": "bc-core-1.65-DMRECOMPILE.jar",
+          "size": 3523847,
+          "sha512": "f600c1f10e4ad29c3beb7da557071990aa64184e8598eb6316200dea79de5cc533ef3386d0329033293c8416ae98b6117f875ef120bfe74066ee62af8846ae42",
+          "sha256": "33cb75f27ceeb44dd6a5bce7622e89bcf26fdb82aac33020fdb9da6fb2ed935d",
+          "sha1": "2dbaa2fefcc1e0eb6209d7cbc26e1805ba99153b",
+          "md5": "30a8877f9596e2e5cada532a29f6d53a"
         }
       ]
     },
@@ -47,13 +47,13 @@
       },
       "files": [
         {
-          "name": "bc-core-1.64b-DMRECOMPILE.jar",
-          "url": "bc-core-1.64b-DMRECOMPILE.jar",
-          "size": 3884241,
-          "sha512": "765715aaaf611f555457a5e326595b0e93c272177d5788f7119d828f0e0bd54286df9781f793253faa344b08b9db971ca819db3d7ffdd75d8c9cb07b12ab94d5",
-          "sha256": "48115c01fa0c9b65cd8f6dde43027d60e433925d1b65e825429362715444baca",
-          "sha1": "85d5584ed6d8def310c99bde68223342a0bfca79",
-          "md5": "74862f143479a1acfed3291cf22c0a69"
+          "name": "bc-core-1.65-DMRECOMPILE.jar",
+          "url": "bc-core-1.65-DMRECOMPILE.jar",
+          "size": 3523847,
+          "sha512": "f600c1f10e4ad29c3beb7da557071990aa64184e8598eb6316200dea79de5cc533ef3386d0329033293c8416ae98b6117f875ef120bfe74066ee62af8846ae42",
+          "sha256": "33cb75f27ceeb44dd6a5bce7622e89bcf26fdb82aac33020fdb9da6fb2ed935d",
+          "sha1": "2dbaa2fefcc1e0eb6209d7cbc26e1805ba99153b",
+          "md5": "30a8877f9596e2e5cada532a29f6d53a"
         }
       ]
     }

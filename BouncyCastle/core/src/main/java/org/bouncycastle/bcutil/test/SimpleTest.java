@@ -168,6 +168,11 @@ public abstract class SimpleTest
         return Arrays.areEqual(a, b);
     }
 
+    protected boolean areEqual(byte[] a, int aFromIndex, int aToIndex, byte[] b, int bFromIndex, int bToIndex)
+    {
+        return Arrays.areEqual(a, aFromIndex, aToIndex, b, bFromIndex, bToIndex);
+    }
+
     public TestResult perform()
     {
         try
@@ -177,12 +182,10 @@ public abstract class SimpleTest
         }
         catch (TestFailedException e)
         {
-            e.printStackTrace();
             return e.getResult();
         }
         catch (Exception e)
         {
-            e.printStackTrace();
             return SimpleTestResult.failed(this, "Exception: " + e, e);
         }
     }

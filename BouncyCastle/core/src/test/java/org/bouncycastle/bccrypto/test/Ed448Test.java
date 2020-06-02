@@ -2,7 +2,6 @@ package org.bouncycastle.bccrypto.test;
 
 import java.security.SecureRandom;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.AsymmetricCipherKeyPair;
 import org.bouncycastle.bccrypto.Signer;
 import org.bouncycastle.bccrypto.generators.Ed448KeyPairGenerator;
@@ -13,6 +12,7 @@ import org.bouncycastle.bccrypto.signers.Ed448Signer;
 import org.bouncycastle.bccrypto.signers.Ed448phSigner;
 import org.bouncycastle.bcmath.ec.rfc8032.Ed448;
 import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class Ed448Test
@@ -70,7 +70,7 @@ public class Ed448Test
 
         signer.init(true, privateKey);
 
-        areEqual(sig, signer.generateSignature());
+        isTrue(areEqual(sig, signer.generateSignature()));
 
         signer.init(false, publicKey);
 

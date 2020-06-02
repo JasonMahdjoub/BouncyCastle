@@ -3,8 +3,21 @@ package org.bouncycastle.bccrypto.test;
 import org.bouncycastle.bccrypto.AsymmetricCipherKeyPair;
 import org.bouncycastle.bccrypto.generators.DHKeyPairGenerator;
 import org.bouncycastle.bccrypto.generators.ElGamalKeyPairGenerator;
-import org.bouncycastle.bccrypto.params.*;
+import org.bouncycastle.bccrypto.params.DHKeyGenerationParameters;
+import org.bouncycastle.bccrypto.params.DHKeyParameters;
+import org.bouncycastle.bccrypto.params.DHParameters;
+import org.bouncycastle.bccrypto.params.DHPrivateKeyParameters;
+import org.bouncycastle.bccrypto.params.DHPublicKeyParameters;
+import org.bouncycastle.bccrypto.params.DHValidationParameters;
+import org.bouncycastle.bccrypto.params.DSAParameters;
+import org.bouncycastle.bccrypto.params.DSAValidationParameters;
+import org.bouncycastle.bccrypto.params.ElGamalKeyGenerationParameters;
+import org.bouncycastle.bccrypto.params.ElGamalKeyParameters;
+import org.bouncycastle.bccrypto.params.ElGamalParameters;
+import org.bouncycastle.bccrypto.params.ElGamalPrivateKeyParameters;
+import org.bouncycastle.bccrypto.params.ElGamalPublicKeyParameters;
 import org.bouncycastle.bccrypto.params.GOST3410Parameters;
+import org.bouncycastle.bccrypto.params.GOST3410ValidationParameters;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 import java.math.BigInteger;
@@ -71,26 +84,26 @@ public class EqualsHashCodeTest
         BigInteger g512 = new BigInteger("153d5d6172adb43045b68ae8e1de1070b6137005686d29d3d73a7749199681ee5b212c9b96bfdcfa5b20cd5e3fd2044895d609cf9b410b7a0f12ca1cb9a428cc", 16);
         BigInteger p512 = new BigInteger("9494fec095f3b85ee286542b3836fc81a5dd0a0349b4c239dd38744d488cf8e31db8bcb7d33b41abb9e5a33cca9144b1cef332c94bf0573bf047a3aca98cdf3b", 16);
 
-        DHParameters dhParams = new DHParameters(p512, g512);
+        DHParameters                dhParams = new DHParameters(p512, g512);
         DHKeyGenerationParameters   params = new DHKeyGenerationParameters(new SecureRandom(), dhParams);         DHKeyPairGenerator          kpGen = new DHKeyPairGenerator();
 
         kpGen.init(params);
 
         AsymmetricCipherKeyPair     pair = kpGen.generateKeyPair();
         DHPublicKeyParameters       pu1 = (DHPublicKeyParameters)pair.getPublic();
-        DHPrivateKeyParameters pv1 = (DHPrivateKeyParameters)pair.getPrivate();
+        DHPrivateKeyParameters      pv1 = (DHPrivateKeyParameters)pair.getPrivate();
 
         DHPublicKeyParameters       pu2 = new DHPublicKeyParameters(pu1.getY(), pu1.getParameters());
-        DHPrivateKeyParameters pv2 = new DHPrivateKeyParameters(pv1.getX(), pv1.getParameters());
+        DHPrivateKeyParameters      pv2 = new DHPrivateKeyParameters(pv1.getX(), pv1.getParameters());
         DHPublicKeyParameters       pu3 = new DHPublicKeyParameters(pv1.getX(), pu1.getParameters());
-        DHPrivateKeyParameters pv3 = new DHPrivateKeyParameters(pu1.getY(), pu1.getParameters());
+        DHPrivateKeyParameters      pv3 = new DHPrivateKeyParameters(pu1.getY(), pu1.getParameters());
 
         doTest(pu1, pu2, pu3);
         doTest(pv1, pv2, pv3);
 
-        DHParameters pr1 = pu1.getParameters();
-        DHParameters pr2 = new DHParameters(pr1.getP(), pr1.getG(), pr1.getQ(), pr1.getM(), pr1.getL(), pr1.getJ(), pr1.getValidationParameters());
-        DHParameters pr3 = new DHParameters(pr1.getG(), pr1.getP(), pr1.getQ(), pr1.getM(), pr1.getL(), pr1.getJ(), pr1.getValidationParameters());
+        DHParameters                pr1 = pu1.getParameters();
+        DHParameters                pr2 = new DHParameters(pr1.getP(), pr1.getG(), pr1.getQ(), pr1.getM(), pr1.getL(), pr1.getJ(), pr1.getValidationParameters());
+        DHParameters                pr3 = new DHParameters(pr1.getG(), pr1.getP(), pr1.getQ(), pr1.getM(), pr1.getL(), pr1.getJ(), pr1.getValidationParameters());
 
         doTest(pr1, pr2, pr3);
 
@@ -140,20 +153,20 @@ public class EqualsHashCodeTest
         kpGen.init(params);
 
         AsymmetricCipherKeyPair     pair = kpGen.generateKeyPair();
-        ElGamalPublicKeyParameters pu1 = (ElGamalPublicKeyParameters)pair.getPublic();
-        ElGamalPrivateKeyParameters pv1 = (ElGamalPrivateKeyParameters)pair.getPrivate();
+        ElGamalPublicKeyParameters       pu1 = (ElGamalPublicKeyParameters)pair.getPublic();
+        ElGamalPrivateKeyParameters      pv1 = (ElGamalPrivateKeyParameters)pair.getPrivate();
 
-        ElGamalPublicKeyParameters pu2 = new ElGamalPublicKeyParameters(pu1.getY(), pu1.getParameters());
-        ElGamalPrivateKeyParameters pv2 = new ElGamalPrivateKeyParameters(pv1.getX(), pv1.getParameters());
-        ElGamalPublicKeyParameters pu3 = new ElGamalPublicKeyParameters(pv1.getX(), pu1.getParameters());
-        ElGamalPrivateKeyParameters pv3 = new ElGamalPrivateKeyParameters(pu1.getY(), pu1.getParameters());
+        ElGamalPublicKeyParameters       pu2 = new ElGamalPublicKeyParameters(pu1.getY(), pu1.getParameters());
+        ElGamalPrivateKeyParameters      pv2 = new ElGamalPrivateKeyParameters(pv1.getX(), pv1.getParameters());
+        ElGamalPublicKeyParameters       pu3 = new ElGamalPublicKeyParameters(pv1.getX(), pu1.getParameters());
+        ElGamalPrivateKeyParameters      pv3 = new ElGamalPrivateKeyParameters(pu1.getY(), pu1.getParameters());
 
         doTest(pu1, pu2, pu3);
         doTest(pv1, pv2, pv3);
 
-        ElGamalParameters pr1 = pu1.getParameters();
-        ElGamalParameters pr2 = new ElGamalParameters(pr1.getP(), pr1.getG());
-        ElGamalParameters pr3 = new ElGamalParameters(pr1.getG(), pr1.getP());
+        ElGamalParameters                pr1 = pu1.getParameters();
+        ElGamalParameters                pr2 = new ElGamalParameters(pr1.getP(), pr1.getG());
+        ElGamalParameters                pr3 = new ElGamalParameters(pr1.getG(), pr1.getP());
 
         doTest(pr1, pr2, pr3);
 

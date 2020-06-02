@@ -9,7 +9,7 @@ public class GOST3410PublicKeyParameters
 
     public GOST3410PublicKeyParameters(
         BigInteger      y,
-        GOST3410Parameters params)
+        GOST3410Parameters   params)
     {
         super(false, params);
 

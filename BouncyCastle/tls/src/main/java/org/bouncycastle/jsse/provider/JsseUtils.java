@@ -3,7 +3,6 @@ package org.bouncycastle.jsse.provider;
 import java.io.IOException;
 import java.security.Principal;
 import java.security.PrivateKey;
-import java.security.cert.CertificateEncodingException;
 import java.security.cert.X509Certificate;
 import java.security.interfaces.DSAPrivateKey;
 import java.security.interfaces.ECPrivateKey;
@@ -14,6 +13,7 @@ import java.util.Collections;
 import java.util.EnumSet;
 import java.util.Enumeration;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.Vector;
@@ -26,30 +26,48 @@ import org.bouncycastle.jsse.BCSNIHostName;
 import org.bouncycastle.jsse.BCSNIMatcher;
 import org.bouncycastle.jsse.BCSNIServerName;
 import org.bouncycastle.jsse.BCStandardConstants;
+import org.bouncycastle.jsse.java.security.BCAlgorithmConstraints;
 import org.bouncycastle.jsse.java.security.BCCryptoPrimitive;
 import org.bouncycastle.tls.AlertDescription;
 import org.bouncycastle.tls.AlertLevel;
 import org.bouncycastle.tls.Certificate;
 import org.bouncycastle.tls.ClientCertificateType;
-import org.bouncycastle.tls.HashAlgorithm;
 import org.bouncycastle.tls.KeyExchangeAlgorithm;
 import org.bouncycastle.tls.ProtocolName;
+import org.bouncycastle.tls.ProtocolVersion;
 import org.bouncycastle.tls.SecurityParameters;
 import org.bouncycastle.tls.ServerName;
 import org.bouncycastle.tls.SignatureAlgorithm;
 import org.bouncycastle.tls.SignatureAndHashAlgorithm;
-import org.bouncycastle.tls.SignatureScheme;
+import org.bouncycastle.tls.TlsContext;
+import org.bouncycastle.tls.TlsCredentialedDecryptor;
+import org.bouncycastle.tls.TlsCredentialedSigner;
 import org.bouncycastle.tls.TlsFatalAlert;
 import org.bouncycastle.tls.TlsUtils;
 import org.bouncycastle.tls.crypto.TlsCertificate;
-import org.bouncycastle.tls.crypto.TlsCrypto;
+import org.bouncycastle.tls.crypto.TlsCryptoParameters;
+import org.bouncycastle.tls.crypto.impl.jcajce.JcaDefaultTlsCredentialedSigner;
 import org.bouncycastle.tls.crypto.impl.jcajce.JcaTlsCertificate;
 import org.bouncycastle.tls.crypto.impl.jcajce.JcaTlsCrypto;
+import org.bouncycastle.tls.crypto.impl.jcajce.JceDefaultTlsCredentialedDecryptor;
 
 abstract class JsseUtils
 {
-    static final Set<BCCryptoPrimitive> TLS_CRYPTO_PRIMITIVES_BC =
+    private static final boolean provTlsAllowLegacyMasterSecret =
+        PropertyUtils.getBooleanSystemProperty("jdk.tls.allowLegacyMasterSecret", true);
+    private static final boolean provTlsAllowLegacyResumption =
+        PropertyUtils.getBooleanSystemProperty("jdk.tls.allowLegacyResumption", false);
+    private static final boolean provTlsUseExtendedMasterSecret =
+        PropertyUtils.getBooleanSystemProperty("jdk.tls.useExtendedMasterSecret", true);
+
+    static final Set<BCCryptoPrimitive> KEY_AGREEMENT_CRYPTO_PRIMITIVES_BC =
         Collections.unmodifiableSet(EnumSet.of(BCCryptoPrimitive.KEY_AGREEMENT));
+    static final Set<BCCryptoPrimitive> KEY_ENCAPSULATION_CRYPTO_PRIMITIVES_BC =
+        Collections.unmodifiableSet(EnumSet.of(BCCryptoPrimitive.KEY_ENCAPSULATION));
+    static final Set<BCCryptoPrimitive> SIGNATURE_CRYPTO_PRIMITIVES_BC =
+        Collections.unmodifiableSet(EnumSet.of(BCCryptoPrimitive.SIGNATURE));
+
+    static final BCAlgorithmConstraints DEFAULT_ALGORITHM_CONSTRAINTS_BC = ProvAlgorithmConstraints.DEFAULT;
 
     protected static X509Certificate[] EMPTY_CHAIN = new X509Certificate[0];
 
@@ -59,6 +77,16 @@ abstract class JsseUtils
         {
             super(nameType, encoded);
         }
+    }
+
+    static boolean allowLegacyMasterSecret()
+    {
+        return provTlsAllowLegacyMasterSecret;
+    }
+
+    static boolean allowLegacyResumption()
+    {
+        return provTlsAllowLegacyResumption;
     }
 
     static boolean contains(String[] values, String value)
@@ -73,11 +101,46 @@ abstract class JsseUtils
         return false;
     }
 
+    static <T> boolean containsNull(T[] ts)
+    {
+        for (int i = 0; i < ts.length; ++i)
+        {
+            if (null == ts[i])
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     static String[] copyOf(String[] data, int newLength)
     {
         String[] tmp = new String[newLength];
         System.arraycopy(data, 0, tmp, 0, Math.min(data.length, newLength));
         return tmp;
+    }
+
+    static TlsCredentialedDecryptor createCredentialedDecryptor(JcaTlsCrypto crypto, ProvX509Key x509Key)
+    {
+        PrivateKey privateKey = x509Key.getPrivateKey();
+        Certificate certificate = getCertificateMessage(crypto, x509Key.getCertificateChain());
+
+        return new JceDefaultTlsCredentialedDecryptor(crypto, certificate, privateKey);
+    }
+
+    static TlsCredentialedSigner createCredentialedSigner(TlsContext context, JcaTlsCrypto crypto, ProvX509Key x509Key,
+        SignatureAndHashAlgorithm sigAndHashAlg)
+    {
+        /*
+         * TODO[jsse] Before proceeding with EC credentials,check (TLS 1.2+) that the used curve
+         * was actually declared in the client's elliptic_curves/named_groups extension.
+         */
+
+        TlsCryptoParameters cryptoParams = new TlsCryptoParameters(context);
+        PrivateKey privateKey = x509Key.getPrivateKey();
+        Certificate certificate = getCertificateMessage(crypto, x509Key.getCertificateChain());
+
+        return new JcaDefaultTlsCredentialedSigner(cryptoParams, crypto, privateKey, certificate, sigAndHashAlg);
     }
 
     static String[] resize(String[] data, int count)
@@ -105,8 +168,14 @@ abstract class JsseUtils
         return applicationProtocol.getUtf8Decoding();
     }
 
-    static String getAuthStringClient(short signatureAlgorithm) throws IOException
+    static String getAuthTypeClient(short signatureAlgorithm) throws IOException
     {
+        /*
+         * For use with checkClientTrusted calls on a trust manager.
+         * "Determined by the actual certificate used" according to JSSE Standard Names, but in
+         * practice trust managers only require the authType to be a non-null, non-empty String.
+         */
+
         switch (signatureAlgorithm)
         {
         case SignatureAlgorithm.rsa:
@@ -115,77 +184,54 @@ abstract class JsseUtils
             return "DSA";
         case SignatureAlgorithm.ecdsa:
             return "EC";
-        // TODO[RFC 8422]
-//        case SignatureAlgorithm.ed25519:
-//            return "Ed25519";
-//        case SignatureAlgorithm.ed448:
-//            return "Ed448";
+        case SignatureAlgorithm.ed25519:
+            return "Ed25519";
+        case SignatureAlgorithm.ed448:
+            return "Ed448";
         // TODO[RFC 8446]
 //        case SignatureAlgorithm.rsa_pss_rsae_sha256:
 //        case SignatureAlgorithm.rsa_pss_rsae_sha384:
 //        case SignatureAlgorithm.rsa_pss_rsae_sha512:
-//            return "RSA_PSS_RSAE";
+//            return "RSA_PSS_RSAE"; // TODO Review
 //        case SignatureAlgorithm.rsa_pss_pss_sha256:
 //        case SignatureAlgorithm.rsa_pss_pss_sha384:
 //        case SignatureAlgorithm.rsa_pss_pss_sha512:
-//            return "RSA_PSS_PSS";
+//            return "RSA_PSS_PSS"; // TODO Review
         default:
             throw new TlsFatalAlert(AlertDescription.internal_error);
         }
     }
 
-    // TODO[RFC 8422]
-    public static String getAuthTypeClient(short clientCertificateType) throws IOException
+    static String getAuthTypeServer(int keyExchangeAlgorithm) throws IOException
     {
-        switch (clientCertificateType)
-        {
-        case ClientCertificateType.dss_sign:
-            return "DSA";
-        case ClientCertificateType.ecdsa_sign:
-            return "EC";
-        case ClientCertificateType.rsa_sign:
-            return "RSA";
-        default:
-            throw new TlsFatalAlert(AlertDescription.internal_error);
-        }
-    }
+        /*
+         * For use with checkServerTrusted calls on a trust manager.
+         * "The key exchange algorithm portion of the cipher suites represented as a String [..]"
+         * according to JSSE Standard Names.
+         */
 
-    public static String getAuthTypeServer(int keyExchangeAlgorithm) throws IOException
-    {
         switch (keyExchangeAlgorithm)
         {
-        case KeyExchangeAlgorithm.DH_anon:
-            return "DH_anon";
         case KeyExchangeAlgorithm.DHE_DSS:
             return "DHE_DSS";
-        case KeyExchangeAlgorithm.DHE_PSK:
-            return "DHE_PSK";
         case KeyExchangeAlgorithm.DHE_RSA:
             return "DHE_RSA";
-        case KeyExchangeAlgorithm.ECDH_anon:
-            return "ECDH_anon";
         case KeyExchangeAlgorithm.ECDHE_ECDSA:
             return "ECDHE_ECDSA";
-        case KeyExchangeAlgorithm.ECDHE_PSK:
-            return "ECDHE_PSK";
         case KeyExchangeAlgorithm.ECDHE_RSA:
             return "ECDHE_RSA";
+        case KeyExchangeAlgorithm.NULL:
+            // For compatibility with SunJSSE, use "UNKNOWN" for TLS 1.3 cipher suites.  
+//            return "NULL";
+            return "UNKNOWN";
         case KeyExchangeAlgorithm.RSA:
             return "RSA";
-        case KeyExchangeAlgorithm.RSA_PSK:
-            return "RSA_PSK";
-        case KeyExchangeAlgorithm.SRP:
-            return "SRP";
-        case KeyExchangeAlgorithm.SRP_DSS:
-            return "SRP_DSS";
-        case KeyExchangeAlgorithm.SRP_RSA:
-            return "SRP_RSA";
         default:
             throw new TlsFatalAlert(AlertDescription.internal_error);
         }
     }
 
-    public static Certificate getCertificateMessage(TlsCrypto crypto, X509Certificate[] chain) throws IOException
+    static Certificate getCertificateMessage(JcaTlsCrypto crypto, X509Certificate[] chain)
     {
         if (chain == null || chain.length < 1)
         {
@@ -193,162 +239,111 @@ abstract class JsseUtils
         }
 
         TlsCertificate[] certificateList = new TlsCertificate[chain.length];
-        try
+        for (int i = 0; i < chain.length; ++i)
         {
-            for (int i = 0; i < chain.length; ++i)
-            {
-                // TODO[jsse] Prefer an option that will not re-encode for typical use-cases
-                certificateList[i] = crypto.createCertificate(chain[i].getEncoded());
-            }
+            certificateList[i] = new JcaTlsCertificate(crypto, chain[i]);
         }
-        catch (CertificateEncodingException e)
-        {
-            throw new TlsFatalAlert(AlertDescription.internal_error, e);
-        }
-
         return new Certificate(certificateList);
     }
 
-    public static String getHashAlgorithmName(short hashAlgorithm)
+    static X509Certificate getEndEntity(JcaTlsCrypto crypto, Certificate certificateMessage) throws IOException
     {
-        switch (hashAlgorithm)
+        if (certificateMessage == null || certificateMessage.isEmpty())
         {
-        case HashAlgorithm.md5:
-            return "MD5";
-        case HashAlgorithm.sha1:
-            return "SHA1";
-        case HashAlgorithm.sha224:
-            return "SHA224";
-        case HashAlgorithm.sha256:
-            return "SHA256";
-        case HashAlgorithm.sha384:
-            return "SHA384";
-        case HashAlgorithm.sha512:
-            return "SHA512";
-        default:
             return null;
+        }
+
+        return getX509Certificate(crypto, certificateMessage.getCertificateAt(0));
+    }
+
+    static String getKeyType(SignatureSchemeInfo signatureSchemeInfo)
+    {
+        return signatureSchemeInfo.getKeyAlgorithm();
+    }
+
+    static String getKeyTypeLegacyClient(short clientCertificateType) throws IOException
+    {
+        /*
+         * For use with chooseClientAlias calls on a key manager. Values from JSSE Standard Names.
+         * 
+         * TODO[RFC 8446] "RSASSA-PSS" is listed in JSSE Standard Names - how does that work?
+         */
+
+        switch (clientCertificateType)
+        {
+        /*
+         * BCJSSE doesn't support any static key exchange cipher suites; any of these values would
+         * be filtered out (as invalid) by the low-level TLS code.
+         */
+//        case ClientCertificateType.dss_fixed_dh:
+//            return "DH_DSA";
+//        case ClientCertificateType.ecdsa_fixed_ecdh:
+//            return "EC_EC";
+//        case ClientCertificateType.rsa_fixed_dh:
+//            return "DH_RSA";
+//        case ClientCertificateType.rsa_fixed_ecdh:
+//            return "EC_RSA";
+
+        case ClientCertificateType.dss_sign:
+            return "DSA";
+        // NOTE: Compatible with peer signature_algorithms "ed25519" and "ed448" in TLS 1.2
+        case ClientCertificateType.ecdsa_sign:
+            return "EC";
+        // NOTE: Compatible with peer signature_algorithms "rsa_pss_*" in TLS 1.2 
+        case ClientCertificateType.rsa_sign:
+            return "RSA";
+        default:
+            throw new TlsFatalAlert(AlertDescription.internal_error);
         }
     }
 
-    public static Vector getProtocolNames(String[] applicationProtocols)
+    static String getKeyTypeLegacyServer(int keyExchangeAlgorithm) throws IOException
+    {
+        /*
+         * For use with chooseServerAlias calls on a key manager. JSSE Standard Names suggest using
+         * the same set of key types as getKeyTypeClient, but this doesn't give enough information
+         * to the key manager, so we currently use the same names as getAuthTypeServer.
+         */
+
+        return getAuthTypeServer(keyExchangeAlgorithm);
+    }
+
+    static Vector<ProtocolName> getProtocolNames(String[] applicationProtocols)
     {
         if (null == applicationProtocols || applicationProtocols.length < 1)
         {
             return null;
         }
 
-        Vector protocolNames = new Vector(applicationProtocols.length);
+        Vector<ProtocolName> result = new Vector<ProtocolName>(applicationProtocols.length);
         for (String applicationProtocol : applicationProtocols)
         {
-            protocolNames.addElement(ProtocolName.asUtf8Encoding(applicationProtocol));
+            result.add(ProtocolName.asUtf8Encoding(applicationProtocol));
         }
-        return protocolNames;
+        return result;
     }
 
-    public static List<String> getProtocolNames(Vector applicationProtocols)
+    static List<String> getProtocolNames(Vector<ProtocolName> applicationProtocols)
     {
         if (null == applicationProtocols || applicationProtocols.isEmpty())
         {
             return null;
         }
 
-        ArrayList<String> protocolNames = new ArrayList<String>(applicationProtocols.size());
-        for (int i = 0; i < applicationProtocols.size(); ++i)
+        ArrayList<String> result = new ArrayList<String>(applicationProtocols.size());
+        for (ProtocolName applicationProtocol : applicationProtocols)
         {
-            ProtocolName protocolName = (ProtocolName)applicationProtocols.elementAt(i);
-            protocolNames .add(protocolName.getUtf8Decoding());
+            result.add(applicationProtocol.getUtf8Decoding());
         }
-        return protocolNames;
+        return result;
     }
 
-    public static String getSignatureAlgorithmName(short signatureAlgorithm)
+    static X509Certificate getX509Certificate(JcaTlsCrypto crypto, TlsCertificate tlsCertificate) throws IOException
     {
-        switch (signatureAlgorithm)
-        {
-        case SignatureAlgorithm.dsa:
-            return "DSA";
-        case SignatureAlgorithm.ecdsa:
-            return "ECDSA";
-        case SignatureAlgorithm.rsa:
-            return "RSA";
-        default:
-            return null;
-        }
+        return JcaTlsCertificate.convert(crypto, tlsCertificate).getX509Certificate();
     }
 
-    public static String getSignatureSchemeName(SignatureAndHashAlgorithm sigAndHashAlg)
-    {
-        short hashAlgorithm = sigAndHashAlg.getHash(), signatureAlgorithm = sigAndHashAlg.getSignature();
-
-        int signatureScheme = ((hashAlgorithm & 0xFF) << 8) | (signatureAlgorithm & 0xFF);
-        switch (signatureScheme)
-        {
-        case SignatureScheme.ecdsa_secp256r1_sha256:
-            return "SHA256withECDSA";
-        case SignatureScheme.ecdsa_secp384r1_sha384:
-            return "SHA384withECDSA";
-        case SignatureScheme.ecdsa_secp521r1_sha512:
-            return "SHA512withECDSA";
-        case SignatureScheme.ecdsa_sha1:
-            return "SHA1withECDSA";
-        case SignatureScheme.ed25519:
-            return "ed25519";
-        case SignatureScheme.ed448:
-            return "ed448";
-        case SignatureScheme.rsa_pkcs1_sha1:
-            return "SHA1withRSA";
-        case SignatureScheme.rsa_pkcs1_sha256:
-            return "SHA256withRSA";
-        case SignatureScheme.rsa_pkcs1_sha384:
-            return "SHA384withRSA";
-        case SignatureScheme.rsa_pkcs1_sha512:
-            return "SHA512withRSA";
-        case SignatureScheme.rsa_pss_pss_sha256:
-        case SignatureScheme.rsa_pss_pss_sha384:
-        case SignatureScheme.rsa_pss_pss_sha512:
-        case SignatureScheme.rsa_pss_rsae_sha256:
-        case SignatureScheme.rsa_pss_rsae_sha384:
-        case SignatureScheme.rsa_pss_rsae_sha512:
-            return "RSASSA-PSS";
-        default:
-            break;
-        }
-
-        String hashName = getHashAlgorithmName(hashAlgorithm);
-        if (null != hashName)
-        {
-            String signatureName = getSignatureAlgorithmName(signatureAlgorithm);
-            if (null != signatureName)
-            {
-                // TODO[jsse] Consider caching/precomputing these
-                return hashName + "with" + signatureName;
-            }
-        }
-
-        return null;
-    }
-
-    public static String[] getSignatureSchemeNames(Vector sigAndHashAlgs)
-    {
-        if (null == sigAndHashAlgs)
-        {
-            return new String[0];
-        }
-
-        int count = sigAndHashAlgs.size();
-        ArrayList<String> result = new ArrayList<String>(count);
-        for (int i = 0; i < count; ++i)
-        {
-            String name = getSignatureSchemeName((SignatureAndHashAlgorithm)sigAndHashAlgs.elementAt(i));
-            if (null != name)
-            {
-                result.add(name);
-            }
-        }
-        return result.toArray(new String[result.size()]);
-    }
-
-    public static X509Certificate[] getX509CertificateChain(TlsCrypto crypto, Certificate certificateMessage)
+    static X509Certificate[] getX509CertificateChain(JcaTlsCrypto crypto, Certificate certificateMessage)
     {
         if (certificateMessage == null || certificateMessage.isEmpty())
         {
@@ -360,7 +355,7 @@ abstract class JsseUtils
             X509Certificate[] chain = new X509Certificate[certificateMessage.getLength()];
             for (int i = 0; i < chain.length; ++i)
             {
-                chain[i] = JcaTlsCertificate.convert((JcaTlsCrypto)crypto, certificateMessage.getCertificateAt(i)).getX509Certificate();
+                chain[i] = JcaTlsCertificate.convert(crypto, certificateMessage.getCertificateAt(i)).getX509Certificate();
             }
             return chain;
         }
@@ -371,7 +366,7 @@ abstract class JsseUtils
         }
     }
 
-    public static X509Certificate[] getX509CertificateChain(java.security.cert.Certificate[] chain)
+    static X509Certificate[] getX509CertificateChain(java.security.cert.Certificate[] chain)
     {
         if (chain == null)
         {
@@ -379,7 +374,7 @@ abstract class JsseUtils
         }
         if (chain instanceof X509Certificate[])
         {
-            return (X509Certificate[])chain;
+            return JsseUtils.containsNull(chain) ? null : (X509Certificate[])chain;
         }
         X509Certificate[] x509Chain = new X509Certificate[chain.length];
         for (int i = 0; i < chain.length; ++i)
@@ -394,7 +389,7 @@ abstract class JsseUtils
         return x509Chain;
     }
 
-    public static X500Principal getSubject(TlsCrypto crypto, Certificate certificateMessage)
+    static X500Principal getSubject(JcaTlsCrypto crypto, Certificate certificateMessage)
     {
         if (certificateMessage == null || certificateMessage.isEmpty())
         {
@@ -403,8 +398,7 @@ abstract class JsseUtils
 
         try
         {
-            return JcaTlsCertificate.convert((JcaTlsCrypto)crypto, certificateMessage.getCertificateAt(0)).getX509Certificate()
-                .getSubjectX500Principal();
+            return getX509Certificate(crypto, certificateMessage.getCertificateAt(0)).getSubjectX500Principal();
         }
         catch (IOException e)
         {
@@ -418,84 +412,86 @@ abstract class JsseUtils
         return root + " " + AlertLevel.getText(alertLevel) + " " + AlertDescription.getText(alertDescription) + " alert";
     }
 
-    static Vector getSupportedSignatureAlgorithms(TlsCrypto crypto)
+    static boolean isTLSv12(String protocol)
     {
-//        SignatureAndHashAlgorithm[] intrinsicSigAlgs = { SignatureAndHashAlgorithm.ed25519,
-//            SignatureAndHashAlgorithm.ed448, SignatureAndHashAlgorithm.rsa_pss_rsae_sha256,
-//            SignatureAndHashAlgorithm.rsa_pss_rsae_sha384, SignatureAndHashAlgorithm.rsa_pss_rsae_sha512,
-//            SignatureAndHashAlgorithm.rsa_pss_pss_sha256, SignatureAndHashAlgorithm.rsa_pss_pss_sha384,
-//            SignatureAndHashAlgorithm.rsa_pss_pss_sha512 };
-        short[] hashAlgorithms = new short[]{ HashAlgorithm.sha1, HashAlgorithm.sha224, HashAlgorithm.sha256,
-            HashAlgorithm.sha384, HashAlgorithm.sha512 };
-        short[] signatureAlgorithms = new short[]{ SignatureAlgorithm.rsa, SignatureAlgorithm.ecdsa };
+        ProtocolVersion protocolVersion = ProvSSLContextSpi.getProtocolVersion(protocol);
 
-        Vector result = new Vector();
-//        for (int i = 0; i < intrinsicSigAlgs.length; ++i)
-//        {
-//            TlsUtils.addIfSupported(result, crypto, intrinsicSigAlgs[i]);
-//        }
-        for (int i = 0; i < signatureAlgorithms.length; ++i)
-        {
-            for (int j = 0; j < hashAlgorithms.length; ++j)
-            {
-                TlsUtils.addIfSupported(result, crypto, new SignatureAndHashAlgorithm(hashAlgorithms[j], signatureAlgorithms[i]));
-            }
-        }
-
-        // TODO Dynamically detect whether the TlsCrypto implementation can handle DSA2
-        TlsUtils.addIfSupported(result, crypto, new SignatureAndHashAlgorithm(HashAlgorithm.sha1, SignatureAlgorithm.dsa));
-
-        return result;
+        return null != protocolVersion && TlsUtils.isTLSv12(protocolVersion); 
     }
 
-    public static boolean isUsableKeyForServer(int keyExchangeAlgorithm, PrivateKey privateKey) throws IOException
+    static boolean isUsableKeyForServer(short signatureAlgorithm, PrivateKey privateKey)
     {
-        if (privateKey == null)
+        final String algorithm = privateKey.getAlgorithm();
+
+        switch (signatureAlgorithm)
         {
-            return false;
-        }
+        case SignatureAlgorithm.dsa:
+            return privateKey instanceof DSAPrivateKey || "DSA".equalsIgnoreCase(algorithm);
 
-        String algorithm = privateKey.getAlgorithm();
-        switch (keyExchangeAlgorithm)
-        {
-        case KeyExchangeAlgorithm.ECDHE_ECDSA:
-            return privateKey instanceof ECPrivateKey || "EC".equals(algorithm);
+        case SignatureAlgorithm.ecdsa:
+            return privateKey instanceof ECPrivateKey || "EC".equalsIgnoreCase(algorithm);
 
-        case KeyExchangeAlgorithm.DHE_DSS:
-        case KeyExchangeAlgorithm.SRP_DSS:
-            return privateKey instanceof DSAPrivateKey || "DSA".equals(algorithm);
+        case SignatureAlgorithm.ed25519:
+            return "Ed25519".equalsIgnoreCase(algorithm);
 
-        case KeyExchangeAlgorithm.DHE_RSA:
-        case KeyExchangeAlgorithm.ECDHE_RSA:
-        case KeyExchangeAlgorithm.RSA:
-        case KeyExchangeAlgorithm.RSA_PSK:
-        case KeyExchangeAlgorithm.SRP_RSA:
-            return privateKey instanceof RSAPrivateKey || "RSA".equals(algorithm);
+        case SignatureAlgorithm.ed448:
+            return "Ed448".equalsIgnoreCase(algorithm);
 
+        case SignatureAlgorithm.rsa:
+            return privateKey instanceof RSAPrivateKey || "RSA".equalsIgnoreCase(algorithm);
+
+        // TODO[RFC 8446]
+//        case SignatureAlgorithm.rsa_pss_rsae_sha256:
+//        case SignatureAlgorithm.rsa_pss_rsae_sha384:
+//        case SignatureAlgorithm.rsa_pss_rsae_sha512:
+//        case SignatureAlgorithm.rsa_pss_pss_sha256:
+//        case SignatureAlgorithm.rsa_pss_pss_sha384:
+//        case SignatureAlgorithm.rsa_pss_pss_sha512:
         default:
             return false;
         }
     }
 
-    static Set<X500Principal> toX500Principals(X500Name[] names) throws IOException
+    static boolean isUsableKeyForServerLegacy(int keyExchangeAlgorithm, PrivateKey privateKey)
     {
-        if (names == null || names.length == 0)
+        switch (keyExchangeAlgorithm)
         {
-            return Collections.emptySet();
+        case KeyExchangeAlgorithm.DHE_DSS:
+        case KeyExchangeAlgorithm.DHE_RSA:
+        case KeyExchangeAlgorithm.ECDHE_ECDSA:
+        case KeyExchangeAlgorithm.ECDHE_RSA:
+            return isUsableKeyForServer(TlsUtils.getLegacySignatureAlgorithmServer(keyExchangeAlgorithm), privateKey);
+
+        case KeyExchangeAlgorithm.RSA:
+            return privateKey instanceof RSAPrivateKey || "RSA".equalsIgnoreCase(privateKey.getAlgorithm());
+
+        // NOTE: This method should never be called for TLS 1.3 
+        case KeyExchangeAlgorithm.NULL:
+        default:
+            return false;
+        }
+    }
+
+    static X500Principal[] toX500Principals(Vector<X500Name> names) throws IOException
+    {
+        if (null == names || names.isEmpty())
+        {
+            return null;
         }
 
-        Set<X500Principal> principals = new HashSet<X500Principal>(names.length);
+        Set<X500Principal> principals = new LinkedHashSet<X500Principal>();
 
-        for (int i = 0; i < names.length; ++i)
+        int count = names.size();
+        for (int i = 0; i < count; ++i)
         {
-            X500Name name = names[i];
-            if (name != null)
+            X500Name name = names.elementAt(i);
+            if (null != name)
             {
-            	principals.add(new X500Principal(name.getEncoded(ASN1Encoding.DER)));
+                principals.add(new X500Principal(name.getEncoded(ASN1Encoding.DER)));
             }
         }
 
-        return principals;
+        return principals.toArray(new X500Principal[0]);
     }
 
     static X500Name toX500Name(Principal principal)
@@ -550,7 +546,7 @@ abstract class JsseUtils
         }
     }
 
-    static List<BCSNIServerName> convertSNIServerNames(Vector serverNameList)
+    static List<BCSNIServerName> convertSNIServerNames(Vector<ServerName> serverNameList)
     {
         if (null == serverNameList || serverNameList.isEmpty())
         {
@@ -559,16 +555,17 @@ abstract class JsseUtils
 
         ArrayList<BCSNIServerName> result = new ArrayList<BCSNIServerName>(serverNameList.size());
 
-        Enumeration serverNames = serverNameList.elements();
+        Enumeration<ServerName> serverNames = serverNameList.elements();
         while (serverNames.hasMoreElements())
         {
-            result.add(convertSNIServerName((ServerName)serverNames.nextElement()));
+            result.add(convertSNIServerName(serverNames.nextElement()));
         }
 
         return Collections.unmodifiableList(result);
     }
 
-    static BCSNIServerName findMatchingSNIServerName(Vector serverNameList, Collection<BCSNIMatcher> sniMatchers)
+    static BCSNIServerName findMatchingSNIServerName(Vector<ServerName> serverNameList,
+        Collection<BCSNIMatcher> sniMatchers)
     {
         if (!serverNameList.isEmpty())
         {
@@ -597,6 +594,33 @@ abstract class JsseUtils
         return null;
     }
 
+    static BCSNIHostName getSNIHostName(List<BCSNIServerName> serverNames)
+    {
+        if (null != serverNames)
+        {
+            for (BCSNIServerName serverName : serverNames)
+            {
+                if (null != serverName && BCStandardConstants.SNI_HOST_NAME == serverName.getType())
+                {
+                    if (serverName instanceof BCSNIHostName)
+                    {
+                        return (BCSNIHostName)serverName;
+                    }
+
+                    try
+                    {
+                        return new BCSNIHostName(serverName.getEncoded());
+                    }
+                    catch (RuntimeException e)
+                    {
+                        return null;
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
     static String stripDoubleQuotes(String s)
     {
         return stripOuterChars(s, '"', '"');
@@ -618,5 +642,10 @@ abstract class JsseUtils
             }
         }
         return s;
+    }
+
+    static boolean useExtendedMasterSecret()
+    {
+        return provTlsUseExtendedMasterSecret;
     }
 }

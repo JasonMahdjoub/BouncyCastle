@@ -43,7 +43,7 @@ import org.bouncycastle.bcasn1.DERBitString;
 import org.bouncycastle.bcasn1.DERIA5String;
 import org.bouncycastle.bcasn1.DERNull;
 import org.bouncycastle.bcasn1.DEROctetString;
-import org.bouncycastle.bcasn1.misc.BCMiscObjectIdentifiers;
+import org.bouncycastle.bcasn1.misc.MiscObjectIdentifiers;
 import org.bouncycastle.bcasn1.misc.NetscapeCertType;
 import org.bouncycastle.bcasn1.misc.NetscapeRevocationURL;
 import org.bouncycastle.bcasn1.misc.VerisignCzagExtension;
@@ -696,15 +696,15 @@ public class X509CertificateObject
                         {
                             buf.append(KeyUsage.getInstance(dIn.readObject())).append(nl);
                         }
-                        else if (oid.equals(BCMiscObjectIdentifiers.netscapeCertType))
+                        else if (oid.equals(MiscObjectIdentifiers.netscapeCertType))
                         {
                             buf.append(new NetscapeCertType((DERBitString)dIn.readObject())).append(nl);
                         }
-                        else if (oid.equals(BCMiscObjectIdentifiers.netscapeRevocationURL))
+                        else if (oid.equals(MiscObjectIdentifiers.netscapeRevocationURL))
                         {
                             buf.append(new NetscapeRevocationURL((DERIA5String)dIn.readObject())).append(nl);
                         }
-                        else if (oid.equals(BCMiscObjectIdentifiers.verisignCzagExtension))
+                        else if (oid.equals(MiscObjectIdentifiers.verisignCzagExtension))
                         {
                             buf.append(new VerisignCzagExtension((DERIA5String)dIn.readObject())).append(nl);
                         }

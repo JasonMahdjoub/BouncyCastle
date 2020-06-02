@@ -14,13 +14,13 @@ import java.security.Signature;
 import java.security.spec.ECGenParameterSpec;
 
 import org.bouncycastle.bcasn1.ASN1OctetString;
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.jce.spec.ECParameterSpec;
 import org.bouncycastle.jce.spec.ECPrivateKeySpec;
 import org.bouncycastle.jce.spec.ECPublicKeySpec;
 import org.bouncycastle.bcmath.ec.ECCurve;
 import org.bouncycastle.bcutil.Strings;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 import org.bouncycastle.bcutil.test.TestRandomBigInteger;
 

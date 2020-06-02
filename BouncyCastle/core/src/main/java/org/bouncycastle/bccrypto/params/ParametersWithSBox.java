@@ -5,7 +5,7 @@ import org.bouncycastle.bccrypto.CipherParameters;
 public class ParametersWithSBox
     implements CipherParameters
 {
-    private CipherParameters parameters;
+    private CipherParameters  parameters;
     private byte[]            sBox;
 
     public ParametersWithSBox(

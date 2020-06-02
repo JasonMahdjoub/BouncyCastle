@@ -2,7 +2,7 @@ package org.bouncycastle.bccrypto.paddings;
 
 import java.security.SecureRandom;
 
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.InvalidCipherTextException;
 
 /**
@@ -27,7 +27,7 @@ public class ISO10126d2Padding
         }
         else
         {
-            this.random = BCCryptoServicesRegistrar.getSecureRandom();
+            this.random = CryptoServicesRegistrar.getSecureRandom();
         }
     }
 

@@ -3,9 +3,9 @@ package org.bouncycastle.bccrypto.test;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.generators.SCrypt;
 import org.bouncycastle.bcutil.Strings;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 /*

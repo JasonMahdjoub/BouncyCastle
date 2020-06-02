@@ -49,7 +49,7 @@ public class BCDSTU4145PublicKey
     private String algorithm = "DSTU4145";
     private boolean withCompression;
 
-    private transient ECPublicKeyParameters ecPublicKey;
+    private transient ECPublicKeyParameters   ecPublicKey;
     private transient ECParameterSpec ecSpec;
     private transient DSTU4145Params dstuParams;
 

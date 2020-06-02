@@ -16,7 +16,6 @@ import java.util.Set;
 import org.bouncycastle.bcasn1.DERNull;
 import org.bouncycastle.bcasn1.nist.NISTObjectIdentifiers;
 import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.operator.DefaultDigestAlgorithmIdentifierFinder;
 import org.bouncycastle.operator.DigestAlgorithmIdentifierFinder;
 import org.bouncycastle.operator.DigestCalculator;
@@ -25,6 +24,7 @@ import org.bouncycastle.operator.OperatorCreationException;
 import org.bouncycastle.bcutil.Arrays;
 import org.bouncycastle.bcutil.Strings;
 import org.bouncycastle.bcutil.encoders.Base64;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 /**
  * Provides stock implementations for basic auth and digest auth.

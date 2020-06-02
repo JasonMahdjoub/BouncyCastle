@@ -11,6 +11,8 @@ import java.util.Iterator;
 import java.util.Map;
 
 import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
+import org.bouncycastle.bcasn1.isara.IsaraObjectIdentifiers;
+import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
 import org.bouncycastle.bcasn1.pkcs.PrivateKeyInfo;
 import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
 import org.bouncycastle.bcjcajce.provider.config.ConfigurableProvider;
@@ -19,6 +21,7 @@ import org.bouncycastle.bcjcajce.provider.symmetric.util.ClassUtil;
 import org.bouncycastle.bcjcajce.provider.util.AlgorithmProvider;
 import org.bouncycastle.bcjcajce.provider.util.AsymmetricKeyInfoConverter;
 import org.bouncycastle.pqc.asn1.PQCObjectIdentifiers;
+import org.bouncycastle.pqc.jcajce.provider.lms.LMSKeyFactorySpi;
 import org.bouncycastle.pqc.jcajce.provider.mceliece.McElieceCCA2KeyFactorySpi;
 import org.bouncycastle.pqc.jcajce.provider.mceliece.McElieceKeyFactorySpi;
 import org.bouncycastle.pqc.jcajce.provider.newhope.NHKeyFactorySpi;
@@ -55,7 +58,7 @@ import org.bouncycastle.pqc.jcajce.provider.xmss.XMSSMTKeyFactorySpi;
 public final class BouncyCastleProvider extends Provider
     implements ConfigurableProvider
 {
-    private static String info = "BouncyCastle Security Provider v1.64";
+    private static String info = "BouncyCastle Security Provider v1.65";
 
     public static final String PROVIDER_NAME = "BC";
 
@@ -75,7 +78,7 @@ public final class BouncyCastleProvider extends Provider
 
     private static final String[] SYMMETRIC_MACS =
     {
-        "SipHash", "Poly1305"
+        "SipHash", "SipHash128", "Poly1305"
     };
 
     private static final String[] SYMMETRIC_CIPHERS =
@@ -139,7 +142,7 @@ public final class BouncyCastleProvider extends Provider
      */
     public BouncyCastleProvider()
     {
-        super(PROVIDER_NAME, 1.64, info);
+        super(PROVIDER_NAME, 1.65, info);
 
         AccessController.doPrivileged(new PrivilegedAction()
         {
@@ -240,12 +243,15 @@ public final class BouncyCastleProvider extends Provider
         addKeyInfoConverter(PQCObjectIdentifiers.sphincs256, new Sphincs256KeyFactorySpi());
         addKeyInfoConverter(PQCObjectIdentifiers.newHope, new NHKeyFactorySpi());
         addKeyInfoConverter(PQCObjectIdentifiers.xmss, new XMSSKeyFactorySpi());
+        addKeyInfoConverter(IsaraObjectIdentifiers.id_alg_xmss, new XMSSKeyFactorySpi());
         addKeyInfoConverter(PQCObjectIdentifiers.xmss_mt, new XMSSMTKeyFactorySpi());
+        addKeyInfoConverter(IsaraObjectIdentifiers.id_alg_xmssmt, new XMSSMTKeyFactorySpi());
         addKeyInfoConverter(PQCObjectIdentifiers.mcEliece, new McElieceKeyFactorySpi());
         addKeyInfoConverter(PQCObjectIdentifiers.mcElieceCca2, new McElieceCCA2KeyFactorySpi());
         addKeyInfoConverter(PQCObjectIdentifiers.rainbow, new RainbowKeyFactorySpi());
         addKeyInfoConverter(PQCObjectIdentifiers.qTESLA_p_I, new QTESLAKeyFactorySpi());
         addKeyInfoConverter(PQCObjectIdentifiers.qTESLA_p_III, new QTESLAKeyFactorySpi());
+        addKeyInfoConverter(PKCSObjectIdentifiers.id_alg_hss_lms_hashsig, new LMSKeyFactorySpi());
     }
 
     public void setParameter(String parameterName, Object parameter)

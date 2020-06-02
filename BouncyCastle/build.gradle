@@ -106,7 +106,7 @@ subprojects {
     sourceCompatibility = JavaVersionSource
     targetCompatibility = JavaVersionTarget
 
-    version = '1.64b-DMRECOMPILE'
+    version = '1.65-DMRECOMPILE'
 
 	compileJava.options.compilerArgs.addAll(['--release', JavaVersionTarget] as Collection<? extends String>)
 	if (project.hasProperty('javaHomeVersion') && JavaVersionTarget.toFloat()>1.8)

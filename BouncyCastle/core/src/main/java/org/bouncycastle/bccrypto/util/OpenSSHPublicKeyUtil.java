@@ -5,8 +5,13 @@ import java.math.BigInteger;
 
 import org.bouncycastle.bcasn1.x9.ECNamedCurveTable;
 import org.bouncycastle.bcasn1.x9.X9ECParameters;
-import org.bouncycastle.bccrypto.params.*;
+import org.bouncycastle.bccrypto.params.AsymmetricKeyParameter;
 import org.bouncycastle.bccrypto.params.DSAParameters;
+import org.bouncycastle.bccrypto.params.DSAPublicKeyParameters;
+import org.bouncycastle.bccrypto.params.ECDomainParameters;
+import org.bouncycastle.bccrypto.params.ECPublicKeyParameters;
+import org.bouncycastle.bccrypto.params.Ed25519PublicKeyParameters;
+import org.bouncycastle.bccrypto.params.RSAKeyParameters;
 import org.bouncycastle.bcmath.ec.ECCurve;
 import org.bouncycastle.bcmath.ec.custom.sec.SecP256R1Curve;
 

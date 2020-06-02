@@ -2,7 +2,6 @@ package org.bouncycastle.bccrypto.test;
 
 import java.security.SecureRandom;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.BlockCipher;
 import org.bouncycastle.bccrypto.InvalidCipherTextException;
 import org.bouncycastle.bccrypto.engines.AESEngine;
@@ -17,6 +16,7 @@ import org.bouncycastle.bccrypto.params.AEADParameters;
 import org.bouncycastle.bccrypto.params.KeyParameter;
 import org.bouncycastle.bcutil.Strings;
 import org.bouncycastle.bcutil.Times;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**

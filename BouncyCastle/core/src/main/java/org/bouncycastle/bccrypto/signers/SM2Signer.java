@@ -2,10 +2,17 @@ package org.bouncycastle.bccrypto.signers;
 
 import java.math.BigInteger;
 
-import org.bouncycastle.bccrypto.*;
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.CipherParameters;
+import org.bouncycastle.bccrypto.CryptoException;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.Digest;
+import org.bouncycastle.bccrypto.Signer;
 import org.bouncycastle.bccrypto.digests.SM3Digest;
-import org.bouncycastle.bccrypto.params.*;
+import org.bouncycastle.bccrypto.params.ECDomainParameters;
+import org.bouncycastle.bccrypto.params.ECKeyParameters;
+import org.bouncycastle.bccrypto.params.ECPrivateKeyParameters;
+import org.bouncycastle.bccrypto.params.ECPublicKeyParameters;
+import org.bouncycastle.bccrypto.params.ParametersWithID;
 import org.bouncycastle.bccrypto.params.ParametersWithRandom;
 import org.bouncycastle.bcmath.ec.ECAlgorithms;
 import org.bouncycastle.bcmath.ec.ECConstants;
@@ -57,10 +64,10 @@ public class SM2Signer
         CipherParameters baseParam;
         byte[] userID;
 
-        if (param instanceof ParametersWithIDBC)
+        if (param instanceof ParametersWithID)
         {
-            baseParam = ((ParametersWithIDBC)param).getParameters();
-            userID = ((ParametersWithIDBC)param).getID();
+            baseParam = ((ParametersWithID)param).getParameters();
+            userID = ((ParametersWithID)param).getID();
 
             if (userID.length >= 8192)
             {
@@ -88,7 +95,7 @@ public class SM2Signer
             {
                 ecKey = (ECKeyParameters)baseParam;
                 ecParams = ecKey.getParameters();
-                kCalculator.init(ecParams.getN(), BCCryptoServicesRegistrar.getSecureRandom());
+                kCalculator.init(ecParams.getN(), CryptoServicesRegistrar.getSecureRandom());
             }
             pubPoint = createBasePointMultiplier().multiply(ecParams.getG(), ((ECPrivateKeyParameters)ecKey).getD()).normalize();
         }

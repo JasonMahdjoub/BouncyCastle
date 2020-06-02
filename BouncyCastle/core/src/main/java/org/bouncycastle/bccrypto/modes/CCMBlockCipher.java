@@ -2,8 +2,12 @@ package org.bouncycastle.bccrypto.modes;
 
 import java.io.ByteArrayOutputStream;
 
-import org.bouncycastle.bccrypto.*;
+import org.bouncycastle.bccrypto.BlockCipher;
 import org.bouncycastle.bccrypto.CipherParameters;
+import org.bouncycastle.bccrypto.DataLengthException;
+import org.bouncycastle.bccrypto.InvalidCipherTextException;
+import org.bouncycastle.bccrypto.Mac;
+import org.bouncycastle.bccrypto.OutputLengthException;
 import org.bouncycastle.bccrypto.macs.CBCBlockCipherMac;
 import org.bouncycastle.bccrypto.params.AEADParameters;
 import org.bouncycastle.bccrypto.params.ParametersWithIV;
@@ -24,7 +28,7 @@ public class CCMBlockCipher
     private byte[]                nonce;
     private byte[]                initialAssociatedText;
     private int                   macSize;
-    private CipherParameters keyParam;
+    private CipherParameters      keyParam;
     private byte[]                macBlock;
     private ExposedByteArrayOutputStream associatedText = new ExposedByteArrayOutputStream();
     private ExposedByteArrayOutputStream data = new ExposedByteArrayOutputStream();

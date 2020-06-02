@@ -4,7 +4,6 @@ import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.util.Vector;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.AsymmetricCipherKeyPair;
 import org.bouncycastle.bccrypto.InvalidCipherTextException;
 import org.bouncycastle.bccrypto.engines.NaccacheSternEngine;
@@ -12,6 +11,7 @@ import org.bouncycastle.bccrypto.generators.NaccacheSternKeyPairGenerator;
 import org.bouncycastle.bccrypto.params.NaccacheSternKeyGenerationParameters;
 import org.bouncycastle.bccrypto.params.NaccacheSternKeyParameters;
 import org.bouncycastle.bccrypto.params.NaccacheSternPrivateKeyParameters;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**

@@ -80,7 +80,7 @@ public class JCEElGamalPrivateKey
     }
 
     JCEElGamalPrivateKey(
-        ElGamalPrivateKeyParameters params)
+        ElGamalPrivateKeyParameters  params)
     {
         this.x = params.getX();
         this.elSpec = new ElGamalParameterSpec(params.getParameters().getP(), params.getParameters().getG());

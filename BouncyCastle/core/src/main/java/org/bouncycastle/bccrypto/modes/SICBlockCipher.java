@@ -1,7 +1,10 @@
 package org.bouncycastle.bccrypto.modes;
 
-import org.bouncycastle.bccrypto.*;
+import org.bouncycastle.bccrypto.BlockCipher;
 import org.bouncycastle.bccrypto.CipherParameters;
+import org.bouncycastle.bccrypto.DataLengthException;
+import org.bouncycastle.bccrypto.SkippingStreamCipher;
+import org.bouncycastle.bccrypto.StreamBlockCipher;
 import org.bouncycastle.bccrypto.params.ParametersWithIV;
 import org.bouncycastle.bcutil.Arrays;
 import org.bouncycastle.bcutil.Pack;
@@ -41,7 +44,7 @@ public class SICBlockCipher
 
     public void init(
         boolean             forEncryption, //ignored by this CTR mode
-        CipherParameters params)
+        CipherParameters    params)
         throws IllegalArgumentException
     {
         if (params instanceof ParametersWithIV)

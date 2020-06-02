@@ -8,7 +8,7 @@ import java.security.spec.AlgorithmParameterSpec;
 import javax.crypto.spec.DHGenParameterSpec;
 import javax.crypto.spec.DHParameterSpec;
 
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.generators.ElGamalParametersGenerator;
 import org.bouncycastle.bccrypto.params.ElGamalParameters;
 import org.bouncycastle.bcjcajce.provider.asymmetric.util.BaseAlgorithmParameterGeneratorSpi;
@@ -55,7 +55,7 @@ public class AlgorithmParameterGeneratorSpi
         }
         else
         {
-            pGen.init(strength, 20, BCCryptoServicesRegistrar.getSecureRandom());
+            pGen.init(strength, 20, CryptoServicesRegistrar.getSecureRandom());
         }
 
         ElGamalParameters p = pGen.generateParameters();

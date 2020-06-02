@@ -2,10 +2,16 @@ package org.bouncycastle.bccrypto.signers;
 
 import java.security.SecureRandom;
 
-import org.bouncycastle.bccrypto.*;
+import org.bouncycastle.bccrypto.AsymmetricBlockCipher;
 import org.bouncycastle.bccrypto.CipherParameters;
+import org.bouncycastle.bccrypto.CryptoException;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.DataLengthException;
+import org.bouncycastle.bccrypto.Digest;
+import org.bouncycastle.bccrypto.Signer;
 import org.bouncycastle.bccrypto.params.ParametersWithRandom;
-import org.bouncycastle.bccrypto.params.RSABlindingParameters;import org.bouncycastle.bccrypto.params.RSAKeyParameters;
+import org.bouncycastle.bccrypto.params.RSABlindingParameters;
+import org.bouncycastle.bccrypto.params.RSAKeyParameters;
 import org.bouncycastle.bcutil.Arrays;
 
 /**
@@ -124,13 +130,13 @@ public class PSSSigner
 
     public void init(
         boolean                 forSigning,
-        CipherParameters param)
+        CipherParameters        param)
     {
-        CipherParameters params;
+        CipherParameters  params;
 
         if (param instanceof ParametersWithRandom)
         {
-            ParametersWithRandom p = (ParametersWithRandom)param;
+            ParametersWithRandom    p = (ParametersWithRandom)param;
 
             params = p.getParameters();
             random = p.getRandom();
@@ -140,7 +146,7 @@ public class PSSSigner
             params = param;
             if (forSigning)
             {
-                random = BCCryptoServicesRegistrar.getSecureRandom();
+                random = CryptoServicesRegistrar.getSecureRandom();
             }
         }
 

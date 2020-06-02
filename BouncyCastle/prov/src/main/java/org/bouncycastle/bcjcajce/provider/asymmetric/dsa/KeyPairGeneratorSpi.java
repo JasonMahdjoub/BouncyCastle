@@ -9,12 +9,15 @@ import java.security.spec.DSAParameterSpec;
 import java.util.Hashtable;
 
 import org.bouncycastle.bccrypto.AsymmetricCipherKeyPair;
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.digests.SHA256Digest;
 import org.bouncycastle.bccrypto.generators.DSAKeyPairGenerator;
 import org.bouncycastle.bccrypto.generators.DSAParametersGenerator;
-import org.bouncycastle.bccrypto.params.*;
+import org.bouncycastle.bccrypto.params.DSAKeyGenerationParameters;
+import org.bouncycastle.bccrypto.params.DSAParameterGenerationParameters;
 import org.bouncycastle.bccrypto.params.DSAParameters;
+import org.bouncycastle.bccrypto.params.DSAPrivateKeyParameters;
+import org.bouncycastle.bccrypto.params.DSAPublicKeyParameters;
 import org.bouncycastle.bcjcajce.provider.asymmetric.util.PrimeCertaintyCalculator;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.bcutil.Integers;
@@ -29,7 +32,7 @@ public class KeyPairGeneratorSpi
     DSAKeyGenerationParameters param;
     DSAKeyPairGenerator engine = new DSAKeyPairGenerator();
     int strength = 2048;
-    SecureRandom random = BCCryptoServicesRegistrar.getSecureRandom();
+    SecureRandom random = CryptoServicesRegistrar.getSecureRandom();
     boolean initialised = false;
 
     public KeyPairGeneratorSpi()

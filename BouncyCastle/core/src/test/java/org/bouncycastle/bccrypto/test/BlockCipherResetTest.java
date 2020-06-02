@@ -1,8 +1,7 @@
 package org.bouncycastle.bccrypto.test;
 
-import org.bouncycastle.bcutil.encoders.Hex;
-import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.BlockCipher;
+import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.DataLengthException;
 import org.bouncycastle.bccrypto.InvalidCipherTextException;
 import org.bouncycastle.bccrypto.engines.AESEngine;
@@ -30,6 +29,7 @@ import org.bouncycastle.bccrypto.modes.SICBlockCipher;
 import org.bouncycastle.bccrypto.params.KeyParameter;
 import org.bouncycastle.bccrypto.params.ParametersWithIV;
 import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**

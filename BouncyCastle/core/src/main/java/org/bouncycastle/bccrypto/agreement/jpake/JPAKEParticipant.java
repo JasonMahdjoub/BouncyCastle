@@ -3,8 +3,8 @@ package org.bouncycastle.bccrypto.agreement.jpake;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.CryptoException;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.Digest;
 import org.bouncycastle.bccrypto.digests.SHA256Digest;
 import org.bouncycastle.bcutil.Arrays;
@@ -194,7 +194,7 @@ public class JPAKEParticipant
             password,
             group,
             new SHA256Digest(),
-            BCCryptoServicesRegistrar.getSecureRandom());
+            CryptoServicesRegistrar.getSecureRandom());
     }
 
 

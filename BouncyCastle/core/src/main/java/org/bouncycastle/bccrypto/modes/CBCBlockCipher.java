@@ -1,7 +1,7 @@
 package org.bouncycastle.bccrypto.modes;
 
-import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.BlockCipher;
+import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.DataLengthException;
 import org.bouncycastle.bccrypto.params.ParametersWithIV;
 import org.bouncycastle.bcutil.Arrays;
@@ -58,7 +58,7 @@ public class CBCBlockCipher
      */
     public void init(
         boolean             encrypting,
-        CipherParameters params)
+        CipherParameters    params)
         throws IllegalArgumentException
     {
         boolean oldEncrypting = this.encrypting;

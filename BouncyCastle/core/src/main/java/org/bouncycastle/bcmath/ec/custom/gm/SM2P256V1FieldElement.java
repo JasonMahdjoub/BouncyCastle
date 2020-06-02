@@ -2,11 +2,11 @@ package org.bouncycastle.bcmath.ec.custom.gm;
 
 import java.math.BigInteger;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcmath.ec.ECFieldElement;
 import org.bouncycastle.bcmath.raw.Mod;
 import org.bouncycastle.bcmath.raw.Nat256;
 import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 public class SM2P256V1FieldElement extends ECFieldElement.AbstractFp
 {

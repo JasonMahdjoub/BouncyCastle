@@ -2,7 +2,6 @@ package org.bouncycastle.bccrypto.test;
 
 import java.security.SecureRandom;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.InvalidCipherTextException;
 import org.bouncycastle.bccrypto.StreamCipher;
@@ -18,6 +17,7 @@ import org.bouncycastle.bccrypto.engines.XSalsa20Engine;
 import org.bouncycastle.bccrypto.params.KeyParameter;
 import org.bouncycastle.bccrypto.params.ParametersWithIV;
 import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**

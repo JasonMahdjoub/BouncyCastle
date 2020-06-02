@@ -1,14 +1,6 @@
 dependencies {
     compile project(':core')
 }
-sourceSets {
-    main {
-        java {
-            srcDir "../src"
-            exclude "com/example/abc/tst/**"
-        }
-    }
-}
 
 cobertura {
    coverageDirs = [

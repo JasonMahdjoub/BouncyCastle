@@ -57,7 +57,7 @@ public class JCEElGamalPublicKey
     }
     
     JCEElGamalPublicKey(
-        ElGamalPublicKeyParameters params)
+        ElGamalPublicKeyParameters  params)
     {
         this.y = params.getY();
         this.elSpec = new ElGamalParameterSpec(params.getParameters().getP(), params.getParameters().getG());

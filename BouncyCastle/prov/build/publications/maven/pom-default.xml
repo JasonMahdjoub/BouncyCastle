@@ -8,12 +8,12 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.bouncycastle</groupId>
   <artifactId>bc-prov</artifactId>
-  <version>1.64b-DMRECOMPILE</version>
+  <version>1.65-DMRECOMPILE</version>
   <dependencies>
     <dependency>
       <groupId>org.bouncycastle</groupId>
       <artifactId>bc-core</artifactId>
-      <version>1.64b-DMRECOMPILE</version>
+      <version>1.65-DMRECOMPILE</version>
       <scope>compile</scope>
     </dependency>
   </dependencies>

@@ -5,6 +5,7 @@ module org.bouncycastle.provider
 
     opens org.bouncycastle.bcjcajce.provider.asymmetric.edec to java.base;
     opens org.bouncycastle.pqc.jcajce.provider.qtesla to java.base;
+    opens org.bouncycastle.pqc.jcajce.provider.lms to java.base;
 
     exports org.bouncycastle;
     exports org.bouncycastle.bcasn1;
@@ -27,6 +28,7 @@ module org.bouncycastle.provider
     exports org.bouncycastle.bcasn1.gnu;
     exports org.bouncycastle.bcasn1.iana;
     exports org.bouncycastle.bcasn1.icao;
+    exports org.bouncycastle.bcasn1.isara;
     exports org.bouncycastle.bcasn1.isismtt;
     exports org.bouncycastle.bcasn1.isismtt.ocsp;
     exports org.bouncycastle.bcasn1.isismtt.x509;
@@ -78,7 +80,6 @@ module org.bouncycastle.provider
     exports org.bouncycastle.bccrypto.prng;
     exports org.bouncycastle.bccrypto.prng.drbg;
     exports org.bouncycastle.bccrypto.signers;
-    exports org.bouncycastle.bccrypto.tls;
     exports org.bouncycastle.bccrypto.util;
     exports org.bouncycastle.i18n;
     exports org.bouncycastle.i18n.filter;
@@ -131,12 +132,14 @@ module org.bouncycastle.provider
     exports org.bouncycastle.pqc.crypto;
     exports org.bouncycastle.pqc.crypto.gmss;
     exports org.bouncycastle.pqc.crypto.gmss.util;
+    exports org.bouncycastle.pqc.crypto.lms;
     exports org.bouncycastle.pqc.crypto.mceliece;
     exports org.bouncycastle.pqc.crypto.newhope;
     exports org.bouncycastle.pqc.crypto.qtesla;
     exports org.bouncycastle.pqc.crypto.rainbow;
     exports org.bouncycastle.pqc.crypto.rainbow.util;
     exports org.bouncycastle.pqc.crypto.sphincs;
+    exports org.bouncycastle.pqc.crypto.util;
     exports org.bouncycastle.pqc.crypto.xmss;
     exports org.bouncycastle.pqc.jcajce.interfaces;
     exports org.bouncycastle.pqc.jcajce.provider;

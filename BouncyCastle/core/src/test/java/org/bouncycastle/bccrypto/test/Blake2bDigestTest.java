@@ -2,11 +2,11 @@ package org.bouncycastle.bccrypto.test;
 
 import java.io.UnsupportedEncodingException;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.Digest;
 import org.bouncycastle.bccrypto.digests.Blake2bDigest;
 import org.bouncycastle.bcutil.Arrays;
 import org.bouncycastle.bcutil.Strings;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class Blake2bDigestTest

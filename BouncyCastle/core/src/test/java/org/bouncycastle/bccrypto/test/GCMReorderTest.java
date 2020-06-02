@@ -3,13 +3,13 @@ package org.bouncycastle.bccrypto.test;
 import java.io.IOException;
 import java.security.SecureRandom;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.modes.gcm.GCMExponentiator;
 import org.bouncycastle.bccrypto.modes.gcm.GCMMultiplier;
 import org.bouncycastle.bccrypto.modes.gcm.Tables1kGCMExponentiator;
 import org.bouncycastle.bccrypto.modes.gcm.Tables4kGCMMultiplier;
 import org.bouncycastle.bcutil.Arrays;
 import org.bouncycastle.bcutil.Pack;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 import junit.framework.TestCase;
 

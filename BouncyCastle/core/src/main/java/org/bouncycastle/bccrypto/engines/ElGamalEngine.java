@@ -5,11 +5,13 @@ import java.security.SecureRandom;
 
 import org.bouncycastle.bccrypto.AsymmetricBlockCipher;
 import org.bouncycastle.bccrypto.CipherParameters;
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.DataLengthException;
-import org.bouncycastle.bccrypto.params.*;
+import org.bouncycastle.bccrypto.params.ElGamalKeyParameters;
+import org.bouncycastle.bccrypto.params.ElGamalPrivateKeyParameters;
 import org.bouncycastle.bccrypto.params.ElGamalPublicKeyParameters;
-import org.bouncycastle.bccrypto.params.ParametersWithRandom;import org.bouncycastle.bcutil.BigIntegers;
+import org.bouncycastle.bccrypto.params.ParametersWithRandom;
+import org.bouncycastle.bcutil.BigIntegers;
 
 /**
  * this does your basic ElGamal algorithm.
@@ -17,7 +19,7 @@ import org.bouncycastle.bccrypto.params.ParametersWithRandom;import org.bouncyca
 public class ElGamalEngine
     implements AsymmetricBlockCipher
 {
-    private ElGamalKeyParameters key;
+    private ElGamalKeyParameters    key;
     private SecureRandom            random;
     private boolean                 forEncryption;
     private int                     bitSize;
@@ -34,11 +36,11 @@ public class ElGamalEngine
      */
     public void init(
         boolean             forEncryption,
-        CipherParameters param)
+        CipherParameters    param)
     {
         if (param instanceof ParametersWithRandom)
         {
-            ParametersWithRandom p = (ParametersWithRandom)param;
+            ParametersWithRandom    p = (ParametersWithRandom)param;
 
             this.key = (ElGamalKeyParameters)p.getParameters();
             this.random = p.getRandom();
@@ -46,7 +48,7 @@ public class ElGamalEngine
         else
         {
             this.key = (ElGamalKeyParameters)param;
-            this.random = BCCryptoServicesRegistrar.getSecureRandom();
+            this.random = CryptoServicesRegistrar.getSecureRandom();
         }
 
         this.forEncryption = forEncryption;
@@ -146,7 +148,7 @@ public class ElGamalEngine
             BigInteger  gamma = new BigInteger(1, in1);
             BigInteger  phi = new BigInteger(1, in2);
 
-            ElGamalPrivateKeyParameters priv = (ElGamalPrivateKeyParameters)key;
+            ElGamalPrivateKeyParameters  priv = (ElGamalPrivateKeyParameters)key;
             // a shortcut, which generally relies on p being prime amongst other things.
             // if a problem with this shows up, check the p and g values!
             BigInteger  m = gamma.modPow(p.subtract(ONE).subtract(priv.getX()), p).multiply(phi).mod(p);
@@ -174,7 +176,7 @@ public class ElGamalEngine
                 throw new DataLengthException("input too large for ElGamal cipher.\n");
             }
 
-            ElGamalPublicKeyParameters pub = (ElGamalPublicKeyParameters)key;
+            ElGamalPublicKeyParameters  pub = (ElGamalPublicKeyParameters)key;
 
             int                         pBitLength = p.bitLength();
             BigInteger                  k = BigIntegers.createRandomBigInteger(pBitLength, random);

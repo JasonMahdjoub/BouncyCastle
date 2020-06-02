@@ -2,7 +2,6 @@ package org.bouncycastle.bccrypto.engines;
 
 import java.math.BigInteger;
 import java.util.Vector;
-
 import org.bouncycastle.bcutil.Arrays;
 
 import org.bouncycastle.bccrypto.AsymmetricBlockCipher;
@@ -35,7 +34,7 @@ public class NaccacheSternEngine
      * Initializes this algorithm. Must be called before all other Functions.
      * 
      * @see org.bouncycastle.bccrypto.AsymmetricBlockCipher#init(boolean,
-     *      CipherParameters)
+     *      org.bouncycastle.bccrypto.CipherParameters)
      */
     public void init(boolean forEncryption, CipherParameters param)
     {

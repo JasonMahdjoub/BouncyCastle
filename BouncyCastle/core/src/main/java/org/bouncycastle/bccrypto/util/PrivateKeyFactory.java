@@ -31,8 +31,22 @@ import org.bouncycastle.bcasn1.x9.X962Parameters;
 import org.bouncycastle.bcasn1.x9.X9ECParameters;
 import org.bouncycastle.bcasn1.x9.X9ObjectIdentifiers;
 import org.bouncycastle.bccrypto.ec.CustomNamedCurves;
-import org.bouncycastle.bccrypto.params.*;
+import org.bouncycastle.bccrypto.params.AsymmetricKeyParameter;
+import org.bouncycastle.bccrypto.params.DHParameters;
+import org.bouncycastle.bccrypto.params.DHPrivateKeyParameters;
+import org.bouncycastle.bccrypto.params.DSAParameters;
+import org.bouncycastle.bccrypto.params.DSAPrivateKeyParameters;
+import org.bouncycastle.bccrypto.params.ECDomainParameters;
+import org.bouncycastle.bccrypto.params.ECGOST3410Parameters;
+import org.bouncycastle.bccrypto.params.ECNamedDomainParameters;
+import org.bouncycastle.bccrypto.params.ECPrivateKeyParameters;
+import org.bouncycastle.bccrypto.params.Ed25519PrivateKeyParameters;
+import org.bouncycastle.bccrypto.params.Ed448PrivateKeyParameters;
 import org.bouncycastle.bccrypto.params.ElGamalParameters;
+import org.bouncycastle.bccrypto.params.ElGamalPrivateKeyParameters;
+import org.bouncycastle.bccrypto.params.RSAPrivateCrtKeyParameters;
+import org.bouncycastle.bccrypto.params.X25519PrivateKeyParameters;
+import org.bouncycastle.bccrypto.params.X448PrivateKeyParameters;
 import org.bouncycastle.bcutil.Arrays;
 
 /**
@@ -193,15 +207,24 @@ public class PrivateKeyFactory
                     gostParams.getPublicKeyParamSet(),
                     gostParams.getDigestParamSet(),
                     gostParams.getEncryptionParamSet());
-                ASN1Encodable privKey = keyInfo.parsePrivateKey();
-                if (privKey instanceof ASN1Integer)
+                ASN1OctetString privEnc = keyInfo.getPrivateKey();
+
+                if (privEnc.getOctets().length == 32 || privEnc.getOctets().length == 64)
                 {
-                    d = ASN1Integer.getInstance(privKey).getPositiveValue();
+                    d = new BigInteger(1, Arrays.reverse(privEnc.getOctets()));
                 }
                 else
                 {
-                    byte[] dVal = Arrays.reverse(ASN1OctetString.getInstance(privKey).getOctets());
-                    d = new BigInteger(1, dVal);
+                    ASN1Encodable privKey = keyInfo.parsePrivateKey();
+                    if (privKey instanceof ASN1Integer)
+                    {
+                        d = ASN1Integer.getInstance(privKey).getPositiveValue();
+                    }
+                    else
+                    {
+                        byte[] dVal = Arrays.reverse(ASN1OctetString.getInstance(privKey).getOctets());
+                        d = new BigInteger(1, dVal);
+                    }
                 }
             }
             else
@@ -259,7 +282,7 @@ public class PrivateKeyFactory
                 }
                 else
                 {
-                    org.bouncycastle.bcasn1.sec.ECPrivateKey ec = org.bouncycastle.bcasn1.sec.ECPrivateKey.getInstance(privKey);
+                    ECPrivateKey ec = ECPrivateKey.getInstance(privKey);
 
                     d = ec.getKey();
                 }

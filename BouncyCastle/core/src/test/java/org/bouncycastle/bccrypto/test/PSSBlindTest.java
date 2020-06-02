@@ -1,15 +1,18 @@
 package org.bouncycastle.bccrypto.test;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.AsymmetricCipherKeyPair;
 import org.bouncycastle.bccrypto.digests.SHA1Digest;
 import org.bouncycastle.bccrypto.engines.RSABlindingEngine;
 import org.bouncycastle.bccrypto.engines.RSAEngine;
 import org.bouncycastle.bccrypto.generators.RSABlindingFactorGenerator;
 import org.bouncycastle.bccrypto.generators.RSAKeyPairGenerator;
-import org.bouncycastle.bccrypto.params.*;
+import org.bouncycastle.bccrypto.params.ParametersWithRandom;
 import org.bouncycastle.bccrypto.params.RSABlindingParameters;
+import org.bouncycastle.bccrypto.params.RSAKeyGenerationParameters;
+import org.bouncycastle.bccrypto.params.RSAKeyParameters;
+import org.bouncycastle.bccrypto.params.RSAPrivateCrtKeyParameters;
 import org.bouncycastle.bccrypto.signers.PSSSigner;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 import java.math.BigInteger;
@@ -217,8 +220,8 @@ public class PSSBlindTest
 
     private void testSig(
         int                 id,
-        RSAKeyParameters pub,
-        RSAKeyParameters prv,
+        RSAKeyParameters    pub,
+        RSAKeyParameters    prv,
         byte[]              slt,
         byte[]              msg,
         byte[]              sig)
@@ -269,8 +272,8 @@ public class PSSBlindTest
     }
 
     private boolean isProcessingOkay(
-        RSAKeyParameters pub,
-        RSAKeyParameters prv,
+        RSAKeyParameters    pub,
+        RSAKeyParameters    prv,
         byte[]              data,
         SecureRandom        random)
         throws Exception

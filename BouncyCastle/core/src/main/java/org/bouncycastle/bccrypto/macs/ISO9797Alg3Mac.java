@@ -1,6 +1,7 @@
 package org.bouncycastle.bccrypto.macs;
 
-import org.bouncycastle.bccrypto.CipherParameters;import org.bouncycastle.bccrypto.BlockCipher;
+import org.bouncycastle.bccrypto.BlockCipher;
+import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.Mac;
 import org.bouncycastle.bccrypto.engines.DESEngine;
 import org.bouncycastle.bccrypto.modes.CBCBlockCipher;

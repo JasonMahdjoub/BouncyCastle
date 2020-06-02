@@ -19,7 +19,7 @@ import javax.crypto.spec.RC2ParameterSpec;
 import javax.crypto.spec.RC5ParameterSpec;
 
 import org.bouncycastle.bccrypto.CipherParameters;
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.DataLengthException;
 import org.bouncycastle.bccrypto.StreamCipher;
 import org.bouncycastle.bccrypto.params.KeyParameter;
@@ -45,7 +45,7 @@ public class BaseStreamCipher
     private StreamCipher       cipher;
     private int keySizeInBits;
     private int digest;
-    private ParametersWithIV ivParam;
+    private ParametersWithIV   ivParam;
 
     private int                     ivLength = 0;
 
@@ -189,7 +189,7 @@ public class BaseStreamCipher
         SecureRandom            random)
         throws InvalidKeyException, InvalidAlgorithmParameterException
     {
-        CipherParameters param;
+        CipherParameters        param;
 
         this.pbeSpec = null;
         this.pbeAlgorithm = null;
@@ -272,7 +272,7 @@ public class BaseStreamCipher
 
             if (ivRandom == null)
             {
-                ivRandom = BCCryptoServicesRegistrar.getSecureRandom();
+                ivRandom = CryptoServicesRegistrar.getSecureRandom();
             }
 
             if ((opmode == Cipher.ENCRYPT_MODE) || (opmode == Cipher.WRAP_MODE))

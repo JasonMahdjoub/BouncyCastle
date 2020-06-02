@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.cms.test.NewSignedDataStreamTest" tests="42" skipped="0" failures="0" errors="0" timestamp="2020-02-14T17:20:18" hostname="Garage" time="0.439">
+<testsuite name="org.bouncycastle.cms.test.NewSignedDataStreamTest" tests="42" skipped="0" failures="0" errors="0" timestamp="2020-06-02T09:05:14" hostname="Garage" time="0.405">
   <properties/>
   <testcase name="testEncapsulatedCertStoreReplacement" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.005"/>
   <testcase name="testSHA1WithRSAAndOtherRevocation" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.001"/>
-  <testcase name="testSHA1WithRSA" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.002"/>
-  <testcase name="testSHA1WithRSAEncapsulated" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.001"/>
-  <testcase name="testAttributeGenerators" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.002"/>
+  <testcase name="testSHA1WithRSA" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.001"/>
+  <testcase name="testSHA1WithRSAEncapsulated" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.002"/>
+  <testcase name="testAttributeGenerators" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.001"/>
   <testcase name="testWithAttributeCertificate" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.0"/>
-  <testcase name="testCertsOnly" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.001"/>
-  <testcase name="testCertStoreReplacement" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.001"/>
-  <testcase name="testSHA1WithRSAEncapsulatedBufferedStream" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.003"/>
+  <testcase name="testCertsOnly" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.0"/>
+  <testcase name="testCertStoreReplacement" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.002"/>
+  <testcase name="testSHA1WithRSAEncapsulatedBufferedStream" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.002"/>
   <testcase name="testMSPKCS7" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.001"/>
-  <testcase name="testSha1EncapsulatedSignature" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.0"/>
+  <testcase name="testSha1EncapsulatedSignature" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.001"/>
   <testcase name="testCertOrdering1" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.001"/>
-  <testcase name="testCertOrdering2" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.001"/>
+  <testcase name="testCertOrdering2" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.0"/>
   <testcase name="testSignerStoreReplacement" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.002"/>
   <testcase name="testSHA1WithRSANonData" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.001"/>
   <testcase name="testSHA1WithRSAEncapsulatedBuffered" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.002"/>
-  <testcase name="testEncapsulatedSignerStoreReplacement" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.001"/>
+  <testcase name="testEncapsulatedSignerStoreReplacement" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.002"/>
   <testcase name="testSHA1AndMD5WithRSA" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.002"/>
   <testcase name="testDSANoAttributes" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.001"/>
   <testcase name="testSHA1WithRSAEncapsulatedSubjectKeyID" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.001"/>
@@ -27,20 +27,20 @@
   <testcase name="testSHA1WithRSA" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.001"/>
   <testcase name="testSHA1WithRSAEncapsulated" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.001"/>
   <testcase name="testAttributeGenerators" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.001"/>
-  <testcase name="testWithAttributeCertificate" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.0"/>
-  <testcase name="testCertsOnly" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.001"/>
+  <testcase name="testWithAttributeCertificate" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.001"/>
+  <testcase name="testCertsOnly" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.0"/>
   <testcase name="testCertStoreReplacement" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.001"/>
-  <testcase name="testSHA1WithRSAEncapsulatedBufferedStream" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.001"/>
+  <testcase name="testSHA1WithRSAEncapsulatedBufferedStream" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.002"/>
   <testcase name="testMSPKCS7" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.001"/>
   <testcase name="testSha1EncapsulatedSignature" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.0"/>
   <testcase name="testCertOrdering1" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.001"/>
-  <testcase name="testCertOrdering2" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.001"/>
-  <testcase name="testSignerStoreReplacement" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.001"/>
+  <testcase name="testCertOrdering2" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.0"/>
+  <testcase name="testSignerStoreReplacement" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.002"/>
   <testcase name="testSHA1WithRSANonData" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.001"/>
   <testcase name="testSHA1WithRSAEncapsulatedBuffered" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.002"/>
   <testcase name="testEncapsulatedSignerStoreReplacement" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.001"/>
   <testcase name="testSHA1AndMD5WithRSA" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.002"/>
-  <testcase name="testDSANoAttributes" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.001"/>
+  <testcase name="testDSANoAttributes" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.0"/>
   <testcase name="testSHA1WithRSAEncapsulatedSubjectKeyID" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.001"/>
   <testcase name="testSHA1WithRSANoAttributes" classname="org.bouncycastle.cms.test.NewSignedDataStreamTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>

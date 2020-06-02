@@ -11,8 +11,8 @@ import org.bouncycastle.bcjcajce.spec.OpenSSHPrivateKeySpec;
 import org.bouncycastle.bcjcajce.spec.OpenSSHPublicKeySpec;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.bcutil.Arrays;
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.encoders.Base64;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.io.pem.PemReader;
 import org.bouncycastle.bcutil.test.SimpleTest;
 

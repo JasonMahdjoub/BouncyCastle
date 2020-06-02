@@ -2,8 +2,11 @@ package org.bouncycastle.bccrypto.engines;
 
 import java.security.SecureRandom;
 
-import org.bouncycastle.bccrypto.*;
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.CipherParameters;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.Digest;
+import org.bouncycastle.bccrypto.InvalidCipherTextException;
+import org.bouncycastle.bccrypto.Wrapper;
 import org.bouncycastle.bccrypto.modes.CBCBlockCipher;
 import org.bouncycastle.bccrypto.params.ParametersWithIV;
 import org.bouncycastle.bccrypto.params.ParametersWithRandom;
@@ -63,7 +66,7 @@ public class RC2WrapEngine
         }
         else
         {
-            sr = BCCryptoServicesRegistrar.getSecureRandom();
+            sr = CryptoServicesRegistrar.getSecureRandom();
         }
         
         if (param instanceof ParametersWithIV)

@@ -12,8 +12,8 @@ public class ECDHUPublicParameters
     private ECPublicKeyParameters ephemeralPublicKey;
 
     public ECDHUPublicParameters(
-        ECPublicKeyParameters staticPublicKey,
-        ECPublicKeyParameters ephemeralPublicKey)
+        ECPublicKeyParameters   staticPublicKey,
+        ECPublicKeyParameters   ephemeralPublicKey)
     {
         if (staticPublicKey == null)
         {

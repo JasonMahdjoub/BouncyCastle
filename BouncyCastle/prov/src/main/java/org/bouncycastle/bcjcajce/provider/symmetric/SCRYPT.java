@@ -5,7 +5,7 @@ import java.security.spec.KeySpec;
 
 import javax.crypto.SecretKey;
 
-import org.bouncycastle.bcasn1.misc.BCMiscObjectIdentifiers;
+import org.bouncycastle.bcasn1.misc.MiscObjectIdentifiers;
 import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.PasswordConverter;
 import org.bouncycastle.bccrypto.generators.SCrypt;
@@ -30,7 +30,7 @@ public class SCRYPT
 
         public BasePBKDF2(String name, int scheme)
         {
-            super(name, BCMiscObjectIdentifiers.id_scrypt);
+            super(name, MiscObjectIdentifiers.id_scrypt);
 
             this.scheme = scheme;
         }
@@ -68,7 +68,7 @@ public class SCRYPT
                         pbeSpec.getCostParameter(), pbeSpec.getBlockSize(), pbeSpec.getParallelizationParameter(),
                         pbeSpec.getKeyLength() / 8));
 
-                return new BCPBEKey(this.algName, pbeSpec, param);
+                return new BCPBEKey(this.algName, param);
             }
 
             throw new InvalidKeySpecException("Invalid KeySpec");
@@ -96,7 +96,7 @@ public class SCRYPT
         public void configure(ConfigurableProvider provider)
         {
             provider.addAlgorithm("SecretKeyFactory.SCRYPT", PREFIX + "$ScryptWithUTF8");
-            provider.addAlgorithm("SecretKeyFactory", BCMiscObjectIdentifiers.id_scrypt, PREFIX + "$ScryptWithUTF8");
+            provider.addAlgorithm("SecretKeyFactory", MiscObjectIdentifiers.id_scrypt, PREFIX + "$ScryptWithUTF8");
         }
     }
 }

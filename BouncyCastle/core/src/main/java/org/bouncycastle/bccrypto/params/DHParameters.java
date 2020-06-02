@@ -167,7 +167,7 @@ public class DHParameters
             return false;
         }
 
-        DHParameters pm = (DHParameters)obj;
+        DHParameters    pm = (DHParameters)obj;
 
         if (this.getQ() != null)
         {

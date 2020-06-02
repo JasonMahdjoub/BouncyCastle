@@ -9,10 +9,10 @@ import java.security.spec.InvalidParameterSpecException;
 
 import javax.crypto.spec.IvParameterSpec;
 
-import org.bouncycastle.bcasn1.misc.BCMiscObjectIdentifiers;
 import org.bouncycastle.bcasn1.misc.IDEACBCPar;
+import org.bouncycastle.bcasn1.misc.MiscObjectIdentifiers;
 import org.bouncycastle.bccrypto.CipherKeyGenerator;
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.engines.IDEAEngine;
 import org.bouncycastle.bccrypto.macs.CBCBlockCipherMac;
 import org.bouncycastle.bccrypto.macs.CFBBlockCipherMac;
@@ -94,7 +94,7 @@ public final class IDEA
 
             if (random == null)
             {
-                random = BCCryptoServicesRegistrar.getSecureRandom();
+                random = CryptoServicesRegistrar.getSecureRandom();
             }
 
             random.nextBytes(iv);
@@ -242,10 +242,10 @@ public final class IDEA
             provider.addAlgorithm("Alg.Alias.AlgorithmParameters.PBEWITHSHAANDIDEA", "PKCS12PBE");
             provider.addAlgorithm("Alg.Alias.AlgorithmParameters.PBEWITHSHAANDIDEA-CBC", "PKCS12PBE");
             provider.addAlgorithm("Cipher.IDEA", PREFIX + "$ECB");
-            provider.addAlgorithm("Cipher", BCMiscObjectIdentifiers.as_sys_sec_alg_ideaCBC, PREFIX + "$CBC");
+            provider.addAlgorithm("Cipher", MiscObjectIdentifiers.as_sys_sec_alg_ideaCBC, PREFIX + "$CBC");
             provider.addAlgorithm("Cipher.PBEWITHSHAANDIDEA-CBC", PREFIX + "$PBEWithSHAAndIDEA");
             provider.addAlgorithm("KeyGenerator.IDEA", PREFIX + "$KeyGen");
-            provider.addAlgorithm("KeyGenerator",  BCMiscObjectIdentifiers.as_sys_sec_alg_ideaCBC, PREFIX + "$KeyGen");
+            provider.addAlgorithm("KeyGenerator",  MiscObjectIdentifiers.as_sys_sec_alg_ideaCBC, PREFIX + "$KeyGen");
             provider.addAlgorithm("SecretKeyFactory.PBEWITHSHAANDIDEA-CBC", PREFIX + "$PBEWithSHAAndIDEAKeyGen");
             provider.addAlgorithm("Mac.IDEAMAC", PREFIX + "$Mac");
             provider.addAlgorithm("Alg.Alias.Mac.IDEA", "IDEAMAC");

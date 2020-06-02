@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.bccrypto.agreement.test.JPAKEUtilTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2020-02-14T17:19:34" hostname="Garage" time="0.006">
+<testsuite name="org.bouncycastle.bccrypto.agreement.test.JPAKEUtilTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2020-06-02T09:04:28" hostname="Garage" time="0.008">
   <properties/>
   <testcase name="testValidateNotNull" classname="org.bouncycastle.bccrypto.agreement.test.JPAKEUtilTest" time="0.0"/>
   <testcase name="testValidateGx4" classname="org.bouncycastle.bccrypto.agreement.test.JPAKEUtilTest" time="0.0"/>
-  <testcase name="testValidateMacTag" classname="org.bouncycastle.bccrypto.agreement.test.JPAKEUtilTest" time="0.001"/>
+  <testcase name="testValidateMacTag" classname="org.bouncycastle.bccrypto.agreement.test.JPAKEUtilTest" time="0.002"/>
   <testcase name="testValidateGa" classname="org.bouncycastle.bccrypto.agreement.test.JPAKEUtilTest" time="0.0"/>
-  <testcase name="testValidateZeroKnowledgeProof" classname="org.bouncycastle.bccrypto.agreement.test.JPAKEUtilTest" time="0.004"/>
+  <testcase name="testValidateZeroKnowledgeProof" classname="org.bouncycastle.bccrypto.agreement.test.JPAKEUtilTest" time="0.006"/>
   <testcase name="testValidateParticipantIdsDiffer" classname="org.bouncycastle.bccrypto.agreement.test.JPAKEUtilTest" time="0.0"/>
   <testcase name="testValidateParticipantIdsEqual" classname="org.bouncycastle.bccrypto.agreement.test.JPAKEUtilTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>

@@ -3,7 +3,6 @@ package org.bouncycastle.bccrypto.test;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.AsymmetricBlockCipher;
 import org.bouncycastle.bccrypto.Digest;
 import org.bouncycastle.bccrypto.digests.RIPEMD128Digest;
@@ -20,6 +19,7 @@ import org.bouncycastle.bccrypto.signers.ISO9796d2PSSSigner;
 import org.bouncycastle.bccrypto.signers.ISO9796d2Signer;
 import org.bouncycastle.bcutil.Arrays;
 import org.bouncycastle.bcutil.encoders.Base64;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**

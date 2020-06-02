@@ -3,7 +3,6 @@ package org.bouncycastle.bccrypto.test;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.CryptoException;
 import org.bouncycastle.bccrypto.agreement.srp.SRP6Client;
 import org.bouncycastle.bccrypto.agreement.srp.SRP6Server;
@@ -15,6 +14,7 @@ import org.bouncycastle.bccrypto.digests.SHA256Digest;
 import org.bouncycastle.bccrypto.generators.DHParametersGenerator;
 import org.bouncycastle.bccrypto.params.DHParameters;
 import org.bouncycastle.bccrypto.params.SRP6GroupParameters;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class SRP6Test extends SimpleTest

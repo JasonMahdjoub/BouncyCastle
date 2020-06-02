@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bcutil.Arrays;
 
 /**
@@ -83,7 +83,7 @@ public class BigIntPolynomial
         {
             coeffs.add(Constants.BIGINT_ZERO);
         }
-        Collections.shuffle(coeffs, BCCryptoServicesRegistrar.getSecureRandom());
+        Collections.shuffle(coeffs, CryptoServicesRegistrar.getSecureRandom());
 
         BigIntPolynomial poly = new BigIntPolynomial(N);
         for (int i = 0; i < coeffs.size(); i++)

@@ -2,7 +2,7 @@ package org.bouncycastle.pqc.math.linearalgebra;
 
 import java.security.SecureRandom;
 
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 
 /**
  * This class describes operations with elements from the finite field F =
@@ -235,7 +235,7 @@ public class GF2mField
      */
     public int getRandomNonZeroElement()
     {
-        return getRandomNonZeroElement(BCCryptoServicesRegistrar.getSecureRandom());
+        return getRandomNonZeroElement(CryptoServicesRegistrar.getSecureRandom());
     }
 
     /**

@@ -8,11 +8,13 @@ import java.security.spec.AlgorithmParameterSpec;
 import javax.crypto.spec.DHParameterSpec;
 
 import org.bouncycastle.bccrypto.AsymmetricCipherKeyPair;
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.generators.ElGamalKeyPairGenerator;
 import org.bouncycastle.bccrypto.generators.ElGamalParametersGenerator;
-import org.bouncycastle.bccrypto.params.*;
-import org.bouncycastle.bccrypto.params.ElGamalPrivateKeyParameters;import org.bouncycastle.bccrypto.params.ElGamalPublicKeyParameters;
+import org.bouncycastle.bccrypto.params.ElGamalKeyGenerationParameters;
+import org.bouncycastle.bccrypto.params.ElGamalParameters;
+import org.bouncycastle.bccrypto.params.ElGamalPrivateKeyParameters;
+import org.bouncycastle.bccrypto.params.ElGamalPublicKeyParameters;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.jce.spec.ElGamalParameterSpec;
 
@@ -23,7 +25,7 @@ public class KeyPairGeneratorSpi
     ElGamalKeyPairGenerator engine = new ElGamalKeyPairGenerator();
     int strength = 1024;
     int certainty = 20;
-    SecureRandom random = BCCryptoServicesRegistrar.getSecureRandom();
+    SecureRandom random = CryptoServicesRegistrar.getSecureRandom();
     boolean initialised = false;
 
     public KeyPairGeneratorSpi()

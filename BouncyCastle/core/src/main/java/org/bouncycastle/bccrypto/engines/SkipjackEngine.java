@@ -1,7 +1,7 @@
 package org.bouncycastle.bccrypto.engines;
 
-import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.BlockCipher;
+import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.DataLengthException;
 import org.bouncycastle.bccrypto.OutputLengthException;
 import org.bouncycastle.bccrypto.params.KeyParameter;
@@ -47,7 +47,7 @@ public class SkipjackEngine
      */
     public void init(
         boolean           encrypting,
-        CipherParameters params)
+        CipherParameters  params)
     {
         if (!(params instanceof KeyParameter))
         {

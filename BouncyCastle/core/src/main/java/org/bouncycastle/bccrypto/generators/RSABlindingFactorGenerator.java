@@ -4,7 +4,7 @@ import java.math.BigInteger;
 import java.security.SecureRandom;
 
 import org.bouncycastle.bccrypto.CipherParameters;
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.params.ParametersWithRandom;
 import org.bouncycastle.bccrypto.params.RSAKeyParameters;
 import org.bouncycastle.bccrypto.params.RSAPrivateCrtKeyParameters;
@@ -41,7 +41,7 @@ public class RSABlindingFactorGenerator
         else
         {
             key = (RSAKeyParameters)param;
-            random = BCCryptoServicesRegistrar.getSecureRandom();
+            random = CryptoServicesRegistrar.getSecureRandom();
         }
 
         if (key instanceof RSAPrivateCrtKeyParameters)

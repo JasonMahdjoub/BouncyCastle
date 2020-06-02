@@ -8,7 +8,6 @@ import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 import org.bouncycastle.bcasn1.x9.X9ECParameters;
 import org.bouncycastle.bcasn1.x9.X9ECParametersHolder;
 import org.bouncycastle.bcasn1.x9.X9ECPoint;
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcmath.ec.ECConstants;
 import org.bouncycastle.bcmath.ec.ECCurve;
 import org.bouncycastle.bcmath.ec.WNafUtil;
@@ -16,6 +15,7 @@ import org.bouncycastle.bcmath.ec.endo.GLVTypeBEndomorphism;
 import org.bouncycastle.bcmath.ec.endo.GLVTypeBParameters;
 import org.bouncycastle.bcmath.ec.endo.ScalarSplitParameters;
 import org.bouncycastle.bcutil.Strings;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 public class SECNamedCurves
 {

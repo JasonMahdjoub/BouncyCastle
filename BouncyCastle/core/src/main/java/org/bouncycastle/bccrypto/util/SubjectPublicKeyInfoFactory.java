@@ -23,8 +23,18 @@ import org.bouncycastle.bcasn1.x9.X962Parameters;
 import org.bouncycastle.bcasn1.x9.X9ECParameters;
 import org.bouncycastle.bcasn1.x9.X9ECPoint;
 import org.bouncycastle.bcasn1.x9.X9ObjectIdentifiers;
-import org.bouncycastle.bccrypto.params.*;
+import org.bouncycastle.bccrypto.params.AsymmetricKeyParameter;
 import org.bouncycastle.bccrypto.params.DSAParameters;
+import org.bouncycastle.bccrypto.params.DSAPublicKeyParameters;
+import org.bouncycastle.bccrypto.params.ECDomainParameters;
+import org.bouncycastle.bccrypto.params.ECGOST3410Parameters;
+import org.bouncycastle.bccrypto.params.ECNamedDomainParameters;
+import org.bouncycastle.bccrypto.params.ECPublicKeyParameters;
+import org.bouncycastle.bccrypto.params.Ed25519PublicKeyParameters;
+import org.bouncycastle.bccrypto.params.Ed448PublicKeyParameters;
+import org.bouncycastle.bccrypto.params.RSAKeyParameters;
+import org.bouncycastle.bccrypto.params.X25519PublicKeyParameters;
+import org.bouncycastle.bccrypto.params.X448PublicKeyParameters;
 
 /**
  * Factory to create ASN.1 subject public key info objects from lightweight public keys.

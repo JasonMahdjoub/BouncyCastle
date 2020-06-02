@@ -1,11 +1,9 @@
 package org.bouncycastle.tls.crypto.impl.bc;
 
 import java.io.IOException;
-import java.io.OutputStream;
 
 import org.bouncycastle.bccrypto.Digest;
 import org.bouncycastle.bccrypto.engines.RSAEngine;
-import org.bouncycastle.bccrypto.io.SignerOutputStream;
 import org.bouncycastle.bccrypto.params.RSAKeyParameters;
 import org.bouncycastle.bccrypto.signers.PSSSigner;
 import org.bouncycastle.tls.DigitallySigned;
@@ -52,23 +50,9 @@ public class BcTlsRSAPSSVerifier
         short hash = SignatureAlgorithm.getRSAPSSHashAlgorithm(signatureAlgorithm);
         Digest digest = crypto.createDigest(hash);
 
-        PSSSigner signer = new PSSSigner(new RSAEngine(), digest, digest.getDigestSize());
-        signer.init(false, publicKey);
+        PSSSigner verifier = new PSSSigner(new RSAEngine(), digest, digest.getDigestSize());
+        verifier.init(false, publicKey);
 
-        final byte[] sig = signature.getSignature();
-        final SignerOutputStream sigOut = new SignerOutputStream(signer);
-
-        return new TlsStreamVerifier()
-        {
-            public OutputStream getOutputStream()
-            {
-                return sigOut;
-            }
-
-            public boolean isVerified() throws IOException
-            {
-                return sigOut.getSigner().verifySignature(sig);
-            }
-        };
+        return new BcTlsStreamVerifier(verifier, signature.getSignature());
     }
 }

@@ -14,7 +14,7 @@ import org.bouncycastle.bccrypto.params.DHPublicKeyParameters;
 
 /**
  * utility class for converting jce/jca DH objects
- * objects into their org.bouncycastle.crypto counterparts.
+ * objects into their org.bouncycastle.bccrypto counterparts.
  */
 public class DHUtil
 {

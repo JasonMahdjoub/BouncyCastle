@@ -19,7 +19,7 @@ public interface PGPDigestCalculator
 
     /**
      * Returns a stream that will accept data for the purpose of calculating a digest. Use
-     * org.bouncycastle.util.io.TeeOutputStream if you want to accumulate the data on the fly as
+     * org.bouncycastle.bcutil.io.TeeOutputStream if you want to accumulate the data on the fly as
      * well.
      * 
      * @return an OutputStream that data to be digested can be written to.

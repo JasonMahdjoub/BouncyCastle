@@ -7,10 +7,11 @@ import java.security.spec.AlgorithmParameterSpec;
 
 import org.bouncycastle.bcasn1.cryptopro.CryptoProObjectIdentifiers;
 import org.bouncycastle.bccrypto.AsymmetricCipherKeyPair;
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.generators.GOST3410KeyPairGenerator;
-import org.bouncycastle.bccrypto.params.*;
+import org.bouncycastle.bccrypto.params.GOST3410KeyGenerationParameters;
 import org.bouncycastle.bccrypto.params.GOST3410Parameters;
+import org.bouncycastle.bccrypto.params.GOST3410PrivateKeyParameters;
 import org.bouncycastle.bccrypto.params.GOST3410PublicKeyParameters;
 import org.bouncycastle.jce.spec.GOST3410ParameterSpec;
 import org.bouncycastle.jce.spec.GOST3410PublicKeyParameterSetSpec;
@@ -69,7 +70,7 @@ public class KeyPairGeneratorSpi
     {
         if (!initialised)
         {
-            init(new GOST3410ParameterSpec(CryptoProObjectIdentifiers.gostR3410_94_CryptoPro_A.getId()), BCCryptoServicesRegistrar.getSecureRandom());
+            init(new GOST3410ParameterSpec(CryptoProObjectIdentifiers.gostR3410_94_CryptoPro_A.getId()), CryptoServicesRegistrar.getSecureRandom());
         }
 
         AsymmetricCipherKeyPair pair = engine.generateKeyPair();

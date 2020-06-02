@@ -6,8 +6,9 @@ import java.security.SecureRandom;
 import org.bouncycastle.bccrypto.AsymmetricCipherKeyPair;
 import org.bouncycastle.bccrypto.AsymmetricCipherKeyPairGenerator;
 import org.bouncycastle.bccrypto.KeyGenerationParameters;
-import org.bouncycastle.bccrypto.params.*;
+import org.bouncycastle.bccrypto.params.CramerShoupKeyGenerationParameters;
 import org.bouncycastle.bccrypto.params.CramerShoupParameters;
+import org.bouncycastle.bccrypto.params.CramerShoupPrivateKeyParameters;
 import org.bouncycastle.bccrypto.params.CramerShoupPublicKeyParameters;
 import org.bouncycastle.bcutil.BigIntegers;
 

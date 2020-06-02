@@ -14,7 +14,7 @@ import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 import org.bouncycastle.bcasn1.cryptopro.CryptoProObjectIdentifiers;
 import org.bouncycastle.bcasn1.gnu.GNUObjectIdentifiers;
 import org.bouncycastle.bcasn1.kisa.KISAObjectIdentifiers;
-import org.bouncycastle.bcasn1.misc.BCMiscObjectIdentifiers;
+import org.bouncycastle.bcasn1.misc.MiscObjectIdentifiers;
 import org.bouncycastle.bcasn1.nist.NISTObjectIdentifiers;
 import org.bouncycastle.bcasn1.ntt.NTTObjectIdentifiers;
 import org.bouncycastle.bcasn1.oiw.OIWObjectIdentifiers;
@@ -95,12 +95,12 @@ public abstract class BaseAgreementSpi
         defaultOids.put("SEED", KISAObjectIdentifiers.id_seedCBC);
         defaultOids.put("DES", OIWObjectIdentifiers.desCBC);
 
-        nameTable.put(BCMiscObjectIdentifiers.cast5CBC.getId(), "CAST5");
-        nameTable.put(BCMiscObjectIdentifiers.as_sys_sec_alg_ideaCBC.getId(), "IDEA");
-        nameTable.put(BCMiscObjectIdentifiers.cryptlib_algorithm_blowfish_ECB.getId(), "Blowfish");
-        nameTable.put(BCMiscObjectIdentifiers.cryptlib_algorithm_blowfish_CBC.getId(), "Blowfish");
-        nameTable.put(BCMiscObjectIdentifiers.cryptlib_algorithm_blowfish_CFB.getId(), "Blowfish");
-        nameTable.put(BCMiscObjectIdentifiers.cryptlib_algorithm_blowfish_OFB.getId(), "Blowfish");
+        nameTable.put(MiscObjectIdentifiers.cast5CBC.getId(), "CAST5");
+        nameTable.put(MiscObjectIdentifiers.as_sys_sec_alg_ideaCBC.getId(), "IDEA");
+        nameTable.put(MiscObjectIdentifiers.cryptlib_algorithm_blowfish_ECB.getId(), "Blowfish");
+        nameTable.put(MiscObjectIdentifiers.cryptlib_algorithm_blowfish_CBC.getId(), "Blowfish");
+        nameTable.put(MiscObjectIdentifiers.cryptlib_algorithm_blowfish_CFB.getId(), "Blowfish");
+        nameTable.put(MiscObjectIdentifiers.cryptlib_algorithm_blowfish_OFB.getId(), "Blowfish");
         nameTable.put(OIWObjectIdentifiers.desECB.getId(), "DES");
         nameTable.put(OIWObjectIdentifiers.desCBC.getId(), "DES");
         nameTable.put(OIWObjectIdentifiers.desCFB.getId(), "DES");

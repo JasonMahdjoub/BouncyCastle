@@ -18,7 +18,10 @@ import org.bouncycastle.bcasn1.x9.ECNamedCurveTable;
 import org.bouncycastle.bcasn1.x9.X962Parameters;
 import org.bouncycastle.bcasn1.x9.X9ECParameters;
 import org.bouncycastle.bccrypto.ec.CustomNamedCurves;
-import org.bouncycastle.bccrypto.params.*;
+import org.bouncycastle.bccrypto.params.AsymmetricKeyParameter;
+import org.bouncycastle.bccrypto.params.ECDomainParameters;
+import org.bouncycastle.bccrypto.params.ECNamedDomainParameters;
+import org.bouncycastle.bccrypto.params.ECPrivateKeyParameters;
 import org.bouncycastle.bccrypto.params.ECPublicKeyParameters;
 import org.bouncycastle.bcjcajce.provider.config.ProviderConfiguration;
 import org.bouncycastle.jce.interfaces.ECPrivateKey;
@@ -35,7 +38,7 @@ import org.bouncycastle.bcutil.Strings;
 
 /**
  * utility class for converting jce/jca ECDSA, ECDH, and ECDHC
- * objects into their org.bouncycastle.crypto counterparts.
+ * objects into their org.bouncycastle.bccrypto counterparts.
  */
 public class ECUtil
 {

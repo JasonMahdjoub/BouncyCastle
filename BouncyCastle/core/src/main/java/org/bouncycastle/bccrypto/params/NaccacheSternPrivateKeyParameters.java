@@ -9,7 +9,7 @@ import java.util.Vector;
  * 
  * http://www.gemplus.com/smart/rd/publications/pdf/NS98pkcs.pdf
  */
-public class NaccacheSternPrivateKeyParameters extends NaccacheSternKeyParameters
+public class NaccacheSternPrivateKeyParameters extends NaccacheSternKeyParameters 
 {
     private BigInteger phi_n;
     private Vector     smallPrimes;
@@ -30,8 +30,8 @@ public class NaccacheSternPrivateKeyParameters extends NaccacheSternKeyParameter
      *            the private modulus phi(n) = (p-1)(q-1)
      */
     public NaccacheSternPrivateKeyParameters(BigInteger g, BigInteger n,
-                                             int lowerSigmaBound, Vector smallPrimes,
-                                             BigInteger phi_n)
+            int lowerSigmaBound, Vector smallPrimes,
+            BigInteger phi_n)
     {
         super(true, g, n, lowerSigmaBound);
         this.smallPrimes = smallPrimes;

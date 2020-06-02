@@ -5,8 +5,8 @@ import java.security.PrivilegedAction;
 import java.security.SecureRandom;
 
 import org.bouncycastle.bccrypto.AsymmetricBlockCipher;
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.CipherParameters;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.InvalidCipherTextException;
 import org.bouncycastle.bccrypto.params.AsymmetricKeyParameter;
 import org.bouncycastle.bccrypto.params.ParametersWithRandom;
@@ -142,7 +142,7 @@ public class PKCS1Encoding
             kParam = (AsymmetricKeyParameter)param;
             if (!kParam.isPrivate() && forEncryption)
             {
-                this.random = BCCryptoServicesRegistrar.getSecureRandom();
+                this.random = CryptoServicesRegistrar.getSecureRandom();
             }
         }
 

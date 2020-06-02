@@ -2,8 +2,8 @@ package org.bouncycastle.bccrypto.prng;
 
 import java.security.SecureRandom;
 
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.BlockCipher;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.Digest;
 import org.bouncycastle.bccrypto.Mac;
 import org.bouncycastle.bccrypto.prng.drbg.CTRSP800DRBG;
@@ -34,7 +34,7 @@ public class SP800SecureRandomBuilder
      */
     public SP800SecureRandomBuilder()
     {
-        this(BCCryptoServicesRegistrar.getSecureRandom(), false);
+        this(CryptoServicesRegistrar.getSecureRandom(), false);
     }
 
     /**

@@ -6,12 +6,12 @@ import java.io.IOException;
 
 import org.bouncycastle.bcpg.ArmoredInputStream;
 import org.bouncycastle.bcpg.ArmoredOutputStream;
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.openpgp.PGPUtil;
 import org.bouncycastle.openpgp.jcajce.JcaPGPObjectFactory;
 import org.bouncycastle.bcutil.Arrays;
 import org.bouncycastle.bcutil.Strings;
 import org.bouncycastle.bcutil.encoders.Base64;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class PGPArmoredTest
@@ -126,6 +126,36 @@ public class PGPArmoredTest
         {
             fail("Incorrect message retrieved in blank line test.");
         }
+    }
+
+    private void repeatHeaderTest()
+        throws Exception
+    {
+        ByteArrayOutputStream bOut = new ByteArrayOutputStream();
+        ArmoredOutputStream aOut = new ArmoredOutputStream(bOut);
+
+        aOut.setHeader("Comment", "Line 1");
+        aOut.addHeader("Comment", "Line 2");
+
+        aOut.write(sample);
+
+        aOut.close();
+
+        ByteArrayInputStream bIn = new ByteArrayInputStream(bOut.toByteArray());
+        ArmoredInputStream aIn = new ArmoredInputStream(bIn, true);
+
+        String[] hdrs = aIn.getArmorHeaders();
+        int count = 0;
+
+        for (int i = 0; i != hdrs.length; i++)
+        {
+            if (hdrs[i].indexOf("Comment: ") == 0)
+            {
+                count++;
+            }
+        }
+
+        isEquals(2, count);
     }
 
     public void performTest()
@@ -261,6 +291,7 @@ public class PGPArmoredTest
 
         blankLineTest();
         pgpUtilTest();
+        repeatHeaderTest();
     }
 
     public String getName()

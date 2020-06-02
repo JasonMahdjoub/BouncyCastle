@@ -2,7 +2,6 @@ package org.bouncycastle.bccrypto.test;
 
 import java.security.SecureRandom;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.AsymmetricCipherKeyPair;
 import org.bouncycastle.bccrypto.Signer;
 import org.bouncycastle.bccrypto.generators.Ed25519KeyPairGenerator;
@@ -14,6 +13,7 @@ import org.bouncycastle.bccrypto.signers.Ed25519ctxSigner;
 import org.bouncycastle.bccrypto.signers.Ed25519phSigner;
 import org.bouncycastle.bcmath.ec.rfc8032.Ed25519;
 import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class Ed25519Test
@@ -59,7 +59,7 @@ public class Ed25519Test
 
         signer.init(true, privateKey);
 
-        areEqual(sig, signer.generateSignature());
+        isTrue(areEqual(sig, signer.generateSignature()));
 
         signer.init(false, publicKey);
 

@@ -1,11 +1,11 @@
 package org.bouncycastle.bccrypto.test;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.engines.RC532Engine;
 import org.bouncycastle.bccrypto.engines.RC564Engine;
 import org.bouncycastle.bccrypto.modes.CBCBlockCipher;
 import org.bouncycastle.bccrypto.params.ParametersWithIV;
 import org.bouncycastle.bccrypto.params.RC5Parameters;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTestResult;
 import org.bouncycastle.bcutil.test.Test;
 import org.bouncycastle.bcutil.test.TestResult;

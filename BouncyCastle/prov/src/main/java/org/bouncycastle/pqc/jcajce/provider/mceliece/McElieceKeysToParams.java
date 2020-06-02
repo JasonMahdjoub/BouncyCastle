@@ -9,7 +9,7 @@ import org.bouncycastle.pqc.crypto.mceliece.McEliecePrivateKeyParameters;
 
 /**
  * utility class for converting jce/jca McEliece objects
- * objects into their org.bouncycastle.crypto counterparts.
+ * objects into their org.bouncycastle.bccrypto counterparts.
  */
 public class McElieceKeysToParams
 {

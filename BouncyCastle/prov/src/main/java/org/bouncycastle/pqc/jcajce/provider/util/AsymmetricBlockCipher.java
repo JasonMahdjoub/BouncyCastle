@@ -12,7 +12,7 @@ import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.ShortBufferException;
 
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 
 
 /**
@@ -147,7 +147,7 @@ public abstract class AsymmetricBlockCipher
     {
         try
         {
-            initEncrypt(key, null, BCCryptoServicesRegistrar.getSecureRandom());
+            initEncrypt(key, null, CryptoServicesRegistrar.getSecureRandom());
         }
         catch (InvalidAlgorithmParameterException e)
         {
@@ -204,7 +204,7 @@ public abstract class AsymmetricBlockCipher
     public final void initEncrypt(Key key, AlgorithmParameterSpec params)
         throws InvalidKeyException, InvalidAlgorithmParameterException
     {
-        initEncrypt(key, params, BCCryptoServicesRegistrar.getSecureRandom());
+        initEncrypt(key, params, CryptoServicesRegistrar.getSecureRandom());
     }
 
     /**

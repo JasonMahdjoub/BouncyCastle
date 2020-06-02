@@ -33,7 +33,7 @@ import org.bouncycastle.bcasn1.bc.EncryptedObjectStoreData;
 import org.bouncycastle.bcasn1.bc.ObjectStore;
 import org.bouncycastle.bcasn1.bc.ObjectStoreIntegrityCheck;
 import org.bouncycastle.bcasn1.bc.PbkdMacIntegrityCheck;
-import org.bouncycastle.bcasn1.misc.BCMiscObjectIdentifiers;
+import org.bouncycastle.bcasn1.misc.MiscObjectIdentifiers;
 import org.bouncycastle.bcasn1.misc.ScryptParams;
 import org.bouncycastle.bcasn1.nist.NISTObjectIdentifiers;
 import org.bouncycastle.bcasn1.pkcs.PBES2Parameters;
@@ -41,7 +41,6 @@ import org.bouncycastle.bcasn1.pkcs.PBKDF2Params;
 import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
 import org.bouncycastle.bcasn1.x500.X500Name;
 import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.util.PBKDF2Config;
 import org.bouncycastle.bccrypto.util.PBKDFConfig;
 import org.bouncycastle.bccrypto.util.ScryptConfig;
@@ -49,6 +48,7 @@ import org.bouncycastle.bcjcajce.BCFKSLoadStoreParameter;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.bcutil.Arrays;
 import org.bouncycastle.bcutil.encoders.Base64;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**
@@ -529,6 +529,32 @@ public class BCFKSStoreTest
             kp2.getPrivate(),
             "CN=EE",
             "SHA1withRSA",
+            null,
+            kp1.getPublic());
+
+        checkOnePrivateKeyFips(kp1.getPrivate(), new X509Certificate[]{interCert, finalCert}, null);
+        checkOnePrivateKeyFips(kp1.getPrivate(), new X509Certificate[]{interCert, finalCert}, testPassword);
+
+        checkOnePrivateKeyDef(kp1.getPrivate(), new X509Certificate[]{interCert, finalCert}, null);
+        checkOnePrivateKeyDef(kp1.getPrivate(), new X509Certificate[]{interCert, finalCert}, testPassword);
+    }
+
+    public void shouldStoreOnePrivateKeyWithChainEdDSA()
+        throws Exception
+    {
+        KeyPairGenerator kpGen = KeyPairGenerator.getInstance("EDDSA", "BC");
+
+        kpGen.initialize(448);
+
+        KeyPair kp1 = kpGen.generateKeyPair();
+        KeyPair kp2 = kpGen.generateKeyPair();
+
+        X509Certificate finalCert = TestUtils.createSelfSignedCert("CN=Final", "Ed448", kp2);
+        X509Certificate interCert = TestUtils.createCert(
+            TestUtils.getCertSubject(finalCert),
+            kp2.getPrivate(),
+            "CN=EE",
+            "Ed448",
             null,
             kp1.getPublic());
 
@@ -1342,7 +1368,7 @@ public class BCFKSStoreTest
         PbkdMacIntegrityCheck check = PbkdMacIntegrityCheck.getInstance(integrityCheck.getIntegrityCheck());
 
         isTrue("wrong MAC", check.getMacAlgorithm().getAlgorithm().equals(PKCSObjectIdentifiers.id_hmacWithSHA512));
-        isTrue("wrong PBE", check.getPbkdAlgorithm().getAlgorithm().equals(BCMiscObjectIdentifiers.id_scrypt));
+        isTrue("wrong PBE", check.getPbkdAlgorithm().getAlgorithm().equals(MiscObjectIdentifiers.id_scrypt));
 
         ScryptParams sParams = ScryptParams.getInstance(check.getPbkdAlgorithm().getParameters());
 
@@ -1358,7 +1384,7 @@ public class BCFKSStoreTest
 
         PBES2Parameters pbeParams = PBES2Parameters.getInstance(encryptionAlgorithm.getParameters());
 
-        isTrue(pbeParams.getKeyDerivationFunc().getAlgorithm().equals(BCMiscObjectIdentifiers.id_scrypt));
+        isTrue(pbeParams.getKeyDerivationFunc().getAlgorithm().equals(MiscObjectIdentifiers.id_scrypt));
 
         sParams = ScryptParams.getInstance(pbeParams.getKeyDerivationFunc().getParameters());
 
@@ -1548,6 +1574,7 @@ public class BCFKSStoreTest
         shouldParseOldStores();
         shouldStoreUsingKWP();
         //shouldRejectInconsistentKeys();
+        shouldStoreOnePrivateKeyWithChainEdDSA();
     }
 
     public static void main(

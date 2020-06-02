@@ -5,9 +5,13 @@ import java.security.SecureRandom;
 
 import org.bouncycastle.bccrypto.AsymmetricCipherKeyPair;
 import org.bouncycastle.bccrypto.CipherParameters;
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.generators.DHKeyPairGenerator;
-import org.bouncycastle.bccrypto.params.*;
+import org.bouncycastle.bccrypto.params.AsymmetricKeyParameter;
+import org.bouncycastle.bccrypto.params.DHKeyGenerationParameters;
+import org.bouncycastle.bccrypto.params.DHParameters;
+import org.bouncycastle.bccrypto.params.DHPrivateKeyParameters;
+import org.bouncycastle.bccrypto.params.DHPublicKeyParameters;
 import org.bouncycastle.bccrypto.params.ParametersWithRandom;
 
 /**
@@ -25,26 +29,26 @@ public class DHAgreement
 {
     private static final BigInteger ONE = BigInteger.valueOf(1);
 
-    private DHPrivateKeyParameters key;
-    private DHParameters dhParams;
+    private DHPrivateKeyParameters  key;
+    private DHParameters            dhParams;
     private BigInteger              privateValue;
     private SecureRandom            random;
 
     public void init(
-        CipherParameters param)
+        CipherParameters    param)
     {
         AsymmetricKeyParameter  kParam;
 
         if (param instanceof ParametersWithRandom)
         {
-            ParametersWithRandom rParam = (ParametersWithRandom)param;
+            ParametersWithRandom    rParam = (ParametersWithRandom)param;
 
             this.random = rParam.getRandom();
             kParam = (AsymmetricKeyParameter)rParam.getParameters();
         }
         else
         {
-            this.random = BCCryptoServicesRegistrar.getSecureRandom();
+            this.random = CryptoServicesRegistrar.getSecureRandom();
             kParam = (AsymmetricKeyParameter)param;
         }
 

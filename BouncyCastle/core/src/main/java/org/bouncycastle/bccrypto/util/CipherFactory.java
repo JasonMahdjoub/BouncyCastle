@@ -7,16 +7,16 @@ import org.bouncycastle.bcasn1.ASN1Primitive;
 import org.bouncycastle.bcasn1.cms.GCMParameters;
 import org.bouncycastle.bcasn1.kisa.KISAObjectIdentifiers;
 import org.bouncycastle.bcasn1.misc.CAST5CBCParameters;
-import org.bouncycastle.bcasn1.misc.BCMiscObjectIdentifiers;
+import org.bouncycastle.bcasn1.misc.MiscObjectIdentifiers;
 import org.bouncycastle.bcasn1.nist.NISTObjectIdentifiers;
 import org.bouncycastle.bcasn1.ntt.NTTObjectIdentifiers;
 import org.bouncycastle.bcasn1.oiw.OIWObjectIdentifiers;
 import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
 import org.bouncycastle.bcasn1.pkcs.RC2CBCParameter;
 import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.BlockCipher;
 import org.bouncycastle.bccrypto.BufferedBlockCipher;
+import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.StreamCipher;
 import org.bouncycastle.bccrypto.engines.AESEngine;
 import org.bouncycastle.bccrypto.engines.CAST5Engine;
@@ -189,7 +189,7 @@ public class CipherFactory
         {
             cipher = new CBCBlockCipher(new RC2Engine());
         }
-        else if (BCMiscObjectIdentifiers.cast5CBC.equals(algorithm))
+        else if (MiscObjectIdentifiers.cast5CBC.equals(algorithm))
         {
             cipher = new CBCBlockCipher(new CAST5Engine());
         }

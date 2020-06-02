@@ -26,6 +26,7 @@ import org.bouncycastle.bcasn1.x9.X9ECParameters;
 import org.bouncycastle.bcpg.ECDHPublicBCPGKey;
 import org.bouncycastle.bcpg.PublicKeyAlgorithmTags;
 import org.bouncycastle.bcpg.PublicKeyPacket;
+import org.bouncycastle.bccrypto.params.X25519PublicKeyParameters;
 import org.bouncycastle.bcjcajce.spec.UserKeyingMaterialSpec;
 import org.bouncycastle.bcjcajce.util.DefaultJcaJceHelper;
 import org.bouncycastle.bcjcajce.util.NamedJcaJceHelper;
@@ -149,17 +150,22 @@ public class JcePublicKeyDataDecryptorFactoryBuilder
         byte[] enc = secKeyData[0];
 
         int pLen = ((((enc[0] & 0xff) << 8) + (enc[1] & 0xff)) + 7) / 8;
-        if (pLen > enc.length)
+        if ((2 + pLen + 1) > enc.length)
         {
             throw new PGPException("encoded length out of range");
         }
-        byte[] pEnc = new byte[pLen];
 
+        byte[] pEnc = new byte[pLen];
         System.arraycopy(enc, 2, pEnc, 0, pLen);
 
-        byte[] keyEnc = new byte[enc[pLen + 2] & 0xff];
+        int keyLen = enc[pLen + 2] & 0xff;
+        if ((2 + pLen + 1 + keyLen) > enc.length)
+        {
+            throw new PGPException("encoded length out of range");
+        }
 
-        System.arraycopy(enc, 2 + pLen + 1, keyEnc, 0, keyEnc.length);
+        byte[] keyEnc = new byte[keyLen];
+        System.arraycopy(enc, 2 + pLen + 1, keyEnc, 0, keyLen);
 
         try
         {
@@ -174,6 +180,11 @@ public class JcePublicKeyDataDecryptorFactoryBuilder
                 KeyFactory keyFact = helper.createKeyFactory("XDH");
 
                 // skip the 0x40 header byte.
+                if (pEnc.length != (1 + X25519PublicKeyParameters.KEY_SIZE) || 0x40 != pEnc[0])
+                {
+                    throw new IllegalArgumentException("Invalid Curve25519 public key");
+                }
+
                 publicKey = keyFact.generatePublic(
                     new X509EncodedKeySpec(
                               new SubjectPublicKeyInfo(new AlgorithmIdentifier(EdECObjectIdentifiers.id_X25519),

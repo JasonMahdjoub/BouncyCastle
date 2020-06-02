@@ -7,9 +7,9 @@ import java.io.OutputStream;
 import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 import org.bouncycastle.bcpg.PublicKeyAlgorithmTags;
 import org.bouncycastle.bcpg.SymmetricKeyAlgorithmTags;
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcmath.ec.ECPoint;
 import org.bouncycastle.openpgp.PGPException;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 /**
  * Calculator for the EC based KDF algorithm described in RFC 6637
@@ -78,7 +78,7 @@ public class RFC6637KDFCalculator
     private static byte[] KDF(PGPDigestCalculator digCalc, ECPoint s, int keyLen, byte[] param)
         throws IOException
     {
-        byte[] ZB = s.getXCoord().getEncoded();
+        byte[] ZB = s.getAffineXCoord().getEncoded();
 
         OutputStream dOut = digCalc.getOutputStream();
 

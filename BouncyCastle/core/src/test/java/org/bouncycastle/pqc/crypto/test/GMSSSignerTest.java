@@ -3,9 +3,8 @@ package org.bouncycastle.pqc.crypto.test;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.AsymmetricCipherKeyPair;
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.Digest;
 import org.bouncycastle.bccrypto.Signer;
 import org.bouncycastle.bccrypto.digests.SHA224Digest;
@@ -13,10 +12,16 @@ import org.bouncycastle.bccrypto.params.AsymmetricKeyParameter;
 import org.bouncycastle.bccrypto.params.ParametersWithRandom;
 import org.bouncycastle.pqc.crypto.DigestingMessageSigner;
 import org.bouncycastle.pqc.crypto.DigestingStateAwareMessageSigner;
-import org.bouncycastle.pqc.crypto.gmss.*;
+import org.bouncycastle.pqc.crypto.gmss.GMSSDigestProvider;
+import org.bouncycastle.pqc.crypto.gmss.GMSSKeyGenerationParameters;
+import org.bouncycastle.pqc.crypto.gmss.GMSSKeyPairGenerator;
+import org.bouncycastle.pqc.crypto.gmss.GMSSParameters;
 import org.bouncycastle.pqc.crypto.gmss.GMSSPrivateKeyParameters;
+import org.bouncycastle.pqc.crypto.gmss.GMSSSigner;
+import org.bouncycastle.pqc.crypto.gmss.GMSSStateAwareSigner;
 import org.bouncycastle.bcutil.BigIntegers;
 import org.bouncycastle.bcutil.Strings;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.FixedSecureRandom;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
@@ -88,7 +93,7 @@ public class GMSSSignerTest
     private void stateAwareTest(GMSSPrivateKeyParameters privKey, AsymmetricKeyParameter pub)
     {
         DigestingStateAwareMessageSigner statefulSigner = new DigestingStateAwareMessageSigner(new GMSSStateAwareSigner(new SHA224Digest()), new SHA224Digest());
-        statefulSigner.init(true, new ParametersWithRandom(privKey, BCCryptoServicesRegistrar.getSecureRandom()));
+        statefulSigner.init(true, new ParametersWithRandom(privKey, CryptoServicesRegistrar.getSecureRandom()));
 
         byte[] mes1 = Strings.toByteArray("Message One");
         statefulSigner.update(mes1, 0, mes1.length);

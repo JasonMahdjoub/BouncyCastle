@@ -8,11 +8,14 @@ import java.security.spec.AlgorithmParameterSpec;
 import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 import org.bouncycastle.bcasn1.nist.NISTObjectIdentifiers;
 import org.bouncycastle.bccrypto.AsymmetricCipherKeyPair;
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.digests.SHA256Digest;
 import org.bouncycastle.bccrypto.digests.SHA512Digest;
 import org.bouncycastle.bccrypto.digests.SHAKEDigest;
-import org.bouncycastle.pqc.crypto.xmss.*;
+import org.bouncycastle.pqc.crypto.xmss.XMSSMTKeyGenerationParameters;
+import org.bouncycastle.pqc.crypto.xmss.XMSSMTKeyPairGenerator;
+import org.bouncycastle.pqc.crypto.xmss.XMSSMTParameters;
+import org.bouncycastle.pqc.crypto.xmss.XMSSMTPrivateKeyParameters;
 import org.bouncycastle.pqc.crypto.xmss.XMSSMTPublicKeyParameters;
 import org.bouncycastle.pqc.jcajce.spec.XMSSMTParameterSpec;
 import org.bouncycastle.pqc.jcajce.spec.XMSSParameterSpec;
@@ -24,7 +27,7 @@ public class XMSSMTKeyPairGeneratorSpi
     private XMSSMTKeyPairGenerator engine = new XMSSMTKeyPairGenerator();
     private ASN1ObjectIdentifier treeDigest;
 
-    private SecureRandom random = BCCryptoServicesRegistrar.getSecureRandom();
+    private SecureRandom random = CryptoServicesRegistrar.getSecureRandom();
     private boolean initialised = false;
 
     public XMSSMTKeyPairGeneratorSpi()

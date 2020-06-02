@@ -1,10 +1,10 @@
 package org.bouncycastle.bccrypto.test;
 
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.generators.Argon2BytesGenerator;
 import org.bouncycastle.bccrypto.params.Argon2Parameters;
 import org.bouncycastle.bcutil.Strings;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**

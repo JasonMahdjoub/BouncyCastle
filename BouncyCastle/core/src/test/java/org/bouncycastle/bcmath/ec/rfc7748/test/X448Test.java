@@ -4,9 +4,9 @@ import java.security.SecureRandom;
 
 import junit.framework.TestCase;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcmath.ec.rfc7748.X448;
 import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 public class X448Test
     extends TestCase

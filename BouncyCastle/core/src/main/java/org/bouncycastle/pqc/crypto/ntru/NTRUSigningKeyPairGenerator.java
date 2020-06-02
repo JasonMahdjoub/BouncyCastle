@@ -11,7 +11,7 @@ import java.util.concurrent.Future;
 
 import org.bouncycastle.bccrypto.AsymmetricCipherKeyPair;
 import org.bouncycastle.bccrypto.AsymmetricCipherKeyPairGenerator;
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.KeyGenerationParameters;
 import org.bouncycastle.pqc.math.ntru.euclid.BigIntEuclidean;
 import org.bouncycastle.pqc.math.ntru.polynomial.BigDecimalPolynomial;
@@ -188,7 +188,7 @@ public class NTRUSigningKeyPairGenerator
         {
             do
             {
-                f = params.polyType== NTRUParameters.TERNARY_POLYNOMIAL_TYPE_SIMPLE ? DenseTernaryPolynomial.generateRandom(N, d + 1, d, BCCryptoServicesRegistrar.getSecureRandom()) : ProductFormPolynomial.generateRandom(N, d1, d2, d3 + 1, d3, BCCryptoServicesRegistrar.getSecureRandom());
+                f = params.polyType== NTRUParameters.TERNARY_POLYNOMIAL_TYPE_SIMPLE ? DenseTernaryPolynomial.generateRandom(N, d + 1, d, CryptoServicesRegistrar.getSecureRandom()) : ProductFormPolynomial.generateRandom(N, d1, d2, d3 + 1, d3, CryptoServicesRegistrar.getSecureRandom());
                 fInt = f.toIntegerPolynomial();
             }
             while (primeCheck && fInt.resultant(_2n1).res.equals(ZERO));
@@ -203,7 +203,7 @@ public class NTRUSigningKeyPairGenerator
             {
                 do
                 {
-                    g = params.polyType == NTRUParameters.TERNARY_POLYNOMIAL_TYPE_SIMPLE ? DenseTernaryPolynomial.generateRandom(N, d + 1, d, BCCryptoServicesRegistrar.getSecureRandom()) : ProductFormPolynomial.generateRandom(N, d1, d2, d3 + 1, d3, BCCryptoServicesRegistrar.getSecureRandom());
+                    g = params.polyType == NTRUParameters.TERNARY_POLYNOMIAL_TYPE_SIMPLE ? DenseTernaryPolynomial.generateRandom(N, d + 1, d, CryptoServicesRegistrar.getSecureRandom()) : ProductFormPolynomial.generateRandom(N, d1, d2, d3 + 1, d3, CryptoServicesRegistrar.getSecureRandom());
                     gInt = g.toIntegerPolynomial();
                 }
                 while (primeCheck && gInt.resultant(_2n1).res.equals(ZERO));

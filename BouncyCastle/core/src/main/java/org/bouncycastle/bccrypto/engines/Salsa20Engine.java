@@ -1,7 +1,10 @@
 package org.bouncycastle.bccrypto.engines;
 
-import org.bouncycastle.bccrypto.*;
 import org.bouncycastle.bccrypto.CipherParameters;
+import org.bouncycastle.bccrypto.DataLengthException;
+import org.bouncycastle.bccrypto.MaxBytesExceededException;
+import org.bouncycastle.bccrypto.OutputLengthException;
+import org.bouncycastle.bccrypto.SkippingStreamCipher;
 import org.bouncycastle.bccrypto.params.KeyParameter;
 import org.bouncycastle.bccrypto.params.ParametersWithIV;
 import org.bouncycastle.bcutil.Pack;
@@ -83,7 +86,7 @@ public class Salsa20Engine
      */
     public void init(
         boolean             forEncryption, 
-        CipherParameters params)
+        CipherParameters     params)
     {
         /* 
         * Salsa20 encryption and decryption is completely

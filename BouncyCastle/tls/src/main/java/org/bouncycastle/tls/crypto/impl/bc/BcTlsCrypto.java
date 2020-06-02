@@ -35,7 +35,6 @@ import org.bouncycastle.bccrypto.modes.AEADBlockCipher;
 import org.bouncycastle.bccrypto.modes.CBCBlockCipher;
 import org.bouncycastle.bccrypto.modes.CCMBlockCipher;
 import org.bouncycastle.bccrypto.modes.GCMBlockCipher;
-import org.bouncycastle.bccrypto.modes.OCBBlockCipher;
 import org.bouncycastle.bccrypto.params.AEADParameters;
 import org.bouncycastle.bccrypto.params.KeyParameter;
 import org.bouncycastle.bccrypto.params.ParametersWithIV;
@@ -46,6 +45,7 @@ import org.bouncycastle.bccrypto.prng.DigestRandomGenerator;
 import org.bouncycastle.tls.AlertDescription;
 import org.bouncycastle.tls.EncryptionAlgorithm;
 import org.bouncycastle.tls.HashAlgorithm;
+import org.bouncycastle.tls.MACAlgorithm;
 import org.bouncycastle.tls.NamedGroup;
 import org.bouncycastle.tls.ProtocolVersion;
 import org.bouncycastle.tls.SignatureAlgorithm;
@@ -73,6 +73,7 @@ import org.bouncycastle.tls.crypto.impl.TlsAEADCipherImpl;
 import org.bouncycastle.tls.crypto.impl.TlsBlockCipher;
 import org.bouncycastle.tls.crypto.impl.TlsBlockCipherImpl;
 import org.bouncycastle.tls.crypto.impl.TlsEncryptor;
+import org.bouncycastle.tls.crypto.impl.TlsImplUtils;
 import org.bouncycastle.tls.crypto.impl.TlsNullCipher;
 import org.bouncycastle.bcutil.Arrays;
 
@@ -127,9 +128,6 @@ public class BcTlsCrypto
         case EncryptionAlgorithm.AES_128_GCM:
             // NOTE: Ignores macAlgorithm
             return createCipher_AES_GCM(cryptoParams, 16, 16);
-        case EncryptionAlgorithm.AES_128_OCB_TAGLEN96:
-            // NOTE: Ignores macAlgorithm
-            return createCipher_AES_OCB(cryptoParams, 16, 12);
         case EncryptionAlgorithm.AES_256_CBC:
             return createAESCipher(cryptoParams, 32, macAlgorithm);
         case EncryptionAlgorithm.AES_256_CCM:
@@ -141,9 +139,6 @@ public class BcTlsCrypto
         case EncryptionAlgorithm.AES_256_GCM:
             // NOTE: Ignores macAlgorithm
             return createCipher_AES_GCM(cryptoParams, 32, 16);
-        case EncryptionAlgorithm.AES_256_OCB_TAGLEN96:
-            // NOTE: Ignores macAlgorithm
-            return createCipher_AES_OCB(cryptoParams, 32, 12);
         case EncryptionAlgorithm.ARIA_128_CBC:
             return createARIACipher(cryptoParams, 16, macAlgorithm);
         case EncryptionAlgorithm.ARIA_128_GCM:
@@ -329,6 +324,11 @@ public class BcTlsCrypto
         return hasSignatureAlgorithm(sigAndHashAlgorithm.getSignature());
     }
 
+    public boolean hasSignatureScheme(int signatureScheme)
+    {
+        return hasSignatureAlgorithm((short)(signatureScheme & 0xFF));
+    }
+
     public boolean hasSRPAuthentication()
     {
         return true;
@@ -445,83 +445,83 @@ public class BcTlsCrypto
     protected TlsCipher createAESCipher(TlsCryptoParameters cryptoParams, int cipherKeySize, int macAlgorithm)
         throws IOException
     {
-        return new TlsBlockCipher(this, cryptoParams, new BlockOperator(createAESBlockCipher(), true), new BlockOperator(createAESBlockCipher(), false),
-            createHMAC(macAlgorithm), createHMAC(macAlgorithm), cipherKeySize);
+        return new TlsBlockCipher(this, cryptoParams, new BlockOperator(createAESBlockCipher(), true),
+            new BlockOperator(createAESBlockCipher(), false), createMAC(cryptoParams, macAlgorithm),
+            createMAC(cryptoParams, macAlgorithm), cipherKeySize);
     }
 
     protected TlsCipher createARIACipher(TlsCryptoParameters cryptoParams, int cipherKeySize, int macAlgorithm)
         throws IOException
     {
-        return new TlsBlockCipher(this, cryptoParams, new BlockOperator(createARIABlockCipher(), true), new BlockOperator(createARIABlockCipher(), false),
-            createHMAC(macAlgorithm), createHMAC(macAlgorithm), cipherKeySize);
+        return new TlsBlockCipher(this, cryptoParams, new BlockOperator(createARIABlockCipher(), true),
+            new BlockOperator(createARIABlockCipher(), false), createMAC(cryptoParams, macAlgorithm),
+            createMAC(cryptoParams, macAlgorithm), cipherKeySize);
     }
 
     protected TlsCipher createCamelliaCipher(TlsCryptoParameters cryptoParams, int cipherKeySize, int macAlgorithm)
         throws IOException
     {
-        return new TlsBlockCipher(this, cryptoParams, new BlockOperator(createCamelliaBlockCipher(), true), new BlockOperator(createCamelliaBlockCipher(), false),
-            createHMAC(macAlgorithm), createHMAC(macAlgorithm), cipherKeySize);
+        return new TlsBlockCipher(this, cryptoParams, new BlockOperator(createCamelliaBlockCipher(), true),
+            new BlockOperator(createCamelliaBlockCipher(), false), createMAC(cryptoParams, macAlgorithm),
+            createMAC(cryptoParams, macAlgorithm), cipherKeySize);
     }
 
-    protected TlsCipher createChaCha20Poly1305(TlsCryptoParameters cryptoParams)
-        throws IOException
+    protected TlsCipher createChaCha20Poly1305(TlsCryptoParameters cryptoParams) throws IOException
     {
-        return new TlsAEADCipher(cryptoParams, new BcChaCha20Poly1305(true), new BcChaCha20Poly1305(false), 32, 16, TlsAEADCipher.NONCE_RFC7905);
+        return new TlsAEADCipher(cryptoParams, new BcChaCha20Poly1305(true), new BcChaCha20Poly1305(false), 32, 16,
+            TlsAEADCipher.AEAD_CHACHA20_POLY1305);
     }
 
     protected TlsAEADCipher createCipher_AES_CCM(TlsCryptoParameters cryptoParams, int cipherKeySize, int macSize)
         throws IOException
     {
-        return new TlsAEADCipher(cryptoParams, new AeadOperator(createAEADBlockCipher_AES_CCM(), true), new AeadOperator(createAEADBlockCipher_AES_CCM(), false),
-            cipherKeySize, macSize);
+        return new TlsAEADCipher(cryptoParams, new AeadOperator(createAEADBlockCipher_AES_CCM(), true),
+            new AeadOperator(createAEADBlockCipher_AES_CCM(), false), cipherKeySize, macSize, TlsAEADCipher.AEAD_CCM);
     }
 
     protected TlsAEADCipher createCipher_AES_GCM(TlsCryptoParameters cryptoParams, int cipherKeySize, int macSize)
         throws IOException
     {
-        return new TlsAEADCipher(cryptoParams, new AeadOperator(createAEADBlockCipher_AES_GCM(), true), new AeadOperator(createAEADBlockCipher_AES_GCM(), false),
-            cipherKeySize, macSize);
-    }
-
-    protected TlsAEADCipher createCipher_AES_OCB(TlsCryptoParameters cryptoParams, int cipherKeySize, int macSize)
-        throws IOException
-    {
-        return new TlsAEADCipher(cryptoParams, new AeadOperator(createAEADBlockCipher_AES_OCB(), true), new AeadOperator(createAEADBlockCipher_AES_OCB(), false),
-            cipherKeySize, macSize, TlsAEADCipher.NONCE_RFC7905);
+        return new TlsAEADCipher(cryptoParams, new AeadOperator(createAEADBlockCipher_AES_GCM(), true),
+            new AeadOperator(createAEADBlockCipher_AES_GCM(), false), cipherKeySize, macSize, TlsAEADCipher.AEAD_GCM);
     }
 
     protected TlsAEADCipher createCipher_ARIA_GCM(TlsCryptoParameters cryptoParams, int cipherKeySize, int macSize)
         throws IOException
     {
-        return new TlsAEADCipher(cryptoParams, new AeadOperator(createAEADBlockCipher_ARIA_GCM(), true), new AeadOperator(createAEADBlockCipher_ARIA_GCM(), false),
-            cipherKeySize, macSize);
+        return new TlsAEADCipher(cryptoParams, new AeadOperator(createAEADBlockCipher_ARIA_GCM(), true),
+            new AeadOperator(createAEADBlockCipher_ARIA_GCM(), false), cipherKeySize, macSize, TlsAEADCipher.AEAD_GCM);
     }
 
     protected TlsAEADCipher createCipher_Camellia_GCM(TlsCryptoParameters cryptoParams, int cipherKeySize, int macSize)
         throws IOException
     {
-        return new TlsAEADCipher(cryptoParams, new AeadOperator(createAEADBlockCipher_Camellia_GCM(), true), new AeadOperator(createAEADBlockCipher_Camellia_GCM(), false),
-            cipherKeySize, macSize);
+        return new TlsAEADCipher(cryptoParams, new AeadOperator(createAEADBlockCipher_Camellia_GCM(), true),
+            new AeadOperator(createAEADBlockCipher_Camellia_GCM(), false), cipherKeySize, macSize,
+            TlsAEADCipher.AEAD_GCM);
     }
 
     protected TlsBlockCipher createDESedeCipher(TlsCryptoParameters cryptoParams, int macAlgorithm)
         throws IOException
     {
-        return new TlsBlockCipher(this, cryptoParams, new BlockOperator(createDESedeBlockCipher(), true), new BlockOperator(createDESedeBlockCipher(), false),
-            createHMAC(macAlgorithm), createHMAC(macAlgorithm), 24);
+        return new TlsBlockCipher(this, cryptoParams, new BlockOperator(createDESedeBlockCipher(), true),
+            new BlockOperator(createDESedeBlockCipher(), false), createMAC(cryptoParams, macAlgorithm),
+            createMAC(cryptoParams, macAlgorithm), 24);
     }
 
     protected TlsNullCipher createNullCipher(TlsCryptoParameters cryptoParams, int macAlgorithm)
         throws IOException
     {
-        return new TlsNullCipher(cryptoParams, createHMAC(macAlgorithm), createHMAC(macAlgorithm));
+        return new TlsNullCipher(cryptoParams, createMAC(cryptoParams, macAlgorithm),
+            createMAC(cryptoParams, macAlgorithm));
     }
 
     protected TlsBlockCipher createSEEDCipher(TlsCryptoParameters cryptoParams, int macAlgorithm)
         throws IOException
     {
-        return new TlsBlockCipher(this, cryptoParams, new BlockOperator(createSEEDBlockCipher(), true), new BlockOperator(createSEEDBlockCipher(), false),
-            createHMAC(macAlgorithm), createHMAC(macAlgorithm), 16);
+        return new TlsBlockCipher(this, cryptoParams, new BlockOperator(createSEEDBlockCipher(), true),
+            new BlockOperator(createSEEDBlockCipher(), false), createMAC(cryptoParams, macAlgorithm),
+            createMAC(cryptoParams, macAlgorithm), 16);
     }
 
     protected BlockCipher createAESEngine()
@@ -558,11 +558,6 @@ public class BcTlsCrypto
     {
         // TODO Consider allowing custom configuration of multiplier
         return new GCMBlockCipher(createAESEngine());
-    }
-
-    protected AEADBlockCipher createAEADBlockCipher_AES_OCB()
-    {
-        return new OCBBlockCipher(createAESEngine(), createAESEngine());
     }
 
     protected AEADBlockCipher createAEADBlockCipher_ARIA_GCM()
@@ -605,6 +600,39 @@ public class BcTlsCrypto
     public TlsHMAC createHMAC(int macAlgorithm)
     {
         return createHMAC(TlsUtils.getHashAlgorithmForHMACAlgorithm(macAlgorithm));
+    }
+
+    protected TlsHMAC createHMAC_SSL(int macAlgorithm)
+        throws IOException
+    {
+        switch (macAlgorithm)
+        {
+        case MACAlgorithm.hmac_md5:
+            return new BcSSL3HMAC(createDigest(HashAlgorithm.md5));
+        case MACAlgorithm.hmac_sha1:
+            return new BcSSL3HMAC(createDigest(HashAlgorithm.sha1));
+        case MACAlgorithm.hmac_sha256:
+            return new BcSSL3HMAC(createDigest(HashAlgorithm.sha256));
+        case MACAlgorithm.hmac_sha384:
+            return new BcSSL3HMAC(createDigest(HashAlgorithm.sha384));
+        case MACAlgorithm.hmac_sha512:
+            return new BcSSL3HMAC(createDigest(HashAlgorithm.sha512));
+        default:
+            throw new TlsFatalAlert(AlertDescription.internal_error);
+        }
+    }
+
+    protected TlsHMAC createMAC(TlsCryptoParameters cryptoParams, int macAlgorithm)
+        throws IOException
+    {
+        if (TlsImplUtils.isSSL(cryptoParams))
+        {
+            return createHMAC_SSL(macAlgorithm);
+        }
+        else
+        {
+            return createHMAC(macAlgorithm);
+        }
     }
 
     public TlsSRP6Client createSRP6Client(TlsSRPConfig srpConfig)
@@ -758,19 +786,33 @@ public class BcTlsCrypto
             return cipher.getOutputSize(inputLength);
         }
 
-        public int doFinal(byte[] input, int inputOffset, int inputLength, byte[] output, int outputOffset)
+        public int doFinal(byte[] input, int inputOffset, int inputLength, byte[] extraInput, byte[] output, int outputOffset)
+            throws IOException
         {
             int len = cipher.processBytes(input, inputOffset, inputLength, output, outputOffset);
 
+            int extraInputLength = extraInput.length;
+            if (extraInputLength > 0)
+            {
+                if (!isEncrypting)
+                {
+                    throw new TlsFatalAlert(AlertDescription.internal_error);
+                }
+
+                len += cipher.processBytes(extraInput, 0, extraInputLength, output, outputOffset + len);
+            }
+
             try
             {
-                return len + cipher.doFinal(output, outputOffset + len);
+                len += cipher.doFinal(output, outputOffset + len);
             }
             catch (InvalidCipherTextException e)
             {
                 // TODO:
                 throw new RuntimeCryptoException(e.toString());
             }
+
+            return len;
         }
     }
 

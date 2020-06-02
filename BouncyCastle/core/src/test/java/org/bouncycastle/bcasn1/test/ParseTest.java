@@ -11,8 +11,8 @@ import org.bouncycastle.bcasn1.BERTags;
 import org.bouncycastle.bcasn1.cms.ContentInfoParser;
 import org.bouncycastle.bcasn1.cms.EncryptedContentInfoParser;
 import org.bouncycastle.bcasn1.cms.EnvelopedDataParser;
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.encoders.Base64;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.io.Streams;
 
 public class ParseTest

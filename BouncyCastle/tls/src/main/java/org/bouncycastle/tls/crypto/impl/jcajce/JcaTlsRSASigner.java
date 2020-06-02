@@ -1,11 +1,9 @@
 package org.bouncycastle.tls.crypto.impl.jcajce;
 
 import java.io.IOException;
-import java.io.OutputStream;
 import java.security.GeneralSecurityException;
 import java.security.PrivateKey;
 import java.security.Signature;
-import java.security.SignatureException;
 
 import org.bouncycastle.bcasn1.DERNull;
 import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
@@ -88,44 +86,12 @@ public class JcaTlsRSASigner
         /*
          * NOTE: The SunMSCAPI provider's "NoneWithRSA" can't produce/verify RSA signatures in the correct format for TLS 1.2
          */
-        if (algorithm != null && algorithm.getSignature() == SignatureAlgorithm.rsa && JcaUtils.isSunMSCAPIProviderActive())
+        if (algorithm != null
+            && SignatureAlgorithm.rsa == algorithm.getSignature()
+            && JcaUtils.isSunMSCAPIProviderActive()
+            && isSunMSCAPIRawSigner())
         {
-            try
-            {
-                Signature rawSigner = getRawSigner();
-
-                if (JcaUtils.isSunMSCAPIProvider(rawSigner.getProvider()))
-                {
-                    String algorithmName = JcaUtils.getJcaAlgorithmName(algorithm);
-
-                    final Signature signer = crypto.getHelper().createSignature(algorithmName);
-                    signer.initSign(privateKey, crypto.getSecureRandom());
-
-                    return new TlsStreamSigner()
-                    {
-                        public OutputStream getOutputStream()
-                        {
-                            return new SignatureOutputStream(signer);
-                        }
-
-                        public byte[] getSignature() throws IOException
-                        {
-                            try
-                            {
-                                return signer.sign();
-                            }
-                            catch (SignatureException e)
-                            {
-                                throw new TlsFatalAlert(AlertDescription.internal_error, e);
-                            }
-                        }
-                    };
-                }
-            }
-            catch (GeneralSecurityException e)
-            {
-                throw new TlsFatalAlert(AlertDescription.internal_error, e);
-            }
+            return crypto.createStreamSigner(algorithm, privateKey, true);
         }
 
         return null;
@@ -139,5 +105,20 @@ public class JcaTlsRSASigner
             rawSigner.initSign(privateKey, crypto.getSecureRandom());
         }
         return rawSigner;
+    }
+
+    protected boolean isSunMSCAPIRawSigner() throws IOException
+    {
+        try
+        {
+            Signature rawSigner = getRawSigner();
+
+            return JcaUtils.isSunMSCAPIProvider(rawSigner.getProvider());
+        }
+        catch (GeneralSecurityException e)
+        {
+            // Assume the worst!
+            return true;
+        }
     }
 }

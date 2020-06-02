@@ -14,9 +14,11 @@ import org.bouncycastle.bccrypto.Digest;
 import org.bouncycastle.bccrypto.digests.SHA256Digest;
 import org.bouncycastle.bccrypto.digests.SM3Digest;
 import org.bouncycastle.bccrypto.generators.ECKeyPairGenerator;
-import org.bouncycastle.bccrypto.params.*;
-import org.bouncycastle.bccrypto.params.ParametersWithIDBC;
-import org.bouncycastle.bccrypto.params.ParametersWithRandom;import org.bouncycastle.bccrypto.signers.SM2Signer;
+import org.bouncycastle.bccrypto.params.ECDomainParameters;
+import org.bouncycastle.bccrypto.params.ECKeyGenerationParameters;
+import org.bouncycastle.bccrypto.params.ParametersWithID;
+import org.bouncycastle.bccrypto.params.ParametersWithRandom;
+import org.bouncycastle.bccrypto.signers.SM2Signer;
 import org.bouncycastle.bcmath.ec.ECConstants;
 import org.bouncycastle.bcmath.ec.ECCurve;
 import org.bouncycastle.bcmath.ec.ECPoint;
@@ -158,7 +160,7 @@ public class SM2SignerTest
 
         SM2Signer signer = new SM2Signer(d);
 
-        signer.init(true, new ParametersWithIDBC(
+        signer.init(true, new ParametersWithID(
             new ParametersWithRandom(kp.getPrivate(), new TestRandomBigInteger(nonce, 16)),
             idBytes));
 
@@ -171,7 +173,7 @@ public class SM2SignerTest
         isTrue("r wrong", rs[0].equals(new BigInteger(r, 16)));
         isTrue("s wrong", rs[1].equals(new BigInteger(s, 16)));
 
-        signer.init(false, new ParametersWithIDBC(kp.getPublic(), idBytes));
+        signer.init(false, new ParametersWithID(kp.getPublic(), idBytes));
 
         signer.update(msgBytes, 0, msgBytes.length);
 

@@ -7,9 +7,12 @@ import java.security.SecureRandom;
 import java.security.spec.AlgorithmParameterSpec;
 
 import org.bouncycastle.bccrypto.AsymmetricCipherKeyPair;
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
-import org.bouncycastle.pqc.crypto.mceliece.*;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
+import org.bouncycastle.pqc.crypto.mceliece.McElieceCCA2KeyGenerationParameters;
+import org.bouncycastle.pqc.crypto.mceliece.McElieceCCA2KeyPairGenerator;
 import org.bouncycastle.pqc.crypto.mceliece.McElieceCCA2Parameters;
+import org.bouncycastle.pqc.crypto.mceliece.McElieceCCA2PrivateKeyParameters;
+import org.bouncycastle.pqc.crypto.mceliece.McElieceCCA2PublicKeyParameters;
 import org.bouncycastle.pqc.jcajce.spec.McElieceCCA2KeyGenParameterSpec;
 
 public class McElieceCCA2KeyPairGeneratorSpi
@@ -42,7 +45,7 @@ public class McElieceCCA2KeyPairGeneratorSpi
         McElieceCCA2KeyGenParameterSpec ecc = (McElieceCCA2KeyGenParameterSpec)params;
 
         McElieceCCA2KeyGenerationParameters mccca2KGParams = new McElieceCCA2KeyGenerationParameters(
-            BCCryptoServicesRegistrar.getSecureRandom(), new McElieceCCA2Parameters(ecc.getM(), ecc.getT(), ecc.getDigest()));
+            CryptoServicesRegistrar.getSecureRandom(), new McElieceCCA2Parameters(ecc.getM(), ecc.getT(), ecc.getDigest()));
         kpg.init(mccca2KGParams);
     }
 

@@ -5,6 +5,9 @@ import org.bouncycastle.bcpg.PublicKeyAlgorithmTags;
 import org.bouncycastle.bcpg.SymmetricKeyAlgorithmTags;
 import org.bouncycastle.bccrypto.AsymmetricBlockCipher;
 import org.bouncycastle.bccrypto.BlockCipher;
+import org.bouncycastle.bccrypto.CipherParameters;
+import org.bouncycastle.bccrypto.CryptoException;
+import org.bouncycastle.bccrypto.DataLengthException;
 import org.bouncycastle.bccrypto.Digest;
 import org.bouncycastle.bccrypto.Signer;
 import org.bouncycastle.bccrypto.Wrapper;
@@ -32,9 +35,11 @@ import org.bouncycastle.bccrypto.engines.TwofishEngine;
 import org.bouncycastle.bccrypto.signers.DSADigestSigner;
 import org.bouncycastle.bccrypto.signers.DSASigner;
 import org.bouncycastle.bccrypto.signers.ECDSASigner;
+import org.bouncycastle.bccrypto.signers.Ed25519Signer;
 import org.bouncycastle.bccrypto.signers.RSADigestSigner;
 import org.bouncycastle.openpgp.PGPException;
 import org.bouncycastle.openpgp.PGPPublicKey;
+import org.bouncycastle.bcutil.Arrays;
 
 class BcImplProvider
 {
@@ -78,6 +83,8 @@ class BcImplProvider
             return new DSADigestSigner(new DSASigner(), createDigest(hashAlgorithm));
         case PublicKeyAlgorithmTags.ECDSA:
             return new DSADigestSigner(new ECDSASigner(), createDigest(hashAlgorithm));
+        case PublicKeyAlgorithmTags.EDDSA:
+            return new EdDsaSigner(new Ed25519Signer(), createDigest(hashAlgorithm));
         default:
             throw new PGPException("cannot recognise keyAlgorithm: " + keyAlgorithm);
         }
@@ -169,5 +176,62 @@ class BcImplProvider
         }
 
         return c;
+    }
+
+    private static class EdDsaSigner
+        implements Signer
+    {
+        private final Signer signer;
+        private final Digest digest;
+        private final byte[] digBuf;
+
+        EdDsaSigner(Signer signer, Digest digest)
+        {
+            this.signer = signer;
+            this.digest = digest;
+            this.digBuf = new byte[digest.getDigestSize()];
+        }
+
+        public void init(boolean forSigning, CipherParameters param)
+        {
+            this.signer.init(forSigning, param);
+            this.digest.reset();
+        }
+
+        public void update(byte b)
+        {
+            this.digest.update(b);
+        }
+
+        public void update(byte[] in, int off, int len)
+        {
+            this.digest.update(in, off, len);
+        }
+
+        public byte[] generateSignature()
+            throws CryptoException, DataLengthException
+        {
+            digest.doFinal(digBuf, 0);
+
+            signer.update(digBuf, 0, digBuf.length);
+
+            return signer.generateSignature();
+        }
+
+        public boolean verifySignature(byte[] signature)
+        {
+            digest.doFinal(digBuf, 0);
+            
+            signer.update(digBuf, 0, digBuf.length);
+
+            return signer.verifySignature(signature);
+        }
+
+        public void reset()
+        {
+            Arrays.clear(digBuf);
+            signer.reset();
+            digest.reset();
+        }
     }
 }

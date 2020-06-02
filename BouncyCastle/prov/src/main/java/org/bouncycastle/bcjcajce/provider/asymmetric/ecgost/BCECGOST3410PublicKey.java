@@ -46,7 +46,7 @@ public class BCECGOST3410PublicKey
     private String algorithm = "ECGOST3410";
     private boolean withCompression;
 
-    private transient ECPublicKeyParameters ecPublicKey;
+    private transient ECPublicKeyParameters   ecPublicKey;
     private transient ECParameterSpec ecSpec;
     private transient ASN1Encodable gostParams;
 

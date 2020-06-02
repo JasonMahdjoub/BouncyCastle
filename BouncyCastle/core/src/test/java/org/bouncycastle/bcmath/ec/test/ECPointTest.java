@@ -13,7 +13,6 @@ import java.util.Set;
 import org.bouncycastle.bcasn1.x9.ECNamedCurveTable;
 import org.bouncycastle.bcasn1.x9.X9ECParameters;
 import org.bouncycastle.bcasn1.x9.X9ECPoint;
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.ec.CustomNamedCurves;
 import org.bouncycastle.bcmath.ec.ECAlgorithms;
 import org.bouncycastle.bcmath.ec.ECConstants;
@@ -24,6 +23,7 @@ import org.bouncycastle.bcmath.ec.WNafUtil;
 import org.bouncycastle.bcutil.Arrays;
 import org.bouncycastle.bcutil.BigIntegers;
 import org.bouncycastle.bcutil.Integers;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

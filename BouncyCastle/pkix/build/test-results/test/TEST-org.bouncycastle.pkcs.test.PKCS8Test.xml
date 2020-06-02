@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.pkcs.test.PKCS8Test" tests="9" skipped="0" failures="0" errors="0" timestamp="2020-02-14T17:20:20" hostname="Garage" time="0.077">
+<testsuite name="org.bouncycastle.pkcs.test.PKCS8Test" tests="9" skipped="0" failures="0" errors="0" timestamp="2020-06-02T09:05:16" hostname="Garage" time="0.076">
   <properties/>
   <testcase name="testCCMEncryption" classname="org.bouncycastle.pkcs.test.PKCS8Test" time="0.006"/>
-  <testcase name="testGOST3411" classname="org.bouncycastle.pkcs.test.PKCS8Test" time="0.043"/>
-  <testcase name="testScryptEncryption" classname="org.bouncycastle.pkcs.test.PKCS8Test" time="0.001"/>
-  <testcase name="testSHA3_256Encryption" classname="org.bouncycastle.pkcs.test.PKCS8Test" time="0.006"/>
+  <testcase name="testGOST3411" classname="org.bouncycastle.pkcs.test.PKCS8Test" time="0.042"/>
+  <testcase name="testScryptEncryption" classname="org.bouncycastle.pkcs.test.PKCS8Test" time="0.002"/>
+  <testcase name="testSHA3_256Encryption" classname="org.bouncycastle.pkcs.test.PKCS8Test" time="0.005"/>
   <testcase name="testGCMEncryption" classname="org.bouncycastle.pkcs.test.PKCS8Test" time="0.006"/>
-  <testcase name="testKWPEncryption" classname="org.bouncycastle.pkcs.test.PKCS8Test" time="0.008"/>
+  <testcase name="testKWPEncryption" classname="org.bouncycastle.pkcs.test.PKCS8Test" time="0.007"/>
   <testcase name="testSHA256" classname="org.bouncycastle.pkcs.test.PKCS8Test" time="0.003"/>
-  <testcase name="testScrypt" classname="org.bouncycastle.pkcs.test.PKCS8Test" time="0.001"/>
+  <testcase name="testScrypt" classname="org.bouncycastle.pkcs.test.PKCS8Test" time="0.002"/>
   <testcase name="testSHA256Encryption" classname="org.bouncycastle.pkcs.test.PKCS8Test" time="0.003"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

@@ -8,9 +8,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.bouncycastle.bccrypto.AsymmetricCipherKeyPair;
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
-import org.bouncycastle.pqc.crypto.qtesla.*;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
+import org.bouncycastle.pqc.crypto.qtesla.QTESLAKeyGenerationParameters;
+import org.bouncycastle.pqc.crypto.qtesla.QTESLAKeyPairGenerator;
 import org.bouncycastle.pqc.crypto.qtesla.QTESLAPrivateKeyParameters;
+import org.bouncycastle.pqc.crypto.qtesla.QTESLAPublicKeyParameters;
+import org.bouncycastle.pqc.crypto.qtesla.QTESLASecurityCategory;
 import org.bouncycastle.pqc.jcajce.spec.QTESLAParameterSpec;
 import org.bouncycastle.bcutil.Integers;
 
@@ -28,7 +31,7 @@ public class KeyPairGeneratorSpi
     private QTESLAKeyGenerationParameters param;
     private QTESLAKeyPairGenerator engine = new QTESLAKeyPairGenerator();
 
-    private SecureRandom random = BCCryptoServicesRegistrar.getSecureRandom();
+    private SecureRandom random = CryptoServicesRegistrar.getSecureRandom();
     private boolean initialised = false;
 
     public KeyPairGeneratorSpi()

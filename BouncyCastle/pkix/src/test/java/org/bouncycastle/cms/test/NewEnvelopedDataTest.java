@@ -60,7 +60,6 @@ import org.bouncycastle.bcasn1.rosstandart.RosstandartObjectIdentifiers;
 import org.bouncycastle.bcasn1.x500.X500Name;
 import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.bcasn1.x509.Extension;
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.cert.jcajce.JcaX509CertificateConverter;
 import org.bouncycastle.cert.jcajce.JcaX509CertificateHolder;
@@ -103,6 +102,7 @@ import org.bouncycastle.operator.OutputEncryptor;
 import org.bouncycastle.operator.jcajce.JcaAlgorithmParametersConverter;
 import org.bouncycastle.bcutil.Strings;
 import org.bouncycastle.bcutil.encoders.Base64;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 public class NewEnvelopedDataTest
     extends TestCase

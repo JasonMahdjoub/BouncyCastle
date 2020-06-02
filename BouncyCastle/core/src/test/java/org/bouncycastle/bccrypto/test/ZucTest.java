@@ -1,6 +1,5 @@
 package org.bouncycastle.bccrypto.test;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.Mac;
 import org.bouncycastle.bccrypto.StreamCipher;
 import org.bouncycastle.bccrypto.engines.Zuc128CoreEngine;
@@ -12,6 +11,7 @@ import org.bouncycastle.bccrypto.macs.Zuc256Mac;
 import org.bouncycastle.bccrypto.params.KeyParameter;
 import org.bouncycastle.bccrypto.params.ParametersWithIV;
 import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**

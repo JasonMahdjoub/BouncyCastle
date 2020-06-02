@@ -3,8 +3,8 @@ package org.bouncycastle.bcutil.encoders.test;
 import java.io.IOException;
 
 import org.bouncycastle.bcutil.Strings;
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.encoders.DecoderException;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.encoders.HexEncoder;
 
 public class HexTest extends AbstractCoderTest

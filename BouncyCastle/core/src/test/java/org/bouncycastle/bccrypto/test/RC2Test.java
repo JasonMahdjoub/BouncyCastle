@@ -1,9 +1,9 @@
 package org.bouncycastle.bccrypto.test;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.engines.RC2Engine;
 import org.bouncycastle.bccrypto.params.KeyParameter;
 import org.bouncycastle.bccrypto.params.RC2Parameters;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 /**
  * RC2 tester - vectors from  ftp://ftp.isi.edu/in-notes/rfc2268.txt

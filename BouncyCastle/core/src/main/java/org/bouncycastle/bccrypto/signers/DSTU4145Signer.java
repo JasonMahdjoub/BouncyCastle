@@ -3,9 +3,13 @@ package org.bouncycastle.bccrypto.signers;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
-import org.bouncycastle.bccrypto.CipherParameters;import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.CipherParameters;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.DSAExt;
-import org.bouncycastle.bccrypto.params.*;
+import org.bouncycastle.bccrypto.params.ECDomainParameters;
+import org.bouncycastle.bccrypto.params.ECKeyParameters;
+import org.bouncycastle.bccrypto.params.ECPrivateKeyParameters;
+import org.bouncycastle.bccrypto.params.ECPublicKeyParameters;
 import org.bouncycastle.bccrypto.params.ParametersWithRandom;
 import org.bouncycastle.bcmath.ec.ECAlgorithms;
 import org.bouncycastle.bcmath.ec.ECCurve;
@@ -43,7 +47,7 @@ public class DSTU4145Signer
             }
             else
             {
-                this.random = BCCryptoServicesRegistrar.getSecureRandom();
+                this.random = CryptoServicesRegistrar.getSecureRandom();
             }
 
             this.key = (ECPrivateKeyParameters)param;

@@ -1,6 +1,6 @@
 package org.bouncycastle.bcjcajce.provider.symmetric;
 
-import org.bouncycastle.bcasn1.misc.BCMiscObjectIdentifiers;
+import org.bouncycastle.bcasn1.misc.MiscObjectIdentifiers;
 import org.bouncycastle.bccrypto.CipherKeyGenerator;
 import org.bouncycastle.bccrypto.engines.BlowfishEngine;
 import org.bouncycastle.bccrypto.macs.CMac;
@@ -77,11 +77,11 @@ public final class Blowfish
 
             provider.addAlgorithm("Mac.BLOWFISHCMAC", PREFIX + "$CMAC");
             provider.addAlgorithm("Cipher.BLOWFISH", PREFIX + "$ECB");
-            provider.addAlgorithm("Cipher", BCMiscObjectIdentifiers.cryptlib_algorithm_blowfish_CBC, PREFIX + "$CBC");
+            provider.addAlgorithm("Cipher", MiscObjectIdentifiers.cryptlib_algorithm_blowfish_CBC, PREFIX + "$CBC");
             provider.addAlgorithm("KeyGenerator.BLOWFISH", PREFIX + "$KeyGen");
-            provider.addAlgorithm("Alg.Alias.KeyGenerator", BCMiscObjectIdentifiers.cryptlib_algorithm_blowfish_CBC, "BLOWFISH");
+            provider.addAlgorithm("Alg.Alias.KeyGenerator", MiscObjectIdentifiers.cryptlib_algorithm_blowfish_CBC, "BLOWFISH");
             provider.addAlgorithm("AlgorithmParameters.BLOWFISH", PREFIX + "$AlgParams");
-            provider.addAlgorithm("Alg.Alias.AlgorithmParameters", BCMiscObjectIdentifiers.cryptlib_algorithm_blowfish_CBC, "BLOWFISH");
+            provider.addAlgorithm("Alg.Alias.AlgorithmParameters", MiscObjectIdentifiers.cryptlib_algorithm_blowfish_CBC, "BLOWFISH");
 
         }
     }

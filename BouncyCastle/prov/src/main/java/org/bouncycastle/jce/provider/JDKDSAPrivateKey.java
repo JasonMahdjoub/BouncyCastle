@@ -62,7 +62,7 @@ public class JDKDSAPrivateKey
     }
 
     JDKDSAPrivateKey(
-        DSAPrivateKeyParameters params)
+        DSAPrivateKeyParameters  params)
     {
         this.x = params.getX();
         this.dsaSpec = new DSAParameterSpec(params.getParameters().getP(), params.getParameters().getQ(), params.getParameters().getG());

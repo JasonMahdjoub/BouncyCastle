@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.est.test.TestHostNameAuthorizer" tests="9" skipped="0" failures="0" errors="0" timestamp="2020-02-14T17:20:09" hostname="Garage" time="0.041">
+<testsuite name="org.bouncycastle.est.test.TestHostNameAuthorizer" tests="9" skipped="0" failures="0" errors="0" timestamp="2020-06-02T09:05:03" hostname="Garage" time="0.051">
   <properties/>
-  <testcase name="testCNMismatch_1" classname="org.bouncycastle.est.test.TestHostNameAuthorizer" time="0.025"/>
+  <testcase name="testCNMismatch_1" classname="org.bouncycastle.est.test.TestHostNameAuthorizer" time="0.019"/>
   <testcase name="testSANMatch" classname="org.bouncycastle.est.test.TestHostNameAuthorizer" time="0.002"/>
-  <testcase name="testCNMatch" classname="org.bouncycastle.est.test.TestHostNameAuthorizer" time="0.002"/>
+  <testcase name="testCNMatch" classname="org.bouncycastle.est.test.TestHostNameAuthorizer" time="0.001"/>
   <testcase name="testWCMismatch" classname="org.bouncycastle.est.test.TestHostNameAuthorizer" time="0.001"/>
-  <testcase name="testSANMismatchIP" classname="org.bouncycastle.est.test.TestHostNameAuthorizer" time="0.005"/>
-  <testcase name="testSANMismatchWC" classname="org.bouncycastle.est.test.TestHostNameAuthorizer" time="0.001"/>
-  <testcase name="testCNIPMismatch" classname="org.bouncycastle.est.test.TestHostNameAuthorizer" time="0.001"/>
-  <testcase name="testSANMatchIP" classname="org.bouncycastle.est.test.TestHostNameAuthorizer" time="0.001"/>
-  <testcase name="testSANMatchWC" classname="org.bouncycastle.est.test.TestHostNameAuthorizer" time="0.001"/>
+  <testcase name="testSANMismatchIP" classname="org.bouncycastle.est.test.TestHostNameAuthorizer" time="0.018"/>
+  <testcase name="testSANMismatchWC" classname="org.bouncycastle.est.test.TestHostNameAuthorizer" time="0.002"/>
+  <testcase name="testCNIPMismatch" classname="org.bouncycastle.est.test.TestHostNameAuthorizer" time="0.002"/>
+  <testcase name="testSANMatchIP" classname="org.bouncycastle.est.test.TestHostNameAuthorizer" time="0.002"/>
+  <testcase name="testSANMatchWC" classname="org.bouncycastle.est.test.TestHostNameAuthorizer" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

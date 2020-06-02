@@ -3,12 +3,14 @@ package org.bouncycastle.pqc.crypto.xmss;
 import java.security.SecureRandom;
 
 import org.bouncycastle.bccrypto.AsymmetricCipherKeyPair;
+import org.bouncycastle.bccrypto.AsymmetricCipherKeyPairGenerator;
 import org.bouncycastle.bccrypto.KeyGenerationParameters;
 
 /**
  * Key pair generator for XMSS^MT keys.
  */
 public final class XMSSMTKeyPairGenerator
+    implements AsymmetricCipherKeyPairGenerator
 {
     private XMSSMTParameters params;
     private XMSSParameters xmssParams;

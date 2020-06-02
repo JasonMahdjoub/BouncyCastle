@@ -32,7 +32,7 @@ public final class McElieceCCA2Primitives
      * @return <tt>m*G + z</tt>
      */
     public static GF2Vector encryptionPrimitive(BCMcElieceCCA2PublicKey pubKey,
-												GF2Vector m, GF2Vector z)
+                                                GF2Vector m, GF2Vector z)
     {
 
         GF2Matrix matrixG = pubKey.getG();
@@ -93,7 +93,7 @@ public final class McElieceCCA2Primitives
     }
 
     public static GF2Vector[] decryptionPrimitive(
-            McElieceCCA2PrivateKeyParameters privKey, GF2Vector c)
+        McElieceCCA2PrivateKeyParameters privKey, GF2Vector c)
     {
 
         // obtain values from private key

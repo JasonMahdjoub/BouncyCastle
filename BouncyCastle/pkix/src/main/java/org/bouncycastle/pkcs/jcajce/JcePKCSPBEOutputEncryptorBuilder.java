@@ -9,11 +9,12 @@ import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
+import javax.crypto.spec.SecretKeySpec;
 
 import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 import org.bouncycastle.bcasn1.ASN1Primitive;
-import org.bouncycastle.bcasn1.bc.DMBCObjectIdentifiers;
-import org.bouncycastle.bcasn1.misc.BCMiscObjectIdentifiers;
+import org.bouncycastle.bcasn1.bc.BCObjectIdentifiers;
+import org.bouncycastle.bcasn1.misc.MiscObjectIdentifiers;
 import org.bouncycastle.bcasn1.misc.ScryptParams;
 import org.bouncycastle.bcasn1.pkcs.EncryptionScheme;
 import org.bouncycastle.bcasn1.pkcs.KeyDerivationFunc;
@@ -32,6 +33,8 @@ import org.bouncycastle.bcjcajce.util.DefaultJcaJceHelper;
 import org.bouncycastle.bcjcajce.util.JcaJceHelper;
 import org.bouncycastle.bcjcajce.util.NamedJcaJceHelper;
 import org.bouncycastle.bcjcajce.util.ProviderJcaJceHelper;
+import org.bouncycastle.operator.AlgorithmNameFinder;
+import org.bouncycastle.operator.DefaultAlgorithmNameFinder;
 import org.bouncycastle.operator.DefaultSecretKeySizeProvider;
 import org.bouncycastle.operator.GenericKey;
 import org.bouncycastle.operator.OperatorCreationException;
@@ -47,6 +50,7 @@ public class JcePKCSPBEOutputEncryptorBuilder
     private ASN1ObjectIdentifier keyEncAlgorithm;
     private SecureRandom random;
     private SecretKeySizeProvider keySizeProvider = DefaultSecretKeySizeProvider.INSTANCE;
+    private AlgorithmNameFinder algorithmNameFinder = new DefaultAlgorithmNameFinder();
     private int iterationCount = 1024;
     private PBKDF2Config.Builder pbkdfBuilder = new PBKDF2Config.Builder();
 
@@ -181,7 +185,7 @@ public class JcePKCSPBEOutputEncryptorBuilder
             {
                 PBKDFConfig pbkDef = (pbkdf == null) ? pbkdfBuilder.build() : pbkdf;
 
-                if (BCMiscObjectIdentifiers.id_scrypt.equals(pbkDef.getAlgorithm()))
+                if (MiscObjectIdentifiers.id_scrypt.equals(pbkDef.getAlgorithm()))
                 {
                     ScryptConfig skdf = (ScryptConfig)pbkDef;
 
@@ -203,10 +207,10 @@ public class JcePKCSPBEOutputEncryptorBuilder
 
                     cipher = helper.createCipher(keyEncAlgorithm.getId());
 
-                    cipher.init(Cipher.ENCRYPT_MODE, key, random);
+                    cipher.init(Cipher.ENCRYPT_MODE, simplifyPbeKey(key), random);
 
                     PBES2Parameters algParams = new PBES2Parameters(
-                        new KeyDerivationFunc(BCMiscObjectIdentifiers.id_scrypt, params),
+                        new KeyDerivationFunc(MiscObjectIdentifiers.id_scrypt, params),
                         new EncryptionScheme(keyEncAlgorithm, ASN1Primitive.fromByteArray(cipher.getParameters().getEncoded())));
 
                     encryptionAlg = new AlgorithmIdentifier(algorithm, algParams);
@@ -226,7 +230,7 @@ public class JcePKCSPBEOutputEncryptorBuilder
 
                     cipher = helper.createCipher(keyEncAlgorithm.getId());
 
-                    cipher.init(Cipher.ENCRYPT_MODE, key, random);
+                    cipher.init(Cipher.ENCRYPT_MODE, simplifyPbeKey(key), random);
 
                     AlgorithmParameters algP = cipher.getParameters();
 
@@ -284,11 +288,27 @@ public class JcePKCSPBEOutputEncryptorBuilder
         }
     }
 
+    // some providers struggle with generic algorithm names in keys.
+    private SecretKey simplifyPbeKey(SecretKey key)
+    {
+        if (algorithmNameFinder.hasAlgorithmName(keyEncAlgorithm))
+        {
+            String algName = algorithmNameFinder.getAlgorithmName(keyEncAlgorithm);
+
+            if (algName.indexOf("AES") >= 0)
+            {
+                key = new SecretKeySpec(key.getEncoded(), "AES");
+            }
+        }
+
+        return key;
+    }
+
     private boolean isPKCS12(ASN1ObjectIdentifier algorithm)
     {
         return algorithm.on(PKCSObjectIdentifiers.pkcs_12PbeIds)
-            || algorithm.on(DMBCObjectIdentifiers.bc_pbe_sha1_pkcs12)
-            || algorithm.on(DMBCObjectIdentifiers.bc_pbe_sha256_pkcs12);
+            || algorithm.on(BCObjectIdentifiers.bc_pbe_sha1_pkcs12)
+            || algorithm.on(BCObjectIdentifiers.bc_pbe_sha256_pkcs12);
     }
 
     /**

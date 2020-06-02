@@ -1,10 +1,10 @@
 
 package org.bouncycastle.bccrypto.test;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.digests.MD5Digest;
 import org.bouncycastle.bccrypto.macs.HMac;
 import org.bouncycastle.bccrypto.params.KeyParameter;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**

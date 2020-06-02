@@ -2,7 +2,6 @@ package org.bouncycastle.bccrypto.test;
 
 import java.security.SecureRandom;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.CipherKeyGenerator;
 import org.bouncycastle.bccrypto.KeyGenerationParameters;
 import org.bouncycastle.bccrypto.Mac;
@@ -12,6 +11,7 @@ import org.bouncycastle.bccrypto.macs.Poly1305;
 import org.bouncycastle.bccrypto.params.KeyParameter;
 import org.bouncycastle.bccrypto.params.ParametersWithIV;
 import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 /*

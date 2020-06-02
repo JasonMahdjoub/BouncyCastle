@@ -19,9 +19,9 @@ import java.security.spec.X509EncodedKeySpec;
 import java.util.Random;
 
 import junit.framework.TestCase;
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.pqc.jcajce.provider.BouncyCastlePQCProvider;
 import org.bouncycastle.pqc.jcajce.spec.RainbowParameterSpec;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 /**
  * Test cases for the use of Rainbow with the BCPQC provider.

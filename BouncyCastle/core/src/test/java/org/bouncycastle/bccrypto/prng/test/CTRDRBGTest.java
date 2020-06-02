@@ -1,6 +1,5 @@
 package org.bouncycastle.bccrypto.prng.test;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.BlockCipher;
 import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.DataLengthException;
@@ -12,6 +11,7 @@ import org.bouncycastle.bccrypto.params.KeyParameter;
 import org.bouncycastle.bccrypto.prng.drbg.CTRSP800DRBG;
 import org.bouncycastle.bccrypto.prng.drbg.SP80090DRBG;
 import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**

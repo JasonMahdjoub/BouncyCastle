@@ -13,7 +13,6 @@ import javax.crypto.interfaces.DHPrivateKey;
 import javax.crypto.interfaces.DHPublicKey;
 import javax.crypto.spec.DHParameterSpec;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.agreement.DHBasicAgreement;
 import org.bouncycastle.bccrypto.digests.SHA1Digest;
 import org.bouncycastle.bccrypto.engines.DESEngine;
@@ -25,6 +24,7 @@ import org.bouncycastle.bcjcajce.provider.asymmetric.dh.IESCipher;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.jce.spec.IESParameterSpec;
 import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**

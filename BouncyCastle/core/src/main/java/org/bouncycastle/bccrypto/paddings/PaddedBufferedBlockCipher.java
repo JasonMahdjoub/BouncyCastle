@@ -1,7 +1,11 @@
 package org.bouncycastle.bccrypto.paddings;
 
-import org.bouncycastle.bccrypto.*;
+import org.bouncycastle.bccrypto.BlockCipher;
+import org.bouncycastle.bccrypto.BufferedBlockCipher;
 import org.bouncycastle.bccrypto.CipherParameters;
+import org.bouncycastle.bccrypto.DataLengthException;
+import org.bouncycastle.bccrypto.InvalidCipherTextException;
+import org.bouncycastle.bccrypto.OutputLengthException;
 import org.bouncycastle.bccrypto.params.ParametersWithRandom;
 
 /**
@@ -55,7 +59,7 @@ public class PaddedBufferedBlockCipher
      */
     public void init(
         boolean             forEncryption,
-        CipherParameters params)
+        CipherParameters    params)
         throws IllegalArgumentException
     {
         this.forEncryption = forEncryption;
@@ -64,7 +68,7 @@ public class PaddedBufferedBlockCipher
 
         if (params instanceof ParametersWithRandom)
         {
-            ParametersWithRandom p = (ParametersWithRandom)params;
+            ParametersWithRandom    p = (ParametersWithRandom)params;
 
             padding.init(p.getRandom());
 

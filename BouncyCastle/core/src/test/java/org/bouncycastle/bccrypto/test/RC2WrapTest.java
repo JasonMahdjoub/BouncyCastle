@@ -2,7 +2,6 @@ package org.bouncycastle.bccrypto.test;
 
 import java.security.SecureRandom;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.Wrapper;
 import org.bouncycastle.bccrypto.engines.RC2WrapEngine;
@@ -10,6 +9,7 @@ import org.bouncycastle.bccrypto.params.ParametersWithIV;
 import org.bouncycastle.bccrypto.params.ParametersWithRandom;
 import org.bouncycastle.bccrypto.params.RC2Parameters;
 import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTestResult;
 import org.bouncycastle.bcutil.test.Test;
 import org.bouncycastle.bcutil.test.TestResult;

@@ -3,8 +3,8 @@ package org.bouncycastle.bccrypto.engines;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
-import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.BlockCipher;
+import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.DataLengthException;
 import org.bouncycastle.bccrypto.OutputLengthException;
 import org.bouncycastle.bccrypto.params.KeyParameter;
@@ -172,11 +172,11 @@ public class GOST28147Engine
      */
     public void init(
         boolean           forEncryption,
-        CipherParameters params)
+        CipherParameters  params)
     {
         if (params instanceof ParametersWithSBox)
         {
-            ParametersWithSBox param = (ParametersWithSBox)params;
+            ParametersWithSBox   param = (ParametersWithSBox)params;
 
             //
             // Set the S-Box

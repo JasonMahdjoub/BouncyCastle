@@ -3,7 +3,6 @@ package org.bouncycastle.bccrypto.test;
 import java.util.Random;
 
 import junit.framework.TestCase;
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.SkippingStreamCipher;
 import org.bouncycastle.bccrypto.engines.AESEngine;
@@ -14,6 +13,7 @@ import org.bouncycastle.bccrypto.params.KeyParameter;
 import org.bouncycastle.bccrypto.params.ParametersWithIV;
 import org.bouncycastle.bcutil.Arrays;
 import org.bouncycastle.bcutil.encoders.Base64;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 public class BigSkippingCipherTest
     extends TestCase

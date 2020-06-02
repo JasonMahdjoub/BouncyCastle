@@ -242,7 +242,7 @@ public class ParseTest
       + "WruAAg/Lj4r0f9vN12wRlHoS2UKDjrE1DnUBbrM=");
 
     /* (non-Javadoc)
-     * @see org.bouncycastle.util.test.Test#getName()
+     * @see org.bouncycastle.bcutil.test.Test#getName()
      */
     public String getName()
     {

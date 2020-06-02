@@ -3,16 +3,19 @@ package org.bouncycastle.bccrypto.test;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.AsymmetricCipherKeyPair;
 import org.bouncycastle.bccrypto.DataLengthException;
 import org.bouncycastle.bccrypto.engines.ElGamalEngine;
 import org.bouncycastle.bccrypto.generators.ElGamalKeyPairGenerator;
 import org.bouncycastle.bccrypto.generators.ElGamalParametersGenerator;
-import org.bouncycastle.bccrypto.params.*;
+import org.bouncycastle.bccrypto.params.ElGamalKeyGenerationParameters;
+import org.bouncycastle.bccrypto.params.ElGamalParameters;
+import org.bouncycastle.bccrypto.params.ElGamalPrivateKeyParameters;
+import org.bouncycastle.bccrypto.params.ElGamalPublicKeyParameters;
 import org.bouncycastle.bccrypto.params.ParametersWithRandom;
 import org.bouncycastle.bcutil.Arrays;
 import org.bouncycastle.bcutil.BigIntegers;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class ElGamalTest
@@ -44,7 +47,7 @@ public class ElGamalTest
         BigInteger  g,
         BigInteger  p)
     {
-        ElGamalParameters dhParams = new ElGamalParameters(p, g, privateValueSize);
+        ElGamalParameters                dhParams = new ElGamalParameters(p, g, privateValueSize);
         ElGamalKeyGenerationParameters   params = new ElGamalKeyGenerationParameters(new SecureRandom(), dhParams);
         ElGamalKeyPairGenerator          kpGen = new ElGamalKeyPairGenerator();
 
@@ -55,8 +58,8 @@ public class ElGamalTest
         //
         AsymmetricCipherKeyPair         pair = kpGen.generateKeyPair();
 
-        ElGamalPublicKeyParameters pu = (ElGamalPublicKeyParameters)pair.getPublic();
-        ElGamalPrivateKeyParameters pv = (ElGamalPrivateKeyParameters)pair.getPrivate();
+        ElGamalPublicKeyParameters      pu = (ElGamalPublicKeyParameters)pair.getPublic();
+        ElGamalPrivateKeyParameters     pv = (ElGamalPrivateKeyParameters)pair.getPrivate();
 
         checkKeySize(privateValueSize, pv);
 
@@ -177,7 +180,7 @@ public class ElGamalTest
 
         pGen.init(size, 10, new SecureRandom());
 
-        ElGamalParameters elParams = pGen.generateParameters();
+        ElGamalParameters                elParams = pGen.generateParameters();
 
         if (elParams.getL() != 0)
         {
@@ -195,8 +198,8 @@ public class ElGamalTest
         //
         AsymmetricCipherKeyPair         pair = kpGen.generateKeyPair();
 
-        ElGamalPublicKeyParameters pu = (ElGamalPublicKeyParameters)pair.getPublic();
-        ElGamalPrivateKeyParameters pv = (ElGamalPrivateKeyParameters)pair.getPrivate();
+        ElGamalPublicKeyParameters      pu = (ElGamalPublicKeyParameters)pair.getPublic();
+        ElGamalPrivateKeyParameters     pv = (ElGamalPrivateKeyParameters)pair.getPrivate();
 
         ElGamalEngine    e = new ElGamalEngine();
 
@@ -232,9 +235,9 @@ public class ElGamalTest
 
     private void testInvalidP()
     {
-        ElGamalParameters dhParams = new ElGamalParameters(pPgpBogusPSamp, gPgpBogusPSamp, lPgpBogusPSamp);
-        ElGamalPublicKeyParameters pu = new ElGamalPublicKeyParameters(yPgpBogusPSamp, dhParams);
-        ElGamalPrivateKeyParameters pv = new ElGamalPrivateKeyParameters(xPgpBogusPSamp, dhParams);
+        ElGamalParameters               dhParams = new ElGamalParameters(pPgpBogusPSamp, gPgpBogusPSamp, lPgpBogusPSamp);
+        ElGamalPublicKeyParameters      pu = new ElGamalPublicKeyParameters(yPgpBogusPSamp, dhParams);
+        ElGamalPrivateKeyParameters     pv = new ElGamalPrivateKeyParameters(xPgpBogusPSamp, dhParams);
 
         ElGamalEngine    e = new ElGamalEngine();
 

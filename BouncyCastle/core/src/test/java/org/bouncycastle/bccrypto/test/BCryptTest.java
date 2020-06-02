@@ -1,9 +1,9 @@
 package org.bouncycastle.bccrypto.test;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.generators.BCrypt;
 import org.bouncycastle.bcutil.Arrays;
 import org.bouncycastle.bcutil.Integers;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 /*

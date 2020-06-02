@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.est.test.ESTParsingTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2020-02-14T17:20:09" hostname="Garage" time="0.037">
+<testsuite name="org.bouncycastle.est.test.ESTParsingTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2020-06-02T09:05:03" hostname="Garage" time="0.031">
   <properties/>
-  <testcase name="testParsingCacertsResponse" classname="org.bouncycastle.est.test.ESTParsingTest" time="0.032"/>
-  <testcase name="testParsingSimpleEnrolRequest" classname="org.bouncycastle.est.test.ESTParsingTest" time="0.002"/>
+  <testcase name="testParsingCacertsResponse" classname="org.bouncycastle.est.test.ESTParsingTest" time="0.027"/>
+  <testcase name="testParsingSimpleEnrolRequest" classname="org.bouncycastle.est.test.ESTParsingTest" time="0.001"/>
   <testcase name="testParsingCsrattrs1" classname="org.bouncycastle.est.test.ESTParsingTest" time="0.001"/>
-  <testcase name="testParsingCsrattrs2" classname="org.bouncycastle.est.test.ESTParsingTest" time="0.001"/>
-  <testcase name="testParsingSimpleEnrolResponse" classname="org.bouncycastle.est.test.ESTParsingTest" time="0.0"/>
+  <testcase name="testParsingCsrattrs2" classname="org.bouncycastle.est.test.ESTParsingTest" time="0.0"/>
+  <testcase name="testParsingSimpleEnrolResponse" classname="org.bouncycastle.est.test.ESTParsingTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

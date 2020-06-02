@@ -1,8 +1,8 @@
 package org.bouncycastle.bccrypto.test;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.Digest;
 import org.bouncycastle.bccrypto.digests.SM3Digest;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 /**
  * standard vector test for SM3 digest from chinese specification

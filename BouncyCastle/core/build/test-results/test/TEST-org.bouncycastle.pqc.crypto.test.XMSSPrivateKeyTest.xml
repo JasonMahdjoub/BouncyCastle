@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.pqc.crypto.test.XMSSPrivateKeyTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-02-14T17:17:41" hostname="Garage" time="0.001">
+<testsuite name="org.bouncycastle.pqc.crypto.test.XMSSPrivateKeyTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-06-02T09:02:32" hostname="Garage" time="0.002">
   <properties/>
-  <testcase name="testPrivateKeyParsing" classname="org.bouncycastle.pqc.crypto.test.XMSSPrivateKeyTest" time="0.001"/>
+  <testcase name="testPrivateKeyParsing" classname="org.bouncycastle.pqc.crypto.test.XMSSPrivateKeyTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

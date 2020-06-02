@@ -1,98 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.cms.test.NewEnvelopedDataTest" tests="130" skipped="0" failures="0" errors="0" timestamp="2020-02-14T17:20:18" hostname="Garage" time="1.039">
+<testsuite name="org.bouncycastle.cms.test.NewEnvelopedDataTest" tests="130" skipped="0" failures="0" errors="0" timestamp="2020-06-02T09:05:13" hostname="Garage" time="0.986">
   <properties/>
   <testcase name="testKeyTransAES128" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.005"/>
   <testcase name="testKeyTransAES192" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
   <testcase name="testKeyTransAES256" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
-  <testcase name="testOpenSSLVectors" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.022"/>
+  <testcase name="testOpenSSLVectors" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.025"/>
   <testcase name="testKeyTransCAST5" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.002"/>
-  <testcase name="testGost3410_2012_KeyAgree" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.005"/>
-  <testcase name="testGost3410_2012_KeyTrans" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.003"/>
-  <testcase name="testUnprotectedAttributes" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
+  <testcase name="testGost3410_2012_KeyAgree" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.006"/>
+  <testcase name="testGost3410_2012_KeyTrans" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.002"/>
+  <testcase name="testUnprotectedAttributes" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.002"/>
   <testcase name="testFaultyAgreementRecipient" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
-  <testcase name="testKeyWrapAlgorithmIdentifiers" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.036"/>
-  <testcase name="testOriginatorInfoGeneration" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.002"/>
+  <testcase name="testKeyWrapAlgorithmIdentifiers" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.037"/>
+  <testcase name="testOriginatorInfoGeneration" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
   <testcase name="testKeyTransSmallAES" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
-  <testcase name="testAES128KEK" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.01"/>
+  <testcase name="testAES128KEK" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.009"/>
   <testcase name="testAES192KEK" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
   <testcase name="testAES256KEK" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.0"/>
-  <testcase name="testGost3410_2012_256_KeyAgree_Creation" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.004"/>
-  <testcase name="testKeyTransDES" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.002"/>
-  <testcase name="testKeyTransRC4" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
-  <testcase name="testKeyTransOAEPSHA1" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.002"/>
+  <testcase name="testGost3410_2012_256_KeyAgree_Creation" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.005"/>
+  <testcase name="testKeyTransDES" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
+  <testcase name="testKeyTransRC4" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.002"/>
+  <testcase name="testKeyTransOAEPSHA1" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
   <testcase name="testStaticStaticDHAgreement" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.002"/>
-  <testcase name="testKeyTransOAEPInCert" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
+  <testcase name="testKeyTransOAEPInCert" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.002"/>
   <testcase name="testOriginatorInfo" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
-  <testcase name="testSEED128KEK" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
-  <testcase name="testErroneousKEK" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.0"/>
+  <testcase name="testSEED128KEK" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.0"/>
+  <testcase name="testErroneousKEK" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
   <testcase name="testKeyTransOAEPDefault" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
   <testcase name="testKeyTransOAEPSHA224" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.002"/>
   <testcase name="testKeyTransOAEPSHA256" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
   <testcase name="testRC2128KEK" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
-  <testcase name="testECMQVKeyAgreeVectors" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.008"/>
+  <testcase name="testECMQVKeyAgreeVectors" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.007"/>
   <testcase name="testCamellia128KEK" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.0"/>
   <testcase name="testCamellia192KEK" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
   <testcase name="testCamellia256KEK" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.0"/>
   <testcase name="testKeyTransWithAlgMapping" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.002"/>
-  <testcase name="testGost3410_2001_KeyAgree" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.002"/>
-  <testcase name="testGost3410_2001_KeyTrans" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.002"/>
-  <testcase name="testECMQVKeyAgreeMultiple" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.014"/>
-  <testcase name="testECKeyAgreeVectors" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.006"/>
+  <testcase name="testGost3410_2001_KeyAgree" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.003"/>
+  <testcase name="testGost3410_2001_KeyTrans" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.003"/>
+  <testcase name="testECMQVKeyAgreeMultiple" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.015"/>
+  <testcase name="testECKeyAgreeVectors" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.004"/>
   <testcase name="testECKeyAgree" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.004"/>
-  <testcase name="testGost3410_2012_512_KeyAgree_Creation" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.009"/>
-  <testcase name="testGost3410_2012_KeyTransGen" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.011"/>
-  <testcase name="testKeyTransDESEDE3Light" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
-  <testcase name="testRFC4134ex5_1" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
-  <testcase name="testRFC4134ex5_2" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
+  <testcase name="testGost3410_2012_512_KeyAgree_Creation" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.008"/>
+  <testcase name="testGost3410_2012_KeyTransGen" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.013"/>
+  <testcase name="testKeyTransDESEDE3Light" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.002"/>
+  <testcase name="testRFC4134ex5_1" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.0"/>
+  <testcase name="testRFC4134ex5_2" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.002"/>
   <testcase name="testKeyTransDESEDE3Short" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
-  <testcase name="testNoSaltOrIterationCount" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.01"/>
+  <testcase name="testNoSaltOrIterationCount" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.011"/>
   <testcase name="testKeyTransOAEPSHA1AndSHA256" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.002"/>
   <testcase name="testKeyTrans" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
   <testcase name="testDESKEK" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
   <testcase name="testGithub539_Gost3410_2012_KeyTrans" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
-  <testcase name="testKeyTransLight128RC4" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
+  <testcase name="testKeyTransLight128RC4" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.0"/>
   <testcase name="testKeyTransODES" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
   <testcase name="testKeyTransSEED" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
-  <testcase name="testKDFAgreements" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.083"/>
+  <testcase name="testKDFAgreements" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.079"/>
   <testcase name="testKeyTransRC2bit40" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
-  <testcase name="testGost3410_2001_KeyAgree_Creation" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.004"/>
+  <testcase name="testGost3410_2001_KeyAgree_Creation" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.005"/>
   <testcase name="testGost3410_2001_KeyAgreeRand" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.002"/>
   <testcase name="testKeyTrans128RC4" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
-  <testcase name="testGost3410_2001_KeyTransRand" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
+  <testcase name="testGost3410_2001_KeyTransRand" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.002"/>
   <testcase name="testPasswordAES256" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
-  <testcase name="testPasswordDESEDE" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.002"/>
-  <testcase name="testPasswordAES256WithPRF" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.005"/>
+  <testcase name="testPasswordDESEDE" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
+  <testcase name="testPasswordAES256WithPRF" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.006"/>
   <testcase name="testEphemeralStaticDHAgreement" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
   <testcase name="testKeyTransCamellia128" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
   <testcase name="testKeyTransCamellia192" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
-  <testcase name="testKeyTransCamellia256" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.0"/>
+  <testcase name="testKeyTransCamellia256" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
   <testcase name="testKeyTransAES128" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.004"/>
-  <testcase name="testKeyTransAES192" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.0"/>
+  <testcase name="testKeyTransAES192" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
   <testcase name="testKeyTransAES256" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.0"/>
-  <testcase name="testOpenSSLVectors" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.016"/>
+  <testcase name="testOpenSSLVectors" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.01"/>
   <testcase name="testKeyTransCAST5" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
-  <testcase name="testGost3410_2012_KeyAgree" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.003"/>
-  <testcase name="testGost3410_2012_KeyTrans" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.002"/>
+  <testcase name="testGost3410_2012_KeyAgree" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.002"/>
+  <testcase name="testGost3410_2012_KeyTrans" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.005"/>
   <testcase name="testUnprotectedAttributes" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
   <testcase name="testFaultyAgreementRecipient" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.0"/>
-  <testcase name="testKeyWrapAlgorithmIdentifiers" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.033"/>
+  <testcase name="testKeyWrapAlgorithmIdentifiers" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.032"/>
   <testcase name="testOriginatorInfoGeneration" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
   <testcase name="testKeyTransSmallAES" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
-  <testcase name="testAES128KEK" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.006"/>
+  <testcase name="testAES128KEK" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.004"/>
   <testcase name="testAES192KEK" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.0"/>
-  <testcase name="testAES256KEK" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
-  <testcase name="testGost3410_2012_256_KeyAgree_Creation" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.004"/>
-  <testcase name="testKeyTransDES" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.0"/>
+  <testcase name="testAES256KEK" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.0"/>
+  <testcase name="testGost3410_2012_256_KeyAgree_Creation" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.003"/>
+  <testcase name="testKeyTransDES" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
   <testcase name="testKeyTransRC4" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
   <testcase name="testKeyTransOAEPSHA1" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
   <testcase name="testStaticStaticDHAgreement" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
   <testcase name="testKeyTransOAEPInCert" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
   <testcase name="testOriginatorInfo" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.0"/>
-  <testcase name="testSEED128KEK" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
+  <testcase name="testSEED128KEK" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.0"/>
   <testcase name="testErroneousKEK" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.0"/>
-  <testcase name="testKeyTransOAEPDefault" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
+  <testcase name="testKeyTransOAEPDefault" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.002"/>
   <testcase name="testKeyTransOAEPSHA224" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
-  <testcase name="testKeyTransOAEPSHA256" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.002"/>
+  <testcase name="testKeyTransOAEPSHA256" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
   <testcase name="testRC2128KEK" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.0"/>
   <testcase name="testECMQVKeyAgreeVectors" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.005"/>
   <testcase name="testCamellia128KEK" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.0"/>
@@ -101,29 +101,29 @@
   <testcase name="testKeyTransWithAlgMapping" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
   <testcase name="testGost3410_2001_KeyAgree" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.002"/>
   <testcase name="testGost3410_2001_KeyTrans" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.002"/>
-  <testcase name="testECMQVKeyAgreeMultiple" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.014"/>
-  <testcase name="testECKeyAgreeVectors" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.004"/>
-  <testcase name="testECKeyAgree" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.006"/>
-  <testcase name="testGost3410_2012_512_KeyAgree_Creation" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.009"/>
-  <testcase name="testGost3410_2012_KeyTransGen" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.012"/>
-  <testcase name="testKeyTransDESEDE3Light" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.0"/>
+  <testcase name="testECMQVKeyAgreeMultiple" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.013"/>
+  <testcase name="testECKeyAgreeVectors" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.003"/>
+  <testcase name="testECKeyAgree" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.005"/>
+  <testcase name="testGost3410_2012_512_KeyAgree_Creation" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.007"/>
+  <testcase name="testGost3410_2012_KeyTransGen" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.01"/>
+  <testcase name="testKeyTransDESEDE3Light" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
   <testcase name="testRFC4134ex5_1" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
   <testcase name="testRFC4134ex5_2" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.0"/>
   <testcase name="testKeyTransDESEDE3Short" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
-  <testcase name="testNoSaltOrIterationCount" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.005"/>
-  <testcase name="testKeyTransOAEPSHA1AndSHA256" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
+  <testcase name="testNoSaltOrIterationCount" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.004"/>
+  <testcase name="testKeyTransOAEPSHA1AndSHA256" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.002"/>
   <testcase name="testKeyTrans" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
   <testcase name="testDESKEK" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.0"/>
-  <testcase name="testGithub539_Gost3410_2012_KeyTrans" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
+  <testcase name="testGithub539_Gost3410_2012_KeyTrans" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.002"/>
   <testcase name="testKeyTransLight128RC4" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.0"/>
   <testcase name="testKeyTransODES" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
   <testcase name="testKeyTransSEED" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.0"/>
-  <testcase name="testKDFAgreements" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.089"/>
+  <testcase name="testKDFAgreements" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.077"/>
   <testcase name="testKeyTransRC2bit40" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
-  <testcase name="testGost3410_2001_KeyAgree_Creation" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.004"/>
+  <testcase name="testGost3410_2001_KeyAgree_Creation" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.003"/>
   <testcase name="testGost3410_2001_KeyAgreeRand" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.002"/>
   <testcase name="testKeyTrans128RC4" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
-  <testcase name="testGost3410_2001_KeyTransRand" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.002"/>
+  <testcase name="testGost3410_2001_KeyTransRand" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
   <testcase name="testPasswordAES256" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
   <testcase name="testPasswordDESEDE" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.001"/>
   <testcase name="testPasswordAES256WithPRF" classname="org.bouncycastle.cms.test.NewEnvelopedDataTest" time="0.003"/>

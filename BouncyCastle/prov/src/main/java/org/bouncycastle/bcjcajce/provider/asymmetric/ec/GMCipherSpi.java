@@ -18,7 +18,7 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.ShortBufferException;
 
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.digests.Blake2bDigest;
 import org.bouncycastle.bccrypto.digests.Blake2sDigest;
 import org.bouncycastle.bccrypto.digests.MD5Digest;
@@ -186,7 +186,7 @@ public class GMCipherSpi
         }
         else
         {
-            this.random = BCCryptoServicesRegistrar.getSecureRandom();
+            this.random = CryptoServicesRegistrar.getSecureRandom();
         }
 
         this.state = opmode;

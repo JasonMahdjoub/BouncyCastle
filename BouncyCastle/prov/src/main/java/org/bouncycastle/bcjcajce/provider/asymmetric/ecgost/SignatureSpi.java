@@ -41,7 +41,7 @@ public class SignatureSpi
         PublicKey   publicKey)
         throws InvalidKeyException
     {
-        CipherParameters param;
+        CipherParameters    param;
 
         if (publicKey instanceof ECPublicKey)
         {
@@ -75,7 +75,7 @@ public class SignatureSpi
         PrivateKey  privateKey)
         throws InvalidKeyException
     {
-        CipherParameters param;
+        CipherParameters    param;
 
         if (privateKey instanceof ECKey)
         {

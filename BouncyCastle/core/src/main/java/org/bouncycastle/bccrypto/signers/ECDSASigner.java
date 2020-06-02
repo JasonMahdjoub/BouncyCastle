@@ -4,9 +4,12 @@ import java.math.BigInteger;
 import java.security.SecureRandom;
 
 import org.bouncycastle.bccrypto.CipherParameters;
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.DSAExt;
-import org.bouncycastle.bccrypto.params.*;
+import org.bouncycastle.bccrypto.params.ECDomainParameters;
+import org.bouncycastle.bccrypto.params.ECKeyParameters;
+import org.bouncycastle.bccrypto.params.ECPrivateKeyParameters;
+import org.bouncycastle.bccrypto.params.ECPublicKeyParameters;
 import org.bouncycastle.bccrypto.params.ParametersWithRandom;
 import org.bouncycastle.bcmath.ec.ECAlgorithms;
 import org.bouncycastle.bcmath.ec.ECConstants;
@@ -47,7 +50,7 @@ public class ECDSASigner
 
     public void init(
         boolean                 forSigning,
-        CipherParameters param)
+        CipherParameters        param)
     {
         SecureRandom providedRandom = null;
 
@@ -250,6 +253,6 @@ public class ECDSASigner
 
     protected SecureRandom initSecureRandom(boolean needed, SecureRandom provided)
     {
-        return !needed ? null : (provided != null) ? provided : BCCryptoServicesRegistrar.getSecureRandom();
+        return !needed ? null : (provided != null) ? provided : CryptoServicesRegistrar.getSecureRandom();
     }
 }

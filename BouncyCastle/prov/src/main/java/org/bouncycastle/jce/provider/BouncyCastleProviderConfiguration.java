@@ -10,7 +10,7 @@ import java.util.Set;
 
 import javax.crypto.spec.DHParameterSpec;
 
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.params.DHParameters;
 import org.bouncycastle.bccrypto.params.DSAParameters;
 import org.bouncycastle.bcjcajce.provider.asymmetric.util.EC5Util;
@@ -196,7 +196,7 @@ class BouncyCastleProviderConfiguration
             }
         }
 
-        DHParameters dhParams = BCCryptoServicesRegistrar.getSizedProperty(BCCryptoServicesRegistrar.Property.DH_DEFAULT_PARAMS, keySize);
+        DHParameters dhParams = CryptoServicesRegistrar.getSizedProperty(CryptoServicesRegistrar.Property.DH_DEFAULT_PARAMS, keySize);
         if (dhParams != null)
         {
             return new DHDomainParameterSpec(dhParams);
@@ -207,7 +207,7 @@ class BouncyCastleProviderConfiguration
 
     public DSAParameterSpec getDSADefaultParameters(int keySize)
     {
-        DSAParameters dsaParams = BCCryptoServicesRegistrar.getSizedProperty(BCCryptoServicesRegistrar.Property.DSA_DEFAULT_PARAMS, keySize);
+        DSAParameters dsaParams = CryptoServicesRegistrar.getSizedProperty(CryptoServicesRegistrar.Property.DSA_DEFAULT_PARAMS, keySize);
         if (dsaParams != null)
         {
             return new DSAParameterSpec(dsaParams.getP(), dsaParams.getQ(), dsaParams.getG());

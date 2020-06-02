@@ -4,9 +4,12 @@ import java.math.BigInteger;
 import java.security.SecureRandom;
 
 import org.bouncycastle.bccrypto.CipherParameters;
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.DSAExt;
-import org.bouncycastle.bccrypto.params.*;
+import org.bouncycastle.bccrypto.params.ECDomainParameters;
+import org.bouncycastle.bccrypto.params.ECKeyParameters;
+import org.bouncycastle.bccrypto.params.ECPrivateKeyParameters;
+import org.bouncycastle.bccrypto.params.ECPublicKeyParameters;
 import org.bouncycastle.bccrypto.params.ParametersWithRandom;
 import org.bouncycastle.bcmath.ec.ECAlgorithms;
 import org.bouncycastle.bcmath.ec.ECConstants;
@@ -28,20 +31,20 @@ public class ECGOST3410_2012Signer
 
     public void init(
         boolean                 forSigning,
-        CipherParameters param)
+        CipherParameters        param)
     {
         if (forSigning)
         {
             if (param instanceof ParametersWithRandom)
             {
-                ParametersWithRandom rParam = (ParametersWithRandom)param;
+                ParametersWithRandom    rParam = (ParametersWithRandom)param;
 
                 this.random = rParam.getRandom();
                 this.key = (ECPrivateKeyParameters)rParam.getParameters();
             }
             else
             {
-                this.random = BCCryptoServicesRegistrar.getSecureRandom();
+                this.random = CryptoServicesRegistrar.getSecureRandom();
                 this.key = (ECPrivateKeyParameters)param;
             }
         }

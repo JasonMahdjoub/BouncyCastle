@@ -12,16 +12,16 @@ public class MQVPrivateParameters
     private ECPublicKeyParameters ephemeralPublicKey;
 
     public MQVPrivateParameters(
-        ECPrivateKeyParameters staticPrivateKey,
-        ECPrivateKeyParameters ephemeralPrivateKey)
+        ECPrivateKeyParameters  staticPrivateKey,
+        ECPrivateKeyParameters  ephemeralPrivateKey)
     {
         this(staticPrivateKey, ephemeralPrivateKey, null);
     }
 
     public MQVPrivateParameters(
-        ECPrivateKeyParameters staticPrivateKey,
-        ECPrivateKeyParameters ephemeralPrivateKey,
-        ECPublicKeyParameters ephemeralPublicKey)
+        ECPrivateKeyParameters  staticPrivateKey,
+        ECPrivateKeyParameters  ephemeralPrivateKey,
+        ECPublicKeyParameters   ephemeralPublicKey)
     {
         if (staticPrivateKey == null)
         {

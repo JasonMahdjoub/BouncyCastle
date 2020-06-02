@@ -2,7 +2,6 @@ package org.bouncycastle.bccrypto.test;
 
 import java.math.BigInteger;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.digests.SHA512tDigest;
 import org.bouncycastle.bccrypto.engines.RSAEngine;
 import org.bouncycastle.bccrypto.params.RSAKeyParameters;
@@ -10,6 +9,7 @@ import org.bouncycastle.bccrypto.signers.ISO9796d2PSSSigner;
 import org.bouncycastle.bccrypto.signers.ISO9796d2Signer;
 import org.bouncycastle.bccrypto.signers.X931Signer;
 import org.bouncycastle.bcutil.encoders.Base64;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class IsoTrailerTest

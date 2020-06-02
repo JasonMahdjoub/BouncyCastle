@@ -9,17 +9,26 @@ import org.bouncycastle.bcasn1.nist.NISTNamedCurves;
 import org.bouncycastle.bcasn1.sec.SECNamedCurves;
 import org.bouncycastle.bcasn1.x9.ECNamedCurveTable;
 import org.bouncycastle.bcasn1.x9.X9ECParameters;
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.AsymmetricCipherKeyPair;
 import org.bouncycastle.bccrypto.BasicAgreement;
+import org.bouncycastle.bccrypto.StagedAgreement;
 import org.bouncycastle.bccrypto.agreement.ECDHBasicAgreement;
 import org.bouncycastle.bccrypto.agreement.ECDHCBasicAgreement;
+import org.bouncycastle.bccrypto.agreement.ECDHCStagedAgreement;
 import org.bouncycastle.bccrypto.agreement.ECDHCUnifiedAgreement;
 import org.bouncycastle.bccrypto.agreement.ECMQVBasicAgreement;
 import org.bouncycastle.bccrypto.digests.SHA3Digest;
 import org.bouncycastle.bccrypto.ec.CustomNamedCurves;
 import org.bouncycastle.bccrypto.generators.ECKeyPairGenerator;
-import org.bouncycastle.bccrypto.params.*;
+import org.bouncycastle.bccrypto.params.AsymmetricKeyParameter;
+import org.bouncycastle.bccrypto.params.ECDHUPrivateParameters;
+import org.bouncycastle.bccrypto.params.ECDHUPublicParameters;
+import org.bouncycastle.bccrypto.params.ECDomainParameters;
+import org.bouncycastle.bccrypto.params.ECKeyGenerationParameters;
+import org.bouncycastle.bccrypto.params.ECPrivateKeyParameters;
+import org.bouncycastle.bccrypto.params.ECPublicKeyParameters;
+import org.bouncycastle.bccrypto.params.MQVPrivateParameters;
+import org.bouncycastle.bccrypto.params.MQVPublicParameters;
 import org.bouncycastle.bccrypto.params.ParametersWithRandom;
 import org.bouncycastle.bccrypto.signers.DSADigestSigner;
 import org.bouncycastle.bccrypto.signers.ECDSASigner;
@@ -28,6 +37,7 @@ import org.bouncycastle.bcmath.ec.ECCurve;
 import org.bouncycastle.bcmath.ec.ECPoint;
 import org.bouncycastle.bcutil.BigIntegers;
 import org.bouncycastle.bcutil.Strings;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 import org.bouncycastle.bcutil.test.TestRandomBigInteger;
 
@@ -818,6 +828,47 @@ public class ECTest
         }
     }
 
+    private void testECDHStagedAgreement()
+    {
+        SecureRandom random = new SecureRandom();
+
+        X9ECParameters x9 = CustomNamedCurves.getByName("curve25519");
+        ECDomainParameters ec = new ECDomainParameters(x9.getCurve(), x9.getG(), x9.getN(), x9.getH(), x9.getSeed());
+
+        ECKeyPairGenerator kpg = new ECKeyPairGenerator();
+        kpg.init(new ECKeyGenerationParameters(ec, random));
+
+        AsymmetricCipherKeyPair p1 = kpg.generateKeyPair();
+        AsymmetricCipherKeyPair p2 = kpg.generateKeyPair();
+        AsymmetricCipherKeyPair p3 = kpg.generateKeyPair();
+
+        StagedAgreement e1 = new ECDHCStagedAgreement();
+        StagedAgreement e2 = new ECDHCStagedAgreement();
+        StagedAgreement e3 = new ECDHCStagedAgreement();
+
+        e1.init(p1.getPrivate());
+        e2.init(p2.getPrivate());
+        e3.init(p3.getPrivate());
+
+        AsymmetricKeyParameter stage1_12 = e1.calculateStage(p2.getPublic());
+        AsymmetricKeyParameter stage1_23 = e2.calculateStage(p3.getPublic());
+        AsymmetricKeyParameter stage1_31 = e3.calculateStage(p1.getPublic());
+
+        BigInteger k1 = e1.calculateAgreement(stage1_23);
+        BigInteger k2 = e2.calculateAgreement(stage1_31);
+        BigInteger k3 = e3.calculateAgreement(stage1_12);
+
+        if (!k1.equals(k2))
+        {
+            fail("1-2 calculated agreement test failed");
+        }
+
+        if (!k3.equals(k2))
+        {
+            fail("3-2 calculated agreement test failed");
+        }
+    }
+
     private void testECMQVTestVector1()
     {
         // Test Vector from GEC-2
@@ -1118,6 +1169,8 @@ public class ECTest
 
         testECUnifiedTestVector1();
         testECUnifiedTestVector2();
+
+        testECDHStagedAgreement();
     }
 
 

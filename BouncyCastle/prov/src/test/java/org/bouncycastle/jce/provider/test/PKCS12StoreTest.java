@@ -40,7 +40,6 @@ import org.bouncycastle.bcasn1.x500.X500Name;
 import org.bouncycastle.bcasn1.x500.X500NameBuilder;
 import org.bouncycastle.bcasn1.x500.style.BCStyle;
 import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcjcajce.PKCS12StoreParameter;
 import org.bouncycastle.jce.PKCS12Util;
 import org.bouncycastle.jce.interfaces.PKCS12BagAttributeCarrier;
@@ -48,6 +47,7 @@ import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.jce.provider.JDKPKCS12StoreParameter;
 import org.bouncycastle.jce.provider.X509CertificateObject;
 import org.bouncycastle.bcutil.encoders.Base64;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**

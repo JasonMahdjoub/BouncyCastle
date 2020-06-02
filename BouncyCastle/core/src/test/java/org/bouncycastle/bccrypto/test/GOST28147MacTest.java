@@ -1,12 +1,12 @@
 package org.bouncycastle.bccrypto.test;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.Mac;
 import org.bouncycastle.bccrypto.engines.GOST28147Engine;
 import org.bouncycastle.bccrypto.macs.GOST28147Mac;
 import org.bouncycastle.bccrypto.params.KeyParameter;
 import org.bouncycastle.bccrypto.params.ParametersWithSBox;
 import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTestResult;
 import org.bouncycastle.bcutil.test.Test;
 import org.bouncycastle.bcutil.test.TestResult;

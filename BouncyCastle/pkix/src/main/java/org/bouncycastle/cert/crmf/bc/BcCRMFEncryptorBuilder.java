@@ -7,7 +7,7 @@ import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.cert.crmf.CRMFException;
 import org.bouncycastle.bccrypto.CipherKeyGenerator;
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.params.KeyParameter;
 import org.bouncycastle.bccrypto.util.CipherFactory;
 import org.bouncycastle.operator.GenericKey;
@@ -60,7 +60,7 @@ public class BcCRMFEncryptorBuilder
         {
             if (random == null)
             {
-                random = BCCryptoServicesRegistrar.getSecureRandom();
+                random = CryptoServicesRegistrar.getSecureRandom();
             }
 
             CipherKeyGenerator keyGen = helper.createKeyGenerator(encryptionOID, random);

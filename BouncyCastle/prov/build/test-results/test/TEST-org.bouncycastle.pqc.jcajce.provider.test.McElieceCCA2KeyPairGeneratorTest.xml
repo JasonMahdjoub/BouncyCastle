@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.pqc.jcajce.provider.test.McElieceCCA2KeyPairGeneratorTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2020-02-15T08:12:11" hostname="Garage" time="0.109">
+<testsuite name="org.bouncycastle.pqc.jcajce.provider.test.McElieceCCA2KeyPairGeneratorTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2020-06-02T09:20:20" hostname="Garage" time="0.145">
   <properties/>
   <testcase name="testKeyFactory" classname="org.bouncycastle.pqc.jcajce.provider.test.McElieceCCA2KeyPairGeneratorTest" time="0.0"/>
-  <testcase name="testKeyPairEncoding_9_33" classname="org.bouncycastle.pqc.jcajce.provider.test.McElieceCCA2KeyPairGeneratorTest" time="0.109"/>
+  <testcase name="testKeyPairEncoding_9_33" classname="org.bouncycastle.pqc.jcajce.provider.test.McElieceCCA2KeyPairGeneratorTest" time="0.145"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

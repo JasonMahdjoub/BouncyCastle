@@ -8,12 +8,12 @@ import junit.framework.Assert;
 import junit.framework.TestCase;
 import org.bouncycastle.bcasn1.ASN1InputStream;
 import org.bouncycastle.bcasn1.tsp.TSTInfo;
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.tsp.GenTimeAccuracy;
 import org.bouncycastle.tsp.TSPAlgorithms;
 import org.bouncycastle.tsp.TSPException;
 import org.bouncycastle.tsp.TimeStampTokenInfo;
 import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 public class TimeStampTokenInfoUnitTest
     extends TestCase

@@ -1,7 +1,7 @@
 package org.bouncycastle.bccrypto.engines;
 
-import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.BlockCipher;
+import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.params.RC5Parameters;
 
 /**
@@ -73,14 +73,14 @@ public class RC564Engine
      */
     public void init(
         boolean             forEncryption,
-        CipherParameters params)
+        CipherParameters    params)
     {
         if (!(params instanceof RC5Parameters))
         {
             throw new IllegalArgumentException("invalid parameter passed to RC564 init - " + params.getClass().getName());
         }
 
-        RC5Parameters p = (RC5Parameters)params;
+        RC5Parameters       p = (RC5Parameters)params;
 
         this.forEncryption = forEncryption;
 

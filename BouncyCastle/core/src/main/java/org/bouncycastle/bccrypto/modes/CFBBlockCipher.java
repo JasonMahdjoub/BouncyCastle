@@ -1,7 +1,7 @@
 package org.bouncycastle.bccrypto.modes;
 
-import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.BlockCipher;
+import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.DataLengthException;
 import org.bouncycastle.bccrypto.StreamBlockCipher;
 import org.bouncycastle.bccrypto.params.ParametersWithIV;
@@ -36,6 +36,11 @@ public class CFBBlockCipher
     {
         super(cipher);
 
+        if (bitBlockSize < 8 || bitBlockSize % 8 != 0)
+        {
+            throw new IllegalArgumentException("CFB" + bitBlockSize + " not supported");
+        }
+
         this.cipher = cipher;
         this.blockSize = bitBlockSize / 8;
 
@@ -58,7 +63,7 @@ public class CFBBlockCipher
      */
     public void init(
         boolean             encrypting,
-        CipherParameters params)
+        CipherParameters    params)
         throws IllegalArgumentException
     {
         this.encrypting = encrypting;

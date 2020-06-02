@@ -15,9 +15,9 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
 import org.bouncycastle.bcasn1.nsri.NSRIObjectIdentifiers;
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.prng.FixedSecureRandom;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 /**
  * basic test class for the ARIA cipher vectors from FIPS-197
@@ -245,7 +245,7 @@ public class ARIATest
             + "b16aedf5aa0de657ba637b391aafd255");
         byte[] N = Hex.decode("cafebabefacedbaddecaf888");
         String T = "c8f245c8619ca9ba7d6d9545e7f48214";
-        byte[] C = Hex.decode(
+        byte[] C = Hex.decode(             
               "c3aa0e01a4f8b5dfdb25d0f1c78c275e516114080e2be7a7f7bffd4504b19a8552f80ad5b55f3d911725489629996d398d5ed6f077e22924c5b8ebe20a219693"
             + T);
 

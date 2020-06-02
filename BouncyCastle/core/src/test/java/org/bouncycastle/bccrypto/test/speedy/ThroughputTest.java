@@ -3,12 +3,12 @@ package org.bouncycastle.bccrypto.test.speedy;
 import java.io.IOException;
 import java.security.SecureRandom;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.BlockCipher;
 import org.bouncycastle.bccrypto.engines.AESFastEngine;
 import org.bouncycastle.bccrypto.engines.ThreefishEngine;
 import org.bouncycastle.bccrypto.params.KeyParameter;
 import org.bouncycastle.bccrypto.params.TweakableBlockCipherParameters;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 public class ThroughputTest
 {

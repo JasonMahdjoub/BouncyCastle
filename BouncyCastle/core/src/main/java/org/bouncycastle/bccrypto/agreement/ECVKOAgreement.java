@@ -4,9 +4,10 @@ import java.math.BigInteger;
 
 import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.Digest;
-import org.bouncycastle.bccrypto.params.*;
+import org.bouncycastle.bccrypto.params.ECDomainParameters;
 import org.bouncycastle.bccrypto.params.ECPrivateKeyParameters;
 import org.bouncycastle.bccrypto.params.ECPublicKeyParameters;
+import org.bouncycastle.bccrypto.params.ParametersWithUKM;
 import org.bouncycastle.bcmath.ec.ECAlgorithms;
 import org.bouncycastle.bcmath.ec.ECPoint;
 import org.bouncycastle.bcutil.BigIntegers;
@@ -29,7 +30,7 @@ public class ECVKOAgreement
     public void init(
         CipherParameters key)
     {
-        ParametersWithUKMBC p = (ParametersWithUKMBC)key;
+        ParametersWithUKM p = (ParametersWithUKM)key;
 
         this.key = (ECPrivateKeyParameters)p.getParameters();
         this.ukm = toInteger(p.getUKM());

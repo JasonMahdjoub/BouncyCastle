@@ -1,12 +1,12 @@
 package org.bouncycastle.bccrypto.prng.test;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.digests.SHA1Digest;
 import org.bouncycastle.bccrypto.digests.SHA256Digest;
 import org.bouncycastle.bccrypto.digests.SHA384Digest;
 import org.bouncycastle.bccrypto.digests.SHA512Digest;
 import org.bouncycastle.bccrypto.prng.drbg.HashSP800DRBG;
 import org.bouncycastle.bccrypto.prng.drbg.SP80090DRBG;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**

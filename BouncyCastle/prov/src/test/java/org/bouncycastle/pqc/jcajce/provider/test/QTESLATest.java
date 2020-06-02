@@ -16,14 +16,14 @@ import java.security.spec.X509EncodedKeySpec;
 
 import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 import org.bouncycastle.bcasn1.DEROctetString;
-import org.bouncycastle.bcasn1.bc.DMBCObjectIdentifiers;
+import org.bouncycastle.bcasn1.bc.BCObjectIdentifiers;
 import org.bouncycastle.bcasn1.pkcs.PrivateKeyInfo;
 import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.pqc.asn1.PQCObjectIdentifiers;
 import org.bouncycastle.pqc.jcajce.spec.QTESLAParameterSpec;
 import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.FixedSecureRandom;
 
 public class QTESLATest
@@ -99,7 +99,7 @@ public class QTESLATest
 
         performKeyPairEncodingTest(kp);
 
-        assertEquals(DMBCObjectIdentifiers.qTESLA_p_I, SubjectPublicKeyInfo.getInstance(kp.getPublic().getEncoded()).getAlgorithm().getAlgorithm());
+        assertEquals(BCObjectIdentifiers.qTESLA_p_I, SubjectPublicKeyInfo.getInstance(kp.getPublic().getEncoded()).getAlgorithm().getAlgorithm());
 
         doTestSig(kp);
         doTestKey(kp);
@@ -119,7 +119,7 @@ public class QTESLATest
 
         performKeyPairEncodingTest(kp);
 
-        assertEquals(DMBCObjectIdentifiers.qTESLA_p_III, SubjectPublicKeyInfo.getInstance(kp.getPublic().getEncoded()).getAlgorithm().getAlgorithm());
+        assertEquals(BCObjectIdentifiers.qTESLA_p_III, SubjectPublicKeyInfo.getInstance(kp.getPublic().getEncoded()).getAlgorithm().getAlgorithm());
 
         doTestSig(kp);
         doTestKey(kp);

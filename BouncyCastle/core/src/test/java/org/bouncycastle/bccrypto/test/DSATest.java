@@ -5,20 +5,25 @@ import java.security.SecureRandom;
 
 import org.bouncycastle.bcasn1.ASN1Integer;
 import org.bouncycastle.bcasn1.ASN1Sequence;
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.AsymmetricCipherKeyPair;
 import org.bouncycastle.bccrypto.digests.SHA224Digest;
 import org.bouncycastle.bccrypto.digests.SHA256Digest;
 import org.bouncycastle.bccrypto.digests.SHA3Digest;
 import org.bouncycastle.bccrypto.generators.DSAKeyPairGenerator;
 import org.bouncycastle.bccrypto.generators.DSAParametersGenerator;
-import org.bouncycastle.bccrypto.params.*;
+import org.bouncycastle.bccrypto.params.DSAKeyGenerationParameters;
+import org.bouncycastle.bccrypto.params.DSAParameterGenerationParameters;
+import org.bouncycastle.bccrypto.params.DSAParameters;
+import org.bouncycastle.bccrypto.params.DSAPrivateKeyParameters;
+import org.bouncycastle.bccrypto.params.DSAPublicKeyParameters;
+import org.bouncycastle.bccrypto.params.DSAValidationParameters;
 import org.bouncycastle.bccrypto.params.ParametersWithRandom;
 import org.bouncycastle.bccrypto.signers.DSADigestSigner;
 import org.bouncycastle.bccrypto.signers.DSASigner;
 import org.bouncycastle.bcutil.Arrays;
 import org.bouncycastle.bcutil.BigIntegers;
 import org.bouncycastle.bcutil.Strings;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.FixedSecureRandom;
 import org.bouncycastle.bcutil.test.SimpleTest;
 import org.bouncycastle.bcutil.test.TestRandomBigInteger;
@@ -57,7 +62,7 @@ public class DSATest
 
         pGen.init(512, 80, random);
 
-        DSAParameters params = pGen.generateParameters();
+        DSAParameters           params = pGen.generateParameters();
         DSAValidationParameters pValid = params.getValidationParameters();
 
         if (pValid.getCounter() != 105)

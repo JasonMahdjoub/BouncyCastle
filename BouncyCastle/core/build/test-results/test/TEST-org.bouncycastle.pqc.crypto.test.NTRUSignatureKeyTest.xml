@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.pqc.crypto.test.NTRUSignatureKeyTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-02-14T17:17:05" hostname="Garage" time="0.262">
+<testsuite name="org.bouncycastle.pqc.crypto.test.NTRUSignatureKeyTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-06-02T09:01:56" hostname="Garage" time="0.267">
   <properties/>
-  <testcase name="testEncode" classname="org.bouncycastle.pqc.crypto.test.NTRUSignatureKeyTest" time="0.262"/>
+  <testcase name="testEncode" classname="org.bouncycastle.pqc.crypto.test.NTRUSignatureKeyTest" time="0.267"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

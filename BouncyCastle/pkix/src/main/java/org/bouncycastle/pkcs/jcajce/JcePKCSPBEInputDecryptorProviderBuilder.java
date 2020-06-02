@@ -17,7 +17,7 @@ import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 import org.bouncycastle.bcasn1.ASN1OctetString;
 import org.bouncycastle.bcasn1.ASN1Sequence;
 import org.bouncycastle.bcasn1.cryptopro.GOST28147Parameters;
-import org.bouncycastle.bcasn1.misc.BCMiscObjectIdentifiers;
+import org.bouncycastle.bcasn1.misc.MiscObjectIdentifiers;
 import org.bouncycastle.bcasn1.misc.ScryptParams;
 import org.bouncycastle.bcasn1.pkcs.PBEParameter;
 import org.bouncycastle.bcasn1.pkcs.PBES2Parameters;
@@ -117,7 +117,7 @@ public class JcePKCSPBEInputDecryptorProviderBuilder
                     {
                         PBES2Parameters alg = PBES2Parameters.getInstance(algorithmIdentifier.getParameters());
 
-                        if (BCMiscObjectIdentifiers.id_scrypt.equals(alg.getKeyDerivationFunc().getAlgorithm()))
+                        if (MiscObjectIdentifiers.id_scrypt.equals(alg.getKeyDerivationFunc().getAlgorithm()))
                         {
                             ScryptParams params = ScryptParams.getInstance(alg.getKeyDerivationFunc().getParameters());
                             AlgorithmIdentifier encScheme = AlgorithmIdentifier.getInstance(alg.getEncryptionScheme());

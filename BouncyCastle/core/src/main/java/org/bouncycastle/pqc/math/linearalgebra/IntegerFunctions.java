@@ -3,7 +3,7 @@ package org.bouncycastle.pqc.math.linearalgebra;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bcutil.BigIntegers;
 
 /**
@@ -1054,7 +1054,7 @@ public final class IntegerFunctions
     {
         if (sr == null)
         {
-            sr = BCCryptoServicesRegistrar.getSecureRandom();
+            sr = CryptoServicesRegistrar.getSecureRandom();
         }
         return randomize(upperBound, sr);
     }
@@ -1067,7 +1067,7 @@ public final class IntegerFunctions
 
         if (prng == null)
         {
-            prng = sr != null ? sr : BCCryptoServicesRegistrar.getSecureRandom();
+            prng = sr != null ? sr : CryptoServicesRegistrar.getSecureRandom();
         }
 
         for (int i = 0; i < 20; i++)

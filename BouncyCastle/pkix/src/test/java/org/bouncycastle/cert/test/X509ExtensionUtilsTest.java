@@ -18,13 +18,13 @@ import org.bouncycastle.bcasn1.x509.GeneralName;
 import org.bouncycastle.bcasn1.x509.GeneralNames;
 import org.bouncycastle.bcasn1.x509.SubjectKeyIdentifier;
 import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.cert.X509ExtensionUtils;
 import org.bouncycastle.cert.jcajce.JcaX509ExtensionUtils;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.bcutil.Arrays;
 import org.bouncycastle.bcutil.encoders.Base64;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class X509ExtensionUtilsTest

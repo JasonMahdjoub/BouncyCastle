@@ -67,7 +67,7 @@ public class GOST3410Parameters
             return false;
         }
 
-        GOST3410Parameters pm = (GOST3410Parameters)obj;
+        GOST3410Parameters    pm = (GOST3410Parameters)obj;
 
         return (pm.getP().equals(p) && pm.getQ().equals(q) && pm.getA().equals(a));
     }

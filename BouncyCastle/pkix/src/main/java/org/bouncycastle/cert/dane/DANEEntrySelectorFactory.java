@@ -3,9 +3,9 @@ package org.bouncycastle.cert.dane;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.operator.DigestCalculator;
 import org.bouncycastle.bcutil.Strings;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 /**
  * Factory for creating selector objects to use with the DANECertificateStore.

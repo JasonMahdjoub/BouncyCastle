@@ -43,7 +43,7 @@ import org.bouncycastle.bcasn1.DERBitString;
 import org.bouncycastle.bcasn1.DERIA5String;
 import org.bouncycastle.bcasn1.DERNull;
 import org.bouncycastle.bcasn1.DEROctetString;
-import org.bouncycastle.bcasn1.misc.BCMiscObjectIdentifiers;
+import org.bouncycastle.bcasn1.misc.MiscObjectIdentifiers;
 import org.bouncycastle.bcasn1.misc.NetscapeCertType;
 import org.bouncycastle.bcasn1.misc.NetscapeRevocationURL;
 import org.bouncycastle.bcasn1.misc.VerisignCzagExtension;
@@ -57,7 +57,6 @@ import org.bouncycastle.bcasn1.x509.Extensions;
 import org.bouncycastle.bcasn1.x509.GeneralName;
 import org.bouncycastle.bcasn1.x509.KeyUsage;
 import org.bouncycastle.bcasn1.x509.TBSCertificate;
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcjcajce.interfaces.BCX509Certificate;
 import org.bouncycastle.bcjcajce.io.OutputStreamFactory;
 import org.bouncycastle.bcjcajce.util.JcaJceHelper;
@@ -66,6 +65,7 @@ import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.bcutil.Arrays;
 import org.bouncycastle.bcutil.Integers;
 import org.bouncycastle.bcutil.Strings;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 abstract class X509CertificateImpl
     extends X509Certificate
@@ -75,14 +75,18 @@ abstract class X509CertificateImpl
     protected org.bouncycastle.bcasn1.x509.Certificate c;
     protected BasicConstraints basicConstraints;
     protected boolean[] keyUsage;
+    protected String sigAlgName;
+    protected byte[] sigAlgParams;
 
     X509CertificateImpl(JcaJceHelper bcHelper, org.bouncycastle.bcasn1.x509.Certificate c,
-        BasicConstraints basicConstraints, boolean[] keyUsage)
+        BasicConstraints basicConstraints, boolean[] keyUsage, String sigAlgName, byte[] sigAlgParams)
     {
         this.bcHelper = bcHelper;
         this.c = c;
         this.basicConstraints = basicConstraints;
         this.keyUsage = keyUsage;
+        this.sigAlgName = sigAlgName;
+        this.sigAlgParams = sigAlgParams;
     }
 
     public X500Name getIssuerX500Name()
@@ -203,7 +207,7 @@ abstract class X509CertificateImpl
      */
     public String getSigAlgName()
     {
-        return X509SignatureUtil.getSignatureName(c.getSignatureAlgorithm());
+        return sigAlgName;
     }
 
     /**
@@ -219,21 +223,7 @@ abstract class X509CertificateImpl
      */
     public byte[] getSigAlgParams()
     {
-        if (c.getSignatureAlgorithm().getParameters() != null)
-        {
-            try
-            {
-                return c.getSignatureAlgorithm().getParameters().toASN1Primitive().getEncoded(ASN1Encoding.DER);
-            }
-            catch (IOException e)
-            {
-                return null;
-            }
-        }
-        else
-        {
-            return null;
-        }
+        return Arrays.clone(sigAlgParams);
     }
 
     public boolean[] getIssuerUniqueID()
@@ -546,15 +536,15 @@ abstract class X509CertificateImpl
                         {
                             buf.append(KeyUsage.getInstance(dIn.readObject())).append(nl);
                         }
-                        else if (oid.equals(BCMiscObjectIdentifiers.netscapeCertType))
+                        else if (oid.equals(MiscObjectIdentifiers.netscapeCertType))
                         {
                             buf.append(new NetscapeCertType(DERBitString.getInstance(dIn.readObject()))).append(nl);
                         }
-                        else if (oid.equals(BCMiscObjectIdentifiers.netscapeRevocationURL))
+                        else if (oid.equals(MiscObjectIdentifiers.netscapeRevocationURL))
                         {
                             buf.append(new NetscapeRevocationURL(DERIA5String.getInstance(dIn.readObject()))).append(nl);
                         }
-                        else if (oid.equals(BCMiscObjectIdentifiers.verisignCzagExtension))
+                        else if (oid.equals(MiscObjectIdentifiers.verisignCzagExtension))
                         {
                             buf.append(new VerisignCzagExtension(DERIA5String.getInstance(dIn.readObject()))).append(nl);
                         }

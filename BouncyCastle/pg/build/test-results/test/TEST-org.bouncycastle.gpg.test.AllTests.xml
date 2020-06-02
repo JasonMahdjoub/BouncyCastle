@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.gpg.test.AllTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-02-14T17:20:08" hostname="Garage" time="0.014">
+<testsuite name="org.bouncycastle.gpg.test.AllTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-06-02T09:05:02" hostname="Garage" time="0.016">
   <properties/>
-  <testcase name="testGPG" classname="org.bouncycastle.gpg.test.AllTests" time="0.014"/>
+  <testcase name="testGPG" classname="org.bouncycastle.gpg.test.AllTests" time="0.016"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

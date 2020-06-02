@@ -3,12 +3,12 @@ package org.bouncycastle.bccrypto.test;
 import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 import org.bouncycastle.bcasn1.nist.NISTObjectIdentifiers;
 import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.DerivationFunction;
 import org.bouncycastle.bccrypto.DerivationParameters;
 import org.bouncycastle.bccrypto.agreement.kdf.DHKDFParameters;
 import org.bouncycastle.bccrypto.agreement.kdf.ECDHKEKGenerator;
 import org.bouncycastle.bccrypto.digests.SHA1Digest;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**

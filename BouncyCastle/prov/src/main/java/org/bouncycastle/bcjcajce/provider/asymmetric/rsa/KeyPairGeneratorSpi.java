@@ -7,8 +7,11 @@ import java.security.SecureRandom;
 import java.security.spec.AlgorithmParameterSpec;
 import java.security.spec.RSAKeyGenParameterSpec;
 
+import org.bouncycastle.bcasn1.DERNull;
+import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
+import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.bccrypto.AsymmetricCipherKeyPair;
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.generators.RSAKeyPairGenerator;
 import org.bouncycastle.bccrypto.params.RSAKeyGenerationParameters;
 import org.bouncycastle.bccrypto.params.RSAKeyParameters;
@@ -18,25 +21,31 @@ import org.bouncycastle.bcjcajce.provider.asymmetric.util.PrimeCertaintyCalculat
 public class KeyPairGeneratorSpi
     extends java.security.KeyPairGenerator
 {
-    public KeyPairGeneratorSpi(
-        String algorithmName)
-    {
-        super(algorithmName);
-    }
+    private static final AlgorithmIdentifier PKCS_ALGID = new AlgorithmIdentifier(PKCSObjectIdentifiers.rsaEncryption, DERNull.INSTANCE);
+    private static final AlgorithmIdentifier PSS_ALGID = new AlgorithmIdentifier(PKCSObjectIdentifiers.id_RSASSA_PSS);
 
     final static BigInteger defaultPublicExponent = BigInteger.valueOf(0x10001);
 
     RSAKeyGenerationParameters param;
     RSAKeyPairGenerator engine;
+    AlgorithmIdentifier algId;
+
+    public KeyPairGeneratorSpi(
+        String algorithmName,
+        AlgorithmIdentifier algId)
+    {
+        super(algorithmName);
+
+        this.algId = algId;
+        engine = new RSAKeyPairGenerator();
+        param = new RSAKeyGenerationParameters(defaultPublicExponent,
+            CryptoServicesRegistrar.getSecureRandom(), 2048, PrimeCertaintyCalculator.getDefaultCertainty(2048));
+        engine.init(param);
+    }
 
     public KeyPairGeneratorSpi()
     {
-        super("RSA");
-
-        engine = new RSAKeyPairGenerator();
-        param = new RSAKeyGenerationParameters(defaultPublicExponent,
-            BCCryptoServicesRegistrar.getSecureRandom(), 2048, PrimeCertaintyCalculator.getDefaultCertainty(2048));
-        engine.init(param);
+        this("RSA", PKCS_ALGID);
     }
 
     public void initialize(
@@ -73,7 +82,16 @@ public class KeyPairGeneratorSpi
         RSAKeyParameters pub = (RSAKeyParameters)pair.getPublic();
         RSAPrivateCrtKeyParameters priv = (RSAPrivateCrtKeyParameters)pair.getPrivate();
 
-        return new KeyPair(new BCRSAPublicKey(pub),
-            new BCRSAPrivateCrtKey(priv));
+        return new KeyPair(new BCRSAPublicKey(algId, pub),
+            new BCRSAPrivateCrtKey(algId, priv));
+    }
+
+    public static class PSS
+        extends KeyPairGeneratorSpi
+    {
+        public PSS()
+        {
+            super("RSASSA-PSS", PSS_ALGID);
+        }
     }
 }

@@ -59,7 +59,7 @@ import org.bouncycastle.bcasn1.DERBitString;
 import org.bouncycastle.bcasn1.DERIA5String;
 import org.bouncycastle.bcasn1.DERNull;
 import org.bouncycastle.bcasn1.DEROctetString;
-import org.bouncycastle.bcasn1.misc.BCMiscObjectIdentifiers;
+import org.bouncycastle.bcasn1.misc.MiscObjectIdentifiers;
 import org.bouncycastle.bcasn1.misc.NetscapeCertType;
 import org.bouncycastle.bcasn1.misc.NetscapeRevocationURL;
 import org.bouncycastle.bcasn1.misc.VerisignCzagExtension;
@@ -74,13 +74,13 @@ import org.bouncycastle.bcasn1.x509.KeyUsage;
 import org.bouncycastle.bcasn1.x509.X509CertificateStructure;
 import org.bouncycastle.bcasn1.x509.X509Extension;
 import org.bouncycastle.bcasn1.x509.X509Extensions;
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.jce.X509Principal;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.bcutil.Arrays;
 import org.bouncycastle.bcutil.Integers;
 import org.bouncycastle.bcutil.Strings;
 import org.bouncycastle.bcutil.encoders.Base64;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class CertPathValidatorTest
@@ -1308,15 +1308,15 @@ public class CertPathValidatorTest
                             {
                                 buf.append(KeyUsage.getInstance(dIn.readObject())).append(nl);
                             }
-                            else if (oid.equals(BCMiscObjectIdentifiers.netscapeCertType))
+                            else if (oid.equals(MiscObjectIdentifiers.netscapeCertType))
                             {
                                 buf.append(new NetscapeCertType((DERBitString)dIn.readObject())).append(nl);
                             }
-                            else if (oid.equals(BCMiscObjectIdentifiers.netscapeRevocationURL))
+                            else if (oid.equals(MiscObjectIdentifiers.netscapeRevocationURL))
                             {
                                 buf.append(new NetscapeRevocationURL((DERIA5String)dIn.readObject())).append(nl);
                             }
-                            else if (oid.equals(BCMiscObjectIdentifiers.verisignCzagExtension))
+                            else if (oid.equals(MiscObjectIdentifiers.verisignCzagExtension))
                             {
                                 buf.append(new VerisignCzagExtension((DERIA5String)dIn.readObject())).append(nl);
                             }

@@ -4,7 +4,7 @@ import java.security.SecureRandom;
 
 import org.bouncycastle.bccrypto.AsymmetricCipherKeyPair;
 import org.bouncycastle.bccrypto.AsymmetricCipherKeyPairGenerator;
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.KeyGenerationParameters;
 import org.bouncycastle.pqc.crypto.rainbow.util.ComputeInField;
 import org.bouncycastle.pqc.crypto.rainbow.util.GF2Field;
@@ -102,7 +102,7 @@ public class RainbowKeyPairGenerator
 
     private void initializeDefault()
     {
-        RainbowKeyGenerationParameters rbKGParams = new RainbowKeyGenerationParameters(BCCryptoServicesRegistrar.getSecureRandom(), new RainbowParameters());
+        RainbowKeyGenerationParameters rbKGParams = new RainbowKeyGenerationParameters(CryptoServicesRegistrar.getSecureRandom(), new RainbowParameters());
         initialize(rbKGParams);
     }
 

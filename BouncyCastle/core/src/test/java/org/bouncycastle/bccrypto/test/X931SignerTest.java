@@ -2,7 +2,6 @@ package org.bouncycastle.bccrypto.test;
 
 import java.math.BigInteger;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.digests.SHA1Digest;
 import org.bouncycastle.bccrypto.digests.SHA224Digest;
 import org.bouncycastle.bccrypto.engines.RSAEngine;
@@ -11,6 +10,7 @@ import org.bouncycastle.bccrypto.params.RSAPrivateCrtKeyParameters;
 import org.bouncycastle.bccrypto.signers.X931Signer;
 import org.bouncycastle.bcutil.Arrays;
 import org.bouncycastle.bcutil.encoders.Base64;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class X931SignerTest

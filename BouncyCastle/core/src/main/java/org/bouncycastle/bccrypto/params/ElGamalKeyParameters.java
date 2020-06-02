@@ -4,11 +4,11 @@ package org.bouncycastle.bccrypto.params;
 public class ElGamalKeyParameters
     extends AsymmetricKeyParameter
 {
-    private ElGamalParameters params;
+    private ElGamalParameters    params;
 
     protected ElGamalKeyParameters(
         boolean         isPrivate,
-        ElGamalParameters params)
+        ElGamalParameters    params)
     {
         super(isPrivate);
 
@@ -33,7 +33,7 @@ public class ElGamalKeyParameters
             return false;
         }
 
-        ElGamalKeyParameters dhKey = (ElGamalKeyParameters)obj;
+        ElGamalKeyParameters    dhKey = (ElGamalKeyParameters)obj;
 
         if (params == null)
         {

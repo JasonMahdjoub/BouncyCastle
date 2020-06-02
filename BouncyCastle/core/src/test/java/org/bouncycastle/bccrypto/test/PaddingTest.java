@@ -2,7 +2,6 @@ package org.bouncycastle.bccrypto.test;
 
 import java.security.SecureRandom;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.engines.DESEngine;
 import org.bouncycastle.bccrypto.paddings.BlockCipherPadding;
 import org.bouncycastle.bccrypto.paddings.ISO10126d2Padding;
@@ -14,6 +13,7 @@ import org.bouncycastle.bccrypto.paddings.X923Padding;
 import org.bouncycastle.bccrypto.paddings.ZeroBytePadding;
 import org.bouncycastle.bccrypto.params.KeyParameter;
 import org.bouncycastle.bccrypto.InvalidCipherTextException;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**

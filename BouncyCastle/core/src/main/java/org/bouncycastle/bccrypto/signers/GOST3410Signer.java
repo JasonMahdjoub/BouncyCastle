@@ -4,9 +4,13 @@ import java.math.BigInteger;
 import java.security.SecureRandom;
 
 import org.bouncycastle.bccrypto.CipherParameters;
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.DSAExt;
-import org.bouncycastle.bccrypto.params.*;import org.bouncycastle.bccrypto.params.GOST3410KeyParameters;
+import org.bouncycastle.bccrypto.params.GOST3410KeyParameters;
+import org.bouncycastle.bccrypto.params.GOST3410Parameters;
+import org.bouncycastle.bccrypto.params.GOST3410PrivateKeyParameters;
+import org.bouncycastle.bccrypto.params.GOST3410PublicKeyParameters;
+import org.bouncycastle.bccrypto.params.ParametersWithRandom;
 import org.bouncycastle.bcutil.Arrays;
 import org.bouncycastle.bcutil.BigIntegers;
 
@@ -22,7 +26,7 @@ public class GOST3410Signer
 
         public void init(
             boolean                 forSigning,
-            CipherParameters param)
+            CipherParameters        param)
         {
             if (forSigning)
             {
@@ -35,7 +39,7 @@ public class GOST3410Signer
                 }
                 else
                 {
-                    this.random = BCCryptoServicesRegistrar.getSecureRandom();
+                    this.random = CryptoServicesRegistrar.getSecureRandom();
                     this.key = (GOST3410PrivateKeyParameters)param;
                 }
             }
@@ -62,7 +66,7 @@ public class GOST3410Signer
         {
             byte[] mRev = Arrays.reverse(message); // conversion is little-endian
             BigInteger      m = new BigInteger(1, mRev);
-            GOST3410Parameters params = key.getParameters();
+            GOST3410Parameters   params = key.getParameters();
             BigInteger      k;
 
             do

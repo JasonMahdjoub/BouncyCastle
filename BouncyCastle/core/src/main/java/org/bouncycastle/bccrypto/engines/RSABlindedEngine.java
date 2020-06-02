@@ -5,7 +5,7 @@ import java.security.SecureRandom;
 
 import org.bouncycastle.bccrypto.AsymmetricBlockCipher;
 import org.bouncycastle.bccrypto.CipherParameters;
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.DataLengthException;
 import org.bouncycastle.bccrypto.params.ParametersWithRandom;
 import org.bouncycastle.bccrypto.params.RSAKeyParameters;
@@ -32,7 +32,7 @@ public class RSABlindedEngine
      */
     public void init(
         boolean             forEncryption,
-        CipherParameters param)
+        CipherParameters    param)
     {
         core.init(forEncryption, param);
 
@@ -57,7 +57,7 @@ public class RSABlindedEngine
 
             if (key instanceof RSAPrivateCrtKeyParameters)
             {
-                this.random = BCCryptoServicesRegistrar.getSecureRandom();
+                this.random = CryptoServicesRegistrar.getSecureRandom();
             }
             else
             {

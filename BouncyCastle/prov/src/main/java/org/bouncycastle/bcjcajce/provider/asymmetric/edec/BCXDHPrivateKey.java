@@ -3,7 +3,6 @@ package org.bouncycastle.bcjcajce.provider.asymmetric.edec;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.security.PrivateKey;
 
 import org.bouncycastle.bcasn1.ASN1Encodable;
 import org.bouncycastle.bcasn1.ASN1OctetString;
@@ -14,15 +13,16 @@ import org.bouncycastle.bccrypto.params.AsymmetricKeyParameter;
 import org.bouncycastle.bccrypto.params.X25519PrivateKeyParameters;
 import org.bouncycastle.bccrypto.params.X448PrivateKeyParameters;
 import org.bouncycastle.bccrypto.util.PrivateKeyInfoFactory;
-import org.bouncycastle.bcjcajce.interfaces.XDHKey;
+import org.bouncycastle.bcjcajce.interfaces.XDHPrivateKey;
+import org.bouncycastle.bcjcajce.interfaces.XDHPublicKey;
 import org.bouncycastle.bcutil.Arrays;
 
 public class BCXDHPrivateKey
-    implements XDHKey, PrivateKey
+    implements XDHPrivateKey
 {
     static final long serialVersionUID = 1L;
 
-    private transient AsymmetricKeyParameter xdhPrivateKey;
+    protected transient AsymmetricKeyParameter xdhPrivateKey;
 
     private final boolean hasPublicKey;
     private final byte[] attributes;
@@ -86,6 +86,18 @@ public class BCXDHPrivateKey
         catch (IOException e)
         {
             return null;
+        }
+    }
+
+    public XDHPublicKey getPublicKey()
+    {
+        if (xdhPrivateKey instanceof X448PrivateKeyParameters)
+        {
+            return new BCXDHPublicKey(((X448PrivateKeyParameters)xdhPrivateKey).generatePublicKey());
+        }
+        else
+        {
+            return new BCXDHPublicKey(((X25519PrivateKeyParameters)xdhPrivateKey).generatePublicKey());
         }
     }
 

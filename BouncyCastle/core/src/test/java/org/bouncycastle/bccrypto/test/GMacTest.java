@@ -1,6 +1,5 @@
 package org.bouncycastle.bccrypto.test;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.Mac;
 import org.bouncycastle.bccrypto.engines.AESEngine;
@@ -8,6 +7,7 @@ import org.bouncycastle.bccrypto.macs.GMac;
 import org.bouncycastle.bccrypto.modes.GCMBlockCipher;
 import org.bouncycastle.bccrypto.params.KeyParameter;
 import org.bouncycastle.bccrypto.params.ParametersWithIV;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**

@@ -32,8 +32,11 @@ import org.bouncycastle.bcasn1.pkcs.PrivateKeyInfo;
 import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.InvalidCipherTextException;
 import org.bouncycastle.bccrypto.Wrapper;
-import org.bouncycastle.bccrypto.params.*;
+import org.bouncycastle.bccrypto.params.KeyParameter;
 import org.bouncycastle.bccrypto.params.ParametersWithIV;
+import org.bouncycastle.bccrypto.params.ParametersWithRandom;
+import org.bouncycastle.bccrypto.params.ParametersWithSBox;
+import org.bouncycastle.bccrypto.params.ParametersWithUKM;
 import org.bouncycastle.bcjcajce.spec.GOST28147WrapParameterSpec;
 import org.bouncycastle.bcjcajce.util.BCJcaJceHelper;
 import org.bouncycastle.bcjcajce.util.JcaJceHelper;
@@ -168,7 +171,7 @@ public abstract class BaseWrapCipher
         SecureRandom            random)
     throws InvalidKeyException, InvalidAlgorithmParameterException
     {
-        CipherParameters param;
+        CipherParameters        param;
 
         if (key instanceof BCPBEKey)
         {
@@ -208,7 +211,7 @@ public abstract class BaseWrapCipher
             {
                 param = new ParametersWithSBox(param, sBox);
             }
-            param = new ParametersWithUKMBC(param, spec.getUKM());
+            param = new ParametersWithUKM(param, spec.getUKM());
         }
 
         if (param instanceof KeyParameter && ivSize != 0)

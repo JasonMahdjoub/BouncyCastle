@@ -7,8 +7,8 @@ import org.bouncycastle.bcasn1.ASN1Integer;
 import org.bouncycastle.bcasn1.ASN1Sequence;
 import org.bouncycastle.bcutil.BigIntegers;
 import org.bouncycastle.bcutil.Properties;
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.encoders.Base64;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class ASN1IntegerTest
@@ -246,7 +246,7 @@ public class ASN1IntegerTest
         //
         try
         {
-            System.getProperties().put("org.bouncycastle.asn1.allow_unsafe_integer", "true");
+            System.getProperties().put("org.bouncycastle.bcasn1.allow_unsafe_integer", "true");
             byte[] rawInt = Hex.decode("0000000010FF");
             ASN1Integer i = new ASN1Integer(rawInt);
             fail("Expecting illegal argument exception.");
@@ -260,13 +260,13 @@ public class ASN1IntegerTest
     public void testLooseInvalidValidEncoding_FF_32B()
         throws Exception
     {
-        System.setProperty("org.bouncycastle.asn1.allow_unsafe_integer", "false");
+        System.setProperty("org.bouncycastle.bcasn1.allow_unsafe_integer", "false");
         //
         // Should still fail as loose validation only permits 3 leading 0xFF bytes.
         //
         try
         {
-            System.getProperties().put("org.bouncycastle.asn1.allow_unsafe_integer", "true");
+            System.getProperties().put("org.bouncycastle.bcasn1.allow_unsafe_integer", "true");
             byte[] rawInt = Hex.decode("FFFFFFFF10FF");
             ASN1Integer i = new ASN1Integer(rawInt);
             fail("Expecting illegal argument exception.");

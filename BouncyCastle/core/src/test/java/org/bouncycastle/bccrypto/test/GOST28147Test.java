@@ -1,6 +1,5 @@
 package org.bouncycastle.bccrypto.test;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.BufferedBlockCipher;
 import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.CryptoException;
@@ -12,6 +11,7 @@ import org.bouncycastle.bccrypto.modes.GOFBBlockCipher;
 import org.bouncycastle.bccrypto.params.KeyParameter;
 import org.bouncycastle.bccrypto.params.ParametersWithIV;
 import org.bouncycastle.bccrypto.params.ParametersWithSBox;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class GOST28147Test
@@ -206,7 +206,7 @@ public class GOST28147Test
 
         byte[] key = generateKey(Hex.decode("0123456789abcdef"));  //!!! heshing start_key - get 256 bits !!!
 //        System.out.println(new String(Hex.encode(key)));
-        CipherParameters param = new ParametersWithSBox(new KeyParameter(key), GOST28147Engine.getSBox("E-A"));
+        CipherParameters  param = new ParametersWithSBox(new KeyParameter(key), GOST28147Engine.getSBox("E-A"));
         //CipherParameters  param = new GOST28147Parameters(key,"D-Test");
         BufferedBlockCipher cipher = new BufferedBlockCipher(new GOST28147Engine());
 

@@ -2,13 +2,13 @@ package org.bouncycastle.bccrypto.prng.test;
 
 import java.security.SecureRandom;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.digests.SHA1Digest;
 import org.bouncycastle.bccrypto.engines.DESedeEngine;
 import org.bouncycastle.bccrypto.macs.HMac;
 import org.bouncycastle.bccrypto.prng.BasicEntropySourceProvider;
 import org.bouncycastle.bccrypto.prng.SP800SecureRandomBuilder;
 import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class SP800RandomTest

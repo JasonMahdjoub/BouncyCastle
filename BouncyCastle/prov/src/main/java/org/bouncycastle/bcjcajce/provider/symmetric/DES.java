@@ -16,7 +16,8 @@ import javax.crypto.spec.SecretKeySpec;
 import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 import org.bouncycastle.bcasn1.oiw.OIWObjectIdentifiers;
 import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.bccrypto.CipherParameters;import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.CipherParameters;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.KeyGenerationParameters;
 import org.bouncycastle.bccrypto.PasswordConverter;
 import org.bouncycastle.bccrypto.engines.DESEngine;
@@ -171,7 +172,7 @@ public final class DES
 
             if (random == null)
             {
-                random = BCCryptoServicesRegistrar.getSecureRandom();
+                random = CryptoServicesRegistrar.getSecureRandom();
             }
 
             random.nextBytes(iv);
@@ -218,7 +219,7 @@ public final class DES
         {
             if (uninitialised)
             {
-                engine.init(new KeyGenerationParameters(BCCryptoServicesRegistrar.getSecureRandom(), defaultKeySize));
+                engine.init(new KeyGenerationParameters(CryptoServicesRegistrar.getSecureRandom(), defaultKeySize));
                 uninitialised = false;
             }
 

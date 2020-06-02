@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.pqc.jcajce.provider.test.McElieceFujisakiCipherTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-02-15T08:12:03" hostname="Garage" time="2.009">
+<testsuite name="org.bouncycastle.pqc.jcajce.provider.test.McElieceFujisakiCipherTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-06-02T09:20:11" hostname="Garage" time="3.039">
   <properties/>
-  <testcase name="testEnDecryption_SHA224_11_50" classname="org.bouncycastle.pqc.jcajce.provider.test.McElieceFujisakiCipherTest" time="0.667"/>
-  <testcase name="testEnDecryption_SHA1_11_50" classname="org.bouncycastle.pqc.jcajce.provider.test.McElieceFujisakiCipherTest" time="0.723"/>
-  <testcase name="testEnDecryption_SHA256_11_50" classname="org.bouncycastle.pqc.jcajce.provider.test.McElieceFujisakiCipherTest" time="0.619"/>
+  <testcase name="testEnDecryption_SHA224_11_50" classname="org.bouncycastle.pqc.jcajce.provider.test.McElieceFujisakiCipherTest" time="1.012"/>
+  <testcase name="testEnDecryption_SHA1_11_50" classname="org.bouncycastle.pqc.jcajce.provider.test.McElieceFujisakiCipherTest" time="1.033"/>
+  <testcase name="testEnDecryption_SHA256_11_50" classname="org.bouncycastle.pqc.jcajce.provider.test.McElieceFujisakiCipherTest" time="0.994"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -1,5 +1,10 @@
 package org.bouncycastle.cms.bc;
 
+import java.security.SecureRandom;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 import org.bouncycastle.bcasn1.nist.NISTObjectIdentifiers;
 import org.bouncycastle.bcasn1.oiw.OIWObjectIdentifiers;
@@ -7,8 +12,8 @@ import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
 import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.cms.CMSAlgorithm;
 import org.bouncycastle.cms.CMSException;
-import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.CipherKeyGenerator;
+import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.ExtendedDigest;
 import org.bouncycastle.bccrypto.Wrapper;
 import org.bouncycastle.bccrypto.digests.SHA1Digest;
@@ -27,11 +32,6 @@ import org.bouncycastle.bccrypto.util.CipherFactory;
 import org.bouncycastle.bccrypto.util.CipherKeyGeneratorFactory;
 import org.bouncycastle.operator.OperatorCreationException;
 import org.bouncycastle.operator.bc.BcDigestProvider;
-
-import java.security.SecureRandom;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
 
 class EnvelopedDataHelper
 {
@@ -160,7 +160,8 @@ class EnvelopedDataHelper
         }
     }
 
-    CipherKeyGenerator createKeyGenerator(ASN1ObjectIdentifier algorithm, SecureRandom random)
+    // TODO: make use of keySize parameter.
+    CipherKeyGenerator createKeyGenerator(ASN1ObjectIdentifier algorithm, int keySize, SecureRandom random)
         throws CMSException
     {
         try

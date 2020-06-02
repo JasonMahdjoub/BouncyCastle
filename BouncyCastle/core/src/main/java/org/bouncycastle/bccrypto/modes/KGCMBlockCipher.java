@@ -2,8 +2,12 @@ package org.bouncycastle.bccrypto.modes;
 
 import java.io.ByteArrayOutputStream;
 
-import org.bouncycastle.bccrypto.*;
+import org.bouncycastle.bccrypto.BlockCipher;
+import org.bouncycastle.bccrypto.BufferedBlockCipher;
 import org.bouncycastle.bccrypto.CipherParameters;
+import org.bouncycastle.bccrypto.DataLengthException;
+import org.bouncycastle.bccrypto.InvalidCipherTextException;
+import org.bouncycastle.bccrypto.OutputLengthException;
 import org.bouncycastle.bccrypto.modes.kgcm.KGCMMultiplier;
 import org.bouncycastle.bccrypto.modes.kgcm.Tables16kKGCMMultiplier_512;
 import org.bouncycastle.bccrypto.modes.kgcm.Tables4kKGCMMultiplier_128;

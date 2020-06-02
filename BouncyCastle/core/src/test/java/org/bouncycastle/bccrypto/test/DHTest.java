@@ -3,7 +3,6 @@ package org.bouncycastle.bccrypto.test;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.AsymmetricCipherKeyPair;
 import org.bouncycastle.bccrypto.agreement.DHAgreement;
 import org.bouncycastle.bccrypto.agreement.DHBasicAgreement;
@@ -11,8 +10,14 @@ import org.bouncycastle.bccrypto.agreement.DHUnifiedAgreement;
 import org.bouncycastle.bccrypto.generators.DHBasicKeyPairGenerator;
 import org.bouncycastle.bccrypto.generators.DHKeyPairGenerator;
 import org.bouncycastle.bccrypto.generators.DHParametersGenerator;
-import org.bouncycastle.bccrypto.params.*;
+import org.bouncycastle.bccrypto.params.DHKeyGenerationParameters;
+import org.bouncycastle.bccrypto.params.DHParameters;
+import org.bouncycastle.bccrypto.params.DHPrivateKeyParameters;
+import org.bouncycastle.bccrypto.params.DHPublicKeyParameters;
+import org.bouncycastle.bccrypto.params.DHUPrivateParameters;
+import org.bouncycastle.bccrypto.params.DHUPublicParameters;
 import org.bouncycastle.bccrypto.params.ParametersWithRandom;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class DHTest
@@ -45,14 +50,14 @@ public class DHTest
         AsymmetricCipherKeyPair     pair = kpGen.generateKeyPair();
 
         DHPublicKeyParameters       pu1 = (DHPublicKeyParameters)pair.getPublic();
-        DHPrivateKeyParameters pv1 = (DHPrivateKeyParameters)pair.getPrivate();
+        DHPrivateKeyParameters      pv1 = (DHPrivateKeyParameters)pair.getPrivate();
         //
         // generate second pair
         //
         pair = kpGen.generateKeyPair();
 
         DHPublicKeyParameters       pu2 = (DHPublicKeyParameters)pair.getPublic();
-        DHPrivateKeyParameters pv2 = (DHPrivateKeyParameters)pair.getPrivate();
+        DHPrivateKeyParameters      pv2 = (DHPrivateKeyParameters)pair.getPrivate();
 
         //
         // two way
@@ -89,7 +94,7 @@ public class DHTest
         AsymmetricCipherKeyPair     pair = kpGen.generateKeyPair();
 
         DHPublicKeyParameters       pu1 = (DHPublicKeyParameters)pair.getPublic();
-        DHPrivateKeyParameters pv1 = (DHPrivateKeyParameters)pair.getPrivate();
+        DHPrivateKeyParameters      pv1 = (DHPrivateKeyParameters)pair.getPrivate();
 
         checkKeySize(privateValueSize, pv1);
         //
@@ -98,7 +103,7 @@ public class DHTest
         pair = kpGen.generateKeyPair();
 
         DHPublicKeyParameters       pu2 = (DHPublicKeyParameters)pair.getPublic();
-        DHPrivateKeyParameters pv2 = (DHPrivateKeyParameters)pair.getPrivate();
+        DHPrivateKeyParameters      pv2 = (DHPrivateKeyParameters)pair.getPrivate();
 
         checkKeySize(privateValueSize, pv2);
         //
@@ -141,14 +146,14 @@ public class DHTest
         AsymmetricCipherKeyPair     pair = kpGen.generateKeyPair();
 
         DHPublicKeyParameters       pu1 = (DHPublicKeyParameters)pair.getPublic();
-        DHPrivateKeyParameters pv1 = (DHPrivateKeyParameters)pair.getPrivate();
+        DHPrivateKeyParameters      pv1 = (DHPrivateKeyParameters)pair.getPrivate();
         //
         // generate second pair
         //
         pair = kpGen.generateKeyPair();
 
         DHPublicKeyParameters       pu2 = (DHPublicKeyParameters)pair.getPublic();
-        DHPrivateKeyParameters pv2 = (DHPrivateKeyParameters)pair.getPrivate();
+        DHPrivateKeyParameters      pv2 = (DHPrivateKeyParameters)pair.getPrivate();
 
         //
         // two way
@@ -180,14 +185,14 @@ public class DHTest
         AsymmetricCipherKeyPair     pair = kpGen.generateKeyPair();
 
         DHPublicKeyParameters       pu1 = (DHPublicKeyParameters)pair.getPublic();
-        DHPrivateKeyParameters pv1 = (DHPrivateKeyParameters)pair.getPrivate();
+        DHPrivateKeyParameters      pv1 = (DHPrivateKeyParameters)pair.getPrivate();
         //
         // generate second pair
         //
         pair = kpGen.generateKeyPair();
 
         DHPublicKeyParameters       pu2 = (DHPublicKeyParameters)pair.getPublic();
-        DHPrivateKeyParameters pv2 = (DHPrivateKeyParameters)pair.getPrivate();
+        DHPrivateKeyParameters      pv2 = (DHPrivateKeyParameters)pair.getPrivate();
 
         //
         // two way
@@ -212,7 +217,7 @@ public class DHTest
         BigInteger p,
         int        privateValueSize)
     {
-        DHParameters dhParams = new DHParameters(p, g, null, privateValueSize);
+        DHParameters                dhParams = new DHParameters(p, g, null, privateValueSize);
         DHKeyGenerationParameters   params = new DHKeyGenerationParameters(new SecureRandom(), dhParams);
         DHBasicKeyPairGenerator     kpGen = new DHBasicKeyPairGenerator();
 
@@ -225,7 +230,7 @@ public class DHTest
         BigInteger g,
         BigInteger p)
     {
-        DHParameters dhParams = new DHParameters(p, g);
+        DHParameters                dhParams = new DHParameters(p, g);
         DHKeyGenerationParameters   params = new DHKeyGenerationParameters(new SecureRandom(), dhParams);
         DHKeyPairGenerator          kpGen = new DHKeyPairGenerator();
 
@@ -244,7 +249,7 @@ public class DHTest
 
         pGen.init(size, 10, new SecureRandom());
 
-        DHParameters dhParams = pGen.generateParameters();
+        DHParameters                dhParams = pGen.generateParameters();
 
         if (dhParams.getL() != 0)
         {
@@ -263,7 +268,7 @@ public class DHTest
         AsymmetricCipherKeyPair     pair = kpGen.generateKeyPair();
 
         DHPublicKeyParameters       pu1 = (DHPublicKeyParameters)pair.getPublic();
-        DHPrivateKeyParameters pv1 = (DHPrivateKeyParameters)pair.getPrivate();
+        DHPrivateKeyParameters      pv1 = (DHPrivateKeyParameters)pair.getPrivate();
         
         //
         // generate second pair
@@ -275,7 +280,7 @@ public class DHTest
         pair = kpGen.generateKeyPair();
 
         DHPublicKeyParameters       pu2 = (DHPublicKeyParameters)pair.getPublic();
-        DHPrivateKeyParameters pv2 = (DHPrivateKeyParameters)pair.getPrivate();
+        DHPrivateKeyParameters      pv2 = (DHPrivateKeyParameters)pair.getPrivate();
 
         //
         // two way

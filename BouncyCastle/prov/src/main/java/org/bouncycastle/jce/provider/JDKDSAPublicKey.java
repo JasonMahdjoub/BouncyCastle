@@ -43,7 +43,7 @@ public class JDKDSAPublicKey
     }
 
     JDKDSAPublicKey(
-        DSAPublicKeyParameters params)
+        DSAPublicKeyParameters  params)
     {
         this.y = params.getY();
         this.dsaSpec = new DSAParameterSpec(params.getParameters().getP(), params.getParameters().getQ(), params.getParameters().getG());

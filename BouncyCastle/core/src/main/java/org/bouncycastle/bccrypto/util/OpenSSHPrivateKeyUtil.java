@@ -14,9 +14,15 @@ import org.bouncycastle.bcasn1.pkcs.RSAPrivateKey;
 import org.bouncycastle.bcasn1.sec.ECPrivateKey;
 import org.bouncycastle.bcasn1.x9.ECNamedCurveTable;
 import org.bouncycastle.bcasn1.x9.X9ECParameters;
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
-import org.bouncycastle.bccrypto.params.*;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.params.AsymmetricKeyParameter;
 import org.bouncycastle.bccrypto.params.DSAParameters;
+import org.bouncycastle.bccrypto.params.DSAPrivateKeyParameters;
+import org.bouncycastle.bccrypto.params.ECNamedDomainParameters;
+import org.bouncycastle.bccrypto.params.ECPrivateKeyParameters;
+import org.bouncycastle.bccrypto.params.Ed25519PrivateKeyParameters;
+import org.bouncycastle.bccrypto.params.Ed25519PublicKeyParameters;
+import org.bouncycastle.bccrypto.params.RSAPrivateCrtKeyParameters;
 import org.bouncycastle.bcutil.Arrays;
 import org.bouncycastle.bcutil.BigIntegers;
 import org.bouncycastle.bcutil.Strings;
@@ -109,7 +115,7 @@ public class OpenSSHPrivateKeyUtil
             {
                 SSHBuilder pkBuild = new SSHBuilder();
 
-                int checkint = BCCryptoServicesRegistrar.getSecureRandom().nextInt();
+                int checkint = CryptoServicesRegistrar.getSecureRandom().nextInt();
                 pkBuild.u32(checkint);
                 pkBuild.u32(checkint);
 

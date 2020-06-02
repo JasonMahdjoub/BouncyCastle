@@ -16,6 +16,7 @@ import org.bouncycastle.bcasn1.pkcs.PrivateKeyInfo;
 import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
 import org.bouncycastle.bcjcajce.provider.util.AsymmetricKeyInfoConverter;
 import org.bouncycastle.pqc.asn1.McElieceCCA2PrivateKey;
+import org.bouncycastle.pqc.asn1.McElieceCCA2PublicKey;
 import org.bouncycastle.pqc.asn1.PQCObjectIdentifiers;
 import org.bouncycastle.pqc.crypto.mceliece.McElieceCCA2PrivateKeyParameters;
 import org.bouncycastle.pqc.crypto.mceliece.McElieceCCA2PublicKeyParameters;
@@ -71,7 +72,7 @@ public class McElieceCCA2KeyFactorySpi
             {
                 if (PQCObjectIdentifiers.mcElieceCca2.equals(pki.getAlgorithm().getAlgorithm()))
                 {
-                    org.bouncycastle.pqc.asn1.McElieceCCA2PublicKey key = org.bouncycastle.pqc.asn1.McElieceCCA2PublicKey.getInstance(pki.parsePublicKey());
+                    McElieceCCA2PublicKey key = McElieceCCA2PublicKey.getInstance(pki.parsePublicKey());
 
                     return new BCMcElieceCCA2PublicKey(new McElieceCCA2PublicKeyParameters(key.getN(), key.getT(), key.getG(), Utils.getDigest(key.getDigest()).getAlgorithmName()));
                 }
@@ -210,7 +211,7 @@ public class McElieceCCA2KeyFactorySpi
     {
         // get the inner type inside the BIT STRING
         ASN1Primitive innerType = pki.parsePublicKey();
-        org.bouncycastle.pqc.asn1.McElieceCCA2PublicKey key = org.bouncycastle.pqc.asn1.McElieceCCA2PublicKey.getInstance(innerType);
+        McElieceCCA2PublicKey key = McElieceCCA2PublicKey.getInstance(innerType);
         return new BCMcElieceCCA2PublicKey(new McElieceCCA2PublicKeyParameters(key.getN(), key.getT(), key.getG(), Utils.getDigest(key.getDigest()).getAlgorithmName()));
     }
 

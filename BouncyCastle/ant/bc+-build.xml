@@ -278,6 +278,8 @@
                  <include name="org/bouncycastle/pqc/crypto/**/*.java" />
                  <include name="org/bouncycastle/pqc/math/**/*.java" />
                  <include name="org/bouncycastle/pqc/asn1/**/*.java" />
+                 <exclude name="org/bouncycastle/pqc/**/*Tests.java" />
+                 <exclude name="org/bouncycastle/pqc/**/LMSVectorUtils.java" />
              </fileset>
         </copy>
 
@@ -317,6 +319,8 @@
                  <exclude name="org/bouncycastle/**/test/**" />
                  <exclude name="org/bouncycastle/crypto/*/*Test.java" />
                  <exclude name="org/bouncycastle/util/*Test.java" />
+                 <exclude name="org/bouncycastle/pqc/**/*Tests.java" />
+                 <exclude name="org/bouncycastle/pqc/**/LMSVectorUtils.java" />
                  <exclude name="**/*.crl" />
                  <exclude name="org/bouncycastle/util/utiltest/**" />
                  <exclude name="org/bouncycastle/bcpg/**" />
@@ -424,6 +428,8 @@
                  <exclude name="org/bouncycastle/**/test/**" />
                  <exclude name="org/bouncycastle/crypto/*/*Test.java" />
                  <exclude name="org/bouncycastle/util/*Test.java" />
+                 <exclude name="org/bouncycastle/pqc/**/*Tests.java" />
+                 <exclude name="org/bouncycastle/pqc/**/LMSVectorUtils.java" />
                  <exclude name="**/*.crl" />
                  <exclude name="**/*.key" />
                  <exclude name="org/bouncycastle/**.crt" />
@@ -468,6 +474,8 @@
                 <include name="**/*.class"/>
                 <exclude name="**/NTRU*.class" />
                 <exclude name="**/ntru/**/*.class" />
+                <exclude name="org/bouncycastle/pqc/**/*Tests.class" />
+                <exclude name="org/bouncycastle/pqc/**/LMSVectorUtils.class" />
                 <include name="**/*.properties"/>
             </jarFileSet>
             <manifestElements>
@@ -755,6 +763,7 @@
              <fileset dir="${src.dir}" includes="**/*.message" />
         </copy>
 
+        <delete file="${test.target.src.dir}/org/bouncycastle/pqc/crypto/lms/AllTests.java" />
         <delete file="${test.target.src.dir}/org/bouncycastle/x509/CertPathReviewerMessages_de.properties" />
         <delete file="${test.target.src.dir}/org/bouncycastle/x509/CertPathReviewerMessages.properties" />
 
@@ -778,6 +787,10 @@
     </target>
 
     <target name="test">
+        <property name="test.target" value="bctest-${target.name}" />
+        <property name="test.target.dir" value="${artifacts.dir}/${test.target}" />
+        <property name="test.target.src.dir" value="${test.target.dir}/src" />
+
         <mkdir dir="${basedir}/${build.dir}/${target.prefix}" />
         <junit fork="yes" dir="${basedir}/${build.dir}/${target.prefix}" failureProperty="test.failed">
             <classpath>
@@ -791,7 +804,7 @@
 
             <formatter type="xml" />
             <batchtest todir="${artifacts.reports.xml.dir}" unless="testcase">
-                <fileset dir="${src.dir}">
+                <fileset dir="${test.target.src.dir}">
                     <include name="**/AllTests.java" />
                 </fileset>
             </batchtest>
@@ -870,8 +883,8 @@
                 <group title="ASN.1 Support Packages" packages="org.bouncycastle.bcasn1*" />
                 <group title="JCA/JCE Provider" packages="org.bouncycastle.jce.provider*,org.bouncycastle.bcjcajce.provider*" />
                 <group title="JCA/JCE Utility and Extension Packages" packages="org.bouncycastle.jce*,org.bouncycastle.bcjcajce*" />
-                <group title="Lightweight Crypto Packages" packages="org.bouncycastle.crypto*" />
-                <group title="Math and Utility Packages" packages="org.bouncycastle.util*:org.bouncycastle.math*" />
+                <group title="Lightweight Crypto Packages" packages="org.bouncycastle.bccrypto*" />
+                <group title="Math and Utility Packages" packages="org.bouncycastle.bcutil*:org.bouncycastle.bcmath*" />
                 <group title="Test Packages" packages="org.bouncycastle.bccrypto.test*,org.bouncycastle.bcutil.utiltest,org.bouncycastle.bcasn1.test*,org.bouncycastle.bcutil.encoders.test*,org.bouncycastle.bcutil.io.test*,org.bouncycastle.bcutil.io.pem.test*,org.bouncycastle.bcmath.ec.test*,org.bouncycastle.bccrypto.ec.test*,org.bouncycastle.bccrypto.prng.test*,org.bouncycastle.bccrypto.tls.test*,org.bouncycastle.bccrypto.agreement.test*,org.bouncycastle.jce.provider.test*" />
                 <group title="Post-Quantum Lightweight Crypto Packages" packages="org.bouncycastle.pqc.crypto*" />
                 <group title="Post-Quantum ASN.1 Packages" packages="org.bouncycastle.pqc.asn1*" />
@@ -910,8 +923,8 @@
                 <group title="JCE Utility and Extension Packages" packages="org.bouncycastle.jce*,org.bouncycastle.bcjcajce*" />
                 <group title="OCSP Support Packages" packages="org.bouncycastle.ocsp*" />
                 <group title="ASN.1 Support Packages" packages="org.bouncycastle.bcasn1*" />
-                <group title="Lightweight Crypto Packages" packages="org.bouncycastle.crypto*" />
-                <group title="Utility Packages" packages="org.bouncycastle.util*:org.bouncycastle.math*" />
+                <group title="Lightweight Crypto Packages" packages="org.bouncycastle.bccrypto*" />
+                <group title="Utility Packages" packages="org.bouncycastle.bcutil*:org.bouncycastle.bcmath*" />
                 <group title="JCE Provider and Test Classes" packages="org.bouncycastle.jce.provider*,org.bouncycastle.bcjcajce.provider*" />
             </docElements>
         </compile-doc>
@@ -1097,9 +1110,9 @@
                 <package name="org.bouncycastle.pqc.asn1.*" />
                 <package name="org.bouncycastle.bcmath.*" />
                 <package name="org.bouncycastle.bcutil.*" />
-                <group title="Lightweight Crypto Packages" packages="org.bouncycastle.crypto*" />
+                <group title="Lightweight Crypto Packages" packages="org.bouncycastle.bccrypto*" />
                 <group title="ASN.1 Support Packages" packages="org.bouncycastle.bcasn1*" />
-                <group title="Utility Packages" packages="org.bouncycastle.util*:org.bouncycastle.math*" />
+                <group title="Utility Packages" packages="org.bouncycastle.bcutil*:org.bouncycastle.bcmath*" />
                 <group title="Test Packages" packages="org.bouncycastle.bccrypto.test*,org.bouncycastle.bcutil.utiltest,org.bouncycastle.bcasn1.test*,org.bouncycastle.bcutil.encoders.test*,org.bouncycastle.bcutil.io.test*,org.bouncycastle.bcutil.io.pem.test*,org.bouncycastle.bcmath.ec.test*,org.bouncycastle.bccrypto.ec.test*,org.bouncycastle.bccrypto.prng.test*,org.bouncycastle.bccrypto.tls.test*,org.bouncycastle.bccrypto.agreement.test*" />
                 <group title="Post-Quantum Lightweight Crypto Packages" packages="org.bouncycastle.pqc.crypto*" />
                 <group title="Post-Quantum Lightweight Math Packages" packages="org.bouncycastle.pqc.math*" />

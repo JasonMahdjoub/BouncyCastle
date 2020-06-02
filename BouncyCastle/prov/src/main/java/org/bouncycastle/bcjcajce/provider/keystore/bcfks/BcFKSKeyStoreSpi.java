@@ -67,7 +67,7 @@ import org.bouncycastle.bcasn1.bc.SecretKeyData;
 import org.bouncycastle.bcasn1.bc.SignatureCheck;
 import org.bouncycastle.bcasn1.cms.CCMParameters;
 import org.bouncycastle.bcasn1.kisa.KISAObjectIdentifiers;
-import org.bouncycastle.bcasn1.misc.BCMiscObjectIdentifiers;
+import org.bouncycastle.bcasn1.misc.MiscObjectIdentifiers;
 import org.bouncycastle.bcasn1.misc.ScryptParams;
 import org.bouncycastle.bcasn1.nist.NISTObjectIdentifiers;
 import org.bouncycastle.bcasn1.nsri.NSRIObjectIdentifiers;
@@ -83,7 +83,7 @@ import org.bouncycastle.bcasn1.pkcs.PrivateKeyInfo;
 import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.bcasn1.x509.X509ObjectIdentifiers;
 import org.bouncycastle.bcasn1.x9.X9ObjectIdentifiers;
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.PBEParametersGenerator;
 import org.bouncycastle.bccrypto.digests.SHA3Digest;
 import org.bouncycastle.bccrypto.digests.SHA512Digest;
@@ -489,7 +489,7 @@ class BcFKSKeyStoreSpi
 
     private SecureRandom getDefaultSecureRandom()
     {
-        return BCCryptoServicesRegistrar.getSecureRandom();
+        return CryptoServicesRegistrar.getSecureRandom();
     }
 
     private EncryptedPrivateKeyData createPrivateKeySequence(EncryptedPrivateKeyInfo encryptedPrivateKeyInfo, Certificate[] chain)
@@ -728,7 +728,7 @@ class BcFKSKeyStoreSpi
 
         int keySizeInBytes = defKeySize;
 
-        if (BCMiscObjectIdentifiers.id_scrypt.equals(pbkdAlgorithm.getAlgorithm()))
+        if (MiscObjectIdentifiers.id_scrypt.equals(pbkdAlgorithm.getAlgorithm()))
         {
             ScryptParams params = ScryptParams.getInstance(pbkdAlgorithm.getParameters());
 
@@ -1004,7 +1004,7 @@ class BcFKSKeyStoreSpi
         EncryptedObjectStoreData encStoreData = getEncryptedObjectStoreData(hmacAlgorithm, password);
 
         // update the salt
-        if (BCMiscObjectIdentifiers.id_scrypt.equals(hmacPkbdAlgorithm.getAlgorithm()))
+        if (MiscObjectIdentifiers.id_scrypt.equals(hmacPkbdAlgorithm.getAlgorithm()))
         {
             ScryptParams sParams = ScryptParams.getInstance(hmacPkbdAlgorithm.getParameters());
 
@@ -1166,7 +1166,7 @@ class BcFKSKeyStoreSpi
             return false;
         }
 
-        if (BCMiscObjectIdentifiers.id_scrypt.equals(hmacPkbdAlgorithm.getAlgorithm()))
+        if (MiscObjectIdentifiers.id_scrypt.equals(hmacPkbdAlgorithm.getAlgorithm()))
         {
             if (!(storePBKDFConfig instanceof ScryptConfig))
             {
@@ -1445,7 +1445,7 @@ class BcFKSKeyStoreSpi
 
     private KeyDerivationFunc generatePkbdAlgorithmIdentifier(PBKDFConfig pbkdfConfig, int keySizeInBytes)
     {
-        if (BCMiscObjectIdentifiers.id_scrypt.equals(pbkdfConfig.getAlgorithm()))
+        if (MiscObjectIdentifiers.id_scrypt.equals(pbkdfConfig.getAlgorithm()))
         {
             ScryptConfig scryptConfig = (ScryptConfig)pbkdfConfig;
 
@@ -1456,7 +1456,7 @@ class BcFKSKeyStoreSpi
                 pbkdSalt,
                 scryptConfig.getCostParameter(), scryptConfig.getBlockSize(), scryptConfig.getParallelizationParameter(), keySizeInBytes);
 
-            return new KeyDerivationFunc(BCMiscObjectIdentifiers.id_scrypt, params);
+            return new KeyDerivationFunc(MiscObjectIdentifiers.id_scrypt, params);
         }
         else
         {
@@ -1471,7 +1471,7 @@ class BcFKSKeyStoreSpi
 
     private KeyDerivationFunc generatePkbdAlgorithmIdentifier(KeyDerivationFunc baseAlg, int keySizeInBytes)
     {
-        if (BCMiscObjectIdentifiers.id_scrypt.equals(baseAlg.getAlgorithm()))
+        if (MiscObjectIdentifiers.id_scrypt.equals(baseAlg.getAlgorithm()))
         {
             ScryptParams oldParams = ScryptParams.getInstance(baseAlg.getParameters());
 
@@ -1482,7 +1482,7 @@ class BcFKSKeyStoreSpi
                 pbkdSalt,
                 oldParams.getCostParameter(), oldParams.getBlockSize(), oldParams.getParallelizationParameter(), BigInteger.valueOf(keySizeInBytes));
 
-            return new KeyDerivationFunc(BCMiscObjectIdentifiers.id_scrypt, params);
+            return new KeyDerivationFunc(MiscObjectIdentifiers.id_scrypt, params);
         }
         else
         {

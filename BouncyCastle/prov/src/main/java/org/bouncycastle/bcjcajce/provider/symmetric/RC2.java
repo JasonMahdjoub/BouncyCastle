@@ -13,8 +13,8 @@ import javax.crypto.spec.RC2ParameterSpec;
 import org.bouncycastle.bcasn1.ASN1Primitive;
 import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
 import org.bouncycastle.bcasn1.pkcs.RC2CBCParameter;
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.CipherKeyGenerator;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.engines.RC2Engine;
 import org.bouncycastle.bccrypto.engines.RC2WrapEngine;
 import org.bouncycastle.bccrypto.macs.CBCBlockCipherMac;
@@ -228,7 +228,7 @@ public final class RC2
 
                 if (random == null)
                 {
-                    random = BCCryptoServicesRegistrar.getSecureRandom();
+                    random = CryptoServicesRegistrar.getSecureRandom();
                 }
 
                 random.nextBytes(iv);

@@ -1,6 +1,6 @@
 package org.bouncycastle.bccrypto.util;
 
-import org.bouncycastle.bcasn1.misc.BCMiscObjectIdentifiers;
+import org.bouncycastle.bcasn1.misc.MiscObjectIdentifiers;
 
 /**
  * Configuration class for a PBKDF based around scrypt.
@@ -67,7 +67,7 @@ public class ScryptConfig
 
     private ScryptConfig(Builder builder)
     {
-        super(BCMiscObjectIdentifiers.id_scrypt);
+        super(MiscObjectIdentifiers.id_scrypt);
 
         this.costParameter = builder.costParameter;
         this.blockSize = builder.blockSize;

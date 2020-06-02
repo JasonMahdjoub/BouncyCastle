@@ -25,7 +25,6 @@ import org.bouncycastle.bcasn1.cms.Attribute;
 import org.bouncycastle.bcasn1.cms.AttributeTable;
 import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
 import org.bouncycastle.bcasn1.x500.X500Name;
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.cms.CMSAlgorithm;
 import org.bouncycastle.cms.CMSEnvelopedDataGenerator;
@@ -49,6 +48,7 @@ import org.bouncycastle.cms.jcajce.JceKeyTransEnvelopedRecipient;
 import org.bouncycastle.cms.jcajce.JceKeyTransRecipientInfoGenerator;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.bcutil.encoders.Base64;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

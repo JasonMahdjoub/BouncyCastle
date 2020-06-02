@@ -200,7 +200,7 @@ public interface PBE
             PBEParameterSpec        pbeParam = (PBEParameterSpec)spec;
             PBEParametersGenerator  generator = makePBEGenerator(scheme, digest);
             byte[]                  key = pbeKey;
-            CipherParameters param;
+            CipherParameters        param;
 
 //            if (pbeKey.shouldTryWrongPKCS12())
 //            {
@@ -254,7 +254,7 @@ public interface PBE
             PBEParameterSpec        pbeParam = (PBEParameterSpec)spec;
             PBEParametersGenerator  generator = makePBEGenerator(pbeKey.getType(), pbeKey.getDigest());
             byte[]                  key = pbeKey.getEncoded();
-            CipherParameters param;
+            CipherParameters        param;
     
             if (pbeKey.shouldTryWrongPKCS12())
             {
@@ -308,7 +308,7 @@ public interface PBE
             PBEParameterSpec        pbeParam = (PBEParameterSpec)spec;
             PBEParametersGenerator  generator = makePBEGenerator(pbeKey.getType(), pbeKey.getDigest());
             byte[]                  key = pbeKey.getEncoded();
-            CipherParameters param;
+            CipherParameters        param;
             
             generator.init(key, pbeParam.getSalt(), pbeParam.getIterationCount());
 
@@ -330,7 +330,7 @@ public interface PBE
         {
             PBEParametersGenerator  generator = makePBEGenerator(type, hash);
             byte[]                  key;
-            CipherParameters param;
+            CipherParameters        param;
 
             key = convertPassword(type, keySpec);
 
@@ -359,7 +359,7 @@ public interface PBE
         {    
             PBEParametersGenerator  generator = makePBEGenerator(type, hash);
             byte[]                  key;
-            CipherParameters param;
+            CipherParameters        param;
 
             key = convertPassword(type, keySpec);
 
@@ -395,7 +395,7 @@ public interface PBE
             PBEParameterSpec pbeSpec)
         {
             PBEParametersGenerator  generator = makePBEGenerator(type, hash);
-            CipherParameters param;
+            CipherParameters        param;
     
             byte[] keyBytes = key.getEncoded();
             

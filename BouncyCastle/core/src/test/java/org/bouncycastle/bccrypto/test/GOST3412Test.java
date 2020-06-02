@@ -1,6 +1,5 @@
 package org.bouncycastle.bccrypto.test;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.engines.GOST3412_2015Engine;
 import org.bouncycastle.bccrypto.modes.G3413CBCBlockCipher;
 import org.bouncycastle.bccrypto.modes.G3413CFBBlockCipher;
@@ -8,6 +7,7 @@ import org.bouncycastle.bccrypto.modes.G3413CTRBlockCipher;
 import org.bouncycastle.bccrypto.modes.G3413OFBBlockCipher;
 import org.bouncycastle.bccrypto.params.KeyParameter;
 import org.bouncycastle.bccrypto.params.ParametersWithIV;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class GOST3412Test

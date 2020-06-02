@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.dvcs.test.AllTests" tests="4" skipped="0" failures="0" errors="0" timestamp="2020-02-14T17:20:20" hostname="Garage" time="0.04">
+<testsuite name="org.bouncycastle.dvcs.test.AllTests" tests="4" skipped="0" failures="0" errors="0" timestamp="2020-06-02T09:05:15" hostname="Garage" time="0.053">
   <properties/>
-  <testcase name="testVSDRequest" classname="org.bouncycastle.dvcs.test.AllTests" time="0.036"/>
+  <testcase name="testVSDRequest" classname="org.bouncycastle.dvcs.test.AllTests" time="0.05"/>
   <testcase name="testCPDRequest" classname="org.bouncycastle.dvcs.test.AllTests" time="0.001"/>
-  <testcase name="testCCPDRequest" classname="org.bouncycastle.dvcs.test.AllTests" time="0.002"/>
+  <testcase name="testCCPDRequest" classname="org.bouncycastle.dvcs.test.AllTests" time="0.001"/>
   <testcase name="testVPKCRequest" classname="org.bouncycastle.dvcs.test.AllTests" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.bcasn1.test.ASN1SequenceParserTest" tests="16" skipped="0" failures="0" errors="0" timestamp="2020-02-14T17:16:29" hostname="Garage" time="0.006">
+<testsuite name="org.bouncycastle.bcasn1.test.ASN1SequenceParserTest" tests="16" skipped="0" failures="0" errors="0" timestamp="2020-06-02T09:04:52" hostname="Garage" time="0.001">
   <properties/>
-  <testcase name="testNestedImplicitTagDERWriting" classname="org.bouncycastle.bcasn1.test.ASN1SequenceParserTest" time="0.001"/>
+  <testcase name="testNestedImplicitTagDERWriting" classname="org.bouncycastle.bcasn1.test.ASN1SequenceParserTest" time="0.0"/>
   <testcase name="testNestedDERReading" classname="org.bouncycastle.bcasn1.test.ASN1SequenceParserTest" time="0.0"/>
   <testcase name="testNestedBERDERReading" classname="org.bouncycastle.bcasn1.test.ASN1SequenceParserTest" time="0.0"/>
-  <testcase name="testNestedBERReading" classname="org.bouncycastle.bcasn1.test.ASN1SequenceParserTest" time="0.001"/>
+  <testcase name="testNestedBERReading" classname="org.bouncycastle.bcasn1.test.ASN1SequenceParserTest" time="0.0"/>
   <testcase name="testNestedDERWriting" classname="org.bouncycastle.bcasn1.test.ASN1SequenceParserTest" time="0.0"/>
-  <testcase name="testNestedBERDERWriting" classname="org.bouncycastle.bcasn1.test.ASN1SequenceParserTest" time="0.0"/>
+  <testcase name="testNestedBERDERWriting" classname="org.bouncycastle.bcasn1.test.ASN1SequenceParserTest" time="0.001"/>
   <testcase name="testNestedBERWriting" classname="org.bouncycastle.bcasn1.test.ASN1SequenceParserTest" time="0.0"/>
   <testcase name="testDERReading" classname="org.bouncycastle.bcasn1.test.ASN1SequenceParserTest" time="0.0"/>
   <testcase name="testBERExplicitTaggedSequenceWriting" classname="org.bouncycastle.bcasn1.test.ASN1SequenceParserTest" time="0.0"/>
-  <testcase name="testDERExplicitTaggedSequenceWriting" classname="org.bouncycastle.bcasn1.test.ASN1SequenceParserTest" time="0.001"/>
+  <testcase name="testDERExplicitTaggedSequenceWriting" classname="org.bouncycastle.bcasn1.test.ASN1SequenceParserTest" time="0.0"/>
   <testcase name="testBERReading" classname="org.bouncycastle.bcasn1.test.ASN1SequenceParserTest" time="0.0"/>
   <testcase name="testSequenceWithDERNullReading" classname="org.bouncycastle.bcasn1.test.ASN1SequenceParserTest" time="0.0"/>
   <testcase name="testDERWriting" classname="org.bouncycastle.bcasn1.test.ASN1SequenceParserTest" time="0.0"/>

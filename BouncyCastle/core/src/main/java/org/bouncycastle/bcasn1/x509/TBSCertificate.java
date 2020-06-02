@@ -2,13 +2,18 @@ package org.bouncycastle.bcasn1.x509;
 
 import java.math.BigInteger;
 
+import org.bouncycastle.bcasn1.ASN1EncodableVector;
 import org.bouncycastle.bcasn1.ASN1Integer;
 import org.bouncycastle.bcasn1.ASN1Object;
 import org.bouncycastle.bcasn1.ASN1Primitive;
 import org.bouncycastle.bcasn1.ASN1Sequence;
 import org.bouncycastle.bcasn1.ASN1TaggedObject;
 import org.bouncycastle.bcasn1.DERBitString;
+import org.bouncycastle.bcasn1.DERSequence;
+import org.bouncycastle.bcasn1.DERTaggedObject;
 import org.bouncycastle.bcasn1.x500.X500Name;
+import org.bouncycastle.bcutil.BigIntegers;
+import org.bouncycastle.bcutil.Properties;
 
 /**
  * The TBSCertificate object.
@@ -218,6 +223,69 @@ public class TBSCertificate
 
     public ASN1Primitive toASN1Primitive()
     {
-        return seq;
+        if (Properties.getPropertyValue("org.bouncycastle.x509.allow_non-der_tbscert") != null)
+        {
+            if (Properties.isOverrideSet("org.bouncycastle.x509.allow_non-der_tbscert"))
+            {
+                return seq;
+            }
+        }
+        else
+        {
+            return seq;
+        }
+
+        ASN1EncodableVector v = new ASN1EncodableVector();
+
+        // DEFAULT Zero
+        if (!version.hasValue(BigIntegers.ZERO))
+        {
+            v.add(new DERTaggedObject(true, 0, version));
+        }
+
+        v.add(serialNumber);
+        v.add(signature);
+        v.add(issuer);
+
+        //
+        // before and after dates
+        //
+        {
+            ASN1EncodableVector validity = new ASN1EncodableVector(2);
+            validity.add(startDate);
+            validity.add(endDate);
+
+            v.add(new DERSequence(validity));
+        }
+
+        if (subject != null)
+        {
+            v.add(subject);
+        }
+        else
+        {
+            v.add(new DERSequence());
+        }
+
+        v.add(subjectPublicKeyInfo);
+
+        // Note: implicit tag
+        if (issuerUniqueId != null)
+        {
+            v.add(new DERTaggedObject(false, 1, issuerUniqueId));
+        }
+
+        // Note: implicit tag
+        if (subjectUniqueId != null)
+        {
+            v.add(new DERTaggedObject(false, 2, subjectUniqueId));
+        }
+
+        if (extensions != null)
+        {
+            v.add(new DERTaggedObject(true, 3, extensions));
+        }
+
+        return new DERSequence(v);
     }
 }

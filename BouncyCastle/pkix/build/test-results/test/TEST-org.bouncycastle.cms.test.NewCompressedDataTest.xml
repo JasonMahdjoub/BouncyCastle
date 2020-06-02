@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.cms.test.NewCompressedDataTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2020-02-14T17:20:17" hostname="Garage" time="0.799">
+<testsuite name="org.bouncycastle.cms.test.NewCompressedDataTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2020-06-02T09:05:12" hostname="Garage" time="0.943">
   <properties/>
-  <testcase name="testLimitOver" classname="org.bouncycastle.cms.test.NewCompressedDataTest" time="0.001"/>
+  <testcase name="testLimitOver" classname="org.bouncycastle.cms.test.NewCompressedDataTest" time="0.002"/>
   <testcase name="testEach" classname="org.bouncycastle.cms.test.NewCompressedDataTest" time="0.0"/>
   <testcase name="testWorkingData" classname="org.bouncycastle.cms.test.NewCompressedDataTest" time="0.0"/>
-  <testcase name="testLimitEqual" classname="org.bouncycastle.cms.test.NewCompressedDataTest" time="0.001"/>
+  <testcase name="testLimitEqual" classname="org.bouncycastle.cms.test.NewCompressedDataTest" time="0.0"/>
   <testcase name="testLimitUnder" classname="org.bouncycastle.cms.test.NewCompressedDataTest" time="0.0"/>
-  <testcase name="testLimitOver" classname="org.bouncycastle.cms.test.NewCompressedDataTest" time="0.001"/>
+  <testcase name="testLimitOver" classname="org.bouncycastle.cms.test.NewCompressedDataTest" time="0.0"/>
   <testcase name="testEach" classname="org.bouncycastle.cms.test.NewCompressedDataTest" time="0.0"/>
   <testcase name="testWorkingData" classname="org.bouncycastle.cms.test.NewCompressedDataTest" time="0.0"/>
   <testcase name="testLimitEqual" classname="org.bouncycastle.cms.test.NewCompressedDataTest" time="0.0"/>

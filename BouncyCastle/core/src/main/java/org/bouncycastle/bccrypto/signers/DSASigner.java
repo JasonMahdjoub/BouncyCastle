@@ -4,10 +4,13 @@ import java.math.BigInteger;
 import java.security.SecureRandom;
 
 import org.bouncycastle.bccrypto.CipherParameters;
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.DSAExt;
-import org.bouncycastle.bccrypto.params.*;
+import org.bouncycastle.bccrypto.params.DSAKeyParameters;
 import org.bouncycastle.bccrypto.params.DSAParameters;
+import org.bouncycastle.bccrypto.params.DSAPrivateKeyParameters;
+import org.bouncycastle.bccrypto.params.DSAPublicKeyParameters;
+import org.bouncycastle.bccrypto.params.ParametersWithRandom;
 import org.bouncycastle.bcutil.BigIntegers;
 
 /**
@@ -42,7 +45,7 @@ public class DSASigner
 
     public void init(
         boolean                 forSigning,
-        CipherParameters param)
+        CipherParameters        param)
     {
         SecureRandom providedRandom = null;
 
@@ -83,7 +86,7 @@ public class DSASigner
     public BigInteger[] generateSignature(
         byte[] message)
     {
-        DSAParameters params = key.getParameters();
+        DSAParameters   params = key.getParameters();
         BigInteger      q = params.getQ();
         BigInteger      m = calculateE(q, message);
         BigInteger      x = ((DSAPrivateKeyParameters)key).getX();
@@ -119,7 +122,7 @@ public class DSASigner
         BigInteger  r,
         BigInteger  s)
     {
-        DSAParameters params = key.getParameters();
+        DSAParameters   params = key.getParameters();
         BigInteger      q = params.getQ();
         BigInteger      m = calculateE(q, message);
         BigInteger      zero = BigInteger.valueOf(0);
@@ -166,7 +169,7 @@ public class DSASigner
 
     protected SecureRandom initSecureRandom(boolean needed, SecureRandom provided)
     {
-        return !needed ? null : (provided != null) ? provided : BCCryptoServicesRegistrar.getSecureRandom();
+        return !needed ? null : (provided != null) ? provided : CryptoServicesRegistrar.getSecureRandom();
     }
 
     private BigInteger getRandomizer(BigInteger q, SecureRandom provided)
@@ -174,6 +177,6 @@ public class DSASigner
         // Calculate a random multiple of q to add to k. Note that g^q = 1 (mod p), so adding multiple of q to k does not change r.
         int randomBits = 7;
 
-        return BigIntegers.createRandomBigInteger(randomBits, provided != null ? provided : BCCryptoServicesRegistrar.getSecureRandom()).add(BigInteger.valueOf(128)).multiply(q);
+        return BigIntegers.createRandomBigInteger(randomBits, provided != null ? provided : CryptoServicesRegistrar.getSecureRandom()).add(BigInteger.valueOf(128)).multiply(q);
     }
 }

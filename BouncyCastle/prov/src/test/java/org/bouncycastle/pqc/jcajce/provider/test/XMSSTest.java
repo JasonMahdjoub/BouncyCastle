@@ -24,7 +24,7 @@ import org.bouncycastle.bcasn1.ASN1Encodable;
 import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 import org.bouncycastle.bcasn1.ASN1Sequence;
 import org.bouncycastle.bcasn1.DERSequence;
-import org.bouncycastle.bcasn1.bc.DMBCObjectIdentifiers;
+import org.bouncycastle.bcasn1.bc.BCObjectIdentifiers;
 import org.bouncycastle.bcasn1.pkcs.PrivateKeyInfo;
 import org.bouncycastle.bccrypto.Digest;
 import org.bouncycastle.bccrypto.Xof;
@@ -266,7 +266,7 @@ public class XMSSTest
         assertTrue(xmssSig.verify(s));
     }
 
-    public void testXMSSSha256SignatureMultiple()
+    public void testXMSSSha256SignatureMultiplePreHash()
         throws Exception
     {
         KeyPairGenerator kpg = KeyPairGenerator.getInstance("XMSS", "BCPQC");
@@ -319,7 +319,7 @@ public class XMSSTest
     {
         KeyPairGenerator kpg = KeyPairGenerator.getInstance("XMSS", "BCPQC");
 
-        kpg.initialize(new XMSSParameterSpec(10, XMSSParameterSpec.SHA256), new SecureRandom());
+        kpg.initialize(XMSSParameterSpec.SHA2_10_256, new SecureRandom());
 
         KeyPair kp = kpg.generateKeyPair();
 
@@ -336,7 +336,7 @@ public class XMSSTest
         assertEquals(10, privKey.getHeight());
         assertEquals(XMSSParameterSpec.SHA256, privKey.getTreeDigest());
 
-        testSig("SHA256withXMSS", pubKey, (PrivateKey)privKey);
+        testSig("XMSS", pubKey, (PrivateKey)privKey);
     }
 
     public void testXMSSSha512KeyFactory()
@@ -563,17 +563,17 @@ public class XMSSTest
         testPrehashAndWithoutPrehash("XMSS-SHA512", "SHA512", new SHA512Digest());
         testPrehashAndWithoutPrehash("XMSS-SHAKE256", "SHAKE256", new SHAKEDigest(256));
 
-        testPrehashAndWithoutPrehash(DMBCObjectIdentifiers.xmss_SHA256ph, DMBCObjectIdentifiers.xmss_SHA256, "SHA256", new SHA256Digest());
-        testPrehashAndWithoutPrehash(DMBCObjectIdentifiers.xmss_SHAKE128ph, DMBCObjectIdentifiers.xmss_SHAKE128, "SHAKE128", new SHAKEDigest(128));
-        testPrehashAndWithoutPrehash(DMBCObjectIdentifiers.xmss_SHA512ph, DMBCObjectIdentifiers.xmss_SHA512, "SHA512", new SHA512Digest());
-        testPrehashAndWithoutPrehash(DMBCObjectIdentifiers.xmss_SHAKE256ph, DMBCObjectIdentifiers.xmss_SHAKE256, "SHAKE256", new SHAKEDigest(256));
+        testPrehashAndWithoutPrehash(BCObjectIdentifiers.xmss_SHA256ph, BCObjectIdentifiers.xmss_SHA256, "SHA256", new SHA256Digest());
+        testPrehashAndWithoutPrehash(BCObjectIdentifiers.xmss_SHAKE128ph, BCObjectIdentifiers.xmss_SHAKE128, "SHAKE128", new SHAKEDigest(128));
+        testPrehashAndWithoutPrehash(BCObjectIdentifiers.xmss_SHA512ph, BCObjectIdentifiers.xmss_SHA512, "SHA512", new SHA512Digest());
+        testPrehashAndWithoutPrehash(BCObjectIdentifiers.xmss_SHAKE256ph, BCObjectIdentifiers.xmss_SHAKE256, "SHAKE256", new SHAKEDigest(256));
     }
 
     public void testExhaustion()
         throws Exception
     {
-        StateAwareSignature s1 = (StateAwareSignature)Signature.getInstance(DMBCObjectIdentifiers.xmss_SHA256.getId(), "BCPQC");
-        Signature s2 = Signature.getInstance(DMBCObjectIdentifiers.xmss_SHA256.getId(), "BCPQC");
+        StateAwareSignature s1 = (StateAwareSignature)Signature.getInstance(BCObjectIdentifiers.xmss_SHA256.getId(), "BCPQC");
+        Signature s2 = Signature.getInstance(BCObjectIdentifiers.xmss_SHA256.getId(), "BCPQC");
 
         byte[] message = Strings.toByteArray("hello, world!");
 
@@ -613,8 +613,8 @@ public class XMSSTest
     public void testShardedKeyExhaustion()
         throws Exception
     {
-        Signature s1 = Signature.getInstance(DMBCObjectIdentifiers.xmss_SHA256.getId(), "BCPQC");
-        Signature s2 = Signature.getInstance(DMBCObjectIdentifiers.xmss_SHA256.getId(), "BCPQC");
+        Signature s1 = Signature.getInstance(BCObjectIdentifiers.xmss_SHA256.getId(), "BCPQC");
+        Signature s2 = Signature.getInstance(BCObjectIdentifiers.xmss_SHA256.getId(), "BCPQC");
 
         byte[] message = Strings.toByteArray("hello, world!");
 
@@ -697,8 +697,8 @@ public class XMSSTest
 
         XMSSPrivateKey privKey = (XMSSPrivateKey)kp.getPrivate();
 
-        Signature sigGen = Signature.getInstance(DMBCObjectIdentifiers.xmss_SHA256.getId(), "BCPQC");
-        Signature sigVer = Signature.getInstance(DMBCObjectIdentifiers.xmss_SHA256.getId(), "BCPQC");
+        Signature sigGen = Signature.getInstance(BCObjectIdentifiers.xmss_SHA256.getId(), "BCPQC");
+        Signature sigVer = Signature.getInstance(BCObjectIdentifiers.xmss_SHA256.getId(), "BCPQC");
 
         Set sigs = new HashSet();
         XMSSPrivateKey sigKey;
@@ -754,6 +754,16 @@ public class XMSSTest
                 fail("same sig generated twice");
             }
             sigs.add(sw);
+        }
+        
+        try
+        {
+            privKey.getIndex();
+            fail("no exception");
+        }
+        catch (IllegalStateException e)
+        {
+            assertEquals("key exhausted", e.getMessage());
         }
     }
 
@@ -827,14 +837,14 @@ public class XMSSTest
 
         for (int i = 0; i != 10; i++)
         {
-            StateAwareSignature signer = (StateAwareSignature)Signature.getInstance(sigAlg, "BCPQC");
+            Signature signer = Signature.getInstance(sigAlg, "BCPQC");
             signer.initSign(privateKey);
             signer.update(payload);
 
             byte[] signature = signer.sign();
 
             // serialise private key
-            byte[] enc = signer.getUpdatedPrivateKey().getEncoded();
+            byte[] enc = privateKey.getEncoded();
             privateKey = KeyFactory.getInstance("XMSS").generatePrivate(new PKCS8EncodedKeySpec(enc));
             Signature verifier = Signature.getInstance(sigAlg, "BCPQC");
             verifier.initVerify(publicKey);

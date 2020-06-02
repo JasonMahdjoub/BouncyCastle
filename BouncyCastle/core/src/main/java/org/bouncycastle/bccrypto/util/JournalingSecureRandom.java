@@ -4,7 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.security.SecureRandom;
 
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bcutil.Arrays;
 
 /**
@@ -29,7 +29,7 @@ public class JournalingSecureRandom
      */
     public JournalingSecureRandom()
     {
-        this(BCCryptoServicesRegistrar.getSecureRandom());
+        this(CryptoServicesRegistrar.getSecureRandom());
     }
 
     /**

@@ -3,7 +3,6 @@ package org.bouncycastle.bcjcajce.provider.asymmetric.edec;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.security.PublicKey;
 import java.security.spec.InvalidKeySpecException;
 
 import org.bouncycastle.bcasn1.edec.EdECObjectIdentifiers;
@@ -11,15 +10,15 @@ import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
 import org.bouncycastle.bccrypto.params.AsymmetricKeyParameter;
 import org.bouncycastle.bccrypto.params.X25519PublicKeyParameters;
 import org.bouncycastle.bccrypto.params.X448PublicKeyParameters;
-import org.bouncycastle.bcjcajce.interfaces.XDHKey;
+import org.bouncycastle.bcjcajce.interfaces.XDHPublicKey;
 import org.bouncycastle.bcutil.Arrays;
 
 public class BCXDHPublicKey
-    implements XDHKey, PublicKey
+    implements XDHPublicKey
 {
     static final long serialVersionUID = 1L;
 
-    private transient AsymmetricKeyParameter xdhPublicKey;
+    protected transient AsymmetricKeyParameter xdhPublicKey;
 
     BCXDHPublicKey(AsymmetricKeyParameter pubKey)
     {

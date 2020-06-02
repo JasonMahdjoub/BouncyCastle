@@ -30,12 +30,12 @@ import org.bouncycastle.bcasn1.x509.Certificate;
 import org.bouncycastle.bcasn1.x509.DigestInfo;
 import org.bouncycastle.bcasn1.x509.GeneralName;
 import org.bouncycastle.bcasn1.x509.PolicyInformation;
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.cms.CMSException;
 import org.bouncycastle.cms.CMSSignedData;
 import org.bouncycastle.dvcs.DVCSException;
 import org.bouncycastle.bcutil.Integers;
 import org.bouncycastle.bcutil.encoders.Base64;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 import junit.framework.TestCase;
 

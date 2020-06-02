@@ -10,15 +10,15 @@ public class DHMQVPrivateParameters
     private DHPublicKeyParameters ephemeralPublicKey;
 
     public DHMQVPrivateParameters(
-        DHPrivateKeyParameters staticPrivateKey,
-        DHPrivateKeyParameters ephemeralPrivateKey)
+        DHPrivateKeyParameters  staticPrivateKey,
+        DHPrivateKeyParameters  ephemeralPrivateKey)
     {
         this(staticPrivateKey, ephemeralPrivateKey, null);
     }
 
     public DHMQVPrivateParameters(
-        DHPrivateKeyParameters staticPrivateKey,
-        DHPrivateKeyParameters ephemeralPrivateKey,
+        DHPrivateKeyParameters  staticPrivateKey,
+        DHPrivateKeyParameters  ephemeralPrivateKey,
         DHPublicKeyParameters   ephemeralPublicKey)
     {
         if (staticPrivateKey == null)

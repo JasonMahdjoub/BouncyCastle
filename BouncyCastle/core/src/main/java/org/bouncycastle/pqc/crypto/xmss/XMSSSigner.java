@@ -2,6 +2,7 @@ package org.bouncycastle.pqc.crypto.xmss;
 
 import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.params.AsymmetricKeyParameter;
+import org.bouncycastle.pqc.crypto.ExhaustedPrivateKeyException;
 import org.bouncycastle.pqc.crypto.StateAwareMessageSigner;
 import org.bouncycastle.bcutil.Arrays;
 
@@ -60,7 +61,7 @@ public class XMSSSigner
         {
             if (privateKey.getUsagesRemaining() <= 0)
             {
-                throw new IllegalStateException("no usages of private key remaining");
+                throw new ExhaustedPrivateKeyException("no usages of private key remaining");
             }
             if (privateKey.getBDSState().getAuthenticationPath().isEmpty())
             {

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.tsp.test.CMSTimeStampedDataGeneratorTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-02-14T17:20:20" hostname="Garage" time="0.641">
+<testsuite name="org.bouncycastle.tsp.test.CMSTimeStampedDataGeneratorTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-06-02T09:05:16" hostname="Garage" time="0.654">
   <properties/>
-  <testcase name="testGenerateWithMetadataAndDifferentAlgorithmIdentifier" classname="org.bouncycastle.tsp.test.CMSTimeStampedDataGeneratorTest" time="0.254"/>
-  <testcase name="testGenerate" classname="org.bouncycastle.tsp.test.CMSTimeStampedDataGeneratorTest" time="0.15"/>
-  <testcase name="testGenerateWithMetadata" classname="org.bouncycastle.tsp.test.CMSTimeStampedDataGeneratorTest" time="0.236"/>
+  <testcase name="testGenerateWithMetadataAndDifferentAlgorithmIdentifier" classname="org.bouncycastle.tsp.test.CMSTimeStampedDataGeneratorTest" time="0.25"/>
+  <testcase name="testGenerate" classname="org.bouncycastle.tsp.test.CMSTimeStampedDataGeneratorTest" time="0.197"/>
+  <testcase name="testGenerateWithMetadata" classname="org.bouncycastle.tsp.test.CMSTimeStampedDataGeneratorTest" time="0.207"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

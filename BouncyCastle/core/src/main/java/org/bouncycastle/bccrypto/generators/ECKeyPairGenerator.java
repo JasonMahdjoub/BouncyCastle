@@ -5,11 +5,13 @@ import java.security.SecureRandom;
 
 import org.bouncycastle.bccrypto.AsymmetricCipherKeyPair;
 import org.bouncycastle.bccrypto.AsymmetricCipherKeyPairGenerator;
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.KeyGenerationParameters;
-import org.bouncycastle.bccrypto.params.*;
+import org.bouncycastle.bccrypto.params.ECDomainParameters;
+import org.bouncycastle.bccrypto.params.ECKeyGenerationParameters;
 import org.bouncycastle.bccrypto.params.ECPrivateKeyParameters;
-import org.bouncycastle.bccrypto.params.ECPublicKeyParameters;import org.bouncycastle.bcmath.ec.ECConstants;
+import org.bouncycastle.bccrypto.params.ECPublicKeyParameters;
+import org.bouncycastle.bcmath.ec.ECConstants;
 import org.bouncycastle.bcmath.ec.ECMultiplier;
 import org.bouncycastle.bcmath.ec.ECPoint;
 import org.bouncycastle.bcmath.ec.FixedPointCombMultiplier;
@@ -32,7 +34,7 @@ public class ECKeyPairGenerator
 
         if (this.random == null)
         {
-            this.random = BCCryptoServicesRegistrar.getSecureRandom();
+            this.random = CryptoServicesRegistrar.getSecureRandom();
         }
     }
 

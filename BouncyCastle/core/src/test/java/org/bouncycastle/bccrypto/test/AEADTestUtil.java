@@ -1,6 +1,5 @@
 package org.bouncycastle.bccrypto.test;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.DataLengthException;
 import org.bouncycastle.bccrypto.InvalidCipherTextException;
@@ -9,6 +8,7 @@ import org.bouncycastle.bccrypto.modes.AEADBlockCipher;
 import org.bouncycastle.bccrypto.modes.AEADCipher;
 import org.bouncycastle.bccrypto.params.AEADParameters;
 import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTestResult;
 import org.bouncycastle.bcutil.test.Test;
 import org.bouncycastle.bcutil.test.TestFailedException;

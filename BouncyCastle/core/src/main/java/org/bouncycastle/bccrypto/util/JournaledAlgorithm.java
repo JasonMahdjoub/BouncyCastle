@@ -18,7 +18,7 @@ import org.bouncycastle.bcasn1.ASN1Sequence;
 import org.bouncycastle.bcasn1.DEROctetString;
 import org.bouncycastle.bcasn1.DERSequence;
 import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bcutil.Encodable;
 import org.bouncycastle.bcutil.io.Streams;
 
@@ -69,7 +69,7 @@ public class JournaledAlgorithm
      */
     public JournaledAlgorithm(byte[] encoding)
     {
-        this(encoding, BCCryptoServicesRegistrar.getSecureRandom());
+        this(encoding, CryptoServicesRegistrar.getSecureRandom());
     }
 
     /**
@@ -214,7 +214,7 @@ public class JournaledAlgorithm
     {
         in.defaultReadObject();
 
-        initFromEncoding((byte[])in.readObject(), BCCryptoServicesRegistrar.getSecureRandom());
+        initFromEncoding((byte[])in.readObject(), CryptoServicesRegistrar.getSecureRandom());
     }
 
     private void writeObject(

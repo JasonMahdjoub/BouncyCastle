@@ -1,8 +1,8 @@
 package org.bouncycastle.bccrypto.prng.test;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.prng.FixedSecureRandom;
 import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class FixedSecureRandomTest

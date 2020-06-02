@@ -114,6 +114,7 @@ public abstract class AbstractTlsSecret
         checkAlive();
 
         byte[] salt = data;
+        this.data = null;
 
         TlsCrypto crypto = getCrypto();
         TlsHMAC hmac = crypto.createHMAC(hashAlgorithm);
@@ -124,6 +125,11 @@ public abstract class AbstractTlsSecret
         byte[] prk = hmac.calculateMAC();
 
         return adoptLocalSecret(prk);
+    }
+
+    public synchronized boolean isAlive()
+    {
+        return null != data;
     }
 
     synchronized byte[] copyData()

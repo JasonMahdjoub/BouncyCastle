@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.pqc.crypto.test.XMSSTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2020-02-14T17:17:52" hostname="Garage" time="39.321">
+<testsuite name="org.bouncycastle.pqc.crypto.test.XMSSTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2020-06-02T09:02:43" hostname="Garage" time="39.505">
   <properties/>
-  <testcase name="testGenKeyPairSHA256" classname="org.bouncycastle.pqc.crypto.test.XMSSTest" time="2.572"/>
-  <testcase name="testGenKeyPairSHA512" classname="org.bouncycastle.pqc.crypto.test.XMSSTest" time="8.109"/>
+  <testcase name="testGenKeyPairSHA256" classname="org.bouncycastle.pqc.crypto.test.XMSSTest" time="2.608"/>
+  <testcase name="testGenKeyPairSHA512" classname="org.bouncycastle.pqc.crypto.test.XMSSTest" time="8.131"/>
   <testcase name="testVerifySignatureSHA256" classname="org.bouncycastle.pqc.crypto.test.XMSSTest" time="0.074"/>
-  <testcase name="testVerifySignatureSHA512" classname="org.bouncycastle.pqc.crypto.test.XMSSTest" time="0.233"/>
+  <testcase name="testVerifySignatureSHA512" classname="org.bouncycastle.pqc.crypto.test.XMSSTest" time="0.232"/>
   <testcase name="testImportKeysSHA512" classname="org.bouncycastle.pqc.crypto.test.XMSSTest" time="0.323"/>
-  <testcase name="testBDSImport" classname="org.bouncycastle.pqc.crypto.test.XMSSTest" time="0.057"/>
+  <testcase name="testBDSImport" classname="org.bouncycastle.pqc.crypto.test.XMSSTest" time="0.061"/>
   <testcase name="testImportStateSHA256" classname="org.bouncycastle.pqc.crypto.test.XMSSTest" time="0.103"/>
-  <testcase name="testRandom" classname="org.bouncycastle.pqc.crypto.test.XMSSTest" time="0.279"/>
-  <testcase name="testSignSHA256CompleteEvenHeight1" classname="org.bouncycastle.pqc.crypto.test.XMSSTest" time="0.113"/>
-  <testcase name="testSignSHA256CompleteEvenHeight2" classname="org.bouncycastle.pqc.crypto.test.XMSSTest" time="14.138"/>
-  <testcase name="testSignSHA256" classname="org.bouncycastle.pqc.crypto.test.XMSSTest" time="2.594"/>
-  <testcase name="testSignSHA512" classname="org.bouncycastle.pqc.crypto.test.XMSSTest" time="8.146"/>
-  <testcase name="testAuthPath" classname="org.bouncycastle.pqc.crypto.test.XMSSTest" time="2.58"/>
+  <testcase name="testRandom" classname="org.bouncycastle.pqc.crypto.test.XMSSTest" time="0.276"/>
+  <testcase name="testSignSHA256CompleteEvenHeight1" classname="org.bouncycastle.pqc.crypto.test.XMSSTest" time="0.106"/>
+  <testcase name="testSignSHA256CompleteEvenHeight2" classname="org.bouncycastle.pqc.crypto.test.XMSSTest" time="14.243"/>
+  <testcase name="testSignSHA256" classname="org.bouncycastle.pqc.crypto.test.XMSSTest" time="2.619"/>
+  <testcase name="testSignSHA512" classname="org.bouncycastle.pqc.crypto.test.XMSSTest" time="8.134"/>
+  <testcase name="testAuthPath" classname="org.bouncycastle.pqc.crypto.test.XMSSTest" time="2.594"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

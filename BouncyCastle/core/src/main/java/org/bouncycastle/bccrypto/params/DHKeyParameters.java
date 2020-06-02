@@ -4,11 +4,11 @@ package org.bouncycastle.bccrypto.params;
 public class DHKeyParameters
     extends AsymmetricKeyParameter
 {
-    private DHParameters params;
+    private DHParameters    params;
 
     protected DHKeyParameters(
         boolean         isPrivate,
-        DHParameters params)
+        DHParameters    params)
     {
         super(isPrivate);
 
@@ -28,7 +28,7 @@ public class DHKeyParameters
             return false;
         }
 
-        DHKeyParameters dhKey = (DHKeyParameters)obj;
+        DHKeyParameters    dhKey = (DHKeyParameters)obj;
 
         if (params == null)
         {

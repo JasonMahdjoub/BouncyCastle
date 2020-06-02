@@ -1,20 +1,15 @@
 package org.bouncycastle.tls.crypto.impl.bc;
 
 import java.io.IOException;
-import java.io.OutputStream;
 
-import org.bouncycastle.bccrypto.CryptoException;
 import org.bouncycastle.bccrypto.Digest;
 import org.bouncycastle.bccrypto.engines.RSABlindedEngine;
-import org.bouncycastle.bccrypto.io.SignerOutputStream;
 import org.bouncycastle.bccrypto.params.ParametersWithRandom;
 import org.bouncycastle.bccrypto.params.RSAKeyParameters;
 import org.bouncycastle.bccrypto.signers.PSSSigner;
-import org.bouncycastle.tls.AlertDescription;
 import org.bouncycastle.tls.HashAlgorithm;
 import org.bouncycastle.tls.SignatureAlgorithm;
 import org.bouncycastle.tls.SignatureAndHashAlgorithm;
-import org.bouncycastle.tls.TlsFatalAlert;
 import org.bouncycastle.tls.crypto.TlsStreamSigner;
 
 /**
@@ -57,26 +52,6 @@ public class BcTlsRSAPSSSigner
         PSSSigner signer = new PSSSigner(new RSABlindedEngine(), digest, HashAlgorithm.getOutputSize(hash));
         signer.init(true, new ParametersWithRandom(privateKey, crypto.getSecureRandom()));
 
-        final SignerOutputStream sigOut = new SignerOutputStream(signer);
-
-        return new TlsStreamSigner()
-        {
-            public OutputStream getOutputStream()
-            {
-                return sigOut;
-            }
-
-            public byte[] getSignature() throws IOException
-            {
-                try
-                {
-                    return sigOut.getSigner().generateSignature();
-                }
-                catch (CryptoException e)
-                {
-                    throw new TlsFatalAlert(AlertDescription.internal_error, e);
-                }
-            }
-        };
+        return new BcTlsStreamSigner(signer);
     }
 }

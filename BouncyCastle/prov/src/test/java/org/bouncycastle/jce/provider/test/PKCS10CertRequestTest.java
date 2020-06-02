@@ -29,7 +29,6 @@ import org.bouncycastle.bcasn1.x509.X509Extensions;
 import org.bouncycastle.bcasn1.x509.X509Name;
 import org.bouncycastle.bcasn1.x9.X9ECParameters;
 import org.bouncycastle.bcasn1.x9.X9ObjectIdentifiers;
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.Digest;
 import org.bouncycastle.bccrypto.digests.SHA1Digest;
 import org.bouncycastle.jce.ECGOST3410NamedCurveTable;
@@ -44,6 +43,7 @@ import org.bouncycastle.jce.spec.ECPrivateKeySpec;
 import org.bouncycastle.jce.spec.ECPublicKeySpec;
 import org.bouncycastle.bcmath.ec.ECCurve;
 import org.bouncycastle.bcutil.encoders.Base64;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**

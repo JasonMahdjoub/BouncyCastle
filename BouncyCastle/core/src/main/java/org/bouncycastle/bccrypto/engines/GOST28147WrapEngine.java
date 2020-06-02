@@ -6,7 +6,7 @@ import org.bouncycastle.bccrypto.Wrapper;
 import org.bouncycastle.bccrypto.macs.GOST28147Mac;
 import org.bouncycastle.bccrypto.params.ParametersWithIV;
 import org.bouncycastle.bccrypto.params.ParametersWithRandom;
-import org.bouncycastle.bccrypto.params.ParametersWithUKMBC;
+import org.bouncycastle.bccrypto.params.ParametersWithUKM;
 import org.bouncycastle.bcutil.Arrays;
 
 public class GOST28147WrapEngine
@@ -23,7 +23,7 @@ public class GOST28147WrapEngine
             param = pr.getParameters();
         }
         
-        ParametersWithUKMBC pU = (ParametersWithUKMBC)param;
+        ParametersWithUKM pU = (ParametersWithUKM)param;
 
         cipher.init(forWrapping, pU.getParameters());
 

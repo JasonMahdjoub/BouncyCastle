@@ -23,8 +23,12 @@ import javax.crypto.spec.RC2ParameterSpec;
 import javax.crypto.spec.RC5ParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
-import org.bouncycastle.bccrypto.*;
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.BlockCipher;
+import org.bouncycastle.bccrypto.BufferedBlockCipher;
+import org.bouncycastle.bccrypto.CipherParameters;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.DataLengthException;
+import org.bouncycastle.bccrypto.InvalidCipherTextException;
 import org.bouncycastle.bccrypto.engines.DESEngine;
 import org.bouncycastle.bccrypto.engines.DESedeEngine;
 import org.bouncycastle.bccrypto.engines.TwofishEngine;
@@ -33,8 +37,9 @@ import org.bouncycastle.bccrypto.modes.CFBBlockCipher;
 import org.bouncycastle.bccrypto.modes.CTSBlockCipher;
 import org.bouncycastle.bccrypto.modes.OFBBlockCipher;
 import org.bouncycastle.bccrypto.paddings.PaddedBufferedBlockCipher;
-import org.bouncycastle.bccrypto.params.*;
+import org.bouncycastle.bccrypto.params.KeyParameter;
 import org.bouncycastle.bccrypto.params.ParametersWithIV;
+import org.bouncycastle.bccrypto.params.RC2Parameters;
 import org.bouncycastle.bccrypto.params.RC5Parameters;
 import org.bouncycastle.bcjcajce.provider.symmetric.util.BCPBEKey;
 import org.bouncycastle.bcutil.Strings;
@@ -54,7 +59,7 @@ public class BrokenJCEBlockCipher
                                     };
  
     private BufferedBlockCipher     cipher;
-    private ParametersWithIV ivParam;
+    private ParametersWithIV        ivParam;
 
     private int                     pbeType = PKCS12;
     private int                     pbeHash = SHA1;
@@ -221,7 +226,7 @@ public class BrokenJCEBlockCipher
         SecureRandom            random) 
     throws InvalidKeyException, InvalidAlgorithmParameterException
     {
-        CipherParameters param;
+        CipherParameters        param;
 
         //
         // a note on iv's - if ivLength is zero the IV gets ignored (we don't use it).
@@ -288,7 +293,7 @@ public class BrokenJCEBlockCipher
         {
             if (random == null)
             {
-                random = BCCryptoServicesRegistrar.getSecureRandom();
+                random = CryptoServicesRegistrar.getSecureRandom();
             }
 
             if ((opmode == Cipher.ENCRYPT_MODE) || (opmode == Cipher.WRAP_MODE))

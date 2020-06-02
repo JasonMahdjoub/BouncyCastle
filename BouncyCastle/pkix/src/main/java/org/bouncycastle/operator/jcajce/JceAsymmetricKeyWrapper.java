@@ -40,7 +40,7 @@ import org.bouncycastle.bcasn1.pkcs.RSAESOAEPparams;
 import org.bouncycastle.bcasn1.rosstandart.RosstandartObjectIdentifiers;
 import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.bccrypto.BCCryptoServicesRegistrar;
+import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bcjcajce.spec.GOST28147WrapParameterSpec;
 import org.bouncycastle.bcjcajce.spec.UserKeyingMaterialSpec;
 import org.bouncycastle.bcjcajce.util.DefaultJcaJceHelper;
@@ -181,7 +181,7 @@ public class JceAsymmetricKeyWrapper
             {
                 if (random == null)
                 {
-                    random = BCCryptoServicesRegistrar.getSecureRandom();
+                    random = CryptoServicesRegistrar.getSecureRandom();
                 }
                 KeyPairGenerator kpGen = helper.createKeyPairGenerator(getAlgorithmIdentifier().getAlgorithm());
 

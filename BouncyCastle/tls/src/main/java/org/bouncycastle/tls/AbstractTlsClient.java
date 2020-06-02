@@ -20,6 +20,7 @@ public abstract class AbstractTlsClient
 
     protected Vector supportedGroups;
     protected Vector supportedSignatureAlgorithms;
+    protected Vector supportedSignatureAlgorithmsCert;
 
     public AbstractTlsClient(TlsCrypto crypto)
     {
@@ -57,9 +58,10 @@ public abstract class AbstractTlsClient
     protected Vector getNamedGroupRoles()
     {
         Vector namedGroupRoles = TlsUtils.getNamedGroupRoles(getCipherSuites());
+        Vector sigAlgs = supportedSignatureAlgorithms, sigAlgsCert = supportedSignatureAlgorithmsCert;
 
-        if (null == supportedSignatureAlgorithms
-            || TlsUtils.containsAnySignatureAlgorithm(supportedSignatureAlgorithms, SignatureAlgorithm.ecdsa))
+        if ((null == sigAlgs || TlsUtils.containsAnySignatureAlgorithm(sigAlgs, SignatureAlgorithm.ecdsa))
+            || (null != sigAlgsCert && TlsUtils.containsAnySignatureAlgorithm(sigAlgsCert, SignatureAlgorithm.ecdsa)))
         {
             TlsUtils.addToSet(namedGroupRoles, NamedGroupRole.ecdsa);
         }
@@ -153,6 +155,11 @@ public abstract class AbstractTlsClient
         return TlsUtils.getDefaultSupportedSignatureAlgorithms(context);
     }
 
+    protected Vector getSupportedSignatureAlgorithmsCert()
+    {
+        return null;
+    }
+
     public void init(TlsClientContext context)
     {
         this.context = context;
@@ -177,6 +184,7 @@ public abstract class AbstractTlsClient
 
         this.supportedGroups = null;
         this.supportedSignatureAlgorithms = null;
+        this.supportedSignatureAlgorithmsCert = null;
     }
 
     public TlsSession getSessionToResume()
@@ -243,9 +251,21 @@ public abstract class AbstractTlsClient
          */
         if (TlsUtils.isSignatureAlgorithmsExtensionAllowed(clientVersion))
         {
-            this.supportedSignatureAlgorithms = getSupportedSignatureAlgorithms();
+            Vector supportedSigAlgs = getSupportedSignatureAlgorithms();
+            if (null != supportedSigAlgs && !supportedSigAlgs.isEmpty())
+            {
+                this.supportedSignatureAlgorithms = supportedSigAlgs;
 
-            TlsExtensionsUtils.addSignatureAlgorithmsExtension(clientExtensions, supportedSignatureAlgorithms);
+                TlsExtensionsUtils.addSignatureAlgorithmsExtension(clientExtensions, supportedSigAlgs);
+            }
+
+            Vector supportedSigAlgsCert = getSupportedSignatureAlgorithmsCert();
+            if (null != supportedSigAlgsCert && !supportedSigAlgsCert.isEmpty())
+            {
+                this.supportedSignatureAlgorithmsCert = supportedSigAlgsCert;
+
+                TlsExtensionsUtils.addSignatureAlgorithmsCertExtension(clientExtensions, supportedSigAlgsCert);
+            }
         }
 
         Vector namedGroupRoles = getNamedGroupRoles();
@@ -272,18 +292,19 @@ public abstract class AbstractTlsClient
 
     public Vector getEarlyKeyShareGroups()
     {
-        if (null != supportedGroups)
+        if (null == supportedGroups || supportedGroups.isEmpty())
         {
-            if (supportedGroups.contains(Integers.valueOf(NamedGroup.x25519)))
-            {
-                return TlsUtils.vectorOfOne(Integers.valueOf(NamedGroup.x25519));
-            }
-            if (supportedGroups.contains(Integers.valueOf(NamedGroup.secp256r1)))
-            {
-                return TlsUtils.vectorOfOne(Integers.valueOf(NamedGroup.secp256r1));
-            }
+            return null;
         }
-        return null;
+        if (supportedGroups.contains(Integers.valueOf(NamedGroup.x25519)))
+        {
+            return TlsUtils.vectorOfOne(Integers.valueOf(NamedGroup.x25519));
+        }
+        if (supportedGroups.contains(Integers.valueOf(NamedGroup.secp256r1)))
+        {
+            return TlsUtils.vectorOfOne(Integers.valueOf(NamedGroup.secp256r1));
+        }
+        return TlsUtils.vectorOfOne(supportedGroups.elementAt(0));
     }
 
     public void notifyServerVersion(ProtocolVersion serverVersion)
@@ -311,8 +332,8 @@ public abstract class AbstractTlsClient
             /*
              * RFC 5246 7.4.1.4.1. Servers MUST NOT send this extension.
              */
-            checkForUnexpectedServerExtension(serverExtensions, TlsUtils.EXT_signature_algorithms);
-            checkForUnexpectedServerExtension(serverExtensions, TlsUtils.EXT_signature_algorithms_cert);
+            checkForUnexpectedServerExtension(serverExtensions, TlsExtensionsUtils.EXT_signature_algorithms);
+            checkForUnexpectedServerExtension(serverExtensions, TlsExtensionsUtils.EXT_signature_algorithms_cert);
 
             checkForUnexpectedServerExtension(serverExtensions, TlsExtensionsUtils.EXT_supported_groups);
 

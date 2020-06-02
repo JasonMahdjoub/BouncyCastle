@@ -5,7 +5,7 @@ import org.bouncycastle.bcpg.SignatureSubpacketTags;
 import org.bouncycastle.bcutil.Arrays;
 
 /**
- * packet giving the issuer key ID.
+ * packet giving the issuer key fingerprint.
  */
 public class IssuerFingerprint
     extends SignatureSubpacket

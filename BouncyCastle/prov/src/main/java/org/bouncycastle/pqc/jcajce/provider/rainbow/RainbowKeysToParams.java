@@ -11,7 +11,7 @@ import org.bouncycastle.pqc.crypto.rainbow.RainbowPublicKeyParameters;
 
 /**
  * utility class for converting jce/jca Rainbow objects
- * objects into their org.bouncycastle.crypto counterparts.
+ * objects into their org.bouncycastle.bccrypto counterparts.
  */
 
 public class RainbowKeysToParams

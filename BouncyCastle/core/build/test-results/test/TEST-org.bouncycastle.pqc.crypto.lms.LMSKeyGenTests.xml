@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.bouncycastle.pqc.crypto.lms.LMSKeyGenTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-06-02T09:01:55" hostname="Garage" time="0.102">
+  <properties/>
+  <testcase name="testGeneratePrivateKey" classname="org.bouncycastle.pqc.crypto.lms.LMSKeyGenTests" time="0.102"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

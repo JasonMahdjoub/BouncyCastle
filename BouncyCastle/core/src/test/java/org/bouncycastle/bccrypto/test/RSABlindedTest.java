@@ -1,6 +1,5 @@
 package org.bouncycastle.bccrypto.test;
 
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.AsymmetricBlockCipher;
 import org.bouncycastle.bccrypto.AsymmetricCipherKeyPair;
 import org.bouncycastle.bccrypto.InvalidCipherTextException;
@@ -11,6 +10,7 @@ import org.bouncycastle.bccrypto.generators.RSAKeyPairGenerator;
 import org.bouncycastle.bccrypto.params.RSAKeyGenerationParameters;
 import org.bouncycastle.bccrypto.params.RSAKeyParameters;
 import org.bouncycastle.bccrypto.params.RSAPrivateCrtKeyParameters;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 import java.math.BigInteger;
@@ -194,8 +194,8 @@ public class RSABlindedTest
 
     public void performTest()
     {
-        RSAKeyParameters pubParameters = new RSAKeyParameters(false, mod, pubExp);
-        RSAKeyParameters privParameters = new RSAPrivateCrtKeyParameters(mod, pubExp, privExp, p, q, pExp, qExp, crtCoef);
+        RSAKeyParameters    pubParameters = new RSAKeyParameters(false, mod, pubExp);
+        RSAKeyParameters    privParameters = new RSAPrivateCrtKeyParameters(mod, pubExp, privExp, p, q, pExp, qExp, crtCoef);
         byte[]              data = Hex.decode(edgeInput);
 
         //

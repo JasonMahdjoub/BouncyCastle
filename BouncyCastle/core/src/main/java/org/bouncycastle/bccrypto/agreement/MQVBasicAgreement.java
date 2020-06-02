@@ -3,9 +3,13 @@ package org.bouncycastle.bccrypto.agreement;
 
 import java.math.BigInteger;
 
-import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.BasicAgreement;
-import org.bouncycastle.bccrypto.params.*;import org.bouncycastle.bccrypto.params.DHMQVPrivateParameters;
+import org.bouncycastle.bccrypto.CipherParameters;
+import org.bouncycastle.bccrypto.params.DHMQVPrivateParameters;
+import org.bouncycastle.bccrypto.params.DHMQVPublicParameters;
+import org.bouncycastle.bccrypto.params.DHParameters;
+import org.bouncycastle.bccrypto.params.DHPrivateKeyParameters;
+import org.bouncycastle.bccrypto.params.DHPublicKeyParameters;
 
 public class MQVBasicAgreement
     implements BasicAgreement

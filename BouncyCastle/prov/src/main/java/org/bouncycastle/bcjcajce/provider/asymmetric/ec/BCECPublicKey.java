@@ -37,7 +37,7 @@ public class BCECPublicKey
     private String    algorithm = "EC";
     private boolean   withCompression;
 
-    private transient ECPublicKeyParameters ecPublicKey;
+    private transient ECPublicKeyParameters   ecPublicKey;
     private transient ECParameterSpec         ecSpec;
     private transient ProviderConfiguration   configuration;
 

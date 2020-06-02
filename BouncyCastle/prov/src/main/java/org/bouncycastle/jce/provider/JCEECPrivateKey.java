@@ -109,7 +109,7 @@ public class JCEECPrivateKey
 
     public JCEECPrivateKey(
         String                  algorithm,
-        ECPrivateKeyParameters params,
+        ECPrivateKeyParameters  params,
         JCEECPublicKey          pubKey,
         ECParameterSpec         spec)
     {
@@ -137,7 +137,7 @@ public class JCEECPrivateKey
 
     public JCEECPrivateKey(
         String                  algorithm,
-        ECPrivateKeyParameters params,
+        ECPrivateKeyParameters  params,
         JCEECPublicKey          pubKey,
         org.bouncycastle.jce.spec.ECParameterSpec         spec)
     {
@@ -171,7 +171,7 @@ public class JCEECPrivateKey
 
     public JCEECPrivateKey(
         String                  algorithm,
-        ECPrivateKeyParameters params)
+        ECPrivateKeyParameters  params)
     {
         this.algorithm = algorithm;
         this.d = params.getD();

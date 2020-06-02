@@ -1,7 +1,7 @@
 package org.bouncycastle.bccrypto.engines;
 
-import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.BlockCipher;
+import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.params.KeyParameter;
 import org.bouncycastle.bccrypto.params.RC5Parameters;
 
@@ -71,11 +71,11 @@ public class RC532Engine
      */
     public void init(
         boolean             forEncryption,
-        CipherParameters params)
+        CipherParameters    params)
     {
         if (params instanceof RC5Parameters)
         {
-            RC5Parameters p = (RC5Parameters)params;
+            RC5Parameters       p = (RC5Parameters)params;
 
             _noRounds     = p.getRounds();
 

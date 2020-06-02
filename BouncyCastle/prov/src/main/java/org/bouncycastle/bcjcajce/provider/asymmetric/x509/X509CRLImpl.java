@@ -43,12 +43,12 @@ import org.bouncycastle.bcasn1.x509.Extensions;
 import org.bouncycastle.bcasn1.x509.GeneralNames;
 import org.bouncycastle.bcasn1.x509.IssuingDistributionPoint;
 import org.bouncycastle.bcasn1.x509.TBSCertList;
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcjcajce.io.OutputStreamFactory;
 import org.bouncycastle.bcjcajce.util.JcaJceHelper;
 import org.bouncycastle.jce.X509Principal;
 import org.bouncycastle.bcutil.Arrays;
 import org.bouncycastle.bcutil.Strings;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 /**
  * The following extensions are listed in RFC 2459 as relevant to CRLs

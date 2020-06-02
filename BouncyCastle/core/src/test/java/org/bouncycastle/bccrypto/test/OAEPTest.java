@@ -9,7 +9,6 @@ import org.bouncycastle.bcasn1.pkcs.PrivateKeyInfo;
 import org.bouncycastle.bcasn1.pkcs.RSAPrivateKey;
 import org.bouncycastle.bcasn1.pkcs.RSAPublicKey;
 import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bccrypto.AsymmetricBlockCipher;
 import org.bouncycastle.bccrypto.AsymmetricCipherKeyPair;
 import org.bouncycastle.bccrypto.AsymmetricCipherKeyPairGenerator;
@@ -19,10 +18,12 @@ import org.bouncycastle.bccrypto.digests.SHA256Digest;
 import org.bouncycastle.bccrypto.encodings.OAEPEncoding;
 import org.bouncycastle.bccrypto.engines.RSAEngine;
 import org.bouncycastle.bccrypto.generators.RSAKeyPairGenerator;
-import org.bouncycastle.bccrypto.params.*;
 import org.bouncycastle.bccrypto.params.ParametersWithRandom;
+import org.bouncycastle.bccrypto.params.RSAKeyGenerationParameters;
 import org.bouncycastle.bccrypto.params.RSAKeyParameters;
+import org.bouncycastle.bccrypto.params.RSAPrivateCrtKeyParameters;
 import org.bouncycastle.bcutil.BigIntegers;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 public class OAEPTest
@@ -332,12 +333,12 @@ public class OAEPTest
 
         privStruct = RSAPrivateKey.getInstance(PrivateKeyInfo.getInstance(dIn.readObject()).parsePrivateKey());
 
-        RSAKeyParameters pubParameters = new RSAKeyParameters(
+        RSAKeyParameters    pubParameters = new RSAKeyParameters(
                                                     false,
                                                     pubStruct.getModulus(),
                                                     pubStruct.getPublicExponent());
 
-        RSAKeyParameters privParameters = new RSAPrivateCrtKeyParameters(
+        RSAKeyParameters    privParameters = new RSAPrivateCrtKeyParameters(
                                                     privStruct.getModulus(),
                                                     privStruct.getPublicExponent(),
                                                     privStruct.getPrivateExponent(),

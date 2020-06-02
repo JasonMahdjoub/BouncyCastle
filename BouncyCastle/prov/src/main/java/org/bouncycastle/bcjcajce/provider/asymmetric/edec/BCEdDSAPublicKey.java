@@ -3,7 +3,6 @@ package org.bouncycastle.bcjcajce.provider.asymmetric.edec;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.security.PublicKey;
 import java.security.spec.InvalidKeySpecException;
 
 import org.bouncycastle.bcasn1.edec.EdECObjectIdentifiers;
@@ -11,11 +10,11 @@ import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
 import org.bouncycastle.bccrypto.params.AsymmetricKeyParameter;
 import org.bouncycastle.bccrypto.params.Ed25519PublicKeyParameters;
 import org.bouncycastle.bccrypto.params.Ed448PublicKeyParameters;
-import org.bouncycastle.bcjcajce.interfaces.EdDSAKey;
+import org.bouncycastle.bcjcajce.interfaces.EdDSAPublicKey;
 import org.bouncycastle.bcutil.Arrays;
 
 public class BCEdDSAPublicKey
-    implements EdDSAKey, PublicKey
+    implements EdDSAPublicKey
 {
     static final long serialVersionUID = 1L;
 

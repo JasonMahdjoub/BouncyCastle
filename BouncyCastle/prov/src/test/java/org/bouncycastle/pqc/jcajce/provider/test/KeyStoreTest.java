@@ -24,7 +24,7 @@ import org.bouncycastle.bcasn1.ASN1Encoding;
 import org.bouncycastle.bcasn1.ASN1Integer;
 import org.bouncycastle.bcasn1.DERBitString;
 import org.bouncycastle.bcasn1.DERSequence;
-import org.bouncycastle.bcasn1.bc.DMBCObjectIdentifiers;
+import org.bouncycastle.bcasn1.bc.BCObjectIdentifiers;
 import org.bouncycastle.bcasn1.x500.X500Name;
 import org.bouncycastle.bcasn1.x500.X500NameBuilder;
 import org.bouncycastle.bcasn1.x500.style.BCStyle;
@@ -54,9 +54,9 @@ public class KeyStoreTest
 
     static
     {
-        algIds.put("SHA512WITHSPHINCS256", new AlgorithmIdentifier(DMBCObjectIdentifiers.sphincs256_with_SHA512));
-        algIds.put("SHA256WITHXMSSMT", new AlgorithmIdentifier(DMBCObjectIdentifiers.xmss_mt_SHA256ph));
-        algIds.put("SHA512WITHXMSSMT", new AlgorithmIdentifier(DMBCObjectIdentifiers.xmss_mt_SHA512ph));
+        algIds.put("SHA512WITHSPHINCS256", new AlgorithmIdentifier(BCObjectIdentifiers.sphincs256_with_SHA512));
+        algIds.put("SHA256WITHXMSSMT", new AlgorithmIdentifier(BCObjectIdentifiers.xmss_mt_SHA256ph));
+        algIds.put("SHA512WITHXMSSMT", new AlgorithmIdentifier(BCObjectIdentifiers.xmss_mt_SHA512ph));
     }
 
     public void setUp()

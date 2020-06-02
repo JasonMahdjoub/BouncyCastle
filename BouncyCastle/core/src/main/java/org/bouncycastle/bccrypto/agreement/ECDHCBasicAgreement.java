@@ -2,8 +2,8 @@ package org.bouncycastle.bccrypto.agreement;
 
 import java.math.BigInteger;
 
-import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.BasicAgreement;
+import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.params.ECDomainParameters;
 import org.bouncycastle.bccrypto.params.ECPrivateKeyParameters;
 import org.bouncycastle.bccrypto.params.ECPublicKeyParameters;

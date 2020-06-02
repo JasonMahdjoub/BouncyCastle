@@ -12,7 +12,7 @@ public class DHPublicKeyParameters
 
     public DHPublicKeyParameters(
         BigInteger      y,
-        DHParameters params)
+        DHParameters    params)
     {
         super(false, params);
 

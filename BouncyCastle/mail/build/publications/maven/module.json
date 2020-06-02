@@ -3,7 +3,7 @@
   "component": {
     "group": "org.bouncycastle",
     "module": "bc-mail",
-    "version": "1.64b-DMRECOMPILE",
+    "version": "1.65-DMRECOMPILE",
     "attributes": {
       "org.gradle.status": "release"
     }
@@ -11,7 +11,7 @@
   "createdBy": {
     "gradle": {
       "version": "6.1",
-      "buildId": "sfc3onk3wzepfha6nzsh5demyy"
+      "buildId": "dxh6w7z6xremxoxe7flzkgqoji"
     }
   },
   "variants": [
@@ -29,21 +29,21 @@
           "group": "org.bouncycastle",
           "module": "bc-core",
           "version": {
-            "requires": "1.64b-DMRECOMPILE"
+            "requires": "1.65-DMRECOMPILE"
           }
         },
         {
           "group": "org.bouncycastle",
           "module": "bc-pkix",
           "version": {
-            "requires": "1.64b-DMRECOMPILE"
+            "requires": "1.65-DMRECOMPILE"
           }
         },
         {
           "group": "org.bouncycastle",
           "module": "bc-prov",
           "version": {
-            "requires": "1.64b-DMRECOMPILE"
+            "requires": "1.65-DMRECOMPILE"
           }
         },
         {
@@ -56,13 +56,13 @@
       ],
       "files": [
         {
-          "name": "bc-mail-1.64b-DMRECOMPILE.jar",
-          "url": "bc-mail-1.64b-DMRECOMPILE.jar",
+          "name": "bc-mail-1.65-DMRECOMPILE.jar",
+          "url": "bc-mail-1.65-DMRECOMPILE.jar",
           "size": 121858,
-          "sha512": "36f510e0bb5dfa88f7c3e16c874a051def597c6926c456770c3bd8b3884b78f54fb7bf6d91f73f13d07aca2bd3d79a4a5217d58e723fb7d8c43e981a73d32e82",
-          "sha256": "fe8c56e19cc4afccec4a14be38069078f9302e7f5d6093d753700b3c45250339",
-          "sha1": "888c0de950cb217a6210653838c6464c1af1c1b9",
-          "md5": "f8506deb9108a066cd05a65dd76ca2b6"
+          "sha512": "9a0a6c5a333d48b6dfaa90c10da13bd7653c28ef0e51ee99d05f86df789cec02517393f7d9085dd4a11acb90fd01226029cd4e2462d49d322ff6095a42ad022b",
+          "sha256": "1399ad95242a1dac52a39dc0b818a941ca1b3584d2b18e94f22dfce9a1aa19da",
+          "sha1": "1ac368b14dda5f8810a835ab211bd5c2b4aefbd5",
+          "md5": "755d62b33f8505b7c23f51a4e54e9e00"
         }
       ]
     },
@@ -80,21 +80,21 @@
           "group": "org.bouncycastle",
           "module": "bc-core",
           "version": {
-            "requires": "1.64b-DMRECOMPILE"
+            "requires": "1.65-DMRECOMPILE"
           }
         },
         {
           "group": "org.bouncycastle",
           "module": "bc-pkix",
           "version": {
-            "requires": "1.64b-DMRECOMPILE"
+            "requires": "1.65-DMRECOMPILE"
           }
         },
         {
           "group": "org.bouncycastle",
           "module": "bc-prov",
           "version": {
-            "requires": "1.64b-DMRECOMPILE"
+            "requires": "1.65-DMRECOMPILE"
           }
         },
         {
@@ -107,13 +107,13 @@
       ],
       "files": [
         {
-          "name": "bc-mail-1.64b-DMRECOMPILE.jar",
-          "url": "bc-mail-1.64b-DMRECOMPILE.jar",
+          "name": "bc-mail-1.65-DMRECOMPILE.jar",
+          "url": "bc-mail-1.65-DMRECOMPILE.jar",
           "size": 121858,
-          "sha512": "36f510e0bb5dfa88f7c3e16c874a051def597c6926c456770c3bd8b3884b78f54fb7bf6d91f73f13d07aca2bd3d79a4a5217d58e723fb7d8c43e981a73d32e82",
-          "sha256": "fe8c56e19cc4afccec4a14be38069078f9302e7f5d6093d753700b3c45250339",
-          "sha1": "888c0de950cb217a6210653838c6464c1af1c1b9",
-          "md5": "f8506deb9108a066cd05a65dd76ca2b6"
+          "sha512": "9a0a6c5a333d48b6dfaa90c10da13bd7653c28ef0e51ee99d05f86df789cec02517393f7d9085dd4a11acb90fd01226029cd4e2462d49d322ff6095a42ad022b",
+          "sha256": "1399ad95242a1dac52a39dc0b818a941ca1b3584d2b18e94f22dfce9a1aa19da",
+          "sha1": "1ac368b14dda5f8810a835ab211bd5c2b4aefbd5",
+          "md5": "755d62b33f8505b7c23f51a4e54e9e00"
         }
       ]
     }

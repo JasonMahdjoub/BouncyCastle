@@ -4,8 +4,9 @@ import java.security.InvalidKeyException;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 
-import org.bouncycastle.bccrypto.params.*;
+import org.bouncycastle.bccrypto.params.AsymmetricKeyParameter;
 import org.bouncycastle.bccrypto.params.GOST3410Parameters;
+import org.bouncycastle.bccrypto.params.GOST3410PrivateKeyParameters;
 import org.bouncycastle.bccrypto.params.GOST3410PublicKeyParameters;
 import org.bouncycastle.jce.interfaces.GOST3410PrivateKey;
 import org.bouncycastle.jce.interfaces.GOST3410PublicKey;
@@ -13,7 +14,7 @@ import org.bouncycastle.jce.spec.GOST3410PublicKeyParameterSetSpec;
 
 /**
  * utility class for converting jce/jca GOST3410-94 objects
- * objects into their org.bouncycastle.crypto counterparts.
+ * objects into their org.bouncycastle.bccrypto counterparts.
  */
 public class GOST3410Util
 {

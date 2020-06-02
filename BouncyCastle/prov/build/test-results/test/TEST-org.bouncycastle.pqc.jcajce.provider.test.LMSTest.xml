@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.bouncycastle.pqc.jcajce.provider.test.LMSTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-06-02T09:21:26" hostname="Garage" time="0.325">
+  <properties/>
+  <testcase name="testKeyPairGenerators" classname="org.bouncycastle.pqc.jcajce.provider.test.LMSTest" time="0.299"/>
+  <testcase name="testKeyFactoryHSSKey" classname="org.bouncycastle.pqc.jcajce.provider.test.LMSTest" time="0.017"/>
+  <testcase name="testKeyFactoryLMSKey" classname="org.bouncycastle.pqc.jcajce.provider.test.LMSTest" time="0.009"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

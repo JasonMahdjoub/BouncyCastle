@@ -12,12 +12,12 @@ import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 import org.bouncycastle.bcasn1.DEROctetString;
 import org.bouncycastle.bcasn1.cms.IssuerAndSerialNumber;
 import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.cms.CMSException;
 import org.bouncycastle.cms.KeyTransRecipient;
 import org.bouncycastle.cms.KeyTransRecipientId;
 import org.bouncycastle.operator.OperatorException;
 import org.bouncycastle.operator.jcajce.JceKTSKeyUnwrapper;
+import org.bouncycastle.bcutil.encoders.Hex;
 
 public abstract class JceKTSKeyTransRecipient
     implements KeyTransRecipient

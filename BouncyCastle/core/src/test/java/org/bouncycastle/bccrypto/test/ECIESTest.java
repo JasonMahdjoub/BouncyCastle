@@ -6,9 +6,12 @@ import java.security.SecureRandom;
 import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
 import org.bouncycastle.bcasn1.x9.ECNamedCurveTable;
 import org.bouncycastle.bcasn1.x9.X9ECParameters;
-import org.bouncycastle.bcutil.encoders.Hex;
-import org.bouncycastle.bccrypto.*;
+import org.bouncycastle.bccrypto.AsymmetricCipherKeyPair;
+import org.bouncycastle.bccrypto.BufferedBlockCipher;
 import org.bouncycastle.bccrypto.CipherParameters;
+import org.bouncycastle.bccrypto.InvalidCipherTextException;
+import org.bouncycastle.bccrypto.KeyEncoder;
+import org.bouncycastle.bccrypto.KeyGenerationParameters;
 import org.bouncycastle.bccrypto.agreement.ECDHBasicAgreement;
 import org.bouncycastle.bccrypto.digests.SHA1Digest;
 import org.bouncycastle.bccrypto.digests.SHA512Digest;
@@ -21,12 +24,21 @@ import org.bouncycastle.bccrypto.kems.ECIESKeyEncapsulation;
 import org.bouncycastle.bccrypto.macs.HMac;
 import org.bouncycastle.bccrypto.modes.CBCBlockCipher;
 import org.bouncycastle.bccrypto.paddings.PaddedBufferedBlockCipher;
-import org.bouncycastle.bccrypto.params.*;
+import org.bouncycastle.bccrypto.params.AsymmetricKeyParameter;
+import org.bouncycastle.bccrypto.params.ECDomainParameters;
+import org.bouncycastle.bccrypto.params.ECKeyGenerationParameters;
+import org.bouncycastle.bccrypto.params.ECNamedDomainParameters;
+import org.bouncycastle.bccrypto.params.ECPrivateKeyParameters;
+import org.bouncycastle.bccrypto.params.ECPublicKeyParameters;
+import org.bouncycastle.bccrypto.params.IESParameters;
+import org.bouncycastle.bccrypto.params.IESWithCipherParameters;
+import org.bouncycastle.bccrypto.params.KeyParameter;
 import org.bouncycastle.bccrypto.params.ParametersWithIV;
 import org.bouncycastle.bccrypto.parsers.ECIESPublicKeyParser;
 import org.bouncycastle.bcmath.ec.ECConstants;
 import org.bouncycastle.bcmath.ec.ECCurve;
 import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.encoders.Hex;
 import org.bouncycastle.bcutil.test.SimpleTest;
 
 /**
@@ -317,7 +329,7 @@ public class ECIESTest
 
         byte[]            d = new byte[] { 1, 2, 3, 4, 5, 6, 7, 8 };
         byte[]            e = new byte[] { 8, 7, 6, 5, 4, 3, 2, 1 };
-        CipherParameters p = new IESParameters(d, e, 64);
+        CipherParameters  p = new IESParameters(d, e, 64);
 
         i1.init(p2.getPublic(), p, ephKeyGen);
         i2.init(p2.getPrivate(), p, new ECIESPublicKeyParser(params));
@@ -390,7 +402,7 @@ public class ECIESTest
                                    new HMac(new SHA1Digest()));
         byte[]         d = new byte[] { 1, 2, 3, 4, 5, 6, 7, 8 };
         byte[]         e = new byte[] { 8, 7, 6, 5, 4, 3, 2, 1 };
-        IESParameters p = new IESParameters(d, e, 64);
+        IESParameters  p = new IESParameters(d, e, 64);
 
         i1.init(true, p1.getPrivate(), p2.getPublic(), p);
         i2.init(false, p2.getPrivate(), p1.getPublic(), p);
