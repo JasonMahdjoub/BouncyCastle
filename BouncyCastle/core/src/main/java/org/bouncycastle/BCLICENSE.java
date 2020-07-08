@@ -23,7 +23,7 @@ import org.bouncycastle.bcutil.Strings;
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
  * DEALINGS IN THE SOFTWARE.
  */
-public class LICENSE
+public class BCLICENSE
 {
     public static final String licenseText =
       "Copyright (c) 2000-2019 The Legion of the Bouncy Castle Inc. (http://www.bouncycastle.org) "
