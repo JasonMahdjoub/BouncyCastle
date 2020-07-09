@@ -4,7 +4,6 @@ import java.net.Socket;
 import java.security.KeyPair;
 import java.security.KeyStore;
 import java.security.SecureRandom;
-import java.security.Security;
 import java.security.cert.X509Certificate;
 import java.util.concurrent.CountDownLatch;
 
@@ -17,9 +16,6 @@ import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManagerFactory;
 
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.jsse.provider.BouncyCastleJsseProvider;
-
 import junit.framework.TestCase;
 
 public class BasicTlsTest
@@ -27,14 +23,7 @@ public class BasicTlsTest
 {
     protected void setUp()
     {
-        if (Security.getProvider(BouncyCastleProvider.PROVIDER_NAME) == null)
-        {
-            Security.addProvider(new BouncyCastleProvider());
-        }
-        if (Security.getProvider(BouncyCastleJsseProvider.PROVIDER_NAME) == null)
-        {
-            Security.addProvider(new BouncyCastleJsseProvider());
-        }
+        ProviderUtils.setupLowPriority(false);
     }
 
     private static final String HOST = "localhost";
@@ -60,12 +49,12 @@ public class BasicTlsTest
             try
             {
                 TrustManagerFactory trustMgrFact = TrustManagerFactory.getInstance("PKIX",
-                    BouncyCastleJsseProvider.PROVIDER_NAME);
+                    ProviderUtils.PROVIDER_NAME_BCJSSE);
                 trustMgrFact.init(trustStore);
 
-                SSLContext clientContext = SSLContext.getInstance("TLS", BouncyCastleJsseProvider.PROVIDER_NAME);
+                SSLContext clientContext = SSLContext.getInstance("TLS", ProviderUtils.PROVIDER_NAME_BCJSSE);
                 clientContext.init(null, trustMgrFact.getTrustManagers(),
-                    SecureRandom.getInstance("DEFAULT", BouncyCastleProvider.PROVIDER_NAME));
+                    SecureRandom.getInstance("DEFAULT", ProviderUtils.PROVIDER_NAME_BC));
 
 //                TrustManagerFactory trustMgrFact = TrustManagerFactory.getInstance("PKIX", "SunJSSE");
 //                trustMgrFact.init(trustStore);
@@ -124,12 +113,12 @@ public class BasicTlsTest
             try
             {
                 KeyManagerFactory keyMgrFact = KeyManagerFactory.getInstance("PKIX",
-                    BouncyCastleJsseProvider.PROVIDER_NAME);
+                    ProviderUtils.PROVIDER_NAME_BCJSSE);
                 keyMgrFact.init(serverStore, keyPass);
 
-                SSLContext serverContext = SSLContext.getInstance("TLS", BouncyCastleJsseProvider.PROVIDER_NAME);
+                SSLContext serverContext = SSLContext.getInstance("TLS", ProviderUtils.PROVIDER_NAME_BCJSSE);
                 serverContext.init(keyMgrFact.getKeyManagers(), null,
-                    SecureRandom.getInstance("DEFAULT", BouncyCastleProvider.PROVIDER_NAME));
+                    SecureRandom.getInstance("DEFAULT", ProviderUtils.PROVIDER_NAME_BC));
 
 //                KeyManagerFactory keyMgrFact = KeyManagerFactory.getInstance("PKIX", "SunJSSE");
 //                keyMgrFact.init(serverStore, keyPass);
@@ -198,11 +187,11 @@ public class BasicTlsTest
         ts.setCertificateEntry("ca", caCert);
 
         TrustManagerFactory trustMgrFact = TrustManagerFactory.getInstance("PKIX",
-            BouncyCastleJsseProvider.PROVIDER_NAME);
+            ProviderUtils.PROVIDER_NAME_BCJSSE);
 
         trustMgrFact.init(ts);
 
-        SSLContext clientContext = SSLContext.getInstance("TLS", BouncyCastleJsseProvider.PROVIDER_NAME);
+        SSLContext clientContext = SSLContext.getInstance("TLS", ProviderUtils.PROVIDER_NAME_BCJSSE);
 
         clientContext.init(null, trustMgrFact.getTrustManagers(), null);
     }

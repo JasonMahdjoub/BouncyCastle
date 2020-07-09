@@ -8,14 +8,13 @@ import java.security.Signature;
 import java.security.SignatureException;
 import java.security.spec.AlgorithmParameterSpec;
 
-import org.bouncycastle.bccrypto.CipherParameters;
 import org.bouncycastle.bccrypto.Digest;
 import org.bouncycastle.bccrypto.digests.NullDigest;
+import org.bouncycastle.pqc.crypto.ExhaustedPrivateKeyException;
 import org.bouncycastle.pqc.crypto.MessageSigner;
-import org.bouncycastle.pqc.crypto.lms.HSSPrivateKeyParameters;
-import org.bouncycastle.pqc.crypto.lms.HSSSigner;
-import org.bouncycastle.pqc.crypto.lms.LMSPublicKeyParameters;
-import org.bouncycastle.pqc.crypto.lms.LMSSigner;
+import org.bouncycastle.pqc.crypto.lms.LMSContext;
+import org.bouncycastle.pqc.crypto.lms.LMSContextBasedSigner;
+import org.bouncycastle.pqc.crypto.lms.LMSContextBasedVerifier;
 
 public class LMSSignatureSpi
     extends Signature
@@ -29,6 +28,9 @@ public class LMSSignatureSpi
     private MessageSigner signer;
     private SecureRandom random;
 
+    private LMSContextBasedSigner lmOtsSigner;
+    private LMSContextBasedVerifier lmOtsVerifier;
+
     protected LMSSignatureSpi(String sigName, Digest digest)
     {
         super(sigName);
@@ -41,20 +43,10 @@ public class LMSSignatureSpi
     {
         if (publicKey instanceof BCLMSPublicKey)
         {
-            CipherParameters param = ((BCLMSPublicKey)publicKey).getKeyParams();
-
+            digest = new NullDigest();
+            
             digest.reset();
-
-            if (param instanceof LMSPublicKeyParameters)
-            {
-                signer = new LMSSigner();
-            }
-            else
-            {
-                signer = new HSSSigner();
-            }
-
-            signer.init(false, param);
+            lmOtsVerifier = (LMSContextBasedVerifier)((BCLMSPublicKey)publicKey).getKeyParams();
         }
         else
         {
@@ -74,47 +66,66 @@ public class LMSSignatureSpi
     {
         if (privateKey instanceof BCLMSPrivateKey)
         {
-            CipherParameters param = ((BCLMSPrivateKey)privateKey).getKeyParams();
-
-            if (param instanceof HSSPrivateKeyParameters)
+            lmOtsSigner = (LMSContextBasedSigner)((BCLMSPrivateKey)privateKey).getKeyParams();
+            if (lmOtsSigner.getUsagesRemaining() == 0)
             {
-                signer = new HSSSigner();
+                throw new InvalidKeyException("private key exhausted");
             }
-            else
-            {
-                signer = new LMSSigner();
-            }
-
-            digest.reset();
-            signer.init(true, param);
+            digest = null;
         }
         else
         {
-            throw new InvalidKeyException("unknown private key passed to XMSS");
+            throw new InvalidKeyException("unknown private key passed to LMS");
         }
     }
 
     protected void engineUpdate(byte b)
         throws SignatureException
     {
+        if (digest == null)
+        {
+            digest = getSigner();
+        }
         digest.update(b);
     }
 
     protected void engineUpdate(byte[] b, int off, int len)
         throws SignatureException
     {
+        if (digest == null)
+        {
+            digest = getSigner();
+        }
         digest.update(b, off, len);
+    }
+
+    private Digest getSigner()
+        throws SignatureException
+    {
+        try
+        {
+            return lmOtsSigner.generateLMSContext();
+        }
+        catch (ExhaustedPrivateKeyException e)
+        {
+            throw new SignatureException(e.getMessage(), e);
+        }
     }
 
     protected byte[] engineSign()
         throws SignatureException
     {
-        byte[] hash = DigestUtil.getDigestResult(digest);
+        if (digest == null)
+        {
+            digest = getSigner();
+        }
 
         try
         {
-            byte[] sig = signer.generateSignature(hash);
+            byte[] sig = lmOtsSigner.generateSignature((LMSContext)digest);
 
+            digest = null;
+            
             return sig;
         }
         catch (Exception e)
@@ -130,9 +141,13 @@ public class LMSSignatureSpi
     protected boolean engineVerify(byte[] sigBytes)
         throws SignatureException
     {
+        LMSContext context = lmOtsVerifier.generateLMSContext(sigBytes);
+
         byte[] hash = DigestUtil.getDigestResult(digest);
 
-        return signer.verifySignature(hash, sigBytes);
+        context.update(hash, 0, hash.length);
+
+        return lmOtsVerifier.verify(context);
     }
 
     protected void engineSetParameter(AlgorithmParameterSpec params)

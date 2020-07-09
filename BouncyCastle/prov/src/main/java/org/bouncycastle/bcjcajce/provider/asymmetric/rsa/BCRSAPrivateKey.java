@@ -27,6 +27,7 @@ public class BCRSAPrivateKey
 
     protected BigInteger modulus;
     protected BigInteger privateExponent;
+    private byte[]       algorithmIdentifierEnc = getEncoding(BCRSAPublicKey.DEFAULT_ALGORITHM_IDENTIFIER);
 
     protected transient AlgorithmIdentifier algorithmIdentifier = BCRSAPublicKey.DEFAULT_ALGORITHM_IDENTIFIER;
     protected transient RSAKeyParameters rsaPrivateKey;
@@ -35,6 +36,18 @@ public class BCRSAPrivateKey
     BCRSAPrivateKey(
         RSAKeyParameters key)
     {
+        this.modulus = key.getModulus();
+        this.privateExponent = key.getExponent();
+        this.rsaPrivateKey = key;
+    }
+
+    BCRSAPrivateKey(
+        AlgorithmIdentifier algID,
+        RSAKeyParameters key)
+    {
+        this.algorithmIdentifier = algID;
+        this.algorithmIdentifierEnc = getEncoding(algID);
+        
         this.modulus = key.getModulus();
         this.privateExponent = key.getExponent();
         this.rsaPrivateKey = key;
@@ -59,6 +72,8 @@ public class BCRSAPrivateKey
     BCRSAPrivateKey(AlgorithmIdentifier algID, org.bouncycastle.bcasn1.pkcs.RSAPrivateKey key)
     {
         this.algorithmIdentifier = algID;
+        this.algorithmIdentifierEnc = getEncoding(algID);
+
         this.modulus = key.getModulus();
         this.privateExponent = key.getPrivateExponent();
         this.rsaPrivateKey = new RSAKeyParameters(true, modulus, privateExponent);
@@ -144,7 +159,14 @@ public class BCRSAPrivateKey
         throws IOException, ClassNotFoundException
     {
         in.defaultReadObject();
-        
+
+        if (algorithmIdentifierEnc == null)
+        {
+            algorithmIdentifierEnc = getEncoding(BCRSAPublicKey.DEFAULT_ALGORITHM_IDENTIFIER);
+        }
+
+        this.algorithmIdentifier = AlgorithmIdentifier.getInstance(algorithmIdentifierEnc);
+
         this.attrCarrier = new PKCS12BagAttributeCarrierImpl();
         this.rsaPrivateKey = new RSAKeyParameters(true, modulus, privateExponent);
     }
@@ -166,5 +188,17 @@ public class BCRSAPrivateKey
         buf.append("            modulus: ").append(this.getModulus().toString(16)).append(nl);
 
         return buf.toString();
+    }
+
+    private static byte[] getEncoding(AlgorithmIdentifier algorithmIdentifier)
+    {
+        try
+        {
+            return algorithmIdentifier.getEncoded();
+        }
+        catch (IOException e)
+        {
+            return null;
+        }
     }
 }

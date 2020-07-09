@@ -3,6 +3,8 @@ module org.bouncycastle.provider
     requires java.sql;
     requires java.naming;
 
+    provides java.security.Provider with org.bouncycastle.jce.provider.BouncyCastleProvider,org.bouncycastle.pqc.jcajce.provider.BouncyCastlePQCProvider;
+
     opens org.bouncycastle.bcjcajce.provider.asymmetric.edec to java.base;
     opens org.bouncycastle.pqc.jcajce.provider.qtesla to java.base;
     opens org.bouncycastle.pqc.jcajce.provider.lms to java.base;
@@ -28,6 +30,7 @@ module org.bouncycastle.provider
     exports org.bouncycastle.bcasn1.gnu;
     exports org.bouncycastle.bcasn1.iana;
     exports org.bouncycastle.bcasn1.icao;
+    exports org.bouncycastle.bcasn1.isara;
     exports org.bouncycastle.bcasn1.isismtt;
     exports org.bouncycastle.bcasn1.isismtt.ocsp;
     exports org.bouncycastle.bcasn1.isismtt.x509;
@@ -108,6 +111,7 @@ module org.bouncycastle.provider
     exports org.bouncycastle.bcjcajce.provider.symmetric;
     exports org.bouncycastle.bcjcajce.provider.symmetric.util;
     exports org.bouncycastle.bcjcajce.provider.util;
+    exports org.bouncycastle.bcjcajce.interfaces;
     exports org.bouncycastle.bcjcajce.spec;
     exports org.bouncycastle.bcjcajce.util;
     exports org.bouncycastle.jce;
@@ -135,6 +139,7 @@ module org.bouncycastle.provider
     exports org.bouncycastle.pqc.crypto.mceliece;
     exports org.bouncycastle.pqc.crypto.newhope;
     exports org.bouncycastle.pqc.crypto.ntru;
+    exports org.bouncycastle.pqc.crypto.qtesla;
     exports org.bouncycastle.pqc.crypto.rainbow;
     exports org.bouncycastle.pqc.crypto.rainbow.util;
     exports org.bouncycastle.pqc.crypto.sphincs;

@@ -19,11 +19,9 @@ import java.util.List;
 
 import org.bouncycastle.bcasn1.x509.Extension;
 import org.bouncycastle.bcjcajce.PKIXCertStore;
-import org.bouncycastle.bcjcajce.PKIXCertStoreSelector;
 import org.bouncycastle.bcjcajce.PKIXExtendedBuilderParameters;
 import org.bouncycastle.bcjcajce.PKIXExtendedParameters;
 import org.bouncycastle.bcjcajce.provider.asymmetric.x509.CertificateFactory;
-import org.bouncycastle.jce.exception.ExtCertPathBuilderException;
 import org.bouncycastle.x509.ExtendedPKIXBuilderParameters;
 import org.bouncycastle.x509.ExtendedPKIXParameters;
 
@@ -100,26 +98,7 @@ public class PKIXCertPathBuilderSpi
         X509Certificate cert;
 
         // search target certificates
-
-        PKIXCertStoreSelector certSelect = paramsPKIX.getBaseParameters().getTargetConstraints();
-
-        try
-        {
-            targets = CertPathValidatorUtilities.findCertificates(certSelect, paramsPKIX.getBaseParameters().getCertificateStores());
-            targets.addAll(CertPathValidatorUtilities.findCertificates(certSelect, paramsPKIX.getBaseParameters().getCertStores()));
-        }
-        catch (AnnotatedException e)
-        {
-            throw new ExtCertPathBuilderException(
-                "Error finding target certificate.", e);
-        }
-
-        if (targets.isEmpty())
-        {
-
-            throw new CertPathBuilderException(
-                "No certificate found matching targetConstraints.");
-        }
+        targets = CertPathValidatorUtilities.findTargets(paramsPKIX);
 
         CertPathBuilderResult result = null;
 

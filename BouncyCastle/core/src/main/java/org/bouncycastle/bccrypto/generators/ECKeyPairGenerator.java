@@ -5,7 +5,6 @@ import java.security.SecureRandom;
 
 import org.bouncycastle.bccrypto.AsymmetricCipherKeyPair;
 import org.bouncycastle.bccrypto.AsymmetricCipherKeyPairGenerator;
-import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.KeyGenerationParameters;
 import org.bouncycastle.bccrypto.params.ECDomainParameters;
 import org.bouncycastle.bccrypto.params.ECKeyGenerationParameters;
@@ -31,11 +30,6 @@ public class ECKeyPairGenerator
 
         this.random = ecP.getRandom();
         this.params = ecP.getDomainParameters();
-
-        if (this.random == null)
-        {
-            this.random = CryptoServicesRegistrar.getSecureRandom();
-        }
     }
 
     /**

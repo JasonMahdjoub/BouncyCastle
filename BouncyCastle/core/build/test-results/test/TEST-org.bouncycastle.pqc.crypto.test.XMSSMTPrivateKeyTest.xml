@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.pqc.crypto.test.XMSSMTPrivateKeyTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2020-06-02T09:02:08" hostname="Garage" time="2.621">
+<testsuite name="org.bouncycastle.pqc.crypto.test.XMSSMTPrivateKeyTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2020-07-09T13:50:36" hostname="Garage" time="2.643">
   <properties/>
-  <testcase name="testPrivateKeySerialisation" classname="org.bouncycastle.pqc.crypto.test.XMSSMTPrivateKeyTest" time="2.602"/>
+  <testcase name="testPrivateKeySerialisation" classname="org.bouncycastle.pqc.crypto.test.XMSSMTPrivateKeyTest" time="2.624"/>
   <testcase name="testPrivateKeyParsingSHA256" classname="org.bouncycastle.pqc.crypto.test.XMSSMTPrivateKeyTest" time="0.019"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.bouncycastle.jsse.provider.test.KeyManagerFactoryTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2020-07-09T13:58:45" hostname="Garage" time="0.654">
+  <properties/>
+  <testcase name="testBasicRSA" classname="org.bouncycastle.jsse.provider.test.KeyManagerFactoryTest" time="0.077"/>
+  <testcase name="testBasicEC" classname="org.bouncycastle.jsse.provider.test.KeyManagerFactoryTest" time="0.013"/>
+  <testcase name="testRSAServerTrustEE" classname="org.bouncycastle.jsse.provider.test.KeyManagerFactoryTest" time="0.171"/>
+  <testcase name="testRSAServer" classname="org.bouncycastle.jsse.provider.test.KeyManagerFactoryTest" time="0.15"/>
+  <testcase name="testRSAServerWithClientAuth" classname="org.bouncycastle.jsse.provider.test.KeyManagerFactoryTest" time="0.243"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

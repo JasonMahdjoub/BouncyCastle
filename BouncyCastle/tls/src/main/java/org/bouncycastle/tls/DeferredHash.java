@@ -65,8 +65,9 @@ class DeferredHash
 
     public void notifyPRFDetermined()
     {
-        int prfAlgorithm = context.getSecurityParametersHandshake().getPrfAlgorithm();
-        switch (prfAlgorithm)
+        SecurityParameters securityParameters = context.getSecurityParametersHandshake();
+
+        switch (securityParameters.getPRFAlgorithm())
         {
         case PRFAlgorithm.ssl_prf_legacy:
         case PRFAlgorithm.tls_prf_legacy:
@@ -77,7 +78,11 @@ class DeferredHash
         }
         default:
         {
-            checkTrackingHash(Shorts.valueOf(TlsUtils.getHashAlgorithmForPRFAlgorithm(prfAlgorithm)));
+            checkTrackingHash(Shorts.valueOf(securityParameters.getPRFHashAlgorithm()));
+            if (TlsUtils.isTLSv13(securityParameters.getNegotiatedVersion()))
+            {
+                sealHashAlgorithms();
+            }
             break;
         }
         }
@@ -95,18 +100,21 @@ class DeferredHash
 
     public void sealHashAlgorithms()
     {
-        if (!sealed)
+        if (sealed)
         {
-            sealed = true;
-            checkStopBuffering();
+            throw new IllegalStateException("Already sealed");
         }
+
+        this.sealed = true;
+        checkStopBuffering();
     }
 
     public TlsHandshakeHash stopTracking()
     {
+        SecurityParameters securityParameters = context.getSecurityParametersHandshake();
+
         Hashtable newHashes = new Hashtable();
-        int prfAlgorithm = context.getSecurityParametersHandshake().getPrfAlgorithm();
-        switch (prfAlgorithm)
+        switch (securityParameters.getPRFAlgorithm())
         {
         case PRFAlgorithm.ssl_prf_legacy:
         case PRFAlgorithm.tls_prf_legacy:
@@ -117,7 +125,7 @@ class DeferredHash
         }
         default:
         {
-            cloneHash(newHashes, TlsUtils.getHashAlgorithmForPRFAlgorithm(prfAlgorithm));
+            cloneHash(newHashes, securityParameters.getPRFHashAlgorithm());
             break;
         }
         }
@@ -128,10 +136,10 @@ class DeferredHash
     {
         checkStopBuffering();
 
-        TlsHash prfHash;
+        SecurityParameters securityParameters = context.getSecurityParametersHandshake();
 
-        int prfAlgorithm = context.getSecurityParametersHandshake().getPrfAlgorithm();
-        switch (prfAlgorithm)
+        TlsHash prfHash;
+        switch (securityParameters.getPRFAlgorithm())
         {
         case PRFAlgorithm.ssl_prf_legacy:
         case PRFAlgorithm.tls_prf_legacy:
@@ -141,7 +149,7 @@ class DeferredHash
         }
         default:
         {
-            prfHash = cloneHash(TlsUtils.getHashAlgorithmForPRFAlgorithm(prfAlgorithm));
+            prfHash = cloneHash(securityParameters.getPRFHashAlgorithm());
             break;
         }
         }

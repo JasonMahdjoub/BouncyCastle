@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.est.test.HostNameAuthorizerMatchTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2020-06-02T09:05:03" hostname="Garage" time="0.002">
+<testsuite name="org.bouncycastle.est.test.HostNameAuthorizerMatchTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2020-07-09T13:53:39" hostname="Garage" time="0.002">
   <properties/>
   <testcase name="testWildcardPublicSuffix" classname="org.bouncycastle.est.test.HostNameAuthorizerMatchTest" time="0.001"/>
   <testcase name="testWildcardMatcher" classname="org.bouncycastle.est.test.HostNameAuthorizerMatchTest" time="0.001"/>

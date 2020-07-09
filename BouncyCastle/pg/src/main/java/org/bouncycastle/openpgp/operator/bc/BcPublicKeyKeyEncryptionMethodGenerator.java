@@ -11,7 +11,6 @@ import org.bouncycastle.bcpg.PublicKeyAlgorithmTags;
 import org.bouncycastle.bcpg.PublicKeyPacket;
 import org.bouncycastle.bccrypto.AsymmetricBlockCipher;
 import org.bouncycastle.bccrypto.AsymmetricCipherKeyPair;
-import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.InvalidCipherTextException;
 import org.bouncycastle.bccrypto.Wrapper;
 import org.bouncycastle.bccrypto.agreement.ECDHBasicAgreement;
@@ -70,11 +69,6 @@ public class BcPublicKeyKeyEncryptionMethodGenerator
     protected byte[] encryptSessionInfo(PGPPublicKey pubKey, byte[] sessionInfo)
         throws PGPException
     {
-        if (random == null)
-        {
-            random = CryptoServicesRegistrar.getSecureRandom();
-        }
-
         try
         {
             AsymmetricKeyParameter cryptoPublicKey = keyConverter.getPublicKey(pubKey);

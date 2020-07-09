@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.operator.test.AllTests" tests="2" skipped="0" failures="0" errors="0" timestamp="2020-06-02T09:05:16" hostname="Garage" time="0.185">
+<testsuite name="org.bouncycastle.operator.test.AllTests" tests="2" skipped="0" failures="0" errors="0" timestamp="2020-07-09T13:53:51" hostname="Garage" time="0.08">
   <properties/>
-  <testcase name="testOaepWrap" classname="org.bouncycastle.operator.test.AllTests" time="0.185"/>
+  <testcase name="testOaepWrap" classname="org.bouncycastle.operator.test.AllTests" time="0.08"/>
   <testcase name="testAlgorithmNameFinder" classname="org.bouncycastle.operator.test.AllTests" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

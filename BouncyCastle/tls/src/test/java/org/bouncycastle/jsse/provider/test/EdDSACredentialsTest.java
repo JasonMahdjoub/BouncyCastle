@@ -5,7 +5,6 @@ import java.security.GeneralSecurityException;
 import java.security.KeyPair;
 import java.security.KeyStore;
 import java.security.SecureRandom;
-import java.security.Security;
 import java.security.cert.X509Certificate;
 import java.util.concurrent.CountDownLatch;
 
@@ -19,25 +18,13 @@ import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManagerFactory;
 
 import junit.framework.TestCase;
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.jsse.provider.BouncyCastleJsseProvider;
 
 public class EdDSACredentialsTest
     extends TestCase
 {
-    private static final String PROV_NAME_BC = BouncyCastleProvider.PROVIDER_NAME;
-    private static final String PROV_NAME_BCJSSE = BouncyCastleJsseProvider.PROVIDER_NAME;
-
     protected void setUp()
     {
-        if (Security.getProvider(PROV_NAME_BC) == null)
-        {
-            Security.addProvider(new BouncyCastleProvider());
-        }
-        if (Security.getProvider(PROV_NAME_BCJSSE) == null)
-        {
-            Security.addProvider(new BouncyCastleJsseProvider());
-        }
+        ProviderUtils.setupLowPriority(false);
     }
 
     private static final String HOST = "localhost";
@@ -69,15 +56,17 @@ public class EdDSACredentialsTest
         {
             try
             {
-                TrustManagerFactory trustMgrFact = TrustManagerFactory.getInstance("PKIX", PROV_NAME_BCJSSE);
+                TrustManagerFactory trustMgrFact = TrustManagerFactory.getInstance("PKIX",
+                    ProviderUtils.PROVIDER_NAME_BCJSSE);
                 trustMgrFact.init(trustStore);
 
-                KeyManagerFactory keyMgrFact = KeyManagerFactory.getInstance("PKIX", PROV_NAME_BCJSSE);
+                KeyManagerFactory keyMgrFact = KeyManagerFactory.getInstance("PKIX",
+                    ProviderUtils.PROVIDER_NAME_BCJSSE);
                 keyMgrFact.init(clientStore, clientKeyPass);
 
-                SSLContext clientContext = SSLContext.getInstance("TLS", PROV_NAME_BCJSSE);
+                SSLContext clientContext = SSLContext.getInstance("TLS", ProviderUtils.PROVIDER_NAME_BCJSSE);
                 clientContext.init(keyMgrFact.getKeyManagers(), trustMgrFact.getTrustManagers(),
-                    SecureRandom.getInstance("DEFAULT", PROV_NAME_BC));
+                    SecureRandom.getInstance("DEFAULT", ProviderUtils.PROVIDER_NAME_BC));
 
                 SSLSocketFactory fact = clientContext.getSocketFactory();
                 SSLSocket cSock = (SSLSocket)fact.createSocket(HOST, port);
@@ -130,15 +119,17 @@ public class EdDSACredentialsTest
         {
             try
             {
-                KeyManagerFactory keyMgrFact = KeyManagerFactory.getInstance("PKIX", PROV_NAME_BCJSSE);
+                KeyManagerFactory keyMgrFact = KeyManagerFactory.getInstance("PKIX",
+                    ProviderUtils.PROVIDER_NAME_BCJSSE);
                 keyMgrFact.init(serverStore, keyPass);
 
-                TrustManagerFactory trustMgrFact = TrustManagerFactory.getInstance("PKIX", PROV_NAME_BCJSSE);
+                TrustManagerFactory trustMgrFact = TrustManagerFactory.getInstance("PKIX",
+                    ProviderUtils.PROVIDER_NAME_BCJSSE);
                 trustMgrFact.init(trustStore);
 
-                SSLContext serverContext = SSLContext.getInstance("TLS", PROV_NAME_BCJSSE);
+                SSLContext serverContext = SSLContext.getInstance("TLS", ProviderUtils.PROVIDER_NAME_BCJSSE);
                 serverContext.init(keyMgrFact.getKeyManagers(), trustMgrFact.getTrustManagers(),
-                    SecureRandom.getInstance("DEFAULT", PROV_NAME_BC));
+                    SecureRandom.getInstance("DEFAULT", ProviderUtils.PROVIDER_NAME_BC));
 
                 SSLServerSocketFactory fact = serverContext.getServerSocketFactory();
                 SSLServerSocket sSock = (SSLServerSocket)fact.createServerSocket(port);

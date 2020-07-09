@@ -8,7 +8,7 @@ import java.util.concurrent.Callable;
 
 import org.bouncycastle.bcutil.Strings;
 
-import junit.framework.Assert;
+import junit.framework.TestCase;
 
 class TestProtocolUtil
 {
@@ -52,19 +52,21 @@ class TestProtocolUtil
     {
         TestProtocolUtil.Task serverTask = new TestProtocolUtil.Task(server);
         Thread serverThread = new Thread(serverTask);
+        serverThread.setDaemon(true);
         serverThread.start();
         server.await();
 
         TestProtocolUtil.Task clientTask = new TestProtocolUtil.Task(client);
         Thread clientThread = new Thread(clientTask);
+        clientThread.setDaemon(true);
         clientThread.start();
         client.await();
 
         serverThread.join();
         clientThread.join();
 
-        Assert.assertNull(serverTask.getResult());
-        Assert.assertNull(clientTask.getResult());
+        TestCase.assertNull(serverTask.getResult());
+        TestCase.assertNull(clientTask.getResult());
     }
 
     public static void doClientProtocol(
@@ -79,7 +81,7 @@ class TestProtocolUtil
 
         String message = readMessage(in);
 
-        Assert.assertEquals("World", message);
+        TestCase.assertEquals("World", message);
     }
 
     public static void doServerProtocol(
@@ -94,7 +96,7 @@ class TestProtocolUtil
 
         writeMessage(text, out);
 
-        Assert.assertEquals("Hello", message);
+        TestCase.assertEquals("Hello", message);
     }
 
     private static void writeMessage(String text, OutputStream out)

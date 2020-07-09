@@ -3,15 +3,15 @@
   "component": {
     "group": "org.bouncycastle",
     "module": "bc-core",
-    "version": "1.65-DMRECOMPILE",
+    "version": "1.66-DMRECOMPILE",
     "attributes": {
       "org.gradle.status": "release"
     }
   },
   "createdBy": {
     "gradle": {
-      "version": "6.1",
-      "buildId": "hq73xmaqavbzvkd6ssg72eub4i"
+      "version": "6.1.1",
+      "buildId": "tujragcqxzesngv5qvzjjql56a"
     }
   },
   "variants": [
@@ -20,19 +20,19 @@
       "attributes": {
         "org.gradle.category": "library",
         "org.gradle.dependency.bundling": "external",
-        "org.gradle.jvm.version": 7,
+        "org.gradle.jvm.version": 8,
         "org.gradle.libraryelements": "jar",
         "org.gradle.usage": "java-api"
       },
       "files": [
         {
-          "name": "bc-core-1.65-DMRECOMPILE.jar",
-          "url": "bc-core-1.65-DMRECOMPILE.jar",
-          "size": 3523854,
-          "sha512": "f9b2865540626829ea6a6a4d17eb52ed58c972dff18f5881280565e31124a3b57bd5e6eaa3aeb9f417a5371e47035cbb84712bd2c67e7f3a86135a8e4ec8e806",
-          "sha256": "f0c5b45571425003e0824b17e46f82837a534387b54185849b4f0bc35c9d3fc7",
-          "sha1": "2b9df01db982ba16a4693ca684a8a1a4070ffa17",
-          "md5": "aacfd46ebfe069789d78e80a88933f37"
+          "name": "bc-core-1.66-DMRECOMPILE.jar",
+          "url": "bc-core-1.66-DMRECOMPILE.jar",
+          "size": 3542361,
+          "sha512": "4cc2403e99db88a6b3b8b6261e5f625b00f4e1564b0683232af142c23670395328f03b425d4f4f3ee291aa2d15782d7d3c211577257cd73faf515be392845a2d",
+          "sha256": "53065182dccd600a4b9c9fe5185c7c9a35748e03d46ed4a73d23b1a2cbf77c73",
+          "sha1": "f518f1eb54ed41d08f80cbc708f8bc884a00c9c4",
+          "md5": "bda46ebc1ce8b0df46ae17805a213e9b"
         }
       ]
     },
@@ -41,19 +41,19 @@
       "attributes": {
         "org.gradle.category": "library",
         "org.gradle.dependency.bundling": "external",
-        "org.gradle.jvm.version": 7,
+        "org.gradle.jvm.version": 8,
         "org.gradle.libraryelements": "jar",
         "org.gradle.usage": "java-runtime"
       },
       "files": [
         {
-          "name": "bc-core-1.65-DMRECOMPILE.jar",
-          "url": "bc-core-1.65-DMRECOMPILE.jar",
-          "size": 3523854,
-          "sha512": "f9b2865540626829ea6a6a4d17eb52ed58c972dff18f5881280565e31124a3b57bd5e6eaa3aeb9f417a5371e47035cbb84712bd2c67e7f3a86135a8e4ec8e806",
-          "sha256": "f0c5b45571425003e0824b17e46f82837a534387b54185849b4f0bc35c9d3fc7",
-          "sha1": "2b9df01db982ba16a4693ca684a8a1a4070ffa17",
-          "md5": "aacfd46ebfe069789d78e80a88933f37"
+          "name": "bc-core-1.66-DMRECOMPILE.jar",
+          "url": "bc-core-1.66-DMRECOMPILE.jar",
+          "size": 3542361,
+          "sha512": "4cc2403e99db88a6b3b8b6261e5f625b00f4e1564b0683232af142c23670395328f03b425d4f4f3ee291aa2d15782d7d3c211577257cd73faf515be392845a2d",
+          "sha256": "53065182dccd600a4b9c9fe5185c7c9a35748e03d46ed4a73d23b1a2cbf77c73",
+          "sha1": "f518f1eb54ed41d08f80cbc708f8bc884a00c9c4",
+          "md5": "bda46ebc1ce8b0df46ae17805a213e9b"
         }
       ]
     }

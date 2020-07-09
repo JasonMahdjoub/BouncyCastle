@@ -70,6 +70,7 @@ abstract class SSLSocketUtil
     {
         String name = "BCJSSE-HandshakeCompleted-" + Integer.toUnsignedString(threadNumber.getAndIncrement());
 
+        // Can't be a daemon thread
         new Thread(null, notifyRunnable, name, 0, false).start();
     }
 

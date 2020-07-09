@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.mime.test.MultipartParserTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2020-06-02T09:05:03" hostname="Garage" time="0.075">
+<testsuite name="org.bouncycastle.mime.test.MultipartParserTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2020-07-09T13:53:39" hostname="Garage" time="0.082">
   <properties/>
-  <testcase name="testSignedMultipart" classname="org.bouncycastle.mime.test.MultipartParserTest" time="0.05"/>
-  <testcase name="testInvalidSha256SignedMultipart" classname="org.bouncycastle.mime.test.MultipartParserTest" time="0.006"/>
+  <testcase name="testSignedMultipart" classname="org.bouncycastle.mime.test.MultipartParserTest" time="0.057"/>
+  <testcase name="testInvalidSha256SignedMultipart" classname="org.bouncycastle.mime.test.MultipartParserTest" time="0.007"/>
   <testcase name="testParseContentTypeHeader_broken" classname="org.bouncycastle.mime.test.MultipartParserTest" time="0.0"/>
   <testcase name="testMimeMultipart" classname="org.bouncycastle.mime.test.MultipartParserTest" time="0.001"/>
-  <testcase name="testParseContentTypeHeader_wellformed" classname="org.bouncycastle.mime.test.MultipartParserTest" time="0.0"/>
+  <testcase name="testParseContentTypeHeader_wellformed" classname="org.bouncycastle.mime.test.MultipartParserTest" time="0.001"/>
   <testcase name="testParseContentTypeHeader_wellformed_multi" classname="org.bouncycastle.mime.test.MultipartParserTest" time="0.0"/>
   <testcase name="testMultipartAlternative" classname="org.bouncycastle.mime.test.MultipartParserTest" time="0.009"/>
-  <testcase name="testEmbeddedMultipart" classname="org.bouncycastle.mime.test.MultipartParserTest" time="0.007"/>
+  <testcase name="testEmbeddedMultipart" classname="org.bouncycastle.mime.test.MultipartParserTest" time="0.006"/>
   <testcase name="testParseContentTypeHeader_empty_micalg" classname="org.bouncycastle.mime.test.MultipartParserTest" time="0.0"/>
   <system-out><![CDATA[#######################################################################
 This is a testmail with a very long line that needs to be broken and some non-ascii chars to enforce quoted-printable encoding: àéè

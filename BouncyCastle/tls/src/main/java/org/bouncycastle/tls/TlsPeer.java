@@ -2,6 +2,7 @@ package org.bouncycastle.tls;
 
 import java.io.IOException;
 
+import org.bouncycastle.tls.crypto.TlsCertificate;
 import org.bouncycastle.tls.crypto.TlsCrypto;
 
 /**
@@ -61,6 +62,10 @@ public interface TlsPeer
      * 
      * @return <code>true</code> if the 'signatureAlgorithm' of received certificates should be
      *         checked, or <code>false</code> to skip those checks.
+     *
+     * @deprecated No longer called by the protocol classes. Can call
+     *             {@link TlsUtils#checkPeerSigAlgs(TlsContext, TlsCertificate[])} once a complete
+     *             CertPath has been determined (i.e. as part of chain validation).
      */
     boolean shouldCheckSigAlgOfPeerCerts();
 
@@ -82,6 +87,9 @@ public interface TlsPeer
      * draft-mathewson-no-gmtunixtime-00 2. "If existing users of a TLS implementation may rely on
      * gmt_unix_time containing the current time, we recommend that implementors MAY provide the
      * ability to set gmt_unix_time as an option only, off by default."
+     * 
+     * NOTE: For a server that has negotiated TLS 1.3 (or later), or a client that has offered TLS
+     * 1.3 (or later), this is not called and gmt_unix_time is not used.
      * 
      * @return <code>true</code> if the current time should be used in the gmt_unix_time field of
      *         Random, or <code>false</code> if gmt_unix_time should contain a cryptographically

@@ -108,6 +108,12 @@ public class PrivateKeyFactory
             }
             else
             {
+                if (pubKey != null)
+                {
+                    byte[] pubEnc = pubKey.getOctets();
+
+                    return HSSPrivateKeyParameters.getInstance(Arrays.copyOfRange(keyEnc, 4, keyEnc.length), pubEnc);
+                }
                 return HSSPrivateKeyParameters.getInstance(Arrays.copyOfRange(keyEnc, 4, keyEnc.length));
             }
         }

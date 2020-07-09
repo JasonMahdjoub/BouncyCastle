@@ -72,7 +72,7 @@ public class BouncyCastleProviderTest
 
         if (!errors.isEmpty())
         {
-            throw new AssertionError("Failed with the following errors:\n" + errors);
+            throw new AssertionError("Failed with the following errors:\n" + String.join("\n", errors));
         }
     }
 

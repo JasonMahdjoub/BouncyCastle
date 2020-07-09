@@ -155,7 +155,7 @@ class DisabledAlgorithmConstraints
     {
         if (null != key)
         {
-            String keyAlgorithm = key.getAlgorithm();
+            String keyAlgorithm = JsseUtils.getKeyAlgorithm(key);
             if (null != keyAlgorithm)
             {
                 return getCanonicalAlgorithm(keyAlgorithm);
@@ -216,13 +216,13 @@ class DisabledAlgorithmConstraints
         checkPrimitives(primitives);
         checkKey(key);
 
-        if (isAlgorithmSpecified(algorithm)
+        if (JsseUtils.isNameSpecified(algorithm)
             && !permits(primitives, algorithm, parameters))
         {
             return false;
         }
 
-        if (!permits(primitives, key.getAlgorithm(), null))
+        if (!permits(primitives, JsseUtils.getKeyAlgorithm(key), null))
         {
             return false;
         }

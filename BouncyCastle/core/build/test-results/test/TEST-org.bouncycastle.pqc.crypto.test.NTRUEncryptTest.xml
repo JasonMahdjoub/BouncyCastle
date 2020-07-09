@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.pqc.crypto.test.NTRUEncryptTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-06-02T09:01:56" hostname="Garage" time="0.256">
+<testsuite name="org.bouncycastle.pqc.crypto.test.NTRUEncryptTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-07-09T13:50:23" hostname="Garage" time="0.257">
   <properties/>
   <testcase name="testEncodedKeysFast" classname="org.bouncycastle.pqc.crypto.test.NTRUEncryptTest" time="0.009"/>
-  <testcase name="testEncodedKeysSlow" classname="org.bouncycastle.pqc.crypto.test.NTRUEncryptTest" time="0.087"/>
-  <testcase name="testEncryptDecrypt" classname="org.bouncycastle.pqc.crypto.test.NTRUEncryptTest" time="0.16"/>
+  <testcase name="testEncodedKeysSlow" classname="org.bouncycastle.pqc.crypto.test.NTRUEncryptTest" time="0.084"/>
+  <testcase name="testEncryptDecrypt" classname="org.bouncycastle.pqc.crypto.test.NTRUEncryptTest" time="0.164"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

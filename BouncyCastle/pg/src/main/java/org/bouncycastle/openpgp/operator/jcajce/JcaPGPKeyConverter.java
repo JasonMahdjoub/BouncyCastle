@@ -66,8 +66,6 @@ import org.bouncycastle.bcpg.PublicKeyPacket;
 import org.bouncycastle.bcpg.RSAPublicBCPGKey;
 import org.bouncycastle.bcpg.RSASecretBCPGKey;
 import org.bouncycastle.bcpg.SymmetricKeyAlgorithmTags;
-import org.bouncycastle.bccrypto.params.Ed25519PublicKeyParameters;
-import org.bouncycastle.bccrypto.params.X25519PublicKeyParameters;
 import org.bouncycastle.bcjcajce.util.DefaultJcaJceHelper;
 import org.bouncycastle.bcjcajce.util.NamedJcaJceHelper;
 import org.bouncycastle.bcjcajce.util.ProviderJcaJceHelper;
@@ -83,6 +81,13 @@ import org.bouncycastle.bcutil.BigIntegers;
 
 public class JcaPGPKeyConverter
 {
+    private static final int X25519_KEY_SIZE = 32;
+    private static final int ED25519_KEY_SIZE = 32;
+
+    // We default to these as they are specified as mandatory in RFC 6631.
+    private static final PGPKdfParameters DEFAULT_KDF_PARAMETERS = new PGPKdfParameters(HashAlgorithmTags.SHA256,
+        SymmetricKeyAlgorithmTags.AES_128);
+
     private OperatorHelper helper = new OperatorHelper(new DefaultJcaJceHelper());
     private KeyFingerPrintCalculator fingerPrintCalculator = new JcaKeyFingerprintCalculator();
 
@@ -459,12 +464,8 @@ public class JcaPGPKeyConverter
 
             if (algorithm == PGPPublicKey.ECDH)
             {
-                PGPKdfParameters kdfParams = (PGPKdfParameters)algorithmParameters;
-                if (kdfParams == null)
-                {
-                    // We default to these as they are specified as mandatory in RFC 6631.
-                    kdfParams = new PGPKdfParameters(HashAlgorithmTags.SHA256, SymmetricKeyAlgorithmTags.AES_128);
-                }
+                PGPKdfParameters kdfParams = implGetKdfParameters(algorithmParameters);
+
                 return new ECDHPublicBCPGKey(curveOid, derQ.getPoint(), kdfParams.getHashAlgorithm(),
                     kdfParams.getSymmetricWrapAlgorithm());
             }
@@ -480,7 +481,7 @@ public class JcaPGPKeyConverter
         else if (pubKey.getAlgorithm().regionMatches(true, 0, "ED2", 0, 3))
         {
             SubjectPublicKeyInfo pubInfo = SubjectPublicKeyInfo.getInstance(pubKey.getEncoded());
-            byte[] pointEnc = new byte[1 + Ed25519PublicKeyParameters.KEY_SIZE];
+            byte[] pointEnc = new byte[1 + ED25519_KEY_SIZE];
 
             pointEnc[0] = 0x40;
             System.arraycopy(pubInfo.getPublicKeyData().getBytes(), 0, pointEnc, 1, pointEnc.length - 1);
@@ -490,17 +491,13 @@ public class JcaPGPKeyConverter
         else if (pubKey.getAlgorithm().regionMatches(true, 0, "X2", 0, 2))
         {
             SubjectPublicKeyInfo pubInfo = SubjectPublicKeyInfo.getInstance(pubKey.getEncoded());
-            byte[] pointEnc = new byte[1 + X25519PublicKeyParameters.KEY_SIZE];
+            byte[] pointEnc = new byte[1 + X25519_KEY_SIZE];
 
             pointEnc[0] = 0x40;
             System.arraycopy(pubInfo.getPublicKeyData().getBytes(), 0, pointEnc, 1, pointEnc.length - 1);
 
-            PGPKdfParameters kdfParams = (PGPKdfParameters)algorithmParameters;
-            if (kdfParams == null)
-            {
-                // We default to these as they are specified as mandatory in RFC 6631.
-                kdfParams = new PGPKdfParameters(HashAlgorithmTags.SHA256, SymmetricKeyAlgorithmTags.AES_128);
-            }
+            PGPKdfParameters kdfParams = implGetKdfParameters(algorithmParameters);
+
             return new ECDHPublicBCPGKey(CryptlibObjectIdentifiers.curvey25519, new BigInteger(1, pointEnc),
                 kdfParams.getHashAlgorithm(), kdfParams.getSymmetricWrapAlgorithm());
         }
@@ -522,6 +519,11 @@ public class JcaPGPKeyConverter
     {
         KeyFactory keyFactory = helper.createKeyFactory(keyAlgorithm);
         return keyFactory.generatePublic(keySpec);
+    }
+
+    private PGPKdfParameters implGetKdfParameters(PGPAlgorithmParameters algorithmParameters)
+    {
+        return null == algorithmParameters ? DEFAULT_KDF_PARAMETERS : (PGPKdfParameters)algorithmParameters;
     }
 
     private PrivateKey implGetPrivateKeyEC(String keyAlgorithm, ECPublicBCPGKey ecPub, ECSecretBCPGKey ecPriv)

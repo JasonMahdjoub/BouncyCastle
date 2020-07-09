@@ -28,6 +28,7 @@ abstract class ProvSSLSessionBase
     protected final Map<String, Object> valueMap = Collections.synchronizedMap(new HashMap<String, Object>());
 
     protected ProvSSLSessionContext sslSessionContext;
+    protected final boolean isFips;
     protected final JcaTlsCrypto crypto;
     protected final String peerHost;
     protected final int peerPort;
@@ -35,18 +36,17 @@ abstract class ProvSSLSessionBase
     protected final SSLSession exportSSLSession;
 
     protected long lastAccessedTime;
-    protected boolean invalidated; 
 
     ProvSSLSessionBase(ProvSSLSessionContext sslSessionContext, String peerHost, int peerPort)
     {
         this.sslSessionContext = sslSessionContext;
+        this.isFips = (null == sslSessionContext) ? false : sslSessionContext.getSSLContext().isFips();
         this.crypto = (null == sslSessionContext) ? null : sslSessionContext.getCrypto();
         this.peerHost = peerHost;
         this.peerPort = peerPort;
         this.creationTime = System.currentTimeMillis();
         this.exportSSLSession = SSLSessionUtil.exportSSLSession(this);
         this.lastAccessedTime = creationTime;
-        this.invalidated = false;
     }
 
     protected abstract int getCipherSuiteTLS();
@@ -108,7 +108,7 @@ abstract class ProvSSLSessionBase
     public byte[] getId()
     {
         byte[] id = getIDArray();
-        return (null == id) ? TlsUtils.EMPTY_BYTES : Arrays.clone(id);
+        return TlsUtils.isNullOrEmpty(id) ? TlsUtils.EMPTY_BYTES : id.clone();
     }
 
     public long getLastAccessedTime()
@@ -159,7 +159,7 @@ abstract class ProvSSLSessionBase
     @SuppressWarnings("deprecation")
     public javax.security.cert.X509Certificate[] getPeerCertificateChain() throws SSLPeerUnverifiedException
     {
-        if (sslSessionContext.getSSLContext().isFips())
+        if (isFips)
         {
             throw new UnsupportedOperationException();
         }
@@ -266,15 +266,23 @@ abstract class ProvSSLSessionBase
             sslSessionContext.removeSession(getIDArray());
 
             this.sslSessionContext = null;
-            this.invalidated = true;
         }
     }
 
     public synchronized boolean isValid()
     {
-        byte[] sessionID = getIDArray();
+        if (null == sslSessionContext)
+        {
+            return false;
+        }
 
-        return null != sessionID && sessionID.length > 0 && !invalidated;
+        // TODO[tls13] TLS 1.3 doesn't need a session ID for resumption?
+//        if (ProtocolVersion.TLSv13.isEqualOrEarlierVersionOf(getProtocolTLS()))
+//        {
+//            return true;
+//        }
+
+        return !TlsUtils.isNullOrEmpty(getIDArray());
     }
 
     public void putValue(String name, Object value)

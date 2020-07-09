@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.openpgp.test.AllTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-06-02T09:04:56" hostname="Garage" time="5.565">
+<testsuite name="org.bouncycastle.openpgp.test.AllTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-07-09T13:53:31" hostname="Garage" time="5.8">
   <properties/>
-  <testcase name="testPGP" classname="org.bouncycastle.openpgp.test.AllTests" time="5.565"/>
+  <testcase name="testPGP" classname="org.bouncycastle.openpgp.test.AllTests" time="5.8"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

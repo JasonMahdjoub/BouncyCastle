@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.cms.test.Rfc4134Test" tests="18" skipped="0" failures="0" errors="0" timestamp="2020-06-02T09:05:14" hostname="Garage" time="0.873">
+<testsuite name="org.bouncycastle.cms.test.Rfc4134Test" tests="18" skipped="0" failures="0" errors="0" timestamp="2020-07-09T13:53:49" hostname="Garage" time="0.868">
   <properties/>
   <testcase name="test4_1" classname="org.bouncycastle.cms.test.Rfc4134Test" time="0.005"/>
   <testcase name="test4_2" classname="org.bouncycastle.cms.test.Rfc4134Test" time="0.0"/>
   <testcase name="test4_4" classname="org.bouncycastle.cms.test.Rfc4134Test" time="0.002"/>
-  <testcase name="test4_5" classname="org.bouncycastle.cms.test.Rfc4134Test" time="0.005"/>
+  <testcase name="test4_5" classname="org.bouncycastle.cms.test.Rfc4134Test" time="0.001"/>
   <testcase name="test4_6" classname="org.bouncycastle.cms.test.Rfc4134Test" time="0.002"/>
   <testcase name="test4_7" classname="org.bouncycastle.cms.test.Rfc4134Test" time="0.001"/>
-  <testcase name="test5_1" classname="org.bouncycastle.cms.test.Rfc4134Test" time="0.002"/>
+  <testcase name="test5_1" classname="org.bouncycastle.cms.test.Rfc4134Test" time="0.001"/>
   <testcase name="test5_2" classname="org.bouncycastle.cms.test.Rfc4134Test" time="0.001"/>
-  <testcase name="testRfc4_3" classname="org.bouncycastle.cms.test.Rfc4134Test" time="0.001"/>
-  <testcase name="test4_1" classname="org.bouncycastle.cms.test.Rfc4134Test" time="0.009"/>
+  <testcase name="testRfc4_3" classname="org.bouncycastle.cms.test.Rfc4134Test" time="0.002"/>
+  <testcase name="test4_1" classname="org.bouncycastle.cms.test.Rfc4134Test" time="0.004"/>
   <testcase name="test4_2" classname="org.bouncycastle.cms.test.Rfc4134Test" time="0.001"/>
-  <testcase name="test4_4" classname="org.bouncycastle.cms.test.Rfc4134Test" time="0.003"/>
-  <testcase name="test4_5" classname="org.bouncycastle.cms.test.Rfc4134Test" time="0.0"/>
-  <testcase name="test4_6" classname="org.bouncycastle.cms.test.Rfc4134Test" time="0.004"/>
+  <testcase name="test4_4" classname="org.bouncycastle.cms.test.Rfc4134Test" time="0.001"/>
+  <testcase name="test4_5" classname="org.bouncycastle.cms.test.Rfc4134Test" time="0.001"/>
+  <testcase name="test4_6" classname="org.bouncycastle.cms.test.Rfc4134Test" time="0.002"/>
   <testcase name="test4_7" classname="org.bouncycastle.cms.test.Rfc4134Test" time="0.001"/>
-  <testcase name="test5_1" classname="org.bouncycastle.cms.test.Rfc4134Test" time="0.002"/>
-  <testcase name="test5_2" classname="org.bouncycastle.cms.test.Rfc4134Test" time="0.002"/>
+  <testcase name="test5_1" classname="org.bouncycastle.cms.test.Rfc4134Test" time="0.001"/>
+  <testcase name="test5_2" classname="org.bouncycastle.cms.test.Rfc4134Test" time="0.001"/>
   <testcase name="testRfc4_3" classname="org.bouncycastle.cms.test.Rfc4134Test" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

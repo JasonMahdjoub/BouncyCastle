@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.pkcs.test.PfxPduTest" tests="17" skipped="0" failures="0" errors="0" timestamp="2020-06-02T09:05:15" hostname="Garage" time="0.348">
+<testsuite name="org.bouncycastle.pkcs.test.PfxPduTest" tests="17" skipped="0" failures="0" errors="0" timestamp="2020-07-09T13:53:51" hostname="Garage" time="0.347">
   <properties/>
   <testcase name="testExceptions" classname="org.bouncycastle.pkcs.test.PfxPduTest" time="0.002"/>
   <testcase name="testCreateTripleDESAndSHA1" classname="org.bouncycastle.pkcs.test.PfxPduTest" time="0.018"/>
   <testcase name="testBasicPKCS12" classname="org.bouncycastle.pkcs.test.PfxPduTest" time="0.002"/>
-  <testcase name="testEncryptedPrivateKeyInfoPKCS5" classname="org.bouncycastle.pkcs.test.PfxPduTest" time="0.003"/>
+  <testcase name="testEncryptedPrivateKeyInfoPKCS5" classname="org.bouncycastle.pkcs.test.PfxPduTest" time="0.004"/>
   <testcase name="testGOST1" classname="org.bouncycastle.pkcs.test.PfxPduTest" time="0.108"/>
   <testcase name="testGOST2" classname="org.bouncycastle.pkcs.test.PfxPduTest" time="0.105"/>
-  <testcase name="testPKCS5" classname="org.bouncycastle.pkcs.test.PfxPduTest" time="0.053"/>
+  <testcase name="testPKCS5" classname="org.bouncycastle.pkcs.test.PfxPduTest" time="0.054"/>
   <testcase name="testPfxPduMac" classname="org.bouncycastle.pkcs.test.PfxPduTest" time="0.007"/>
-  <testcase name="testEncryptedPrivateKeyInfoDESWithMD5" classname="org.bouncycastle.pkcs.test.PfxPduTest" time="0.007"/>
-  <testcase name="testBcEncryptedPrivateKeyInfo" classname="org.bouncycastle.pkcs.test.PfxPduTest" time="0.007"/>
+  <testcase name="testEncryptedPrivateKeyInfoDESWithMD5" classname="org.bouncycastle.pkcs.test.PfxPduTest" time="0.003"/>
+  <testcase name="testBcEncryptedPrivateKeyInfo" classname="org.bouncycastle.pkcs.test.PfxPduTest" time="0.004"/>
   <testcase name="testCreateAES256andSHA256" classname="org.bouncycastle.pkcs.test.PfxPduTest" time="0.011"/>
-  <testcase name="testEncryptedPrivateKeyInfoDESWithSHA1" classname="org.bouncycastle.pkcs.test.PfxPduTest" time="0.003"/>
-  <testcase name="testKeyBag" classname="org.bouncycastle.pkcs.test.PfxPduTest" time="0.004"/>
-  <testcase name="testPfxPdu" classname="org.bouncycastle.pkcs.test.PfxPduTest" time="0.007"/>
-  <testcase name="testSafeBagRecovery" classname="org.bouncycastle.pkcs.test.PfxPduTest" time="0.007"/>
-  <testcase name="testEncryptedPrivateKeyInfo" classname="org.bouncycastle.pkcs.test.PfxPduTest" time="0.003"/>
-  <testcase name="testSHA256withPKCS5" classname="org.bouncycastle.pkcs.test.PfxPduTest" time="0.001"/>
+  <testcase name="testEncryptedPrivateKeyInfoDESWithSHA1" classname="org.bouncycastle.pkcs.test.PfxPduTest" time="0.002"/>
+  <testcase name="testKeyBag" classname="org.bouncycastle.pkcs.test.PfxPduTest" time="0.003"/>
+  <testcase name="testPfxPdu" classname="org.bouncycastle.pkcs.test.PfxPduTest" time="0.008"/>
+  <testcase name="testSafeBagRecovery" classname="org.bouncycastle.pkcs.test.PfxPduTest" time="0.006"/>
+  <testcase name="testEncryptedPrivateKeyInfo" classname="org.bouncycastle.pkcs.test.PfxPduTest" time="0.007"/>
+  <testcase name="testSHA256withPKCS5" classname="org.bouncycastle.pkcs.test.PfxPduTest" time="0.003"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

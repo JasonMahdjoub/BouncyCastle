@@ -3,8 +3,8 @@ package org.bouncycastle.bcjcajce.provider.asymmetric.edec;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.security.PrivateKey;
 
-import org.bouncycastle.bcasn1.ASN1Encodable;
 import org.bouncycastle.bcasn1.ASN1OctetString;
 import org.bouncycastle.bcasn1.ASN1Set;
 import org.bouncycastle.bcasn1.edec.EdECObjectIdentifiers;
@@ -16,13 +16,14 @@ import org.bouncycastle.bccrypto.util.PrivateKeyInfoFactory;
 import org.bouncycastle.bcjcajce.interfaces.XDHPrivateKey;
 import org.bouncycastle.bcjcajce.interfaces.XDHPublicKey;
 import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.Properties;
 
 public class BCXDHPrivateKey
     implements XDHPrivateKey
 {
     static final long serialVersionUID = 1L;
 
-    protected transient AsymmetricKeyParameter xdhPrivateKey;
+    transient AsymmetricKeyParameter xdhPrivateKey;
 
     private final boolean hasPublicKey;
     private final byte[] attributes;
@@ -46,7 +47,14 @@ public class BCXDHPrivateKey
     private void populateFromPrivateKeyInfo(PrivateKeyInfo keyInfo)
         throws IOException
     {
-        ASN1Encodable keyOcts = keyInfo.parsePrivateKey();
+        ASN1OctetString keyOcts = keyInfo.getPrivateKey();
+        byte[] infoOcts = keyOcts.getOctets();
+
+        if (infoOcts.length != 32 && infoOcts.length != 56) // exact length of X25519/X448 secret used in Java 11
+        {
+            keyOcts = ASN1OctetString.getInstance(keyInfo.parsePrivateKey());
+        }
+
         if (EdECObjectIdentifiers.id_X448.equals(keyInfo.getPrivateKeyAlgorithm().getAlgorithm()))
         {
             xdhPrivateKey = new X448PrivateKeyParameters(ASN1OctetString.getInstance(keyOcts).getOctets(), 0);
@@ -74,7 +82,7 @@ public class BCXDHPrivateKey
             ASN1Set attrSet = ASN1Set.getInstance(attributes);
             PrivateKeyInfo privInfo = PrivateKeyInfoFactory.createPrivateKeyInfo(xdhPrivateKey, attrSet);
 
-            if (hasPublicKey)
+            if (hasPublicKey && !Properties.isOverrideSet("org.bouncycastle.pkcs8.v1_info_only"))
             {
                 return privInfo.getEncoded();
             }
@@ -127,12 +135,12 @@ public class BCXDHPrivateKey
             return true;
         }
 
-        if (!(o instanceof BCXDHPrivateKey))
+        if (!(o instanceof PrivateKey))
         {
             return false;
         }
 
-        BCXDHPrivateKey other = (BCXDHPrivateKey)o;
+        PrivateKey other = (PrivateKey)o;
 
         return Arrays.areEqual(other.getEncoded(), this.getEncoded());
     }

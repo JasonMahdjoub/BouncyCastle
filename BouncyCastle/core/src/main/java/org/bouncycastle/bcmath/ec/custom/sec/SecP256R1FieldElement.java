@@ -3,7 +3,6 @@ package org.bouncycastle.bcmath.ec.custom.sec;
 import java.math.BigInteger;
 
 import org.bouncycastle.bcmath.ec.ECFieldElement;
-import org.bouncycastle.bcmath.raw.Mod;
 import org.bouncycastle.bcmath.raw.Nat256;
 import org.bouncycastle.bcutil.Arrays;
 import org.bouncycastle.bcutil.encoders.Hex;
@@ -97,7 +96,7 @@ public class SecP256R1FieldElement extends ECFieldElement.AbstractFp
     {
 //        return multiply(b.invert());
         int[] z = Nat256.create();
-        Mod.invert(SecP256R1Field.P, ((SecP256R1FieldElement)b).x, z);
+        SecP256R1Field.inv(((SecP256R1FieldElement)b).x, z);
         SecP256R1Field.multiply(z, x, z);
         return new SecP256R1FieldElement(z);
     }
@@ -120,7 +119,7 @@ public class SecP256R1FieldElement extends ECFieldElement.AbstractFp
     {
 //        return new SecP256R1FieldElement(toBigInteger().modInverse(Q));
         int[] z = Nat256.create();
-        Mod.invert(SecP256R1Field.P, x, z);
+        SecP256R1Field.inv(x, z);
         return new SecP256R1FieldElement(z);
     }
 

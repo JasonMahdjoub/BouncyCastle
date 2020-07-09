@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.pqc.jcajce.provider.test.NewHopeTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-06-02T09:20:20" hostname="Garage" time="0.369">
+<testsuite name="org.bouncycastle.pqc.jcajce.provider.test.NewHopeTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-07-09T14:01:19" hostname="Garage" time="0.37">
   <properties/>
-  <testcase name="testKeyExchange" classname="org.bouncycastle.pqc.jcajce.provider.test.NewHopeTest" time="0.366"/>
+  <testcase name="testKeyExchange" classname="org.bouncycastle.pqc.jcajce.provider.test.NewHopeTest" time="0.367"/>
   <testcase name="testPrivateKeyRecovery" classname="org.bouncycastle.pqc.jcajce.provider.test.NewHopeTest" time="0.002"/>
   <testcase name="testPublicKeyRecovery" classname="org.bouncycastle.pqc.jcajce.provider.test.NewHopeTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>

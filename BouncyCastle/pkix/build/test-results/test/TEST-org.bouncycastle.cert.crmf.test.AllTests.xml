@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.cert.crmf.test.AllTests" tests="13" skipped="0" failures="0" errors="0" timestamp="2020-06-02T09:05:12" hostname="Garage" time="0.36">
+<testsuite name="org.bouncycastle.cert.crmf.test.AllTests" tests="13" skipped="0" failures="0" errors="0" timestamp="2020-07-09T13:53:47" hostname="Garage" time="0.339">
   <properties/>
-  <testcase name="testEncryptedValue" classname="org.bouncycastle.cert.crmf.test.AllTests" time="0.013"/>
-  <testcase name="testEncryptedValuePassphrase" classname="org.bouncycastle.cert.crmf.test.AllTests" time="0.007"/>
-  <testcase name="testBcEncryptedValueWithKey" classname="org.bouncycastle.cert.crmf.test.AllTests" time="0.012"/>
-  <testcase name="testProofOfPossessionWithSender" classname="org.bouncycastle.cert.crmf.test.AllTests" time="0.009"/>
-  <testcase name="testProofOfPossessionWithTemplate" classname="org.bouncycastle.cert.crmf.test.AllTests" time="0.006"/>
+  <testcase name="testEncryptedValue" classname="org.bouncycastle.cert.crmf.test.AllTests" time="0.014"/>
+  <testcase name="testEncryptedValuePassphrase" classname="org.bouncycastle.cert.crmf.test.AllTests" time="0.01"/>
+  <testcase name="testBcEncryptedValueWithKey" classname="org.bouncycastle.cert.crmf.test.AllTests" time="0.01"/>
+  <testcase name="testProofOfPossessionWithSender" classname="org.bouncycastle.cert.crmf.test.AllTests" time="0.011"/>
+  <testcase name="testProofOfPossessionWithTemplate" classname="org.bouncycastle.cert.crmf.test.AllTests" time="0.007"/>
   <testcase name="testEncryptedValueWithKey" classname="org.bouncycastle.cert.crmf.test.AllTests" time="0.008"/>
-  <testcase name="testBasicMessage" classname="org.bouncycastle.cert.crmf.test.AllTests" time="0.007"/>
-  <testcase name="testBasicMessageWithArchiveControl" classname="org.bouncycastle.cert.crmf.test.AllTests" time="0.006"/>
-  <testcase name="testEncryptedValuePassphraseWithPadding" classname="org.bouncycastle.cert.crmf.test.AllTests" time="0.008"/>
+  <testcase name="testBasicMessage" classname="org.bouncycastle.cert.crmf.test.AllTests" time="0.012"/>
+  <testcase name="testBasicMessageWithArchiveControl" classname="org.bouncycastle.cert.crmf.test.AllTests" time="0.007"/>
+  <testcase name="testEncryptedValuePassphraseWithPadding" classname="org.bouncycastle.cert.crmf.test.AllTests" time="0.013"/>
   <testcase name="testKeySizes" classname="org.bouncycastle.cert.crmf.test.AllTests" time="0.004"/>
-  <testcase name="testEncryptedValueOAEP1" classname="org.bouncycastle.cert.crmf.test.AllTests" time="0.165"/>
+  <testcase name="testEncryptedValueOAEP1" classname="org.bouncycastle.cert.crmf.test.AllTests" time="0.135"/>
   <testcase name="testEncryptedValueOAEP2" classname="org.bouncycastle.cert.crmf.test.AllTests" time="0.097"/>
-  <testcase name="testProofOfPossessionWithoutSender" classname="org.bouncycastle.cert.crmf.test.AllTests" time="0.017"/>
+  <testcase name="testProofOfPossessionWithoutSender" classname="org.bouncycastle.cert.crmf.test.AllTests" time="0.009"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

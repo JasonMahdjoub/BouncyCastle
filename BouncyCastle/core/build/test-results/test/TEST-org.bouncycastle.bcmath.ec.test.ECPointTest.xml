@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.bcmath.ec.test.ECPointTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2020-06-02T09:01:27" hostname="Garage" time="8.381">
+<testsuite name="org.bouncycastle.bcmath.ec.test.ECPointTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2020-07-09T13:49:54" hostname="Garage" time="8.116">
   <properties/>
   <testcase name="testThreeTimes" classname="org.bouncycastle.bcmath.ec.test.ECPointTest" time="0.001"/>
-  <testcase name="testAdd" classname="org.bouncycastle.bcmath.ec.test.ECPointTest" time="0.0"/>
-  <testcase name="testAddSubtractMultiplySimple" classname="org.bouncycastle.bcmath.ec.test.ECPointTest" time="0.019"/>
-  <testcase name="testTwice" classname="org.bouncycastle.bcmath.ec.test.ECPointTest" time="0.0"/>
-  <testcase name="testAllPoints" classname="org.bouncycastle.bcmath.ec.test.ECPointTest" time="0.005"/>
-  <testcase name="testAddSubtractMultiplyTwiceEncoding" classname="org.bouncycastle.bcmath.ec.test.ECPointTest" time="5.997"/>
-  <testcase name="testExampleFpB0" classname="org.bouncycastle.bcmath.ec.test.ECPointTest" time="2.357"/>
-  <testcase name="testPointCreationConsistency" classname="org.bouncycastle.bcmath.ec.test.ECPointTest" time="0.001"/>
+  <testcase name="testAdd" classname="org.bouncycastle.bcmath.ec.test.ECPointTest" time="0.001"/>
+  <testcase name="testAddSubtractMultiplySimple" classname="org.bouncycastle.bcmath.ec.test.ECPointTest" time="0.016"/>
+  <testcase name="testTwice" classname="org.bouncycastle.bcmath.ec.test.ECPointTest" time="0.001"/>
+  <testcase name="testAllPoints" classname="org.bouncycastle.bcmath.ec.test.ECPointTest" time="0.003"/>
+  <testcase name="testAddSubtractMultiplyTwiceEncoding" classname="org.bouncycastle.bcmath.ec.test.ECPointTest" time="5.808"/>
+  <testcase name="testExampleFpB0" classname="org.bouncycastle.bcmath.ec.test.ECPointTest" time="2.286"/>
+  <testcase name="testPointCreationConsistency" classname="org.bouncycastle.bcmath.ec.test.ECPointTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

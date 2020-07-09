@@ -36,6 +36,7 @@ import org.bouncycastle.bcjcajce.provider.symmetric.util.BaseMac;
 import org.bouncycastle.bcjcajce.provider.symmetric.util.BaseSecretKeyFactory;
 import org.bouncycastle.bcjcajce.provider.symmetric.util.BaseWrapCipher;
 import org.bouncycastle.bcjcajce.provider.symmetric.util.BlockCipherProvider;
+import org.bouncycastle.bcjcajce.provider.symmetric.util.GcmSpecUtil;
 import org.bouncycastle.bcjcajce.provider.symmetric.util.IvAlgorithmParameters;
 import org.bouncycastle.bcjcajce.spec.AEADParameterSpec;
 

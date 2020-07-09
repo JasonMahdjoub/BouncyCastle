@@ -225,7 +225,12 @@ public class PublicKeyFactory
             }
             else
             {
-                return HSSPublicKeyParameters.getInstance(Arrays.copyOfRange(keyEnc, 4, keyEnc.length));
+                // public key with extra tree height
+                if (keyEnc.length == 64)
+                {
+                    keyEnc = Arrays.copyOfRange(keyEnc, 4, keyEnc.length);
+                }
+                return HSSPublicKeyParameters.getInstance(keyEnc);
             }
         }
     }

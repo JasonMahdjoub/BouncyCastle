@@ -26,6 +26,7 @@ import org.bouncycastle.bcasn1.x9.X9ECParameters;
 import org.bouncycastle.bcasn1.x9.X9ObjectIdentifiers;
 import org.bouncycastle.bccrypto.params.ECDomainParameters;
 import org.bouncycastle.bccrypto.params.ECPrivateKeyParameters;
+import org.bouncycastle.bcjcajce.provider.asymmetric.util.ECUtil;
 import org.bouncycastle.bcjcajce.provider.asymmetric.util.KeyUtil;
 import org.bouncycastle.bcjcajce.provider.asymmetric.util.PKCS12BagAttributeCarrierImpl;
 import org.bouncycastle.bcjcajce.provider.config.ProviderConfiguration;
@@ -39,7 +40,6 @@ import org.bouncycastle.jce.spec.ECPrivateKeySpec;
 import org.bouncycastle.bcmath.ec.ECCurve;
 import org.bouncycastle.bcmath.ec.ECPoint;
 import org.bouncycastle.bcutil.Strings;
-import org.bouncycastle.bcjcajce.provider.asymmetric.util.ECUtil;
 
 public class BCECPrivateKey
     implements ECPrivateKey, PKCS12BagAttributeCarrier, ECPointEncoder

@@ -14,6 +14,8 @@ import org.bouncycastle.bcasn1.DERSet;
 import org.bouncycastle.bcasn1.cms.AttributeTable;
 import org.bouncycastle.bcasn1.cms.SignerIdentifier;
 import org.bouncycastle.bcasn1.cms.SignerInfo;
+import org.bouncycastle.bcasn1.edec.EdECObjectIdentifiers;
+import org.bouncycastle.bcasn1.nist.NISTObjectIdentifiers;
 import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.operator.ContentSigner;
@@ -230,6 +232,15 @@ public class SignerInfoGenerator
                 unsignedAttr = getAttributeSet(unsigned);
             }
 
+            if (sAttrGen == null)
+            {
+                // RFC 8419, Section 3.2 - needs to be shake-256, not shake-256-len
+                if (EdECObjectIdentifiers.id_Ed448.equals(digestEncryptionAlgorithm.getAlgorithm()))
+                {
+                    digestAlg = new AlgorithmIdentifier(NISTObjectIdentifiers.id_shake256);
+                }
+            }
+            
             return new SignerInfo(signerIdentifier, digestAlg,
                 signedAttr, digestEncryptionAlgorithm, new DEROctetString(sigBytes), unsignedAttr);
         }

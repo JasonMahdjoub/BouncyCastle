@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.pqc.math.ntru.polynomial.test.IntegerPolynomialTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2020-06-02T09:01:37" hostname="Garage" time="0.611">
+<testsuite name="org.bouncycastle.pqc.math.ntru.polynomial.test.IntegerPolynomialTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2020-07-09T13:50:04" hostname="Garage" time="0.462">
   <properties/>
-  <testcase name="testResultant" classname="org.bouncycastle.pqc.math.ntru.polynomial.test.IntegerPolynomialTest" time="0.038"/>
-  <testcase name="testMult" classname="org.bouncycastle.pqc.math.ntru.polynomial.test.IntegerPolynomialTest" time="0.001"/>
+  <testcase name="testResultant" classname="org.bouncycastle.pqc.math.ntru.polynomial.test.IntegerPolynomialTest" time="0.037"/>
+  <testcase name="testMult" classname="org.bouncycastle.pqc.math.ntru.polynomial.test.IntegerPolynomialTest" time="0.0"/>
   <testcase name="testFromToBinary3Sves" classname="org.bouncycastle.pqc.math.ntru.polynomial.test.IntegerPolynomialTest" time="0.0"/>
   <testcase name="testFromToBinary" classname="org.bouncycastle.pqc.math.ntru.polynomial.test.IntegerPolynomialTest" time="0.002"/>
   <testcase name="testFromToBinary3Tight" classname="org.bouncycastle.pqc.math.ntru.polynomial.test.IntegerPolynomialTest" time="0.014"/>
   <testcase name="testInvertF3" classname="org.bouncycastle.pqc.math.ntru.polynomial.test.IntegerPolynomialTest" time="0.001"/>
-  <testcase name="testInvertFq" classname="org.bouncycastle.pqc.math.ntru.polynomial.test.IntegerPolynomialTest" time="0.3"/>
-  <testcase name="testResultantMod" classname="org.bouncycastle.pqc.math.ntru.polynomial.test.IntegerPolynomialTest" time="0.255"/>
+  <testcase name="testInvertFq" classname="org.bouncycastle.pqc.math.ntru.polynomial.test.IntegerPolynomialTest" time="0.107"/>
+  <testcase name="testResultantMod" classname="org.bouncycastle.pqc.math.ntru.polynomial.test.IntegerPolynomialTest" time="0.3"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

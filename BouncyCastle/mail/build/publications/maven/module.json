@@ -3,15 +3,15 @@
   "component": {
     "group": "org.bouncycastle",
     "module": "bc-mail",
-    "version": "1.65-DMRECOMPILE",
+    "version": "1.66-DMRECOMPILE",
     "attributes": {
       "org.gradle.status": "release"
     }
   },
   "createdBy": {
     "gradle": {
-      "version": "6.1",
-      "buildId": "hq73xmaqavbzvkd6ssg72eub4i"
+      "version": "6.1.1",
+      "buildId": "tujragcqxzesngv5qvzjjql56a"
     }
   },
   "variants": [
@@ -20,7 +20,7 @@
       "attributes": {
         "org.gradle.category": "library",
         "org.gradle.dependency.bundling": "external",
-        "org.gradle.jvm.version": 7,
+        "org.gradle.jvm.version": 8,
         "org.gradle.libraryelements": "jar",
         "org.gradle.usage": "java-api"
       },
@@ -29,21 +29,21 @@
           "group": "org.bouncycastle",
           "module": "bc-core",
           "version": {
-            "requires": "1.65-DMRECOMPILE"
+            "requires": "1.66-DMRECOMPILE"
           }
         },
         {
           "group": "org.bouncycastle",
           "module": "bc-pkix",
           "version": {
-            "requires": "1.65-DMRECOMPILE"
+            "requires": "1.66-DMRECOMPILE"
           }
         },
         {
           "group": "org.bouncycastle",
           "module": "bc-prov",
           "version": {
-            "requires": "1.65-DMRECOMPILE"
+            "requires": "1.66-DMRECOMPILE"
           }
         },
         {
@@ -56,13 +56,13 @@
       ],
       "files": [
         {
-          "name": "bc-mail-1.65-DMRECOMPILE.jar",
-          "url": "bc-mail-1.65-DMRECOMPILE.jar",
-          "size": 121858,
-          "sha512": "9a0a6c5a333d48b6dfaa90c10da13bd7653c28ef0e51ee99d05f86df789cec02517393f7d9085dd4a11acb90fd01226029cd4e2462d49d322ff6095a42ad022b",
-          "sha256": "1399ad95242a1dac52a39dc0b818a941ca1b3584d2b18e94f22dfce9a1aa19da",
-          "sha1": "1ac368b14dda5f8810a835ab211bd5c2b4aefbd5",
-          "md5": "755d62b33f8505b7c23f51a4e54e9e00"
+          "name": "bc-mail-1.66-DMRECOMPILE.jar",
+          "url": "bc-mail-1.66-DMRECOMPILE.jar",
+          "size": 122517,
+          "sha512": "6cf91f32aa7b247a10724e50d822e14391c5ec68a8c9a37c3db0e1ead9e861b96d681cc34baa972d8ba2f42870e708d847653ca241a1b362b9087007f413edc2",
+          "sha256": "148c427844a03cb5994d8f3aaf41b15ead6b697729aececd89b90ec602b6764b",
+          "sha1": "181f025184b5be66a72fb08abdec50f73d0f5382",
+          "md5": "f4aa2edf60b59439990e7eea1021a098"
         }
       ]
     },
@@ -71,7 +71,7 @@
       "attributes": {
         "org.gradle.category": "library",
         "org.gradle.dependency.bundling": "external",
-        "org.gradle.jvm.version": 7,
+        "org.gradle.jvm.version": 8,
         "org.gradle.libraryelements": "jar",
         "org.gradle.usage": "java-runtime"
       },
@@ -80,21 +80,21 @@
           "group": "org.bouncycastle",
           "module": "bc-core",
           "version": {
-            "requires": "1.65-DMRECOMPILE"
+            "requires": "1.66-DMRECOMPILE"
           }
         },
         {
           "group": "org.bouncycastle",
           "module": "bc-pkix",
           "version": {
-            "requires": "1.65-DMRECOMPILE"
+            "requires": "1.66-DMRECOMPILE"
           }
         },
         {
           "group": "org.bouncycastle",
           "module": "bc-prov",
           "version": {
-            "requires": "1.65-DMRECOMPILE"
+            "requires": "1.66-DMRECOMPILE"
           }
         },
         {
@@ -107,13 +107,13 @@
       ],
       "files": [
         {
-          "name": "bc-mail-1.65-DMRECOMPILE.jar",
-          "url": "bc-mail-1.65-DMRECOMPILE.jar",
-          "size": 121858,
-          "sha512": "9a0a6c5a333d48b6dfaa90c10da13bd7653c28ef0e51ee99d05f86df789cec02517393f7d9085dd4a11acb90fd01226029cd4e2462d49d322ff6095a42ad022b",
-          "sha256": "1399ad95242a1dac52a39dc0b818a941ca1b3584d2b18e94f22dfce9a1aa19da",
-          "sha1": "1ac368b14dda5f8810a835ab211bd5c2b4aefbd5",
-          "md5": "755d62b33f8505b7c23f51a4e54e9e00"
+          "name": "bc-mail-1.66-DMRECOMPILE.jar",
+          "url": "bc-mail-1.66-DMRECOMPILE.jar",
+          "size": 122517,
+          "sha512": "6cf91f32aa7b247a10724e50d822e14391c5ec68a8c9a37c3db0e1ead9e861b96d681cc34baa972d8ba2f42870e708d847653ca241a1b362b9087007f413edc2",
+          "sha256": "148c427844a03cb5994d8f3aaf41b15ead6b697729aececd89b90ec602b6764b",
+          "sha1": "181f025184b5be66a72fb08abdec50f73d0f5382",
+          "md5": "f4aa2edf60b59439990e7eea1021a098"
         }
       ]
     }

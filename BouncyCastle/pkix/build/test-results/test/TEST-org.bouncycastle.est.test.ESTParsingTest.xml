@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.est.test.ESTParsingTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2020-06-02T09:05:03" hostname="Garage" time="0.031">
+<testsuite name="org.bouncycastle.est.test.ESTParsingTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2020-07-09T13:53:39" hostname="Garage" time="0.037">
   <properties/>
-  <testcase name="testParsingCacertsResponse" classname="org.bouncycastle.est.test.ESTParsingTest" time="0.027"/>
-  <testcase name="testParsingSimpleEnrolRequest" classname="org.bouncycastle.est.test.ESTParsingTest" time="0.001"/>
+  <testcase name="testParsingCacertsResponse" classname="org.bouncycastle.est.test.ESTParsingTest" time="0.026"/>
+  <testcase name="testParsingSimpleEnrolRequest" classname="org.bouncycastle.est.test.ESTParsingTest" time="0.008"/>
   <testcase name="testParsingCsrattrs1" classname="org.bouncycastle.est.test.ESTParsingTest" time="0.001"/>
   <testcase name="testParsingCsrattrs2" classname="org.bouncycastle.est.test.ESTParsingTest" time="0.0"/>
   <testcase name="testParsingSimpleEnrolResponse" classname="org.bouncycastle.est.test.ESTParsingTest" time="0.001"/>

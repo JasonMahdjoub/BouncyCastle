@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.cert.test.ConverterTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-06-02T09:05:12" hostname="Garage" time="0.001">
+<testsuite name="org.bouncycastle.cert.test.ConverterTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-07-09T13:53:47" hostname="Garage" time="0.001">
   <properties/>
   <testcase name="testCertificateSelectorConversion" classname="org.bouncycastle.cert.test.ConverterTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>

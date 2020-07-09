@@ -5,6 +5,7 @@ import org.bouncycastle.bccrypto.DataLengthException;
 import org.bouncycastle.bccrypto.Mac;
 import org.bouncycastle.bccrypto.Xof;
 import org.bouncycastle.bccrypto.digests.CSHAKEDigest;
+import org.bouncycastle.bccrypto.digests.XofUtils;
 import org.bouncycastle.bccrypto.params.KeyParameter;
 import org.bouncycastle.bcutil.Arrays;
 import org.bouncycastle.bcutil.Strings;
@@ -54,7 +55,7 @@ public class KMAC
 
     public String getAlgorithmName()
     {
-        return "KMACwith" + cshake.getAlgorithmName();
+        return "KMAC" + cshake.getAlgorithmName().substring(6);
     }
 
     public int getByteLength()
@@ -104,7 +105,7 @@ public class KMAC
                 throw new IllegalStateException("KMAC not initialized");
             }
 
-            byte[] encOut = rightEncode(getMacSize() * 8);
+            byte[] encOut = XofUtils.rightEncode(getMacSize() * 8);
 
             cshake.update(encOut, 0, encOut.length);
         }
@@ -125,7 +126,7 @@ public class KMAC
                 throw new IllegalStateException("KMAC not initialized");
             }
 
-            byte[] encOut = rightEncode(outLen * 8);
+            byte[] encOut = XofUtils.rightEncode(outLen * 8);
 
             cshake.update(encOut, 0, encOut.length);
         }
@@ -146,7 +147,7 @@ public class KMAC
                 throw new IllegalStateException("KMAC not initialized");
             }
 
-            byte[] encOut = rightEncode(0);
+            byte[] encOut = XofUtils.rightEncode(0);
 
             cshake.update(encOut, 0, encOut.length);
 
@@ -177,7 +178,7 @@ public class KMAC
 
     private void bytePad(byte[] X, int w)
     {
-        byte[] bytes = leftEncode(w);
+        byte[] bytes = XofUtils.leftEncode(w);
         update(bytes, 0, bytes.length);
         byte[] encX = encode(X);
         update(encX, 0, encX.length);
@@ -198,50 +199,6 @@ public class KMAC
 
     private static byte[] encode(byte[] X)
     {
-        return Arrays.concatenate(leftEncode(X.length * 8), X);
-    }
-    
-    private static byte[] leftEncode(long strLen)
-    {
-        byte n = 1;
-
-        long v = strLen;
-        while ((v >>= 8) != 0)
-        {
-            n++;
-        }
-
-        byte[] b = new byte[n + 1];
-
-        b[0] = n;
-
-        for (int i = 1; i <= n; i++)
-        {
-            b[i] = (byte)(strLen >> (8 * (n - i)));
-        }
-
-        return b;
-    }
-
-    private static byte[] rightEncode(long strLen)
-    {
-        byte n = 1;
-
-        long v = strLen;
-        while ((v >>= 8) != 0)
-        {
-            n++;
-        }
-
-        byte[] b = new byte[n + 1];
-
-        b[n] = n;
-
-        for (int i = 0; i < n; i++)
-        {
-            b[n - i - 1] = (byte)(strLen >> (8 * (n - i)));
-        }
-
-        return b;
+        return Arrays.concatenate(XofUtils.leftEncode(X.length * 8), X);
     }
 }

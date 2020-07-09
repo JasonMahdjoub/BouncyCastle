@@ -11,17 +11,18 @@ import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.bouncycastle.bcasn1.ASN1Encoding;
+import org.bouncycastle.bcasn1.x500.X500Name;
 import org.bouncycastle.jsse.BCSNIHostName;
 import org.bouncycastle.jsse.BCSNIServerName;
-import org.bouncycastle.jsse.java.security.BCAlgorithmConstraints;
 import org.bouncycastle.tls.AlertDescription;
 import org.bouncycastle.tls.AlertLevel;
 import org.bouncycastle.tls.CertificateRequest;
-import org.bouncycastle.tls.CertificateStatus;
 import org.bouncycastle.tls.CertificateStatusRequest;
+import org.bouncycastle.tls.CertificateStatusRequestItemV2;
 import org.bouncycastle.tls.CertificateStatusType;
 import org.bouncycastle.tls.DefaultTlsClient;
+import org.bouncycastle.tls.IdentifierType;
+import org.bouncycastle.tls.OCSPStatusRequest;
 import org.bouncycastle.tls.ProtocolName;
 import org.bouncycastle.tls.ProtocolVersion;
 import org.bouncycastle.tls.SecurityParameters;
@@ -35,6 +36,7 @@ import org.bouncycastle.tls.TlsFatalAlert;
 import org.bouncycastle.tls.TlsServerCertificate;
 import org.bouncycastle.tls.TlsSession;
 import org.bouncycastle.tls.TlsUtils;
+import org.bouncycastle.tls.TrustedAuthority;
 import org.bouncycastle.tls.crypto.impl.jcajce.JcaTlsCrypto;
 import org.bouncycastle.bcutil.Arrays;
 import org.bouncycastle.bcutil.IPAddress;
@@ -49,6 +51,9 @@ class ProvTlsClient
     private static final boolean provEnableSNIExtension = PropertyUtils.getBooleanSystemProperty("jsse.enableSNIExtension", true);
     private static final boolean provClientEnableStatusRequest = PropertyUtils.getBooleanSystemProperty(
         "jdk.tls.client.enableStatusRequestExtension", true);
+
+    private static final boolean provClientEnableTrustedCAKeys = PropertyUtils
+        .getBooleanSystemProperty("org.bouncycastle.jsse.client.enableTrustedCAKeysExtension", false);
 
     protected final ProvTlsManager manager;
     protected final ProvSSLParameters sslParameters;
@@ -66,9 +71,16 @@ class ProvTlsClient
     }
 
     @Override
-    protected Vector<ProtocolName> getProtocolNames()
+    protected Vector<X500Name> getCertificateAuthorities()
     {
-        return JsseUtils.getProtocolNames(sslParameters.getApplicationProtocols());
+        /*
+         * TODO[tls13] It appears SunJSSE will add a system property for this (default disabled?),
+         * perhaps "jdk.tls[.client/server].enableCAExtension" or similar.
+         * 
+         * TODO[tls13] Avoid duplication b/w this method and getTrustedCAIndication.
+         */
+//        return JsseUtils.getCertificateAuthorities(manager.getContextData().getX509TrustManager());
+        return null;
     }
 
     @Override
@@ -80,17 +92,42 @@ class ProvTlsClient
         }
 
         // JSSE API provides no way to specify responders or extensions, so use default request
-        return super.getCertificateStatusRequest();
+        OCSPStatusRequest ocspStatusRequest = new OCSPStatusRequest(null, null);
+
+        return new CertificateStatusRequest(CertificateStatusType.ocsp, ocspStatusRequest);
+    }
+
+    @Override
+    protected Vector<CertificateStatusRequestItemV2> getMultiCertStatusRequest()
+    {
+        if (!provClientEnableStatusRequest)
+        {
+            return null;
+        }
+
+        // JSSE API provides no way to specify responders or extensions, so use default request
+        OCSPStatusRequest ocspStatusRequest = new OCSPStatusRequest(null, null);
+
+        Vector<CertificateStatusRequestItemV2> result = new Vector<CertificateStatusRequestItemV2>(2);
+        result.add(new CertificateStatusRequestItemV2(CertificateStatusType.ocsp_multi, ocspStatusRequest));
+        result.add(new CertificateStatusRequestItemV2(CertificateStatusType.ocsp, ocspStatusRequest));
+        return result;
+    }
+
+    @Override
+    protected Vector<ProtocolName> getProtocolNames()
+    {
+        return JsseUtils.getProtocolNames(sslParameters.getApplicationProtocols());
     }
 
     @Override
     protected Vector<Integer> getSupportedGroups(@SuppressWarnings("rawtypes") Vector namedGroupRolesRaw)
     {
-        @SuppressWarnings("unchecked")
-        Vector<Integer> namedGroupRoles = namedGroupRolesRaw;
+        // NOTE: Ignore roles; BCJSSE determines supported groups BEFORE signature schemes and cipher suites  
+//        @SuppressWarnings("unchecked")
+//        Vector<Integer> namedGroupRoles = namedGroupRolesRaw;
 
-        return SupportedGroups.getClientSupportedGroups(getCrypto(), manager.getContextData().getContext().isFips(),
-            namedGroupRoles);
+        return NamedGroupInfo.getSupportedGroupsLocal(jsseSecurityParameters.namedGroups);
     }
 
     @Override
@@ -145,20 +182,25 @@ class ProvTlsClient
     protected Vector<SignatureAndHashAlgorithm> getSupportedSignatureAlgorithms()
     {
         ContextData contextData = manager.getContextData();
+        ProtocolVersion[] activeProtocolVersions = getProtocolVersions();
 
-        List<SignatureSchemeInfo> signatureSchemes = contextData.getActiveSignatureSchemes(sslParameters,
-            getProtocolVersions());
+        List<SignatureSchemeInfo> signatureSchemes = contextData.getActiveCertsSignatureSchemes(false, sslParameters,
+            activeProtocolVersions, jsseSecurityParameters.namedGroups);
 
-        // TODO[tls13] Legacy schemes (cert-only for TLS 1.3) complicate this 
         jsseSecurityParameters.localSigSchemes = signatureSchemes;
         jsseSecurityParameters.localSigSchemesCert = signatureSchemes;
 
-        return contextData.getSignatureAndHashAlgorithms(signatureSchemes);
+        return SignatureSchemeInfo.getSignatureAndHashAlgorithms(jsseSecurityParameters.localSigSchemes);
     }
 
     @Override
     protected Vector<SignatureAndHashAlgorithm> getSupportedSignatureAlgorithmsCert()
     {
+//        if (jsseSecurityParameters.localSigSchemes != jsseSecurityParameters.localSigSchemesCert)
+//        {
+//            return SignatureSchemeInfo.getSignatureAndHashAlgorithms(jsseSecurityParameters.localSigSchemesCert);
+//        }
+
         return null;
     }
 
@@ -166,6 +208,28 @@ class ProvTlsClient
     protected ProtocolVersion[] getSupportedVersions()
     {
         return manager.getContextData().getContext().getActiveProtocolVersions(sslParameters);
+    }
+
+    @Override
+    protected Vector<TrustedAuthority> getTrustedCAIndication()
+    {
+        if (provClientEnableTrustedCAKeys)
+        {
+            Vector<X500Name> certificateAuthorities = JsseUtils
+                .getCertificateAuthorities(manager.getContextData().getX509TrustManager());
+
+            if (null != certificateAuthorities)
+            {
+                Vector<TrustedAuthority> trustedCAKeys = new Vector<TrustedAuthority>(certificateAuthorities.size());
+                for (X500Name certificateAuthority : certificateAuthorities)
+                {
+                    trustedCAKeys.add(new TrustedAuthority(IdentifierType.x509_name, certificateAuthority));
+                }
+                return trustedCAKeys;
+            }
+        }
+
+        return null;
     }
 
     @Override
@@ -193,6 +257,8 @@ class ProvTlsClient
             {
                 final ContextData contextData = manager.getContextData();
                 final SecurityParameters securityParameters = context.getSecurityParametersHandshake();
+                final ProtocolVersion negotiatedVersion = securityParameters.getNegotiatedVersion();
+                final boolean isTLSv13 = TlsUtils.isTLSv13(negotiatedVersion);
 
                 // Setup the peer supported signature schemes  
                 {
@@ -203,7 +269,11 @@ class ProvTlsClient
                     Vector<SignatureAndHashAlgorithm> serverSigAlgsCert = (Vector<SignatureAndHashAlgorithm>)
                         securityParameters.getServerSigAlgsCert();
 
-                    // TODO[tls13] Legacy schemes (cert-only for TLS 1.3) complicate these conversions 
+                    /*
+                     * TODO[tls13] Legacy schemes (cert-only for TLS 1.3) complicate these conversions. Consider which
+                     * (if any) of these should be constrained by locally enabled schemes (especially once
+                     * jdk.tls.signatureSchemes support added).
+                     */
                     jsseSecurityParameters.peerSigSchemes = contextData.getSignatureSchemes(serverSigAlgs);
                     jsseSecurityParameters.peerSigSchemesCert = (serverSigAlgs == serverSigAlgsCert)
                         ?   jsseSecurityParameters.peerSigSchemes
@@ -218,15 +288,30 @@ class ProvTlsClient
                 @SuppressWarnings("unchecked")
                 Principal[] issuers = JsseUtils.toX500Principals(certificateRequest.getCertificateAuthorities());
 
-                // TODO[tls13] Should be null from TLS 1.3
-                short[] certificateTypes = certificateRequest.getCertificateTypes();
+                byte[] certificateRequestContext = certificateRequest.getCertificateRequestContext();
+                if (isTLSv13 != (null != certificateRequestContext))
+                {
+                    throw new TlsFatalAlert(AlertDescription.internal_error);
+                }
 
-                if (!TlsUtils.isSignatureAlgorithmsExtensionAllowed(securityParameters.getNegotiatedVersion()))
+                short[] certificateTypes = certificateRequest.getCertificateTypes();
+                if (isTLSv13 != (null == certificateTypes))
+                {
+                    throw new TlsFatalAlert(AlertDescription.internal_error);
+                }
+
+                if (isTLSv13)
+                {
+                    return chooseClientCredentials13(issuers, certificateRequestContext);
+                }
+                else if (TlsUtils.isSignatureAlgorithmsExtensionAllowed(negotiatedVersion))
+                {
+                    return chooseClientCredentials12(issuers, certificateTypes);
+                }
+                else
                 {
                     return chooseClientCredentialsLegacy(issuers, certificateTypes);
                 }
-
-                return chooseClientCredentials(issuers, certificateTypes);
             }
 
             public void notifyServerCertificate(TlsServerCertificate serverCertificate) throws IOException
@@ -237,16 +322,14 @@ class ProvTlsClient
                     throw new TlsFatalAlert(AlertDescription.handshake_failure);
                 }
 
-                X509Certificate[] chain = JsseUtils.getX509CertificateChain(getCrypto(), serverCertificate.getCertificate());
-                int keyExchangeAlgorithm = context.getSecurityParametersHandshake().getKeyExchangeAlgorithm();
-                String authType = JsseUtils.getAuthTypeServer(keyExchangeAlgorithm);
+                X509Certificate[] chain = JsseUtils.getX509CertificateChain(getCrypto(),
+                    serverCertificate.getCertificate());
 
-                CertificateStatus certificateStatus = serverCertificate.getCertificateStatus();
-                if (null != certificateStatus && CertificateStatusType.ocsp == certificateStatus.getStatusType())
-                {
-                    jsseSecurityParameters.statusResponses = Collections.singletonList(
-                        certificateStatus.getOCSPResponse().getEncoded(ASN1Encoding.DER));
-                }
+                String authType = JsseUtils.getAuthTypeServer(
+                    context.getSecurityParametersHandshake().getKeyExchangeAlgorithm());
+
+                jsseSecurityParameters.statusResponses = JsseUtils.getStatusResponses(
+                    serverCertificate.getCertificateStatus());
 
                 manager.checkServerTrusted(chain, authType);
             }
@@ -322,6 +405,17 @@ class ProvTlsClient
 
             LOG.log(level, msg);
         }
+    }
+
+    @Override
+    public void notifyHandshakeBeginning() throws IOException
+    {
+        super.notifyHandshakeBeginning();
+
+        ContextData contextData = manager.getContextData();
+        ProtocolVersion[] activeProtocolVersions = getProtocolVersions();
+
+        jsseSecurityParameters.namedGroups = contextData.getNamedGroups(sslParameters, activeProtocolVersions);
     }
 
     @Override
@@ -449,7 +543,40 @@ class ProvTlsClient
         return JsseUtils.useExtendedMasterSecret();
     }
 
-    protected TlsCredentials chooseClientCredentials(Principal[] issuers, short[] certificateTypes)
+    protected TlsCredentials chooseClientCredentials13(Principal[] issuers, byte[] certificateRequestContext)
+        throws IOException
+    {
+        Set<String> keyManagerMissCache = new HashSet<String>();
+
+        for (SignatureSchemeInfo signatureSchemeInfo : jsseSecurityParameters.peerSigSchemes)
+        {
+            if (!signatureSchemeInfo.isSupported13() ||
+                !jsseSecurityParameters.localSigSchemes.contains(signatureSchemeInfo))
+            {
+                continue;
+            }
+
+            String keyType = JsseUtils.getKeyType(signatureSchemeInfo);
+            if (keyManagerMissCache.contains(keyType))
+            {
+                continue;
+            }
+
+            ProvX509Key x509Key = manager.chooseClientKey(new String[]{ keyType }, issuers);
+            if (null == x509Key)
+            {
+                keyManagerMissCache.add(keyType);
+                continue;
+            }
+
+            return JsseUtils.createCredentialedSigner13(context, getCrypto(), x509Key,
+                signatureSchemeInfo.getSignatureAndHashAlgorithm(), certificateRequestContext);
+        }
+
+        return null;
+    }
+
+    protected TlsCredentials chooseClientCredentials12(Principal[] issuers, short[] certificateTypes)
         throws IOException
     {
         /*
@@ -458,7 +585,6 @@ class ProvTlsClient
          * with some hash/signature algorithm pair in supported_signature_algorithms.
          */
 
-        BCAlgorithmConstraints algorithmConstraints = sslParameters.getAlgorithmConstraints();
         Set<String> keyManagerMissCache = new HashSet<String>();
 
         for (SignatureSchemeInfo signatureSchemeInfo : jsseSecurityParameters.peerSigSchemes)
@@ -469,17 +595,14 @@ class ProvTlsClient
                 continue;
             }
 
-            if (null != certificateTypes)
+            short signatureAlgorithm = signatureSchemeInfo.getSignatureAlgorithm();
+            short certificateType = SignatureAlgorithm.getClientCertificateType(signatureAlgorithm);
+            if (certificateType < 0 || !Arrays.contains(certificateTypes, certificateType))
             {
-                short signatureAlgorithm = signatureSchemeInfo.getSignatureAlgorithm();
-                short certificateType = SignatureAlgorithm.getClientCertificateType(signatureAlgorithm);
-                if (certificateType < 0 || !Arrays.contains(certificateTypes, certificateType))
-                {
-                    continue;
-                }
+                continue;
             }
 
-            if (!signatureSchemeInfo.isActive(algorithmConstraints))
+            if (!jsseSecurityParameters.localSigSchemes.contains(signatureSchemeInfo))
             {
                 continue;
             }
@@ -514,12 +637,6 @@ class ProvTlsClient
 
     protected String[] getKeyTypesLegacy(short[] certificateTypes) throws IOException
     {
-        if (null == certificateTypes || certificateTypes.length == 0)
-        {
-            // TODO[jsse] Or does this mean ANY type - or something else?
-            return null;
-        }
-
         String[] keyTypes = new String[certificateTypes.length];
         for (int i = 0; i < certificateTypes.length; ++i)
         {

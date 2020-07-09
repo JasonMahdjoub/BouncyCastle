@@ -14,7 +14,6 @@ import org.bouncycastle.bcpg.ArmoredInputStream;
 import org.bouncycastle.bcpg.HashAlgorithmTags;
 import org.bouncycastle.bcpg.PublicKeyAlgorithmTags;
 import org.bouncycastle.bcpg.SymmetricKeyAlgorithmTags;
-import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.generators.Ed25519KeyPairGenerator;
 import org.bouncycastle.bccrypto.generators.X25519KeyPairGenerator;
 import org.bouncycastle.bccrypto.params.Ed25519KeyGenerationParameters;
@@ -327,12 +326,12 @@ public class PGPEdDSATest
         char[] passPhrase = "Hello, world!".toCharArray();
 
         Ed25519KeyPairGenerator edKp = new Ed25519KeyPairGenerator();
-        edKp.init(new Ed25519KeyGenerationParameters(CryptoServicesRegistrar.getSecureRandom()));
+        edKp.init(new Ed25519KeyGenerationParameters(null));
 
         PGPKeyPair dsaKeyPair = new BcPGPKeyPair(PGPPublicKey.EDDSA, edKp.generateKeyPair(), new Date());
 
         X25519KeyPairGenerator dhKp = new X25519KeyPairGenerator();
-        dhKp.init(new X25519KeyGenerationParameters(CryptoServicesRegistrar.getSecureRandom()));
+        dhKp.init(new X25519KeyGenerationParameters(null));
 
         PGPKeyPair dhKeyPair = new BcPGPKeyPair(PGPPublicKey.ECDH, dhKp.generateKeyPair(), new Date());
 
@@ -418,6 +417,8 @@ public class PGPEdDSATest
         aIn = new ArmoredInputStream(new ByteArrayInputStream(Strings.toByteArray(edDSASecretKey)));
 
         PGPSecretKeyRing secRing = new PGPSecretKeyRing(aIn, new JcaKeyFingerprintCalculator());
+
+        isTrue(secRing.getSecretKey().isSigningKey());
 
         PGPSignatureGenerator pgpGen = new PGPSignatureGenerator(new JcaPGPContentSignerBuilder(PublicKeyAlgorithmTags.EDDSA, HashAlgorithmTags.SHA256));
 

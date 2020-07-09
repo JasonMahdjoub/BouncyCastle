@@ -3,6 +3,7 @@ package org.bouncycastle.bcjcajce.provider.asymmetric.edec;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.security.PrivateKey;
 
 import org.bouncycastle.bcasn1.ASN1Encodable;
 import org.bouncycastle.bcasn1.ASN1OctetString;
@@ -16,13 +17,14 @@ import org.bouncycastle.bccrypto.util.PrivateKeyInfoFactory;
 import org.bouncycastle.bcjcajce.interfaces.EdDSAPrivateKey;
 import org.bouncycastle.bcjcajce.interfaces.EdDSAPublicKey;
 import org.bouncycastle.bcutil.Arrays;
+import org.bouncycastle.bcutil.Properties;
 
 public class BCEdDSAPrivateKey
     implements EdDSAPrivateKey
 {
     static final long serialVersionUID = 1L;
     
-    private transient AsymmetricKeyParameter eddsaPrivateKey;
+    transient AsymmetricKeyParameter eddsaPrivateKey;
 
     private final boolean hasPublicKey;
     private final byte[] attributes;
@@ -74,7 +76,7 @@ public class BCEdDSAPrivateKey
             ASN1Set attrSet = ASN1Set.getInstance(attributes);
             PrivateKeyInfo privInfo = PrivateKeyInfoFactory.createPrivateKeyInfo(eddsaPrivateKey, attrSet);
 
-            if (hasPublicKey)
+            if (hasPublicKey && !Properties.isOverrideSet("org.bouncycastle.pkcs8.v1_info_only"))
             {
                 return privInfo.getEncoded();
             }
@@ -127,12 +129,12 @@ public class BCEdDSAPrivateKey
             return true;
         }
 
-        if (!(o instanceof BCEdDSAPrivateKey))
+        if (!(o instanceof PrivateKey))
         {
             return false;
         }
 
-        BCEdDSAPrivateKey other = (BCEdDSAPrivateKey)o;
+        PrivateKey other = (PrivateKey)o;
 
         return Arrays.areEqual(other.getEncoded(), this.getEncoded());
     }

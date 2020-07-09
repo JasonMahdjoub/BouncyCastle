@@ -3,6 +3,8 @@ module org.bouncycastle.provider
     requires java.sql;
     requires java.naming;
 
+    provides java.security.Provider with org.bouncycastle.jce.provider.BouncyCastleProvider,org.bouncycastle.pqc.jcajce.provider.BouncyCastlePQCProvider;
+
     opens org.bouncycastle.bcjcajce.provider.asymmetric.edec to java.base;
     opens org.bouncycastle.pqc.jcajce.provider.qtesla to java.base;
     opens org.bouncycastle.pqc.jcajce.provider.lms to java.base;
@@ -109,6 +111,7 @@ module org.bouncycastle.provider
     exports org.bouncycastle.bcjcajce.provider.symmetric;
     exports org.bouncycastle.bcjcajce.provider.symmetric.util;
     exports org.bouncycastle.bcjcajce.provider.util;
+    exports org.bouncycastle.bcjcajce.interfaces;
     exports org.bouncycastle.bcjcajce.spec;
     exports org.bouncycastle.bcjcajce.util;
     exports org.bouncycastle.jce;

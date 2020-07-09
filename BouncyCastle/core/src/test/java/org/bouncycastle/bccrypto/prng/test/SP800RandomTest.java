@@ -3,6 +3,10 @@ package org.bouncycastle.bccrypto.prng.test;
 import java.security.SecureRandom;
 
 import org.bouncycastle.bccrypto.digests.SHA1Digest;
+import org.bouncycastle.bccrypto.digests.SHA256Digest;
+import org.bouncycastle.bccrypto.digests.SHA384Digest;
+import org.bouncycastle.bccrypto.digests.SHA512Digest;
+import org.bouncycastle.bccrypto.engines.AESEngine;
 import org.bouncycastle.bccrypto.engines.DESedeEngine;
 import org.bouncycastle.bccrypto.macs.HMac;
 import org.bouncycastle.bccrypto.prng.BasicEntropySourceProvider;
@@ -28,6 +32,7 @@ public class SP800RandomTest
                             true,
                             "2021222324",
                             80,
+                            "HASH-DRBG-SHA1",
                             new String[]
                                 {
                                     "532CA1165DCFF21C55592687639884AF4BC4B057DF8F41DE653AB44E2ADEC7C9303E75ABE277EDBF",
@@ -43,6 +48,7 @@ public class SP800RandomTest
                             false,
                             "2021222324",
                             80,
+                            "HASH-DRBG-SHA1",
                             new String[]
                                 {
                                     "AB438BD3B01A0AF85CFEE29F7D7B71621C4908B909124D430E7B406FB1086EA994C582E0D656D989",
@@ -80,6 +86,8 @@ public class SP800RandomTest
         {
             fail(index + " SP800 Hash SecureRandom produced incorrect result (2)");
         }
+
+        isTrue(random.getAlgorithm(), tv.getName().equals(random.getAlgorithm()));
     }
 
     private void testHMACRandom()
@@ -90,6 +98,7 @@ public class SP800RandomTest
             true,
             "2021222324",
             80,
+            "HMAC-DRBG-SHA1",
             new String[]
                 {
                     "6C37FDD729AA40F80BC6AB08CA7CC649794F6998B57081E4220F22C5C283E2C91B8E305AB869C625",
@@ -105,6 +114,7 @@ public class SP800RandomTest
                 false,
                 "2021222324",
                 80,
+                "HMAC-DRBG-SHA1",
                 new String[]
                     {
                         "5A7D3B449F481CB38DF79AD2B1FCC01E57F8135E8C0B22CD0630BFB0127FB5408C8EFC17A929896E",
@@ -140,6 +150,8 @@ public class SP800RandomTest
         {
             fail("SP800 HMAC SecureRandom produced incorrect result (2)");
         }
+
+        isTrue(random.getAlgorithm(), tv.getName().equals(random.getAlgorithm()));
     }
 
     private void testCTRRandom()
@@ -150,6 +162,7 @@ public class SP800RandomTest
                                     false,
                                     "20212223242526",
                                     112,
+                                    "CTR-DRBG-3KEY-TDES",
                                     new String[]
                                         {
                                             "ABC88224514D0316EA3D48AEE3C9A2B4",
@@ -165,6 +178,7 @@ public class SP800RandomTest
                     true,
                     "20212223242526",
                     112,
+                    "CTR-DRBG-3KEY-TDES",
                     new String[]
                         {
                             "64983055D014550B39DE699E43130B64",
@@ -202,6 +216,8 @@ public class SP800RandomTest
         {
             fail("SP800 CTR SecureRandom produced incorrect result (2)");
         }
+
+        isTrue(random.getAlgorithm(), tv.getName().equals(random.getAlgorithm()));
     }
 
     private void testGenerateSeed()
@@ -232,6 +248,29 @@ public class SP800RandomTest
         }
     }
 
+    private void testNames()
+    {
+        SP800SecureRandomBuilder rBuild = new SP800SecureRandomBuilder(new Bit232EntropyProvider());
+
+        rBuild.setPersonalizationString(Hex.decode("404142434445464748494A4B4C4D4E4F505152535455565758595A5B5C"));
+        rBuild.setSecurityStrength(112);
+        rBuild.setEntropyBitsRequired(232);
+
+        isEquals("CTR-DRBG-3KEY-TDES", rBuild.buildCTR(new DESedeEngine(), 168, Hex.decode("20212223242526"), false).getAlgorithm());
+
+        isEquals("CTR-DRBG-AES128", rBuild.buildCTR(new AESEngine(), 128, Hex.decode("20212223242526"), false).getAlgorithm());
+        isEquals("CTR-DRBG-AES192", rBuild.buildCTR(new AESEngine(), 192, Hex.decode("20212223242526"), false).getAlgorithm());
+        isEquals("CTR-DRBG-AES256", rBuild.buildCTR(new AESEngine(), 256, Hex.decode("20212223242526"), false).getAlgorithm());
+
+        isEquals("HASH-DRBG-SHA256", rBuild.buildHash(new SHA256Digest(), Hex.decode("20212223242526"), false).getAlgorithm());
+        isEquals("HASH-DRBG-SHA384", rBuild.buildHash(new SHA384Digest(), Hex.decode("20212223242526"), false).getAlgorithm());
+        isEquals("HASH-DRBG-SHA512", rBuild.buildHash(new SHA512Digest(), Hex.decode("20212223242526"), false).getAlgorithm());
+
+        isEquals("HMAC-DRBG-SHA256", rBuild.buildHMAC(new HMac(new SHA256Digest()), Hex.decode("20212223242526"), false).getAlgorithm());
+        isEquals("HMAC-DRBG-SHA384", rBuild.buildHMAC(new HMac(new SHA384Digest()), Hex.decode("20212223242526"), false).getAlgorithm());
+        isEquals("HMAC-DRBG-SHA512", rBuild.buildHMAC(new HMac(new SHA512Digest()), Hex.decode("20212223242526"), false).getAlgorithm());
+    }
+
     public void performTest()
         throws Exception
     {
@@ -239,6 +278,7 @@ public class SP800RandomTest
         testHMACRandom();
         testCTRRandom();
         testGenerateSeed();
+        testNames();
     }
 
     public static void main(String[] args)

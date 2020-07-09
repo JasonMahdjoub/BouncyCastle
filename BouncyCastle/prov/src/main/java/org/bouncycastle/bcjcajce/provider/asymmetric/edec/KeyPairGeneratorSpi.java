@@ -10,7 +10,6 @@ import java.security.spec.ECGenParameterSpec;
 import org.bouncycastle.bcasn1.edec.EdECObjectIdentifiers;
 import org.bouncycastle.bccrypto.AsymmetricCipherKeyPair;
 import org.bouncycastle.bccrypto.AsymmetricCipherKeyPairGenerator;
-import org.bouncycastle.bccrypto.CryptoServicesRegistrar;
 import org.bouncycastle.bccrypto.generators.Ed25519KeyPairGenerator;
 import org.bouncycastle.bccrypto.generators.Ed448KeyPairGenerator;
 import org.bouncycastle.bccrypto.generators.X25519KeyPairGenerator;
@@ -18,7 +17,9 @@ import org.bouncycastle.bccrypto.generators.X448KeyPairGenerator;
 import org.bouncycastle.bccrypto.params.Ed25519KeyGenerationParameters;
 import org.bouncycastle.bccrypto.params.Ed448KeyGenerationParameters;
 import org.bouncycastle.bccrypto.params.X25519KeyGenerationParameters;
+import org.bouncycastle.bccrypto.params.X25519PrivateKeyParameters;
 import org.bouncycastle.bccrypto.params.X448KeyGenerationParameters;
+import org.bouncycastle.bccrypto.params.X448PrivateKeyParameters;
 import org.bouncycastle.bcjcajce.provider.asymmetric.util.ECUtil;
 import org.bouncycastle.bcjcajce.spec.EdDSAParameterSpec;
 import org.bouncycastle.bcjcajce.spec.XDHParameterSpec;
@@ -160,7 +161,6 @@ public class KeyPairGeneratorSpi
             {
                 throw new InvalidAlgorithmParameterException("parameterSpec for wrong curve type");
             }
-            this.algorithm = algorithm;
         }
     }
 
@@ -207,29 +207,20 @@ public class KeyPairGeneratorSpi
 
         AsymmetricCipherKeyPair kp = generator.generateKeyPair();
 
-        switch (algorithm)
+        if (kp.getPrivate() instanceof X448PrivateKeyParameters
+           || kp.getPrivate() instanceof X25519PrivateKeyParameters)
         {
-        case Ed448:
-            return new KeyPair(new BCEdDSAPublicKey(kp.getPublic()), new BCEdDSAPrivateKey(kp.getPrivate()));
-        case Ed25519:
-            return new KeyPair(new BCEdDSAPublicKey(kp.getPublic()), new BCEdDSAPrivateKey(kp.getPrivate()));
-        case X448:
-            return new KeyPair(new BCXDHPublicKey(kp.getPublic()), new BCXDHPrivateKey(kp.getPrivate()));
-        case X25519:
             return new KeyPair(new BCXDHPublicKey(kp.getPublic()), new BCXDHPrivateKey(kp.getPrivate()));
         }
-
-        throw new IllegalStateException("generator not correctly initialized");
+        else
+        {
+            return new KeyPair(new BCEdDSAPublicKey(kp.getPublic()), new BCEdDSAPrivateKey(kp.getPrivate()));
+        }
     }
 
     private void setupGenerator(int algorithm)
     {
         initialised = true;
-
-        if (secureRandom == null)
-        {
-            secureRandom = CryptoServicesRegistrar.getSecureRandom();
-        }
 
         switch (algorithm)
         {

@@ -148,14 +148,12 @@ public abstract class TlsProtocol
     protected SessionParameters sessionParameters = null;
     protected TlsSecret sessionMasterSecret = null;
 
-    protected int[] offeredCipherSuites = null;
     protected Hashtable clientExtensions = null;
     protected Hashtable serverExtensions = null;
 
     protected short connection_state = CS_START;
     protected boolean resumedSession = false;
     protected boolean receivedChangeCipherSpec = false;
-    protected boolean allowCertificateStatus = false;
     protected boolean expectSessionTicket = false;
 
     protected boolean blocking;
@@ -431,13 +429,11 @@ public abstract class TlsProtocol
         this.sessionParameters = null;
         this.sessionMasterSecret = null;
 
-        this.offeredCipherSuites = null;
         this.clientExtensions = null;
         this.serverExtensions = null;
 
         this.resumedSession = false;
         this.receivedChangeCipherSpec = false;
-        this.allowCertificateStatus = false;
         this.expectSessionTicket = false;
     }
 
@@ -450,6 +446,14 @@ public abstract class TlsProtocol
             this.connection_state = CS_END;
 
             AbstractTlsContext context = getContextAdmin();
+            SecurityParameters securityParameters = context.getSecurityParametersHandshake();
+
+            // Sanity check that Finished messages were exchanged
+            if (null == securityParameters.getLocalVerifyData()
+                || null == securityParameters.getPeerVerifyData())
+            {
+                throw new TlsFatalAlert(AlertDescription.internal_error);
+            }
 
             // TODO Prefer to set to null, but would need guards elsewhere
             this.handshakeHash = new DeferredHash(context);
@@ -475,8 +479,6 @@ public abstract class TlsProtocol
 
             if (this.sessionParameters == null)
             {
-                SecurityParameters securityParameters = context.getSecurityParametersHandshake();
-
                 this.sessionMasterSecret = securityParameters.getMasterSecret();
 
                 this.sessionParameters = new SessionParameters.Builder()
@@ -604,6 +606,12 @@ public abstract class TlsProtocol
                  * TODO[tls13] No CCS required, but accept one for compatibility purposes. Search
                  * RFC 8446 for "change_cipher_spec" for details.
                  */
+                ProtocolVersion negotiatedVersion = getContext().getServerVersion();
+                if (null != negotiatedVersion && TlsUtils.isTLSv13(negotiatedVersion))
+                {
+                    break;
+                }
+
                 checkReceivedChangeCipherSpec(HandshakeType.finished == type);
                 break;
             }
@@ -679,6 +687,16 @@ public abstract class TlsProtocol
     private void processChangeCipherSpec(byte[] buf, int off, int len)
         throws IOException
     {
+        /*
+         * TODO[tls13] No CCS required, but accept one for compatibility purposes. Search
+         * RFC 8446 for "change_cipher_spec" for details.
+         */
+        ProtocolVersion negotiatedVersion = getContext().getServerVersion();
+        if (null != negotiatedVersion && TlsUtils.isTLSv13(negotiatedVersion))
+        {
+            return;
+        }
+
         for (int i = 0; i < len; ++i)
         {
             short message = TlsUtils.readUint8(buf, off + i);
@@ -1351,9 +1369,9 @@ public abstract class TlsProtocol
 
         securityParameters.peerVerifyData = expected_verify_data;
 
-        if (isServerContext ^ resumedSession)
+        if (!resumedSession || securityParameters.isExtendedMasterSecret())
         {
-            if (!resumedSession || securityParameters.isExtendedMasterSecret())
+            if (null == securityParameters.getLocalVerifyData())
             {
                 securityParameters.tlsUnique = expected_verify_data;
             }
@@ -1417,6 +1435,35 @@ public abstract class TlsProtocol
         securityParameters.localCertificate = certificate;
     }
 
+    protected void send13CertificateMessage(Certificate certificate, OutputStream endPointHash) throws IOException
+    {
+        if (null == certificate)
+        {
+            throw new TlsFatalAlert(AlertDescription.internal_error);
+        }
+
+        TlsContext context = getContext();
+        SecurityParameters securityParameters = context.getSecurityParametersHandshake();
+        if (null != securityParameters.getLocalCertificate())
+        {
+            throw new TlsFatalAlert(AlertDescription.internal_error);
+        }
+
+        HandshakeMessageOutput message = new HandshakeMessageOutput(HandshakeType.certificate);
+        certificate.encode(context, message, endPointHash);
+        message.send(this);
+
+        securityParameters.localCertificate = certificate;
+    }
+
+    protected void send13CertificateVerifyMessage(DigitallySigned certificateVerify)
+        throws IOException
+    {
+        HandshakeMessageOutput message = new HandshakeMessageOutput(HandshakeType.certificate_verify);
+        certificateVerify.encode(message);
+        message.send(this);
+    }
+
     protected void sendChangeCipherSpecMessage()
         throws IOException
     {
@@ -1436,12 +1483,31 @@ public abstract class TlsProtocol
 
         securityParameters.localVerifyData = verify_data;
 
-        if (!isServerContext ^ resumedSession)
+        if (!resumedSession || securityParameters.isExtendedMasterSecret())
         {
-            if (!resumedSession || securityParameters.isExtendedMasterSecret())
+            if (null == securityParameters.getPeerVerifyData())
             {
                 securityParameters.tlsUnique = verify_data;
             }
+        }
+
+        HandshakeMessageOutput.send(this, HandshakeType.finished, verify_data);
+    }
+
+    protected void send13FinishedMessage()
+        throws IOException
+    {
+        TlsContext context = getContext();
+        SecurityParameters securityParameters = context.getSecurityParametersHandshake();
+        boolean isServerContext = context.isServer();
+
+        byte[] verify_data = TlsUtils.calculateVerifyData(context, handshakeHash, isServerContext);
+
+        securityParameters.localVerifyData = verify_data;
+
+        if (null == securityParameters.getPeerVerifyData())
+        {
+            securityParameters.tlsUnique = verify_data;
         }
 
         HandshakeMessageOutput.send(this, HandshakeType.finished, verify_data);
@@ -1588,6 +1654,10 @@ public abstract class TlsProtocol
         return readExtensionsData(extBytes);
     }
 
+    /*
+     * TODO[tls13] Need a general mechanism for extensions contexts to enforce TLS 1.3 restrictions
+     * on which extensions can appear where (review all callers).
+     */
     protected static Hashtable readExtensionsData(byte[] extBytes)
         throws IOException
     {
@@ -1639,14 +1709,20 @@ public abstract class TlsProtocol
         return supplementalData;
     }
 
-    protected static void writeExtensions(OutputStream output, Hashtable extensions)
-        throws IOException
+    protected static void writeExtensions(OutputStream output, Hashtable extensions) throws IOException
     {
         if (null == extensions || extensions.isEmpty())
         {
             return;
         }
 
+        byte[] extBytes = writeExtensionsData(extensions);
+
+        TlsUtils.writeOpaque16(extBytes, output);
+    }
+
+    protected static byte[] writeExtensionsData(Hashtable extensions) throws IOException
+    {
         ByteArrayOutputStream buf = new ByteArrayOutputStream();
 
         /*
@@ -1656,9 +1732,7 @@ public abstract class TlsProtocol
         writeSelectedExtensions(buf, extensions, true);
         writeSelectedExtensions(buf, extensions, false);
 
-        byte[] extBytes = buf.toByteArray();
-
-        TlsUtils.writeOpaque16(extBytes, output);
+        return buf.toByteArray();
     }
 
     protected static void writeSelectedExtensions(OutputStream output, Hashtable extensions, boolean selectEmpty)
@@ -1698,277 +1772,5 @@ public abstract class TlsProtocol
         byte[] supp_data = buf.toByteArray();
 
         TlsUtils.writeOpaque24(supp_data, output);
-    }
-
-    protected static int getPRFAlgorithm(TlsContext context, int cipherSuite) throws IOException
-    {
-        ProtocolVersion negotiatedVersion = context.getSecurityParametersHandshake().getNegotiatedVersion();
-
-        final boolean isTLSv13 = TlsUtils.isTLSv13(negotiatedVersion);
-        final boolean isTLSv12 = !isTLSv13 && TlsUtils.isTLSv12(negotiatedVersion);
-        final boolean isSSL = negotiatedVersion.isSSL();
-
-        switch (cipherSuite)
-        {
-        case CipherSuite.TLS_AES_128_CCM_SHA256:
-        case CipherSuite.TLS_AES_128_CCM_8_SHA256:
-        case CipherSuite.TLS_AES_128_GCM_SHA256:
-        case CipherSuite.TLS_CHACHA20_POLY1305_SHA256:
-        {
-            if (isTLSv13)
-            {
-                return PRFAlgorithm.tls13_hkdf_sha256;
-            }
-            throw new TlsFatalAlert(AlertDescription.illegal_parameter);
-        }
-
-        case CipherSuite.TLS_AES_256_GCM_SHA384:
-        {
-            if (isTLSv13)
-            {
-                return PRFAlgorithm.tls13_hkdf_sha384;
-            }
-            throw new TlsFatalAlert(AlertDescription.illegal_parameter);
-        }
-
-        case CipherSuite.TLS_DH_anon_WITH_AES_128_CBC_SHA256:
-        case CipherSuite.TLS_DH_anon_WITH_AES_128_GCM_SHA256:
-        case CipherSuite.TLS_DH_anon_WITH_AES_256_CBC_SHA256:
-        case CipherSuite.TLS_DH_anon_WITH_ARIA_128_CBC_SHA256:
-        case CipherSuite.TLS_DH_anon_WITH_ARIA_128_GCM_SHA256:
-        case CipherSuite.TLS_DH_anon_WITH_CAMELLIA_128_CBC_SHA256:
-        case CipherSuite.TLS_DH_anon_WITH_CAMELLIA_128_GCM_SHA256:
-        case CipherSuite.TLS_DH_anon_WITH_CAMELLIA_256_CBC_SHA256:
-        case CipherSuite.TLS_DH_DSS_WITH_AES_128_CBC_SHA256:
-        case CipherSuite.TLS_DH_DSS_WITH_AES_128_GCM_SHA256:
-        case CipherSuite.TLS_DH_DSS_WITH_AES_256_CBC_SHA256:
-        case CipherSuite.TLS_DH_DSS_WITH_ARIA_128_CBC_SHA256:
-        case CipherSuite.TLS_DH_DSS_WITH_ARIA_128_GCM_SHA256:
-        case CipherSuite.TLS_DH_DSS_WITH_CAMELLIA_128_CBC_SHA256:
-        case CipherSuite.TLS_DH_DSS_WITH_CAMELLIA_128_GCM_SHA256:
-        case CipherSuite.TLS_DH_DSS_WITH_CAMELLIA_256_CBC_SHA256:
-        case CipherSuite.TLS_DH_RSA_WITH_AES_128_CBC_SHA256:
-        case CipherSuite.TLS_DH_RSA_WITH_AES_128_GCM_SHA256:
-        case CipherSuite.TLS_DH_RSA_WITH_AES_256_CBC_SHA256:
-        case CipherSuite.TLS_DH_RSA_WITH_ARIA_128_CBC_SHA256:
-        case CipherSuite.TLS_DH_RSA_WITH_ARIA_128_GCM_SHA256:
-        case CipherSuite.TLS_DH_RSA_WITH_CAMELLIA_128_CBC_SHA256:
-        case CipherSuite.TLS_DH_RSA_WITH_CAMELLIA_128_GCM_SHA256:
-        case CipherSuite.TLS_DH_RSA_WITH_CAMELLIA_256_CBC_SHA256:
-        case CipherSuite.TLS_DHE_DSS_WITH_AES_128_CBC_SHA256:
-        case CipherSuite.TLS_DHE_DSS_WITH_AES_128_GCM_SHA256:
-        case CipherSuite.TLS_DHE_DSS_WITH_AES_256_CBC_SHA256:
-        case CipherSuite.TLS_DHE_DSS_WITH_ARIA_128_CBC_SHA256:
-        case CipherSuite.TLS_DHE_DSS_WITH_ARIA_128_GCM_SHA256:
-        case CipherSuite.TLS_DHE_DSS_WITH_CAMELLIA_128_CBC_SHA256:
-        case CipherSuite.TLS_DHE_DSS_WITH_CAMELLIA_128_GCM_SHA256:
-        case CipherSuite.TLS_DHE_DSS_WITH_CAMELLIA_256_CBC_SHA256:
-        case CipherSuite.TLS_DHE_PSK_WITH_AES_128_CCM:
-        case CipherSuite.TLS_DHE_PSK_WITH_AES_128_GCM_SHA256:
-        case CipherSuite.TLS_DHE_PSK_WITH_ARIA_128_CBC_SHA256:
-        case CipherSuite.TLS_DHE_PSK_WITH_ARIA_128_GCM_SHA256:
-        case CipherSuite.TLS_DHE_PSK_WITH_AES_256_CCM:
-        case CipherSuite.TLS_DHE_PSK_WITH_CAMELLIA_128_GCM_SHA256:
-        case CipherSuite.TLS_DHE_PSK_WITH_CHACHA20_POLY1305_SHA256:
-        case CipherSuite.TLS_DHE_RSA_WITH_AES_128_CBC_SHA256:
-        case CipherSuite.TLS_DHE_RSA_WITH_AES_128_CCM:
-        case CipherSuite.TLS_DHE_RSA_WITH_AES_128_CCM_8:
-        case CipherSuite.TLS_DHE_RSA_WITH_AES_128_GCM_SHA256:
-        case CipherSuite.TLS_DHE_RSA_WITH_AES_256_CBC_SHA256:
-        case CipherSuite.TLS_DHE_RSA_WITH_AES_256_CCM:
-        case CipherSuite.TLS_DHE_RSA_WITH_AES_256_CCM_8:
-        case CipherSuite.TLS_DHE_RSA_WITH_ARIA_128_CBC_SHA256:
-        case CipherSuite.TLS_DHE_RSA_WITH_ARIA_128_GCM_SHA256:
-        case CipherSuite.TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA256:
-        case CipherSuite.TLS_DHE_RSA_WITH_CAMELLIA_128_GCM_SHA256:
-        case CipherSuite.TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA256:
-        case CipherSuite.TLS_DHE_RSA_WITH_CHACHA20_POLY1305_SHA256:
-        case CipherSuite.TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256:
-        case CipherSuite.TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256:
-        case CipherSuite.TLS_ECDH_ECDSA_WITH_ARIA_128_CBC_SHA256:
-        case CipherSuite.TLS_ECDH_ECDSA_WITH_ARIA_128_GCM_SHA256:
-        case CipherSuite.TLS_ECDH_ECDSA_WITH_CAMELLIA_128_CBC_SHA256:
-        case CipherSuite.TLS_ECDH_ECDSA_WITH_CAMELLIA_128_GCM_SHA256:
-        case CipherSuite.TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256:
-        case CipherSuite.TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256:
-        case CipherSuite.TLS_ECDH_RSA_WITH_ARIA_128_CBC_SHA256:
-        case CipherSuite.TLS_ECDH_RSA_WITH_ARIA_128_GCM_SHA256:
-        case CipherSuite.TLS_ECDH_RSA_WITH_CAMELLIA_128_CBC_SHA256:
-        case CipherSuite.TLS_ECDH_RSA_WITH_CAMELLIA_128_GCM_SHA256:
-        case CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:
-        case CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_128_CCM:
-        case CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_128_CCM_8:
-        case CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:
-        case CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_256_CCM:
-        case CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_256_CCM_8:
-        case CipherSuite.TLS_ECDHE_ECDSA_WITH_ARIA_128_CBC_SHA256:
-        case CipherSuite.TLS_ECDHE_ECDSA_WITH_ARIA_128_GCM_SHA256:
-        case CipherSuite.TLS_ECDHE_ECDSA_WITH_CAMELLIA_128_CBC_SHA256:
-        case CipherSuite.TLS_ECDHE_ECDSA_WITH_CAMELLIA_128_GCM_SHA256:
-        case CipherSuite.TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:
-        case CipherSuite.TLS_ECDHE_PSK_WITH_AES_128_CCM_8_SHA256:
-        case CipherSuite.TLS_ECDHE_PSK_WITH_AES_128_CCM_SHA256:
-        case CipherSuite.TLS_ECDHE_PSK_WITH_AES_128_GCM_SHA256:
-        case CipherSuite.TLS_ECDHE_PSK_WITH_ARIA_128_CBC_SHA256:
-        case CipherSuite.TLS_ECDHE_PSK_WITH_CHACHA20_POLY1305_SHA256:
-        case CipherSuite.TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256:
-        case CipherSuite.TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:
-        case CipherSuite.TLS_ECDHE_RSA_WITH_ARIA_128_CBC_SHA256:
-        case CipherSuite.TLS_ECDHE_RSA_WITH_ARIA_128_GCM_SHA256:
-        case CipherSuite.TLS_ECDHE_RSA_WITH_CAMELLIA_128_CBC_SHA256:
-        case CipherSuite.TLS_ECDHE_RSA_WITH_CAMELLIA_128_GCM_SHA256:
-        case CipherSuite.TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:
-        case CipherSuite.TLS_PSK_DHE_WITH_AES_128_CCM_8:
-        case CipherSuite.TLS_PSK_DHE_WITH_AES_256_CCM_8:
-        case CipherSuite.TLS_PSK_WITH_AES_128_CCM:
-        case CipherSuite.TLS_PSK_WITH_AES_128_CCM_8:
-        case CipherSuite.TLS_PSK_WITH_AES_128_GCM_SHA256:
-        case CipherSuite.TLS_PSK_WITH_CHACHA20_POLY1305_SHA256:
-        case CipherSuite.TLS_PSK_WITH_AES_256_CCM:
-        case CipherSuite.TLS_PSK_WITH_AES_256_CCM_8:
-        case CipherSuite.TLS_PSK_WITH_ARIA_128_CBC_SHA256:
-        case CipherSuite.TLS_PSK_WITH_ARIA_128_GCM_SHA256:
-        case CipherSuite.TLS_PSK_WITH_CAMELLIA_128_GCM_SHA256:
-        case CipherSuite.TLS_RSA_PSK_WITH_AES_128_GCM_SHA256:
-        case CipherSuite.TLS_RSA_PSK_WITH_ARIA_128_CBC_SHA256:
-        case CipherSuite.TLS_RSA_PSK_WITH_ARIA_128_GCM_SHA256:
-        case CipherSuite.TLS_RSA_PSK_WITH_CAMELLIA_128_GCM_SHA256:
-        case CipherSuite.TLS_RSA_PSK_WITH_CHACHA20_POLY1305_SHA256:
-        case CipherSuite.TLS_RSA_WITH_AES_128_CBC_SHA256:
-        case CipherSuite.TLS_RSA_WITH_AES_128_CCM:
-        case CipherSuite.TLS_RSA_WITH_AES_128_CCM_8:
-        case CipherSuite.TLS_RSA_WITH_AES_128_GCM_SHA256:
-        case CipherSuite.TLS_RSA_WITH_AES_256_CBC_SHA256:
-        case CipherSuite.TLS_RSA_WITH_AES_256_CCM:
-        case CipherSuite.TLS_RSA_WITH_AES_256_CCM_8:
-        case CipherSuite.TLS_RSA_WITH_ARIA_128_CBC_SHA256:
-        case CipherSuite.TLS_RSA_WITH_ARIA_128_GCM_SHA256:
-        case CipherSuite.TLS_RSA_WITH_CAMELLIA_128_CBC_SHA256:
-        case CipherSuite.TLS_RSA_WITH_CAMELLIA_128_GCM_SHA256:
-        case CipherSuite.TLS_RSA_WITH_CAMELLIA_256_CBC_SHA256:
-        case CipherSuite.TLS_RSA_WITH_NULL_SHA256:
-        {
-            if (isTLSv12)
-            {
-                return PRFAlgorithm.tls_prf_sha256;
-            }
-            throw new TlsFatalAlert(AlertDescription.illegal_parameter);
-        }
-
-        case CipherSuite.TLS_DH_anon_WITH_AES_256_GCM_SHA384:
-        case CipherSuite.TLS_DH_anon_WITH_ARIA_256_CBC_SHA384:
-        case CipherSuite.TLS_DH_anon_WITH_ARIA_256_GCM_SHA384:
-        case CipherSuite.TLS_DH_anon_WITH_CAMELLIA_256_GCM_SHA384:
-        case CipherSuite.TLS_DH_DSS_WITH_AES_256_GCM_SHA384:
-        case CipherSuite.TLS_DH_DSS_WITH_ARIA_256_CBC_SHA384:
-        case CipherSuite.TLS_DH_DSS_WITH_ARIA_256_GCM_SHA384:
-        case CipherSuite.TLS_DH_DSS_WITH_CAMELLIA_256_GCM_SHA384:
-        case CipherSuite.TLS_DH_RSA_WITH_AES_256_GCM_SHA384:
-        case CipherSuite.TLS_DH_RSA_WITH_ARIA_256_CBC_SHA384:
-        case CipherSuite.TLS_DH_RSA_WITH_ARIA_256_GCM_SHA384:
-        case CipherSuite.TLS_DH_RSA_WITH_CAMELLIA_256_GCM_SHA384:
-        case CipherSuite.TLS_DHE_DSS_WITH_AES_256_GCM_SHA384:
-        case CipherSuite.TLS_DHE_DSS_WITH_ARIA_256_CBC_SHA384:
-        case CipherSuite.TLS_DHE_DSS_WITH_ARIA_256_GCM_SHA384:
-        case CipherSuite.TLS_DHE_DSS_WITH_CAMELLIA_256_GCM_SHA384:
-        case CipherSuite.TLS_DHE_PSK_WITH_AES_256_GCM_SHA384:
-        case CipherSuite.TLS_DHE_PSK_WITH_ARIA_256_CBC_SHA384:
-        case CipherSuite.TLS_DHE_PSK_WITH_ARIA_256_GCM_SHA384:
-        case CipherSuite.TLS_DHE_PSK_WITH_CAMELLIA_256_GCM_SHA384:
-        case CipherSuite.TLS_DHE_RSA_WITH_AES_256_GCM_SHA384:
-        case CipherSuite.TLS_DHE_RSA_WITH_ARIA_256_CBC_SHA384:
-        case CipherSuite.TLS_DHE_RSA_WITH_ARIA_256_GCM_SHA384:
-        case CipherSuite.TLS_DHE_RSA_WITH_CAMELLIA_256_GCM_SHA384:
-        case CipherSuite.TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384:
-        case CipherSuite.TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384:
-        case CipherSuite.TLS_ECDH_ECDSA_WITH_ARIA_256_CBC_SHA384:
-        case CipherSuite.TLS_ECDH_ECDSA_WITH_ARIA_256_GCM_SHA384:
-        case CipherSuite.TLS_ECDH_ECDSA_WITH_CAMELLIA_256_CBC_SHA384:
-        case CipherSuite.TLS_ECDH_ECDSA_WITH_CAMELLIA_256_GCM_SHA384:
-        case CipherSuite.TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384:
-        case CipherSuite.TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384:
-        case CipherSuite.TLS_ECDH_RSA_WITH_ARIA_256_CBC_SHA384:
-        case CipherSuite.TLS_ECDH_RSA_WITH_ARIA_256_GCM_SHA384:
-        case CipherSuite.TLS_ECDH_RSA_WITH_CAMELLIA_256_CBC_SHA384:
-        case CipherSuite.TLS_ECDH_RSA_WITH_CAMELLIA_256_GCM_SHA384:
-        case CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384:
-        case CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:
-        case CipherSuite.TLS_ECDHE_ECDSA_WITH_ARIA_256_CBC_SHA384:
-        case CipherSuite.TLS_ECDHE_ECDSA_WITH_ARIA_256_GCM_SHA384:
-        case CipherSuite.TLS_ECDHE_ECDSA_WITH_CAMELLIA_256_CBC_SHA384:
-        case CipherSuite.TLS_ECDHE_ECDSA_WITH_CAMELLIA_256_GCM_SHA384:
-        case CipherSuite.TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384:
-        case CipherSuite.TLS_ECDHE_PSK_WITH_ARIA_256_CBC_SHA384:
-        case CipherSuite.TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384:
-        case CipherSuite.TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:
-        case CipherSuite.TLS_ECDHE_RSA_WITH_ARIA_256_CBC_SHA384:
-        case CipherSuite.TLS_ECDHE_RSA_WITH_ARIA_256_GCM_SHA384:
-        case CipherSuite.TLS_ECDHE_RSA_WITH_CAMELLIA_256_CBC_SHA384:
-        case CipherSuite.TLS_ECDHE_RSA_WITH_CAMELLIA_256_GCM_SHA384:
-        case CipherSuite.TLS_PSK_WITH_AES_256_GCM_SHA384:
-        case CipherSuite.TLS_PSK_WITH_ARIA_256_CBC_SHA384:
-        case CipherSuite.TLS_PSK_WITH_ARIA_256_GCM_SHA384:
-        case CipherSuite.TLS_PSK_WITH_CAMELLIA_256_GCM_SHA384:
-        case CipherSuite.TLS_RSA_PSK_WITH_AES_256_GCM_SHA384:
-        case CipherSuite.TLS_RSA_PSK_WITH_ARIA_256_CBC_SHA384:
-        case CipherSuite.TLS_RSA_PSK_WITH_ARIA_256_GCM_SHA384:
-        case CipherSuite.TLS_RSA_PSK_WITH_CAMELLIA_256_GCM_SHA384:
-        case CipherSuite.TLS_RSA_WITH_AES_256_GCM_SHA384:
-        case CipherSuite.TLS_RSA_WITH_ARIA_256_CBC_SHA384:
-        case CipherSuite.TLS_RSA_WITH_ARIA_256_GCM_SHA384:
-        case CipherSuite.TLS_RSA_WITH_CAMELLIA_256_GCM_SHA384:
-        {
-            if (isTLSv12)
-            {
-                return PRFAlgorithm.tls_prf_sha384;
-            }
-            throw new TlsFatalAlert(AlertDescription.illegal_parameter);
-        }
-
-        case CipherSuite.TLS_DHE_PSK_WITH_AES_256_CBC_SHA384:
-        case CipherSuite.TLS_DHE_PSK_WITH_CAMELLIA_256_CBC_SHA384:
-        case CipherSuite.TLS_DHE_PSK_WITH_NULL_SHA384:
-        case CipherSuite.TLS_ECDHE_PSK_WITH_AES_256_CBC_SHA384:
-        case CipherSuite.TLS_ECDHE_PSK_WITH_CAMELLIA_256_CBC_SHA384:
-        case CipherSuite.TLS_ECDHE_PSK_WITH_NULL_SHA384:
-        case CipherSuite.TLS_PSK_WITH_AES_256_CBC_SHA384:
-        case CipherSuite.TLS_PSK_WITH_CAMELLIA_256_CBC_SHA384:
-        case CipherSuite.TLS_PSK_WITH_NULL_SHA384:
-        case CipherSuite.TLS_RSA_PSK_WITH_AES_256_CBC_SHA384:
-        case CipherSuite.TLS_RSA_PSK_WITH_CAMELLIA_256_CBC_SHA384:
-        case CipherSuite.TLS_RSA_PSK_WITH_NULL_SHA384:
-        {
-            if (isTLSv13)
-            {
-                throw new TlsFatalAlert(AlertDescription.illegal_parameter);
-            }
-            if (isTLSv12)
-            {
-                return PRFAlgorithm.tls_prf_sha384;
-            }
-            if (isSSL)
-            {
-                return PRFAlgorithm.ssl_prf_legacy;
-            }
-            return PRFAlgorithm.tls_prf_legacy;
-        }
-
-        default:
-        {
-            if (isTLSv13)
-            {
-                throw new TlsFatalAlert(AlertDescription.illegal_parameter);
-            }
-            if (isTLSv12)
-            {
-                return PRFAlgorithm.tls_prf_sha256;
-            }
-            if (isSSL)
-            {
-                return PRFAlgorithm.ssl_prf_legacy;
-            }
-            return PRFAlgorithm.tls_prf_legacy;
-        }
-        }
     }
 }

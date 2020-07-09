@@ -28,6 +28,7 @@ import org.bouncycastle.bcjcajce.provider.config.ProviderConfiguration;
 import org.bouncycastle.jce.interfaces.ECPointEncoder;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.bcmath.ec.ECCurve;
+import org.bouncycastle.bcutil.Properties;
 
 public class BCECPublicKey
     implements ECPublicKey, org.bouncycastle.jce.interfaces.ECPublicKey, ECPointEncoder
@@ -234,11 +235,13 @@ public class BCECPublicKey
 
     public byte[] getEncoded()
     {
+        boolean compress = withCompression || Properties.isOverrideSet("org.bouncycastle.ec.enable_pc");
+
         AlgorithmIdentifier algId = new AlgorithmIdentifier(
             X9ObjectIdentifiers.id_ecPublicKey,
-            ECUtils.getDomainParametersFromName(ecSpec, withCompression));
+            ECUtils.getDomainParametersFromName(ecSpec, compress));
 
-        byte[] pubKeyOctets = ecPublicKey.getQ().getEncoded(withCompression);
+        byte[] pubKeyOctets = ecPublicKey.getQ().getEncoded(compress);
 
         // stored curve is null if ImplicitlyCa
         return KeyUtil.getEncodedSubjectPublicKeyInfo(algId, pubKeyOctets);
