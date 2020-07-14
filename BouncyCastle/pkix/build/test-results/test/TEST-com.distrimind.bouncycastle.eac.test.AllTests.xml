@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.eac.test.AllTests" tests="6" skipped="0" failures="0" errors="0" timestamp="2020-07-14T23:12:33" hostname="Garage" time="0.364">
+  <properties/>
+  <testcase name="testGenerateEC" classname="com.distrimind.bouncycastle.eac.test.AllTests" time="0.221"/>
+  <testcase name="testLoadRefCert" classname="com.distrimind.bouncycastle.eac.test.AllTests" time="0.002"/>
+  <testcase name="testLoadCSR" classname="com.distrimind.bouncycastle.eac.test.AllTests" time="0.01"/>
+  <testcase name="testLoadInvalidRequest" classname="com.distrimind.bouncycastle.eac.test.AllTests" time="0.007"/>
+  <testcase name="testLoadCertificate" classname="com.distrimind.bouncycastle.eac.test.AllTests" time="0.005"/>
+  <testcase name="testGenerateRSA" classname="com.distrimind.bouncycastle.eac.test.AllTests" time="0.116"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

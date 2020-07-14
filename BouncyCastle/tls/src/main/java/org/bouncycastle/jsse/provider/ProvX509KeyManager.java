@@ -1,4 +1,4 @@
-package org.bouncycastle.jsse.provider;
+package com.distrimind.bouncycastle.jsse.provider;
 
 import java.lang.ref.SoftReference;
 import java.net.Socket;
@@ -30,12 +30,12 @@ import java.util.logging.Logger;
 import javax.net.ssl.SSLEngine;
 import javax.net.ssl.X509ExtendedKeyManager;
 
-import org.bouncycastle.bcasn1.x509.KeyPurposeId;
-import org.bouncycastle.bcjcajce.util.JcaJceHelper;
-import org.bouncycastle.jsse.BCExtendedSSLSession;
-import org.bouncycastle.jsse.BCSNIHostName;
-import org.bouncycastle.jsse.java.security.BCAlgorithmConstraints;
-import org.bouncycastle.tls.KeyExchangeAlgorithm;
+import com.distrimind.bouncycastle.asn1.x509.KeyPurposeId;
+import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
+import com.distrimind.bouncycastle.jsse.BCExtendedSSLSession;
+import com.distrimind.bouncycastle.jsse.BCSNIHostName;
+import com.distrimind.bouncycastle.jsse.java.security.BCAlgorithmConstraints;
+import com.distrimind.bouncycastle.tls.KeyExchangeAlgorithm;
 
 class ProvX509KeyManager
     extends X509ExtendedKeyManager

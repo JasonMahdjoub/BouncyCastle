@@ -1,4 +1,4 @@
-package org.bouncycastle.jsse.java.security;
+package com.distrimind.bouncycastle.jsse.java.security;
 
 public enum BCCryptoPrimitive
 {

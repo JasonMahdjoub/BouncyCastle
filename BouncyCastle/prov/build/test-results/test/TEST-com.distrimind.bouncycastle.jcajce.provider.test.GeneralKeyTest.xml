@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.jcajce.provider.test.GeneralKeyTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2020-07-14T23:14:07" hostname="Garage" time="1.22">
+  <properties/>
+  <testcase name="testDSA" classname="com.distrimind.bouncycastle.jcajce.provider.test.GeneralKeyTest" time="0.935"/>
+  <testcase name="testRSA" classname="com.distrimind.bouncycastle.jcajce.provider.test.GeneralKeyTest" time="0.167"/>
+  <testcase name="testSM2" classname="com.distrimind.bouncycastle.jcajce.provider.test.GeneralKeyTest" time="0.018"/>
+  <testcase name="testGost3410" classname="com.distrimind.bouncycastle.jcajce.provider.test.GeneralKeyTest" time="0.005"/>
+  <testcase name="testEcgost3410_2012" classname="com.distrimind.bouncycastle.jcajce.provider.test.GeneralKeyTest" time="0.035"/>
+  <testcase name="testDH" classname="com.distrimind.bouncycastle.jcajce.provider.test.GeneralKeyTest" time="0.013"/>
+  <testcase name="testEC" classname="com.distrimind.bouncycastle.jcajce.provider.test.GeneralKeyTest" time="0.014"/>
+  <testcase name="testEcgost3410" classname="com.distrimind.bouncycastle.jcajce.provider.test.GeneralKeyTest" time="0.014"/>
+  <testcase name="testDstu4145" classname="com.distrimind.bouncycastle.jcajce.provider.test.GeneralKeyTest" time="0.018"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

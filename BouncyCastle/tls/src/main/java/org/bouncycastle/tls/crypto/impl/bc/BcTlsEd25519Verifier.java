@@ -1,14 +1,14 @@
-package org.bouncycastle.tls.crypto.impl.bc;
+package com.distrimind.bouncycastle.tls.crypto.impl.bc;
 
 import java.io.IOException;
 
-import org.bouncycastle.bccrypto.params.Ed25519PublicKeyParameters;
-import org.bouncycastle.bccrypto.signers.Ed25519Signer;
-import org.bouncycastle.tls.DigitallySigned;
-import org.bouncycastle.tls.HashAlgorithm;
-import org.bouncycastle.tls.SignatureAlgorithm;
-import org.bouncycastle.tls.SignatureAndHashAlgorithm;
-import org.bouncycastle.tls.crypto.TlsStreamVerifier;
+import com.distrimind.bouncycastle.crypto.params.Ed25519PublicKeyParameters;
+import com.distrimind.bouncycastle.crypto.signers.Ed25519Signer;
+import com.distrimind.bouncycastle.tls.DigitallySigned;
+import com.distrimind.bouncycastle.tls.HashAlgorithm;
+import com.distrimind.bouncycastle.tls.SignatureAlgorithm;
+import com.distrimind.bouncycastle.tls.SignatureAndHashAlgorithm;
+import com.distrimind.bouncycastle.tls.crypto.TlsStreamVerifier;
 
 public class BcTlsEd25519Verifier
     extends BcTlsVerifier

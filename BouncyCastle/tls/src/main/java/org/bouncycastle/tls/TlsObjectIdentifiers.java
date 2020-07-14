@@ -1,7 +1,7 @@
-package org.bouncycastle.tls;
+package com.distrimind.bouncycastle.tls;
 
-import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
-import org.bouncycastle.bcasn1.x509.X509ObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.x509.X509ObjectIdentifiers;
 
 /**
  * Object Identifiers associated with TLS extensions.

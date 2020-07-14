@@ -1,27 +1,27 @@
-package org.bouncycastle.cert.test;
+package com.distrimind.bouncycastle.cert.test;
 
 import java.math.BigInteger;
 import java.util.Date;
 
-import org.bouncycastle.bcasn1.DERNull;
-import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.bcasn1.pkcs.RSAPublicKey;
-import org.bouncycastle.bcasn1.x500.X500NameBuilder;
-import org.bouncycastle.bcasn1.x500.style.BCStyle;
-import org.bouncycastle.bcasn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.bcasn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.cert.X509CertificateHolder;
-import org.bouncycastle.cert.X509v3CertificateBuilder;
-import org.bouncycastle.bccrypto.params.RSAKeyParameters;
-import org.bouncycastle.bccrypto.params.RSAPrivateCrtKeyParameters;
-import org.bouncycastle.operator.ContentSigner;
-import org.bouncycastle.operator.ContentVerifierProvider;
-import org.bouncycastle.operator.DefaultDigestAlgorithmIdentifierFinder;
-import org.bouncycastle.operator.DefaultSignatureAlgorithmIdentifierFinder;
-import org.bouncycastle.operator.bc.BcRSAContentSignerBuilder;
-import org.bouncycastle.operator.bc.BcRSAContentVerifierProviderBuilder;
-import org.bouncycastle.bcutil.encoders.Base64;
-import org.bouncycastle.bcutil.test.SimpleTest;
+import com.distrimind.bouncycastle.asn1.DERNull;
+import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.pkcs.RSAPublicKey;
+import com.distrimind.bouncycastle.asn1.x500.X500NameBuilder;
+import com.distrimind.bouncycastle.asn1.x500.style.BCStyle;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
+import com.distrimind.bouncycastle.cert.X509CertificateHolder;
+import com.distrimind.bouncycastle.cert.X509v3CertificateBuilder;
+import com.distrimind.bouncycastle.crypto.params.RSAKeyParameters;
+import com.distrimind.bouncycastle.crypto.params.RSAPrivateCrtKeyParameters;
+import com.distrimind.bouncycastle.operator.ContentSigner;
+import com.distrimind.bouncycastle.operator.ContentVerifierProvider;
+import com.distrimind.bouncycastle.operator.DefaultDigestAlgorithmIdentifierFinder;
+import com.distrimind.bouncycastle.operator.DefaultSignatureAlgorithmIdentifierFinder;
+import com.distrimind.bouncycastle.operator.bc.BcRSAContentSignerBuilder;
+import com.distrimind.bouncycastle.operator.bc.BcRSAContentVerifierProviderBuilder;
+import com.distrimind.bouncycastle.util.encoders.Base64;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 public class CertTest
     extends SimpleTest

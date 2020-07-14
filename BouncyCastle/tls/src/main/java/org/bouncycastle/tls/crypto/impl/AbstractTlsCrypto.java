@@ -1,10 +1,10 @@
-package org.bouncycastle.tls.crypto.impl;
+package com.distrimind.bouncycastle.tls.crypto.impl;
 
 import java.io.IOException;
 
-import org.bouncycastle.tls.crypto.TlsCertificate;
-import org.bouncycastle.tls.crypto.TlsCrypto;
-import org.bouncycastle.tls.crypto.TlsSecret;
+import com.distrimind.bouncycastle.tls.crypto.TlsCertificate;
+import com.distrimind.bouncycastle.tls.crypto.TlsCrypto;
+import com.distrimind.bouncycastle.tls.crypto.TlsSecret;
 
 /**
  * Base class for a TlsCrypto implementation that provides some needed methods from elsewhere in the impl package.

@@ -292,22 +292,22 @@
               <include name="**/*.java"/>
             </fileset>
         </replaceregexp>
-        <replaceregexp match="java.security.cert.CertStore" replace="org.bouncycastle.jce.cert.CertStore" flags="g" byline="true">
+        <replaceregexp match="java.security.cert.CertStore" replace="com.distrimind.bouncycastle.jce.cert.CertStore" flags="g" byline="true">
             <fileset dir="${src.dir}">
               <include name="**/*.java"/>
             </fileset>
         </replaceregexp>
-        <replaceregexp match="java.security.cert.PKIX" replace="org.bouncycastle.jce.cert.PKIX" flags="g" byline="true">
+        <replaceregexp match="java.security.cert.PKIX" replace="com.distrimind.bouncycastle.jce.cert.PKIX" flags="g" byline="true">
             <fileset dir="${src.dir}">
               <include name="**/*.java"/>
             </fileset>
         </replaceregexp>
-        <replaceregexp match="java.security.cert.(.*Selector)" replace="org.bouncycastle.jce.cert.\1" flags="g" byline="true">
+        <replaceregexp match="java.security.cert.(.*Selector)" replace="com.distrimind.bouncycastle.jce.cert.\1" flags="g" byline="true">
             <fileset dir="${src.dir}">
               <include name="**/*.java"/>
             </fileset>
         </replaceregexp>
-        <replaceregexp match="java.security.cert.CertPath" replace="org.bouncycastle.jce.cert.CertPath" flags="g" byline="true">
+        <replaceregexp match="java.security.cert.CertPath" replace="com.distrimind.bouncycastle.jce.cert.CertPath" flags="g" byline="true">
             <fileset dir="${src.dir}">
               <include name="**/*.java"/>
             </fileset>

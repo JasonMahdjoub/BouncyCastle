@@ -1,8 +1,8 @@
 dependencies {
-    compile project(':core')
+    implementation(project(':core'))
 }
 
-jar.baseName( "bcprov-$vmrange")
+jar.archiveBaseName= "bcprov-$vmrange"
 
 
 

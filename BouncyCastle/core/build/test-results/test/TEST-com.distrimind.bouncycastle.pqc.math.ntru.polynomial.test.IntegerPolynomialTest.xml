@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.pqc.math.ntru.polynomial.test.IntegerPolynomialTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2020-07-14T23:08:21" hostname="Garage" time="0.582">
+  <properties/>
+  <testcase name="testResultant" classname="com.distrimind.bouncycastle.pqc.math.ntru.polynomial.test.IntegerPolynomialTest" time="0.07"/>
+  <testcase name="testMult" classname="com.distrimind.bouncycastle.pqc.math.ntru.polynomial.test.IntegerPolynomialTest" time="0.0"/>
+  <testcase name="testFromToBinary3Sves" classname="com.distrimind.bouncycastle.pqc.math.ntru.polynomial.test.IntegerPolynomialTest" time="0.001"/>
+  <testcase name="testFromToBinary" classname="com.distrimind.bouncycastle.pqc.math.ntru.polynomial.test.IntegerPolynomialTest" time="0.002"/>
+  <testcase name="testFromToBinary3Tight" classname="com.distrimind.bouncycastle.pqc.math.ntru.polynomial.test.IntegerPolynomialTest" time="0.032"/>
+  <testcase name="testInvertF3" classname="com.distrimind.bouncycastle.pqc.math.ntru.polynomial.test.IntegerPolynomialTest" time="0.0"/>
+  <testcase name="testInvertFq" classname="com.distrimind.bouncycastle.pqc.math.ntru.polynomial.test.IntegerPolynomialTest" time="0.118"/>
+  <testcase name="testResultantMod" classname="com.distrimind.bouncycastle.pqc.math.ntru.polynomial.test.IntegerPolynomialTest" time="0.359"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

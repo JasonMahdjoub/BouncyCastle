@@ -1,5 +1,5 @@
-org.bouncycastle.mail.smime
-org.bouncycastle.mail.smime.examples
-org.bouncycastle.mail.smime.handlers
-org.bouncycastle.mail.smime.util
-org.bouncycastle.mail.smime.validator
+com.distrimind.bouncycastle.mail.smime
+com.distrimind.bouncycastle.mail.smime.examples
+com.distrimind.bouncycastle.mail.smime.handlers
+com.distrimind.bouncycastle.mail.smime.util
+com.distrimind.bouncycastle.mail.smime.validator

@@ -1,8 +1,8 @@
-package org.bouncycastle.tls.crypto;
+package com.distrimind.bouncycastle.tls.crypto;
 
 import java.math.BigInteger;
 
-import org.bouncycastle.bcutil.encoders.Hex;
+import com.distrimind.bouncycastle.util.encoders.Hex;
 
 /**
  * Standard Diffie-Hellman groups from various IETF specifications.

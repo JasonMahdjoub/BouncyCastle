@@ -1,9 +1,9 @@
-package org.bouncycastle.tls;
+package com.distrimind.bouncycastle.tls;
 
 import java.io.IOException;
 
-import org.bouncycastle.tls.crypto.TlsDHConfig;
-import org.bouncycastle.tls.crypto.TlsECConfig;
+import com.distrimind.bouncycastle.tls.crypto.TlsDHConfig;
+import com.distrimind.bouncycastle.tls.crypto.TlsECConfig;
 
 /**
  * Base class for supporting a TLS key exchange factory implementation.

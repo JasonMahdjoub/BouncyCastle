@@ -1,8 +1,8 @@
-package org.bouncycastle.tls;
+package com.distrimind.bouncycastle.tls;
 
 import java.io.IOException;
 
-import org.bouncycastle.tls.crypto.TlsCipher;
+import com.distrimind.bouncycastle.tls.crypto.TlsCipher;
 
 class DTLSEpoch
 {

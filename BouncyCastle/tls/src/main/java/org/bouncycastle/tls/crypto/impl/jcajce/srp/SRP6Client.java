@@ -1,10 +1,10 @@
-package org.bouncycastle.tls.crypto.impl.jcajce.srp;
+package com.distrimind.bouncycastle.tls.crypto.impl.jcajce.srp;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
-import org.bouncycastle.tls.crypto.SRP6Group;
-import org.bouncycastle.tls.crypto.TlsHash;
+import com.distrimind.bouncycastle.tls.crypto.SRP6Group;
+import com.distrimind.bouncycastle.tls.crypto.TlsHash;
 
 /**
  * Implements the client side SRP-6a protocol. Note that this class is stateful, and therefore NOT threadsafe.

@@ -1,4 +1,4 @@
-package org.bouncycastle.tls.crypto.impl.jcajce;
+package com.distrimind.bouncycastle.tls.crypto.impl.jcajce;
 
 import java.security.InvalidKeyException;
 import java.util.Hashtable;
@@ -7,8 +7,8 @@ import javax.crypto.Mac;
 import javax.crypto.ShortBufferException;
 import javax.crypto.spec.SecretKeySpec;
 
-import org.bouncycastle.tls.crypto.TlsHMAC;
-import org.bouncycastle.bcutil.Integers;
+import com.distrimind.bouncycastle.tls.crypto.TlsHMAC;
+import com.distrimind.bouncycastle.util.Integers;
 
 /**
  * Wrapper class for a JCE MAC based on HMAC to provide the necessary operations for TLS.

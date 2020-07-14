@@ -1,4 +1,4 @@
-package org.bouncycastle.jsse.provider.test;
+package com.distrimind.bouncycastle.jsse.provider.test;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;

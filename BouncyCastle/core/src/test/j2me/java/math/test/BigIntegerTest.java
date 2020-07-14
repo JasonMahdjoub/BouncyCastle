@@ -2,7 +2,6 @@ package java.math.test;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
-import org.bouncycastle.bcutil.test.*;
 
 public class BigIntegerTest
     extends SimpleTest

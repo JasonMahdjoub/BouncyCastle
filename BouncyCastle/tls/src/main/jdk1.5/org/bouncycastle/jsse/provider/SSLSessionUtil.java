@@ -1,11 +1,11 @@
-package org.bouncycastle.jsse.provider;
+package com.distrimind.bouncycastle.jsse.provider;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 
 import javax.net.ssl.SSLSession;
 
-import org.bouncycastle.jsse.BCExtendedSSLSession;
+import com.distrimind.bouncycastle.jsse.BCExtendedSSLSession;
 
 abstract class SSLSessionUtil
 {
@@ -37,11 +37,11 @@ abstract class SSLSessionUtil
                     String className;
                     if (ReflectionUtil.hasMethod(methods, "getRequestedServerNames"))
                     {
-                        className = "org.bouncycastle.jsse.provider.ExportSSLSession_8";
+                        className = "com.distrimind.bouncycastle.jsse.provider.ExportSSLSession_8";
                     }
                     else
                     {
-                        className = "org.bouncycastle.jsse.provider.ExportSSLSession_7";
+                        className = "com.distrimind.bouncycastle.jsse.provider.ExportSSLSession_7";
                     }
 
                     constructor = ReflectionUtil.getDeclaredConstructor(className, BCExtendedSSLSession.class);
@@ -66,11 +66,11 @@ abstract class SSLSessionUtil
                         String className;
                         if (ReflectionUtil.hasMethod(methods, "getRequestedServerNames"))
                         {
-                            className = "org.bouncycastle.jsse.provider.ImportSSLSession_8";
+                            className = "com.distrimind.bouncycastle.jsse.provider.ImportSSLSession_8";
                         }
                         else
                         {
-                            className = "org.bouncycastle.jsse.provider.ImportSSLSession_7";
+                            className = "com.distrimind.bouncycastle.jsse.provider.ImportSSLSession_7";
                         }
 
                         constructor = ReflectionUtil.getDeclaredConstructor(className, extendedSSLSessionClass);

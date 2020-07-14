@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.pqc.jcajce.provider.test.QTESLATest" tests="4" skipped="0" failures="0" errors="0" timestamp="2020-07-14T23:14:05" hostname="Garage" time="0.295">
+  <properties/>
+  <testcase name="testCatPIVector0" classname="com.distrimind.bouncycastle.pqc.jcajce.provider.test.QTESLATest" time="0.045"/>
+  <testcase name="testGenerateKeyPairSigningVerifyingPI" classname="com.distrimind.bouncycastle.pqc.jcajce.provider.test.QTESLATest" time="0.06"/>
+  <testcase name="testGenerateKeyPairSigningVerifyingPIII" classname="com.distrimind.bouncycastle.pqc.jcajce.provider.test.QTESLATest" time="0.129"/>
+  <testcase name="testCatPIIIVector0" classname="com.distrimind.bouncycastle.pqc.jcajce.provider.test.QTESLATest" time="0.06"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

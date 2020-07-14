@@ -1,9 +1,9 @@
 dependencies {
-  compile project(':core')
-  compile project(':prov')
+  implementation(project(':core'))
+  implementation(project(':prov'))
 }
 
-jar.baseName("bcpkix-$vmrange")
+jar.archiveBaseName="bcpkix-$vmrange"
 
 
 artifacts {

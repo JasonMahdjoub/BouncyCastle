@@ -1,4 +1,4 @@
-package org.bouncycastle.tls.test;
+package com.distrimind.bouncycastle.tls.test;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -6,9 +6,9 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import org.bouncycastle.tls.TlsServerProtocol;
-import org.bouncycastle.bcutil.io.Streams;
-import org.bouncycastle.bcutil.io.TeeOutputStream;
+import com.distrimind.bouncycastle.tls.TlsServerProtocol;
+import com.distrimind.bouncycastle.util.io.Streams;
+import com.distrimind.bouncycastle.util.io.TeeOutputStream;
 
 /**
  * A simple test designed to conduct a TLS handshake with an external TLS client.

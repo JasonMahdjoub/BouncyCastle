@@ -1,7 +1,7 @@
-package org.bouncycastle.tls;
+package com.distrimind.bouncycastle.tls;
 
-import org.bouncycastle.bcutil.Arrays;
-import org.bouncycastle.bcutil.Strings;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Strings;
 
 /**
  * A basic PSK Identity holder.

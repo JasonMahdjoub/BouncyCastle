@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.tls.test.TlsProtocolTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-07-09T13:58:52" hostname="Garage" time="0.013">
+<testsuite name="com.distrimind.bouncycastle.tls.test.TlsProtocolTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-07-09T13:58:52" hostname="Garage" time="0.013">
   <properties/>
-  <testcase name="testClientServer" classname="org.bouncycastle.tls.test.TlsProtocolTest" time="0.013"/>
+  <testcase name="testClientServer" classname="com.distrimind.bouncycastle.tls.test.TlsProtocolTest" time="0.013"/>
   <system-out><![CDATA[TLS server negotiated TLS 1.2
 TLS client negotiated TLS 1.2
 TLS client received server certificate chain of length 1

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.pqc.crypto.test.XMSSSignatureTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-07-09T13:51:00" hostname="Garage" time="10.739">
-  <properties/>
-  <testcase name="testSignatureParsingSHA256" classname="org.bouncycastle.pqc.crypto.test.XMSSSignatureTest" time="2.636"/>
-  <testcase name="testSignatureParsingSHA512" classname="org.bouncycastle.pqc.crypto.test.XMSSSignatureTest" time="8.103"/>
-  <testcase name="testConstructor" classname="org.bouncycastle.pqc.crypto.test.XMSSSignatureTest" time="0.0"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

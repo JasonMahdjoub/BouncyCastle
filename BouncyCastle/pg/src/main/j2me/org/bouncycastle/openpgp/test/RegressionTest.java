@@ -1,7 +1,7 @@
-package org.bouncycastle.openpgp.test;
+package com.distrimind.bouncycastle.openpgp.test;
 
-import org.bouncycastle.bcutil.test.SimpleTest;
-import org.bouncycastle.bcutil.test.Test;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.util.test.Test;
 
 public class RegressionTest
 {

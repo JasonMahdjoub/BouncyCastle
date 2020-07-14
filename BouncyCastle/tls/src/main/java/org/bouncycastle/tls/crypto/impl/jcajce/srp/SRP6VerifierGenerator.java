@@ -1,9 +1,9 @@
-package org.bouncycastle.tls.crypto.impl.jcajce.srp;
+package com.distrimind.bouncycastle.tls.crypto.impl.jcajce.srp;
 
 import java.math.BigInteger;
 
-import org.bouncycastle.tls.crypto.SRP6Group;
-import org.bouncycastle.tls.crypto.TlsHash;
+import com.distrimind.bouncycastle.tls.crypto.SRP6Group;
+import com.distrimind.bouncycastle.tls.crypto.TlsHash;
 
 /**
  * Generates new SRP verifier for user

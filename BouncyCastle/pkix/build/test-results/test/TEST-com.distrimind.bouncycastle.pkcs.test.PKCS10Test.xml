@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.pkcs.test.PKCS10Test" tests="4" skipped="0" failures="0" errors="0" timestamp="2020-07-14T23:12:45" hostname="Garage" time="0.091">
+  <properties/>
+  <testcase name="testRequest" classname="com.distrimind.bouncycastle.pkcs.test.PKCS10Test" time="0.002"/>
+  <testcase name="testLeaveOffEmpty" classname="com.distrimind.bouncycastle.pkcs.test.PKCS10Test" time="0.002"/>
+  <testcase name="testRequest" classname="com.distrimind.bouncycastle.pkcs.test.PKCS10Test" time="0.004"/>
+  <testcase name="testLeaveOffEmpty" classname="com.distrimind.bouncycastle.pkcs.test.PKCS10Test" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

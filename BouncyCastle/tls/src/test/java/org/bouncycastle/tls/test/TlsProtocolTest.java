@@ -1,4 +1,4 @@
-package org.bouncycastle.tls.test;
+package com.distrimind.bouncycastle.tls.test;
 
 import java.io.OutputStream;
 import java.io.PipedInputStream;
@@ -6,10 +6,10 @@ import java.io.PipedOutputStream;
 import java.security.SecureRandom;
 
 import junit.framework.TestCase;
-import org.bouncycastle.tls.TlsClientProtocol;
-import org.bouncycastle.tls.TlsServerProtocol;
-import org.bouncycastle.bcutil.Arrays;
-import org.bouncycastle.bcutil.io.Streams;
+import com.distrimind.bouncycastle.tls.TlsClientProtocol;
+import com.distrimind.bouncycastle.tls.TlsServerProtocol;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.io.Streams;
 
 public class TlsProtocolTest
     extends TestCase

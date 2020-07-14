@@ -1,15 +1,15 @@
-package org.bouncycastle.openpgp;
+package com.distrimind.bouncycastle.openpgp;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import org.bouncycastle.bcpg.BCPGInputStream;
-import org.bouncycastle.bcpg.BCPGOutputStream;
-import org.bouncycastle.bcpg.OnePassSignaturePacket;
-import org.bouncycastle.openpgp.operator.PGPContentVerifier;
-import org.bouncycastle.openpgp.operator.PGPContentVerifierBuilder;
-import org.bouncycastle.openpgp.operator.PGPContentVerifierBuilderProvider;
+import com.distrimind.bouncycastle.bcpg.BCPGInputStream;
+import com.distrimind.bouncycastle.bcpg.BCPGOutputStream;
+import com.distrimind.bouncycastle.bcpg.OnePassSignaturePacket;
+import com.distrimind.bouncycastle.openpgp.operator.PGPContentVerifier;
+import com.distrimind.bouncycastle.openpgp.operator.PGPContentVerifierBuilder;
+import com.distrimind.bouncycastle.openpgp.operator.PGPContentVerifierBuilderProvider;
 
 /**
  * A one pass signature object.

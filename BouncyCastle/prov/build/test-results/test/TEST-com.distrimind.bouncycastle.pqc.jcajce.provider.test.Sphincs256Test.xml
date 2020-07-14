@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.pqc.jcajce.provider.test.Sphincs256Test" tests="18" skipped="0" failures="0" errors="0" timestamp="2020-07-14T23:12:47" hostname="Garage" time="13.441">
+  <properties/>
+  <testcase name="testSphincsRandomSigSHA2" classname="com.distrimind.bouncycastle.pqc.jcajce.provider.test.Sphincs256Test" time="0.254"/>
+  <testcase name="testSphincsRandomSigSHA3" classname="com.distrimind.bouncycastle.pqc.jcajce.provider.test.Sphincs256Test" time="0.184"/>
+  <testcase name="testSphincsDefaultSha2KeyGen" classname="com.distrimind.bouncycastle.pqc.jcajce.provider.test.Sphincs256Test" time="0.026"/>
+  <testcase name="testSphincsSha3Signature" classname="com.distrimind.bouncycastle.pqc.jcajce.provider.test.Sphincs256Test" time="0.134"/>
+  <testcase name="testSphincsSha2Signature" classname="com.distrimind.bouncycastle.pqc.jcajce.provider.test.Sphincs256Test" time="0.133"/>
+  <testcase name="testPrivateKeyRecovery" classname="com.distrimind.bouncycastle.pqc.jcajce.provider.test.Sphincs256Test" time="0.008"/>
+  <testcase name="testSphincsDefaultKeyGen" classname="com.distrimind.bouncycastle.pqc.jcajce.provider.test.Sphincs256Test" time="0.008"/>
+  <testcase name="testSphincsDefaultSha3KeyGen" classname="com.distrimind.bouncycastle.pqc.jcajce.provider.test.Sphincs256Test" time="0.009"/>
+  <testcase name="testPublicKeyRecovery" classname="com.distrimind.bouncycastle.pqc.jcajce.provider.test.Sphincs256Test" time="0.013"/>
+  <testcase name="testSphincsRandomSigSHA2" classname="com.distrimind.bouncycastle.pqc.jcajce.provider.test.Sphincs256Test" time="0.139"/>
+  <testcase name="testSphincsRandomSigSHA3" classname="com.distrimind.bouncycastle.pqc.jcajce.provider.test.Sphincs256Test" time="0.135"/>
+  <testcase name="testSphincsDefaultSha2KeyGen" classname="com.distrimind.bouncycastle.pqc.jcajce.provider.test.Sphincs256Test" time="0.006"/>
+  <testcase name="testSphincsSha3Signature" classname="com.distrimind.bouncycastle.pqc.jcajce.provider.test.Sphincs256Test" time="0.133"/>
+  <testcase name="testSphincsSha2Signature" classname="com.distrimind.bouncycastle.pqc.jcajce.provider.test.Sphincs256Test" time="0.136"/>
+  <testcase name="testPrivateKeyRecovery" classname="com.distrimind.bouncycastle.pqc.jcajce.provider.test.Sphincs256Test" time="0.007"/>
+  <testcase name="testSphincsDefaultKeyGen" classname="com.distrimind.bouncycastle.pqc.jcajce.provider.test.Sphincs256Test" time="0.007"/>
+  <testcase name="testSphincsDefaultSha3KeyGen" classname="com.distrimind.bouncycastle.pqc.jcajce.provider.test.Sphincs256Test" time="0.006"/>
+  <testcase name="testPublicKeyRecovery" classname="com.distrimind.bouncycastle.pqc.jcajce.provider.test.Sphincs256Test" time="0.007"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

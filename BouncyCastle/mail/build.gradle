@@ -1,12 +1,12 @@
 dependencies {
-    compile project(':core')
-    compile project(':pkix')
-    compile project(':prov')
+    implementation(project(':core'))
+    implementation(project(':pkix'))
+    implementation(project(':prov'))
 
-    compile group: 'javax.mail', name: 'mail', version: '1.4'
+    implementation(group: 'javax.mail', name: 'mail', version: '1.4')
 }
 
-jar.baseName("bcmail-$vmrange")
+jar.archiveBaseName="bcmail-$vmrange"
 
 
 artifacts {

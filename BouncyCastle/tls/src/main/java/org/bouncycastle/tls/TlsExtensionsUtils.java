@@ -1,4 +1,4 @@
-package org.bouncycastle.tls;
+package com.distrimind.bouncycastle.tls;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -7,12 +7,12 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Vector;
 
-import org.bouncycastle.bcasn1.ASN1Encoding;
-import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
-import org.bouncycastle.bcasn1.ASN1Primitive;
-import org.bouncycastle.bcasn1.x500.X500Name;
-import org.bouncycastle.bcutil.Arrays;
-import org.bouncycastle.bcutil.Integers;
+import com.distrimind.bouncycastle.asn1.ASN1Encoding;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.ASN1Primitive;
+import com.distrimind.bouncycastle.asn1.x500.X500Name;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Integers;
 
 public class TlsExtensionsUtils
 {

@@ -1,11 +1,11 @@
-package org.bouncycastle.tls;
+package com.distrimind.bouncycastle.tls;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Hashtable;
 
-import org.bouncycastle.bcutil.Integers;
+import com.distrimind.bouncycastle.util.Integers;
 
 /**
  * RFC 5764 DTLS Extension to Establish Keys for SRTP.

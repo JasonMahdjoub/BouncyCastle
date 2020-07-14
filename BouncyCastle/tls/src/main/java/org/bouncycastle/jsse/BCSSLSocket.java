@@ -1,4 +1,4 @@
-package org.bouncycastle.jsse;
+package com.distrimind.bouncycastle.jsse;
 
 import javax.net.SocketFactory;
 import javax.net.ssl.SSLSocket;

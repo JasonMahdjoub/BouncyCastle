@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.cms.test.NewAuthenticatedDataTest" tests="22" skipped="0" failures="0" errors="0" timestamp="2020-07-14T23:12:43" hostname="Garage" time="1.038">
+  <properties/>
+  <testcase name="testKeyTransDESede" classname="com.distrimind.bouncycastle.cms.test.NewAuthenticatedDataTest" time="0.005"/>
+  <testcase name="testEncoding" classname="com.distrimind.bouncycastle.cms.test.NewAuthenticatedDataTest" time="0.001"/>
+  <testcase name="testCMSAlgorithmProtection" classname="com.distrimind.bouncycastle.cms.test.NewAuthenticatedDataTest" time="0.001"/>
+  <testcase name="testAES256CCM" classname="com.distrimind.bouncycastle.cms.test.NewAuthenticatedDataTest" time="0.001"/>
+  <testcase name="testKeyTransRC2" classname="com.distrimind.bouncycastle.cms.test.NewAuthenticatedDataTest" time="0.001"/>
+  <testcase name="testOriginatorInfo" classname="com.distrimind.bouncycastle.cms.test.NewAuthenticatedDataTest" time="0.0"/>
+  <testcase name="testKEKDESede" classname="com.distrimind.bouncycastle.cms.test.NewAuthenticatedDataTest" time="0.001"/>
+  <testcase name="testKeyTransDESedeWithDigest" classname="com.distrimind.bouncycastle.cms.test.NewAuthenticatedDataTest" time="0.001"/>
+  <testcase name="testECKeyAgree" classname="com.distrimind.bouncycastle.cms.test.NewAuthenticatedDataTest" time="0.005"/>
+  <testcase name="testKEKDESedeWithDigest" classname="com.distrimind.bouncycastle.cms.test.NewAuthenticatedDataTest" time="0.0"/>
+  <testcase name="testPasswordAES256" classname="com.distrimind.bouncycastle.cms.test.NewAuthenticatedDataTest" time="0.001"/>
+  <testcase name="testKeyTransDESede" classname="com.distrimind.bouncycastle.cms.test.NewAuthenticatedDataTest" time="0.004"/>
+  <testcase name="testEncoding" classname="com.distrimind.bouncycastle.cms.test.NewAuthenticatedDataTest" time="0.001"/>
+  <testcase name="testCMSAlgorithmProtection" classname="com.distrimind.bouncycastle.cms.test.NewAuthenticatedDataTest" time="0.0"/>
+  <testcase name="testAES256CCM" classname="com.distrimind.bouncycastle.cms.test.NewAuthenticatedDataTest" time="0.001"/>
+  <testcase name="testKeyTransRC2" classname="com.distrimind.bouncycastle.cms.test.NewAuthenticatedDataTest" time="0.0"/>
+  <testcase name="testOriginatorInfo" classname="com.distrimind.bouncycastle.cms.test.NewAuthenticatedDataTest" time="0.001"/>
+  <testcase name="testKEKDESede" classname="com.distrimind.bouncycastle.cms.test.NewAuthenticatedDataTest" time="0.001"/>
+  <testcase name="testKeyTransDESedeWithDigest" classname="com.distrimind.bouncycastle.cms.test.NewAuthenticatedDataTest" time="0.0"/>
+  <testcase name="testECKeyAgree" classname="com.distrimind.bouncycastle.cms.test.NewAuthenticatedDataTest" time="0.004"/>
+  <testcase name="testKEKDESedeWithDigest" classname="com.distrimind.bouncycastle.cms.test.NewAuthenticatedDataTest" time="0.001"/>
+  <testcase name="testPasswordAES256" classname="com.distrimind.bouncycastle.cms.test.NewAuthenticatedDataTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

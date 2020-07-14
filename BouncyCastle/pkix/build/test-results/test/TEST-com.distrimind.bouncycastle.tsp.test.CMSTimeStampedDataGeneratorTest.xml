@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.tsp.test.CMSTimeStampedDataGeneratorTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-07-14T23:12:45" hostname="Garage" time="0.564">
+  <properties/>
+  <testcase name="testGenerateWithMetadataAndDifferentAlgorithmIdentifier" classname="com.distrimind.bouncycastle.tsp.test.CMSTimeStampedDataGeneratorTest" time="0.229"/>
+  <testcase name="testGenerate" classname="com.distrimind.bouncycastle.tsp.test.CMSTimeStampedDataGeneratorTest" time="0.159"/>
+  <testcase name="testGenerateWithMetadata" classname="com.distrimind.bouncycastle.tsp.test.CMSTimeStampedDataGeneratorTest" time="0.176"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -7,13 +7,13 @@ import java.security.NoSuchProviderException;
 import java.security.Provider;
 import java.security.Security;
 
-import org.bouncycastle.bcasn1.ASN1Object;
-import org.bouncycastle.bcasn1.ASN1ObjectIdentifier;
-import org.bouncycastle.bcasn1.DERIA5String;
-import org.bouncycastle.bcasn1.DEROutputStream;
-import org.bouncycastle.bcasn1.OIDTokenizer;
-import org.bouncycastle.bcasn1.x509.X509Name;
-import org.bouncycastle.bcutil.Strings;
+import com.distrimind.bouncycastle.asn1.ASN1Object;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.DERIA5String;
+import com.distrimind.bouncycastle.asn1.DEROutputStream;
+import com.distrimind.bouncycastle.asn1.OIDTokenizer;
+import com.distrimind.bouncycastle.asn1.x509.X509Name;
+import com.distrimind.bouncycastle.util.Strings;
 
 class CertUtil
 {
@@ -287,7 +287,7 @@ class CertUtil
      * Throw an IOException if the first component is not 0, 1 or 2 or the
      * second component is greater than 39.<br />
      * <br />
-     * User {@link org.bouncycastle.bcasn1.OIDTokenizer OIDTokenizer}
+     * User {@link com.distrimind.bouncycastle.asn1.OIDTokenizer OIDTokenizer}
      * 
      * @param the
      *            OID to be checked.

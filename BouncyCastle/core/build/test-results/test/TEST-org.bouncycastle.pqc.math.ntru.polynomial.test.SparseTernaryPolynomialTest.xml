@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.pqc.math.ntru.polynomial.test.SparseTernaryPolynomialTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2020-07-09T13:50:04" hostname="Garage" time="0.04">
-  <properties/>
-  <testcase name="testMult" classname="org.bouncycastle.pqc.math.ntru.polynomial.test.SparseTernaryPolynomialTest" time="0.039"/>
-  <testcase name="testFromToBinary" classname="org.bouncycastle.pqc.math.ntru.polynomial.test.SparseTernaryPolynomialTest" time="0.001"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

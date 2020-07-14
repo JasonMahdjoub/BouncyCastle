@@ -1,13 +1,13 @@
-package org.bouncycastle.tls;
+package com.distrimind.bouncycastle.tls;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import org.bouncycastle.bcasn1.ASN1Encoding;
-import org.bouncycastle.bcasn1.ASN1Primitive;
-import org.bouncycastle.bcasn1.x500.X500Name;
-import org.bouncycastle.bcutil.Arrays;
+import com.distrimind.bouncycastle.asn1.ASN1Encoding;
+import com.distrimind.bouncycastle.asn1.ASN1Primitive;
+import com.distrimind.bouncycastle.asn1.x500.X500Name;
+import com.distrimind.bouncycastle.util.Arrays;
 
 public class TrustedAuthority
 {

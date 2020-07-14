@@ -1,8 +1,8 @@
-package org.bouncycastle.tls;
+package com.distrimind.bouncycastle.tls;
 
 import java.util.Vector;
 
-import org.bouncycastle.bcutil.Strings;
+import com.distrimind.bouncycastle.util.Strings;
 
 public final class ProtocolVersion
 {

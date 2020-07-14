@@ -1,6 +1,6 @@
-package org.bouncycastle.tls;
+package com.distrimind.bouncycastle.tls;
 
-import org.bouncycastle.tls.crypto.TlsCrypto;
+import com.distrimind.bouncycastle.tls.crypto.TlsCrypto;
 
 public abstract class DefaultTlsClient
     extends AbstractTlsClient

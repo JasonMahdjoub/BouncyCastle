@@ -1,4 +1,4 @@
-package org.bouncycastle.bcjcajce.examples;
+package com.distrimind.bouncycastle.jcajce.examples;
 
 import java.io.FileOutputStream;
 import java.math.BigInteger;
@@ -13,23 +13,23 @@ import java.security.spec.RSAPrivateCrtKeySpec;
 import java.security.spec.RSAPublicKeySpec;
 import java.util.Date;
 
-import org.bouncycastle.bcasn1.DERBMPString;
-import org.bouncycastle.bcasn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.bcasn1.x500.X500Name;
-import org.bouncycastle.bcasn1.x500.X500NameBuilder;
-import org.bouncycastle.bcasn1.x500.style.BCStyle;
-import org.bouncycastle.bcasn1.x509.BasicConstraints;
-import org.bouncycastle.bcasn1.x509.Extension;
-import org.bouncycastle.cert.X509CertificateHolder;
-import org.bouncycastle.cert.X509v1CertificateBuilder;
-import org.bouncycastle.cert.X509v3CertificateBuilder;
-import org.bouncycastle.cert.jcajce.JcaX509CertificateConverter;
-import org.bouncycastle.cert.jcajce.JcaX509ExtensionUtils;
-import org.bouncycastle.cert.jcajce.JcaX509v1CertificateBuilder;
-import org.bouncycastle.cert.jcajce.JcaX509v3CertificateBuilder;
-import org.bouncycastle.jce.interfaces.PKCS12BagAttributeCarrier;
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.operator.jcajce.JcaContentSignerBuilder;
+import com.distrimind.bouncycastle.asn1.DERBMPString;
+import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.x500.X500Name;
+import com.distrimind.bouncycastle.asn1.x500.X500NameBuilder;
+import com.distrimind.bouncycastle.asn1.x500.style.BCStyle;
+import com.distrimind.bouncycastle.asn1.x509.BasicConstraints;
+import com.distrimind.bouncycastle.asn1.x509.Extension;
+import com.distrimind.bouncycastle.cert.X509CertificateHolder;
+import com.distrimind.bouncycastle.cert.X509v1CertificateBuilder;
+import com.distrimind.bouncycastle.cert.X509v3CertificateBuilder;
+import com.distrimind.bouncycastle.cert.jcajce.JcaX509CertificateConverter;
+import com.distrimind.bouncycastle.cert.jcajce.JcaX509ExtensionUtils;
+import com.distrimind.bouncycastle.cert.jcajce.JcaX509v1CertificateBuilder;
+import com.distrimind.bouncycastle.cert.jcajce.JcaX509v3CertificateBuilder;
+import com.distrimind.bouncycastle.jce.interfaces.PKCS12BagAttributeCarrier;
+import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
+import com.distrimind.bouncycastle.operator.jcajce.JcaContentSignerBuilder;
 
 /**
  * Example of how to set up a certificate chain and a PKCS 12 store for

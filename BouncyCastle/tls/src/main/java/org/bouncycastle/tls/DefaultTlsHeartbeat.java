@@ -1,6 +1,6 @@
-package org.bouncycastle.tls;
+package com.distrimind.bouncycastle.tls;
 
-import org.bouncycastle.bcutil.Pack;
+import com.distrimind.bouncycastle.util.Pack;
 
 public class DefaultTlsHeartbeat
     implements TlsHeartbeat

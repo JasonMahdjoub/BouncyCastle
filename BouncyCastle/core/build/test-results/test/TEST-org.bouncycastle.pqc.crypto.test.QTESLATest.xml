@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.pqc.crypto.test.QTESLATest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-07-09T13:50:24" hostname="Garage" time="12.06">
-  <properties/>
-  <testcase name="testKATVectors" classname="org.bouncycastle.pqc.crypto.test.QTESLATest" time="11.965"/>
-  <testcase name="testSignQ1p" classname="org.bouncycastle.pqc.crypto.test.QTESLATest" time="0.014"/>
-  <testcase name="testSignQ3p" classname="org.bouncycastle.pqc.crypto.test.QTESLATest" time="0.081"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

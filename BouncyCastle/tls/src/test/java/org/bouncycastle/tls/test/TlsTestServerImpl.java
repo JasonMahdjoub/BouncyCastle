@@ -1,29 +1,29 @@
-package org.bouncycastle.tls.test;
+package com.distrimind.bouncycastle.tls.test;
 
 import java.io.IOException;
 import java.io.PrintStream;
 import java.security.SecureRandom;
 import java.util.Vector;
 
-import org.bouncycastle.bcasn1.x500.X500Name;
-import org.bouncycastle.bcasn1.x509.Certificate;
-import org.bouncycastle.tls.AlertDescription;
-import org.bouncycastle.tls.AlertLevel;
-import org.bouncycastle.tls.CertificateRequest;
-import org.bouncycastle.tls.ChannelBinding;
-import org.bouncycastle.tls.ClientCertificateType;
-import org.bouncycastle.tls.ConnectionEnd;
-import org.bouncycastle.tls.DefaultTlsServer;
-import org.bouncycastle.tls.ProtocolVersion;
-import org.bouncycastle.tls.SignatureAlgorithm;
-import org.bouncycastle.tls.TlsCredentialedDecryptor;
-import org.bouncycastle.tls.TlsCredentialedSigner;
-import org.bouncycastle.tls.TlsFatalAlert;
-import org.bouncycastle.tls.TlsUtils;
-import org.bouncycastle.tls.crypto.TlsCertificate;
-import org.bouncycastle.tls.crypto.TlsCrypto;
-import org.bouncycastle.tls.crypto.impl.bc.BcTlsCrypto;
-import org.bouncycastle.bcutil.encoders.Hex;
+import com.distrimind.bouncycastle.asn1.x500.X500Name;
+import com.distrimind.bouncycastle.asn1.x509.Certificate;
+import com.distrimind.bouncycastle.tls.AlertDescription;
+import com.distrimind.bouncycastle.tls.AlertLevel;
+import com.distrimind.bouncycastle.tls.CertificateRequest;
+import com.distrimind.bouncycastle.tls.ChannelBinding;
+import com.distrimind.bouncycastle.tls.ClientCertificateType;
+import com.distrimind.bouncycastle.tls.ConnectionEnd;
+import com.distrimind.bouncycastle.tls.DefaultTlsServer;
+import com.distrimind.bouncycastle.tls.ProtocolVersion;
+import com.distrimind.bouncycastle.tls.SignatureAlgorithm;
+import com.distrimind.bouncycastle.tls.TlsCredentialedDecryptor;
+import com.distrimind.bouncycastle.tls.TlsCredentialedSigner;
+import com.distrimind.bouncycastle.tls.TlsFatalAlert;
+import com.distrimind.bouncycastle.tls.TlsUtils;
+import com.distrimind.bouncycastle.tls.crypto.TlsCertificate;
+import com.distrimind.bouncycastle.tls.crypto.TlsCrypto;
+import com.distrimind.bouncycastle.tls.crypto.impl.bc.BcTlsCrypto;
+import com.distrimind.bouncycastle.util.encoders.Hex;
 
 class TlsTestServerImpl
     extends DefaultTlsServer
@@ -163,7 +163,7 @@ class TlsTestServerImpl
         return new CertificateRequest(certificateTypes, serverSigAlgs, certificateAuthorities);
     }
 
-    public void notifyClientCertificate(org.bouncycastle.tls.Certificate clientCertificate)
+    public void notifyClientCertificate(com.distrimind.bouncycastle.tls.Certificate clientCertificate)
         throws IOException
     {
         boolean isEmpty = (clientCertificate == null || clientCertificate.isEmpty());

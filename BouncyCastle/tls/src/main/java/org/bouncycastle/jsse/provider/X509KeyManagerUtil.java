@@ -1,9 +1,9 @@
-package org.bouncycastle.jsse.provider;
+package com.distrimind.bouncycastle.jsse.provider;
 
 import javax.net.ssl.X509ExtendedKeyManager;
 import javax.net.ssl.X509KeyManager;
 
-import org.bouncycastle.bcjcajce.util.JcaJceHelper;
+import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
 
 abstract class X509KeyManagerUtil
 {

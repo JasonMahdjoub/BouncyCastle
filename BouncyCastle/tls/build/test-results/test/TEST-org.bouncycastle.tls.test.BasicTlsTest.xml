@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.tls.test.BasicTlsTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2020-07-09T13:58:48" hostname="Garage" time="1.011">
+<testsuite name="com.distrimind.bouncycastle.tls.test.BasicTlsTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2020-07-09T13:58:48" hostname="Garage" time="1.011">
   <properties/>
-  <testcase name="testConnection" classname="org.bouncycastle.tls.test.BasicTlsTest" time="1.011">
-    <failure message="org.bouncycastle.tls.TlsFatalAlertReceived: internal_error(80)" type="org.bouncycastle.tls.TlsFatalAlertReceived">org.bouncycastle.tls.TlsFatalAlertReceived: internal_error(80)
-	at org.bouncycastle.tls.TlsProtocol.handleAlertMessage(TlsProtocol.java:239)
-	at org.bouncycastle.tls.TlsProtocol.processAlertQueue(TlsProtocol.java:677)
-	at org.bouncycastle.tls.TlsProtocol.processRecord(TlsProtocol.java:520)
-	at org.bouncycastle.tls.RecordStream.readRecord(RecordStream.java:215)
-	at org.bouncycastle.tls.TlsProtocol.safeReadRecord(TlsProtocol.java:803)
-	at org.bouncycastle.tls.TlsProtocol.blockForHandshake(TlsProtocol.java:396)
-	at org.bouncycastle.tls.TlsClientProtocol.connect(TlsClientProtocol.java:91)
-	at org.bouncycastle.tls.test.BasicTlsTest.testConnection(BasicTlsTest.java:101)
+  <testcase name="testConnection" classname="com.distrimind.bouncycastle.tls.test.BasicTlsTest" time="1.011">
+    <failure message="com.distrimind.bouncycastle.tls.TlsFatalAlertReceived: internal_error(80)" type="com.distrimind.bouncycastle.tls.TlsFatalAlertReceived">com.distrimind.bouncycastle.tls.TlsFatalAlertReceived: internal_error(80)
+	at com.distrimind.bouncycastle.tls.TlsProtocol.handleAlertMessage(TlsProtocol.java:239)
+	at com.distrimind.bouncycastle.tls.TlsProtocol.processAlertQueue(TlsProtocol.java:677)
+	at com.distrimind.bouncycastle.tls.TlsProtocol.processRecord(TlsProtocol.java:520)
+	at com.distrimind.bouncycastle.tls.RecordStream.readRecord(RecordStream.java:215)
+	at com.distrimind.bouncycastle.tls.TlsProtocol.safeReadRecord(TlsProtocol.java:803)
+	at com.distrimind.bouncycastle.tls.TlsProtocol.blockForHandshake(TlsProtocol.java:396)
+	at com.distrimind.bouncycastle.tls.TlsClientProtocol.connect(TlsClientProtocol.java:91)
+	at com.distrimind.bouncycastle.tls.test.BasicTlsTest.testConnection(BasicTlsTest.java:101)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -63,10 +63,10 @@
 </failure>
   </testcase>
   <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[Exception in thread "Thread-372" java.lang.RuntimeException: javax.net.ssl.SSLException: class org.bouncycastle.bcjcajce.provider.asymmetric.edec.BCXDHPublicKey cannot be cast to class java.security.interfaces.XECPublicKey (org.bouncycastle.bcjcajce.provider.asymmetric.edec.BCXDHPublicKey is in unnamed module of loader 'app'; java.security.interfaces.XECPublicKey is in module java.base of loader 'bootstrap')
-	at org.bouncycastle.tls.test.HTTPSServerThread.run(HTTPSServerThread.java:136)
+  <system-err><![CDATA[Exception in thread "Thread-372" java.lang.RuntimeException: javax.net.ssl.SSLException: class com.distrimind.bouncycastle.jcajce.provider.asymmetric.edec.BCXDHPublicKey cannot be cast to class java.security.interfaces.XECPublicKey (com.distrimind.bouncycastle.jcajce.provider.asymmetric.edec.BCXDHPublicKey is in unnamed module of loader 'app'; java.security.interfaces.XECPublicKey is in module java.base of loader 'bootstrap')
+	at com.distrimind.bouncycastle.tls.test.HTTPSServerThread.run(HTTPSServerThread.java:136)
 TLS client received alert: fatal(2), internal_error(80)
-Caused by: javax.net.ssl.SSLException: class org.bouncycastle.bcjcajce.provider.asymmetric.edec.BCXDHPublicKey cannot be cast to class java.security.interfaces.XECPublicKey (org.bouncycastle.bcjcajce.provider.asymmetric.edec.BCXDHPublicKey is in unnamed module of loader 'app'; java.security.interfaces.XECPublicKey is in module java.base of loader 'bootstrap')
+Caused by: javax.net.ssl.SSLException: class com.distrimind.bouncycastle.jcajce.provider.asymmetric.edec.BCXDHPublicKey cannot be cast to class java.security.interfaces.XECPublicKey (com.distrimind.bouncycastle.jcajce.provider.asymmetric.edec.BCXDHPublicKey is in unnamed module of loader 'app'; java.security.interfaces.XECPublicKey is in module java.base of loader 'bootstrap')
 	at java.base/sun.security.ssl.Alert.createSSLException(Alert.java:133)
 	at java.base/sun.security.ssl.TransportContext.fatal(TransportContext.java:325)
 	at java.base/sun.security.ssl.TransportContext.fatal(TransportContext.java:268)
@@ -76,9 +76,9 @@ Caused by: javax.net.ssl.SSLException: class org.bouncycastle.bcjcajce.provider.
 	at java.base/sun.security.ssl.SSLSocketImpl.ensureNegotiated(SSLSocketImpl.java:878)
 	at java.base/sun.security.ssl.SSLSocketImpl$AppInputStream.read(SSLSocketImpl.java:969)
 	at java.base/sun.security.ssl.SSLSocketImpl$AppInputStream.read(SSLSocketImpl.java:929)
-	at org.bouncycastle.tls.test.HTTPSServerThread.readRequest(HTTPSServerThread.java:40)
-	at org.bouncycastle.tls.test.HTTPSServerThread.run(HTTPSServerThread.java:124)
-Caused by: java.lang.ClassCastException: class org.bouncycastle.bcjcajce.provider.asymmetric.edec.BCXDHPublicKey cannot be cast to class java.security.interfaces.XECPublicKey (org.bouncycastle.bcjcajce.provider.asymmetric.edec.BCXDHPublicKey is in unnamed module of loader 'app'; java.security.interfaces.XECPublicKey is in module java.base of loader 'bootstrap')
+	at com.distrimind.bouncycastle.tls.test.HTTPSServerThread.readRequest(HTTPSServerThread.java:40)
+	at com.distrimind.bouncycastle.tls.test.HTTPSServerThread.run(HTTPSServerThread.java:124)
+Caused by: java.lang.ClassCastException: class com.distrimind.bouncycastle.jcajce.provider.asymmetric.edec.BCXDHPublicKey cannot be cast to class java.security.interfaces.XECPublicKey (com.distrimind.bouncycastle.jcajce.provider.asymmetric.edec.BCXDHPublicKey is in unnamed module of loader 'app'; java.security.interfaces.XECPublicKey is in module java.base of loader 'bootstrap')
 	at java.base/sun.security.ssl.XDHKeyExchange$XDHEPossession.<init>(XDHKeyExchange.java:108)
 	at java.base/sun.security.ssl.NamedGroup$XDHFunctions.createPossession(NamedGroup.java:750)
 	at java.base/sun.security.ssl.NamedGroup.createPossession(NamedGroup.java:390)

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.tls.test.DTLSProtocolTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-07-09T13:58:49" hostname="Garage" time="1.034">
+<testsuite name="com.distrimind.bouncycastle.tls.test.DTLSProtocolTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-07-09T13:58:49" hostname="Garage" time="1.034">
   <properties/>
-  <testcase name="testClientServer" classname="org.bouncycastle.tls.test.DTLSProtocolTest" time="1.034"/>
+  <testcase name="testClientServer" classname="com.distrimind.bouncycastle.tls.test.DTLSProtocolTest" time="1.034"/>
   <system-out><![CDATA[(+3ms) Sending 219 byte datagram:
     16 FE FF 00 00 00 00 00-00 00 00 00 CE 01 00 00
     C2 00 00 00 00 00 00 00-C2 FE FD 95 9B 23 A3 1D

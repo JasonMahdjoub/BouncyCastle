@@ -1,4 +1,4 @@
-package org.bouncycastle.bcjcajce.examples;
+package com.distrimind.bouncycastle.jcajce.examples;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -7,16 +7,16 @@ import java.security.PrivilegedAction;
 import java.security.Provider;
 import java.security.SecureRandom;
 
-import org.bouncycastle.bccrypto.digests.SHA512Digest;
-import org.bouncycastle.bccrypto.macs.HMac;
-import org.bouncycastle.bccrypto.prng.EntropySource;
-import org.bouncycastle.bccrypto.prng.EntropySourceProvider;
-import org.bouncycastle.bccrypto.prng.SP800SecureRandom;
-import org.bouncycastle.bccrypto.prng.SP800SecureRandomBuilder;
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.bcutil.Strings;
-import org.bouncycastle.bcutil.encoders.Hex;
-import org.bouncycastle.bcutil.io.Streams;
+import com.distrimind.bouncycastle.crypto.digests.SHA512Digest;
+import com.distrimind.bouncycastle.crypto.macs.HMac;
+import com.distrimind.bouncycastle.crypto.prng.EntropySource;
+import com.distrimind.bouncycastle.crypto.prng.EntropySourceProvider;
+import com.distrimind.bouncycastle.crypto.prng.SP800SecureRandom;
+import com.distrimind.bouncycastle.crypto.prng.SP800SecureRandomBuilder;
+import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
+import com.distrimind.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.util.encoders.Hex;
+import com.distrimind.bouncycastle.util.io.Streams;
 
 /**
  * A basic example for Unix style systems that just uses /dev/random. The idea is just to get something that
@@ -147,7 +147,7 @@ public class SamplingEntropySourceProvider
     public static void main(String[] ags)
         throws Exception
     {
-        System.setProperty("org.bouncycastle.drbg.entropysource", "org.bouncycastle.bcjcajce.examples.SamplingEntropySourceProvider");
+        System.setProperty("com.distrimind.bouncycastle.drbg.entropysource", "com.distrimind.bouncycastle.jcajce.examples.SamplingEntropySourceProvider");
 
         Provider prov = new BouncyCastleProvider();
 

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.asn1.test.OctetStringTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2020-07-14T23:11:14" hostname="Garage" time="0.001">
+  <properties/>
+  <testcase name="testReadingWritingZeroInLength" classname="com.distrimind.bouncycastle.asn1.test.OctetStringTest" time="0.001"/>
+  <testcase name="testReadingWriting" classname="com.distrimind.bouncycastle.asn1.test.OctetStringTest" time="0.0"/>
+  <testcase name="testNestedStructure" classname="com.distrimind.bouncycastle.asn1.test.OctetStringTest" time="0.0"/>
+  <testcase name="testReadingWritingNested" classname="com.distrimind.bouncycastle.asn1.test.OctetStringTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,7 +1,7 @@
-package org.bouncycastle.bccrypto.test;
+package com.distrimind.bouncycastle.crypto.test;
 
-import org.bouncycastle.bcutil.test.SimpleTest;
-import org.bouncycastle.bcutil.test.Test;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.util.test.Test;
 
 public final class RegressionTest
 {

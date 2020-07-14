@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.openpgp.examples.test.AllTests" tests="6" skipped="0" failures="0" errors="0" timestamp="2020-07-14T23:12:23" hostname="Garage" time="0.785">
+  <properties/>
+  <testcase name="testRSAKeyGeneration" classname="com.distrimind.bouncycastle.openpgp.examples.test.AllTests" time="0.496"/>
+  <testcase name="testClearSignedBogusInput" classname="com.distrimind.bouncycastle.openpgp.examples.test.AllTests" time="0.036"/>
+  <testcase name="testDSAElGamaleKeyGeneration" classname="com.distrimind.bouncycastle.openpgp.examples.test.AllTests" time="0.131"/>
+  <testcase name="testPBEEncryption" classname="com.distrimind.bouncycastle.openpgp.examples.test.AllTests" time="0.021"/>
+  <testcase name="testClearSignedSingleLine" classname="com.distrimind.bouncycastle.openpgp.examples.test.AllTests" time="0.036"/>
+  <testcase name="testClearSigned" classname="com.distrimind.bouncycastle.openpgp.examples.test.AllTests" time="0.064"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

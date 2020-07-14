@@ -1,4 +1,4 @@
-package org.bouncycastle.bccrypto.test;
+package com.distrimind.bouncycastle.crypto.test;
 
 import java.util.Random;
 

@@ -1,4 +1,4 @@
-package org.bouncycastle.jsse;
+package com.distrimind.bouncycastle.jsse;
 
 import java.util.List;
 

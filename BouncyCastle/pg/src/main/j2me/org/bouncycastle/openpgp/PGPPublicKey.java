@@ -1,4 +1,4 @@
-package org.bouncycastle.openpgp;
+package com.distrimind.bouncycastle.openpgp;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -9,21 +9,21 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-import org.bouncycastle.bcasn1.x9.ECNamedCurveTable;
-import org.bouncycastle.bcpg.BCPGKey;
-import org.bouncycastle.bcpg.BCPGOutputStream;
-import org.bouncycastle.bcpg.ContainedPacket;
-import org.bouncycastle.bcpg.DSAPublicBCPGKey;
-import org.bouncycastle.bcpg.ECPublicBCPGKey;
-import org.bouncycastle.bcpg.ElGamalPublicBCPGKey;
-import org.bouncycastle.bcpg.PublicKeyAlgorithmTags;
-import org.bouncycastle.bcpg.PublicKeyPacket;
-import org.bouncycastle.bcpg.RSAPublicBCPGKey;
-import org.bouncycastle.bcpg.TrustPacket;
-import org.bouncycastle.bcpg.UserAttributePacket;
-import org.bouncycastle.bcpg.UserIDPacket;
-import org.bouncycastle.openpgp.operator.KeyFingerPrintCalculator;
-import org.bouncycastle.bcutil.Arrays;
+import com.distrimind.bouncycastle.asn1.x9.ECNamedCurveTable;
+import com.distrimind.bouncycastle.bcpg.BCPGKey;
+import com.distrimind.bouncycastle.bcpg.BCPGOutputStream;
+import com.distrimind.bouncycastle.bcpg.ContainedPacket;
+import com.distrimind.bouncycastle.bcpg.DSAPublicBCPGKey;
+import com.distrimind.bouncycastle.bcpg.ECPublicBCPGKey;
+import com.distrimind.bouncycastle.bcpg.ElGamalPublicBCPGKey;
+import com.distrimind.bouncycastle.bcpg.PublicKeyAlgorithmTags;
+import com.distrimind.bouncycastle.bcpg.PublicKeyPacket;
+import com.distrimind.bouncycastle.bcpg.RSAPublicBCPGKey;
+import com.distrimind.bouncycastle.bcpg.TrustPacket;
+import com.distrimind.bouncycastle.bcpg.UserAttributePacket;
+import com.distrimind.bouncycastle.bcpg.UserIDPacket;
+import com.distrimind.bouncycastle.openpgp.operator.KeyFingerPrintCalculator;
+import com.distrimind.bouncycastle.util.Arrays;
 
 /**
  * general class to handle a PGP public key object.

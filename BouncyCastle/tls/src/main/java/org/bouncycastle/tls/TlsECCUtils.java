@@ -1,12 +1,12 @@
-package org.bouncycastle.tls;
+package com.distrimind.bouncycastle.tls;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Hashtable;
 
-import org.bouncycastle.tls.crypto.TlsECConfig;
-import org.bouncycastle.bcutil.Arrays;
+import com.distrimind.bouncycastle.tls.crypto.TlsECConfig;
+import com.distrimind.bouncycastle.util.Arrays;
 
 public class TlsECCUtils
 {

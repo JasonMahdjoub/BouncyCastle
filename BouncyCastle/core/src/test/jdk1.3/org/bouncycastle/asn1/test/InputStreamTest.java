@@ -1,12 +1,12 @@
-package org.bouncycastle.bcasn1.test;
+package com.distrimind.bouncycastle.asn1.test;
 
 import java.io.IOException;
 
-import org.bouncycastle.bcasn1.ASN1InputStream;
-import org.bouncycastle.bcasn1.ASN1Primitive;
-import org.bouncycastle.bcasn1.ASN1Sequence;
-import org.bouncycastle.bcutil.encoders.Base64;
-import org.bouncycastle.bcutil.test.SimpleTest;
+import com.distrimind.bouncycastle.asn1.ASN1InputStream;
+import com.distrimind.bouncycastle.asn1.ASN1Primitive;
+import com.distrimind.bouncycastle.asn1.ASN1Sequence;
+import com.distrimind.bouncycastle.util.encoders.Base64;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 public class InputStreamTest
     extends SimpleTest
@@ -74,9 +74,9 @@ public class InputStreamTest
             }
         }
 
-        testWithByteArray(classCast1, "unknown object encountered: class org.bouncycastle.bcasn1.DLApplicationSpecific");
-        testWithByteArray(classCast2, "unknown object encountered: class org.bouncycastle.bcasn1.BERTaggedObjectParser");
-        testWithByteArray(classCast3, "unknown object encountered in constructed OCTET STRING: class org.bouncycastle.bcasn1.DLTaggedObject");
+        testWithByteArray(classCast1, "unknown object encountered: class com.distrimind.bouncycastle.asn1.DLApplicationSpecific");
+        testWithByteArray(classCast2, "unknown object encountered: class com.distrimind.bouncycastle.asn1.BERTaggedObjectParser");
+        testWithByteArray(classCast3, "unknown object encountered in constructed OCTET STRING: class com.distrimind.bouncycastle.asn1.DLTaggedObject");
 
         testWithByteArray(memoryError1, "corrupted stream - out of bounds length found: 2078365180 >= 39");
         testWithByteArray(memoryError2, "corrupted stream - out of bounds length found: 2102504523 >= 39");

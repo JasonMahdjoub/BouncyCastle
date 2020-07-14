@@ -1,9 +1,9 @@
-package org.bouncycastle.tls.test;
+package com.distrimind.bouncycastle.tls.test;
 
-import org.bouncycastle.tls.DTLSTransport;
-import org.bouncycastle.tls.DatagramTransport;
-import org.bouncycastle.tls.ProtocolVersion;
-import org.bouncycastle.bcutil.Arrays;
+import com.distrimind.bouncycastle.tls.DTLSTransport;
+import com.distrimind.bouncycastle.tls.DatagramTransport;
+import com.distrimind.bouncycastle.tls.ProtocolVersion;
+import com.distrimind.bouncycastle.util.Arrays;
 
 import junit.framework.TestCase;
 

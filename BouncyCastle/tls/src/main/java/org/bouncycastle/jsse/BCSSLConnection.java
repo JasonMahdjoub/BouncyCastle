@@ -1,4 +1,4 @@
-package org.bouncycastle.jsse;
+package com.distrimind.bouncycastle.jsse;
 
 /**
  * A BCJSSE-specific interface providing access to extended connection-specific functionality.

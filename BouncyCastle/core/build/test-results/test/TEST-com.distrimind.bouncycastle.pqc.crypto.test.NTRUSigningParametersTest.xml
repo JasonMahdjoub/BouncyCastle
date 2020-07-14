@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.pqc.crypto.test.NTRUSigningParametersTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-07-14T23:08:42" hostname="Garage" time="0.0">
+  <properties/>
+  <testcase name="testLoadSave" classname="com.distrimind.bouncycastle.pqc.crypto.test.NTRUSigningParametersTest" time="0.0"/>
+  <testcase name="testClone" classname="com.distrimind.bouncycastle.pqc.crypto.test.NTRUSigningParametersTest" time="0.0"/>
+  <testcase name="testEqualsHashCode" classname="com.distrimind.bouncycastle.pqc.crypto.test.NTRUSigningParametersTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

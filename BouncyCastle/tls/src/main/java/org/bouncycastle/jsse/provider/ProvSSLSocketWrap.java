@@ -1,4 +1,4 @@
-package org.bouncycastle.jsse.provider;
+package com.distrimind.bouncycastle.jsse.provider;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -21,15 +21,15 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.X509ExtendedKeyManager;
 
-import org.bouncycastle.jsse.BCApplicationProtocolSelector;
-import org.bouncycastle.jsse.BCExtendedSSLSession;
-import org.bouncycastle.jsse.BCSSLConnection;
-import org.bouncycastle.jsse.BCSSLParameters;
-import org.bouncycastle.tls.AlertDescription;
-import org.bouncycastle.tls.TlsClientProtocol;
-import org.bouncycastle.tls.TlsFatalAlert;
-import org.bouncycastle.tls.TlsProtocol;
-import org.bouncycastle.tls.TlsServerProtocol;
+import com.distrimind.bouncycastle.jsse.BCApplicationProtocolSelector;
+import com.distrimind.bouncycastle.jsse.BCExtendedSSLSession;
+import com.distrimind.bouncycastle.jsse.BCSSLConnection;
+import com.distrimind.bouncycastle.jsse.BCSSLParameters;
+import com.distrimind.bouncycastle.tls.AlertDescription;
+import com.distrimind.bouncycastle.tls.TlsClientProtocol;
+import com.distrimind.bouncycastle.tls.TlsFatalAlert;
+import com.distrimind.bouncycastle.tls.TlsProtocol;
+import com.distrimind.bouncycastle.tls.TlsServerProtocol;
 
 class ProvSSLSocketWrap
     extends ProvSSLSocketBase

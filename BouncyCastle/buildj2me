@@ -24,7 +24,7 @@ then
     mkdir -p $target
     mkdir $target/javadoc
     mkdir $target/src
-    tar cf - index.html BCLICENSE.html CONTRIBUTORS.html docs zips | (cd $target && tar xf -)
+    tar cf - index.html LICENSE.html CONTRIBUTORS.html docs zips | (cd $target && tar xf -)
     ((cd core/src/main/java; tar cf - * ) | (cd $target/src && tar xf -))
     ((cd core/src/main/javadoc; tar cf - * ) | (cd $target/src && tar xf -))
     ((cd core/src/main/jdk1.4; tar cf - * ) | (cd $target/src && tar xf -))
@@ -163,91 +163,91 @@ then
     cd $target;
     javadoc -windowtitle "$WINDOWTITLE" -doctitle "$DOCTITLE" \
       -header "$HEADER" \
-    -group "Lightweight Crypto Packages" "org.bouncycastle.bccrypto*" \
-    -group "ASN.1 Support Packages" "org.bouncycastle.bcasn1*" \
-    -group "OpenPGP Support Packages" "org.bouncycastle.bcpg*:org.bouncycastle.openpgp*" \
-    -group "Basic Signing And Encryption" "org.bouncycastle.operator*" \
-    -group "Certificate Generation And Handling Support Packages" "org.bouncycastle.cert*" \
-    -group "CMS Support Packages" "org.bouncycastle.cms*" \
-    -group "EAC Support Packages" "org.bouncycastle.eac*" \
-    -group "TSP Support Packages" "org.bouncycastle.tsp*" \
-    -group "PKCS Support Packages" "org.bouncycastle.pkcs*" \
-    -group "Post-Quantum Crypto Packages" "org.bouncycastle.pqc*" \
-    -group "Utility Packages" "org.bouncycastle.bcutil*:org.bouncycastle.bcmath*" \
+    -group "Lightweight Crypto Packages" "com.distrimind.bouncycastle.crypto*" \
+    -group "ASN.1 Support Packages" "com.distrimind.bouncycastle.asn1*" \
+    -group "OpenPGP Support Packages" "com.distrimind.bouncycastle.bcpg*:com.distrimind.bouncycastle.openpgp*" \
+    -group "Basic Signing And Encryption" "com.distrimind.bouncycastle.operator*" \
+    -group "Certificate Generation And Handling Support Packages" "com.distrimind.bouncycastle.cert*" \
+    -group "CMS Support Packages" "com.distrimind.bouncycastle.cms*" \
+    -group "EAC Support Packages" "com.distrimind.bouncycastle.eac*" \
+    -group "TSP Support Packages" "com.distrimind.bouncycastle.tsp*" \
+    -group "PKCS Support Packages" "com.distrimind.bouncycastle.pkcs*" \
+    -group "Post-Quantum Crypto Packages" "com.distrimind.bouncycastle.pqc*" \
+    -group "Utility Packages" "com.distrimind.bouncycastle.util*:com.distrimind.bouncycastle.math*" \
       -classpath classes \
       -d javadoc -sourcepath src -breakiterator \
-    org.bouncycastle.bcasn1 \
-    org.bouncycastle.bcasn1.cmp \
-    org.bouncycastle.bcasn1.cms \
-    org.bouncycastle.bcasn1.cryptopro \
-    org.bouncycastle.bcasn1.esf \
-    org.bouncycastle.bcasn1.ess \
-    org.bouncycastle.bcasn1.gnu \
-    org.bouncycastle.bcasn1.iana \
-    org.bouncycastle.bcasn1.icao \
-    org.bouncycastle.bcasn1.misc \
-    org.bouncycastle.bcasn1.mozilla \
-    org.bouncycastle.bcasn1.nist \
-    org.bouncycastle.bcasn1.ocsp \
-    org.bouncycastle.bcasn1.oiw \
-    org.bouncycastle.bcasn1.pkcs \
-    org.bouncycastle.bcasn1.sec \
-    org.bouncycastle.bcasn1.smime \
-    org.bouncycastle.bcasn1.teletrust \
-    org.bouncycastle.bcasn1.test \
-    org.bouncycastle.bcasn1.tsp \
-    org.bouncycastle.bcasn1.util \
-    org.bouncycastle.bcasn1.x500 \
-    org.bouncycastle.bcasn1.x500.style \
-    org.bouncycastle.bcasn1.x509 \
-    org.bouncycastle.bcasn1.x9 \
-    org.bouncycastle.bcpg \
-    org.bouncycastle.bcpg.sig \
-    org.bouncycastle.openpgp \
-    org.bouncycastle.openpgp.bc \
-    org.bouncycastle.openpgp.operator \
-    org.bouncycastle.openpgp.operator.bc \
-    org.bouncycastle.operator \
-    org.bouncycastle.operator.bc \
-    org.bouncycastle.cert \
-    org.bouncycastle.cert.crmf \
-    org.bouncycastle.cert.crmf.bc \
-    org.bouncycastle.cert.cmp \
-    org.bouncycastle.pkcs \
-    org.bouncycastle.pkcs.bc \
-    org.bouncycastle.tsp \
-    org.bouncycastle.cms \
-    org.bouncycastle.cms.bc \
-    org.bouncycastle.bcmath.ec \
-    org.bouncycastle.bccrypto \
-    org.bouncycastle.bccrypto.agreement \
-    org.bouncycastle.bccrypto.commitments \
-    org.bouncycastle.bccrypto.digests \
-    org.bouncycastle.bccrypto.encodings \
-    org.bouncycastle.bccrypto.engines \
-    org.bouncycastle.bccrypto.generators \
-    org.bouncycastle.bccrypto.io \
-    org.bouncycastle.bccrypto.kems \
-    org.bouncycastle.bccrypto.macs \
-    org.bouncycastle.bccrypto.modes \
-    org.bouncycastle.bccrypto.params \
-    org.bouncycastle.bccrypto.parsers \
-    org.bouncycastle.bccrypto.paddings \
-    org.bouncycastle.bccrypto.signers \
-    org.bouncycastle.bccrypto.prng \
-    org.bouncycastle.bccrypto.tls \
-    org.bouncycastle.bccrypto.test \
-    org.bouncycastle.bccrypto.util \
-    org.bouncycastle.bccrypto.examples \
-    org.bouncycastle.pqc.asn1 \
-    org.bouncycastle.pqc.crypto \
-    org.bouncycastle.pqc.crypto.rainbow \
-    org.bouncycastle.pqc.crypto.mceliece \
-    org.bouncycastle.pqc.crypto.gmss \
-    org.bouncycastle.pqc.math.linearalgebra \
-    org.bouncycastle.bcutil \
-    org.bouncycastle.bcutil.encoders \
-    org.bouncycastle.bcutil.test > /dev/null \
+    com.distrimind.bouncycastle.asn1 \
+    com.distrimind.bouncycastle.asn1.cmp \
+    com.distrimind.bouncycastle.asn1.cms \
+    com.distrimind.bouncycastle.asn1.cryptopro \
+    com.distrimind.bouncycastle.asn1.esf \
+    com.distrimind.bouncycastle.asn1.ess \
+    com.distrimind.bouncycastle.asn1.gnu \
+    com.distrimind.bouncycastle.asn1.iana \
+    com.distrimind.bouncycastle.asn1.icao \
+    com.distrimind.bouncycastle.asn1.misc \
+    com.distrimind.bouncycastle.asn1.mozilla \
+    com.distrimind.bouncycastle.asn1.nist \
+    com.distrimind.bouncycastle.asn1.ocsp \
+    com.distrimind.bouncycastle.asn1.oiw \
+    com.distrimind.bouncycastle.asn1.pkcs \
+    com.distrimind.bouncycastle.asn1.sec \
+    com.distrimind.bouncycastle.asn1.smime \
+    com.distrimind.bouncycastle.asn1.teletrust \
+    com.distrimind.bouncycastle.asn1.test \
+    com.distrimind.bouncycastle.asn1.tsp \
+    com.distrimind.bouncycastle.asn1.util \
+    com.distrimind.bouncycastle.asn1.x500 \
+    com.distrimind.bouncycastle.asn1.x500.style \
+    com.distrimind.bouncycastle.asn1.x509 \
+    com.distrimind.bouncycastle.asn1.x9 \
+    com.distrimind.bouncycastle.bcpg \
+    com.distrimind.bouncycastle.bcpg.sig \
+    com.distrimind.bouncycastle.openpgp \
+    com.distrimind.bouncycastle.openpgp.bc \
+    com.distrimind.bouncycastle.openpgp.operator \
+    com.distrimind.bouncycastle.openpgp.operator.bc \
+    com.distrimind.bouncycastle.operator \
+    com.distrimind.bouncycastle.operator.bc \
+    com.distrimind.bouncycastle.cert \
+    com.distrimind.bouncycastle.cert.crmf \
+    com.distrimind.bouncycastle.cert.crmf.bc \
+    com.distrimind.bouncycastle.cert.cmp \
+    com.distrimind.bouncycastle.pkcs \
+    com.distrimind.bouncycastle.pkcs.bc \
+    com.distrimind.bouncycastle.tsp \
+    com.distrimind.bouncycastle.cms \
+    com.distrimind.bouncycastle.cms.bc \
+    com.distrimind.bouncycastle.math.ec \
+    com.distrimind.bouncycastle.crypto \
+    com.distrimind.bouncycastle.crypto.agreement \
+    com.distrimind.bouncycastle.crypto.commitments \
+    com.distrimind.bouncycastle.crypto.digests \
+    com.distrimind.bouncycastle.crypto.encodings \
+    com.distrimind.bouncycastle.crypto.engines \
+    com.distrimind.bouncycastle.crypto.generators \
+    com.distrimind.bouncycastle.crypto.io \
+    com.distrimind.bouncycastle.crypto.kems \
+    com.distrimind.bouncycastle.crypto.macs \
+    com.distrimind.bouncycastle.crypto.modes \
+    com.distrimind.bouncycastle.crypto.params \
+    com.distrimind.bouncycastle.crypto.parsers \
+    com.distrimind.bouncycastle.crypto.paddings \
+    com.distrimind.bouncycastle.crypto.signers \
+    com.distrimind.bouncycastle.crypto.prng \
+    com.distrimind.bouncycastle.crypto.tls \
+    com.distrimind.bouncycastle.crypto.test \
+    com.distrimind.bouncycastle.crypto.util \
+    com.distrimind.bouncycastle.crypto.examples \
+    com.distrimind.bouncycastle.pqc.asn1 \
+    com.distrimind.bouncycastle.pqc.crypto \
+    com.distrimind.bouncycastle.pqc.crypto.rainbow \
+    com.distrimind.bouncycastle.pqc.crypto.mceliece \
+    com.distrimind.bouncycastle.pqc.crypto.gmss \
+    com.distrimind.bouncycastle.pqc.math.linearalgebra \
+    com.distrimind.bouncycastle.util \
+    com.distrimind.bouncycastle.util.encoders \
+    com.distrimind.bouncycastle.util.test > /dev/null \
 
     )
 fi

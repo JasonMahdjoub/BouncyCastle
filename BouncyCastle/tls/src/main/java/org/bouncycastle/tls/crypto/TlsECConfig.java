@@ -1,6 +1,6 @@
-package org.bouncycastle.tls.crypto;
+package com.distrimind.bouncycastle.tls.crypto;
 
-import org.bouncycastle.tls.NamedGroup;
+import com.distrimind.bouncycastle.tls.NamedGroup;
 
 /**
  * Carrier class for Elliptic Curve parameter configuration.

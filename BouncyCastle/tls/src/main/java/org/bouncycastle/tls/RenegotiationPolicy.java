@@ -1,4 +1,4 @@
-package org.bouncycastle.tls;
+package com.distrimind.bouncycastle.tls;
 
 /**
  * Note that the values here are implementation-specific and arbitrary. It is recommended not to

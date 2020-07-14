@@ -1,4 +1,4 @@
-package org.bouncycastle.tls.crypto.impl.jcajce;
+package com.distrimind.bouncycastle.tls.crypto.impl.jcajce;
 
 import java.math.BigInteger;
 import java.security.AlgorithmParameters;
@@ -15,7 +15,7 @@ import java.security.spec.ECGenParameterSpec;
 import java.security.spec.ECParameterSpec;
 import java.security.spec.EllipticCurve;
 
-import org.bouncycastle.bcmath.ec.ECCurve;
+import com.distrimind.bouncycastle.math.ec.ECCurve;
 
 class ECUtil
 {

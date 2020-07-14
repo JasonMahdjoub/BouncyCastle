@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.jsse.provider.test.AllTests" tests="0" skipped="0" failures="0" errors="0" timestamp="1970-01-01T00:00:00" hostname="Garage" time="0.0">
+<testsuite name="com.distrimind.bouncycastle.jsse.provider.test.AllTests" tests="0" skipped="0" failures="0" errors="0" timestamp="1970-01-01T00:00:00" hostname="Garage" time="0.0">
   <properties/>
   <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[juil. 09, 2020 3:58:44 PM org.bouncycastle.jsse.provider.PropertyUtils getStringSecurityProperty
+  <system-err><![CDATA[juil. 09, 2020 3:58:44 PM com.distrimind.bouncycastle.jsse.provider.PropertyUtils getStringSecurityProperty
 INFOS: Found string security property [jdk.tls.disabledAlgorithms]: SSLv3, RC4, DES, MD5withRSA, DH keySize < 1024, EC keySize < 224, 3DES_EDE_CBC, anon, NULL
-juil. 09, 2020 3:58:44 PM org.bouncycastle.jsse.provider.PropertyUtils getStringSecurityProperty
+juil. 09, 2020 3:58:44 PM com.distrimind.bouncycastle.jsse.provider.PropertyUtils getStringSecurityProperty
 INFOS: Found string security property [jdk.certpath.disabledAlgorithms]: MD2, MD5, SHA1 jdkCA & usage TLSServer, RSA keySize < 1024, DSA keySize < 1024, EC keySize < 224
-juil. 09, 2020 3:58:44 PM org.bouncycastle.jsse.provider.DisabledAlgorithmConstraints create
+juil. 09, 2020 3:58:44 PM com.distrimind.bouncycastle.jsse.provider.DisabledAlgorithmConstraints create
 AVERTISSEMENT: Ignoring unsupported entry in 'jdk.certpath.disabledAlgorithms': SHA1 jdkCA & usage TLSServer
-juil. 09, 2020 3:58:44 PM org.bouncycastle.jsse.provider.ProvKeyManagerFactorySpi getDefaultKeyStore
+juil. 09, 2020 3:58:44 PM com.distrimind.bouncycastle.jsse.provider.ProvKeyManagerFactorySpi getDefaultKeyStore
 INFOS: Initializing empty key store
-juil. 09, 2020 3:58:44 PM org.bouncycastle.jsse.provider.ProvTrustManagerFactorySpi getDefaultTrustStore
+juil. 09, 2020 3:58:44 PM com.distrimind.bouncycastle.jsse.provider.ProvTrustManagerFactorySpi getDefaultTrustStore
 INFOS: Initializing with trust store at path: /usr/lib/jvm/java-13-openjdk-amd64/lib/security/cacerts
 ]]></system-err>
 </testsuite>

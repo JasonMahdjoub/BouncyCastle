@@ -1,14 +1,14 @@
-package org.bouncycastle.tls;
+package com.distrimind.bouncycastle.tls;
 
 import java.io.IOException;
 
-import org.bouncycastle.tls.crypto.TlsCrypto;
-import org.bouncycastle.tls.crypto.TlsCryptoUtils;
-import org.bouncycastle.tls.crypto.TlsNonceGenerator;
-import org.bouncycastle.tls.crypto.TlsSecret;
-import org.bouncycastle.bcutil.Arrays;
-import org.bouncycastle.bcutil.Pack;
-import org.bouncycastle.bcutil.Times;
+import com.distrimind.bouncycastle.tls.crypto.TlsCrypto;
+import com.distrimind.bouncycastle.tls.crypto.TlsCryptoUtils;
+import com.distrimind.bouncycastle.tls.crypto.TlsNonceGenerator;
+import com.distrimind.bouncycastle.tls.crypto.TlsSecret;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Pack;
+import com.distrimind.bouncycastle.util.Times;
 
 abstract class AbstractTlsContext
     implements TlsContext

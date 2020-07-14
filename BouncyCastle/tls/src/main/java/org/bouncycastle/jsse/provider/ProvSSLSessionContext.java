@@ -1,4 +1,4 @@
-package org.bouncycastle.jsse.provider;
+package com.distrimind.bouncycastle.jsse.provider;
 
 import java.lang.ref.ReferenceQueue;
 import java.lang.ref.SoftReference;
@@ -15,9 +15,9 @@ import java.util.logging.Logger;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSessionContext;
 
-import org.bouncycastle.tls.SessionID;
-import org.bouncycastle.tls.TlsSession;
-import org.bouncycastle.tls.crypto.impl.jcajce.JcaTlsCrypto;
+import com.distrimind.bouncycastle.tls.SessionID;
+import com.distrimind.bouncycastle.tls.TlsSession;
+import com.distrimind.bouncycastle.tls.crypto.impl.jcajce.JcaTlsCrypto;
 
 class ProvSSLSessionContext
     implements SSLSessionContext

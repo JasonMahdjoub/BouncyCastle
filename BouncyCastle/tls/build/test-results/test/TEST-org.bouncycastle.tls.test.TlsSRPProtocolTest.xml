@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.tls.test.TlsSRPProtocolTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-07-09T13:58:52" hostname="Garage" time="0.012">
+<testsuite name="com.distrimind.bouncycastle.tls.test.TlsSRPProtocolTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-07-09T13:58:52" hostname="Garage" time="0.012">
   <properties/>
-  <testcase name="testClientServer" classname="org.bouncycastle.tls.test.TlsSRPProtocolTest" time="0.012"/>
+  <testcase name="testClientServer" classname="com.distrimind.bouncycastle.tls.test.TlsSRPProtocolTest" time="0.012"/>
   <system-out><![CDATA[TLS-SRP server negotiated TLS 1.2
 TLS-SRP client negotiated TLS 1.2
 TLS-SRP client received server certificate chain of length 1

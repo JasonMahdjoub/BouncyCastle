@@ -1,23 +1,23 @@
-package org.bouncycastle.tls.crypto.impl.bc;
+package com.distrimind.bouncycastle.tls.crypto.impl.bc;
 
 import java.io.IOException;
 import java.math.BigInteger;
 
-import org.bouncycastle.bccrypto.AsymmetricCipherKeyPair;
-import org.bouncycastle.bccrypto.agreement.DHBasicAgreement;
-import org.bouncycastle.bccrypto.generators.DHBasicKeyPairGenerator;
-import org.bouncycastle.bccrypto.params.DHKeyGenerationParameters;
-import org.bouncycastle.bccrypto.params.DHParameters;
-import org.bouncycastle.bccrypto.params.DHPrivateKeyParameters;
-import org.bouncycastle.bccrypto.params.DHPublicKeyParameters;
-import org.bouncycastle.tls.AlertDescription;
-import org.bouncycastle.tls.TlsDHUtils;
-import org.bouncycastle.tls.TlsFatalAlert;
-import org.bouncycastle.tls.crypto.DHGroup;
-import org.bouncycastle.tls.crypto.TlsAgreement;
-import org.bouncycastle.tls.crypto.TlsDHConfig;
-import org.bouncycastle.tls.crypto.TlsDHDomain;
-import org.bouncycastle.bcutil.BigIntegers;
+import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
+import com.distrimind.bouncycastle.crypto.agreement.DHBasicAgreement;
+import com.distrimind.bouncycastle.crypto.generators.DHBasicKeyPairGenerator;
+import com.distrimind.bouncycastle.crypto.params.DHKeyGenerationParameters;
+import com.distrimind.bouncycastle.crypto.params.DHParameters;
+import com.distrimind.bouncycastle.crypto.params.DHPrivateKeyParameters;
+import com.distrimind.bouncycastle.crypto.params.DHPublicKeyParameters;
+import com.distrimind.bouncycastle.tls.AlertDescription;
+import com.distrimind.bouncycastle.tls.TlsDHUtils;
+import com.distrimind.bouncycastle.tls.TlsFatalAlert;
+import com.distrimind.bouncycastle.tls.crypto.DHGroup;
+import com.distrimind.bouncycastle.tls.crypto.TlsAgreement;
+import com.distrimind.bouncycastle.tls.crypto.TlsDHConfig;
+import com.distrimind.bouncycastle.tls.crypto.TlsDHDomain;
+import com.distrimind.bouncycastle.util.BigIntegers;
 
 /**
  * BC light-weight support class for Diffie-Hellman key pair generation and key agreement over a specified Diffie-Hellman configuration.

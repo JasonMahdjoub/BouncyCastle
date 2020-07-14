@@ -1,4 +1,4 @@
-package org.bouncycastle.tls.test;
+package com.distrimind.bouncycastle.tls.test;
 
 import junit.extensions.TestSetup;
 import junit.framework.Test;

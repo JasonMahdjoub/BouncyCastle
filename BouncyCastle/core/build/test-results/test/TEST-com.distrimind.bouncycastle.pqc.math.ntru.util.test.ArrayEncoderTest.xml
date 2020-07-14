@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.pqc.math.ntru.util.test.ArrayEncoderTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-07-14T23:08:21" hostname="Garage" time="0.019">
+  <properties/>
+  <testcase name="testEncodeDecodeMod3Tight" classname="com.distrimind.bouncycastle.pqc.math.ntru.util.test.ArrayEncoderTest" time="0.016"/>
+  <testcase name="testEncodeDecodeModQ" classname="com.distrimind.bouncycastle.pqc.math.ntru.util.test.ArrayEncoderTest" time="0.002"/>
+  <testcase name="testEncodeDecodeMod3Sves" classname="com.distrimind.bouncycastle.pqc.math.ntru.util.test.ArrayEncoderTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

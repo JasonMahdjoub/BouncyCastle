@@ -1,22 +1,22 @@
-package org.bouncycastle.tls.crypto.impl.bc;
+package com.distrimind.bouncycastle.tls.crypto.impl.bc;
 
 import java.io.IOException;
 
-import org.bouncycastle.bccrypto.CryptoException;
-import org.bouncycastle.bccrypto.Digest;
-import org.bouncycastle.bccrypto.Signer;
-import org.bouncycastle.bccrypto.encodings.PKCS1Encoding;
-import org.bouncycastle.bccrypto.engines.RSABlindedEngine;
-import org.bouncycastle.bccrypto.params.ParametersWithRandom;
-import org.bouncycastle.bccrypto.params.RSAKeyParameters;
-import org.bouncycastle.bccrypto.signers.GenericSigner;
-import org.bouncycastle.bccrypto.signers.RSADigestSigner;
-import org.bouncycastle.tls.AlertDescription;
-import org.bouncycastle.tls.HashAlgorithm;
-import org.bouncycastle.tls.SignatureAlgorithm;
-import org.bouncycastle.tls.SignatureAndHashAlgorithm;
-import org.bouncycastle.tls.TlsFatalAlert;
-import org.bouncycastle.tls.TlsUtils;
+import com.distrimind.bouncycastle.crypto.CryptoException;
+import com.distrimind.bouncycastle.crypto.Digest;
+import com.distrimind.bouncycastle.crypto.Signer;
+import com.distrimind.bouncycastle.crypto.encodings.PKCS1Encoding;
+import com.distrimind.bouncycastle.crypto.engines.RSABlindedEngine;
+import com.distrimind.bouncycastle.crypto.params.ParametersWithRandom;
+import com.distrimind.bouncycastle.crypto.params.RSAKeyParameters;
+import com.distrimind.bouncycastle.crypto.signers.GenericSigner;
+import com.distrimind.bouncycastle.crypto.signers.RSADigestSigner;
+import com.distrimind.bouncycastle.tls.AlertDescription;
+import com.distrimind.bouncycastle.tls.HashAlgorithm;
+import com.distrimind.bouncycastle.tls.SignatureAlgorithm;
+import com.distrimind.bouncycastle.tls.SignatureAndHashAlgorithm;
+import com.distrimind.bouncycastle.tls.TlsFatalAlert;
+import com.distrimind.bouncycastle.tls.TlsUtils;
 
 /**
  * Operator supporting the generation of RSASSA-PKCS1-v1_5 signatures using the BC light-weight API.

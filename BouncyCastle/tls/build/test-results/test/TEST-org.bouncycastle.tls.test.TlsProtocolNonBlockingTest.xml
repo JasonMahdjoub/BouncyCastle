@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.tls.test.TlsProtocolNonBlockingTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2020-07-09T13:58:52" hostname="Garage" time="0.022">
+<testsuite name="com.distrimind.bouncycastle.tls.test.TlsProtocolNonBlockingTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2020-07-09T13:58:52" hostname="Garage" time="0.022">
   <properties/>
-  <testcase name="testClientServerFragmented" classname="org.bouncycastle.tls.test.TlsProtocolNonBlockingTest" time="0.012"/>
-  <testcase name="testClientServerNonFragmented" classname="org.bouncycastle.tls.test.TlsProtocolNonBlockingTest" time="0.01"/>
+  <testcase name="testClientServerFragmented" classname="com.distrimind.bouncycastle.tls.test.TlsProtocolNonBlockingTest" time="0.012"/>
+  <testcase name="testClientServerNonFragmented" classname="com.distrimind.bouncycastle.tls.test.TlsProtocolNonBlockingTest" time="0.01"/>
   <system-out><![CDATA[TLS server negotiated TLS 1.2
 TLS client negotiated TLS 1.2
 TLS client received server certificate chain of length 1

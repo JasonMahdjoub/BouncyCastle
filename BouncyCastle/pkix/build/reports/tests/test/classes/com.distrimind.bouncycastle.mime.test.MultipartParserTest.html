@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - Class com.distrimind.bouncycastle.mime.test.MultipartParserTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>Class com.distrimind.bouncycastle.mime.test.MultipartParserTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/com.distrimind.bouncycastle.mime.test.html">com.distrimind.bouncycastle.mime.test</a> &gt; MultipartParserTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">9</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.108s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">testEmbeddedMultipart</td>
+<td class="success">0.006s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testInvalidSha256SignedMultipart</td>
+<td class="success">0.012s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testMimeMultipart</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testMultipartAlternative</td>
+<td class="success">0.012s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testParseContentTypeHeader_broken</td>
+<td class="success">0s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testParseContentTypeHeader_empty_micalg</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testParseContentTypeHeader_wellformed</td>
+<td class="success">0s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testParseContentTypeHeader_wellformed_multi</td>
+<td class="success">0s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testSignedMultipart</td>
+<td class="success">0.075s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>#######################################################################
+This is a testmail with a very long line that needs to be broken and some non-ascii chars to enforce quoted-printable encoding: àéè
+#######################################################################
+#######################################################################
+
+--B_3508900603_19033269
+Content-type: multipart/alternative;
+	boundary=&quot;B_3508900603_18973565&quot;
+
+
+--B_3508900603_18973565
+Content-type: text/plain;
+	charset=&quot;US-ASCII&quot;
+Content-transfer-encoding: 7bit
+
+Test using single, tiny attachment.
+
+
+
+--B_3508900603_18973565
+Content-type: text/html;
+	charset=&quot;US-ASCII&quot;
+Content-transfer-encoding: quoted-printable
+
+&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body style=3D&quot;word-wrap: break-word; -webkit-nbsp-mode: s=
+pace; -webkit-line-break: after-white-space; color: rgb(0, 0, 0); font-size:=
+ 14px; font-family: Calibri, sans-serif;&quot;&gt;&lt;div&gt;Test using single, tiny attac=
+hment.&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;
+
+--B_3508900603_18973565--
+
+
+--B_3508900603_19033269
+Content-type: text/plain; name=&quot;tinyattachment.txt&quot;
+Content-disposition: attachment;
+	filename=&quot;tinyattachment.txt&quot;
+Content-transfer-encoding: base64
+
+
+eHh4eA==
+--B_3508900603_19033269--
+
+#######################################################################
+#######################################################################
+--------alternative_boundary
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+ In Beantwortung Ihrer Datei 'CONTRL__9904144000002_9900496000005_20080409_=
+141316.txt' lieferte der
+ AKTIF-EDI-Service folgende Ergebnisse:
+
+ --------------------------------------------------------------------------=
+--------
+ Dateiname                        gepackt   verschl.  Kommentar/Signaturdat=
+ei
+ =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D
+ CONTRL__9904144000002_9900496...     not      not    
+ --------------------------------------------------------------------------=
+--------
+
+
+
+
+ In response of your processed file 'CONTRL__9904144000002_9900496000005_20=
+080409_141316.txt' the
+ AKTIF-EDI-Service sent to you the following results:
+
+ --------------------------------------------------------------------------=
+--------
+ filename                        compressed encrypted comment/sigfile
+ =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D
+ CONTRL__9904144000002_9900496...     not      not    
+ --------------------------------------------------------------------------=
+--------
+
+
+
+-- 
+autogenerated email by AKTIF EDI Service (aedic.sm).
+Please do not respond to this emailaddress.
+
+
+--------alternative_boundary
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+&lt;!doctype html public &quot;-//w3c//dtd html 4.0 transitional//en&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;title&gt;processed file&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=3D&quot;#ffffff&quot;&gt;
+&lt;!-- header --&gt;
+&lt;b&gt;AKTIF EDI-Service:&lt;/b&gt;&amp;nbsp;Konvertierte Datei/converted file 'CONTRL__9=
+904144000002_9900496000005_20080409_141316.txt'
+&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;!-- body --&gt;
+&lt;table cellpadding=3D&quot;3&quot; border=3D&quot;0&quot; align=3D&quot;center&quot;&gt;
+&lt;tr bgcolor=3D&quot;#330866&quot;&gt;
+&lt;td valign=3D&quot;top&quot;&gt;&lt;font color=3D&quot;#ffffff&quot; face=3D&quot;Verdana,Arial,Helvetica&quot;=
+ size=3D&quot;-1&quot;&gt;&lt;b&gt;Datei&lt;/b&gt;&lt;/font&gt;&lt;br&gt;
+&lt;font color=3D&quot;#d1cedc&quot; face=3D&quot;Verdana,Arial,Helvetica&quot; size=3D&quot;-1&quot;&gt;&lt;b&gt;fil=
+e&lt;/b&gt;&lt;/font&gt;&lt;/td&gt;
+&lt;td valign=3D&quot;top&quot;&gt;&lt;font color=3D&quot;#ffffff&quot; face=3D&quot;Verdana,Arial,Helvetica&quot;=
+ size=3D&quot;-1&quot;&gt;&lt;b&gt;Komprimierung&lt;/b&gt;&lt;/font&gt;&lt;br&gt;
+&lt;font color=3D&quot;#d1cedc&quot; face=3D&quot;Verdana,Arial,Helvetica&quot; size=3D&quot;-1&quot;&gt;&lt;b&gt;com=
+pression&lt;/b&gt;&lt;/font&gt;&lt;/td&gt;
+&lt;td valign=3D&quot;top&quot;&gt;&lt;font color=3D&quot;#ffffff&quot; face=3D&quot;Verdana,Arial,Helvetica&quot;=
+ size=3D&quot;-1&quot;&gt;&lt;b&gt;Verschl=FCsselung&lt;/b&gt;&lt;/font&gt;&lt;br&gt;
+&lt;font color=3D&quot;#d1cedc&quot; face=3D&quot;Verdana,Arial,Helvetica&quot; size=3D&quot;-1&quot;&gt;&lt;b&gt;enc=
+ryption&lt;/b&gt;&lt;/font&gt;&lt;/td&gt;
+&lt;td valign=3D&quot;top&quot;&gt;&lt;font color=3D&quot;#ffffff&quot; face=3D&quot;Verdana,Arial,Helvetica&quot;=
+ size=3D&quot;-1&quot;&gt;&lt;b&gt;Signaturdatei/Kommentar&lt;/b&gt;&lt;/font&gt;&lt;br&gt;
+&lt;font color=3D&quot;#d1cedc&quot; face=3D&quot;Verdana,Arial,Helvetica&quot; size=3D&quot;-1&quot;&gt;&lt;b&gt;sig=
+naturefile/comment&lt;/b&gt;&lt;/font&gt;
+&lt;/td&gt;&lt;/tr&gt;
+&lt;tr align=3D&quot;center&quot;&gt;
+&lt;td&gt;CONTRL__9904144000002_9900496000005_20080409_141316.txt&lt;/td&gt;
+&lt;td&gt;keine/none&lt;/td&gt;
+&lt;td&gt;keine/none&lt;/td&gt;
+&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;!-- trailer --&gt;
+&lt;font face=3D&quot;Verdana,Arial,Helvetica&quot; size=3D&quot;-2&quot;&gt;
+--&amp;nbsp;&lt;br&gt;autogenerated email by &lt;a href=3D&quot;http://www.aktif-technology.c=
+om&quot;&gt;AKTIF&lt;/a&gt;-EDIService (aedic.sm).
+Please do not respond to this emailaddress.&lt;/font&gt;
+&lt;/body&gt;&lt;/html&gt;
+
+
+--------alternative_boundary--
+#######################################################################
+#######################################################################
+UNA:+.? 'UNB+UNOC:3+9904144000002:500+9900496000005:500+080409:1024+141316'UNH+129534+CONTRL:D:3:UN:1.3'UCI+90410000031762+9900496000005:500+9904144000002:500+8'UNT+3+129534'UNZ+1+141316'
+#######################################################################
+#######################################################################
+
+------=_NextPart_001_00E1_01C73A39.F0BAF680
+Content-Type: text/plain;
+	charset=&quot;us-ascii&quot;
+Content-Transfer-Encoding: 7bit
+
+Hello
+
+
+
+------=_NextPart_001_00E1_01C73A39.F0BAF680
+Content-Type: text/plain;
+	name=&quot;ro.txt&quot;
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: attachment;
+	filename=&quot;ro.txt&quot;
+
+Lieber Ralf
+
+Besten Dank f=FCr die =C4nderungsvorschl=E4ge. Ich werde das heute Abend =
+anpassen und dann einreichen.=20
+Dann schauen wir. Von der Publizit=E4t her w=E4re eine =
+Ver=F6ffentlichung im IEEE Computer schon sehr gut.
+
+Sch=F6n, dass das mit der Offerte geklappt hat. ...
+
+
+Sch=F6ne Woche und Gruss,
+
+Rolf
+
+------=_NextPart_001_00E1_01C73A39.F0BAF680--
+
+#######################################################################
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 6.1.1</a> at 15 juil. 2020 à 01:12:46</p>
+</div>
+</div>
+</body>
+</html>

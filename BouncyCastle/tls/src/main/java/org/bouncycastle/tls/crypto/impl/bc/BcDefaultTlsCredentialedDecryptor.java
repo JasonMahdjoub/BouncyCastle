@@ -1,20 +1,20 @@
-package org.bouncycastle.tls.crypto.impl.bc;
+package com.distrimind.bouncycastle.tls.crypto.impl.bc;
 
 import java.io.IOException;
 import java.security.SecureRandom;
 
-import org.bouncycastle.bccrypto.encodings.PKCS1Encoding;
-import org.bouncycastle.bccrypto.engines.RSABlindedEngine;
-import org.bouncycastle.bccrypto.params.AsymmetricKeyParameter;
-import org.bouncycastle.bccrypto.params.ParametersWithRandom;
-import org.bouncycastle.bccrypto.params.RSAKeyParameters;
-import org.bouncycastle.tls.Certificate;
-import org.bouncycastle.tls.ProtocolVersion;
-import org.bouncycastle.tls.TlsCredentialedDecryptor;
-import org.bouncycastle.tls.crypto.TlsCryptoParameters;
-import org.bouncycastle.tls.crypto.TlsSecret;
-import org.bouncycastle.tls.crypto.impl.TlsImplUtils;
-import org.bouncycastle.bcutil.Arrays;
+import com.distrimind.bouncycastle.crypto.encodings.PKCS1Encoding;
+import com.distrimind.bouncycastle.crypto.engines.RSABlindedEngine;
+import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
+import com.distrimind.bouncycastle.crypto.params.ParametersWithRandom;
+import com.distrimind.bouncycastle.crypto.params.RSAKeyParameters;
+import com.distrimind.bouncycastle.tls.Certificate;
+import com.distrimind.bouncycastle.tls.ProtocolVersion;
+import com.distrimind.bouncycastle.tls.TlsCredentialedDecryptor;
+import com.distrimind.bouncycastle.tls.crypto.TlsCryptoParameters;
+import com.distrimind.bouncycastle.tls.crypto.TlsSecret;
+import com.distrimind.bouncycastle.tls.crypto.impl.TlsImplUtils;
+import com.distrimind.bouncycastle.util.Arrays;
 
 /**
  * Credentialed class decrypting RSA encrypted secrets sent from a peer for our end of the TLS connection using the BC light-weight API.

@@ -1,4 +1,4 @@
-package org.bouncycastle.openpgp;
+package com.distrimind.bouncycastle.openpgp;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -7,18 +7,18 @@ import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.util.Date;
 
-import org.bouncycastle.bcpg.MPInteger;
-import org.bouncycastle.bcpg.OnePassSignaturePacket;
-import org.bouncycastle.bcpg.PublicKeyAlgorithmTags;
-import org.bouncycastle.bcpg.SignaturePacket;
-import org.bouncycastle.bcpg.SignatureSubpacket;
-import org.bouncycastle.bcpg.SignatureSubpacketTags;
-import org.bouncycastle.bcpg.UserAttributeSubpacket;
-import org.bouncycastle.bcpg.sig.IssuerKeyID;
-import org.bouncycastle.bcpg.sig.SignatureCreationTime;
-import org.bouncycastle.openpgp.operator.PGPContentSigner;
-import org.bouncycastle.openpgp.operator.PGPContentSignerBuilder;
-import org.bouncycastle.bcutil.Strings;
+import com.distrimind.bouncycastle.bcpg.MPInteger;
+import com.distrimind.bouncycastle.bcpg.OnePassSignaturePacket;
+import com.distrimind.bouncycastle.bcpg.PublicKeyAlgorithmTags;
+import com.distrimind.bouncycastle.bcpg.SignaturePacket;
+import com.distrimind.bouncycastle.bcpg.SignatureSubpacket;
+import com.distrimind.bouncycastle.bcpg.SignatureSubpacketTags;
+import com.distrimind.bouncycastle.bcpg.UserAttributeSubpacket;
+import com.distrimind.bouncycastle.bcpg.sig.IssuerKeyID;
+import com.distrimind.bouncycastle.bcpg.sig.SignatureCreationTime;
+import com.distrimind.bouncycastle.openpgp.operator.PGPContentSigner;
+import com.distrimind.bouncycastle.openpgp.operator.PGPContentSignerBuilder;
+import com.distrimind.bouncycastle.util.Strings;
 
 /**
  * Generator for PGP Signatures.

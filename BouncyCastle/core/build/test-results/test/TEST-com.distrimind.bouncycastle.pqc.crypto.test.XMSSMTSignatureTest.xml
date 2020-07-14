@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.pqc.crypto.test.XMSSMTSignatureTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2020-07-14T23:08:57" hostname="Garage" time="0.051">
+  <properties/>
+  <testcase name="testSignatureParsingSHA256" classname="com.distrimind.bouncycastle.pqc.crypto.test.XMSSMTSignatureTest" time="0.05"/>
+  <testcase name="testConstructor" classname="com.distrimind.bouncycastle.pqc.crypto.test.XMSSMTSignatureTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

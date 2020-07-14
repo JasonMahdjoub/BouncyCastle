@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bouncycastle.tsp.test.CMSTimeStampedDataTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-07-09T13:53:52" hostname="Garage" time="0.005">
-  <properties/>
-  <testcase name="testGetTimeStampTokens" classname="org.bouncycastle.tsp.test.CMSTimeStampedDataTest" time="0.003"/>
-  <testcase name="testValidate" classname="org.bouncycastle.tsp.test.CMSTimeStampedDataTest" time="0.001"/>
-  <testcase name="testValidateAllTokens" classname="org.bouncycastle.tsp.test.CMSTimeStampedDataTest" time="0.001"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

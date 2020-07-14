@@ -1,25 +1,25 @@
-package org.bouncycastle.bccrypto.test;
+package com.distrimind.bouncycastle.crypto.test;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
-import org.bouncycastle.bccrypto.AsymmetricBlockCipher;
-import org.bouncycastle.bccrypto.AsymmetricCipherKeyPair;
-import org.bouncycastle.bccrypto.CipherParameters;
-import org.bouncycastle.bccrypto.DataLengthException;
-import org.bouncycastle.bccrypto.InvalidCipherTextException;
-import org.bouncycastle.bccrypto.digests.SHA1Digest;
-import org.bouncycastle.bccrypto.encodings.OAEPEncoding;
-import org.bouncycastle.bccrypto.encodings.PKCS1Encoding;
-import org.bouncycastle.bccrypto.engines.RSAEngine;
-import org.bouncycastle.bccrypto.generators.RSAKeyPairGenerator;
-import org.bouncycastle.bccrypto.params.ParametersWithRandom;
-import org.bouncycastle.bccrypto.params.RSAKeyGenerationParameters;
-import org.bouncycastle.bccrypto.params.RSAKeyParameters;
-import org.bouncycastle.bccrypto.params.RSAPrivateCrtKeyParameters;
-import org.bouncycastle.bcutil.Arrays;
-import org.bouncycastle.bcutil.encoders.Hex;
-import org.bouncycastle.bcutil.test.SimpleTest;
+import com.distrimind.bouncycastle.crypto.AsymmetricBlockCipher;
+import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
+import com.distrimind.bouncycastle.crypto.CipherParameters;
+import com.distrimind.bouncycastle.crypto.DataLengthException;
+import com.distrimind.bouncycastle.crypto.InvalidCipherTextException;
+import com.distrimind.bouncycastle.crypto.digests.SHA1Digest;
+import com.distrimind.bouncycastle.crypto.encodings.OAEPEncoding;
+import com.distrimind.bouncycastle.crypto.encodings.PKCS1Encoding;
+import com.distrimind.bouncycastle.crypto.engines.RSAEngine;
+import com.distrimind.bouncycastle.crypto.generators.RSAKeyPairGenerator;
+import com.distrimind.bouncycastle.crypto.params.ParametersWithRandom;
+import com.distrimind.bouncycastle.crypto.params.RSAKeyGenerationParameters;
+import com.distrimind.bouncycastle.crypto.params.RSAKeyParameters;
+import com.distrimind.bouncycastle.crypto.params.RSAPrivateCrtKeyParameters;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.encoders.Hex;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 public class RSATest
     extends SimpleTest

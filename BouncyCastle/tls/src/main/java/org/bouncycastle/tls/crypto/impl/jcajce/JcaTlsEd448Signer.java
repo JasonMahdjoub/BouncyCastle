@@ -1,8 +1,8 @@
-package org.bouncycastle.tls.crypto.impl.jcajce;
+package com.distrimind.bouncycastle.tls.crypto.impl.jcajce;
 
 import java.security.PrivateKey;
 
-import org.bouncycastle.tls.SignatureAlgorithm;
+import com.distrimind.bouncycastle.tls.SignatureAlgorithm;
 
 public class JcaTlsEd448Signer
     extends JcaTlsEdDSASigner

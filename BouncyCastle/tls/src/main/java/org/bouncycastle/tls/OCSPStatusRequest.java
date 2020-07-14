@@ -1,4 +1,4 @@
-package org.bouncycastle.tls;
+package com.distrimind.bouncycastle.tls;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -7,10 +7,10 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Vector;
 
-import org.bouncycastle.bcasn1.ASN1Encoding;
-import org.bouncycastle.bcasn1.ocsp.ResponderID;
-import org.bouncycastle.bcasn1.x509.Extensions;
-import org.bouncycastle.bcutil.io.Streams;
+import com.distrimind.bouncycastle.asn1.ASN1Encoding;
+import com.distrimind.bouncycastle.asn1.ocsp.ResponderID;
+import com.distrimind.bouncycastle.asn1.x509.Extensions;
+import com.distrimind.bouncycastle.util.io.Streams;
 
 /**
  * RFC 3546 3.6

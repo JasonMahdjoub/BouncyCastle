@@ -1,4 +1,4 @@
-package org.bouncycastle.jsse.provider.test;
+package com.distrimind.bouncycastle.jsse.provider.test;
 
 import java.security.KeyPair;
 import java.security.KeyStore;
@@ -15,7 +15,7 @@ import javax.net.ssl.TrustManagerFactory;
 import javax.net.ssl.X509ExtendedKeyManager;
 import javax.security.auth.x500.X500Principal;
 
-import org.bouncycastle.bcasn1.x500.X500Name;
+import com.distrimind.bouncycastle.asn1.x500.X500Name;
 
 import junit.framework.TestCase;
 
