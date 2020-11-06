@@ -1,9 +1,9 @@
-package com.distrimind.bouncycastle.jsse.provider;
+package org.bouncycastle.jsse.provider;
 
 import java.util.List;
 import java.util.function.BiFunction;
 
-import com.distrimind.bouncycastle.jsse.BCApplicationProtocolSelector;
+import org.bouncycastle.jsse.BCApplicationProtocolSelector;
 
 abstract class JsseUtils_9
     extends JsseUtils_8

@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.jsse.provider;
+package org.bouncycastle.jsse.provider;
 
 import java.net.Socket;
 import java.util.Collections;
@@ -7,9 +7,9 @@ import java.util.List;
 import javax.net.ssl.SSLEngine;
 import javax.net.ssl.SSLSocket;
 
-import com.distrimind.bouncycastle.jsse.BCExtendedSSLSession;
-import com.distrimind.bouncycastle.jsse.BCSSLParameters;
-import com.distrimind.bouncycastle.jsse.java.security.BCAlgorithmConstraints;
+import org.bouncycastle.jsse.BCExtendedSSLSession;
+import org.bouncycastle.jsse.BCSSLParameters;
+import org.bouncycastle.jsse.java.security.BCAlgorithmConstraints;
 
 class TransportData
 {

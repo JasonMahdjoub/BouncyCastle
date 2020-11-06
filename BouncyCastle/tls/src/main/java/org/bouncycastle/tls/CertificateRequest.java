@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.tls;
+package org.bouncycastle.tls;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -7,10 +7,10 @@ import java.io.OutputStream;
 import java.util.Hashtable;
 import java.util.Vector;
 
-import com.distrimind.bouncycastle.asn1.ASN1Encoding;
-import com.distrimind.bouncycastle.asn1.ASN1Primitive;
-import com.distrimind.bouncycastle.asn1.x500.X500Name;
-import com.distrimind.bouncycastle.util.Arrays;
+import org.bouncycastle.asn1.ASN1Encoding;
+import org.bouncycastle.asn1.ASN1Primitive;
+import org.bouncycastle.asn1.x500.X500Name;
+import org.bouncycastle.util.Arrays;
 
 /**
  * Parsing and encoding of a <i>CertificateRequest</i> struct from RFC 4346:
@@ -245,6 +245,7 @@ public class CertificateRequest
 
             Hashtable extensions = TlsProtocol.readExtensionsData(extEncoding);
 
+            // TODO[tls13] The "signature_algorithms" extension MUST be specified
             Vector supportedSignatureAlgorithms = TlsExtensionsUtils.getSignatureAlgorithmsExtension(extensions);
             Vector supportedSignatureAlgorithmsCert = TlsExtensionsUtils
                 .getSignatureAlgorithmsCertExtension(extensions);

@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.tls;
+package org.bouncycastle.tls;
 
 /**
  * RFC 4347 4.1.2.5 Anti-replay

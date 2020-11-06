@@ -1,16 +1,16 @@
-package com.distrimind.bouncycastle.pqc.crypto.test;
+package org.bouncycastle.pqc.crypto.test;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import com.distrimind.bouncycastle.util.test.SimpleTestResult;
+import org.bouncycastle.util.test.SimpleTestResult;
 
 public class AllTests
     extends TestCase
 {   
     public void testCrypto()
     {   
-        com.distrimind.bouncycastle.util.test.Test[] tests = RegressionTest.tests;
+        org.bouncycastle.util.test.Test[] tests = RegressionTest.tests;
         
 //        for (int i = 0; i != tests.length; i++)
 //        {

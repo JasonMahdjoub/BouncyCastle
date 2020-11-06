@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.jsse.provider;
+package org.bouncycastle.jsse.provider;
 
 import java.security.Principal;
 import java.security.cert.Certificate;
@@ -15,12 +15,12 @@ import javax.net.ssl.SSLSessionBindingListener;
 import javax.net.ssl.SSLSessionContext;
 import javax.security.auth.x500.X500Principal;
 
-import com.distrimind.bouncycastle.jsse.BCExtendedSSLSession;
-import com.distrimind.bouncycastle.tls.ProtocolVersion;
-import com.distrimind.bouncycastle.tls.RecordFormat;
-import com.distrimind.bouncycastle.tls.TlsUtils;
-import com.distrimind.bouncycastle.tls.crypto.impl.jcajce.JcaTlsCrypto;
-import com.distrimind.bouncycastle.util.Arrays;
+import org.bouncycastle.jsse.BCExtendedSSLSession;
+import org.bouncycastle.tls.ProtocolVersion;
+import org.bouncycastle.tls.RecordFormat;
+import org.bouncycastle.tls.TlsUtils;
+import org.bouncycastle.tls.crypto.impl.jcajce.JcaTlsCrypto;
+import org.bouncycastle.util.Arrays;
 
 abstract class ProvSSLSessionBase
     extends BCExtendedSSLSession
@@ -57,9 +57,9 @@ abstract class ProvSSLSessionBase
 
     protected abstract JsseSessionParameters getJsseSessionParameters();
 
-    protected abstract com.distrimind.bouncycastle.tls.Certificate getLocalCertificateTLS();
+    protected abstract org.bouncycastle.tls.Certificate getLocalCertificateTLS();
 
-    protected abstract com.distrimind.bouncycastle.tls.Certificate getPeerCertificateTLS();
+    protected abstract org.bouncycastle.tls.Certificate getPeerCertificateTLS();
 
     protected abstract ProtocolVersion getProtocolTLS();
 

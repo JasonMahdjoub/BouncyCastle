@@ -1,10 +1,10 @@
-package com.distrimind.bouncycastle.tls.crypto.impl.bc;
+package org.bouncycastle.tls.crypto.impl.bc;
 
-import com.distrimind.bouncycastle.crypto.DSA;
-import com.distrimind.bouncycastle.crypto.params.ECPrivateKeyParameters;
-import com.distrimind.bouncycastle.crypto.signers.ECDSASigner;
-import com.distrimind.bouncycastle.crypto.signers.HMacDSAKCalculator;
-import com.distrimind.bouncycastle.tls.SignatureAlgorithm;
+import org.bouncycastle.crypto.DSA;
+import org.bouncycastle.crypto.params.ECPrivateKeyParameters;
+import org.bouncycastle.crypto.signers.ECDSASigner;
+import org.bouncycastle.crypto.signers.HMacDSAKCalculator;
+import org.bouncycastle.tls.SignatureAlgorithm;
 
 /**
  * Implementation class for generation of the raw ECDSA signature type using the BC light-weight API.

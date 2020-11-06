@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.test.est.examples;
+package org.bouncycastle.test.est.examples;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
@@ -27,33 +27,33 @@ import java.util.Set;
 
 import javax.security.cert.X509Certificate;
 
-import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
-import com.distrimind.bouncycastle.asn1.ASN1Encoding;
-import com.distrimind.bouncycastle.asn1.ASN1Integer;
-import com.distrimind.bouncycastle.asn1.DERBitString;
-import com.distrimind.bouncycastle.asn1.DERNull;
-import com.distrimind.bouncycastle.asn1.DERSequence;
-import com.distrimind.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.x500.X500Name;
-import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import com.distrimind.bouncycastle.asn1.x509.Extension;
-import com.distrimind.bouncycastle.asn1.x509.ExtensionsGenerator;
-import com.distrimind.bouncycastle.asn1.x509.KeyUsage;
-import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
-import com.distrimind.bouncycastle.asn1.x509.TBSCertificate;
-import com.distrimind.bouncycastle.asn1.x509.Time;
-import com.distrimind.bouncycastle.asn1.x509.V1TBSCertificateGenerator;
-import com.distrimind.bouncycastle.asn1.x509.V3TBSCertificateGenerator;
-import com.distrimind.bouncycastle.asn1.x9.X9ObjectIdentifiers;
-import com.distrimind.bouncycastle.cert.X509CertificateHolder;
-import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
-import com.distrimind.bouncycastle.jsse.provider.BouncyCastleJsseProvider;
-import com.distrimind.bouncycastle.openssl.MiscPEMGenerator;
-import com.distrimind.bouncycastle.util.Strings;
-import com.distrimind.bouncycastle.util.io.pem.PemObject;
-import com.distrimind.bouncycastle.util.io.pem.PemReader;
-import com.distrimind.bouncycastle.util.io.pem.PemWriter;
+import org.bouncycastle.asn1.ASN1EncodableVector;
+import org.bouncycastle.asn1.ASN1Encoding;
+import org.bouncycastle.asn1.ASN1Integer;
+import org.bouncycastle.asn1.DERBitString;
+import org.bouncycastle.asn1.DERNull;
+import org.bouncycastle.asn1.DERSequence;
+import org.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
+import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
+import org.bouncycastle.asn1.x500.X500Name;
+import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.asn1.x509.Extension;
+import org.bouncycastle.asn1.x509.ExtensionsGenerator;
+import org.bouncycastle.asn1.x509.KeyUsage;
+import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
+import org.bouncycastle.asn1.x509.TBSCertificate;
+import org.bouncycastle.asn1.x509.Time;
+import org.bouncycastle.asn1.x509.V1TBSCertificateGenerator;
+import org.bouncycastle.asn1.x509.V3TBSCertificateGenerator;
+import org.bouncycastle.asn1.x9.X9ObjectIdentifiers;
+import org.bouncycastle.cert.X509CertificateHolder;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.bouncycastle.jsse.provider.BouncyCastleJsseProvider;
+import org.bouncycastle.openssl.MiscPEMGenerator;
+import org.bouncycastle.util.Strings;
+import org.bouncycastle.util.io.pem.PemObject;
+import org.bouncycastle.util.io.pem.PemReader;
+import org.bouncycastle.util.io.pem.PemWriter;
 
 /**
  * A Collection of utility functions for reading and handling certificates and private keys.

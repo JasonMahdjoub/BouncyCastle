@@ -19,7 +19,7 @@ When it is done building it will then copy the jars into the ```<bc-java>/test/e
 
 If you need to refresh these jars delete the jars directory or use ```./ensurejar.sh force```
 
-## Using Java 7 ('com.distrimind.bouncycastle.est.ESTException: Connection reset')
+## Using Java 7 ('org.bouncycastle.est.ESTException: Connection reset')
 The Cisco EST server will reject TLS version 1 'TLSv1' handshakes. 
 
 This is the default in Java 7, however Java 8 defaults to TLSv1.2 which the Cisco test EST server will accept.
@@ -122,7 +122,7 @@ Issuer: CN=estExampleCA
 Serial Number: 13965287907438568554
 Not Before: Thu Sep 08 03:19:39 AEST 2016
 Not After: Fri Sep 08 03:19:39 AEST 2017
-Signature Algorithm: com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier@ca7a8819
+Signature Algorithm: org.bouncycastle.asn1.x509.AlgorithmIdentifier@ca7a8819
 
 
 Do you accept these certificates (y,n) ? 
@@ -274,7 +274,7 @@ Issuer: CN=estExampleCA
 Serial Number: 8727
 Not Before: Tue Feb 07 16:00:25 AEDT 2017
 Not After: Wed Feb 07 16:00:25 AEDT 2018
-Signature Algorithm: com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier@ca7a8819
+Signature Algorithm: org.bouncycastle.asn1.x509.AlgorithmIdentifier@ca7a8819
 
 ```
 

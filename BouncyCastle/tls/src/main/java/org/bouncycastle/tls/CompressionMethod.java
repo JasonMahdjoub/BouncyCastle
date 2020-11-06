@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.tls;
+package org.bouncycastle.tls;
 
 /**
  * RFC 2246 6.1

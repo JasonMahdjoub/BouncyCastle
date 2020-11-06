@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.tls.test;
+package org.bouncycastle.tls.test;
 
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -9,28 +9,28 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.distrimind.bouncycastle.asn1.ASN1GeneralizedTime;
-import com.distrimind.bouncycastle.asn1.ocsp.RevokedInfo;
-import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
-import com.distrimind.bouncycastle.asn1.x509.CRLReason;
-import com.distrimind.bouncycastle.asn1.x509.KeyPurposeId;
-import com.distrimind.bouncycastle.cert.X509CertificateHolder;
-import com.distrimind.bouncycastle.cert.ocsp.BasicOCSPResp;
-import com.distrimind.bouncycastle.cert.ocsp.BasicOCSPRespBuilder;
-import com.distrimind.bouncycastle.cert.ocsp.CertificateID;
-import com.distrimind.bouncycastle.cert.ocsp.CertificateStatus;
-import com.distrimind.bouncycastle.cert.ocsp.OCSPReq;
-import com.distrimind.bouncycastle.cert.ocsp.OCSPResp;
-import com.distrimind.bouncycastle.cert.ocsp.OCSPRespBuilder;
-import com.distrimind.bouncycastle.cert.ocsp.Req;
-import com.distrimind.bouncycastle.cert.ocsp.RespID;
-import com.distrimind.bouncycastle.cert.ocsp.RevokedStatus;
-import com.distrimind.bouncycastle.cert.ocsp.jcajce.JcaBasicOCSPRespBuilder;
-import com.distrimind.bouncycastle.operator.DigestCalculatorProvider;
-import com.distrimind.bouncycastle.operator.jcajce.JcaContentSignerBuilder;
-import com.distrimind.bouncycastle.operator.jcajce.JcaDigestCalculatorProviderBuilder;
-import com.distrimind.bouncycastle.pkix.PKIXIdentity;
-import com.distrimind.bouncycastle.util.io.Streams;
+import org.bouncycastle.asn1.ASN1GeneralizedTime;
+import org.bouncycastle.asn1.ocsp.RevokedInfo;
+import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
+import org.bouncycastle.asn1.x509.CRLReason;
+import org.bouncycastle.asn1.x509.KeyPurposeId;
+import org.bouncycastle.cert.X509CertificateHolder;
+import org.bouncycastle.cert.ocsp.BasicOCSPResp;
+import org.bouncycastle.cert.ocsp.BasicOCSPRespBuilder;
+import org.bouncycastle.cert.ocsp.CertificateID;
+import org.bouncycastle.cert.ocsp.CertificateStatus;
+import org.bouncycastle.cert.ocsp.OCSPReq;
+import org.bouncycastle.cert.ocsp.OCSPResp;
+import org.bouncycastle.cert.ocsp.OCSPRespBuilder;
+import org.bouncycastle.cert.ocsp.Req;
+import org.bouncycastle.cert.ocsp.RespID;
+import org.bouncycastle.cert.ocsp.RevokedStatus;
+import org.bouncycastle.cert.ocsp.jcajce.JcaBasicOCSPRespBuilder;
+import org.bouncycastle.operator.DigestCalculatorProvider;
+import org.bouncycastle.operator.jcajce.JcaContentSignerBuilder;
+import org.bouncycastle.operator.jcajce.JcaDigestCalculatorProviderBuilder;
+import org.bouncycastle.pkix.PKIXIdentity;
+import org.bouncycastle.util.io.Streams;
 
 public class TestOCSPCertServer
 {

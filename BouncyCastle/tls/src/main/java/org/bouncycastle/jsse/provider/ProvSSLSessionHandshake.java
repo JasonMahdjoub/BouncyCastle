@@ -1,14 +1,14 @@
-package com.distrimind.bouncycastle.jsse.provider;
+package org.bouncycastle.jsse.provider;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Vector;
 
-import com.distrimind.bouncycastle.jsse.BCSNIServerName;
-import com.distrimind.bouncycastle.tls.ProtocolVersion;
-import com.distrimind.bouncycastle.tls.SecurityParameters;
-import com.distrimind.bouncycastle.tls.ServerName;
+import org.bouncycastle.jsse.BCSNIServerName;
+import org.bouncycastle.tls.ProtocolVersion;
+import org.bouncycastle.tls.SecurityParameters;
+import org.bouncycastle.tls.ServerName;
 
 class ProvSSLSessionHandshake
     extends ProvSSLSessionBase
@@ -55,7 +55,7 @@ class ProvSSLSessionHandshake
     }
 
     @Override
-    protected com.distrimind.bouncycastle.tls.Certificate getLocalCertificateTLS()
+    protected org.bouncycastle.tls.Certificate getLocalCertificateTLS()
     {
         return securityParameters.getLocalCertificate();
     }
@@ -73,7 +73,7 @@ class ProvSSLSessionHandshake
     }
 
     @Override
-    protected com.distrimind.bouncycastle.tls.Certificate getPeerCertificateTLS()
+    protected org.bouncycastle.tls.Certificate getPeerCertificateTLS()
     {
         return securityParameters.getPeerCertificate();
     }

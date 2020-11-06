@@ -1,13 +1,13 @@
-package com.distrimind.bouncycastle.tls.crypto.impl.jcajce;
+package org.bouncycastle.tls.crypto.impl.jcajce;
 
 import java.io.IOException;
 import java.security.PublicKey;
 
-import com.distrimind.bouncycastle.tls.DigitallySigned;
-import com.distrimind.bouncycastle.tls.HashAlgorithm;
-import com.distrimind.bouncycastle.tls.SignatureAndHashAlgorithm;
-import com.distrimind.bouncycastle.tls.crypto.TlsStreamVerifier;
-import com.distrimind.bouncycastle.tls.crypto.TlsVerifier;
+import org.bouncycastle.tls.DigitallySigned;
+import org.bouncycastle.tls.HashAlgorithm;
+import org.bouncycastle.tls.SignatureAndHashAlgorithm;
+import org.bouncycastle.tls.crypto.TlsStreamVerifier;
+import org.bouncycastle.tls.crypto.TlsVerifier;
 
 public class JcaTlsEdDSAVerifier
     implements TlsVerifier
@@ -47,7 +47,7 @@ public class JcaTlsEdDSAVerifier
             || algorithm.getSignature() != algorithmType
             || algorithm.getHash() != HashAlgorithm.Intrinsic)
         {
-            throw new IllegalStateException();
+            throw new IllegalStateException("Invalid algorithm: " + algorithm);
         }
 
         return crypto.createStreamVerifier(algorithmName, null, signature.getSignature(), publicKey);

@@ -1,9 +1,9 @@
-package com.distrimind.bouncycastle.tls;
+package org.bouncycastle.tls;
 
 import java.io.IOException;
 
-import com.distrimind.bouncycastle.tls.crypto.TlsCryptoParameters;
-import com.distrimind.bouncycastle.tls.crypto.TlsSecret;
+import org.bouncycastle.tls.crypto.TlsCryptoParameters;
+import org.bouncycastle.tls.crypto.TlsSecret;
 
 /**
  * Base interface for a class that decrypts TLS secrets.

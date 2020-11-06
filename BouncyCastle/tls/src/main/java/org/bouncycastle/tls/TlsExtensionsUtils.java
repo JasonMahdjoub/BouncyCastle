@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.tls;
+package org.bouncycastle.tls;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -7,12 +7,12 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Vector;
 
-import com.distrimind.bouncycastle.asn1.ASN1Encoding;
-import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
-import com.distrimind.bouncycastle.asn1.ASN1Primitive;
-import com.distrimind.bouncycastle.asn1.x500.X500Name;
-import com.distrimind.bouncycastle.util.Arrays;
-import com.distrimind.bouncycastle.util.Integers;
+import org.bouncycastle.asn1.ASN1Encoding;
+import org.bouncycastle.asn1.ASN1ObjectIdentifier;
+import org.bouncycastle.asn1.ASN1Primitive;
+import org.bouncycastle.asn1.x500.X500Name;
+import org.bouncycastle.util.Arrays;
+import org.bouncycastle.util.Integers;
 
 public class TlsExtensionsUtils
 {
@@ -1115,6 +1115,13 @@ public class TlsExtensionsUtils
         {
             throw new IllegalArgumentException("'extensionData' cannot be null");
         }
+
+        /*
+         * TODO[tls13] Clients MUST NOT offer multiple KeyShareEntry values for the same group.
+         * Clients MUST NOT offer any KeyShareEntry values for groups not listed in the client's
+         * "supported_groups" extension. Servers MAY check for violations of these rules and abort
+         * the handshake with an "illegal_parameter" alert if one is violated.
+         */
 
         ByteArrayInputStream buf = new ByteArrayInputStream(extensionData);
 

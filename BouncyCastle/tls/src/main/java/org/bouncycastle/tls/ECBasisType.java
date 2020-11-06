@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.tls;
+package org.bouncycastle.tls;
 
 /**
  * RFC 4492 5.4. (Errata ID: 2389)

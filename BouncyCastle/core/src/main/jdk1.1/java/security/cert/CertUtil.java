@@ -7,13 +7,13 @@ import java.security.NoSuchProviderException;
 import java.security.Provider;
 import java.security.Security;
 
-import com.distrimind.bouncycastle.asn1.ASN1Object;
-import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
-import com.distrimind.bouncycastle.asn1.DERIA5String;
-import com.distrimind.bouncycastle.asn1.DEROutputStream;
-import com.distrimind.bouncycastle.asn1.OIDTokenizer;
-import com.distrimind.bouncycastle.asn1.x509.X509Name;
-import com.distrimind.bouncycastle.util.Strings;
+import org.bouncycastle.asn1.ASN1Object;
+import org.bouncycastle.asn1.ASN1ObjectIdentifier;
+import org.bouncycastle.asn1.DERIA5String;
+import org.bouncycastle.asn1.ASN1Encoding;
+import org.bouncycastle.asn1.OIDTokenizer;
+import org.bouncycastle.asn1.x509.X509Name;
+import org.bouncycastle.util.Strings;
 
 class CertUtil
 {
@@ -287,7 +287,7 @@ class CertUtil
      * Throw an IOException if the first component is not 0, 1 or 2 or the
      * second component is greater than 39.<br />
      * <br />
-     * User {@link com.distrimind.bouncycastle.asn1.OIDTokenizer OIDTokenizer}
+     * User {@link org.bouncycastle.asn1.OIDTokenizer OIDTokenizer}
      * 
      * @param the
      *            OID to be checked.
@@ -337,7 +337,7 @@ class CertUtil
         }
         ASN1Object derData = new ASN1ObjectIdentifier(oid);
         ByteArrayOutputStream outStream = new ByteArrayOutputStream();
-        DEROutputStream derOutStream = new DEROutputStream(outStream);
+        ASN1OutputStream derOutStream = ASN1OutputStream.create(outStream, ASN1Encoding.DER);
         derOutStream.writeObject(derData);
         derOutStream.close();
         return outStream.toByteArray();
@@ -453,7 +453,7 @@ class CertUtil
         // TODO do parsing test
         ASN1Object derData = new DERIA5String(data);
         ByteArrayOutputStream outStream = new ByteArrayOutputStream();
-        DEROutputStream derOutStream = new DEROutputStream(outStream);
+        ASN1OutputStream derOutStream = ASN1OutputStream.create(outStream, ASN1Encoding.DER);
         derOutStream.writeObject(derData);
         derOutStream.close();
         return outStream.toByteArray();
@@ -481,7 +481,7 @@ class CertUtil
         // TODO more test for illegal charateers
         ASN1Object derData = new DERIA5String(data);
         ByteArrayOutputStream outStream = new ByteArrayOutputStream();
-        DEROutputStream derOutStream = new DEROutputStream(outStream);
+        ASN1OutputStream derOutStream = ASN1OutputStream.create(outStream, ASN1Encoding.DER);
         derOutStream.writeObject(derData);
         derOutStream.close();
         return outStream.toByteArray();
@@ -504,7 +504,7 @@ class CertUtil
         // TODO more test for illegal charateers
         ASN1Object derData = new DERIA5String(data);
         ByteArrayOutputStream outStream = new ByteArrayOutputStream();
-        DEROutputStream derOutStream = new DEROutputStream(outStream);
+        ASN1OutputStream derOutStream = ASN1OutputStream.create(outStream, ASN1Encoding.DER);
         derOutStream.writeObject(derData);
         derOutStream.close();
         return outStream.toByteArray();
@@ -525,7 +525,7 @@ class CertUtil
     {
         // TODO more test for illegal charateers
         ByteArrayOutputStream outStream = new ByteArrayOutputStream();
-        DEROutputStream derOutStream = new DEROutputStream(outStream);
+        ASN1OutputStream derOutStream = ASN1OutputStream.create(outStream, ASN1Encoding.DER);
         derOutStream.writeObject(new X509Name(trimX509Name(data)));
         derOutStream.close();
         return outStream.toByteArray();

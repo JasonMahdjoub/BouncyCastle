@@ -1,6 +1,6 @@
-package com.distrimind.bouncycastle.kmip.wire;
+package org.bouncycastle.kmip.wire;
 
-import com.distrimind.bouncycastle.util.Integers;
+import org.bouncycastle.util.Integers;
 
 public class KMIPInteger
     implements KMIPItem

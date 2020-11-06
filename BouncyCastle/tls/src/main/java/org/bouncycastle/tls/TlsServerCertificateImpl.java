@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.tls;
+package org.bouncycastle.tls;
 
 class TlsServerCertificateImpl
     implements TlsServerCertificate

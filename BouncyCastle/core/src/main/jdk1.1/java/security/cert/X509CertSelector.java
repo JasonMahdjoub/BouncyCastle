@@ -20,24 +20,24 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import com.distrimind.bouncycastle.asn1.ASN1InputStream;
-import com.distrimind.bouncycastle.asn1.ASN1Object;
-import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
-import com.distrimind.bouncycastle.asn1.ASN1OctetString;
-import com.distrimind.bouncycastle.asn1.ASN1Sequence;
-import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
-import com.distrimind.bouncycastle.asn1.ASN1GeneralizedTime;
-import com.distrimind.bouncycastle.asn1.DERGeneralizedTime;
-import com.distrimind.bouncycastle.asn1.DEROutputStream;
-import com.distrimind.bouncycastle.asn1.util.ASN1Dump;
-import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import com.distrimind.bouncycastle.asn1.x509.ExtendedKeyUsage;
-import com.distrimind.bouncycastle.asn1.x509.KeyPurposeId;
-import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
-import com.distrimind.bouncycastle.asn1.x509.X509Extensions;
-import com.distrimind.bouncycastle.asn1.x509.X509Name;
-import com.distrimind.bouncycastle.jce.PrincipalUtil;
-import com.distrimind.bouncycastle.util.Integers;
+import org.bouncycastle.asn1.ASN1InputStream;
+import org.bouncycastle.asn1.ASN1Object;
+import org.bouncycastle.asn1.ASN1ObjectIdentifier;
+import org.bouncycastle.asn1.ASN1OctetString;
+import org.bouncycastle.asn1.ASN1Sequence;
+import org.bouncycastle.asn1.ASN1TaggedObject;
+import org.bouncycastle.asn1.ASN1GeneralizedTime;
+import org.bouncycastle.asn1.DERGeneralizedTime;
+import org.bouncycastle.asn1.ASN1Encoding;
+import org.bouncycastle.asn1.util.ASN1Dump;
+import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.asn1.x509.ExtendedKeyUsage;
+import org.bouncycastle.asn1.x509.KeyPurposeId;
+import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
+import org.bouncycastle.asn1.x509.X509Extensions;
+import org.bouncycastle.asn1.x509.X509Name;
+import org.bouncycastle.jce.PrincipalUtil;
+import org.bouncycastle.util.Integers;
 
 /**
  * A <code>CertSelector</code> that selects
@@ -76,18 +76,18 @@ import com.distrimind.bouncycastle.util.Integers;
  * <b>TODO: implement name constraints</b>
  * <b>TODO: implement match check for path to names</b><br />
  * <br />
- * Uses {@link com.distrimind.bouncycastle.asn1.ASN1InputStream ASN1InputStream},
- * {@link com.distrimind.bouncycastle.asn1.ASN1Sequence ASN1Sequence},
- * {@link com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier ASN1ObjectIdentifier},
- * {@link com.distrimind.bouncycastle.asn1.DEROutputStream DEROutputStream},
- * {@link com.distrimind.bouncycastle.asn1.ASN1Object ASN1Object},
- * {@link com.distrimind.bouncycastle.asn1.OIDTokenizer OIDTokenizer},
- * {@link com.distrimind.bouncycastle.asn1.x509.X509Name X509Name},
- * {@link com.distrimind.bouncycastle.asn1.x509.X509Extensions X509Extensions},
- * {@link com.distrimind.bouncycastle.asn1.x509.ExtendedKeyUsage ExtendedKeyUsage},
- * {@link com.distrimind.bouncycastle.asn1.x509.KeyPurposeId KeyPurposeId},
- * {@link com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo SubjectPublicKeyInfo},
- * {@link com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier AlgorithmIdentifier}
+ * Uses {@link org.bouncycastle.asn1.ASN1InputStream ASN1InputStream},
+ * {@link org.bouncycastle.asn1.ASN1Sequence ASN1Sequence},
+ * {@link org.bouncycastle.asn1.ASN1ObjectIdentifier ASN1ObjectIdentifier},
+ * {@link org.bouncycastle.asn1.ASN1OutputStream DEROutputStream},
+ * {@link org.bouncycastle.asn1.ASN1Object ASN1Object},
+ * {@link org.bouncycastle.asn1.OIDTokenizer OIDTokenizer},
+ * {@link org.bouncycastle.asn1.x509.X509Name X509Name},
+ * {@link org.bouncycastle.asn1.x509.X509Extensions X509Extensions},
+ * {@link org.bouncycastle.asn1.x509.ExtendedKeyUsage ExtendedKeyUsage},
+ * {@link org.bouncycastle.asn1.x509.KeyPurposeId KeyPurposeId},
+ * {@link org.bouncycastle.asn1.x509.SubjectPublicKeyInfo SubjectPublicKeyInfo},
+ * {@link org.bouncycastle.asn1.x509.AlgorithmIdentifier AlgorithmIdentifier}
  */
 public class X509CertSelector implements CertSelector
 {
@@ -210,7 +210,7 @@ public class X509CertSelector implements CertSelector
      * If <code>issuerDN</code> is not <code>null</code>, it should contain
      * a distinguished name, in RFC 2253 format.<br />
      * <br />
-     * Uses {@link com.distrimind.bouncycastle.asn1.x509.X509Name X509Name} for parsing the
+     * Uses {@link org.bouncycastle.asn1.x509.X509Name X509Name} for parsing the
      * issuerDN.
      * 
      * @param issuerDN
@@ -283,10 +283,10 @@ public class X509CertSelector implements CertSelector
      * Note that the byte array specified here is cloned to protect against
      * subsequent modifications.<br />
      * <br />
-     * Uses {@link com.distrimind.bouncycastle.asn1.ASN1InputStream ASN1InputStream},
-     * {@link com.distrimind.bouncycastle.asn1.ASN1Object ASN1Object},
-     * {@link com.distrimind.bouncycastle.asn1.ASN1Sequence ASN1Sequence},
-     * {@link com.distrimind.bouncycastle.asn1.x509.X509Name X509Name}
+     * Uses {@link org.bouncycastle.asn1.ASN1InputStream ASN1InputStream},
+     * {@link org.bouncycastle.asn1.ASN1Object ASN1Object},
+     * {@link org.bouncycastle.asn1.ASN1Sequence ASN1Sequence},
+     * {@link org.bouncycastle.asn1.x509.X509Name X509Name}
      * 
      * @param issuerDN -
      *            a byte array containing the distinguished name in ASN.1 DER
@@ -327,7 +327,7 @@ public class X509CertSelector implements CertSelector
      * If <code>subjectDN</code> is not <code>null</code>, it should
      * contain a distinguished name, in RFC 2253 format.<br />
      * <br />
-     * Uses {@link com.distrimind.bouncycastle.asn1.x509.X509Name X509Name} for parsing the
+     * Uses {@link org.bouncycastle.asn1.x509.X509Name X509Name} for parsing the
      * subjectDN.
      * 
      * @param subjectDN
@@ -370,10 +370,10 @@ public class X509CertSelector implements CertSelector
      * the ASN.1 notation for this structure, see
      * {@link #setIssuer(byte []) setIssuer(byte [] issuerDN)}.<br />
      * <br />
-     * Uses {@link com.distrimind.bouncycastle.asn1.ASN1InputStream ASN1InputStream},
-     * {@link com.distrimind.bouncycastle.asn1.ASN1Object ASN1Object},
-     * {@link com.distrimind.bouncycastle.asn1.ASN1Sequence ASN1Sequence},
-     * {@link com.distrimind.bouncycastle.asn1.x509.X509Name X509Name}
+     * Uses {@link org.bouncycastle.asn1.ASN1InputStream ASN1InputStream},
+     * {@link org.bouncycastle.asn1.ASN1Object ASN1Object},
+     * {@link org.bouncycastle.asn1.ASN1Sequence ASN1Sequence},
+     * {@link org.bouncycastle.asn1.x509.X509Name X509Name}
      * 
      * @param subjectDN
      *            a byte array containing the distinguished name in ASN.1 DER
@@ -709,7 +709,7 @@ public class X509CertSelector implements CertSelector
      * <br />
      * Note that the Set is cloned to protect against subsequent modifications.<br />
      * <br />
-     * Uses {@link com.distrimind.bouncycastle.asn1.x509.KeyPurposeId KeyPurposeId}
+     * Uses {@link org.bouncycastle.asn1.x509.KeyPurposeId KeyPurposeId}
      * 
      * @param keyPurposeSet
      *            a <code>Set</code> of key purpose OIDs in string format (or
@@ -1322,7 +1322,7 @@ public class X509CertSelector implements CertSelector
      * If the value returned is not <code>null</code>, it is a distinguished
      * name, in RFC 2253 format.<br />
      * <br />
-     * Uses {@link com.distrimind.bouncycastle.asn1.x509.X509Name X509Name} for formatiing
+     * Uses {@link org.bouncycastle.asn1.x509.X509Name X509Name} for formatiing
      * byte[] issuerDN to String.
      * 
      * @return the required issuer distinguished name in RFC 2253 format (or
@@ -1356,8 +1356,8 @@ public class X509CertSelector implements CertSelector
      * Note that the byte array returned is cloned to protect against subsequent
      * modifications.<br />
      * <br />
-     * Uses {@link com.distrimind.bouncycastle.asn1.DEROutputStream DEROutputStream},
-     * {@link com.distrimind.bouncycastle.asn1.x509.X509Name X509Name} to gnerate byte[]
+     * Uses {@link org.bouncycastle.asn1.ASN1OutputStream DEROutputStream},
+     * {@link org.bouncycastle.asn1.x509.X509Name X509Name} to gnerate byte[]
      * output for String issuerDN.
      * 
      * @return a byte array containing the required issuer distinguished name in
@@ -1375,7 +1375,7 @@ public class X509CertSelector implements CertSelector
         else if (issuerDNX509 != null)
         {
             ByteArrayOutputStream outStream = new ByteArrayOutputStream();
-            DEROutputStream derOutStream = new DEROutputStream(outStream);
+            ASN1OutputStream derOutStream = ASN1OutputStream.create(outStream, ASN1Encoding.DER);
 
             derOutStream.writeObject(issuerDNX509.toASN1Primitive());
             derOutStream.close();
@@ -1395,7 +1395,7 @@ public class X509CertSelector implements CertSelector
      * If the value returned is not <code>null</code>, it is a distinguished
      * name, in RFC 2253 format.<br />
      * <br />
-     * Uses {@link com.distrimind.bouncycastle.asn1.x509.X509Name X509Name} for formatiing
+     * Uses {@link org.bouncycastle.asn1.x509.X509Name X509Name} for formatiing
      * byte[] subjectDN to String.
      * 
      * @return the required subject distinguished name in RFC 2253 format (or
@@ -1429,8 +1429,8 @@ public class X509CertSelector implements CertSelector
      * Note that the byte array returned is cloned to protect against subsequent
      * modifications.<br />
      * <br />
-     * Uses {@link com.distrimind.bouncycastle.asn1.DEROutputStream DEROutputStream},
-     * {@link com.distrimind.bouncycastle.asn1.x509.X509Name X509Name} to gnerate byte[]
+     * Uses {@link org.bouncycastle.asn1.ASN1OutputStream DEROutputStream},
+     * {@link org.bouncycastle.asn1.x509.X509Name X509Name} to gnerate byte[]
      * output for String subjectDN.
      * 
      * @return a byte array containing the required subject distinguished name
@@ -1448,7 +1448,7 @@ public class X509CertSelector implements CertSelector
         else if (subjectDNX509 != null)
         {
             ByteArrayOutputStream outStream = new ByteArrayOutputStream();
-            DEROutputStream derOutStream = new DEROutputStream(outStream);
+            ASN1OutputStream derOutStream = ASN1OutputStream.create(outStream, ASN1Encoding.DER);
 
             derOutStream.writeObject(subjectDNX509.toASN1Primitive());
             derOutStream.close();
@@ -1861,9 +1861,9 @@ public class X509CertSelector implements CertSelector
      * <b>TODO: implement output for currently unsupported options(name
      * constraints)</b><br />
      * <br />
-     * Uses {@link com.distrimind.bouncycastle.asn1.ASN1InputStream ASN1InputStream},
-     * {@link com.distrimind.bouncycastle.asn1.ASN1Object ASN1Object},
-     * {@link com.distrimind.bouncycastle.asn1.x509.KeyPurposeId KeyPurposeId}
+     * Uses {@link org.bouncycastle.asn1.ASN1InputStream ASN1InputStream},
+     * {@link org.bouncycastle.asn1.ASN1Object ASN1Object},
+     * {@link org.bouncycastle.asn1.x509.KeyPurposeId KeyPurposeId}
      * 
      * @return a <code>String</code> describing the contents of the
      *         <code>CertSelector</code>
@@ -2004,17 +2004,17 @@ public class X509CertSelector implements CertSelector
      * <br />
      * <b>TODO: implement missing tests (name constraints and path to names)</b><br />
      * <br />
-     * Uses {@link com.distrimind.bouncycastle.asn1.ASN1InputStream ASN1InputStream},
-     * {@link com.distrimind.bouncycastle.asn1.ASN1Sequence ASN1Sequence},
-     * {@link com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier ASN1ObjectIdentifier},
-     * {@link com.distrimind.bouncycastle.asn1.ASN1Object ASN1Object},
-     * {@link com.distrimind.bouncycastle.asn1.DERGeneralizedTime DERGeneralizedTime},
-     * {@link com.distrimind.bouncycastle.asn1.x509.X509Name X509Name},
-     * {@link com.distrimind.bouncycastle.asn1.x509.X509Extensions X509Extensions},
-     * {@link com.distrimind.bouncycastle.asn1.x509.ExtendedKeyUsage ExtendedKeyUsage},
-     * {@link com.distrimind.bouncycastle.asn1.x509.KeyPurposeId KeyPurposeId},
-     * {@link com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo SubjectPublicKeyInfo},
-     * {@link com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier AlgorithmIdentifier}
+     * Uses {@link org.bouncycastle.asn1.ASN1InputStream ASN1InputStream},
+     * {@link org.bouncycastle.asn1.ASN1Sequence ASN1Sequence},
+     * {@link org.bouncycastle.asn1.ASN1ObjectIdentifier ASN1ObjectIdentifier},
+     * {@link org.bouncycastle.asn1.ASN1Object ASN1Object},
+     * {@link org.bouncycastle.asn1.DERGeneralizedTime DERGeneralizedTime},
+     * {@link org.bouncycastle.asn1.x509.X509Name X509Name},
+     * {@link org.bouncycastle.asn1.x509.X509Extensions X509Extensions},
+     * {@link org.bouncycastle.asn1.x509.ExtendedKeyUsage ExtendedKeyUsage},
+     * {@link org.bouncycastle.asn1.x509.KeyPurposeId KeyPurposeId},
+     * {@link org.bouncycastle.asn1.x509.SubjectPublicKeyInfo SubjectPublicKeyInfo},
+     * {@link org.bouncycastle.asn1.x509.AlgorithmIdentifier AlgorithmIdentifier}
      * to access X509 extensions
      * 
      * @param cert
@@ -2328,7 +2328,7 @@ public class X509CertSelector implements CertSelector
                 List testList;
                 ASN1Object derData;
                 ByteArrayOutputStream outStream;
-                DEROutputStream derOutStream;
+                ASN1OutputStream derOutStream;
                 while (altNamesSequence.hasMoreElements() && !test)
                 {
                     altNameObject = (ASN1TaggedObject)altNamesSequence
@@ -2337,7 +2337,7 @@ public class X509CertSelector implements CertSelector
                     testList.add(Integers.valueOf(altNameObject.getTagNo()));
                     derData = altNameObject.getObject();
                     outStream = new ByteArrayOutputStream();
-                    derOutStream = new DEROutputStream(outStream);
+                    derOutStream = ASN1OutputStream.create(outStream, ASN1Encoding.DER);
                     derOutStream.writeObject(derData);
                     derOutStream.close();
                     testList.add(outStream.toByteArray());

@@ -1,13 +1,11 @@
-package com.distrimind.bouncycastle.jsse.provider;
+package org.bouncycastle.jsse.provider;
 
 import java.io.Closeable;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
-import java.net.SocketAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
-import java.nio.channels.SocketChannel;
 import java.security.AccessControlContext;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
@@ -22,7 +20,7 @@ import javax.net.ssl.HandshakeCompletedListener;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocket;
 
-import com.distrimind.bouncycastle.jsse.BCSSLSocket;
+import org.bouncycastle.jsse.BCSSLSocket;
 
 abstract class ProvSSLSocketBase
     extends SSLSocket
@@ -62,17 +60,18 @@ abstract class ProvSSLSocketBase
         super.close();
     }
 
-    @Override
-    public SocketChannel getChannel()
+    public void connect(String host, int port, int timeout) throws IOException
     {
-//        return super.getChannel();
-        throw new UnsupportedOperationException();
+        setHost(host);
+
+        connect(createInetSocketAddress(host, port), timeout);
     }
 
     @Override
-    public boolean getOOBInline() throws SocketException
+    public final boolean getOOBInline() throws SocketException
     {
-        return false;
+        throw new SocketException(
+            "This method is ineffective, since sending urgent data is not supported by SSLSockets");
     }
 
     @Override
@@ -89,30 +88,15 @@ abstract class ProvSSLSocketBase
     }
 
     @Override
-    public void sendUrgentData(int data) throws IOException
+    public final void sendUrgentData(int data) throws IOException
     {
-        throw new UnsupportedOperationException("Urgent data not supported in TLS");
+        throw new SocketException("This method is not supported by SSLSockets");
     }
 
     @Override
-    public void setOOBInline(boolean on) throws SocketException
+    public final void setOOBInline(boolean on) throws SocketException
     {
-        if (on)
-        {
-            throw new UnsupportedOperationException("Urgent data not supported in TLS");
-        }
-    }
-    
-    @Override
-    public void shutdownInput() throws IOException
-    {
-        throw new UnsupportedOperationException("shutdownInput() not supported in TLS");
-    }
-
-    @Override
-    public void shutdownOutput() throws IOException
-    {
-        throw new UnsupportedOperationException("shutdownOutput() not supported in TLS");
+        throw new SocketException("This method is ineffective, since sending urgent data is not supported by SSLSockets");
     }
 
     // TODO[jsse] Proper toString for sockets
@@ -122,28 +106,31 @@ abstract class ProvSSLSocketBase
 //        return super.toString();
 //    }
 
+    protected InetSocketAddress createInetSocketAddress(InetAddress address, int port) throws IOException
+    {
+        return new InetSocketAddress(address, port);
+    }
+
+    protected InetSocketAddress createInetSocketAddress(String host, int port) throws IOException
+    {
+        return null == host
+            ? new InetSocketAddress(InetAddress.getByName(null), port)
+            : new InetSocketAddress(host, port);
+    }
+
     protected void implBind(InetAddress clientAddress, int clientPort) throws IOException
     {
-        InetSocketAddress socketAddress = new InetSocketAddress(clientAddress, clientPort);
-
-        bind(socketAddress);
+        bind(createInetSocketAddress(clientAddress, clientPort));
     }
 
     protected void implConnect(InetAddress address, int port) throws IOException
     {
-        SocketAddress socketAddress = new InetSocketAddress(address, port);
-
-        connect(socketAddress, 0);
+        connect(createInetSocketAddress(address, port), 0);
     }
 
     protected void implConnect(String host, int port) throws IOException, UnknownHostException
     {
-        SocketAddress socketAddress =
-                null == host
-            ?   new InetSocketAddress(InetAddress.getByName(null), port)
-            :   new InetSocketAddress(host, port);
-
-        connect(socketAddress, 0);
+        connect(createInetSocketAddress(host, port), 0);
     }
 
     protected void notifyHandshakeCompletedListeners(final SSLSession eventSession)

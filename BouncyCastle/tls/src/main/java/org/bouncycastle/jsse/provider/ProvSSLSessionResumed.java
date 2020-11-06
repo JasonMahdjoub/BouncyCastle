@@ -1,9 +1,9 @@
-package com.distrimind.bouncycastle.jsse.provider;
+package org.bouncycastle.jsse.provider;
 
-import com.distrimind.bouncycastle.tls.ProtocolVersion;
-import com.distrimind.bouncycastle.tls.SecurityParameters;
-import com.distrimind.bouncycastle.tls.SessionParameters;
-import com.distrimind.bouncycastle.tls.TlsSession;
+import org.bouncycastle.tls.ProtocolVersion;
+import org.bouncycastle.tls.SecurityParameters;
+import org.bouncycastle.tls.SessionParameters;
+import org.bouncycastle.tls.TlsSession;
 
 class ProvSSLSessionResumed
     extends ProvSSLSessionHandshake
@@ -42,13 +42,13 @@ class ProvSSLSessionResumed
     }
 
     @Override
-    protected com.distrimind.bouncycastle.tls.Certificate getLocalCertificateTLS()
+    protected org.bouncycastle.tls.Certificate getLocalCertificateTLS()
     {
         return sessionParameters.getLocalCertificate();
     }
 
     @Override
-    protected com.distrimind.bouncycastle.tls.Certificate getPeerCertificateTLS()
+    protected org.bouncycastle.tls.Certificate getPeerCertificateTLS()
     {
         return sessionParameters.getPeerCertificate();
     }

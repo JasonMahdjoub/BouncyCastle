@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.kmip.wire;
+package org.bouncycastle.kmip.wire;
 
 public interface KMIPItem<T>
     extends KMIPEncodable

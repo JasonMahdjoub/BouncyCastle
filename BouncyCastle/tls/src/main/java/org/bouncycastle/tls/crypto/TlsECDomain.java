@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.tls.crypto;
+package org.bouncycastle.tls.crypto;
 
 /**
  * Domain interface to service factory for creating Elliptic-Curve (EC) based operators.

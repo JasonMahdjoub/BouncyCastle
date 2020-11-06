@@ -1,13 +1,13 @@
-package com.distrimind.bouncycastle.tls.crypto.impl.bc;
+package org.bouncycastle.tls.crypto.impl.bc;
 
 import java.io.IOException;
 
-import com.distrimind.bouncycastle.math.ec.rfc7748.X25519;
-import com.distrimind.bouncycastle.tls.AlertDescription;
-import com.distrimind.bouncycastle.tls.TlsFatalAlert;
-import com.distrimind.bouncycastle.tls.crypto.TlsAgreement;
-import com.distrimind.bouncycastle.tls.crypto.TlsSecret;
-import com.distrimind.bouncycastle.util.Arrays;
+import org.bouncycastle.math.ec.rfc7748.X25519;
+import org.bouncycastle.tls.AlertDescription;
+import org.bouncycastle.tls.TlsFatalAlert;
+import org.bouncycastle.tls.crypto.TlsAgreement;
+import org.bouncycastle.tls.crypto.TlsSecret;
+import org.bouncycastle.util.Arrays;
 
 /**
  * Support class for X25519 using the BC light-weight library.

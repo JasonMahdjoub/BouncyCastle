@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.jsse;
+package org.bouncycastle.jsse;
 
 import javax.net.ssl.SSLEngine;
 

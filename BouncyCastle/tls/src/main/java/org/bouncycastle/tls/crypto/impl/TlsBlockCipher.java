@@ -1,19 +1,19 @@
-package com.distrimind.bouncycastle.tls.crypto.impl;
+package org.bouncycastle.tls.crypto.impl;
 
 import java.io.IOException;
 import java.security.SecureRandom;
 
-import com.distrimind.bouncycastle.tls.AlertDescription;
-import com.distrimind.bouncycastle.tls.ProtocolVersion;
-import com.distrimind.bouncycastle.tls.SecurityParameters;
-import com.distrimind.bouncycastle.tls.TlsFatalAlert;
-import com.distrimind.bouncycastle.tls.TlsUtils;
-import com.distrimind.bouncycastle.tls.crypto.TlsCipher;
-import com.distrimind.bouncycastle.tls.crypto.TlsCrypto;
-import com.distrimind.bouncycastle.tls.crypto.TlsCryptoParameters;
-import com.distrimind.bouncycastle.tls.crypto.TlsDecodeResult;
-import com.distrimind.bouncycastle.tls.crypto.TlsEncodeResult;
-import com.distrimind.bouncycastle.tls.crypto.TlsHMAC;
+import org.bouncycastle.tls.AlertDescription;
+import org.bouncycastle.tls.ProtocolVersion;
+import org.bouncycastle.tls.SecurityParameters;
+import org.bouncycastle.tls.TlsFatalAlert;
+import org.bouncycastle.tls.TlsUtils;
+import org.bouncycastle.tls.crypto.TlsCipher;
+import org.bouncycastle.tls.crypto.TlsCrypto;
+import org.bouncycastle.tls.crypto.TlsCryptoParameters;
+import org.bouncycastle.tls.crypto.TlsDecodeResult;
+import org.bouncycastle.tls.crypto.TlsEncodeResult;
+import org.bouncycastle.tls.crypto.TlsHMAC;
 
 /**
  * A generic TLS 1.0-1.2 block cipher. This can be used for AES or 3DES for example.

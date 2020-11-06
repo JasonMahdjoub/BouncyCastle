@@ -1,4 +1,6 @@
-package com.distrimind.bouncycastle.crypto.test;
+package org.bouncycastle.crypto.test;
+
+import org.bouncycastle.util.test.*;
 
 public class CryptoRegressionTest
 {

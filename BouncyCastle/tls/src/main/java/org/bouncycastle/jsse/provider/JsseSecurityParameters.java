@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.jsse.provider;
+package org.bouncycastle.jsse.provider;
 
 import java.security.Principal;
 import java.util.List;

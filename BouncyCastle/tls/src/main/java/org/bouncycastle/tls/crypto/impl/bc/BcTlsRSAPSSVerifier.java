@@ -1,16 +1,16 @@
-package com.distrimind.bouncycastle.tls.crypto.impl.bc;
+package org.bouncycastle.tls.crypto.impl.bc;
 
 import java.io.IOException;
 
-import com.distrimind.bouncycastle.crypto.Digest;
-import com.distrimind.bouncycastle.crypto.engines.RSAEngine;
-import com.distrimind.bouncycastle.crypto.params.RSAKeyParameters;
-import com.distrimind.bouncycastle.crypto.signers.PSSSigner;
-import com.distrimind.bouncycastle.tls.DigitallySigned;
-import com.distrimind.bouncycastle.tls.HashAlgorithm;
-import com.distrimind.bouncycastle.tls.SignatureAlgorithm;
-import com.distrimind.bouncycastle.tls.SignatureAndHashAlgorithm;
-import com.distrimind.bouncycastle.tls.crypto.TlsStreamVerifier;
+import org.bouncycastle.crypto.Digest;
+import org.bouncycastle.crypto.engines.RSAEngine;
+import org.bouncycastle.crypto.params.RSAKeyParameters;
+import org.bouncycastle.crypto.signers.PSSSigner;
+import org.bouncycastle.tls.DigitallySigned;
+import org.bouncycastle.tls.HashAlgorithm;
+import org.bouncycastle.tls.SignatureAlgorithm;
+import org.bouncycastle.tls.SignatureAndHashAlgorithm;
+import org.bouncycastle.tls.crypto.TlsStreamVerifier;
 
 /**
  * Operator supporting the verification of RSASSA-PSS signatures using the BC light-weight API.
@@ -44,7 +44,7 @@ public class BcTlsRSAPSSVerifier
             || algorithm.getSignature() != signatureAlgorithm
             || algorithm.getHash() != HashAlgorithm.Intrinsic)
         {
-            throw new IllegalStateException();
+            throw new IllegalStateException("Invalid algorithm: " + algorithm);
         }
 
         short hash = SignatureAlgorithm.getRSAPSSHashAlgorithm(signatureAlgorithm);

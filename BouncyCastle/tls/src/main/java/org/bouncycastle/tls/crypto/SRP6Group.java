@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.tls.crypto;
+package org.bouncycastle.tls.crypto;
 
 import java.math.BigInteger;
 

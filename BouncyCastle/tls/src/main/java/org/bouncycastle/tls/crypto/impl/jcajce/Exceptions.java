@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.tls.crypto.impl.jcajce;
+package org.bouncycastle.tls.crypto.impl.jcajce;
 
 /**
  * In earlier JDK's these do not allow nested exceptions

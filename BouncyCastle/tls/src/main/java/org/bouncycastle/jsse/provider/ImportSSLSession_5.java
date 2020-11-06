@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.jsse.provider;
+package org.bouncycastle.jsse.provider;
 
 import java.security.Principal;
 import java.security.cert.Certificate;
@@ -9,8 +9,8 @@ import javax.net.ssl.SSLPeerUnverifiedException;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSessionContext;
 
-import com.distrimind.bouncycastle.jsse.BCExtendedSSLSession;
-import com.distrimind.bouncycastle.jsse.BCSNIServerName;
+import org.bouncycastle.jsse.BCExtendedSSLSession;
+import org.bouncycastle.jsse.BCSNIServerName;
 
 final class ImportSSLSession_5
     extends BCExtendedSSLSession

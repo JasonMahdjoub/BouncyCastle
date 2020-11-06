@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.tls;
+package org.bouncycastle.tls;
 
 import java.io.EOFException;
 import java.io.IOException;
@@ -6,10 +6,10 @@ import java.io.InputStream;
 import java.io.InterruptedIOException;
 import java.io.OutputStream;
 
-import com.distrimind.bouncycastle.tls.crypto.TlsCipher;
-import com.distrimind.bouncycastle.tls.crypto.TlsDecodeResult;
-import com.distrimind.bouncycastle.tls.crypto.TlsEncodeResult;
-import com.distrimind.bouncycastle.tls.crypto.TlsNullNullCipher;
+import org.bouncycastle.tls.crypto.TlsCipher;
+import org.bouncycastle.tls.crypto.TlsDecodeResult;
+import org.bouncycastle.tls.crypto.TlsEncodeResult;
+import org.bouncycastle.tls.crypto.TlsNullNullCipher;
 
 /**
  * An implementation of the TLS 1.0/1.1/1.2 record layer.
@@ -24,12 +24,13 @@ class RecordStream
     private InputStream input;
     private OutputStream output;
 //    private TlsContext context = null;
-    private TlsCipher pendingCipher = null, readCipher = null, writeCipher = null;
+    private TlsCipher pendingCipher = null, readCipher = null, readCipherDeferred = null, writeCipher = null;
     private SequenceNumber readSeqNo = new SequenceNumber(), writeSeqNo = new SequenceNumber();
 
     private ProtocolVersion writeVersion = null;
 
     private int plaintextLimit, ciphertextLimit;
+    private boolean ignoreChangeCipherSpec;
 
     RecordStream(TlsProtocol handler, InputStream input, OutputStream output)
     {
@@ -43,6 +44,7 @@ class RecordStream
 //        this.context = context;
         this.readCipher = TlsNullNullCipher.INSTANCE;
         this.writeCipher = this.readCipher;
+        this.ignoreChangeCipherSpec = false;
 
         setPlaintextLimit(DEFAULT_PLAINTEXT_LIMIT);
     }
@@ -63,32 +65,59 @@ class RecordStream
         this.writeVersion = writeVersion;
     }
 
-    void setPendingConnectionState(TlsCipher tlsCipher)
+    public void setIgnoreChangeCipherSpec(boolean ignoreChangeCipherSpec)
+    {
+        this.ignoreChangeCipherSpec = ignoreChangeCipherSpec;
+    }
+
+    void setPendingCipher(TlsCipher tlsCipher)
     {
         this.pendingCipher = tlsCipher;
     }
 
-    void sentWriteCipherSpec()
+    void notifyChangeCipherSpecReceived()
         throws IOException
     {
         if (pendingCipher == null)
         {
-            throw new TlsFatalAlert(AlertDescription.handshake_failure);
+            throw new TlsFatalAlert(AlertDescription.unexpected_message);
+        }
+
+        enablePendingCipherRead(false);
+    }
+
+    void enablePendingCipherRead(boolean deferred)
+        throws IOException
+    {
+        if (pendingCipher == null)
+        {
+            throw new TlsFatalAlert(AlertDescription.internal_error);
+        }
+        if (readCipherDeferred != null)
+        {
+            throw new TlsFatalAlert(AlertDescription.internal_error);
+        }
+        if (deferred)
+        {
+            this.readCipherDeferred = pendingCipher;
+        }
+        else
+        {
+            this.readCipher = pendingCipher;
+            this.ciphertextLimit = readCipher.getCiphertextDecodeLimit(plaintextLimit);
+            this.readSeqNo = new SequenceNumber();
+        }
+    }
+
+    void enablePendingCipherWrite()
+        throws IOException
+    {
+        if (pendingCipher == null)
+        {
+            throw new TlsFatalAlert(AlertDescription.internal_error);
         }
         this.writeCipher = this.pendingCipher;
         this.writeSeqNo = new SequenceNumber();
-    }
-
-    void receivedReadCipherSpec()
-        throws IOException
-    {
-        if (pendingCipher == null)
-        {
-            throw new TlsFatalAlert(AlertDescription.handshake_failure);
-        }
-        this.readCipher = this.pendingCipher;
-        this.ciphertextLimit = readCipher.getCiphertextDecodeLimit(plaintextLimit);
-        this.readSeqNo = new SequenceNumber();
     }
 
     void finaliseHandshake()
@@ -103,9 +132,7 @@ class RecordStream
 
     RecordPreview previewRecordHeader(byte[] recordHeader) throws IOException
     {
-        short recordType = TlsUtils.readUint8(recordHeader, RecordFormat.TYPE_OFFSET);
-
-        checkRecordType(recordType);
+        short recordType = checkRecordType(recordHeader, RecordFormat.TYPE_OFFSET);
 
 //        ProtocolVersion recordVersion = TlsUtils.readVersion(recordHeader, RecordFormat.VERSION_OFFSET);
 
@@ -149,20 +176,15 @@ class RecordStream
             return false;
         }
 
-        short recordType = TlsUtils.readUint8(input, inputOff + RecordFormat.TYPE_OFFSET);
-
-        checkRecordType(recordType);
+        short recordType = checkRecordType(input, inputOff + RecordFormat.TYPE_OFFSET);
 
         ProtocolVersion recordVersion = TlsUtils.readVersion(input, inputOff + RecordFormat.VERSION_OFFSET);
 
         checkLength(length, ciphertextLimit, AlertDescription.record_overflow);
 
-        /*
-         * TODO[tls13] No CCS required, but accept one for compatibility purposes. Search
-         * RFC 8446 for "change_cipher_spec" for details.
-         */
-        if (readCipher.usesOpaqueRecordType() && ContentType.change_cipher_spec == recordType)
+        if (ignoreChangeCipherSpec && ContentType.change_cipher_spec == recordType)
         {
+            checkChangeCipherSpec(input, inputOff + RecordFormat.FRAGMENT_OFFSET, length);
             return true;
         }
 
@@ -181,9 +203,7 @@ class RecordStream
             return false;
         }
 
-        short recordType = TlsUtils.readUint8(inputRecord.buf, RecordFormat.TYPE_OFFSET);
-
-        checkRecordType(recordType);
+        short recordType = checkRecordType(inputRecord.buf, RecordFormat.TYPE_OFFSET);
 
         ProtocolVersion recordVersion = TlsUtils.readVersion(inputRecord.buf, RecordFormat.VERSION_OFFSET);
 
@@ -196,12 +216,9 @@ class RecordStream
         TlsDecodeResult decoded;
         try
         {
-            /*
-             * TODO[tls13] No CCS required, but accept one for compatibility purposes. Search
-             * RFC 8446 for "change_cipher_spec" for details.
-             */
-            if (readCipher.usesOpaqueRecordType() && ContentType.change_cipher_spec == recordType)
+            if (ignoreChangeCipherSpec && ContentType.change_cipher_spec == recordType)
             {
+                checkChangeCipherSpec(inputRecord.buf, RecordFormat.FRAGMENT_OFFSET, length);
                 return true;
             }
 
@@ -327,21 +344,39 @@ class RecordStream
         output.flush();
     }
 
-    private void checkRecordType(short recordType)
+    private void checkChangeCipherSpec(byte[] buf, int off, int len)
         throws IOException
     {
-        if (readCipher.usesOpaqueRecordType())
+        if (1 != len || (byte)ChangeCipherSpec.change_cipher_spec != buf[off])
         {
-            if (ContentType.change_cipher_spec == recordType)
+            throw new TlsFatalAlert(AlertDescription.unexpected_message);
+        }
+    }
+
+    private short checkRecordType(byte[] buf, int off)
+        throws IOException
+    {
+        short recordType = TlsUtils.readUint8(buf, off);
+
+        if (null != readCipherDeferred && recordType == ContentType.application_data)
+        {
+            this.readCipher = readCipherDeferred;
+            this.readCipherDeferred = null;
+            this.ciphertextLimit = readCipher.getCiphertextDecodeLimit(plaintextLimit);
+            this.readSeqNo = new SequenceNumber();
+        }
+        else if (readCipher.usesOpaqueRecordType())
+        {
+            if (ContentType.application_data != recordType)
             {
-                /*
-                 * TODO[tls13] No CCS required, but accept one for compatibility purposes. Search
-                 * RFC 8446 for "change_cipher_spec" for details.
-                 */
-            }
-            else if (ContentType.application_data != recordType)
-            {
-                throw new TlsFatalAlert(AlertDescription.unexpected_message);
+                if (ignoreChangeCipherSpec && ContentType.change_cipher_spec == recordType)
+                {
+                    // See RFC 8446 D.4.
+                }
+                else
+                {
+                    throw new TlsFatalAlert(AlertDescription.unexpected_message, ContentType.getText(recordType));
+                }
             }
         }
         else
@@ -365,6 +400,8 @@ class RecordStream
                 throw new TlsFatalAlert(AlertDescription.unexpected_message);
             }
         }
+
+        return recordType;
     }
 
     private static void checkLength(int length, int limit, short alertDescription)

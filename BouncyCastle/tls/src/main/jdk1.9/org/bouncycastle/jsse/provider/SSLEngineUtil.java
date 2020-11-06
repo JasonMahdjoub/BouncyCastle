@@ -1,12 +1,12 @@
-package com.distrimind.bouncycastle.jsse.provider;
+package org.bouncycastle.jsse.provider;
 
 import javax.net.ssl.SSLEngine;
 import javax.net.ssl.SSLParameters;
 import javax.net.ssl.SSLSession;
 
-import com.distrimind.bouncycastle.jsse.BCExtendedSSLSession;
-import com.distrimind.bouncycastle.jsse.BCSSLEngine;
-import com.distrimind.bouncycastle.jsse.BCSSLParameters;
+import org.bouncycastle.jsse.BCExtendedSSLSession;
+import org.bouncycastle.jsse.BCSSLEngine;
+import org.bouncycastle.jsse.BCSSLParameters;
 
 abstract class SSLEngineUtil
 {

@@ -1,11 +1,11 @@
-package com.distrimind.bouncycastle.jsse.provider;
+package org.bouncycastle.jsse.provider;
 
 import java.security.AlgorithmParameters;
 import java.security.Key;
 import java.util.Set;
 
-import com.distrimind.bouncycastle.jsse.java.security.BCAlgorithmConstraints;
-import com.distrimind.bouncycastle.jsse.java.security.BCCryptoPrimitive;
+import org.bouncycastle.jsse.java.security.BCAlgorithmConstraints;
+import org.bouncycastle.jsse.java.security.BCCryptoPrimitive;
 
 class ProvAlgorithmConstraints
     extends AbstractAlgorithmConstraints

@@ -1,14 +1,14 @@
-package com.distrimind.bouncycastle.tls.crypto.impl.bc;
+package org.bouncycastle.tls.crypto.impl.bc;
 
 import java.io.IOException;
 import java.io.OutputStream;
 
-import com.distrimind.bouncycastle.crypto.CryptoException;
-import com.distrimind.bouncycastle.crypto.Signer;
-import com.distrimind.bouncycastle.crypto.io.SignerOutputStream;
-import com.distrimind.bouncycastle.tls.AlertDescription;
-import com.distrimind.bouncycastle.tls.TlsFatalAlert;
-import com.distrimind.bouncycastle.tls.crypto.TlsStreamSigner;
+import org.bouncycastle.crypto.CryptoException;
+import org.bouncycastle.crypto.Signer;
+import org.bouncycastle.crypto.io.SignerOutputStream;
+import org.bouncycastle.tls.AlertDescription;
+import org.bouncycastle.tls.TlsFatalAlert;
+import org.bouncycastle.tls.crypto.TlsStreamSigner;
 
 class BcTlsStreamSigner
     implements TlsStreamSigner

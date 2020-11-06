@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.openpgp;
+package org.bouncycastle.openpgp;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -10,12 +10,12 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-import com.distrimind.bouncycastle.bcpg.BCPGInputStream;
-import com.distrimind.bouncycastle.bcpg.PacketTags;
-import com.distrimind.bouncycastle.bcpg.PublicKeyPacket;
-import com.distrimind.bouncycastle.bcpg.TrustPacket;
-import com.distrimind.bouncycastle.openpgp.operator.KeyFingerPrintCalculator;
-import com.distrimind.bouncycastle.util.Arrays;
+import org.bouncycastle.bcpg.BCPGInputStream;
+import org.bouncycastle.bcpg.PacketTags;
+import org.bouncycastle.bcpg.PublicKeyPacket;
+import org.bouncycastle.bcpg.TrustPacket;
+import org.bouncycastle.openpgp.operator.KeyFingerPrintCalculator;
+import org.bouncycastle.util.Arrays;
 
 /**
  * Class to hold a single master public key and its subkeys.

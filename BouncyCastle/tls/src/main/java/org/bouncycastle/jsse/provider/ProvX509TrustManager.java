@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.jsse.provider;
+package org.bouncycastle.jsse.provider;
 
 import java.net.Socket;
 import java.security.GeneralSecurityException;
@@ -32,14 +32,14 @@ import java.util.logging.Logger;
 import javax.net.ssl.SSLEngine;
 import javax.net.ssl.X509TrustManager;
 
-import com.distrimind.bouncycastle.asn1.x509.KeyPurposeId;
-import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
-import com.distrimind.bouncycastle.jsse.BCExtendedSSLSession;
-import com.distrimind.bouncycastle.jsse.BCSNIHostName;
-import com.distrimind.bouncycastle.jsse.BCSSLParameters;
-import com.distrimind.bouncycastle.jsse.BCX509ExtendedTrustManager;
-import com.distrimind.bouncycastle.jsse.java.security.BCAlgorithmConstraints;
-import com.distrimind.bouncycastle.tls.KeyExchangeAlgorithm;
+import org.bouncycastle.asn1.x509.KeyPurposeId;
+import org.bouncycastle.jcajce.util.JcaJceHelper;
+import org.bouncycastle.jsse.BCExtendedSSLSession;
+import org.bouncycastle.jsse.BCSNIHostName;
+import org.bouncycastle.jsse.BCSSLParameters;
+import org.bouncycastle.jsse.BCX509ExtendedTrustManager;
+import org.bouncycastle.jsse.java.security.BCAlgorithmConstraints;
+import org.bouncycastle.tls.KeyExchangeAlgorithm;
 
 class ProvX509TrustManager
     extends BCX509ExtendedTrustManager
@@ -48,6 +48,8 @@ class ProvX509TrustManager
 
     private static final boolean provCheckRevocation = PropertyUtils
         .getBooleanSystemProperty("com.sun.net.ssl.checkRevocation", false);
+    private static final boolean provTrustManagerCheckEKU = PropertyUtils
+        .getBooleanSystemProperty("org.bouncycastle.jsse.trustManager.checkEKU", true);
 
     private static final Map<String, Integer> keyUsagesServer = createKeyUsagesServer();
 
@@ -352,7 +354,9 @@ class ProvX509TrustManager
 
     static KeyPurposeId getRequiredExtendedKeyUsage(boolean forServer)
     {
-        return forServer
+        return !provTrustManagerCheckEKU
+            ?   null
+            :   forServer
             ?   KeyPurposeId.id_kp_serverAuth
             :   KeyPurposeId.id_kp_clientAuth;
     }

@@ -1,6 +1,6 @@
-package com.distrimind.bouncycastle.tls;
+package org.bouncycastle.tls;
 
-import com.distrimind.bouncycastle.tls.crypto.TlsSRPConfig;
+import org.bouncycastle.tls.crypto.TlsSRPConfig;
 
 /**
  * Interface a class for verifying SRP config needs to conform to.

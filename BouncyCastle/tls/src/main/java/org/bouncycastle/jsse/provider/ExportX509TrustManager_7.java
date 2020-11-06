@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.jsse.provider;
+package org.bouncycastle.jsse.provider;
 
 import java.net.Socket;
 import java.security.cert.CertificateException;
@@ -7,7 +7,7 @@ import java.security.cert.X509Certificate;
 import javax.net.ssl.SSLEngine;
 import javax.net.ssl.X509ExtendedTrustManager;
 
-import com.distrimind.bouncycastle.jsse.BCX509ExtendedTrustManager;
+import org.bouncycastle.jsse.BCX509ExtendedTrustManager;
 
 class ExportX509TrustManager_7
     extends X509ExtendedTrustManager

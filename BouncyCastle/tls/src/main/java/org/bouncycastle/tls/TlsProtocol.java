@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.tls;
+package org.bouncycastle.tls;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -11,9 +11,9 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Vector;
 
-import com.distrimind.bouncycastle.tls.crypto.TlsSecret;
-import com.distrimind.bouncycastle.util.Arrays;
-import com.distrimind.bouncycastle.util.Integers;
+import org.bouncycastle.tls.crypto.TlsSecret;
+import org.bouncycastle.util.Arrays;
+import org.bouncycastle.util.Integers;
 
 public abstract class TlsProtocol
     implements TlsCloseable
@@ -148,6 +148,8 @@ public abstract class TlsProtocol
     protected SessionParameters sessionParameters = null;
     protected TlsSecret sessionMasterSecret = null;
 
+    protected byte[] retryCookie = null;
+    protected int retryGroup = -1;
     protected Hashtable clientExtensions = null;
     protected Hashtable serverExtensions = null;
 
@@ -212,16 +214,6 @@ public abstract class TlsProtocol
     abstract AbstractTlsContext getContextAdmin();
 
     protected abstract TlsPeer getPeer();
-
-    protected int getRenegotiationPolicy()
-    {
-//        SecurityParameters sp = getContext().getSecurityParametersConnection();
-//        if (null != sp && sp.isSecureRenegotiation())
-//        {
-//            return getPeer().getRenegotiationPolicy();
-//        }
-        return RenegotiationPolicy.DENY;
-    }
 
     protected void handleAlertMessage(short alertLevel, short alertDescription)
         throws IOException
@@ -336,28 +328,6 @@ public abstract class TlsProtocol
     protected abstract void handleHandshakeMessage(short type, HandshakeMessageInput buf)
         throws IOException;
 
-    protected boolean handleRenegotiation() throws IOException
-    {
-        switch (getRenegotiationPolicy())
-        {
-        case RenegotiationPolicy.ACCEPT:
-        {
-            beginHandshake(true);
-            return true;
-        }
-        case RenegotiationPolicy.IGNORE:
-        {
-            return false;
-        }
-        case RenegotiationPolicy.DENY:
-        default:
-        {
-            refuseRenegotiation();
-            return false;
-        }
-        }
-    }
-
     protected void applyMaxFragmentLengthExtension()
         throws IOException
     {
@@ -397,7 +367,7 @@ public abstract class TlsProtocol
         }
     }
 
-    protected void beginHandshake(boolean renegotiation)
+    protected void beginHandshake()
         throws IOException
     {
         AbstractTlsContext context = getContextAdmin(); 
@@ -409,10 +379,6 @@ public abstract class TlsProtocol
         context.handshakeBeginning(peer);
 
         SecurityParameters securityParameters = context.getSecurityParametersHandshake();
-        if (renegotiation != securityParameters.renegotiating)
-        {
-            throw new TlsFatalAlert(AlertDescription.internal_error);
-        }
 
         securityParameters.extendedPadding = peer.shouldUseExtendedPadding();
     }
@@ -429,6 +395,8 @@ public abstract class TlsProtocol
         this.sessionParameters = null;
         this.sessionMasterSecret = null;
 
+        this.retryCookie = null;
+        this.retryGroup = -1;
         this.clientExtensions = null;
         this.serverExtensions = null;
 
@@ -687,14 +655,11 @@ public abstract class TlsProtocol
     private void processChangeCipherSpec(byte[] buf, int off, int len)
         throws IOException
     {
-        /*
-         * TODO[tls13] No CCS required, but accept one for compatibility purposes. Search
-         * RFC 8446 for "change_cipher_spec" for details.
-         */
         ProtocolVersion negotiatedVersion = getContext().getServerVersion();
-        if (null != negotiatedVersion && TlsUtils.isTLSv13(negotiatedVersion))
+        if (null == negotiatedVersion || TlsUtils.isTLSv13(negotiatedVersion))
         {
-            return;
+            // See RFC 8446 D.4.
+            throw new TlsFatalAlert(AlertDescription.unexpected_message);
         }
 
         for (int i = 0; i < len; ++i)
@@ -713,7 +678,7 @@ public abstract class TlsProtocol
                 throw new TlsFatalAlert(AlertDescription.unexpected_message);
             }
 
-            recordStream.receivedReadCipherSpec();
+            recordStream.notifyChangeCipherSpecReceived();
 
             this.receivedChangeCipherSpec = true;
 
@@ -1464,12 +1429,18 @@ public abstract class TlsProtocol
         message.send(this);
     }
 
+    protected void sendChangeCipherSpec()
+        throws IOException
+    {
+        sendChangeCipherSpecMessage();
+        recordStream.enablePendingCipherWrite();
+    }
+
     protected void sendChangeCipherSpecMessage()
         throws IOException
     {
         byte[] message = new byte[]{ 1 };
         safeWriteRecord(ContentType.change_cipher_spec, message, 0, message.length);
-        recordStream.sentWriteCipherSpec();
     }
 
     protected void sendFinishedMessage()
@@ -1724,15 +1695,18 @@ public abstract class TlsProtocol
     protected static byte[] writeExtensionsData(Hashtable extensions) throws IOException
     {
         ByteArrayOutputStream buf = new ByteArrayOutputStream();
+        writeExtensionsData(extensions, buf);
+        return buf.toByteArray();
+    }
 
+    protected static void writeExtensionsData(Hashtable extensions, ByteArrayOutputStream buf) throws IOException
+    {
         /*
          * NOTE: There are reports of servers that don't accept a zero-length extension as the last
          * one, so we write out any zero-length ones first as a best-effort workaround.
          */
         writeSelectedExtensions(buf, extensions, true);
         writeSelectedExtensions(buf, extensions, false);
-
-        return buf.toByteArray();
     }
 
     protected static void writeSelectedExtensions(OutputStream output, Hashtable extensions, boolean selectEmpty)

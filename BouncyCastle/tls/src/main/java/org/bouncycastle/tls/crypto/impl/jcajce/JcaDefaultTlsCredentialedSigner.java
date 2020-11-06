@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.tls.crypto.impl.jcajce;
+package org.bouncycastle.tls.crypto.impl.jcajce;
 
 import java.io.IOException;
 import java.security.PrivateKey;
@@ -6,12 +6,12 @@ import java.security.PublicKey;
 import java.security.interfaces.DSAPrivateKey;
 import java.security.interfaces.RSAPrivateKey;
 
-import com.distrimind.bouncycastle.tls.Certificate;
-import com.distrimind.bouncycastle.tls.DefaultTlsCredentialedSigner;
-import com.distrimind.bouncycastle.tls.SignatureAlgorithm;
-import com.distrimind.bouncycastle.tls.SignatureAndHashAlgorithm;
-import com.distrimind.bouncycastle.tls.crypto.TlsCryptoParameters;
-import com.distrimind.bouncycastle.tls.crypto.TlsSigner;
+import org.bouncycastle.tls.Certificate;
+import org.bouncycastle.tls.DefaultTlsCredentialedSigner;
+import org.bouncycastle.tls.SignatureAlgorithm;
+import org.bouncycastle.tls.SignatureAndHashAlgorithm;
+import org.bouncycastle.tls.crypto.TlsCryptoParameters;
+import org.bouncycastle.tls.crypto.TlsSigner;
 
 /**
  * Credentialed class for generating signatures based on the use of primitives from the JCA.

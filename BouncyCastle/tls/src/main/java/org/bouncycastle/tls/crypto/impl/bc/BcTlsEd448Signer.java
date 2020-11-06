@@ -1,14 +1,14 @@
-package com.distrimind.bouncycastle.tls.crypto.impl.bc;
+package org.bouncycastle.tls.crypto.impl.bc;
 
 import java.io.IOException;
 
-import com.distrimind.bouncycastle.crypto.params.Ed448PrivateKeyParameters;
-import com.distrimind.bouncycastle.crypto.signers.Ed448Signer;
-import com.distrimind.bouncycastle.tls.HashAlgorithm;
-import com.distrimind.bouncycastle.tls.SignatureAlgorithm;
-import com.distrimind.bouncycastle.tls.SignatureAndHashAlgorithm;
-import com.distrimind.bouncycastle.tls.TlsUtils;
-import com.distrimind.bouncycastle.tls.crypto.TlsStreamSigner;
+import org.bouncycastle.crypto.params.Ed448PrivateKeyParameters;
+import org.bouncycastle.crypto.signers.Ed448Signer;
+import org.bouncycastle.tls.HashAlgorithm;
+import org.bouncycastle.tls.SignatureAlgorithm;
+import org.bouncycastle.tls.SignatureAndHashAlgorithm;
+import org.bouncycastle.tls.TlsUtils;
+import org.bouncycastle.tls.crypto.TlsStreamSigner;
 
 public class BcTlsEd448Signer
     extends BcTlsSigner
@@ -29,7 +29,7 @@ public class BcTlsEd448Signer
             || algorithm.getSignature() != SignatureAlgorithm.ed448
             || algorithm.getHash() != HashAlgorithm.Intrinsic)
         {
-            throw new IllegalStateException();
+            throw new IllegalStateException("Invalid algorithm: " + algorithm);
         }
 
         Ed448Signer signer = new Ed448Signer(TlsUtils.EMPTY_BYTES);

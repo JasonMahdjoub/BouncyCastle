@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.tls.test;
+package org.bouncycastle.tls.test;
 
 import java.io.IOException;
 import java.io.PrintStream;
@@ -6,28 +6,28 @@ import java.security.SecureRandom;
 import java.util.Hashtable;
 import java.util.Vector;
 
-import com.distrimind.bouncycastle.asn1.x509.Certificate;
-import com.distrimind.bouncycastle.tls.AlertDescription;
-import com.distrimind.bouncycastle.tls.AlertLevel;
-import com.distrimind.bouncycastle.tls.CertificateRequest;
-import com.distrimind.bouncycastle.tls.ChannelBinding;
-import com.distrimind.bouncycastle.tls.ClientCertificateType;
-import com.distrimind.bouncycastle.tls.DefaultTlsClient;
-import com.distrimind.bouncycastle.tls.MaxFragmentLength;
-import com.distrimind.bouncycastle.tls.ProtocolName;
-import com.distrimind.bouncycastle.tls.ProtocolVersion;
-import com.distrimind.bouncycastle.tls.SignatureAlgorithm;
-import com.distrimind.bouncycastle.tls.TlsAuthentication;
-import com.distrimind.bouncycastle.tls.TlsCredentials;
-import com.distrimind.bouncycastle.tls.TlsExtensionsUtils;
-import com.distrimind.bouncycastle.tls.TlsFatalAlert;
-import com.distrimind.bouncycastle.tls.TlsServerCertificate;
-import com.distrimind.bouncycastle.tls.TlsSession;
-import com.distrimind.bouncycastle.tls.TlsUtils;
-import com.distrimind.bouncycastle.tls.crypto.TlsCertificate;
-import com.distrimind.bouncycastle.tls.crypto.impl.bc.BcTlsCrypto;
-import com.distrimind.bouncycastle.util.Arrays;
-import com.distrimind.bouncycastle.util.encoders.Hex;
+import org.bouncycastle.asn1.x509.Certificate;
+import org.bouncycastle.tls.AlertDescription;
+import org.bouncycastle.tls.AlertLevel;
+import org.bouncycastle.tls.CertificateRequest;
+import org.bouncycastle.tls.ChannelBinding;
+import org.bouncycastle.tls.ClientCertificateType;
+import org.bouncycastle.tls.DefaultTlsClient;
+import org.bouncycastle.tls.MaxFragmentLength;
+import org.bouncycastle.tls.ProtocolName;
+import org.bouncycastle.tls.ProtocolVersion;
+import org.bouncycastle.tls.SignatureAlgorithm;
+import org.bouncycastle.tls.TlsAuthentication;
+import org.bouncycastle.tls.TlsCredentials;
+import org.bouncycastle.tls.TlsExtensionsUtils;
+import org.bouncycastle.tls.TlsFatalAlert;
+import org.bouncycastle.tls.TlsServerCertificate;
+import org.bouncycastle.tls.TlsSession;
+import org.bouncycastle.tls.TlsUtils;
+import org.bouncycastle.tls.crypto.TlsCertificate;
+import org.bouncycastle.tls.crypto.impl.bc.BcTlsCrypto;
+import org.bouncycastle.util.Arrays;
+import org.bouncycastle.util.encoders.Hex;
 
 class MockTlsClient
     extends DefaultTlsClient
@@ -97,13 +97,11 @@ class MockTlsClient
         System.out.println("TLS client negotiated " + serverVersion);
     }
 
-    public TlsAuthentication getAuthentication()
-        throws IOException
+    public TlsAuthentication getAuthentication() throws IOException
     {
         return new TlsAuthentication()
         {
-            public void notifyServerCertificate(TlsServerCertificate serverCertificate)
-                throws IOException
+            public void notifyServerCertificate(TlsServerCertificate serverCertificate) throws IOException
             {
                 TlsCertificate[] chain = serverCertificate.getCertificate().getCertificateList();
 
@@ -140,8 +138,7 @@ class MockTlsClient
                 TlsUtils.checkPeerSigAlgs(context, certPath);
             }
 
-            public TlsCredentials getClientCredentials(CertificateRequest certificateRequest)
-                throws IOException
+            public TlsCredentials getClientCredentials(CertificateRequest certificateRequest) throws IOException
             {
                 short[] certificateTypes = certificateRequest.getCertificateTypes();
                 if (certificateTypes == null || !Arrays.contains(certificateTypes, ClientCertificateType.rsa_sign))

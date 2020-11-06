@@ -1,9 +1,9 @@
-package com.distrimind.bouncycastle.tls.test;
+package org.bouncycastle.tls.test;
 
 import java.io.IOException;
 import java.util.Random;
 
-import com.distrimind.bouncycastle.tls.DatagramTransport;
+import org.bouncycastle.tls.DatagramTransport;
 
 public class UnreliableDatagramTransport
     implements DatagramTransport

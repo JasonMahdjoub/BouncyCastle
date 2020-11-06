@@ -1,10 +1,10 @@
-package com.distrimind.bouncycastle.jsse.provider;
+package org.bouncycastle.jsse.provider;
 
 import java.util.List;
 
 import javax.net.ssl.ExtendedSSLSession;
 
-import com.distrimind.bouncycastle.jsse.BCSNIServerName;
+import org.bouncycastle.jsse.BCSNIServerName;
 
 class ImportSSLSession_8
     extends ImportSSLSession_7

@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.jsse.provider;
+package org.bouncycastle.jsse.provider;
 
 import java.io.IOException;
 import java.security.Principal;
@@ -15,32 +15,33 @@ import java.util.logging.Logger;
 
 import javax.net.ssl.SSLException;
 
-import com.distrimind.bouncycastle.asn1.x500.X500Name;
-import com.distrimind.bouncycastle.jsse.BCSNIMatcher;
-import com.distrimind.bouncycastle.jsse.BCSNIServerName;
-import com.distrimind.bouncycastle.jsse.java.security.BCAlgorithmConstraints;
-import com.distrimind.bouncycastle.tls.AlertDescription;
-import com.distrimind.bouncycastle.tls.AlertLevel;
-import com.distrimind.bouncycastle.tls.Certificate;
-import com.distrimind.bouncycastle.tls.CertificateRequest;
-import com.distrimind.bouncycastle.tls.CertificateStatus;
-import com.distrimind.bouncycastle.tls.ClientCertificateType;
-import com.distrimind.bouncycastle.tls.DefaultTlsServer;
-import com.distrimind.bouncycastle.tls.KeyExchangeAlgorithm;
-import com.distrimind.bouncycastle.tls.ProtocolName;
-import com.distrimind.bouncycastle.tls.ProtocolVersion;
-import com.distrimind.bouncycastle.tls.SecurityParameters;
-import com.distrimind.bouncycastle.tls.ServerName;
-import com.distrimind.bouncycastle.tls.SignatureAlgorithm;
-import com.distrimind.bouncycastle.tls.SignatureAndHashAlgorithm;
-import com.distrimind.bouncycastle.tls.TlsCredentials;
-import com.distrimind.bouncycastle.tls.TlsExtensionsUtils;
-import com.distrimind.bouncycastle.tls.TlsFatalAlert;
-import com.distrimind.bouncycastle.tls.TlsSession;
-import com.distrimind.bouncycastle.tls.TlsUtils;
-import com.distrimind.bouncycastle.tls.TrustedAuthority;
-import com.distrimind.bouncycastle.tls.crypto.TlsCertificate;
-import com.distrimind.bouncycastle.tls.crypto.impl.jcajce.JcaTlsCrypto;
+import org.bouncycastle.asn1.x500.X500Name;
+import org.bouncycastle.jsse.BCSNIMatcher;
+import org.bouncycastle.jsse.BCSNIServerName;
+import org.bouncycastle.jsse.BCX509Key;
+import org.bouncycastle.jsse.java.security.BCAlgorithmConstraints;
+import org.bouncycastle.tls.AlertDescription;
+import org.bouncycastle.tls.AlertLevel;
+import org.bouncycastle.tls.Certificate;
+import org.bouncycastle.tls.CertificateRequest;
+import org.bouncycastle.tls.CertificateStatus;
+import org.bouncycastle.tls.ClientCertificateType;
+import org.bouncycastle.tls.DefaultTlsServer;
+import org.bouncycastle.tls.KeyExchangeAlgorithm;
+import org.bouncycastle.tls.ProtocolName;
+import org.bouncycastle.tls.ProtocolVersion;
+import org.bouncycastle.tls.SecurityParameters;
+import org.bouncycastle.tls.ServerName;
+import org.bouncycastle.tls.SignatureAlgorithm;
+import org.bouncycastle.tls.SignatureAndHashAlgorithm;
+import org.bouncycastle.tls.TlsCredentials;
+import org.bouncycastle.tls.TlsExtensionsUtils;
+import org.bouncycastle.tls.TlsFatalAlert;
+import org.bouncycastle.tls.TlsSession;
+import org.bouncycastle.tls.TlsUtils;
+import org.bouncycastle.tls.TrustedAuthority;
+import org.bouncycastle.tls.crypto.TlsCertificate;
+import org.bouncycastle.tls.crypto.impl.jcajce.JcaTlsCrypto;
 
 class ProvTlsServer
     extends DefaultTlsServer
@@ -57,7 +58,7 @@ class ProvTlsServer
     private static final boolean provServerEnableStatusRequest = false;
 
     private static final boolean provServerEnableTrustedCAKeys = PropertyUtils
-        .getBooleanSystemProperty("com.distrimind.bouncycastle.jsse.server.enableTrustedCAKeysExtension", false);
+        .getBooleanSystemProperty("org.bouncycastle.jsse.server.enableTrustedCAKeysExtension", false);
 
     protected final ProvTlsManager manager;
     protected final ProvSSLParameters sslParameters;
@@ -360,6 +361,19 @@ class ProvTlsServer
     }
 
     @Override
+    public int[] getSupportedGroups() throws IOException
+    {
+        // Setup the local supported groups
+        {
+            ProtocolVersion[] activeProtocolVersions = new ProtocolVersion[]{ context.getServerVersion() };
+
+            jsseSecurityParameters.namedGroups = manager.getContextData().getNamedGroups(sslParameters, activeProtocolVersions);
+        }
+
+        return NamedGroupInfo.getSupportedGroupsLocalServer(jsseSecurityParameters.namedGroups);
+    }
+
+    @Override
     public int getSelectedCipherSuite() throws IOException
     {
         final ContextData contextData = manager.getContextData();
@@ -387,13 +401,6 @@ class ProvTlsServer
             }
 
             manager.notifyHandshakeSession(handshakeSession);
-        }
-
-        // Setup the local supported groups
-        {
-            ProtocolVersion[] activeProtocolVersions = new ProtocolVersion[]{ context.getServerVersion() };
-
-            jsseSecurityParameters.namedGroups = contextData.getNamedGroups(sslParameters, activeProtocolVersions);
         }
 
         // Setup the peer supported groups
@@ -620,13 +627,11 @@ class ProvTlsServer
     {
         if (!secureRenegotiation)
         {
-            boolean allowLegacyHelloMessages = PropertyUtils.getBooleanSystemProperty("sun.security.ssl.allowLegacyHelloMessages", true);
+            boolean allowLegacyHelloMessages = PropertyUtils.getBooleanSystemProperty(
+                "sun.security.ssl.allowLegacyHelloMessages", true);
+
             if (!allowLegacyHelloMessages)
             {
-                /*
-                 * RFC 5746 3.4/3.6. In this case, some clients/servers may want to terminate the handshake instead
-                 * of continuing; see Section 4.1/4.3 for discussion.
-                 */
                 throw new TlsFatalAlert(AlertDescription.handshake_failure);
             }
         }
@@ -710,7 +715,6 @@ class ProvTlsServer
         case KeyExchangeAlgorithm.DHE_RSA:
         case KeyExchangeAlgorithm.ECDHE_ECDSA:
         case KeyExchangeAlgorithm.ECDHE_RSA:
-        case KeyExchangeAlgorithm.NULL:
         case KeyExchangeAlgorithm.RSA:
         {
             if (KeyExchangeAlgorithm.RSA == keyExchangeAlgorithm
@@ -719,7 +723,14 @@ class ProvTlsServer
                 return selectServerCredentialsLegacy(issuers, keyExchangeAlgorithm);
             }
 
-            return selectServerCredentials(issuers, keyExchangeAlgorithm);
+            return selectServerCredentials12(issuers, keyExchangeAlgorithm);
+        }
+
+        case KeyExchangeAlgorithm.NULL:
+        {
+            byte[] certificateRequestContext = TlsUtils.EMPTY_BYTES;
+
+            return selectServerCredentials13(issuers, certificateRequestContext);
         }
 
         default:
@@ -727,8 +738,7 @@ class ProvTlsServer
         }
     }
 
-    // TODO[tls13] Need an alternate (probably simpler) version of this for TLS 1.3
-    protected TlsCredentials selectServerCredentials(Principal[] issuers, int keyExchangeAlgorithm) throws IOException
+    protected TlsCredentials selectServerCredentials12(Principal[] issuers, int keyExchangeAlgorithm) throws IOException
     {
         BCAlgorithmConstraints algorithmConstraints = sslParameters.getAlgorithmConstraints();
         boolean post13Active = TlsUtils.isTLSv13(context);
@@ -762,17 +772,81 @@ class ProvTlsServer
                 continue;
             }
 
-            ProvX509Key x509Key = manager.chooseServerKey(keyType, issuers);
+            BCX509Key x509Key = manager.chooseServerKey(keyType, issuers);
             if (null == x509Key
                 || !JsseUtils.isUsableKeyForServer(signatureAlgorithm, x509Key.getPrivateKey()))
             {
+                if (LOG.isLoggable(Level.FINER))
+                {
+                    LOG.finer("Server (1.2) found no credentials for signature scheme '" + signatureSchemeInfo
+                        + "' (keyType '" + keyType + "')");
+                }
+
                 keyManagerMissCache.add(keyType);
                 continue;
+            }
+
+            if (LOG.isLoggable(Level.FINE))
+            {
+                LOG.fine("Server (1.2) selected credentials for signature scheme '" + signatureSchemeInfo
+                    + "' (keyType '" + keyType + "'), with private key algorithm '"
+                    + JsseUtils.getPrivateKeyAlgorithm(x509Key.getPrivateKey()) + "'");
             }
 
             return JsseUtils.createCredentialedSigner(context, getCrypto(), x509Key,
                 signatureSchemeInfo.getSignatureAndHashAlgorithm());
         }
+
+        LOG.fine("Server (1.2) did not select any credentials");
+
+        return null;
+    }
+
+    protected TlsCredentials selectServerCredentials13(Principal[] issuers, byte[] certificateRequestContext)
+        throws IOException
+    {
+        BCAlgorithmConstraints algorithmConstraints = sslParameters.getAlgorithmConstraints();
+
+        for (SignatureSchemeInfo signatureSchemeInfo : jsseSecurityParameters.peerSigSchemes)
+        {
+            String keyType = JsseUtils.getKeyType(signatureSchemeInfo);
+            if (keyManagerMissCache.contains(keyType))
+            {
+                continue;
+            }
+
+            // TODO[tls13] Somewhat redundant if we get all active signature schemes later (for CertificateRequest)
+            if (!signatureSchemeInfo.isActive(algorithmConstraints, false, true, jsseSecurityParameters.namedGroups))
+            {
+                continue;
+            }
+
+            BCX509Key x509Key = manager.chooseServerKey(keyType, issuers);
+            if (null == x509Key ||
+                !JsseUtils.isUsableKeyForServer(signatureSchemeInfo.getSignatureAlgorithm(), x509Key.getPrivateKey()))
+            {
+                if (LOG.isLoggable(Level.FINER))
+                {
+                    LOG.finer("Server (1.3) found no credentials for signature scheme '" + signatureSchemeInfo
+                        + "' (keyType '" + keyType + "')");
+                }
+
+                keyManagerMissCache.add(keyType);
+                continue;
+            }
+
+            if (LOG.isLoggable(Level.FINE))
+            {
+                LOG.fine("Server (1.3) selected credentials for signature scheme '" + signatureSchemeInfo
+                    + "' (keyType '" + keyType + "'), with private key algorithm '"
+                    + JsseUtils.getPrivateKeyAlgorithm(x509Key.getPrivateKey()) + "'");
+            }
+
+            return JsseUtils.createCredentialedSigner13(context, getCrypto(), x509Key,
+                signatureSchemeInfo.getSignatureAndHashAlgorithm(), certificateRequestContext);
+        }
+
+        LOG.fine("Server (1.3) did not select any credentials");
 
         return null;
     }
@@ -786,7 +860,7 @@ class ProvTlsServer
             return null;
         }
 
-        ProvX509Key x509Key = manager.chooseServerKey(keyType, issuers);
+        BCX509Key x509Key = manager.chooseServerKey(keyType, issuers);
         if (null == x509Key
             || !JsseUtils.isUsableKeyForServerLegacy(keyExchangeAlgorithm, x509Key.getPrivateKey()))
         {

@@ -1,11 +1,11 @@
-package com.distrimind.bouncycastle.tls;
+package org.bouncycastle.tls;
 
 import java.io.IOException;
 import java.util.Hashtable;
 import java.util.Vector;
 
-import com.distrimind.bouncycastle.tls.crypto.TlsDHConfig;
-import com.distrimind.bouncycastle.tls.crypto.TlsECConfig;
+import org.bouncycastle.tls.crypto.TlsDHConfig;
+import org.bouncycastle.tls.crypto.TlsECConfig;
 
 /**
  * Interface describing a TLS server endpoint.
@@ -37,6 +37,9 @@ public interface TlsServer
         throws IOException;
 
     ProtocolVersion getServerVersion()
+        throws IOException;
+
+    int[] getSupportedGroups()
         throws IOException;
 
     int getSelectedCipherSuite()

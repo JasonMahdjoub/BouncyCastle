@@ -1,11 +1,11 @@
-package com.distrimind.bouncycastle.tls;
+package org.bouncycastle.tls;
 
 import java.io.IOException;
 
-import com.distrimind.bouncycastle.tls.crypto.TlsCrypto;
-import com.distrimind.bouncycastle.tls.crypto.TlsMAC;
-import com.distrimind.bouncycastle.tls.crypto.TlsMACOutputStream;
-import com.distrimind.bouncycastle.util.Arrays;
+import org.bouncycastle.tls.crypto.TlsCrypto;
+import org.bouncycastle.tls.crypto.TlsMAC;
+import org.bouncycastle.tls.crypto.TlsMACOutputStream;
+import org.bouncycastle.util.Arrays;
 
 public class DTLSVerifier
 {

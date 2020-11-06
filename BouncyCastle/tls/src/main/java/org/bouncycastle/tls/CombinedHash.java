@@ -1,8 +1,8 @@
-package com.distrimind.bouncycastle.tls;
+package org.bouncycastle.tls;
 
-import com.distrimind.bouncycastle.tls.crypto.TlsCrypto;
-import com.distrimind.bouncycastle.tls.crypto.TlsHash;
-import com.distrimind.bouncycastle.util.Arrays;
+import org.bouncycastle.tls.crypto.TlsCrypto;
+import org.bouncycastle.tls.crypto.TlsHash;
+import org.bouncycastle.util.Arrays;
 
 /**
  * A combined hash, which implements md5(m) || sha1(m).

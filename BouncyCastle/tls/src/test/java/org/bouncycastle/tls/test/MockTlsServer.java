@@ -1,28 +1,28 @@
-package com.distrimind.bouncycastle.tls.test;
+package org.bouncycastle.tls.test;
 
 import java.io.IOException;
 import java.io.PrintStream;
 import java.security.SecureRandom;
 import java.util.Vector;
 
-import com.distrimind.bouncycastle.asn1.x500.X500Name;
-import com.distrimind.bouncycastle.asn1.x509.Certificate;
-import com.distrimind.bouncycastle.tls.AlertDescription;
-import com.distrimind.bouncycastle.tls.AlertLevel;
-import com.distrimind.bouncycastle.tls.CertificateRequest;
-import com.distrimind.bouncycastle.tls.ChannelBinding;
-import com.distrimind.bouncycastle.tls.ClientCertificateType;
-import com.distrimind.bouncycastle.tls.DefaultTlsServer;
-import com.distrimind.bouncycastle.tls.ProtocolName;
-import com.distrimind.bouncycastle.tls.ProtocolVersion;
-import com.distrimind.bouncycastle.tls.SignatureAlgorithm;
-import com.distrimind.bouncycastle.tls.TlsCredentialedDecryptor;
-import com.distrimind.bouncycastle.tls.TlsCredentialedSigner;
-import com.distrimind.bouncycastle.tls.TlsFatalAlert;
-import com.distrimind.bouncycastle.tls.TlsUtils;
-import com.distrimind.bouncycastle.tls.crypto.TlsCertificate;
-import com.distrimind.bouncycastle.tls.crypto.impl.bc.BcTlsCrypto;
-import com.distrimind.bouncycastle.util.encoders.Hex;
+import org.bouncycastle.asn1.x500.X500Name;
+import org.bouncycastle.asn1.x509.Certificate;
+import org.bouncycastle.tls.AlertDescription;
+import org.bouncycastle.tls.AlertLevel;
+import org.bouncycastle.tls.CertificateRequest;
+import org.bouncycastle.tls.ChannelBinding;
+import org.bouncycastle.tls.ClientCertificateType;
+import org.bouncycastle.tls.DefaultTlsServer;
+import org.bouncycastle.tls.ProtocolName;
+import org.bouncycastle.tls.ProtocolVersion;
+import org.bouncycastle.tls.SignatureAlgorithm;
+import org.bouncycastle.tls.TlsCredentialedDecryptor;
+import org.bouncycastle.tls.TlsCredentialedSigner;
+import org.bouncycastle.tls.TlsFatalAlert;
+import org.bouncycastle.tls.TlsUtils;
+import org.bouncycastle.tls.crypto.TlsCertificate;
+import org.bouncycastle.tls.crypto.impl.bc.BcTlsCrypto;
+import org.bouncycastle.util.encoders.Hex;
 
 class MockTlsServer
     extends DefaultTlsServer
@@ -93,8 +93,7 @@ class MockTlsServer
         return new CertificateRequest(certificateTypes, serverSigAlgs, certificateAuthorities);
     }
 
-    public void notifyClientCertificate(com.distrimind.bouncycastle.tls.Certificate clientCertificate)
-        throws IOException
+    public void notifyClientCertificate(org.bouncycastle.tls.Certificate clientCertificate) throws IOException
     {
         TlsCertificate[] chain = clientCertificate.getCertificateList();
 
@@ -146,10 +145,9 @@ class MockTlsServer
         System.out.println("Server 'tls-unique': " + hex(tlsUnique));
     }
 
-    protected TlsCredentialedDecryptor getRSAEncryptionCredentials()
-        throws IOException
+    protected TlsCredentialedDecryptor getRSAEncryptionCredentials() throws IOException
     {
-        return TlsTestUtils.loadEncryptionCredentials(context, new String[]{"x509-server-rsa-enc.pem", "x509-ca-rsa.pem"},
+        return TlsTestUtils.loadEncryptionCredentials(context, new String[]{ "x509-server-rsa-enc.pem", "x509-ca-rsa.pem" },
             "x509-server-key-rsa-enc.pem");
     }
 

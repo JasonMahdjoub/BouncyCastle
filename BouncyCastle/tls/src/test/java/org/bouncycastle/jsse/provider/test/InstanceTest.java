@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.jsse.provider.test;
+package org.bouncycastle.jsse.provider.test;
 
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;

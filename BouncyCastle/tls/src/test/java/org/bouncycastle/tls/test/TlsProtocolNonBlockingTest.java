@@ -1,13 +1,13 @@
-package com.distrimind.bouncycastle.tls.test;
+package org.bouncycastle.tls.test;
 
 import java.io.IOException;
 import java.security.SecureRandom;
 
 import junit.framework.TestCase;
-import com.distrimind.bouncycastle.tls.TlsClientProtocol;
-import com.distrimind.bouncycastle.tls.TlsProtocol;
-import com.distrimind.bouncycastle.tls.TlsServerProtocol;
-import com.distrimind.bouncycastle.util.Arrays;
+import org.bouncycastle.tls.TlsClientProtocol;
+import org.bouncycastle.tls.TlsProtocol;
+import org.bouncycastle.tls.TlsServerProtocol;
+import org.bouncycastle.util.Arrays;
 
 public class TlsProtocolNonBlockingTest
     extends TestCase

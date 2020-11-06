@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.jsse.provider;
+package org.bouncycastle.jsse.provider;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -25,16 +25,21 @@ import javax.net.ssl.ManagerFactoryParameters;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactorySpi;
 
-import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
+import org.bouncycastle.jcajce.util.JcaJceHelper;
 
 class ProvTrustManagerFactorySpi
     extends TrustManagerFactorySpi
 {
     private static final Logger LOG = Logger.getLogger(ProvTrustManagerFactorySpi.class.getName());
 
+    private static final boolean provKeyStoreTypeCompat = PropertyUtils
+        .getBooleanSecurityProperty("keystore.type.compat", false);
+
     static KeyStore getDefaultTrustStore() throws Exception
     {
         String defaultType = KeyStore.getDefaultType();
+
+        boolean defaultCacertsToJKS = provKeyStoreTypeCompat && "pkcs12".equalsIgnoreCase(defaultType);
 
         String tsPath = null;
         char[] tsPassword = null;
@@ -59,7 +64,10 @@ class ProvTrustManagerFactorySpi
                 String jsseCacertsPath = javaHome + "/lib/security/jssecacerts".replace("/", File.separator);
                 if (new File(jsseCacertsPath).exists())
                 {
-                    defaultType = "jks";
+                    if (defaultCacertsToJKS)
+                    {
+                        defaultType = "jks";
+                    }
                     tsPath = jsseCacertsPath;
                 }
                 else
@@ -67,7 +75,10 @@ class ProvTrustManagerFactorySpi
                     String cacertsPath = javaHome + "/lib/security/cacerts".replace("/", File.separator);
                     if (new File(cacertsPath).exists())
                     {
-                        defaultType = "jks";
+                        if (defaultCacertsToJKS)
+                        {
+                            defaultType = "jks";
+                        }
                         tsPath = cacertsPath;
                     }
                 }

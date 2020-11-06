@@ -1,10 +1,10 @@
-package com.distrimind.bouncycastle.jsse.provider;
+package org.bouncycastle.jsse.provider;
 
 import javax.net.ssl.X509ExtendedTrustManager;
 import javax.net.ssl.X509TrustManager;
 
-import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
-import com.distrimind.bouncycastle.jsse.BCX509ExtendedTrustManager;
+import org.bouncycastle.jcajce.util.JcaJceHelper;
+import org.bouncycastle.jsse.BCX509ExtendedTrustManager;
 
 abstract class X509TrustManagerUtil
 {

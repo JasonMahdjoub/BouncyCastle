@@ -1,10 +1,10 @@
-package com.distrimind.bouncycastle.tls;
+package org.bouncycastle.tls;
 
 import java.io.IOException;
 import java.io.OutputStream;
 
-import com.distrimind.bouncycastle.tls.crypto.TlsCertificate;
-import com.distrimind.bouncycastle.tls.crypto.TlsSecret;
+import org.bouncycastle.tls.crypto.TlsCertificate;
+import org.bouncycastle.tls.crypto.TlsSecret;
 
 /**
  * RSA Utility methods.

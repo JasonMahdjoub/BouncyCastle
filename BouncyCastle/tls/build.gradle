@@ -14,11 +14,11 @@ sourceSets {
     }
 }
 
-/*task sourcesJar(type: Jar) {
+task sourcesJar(type: Jar) {
   baseName = jar.baseName
   classifier = 'sources'
   from sourceSets.main.allSource
-}*/
+}
 
 task javadocJar(type: Jar, dependsOn: javadoc) {
   baseName = jar.baseName

@@ -1,6 +1,6 @@
-package com.distrimind.bouncycastle.jsse.provider;
+package org.bouncycastle.jsse.provider;
 
-import com.distrimind.bouncycastle.jsse.BCExtendedSSLSession;
+import org.bouncycastle.jsse.BCExtendedSSLSession;
 
 interface ExportSSLSession
 {

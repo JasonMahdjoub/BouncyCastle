@@ -1,5 +1,7 @@
 # The Bouncy Castle Crypto Package For Java
 
+[![Build Status](https://travis-ci.org/bcgit/bc-java.svg?branch=master)](https://travis-ci.org/bcgit/bc-java)
+
 The Bouncy Castle Crypto package is a Java implementation of cryptographic algorithms, it was developed by the Legion of the Bouncy Castle, a registered Australian Charity, with a little help! The Legion, and the latest goings on with this package, can be found at [https://www.bouncycastle.org](https://www.bouncycastle.org).
 
 The Legion also gratefully acknowledges the contributions made to this package by others (see [here](https://www.bouncycastle.org/contributors.html) for the current list). If you would like to contribute to our efforts please feel free to get in touch with us or visit our [donations page](https://www.bouncycastle.org/donate), sponsor some specific work, or purchase a support contract through [Crypto Workshop](https://www.cryptoworkshop.com).
@@ -36,23 +38,23 @@ If you want to try create a build for yourself, using your own environment, the 
 
 To view some examples, look at the test programs in the packages:
 
-*   **com.distrimind.bouncycastle.crypto.test**
+*   **org.bouncycastle.crypto.test**
 
-*   **com.distrimind.bouncycastle.jce.provider.test**
+*   **org.bouncycastle.jce.provider.test**
 
-*   **com.distrimind.bouncycastle.cms.test**
+*   **org.bouncycastle.cms.test**
 
-*   **com.distrimind.bouncycastle.mail.smime.test**
+*   **org.bouncycastle.mail.smime.test**
 
-*   **com.distrimind.bouncycastle.openpgp.test**
+*   **org.bouncycastle.openpgp.test**
 
-*   **com.distrimind.bouncycastle.tsp.test**
+*   **org.bouncycastle.tsp.test**
 
 There are also some specific example programs for dealing with SMIME and OpenPGP. They can be found in:
 
-*   **com.distrimind.bouncycastle.mail.smime.examples**
+*   **org.bouncycastle.mail.smime.examples**
 
-*   **com.distrimind.bouncycastle.openpgp.examples**
+*   **org.bouncycastle.openpgp.examples**
 
 ## Mailing Lists
 

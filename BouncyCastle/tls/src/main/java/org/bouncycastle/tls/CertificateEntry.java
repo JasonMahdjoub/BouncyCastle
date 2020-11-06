@@ -1,8 +1,8 @@
-package com.distrimind.bouncycastle.tls;
+package org.bouncycastle.tls;
 
 import java.util.Hashtable;
 
-import com.distrimind.bouncycastle.tls.crypto.TlsCertificate;
+import org.bouncycastle.tls.crypto.TlsCertificate;
 
 public class CertificateEntry
 {

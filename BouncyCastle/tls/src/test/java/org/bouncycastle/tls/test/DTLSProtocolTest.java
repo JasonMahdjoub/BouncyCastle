@@ -1,19 +1,19 @@
-package com.distrimind.bouncycastle.tls.test;
+package org.bouncycastle.tls.test;
 
 import java.security.SecureRandom;
 
+import org.bouncycastle.tls.DTLSClientProtocol;
+import org.bouncycastle.tls.DTLSServerProtocol;
+import org.bouncycastle.tls.DTLSTransport;
+import org.bouncycastle.tls.DatagramTransport;
+import org.bouncycastle.util.Arrays;
+
 import junit.framework.TestCase;
-import com.distrimind.bouncycastle.tls.DTLSClientProtocol;
-import com.distrimind.bouncycastle.tls.DTLSServerProtocol;
-import com.distrimind.bouncycastle.tls.DTLSTransport;
-import com.distrimind.bouncycastle.tls.DatagramTransport;
-import com.distrimind.bouncycastle.util.Arrays;
 
 public class DTLSProtocolTest
     extends TestCase
 {
-    public void testClientServer()
-        throws Exception
+    public void testClientServer() throws Exception
     {
         SecureRandom secureRandom = new SecureRandom();
 

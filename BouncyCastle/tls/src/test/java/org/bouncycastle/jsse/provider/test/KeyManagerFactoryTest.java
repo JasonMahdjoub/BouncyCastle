@@ -1,21 +1,24 @@
-package com.distrimind.bouncycastle.jsse.provider.test;
+package org.bouncycastle.jsse.provider.test;
 
 import java.security.KeyPair;
 import java.security.KeyStore;
+import java.security.KeyStore.Builder;
 import java.security.Principal;
 import java.security.cert.Certificate;
 import java.security.cert.X509Certificate;
 
 import javax.net.ssl.KeyManager;
 import javax.net.ssl.KeyManagerFactory;
+import javax.net.ssl.KeyStoreBuilderParameters;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManagerFactory;
-import javax.net.ssl.X509ExtendedKeyManager;
 import javax.security.auth.x500.X500Principal;
 
-import com.distrimind.bouncycastle.asn1.x500.X500Name;
+import org.bouncycastle.asn1.x500.X500Name;
+import org.bouncycastle.jsse.BCX509ExtendedKeyManager;
+import org.bouncycastle.jsse.BCX509Key;
 
 import junit.framework.TestCase;
 
@@ -29,141 +32,27 @@ public class KeyManagerFactoryTest
         ProviderUtils.setupLowPriority(false);
     }
 
+    public void testBasicEC()
+        throws Exception
+    {
+        KeyStore keyStore = getEcKeyStore(false);
+
+        // NOTE: This depends on the value of JsseUtils.getKeyTypeLegacyServer(KeyExchangeAlgorithm.ECDHE_ECDSA)
+        String keyType = "ECDHE_ECDSA";
+
+        implTestKeyManagerFactory(keyStore, keyType);
+    }
+
     public void testBasicRSA()
         throws Exception
     {
-        KeyManagerFactory fact = KeyManagerFactory.getInstance("PKIX", ProviderUtils.PROVIDER_NAME_BCJSSE);
-
-        KeyStore ks = getRsaKeyStore(true);
-
-        fact.init(ks, PASSWORD);
-
-        KeyManager[] managers = fact.getKeyManagers();
-
-        X509ExtendedKeyManager manager = (X509ExtendedKeyManager)managers[0];
+        KeyStore keyStore = getRsaKeyStore(true);
 
         // NOTE: This depends on the value of JsseUtils.getKeyTypeLegacyServer(KeyExchangeAlgorithm.RSA)
 //        String keyType = "RSA";
         String keyType = "KE:RSA";
 
-        String alias = manager.chooseServerAlias(keyType, null, null);
-
-        assertNotNull(alias);
-
-        assertNotNull(manager.getCertificateChain(alias));
-
-        assertNotNull(manager.getPrivateKey(alias));
-
-        alias = manager.chooseServerAlias(keyType, new Principal[] { new X500Principal("CN=TLS Test") }, null);
-
-        assertNull(alias);
-
-        alias = manager.chooseServerAlias(keyType, new Principal[] { new X500Principal("CN=TLS Test CA") }, null);
-
-        assertNotNull(alias);
-
-        assertNotNull(manager.getCertificateChain(alias));
-
-        assertNotNull(manager.getPrivateKey(alias));
-    }
-
-    public void testBasicEC()
-        throws Exception
-    {
-        KeyManagerFactory fact = KeyManagerFactory.getInstance("PKIX", ProviderUtils.PROVIDER_NAME_BCJSSE);
-
-        KeyStore ks = getEcKeyStore(false);
-
-        fact.init(ks, PASSWORD);
-
-        KeyManager[] managers = fact.getKeyManagers();
-
-        X509ExtendedKeyManager manager = (X509ExtendedKeyManager)managers[0];
-
-        // NOTE: This depends on the value of JsseUtils.getKeyTypeLegacyServer(KeyExchangeAlgorithm.ECDHE_ECDSA)
-        String keyType = "ECDHE_ECDSA";
-
-        String alias = manager.chooseServerAlias(keyType, null, null);
-
-        assertNotNull(alias);
-
-        assertNotNull(manager.getCertificateChain(alias));
-
-        assertNotNull(manager.getPrivateKey(alias));
-
-        alias = manager.chooseServerAlias(keyType, new Principal[] { new X500Principal("CN=TLS Test") }, null);
-
-        assertNull(alias);
-
-        alias = manager.chooseServerAlias(keyType, new Principal[] { new X500Principal("CN=TLS Test CA") }, null);
-
-        assertNotNull(alias);
-
-        assertNotNull(manager.getCertificateChain(alias));
-
-        assertNotNull(manager.getPrivateKey(alias));
-    }
-
-    private KeyStore getRsaKeyStore(boolean encryption)
-        throws Exception
-    {
-        KeyStore ks = KeyStore.getInstance("JKS");
-
-        KeyPair rPair = TestUtils.generateRSAKeyPair();
-        KeyPair iPair = TestUtils.generateRSAKeyPair();
-        KeyPair ePair = TestUtils.generateRSAKeyPair();
-
-        X509Certificate rCert = TestUtils.generateRootCert(rPair);
-        X509Certificate iCert = TestUtils.generateIntermediateCert(iPair.getPublic(), new X500Name("CN=TLS Test CA"), rPair.getPrivate(), rCert);
-
-        X509Certificate eCert;
-        if (encryption)
-        {
-            eCert = TestUtils.generateEndEntityCertEnc(ePair.getPublic(), new X500Name("CN=TLS Test"), iPair.getPrivate(), iCert);
-        }
-        else
-        {
-            eCert = TestUtils.generateEndEntityCertSign(ePair.getPublic(), new X500Name("CN=TLS Test"), iPair.getPrivate(), iCert);
-        }
-
-        ks.load(null, PASSWORD);
-
-        ks.setKeyEntry("test", ePair.getPrivate(), PASSWORD, new Certificate[] { eCert, iCert });
-
-        ks.setCertificateEntry("root", rCert);
-
-        return ks;
-    }
-
-    private KeyStore getEcKeyStore(boolean agreement)
-        throws Exception
-    {
-        KeyStore ks = KeyStore.getInstance("JKS");
-
-        KeyPair rPair = TestUtils.generateECKeyPair();
-        KeyPair iPair = TestUtils.generateECKeyPair();
-        KeyPair ePair = TestUtils.generateECKeyPair();
-
-        X509Certificate rCert = TestUtils.generateRootCert(rPair);
-        X509Certificate iCert = TestUtils.generateIntermediateCert(iPair.getPublic(), new X500Name("CN=TLS Test CA"), rPair.getPrivate(), rCert);
-
-        X509Certificate eCert;
-        if (agreement)
-        {
-            eCert = TestUtils.generateEndEntityCertAgree(ePair.getPublic(), new X500Name("CN=TLS Test"), iPair.getPrivate(), iCert);
-        }
-        else
-        {
-            eCert = TestUtils.generateEndEntityCertSign(ePair.getPublic(), new X500Name("CN=TLS Test"), iPair.getPrivate(), iCert);
-        }
-
-        ks.load(null, PASSWORD);
-
-        ks.setKeyEntry("test", ePair.getPrivate(), PASSWORD, new Certificate[] { eCert, iCert });
-
-        ks.setCertificateEntry("root", rCert);
-
-        return ks;
+        implTestKeyManagerFactory(keyStore, keyType);
     }
 
     public void testRSAServer()
@@ -284,5 +173,116 @@ public class KeyManagerFactoryTest
 
         c.getInputStream().read();
 
+    }
+
+    private KeyStore getEcKeyStore(boolean agreement)
+        throws Exception
+    {
+        KeyStore ks = KeyStore.getInstance("JKS");
+
+        KeyPair rPair = TestUtils.generateECKeyPair();
+        KeyPair iPair = TestUtils.generateECKeyPair();
+        KeyPair ePair = TestUtils.generateECKeyPair();
+
+        X509Certificate rCert = TestUtils.generateRootCert(rPair);
+        X509Certificate iCert = TestUtils.generateIntermediateCert(iPair.getPublic(), new X500Name("CN=TLS Test CA"), rPair.getPrivate(), rCert);
+
+        X509Certificate eCert;
+        if (agreement)
+        {
+            eCert = TestUtils.generateEndEntityCertAgree(ePair.getPublic(), new X500Name("CN=TLS Test"), iPair.getPrivate(), iCert);
+        }
+        else
+        {
+            eCert = TestUtils.generateEndEntityCertSign(ePair.getPublic(), new X500Name("CN=TLS Test"), iPair.getPrivate(), iCert);
+        }
+
+        ks.load(null, PASSWORD);
+
+        ks.setKeyEntry("test", ePair.getPrivate(), PASSWORD, new Certificate[] { eCert, iCert });
+
+        ks.setCertificateEntry("root", rCert);
+
+        return ks;
+    }
+
+    private KeyStore getRsaKeyStore(boolean encryption)
+        throws Exception
+    {
+        KeyStore ks = KeyStore.getInstance("JKS");
+
+        KeyPair rPair = TestUtils.generateRSAKeyPair();
+        KeyPair iPair = TestUtils.generateRSAKeyPair();
+        KeyPair ePair = TestUtils.generateRSAKeyPair();
+
+        X509Certificate rCert = TestUtils.generateRootCert(rPair);
+        X509Certificate iCert = TestUtils.generateIntermediateCert(iPair.getPublic(), new X500Name("CN=TLS Test CA"), rPair.getPrivate(), rCert);
+
+        X509Certificate eCert;
+        if (encryption)
+        {
+            eCert = TestUtils.generateEndEntityCertEnc(ePair.getPublic(), new X500Name("CN=TLS Test"), iPair.getPrivate(), iCert);
+        }
+        else
+        {
+            eCert = TestUtils.generateEndEntityCertSign(ePair.getPublic(), new X500Name("CN=TLS Test"), iPair.getPrivate(), iCert);
+        }
+
+        ks.load(null, PASSWORD);
+
+        ks.setKeyEntry("test", ePair.getPrivate(), PASSWORD, new Certificate[] { eCert, iCert });
+
+        ks.setCertificateEntry("root", rCert);
+
+        return ks;
+    }
+
+    private void implTestKeyManager(BCX509ExtendedKeyManager manager, String keyType)
+        throws Exception
+    {
+        String alias = manager.chooseServerAlias(keyType, null, null);
+        assertNotNull(alias);
+        assertNotNull(manager.getCertificateChain(alias));
+        assertNotNull(manager.getPrivateKey(alias));
+        assertNotNull(manager.getKeyBC(alias));
+
+        BCX509Key key = manager.chooseServerKeyBC(keyType, null, null);
+        assertNotNull(key);
+
+        alias = manager.chooseServerAlias(keyType, new Principal[] { new X500Principal("CN=TLS Test") }, null);
+        assertNull(alias);
+
+        key = manager.chooseServerKeyBC(keyType, new Principal[] { new X500Principal("CN=TLS Test") }, null);
+        assertNull(key);
+
+        alias = manager.chooseServerAlias(keyType, new Principal[] { new X500Principal("CN=TLS Test CA") }, null);
+        assertNotNull(alias);
+        assertNotNull(manager.getCertificateChain(alias));
+        assertNotNull(manager.getPrivateKey(alias));
+        assertNotNull(manager.getKeyBC(alias));
+
+        key = manager.chooseServerKeyBC(keyType, new Principal[] { new X500Principal("CN=TLS Test CA") }, null);
+        assertNotNull(key);
+    }
+
+    private void implTestKeyManagerFactory(KeyManagerFactory kmf, String keyType)
+        throws Exception
+    {
+        KeyManager[] keyManagers = kmf.getKeyManagers();
+        BCX509ExtendedKeyManager keyManager = (BCX509ExtendedKeyManager)keyManagers[0];
+        implTestKeyManager(keyManager, keyType);
+    }
+
+    private void implTestKeyManagerFactory(KeyStore ks, String keyType)
+        throws Exception
+    {
+        KeyManagerFactory kmf = KeyManagerFactory.getInstance("PKIX", ProviderUtils.PROVIDER_NAME_BCJSSE);
+
+        kmf.init(ks, PASSWORD);
+        implTestKeyManagerFactory(kmf, keyType);
+
+        Builder builder = KeyStore.Builder.newInstance(ks, new KeyStore.PasswordProtection(PASSWORD));
+        kmf.init(new KeyStoreBuilderParameters(builder));
+        implTestKeyManagerFactory(kmf, keyType);
     }
 }

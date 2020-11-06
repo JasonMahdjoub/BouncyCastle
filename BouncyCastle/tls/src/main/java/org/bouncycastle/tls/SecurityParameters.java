@@ -1,8 +1,8 @@
-package com.distrimind.bouncycastle.tls;
+package org.bouncycastle.tls;
 
 import java.util.Vector;
 
-import com.distrimind.bouncycastle.tls.crypto.TlsSecret;
+import org.bouncycastle.tls.crypto.TlsSecret;
 
 /**
  * Carrier class for general security parameters.
@@ -10,7 +10,6 @@ import com.distrimind.bouncycastle.tls.crypto.TlsSecret;
 public class SecurityParameters
 {
     int entity = -1;
-    boolean renegotiating = false;
     boolean secureRenegotiation = false;
     int cipherSuite = CipherSuite.TLS_NULL_WITH_NULL_NULL;
     final short compressionAlgorithm = CompressionMethod._null;
@@ -19,6 +18,8 @@ public class SecurityParameters
     short prfHashAlgorithm = -1;
     int prfHashLength = -1;
     int verifyDataLength = -1;
+    TlsSecret baseKeyClient = null;
+    TlsSecret baseKeyServer = null;
     TlsSecret earlyExporterMasterSecret = null;
     TlsSecret earlySecret = null;
     TlsSecret exporterMasterSecret = null;
@@ -49,6 +50,7 @@ public class SecurityParameters
     int[] clientSupportedGroups = null;
     Vector serverSigAlgs = null;
     Vector serverSigAlgsCert = null;
+    int[] serverSupportedGroups = null;
     int keyExchangeAlgorithm = -1;
     Certificate localCertificate = null;
     Certificate peerCertificate = null;
@@ -70,8 +72,11 @@ public class SecurityParameters
         this.clientSupportedGroups = null;
         this.serverSigAlgs = null;
         this.serverSigAlgsCert = null;
+        this.serverSupportedGroups = null;
         this.statusRequestVersion = 0;
 
+        this.baseKeyClient = clearSecret(baseKeyClient);
+        this.baseKeyServer = clearSecret(baseKeyServer);
         this.earlyExporterMasterSecret = clearSecret(earlyExporterMasterSecret);
         this.earlySecret = clearSecret(earlySecret);
         this.exporterMasterSecret = clearSecret(exporterMasterSecret);
@@ -88,9 +93,12 @@ public class SecurityParameters
         return entity;
     }
 
+    /**
+     * @deprecated Always false.
+     */
     public boolean isRenegotiating()
     {
-        return renegotiating;
+        return false;
     }
 
     public boolean isSecureRenegotiation()
@@ -141,6 +149,11 @@ public class SecurityParameters
         return serverSigAlgsCert;
     }
 
+    public int[] getServerSupportedGroups()
+    {
+        return serverSupportedGroups;
+    }
+
     /**
      * @return {@link CompressionMethod}
      */
@@ -189,6 +202,16 @@ public class SecurityParameters
     public int getVerifyDataLength()
     {
         return verifyDataLength;
+    }
+
+    public TlsSecret getBaseKeyClient()
+    {
+        return baseKeyClient;
+    }
+
+    public TlsSecret getBaseKeyServer()
+    {
+        return baseKeyServer;
     }
 
     public TlsSecret getEarlyExporterMasterSecret()

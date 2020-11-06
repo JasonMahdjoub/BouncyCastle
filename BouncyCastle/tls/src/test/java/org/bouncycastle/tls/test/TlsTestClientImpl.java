@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.tls.test;
+package org.bouncycastle.tls.test;
 
 import java.io.IOException;
 import java.io.PrintStream;
@@ -6,38 +6,68 @@ import java.security.SecureRandom;
 import java.util.Hashtable;
 import java.util.Vector;
 
-import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
-import com.distrimind.bouncycastle.asn1.ASN1Encoding;
-import com.distrimind.bouncycastle.asn1.DERBitString;
-import com.distrimind.bouncycastle.asn1.DERSequence;
-import com.distrimind.bouncycastle.asn1.x509.Certificate;
-import com.distrimind.bouncycastle.tls.AlertDescription;
-import com.distrimind.bouncycastle.tls.AlertLevel;
-import com.distrimind.bouncycastle.tls.CertificateRequest;
-import com.distrimind.bouncycastle.tls.ChannelBinding;
-import com.distrimind.bouncycastle.tls.ClientCertificateType;
-import com.distrimind.bouncycastle.tls.ConnectionEnd;
-import com.distrimind.bouncycastle.tls.DefaultTlsClient;
-import com.distrimind.bouncycastle.tls.ProtocolVersion;
-import com.distrimind.bouncycastle.tls.SignatureAlgorithm;
-import com.distrimind.bouncycastle.tls.SignatureAndHashAlgorithm;
-import com.distrimind.bouncycastle.tls.TlsAuthentication;
-import com.distrimind.bouncycastle.tls.TlsCredentialedSigner;
-import com.distrimind.bouncycastle.tls.TlsCredentials;
-import com.distrimind.bouncycastle.tls.TlsExtensionsUtils;
-import com.distrimind.bouncycastle.tls.TlsFatalAlert;
-import com.distrimind.bouncycastle.tls.TlsServerCertificate;
-import com.distrimind.bouncycastle.tls.TlsUtils;
-import com.distrimind.bouncycastle.tls.crypto.TlsCertificate;
-import com.distrimind.bouncycastle.tls.crypto.TlsCrypto;
-import com.distrimind.bouncycastle.tls.crypto.TlsStreamSigner;
-import com.distrimind.bouncycastle.tls.crypto.impl.bc.BcTlsCrypto;
-import com.distrimind.bouncycastle.util.Arrays;
-import com.distrimind.bouncycastle.util.encoders.Hex;
+import org.bouncycastle.asn1.ASN1EncodableVector;
+import org.bouncycastle.asn1.ASN1Encoding;
+import org.bouncycastle.asn1.DERBitString;
+import org.bouncycastle.asn1.DERSequence;
+import org.bouncycastle.asn1.x509.Certificate;
+import org.bouncycastle.tls.AlertDescription;
+import org.bouncycastle.tls.AlertLevel;
+import org.bouncycastle.tls.CertificateEntry;
+import org.bouncycastle.tls.CertificateRequest;
+import org.bouncycastle.tls.ChannelBinding;
+import org.bouncycastle.tls.CipherSuite;
+import org.bouncycastle.tls.ClientCertificateType;
+import org.bouncycastle.tls.ConnectionEnd;
+import org.bouncycastle.tls.DefaultTlsClient;
+import org.bouncycastle.tls.ProtocolVersion;
+import org.bouncycastle.tls.SignatureAlgorithm;
+import org.bouncycastle.tls.SignatureAndHashAlgorithm;
+import org.bouncycastle.tls.TlsAuthentication;
+import org.bouncycastle.tls.TlsCredentialedSigner;
+import org.bouncycastle.tls.TlsCredentials;
+import org.bouncycastle.tls.TlsExtensionsUtils;
+import org.bouncycastle.tls.TlsFatalAlert;
+import org.bouncycastle.tls.TlsServerCertificate;
+import org.bouncycastle.tls.TlsUtils;
+import org.bouncycastle.tls.crypto.TlsCertificate;
+import org.bouncycastle.tls.crypto.TlsCrypto;
+import org.bouncycastle.tls.crypto.TlsStreamSigner;
+import org.bouncycastle.tls.crypto.impl.bc.BcTlsCrypto;
+import org.bouncycastle.util.Arrays;
+import org.bouncycastle.util.encoders.Hex;
 
 class TlsTestClientImpl
     extends DefaultTlsClient
 {
+    private static final int[] TEST_CIPHER_SUITES = new int[]
+    {
+        /*
+         * TLS 1.3
+         */
+        CipherSuite.TLS_CHACHA20_POLY1305_SHA256,
+        CipherSuite.TLS_AES_128_GCM_SHA256,
+
+        /*
+         * pre-TLS 1.3
+         */
+        CipherSuite.TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256,
+        CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
+        CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,
+        CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA,
+        CipherSuite.TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256,
+        CipherSuite.TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
+        CipherSuite.TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,
+        CipherSuite.TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,
+        CipherSuite.TLS_DHE_RSA_WITH_CHACHA20_POLY1305_SHA256,
+        CipherSuite.TLS_DHE_RSA_WITH_AES_128_GCM_SHA256,
+        CipherSuite.TLS_DHE_RSA_WITH_AES_128_CBC_SHA256,
+        CipherSuite.TLS_DHE_RSA_WITH_AES_128_CBC_SHA,
+        CipherSuite.TLS_RSA_WITH_AES_128_GCM_SHA256,
+        CipherSuite.TLS_RSA_WITH_AES_128_CBC_SHA256,
+        CipherSuite.TLS_RSA_WITH_AES_128_CBC_SHA,
+    };
+
     protected final TlsTestConfig config;
 
     protected int firstFatalAlertConnectionEnd = -1;
@@ -91,6 +121,16 @@ class TlsTestClientImpl
             }
         }
         return clientExtensions;
+    }
+
+    public Vector getEarlyKeyShareGroups()
+    {
+        if (config.clientEmptyKeyShare)
+        {
+            return null;
+        }
+
+        return super.getEarlyKeyShareGroups();
     }
 
     public boolean isFallback()
@@ -223,10 +263,15 @@ class TlsTestClientImpl
                     return null;
                 }
 
-                short[] certificateTypes = certificateRequest.getCertificateTypes();
-                if (certificateTypes == null || !Arrays.contains(certificateTypes, ClientCertificateType.rsa_sign))
+                boolean isTLSv13 = TlsUtils.isTLSv13(context);
+
+                if (!isTLSv13)
                 {
-                    return null;
+                    short[] certificateTypes = certificateRequest.getCertificateTypes();
+                    if (certificateTypes == null || !Arrays.contains(certificateTypes, ClientCertificateType.rsa_sign))
+                    {
+                        return null;
+                    }
                 }
 
                 Vector supportedSigAlgs = certificateRequest.getSupportedSignatureAlgorithms();
@@ -235,6 +280,8 @@ class TlsTestClientImpl
                     supportedSigAlgs = new Vector(1);
                     supportedSigAlgs.addElement(config.clientAuthSigAlg);
                 }
+
+                // TODO[tls13] Check also supportedSigAlgsCert against the chain signature(s)
 
                 final TlsCredentialedSigner signerCredentials = TlsTestUtils.loadSignerCredentials(context,
                     supportedSigAlgs, SignatureAlgorithm.rsa, "x509-client-rsa.pem", "x509-client-key-rsa.pem");
@@ -258,9 +305,9 @@ class TlsTestClientImpl
                         return sig;
                     }
 
-                    public com.distrimind.bouncycastle.tls.Certificate getCertificate()
+                    public org.bouncycastle.tls.Certificate getCertificate()
                     {
-                        com.distrimind.bouncycastle.tls.Certificate cert = signerCredentials.getCertificate();
+                        org.bouncycastle.tls.Certificate cert = signerCredentials.getCertificate();
 
                         if (config.clientAuth == TlsTestConfig.CLIENT_AUTH_INVALID_CERT)
                         {
@@ -284,18 +331,20 @@ class TlsTestClientImpl
         };
     }
 
-    protected com.distrimind.bouncycastle.tls.Certificate corruptCertificate(TlsCrypto crypto, com.distrimind.bouncycastle.tls.Certificate cert)
+    protected org.bouncycastle.tls.Certificate corruptCertificate(TlsCrypto crypto, org.bouncycastle.tls.Certificate cert)
     {
-        TlsCertificate[] certList = cert.getCertificateList();
+        CertificateEntry[] certEntryList = cert.getCertificateEntryList();
         try
         {
-            certList[0] = corruptCertificateSignature(crypto, certList[0]);
+            CertificateEntry ee = certEntryList[0];
+            TlsCertificate corruptCert = corruptCertificateSignature(crypto, ee.getCertificate());
+            certEntryList[0] = new CertificateEntry(corruptCert, ee.getExtensions());
         }
         catch (IOException e)
         {
             throw new RuntimeException(e);
         }
-        return new com.distrimind.bouncycastle.tls.Certificate(certList);
+        return new org.bouncycastle.tls.Certificate(cert.getCertificateRequestContext(), certEntryList);
     }
 
     protected TlsCertificate corruptCertificateSignature(TlsCrypto crypto, TlsCertificate tlsCertificate) throws IOException
@@ -324,6 +373,11 @@ class TlsTestClientImpl
         bs[bit >>> 3] ^= (1 << (bit & 7));
 
         return bs;
+    }
+
+    protected int[] getSupportedCipherSuites()
+    {
+        return TlsUtils.getSupportedCipherSuites(getCrypto(), TEST_CIPHER_SUITES);
     }
 
     protected ProtocolVersion[] getSupportedVersions()

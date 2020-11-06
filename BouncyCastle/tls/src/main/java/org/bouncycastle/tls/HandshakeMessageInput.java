@@ -1,8 +1,8 @@
-package com.distrimind.bouncycastle.tls;
+package org.bouncycastle.tls;
 
 import java.io.ByteArrayInputStream;
 
-import com.distrimind.bouncycastle.tls.crypto.TlsHash;
+import org.bouncycastle.tls.crypto.TlsHash;
 
 class HandshakeMessageInput
     extends ByteArrayInputStream

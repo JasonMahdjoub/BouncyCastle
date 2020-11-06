@@ -1,12 +1,12 @@
-package com.distrimind.bouncycastle.tls;
+package org.bouncycastle.tls;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import com.distrimind.bouncycastle.tls.crypto.TlsHash;
-import com.distrimind.bouncycastle.util.io.Streams;
+import org.bouncycastle.tls.crypto.TlsHash;
+import org.bouncycastle.util.io.Streams;
 
 class DigestInputBuffer extends ByteArrayOutputStream
 {

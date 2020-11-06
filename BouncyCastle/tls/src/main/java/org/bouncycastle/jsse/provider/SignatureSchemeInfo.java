@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.jsse.provider;
+package org.bouncycastle.jsse.provider;
 
 import java.security.AlgorithmParameters;
 import java.util.ArrayList;
@@ -11,15 +11,15 @@ import java.util.TreeMap;
 import java.util.Vector;
 import java.util.logging.Logger;
 
-import com.distrimind.bouncycastle.jsse.java.security.BCAlgorithmConstraints;
-import com.distrimind.bouncycastle.jsse.java.security.BCCryptoPrimitive;
-import com.distrimind.bouncycastle.tls.ProtocolVersion;
-import com.distrimind.bouncycastle.tls.SignatureAndHashAlgorithm;
-import com.distrimind.bouncycastle.tls.SignatureScheme;
-import com.distrimind.bouncycastle.tls.TlsUtils;
-import com.distrimind.bouncycastle.tls.crypto.impl.jcajce.JcaTlsCrypto;
-import com.distrimind.bouncycastle.util.Arrays;
-import com.distrimind.bouncycastle.util.Integers;
+import org.bouncycastle.jsse.java.security.BCAlgorithmConstraints;
+import org.bouncycastle.jsse.java.security.BCCryptoPrimitive;
+import org.bouncycastle.tls.ProtocolVersion;
+import org.bouncycastle.tls.SignatureAndHashAlgorithm;
+import org.bouncycastle.tls.SignatureScheme;
+import org.bouncycastle.tls.TlsUtils;
+import org.bouncycastle.tls.crypto.impl.jcajce.JcaTlsCrypto;
+import org.bouncycastle.util.Arrays;
+import org.bouncycastle.util.Integers;
 
 class SignatureSchemeInfo
 {

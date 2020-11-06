@@ -5,11 +5,12 @@ import java.io.*;
 import java.security.*;
 import java.security.spec.*;
 
-import com.distrimind.bouncycastle.asn1.ASN1InputStream;
-import com.distrimind.bouncycastle.asn1.DEROutputStream;
-import com.distrimind.bouncycastle.asn1.ASN1Sequence;
-import com.distrimind.bouncycastle.asn1.DERObjectIdentifier;
-import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.asn1.ASN1InputStream;
+import org.bouncycastle.asn1.ASN1Encoding;
+import org.bouncycastle.asn1.ASN1Sequence;
+import org.bouncycastle.asn1.ASN1ObjectIdentifier;
+import org.bouncycastle.asn1.ASN1OutputStream;
+import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
 
 /**
  * This class implements the <code>EncryptedPrivateKeyInfo</code> type
@@ -28,7 +29,7 @@ import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
  */
 public class EncryptedPrivateKeyInfo
 {
-    private com.distrimind.bouncycastle.asn1.pkcs.EncryptedPrivateKeyInfo infoObj;
+    private org.bouncycastle.asn1.pkcs.EncryptedPrivateKeyInfo infoObj;
     private AlgorithmParameters algP;
 
     /*
@@ -51,7 +52,7 @@ public class EncryptedPrivateKeyInfo
         ByteArrayInputStream    bIn = new ByteArrayInputStream(encoded);
         ASN1InputStream         dIn = new ASN1InputStream(bIn);
 
-        infoObj = com.distrimind.bouncycastle.asn1.pkcs.EncryptedPrivateKeyInfo.getInstance((ASN1Sequence)dIn.readObject());
+        infoObj = org.bouncycastle.asn1.pkcs.EncryptedPrivateKeyInfo.getInstance((ASN1Sequence)dIn.readObject());
 
         try
         {
@@ -88,9 +89,9 @@ public class EncryptedPrivateKeyInfo
             throw new NullPointerException("parameters null");
         }
 
-        com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier      kAlgId = new AlgorithmIdentifier(new DERObjectIdentifier(algName), null);
+        org.bouncycastle.asn1.x509.AlgorithmIdentifier      kAlgId = new AlgorithmIdentifier(new ASN1ObjectIdentifier(algName), null);
 
-        infoObj = new com.distrimind.bouncycastle.asn1.pkcs.EncryptedPrivateKeyInfo(kAlgId, (byte[])encryptedData.clone());
+        infoObj = new org.bouncycastle.asn1.pkcs.EncryptedPrivateKeyInfo(kAlgId, (byte[])encryptedData.clone());
         algP = this.getParameters();
     }
 
@@ -120,7 +121,7 @@ public class EncryptedPrivateKeyInfo
             throw new NullPointerException("parameters null");
         }
 
-        com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier      kAlgId = null;
+        org.bouncycastle.asn1.x509.AlgorithmIdentifier      kAlgId = null;
 
         try
         {
@@ -128,14 +129,14 @@ public class EncryptedPrivateKeyInfo
             ASN1InputStream          dIn = new ASN1InputStream(bIn);
 
             kAlgId = new AlgorithmIdentifier(
-                    new DERObjectIdentifier(algParams.getAlgorithm()), dIn.readObject());
+                    new ASN1ObjectIdentifier(algParams.getAlgorithm()), dIn.readObject());
         }
         catch (IOException e)
         {
             throw new IllegalArgumentException("error in encoding: " + e.toString());
         }
 
-        infoObj = new com.distrimind.bouncycastle.asn1.pkcs.EncryptedPrivateKeyInfo(kAlgId, (byte[])encryptedData.clone());
+        infoObj = new org.bouncycastle.asn1.pkcs.EncryptedPrivateKeyInfo(kAlgId, (byte[])encryptedData.clone());
         algP = this.getParameters();
     }
 
@@ -154,7 +155,7 @@ public class EncryptedPrivateKeyInfo
     {
         AlgorithmParameters     ap = AlgorithmParameters.getInstance(this.getAlgName());
         ByteArrayOutputStream   bOut = new ByteArrayOutputStream();
-        DEROutputStream         dOut = new DEROutputStream(bOut);
+        ASN1OutputStream         dOut = ASN1OutputStream.create(bOut, ASN1Encoding.DER);
 
         try
         {
@@ -224,7 +225,7 @@ public class EncryptedPrivateKeyInfo
         throws IOException
     {
         ByteArrayOutputStream   bOut = new ByteArrayOutputStream();
-        DEROutputStream         dOut = new DEROutputStream(bOut);
+        ASN1OutputStream         dOut = ASN1OutputStream.create(bOut, ASN1Encoding.DER);
 
         dOut.writeObject(infoObj);
         dOut.close();

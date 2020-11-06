@@ -1,8 +1,8 @@
-package com.distrimind.bouncycastle.tls;
+package org.bouncycastle.tls;
 
 import java.io.IOException;
 
-import com.distrimind.bouncycastle.tls.crypto.TlsStreamSigner;
+import org.bouncycastle.tls.crypto.TlsStreamSigner;
 
 /**
  * Support interface for generating a signature based on our private credentials.

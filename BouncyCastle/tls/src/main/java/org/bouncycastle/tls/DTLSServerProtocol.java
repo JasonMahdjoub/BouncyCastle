@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.tls;
+package org.bouncycastle.tls;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -6,8 +6,8 @@ import java.io.IOException;
 import java.util.Hashtable;
 import java.util.Vector;
 
-import com.distrimind.bouncycastle.tls.crypto.TlsSecret;
-import com.distrimind.bouncycastle.util.Arrays;
+import org.bouncycastle.tls.crypto.TlsSecret;
+import org.bouncycastle.util.Arrays;
 
 public class DTLSServerProtocol
     extends DTLSProtocol
@@ -799,9 +799,15 @@ public class DTLSServerProtocol
 
     protected boolean expectCertificateVerifyMessage(ServerHandshakeState state)
     {
+        if (null == state.certificateRequest)
+        {
+            return false;
+        }
+
         Certificate clientCertificate = state.serverContext.getSecurityParametersHandshake().getPeerCertificate();
 
-        return null != clientCertificate && !clientCertificate.isEmpty() && state.keyExchange.requiresCertificateVerify();
+        return null != clientCertificate && !clientCertificate.isEmpty()
+            && (null == state.keyExchange || state.keyExchange.requiresCertificateVerify());
     }
 
     protected static class ServerHandshakeState

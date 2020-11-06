@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.jsse.provider.test;
+package org.bouncycastle.jsse.provider.test;
 
 import java.net.Socket;
 import java.security.KeyPair;

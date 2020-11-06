@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.tls;
+package org.bouncycastle.tls;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -11,40 +11,40 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Vector;
 
-import com.distrimind.bouncycastle.asn1.ASN1Encoding;
-import com.distrimind.bouncycastle.asn1.ASN1InputStream;
-import com.distrimind.bouncycastle.asn1.ASN1Integer;
-import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
-import com.distrimind.bouncycastle.asn1.ASN1Primitive;
-import com.distrimind.bouncycastle.asn1.ASN1Sequence;
-import com.distrimind.bouncycastle.asn1.bsi.BSIObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.eac.EACObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.edec.EdECObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.nist.NISTObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.pkcs.RSASSAPSSparams;
-import com.distrimind.bouncycastle.asn1.x509.X509ObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.x9.X9ObjectIdentifiers;
-import com.distrimind.bouncycastle.tls.crypto.TlsAgreement;
-import com.distrimind.bouncycastle.tls.crypto.TlsCertificate;
-import com.distrimind.bouncycastle.tls.crypto.TlsCipher;
-import com.distrimind.bouncycastle.tls.crypto.TlsCrypto;
-import com.distrimind.bouncycastle.tls.crypto.TlsCryptoParameters;
-import com.distrimind.bouncycastle.tls.crypto.TlsCryptoUtils;
-import com.distrimind.bouncycastle.tls.crypto.TlsDHConfig;
-import com.distrimind.bouncycastle.tls.crypto.TlsECConfig;
-import com.distrimind.bouncycastle.tls.crypto.TlsHMAC;
-import com.distrimind.bouncycastle.tls.crypto.TlsHash;
-import com.distrimind.bouncycastle.tls.crypto.TlsSecret;
-import com.distrimind.bouncycastle.tls.crypto.TlsStreamSigner;
-import com.distrimind.bouncycastle.tls.crypto.TlsStreamVerifier;
-import com.distrimind.bouncycastle.tls.crypto.TlsVerifier;
-import com.distrimind.bouncycastle.util.Arrays;
-import com.distrimind.bouncycastle.util.Integers;
-import com.distrimind.bouncycastle.util.Shorts;
-import com.distrimind.bouncycastle.util.encoders.Hex;
-import com.distrimind.bouncycastle.util.io.Streams;
+import org.bouncycastle.asn1.ASN1Encoding;
+import org.bouncycastle.asn1.ASN1InputStream;
+import org.bouncycastle.asn1.ASN1Integer;
+import org.bouncycastle.asn1.ASN1ObjectIdentifier;
+import org.bouncycastle.asn1.ASN1Primitive;
+import org.bouncycastle.asn1.ASN1Sequence;
+import org.bouncycastle.asn1.bsi.BSIObjectIdentifiers;
+import org.bouncycastle.asn1.eac.EACObjectIdentifiers;
+import org.bouncycastle.asn1.edec.EdECObjectIdentifiers;
+import org.bouncycastle.asn1.nist.NISTObjectIdentifiers;
+import org.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
+import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
+import org.bouncycastle.asn1.pkcs.RSASSAPSSparams;
+import org.bouncycastle.asn1.x509.X509ObjectIdentifiers;
+import org.bouncycastle.asn1.x9.X9ObjectIdentifiers;
+import org.bouncycastle.tls.crypto.TlsAgreement;
+import org.bouncycastle.tls.crypto.TlsCertificate;
+import org.bouncycastle.tls.crypto.TlsCipher;
+import org.bouncycastle.tls.crypto.TlsCrypto;
+import org.bouncycastle.tls.crypto.TlsCryptoParameters;
+import org.bouncycastle.tls.crypto.TlsCryptoUtils;
+import org.bouncycastle.tls.crypto.TlsDHConfig;
+import org.bouncycastle.tls.crypto.TlsECConfig;
+import org.bouncycastle.tls.crypto.TlsHMAC;
+import org.bouncycastle.tls.crypto.TlsHash;
+import org.bouncycastle.tls.crypto.TlsSecret;
+import org.bouncycastle.tls.crypto.TlsStreamSigner;
+import org.bouncycastle.tls.crypto.TlsStreamVerifier;
+import org.bouncycastle.tls.crypto.TlsVerifier;
+import org.bouncycastle.util.Arrays;
+import org.bouncycastle.util.Integers;
+import org.bouncycastle.util.Shorts;
+import org.bouncycastle.util.encoders.Hex;
+import org.bouncycastle.util.io.Streams;
 
 /**
  * Some helper functions for the TLS API.
@@ -1205,6 +1205,11 @@ public class TlsUtils
         return null == array || array.length < 1;
     }
 
+    public static boolean isNullOrEmpty(int[] array)
+    {
+        return null == array || array.length < 1;
+    }
+
     public static boolean isNullOrEmpty(Object[] array)
     {
         return null == array || array.length < 1;
@@ -1591,8 +1596,8 @@ public class TlsUtils
         if (isTLSv13(negotiatedVersion))
         {
             TlsSecret baseKey = isServer
-                ?   securityParameters.getTrafficSecretServer()
-                :   securityParameters.getTrafficSecretClient();
+                ?   securityParameters.getBaseKeyServer()
+                :   securityParameters.getBaseKeyClient();
 
             TlsSecret finishedKey = deriveSecret(securityParameters, baseKey, "finished", TlsUtils.EMPTY_BYTES);
             byte[] transcriptHash = getCurrentPRFHash(handshakeHash);
@@ -1675,9 +1680,8 @@ public class TlsUtils
         }
 
         // TODO[tls13] Early data (client->server only)
-        recordStream.setPendingConnectionState(initCipher(context));
-        recordStream.receivedReadCipherSpec();
-        recordStream.sentWriteCipherSpec();
+
+        recordStream.setPendingCipher(initCipher(context));
     }
 
     static void establish13PhaseApplication(TlsContext context, byte[] serverFinishedTranscriptHash,
@@ -1715,10 +1719,14 @@ public class TlsUtils
     static void establish13PhaseHandshake(TlsContext context, byte[] serverHelloTranscriptHash,
         RecordStream recordStream) throws IOException
     {
-        TlsSecret phaseSecret = context.getSecurityParametersHandshake().getHandshakeSecret();
+        SecurityParameters securityParameters = context.getSecurityParametersHandshake();
+        TlsSecret phaseSecret = securityParameters.getHandshakeSecret();
 
         establish13TrafficSecrets(context, serverHelloTranscriptHash, phaseSecret, "c hs traffic", "s hs traffic",
             recordStream);
+
+        securityParameters.baseKeyClient = securityParameters.getTrafficSecretClient();
+        securityParameters.baseKeyServer = securityParameters.getTrafficSecretServer();
     }
 
     public static short getHashAlgorithmForHMACAlgorithm(int macAlgorithm)
@@ -2245,7 +2253,43 @@ public class TlsUtils
         }
     }
 
-    static void verifyCertificateVerifyServer(TlsClientContext clientContext, DigitallySigned certificateVerify,
+    static void verify13CertificateVerifyClient(TlsServerContext serverContext, CertificateRequest certificateRequest,
+        DigitallySigned certificateVerify, TlsHandshakeHash handshakeHash) throws IOException
+    {
+        SecurityParameters securityParameters = serverContext.getSecurityParametersHandshake();
+        Certificate clientCertificate = securityParameters.getPeerCertificate();
+        TlsCertificate verifyingCert = clientCertificate.getCertificateAt(0);
+
+        SignatureAndHashAlgorithm sigAndHashAlg = certificateVerify.getAlgorithm();
+        verifySupportedSignatureAlgorithm(securityParameters.getServerSigAlgs(), sigAndHashAlg);
+
+        short signatureAlgorithm = sigAndHashAlg.getSignature();
+
+        // Verify the CertificateVerify message contains a correct signature.
+        boolean verified;
+        try
+        {
+            TlsVerifier verifier = verifyingCert.createVerifier(signatureAlgorithm);
+
+            verified = verify13CertificateVerify(serverContext.getCrypto(), certificateVerify, verifier,
+                "TLS 1.3, client CertificateVerify", handshakeHash);
+        }
+        catch (TlsFatalAlert e)
+        {
+            throw e;
+        }
+        catch (Exception e)
+        {
+            throw new TlsFatalAlert(AlertDescription.decrypt_error, e);
+        }
+
+        if (!verified)
+        {
+            throw new TlsFatalAlert(AlertDescription.decrypt_error);
+        }
+    }
+
+    static void verify13CertificateVerifyServer(TlsClientContext clientContext, DigitallySigned certificateVerify,
         TlsHandshakeHash handshakeHash) throws IOException
     {
         SecurityParameters securityParameters = clientContext.getSecurityParametersHandshake();
@@ -2262,15 +2306,9 @@ public class TlsUtils
         try
         {
             TlsVerifier verifier = verifyingCert.createVerifier(signatureAlgorithm);
-            if (isTLSv13(securityParameters.getNegotiatedVersion()))
-            {
-                verified = verify13CertificateVerify(clientContext.getCrypto(), certificateVerify, verifier,
-                    "TLS 1.3, server CertificateVerify", handshakeHash);
-            }
-            else
-            {
-                throw new TlsFatalAlert(AlertDescription.internal_error);
-            }
+
+            verified = verify13CertificateVerify(clientContext.getCrypto(), certificateVerify, verifier,
+                "TLS 1.3, server CertificateVerify", handshakeHash);
         }
         catch (TlsFatalAlert e)
         {
@@ -3869,6 +3907,9 @@ public class TlsUtils
                 return false;
             }
 
+        case KeyExchangeAlgorithm.NULL:
+            return SignatureAlgorithm.anonymous != signatureAlgorithm;
+
         default:
             return false;
         }
@@ -4441,7 +4482,12 @@ public class TlsUtils
             throw new TlsFatalAlert(AlertDescription.unexpected_message);
         }
 
-        if (clientCertificate.isEmpty())
+        boolean isTLSv13 = TlsUtils.isTLSv13(securityParameters.getNegotiatedVersion());
+        if (isTLSv13)
+        {
+            // TODO[tls13] Review whether any alternative checks needed here.
+        }
+        else if (clientCertificate.isEmpty())
         {
             /*
              * NOTE: We tolerate SSLv3 clients sending an empty chain, although "If no suitable
@@ -4884,6 +4930,94 @@ public class TlsUtils
         }
     }
 
+    static KeyShareEntry selectKeyShare(Vector clientShares, int keyShareGroup)
+    {
+        if (null != clientShares && 1 == clientShares.size())
+        {
+            KeyShareEntry clientShare = (KeyShareEntry)clientShares.elementAt(0);
+            if (null != clientShare && clientShare.getNamedGroup() == keyShareGroup)
+            {
+                return clientShare;
+            }
+        }
+        return null;
+    }
+
+    static KeyShareEntry selectKeyShare(TlsCrypto crypto, ProtocolVersion negotiatedVersion, Vector clientShares,
+        int[] clientSupportedGroups, int[] serverSupportedGroups)
+    {
+        if (null != clientShares && !isNullOrEmpty(clientSupportedGroups) && !isNullOrEmpty(serverSupportedGroups))
+        {
+            for (int i = 0; i < clientShares.size(); ++i)
+            {
+                KeyShareEntry clientShare = (KeyShareEntry)clientShares.elementAt(i);
+
+                int group = clientShare.getNamedGroup();
+
+                if (!NamedGroup.canBeNegotiated(group, negotiatedVersion))
+                {
+                    continue;
+                }
+
+                if (!Arrays.contains(serverSupportedGroups, group) ||
+                    !Arrays.contains(clientSupportedGroups, group))
+                {
+                    continue;
+                }
+
+                if (!crypto.hasNamedGroup(group))
+                {
+                    continue;
+                }
+
+                if ((NamedGroup.refersToASpecificCurve(group) && !crypto.hasECDHAgreement()) ||
+                    (NamedGroup.refersToASpecificFiniteField(group) && !crypto.hasDHAgreement())) 
+                {
+                    continue;
+                }
+
+                return clientShare;
+            }
+        }
+        return null;
+    }
+
+    static int selectKeyShareGroup(TlsCrypto crypto, ProtocolVersion negotiatedVersion,
+        int[] clientSupportedGroups, int[] serverSupportedGroups)
+    {
+        if (!isNullOrEmpty(clientSupportedGroups) && !isNullOrEmpty(serverSupportedGroups))
+        {
+            for (int i = 0; i < clientSupportedGroups.length; ++i)
+            {
+                int group = clientSupportedGroups[i];
+
+                if (!NamedGroup.canBeNegotiated(group, negotiatedVersion))
+                {
+                    continue;
+                }
+
+                if (!Arrays.contains(serverSupportedGroups, group))
+                {
+                    continue;
+                }
+
+                if (!crypto.hasNamedGroup(group))
+                {
+                    continue;
+                }
+
+                if ((NamedGroup.refersToASpecificCurve(group) && !crypto.hasECDHAgreement()) ||
+                    (NamedGroup.refersToASpecificFiniteField(group) && !crypto.hasDHAgreement())) 
+                {
+                    continue;
+                }
+
+                return group;
+            }
+        }
+        return -1;
+    }
+
     static byte[] readEncryptedPMS(TlsContext context, InputStream input) throws IOException
     {
         if (isSSL(context))
@@ -4955,11 +5089,6 @@ public class TlsUtils
     {
         securityParameters.clientSigAlgs = TlsExtensionsUtils.getSignatureAlgorithmsExtension(clientExtensions);
         securityParameters.clientSigAlgsCert = TlsExtensionsUtils.getSignatureAlgorithmsCertExtension(clientExtensions);
-
-        /*
-         * TODO[tls13] RFC 8446 4.2.3 Clients which desire the server to authenticate itself via a
-         * certificate MUST send the "signature_algorithms" extension.
-         */
     }
 
     static TlsCredentials establishServerCredentials(TlsServer server) throws IOException

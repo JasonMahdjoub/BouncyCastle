@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.tls;
+package org.bouncycastle.tls;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -138,6 +138,6 @@ public class SignatureAndHashAlgorithm
 
     public String toString()
     {
-        return "{" + HashAlgorithm.getName(hash) + "," + SignatureAlgorithm.getName(signature) + "}";
+        return "{" + HashAlgorithm.getText(hash) + "," + SignatureAlgorithm.getText(signature) + "}";
     }
 }

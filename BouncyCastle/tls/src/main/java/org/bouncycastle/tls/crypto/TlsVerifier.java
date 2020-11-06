@@ -1,8 +1,8 @@
-package com.distrimind.bouncycastle.tls.crypto;
+package org.bouncycastle.tls.crypto;
 
 import java.io.IOException;
 
-import com.distrimind.bouncycastle.tls.DigitallySigned;
+import org.bouncycastle.tls.DigitallySigned;
 
 /**
  * Base interface for a TLS verifier that works with signatures and either raw message digests, or

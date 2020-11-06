@@ -1,12 +1,12 @@
-package com.distrimind.bouncycastle.tls;
+package org.bouncycastle.tls;
 
 import java.io.IOException;
 import java.util.Hashtable;
 import java.util.Vector;
 
-import com.distrimind.bouncycastle.tls.crypto.TlsCrypto;
-import com.distrimind.bouncycastle.tls.crypto.TlsDHConfig;
-import com.distrimind.bouncycastle.tls.crypto.TlsECConfig;
+import org.bouncycastle.tls.crypto.TlsCrypto;
+import org.bouncycastle.tls.crypto.TlsDHConfig;
+import org.bouncycastle.tls.crypto.TlsECConfig;
 
 /**
  * Base class for a TLS server.
@@ -364,6 +364,13 @@ public abstract class AbstractTlsServer
         }
 
         throw new TlsFatalAlert(AlertDescription.protocol_version);
+    }
+
+    public int[] getSupportedGroups() throws IOException
+    {
+        // TODO[tls13] The rest of this class assumes all named groups are supported
+        return new int[]{ NamedGroup.x25519, NamedGroup.x448, NamedGroup.secp256r1, NamedGroup.secp384r1,
+            NamedGroup.ffdhe2048, NamedGroup.ffdhe3072, NamedGroup.ffdhe4096 };
     }
 
     public int getSelectedCipherSuite()

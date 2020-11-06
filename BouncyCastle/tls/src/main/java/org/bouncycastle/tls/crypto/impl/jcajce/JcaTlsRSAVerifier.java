@@ -1,19 +1,19 @@
-package com.distrimind.bouncycastle.tls.crypto.impl.jcajce;
+package org.bouncycastle.tls.crypto.impl.jcajce;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.security.PublicKey;
 import java.security.Signature;
 
-import com.distrimind.bouncycastle.asn1.DERNull;
-import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import com.distrimind.bouncycastle.asn1.x509.DigestInfo;
-import com.distrimind.bouncycastle.tls.DigitallySigned;
-import com.distrimind.bouncycastle.tls.SignatureAlgorithm;
-import com.distrimind.bouncycastle.tls.SignatureAndHashAlgorithm;
-import com.distrimind.bouncycastle.tls.TlsUtils;
-import com.distrimind.bouncycastle.tls.crypto.TlsStreamVerifier;
-import com.distrimind.bouncycastle.tls.crypto.TlsVerifier;
+import org.bouncycastle.asn1.DERNull;
+import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.asn1.x509.DigestInfo;
+import org.bouncycastle.tls.DigitallySigned;
+import org.bouncycastle.tls.SignatureAlgorithm;
+import org.bouncycastle.tls.SignatureAndHashAlgorithm;
+import org.bouncycastle.tls.TlsUtils;
+import org.bouncycastle.tls.crypto.TlsStreamVerifier;
+import org.bouncycastle.tls.crypto.TlsVerifier;
 
 /**
  * Operator supporting the verification of RSASSA-PKCS1-v1_5 signatures.
@@ -71,7 +71,7 @@ public class JcaTlsRSAVerifier
             {
                 if (algorithm.getSignature() != SignatureAlgorithm.rsa)
                 {
-                    throw new IllegalStateException();
+                    throw new IllegalStateException("Invalid algorithm: " + algorithm);
                 }
 
                 /*

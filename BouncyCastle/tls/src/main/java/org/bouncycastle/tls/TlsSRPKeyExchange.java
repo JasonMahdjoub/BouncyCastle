@@ -1,18 +1,18 @@
-package com.distrimind.bouncycastle.tls;
+package org.bouncycastle.tls;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.math.BigInteger;
 
-import com.distrimind.bouncycastle.tls.crypto.TlsCertificate;
-import com.distrimind.bouncycastle.tls.crypto.TlsSRP6Client;
-import com.distrimind.bouncycastle.tls.crypto.TlsSRP6Server;
-import com.distrimind.bouncycastle.tls.crypto.TlsSRPConfig;
-import com.distrimind.bouncycastle.tls.crypto.TlsSecret;
-import com.distrimind.bouncycastle.util.Arrays;
-import com.distrimind.bouncycastle.util.BigIntegers;
-import com.distrimind.bouncycastle.util.io.TeeInputStream;
+import org.bouncycastle.tls.crypto.TlsCertificate;
+import org.bouncycastle.tls.crypto.TlsSRP6Client;
+import org.bouncycastle.tls.crypto.TlsSRP6Server;
+import org.bouncycastle.tls.crypto.TlsSRPConfig;
+import org.bouncycastle.tls.crypto.TlsSecret;
+import org.bouncycastle.util.Arrays;
+import org.bouncycastle.util.BigIntegers;
+import org.bouncycastle.util.io.TeeInputStream;
 
 /**
  * (D)TLS SRP key exchange (RFC 5054).

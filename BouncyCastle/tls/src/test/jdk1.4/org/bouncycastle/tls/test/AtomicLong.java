@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.tls.test;
+package org.bouncycastle.tls.test;
 
 /**
  * For jdk1.4

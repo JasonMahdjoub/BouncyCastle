@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.distrimind.bouncycastle.pqc.math.ntru.polynomial.test.LongPolynomial2Test" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-07-14T23:08:22" hostname="Garage" time="0.025">
-  <properties/>
-  <testcase name="testMult" classname="com.distrimind.bouncycastle.pqc.math.ntru.polynomial.test.LongPolynomial2Test" time="0.025"/>
-  <testcase name="testMult2And" classname="com.distrimind.bouncycastle.pqc.math.ntru.polynomial.test.LongPolynomial2Test" time="0.0"/>
-  <testcase name="testSubAnd" classname="com.distrimind.bouncycastle.pqc.math.ntru.polynomial.test.LongPolynomial2Test" time="0.0"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.tls.crypto.impl.jcajce;
+package org.bouncycastle.tls.crypto.impl.jcajce;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -13,25 +13,25 @@ import java.security.interfaces.RSAPublicKey;
 
 import javax.crypto.interfaces.DHPublicKey;
 
-import com.distrimind.bouncycastle.asn1.ASN1Encodable;
-import com.distrimind.bouncycastle.asn1.ASN1Encoding;
-import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
-import com.distrimind.bouncycastle.asn1.ASN1OctetString;
-import com.distrimind.bouncycastle.asn1.ASN1Primitive;
-import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import com.distrimind.bouncycastle.asn1.x509.Certificate;
-import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
-import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
-import com.distrimind.bouncycastle.tls.AlertDescription;
-import com.distrimind.bouncycastle.tls.ConnectionEnd;
-import com.distrimind.bouncycastle.tls.KeyExchangeAlgorithm;
-import com.distrimind.bouncycastle.tls.SignatureAlgorithm;
-import com.distrimind.bouncycastle.tls.TlsFatalAlert;
-import com.distrimind.bouncycastle.tls.TlsUtils;
-import com.distrimind.bouncycastle.tls.crypto.TlsCertificate;
-import com.distrimind.bouncycastle.tls.crypto.TlsCryptoException;
-import com.distrimind.bouncycastle.tls.crypto.TlsVerifier;
-import com.distrimind.bouncycastle.tls.crypto.impl.RSAUtil;
+import org.bouncycastle.asn1.ASN1Encodable;
+import org.bouncycastle.asn1.ASN1Encoding;
+import org.bouncycastle.asn1.ASN1ObjectIdentifier;
+import org.bouncycastle.asn1.ASN1OctetString;
+import org.bouncycastle.asn1.ASN1Primitive;
+import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.asn1.x509.Certificate;
+import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
+import org.bouncycastle.jcajce.util.JcaJceHelper;
+import org.bouncycastle.tls.AlertDescription;
+import org.bouncycastle.tls.ConnectionEnd;
+import org.bouncycastle.tls.KeyExchangeAlgorithm;
+import org.bouncycastle.tls.SignatureAlgorithm;
+import org.bouncycastle.tls.TlsFatalAlert;
+import org.bouncycastle.tls.TlsUtils;
+import org.bouncycastle.tls.crypto.TlsCertificate;
+import org.bouncycastle.tls.crypto.TlsCryptoException;
+import org.bouncycastle.tls.crypto.TlsVerifier;
+import org.bouncycastle.tls.crypto.impl.RSAUtil;
 
 /**
  * Implementation class for a single X.509 certificate based on the JCA.
@@ -49,8 +49,6 @@ public class JcaTlsCertificate
     protected static final int KU_ENCIPHER_ONLY = 7;
     protected static final int KU_DECIPHER_ONLY = 8;
 
-    private static final int X509V3_VERSION = 3;
-
     public static JcaTlsCertificate convert(JcaTlsCrypto crypto, TlsCertificate certificate) throws IOException
     {
         if (certificate instanceof JcaTlsCertificate)
@@ -64,7 +62,6 @@ public class JcaTlsCertificate
     public static X509Certificate parseCertificate(JcaJceHelper helper, byte[] encoding)
         throws IOException
     {
-        final X509Certificate certificate;
         try
         {
             /*
@@ -77,23 +74,18 @@ public class JcaTlsCertificate
             byte[] derEncoding = Certificate.getInstance(encoding).getEncoded(ASN1Encoding.DER);
 
             ByteArrayInputStream input = new ByteArrayInputStream(derEncoding);
-            certificate = (X509Certificate)helper.createCertificateFactory("X.509").generateCertificate(input);
+            X509Certificate certificate = (X509Certificate)helper.createCertificateFactory("X.509")
+                .generateCertificate(input);
             if (input.available() != 0)
             {
                 throw new IOException("Extra data detected in stream");
             }
+            return certificate;
         }
         catch (GeneralSecurityException e)
         {
             throw new TlsCryptoException("unable to decode certificate", e);
         }
-
-        if (X509V3_VERSION != certificate.getVersion())
-        {
-            throw new TlsFatalAlert(AlertDescription.bad_certificate);
-        }
-
-        return certificate;
     }
 
     protected final JcaTlsCrypto crypto;

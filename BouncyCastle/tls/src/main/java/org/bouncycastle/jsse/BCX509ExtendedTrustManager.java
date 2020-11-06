@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.jsse;
+package org.bouncycastle.jsse;
 
 import java.net.Socket;
 import java.security.cert.CertificateException;

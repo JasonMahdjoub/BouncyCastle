@@ -1,8 +1,8 @@
-package com.distrimind.bouncycastle.tls.crypto;
+package org.bouncycastle.tls.crypto;
 
 import java.io.IOException;
 
-import com.distrimind.bouncycastle.tls.HashAlgorithm;
+import org.bouncycastle.tls.HashAlgorithm;
 
 /**
  * Interface supporting the generation of key material and other SSL/TLS secret values from PRFs.

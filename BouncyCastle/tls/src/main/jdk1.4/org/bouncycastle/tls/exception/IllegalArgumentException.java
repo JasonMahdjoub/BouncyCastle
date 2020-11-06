@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.tls.exception;
+package org.bouncycastle.tls.exception;
 
 public class IllegalArgumentException
     extends java.lang.IllegalArgumentException

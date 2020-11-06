@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.jsse.provider;
+package org.bouncycastle.jsse.provider;
 
 import java.security.AlgorithmConstraints;
 import java.util.Collection;
@@ -8,10 +8,10 @@ import javax.net.ssl.SNIMatcher;
 import javax.net.ssl.SNIServerName;
 import javax.net.ssl.SSLParameters;
 
-import com.distrimind.bouncycastle.jsse.BCSNIMatcher;
-import com.distrimind.bouncycastle.jsse.BCSNIServerName;
-import com.distrimind.bouncycastle.jsse.BCSSLParameters;
-import com.distrimind.bouncycastle.jsse.java.security.BCAlgorithmConstraints;
+import org.bouncycastle.jsse.BCSNIMatcher;
+import org.bouncycastle.jsse.BCSNIServerName;
+import org.bouncycastle.jsse.BCSSLParameters;
+import org.bouncycastle.jsse.java.security.BCAlgorithmConstraints;
 
 abstract class SSLParametersUtil
 {

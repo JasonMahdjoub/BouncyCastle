@@ -1,7 +1,7 @@
-package com.distrimind.bouncycastle.cms.test;
+package org.bouncycastle.cms.test;
 
-import com.distrimind.bouncycastle.util.test.SimpleTest;
-import com.distrimind.bouncycastle.util.test.Test;
+import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.util.test.Test;
 
 public class RegressionTest
 {

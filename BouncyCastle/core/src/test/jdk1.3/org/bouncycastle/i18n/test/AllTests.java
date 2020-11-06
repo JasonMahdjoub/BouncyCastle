@@ -1,8 +1,8 @@
 
-package com.distrimind.bouncycastle.i18n.test;
+package org.bouncycastle.i18n.test;
 
-import com.distrimind.bouncycastle.i18n.filter.test.HTMLFilterTest;
-import com.distrimind.bouncycastle.i18n.filter.test.SQLFilterTest;
+import org.bouncycastle.i18n.filter.test.HTMLFilterTest;
+import org.bouncycastle.i18n.filter.test.SQLFilterTest;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

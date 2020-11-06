@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.tls.crypto.impl.jcajce;
+package org.bouncycastle.tls.crypto.impl.jcajce;
 
 import java.security.DigestException;
 import java.security.GeneralSecurityException;
@@ -7,11 +7,11 @@ import java.security.Provider;
 import java.security.SecureRandom;
 import java.security.SecureRandomSpi;
 
-import com.distrimind.bouncycastle.jcajce.util.DefaultJcaJceHelper;
-import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
-import com.distrimind.bouncycastle.jcajce.util.NamedJcaJceHelper;
-import com.distrimind.bouncycastle.jcajce.util.ProviderJcaJceHelper;
-import com.distrimind.bouncycastle.tls.crypto.TlsCryptoProvider;
+import org.bouncycastle.jcajce.util.DefaultJcaJceHelper;
+import org.bouncycastle.jcajce.util.JcaJceHelper;
+import org.bouncycastle.jcajce.util.NamedJcaJceHelper;
+import org.bouncycastle.jcajce.util.ProviderJcaJceHelper;
+import org.bouncycastle.tls.crypto.TlsCryptoProvider;
 
 /**
  * Basic builder class for constructing standard JcaTlsCrypto classes.

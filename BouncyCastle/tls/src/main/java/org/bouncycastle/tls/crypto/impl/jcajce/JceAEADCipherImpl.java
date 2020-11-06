@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.tls.crypto.impl.jcajce;
+package org.bouncycastle.tls.crypto.impl.jcajce;
 
 import java.io.IOException;
 import java.security.AccessController;
@@ -10,12 +10,12 @@ import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
-import com.distrimind.bouncycastle.asn1.cms.GCMParameters;
-import com.distrimind.bouncycastle.jcajce.spec.AEADParameterSpec;
-import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
-import com.distrimind.bouncycastle.tls.AlertDescription;
-import com.distrimind.bouncycastle.tls.TlsFatalAlert;
-import com.distrimind.bouncycastle.tls.crypto.impl.TlsAEADCipherImpl;
+import org.bouncycastle.asn1.cms.GCMParameters;
+import org.bouncycastle.jcajce.spec.AEADParameterSpec;
+import org.bouncycastle.jcajce.util.JcaJceHelper;
+import org.bouncycastle.tls.AlertDescription;
+import org.bouncycastle.tls.TlsFatalAlert;
+import org.bouncycastle.tls.crypto.impl.TlsAEADCipherImpl;
 
 /**
  * A basic wrapper for a JCE Cipher class to provide the needed AEAD cipher functionality for TLS.

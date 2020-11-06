@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.jsse.provider;
+package org.bouncycastle.jsse.provider;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,17 +18,17 @@ import java.util.logging.Logger;
 import javax.net.ssl.SSLParameters;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocket;
-import javax.net.ssl.X509ExtendedKeyManager;
 
-import com.distrimind.bouncycastle.jsse.BCApplicationProtocolSelector;
-import com.distrimind.bouncycastle.jsse.BCExtendedSSLSession;
-import com.distrimind.bouncycastle.jsse.BCSSLConnection;
-import com.distrimind.bouncycastle.jsse.BCSSLParameters;
-import com.distrimind.bouncycastle.tls.AlertDescription;
-import com.distrimind.bouncycastle.tls.TlsClientProtocol;
-import com.distrimind.bouncycastle.tls.TlsFatalAlert;
-import com.distrimind.bouncycastle.tls.TlsProtocol;
-import com.distrimind.bouncycastle.tls.TlsServerProtocol;
+import org.bouncycastle.jsse.BCApplicationProtocolSelector;
+import org.bouncycastle.jsse.BCExtendedSSLSession;
+import org.bouncycastle.jsse.BCSSLConnection;
+import org.bouncycastle.jsse.BCSSLParameters;
+import org.bouncycastle.jsse.BCX509Key;
+import org.bouncycastle.tls.AlertDescription;
+import org.bouncycastle.tls.TlsClientProtocol;
+import org.bouncycastle.tls.TlsFatalAlert;
+import org.bouncycastle.tls.TlsProtocol;
+import org.bouncycastle.tls.TlsServerProtocol;
 
 class ProvSSLSocketDirect
     extends ProvSSLSocketBase
@@ -135,18 +135,14 @@ class ProvSSLSocketDirect
         }
     }
 
-    public ProvX509Key chooseClientKey(String[] keyTypes, Principal[] issuers)
+    public BCX509Key chooseClientKey(String[] keyTypes, Principal[] issuers)
     {
-        X509ExtendedKeyManager x509KeyManager = getContextData().getX509KeyManager();
-        String alias = x509KeyManager.chooseClientAlias(keyTypes, JsseUtils.clone(issuers), this);
-        return ProvX509Key.from(x509KeyManager, alias);
+        return getContextData().getX509KeyManager().chooseClientKeyBC(keyTypes, JsseUtils.clone(issuers), this);
     }
 
-    public ProvX509Key chooseServerKey(String keyType, Principal[] issuers)
+    public BCX509Key chooseServerKey(String keyType, Principal[] issuers)
     {
-        X509ExtendedKeyManager x509KeyManager = getContextData().getX509KeyManager();
-        String alias = x509KeyManager.chooseServerAlias(keyType, JsseUtils.clone(issuers), this);
-        return ProvX509Key.from(x509KeyManager, alias);
+        return getContextData().getX509KeyManager().chooseServerKeyBC(keyType, JsseUtils.clone(issuers), this);
     }
 
     @Override
@@ -407,6 +403,20 @@ class ProvSSLSocketDirect
     public synchronized void setWantClientAuth(boolean want)
     {
         sslParameters.setWantClientAuth(want);
+    }
+
+    @Override
+    public void shutdownInput() throws IOException
+    {
+        // TODO[tls13]
+        throw new UnsupportedOperationException("shutdownInput() not supported in TLS");
+    }
+
+    @Override
+    public void shutdownOutput() throws IOException
+    {
+        // TODO[tls13]
+        throw new UnsupportedOperationException("shutdownOutput() not supported in TLS");
     }
 
     @Override

@@ -59,13 +59,20 @@ find $jdk12src -name "*.java" -exec scripts/usejcecert.sh \{\} \;
     rm -rf org/bouncycastle/pqc/crypto/ntru
     rm -rf org/bouncycastle/pqc/crypto/*/NTRU*
     rm -rf org/bouncycastle/pqc/crypto/xmss
+    rm -rf org/bouncycastle/pqc/crypto/lms
     rm -rf org/bouncycastle/pqc/jcajce/provider/xmss
     rm -rf org/bouncycastle/pqc/jcajce/provider/XMSS*
+    rm -rf org/bouncycastle/pqc/jcajce/provider/LMS*
+    rm -rf org/bouncycastle/pqc/jcajce/provider/lms
     rm -rf org/bouncycastle/pqc/crypto/*/XMSS*
+    rm -rf org/bouncycastle/pqc/crypto/*/LMS*
+    rm -rf org/bouncycastle/pqc/crypto/*/HSS*
     rm -rf org/bouncycastle/pqc/crypto/*/EncryptionKey*
     rm -rf org/bouncycastle/pqc/crypto/*/BitStringT*
+    rm org/bouncycastle/pqc/jcajce/spec/LMS*
     rm -rf org/bouncycastle/crypto/*/test
     rm -rf org/bouncycastle/crypto/*/IndexGenerator*
+    rm -rf org/bouncycastle/crypto/test/SimpleTestTest.java
     rm -rf org/bouncycastle/util/utiltest
     rm -rf org/bouncycastle/mail
     rm -rf org/bouncycastle/bcpg
@@ -75,12 +82,14 @@ find $jdk12src -name "*.java" -exec scripts/usejcecert.sh \{\} \;
     rm org/bouncycastle/pkix/jcajce/X509RevocationChecker.java
     rm org/bouncycastle/pkix/jcajce/RFC3280*.java
     rm org/bouncycastle/cms/jcajce/JceKeyTransAuthEnvelopedRecipient.java
+    rm -rf org/bouncycastle/jce/provider/test/SimpleTestTest.java
     rm -rf org/bouncycastle/sasn1/test
     rm -rf org/bouncycastle/i18n/test
     rm -rf org/bouncycastle/i18n/filter/test
     rm -rf org/bouncycastle/math/ec/test
     rm -rf org/bouncycastle/crypto/tls/test
     rm -rf org/bouncycastle/crypto/test/GCMReorderTest.java
+    rm -rf org/bouncycastle/crypto/test/NISTECCTest.java
     rm -rf org/bouncycastle/jce/ECPointUtil.java
     rm -rf org/bouncycastle/jce/X509LDAP*.java
     rm -rf org/bouncycastle/jce/provider/X509LDAP*.java
@@ -116,6 +125,12 @@ find $jdk12src -name "*.java" -exec scripts/usejcecert.sh \{\} \;
     rm -rf org/bouncycastle/jce/provider/test/rsa3
     rm -rf org/bouncycastle/jce/provider/test/DSTU4145Test.java
     rm -rf org/bouncycastle/jce/provider/test/JceTestUtil.java
+    rm -f org/bouncycastle/jce/provider/PKIXCertPathValidatorSpi_8.java
+    rm -f org/bouncycastle/jce/provider/PKIXCertPathBuilderSpi_8.java
+    rm -f org/bouncycastle/jce/provider/WrappedRevocationChecker.java
+    rm -f org/bouncycastle/jce/provider/ProvRevocationChecker.java
+    rm -f org/bouncycastle/jce/provider/OcspCache.java
+    rm -f org/bouncycastle/jce/provider/ProvOcspRevocationChecker.java
     rm -rf org/bouncycastle/x509/PKIXAttrCert*.java
     rm -rf org/bouncycastle/jce/provider/RFC3281*.java
     rm -rf org/bouncycastle/jcajce/PKCS12StoreParameter.java
@@ -128,12 +143,14 @@ find $jdk12src -name "*.java" -exec scripts/usejcecert.sh \{\} \;
     rm -rf org/bouncycastle/jcajce/provider/test/PrivateConstructorTest.java
     rm -rf org/bouncycastle/jcajce/provider/test/ECAlgorithmParametersTest.java
     rm -rf org/bouncycastle/jcajce/provider/test/RandomTest.java
+    rm -rf org/bouncycastle/jce/provider/test/ECEncodingTest.java
     rm org/bouncycastle/asn1/test/GetInstanceTest.java
     rm org/bouncycastle/asn1/test/ASN1SequenceParserTest.java
     rm org/bouncycastle/asn1/test/OctetStringTest.java
     rm org/bouncycastle/asn1/test/ParseTest.java
     rm org/bouncycastle/pkix/test/RevocationTest.java
     rm org/bouncycastle/pkix/test/TestUtil.java
+    rm org/bouncycastle/cert/ocsp/test/PKIXRevocationTest.java
     rm -r org/bouncycastle/crypto/test/BigSkippingCipherTest.java
     rm -rf org/bouncycastle/openssl/test
     rm -rf org/bouncycastle/jcajce/provider/asymmetric/dstu
@@ -182,56 +199,56 @@ then
 
         (2>&1 javadoc -windowtitle "$WINDOWTITLE" -doctitle "$DOCTITLE" \
             -header "$HEADER" \
-            -group "Lightweight Crypto Packages" "com.distrimind.bouncycastle.crypto*" \
-            -group "ASN.1 Support Packages" "com.distrimind.bouncycastle.asn1*" \
-            -group "Math Support Packages" "com.distrimind.bouncycastle.math*" \
-            -group "Utility Packages" "com.distrimind.bouncycastle.util*" \
+            -group "Lightweight Crypto Packages" "org.bouncycastle.crypto*" \
+            -group "ASN.1 Support Packages" "org.bouncycastle.asn1*" \
+            -group "Math Support Packages" "org.bouncycastle.math*" \
+            -group "Utility Packages" "org.bouncycastle.util*" \
             -classpath classes \
             -d javadoc -sourcepath src \
-            com.distrimind.bouncycastle.asn1 \
-            com.distrimind.bouncycastle.asn1.cmp \
-            com.distrimind.bouncycastle.asn1.cms \
-            com.distrimind.bouncycastle.asn1.cryptopro \
-            com.distrimind.bouncycastle.asn1.esf \
-            com.distrimind.bouncycastle.asn1.ess \
-            com.distrimind.bouncycastle.asn1.gnu \
-            com.distrimind.bouncycastle.asn1.iana \
-            com.distrimind.bouncycastle.asn1.icao \
-            com.distrimind.bouncycastle.asn1.misc \
-            com.distrimind.bouncycastle.asn1.mozilla \
-            com.distrimind.bouncycastle.asn1.nist \
-            com.distrimind.bouncycastle.asn1.ocsp \
-            com.distrimind.bouncycastle.asn1.oiw \
-            com.distrimind.bouncycastle.asn1.pkcs \
-            com.distrimind.bouncycastle.asn1.sec \
-            com.distrimind.bouncycastle.asn1.smime \
-            com.distrimind.bouncycastle.asn1.teletrust \
-            com.distrimind.bouncycastle.asn1.test \
-            com.distrimind.bouncycastle.asn1.tsp \
-            com.distrimind.bouncycastle.asn1.util \
-            com.distrimind.bouncycastle.asn1.x509 \
-            com.distrimind.bouncycastle.asn1.x9 \
-            com.distrimind.bouncycastle.math.ec \
-            com.distrimind.bouncycastle.crypto \
-            com.distrimind.bouncycastle.crypto.agreement \
-            com.distrimind.bouncycastle.crypto.commitments \
-            com.distrimind.bouncycastle.crypto.digests \
-            com.distrimind.bouncycastle.crypto.encodings \
-            com.distrimind.bouncycastle.crypto.ec \
-            com.distrimind.bouncycastle.crypto.engines \
-            com.distrimind.bouncycastle.crypto.generators \
-            com.distrimind.bouncycastle.crypto.io \
-            com.distrimind.bouncycastle.crypto.kems \
-            com.distrimind.bouncycastle.crypto.macs \
-            com.distrimind.bouncycastle.crypto.modes \
-            com.distrimind.bouncycastle.crypto.paddings \
-            com.distrimind.bouncycastle.crypto.params \
-            com.distrimind.bouncycastle.crypto.signers \
-            com.distrimind.bouncycastle.crypto.test \
-            com.distrimind.bouncycastle.crypto.examples \
-            com.distrimind.bouncycastle.crypto.tls \
-            com.distrimind.bouncycastle.util.encoders \
-            com.distrimind.bouncycastle.util.test) > /dev/null \
+            org.bouncycastle.asn1 \
+            org.bouncycastle.asn1.cmp \
+            org.bouncycastle.asn1.cms \
+            org.bouncycastle.asn1.cryptopro \
+            org.bouncycastle.asn1.esf \
+            org.bouncycastle.asn1.ess \
+            org.bouncycastle.asn1.gnu \
+            org.bouncycastle.asn1.iana \
+            org.bouncycastle.asn1.icao \
+            org.bouncycastle.asn1.misc \
+            org.bouncycastle.asn1.mozilla \
+            org.bouncycastle.asn1.nist \
+            org.bouncycastle.asn1.ocsp \
+            org.bouncycastle.asn1.oiw \
+            org.bouncycastle.asn1.pkcs \
+            org.bouncycastle.asn1.sec \
+            org.bouncycastle.asn1.smime \
+            org.bouncycastle.asn1.teletrust \
+            org.bouncycastle.asn1.test \
+            org.bouncycastle.asn1.tsp \
+            org.bouncycastle.asn1.util \
+            org.bouncycastle.asn1.x509 \
+            org.bouncycastle.asn1.x9 \
+            org.bouncycastle.math.ec \
+            org.bouncycastle.crypto \
+            org.bouncycastle.crypto.agreement \
+            org.bouncycastle.crypto.commitments \
+            org.bouncycastle.crypto.digests \
+            org.bouncycastle.crypto.encodings \
+            org.bouncycastle.crypto.ec \
+            org.bouncycastle.crypto.engines \
+            org.bouncycastle.crypto.generators \
+            org.bouncycastle.crypto.io \
+            org.bouncycastle.crypto.kems \
+            org.bouncycastle.crypto.macs \
+            org.bouncycastle.crypto.modes \
+            org.bouncycastle.crypto.paddings \
+            org.bouncycastle.crypto.params \
+            org.bouncycastle.crypto.signers \
+            org.bouncycastle.crypto.test \
+            org.bouncycastle.crypto.examples \
+            org.bouncycastle.crypto.tls \
+            org.bouncycastle.util.encoders \
+            org.bouncycastle.util.test) > /dev/null \
 
         PATH=$JDK12PATH/bin:$PATH
         export PATH
@@ -248,8 +265,8 @@ then
         cp ../../../../core/src/test/resources/org/bouncycastle/crypto/test/*.txt classes/org/bouncycastle/crypto/test
         cp ../../../../core/src/test/resources/org/bouncycastle/asn1/test/*.data classes/org/bouncycastle/asn1/test
 
-        java -classpath classes -Dbc.test.data.home=../core/src/test/data com.distrimind.bouncycastle.crypto.test.RegressionTest
-        java -classpath classes com.distrimind.bouncycastle.asn1.test.RegressionTest
+        java -classpath classes -Dbc.test.data.home=../core/src/test/data org.bouncycastle.crypto.test.RegressionTest
+        java -classpath classes org.bouncycastle.asn1.test.RegressionTest
     )
     (2>&1 find $artifacts/lcrypto-jdk12-$base -name CVS -exec rm -rf \{\} \; ) > /dev/null
 fi
@@ -269,77 +286,77 @@ then
     (2>&1 javadoc -windowtitle "$WINDOWTITLE" -doctitle "$DOCTITLE" \
         -header "$HEADER" \
         -group "Cleanroom JCE" "javax.crypto*" \
-        -group "JCE Utility and Extension Packages" "com.distrimind.bouncycastle.jce*" \
-        -group "OCSP and OpenSSL PEM Support Packages" "com.distrimind.bouncycastle.ocsp*:com.distrimind.bouncycastle.openssl*" \
-        -group "ASN.1 Support Packages" "com.distrimind.bouncycastle.asn1*" \
-        -group "Lightweight Crypto Packages" "com.distrimind.bouncycastle.crypto*" \
-        -group "Utility Packages" "com.distrimind.bouncycastle.util*:com.distrimind.bouncycastle.math*" \
-        -group "JCE Provider and Test Classes" "com.distrimind.bouncycastle.jce.provider*" \
+        -group "JCE Utility and Extension Packages" "org.bouncycastle.jce*" \
+        -group "OCSP and OpenSSL PEM Support Packages" "org.bouncycastle.ocsp*:org.bouncycastle.openssl*" \
+        -group "ASN.1 Support Packages" "org.bouncycastle.asn1*" \
+        -group "Lightweight Crypto Packages" "org.bouncycastle.crypto*" \
+        -group "Utility Packages" "org.bouncycastle.util*:org.bouncycastle.math*" \
+        -group "JCE Provider and Test Classes" "org.bouncycastle.jce.provider*" \
         -classpath classes \
         -d docs -sourcepath src \
         java.security.spec \
         javax.crypto  \
         javax.crypto.interfaces \
         javax.crypto.spec \
-        com.distrimind.bouncycastle.asn1 \
-        com.distrimind.bouncycastle.asn1.cmp \
-        com.distrimind.bouncycastle.asn1.cms \
-        com.distrimind.bouncycastle.asn1.cryptopro \
-        com.distrimind.bouncycastle.asn1.esf \
-        com.distrimind.bouncycastle.asn1.ess \
-        com.distrimind.bouncycastle.asn1.gnu \
-        com.distrimind.bouncycastle.asn1.iana \
-        com.distrimind.bouncycastle.asn1.icao \
-        com.distrimind.bouncycastle.asn1.misc \
-        com.distrimind.bouncycastle.asn1.mozilla \
-        com.distrimind.bouncycastle.asn1.nist \
-        com.distrimind.bouncycastle.asn1.ocsp \
-        com.distrimind.bouncycastle.asn1.oiw \
-        com.distrimind.bouncycastle.asn1.pkcs \
-        com.distrimind.bouncycastle.asn1.sec \
-        com.distrimind.bouncycastle.asn1.smime \
-        com.distrimind.bouncycastle.asn1.teletrust \
-        com.distrimind.bouncycastle.asn1.test \
-        com.distrimind.bouncycastle.asn1.tsp \
-        com.distrimind.bouncycastle.asn1.util \
-        com.distrimind.bouncycastle.asn1.x509 \
-        com.distrimind.bouncycastle.asn1.x9 \
-        com.distrimind.bouncycastle.math.ec \
-        com.distrimind.bouncycastle.crypto \
-        com.distrimind.bouncycastle.crypto.agreement \
-        com.distrimind.bouncycastle.crypto.commitments \
-        com.distrimind.bouncycastle.crypto.digests \
-        com.distrimind.bouncycastle.crypto.encodings \
-        com.distrimind.bouncycastle.crypto.ec \
-        com.distrimind.bouncycastle.crypto.engines \
-        com.distrimind.bouncycastle.crypto.generators \
-        com.distrimind.bouncycastle.crypto.io \
-        com.distrimind.bouncycastle.crypto.kems \
-        com.distrimind.bouncycastle.crypto.macs \
-        com.distrimind.bouncycastle.crypto.modes \
-        com.distrimind.bouncycastle.crypto.paddings \
-        com.distrimind.bouncycastle.crypto.params \
-        com.distrimind.bouncycastle.crypto.signers \
-        com.distrimind.bouncycastle.crypto.test \
-        com.distrimind.bouncycastle.crypto.tls \
-        com.distrimind.bouncycastle.crypto.examples \
-        com.distrimind.bouncycastle.jce \
-        com.distrimind.bouncycastle.jce.cert \
-        com.distrimind.bouncycastle.jce.interfaces \
-        com.distrimind.bouncycastle.jce.spec \
-        com.distrimind.bouncycastle.jce.examples \
-        com.distrimind.bouncycastle.jce.provider \
-        com.distrimind.bouncycastle.jcajce.provider.asymmetric \
-        com.distrimind.bouncycastle.jcajce.provider.asymmetric.ec \
-        com.distrimind.bouncycastle.jcajce.provider.symmetric \
-        com.distrimind.bouncycastle.jce.provider.test \
-        com.distrimind.bouncycastle.ocsp \
-        com.distrimind.bouncycastle.ocsp.test \
-        com.distrimind.bouncycastle.x509 \
-        com.distrimind.bouncycastle.x509.examples \
-        com.distrimind.bouncycastle.x509.extension \
-        com.distrimind.bouncycastle.util.encoders \
-        com.distrimind.bouncycastle.util.test) > /dev/null \
+        org.bouncycastle.asn1 \
+        org.bouncycastle.asn1.cmp \
+        org.bouncycastle.asn1.cms \
+        org.bouncycastle.asn1.cryptopro \
+        org.bouncycastle.asn1.esf \
+        org.bouncycastle.asn1.ess \
+        org.bouncycastle.asn1.gnu \
+        org.bouncycastle.asn1.iana \
+        org.bouncycastle.asn1.icao \
+        org.bouncycastle.asn1.misc \
+        org.bouncycastle.asn1.mozilla \
+        org.bouncycastle.asn1.nist \
+        org.bouncycastle.asn1.ocsp \
+        org.bouncycastle.asn1.oiw \
+        org.bouncycastle.asn1.pkcs \
+        org.bouncycastle.asn1.sec \
+        org.bouncycastle.asn1.smime \
+        org.bouncycastle.asn1.teletrust \
+        org.bouncycastle.asn1.test \
+        org.bouncycastle.asn1.tsp \
+        org.bouncycastle.asn1.util \
+        org.bouncycastle.asn1.x509 \
+        org.bouncycastle.asn1.x9 \
+        org.bouncycastle.math.ec \
+        org.bouncycastle.crypto \
+        org.bouncycastle.crypto.agreement \
+        org.bouncycastle.crypto.commitments \
+        org.bouncycastle.crypto.digests \
+        org.bouncycastle.crypto.encodings \
+        org.bouncycastle.crypto.ec \
+        org.bouncycastle.crypto.engines \
+        org.bouncycastle.crypto.generators \
+        org.bouncycastle.crypto.io \
+        org.bouncycastle.crypto.kems \
+        org.bouncycastle.crypto.macs \
+        org.bouncycastle.crypto.modes \
+        org.bouncycastle.crypto.paddings \
+        org.bouncycastle.crypto.params \
+        org.bouncycastle.crypto.signers \
+        org.bouncycastle.crypto.test \
+        org.bouncycastle.crypto.tls \
+        org.bouncycastle.crypto.examples \
+        org.bouncycastle.jce \
+        org.bouncycastle.jce.cert \
+        org.bouncycastle.jce.interfaces \
+        org.bouncycastle.jce.spec \
+        org.bouncycastle.jce.examples \
+        org.bouncycastle.jce.provider \
+        org.bouncycastle.jcajce.provider.asymmetric \
+        org.bouncycastle.jcajce.provider.asymmetric.ec \
+        org.bouncycastle.jcajce.provider.symmetric \
+        org.bouncycastle.jce.provider.test \
+        org.bouncycastle.ocsp \
+        org.bouncycastle.ocsp.test \
+        org.bouncycastle.x509 \
+        org.bouncycastle.x509.examples \
+        org.bouncycastle.x509.extension \
+        org.bouncycastle.util.encoders \
+        org.bouncycastle.util.test) > /dev/null \
 
     PATH=$JDK12PATH/bin:$PATH
     export PATH
@@ -364,7 +381,7 @@ then
 
 
     echo "provider regression test"
-    java -classpath classes com.distrimind.bouncycastle.jce.provider.test.RegressionTest
+    java -classpath classes org.bouncycastle.jce.provider.test.RegressionTest
 
     (cd classes; jar cf ../../bctest-jdk12-$base.jar org/bouncycastle/asn1/test org/bouncycastle/crypto/test org/bouncycastle/jce/provider/test)
 
@@ -408,50 +425,50 @@ then
 
     javadoc -windowtitle "$WINDOWTITLE" -doctitle "$DOCTITLE" \
         -header "$HEADER" \
-        -group "Basic Signing And Encryption" "com.distrimind.bouncycastle.operator*" \
-        -group "Certificate Generation And Handling Support Packages" "com.distrimind.bouncycastle.cert*" \
-        -group "CMS Support Packages" "com.distrimind.bouncycastle.cms*" \
-        -group "EAC Support Packages" "com.distrimind.bouncycastle.eac*" \
-        -group "TSP Support Packages" "com.distrimind.bouncycastle.tsp*" \
-        -group "PKCS Support Packages" "com.distrimind.bouncycastle.pkcs*" \
-        -group "OpenSSL PEM Support Packages" "com.distrimind.bouncycastle.openssl*" \
+        -group "Basic Signing And Encryption" "org.bouncycastle.operator*" \
+        -group "Certificate Generation And Handling Support Packages" "org.bouncycastle.cert*" \
+        -group "CMS Support Packages" "org.bouncycastle.cms*" \
+        -group "EAC Support Packages" "org.bouncycastle.eac*" \
+        -group "TSP Support Packages" "org.bouncycastle.tsp*" \
+        -group "PKCS Support Packages" "org.bouncycastle.pkcs*" \
+        -group "OpenSSL PEM Support Packages" "org.bouncycastle.openssl*" \
         -classpath classes:../jce-jdk12-$base.jar \
         -d javadoc -sourcepath src \
-        com.distrimind.bouncycastle.openssl \
-        com.distrimind.bouncycastle.voms \
-        com.distrimind.bouncycastle.mozilla \
-        com.distrimind.bouncycastle.pkcs \
-        com.distrimind.bouncycastle.pkcs.bc \
-        com.distrimind.bouncycastle.pkcs.jcajce \
-        com.distrimind.bouncycastle.cert \
-        com.distrimind.bouncycastle.cert.cmp \
-        com.distrimind.bouncycastle.cert.crmf \
-        com.distrimind.bouncycastle.cert.jcajce \
-        com.distrimind.bouncycastle.cert.ocsp \
-        com.distrimind.bouncycastle.cert.selector \
-        com.distrimind.bouncycastle.cms \
-        com.distrimind.bouncycastle.cms.bc \
-        com.distrimind.bouncycastle.cms.jcajce \
-        com.distrimind.bouncycastle.cert.test > /dev/null \
+        org.bouncycastle.openssl \
+        org.bouncycastle.voms \
+        org.bouncycastle.mozilla \
+        org.bouncycastle.pkcs \
+        org.bouncycastle.pkcs.bc \
+        org.bouncycastle.pkcs.jcajce \
+        org.bouncycastle.cert \
+        org.bouncycastle.cert.cmp \
+        org.bouncycastle.cert.crmf \
+        org.bouncycastle.cert.jcajce \
+        org.bouncycastle.cert.ocsp \
+        org.bouncycastle.cert.selector \
+        org.bouncycastle.cms \
+        org.bouncycastle.cms.bc \
+        org.bouncycastle.cms.jcajce \
+        org.bouncycastle.cert.test > /dev/null \
 
     echo "compiling"
 
     (cd src/org/bouncycastle; javac -d ../../../classes -classpath ../../../classes:../../../src:../../../../jce-jdk12-$base/classes */*.java */*/*.java */*/*/*.java)
     cat > classes/pg.mf <<%
 Manifest-Version: 1.0
-Extension-Name: com.distrimind.bouncycastle.bcpkix
+Extension-Name: org.bouncycastle.bcpkix
 Specification-Vendor: BouncyCastle.org
 Specification-Version: 1.1
-Implementation-Vendor-Id: com.distrimind.bouncycastle
+Implementation-Vendor-Id: org.bouncycastle
 Implementation-Vendor: BouncyCastle.org
 Implementation-Version: $version.0
 %
 
     (cd classes; jar cmf pg.mf ../../bcpkix-jdk12-$base.jar org)
-    java -classpath ../jce-jdk12-$base.jar:classes com.distrimind.bouncycastle.cert.test.CertTest
-    java -classpath ../jce-jdk12-$base.jar:classes com.distrimind.bouncycastle.cert.test.AttrCertTest
-    java -classpath ../jce-jdk12-$base.jar:classes com.distrimind.bouncycastle.cert.test.PKCS10Test
-    java -classpath ../jce-jdk12-$base.jar:classes com.distrimind.bouncycastle.cert.test.X509ExtensionUtilsTest
+    java -classpath ../jce-jdk12-$base.jar:classes org.bouncycastle.cert.test.CertTest
+    java -classpath ../jce-jdk12-$base.jar:classes org.bouncycastle.cert.test.AttrCertTest
+    java -classpath ../jce-jdk12-$base.jar:classes org.bouncycastle.cert.test.PKCS10Test
+    java -classpath ../jce-jdk12-$base.jar:classes org.bouncycastle.cert.test.X509ExtensionUtilsTest
     )
 
     (2>&1 find $artifacts/bcpkix-jdk12-$base -name CVS -exec rm -rf \{\} \;) > /dev/null
@@ -502,16 +519,16 @@ then
 
     javadoc -windowtitle "$WINDOWTITLE" -doctitle "$DOCTITLE" \
         -header "$HEADER" \
-        -group "BCPG Support Packages" "com.distrimind.bouncycastle.bcpg*" \
-        -group "OpenPGP Packages" "com.distrimind.bouncycastle.openpgp*" \
+        -group "BCPG Support Packages" "org.bouncycastle.bcpg*" \
+        -group "OpenPGP Packages" "org.bouncycastle.openpgp*" \
         -classpath classes:../jce-jdk12-$base.jar \
         -d javadoc -sourcepath src \
-        com.distrimind.bouncycastle.bcpg \
-        com.distrimind.bouncycastle.bcpg.attr \
-        com.distrimind.bouncycastle.bcpg.sig \
-        com.distrimind.bouncycastle.openpgp \
-        com.distrimind.bouncycastle.openpgp.examples \
-        com.distrimind.bouncycastle.openpgp.test > /dev/null \
+        org.bouncycastle.bcpg \
+        org.bouncycastle.bcpg.attr \
+        org.bouncycastle.bcpg.sig \
+        org.bouncycastle.openpgp \
+        org.bouncycastle.openpgp.examples \
+        org.bouncycastle.openpgp.test > /dev/null \
 
     echo "compiling"
 
@@ -530,19 +547,22 @@ q
     (cd src/org/bouncycastle; javac -d ../../../classes -classpath ../../../classes:../../../src:../../../../jce-jdk12-$base/classes */*.java */*/*.java)
     cat > classes/pg.mf <<%
 Manifest-Version: 1.0
-Extension-Name: com.distrimind.bouncycastle.bcpg
+Extension-Name: org.bouncycastle.bcpg
 Specification-Vendor: BouncyCastle.org
 Specification-Version: 1.1
-Implementation-Vendor-Id: com.distrimind.bouncycastle
+Implementation-Vendor-Id: org.bouncycastle
 Implementation-Vendor: BouncyCastle.org
 Implementation-Version: $version.0
 %
 
     cp ../../../../pg/src/test/resources/org/bouncycastle/openpgp/test/bigpub.asc classes/org/bouncycastle/openpgp/test/bigpub.asc
+    cp ../../../../pg/src/test/resources/org/bouncycastle/openpgp/test/eddsa-sks-pub-keyring.asc classes/org/bouncycastle/openpgp/test/eddsa-sks-pub-keyring.asc
     cp ../../../../pg/src/test/resources/org/bouncycastle/openpgp/test/longSigSubPack.asc classes/org/bouncycastle/openpgp/test/longSigSubPack.asc
+    (dbase=`pwd`; cd ../../../../pg/src/test/resources/; tar cf - pgpdata | (cd $dbase/classes; tar xf -)) 
+    
 
     (cd classes; jar cmf pg.mf ../../bcpg-jdk12-$base.jar org)
-    java -classpath ../jce-jdk12-$base.jar:classes com.distrimind.bouncycastle.openpgp.test.RegressionTest
+    java -classpath ../jce-jdk12-$base.jar:classes org.bouncycastle.openpgp.test.RegressionTest
 
     )
 

@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.jsse.provider;
+package org.bouncycastle.jsse.provider;
 
 import java.security.AlgorithmParameters;
 import java.security.Key;
@@ -23,7 +23,7 @@ import javax.crypto.SecretKey;
 import javax.crypto.interfaces.DHKey;
 import javax.crypto.spec.DHParameterSpec;
 
-import com.distrimind.bouncycastle.jsse.java.security.BCCryptoPrimitive;
+import org.bouncycastle.jsse.java.security.BCCryptoPrimitive;
 
 class DisabledAlgorithmConstraints
     extends AbstractAlgorithmConstraints

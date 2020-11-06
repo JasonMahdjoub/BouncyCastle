@@ -1,13 +1,13 @@
-package com.distrimind.bouncycastle.openpgp;
+package org.bouncycastle.openpgp;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import com.distrimind.bouncycastle.bcpg.PublicSubkeyPacket;
-import com.distrimind.bouncycastle.openpgp.operator.PBESecretKeyEncryptor;
-import com.distrimind.bouncycastle.openpgp.operator.PGPContentSignerBuilder;
-import com.distrimind.bouncycastle.openpgp.operator.PGPDigestCalculator;
+import org.bouncycastle.bcpg.PublicSubkeyPacket;
+import org.bouncycastle.openpgp.operator.PBESecretKeyEncryptor;
+import org.bouncycastle.openpgp.operator.PGPContentSignerBuilder;
+import org.bouncycastle.openpgp.operator.PGPDigestCalculator;
 
 /**
  * Generator for a PGP master and subkey ring. This class will generate

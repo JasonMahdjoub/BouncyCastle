@@ -1,20 +1,20 @@
-package com.distrimind.bouncycastle.tls.test;
+package org.bouncycastle.tls.test;
 
 import java.util.Random;
 import java.util.Vector;
 
-import com.distrimind.bouncycastle.tls.HashAlgorithm;
-import com.distrimind.bouncycastle.tls.KeyExchangeAlgorithm;
-import com.distrimind.bouncycastle.tls.ProtocolVersion;
-import com.distrimind.bouncycastle.tls.SecurityParameters;
-import com.distrimind.bouncycastle.tls.SignatureAlgorithm;
-import com.distrimind.bouncycastle.tls.SignatureAndHashAlgorithm;
-import com.distrimind.bouncycastle.tls.TlsContext;
-import com.distrimind.bouncycastle.tls.TlsServerContext;
-import com.distrimind.bouncycastle.tls.TlsSession;
-import com.distrimind.bouncycastle.tls.TlsUtils;
-import com.distrimind.bouncycastle.tls.crypto.TlsCrypto;
-import com.distrimind.bouncycastle.tls.crypto.TlsNonceGenerator;
+import org.bouncycastle.tls.HashAlgorithm;
+import org.bouncycastle.tls.KeyExchangeAlgorithm;
+import org.bouncycastle.tls.ProtocolVersion;
+import org.bouncycastle.tls.SecurityParameters;
+import org.bouncycastle.tls.SignatureAlgorithm;
+import org.bouncycastle.tls.SignatureAndHashAlgorithm;
+import org.bouncycastle.tls.TlsContext;
+import org.bouncycastle.tls.TlsServerContext;
+import org.bouncycastle.tls.TlsSession;
+import org.bouncycastle.tls.TlsUtils;
+import org.bouncycastle.tls.crypto.TlsCrypto;
+import org.bouncycastle.tls.crypto.TlsNonceGenerator;
 
 import junit.framework.TestCase;
 

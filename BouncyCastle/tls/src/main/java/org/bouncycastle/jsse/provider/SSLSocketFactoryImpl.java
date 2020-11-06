@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.jsse.provider;
+package org.bouncycastle.jsse.provider;
 
 /**
  * Public class with a public default constructor, for use with the "ssl.SocketFactory.provider"

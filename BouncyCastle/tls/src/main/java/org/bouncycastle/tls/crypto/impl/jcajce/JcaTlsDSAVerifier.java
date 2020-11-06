@@ -1,13 +1,13 @@
-package com.distrimind.bouncycastle.tls.crypto.impl.jcajce;
+package org.bouncycastle.tls.crypto.impl.jcajce;
 
 import java.io.IOException;
 import java.security.PublicKey;
 
-import com.distrimind.bouncycastle.tls.DigitallySigned;
-import com.distrimind.bouncycastle.tls.HashAlgorithm;
-import com.distrimind.bouncycastle.tls.SignatureAlgorithm;
-import com.distrimind.bouncycastle.tls.SignatureAndHashAlgorithm;
-import com.distrimind.bouncycastle.tls.crypto.TlsStreamVerifier;
+import org.bouncycastle.tls.DigitallySigned;
+import org.bouncycastle.tls.HashAlgorithm;
+import org.bouncycastle.tls.SignatureAlgorithm;
+import org.bouncycastle.tls.SignatureAndHashAlgorithm;
+import org.bouncycastle.tls.crypto.TlsStreamVerifier;
 
 /**
  * Implementation class for the verification of the raw DSA signature type using the JCA.

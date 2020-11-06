@@ -1,9 +1,9 @@
-package com.distrimind.bouncycastle.tls;
+package org.bouncycastle.tls;
 
 import java.io.IOException;
 import java.util.Hashtable;
 
-import com.distrimind.bouncycastle.tls.crypto.TlsCrypto;
+import org.bouncycastle.tls.crypto.TlsCrypto;
 
 public class SRPTlsClient
     extends AbstractTlsClient

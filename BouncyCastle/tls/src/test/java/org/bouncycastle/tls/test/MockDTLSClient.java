@@ -1,35 +1,38 @@
-package com.distrimind.bouncycastle.tls.test;
+package org.bouncycastle.tls.test;
 
 import java.io.IOException;
 import java.io.PrintStream;
 import java.security.SecureRandom;
 import java.util.Hashtable;
 
-import com.distrimind.bouncycastle.asn1.x509.Certificate;
-import com.distrimind.bouncycastle.tls.AlertDescription;
-import com.distrimind.bouncycastle.tls.AlertLevel;
-import com.distrimind.bouncycastle.tls.CertificateRequest;
-import com.distrimind.bouncycastle.tls.ClientCertificateType;
-import com.distrimind.bouncycastle.tls.DefaultTlsClient;
-import com.distrimind.bouncycastle.tls.MaxFragmentLength;
-import com.distrimind.bouncycastle.tls.ProtocolVersion;
-import com.distrimind.bouncycastle.tls.SignatureAlgorithm;
-import com.distrimind.bouncycastle.tls.TlsAuthentication;
-import com.distrimind.bouncycastle.tls.TlsCredentials;
-import com.distrimind.bouncycastle.tls.TlsExtensionsUtils;
-import com.distrimind.bouncycastle.tls.TlsServerCertificate;
-import com.distrimind.bouncycastle.tls.TlsSession;
-import com.distrimind.bouncycastle.tls.crypto.TlsCertificate;
-import com.distrimind.bouncycastle.tls.crypto.impl.bc.BcTlsCrypto;
-import com.distrimind.bouncycastle.util.Arrays;
-import com.distrimind.bouncycastle.util.encoders.Hex;
+import org.bouncycastle.asn1.x509.Certificate;
+import org.bouncycastle.tls.AlertDescription;
+import org.bouncycastle.tls.AlertLevel;
+import org.bouncycastle.tls.CertificateRequest;
+import org.bouncycastle.tls.ChannelBinding;
+import org.bouncycastle.tls.ClientCertificateType;
+import org.bouncycastle.tls.DefaultTlsClient;
+import org.bouncycastle.tls.MaxFragmentLength;
+import org.bouncycastle.tls.ProtocolVersion;
+import org.bouncycastle.tls.SignatureAlgorithm;
+import org.bouncycastle.tls.TlsAuthentication;
+import org.bouncycastle.tls.TlsCredentials;
+import org.bouncycastle.tls.TlsExtensionsUtils;
+import org.bouncycastle.tls.TlsFatalAlert;
+import org.bouncycastle.tls.TlsServerCertificate;
+import org.bouncycastle.tls.TlsSession;
+import org.bouncycastle.tls.TlsUtils;
+import org.bouncycastle.tls.crypto.TlsCertificate;
+import org.bouncycastle.tls.crypto.impl.bc.BcTlsCrypto;
+import org.bouncycastle.util.Arrays;
+import org.bouncycastle.util.encoders.Hex;
 
-public class MockDTLSClient
+class MockDTLSClient
     extends DefaultTlsClient
 {
-    protected TlsSession session;
+    TlsSession session;
 
-    public MockDTLSClient(TlsSession session)
+    MockDTLSClient(TlsSession session)
     {
         super(new BcTlsCrypto(new SecureRandom()));
 
@@ -48,7 +51,7 @@ public class MockDTLSClient
             + ", " + AlertDescription.getText(alertDescription));
         if (message != null)
         {
-            out.println(message);
+            out.println("> " + message);
         }
         if (cause != null)
         {
@@ -63,36 +66,21 @@ public class MockDTLSClient
             + ", " + AlertDescription.getText(alertDescription));
     }
 
-    public Hashtable getClientExtensions() throws IOException
-    {
-        Hashtable clientExtensions = TlsExtensionsUtils.ensureExtensionsInitialised(super.getClientExtensions());
-        {
-            /*
-             * NOTE: If you are copying test code, do not blindly set these extensions in your own client.
-             */
-            TlsExtensionsUtils.addMaxFragmentLengthExtension(clientExtensions, MaxFragmentLength.pow2_9);
-            TlsExtensionsUtils.addPaddingExtension(clientExtensions, context.getCrypto().getSecureRandom().nextInt(16));
-            TlsExtensionsUtils.addTruncatedHMacExtension(clientExtensions);
-        }
-        return clientExtensions;
-    }
-
     public void notifyServerVersion(ProtocolVersion serverVersion) throws IOException
     {
         super.notifyServerVersion(serverVersion);
 
-        System.out.println("Negotiated " + serverVersion);
+        System.out.println("DTLS client negotiated " + serverVersion);
     }
 
-    public TlsAuthentication getAuthentication()
-        throws IOException
+    public TlsAuthentication getAuthentication() throws IOException
     {
         return new TlsAuthentication()
         {
-            public void notifyServerCertificate(TlsServerCertificate serverCertificate)
-                throws IOException
+            public void notifyServerCertificate(TlsServerCertificate serverCertificate) throws IOException
             {
                 TlsCertificate[] chain = serverCertificate.getCertificate().getCertificateList();
+
                 System.out.println("DTLS client received server certificate chain of length " + chain.length);
                 for (int i = 0; i != chain.length; i++)
                 {
@@ -101,10 +89,32 @@ public class MockDTLSClient
                     System.out.println("    fingerprint:SHA-256 " + TlsTestUtils.fingerprint(entry) + " ("
                         + entry.getSubject() + ")");
                 }
+
+                boolean isEmpty = serverCertificate == null || serverCertificate.getCertificate() == null
+                    || serverCertificate.getCertificate().isEmpty();
+
+                if (isEmpty)
+                {
+                    throw new TlsFatalAlert(AlertDescription.bad_certificate);
+                }
+
+                String[] trustedCertResources = new String[]{ "x509-server-dsa.pem", "x509-server-ecdh.pem",
+                    "x509-server-ecdsa.pem", "x509-server-ed25519.pem", "x509-server-ed448.pem",
+                    "x509-server-rsa_pss_256.pem", "x509-server-rsa_pss_384.pem", "x509-server-rsa_pss_512.pem",
+                    "x509-server-rsa-enc.pem", "x509-server-rsa-sign.pem" };
+
+                TlsCertificate[] certPath = TlsTestUtils.getTrustedCertPath(context.getCrypto(), chain[0],
+                    trustedCertResources);
+
+                if (null == certPath)
+                {
+                    throw new TlsFatalAlert(AlertDescription.bad_certificate);
+                }
+
+                TlsUtils.checkPeerSigAlgs(context, certPath);
             }
 
-            public TlsCredentials getClientCredentials(CertificateRequest certificateRequest)
-                throws IOException
+            public TlsCredentials getClientCredentials(CertificateRequest certificateRequest) throws IOException
             {
                 short[] certificateTypes = certificateRequest.getCertificateTypes();
                 if (certificateTypes == null || !Arrays.contains(certificateTypes, ClientCertificateType.rsa_sign))
@@ -122,23 +132,40 @@ public class MockDTLSClient
     {
         super.notifyHandshakeComplete();
 
-        TlsSession newSession = context.getResumableSession();
+        TlsSession newSession = context.getSession();
         if (newSession != null)
         {
-            byte[] newSessionID = newSession.getSessionID();
-            String hex = Hex.toHexString(newSessionID);
-
-            if (this.session != null && Arrays.areEqual(this.session.getSessionID(), newSessionID))
+            if (newSession.isResumable())
             {
-                System.out.println("Resumed session: " + hex);
-            }
-            else
-            {
-                System.out.println("Established session: " + hex);
+                byte[] newSessionID = newSession.getSessionID();
+                String hex = Hex.toHexString(newSessionID);
+
+                if (this.session != null && Arrays.areEqual(this.session.getSessionID(), newSessionID))
+                {
+                    System.out.println("Client resumed session: " + hex);
+                }
+                else
+                {
+                    System.out.println("Client established session: " + hex);
+                }
+
+                this.session = newSession;
             }
 
-            this.session = newSession;
+            byte[] tlsServerEndPoint = context.exportChannelBinding(ChannelBinding.tls_server_end_point);
+            if (null != tlsServerEndPoint)
+            {
+                System.out.println("Client 'tls-server-end-point': " + hex(tlsServerEndPoint));
+            }
+
+            byte[] tlsUnique = context.exportChannelBinding(ChannelBinding.tls_unique);
+            System.out.println("Client 'tls-unique': " + hex(tlsUnique));
         }
+    }
+
+    protected String hex(byte[] data)
+    {
+        return data == null ? "(null)" : Hex.toHexString(data);
     }
 
     protected ProtocolVersion[] getSupportedVersions()

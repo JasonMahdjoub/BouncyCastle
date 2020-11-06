@@ -1,12 +1,12 @@
-package com.distrimind.bouncycastle.tls.crypto.impl.bc;
+package org.bouncycastle.tls.crypto.impl.bc;
 
 import java.io.IOException;
 
-import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
-import com.distrimind.bouncycastle.crypto.params.ECPrivateKeyParameters;
-import com.distrimind.bouncycastle.crypto.params.ECPublicKeyParameters;
-import com.distrimind.bouncycastle.tls.crypto.TlsAgreement;
-import com.distrimind.bouncycastle.tls.crypto.TlsSecret;
+import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
+import org.bouncycastle.crypto.params.ECPrivateKeyParameters;
+import org.bouncycastle.crypto.params.ECPublicKeyParameters;
+import org.bouncycastle.tls.crypto.TlsAgreement;
+import org.bouncycastle.tls.crypto.TlsSecret;
 
 /**
  * Support class for ephemeral Elliptic Curve Diffie-Hellman using the BC light-weight library.

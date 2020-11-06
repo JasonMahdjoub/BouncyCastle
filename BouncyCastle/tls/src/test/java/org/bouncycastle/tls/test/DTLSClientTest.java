@@ -1,16 +1,16 @@
-package com.distrimind.bouncycastle.tls.test;
+package org.bouncycastle.tls.test;
 
 import java.io.IOException;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.security.SecureRandom;
 
-import com.distrimind.bouncycastle.tls.DTLSClientProtocol;
-import com.distrimind.bouncycastle.tls.DTLSTransport;
-import com.distrimind.bouncycastle.tls.DatagramTransport;
-import com.distrimind.bouncycastle.tls.TlsClient;
-import com.distrimind.bouncycastle.tls.TlsSession;
-import com.distrimind.bouncycastle.tls.UDPTransport;
+import org.bouncycastle.tls.DTLSClientProtocol;
+import org.bouncycastle.tls.DTLSTransport;
+import org.bouncycastle.tls.DatagramTransport;
+import org.bouncycastle.tls.TlsClient;
+import org.bouncycastle.tls.TlsSession;
+import org.bouncycastle.tls.UDPTransport;
 
 /**
  * A simple test designed to conduct a DTLS handshake with an external DTLS server.

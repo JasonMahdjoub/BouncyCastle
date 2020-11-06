@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.jsse.provider;
+package org.bouncycastle.jsse.provider;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -10,7 +10,6 @@ import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.security.UnrecoverableKeyException;
-import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -18,9 +17,9 @@ import javax.net.ssl.KeyManager;
 import javax.net.ssl.KeyManagerFactorySpi;
 import javax.net.ssl.KeyStoreBuilderParameters;
 import javax.net.ssl.ManagerFactoryParameters;
-import javax.net.ssl.X509ExtendedKeyManager;
 
-import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
+import org.bouncycastle.jcajce.util.JcaJceHelper;
+import org.bouncycastle.jsse.BCX509ExtendedKeyManager;
 
 class ProvKeyManagerFactorySpi
     extends KeyManagerFactorySpi
@@ -83,7 +82,7 @@ class ProvKeyManagerFactorySpi
 
     protected final JcaJceHelper helper;
 
-    protected X509ExtendedKeyManager x509KeyManager;
+    protected BCX509ExtendedKeyManager x509KeyManager;
 
     ProvKeyManagerFactorySpi(JcaJceHelper helper)
     {
@@ -106,9 +105,7 @@ class ProvKeyManagerFactorySpi
         throws KeyStoreException, NoSuchAlgorithmException, UnrecoverableKeyException
     {
         // NOTE: When key store is null, we do not try to load defaults
-
-        List<KeyStore.Builder> builders = getKeyStoreBuilders(ks, ksPassword);
-        this.x509KeyManager = new ProvX509KeyManager(helper, builders);
+        this.x509KeyManager = new ProvX509KeyManagerSimple(helper, ks, ksPassword);
     }
 
     @Override
@@ -134,26 +131,6 @@ class ProvKeyManagerFactorySpi
         return (null == ksProv || ksProv.length() < 1)
             ?   KeyStore.getInstance(ksType)
             :   KeyStore.getInstance(ksType, ksProv);
-    }
-
-    private static List<KeyStore.Builder> getKeyStoreBuilders(KeyStore ks, char[] ksPassword)
-        throws KeyStoreException
-    {
-        if (null == ks)
-        {
-            return Collections.emptyList();
-        }
-
-        try
-        {
-            KeyStore.Builder builder = KeyStore.Builder.newInstance(ks, new KeyStore.PasswordProtection(ksPassword));
-
-            return Collections.singletonList(builder);
-        }
-        catch (RuntimeException e)
-        {
-            throw new KeyStoreException("initialization failed", e);
-        }
     }
 
     private static String getKeyStoreType(String defaultType)

@@ -1,15 +1,15 @@
-package com.distrimind.bouncycastle.tls.crypto.impl.jcajce;
+package org.bouncycastle.tls.crypto.impl.jcajce;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.security.PrivateKey;
 import java.security.Signature;
 
-import com.distrimind.bouncycastle.tls.AlertDescription;
-import com.distrimind.bouncycastle.tls.SignatureAndHashAlgorithm;
-import com.distrimind.bouncycastle.tls.TlsFatalAlert;
-import com.distrimind.bouncycastle.tls.crypto.TlsSigner;
-import com.distrimind.bouncycastle.tls.crypto.TlsStreamSigner;
+import org.bouncycastle.tls.AlertDescription;
+import org.bouncycastle.tls.SignatureAndHashAlgorithm;
+import org.bouncycastle.tls.TlsFatalAlert;
+import org.bouncycastle.tls.crypto.TlsSigner;
+import org.bouncycastle.tls.crypto.TlsStreamSigner;
 
 /**
  * JCA base class for the signers implementing the two DSA style algorithms from FIPS PUB 186-4: DSA and ECDSA.
@@ -44,7 +44,7 @@ public abstract class JcaTlsDSSSigner
     {
         if (algorithm != null && algorithm.getSignature() != algorithmType)
         {
-            throw new IllegalStateException();
+            throw new IllegalStateException("Invalid algorithm: " + algorithm);
         }
 
         try

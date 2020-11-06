@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.jsse.provider.test;
+package org.bouncycastle.jsse.provider.test;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -31,34 +31,34 @@ import java.util.Set;
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLSocket;
 
-import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
-import com.distrimind.bouncycastle.asn1.ASN1Encoding;
-import com.distrimind.bouncycastle.asn1.ASN1Integer;
-import com.distrimind.bouncycastle.asn1.DERBitString;
-import com.distrimind.bouncycastle.asn1.DERNull;
-import com.distrimind.bouncycastle.asn1.DERSequence;
-import com.distrimind.bouncycastle.asn1.nist.NISTObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.pkcs.RSASSAPSSparams;
-import com.distrimind.bouncycastle.asn1.x500.X500Name;
-import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import com.distrimind.bouncycastle.asn1.x509.AuthorityKeyIdentifier;
-import com.distrimind.bouncycastle.asn1.x509.BasicConstraints;
-import com.distrimind.bouncycastle.asn1.x509.Certificate;
-import com.distrimind.bouncycastle.asn1.x509.Extension;
-import com.distrimind.bouncycastle.asn1.x509.Extensions;
-import com.distrimind.bouncycastle.asn1.x509.ExtensionsGenerator;
-import com.distrimind.bouncycastle.asn1.x509.GeneralName;
-import com.distrimind.bouncycastle.asn1.x509.GeneralNames;
-import com.distrimind.bouncycastle.asn1.x509.KeyUsage;
-import com.distrimind.bouncycastle.asn1.x509.SubjectKeyIdentifier;
-import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
-import com.distrimind.bouncycastle.asn1.x509.TBSCertificate;
-import com.distrimind.bouncycastle.asn1.x509.Time;
-import com.distrimind.bouncycastle.asn1.x509.V3TBSCertificateGenerator;
-import com.distrimind.bouncycastle.asn1.x9.X9ObjectIdentifiers;
-import com.distrimind.bouncycastle.jsse.BCSSLConnection;
-import com.distrimind.bouncycastle.jsse.BCSSLSocket;
+import org.bouncycastle.asn1.ASN1EncodableVector;
+import org.bouncycastle.asn1.ASN1Encoding;
+import org.bouncycastle.asn1.ASN1Integer;
+import org.bouncycastle.asn1.DERBitString;
+import org.bouncycastle.asn1.DERNull;
+import org.bouncycastle.asn1.DERSequence;
+import org.bouncycastle.asn1.nist.NISTObjectIdentifiers;
+import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
+import org.bouncycastle.asn1.pkcs.RSASSAPSSparams;
+import org.bouncycastle.asn1.x500.X500Name;
+import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.asn1.x509.AuthorityKeyIdentifier;
+import org.bouncycastle.asn1.x509.BasicConstraints;
+import org.bouncycastle.asn1.x509.Certificate;
+import org.bouncycastle.asn1.x509.Extension;
+import org.bouncycastle.asn1.x509.Extensions;
+import org.bouncycastle.asn1.x509.ExtensionsGenerator;
+import org.bouncycastle.asn1.x509.GeneralName;
+import org.bouncycastle.asn1.x509.GeneralNames;
+import org.bouncycastle.asn1.x509.KeyUsage;
+import org.bouncycastle.asn1.x509.SubjectKeyIdentifier;
+import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
+import org.bouncycastle.asn1.x509.TBSCertificate;
+import org.bouncycastle.asn1.x509.Time;
+import org.bouncycastle.asn1.x509.V3TBSCertificateGenerator;
+import org.bouncycastle.asn1.x9.X9ObjectIdentifiers;
+import org.bouncycastle.jsse.BCSSLConnection;
+import org.bouncycastle.jsse.BCSSLSocket;
 
 /**
  * Test Utils

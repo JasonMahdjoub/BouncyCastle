@@ -1,10 +1,10 @@
-package com.distrimind.bouncycastle.test.est;
+package org.bouncycastle.test.est;
 
 import java.net.Socket;
 
-import com.distrimind.bouncycastle.est.jcajce.ChannelBindingProvider;
-import com.distrimind.bouncycastle.jsse.BCSSLConnection;
-import com.distrimind.bouncycastle.jsse.BCSSLSocket;
+import org.bouncycastle.est.jcajce.ChannelBindingProvider;
+import org.bouncycastle.jsse.BCSSLConnection;
+import org.bouncycastle.jsse.BCSSLSocket;
 
 /**
  * BouncyCastle specific channel binding provider.

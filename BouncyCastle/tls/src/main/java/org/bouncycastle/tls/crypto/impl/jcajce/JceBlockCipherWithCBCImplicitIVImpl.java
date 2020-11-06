@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.tls.crypto.impl.jcajce;
+package org.bouncycastle.tls.crypto.impl.jcajce;
 
 import java.security.GeneralSecurityException;
 
@@ -7,8 +7,8 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
-import com.distrimind.bouncycastle.tls.TlsUtils;
-import com.distrimind.bouncycastle.tls.crypto.impl.TlsBlockCipherImpl;
+import org.bouncycastle.tls.TlsUtils;
+import org.bouncycastle.tls.crypto.impl.TlsBlockCipherImpl;
 
 /**
  * A basic wrapper for a JCE Cipher class to provide the needed block cipher functionality for TLS where the

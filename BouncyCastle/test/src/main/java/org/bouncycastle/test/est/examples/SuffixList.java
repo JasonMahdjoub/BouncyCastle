@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.test.est.examples;
+package org.bouncycastle.test.est.examples;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;

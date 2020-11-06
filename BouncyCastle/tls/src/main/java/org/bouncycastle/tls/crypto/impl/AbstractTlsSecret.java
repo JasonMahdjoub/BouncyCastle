@@ -1,10 +1,10 @@
-package com.distrimind.bouncycastle.tls.crypto.impl;
+package org.bouncycastle.tls.crypto.impl;
 
 import java.io.IOException;
 
-import com.distrimind.bouncycastle.tls.crypto.TlsCertificate;
-import com.distrimind.bouncycastle.tls.crypto.TlsSecret;
-import com.distrimind.bouncycastle.util.Arrays;
+import org.bouncycastle.tls.crypto.TlsCertificate;
+import org.bouncycastle.tls.crypto.TlsSecret;
+import org.bouncycastle.util.Arrays;
 
 /**
  * Base class for a TlsSecret implementation which captures common code and fields.

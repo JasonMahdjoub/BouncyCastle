@@ -1,8 +1,8 @@
-package com.distrimind.bouncycastle.tls.crypto.test;
+package org.bouncycastle.tls.crypto.test;
 
 import java.security.SecureRandom;
 
-import com.distrimind.bouncycastle.tls.crypto.impl.bc.BcTlsCrypto;
+import org.bouncycastle.tls.crypto.impl.bc.BcTlsCrypto;
 
 public class BcTlsCryptoTest
     extends TlsCryptoTest

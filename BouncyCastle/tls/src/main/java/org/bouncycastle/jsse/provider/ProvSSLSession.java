@@ -1,12 +1,12 @@
-package com.distrimind.bouncycastle.jsse.provider;
+package org.bouncycastle.jsse.provider;
 
 import java.util.List;
 
-import com.distrimind.bouncycastle.jsse.BCSNIServerName;
-import com.distrimind.bouncycastle.tls.CipherSuite;
-import com.distrimind.bouncycastle.tls.ProtocolVersion;
-import com.distrimind.bouncycastle.tls.SessionParameters;
-import com.distrimind.bouncycastle.tls.TlsSession;
+import org.bouncycastle.jsse.BCSNIServerName;
+import org.bouncycastle.tls.CipherSuite;
+import org.bouncycastle.tls.ProtocolVersion;
+import org.bouncycastle.tls.SessionParameters;
+import org.bouncycastle.tls.TlsSession;
 
 class ProvSSLSession
     extends ProvSSLSessionBase
@@ -55,7 +55,7 @@ class ProvSSLSession
     }
 
     @Override
-    protected com.distrimind.bouncycastle.tls.Certificate getLocalCertificateTLS()
+    protected org.bouncycastle.tls.Certificate getLocalCertificateTLS()
     {
         return null == sessionParameters ? null : sessionParameters.getLocalCertificate();
     }
@@ -68,7 +68,7 @@ class ProvSSLSession
     }
 
     @Override
-    protected com.distrimind.bouncycastle.tls.Certificate getPeerCertificateTLS()
+    protected org.bouncycastle.tls.Certificate getPeerCertificateTLS()
     {
         return null == sessionParameters ? null : sessionParameters.getPeerCertificate();
     }

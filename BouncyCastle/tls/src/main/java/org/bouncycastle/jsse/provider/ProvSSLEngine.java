@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.jsse.provider;
+package org.bouncycastle.jsse.provider;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -16,20 +16,20 @@ import javax.net.ssl.SSLEngineResult.Status;
 import javax.net.ssl.SSLException;
 import javax.net.ssl.SSLParameters;
 import javax.net.ssl.SSLSession;
-import javax.net.ssl.X509ExtendedKeyManager;
 
-import com.distrimind.bouncycastle.jsse.BCApplicationProtocolSelector;
-import com.distrimind.bouncycastle.jsse.BCExtendedSSLSession;
-import com.distrimind.bouncycastle.jsse.BCSSLConnection;
-import com.distrimind.bouncycastle.jsse.BCSSLEngine;
-import com.distrimind.bouncycastle.jsse.BCSSLParameters;
-import com.distrimind.bouncycastle.tls.AlertDescription;
-import com.distrimind.bouncycastle.tls.RecordFormat;
-import com.distrimind.bouncycastle.tls.RecordPreview;
-import com.distrimind.bouncycastle.tls.TlsClientProtocol;
-import com.distrimind.bouncycastle.tls.TlsFatalAlert;
-import com.distrimind.bouncycastle.tls.TlsProtocol;
-import com.distrimind.bouncycastle.tls.TlsServerProtocol;
+import org.bouncycastle.jsse.BCApplicationProtocolSelector;
+import org.bouncycastle.jsse.BCExtendedSSLSession;
+import org.bouncycastle.jsse.BCSSLConnection;
+import org.bouncycastle.jsse.BCSSLEngine;
+import org.bouncycastle.jsse.BCSSLParameters;
+import org.bouncycastle.jsse.BCX509Key;
+import org.bouncycastle.tls.AlertDescription;
+import org.bouncycastle.tls.RecordFormat;
+import org.bouncycastle.tls.RecordPreview;
+import org.bouncycastle.tls.TlsClientProtocol;
+import org.bouncycastle.tls.TlsFatalAlert;
+import org.bouncycastle.tls.TlsProtocol;
+import org.bouncycastle.tls.TlsServerProtocol;
 
 /*
  * TODO[jsse] Known limitations (relative to SSLEngine javadoc): 1. The wrap() and unwrap() methods
@@ -156,18 +156,14 @@ class ProvSSLEngine
         }
     }
 
-    public ProvX509Key chooseClientKey(String[] keyTypes, Principal[] issuers)
+    public BCX509Key chooseClientKey(String[] keyTypes, Principal[] issuers)
     {
-        X509ExtendedKeyManager x509KeyManager = getContextData().getX509KeyManager();
-        String alias = x509KeyManager.chooseEngineClientAlias(keyTypes, JsseUtils.clone(issuers), this);
-        return ProvX509Key.from(x509KeyManager, alias);
+        return getContextData().getX509KeyManager().chooseEngineClientKeyBC(keyTypes, JsseUtils.clone(issuers), this);
     }
 
-    public ProvX509Key chooseServerKey(String keyType, Principal[] issuers)
+    public BCX509Key chooseServerKey(String keyType, Principal[] issuers)
     {
-        X509ExtendedKeyManager x509KeyManager = getContextData().getX509KeyManager();
-        String alias = x509KeyManager.chooseEngineServerAlias(keyType, JsseUtils.clone(issuers), this);
-        return ProvX509Key.from(x509KeyManager, alias);
+        return getContextData().getX509KeyManager().chooseEngineServerKeyBC(keyType, JsseUtils.clone(issuers), this);
     }
 
     @Override

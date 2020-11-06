@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.openpgp;
+package org.bouncycastle.openpgp;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -7,12 +7,12 @@ import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.util.Date;
 
-import com.distrimind.bouncycastle.bcpg.MPInteger;
-import com.distrimind.bouncycastle.bcpg.OnePassSignaturePacket;
-import com.distrimind.bouncycastle.bcpg.PublicKeyAlgorithmTags;
-import com.distrimind.bouncycastle.bcpg.SignaturePacket;
-import com.distrimind.bouncycastle.openpgp.operator.PGPContentSigner;
-import com.distrimind.bouncycastle.openpgp.operator.PGPContentSignerBuilder;
+import org.bouncycastle.bcpg.MPInteger;
+import org.bouncycastle.bcpg.OnePassSignaturePacket;
+import org.bouncycastle.bcpg.PublicKeyAlgorithmTags;
+import org.bouncycastle.bcpg.SignaturePacket;
+import org.bouncycastle.openpgp.operator.PGPContentSigner;
+import org.bouncycastle.openpgp.operator.PGPContentSignerBuilder;
 
 /**
  * Generator for old style PGP V3 Signatures.

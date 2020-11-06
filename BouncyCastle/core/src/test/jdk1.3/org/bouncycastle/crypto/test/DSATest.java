@@ -1,33 +1,33 @@
-package com.distrimind.bouncycastle.crypto.test;
+package org.bouncycastle.crypto.test;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
-import com.distrimind.bouncycastle.asn1.ASN1Integer;
-import com.distrimind.bouncycastle.asn1.ASN1Sequence;
-import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
-import com.distrimind.bouncycastle.crypto.digests.SHA224Digest;
-import com.distrimind.bouncycastle.crypto.digests.SHA256Digest;
-import com.distrimind.bouncycastle.crypto.digests.SHA3Digest;
-import com.distrimind.bouncycastle.crypto.generators.DSAKeyPairGenerator;
-import com.distrimind.bouncycastle.crypto.generators.DSAParametersGenerator;
-import com.distrimind.bouncycastle.crypto.params.DSAKeyGenerationParameters;
-import com.distrimind.bouncycastle.crypto.params.DSAParameterGenerationParameters;
-import com.distrimind.bouncycastle.crypto.params.DSAParameters;
-import com.distrimind.bouncycastle.crypto.params.DSAPrivateKeyParameters;
-import com.distrimind.bouncycastle.crypto.params.DSAPublicKeyParameters;
-import com.distrimind.bouncycastle.crypto.params.DSAValidationParameters;
-import com.distrimind.bouncycastle.crypto.params.ParametersWithRandom;
-import com.distrimind.bouncycastle.crypto.signers.DSADigestSigner;
-import com.distrimind.bouncycastle.crypto.signers.DSASigner;
-import com.distrimind.bouncycastle.util.Arrays;
-import com.distrimind.bouncycastle.util.BigIntegers;
-import com.distrimind.bouncycastle.util.Strings;
-import com.distrimind.bouncycastle.util.encoders.Hex;
-import com.distrimind.bouncycastle.util.test.FixedSecureRandom;
-import com.distrimind.bouncycastle.util.test.SimpleTest;
-import com.distrimind.bouncycastle.util.test.TestRandomBigInteger;
-import com.distrimind.bouncycastle.util.test.TestRandomData;
+import org.bouncycastle.asn1.ASN1Integer;
+import org.bouncycastle.asn1.ASN1Sequence;
+import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
+import org.bouncycastle.crypto.digests.SHA224Digest;
+import org.bouncycastle.crypto.digests.SHA256Digest;
+import org.bouncycastle.crypto.digests.SHA3Digest;
+import org.bouncycastle.crypto.generators.DSAKeyPairGenerator;
+import org.bouncycastle.crypto.generators.DSAParametersGenerator;
+import org.bouncycastle.crypto.params.DSAKeyGenerationParameters;
+import org.bouncycastle.crypto.params.DSAParameterGenerationParameters;
+import org.bouncycastle.crypto.params.DSAParameters;
+import org.bouncycastle.crypto.params.DSAPrivateKeyParameters;
+import org.bouncycastle.crypto.params.DSAPublicKeyParameters;
+import org.bouncycastle.crypto.params.DSAValidationParameters;
+import org.bouncycastle.crypto.params.ParametersWithRandom;
+import org.bouncycastle.crypto.signers.DSADigestSigner;
+import org.bouncycastle.crypto.signers.DSASigner;
+import org.bouncycastle.util.Arrays;
+import org.bouncycastle.util.BigIntegers;
+import org.bouncycastle.util.Strings;
+import org.bouncycastle.util.encoders.Hex;
+import org.bouncycastle.util.test.FixedSecureRandom;
+import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.util.test.TestRandomBigInteger;
+import org.bouncycastle.util.test.TestRandomData;
 
 /**
  * Test based on FIPS 186-2, Appendix 5, an example of DSA, and FIPS 168-3 test vectors.

@@ -1,12 +1,12 @@
-package com.distrimind.bouncycastle.tls;
+package org.bouncycastle.tls;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import com.distrimind.bouncycastle.util.Arrays;
-import com.distrimind.bouncycastle.util.io.Streams;
+import org.bouncycastle.util.Arrays;
+import org.bouncycastle.util.io.Streams;
 
 public class HeartbeatMessage
 {

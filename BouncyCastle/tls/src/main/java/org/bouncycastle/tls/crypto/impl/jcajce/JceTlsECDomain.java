@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.tls.crypto.impl.jcajce;
+package org.bouncycastle.tls.crypto.impl.jcajce;
 
 import java.io.IOException;
 import java.math.BigInteger;
@@ -11,16 +11,16 @@ import java.security.PublicKey;
 import java.security.spec.ECParameterSpec;
 import java.security.spec.ECPublicKeySpec;
 
-import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
-import com.distrimind.bouncycastle.math.ec.ECCurve;
-import com.distrimind.bouncycastle.math.ec.ECPoint;
-import com.distrimind.bouncycastle.tls.AlertDescription;
-import com.distrimind.bouncycastle.tls.NamedGroup;
-import com.distrimind.bouncycastle.tls.TlsFatalAlert;
-import com.distrimind.bouncycastle.tls.crypto.TlsAgreement;
-import com.distrimind.bouncycastle.tls.crypto.TlsCryptoException;
-import com.distrimind.bouncycastle.tls.crypto.TlsECConfig;
-import com.distrimind.bouncycastle.tls.crypto.TlsECDomain;
+import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
+import org.bouncycastle.math.ec.ECCurve;
+import org.bouncycastle.math.ec.ECPoint;
+import org.bouncycastle.tls.AlertDescription;
+import org.bouncycastle.tls.NamedGroup;
+import org.bouncycastle.tls.TlsFatalAlert;
+import org.bouncycastle.tls.crypto.TlsAgreement;
+import org.bouncycastle.tls.crypto.TlsCryptoException;
+import org.bouncycastle.tls.crypto.TlsECConfig;
+import org.bouncycastle.tls.crypto.TlsECDomain;
 
 /**
  * EC domain class for generating key pairs and performing key agreement.
@@ -112,11 +112,11 @@ public class JceTlsECDomain
 
     public byte[] encodePublicKey(PublicKey publicKey) throws IOException
     {
-        // TODO Add new com.distrimind.bouncycastle.util.ECPointHolder with getEncodedPoint(boolean)
+        // TODO Add new org.bouncycastle.util.ECPointHolder with getEncodedPoint(boolean)
 
-        if (publicKey instanceof com.distrimind.bouncycastle.jce.interfaces.ECPublicKey)
+        if (publicKey instanceof org.bouncycastle.jce.interfaces.ECPublicKey)
         {
-            return encodePoint(((com.distrimind.bouncycastle.jce.interfaces.ECPublicKey)publicKey).getQ());
+            return encodePoint(((org.bouncycastle.jce.interfaces.ECPublicKey)publicKey).getQ());
         }
 
         if (publicKey instanceof java.security.interfaces.ECPublicKey)

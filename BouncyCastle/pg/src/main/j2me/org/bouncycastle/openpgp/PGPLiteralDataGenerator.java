@@ -1,12 +1,12 @@
-package com.distrimind.bouncycastle.openpgp;
+package org.bouncycastle.openpgp;
 
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Date;
 
-import com.distrimind.bouncycastle.bcpg.BCPGOutputStream;
-import com.distrimind.bouncycastle.bcpg.PacketTags;
-import com.distrimind.bouncycastle.util.Strings;
+import org.bouncycastle.bcpg.BCPGOutputStream;
+import org.bouncycastle.bcpg.PacketTags;
+import org.bouncycastle.util.Strings;
 
 /**
  * Class for producing literal data packets.

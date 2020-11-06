@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.jsse.provider.test;
+package org.bouncycastle.jsse.provider.test;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -6,7 +6,7 @@ import java.io.OutputStream;
 import java.net.Socket;
 import java.util.concurrent.Callable;
 
-import com.distrimind.bouncycastle.util.Strings;
+import org.bouncycastle.util.Strings;
 
 import junit.framework.TestCase;
 

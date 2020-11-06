@@ -2,10 +2,10 @@ package java.security;
 
 import java.util.Random;
 
-import com.distrimind.bouncycastle.crypto.digests.SHA1Digest;
-import com.distrimind.bouncycastle.crypto.digests.SHA256Digest;
-import com.distrimind.bouncycastle.crypto.prng.RandomGenerator;
-import com.distrimind.bouncycastle.crypto.prng.DigestRandomGenerator;
+import org.bouncycastle.crypto.digests.SHA1Digest;
+import org.bouncycastle.crypto.digests.SHA256Digest;
+import org.bouncycastle.crypto.prng.RandomGenerator;
+import org.bouncycastle.crypto.prng.DigestRandomGenerator;
 
 /**
  * An implementation of SecureRandom specifically for the light-weight API, JDK
@@ -13,7 +13,7 @@ import com.distrimind.bouncycastle.crypto.prng.DigestRandomGenerator;
  * counter. Calling setSeed will always increase the entropy of the hash.
  * <p>
  * <b>Do not use this class without calling setSeed at least once</b>! There
- * are some example seed generators in the com.distrimind.bouncycastle.prng package.
+ * are some example seed generators in the org.bouncycastle.prng package.
  */
 public class SecureRandom extends java.util.Random
 {

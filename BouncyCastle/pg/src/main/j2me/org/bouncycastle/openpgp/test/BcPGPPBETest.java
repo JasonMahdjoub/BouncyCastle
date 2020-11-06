@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.openpgp.test;
+package org.bouncycastle.openpgp.test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -6,23 +6,23 @@ import java.io.OutputStream;
 import java.security.SecureRandom;
 import java.util.Date;
 
-import com.distrimind.bouncycastle.openpgp.PGPEncryptedData;
-import com.distrimind.bouncycastle.openpgp.PGPEncryptedDataGenerator;
-import com.distrimind.bouncycastle.openpgp.PGPEncryptedDataList;
-import com.distrimind.bouncycastle.openpgp.PGPLiteralData;
-import com.distrimind.bouncycastle.openpgp.PGPLiteralDataGenerator;
-import com.distrimind.bouncycastle.openpgp.PGPObjectFactory;
-import com.distrimind.bouncycastle.openpgp.PGPPBEEncryptedData;
-import com.distrimind.bouncycastle.openpgp.bc.BcPGPObjectFactory;
-import com.distrimind.bouncycastle.openpgp.operator.bc.BcKeyFingerprintCalculator;
-import com.distrimind.bouncycastle.openpgp.operator.bc.BcPBEDataDecryptorFactory;
-import com.distrimind.bouncycastle.openpgp.operator.bc.BcPBEKeyEncryptionMethodGenerator;
-import com.distrimind.bouncycastle.openpgp.operator.bc.BcPGPDataEncryptorBuilder;
-import com.distrimind.bouncycastle.openpgp.operator.bc.BcPGPDigestCalculatorProvider;
-import com.distrimind.bouncycastle.util.encoders.Base64;
-import com.distrimind.bouncycastle.util.encoders.Hex;
-import com.distrimind.bouncycastle.util.test.SimpleTest;
-import com.distrimind.bouncycastle.util.test.UncloseableOutputStream;
+import org.bouncycastle.openpgp.PGPEncryptedData;
+import org.bouncycastle.openpgp.PGPEncryptedDataGenerator;
+import org.bouncycastle.openpgp.PGPEncryptedDataList;
+import org.bouncycastle.openpgp.PGPLiteralData;
+import org.bouncycastle.openpgp.PGPLiteralDataGenerator;
+import org.bouncycastle.openpgp.PGPObjectFactory;
+import org.bouncycastle.openpgp.PGPPBEEncryptedData;
+import org.bouncycastle.openpgp.bc.BcPGPObjectFactory;
+import org.bouncycastle.openpgp.operator.bc.BcKeyFingerprintCalculator;
+import org.bouncycastle.openpgp.operator.bc.BcPBEDataDecryptorFactory;
+import org.bouncycastle.openpgp.operator.bc.BcPBEKeyEncryptionMethodGenerator;
+import org.bouncycastle.openpgp.operator.bc.BcPGPDataEncryptorBuilder;
+import org.bouncycastle.openpgp.operator.bc.BcPGPDigestCalculatorProvider;
+import org.bouncycastle.util.encoders.Base64;
+import org.bouncycastle.util.encoders.Hex;
+import org.bouncycastle.util.test.SimpleTest;
+import org.bouncycastle.util.test.UncloseableOutputStream;
 
 public class BcPGPPBETest
     extends SimpleTest

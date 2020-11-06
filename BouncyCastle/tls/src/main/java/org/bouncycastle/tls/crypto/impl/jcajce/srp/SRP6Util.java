@@ -1,10 +1,10 @@
-package com.distrimind.bouncycastle.tls.crypto.impl.jcajce.srp;
+package org.bouncycastle.tls.crypto.impl.jcajce.srp;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
-import com.distrimind.bouncycastle.tls.crypto.TlsHash;
-import com.distrimind.bouncycastle.util.BigIntegers;
+import org.bouncycastle.tls.crypto.TlsHash;
+import org.bouncycastle.util.BigIntegers;
 
 class SRP6Util
 {

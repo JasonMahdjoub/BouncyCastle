@@ -1,14 +1,14 @@
-package com.distrimind.bouncycastle.tls;
+package org.bouncycastle.tls;
 
 import java.io.IOException;
 
-import com.distrimind.bouncycastle.tls.crypto.TlsCrypto;
-import com.distrimind.bouncycastle.tls.crypto.TlsCryptoUtils;
-import com.distrimind.bouncycastle.tls.crypto.TlsNonceGenerator;
-import com.distrimind.bouncycastle.tls.crypto.TlsSecret;
-import com.distrimind.bouncycastle.util.Arrays;
-import com.distrimind.bouncycastle.util.Pack;
-import com.distrimind.bouncycastle.util.Times;
+import org.bouncycastle.tls.crypto.TlsCrypto;
+import org.bouncycastle.tls.crypto.TlsCryptoUtils;
+import org.bouncycastle.tls.crypto.TlsNonceGenerator;
+import org.bouncycastle.tls.crypto.TlsSecret;
+import org.bouncycastle.util.Arrays;
+import org.bouncycastle.util.Pack;
+import org.bouncycastle.util.Times;
 
 abstract class AbstractTlsContext
     implements TlsContext
@@ -53,7 +53,7 @@ abstract class AbstractTlsContext
     {
         if (null != securityParametersHandshake)
         {
-            throw new TlsFatalAlert(AlertDescription.internal_error);
+            throw new TlsFatalAlert(AlertDescription.internal_error, "Handshake already started");
         }
 
         securityParametersHandshake = new SecurityParameters();
@@ -61,9 +61,7 @@ abstract class AbstractTlsContext
 
         if (null != securityParametersConnection)
         {
-            securityParametersHandshake.renegotiating = true;
-            securityParametersHandshake.secureRenegotiation = securityParametersConnection.isSecureRenegotiation();
-            securityParametersHandshake.negotiatedVersion = securityParametersConnection.getNegotiatedVersion();
+            throw new TlsFatalAlert(AlertDescription.internal_error, "Renegotiation not supported");
         }
 
         peer.notifyHandshakeBeginning();
