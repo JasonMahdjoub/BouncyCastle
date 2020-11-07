@@ -1,4 +1,4 @@
-package org.bouncycastle.jsse.provider;
+package com.distrimind.bouncycastle.jsse.provider;
 
 import java.security.AlgorithmParameters;
 import java.util.ArrayList;
@@ -12,14 +12,14 @@ import java.util.TreeMap;
 import java.util.Vector;
 import java.util.logging.Logger;
 
-import org.bouncycastle.jsse.java.security.BCAlgorithmConstraints;
-import org.bouncycastle.jsse.java.security.BCCryptoPrimitive;
-import org.bouncycastle.tls.NamedGroup;
-import org.bouncycastle.tls.ProtocolVersion;
-import org.bouncycastle.tls.TlsUtils;
-import org.bouncycastle.tls.crypto.impl.jcajce.JcaTlsCrypto;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Integers;
+import com.distrimind.bouncycastle.jsse.java.security.BCAlgorithmConstraints;
+import com.distrimind.bouncycastle.jsse.java.security.BCCryptoPrimitive;
+import com.distrimind.bouncycastle.tls.NamedGroup;
+import com.distrimind.bouncycastle.tls.ProtocolVersion;
+import com.distrimind.bouncycastle.tls.TlsUtils;
+import com.distrimind.bouncycastle.tls.crypto.impl.jcajce.JcaTlsCrypto;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Integers;
 
 class NamedGroupInfo
 {
@@ -326,8 +326,8 @@ class NamedGroupInfo
     {
         Map<Integer, NamedGroupInfo> ng = new TreeMap<Integer, NamedGroupInfo>();
 
-        final boolean disableChar2 = PropertyUtils.getBooleanSystemProperty("org.bouncycastle.jsse.ec.disableChar2", false)
-                                  || PropertyUtils.getBooleanSystemProperty("org.bouncycastle.ec.disable_f2m", false);
+        final boolean disableChar2 = PropertyUtils.getBooleanSystemProperty("com.distrimind.bouncycastle.jsse.ec.disableChar2", false)
+                                  || PropertyUtils.getBooleanSystemProperty("com.distrimind.bouncycastle.ec.disable_f2m", false);
 
         final boolean disableFFDHE = !PropertyUtils.getBooleanSystemProperty("jsse.enableFFDHE", true);
 

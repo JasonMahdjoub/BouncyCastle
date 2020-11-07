@@ -1,4 +1,4 @@
-package org.bouncycastle.test.est;
+package com.distrimind.bouncycastle.test.est;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -7,17 +7,17 @@ import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.est.AttrOrOID;
-import org.bouncycastle.asn1.est.CsrAttrs;
-import org.bouncycastle.cert.X509CertificateHolder;
-import org.bouncycastle.est.CSRRequestResponse;
-import org.bouncycastle.est.ESTException;
-import org.bouncycastle.est.ESTService;
-import org.bouncycastle.est.jcajce.JcaJceUtils;
-import org.bouncycastle.est.jcajce.JsseESTServiceBuilder;
-import org.bouncycastle.util.encoders.Base64;
-import org.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.est.AttrOrOID;
+import com.distrimind.bouncycastle.asn1.est.CsrAttrs;
+import com.distrimind.bouncycastle.cert.X509CertificateHolder;
+import com.distrimind.bouncycastle.est.CSRRequestResponse;
+import com.distrimind.bouncycastle.est.ESTException;
+import com.distrimind.bouncycastle.est.ESTService;
+import com.distrimind.bouncycastle.est.jcajce.JcaJceUtils;
+import com.distrimind.bouncycastle.est.jcajce.JsseESTServiceBuilder;
+import com.distrimind.bouncycastle.util.encoders.Base64;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 import org.junit.Assert;
 import org.junit.Test;
 

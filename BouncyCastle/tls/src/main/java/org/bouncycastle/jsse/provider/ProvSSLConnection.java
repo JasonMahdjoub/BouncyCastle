@@ -1,8 +1,8 @@
-package org.bouncycastle.jsse.provider;
+package com.distrimind.bouncycastle.jsse.provider;
 
-import org.bouncycastle.jsse.BCSSLConnection;
-import org.bouncycastle.tls.ChannelBinding;
-import org.bouncycastle.tls.TlsContext;
+import com.distrimind.bouncycastle.jsse.BCSSLConnection;
+import com.distrimind.bouncycastle.tls.ChannelBinding;
+import com.distrimind.bouncycastle.tls.TlsContext;
 
 class ProvSSLConnection
     implements BCSSLConnection

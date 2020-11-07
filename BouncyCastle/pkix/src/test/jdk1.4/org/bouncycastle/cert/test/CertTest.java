@@ -1,4 +1,4 @@
-package org.bouncycastle.cert.test;
+package com.distrimind.bouncycastle.cert.test;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -34,80 +34,77 @@ import java.util.Vector;
 
 import javax.security.auth.x500.X500Principal;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1EncodableVector;
-import org.bouncycastle.asn1.ASN1Enumerated;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.ASN1Enumerated;
-import org.bouncycastle.asn1.DERNull;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.DEROctetString;
-import org.bouncycastle.asn1.DERSequence;
-import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.asn1.pkcs.RSAPublicKey;
-import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.asn1.x500.X500NameBuilder;
-import org.bouncycastle.asn1.x500.style.BCStyle;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x509.AuthorityKeyIdentifier;
-import org.bouncycastle.asn1.x509.CRLReason;
-import org.bouncycastle.asn1.x509.Extension;
-import org.bouncycastle.asn1.x509.ExtensionsGenerator;
-import org.bouncycastle.asn1.x509.GeneralName;
-import org.bouncycastle.asn1.x509.GeneralNames;
-import org.bouncycastle.asn1.x509.IssuingDistributionPoint;
-import org.bouncycastle.asn1.x509.KeyPurposeId;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.asn1.x509.X509CertificateStructure;
-import org.bouncycastle.asn1.x509.Extension;
-import org.bouncycastle.asn1.x509.Extensions;
-import org.bouncycastle.asn1.x9.X9ObjectIdentifiers;
-import org.bouncycastle.cert.CertException;
-import org.bouncycastle.cert.X509CRLEntryHolder;
-import org.bouncycastle.cert.X509CRLHolder;
-import org.bouncycastle.cert.X509CertificateHolder;
-import org.bouncycastle.cert.X509v1CertificateBuilder;
-import org.bouncycastle.cert.X509v2CRLBuilder;
-import org.bouncycastle.cert.X509v3CertificateBuilder;
-import org.bouncycastle.cert.jcajce.JcaX509CRLConverter;
-import org.bouncycastle.cert.jcajce.JcaX509CRLHolder;
-import org.bouncycastle.cert.jcajce.JcaX509CertificateConverter;
-import org.bouncycastle.cert.jcajce.JcaX509CertificateHolder;
-import org.bouncycastle.cert.jcajce.JcaX509ExtensionUtils;
-import org.bouncycastle.cert.jcajce.JcaX509v1CertificateBuilder;
-import org.bouncycastle.cert.jcajce.JcaX509v2CRLBuilder;
-import org.bouncycastle.cert.jcajce.JcaX509v3CertificateBuilder;
-import org.bouncycastle.crypto.params.RSAKeyParameters;
-import org.bouncycastle.crypto.params.RSAPrivateCrtKeyParameters;
-import org.bouncycastle.jce.X509KeyUsage;
-import org.bouncycastle.jce.X509Principal;
-import org.bouncycastle.jce.interfaces.ECPointEncoder;
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.jce.spec.ECParameterSpec;
-import org.bouncycastle.jce.spec.ECPrivateKeySpec;
-import org.bouncycastle.jce.spec.ECPublicKeySpec;
-import org.bouncycastle.jce.spec.GOST3410ParameterSpec;
-import org.bouncycastle.math.ec.ECCurve;
-import org.bouncycastle.operator.ContentSigner;
-import org.bouncycastle.operator.ContentVerifierProvider;
-import org.bouncycastle.operator.DefaultDigestAlgorithmIdentifierFinder;
-import org.bouncycastle.operator.DefaultSignatureAlgorithmIdentifierFinder;
-import org.bouncycastle.operator.bc.BcRSAContentSignerBuilder;
-import org.bouncycastle.operator.bc.BcRSAContentVerifierProviderBuilder;
-import org.bouncycastle.operator.jcajce.JcaContentSignerBuilder;
-import org.bouncycastle.operator.jcajce.JcaContentVerifierProviderBuilder;
-import org.bouncycastle.util.encoders.Base64;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
-import org.bouncycastle.x509.extension.AuthorityKeyIdentifierStructure;
-import org.bouncycastle.x509.extension.X509ExtensionUtil;
-import org.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.asn1.ASN1Encodable;
+import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
+import com.distrimind.bouncycastle.asn1.ASN1Enumerated;
+import com.distrimind.bouncycastle.asn1.ASN1Primitive;
+import com.distrimind.bouncycastle.asn1.DERNull;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.DEROctetString;
+import com.distrimind.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.pkcs.RSAPublicKey;
+import com.distrimind.bouncycastle.asn1.x500.X500Name;
+import com.distrimind.bouncycastle.asn1.x500.X500NameBuilder;
+import com.distrimind.bouncycastle.asn1.x500.style.BCStyle;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.asn1.x509.AuthorityKeyIdentifier;
+import com.distrimind.bouncycastle.asn1.x509.CRLReason;
+import com.distrimind.bouncycastle.asn1.x509.Extension;
+import com.distrimind.bouncycastle.asn1.x509.ExtensionsGenerator;
+import com.distrimind.bouncycastle.asn1.x509.GeneralName;
+import com.distrimind.bouncycastle.asn1.x509.GeneralNames;
+import com.distrimind.bouncycastle.asn1.x509.IssuingDistributionPoint;
+import com.distrimind.bouncycastle.asn1.x509.KeyPurposeId;
+import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
+import com.distrimind.bouncycastle.asn1.x509.X509CertificateStructure;
+import com.distrimind.bouncycastle.asn1.x509.Extensions;
+import com.distrimind.bouncycastle.asn1.x9.X9ObjectIdentifiers;
+import com.distrimind.bouncycastle.cert.CertException;
+import com.distrimind.bouncycastle.cert.X509CRLEntryHolder;
+import com.distrimind.bouncycastle.cert.X509CRLHolder;
+import com.distrimind.bouncycastle.cert.X509CertificateHolder;
+import com.distrimind.bouncycastle.cert.X509v1CertificateBuilder;
+import com.distrimind.bouncycastle.cert.X509v2CRLBuilder;
+import com.distrimind.bouncycastle.cert.X509v3CertificateBuilder;
+import com.distrimind.bouncycastle.cert.jcajce.JcaX509CRLConverter;
+import com.distrimind.bouncycastle.cert.jcajce.JcaX509CRLHolder;
+import com.distrimind.bouncycastle.cert.jcajce.JcaX509CertificateConverter;
+import com.distrimind.bouncycastle.cert.jcajce.JcaX509CertificateHolder;
+import com.distrimind.bouncycastle.cert.jcajce.JcaX509ExtensionUtils;
+import com.distrimind.bouncycastle.cert.jcajce.JcaX509v1CertificateBuilder;
+import com.distrimind.bouncycastle.cert.jcajce.JcaX509v2CRLBuilder;
+import com.distrimind.bouncycastle.cert.jcajce.JcaX509v3CertificateBuilder;
+import com.distrimind.bouncycastle.crypto.params.RSAKeyParameters;
+import com.distrimind.bouncycastle.crypto.params.RSAPrivateCrtKeyParameters;
+import com.distrimind.bouncycastle.jce.X509KeyUsage;
+import com.distrimind.bouncycastle.jce.X509Principal;
+import com.distrimind.bouncycastle.jce.interfaces.ECPointEncoder;
+import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
+import com.distrimind.bouncycastle.jce.spec.ECParameterSpec;
+import com.distrimind.bouncycastle.jce.spec.ECPrivateKeySpec;
+import com.distrimind.bouncycastle.jce.spec.ECPublicKeySpec;
+import com.distrimind.bouncycastle.jce.spec.GOST3410ParameterSpec;
+import com.distrimind.bouncycastle.math.ec.ECCurve;
+import com.distrimind.bouncycastle.operator.ContentSigner;
+import com.distrimind.bouncycastle.operator.ContentVerifierProvider;
+import com.distrimind.bouncycastle.operator.DefaultDigestAlgorithmIdentifierFinder;
+import com.distrimind.bouncycastle.operator.DefaultSignatureAlgorithmIdentifierFinder;
+import com.distrimind.bouncycastle.operator.bc.BcRSAContentSignerBuilder;
+import com.distrimind.bouncycastle.operator.bc.BcRSAContentVerifierProviderBuilder;
+import com.distrimind.bouncycastle.operator.jcajce.JcaContentSignerBuilder;
+import com.distrimind.bouncycastle.operator.jcajce.JcaContentVerifierProviderBuilder;
+import com.distrimind.bouncycastle.util.encoders.Base64;
+import com.distrimind.bouncycastle.util.encoders.Hex;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.x509.extension.AuthorityKeyIdentifierStructure;
+import com.distrimind.bouncycastle.x509.extension.X509ExtensionUtil;
+import com.distrimind.bouncycastle.util.Strings;
 
 public class CertTest
     extends SimpleTest
 {
-    private static final String BC = org.bouncycastle.jce.provider.BouncyCastleProvider.PROVIDER_NAME;
+    private static final String BC = com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider.PROVIDER_NAME;
 
     // test CA
     byte[] testCAp12 = Base64.decode(
@@ -2625,7 +2622,7 @@ public class CertTest
         JcaX509v3CertificateBuilder certGen = new JcaX509v3CertificateBuilder(new X500Name("CN=Test"), BigInteger.valueOf(1), new Date(System.currentTimeMillis() - 50000), new Date(System.currentTimeMillis() + 50000), new X500Name("CN=Test"), pubKey);
         X509Certificate cert = new JcaX509CertificateConverter().setProvider(BC).getCertificate(certGen.build(sigGen));
 
-        org.bouncycastle.asn1.x509.Certificate struct = org.bouncycastle.asn1.x509.Certificate.getInstance(ASN1Primitive.fromByteArray(cert.getEncoded()));
+        com.distrimind.bouncycastle.asn1.x509.Certificate struct = com.distrimind.bouncycastle.asn1.x509.Certificate.getInstance(ASN1Primitive.fromByteArray(cert.getEncoded()));
 
         ASN1Encodable tbsCertificate = struct.getTBSCertificate();
         AlgorithmIdentifier sig = struct.getSignatureAlgorithm();
@@ -2671,7 +2668,7 @@ public class CertTest
                 isTrue(e.getMessage().equals("signature invalid - algorithm identifier mismatch"));
             }
 
-            System.setProperty("org.bouncycastle.x509.allow_absent_equiv_NULL", "true");
+            System.setProperty("com.distrimind.bouncycastle.x509.allow_absent_equiv_NULL", "true");
 
             cert.verify(cert.getPublicKey());
 
@@ -2686,7 +2683,7 @@ public class CertTest
         }
         finally
         {
-            System.setProperty("org.bouncycastle.x509.allow_absent_equiv_NULL", "false");
+            System.setProperty("com.distrimind.bouncycastle.x509.allow_absent_equiv_NULL", "false");
         }
     }
 

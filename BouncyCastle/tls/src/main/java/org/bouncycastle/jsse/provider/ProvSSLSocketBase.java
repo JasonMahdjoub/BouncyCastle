@@ -1,4 +1,4 @@
-package org.bouncycastle.jsse.provider;
+package com.distrimind.bouncycastle.jsse.provider;
 
 import java.io.Closeable;
 import java.io.IOException;
@@ -20,7 +20,7 @@ import javax.net.ssl.HandshakeCompletedListener;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocket;
 
-import org.bouncycastle.jsse.BCSSLSocket;
+import com.distrimind.bouncycastle.jsse.BCSSLSocket;
 
 abstract class ProvSSLSocketBase
     extends SSLSocket

@@ -1,4 +1,4 @@
-package org.bouncycastle.jce.cert;
+package com.distrimind.bouncycastle.jce.cert;
 
 /**
  * A specification of the result of a certification path validator algorithm.<br />

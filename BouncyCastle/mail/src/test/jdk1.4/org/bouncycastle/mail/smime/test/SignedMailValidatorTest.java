@@ -1,4 +1,4 @@
-package org.bouncycastle.mail.smime.test;
+package com.distrimind.bouncycastle.mail.smime.test;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -32,19 +32,19 @@ import javax.mail.internet.MimeMultipart;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1Encoding;
-import org.bouncycastle.asn1.x509.Extension;
-import org.bouncycastle.cert.jcajce.JcaCertStore;
-import org.bouncycastle.cert.jcajce.JcaX509ExtensionUtils;
-import org.bouncycastle.cms.SignerInformation;
-import org.bouncycastle.cms.jcajce.JcaSimpleSignerInfoGeneratorBuilder;
-import org.bouncycastle.i18n.ErrorBundle;
-import org.bouncycastle.mail.smime.SMIMESignedGenerator;
-import org.bouncycastle.mail.smime.validator.SignedMailValidator;
-import org.bouncycastle.util.Store;
-import org.bouncycastle.util.encoders.Base64;
-import org.bouncycastle.x509.PKIXCertPathReviewer;
+import com.distrimind.bouncycastle.asn1.ASN1Encodable;
+import com.distrimind.bouncycastle.asn1.ASN1Encoding;
+import com.distrimind.bouncycastle.asn1.x509.Extension;
+import com.distrimind.bouncycastle.cert.jcajce.JcaCertStore;
+import com.distrimind.bouncycastle.cert.jcajce.JcaX509ExtensionUtils;
+import com.distrimind.bouncycastle.cms.SignerInformation;
+import com.distrimind.bouncycastle.cms.jcajce.JcaSimpleSignerInfoGeneratorBuilder;
+import com.distrimind.bouncycastle.i18n.ErrorBundle;
+import com.distrimind.bouncycastle.mail.smime.SMIMESignedGenerator;
+import com.distrimind.bouncycastle.mail.smime.validator.SignedMailValidator;
+import com.distrimind.bouncycastle.util.Store;
+import com.distrimind.bouncycastle.util.encoders.Base64;
+import com.distrimind.bouncycastle.x509.PKIXCertPathReviewer;
 
 public class SignedMailValidatorTest extends TestCase
 {
@@ -518,7 +518,7 @@ public class SignedMailValidatorTest extends TestCase
         if (Security.getProvider("BC") == null)
         {
             Security
-                    .addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
+                    .addProvider(new com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider());
         }
     }
     

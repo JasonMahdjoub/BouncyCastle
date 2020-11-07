@@ -1,15 +1,15 @@
-package org.bouncycastle.tsp.cms;
+package com.distrimind.bouncycastle.tsp.cms;
 
 import java.net.URL;
 
-import org.bouncycastle.asn1.ASN1Boolean;
-import org.bouncycastle.asn1.DERIA5String;
-import org.bouncycastle.asn1.DERUTF8String;
-import org.bouncycastle.asn1.cms.Attributes;
-import org.bouncycastle.asn1.cms.MetaData;
-import org.bouncycastle.cms.CMSException;
-import org.bouncycastle.operator.DigestCalculator;
-import org.bouncycastle.util.Integers;
+import com.distrimind.bouncycastle.asn1.ASN1Boolean;
+import com.distrimind.bouncycastle.asn1.DERIA5String;
+import com.distrimind.bouncycastle.asn1.DERUTF8String;
+import com.distrimind.bouncycastle.asn1.cms.Attributes;
+import com.distrimind.bouncycastle.asn1.cms.MetaData;
+import com.distrimind.bouncycastle.cms.CMSException;
+import com.distrimind.bouncycastle.operator.DigestCalculator;
+import com.distrimind.bouncycastle.util.Integers;
 
 public class CMSTimeStampedGenerator
 {

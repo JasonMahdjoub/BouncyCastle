@@ -1,4 +1,4 @@
-package org.bouncycastle.tls.crypto;
+package com.distrimind.bouncycastle.tls.crypto;
 
 
 import java.security.SecureRandom;

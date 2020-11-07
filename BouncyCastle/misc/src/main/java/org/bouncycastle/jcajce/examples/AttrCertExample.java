@@ -1,4 +1,4 @@
-package org.bouncycastle.jcajce.examples;
+package com.distrimind.bouncycastle.jcajce.examples;
 
 import java.math.BigInteger;
 import java.security.KeyFactory;
@@ -10,30 +10,30 @@ import java.security.spec.RSAPrivateCrtKeySpec;
 import java.security.spec.RSAPublicKeySpec;
 import java.util.Date;
 
-import org.bouncycastle.asn1.misc.MiscObjectIdentifiers;
-import org.bouncycastle.asn1.misc.NetscapeCertType;
-import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.asn1.x500.X500NameBuilder;
-import org.bouncycastle.asn1.x500.style.BCStyle;
-import org.bouncycastle.asn1.x509.Attribute;
-import org.bouncycastle.asn1.x509.GeneralName;
-import org.bouncycastle.asn1.x509.RoleSyntax;
-import org.bouncycastle.asn1.x509.X509AttributeIdentifiers;
-import org.bouncycastle.cert.AttributeCertificateHolder;
-import org.bouncycastle.cert.AttributeCertificateIssuer;
-import org.bouncycastle.cert.X509AttributeCertificateHolder;
-import org.bouncycastle.cert.X509CertificateHolder;
-import org.bouncycastle.cert.X509v1CertificateBuilder;
-import org.bouncycastle.cert.X509v2AttributeCertificateBuilder;
-import org.bouncycastle.cert.X509v3CertificateBuilder;
-import org.bouncycastle.cert.jcajce.JcaAttributeCertificateIssuer;
-import org.bouncycastle.cert.jcajce.JcaX509CertificateConverter;
-import org.bouncycastle.cert.jcajce.JcaX509CertificateHolder;
-import org.bouncycastle.cert.jcajce.JcaX509v1CertificateBuilder;
-import org.bouncycastle.cert.jcajce.JcaX509v3CertificateBuilder;
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.operator.jcajce.JcaContentSignerBuilder;
-import org.bouncycastle.operator.jcajce.JcaContentVerifierProviderBuilder;
+import com.distrimind.bouncycastle.asn1.misc.MiscObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.misc.NetscapeCertType;
+import com.distrimind.bouncycastle.asn1.x500.X500Name;
+import com.distrimind.bouncycastle.asn1.x500.X500NameBuilder;
+import com.distrimind.bouncycastle.asn1.x500.style.BCStyle;
+import com.distrimind.bouncycastle.asn1.x509.Attribute;
+import com.distrimind.bouncycastle.asn1.x509.GeneralName;
+import com.distrimind.bouncycastle.asn1.x509.RoleSyntax;
+import com.distrimind.bouncycastle.asn1.x509.X509AttributeIdentifiers;
+import com.distrimind.bouncycastle.cert.AttributeCertificateHolder;
+import com.distrimind.bouncycastle.cert.AttributeCertificateIssuer;
+import com.distrimind.bouncycastle.cert.X509AttributeCertificateHolder;
+import com.distrimind.bouncycastle.cert.X509CertificateHolder;
+import com.distrimind.bouncycastle.cert.X509v1CertificateBuilder;
+import com.distrimind.bouncycastle.cert.X509v2AttributeCertificateBuilder;
+import com.distrimind.bouncycastle.cert.X509v3CertificateBuilder;
+import com.distrimind.bouncycastle.cert.jcajce.JcaAttributeCertificateIssuer;
+import com.distrimind.bouncycastle.cert.jcajce.JcaX509CertificateConverter;
+import com.distrimind.bouncycastle.cert.jcajce.JcaX509CertificateHolder;
+import com.distrimind.bouncycastle.cert.jcajce.JcaX509v1CertificateBuilder;
+import com.distrimind.bouncycastle.cert.jcajce.JcaX509v3CertificateBuilder;
+import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
+import com.distrimind.bouncycastle.operator.jcajce.JcaContentSignerBuilder;
+import com.distrimind.bouncycastle.operator.jcajce.JcaContentVerifierProviderBuilder;
 
 /**
  * A simple example that generates an attribute certificate.

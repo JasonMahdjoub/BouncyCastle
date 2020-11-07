@@ -1,11 +1,11 @@
-package org.bouncycastle.jcajce;
+package com.distrimind.bouncycastle.jcajce;
 
 import java.security.cert.CertPathParameters;
 import java.security.cert.CertSelector;
 import java.security.cert.CertStore;
 import java.security.cert.CertStoreParameters;
 import java.security.cert.PKIXParameters;
-import org.bouncycastle.jce.cert.TrustAnchor;
+import com.distrimind.bouncycastle.jce.cert.TrustAnchor;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.bouncycastle.asn1.x509.GeneralName;
+import com.distrimind.bouncycastle.asn1.x509.GeneralName;
 
 /**
  * This class extends the PKIXParameters with a validity model parameter.
@@ -283,7 +283,7 @@ public class PKIXExtendedParameters
      *
      * @return a <code>Selector</code> specifying the constraints on the
      *         target certificate or attribute certificate (or <code>null</code>)
-     * @see org.bouncycastle.jcajce.PKIXCertStoreSelector
+     * @see com.distrimind.bouncycastle.jcajce.PKIXCertStoreSelector
      */
     public PKIXCertStoreSelector getTargetConstraints()
     {

@@ -1,23 +1,23 @@
-package org.bouncycastle.tls.test;
+package com.distrimind.bouncycastle.tls.test;
 
 import java.io.IOException;
 import java.io.PrintStream;
 import java.security.SecureRandom;
 import java.util.Vector;
 
-import org.bouncycastle.tls.AlertDescription;
-import org.bouncycastle.tls.AlertLevel;
-import org.bouncycastle.tls.ChannelBinding;
-import org.bouncycastle.tls.PSKTlsServer;
-import org.bouncycastle.tls.ProtocolName;
-import org.bouncycastle.tls.ProtocolVersion;
-import org.bouncycastle.tls.SignatureAlgorithm;
-import org.bouncycastle.tls.TlsCredentialedDecryptor;
-import org.bouncycastle.tls.TlsCredentialedSigner;
-import org.bouncycastle.tls.TlsPSKIdentityManager;
-import org.bouncycastle.tls.crypto.impl.bc.BcTlsCrypto;
-import org.bouncycastle.util.Strings;
-import org.bouncycastle.util.encoders.Hex;
+import com.distrimind.bouncycastle.tls.AlertDescription;
+import com.distrimind.bouncycastle.tls.AlertLevel;
+import com.distrimind.bouncycastle.tls.ChannelBinding;
+import com.distrimind.bouncycastle.tls.PSKTlsServer;
+import com.distrimind.bouncycastle.tls.ProtocolName;
+import com.distrimind.bouncycastle.tls.ProtocolVersion;
+import com.distrimind.bouncycastle.tls.SignatureAlgorithm;
+import com.distrimind.bouncycastle.tls.TlsCredentialedDecryptor;
+import com.distrimind.bouncycastle.tls.TlsCredentialedSigner;
+import com.distrimind.bouncycastle.tls.TlsPSKIdentityManager;
+import com.distrimind.bouncycastle.tls.crypto.impl.bc.BcTlsCrypto;
+import com.distrimind.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.util.encoders.Hex;
 
 class MockPSKTlsServer
     extends PSKTlsServer

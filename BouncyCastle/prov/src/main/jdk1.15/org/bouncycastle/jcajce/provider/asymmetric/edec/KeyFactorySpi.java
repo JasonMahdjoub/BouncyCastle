@@ -1,4 +1,4 @@
-package org.bouncycastle.jcajce.provider.asymmetric.edec;
+package com.distrimind.bouncycastle.jcajce.provider.asymmetric.edec;
 
 import java.io.IOException;
 import java.security.InvalidKeyException;
@@ -9,26 +9,26 @@ import java.security.spec.InvalidKeySpecException;
 import java.security.spec.KeySpec;
 import java.security.spec.X509EncodedKeySpec;
 
-import org.bouncycastle.asn1.ASN1Encoding;
-import org.bouncycastle.asn1.ASN1InputStream;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1OctetString;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.DEROctetString;
-import org.bouncycastle.asn1.edec.EdECObjectIdentifiers;
-import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.params.Ed25519PrivateKeyParameters;
-import org.bouncycastle.crypto.params.Ed25519PublicKeyParameters;
-import org.bouncycastle.crypto.util.OpenSSHPrivateKeyUtil;
-import org.bouncycastle.crypto.util.OpenSSHPublicKeyUtil;
-import org.bouncycastle.jcajce.provider.asymmetric.util.BaseKeyFactorySpi;
-import org.bouncycastle.jcajce.provider.util.AsymmetricKeyInfoConverter;
-import org.bouncycastle.jcajce.spec.OpenSSHPrivateKeySpec;
-import org.bouncycastle.jcajce.spec.OpenSSHPublicKeySpec;
-import org.bouncycastle.util.encoders.Hex;
+import com.distrimind.bouncycastle.asn1.ASN1Encoding;
+import com.distrimind.bouncycastle.asn1.ASN1InputStream;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.ASN1OctetString;
+import com.distrimind.bouncycastle.asn1.ASN1Sequence;
+import com.distrimind.bouncycastle.asn1.DEROctetString;
+import com.distrimind.bouncycastle.asn1.edec.EdECObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
+import com.distrimind.bouncycastle.crypto.CipherParameters;
+import com.distrimind.bouncycastle.crypto.params.Ed25519PrivateKeyParameters;
+import com.distrimind.bouncycastle.crypto.params.Ed25519PublicKeyParameters;
+import com.distrimind.bouncycastle.crypto.util.OpenSSHPrivateKeyUtil;
+import com.distrimind.bouncycastle.crypto.util.OpenSSHPublicKeyUtil;
+import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.BaseKeyFactorySpi;
+import com.distrimind.bouncycastle.jcajce.provider.util.AsymmetricKeyInfoConverter;
+import com.distrimind.bouncycastle.jcajce.spec.OpenSSHPrivateKeySpec;
+import com.distrimind.bouncycastle.jcajce.spec.OpenSSHPublicKeySpec;
+import com.distrimind.bouncycastle.util.encoders.Hex;
 
 public class KeyFactorySpi
     extends BaseKeyFactorySpi
@@ -102,7 +102,7 @@ public class KeyFactorySpi
                 throw new InvalidKeySpecException(ex.getMessage(), ex.getCause());
             }
         }
-        if (spec.isAssignableFrom(org.bouncycastle.jce.spec.OpenSSHPrivateKeySpec.class) && key instanceof BC15EdDSAPrivateKey)
+        if (spec.isAssignableFrom(com.distrimind.bouncycastle.jce.spec.OpenSSHPrivateKeySpec.class) && key instanceof BC15EdDSAPrivateKey)
         {
             try
             {
@@ -115,7 +115,7 @@ public class KeyFactorySpi
                 DEROctetString val = (DEROctetString)seq.getObjectAt(2);
                 ASN1InputStream in = new ASN1InputStream(val.getOctets());
 
-                return new org.bouncycastle.jce.spec.OpenSSHPrivateKeySpec(OpenSSHPrivateKeyUtil.encodePrivateKey(new Ed25519PrivateKeyParameters(ASN1OctetString.getInstance(in.readObject()).getOctets(), 0)));
+                return new com.distrimind.bouncycastle.jce.spec.OpenSSHPrivateKeySpec(OpenSSHPrivateKeyUtil.encodePrivateKey(new Ed25519PrivateKeyParameters(ASN1OctetString.getInstance(in.readObject()).getOctets(), 0)));
             }
             catch (IOException ex)
             {
@@ -123,11 +123,11 @@ public class KeyFactorySpi
             }
 
         }
-        else if (spec.isAssignableFrom(org.bouncycastle.jce.spec.OpenSSHPublicKeySpec.class) && key instanceof BC15EdDSAPublicKey)
+        else if (spec.isAssignableFrom(com.distrimind.bouncycastle.jce.spec.OpenSSHPublicKeySpec.class) && key instanceof BC15EdDSAPublicKey)
         {
             try
             {
-                return new org.bouncycastle.jce.spec.OpenSSHPublicKeySpec(OpenSSHPublicKeyUtil.encodePublicKey(new Ed25519PublicKeyParameters(key.getEncoded(), Ed25519Prefix.length)));
+                return new com.distrimind.bouncycastle.jce.spec.OpenSSHPublicKeySpec(OpenSSHPublicKeyUtil.encodePublicKey(new Ed25519PublicKeyParameters(key.getEncoded(), Ed25519Prefix.length)));
             }
             catch (IOException ex)
             {

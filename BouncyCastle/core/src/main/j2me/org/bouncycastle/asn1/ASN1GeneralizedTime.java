@@ -1,11 +1,11 @@
-package org.bouncycastle.asn1;
+package com.distrimind.bouncycastle.asn1;
 
 import java.io.IOException;
 import java.util.Date;
 import java.util.TimeZone;
 
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Strings;
 
 /**
  * Generalized time object.

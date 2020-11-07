@@ -1,10 +1,10 @@
-package org.bouncycastle.tls;
+package com.distrimind.bouncycastle.tls;
 
 import java.math.BigInteger;
 import java.util.Vector;
 
-import org.bouncycastle.tls.crypto.DHGroup;
-import org.bouncycastle.tls.crypto.DHStandardGroups;
+import com.distrimind.bouncycastle.tls.crypto.DHGroup;
+import com.distrimind.bouncycastle.tls.crypto.DHStandardGroups;
 
 public class DefaultTlsDHGroupVerifier
     implements TlsDHGroupVerifier

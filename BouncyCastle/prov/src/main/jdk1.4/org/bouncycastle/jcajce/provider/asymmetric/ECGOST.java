@@ -1,15 +1,15 @@
-package org.bouncycastle.jcajce.provider.asymmetric;
+package com.distrimind.bouncycastle.jcajce.provider.asymmetric;
 
-import org.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
-import org.bouncycastle.asn1.rosstandart.RosstandartObjectIdentifiers;
-import org.bouncycastle.jcajce.provider.asymmetric.ecgost.KeyFactorySpi;
-import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
-import org.bouncycastle.jcajce.provider.util.AsymmetricAlgorithmProvider;
+import com.distrimind.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.rosstandart.RosstandartObjectIdentifiers;
+import com.distrimind.bouncycastle.jcajce.provider.asymmetric.ecgost.KeyFactorySpi;
+import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
+import com.distrimind.bouncycastle.jcajce.provider.util.AsymmetricAlgorithmProvider;
 
 public class ECGOST
 {
-    private static final String PREFIX = "org.bouncycastle.jcajce.provider.asymmetric" + ".ecgost.";
-    private static final String PREFIX_GOST_2012 = "org.bouncycastle.jcajce.provider.asymmetric" + ".ecgost12.";
+    private static final String PREFIX = "com.distrimind.bouncycastle.jcajce.provider.asymmetric" + ".ecgost.";
+    private static final String PREFIX_GOST_2012 = "com.distrimind.bouncycastle.jcajce.provider.asymmetric" + ".ecgost12.";
 
     public static class Mappings
         extends AsymmetricAlgorithmProvider

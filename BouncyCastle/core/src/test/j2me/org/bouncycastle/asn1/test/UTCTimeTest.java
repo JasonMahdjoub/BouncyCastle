@@ -1,8 +1,8 @@
-package org.bouncycastle.asn1.test;
+package com.distrimind.bouncycastle.asn1.test;
 
-import org.bouncycastle.asn1.ASN1UTCTime;
-import org.bouncycastle.asn1.DERUTCTime;
-import org.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.asn1.ASN1UTCTime;
+import com.distrimind.bouncycastle.asn1.DERUTCTime;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 /**
  * X.690 test example

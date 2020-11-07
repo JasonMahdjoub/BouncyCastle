@@ -1,12 +1,12 @@
-package org.bouncycastle.jsse.provider;
+package com.distrimind.bouncycastle.jsse.provider;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 
 import javax.net.ssl.X509TrustManager;
 
-import org.bouncycastle.jcajce.util.JcaJceHelper;
-import org.bouncycastle.jsse.BCX509ExtendedTrustManager;
+import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
+import com.distrimind.bouncycastle.jsse.BCX509ExtendedTrustManager;
 
 abstract class X509TrustManagerUtil
 {
@@ -35,7 +35,7 @@ abstract class X509TrustManagerUtil
                 Method[] methods = ReflectionUtil.getMethods("javax.net.ssl.X509ExtendedTrustManager");
                 if (null != methods)
                 {
-                    String className = "org.bouncycastle.jsse.provider.ExportX509TrustManager_7";
+                    String className = "com.distrimind.bouncycastle.jsse.provider.ExportX509TrustManager_7";
 
                     constructor = ReflectionUtil.getDeclaredConstructor(className, BCX509ExtendedTrustManager.class);
                 }
@@ -52,7 +52,7 @@ abstract class X509TrustManagerUtil
             {
                 try
                 {
-                    String className = "org.bouncycastle.jsse.provider.ImportX509TrustManager_7";
+                    String className = "com.distrimind.bouncycastle.jsse.provider.ImportX509TrustManager_7";
 
                     constructor = ReflectionUtil.getDeclaredConstructor(className, x509ExtendedTrustManagerClass);
                 }

@@ -1,4 +1,4 @@
-package org.bouncycastle.x509;
+package com.distrimind.bouncycastle.x509;
 
 import java.io.IOException;
 import java.math.BigInteger;
@@ -16,28 +16,27 @@ import java.security.cert.X509Certificate;
 import java.util.Date;
 import java.util.Iterator;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1EncodableVector;
-import org.bouncycastle.asn1.ASN1InputStream;
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.DERBitString;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.DERSequence;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.asn1.x509.TBSCertificate;
-import org.bouncycastle.asn1.x509.Time;
-import org.bouncycastle.asn1.x509.V3TBSCertificateGenerator;
-import org.bouncycastle.asn1.x509.Certificate;
-import org.bouncycastle.asn1.x509.X509ExtensionsGenerator;
-import org.bouncycastle.asn1.x509.X509Name;
-import org.bouncycastle.jce.provider.X509CertificateObject;
-import org.bouncycastle.x509.extension.X509ExtensionUtil;
+import com.distrimind.bouncycastle.asn1.ASN1Encodable;
+import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
+import com.distrimind.bouncycastle.asn1.ASN1InputStream;
+import com.distrimind.bouncycastle.asn1.ASN1Integer;
+import com.distrimind.bouncycastle.asn1.DERBitString;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
+import com.distrimind.bouncycastle.asn1.x509.TBSCertificate;
+import com.distrimind.bouncycastle.asn1.x509.Time;
+import com.distrimind.bouncycastle.asn1.x509.V3TBSCertificateGenerator;
+import com.distrimind.bouncycastle.asn1.x509.Certificate;
+import com.distrimind.bouncycastle.asn1.x509.X509ExtensionsGenerator;
+import com.distrimind.bouncycastle.asn1.x509.X509Name;
+import com.distrimind.bouncycastle.jce.provider.X509CertificateObject;
+import com.distrimind.bouncycastle.x509.extension.X509ExtensionUtil;
 
 /**
  * class to produce an X.509 Version 3 certificate.
- *  @deprecated use org.bouncycastle.cert.X509v3CertificateBuilder.
+ *  @deprecated use com.distrimind.bouncycastle.cert.X509v3CertificateBuilder.
  */
 public class X509V3CertificateGenerator
 {

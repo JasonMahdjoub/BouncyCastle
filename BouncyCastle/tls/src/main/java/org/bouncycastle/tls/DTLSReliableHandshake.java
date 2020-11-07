@@ -1,4 +1,4 @@
-package org.bouncycastle.tls;
+package com.distrimind.bouncycastle.tls;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -8,7 +8,7 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Vector;
 
-import org.bouncycastle.util.Integers;
+import com.distrimind.bouncycastle.util.Integers;
 
 class DTLSReliableHandshake
 {

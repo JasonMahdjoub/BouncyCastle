@@ -1,23 +1,23 @@
-package org.bouncycastle.cert.crmf;
+package com.distrimind.bouncycastle.cert.crmf;
 
 import java.io.IOException;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.DERUTF8String;
-import org.bouncycastle.asn1.crmf.AttributeTypeAndValue;
-import org.bouncycastle.asn1.crmf.CRMFObjectIdentifiers;
-import org.bouncycastle.asn1.crmf.CertReqMsg;
-import org.bouncycastle.asn1.crmf.CertTemplate;
-import org.bouncycastle.asn1.crmf.Controls;
-import org.bouncycastle.asn1.crmf.PKIArchiveOptions;
-import org.bouncycastle.asn1.crmf.PKMACValue;
-import org.bouncycastle.asn1.crmf.POPOSigningKey;
-import org.bouncycastle.asn1.crmf.ProofOfPossession;
-import org.bouncycastle.cert.CertIOException;
-import org.bouncycastle.operator.ContentVerifier;
-import org.bouncycastle.operator.ContentVerifierProvider;
-import org.bouncycastle.operator.OperatorCreationException;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.ASN1Primitive;
+import com.distrimind.bouncycastle.asn1.DERUTF8String;
+import com.distrimind.bouncycastle.asn1.crmf.AttributeTypeAndValue;
+import com.distrimind.bouncycastle.asn1.crmf.CRMFObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.crmf.CertReqMsg;
+import com.distrimind.bouncycastle.asn1.crmf.CertTemplate;
+import com.distrimind.bouncycastle.asn1.crmf.Controls;
+import com.distrimind.bouncycastle.asn1.crmf.PKIArchiveOptions;
+import com.distrimind.bouncycastle.asn1.crmf.PKMACValue;
+import com.distrimind.bouncycastle.asn1.crmf.POPOSigningKey;
+import com.distrimind.bouncycastle.asn1.crmf.ProofOfPossession;
+import com.distrimind.bouncycastle.cert.CertIOException;
+import com.distrimind.bouncycastle.operator.ContentVerifier;
+import com.distrimind.bouncycastle.operator.ContentVerifierProvider;
+import com.distrimind.bouncycastle.operator.OperatorCreationException;
 
 /**
  * Carrier for a CRMF CertReqMsg.

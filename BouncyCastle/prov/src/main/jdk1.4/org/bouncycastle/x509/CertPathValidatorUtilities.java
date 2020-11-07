@@ -1,4 +1,4 @@
-package org.bouncycastle.x509;
+package com.distrimind.bouncycastle.x509;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -39,45 +39,45 @@ import java.util.Set;
 
 import javax.security.auth.x500.X500Principal;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1Enumerated;
-import org.bouncycastle.asn1.ASN1GeneralizedTime;
-import org.bouncycastle.asn1.ASN1InputStream;
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1OctetString;
-import org.bouncycastle.asn1.ASN1OutputStream;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.DERIA5String;
-import org.bouncycastle.asn1.DERSequence;
-import org.bouncycastle.asn1.isismtt.ISISMTTObjectIdentifiers;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x509.CertificateList;
-import org.bouncycastle.asn1.x509.CRLDistPoint;
-import org.bouncycastle.asn1.x509.CRLReason;
-import org.bouncycastle.asn1.x509.DistributionPoint;
-import org.bouncycastle.asn1.x509.DistributionPointName;
-import org.bouncycastle.asn1.x509.Extension;
-import org.bouncycastle.asn1.x509.GeneralName;
-import org.bouncycastle.asn1.x509.GeneralNames;
-import org.bouncycastle.asn1.x509.IssuingDistributionPoint;
-import org.bouncycastle.asn1.x509.PolicyInformation;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.asn1.x509.X509Extension;
-import org.bouncycastle.jcajce.PKIXCertStoreSelector;
-import org.bouncycastle.jce.X509LDAPCertStoreParameters;
-import org.bouncycastle.jce.exception.ExtCertPathValidatorException;
-import org.bouncycastle.jce.provider.AnnotatedException;
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.jce.provider.PKIXPolicyNode;
-import org.bouncycastle.util.Encodable;
-import org.bouncycastle.util.Integers;
-import org.bouncycastle.util.Selector;
-import org.bouncycastle.util.Store;
-import org.bouncycastle.util.StoreException;
-import org.bouncycastle.jce.provider.X509CRLObject;
-import org.bouncycastle.jce.provider.X509CRLEntryObject;
+import com.distrimind.bouncycastle.asn1.ASN1Encodable;
+import com.distrimind.bouncycastle.asn1.ASN1Enumerated;
+import com.distrimind.bouncycastle.asn1.ASN1GeneralizedTime;
+import com.distrimind.bouncycastle.asn1.ASN1InputStream;
+import com.distrimind.bouncycastle.asn1.ASN1Integer;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.ASN1OctetString;
+import com.distrimind.bouncycastle.asn1.ASN1OutputStream;
+import com.distrimind.bouncycastle.asn1.ASN1Primitive;
+import com.distrimind.bouncycastle.asn1.ASN1Sequence;
+import com.distrimind.bouncycastle.asn1.DERIA5String;
+import com.distrimind.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.asn1.isismtt.ISISMTTObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.asn1.x509.CertificateList;
+import com.distrimind.bouncycastle.asn1.x509.CRLDistPoint;
+import com.distrimind.bouncycastle.asn1.x509.CRLReason;
+import com.distrimind.bouncycastle.asn1.x509.DistributionPoint;
+import com.distrimind.bouncycastle.asn1.x509.DistributionPointName;
+import com.distrimind.bouncycastle.asn1.x509.Extension;
+import com.distrimind.bouncycastle.asn1.x509.GeneralName;
+import com.distrimind.bouncycastle.asn1.x509.GeneralNames;
+import com.distrimind.bouncycastle.asn1.x509.IssuingDistributionPoint;
+import com.distrimind.bouncycastle.asn1.x509.PolicyInformation;
+import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
+import com.distrimind.bouncycastle.asn1.x509.X509Extension;
+import com.distrimind.bouncycastle.jcajce.PKIXCertStoreSelector;
+import com.distrimind.bouncycastle.jce.X509LDAPCertStoreParameters;
+import com.distrimind.bouncycastle.jce.exception.ExtCertPathValidatorException;
+import com.distrimind.bouncycastle.jce.provider.AnnotatedException;
+import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
+import com.distrimind.bouncycastle.jce.provider.PKIXPolicyNode;
+import com.distrimind.bouncycastle.util.Encodable;
+import com.distrimind.bouncycastle.util.Integers;
+import com.distrimind.bouncycastle.util.Selector;
+import com.distrimind.bouncycastle.util.Store;
+import com.distrimind.bouncycastle.util.StoreException;
+import com.distrimind.bouncycastle.jce.provider.X509CRLObject;
+import com.distrimind.bouncycastle.jce.provider.X509CRLEntryObject;
 
 class CertPathValidatorUtilities
 {
@@ -129,7 +129,7 @@ class CertPathValidatorUtilities
      * @param trustAnchors a Set of TrustAnchor's
      * @return the <code>TrustAnchor</code> object if found or
      *         <code>null</code> if not.
-     * @throws org.bouncycastle.jce.provider.AnnotatedException if a TrustAnchor was found but the signature verification
+     * @throws com.distrimind.bouncycastle.jce.provider.AnnotatedException if a TrustAnchor was found but the signature verification
      * on the given certificate has thrown an exception.
      */
     protected static TrustAnchor findTrustAnchor(
@@ -151,7 +151,7 @@ class CertPathValidatorUtilities
      * @param sigProvider  the provider to use for signature verification
      * @return the <code>TrustAnchor</code> object if found or
      *         <code>null</code> if not.
-     * @throws org.bouncycastle.jce.provider.AnnotatedException if a TrustAnchor was found but the signature verification
+     * @throws com.distrimind.bouncycastle.jce.provider.AnnotatedException if a TrustAnchor was found but the signature verification
      * on the given certificate has thrown an exception.
      */
     protected static TrustAnchor findTrustAnchor(
@@ -310,7 +310,7 @@ class CertPathValidatorUtilities
      *
      * @param ext The extension object.
      * @param oid The object identifier to obtain.
-     * @throws org.bouncycastle.jce.provider.AnnotatedException if the extension cannot be read.
+     * @throws com.distrimind.bouncycastle.jce.provider.AnnotatedException if the extension cannot be read.
      */
     protected static ASN1Primitive getExtensionValue(
         java.security.cert.X509Extension ext,
@@ -706,9 +706,9 @@ class CertPathValidatorUtilities
      * Return a Collection of all certificates or attribute certificates found
      * in the X509Store's that are matching the certSelect criteriums.
      *
-     * @param certSelect a {@link org.bouncycastle.util.Selector} object that will be used to select
+     * @param certSelect a {@link com.distrimind.bouncycastle.util.Selector} object that will be used to select
      *                   the certificates
-     * @param certStores a List containing only {@link org.bouncycastle.x509.X509Store} objects. These
+     * @param certStores a List containing only {@link com.distrimind.bouncycastle.x509.X509Store} objects. These
      *                   are used to search for certificates.
      * @return a Collection of all found {@link java.security.cert.X509Certificate} or
      *         {@link X509AttributeCertificate} objects.
@@ -720,7 +720,7 @@ class CertPathValidatorUtilities
     {
         Set certs = new HashSet();
         Iterator iter = certStores.iterator();
-        org.bouncycastle.jcajce.provider.asymmetric.x509.CertificateFactory certFact = new org.bouncycastle.jcajce.provider.asymmetric.x509.CertificateFactory();
+        com.distrimind.bouncycastle.jcajce.provider.asymmetric.x509.CertificateFactory certFact = new com.distrimind.bouncycastle.jcajce.provider.asymmetric.x509.CertificateFactory();
 
         while (iter.hasNext())
         {
@@ -907,7 +907,7 @@ class CertPathValidatorUtilities
      * <p>
      * The <code>issuerPrincipals</code> are a collection with a single
      * <code>X500Principal</code> for <code>X509Certificate</code>s. For
-     * {@link org.bouncycastle.x509.X509AttributeCertificate}s the issuer may contain more than one
+     * {@link com.distrimind.bouncycastle.x509.X509AttributeCertificate}s the issuer may contain more than one
      * <code>X500Principal</code>.
      * </p>
      * @param dp               The distribution point.
@@ -915,7 +915,7 @@ class CertPathValidatorUtilities
      *                         certificate which contains the distribution point.
      * @param selector         The CRL selector.
      * @param pkixParams       The PKIX parameters containing the cert stores.
-     * @throws org.bouncycastle.jce.provider.AnnotatedException if an exception occurs while processing.
+     * @throws com.distrimind.bouncycastle.jce.provider.AnnotatedException if an exception occurs while processing.
      * @throws ClassCastException if <code>issuerPrincipals</code> does not
      * contain only <code>X500Principal</code>s.
      */
@@ -1154,7 +1154,7 @@ class CertPathValidatorUtilities
      * @param paramsPKIX  The extended PKIX parameters.
      * @param completeCRL The complete CRL the delta CRL is for.
      * @return A <code>Set</code> of <code>X509CRL</code>s with delta CRLs.
-     * @throws org.bouncycastle.jce.provider.AnnotatedException if an exception occurs while picking the delta
+     * @throws com.distrimind.bouncycastle.jce.provider.AnnotatedException if an exception occurs while picking the delta
      * CRLs.
      */
     protected static Set getDeltaCRLs(Date currentDate,
@@ -1256,7 +1256,7 @@ class CertPathValidatorUtilities
      * @param paramsPKIX  The extended PKIX parameters.
      * @return A <code>Set</code> of <code>X509CRL</code>s with complete
      *         CRLs.
-     * @throws org.bouncycastle.jce.provider.AnnotatedException if an exception occurs while picking the CRLs
+     * @throws com.distrimind.bouncycastle.jce.provider.AnnotatedException if an exception occurs while picking the CRLs
      * or no CRLs are found.
      */
     protected static Set getCompleteCRLs(DistributionPoint dp, Object cert,
@@ -1398,7 +1398,7 @@ class CertPathValidatorUtilities
      *              which should be extended with DSA parameters.
      * @return The public key of the certificate in list position
      *         <code>index</code> extended with DSA parameters if applicable.
-     * @throws org.bouncycastle.jce.provider.AnnotatedException if DSA parameters cannot be inherited.
+     * @throws com.distrimind.bouncycastle.jce.provider.AnnotatedException if DSA parameters cannot be inherited.
      */
     protected static PublicKey getNextWorkingKey(List certs, int index)
         throws CertPathValidatorException
@@ -1450,7 +1450,7 @@ class CertPathValidatorUtilities
      * @param cert       The certificate for which an issuer should be found.
      * @return A <code>Collection</code> object containing the issuer
      *         <code>X509Certificate</code>s. Never <code>null</code>.
-     * @throws org.bouncycastle.jce.provider.AnnotatedException if an error occurs.
+     * @throws com.distrimind.bouncycastle.jce.provider.AnnotatedException if an error occurs.
      */
     static Collection findIssuerCerts(
         X509Certificate cert,

@@ -1,4 +1,4 @@
-package org.bouncycastle.util;
+package com.distrimind.bouncycastle.util;
 
 public interface StringList
     extends Iterable

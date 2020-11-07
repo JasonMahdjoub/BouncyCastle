@@ -1,4 +1,4 @@
-package org.bouncycastle.jsse.provider;
+package com.distrimind.bouncycastle.jsse.provider;
 
 import java.io.IOException;
 import java.security.Principal;
@@ -11,37 +11,37 @@ import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.jsse.BCSNIHostName;
-import org.bouncycastle.jsse.BCSNIServerName;
-import org.bouncycastle.jsse.BCX509Key;
-import org.bouncycastle.tls.AlertDescription;
-import org.bouncycastle.tls.AlertLevel;
-import org.bouncycastle.tls.CertificateRequest;
-import org.bouncycastle.tls.CertificateStatusRequest;
-import org.bouncycastle.tls.CertificateStatusRequestItemV2;
-import org.bouncycastle.tls.CertificateStatusType;
-import org.bouncycastle.tls.DefaultTlsClient;
-import org.bouncycastle.tls.IdentifierType;
-import org.bouncycastle.tls.OCSPStatusRequest;
-import org.bouncycastle.tls.ProtocolName;
-import org.bouncycastle.tls.ProtocolVersion;
-import org.bouncycastle.tls.SecurityParameters;
-import org.bouncycastle.tls.ServerName;
-import org.bouncycastle.tls.SignatureAlgorithm;
-import org.bouncycastle.tls.SignatureAndHashAlgorithm;
-import org.bouncycastle.tls.TlsAuthentication;
-import org.bouncycastle.tls.TlsCredentials;
-import org.bouncycastle.tls.TlsDHGroupVerifier;
-import org.bouncycastle.tls.TlsFatalAlert;
-import org.bouncycastle.tls.TlsServerCertificate;
-import org.bouncycastle.tls.TlsSession;
-import org.bouncycastle.tls.TlsUtils;
-import org.bouncycastle.tls.TrustedAuthority;
-import org.bouncycastle.tls.crypto.impl.jcajce.JcaTlsCrypto;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.IPAddress;
-import org.bouncycastle.util.encoders.Hex;
+import com.distrimind.bouncycastle.asn1.x500.X500Name;
+import com.distrimind.bouncycastle.jsse.BCSNIHostName;
+import com.distrimind.bouncycastle.jsse.BCSNIServerName;
+import com.distrimind.bouncycastle.jsse.BCX509Key;
+import com.distrimind.bouncycastle.tls.AlertDescription;
+import com.distrimind.bouncycastle.tls.AlertLevel;
+import com.distrimind.bouncycastle.tls.CertificateRequest;
+import com.distrimind.bouncycastle.tls.CertificateStatusRequest;
+import com.distrimind.bouncycastle.tls.CertificateStatusRequestItemV2;
+import com.distrimind.bouncycastle.tls.CertificateStatusType;
+import com.distrimind.bouncycastle.tls.DefaultTlsClient;
+import com.distrimind.bouncycastle.tls.IdentifierType;
+import com.distrimind.bouncycastle.tls.OCSPStatusRequest;
+import com.distrimind.bouncycastle.tls.ProtocolName;
+import com.distrimind.bouncycastle.tls.ProtocolVersion;
+import com.distrimind.bouncycastle.tls.SecurityParameters;
+import com.distrimind.bouncycastle.tls.ServerName;
+import com.distrimind.bouncycastle.tls.SignatureAlgorithm;
+import com.distrimind.bouncycastle.tls.SignatureAndHashAlgorithm;
+import com.distrimind.bouncycastle.tls.TlsAuthentication;
+import com.distrimind.bouncycastle.tls.TlsCredentials;
+import com.distrimind.bouncycastle.tls.TlsDHGroupVerifier;
+import com.distrimind.bouncycastle.tls.TlsFatalAlert;
+import com.distrimind.bouncycastle.tls.TlsServerCertificate;
+import com.distrimind.bouncycastle.tls.TlsSession;
+import com.distrimind.bouncycastle.tls.TlsUtils;
+import com.distrimind.bouncycastle.tls.TrustedAuthority;
+import com.distrimind.bouncycastle.tls.crypto.impl.jcajce.JcaTlsCrypto;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.IPAddress;
+import com.distrimind.bouncycastle.util.encoders.Hex;
 
 class ProvTlsClient
     extends DefaultTlsClient
@@ -54,7 +54,7 @@ class ProvTlsClient
         "jdk.tls.client.enableStatusRequestExtension", true);
 
     private static final boolean provClientEnableTrustedCAKeys = PropertyUtils
-        .getBooleanSystemProperty("org.bouncycastle.jsse.client.enableTrustedCAKeysExtension", false);
+        .getBooleanSystemProperty("com.distrimind.bouncycastle.jsse.client.enableTrustedCAKeysExtension", false);
 
     protected final ProvTlsManager manager;
     protected final ProvSSLParameters sslParameters;

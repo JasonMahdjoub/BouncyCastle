@@ -1,6 +1,6 @@
-package org.bouncycastle.tls;
+package com.distrimind.bouncycastle.tls;
 
-import org.bouncycastle.tls.crypto.DHGroup;
+import com.distrimind.bouncycastle.tls.crypto.DHGroup;
 
 /**
  * Interface for verifying explicit Diffie-Hellman group parameters.

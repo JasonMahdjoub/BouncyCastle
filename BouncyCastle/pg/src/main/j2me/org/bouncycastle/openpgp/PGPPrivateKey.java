@@ -1,10 +1,10 @@
-package org.bouncycastle.openpgp;
+package com.distrimind.bouncycastle.openpgp;
 
-import org.bouncycastle.bcpg.BCPGKey;
-import org.bouncycastle.bcpg.DSASecretBCPGKey;
-import org.bouncycastle.bcpg.ElGamalSecretBCPGKey;
-import org.bouncycastle.bcpg.PublicKeyPacket;
-import org.bouncycastle.bcpg.RSASecretBCPGKey;
+import com.distrimind.bouncycastle.bcpg.BCPGKey;
+import com.distrimind.bouncycastle.bcpg.DSASecretBCPGKey;
+import com.distrimind.bouncycastle.bcpg.ElGamalSecretBCPGKey;
+import com.distrimind.bouncycastle.bcpg.PublicKeyPacket;
+import com.distrimind.bouncycastle.bcpg.RSASecretBCPGKey;
 
 /**
  * general class to contain a private key for use with other openPGP

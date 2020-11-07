@@ -1,13 +1,13 @@
-package org.bouncycastle.x509;
+package com.distrimind.bouncycastle.x509;
 
-import org.bouncycastle.util.Selector;
+import com.distrimind.bouncycastle.util.Selector;
 
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidParameterException;
-import org.bouncycastle.jce.cert.PKIXBuilderParameters;
-import org.bouncycastle.jce.cert.PKIXParameters;
-import org.bouncycastle.jce.cert.TrustAnchor;
-import org.bouncycastle.jce.cert.X509CertSelector;
+import com.distrimind.bouncycastle.jce.cert.PKIXBuilderParameters;
+import com.distrimind.bouncycastle.jce.cert.PKIXParameters;
+import com.distrimind.bouncycastle.jce.cert.TrustAnchor;
+import com.distrimind.bouncycastle.jce.cert.X509CertSelector;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
@@ -16,7 +16,7 @@ import java.util.Set;
  * This class contains extended parameters for PKIX certification path builders.
  * 
  * @see java.security.cert.PKIXBuilderParameters
- * @see org.bouncycastle.jce.provider.PKIXCertPathBuilderSpi
+ * @see com.distrimind.bouncycastle.jce.provider.PKIXCertPathBuilderSpi
  */
 public class ExtendedPKIXBuilderParameters extends ExtendedPKIXParameters
 {
@@ -105,7 +105,7 @@ public class ExtendedPKIXBuilderParameters extends ExtendedPKIXParameters
      * @throws InvalidParameterException if <code>maxPathLength</code> is set
      *             to a value less than -1
      * 
-     * @see org.bouncycastle.jce.provider.PKIXCertPathBuilderSpi
+     * @see com.distrimind.bouncycastle.jce.provider.PKIXCertPathBuilderSpi
      * @see #getMaxPathLength
      */
     public void setMaxPathLength(int maxPathLength)
@@ -137,7 +137,7 @@ public class ExtendedPKIXBuilderParameters extends ExtendedPKIXParameters
      * <code>PKIXBuilderParameters</code>.
      * 
      * @param params Parameters to set.
-     * @see org.bouncycastle.x509.ExtendedPKIXParameters#setParams(java.security.cert.PKIXParameters)
+     * @see com.distrimind.bouncycastle.x509.ExtendedPKIXParameters#setParams(java.security.cert.PKIXParameters)
      */
     protected void setParams(PKIXParameters params)
     {

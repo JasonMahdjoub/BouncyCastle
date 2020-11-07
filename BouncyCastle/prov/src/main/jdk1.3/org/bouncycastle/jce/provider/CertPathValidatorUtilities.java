@@ -1,4 +1,4 @@
-package org.bouncycastle.jce.provider;
+package com.distrimind.bouncycastle.jce.provider;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -8,20 +8,20 @@ import java.security.GeneralSecurityException;
 import java.security.KeyFactory;
 import java.security.PublicKey;
 import java.security.cert.CRLException;
-import org.bouncycastle.jce.cert.CertPath;
-import org.bouncycastle.jce.cert.CertPathBuilderException;
-import org.bouncycastle.jce.cert.CertPathValidatorException;
-import org.bouncycastle.jce.cert.CertStore;
-import org.bouncycastle.jce.cert.CertStoreException;
+import com.distrimind.bouncycastle.jce.cert.CertPath;
+import com.distrimind.bouncycastle.jce.cert.CertPathBuilderException;
+import com.distrimind.bouncycastle.jce.cert.CertPathValidatorException;
+import com.distrimind.bouncycastle.jce.cert.CertStore;
+import com.distrimind.bouncycastle.jce.cert.CertStoreException;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateFactory;
 import java.security.cert.CertificateParsingException;
-import org.bouncycastle.jce.cert.PolicyQualifierInfo;
-import org.bouncycastle.jce.cert.TrustAnchor;
+import com.distrimind.bouncycastle.jce.cert.PolicyQualifierInfo;
+import com.distrimind.bouncycastle.jce.cert.TrustAnchor;
 import java.security.cert.X509CRL;
 import java.security.cert.X509CRLEntry;
-import org.bouncycastle.jce.cert.X509CRLSelector;
-import org.bouncycastle.jce.cert.X509CertSelector;
+import com.distrimind.bouncycastle.jce.cert.X509CRLSelector;
+import com.distrimind.bouncycastle.jce.cert.X509CertSelector;
 import java.security.cert.X509Certificate;
 import java.security.interfaces.DSAParams;
 import java.security.interfaces.DSAPublicKey;
@@ -38,50 +38,50 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.bouncycastle.jce.X509Principal;
+import com.distrimind.bouncycastle.jce.X509Principal;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1Enumerated;
-import org.bouncycastle.asn1.ASN1GeneralizedTime;
-import org.bouncycastle.asn1.ASN1InputStream;
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1OctetString;
-import org.bouncycastle.asn1.ASN1OutputStream;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.ASN1String;
-import org.bouncycastle.asn1.DEROctetString;
-import org.bouncycastle.asn1.DERSequence;
-import org.bouncycastle.asn1.isismtt.ISISMTTObjectIdentifiers;
-import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.asn1.x500.style.RFC4519Style;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x509.AuthorityKeyIdentifier;
-import org.bouncycastle.asn1.x509.CRLDistPoint;
-import org.bouncycastle.asn1.x509.CRLReason;
-import org.bouncycastle.asn1.x509.DistributionPoint;
-import org.bouncycastle.asn1.x509.DistributionPointName;
-import org.bouncycastle.asn1.x509.Extension;
-import org.bouncycastle.asn1.x509.GeneralName;
-import org.bouncycastle.asn1.x509.GeneralNames;
-import org.bouncycastle.asn1.x509.PolicyInformation;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.jcajce.PKIXCRLStore;
-import org.bouncycastle.jcajce.PKIXCRLStoreSelector;
-import org.bouncycastle.jcajce.PKIXCertRevocationCheckerParameters;
-import org.bouncycastle.jcajce.PKIXCertStore;
-import org.bouncycastle.jcajce.PKIXCertStoreSelector;
-import org.bouncycastle.jcajce.PKIXExtendedBuilderParameters;
-import org.bouncycastle.jcajce.PKIXExtendedParameters;
-import org.bouncycastle.jcajce.util.JcaJceHelper;
-import org.bouncycastle.jce.exception.ExtCertPathBuilderException;
-import org.bouncycastle.jce.exception.ExtCertPathValidatorException;
-import org.bouncycastle.util.Properties;
-import org.bouncycastle.util.Selector;
-import org.bouncycastle.util.Store;
-import org.bouncycastle.util.StoreException;
-import org.bouncycastle.x509.X509AttributeCertificate;
+import com.distrimind.bouncycastle.asn1.ASN1Encodable;
+import com.distrimind.bouncycastle.asn1.ASN1Enumerated;
+import com.distrimind.bouncycastle.asn1.ASN1GeneralizedTime;
+import com.distrimind.bouncycastle.asn1.ASN1InputStream;
+import com.distrimind.bouncycastle.asn1.ASN1Integer;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.ASN1OctetString;
+import com.distrimind.bouncycastle.asn1.ASN1OutputStream;
+import com.distrimind.bouncycastle.asn1.ASN1Primitive;
+import com.distrimind.bouncycastle.asn1.ASN1Sequence;
+import com.distrimind.bouncycastle.asn1.ASN1String;
+import com.distrimind.bouncycastle.asn1.DEROctetString;
+import com.distrimind.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.asn1.isismtt.ISISMTTObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.x500.X500Name;
+import com.distrimind.bouncycastle.asn1.x500.style.RFC4519Style;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.asn1.x509.AuthorityKeyIdentifier;
+import com.distrimind.bouncycastle.asn1.x509.CRLDistPoint;
+import com.distrimind.bouncycastle.asn1.x509.CRLReason;
+import com.distrimind.bouncycastle.asn1.x509.DistributionPoint;
+import com.distrimind.bouncycastle.asn1.x509.DistributionPointName;
+import com.distrimind.bouncycastle.asn1.x509.Extension;
+import com.distrimind.bouncycastle.asn1.x509.GeneralName;
+import com.distrimind.bouncycastle.asn1.x509.GeneralNames;
+import com.distrimind.bouncycastle.asn1.x509.PolicyInformation;
+import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
+import com.distrimind.bouncycastle.jcajce.PKIXCRLStore;
+import com.distrimind.bouncycastle.jcajce.PKIXCRLStoreSelector;
+import com.distrimind.bouncycastle.jcajce.PKIXCertRevocationCheckerParameters;
+import com.distrimind.bouncycastle.jcajce.PKIXCertStore;
+import com.distrimind.bouncycastle.jcajce.PKIXCertStoreSelector;
+import com.distrimind.bouncycastle.jcajce.PKIXExtendedBuilderParameters;
+import com.distrimind.bouncycastle.jcajce.PKIXExtendedParameters;
+import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
+import com.distrimind.bouncycastle.jce.exception.ExtCertPathBuilderException;
+import com.distrimind.bouncycastle.jce.exception.ExtCertPathValidatorException;
+import com.distrimind.bouncycastle.util.Properties;
+import com.distrimind.bouncycastle.util.Selector;
+import com.distrimind.bouncycastle.util.Store;
+import com.distrimind.bouncycastle.util.StoreException;
+import com.distrimind.bouncycastle.x509.X509AttributeCertificate;
 
 class CertPathValidatorUtilities
 {
@@ -790,7 +790,7 @@ class CertPathValidatorUtilities
             }
     
             // if the named CRL store is empty, and we're told to check with CRLDP
-            if (stores.isEmpty() && Properties.isOverrideSet("org.bouncycastle.x509.enableCRLDP"))
+            if (stores.isEmpty() && Properties.isOverrideSet("com.distrimind.bouncycastle.x509.enableCRLDP"))
             {
                 CertificateFactory certFact = null;
                 try
@@ -1146,7 +1146,7 @@ class CertPathValidatorUtilities
         Set temp = CRL_UTIL.findCRLs(deltaSelect, validityDate, certStores, pkixCrlStores);
 
         // if the named CRL store is empty, and we're told to check with CRLDP
-        if (temp.isEmpty() && Properties.isOverrideSet("org.bouncycastle.x509.enableCRLDP"))
+        if (temp.isEmpty() && Properties.isOverrideSet("com.distrimind.bouncycastle.x509.enableCRLDP"))
         {
             CertificateFactory certFact = null;
             try

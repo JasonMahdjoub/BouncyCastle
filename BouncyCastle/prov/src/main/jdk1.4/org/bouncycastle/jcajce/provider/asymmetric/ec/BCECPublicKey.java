@@ -1,38 +1,36 @@
-package org.bouncycastle.jcajce.provider.asymmetric.ec;
+package com.distrimind.bouncycastle.jcajce.provider.asymmetric.ec;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1OctetString;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.DERBitString;
-import org.bouncycastle.asn1.DERNull;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.DEROctetString;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.asn1.x9.X962Parameters;
-import org.bouncycastle.asn1.x9.X9ECParameters;
-import org.bouncycastle.asn1.x9.X9ECPoint;
-import org.bouncycastle.asn1.x9.X9IntegerConverter;
-import org.bouncycastle.asn1.x9.X9ObjectIdentifiers;
-import org.bouncycastle.crypto.params.ECDomainParameters;
-import org.bouncycastle.crypto.params.ECPublicKeyParameters;
-import org.bouncycastle.jcajce.provider.asymmetric.util.ECUtil;
-import org.bouncycastle.jcajce.provider.asymmetric.util.KeyUtil;
-import org.bouncycastle.jcajce.provider.config.ProviderConfiguration;
-import org.bouncycastle.jce.interfaces.ECPointEncoder;
-import org.bouncycastle.jce.interfaces.ECPublicKey;
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.jce.spec.ECNamedCurveParameterSpec;
-import org.bouncycastle.jce.spec.ECParameterSpec;
-import org.bouncycastle.jce.spec.ECPublicKeySpec;
-import org.bouncycastle.math.ec.ECCurve;
-import org.bouncycastle.math.ec.ECPoint;
-import org.bouncycastle.util.Strings;
-import org.bouncycastle.jcajce.provider.asymmetric.util.ECUtil;
+import com.distrimind.bouncycastle.asn1.ASN1OctetString;
+import com.distrimind.bouncycastle.asn1.ASN1Primitive;
+import com.distrimind.bouncycastle.asn1.DERBitString;
+import com.distrimind.bouncycastle.asn1.DERNull;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.DEROctetString;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
+import com.distrimind.bouncycastle.asn1.x9.X962Parameters;
+import com.distrimind.bouncycastle.asn1.x9.X9ECParameters;
+import com.distrimind.bouncycastle.asn1.x9.X9ECPoint;
+import com.distrimind.bouncycastle.asn1.x9.X9IntegerConverter;
+import com.distrimind.bouncycastle.asn1.x9.X9ObjectIdentifiers;
+import com.distrimind.bouncycastle.crypto.params.ECDomainParameters;
+import com.distrimind.bouncycastle.crypto.params.ECPublicKeyParameters;
+import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.KeyUtil;
+import com.distrimind.bouncycastle.jcajce.provider.config.ProviderConfiguration;
+import com.distrimind.bouncycastle.jce.interfaces.ECPointEncoder;
+import com.distrimind.bouncycastle.jce.interfaces.ECPublicKey;
+import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
+import com.distrimind.bouncycastle.jce.spec.ECNamedCurveParameterSpec;
+import com.distrimind.bouncycastle.jce.spec.ECParameterSpec;
+import com.distrimind.bouncycastle.jce.spec.ECPublicKeySpec;
+import com.distrimind.bouncycastle.math.ec.ECCurve;
+import com.distrimind.bouncycastle.math.ec.ECPoint;
+import com.distrimind.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.ECUtil;
 
 public class BCECPublicKey
     implements ECPublicKey, ECPointEncoder
@@ -73,7 +71,7 @@ public class BCECPublicKey
         {
             this.ecSpec = null;
 
-            org.bouncycastle.jce.spec.ECParameterSpec s = configuration.getEcImplicitlyCa();
+            com.distrimind.bouncycastle.jce.spec.ECParameterSpec s = configuration.getEcImplicitlyCa();
 
             this.ecPublicKey = new ECPublicKeyParameters(s.getCurve().createPoint(spec.getQ().getAffineXCoord().toBigInteger(), spec.getQ().getAffineYCoord().toBigInteger()), ECUtil.getDomainParameters(configuration, (ECParameterSpec)null));
         }
@@ -258,9 +256,9 @@ public class BCECPublicKey
         return (ECParameterSpec)ecSpec;
     }
     
-    public org.bouncycastle.math.ec.ECPoint getQ()
+    public com.distrimind.bouncycastle.math.ec.ECPoint getQ()
     {
-        org.bouncycastle.math.ec.ECPoint q = ecPublicKey.getQ();
+        com.distrimind.bouncycastle.math.ec.ECPoint q = ecPublicKey.getQ();
         
         if (ecSpec == null)
         {

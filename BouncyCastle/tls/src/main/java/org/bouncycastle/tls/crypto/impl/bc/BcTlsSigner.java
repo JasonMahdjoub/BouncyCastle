@@ -1,9 +1,9 @@
-package org.bouncycastle.tls.crypto.impl.bc;
+package com.distrimind.bouncycastle.tls.crypto.impl.bc;
 
-import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
-import org.bouncycastle.tls.SignatureAndHashAlgorithm;
-import org.bouncycastle.tls.crypto.TlsSigner;
-import org.bouncycastle.tls.crypto.TlsStreamSigner;
+import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
+import com.distrimind.bouncycastle.tls.SignatureAndHashAlgorithm;
+import com.distrimind.bouncycastle.tls.crypto.TlsSigner;
+import com.distrimind.bouncycastle.tls.crypto.TlsStreamSigner;
 
 public abstract class BcTlsSigner
     implements TlsSigner

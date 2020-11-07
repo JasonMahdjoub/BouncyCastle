@@ -1,4 +1,4 @@
-package org.bouncycastle.jce.spec;
+package com.distrimind.bouncycastle.jce.spec;
 
 /**
  * This class specifies a parameter spec for RSA PSS encoding scheme,

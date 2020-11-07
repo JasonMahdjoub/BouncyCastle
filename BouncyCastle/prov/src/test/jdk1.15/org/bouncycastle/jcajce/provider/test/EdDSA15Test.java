@@ -1,4 +1,4 @@
-package org.bouncycastle.jcajce.provider.test;
+package com.distrimind.bouncycastle.jcajce.provider.test;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -11,8 +11,8 @@ import java.security.cert.CertificateFactory;
 import java.util.Base64;
 
 import junit.framework.TestCase;
-import org.bouncycastle.jcajce.interfaces.EdDSAPublicKey;
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import com.distrimind.bouncycastle.jcajce.interfaces.EdDSAPublicKey;
+import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
 
 public class EdDSA15Test
     extends TestCase

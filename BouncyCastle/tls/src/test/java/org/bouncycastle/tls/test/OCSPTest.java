@@ -1,4 +1,4 @@
-package org.bouncycastle.tls.test;
+package com.distrimind.bouncycastle.tls.test;
 
 import java.io.IOException;
 import java.math.BigInteger;
@@ -8,25 +8,25 @@ import java.security.cert.CertificateEncodingException;
 import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 
-import org.bouncycastle.asn1.ocsp.BasicOCSPResponse;
-import org.bouncycastle.asn1.ocsp.OCSPObjectIdentifiers;
-import org.bouncycastle.asn1.ocsp.OCSPResponse;
-import org.bouncycastle.asn1.ocsp.OCSPResponseStatus;
-import org.bouncycastle.cert.X509CertificateHolder;
-import org.bouncycastle.cert.ocsp.BasicOCSPResp;
-import org.bouncycastle.cert.ocsp.CertificateID;
-import org.bouncycastle.cert.ocsp.OCSPException;
-import org.bouncycastle.cert.ocsp.OCSPReqBuilder;
-import org.bouncycastle.cert.ocsp.SingleResp;
-import org.bouncycastle.cert.ocsp.jcajce.JcaCertificateID;
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.operator.DigestCalculator;
-import org.bouncycastle.operator.OperatorCreationException;
-import org.bouncycastle.operator.jcajce.JcaDigestCalculatorProviderBuilder;
-import org.bouncycastle.tls.Certificate;
-import org.bouncycastle.tls.crypto.TlsCertificate;
-import org.bouncycastle.tls.crypto.impl.jcajce.JcaTlsCrypto;
-import org.bouncycastle.tls.crypto.impl.jcajce.JcaTlsCryptoProvider;
+import com.distrimind.bouncycastle.asn1.ocsp.BasicOCSPResponse;
+import com.distrimind.bouncycastle.asn1.ocsp.OCSPObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.ocsp.OCSPResponse;
+import com.distrimind.bouncycastle.asn1.ocsp.OCSPResponseStatus;
+import com.distrimind.bouncycastle.cert.X509CertificateHolder;
+import com.distrimind.bouncycastle.cert.ocsp.BasicOCSPResp;
+import com.distrimind.bouncycastle.cert.ocsp.CertificateID;
+import com.distrimind.bouncycastle.cert.ocsp.OCSPException;
+import com.distrimind.bouncycastle.cert.ocsp.OCSPReqBuilder;
+import com.distrimind.bouncycastle.cert.ocsp.SingleResp;
+import com.distrimind.bouncycastle.cert.ocsp.jcajce.JcaCertificateID;
+import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
+import com.distrimind.bouncycastle.operator.DigestCalculator;
+import com.distrimind.bouncycastle.operator.OperatorCreationException;
+import com.distrimind.bouncycastle.operator.jcajce.JcaDigestCalculatorProviderBuilder;
+import com.distrimind.bouncycastle.tls.Certificate;
+import com.distrimind.bouncycastle.tls.crypto.TlsCertificate;
+import com.distrimind.bouncycastle.tls.crypto.impl.jcajce.JcaTlsCrypto;
+import com.distrimind.bouncycastle.tls.crypto.impl.jcajce.JcaTlsCryptoProvider;
 
 import junit.framework.TestCase;
 

@@ -1,4 +1,4 @@
-package org.bouncycastle.jce.provider;
+package com.distrimind.bouncycastle.jce.provider;
 
 import java.security.Permission;
 import java.util.Collections;
@@ -11,14 +11,14 @@ import java.security.spec.DSAParameterSpec;
 
 import javax.crypto.spec.DHParameterSpec;
 
-import org.bouncycastle.crypto.CryptoServicesRegistrar;
-import org.bouncycastle.crypto.params.DSAParameters;
-import org.bouncycastle.crypto.params.DHParameters;
-import org.bouncycastle.jcajce.spec.DHDomainParameterSpec;
-import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
-import org.bouncycastle.jcajce.provider.config.ProviderConfiguration;
-import org.bouncycastle.jcajce.provider.config.ProviderConfigurationPermission;
-import org.bouncycastle.jce.spec.ECParameterSpec;
+import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
+import com.distrimind.bouncycastle.crypto.params.DSAParameters;
+import com.distrimind.bouncycastle.crypto.params.DHParameters;
+import com.distrimind.bouncycastle.jcajce.spec.DHDomainParameterSpec;
+import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
+import com.distrimind.bouncycastle.jcajce.provider.config.ProviderConfiguration;
+import com.distrimind.bouncycastle.jcajce.provider.config.ProviderConfigurationPermission;
+import com.distrimind.bouncycastle.jce.spec.ECParameterSpec;
 
 class BouncyCastleProviderConfiguration
     implements ProviderConfiguration

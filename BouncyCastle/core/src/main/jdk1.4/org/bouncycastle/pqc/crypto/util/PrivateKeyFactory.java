@@ -1,23 +1,23 @@
-package org.bouncycastle.pqc.crypto.util;
+package com.distrimind.bouncycastle.pqc.crypto.util;
 
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.bouncycastle.asn1.ASN1InputStream;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1OctetString;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.bc.BCObjectIdentifiers;
-import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
-import org.bouncycastle.pqc.asn1.PQCObjectIdentifiers;
-import org.bouncycastle.pqc.asn1.SPHINCS256KeyParams;
-import org.bouncycastle.pqc.crypto.newhope.NHPrivateKeyParameters;
-import org.bouncycastle.pqc.crypto.qtesla.QTESLAPrivateKeyParameters;
-import org.bouncycastle.pqc.crypto.sphincs.SPHINCSPrivateKeyParameters;
+import com.distrimind.bouncycastle.asn1.ASN1InputStream;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.ASN1OctetString;
+import com.distrimind.bouncycastle.asn1.ASN1Primitive;
+import com.distrimind.bouncycastle.asn1.bc.BCObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
+import com.distrimind.bouncycastle.pqc.asn1.PQCObjectIdentifiers;
+import com.distrimind.bouncycastle.pqc.asn1.SPHINCS256KeyParams;
+import com.distrimind.bouncycastle.pqc.crypto.newhope.NHPrivateKeyParameters;
+import com.distrimind.bouncycastle.pqc.crypto.qtesla.QTESLAPrivateKeyParameters;
+import com.distrimind.bouncycastle.pqc.crypto.sphincs.SPHINCSPrivateKeyParameters;
 
-import org.bouncycastle.util.Pack;
+import com.distrimind.bouncycastle.util.Pack;
 
 /**
  * Factory for creating private key objects from PKCS8 PrivateKeyInfo objects.

@@ -1,4 +1,4 @@
-package org.bouncycastle.jcajce.provider.asymmetric.edec;
+package com.distrimind.bouncycastle.jcajce.provider.asymmetric.edec;
 
 import java.security.AlgorithmParameters;
 import java.security.InvalidKeyException;
@@ -9,17 +9,17 @@ import java.security.SignatureException;
 import java.security.interfaces.EdECPrivateKey;
 import java.security.interfaces.EdECPublicKey;
 
-import org.bouncycastle.crypto.CryptoException;
-import org.bouncycastle.crypto.Signer;
-import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
-import org.bouncycastle.crypto.params.Ed25519PrivateKeyParameters;
-import org.bouncycastle.crypto.params.Ed25519PublicKeyParameters;
-import org.bouncycastle.crypto.params.Ed448PrivateKeyParameters;
-import org.bouncycastle.crypto.params.Ed448PublicKeyParameters;
-import org.bouncycastle.crypto.signers.Ed25519Signer;
-import org.bouncycastle.crypto.signers.Ed448Signer;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.BigIntegers;
+import com.distrimind.bouncycastle.crypto.CryptoException;
+import com.distrimind.bouncycastle.crypto.Signer;
+import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
+import com.distrimind.bouncycastle.crypto.params.Ed25519PrivateKeyParameters;
+import com.distrimind.bouncycastle.crypto.params.Ed25519PublicKeyParameters;
+import com.distrimind.bouncycastle.crypto.params.Ed448PrivateKeyParameters;
+import com.distrimind.bouncycastle.crypto.params.Ed448PublicKeyParameters;
+import com.distrimind.bouncycastle.crypto.signers.Ed25519Signer;
+import com.distrimind.bouncycastle.crypto.signers.Ed448Signer;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.BigIntegers;
 
 public class SignatureSpi
     extends java.security.SignatureSpi

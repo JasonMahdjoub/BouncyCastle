@@ -1,8 +1,8 @@
-package org.bouncycastle.tls.crypto;
+package com.distrimind.bouncycastle.tls.crypto;
 
 import java.io.IOException;
 
-import org.bouncycastle.tls.ProtocolVersion;
+import com.distrimind.bouncycastle.tls.ProtocolVersion;
 
 /**
  * Base interface for a TLS cipher suite.

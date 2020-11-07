@@ -1,4 +1,4 @@
-package org.bouncycastle.cms;
+package com.distrimind.bouncycastle.cms;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -6,24 +6,24 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.bouncycastle.asn1.ASN1Encoding;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1Set;
-import org.bouncycastle.asn1.DEROctetString;
-import org.bouncycastle.asn1.DERSet;
-import org.bouncycastle.asn1.cms.AttributeTable;
-import org.bouncycastle.asn1.cms.SignerIdentifier;
-import org.bouncycastle.asn1.cms.SignerInfo;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.cert.X509CertificateHolder;
-import org.bouncycastle.operator.ContentSigner;
-import org.bouncycastle.operator.DefaultDigestAlgorithmIdentifierFinder;
-import org.bouncycastle.operator.DigestAlgorithmIdentifierFinder;
-import org.bouncycastle.operator.DigestCalculator;
-import org.bouncycastle.operator.DigestCalculatorProvider;
-import org.bouncycastle.operator.OperatorCreationException;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.io.TeeOutputStream;
+import com.distrimind.bouncycastle.asn1.ASN1Encoding;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.ASN1Set;
+import com.distrimind.bouncycastle.asn1.DEROctetString;
+import com.distrimind.bouncycastle.asn1.DERSet;
+import com.distrimind.bouncycastle.asn1.cms.AttributeTable;
+import com.distrimind.bouncycastle.asn1.cms.SignerIdentifier;
+import com.distrimind.bouncycastle.asn1.cms.SignerInfo;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.cert.X509CertificateHolder;
+import com.distrimind.bouncycastle.operator.ContentSigner;
+import com.distrimind.bouncycastle.operator.DefaultDigestAlgorithmIdentifierFinder;
+import com.distrimind.bouncycastle.operator.DigestAlgorithmIdentifierFinder;
+import com.distrimind.bouncycastle.operator.DigestCalculator;
+import com.distrimind.bouncycastle.operator.DigestCalculatorProvider;
+import com.distrimind.bouncycastle.operator.OperatorCreationException;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.io.TeeOutputStream;
 
 public class SignerInfoGenerator
 {

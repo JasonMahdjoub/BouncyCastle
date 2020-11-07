@@ -1,14 +1,14 @@
-package org.bouncycastle.jcajce.provider.asymmetric.edec;
+package com.distrimind.bouncycastle.jcajce.provider.asymmetric.edec;
 
 import java.io.IOException;
 import java.security.interfaces.EdECPrivateKey;
 import java.security.spec.NamedParameterSpec;
 import java.util.Optional;
 
-import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
-import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
-import org.bouncycastle.crypto.params.Ed25519PrivateKeyParameters;
-import org.bouncycastle.crypto.params.Ed448PrivateKeyParameters;
+import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
+import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
+import com.distrimind.bouncycastle.crypto.params.Ed25519PrivateKeyParameters;
+import com.distrimind.bouncycastle.crypto.params.Ed448PrivateKeyParameters;
 
 class BC15EdDSAPrivateKey
     extends BCEdDSAPrivateKey

@@ -1,11 +1,11 @@
-package org.bouncycastle.tls.test;
+package com.distrimind.bouncycastle.tls.test;
 
 import java.util.Vector;
 
-import org.bouncycastle.tls.ConnectionEnd;
-import org.bouncycastle.tls.ProtocolVersion;
-import org.bouncycastle.tls.SignatureAndHashAlgorithm;
-import org.bouncycastle.tls.TlsPeer;
+import com.distrimind.bouncycastle.tls.ConnectionEnd;
+import com.distrimind.bouncycastle.tls.ProtocolVersion;
+import com.distrimind.bouncycastle.tls.SignatureAndHashAlgorithm;
+import com.distrimind.bouncycastle.tls.TlsPeer;
 
 public class TlsTestConfig
 {

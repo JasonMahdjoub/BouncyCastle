@@ -1,4 +1,4 @@
-package org.bouncycastle.jsse.provider;
+package com.distrimind.bouncycastle.jsse.provider;
 
 import javax.net.ssl.X509KeyManager;
 

@@ -1,18 +1,18 @@
-package org.bouncycastle.cms.test;
+package com.distrimind.bouncycastle.cms.test;
 
 import java.math.BigInteger;
-import org.bouncycastle.jce.cert.X509CertSelector;
+import com.distrimind.bouncycastle.jce.cert.X509CertSelector;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import org.bouncycastle.asn1.DEROctetString;
-import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.cms.KeyTransRecipientId;
-import org.bouncycastle.cms.SignerId;
-import org.bouncycastle.cms.jcajce.JcaSelectorConverter;
-import org.bouncycastle.cms.jcajce.JcaX509CertSelectorConverter;
-import org.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.asn1.DEROctetString;
+import com.distrimind.bouncycastle.asn1.x500.X500Name;
+import com.distrimind.bouncycastle.cms.KeyTransRecipientId;
+import com.distrimind.bouncycastle.cms.SignerId;
+import com.distrimind.bouncycastle.cms.jcajce.JcaSelectorConverter;
+import com.distrimind.bouncycastle.cms.jcajce.JcaX509CertSelectorConverter;
+import com.distrimind.bouncycastle.util.Arrays;
 
 public class ConverterTest
     extends TestCase

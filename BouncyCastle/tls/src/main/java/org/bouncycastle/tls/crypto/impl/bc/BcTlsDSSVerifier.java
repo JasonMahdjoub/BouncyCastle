@@ -1,12 +1,12 @@
-package org.bouncycastle.tls.crypto.impl.bc;
+package com.distrimind.bouncycastle.tls.crypto.impl.bc;
 
-import org.bouncycastle.crypto.DSA;
-import org.bouncycastle.crypto.Signer;
-import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
-import org.bouncycastle.crypto.signers.DSADigestSigner;
-import org.bouncycastle.tls.DigitallySigned;
-import org.bouncycastle.tls.HashAlgorithm;
-import org.bouncycastle.tls.SignatureAndHashAlgorithm;
+import com.distrimind.bouncycastle.crypto.DSA;
+import com.distrimind.bouncycastle.crypto.Signer;
+import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
+import com.distrimind.bouncycastle.crypto.signers.DSADigestSigner;
+import com.distrimind.bouncycastle.tls.DigitallySigned;
+import com.distrimind.bouncycastle.tls.HashAlgorithm;
+import com.distrimind.bouncycastle.tls.SignatureAndHashAlgorithm;
 
 /**
  * BC light-weight base class for the verifiers supporting the two DSA style algorithms from FIPS PUB 186-4: DSA and ECDSA.

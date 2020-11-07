@@ -1,15 +1,15 @@
-package org.bouncycastle.openpgp;
+package com.distrimind.bouncycastle.openpgp;
 
 import java.io.EOFException;
 import java.io.InputStream;
 
-import org.bouncycastle.bcpg.BCPGInputStream;
-import org.bouncycastle.bcpg.InputStreamPacket;
-import org.bouncycastle.bcpg.SymmetricEncIntegrityPacket;
-import org.bouncycastle.bcpg.SymmetricKeyEncSessionPacket;
-import org.bouncycastle.openpgp.operator.PBEDataDecryptorFactory;
-import org.bouncycastle.openpgp.operator.PGPDataDecryptor;
-import org.bouncycastle.util.io.TeeInputStream;
+import com.distrimind.bouncycastle.bcpg.BCPGInputStream;
+import com.distrimind.bouncycastle.bcpg.InputStreamPacket;
+import com.distrimind.bouncycastle.bcpg.SymmetricEncIntegrityPacket;
+import com.distrimind.bouncycastle.bcpg.SymmetricKeyEncSessionPacket;
+import com.distrimind.bouncycastle.openpgp.operator.PBEDataDecryptorFactory;
+import com.distrimind.bouncycastle.openpgp.operator.PGPDataDecryptor;
+import com.distrimind.bouncycastle.util.io.TeeInputStream;
 
 /**
  * A password based encryption object.

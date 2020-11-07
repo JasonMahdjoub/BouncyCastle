@@ -1,4 +1,4 @@
-package org.bouncycastle.jsse.provider.test;
+package com.distrimind.bouncycastle.jsse.provider.test;
 
 import static org.junit.Assert.fail;
 

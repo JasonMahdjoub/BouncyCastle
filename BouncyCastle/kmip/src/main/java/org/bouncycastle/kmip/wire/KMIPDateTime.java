@@ -1,4 +1,4 @@
-package org.bouncycastle.kmip.wire;
+package com.distrimind.bouncycastle.kmip.wire;
 
 import java.util.Date;
 

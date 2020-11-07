@@ -1,14 +1,14 @@
-package org.bouncycastle.jcajce.provider.asymmetric.rsa;
+package com.distrimind.bouncycastle.jcajce.provider.asymmetric.rsa;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.security.spec.AlgorithmParameterSpec;
 import java.security.spec.InvalidParameterSpecException;
 
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.ASN1Encoding;
-import org.bouncycastle.asn1.pkcs.RSAESOAEPparams;
-import org.bouncycastle.asn1.pkcs.RSASSAPSSparams;
+import com.distrimind.bouncycastle.asn1.ASN1Integer;
+import com.distrimind.bouncycastle.asn1.ASN1Encoding;
+import com.distrimind.bouncycastle.asn1.pkcs.RSAESOAEPparams;
+import com.distrimind.bouncycastle.asn1.pkcs.RSASSAPSSparams;
 
 public abstract class AlgorithmParametersSpi
     extends java.security.AlgorithmParametersSpi
@@ -179,7 +179,7 @@ public abstract class AlgorithmParametersSpi
             try
             {
                 RSASSAPSSparams pssP = RSASSAPSSparams.getInstance(params);
-                String hashName = org.bouncycastle.jcajce.util.MessageDigestUtils.getDigestName(
+                String hashName = com.distrimind.bouncycastle.jcajce.util.MessageDigestUtils.getDigestName(
                     pssP.getHashAlgorithm().getAlgorithm());
 
                 currentSpec = new PSSParamSpec(

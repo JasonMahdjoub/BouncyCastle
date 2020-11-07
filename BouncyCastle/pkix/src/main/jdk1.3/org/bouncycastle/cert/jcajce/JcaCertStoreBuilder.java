@@ -1,4 +1,4 @@
-package org.bouncycastle.cert.jcajce;
+package com.distrimind.bouncycastle.cert.jcajce;
 
 import java.security.GeneralSecurityException;
 import java.security.InvalidAlgorithmParameterException;
@@ -6,16 +6,16 @@ import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.security.Provider;
 import java.security.cert.CRLException;
-import org.bouncycastle.jce.cert.CertStore;
+import com.distrimind.bouncycastle.jce.cert.CertStore;
 import java.security.cert.CertificateException;
-import org.bouncycastle.jce.cert.CollectionCertStoreParameters;
+import com.distrimind.bouncycastle.jce.cert.CollectionCertStoreParameters;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.bouncycastle.cert.X509CRLHolder;
-import org.bouncycastle.cert.X509CertificateHolder;
-import org.bouncycastle.util.Store;
+import com.distrimind.bouncycastle.cert.X509CRLHolder;
+import com.distrimind.bouncycastle.cert.X509CertificateHolder;
+import com.distrimind.bouncycastle.util.Store;
 
 /**
  * Builder to create a CertStore from certificate and CRL stores.

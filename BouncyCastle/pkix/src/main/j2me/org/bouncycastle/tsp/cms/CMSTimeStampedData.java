@@ -1,23 +1,23 @@
-package org.bouncycastle.tsp.cms;
+package com.distrimind.bouncycastle.tsp.cms;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.bouncycastle.asn1.ASN1InputStream;
-import org.bouncycastle.asn1.DERIA5String;
-import org.bouncycastle.asn1.cms.AttributeTable;
-import org.bouncycastle.asn1.cms.CMSObjectIdentifiers;
-import org.bouncycastle.asn1.cms.ContentInfo;
-import org.bouncycastle.asn1.cms.Evidence;
-import org.bouncycastle.asn1.cms.TimeStampAndCRL;
-import org.bouncycastle.asn1.cms.TimeStampTokenEvidence;
-import org.bouncycastle.asn1.cms.TimeStampedData;
-import org.bouncycastle.cms.CMSException;
-import org.bouncycastle.operator.DigestCalculator;
-import org.bouncycastle.operator.DigestCalculatorProvider;
-import org.bouncycastle.operator.OperatorCreationException;
-import org.bouncycastle.tsp.TimeStampToken;
+import com.distrimind.bouncycastle.asn1.ASN1InputStream;
+import com.distrimind.bouncycastle.asn1.DERIA5String;
+import com.distrimind.bouncycastle.asn1.cms.AttributeTable;
+import com.distrimind.bouncycastle.asn1.cms.CMSObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.cms.ContentInfo;
+import com.distrimind.bouncycastle.asn1.cms.Evidence;
+import com.distrimind.bouncycastle.asn1.cms.TimeStampAndCRL;
+import com.distrimind.bouncycastle.asn1.cms.TimeStampTokenEvidence;
+import com.distrimind.bouncycastle.asn1.cms.TimeStampedData;
+import com.distrimind.bouncycastle.cms.CMSException;
+import com.distrimind.bouncycastle.operator.DigestCalculator;
+import com.distrimind.bouncycastle.operator.DigestCalculatorProvider;
+import com.distrimind.bouncycastle.operator.OperatorCreationException;
+import com.distrimind.bouncycastle.tsp.TimeStampToken;
 
 public class CMSTimeStampedData
 {

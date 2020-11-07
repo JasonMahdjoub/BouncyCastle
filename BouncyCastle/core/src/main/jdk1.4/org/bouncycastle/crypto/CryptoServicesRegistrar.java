@@ -1,4 +1,4 @@
-package org.bouncycastle.crypto;
+package com.distrimind.bouncycastle.crypto;
 
 import java.math.BigInteger;
 import java.security.AccessController;
@@ -9,12 +9,12 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.bouncycastle.asn1.x9.X9ECParameters;
-import org.bouncycastle.crypto.params.DHParameters;
-import org.bouncycastle.crypto.params.DHValidationParameters;
-import org.bouncycastle.crypto.params.DSAParameters;
-import org.bouncycastle.crypto.params.DSAValidationParameters;
-import org.bouncycastle.util.encoders.Hex;
+import com.distrimind.bouncycastle.asn1.x9.X9ECParameters;
+import com.distrimind.bouncycastle.crypto.params.DHParameters;
+import com.distrimind.bouncycastle.crypto.params.DHValidationParameters;
+import com.distrimind.bouncycastle.crypto.params.DSAParameters;
+import com.distrimind.bouncycastle.crypto.params.DSAValidationParameters;
+import com.distrimind.bouncycastle.util.encoders.Hex;
 
 /**
  * Basic registrar class for providing defaults for cryptography services in this module.

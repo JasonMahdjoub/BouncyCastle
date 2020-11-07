@@ -1,15 +1,15 @@
-package org.bouncycastle.cert.crmf;
+package com.distrimind.bouncycastle.cert.crmf;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.bouncycastle.asn1.crmf.EncryptedValue;
-import org.bouncycastle.asn1.x509.Certificate;
-import org.bouncycastle.cert.X509CertificateHolder;
-import org.bouncycastle.operator.InputDecryptor;
-import org.bouncycastle.util.Strings;
-import org.bouncycastle.util.io.Streams;
+import com.distrimind.bouncycastle.asn1.crmf.EncryptedValue;
+import com.distrimind.bouncycastle.asn1.x509.Certificate;
+import com.distrimind.bouncycastle.cert.X509CertificateHolder;
+import com.distrimind.bouncycastle.operator.InputDecryptor;
+import com.distrimind.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.util.io.Streams;
 
 /**
  * Parser for EncryptedValue structures.

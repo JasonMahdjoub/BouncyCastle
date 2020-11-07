@@ -1,4 +1,4 @@
-package org.bouncycastle.tls;
+package com.distrimind.bouncycastle.tls;
 
 import java.io.EOFException;
 import java.io.IOException;
@@ -6,10 +6,10 @@ import java.io.InputStream;
 import java.io.InterruptedIOException;
 import java.io.OutputStream;
 
-import org.bouncycastle.tls.crypto.TlsCipher;
-import org.bouncycastle.tls.crypto.TlsDecodeResult;
-import org.bouncycastle.tls.crypto.TlsEncodeResult;
-import org.bouncycastle.tls.crypto.TlsNullNullCipher;
+import com.distrimind.bouncycastle.tls.crypto.TlsCipher;
+import com.distrimind.bouncycastle.tls.crypto.TlsDecodeResult;
+import com.distrimind.bouncycastle.tls.crypto.TlsEncodeResult;
+import com.distrimind.bouncycastle.tls.crypto.TlsNullNullCipher;
 
 /**
  * An implementation of the TLS 1.0/1.1/1.2 record layer.

@@ -1,17 +1,17 @@
-package org.bouncycastle.tls.crypto.impl.bc;
+package com.distrimind.bouncycastle.tls.crypto.impl.bc;
 
 import java.io.IOException;
 
-import org.bouncycastle.crypto.CryptoException;
-import org.bouncycastle.crypto.DSA;
-import org.bouncycastle.crypto.Signer;
-import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
-import org.bouncycastle.crypto.params.ParametersWithRandom;
-import org.bouncycastle.crypto.signers.DSADigestSigner;
-import org.bouncycastle.tls.AlertDescription;
-import org.bouncycastle.tls.HashAlgorithm;
-import org.bouncycastle.tls.SignatureAndHashAlgorithm;
-import org.bouncycastle.tls.TlsFatalAlert;
+import com.distrimind.bouncycastle.crypto.CryptoException;
+import com.distrimind.bouncycastle.crypto.DSA;
+import com.distrimind.bouncycastle.crypto.Signer;
+import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
+import com.distrimind.bouncycastle.crypto.params.ParametersWithRandom;
+import com.distrimind.bouncycastle.crypto.signers.DSADigestSigner;
+import com.distrimind.bouncycastle.tls.AlertDescription;
+import com.distrimind.bouncycastle.tls.HashAlgorithm;
+import com.distrimind.bouncycastle.tls.SignatureAndHashAlgorithm;
+import com.distrimind.bouncycastle.tls.TlsFatalAlert;
 
 /**
  * BC light-weight base class for the signers implementing the two DSA style algorithms from FIPS PUB 186-4: DSA and ECDSA.

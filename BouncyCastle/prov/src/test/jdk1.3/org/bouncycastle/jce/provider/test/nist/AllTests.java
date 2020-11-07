@@ -1,4 +1,4 @@
-package org.bouncycastle.jce.provider.test.nist;
+package com.distrimind.bouncycastle.jce.provider.test.nist;
 
 import java.security.Security;
 
@@ -6,7 +6,7 @@ import junit.extensions.TestSetup;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
 
 public class AllTests
     extends TestCase

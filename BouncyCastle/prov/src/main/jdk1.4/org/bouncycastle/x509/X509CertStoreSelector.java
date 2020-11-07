@@ -1,6 +1,6 @@
-package org.bouncycastle.x509;
+package com.distrimind.bouncycastle.x509;
 
-import org.bouncycastle.util.Selector;
+import com.distrimind.bouncycastle.util.Selector;
 
 import java.io.IOException;
 import java.security.cert.Certificate;
@@ -10,9 +10,9 @@ import java.security.cert.X509Certificate;
 /**
  * This class is a Selector implementation for X.509 certificates.
  * 
- * @see org.bouncycastle.util.Selector
- * @see org.bouncycastle.x509.X509Store
- * @see org.bouncycastle.jce.provider.X509StoreCertCollection
+ * @see com.distrimind.bouncycastle.util.Selector
+ * @see com.distrimind.bouncycastle.x509.X509Store
+ * @see com.distrimind.bouncycastle.jce.provider.X509StoreCertCollection
  */
 public class X509CertStoreSelector
     extends X509CertSelector

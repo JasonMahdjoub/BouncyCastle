@@ -1,17 +1,17 @@
-package org.bouncycastle.math.ec;
+package com.distrimind.bouncycastle.math.ec;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.util.Hashtable;
 import java.util.Random;
 
-import org.bouncycastle.math.ec.endo.ECEndomorphism;
-import org.bouncycastle.math.ec.endo.GLVEndomorphism;
-import org.bouncycastle.math.field.FiniteField;
-import org.bouncycastle.math.field.FiniteFields;
-import org.bouncycastle.math.raw.Nat;
-import org.bouncycastle.util.BigIntegers;
-import org.bouncycastle.util.Integers;
+import com.distrimind.bouncycastle.math.ec.endo.ECEndomorphism;
+import com.distrimind.bouncycastle.math.ec.endo.GLVEndomorphism;
+import com.distrimind.bouncycastle.math.field.FiniteField;
+import com.distrimind.bouncycastle.math.field.FiniteFields;
+import com.distrimind.bouncycastle.math.raw.Nat;
+import com.distrimind.bouncycastle.util.BigIntegers;
+import com.distrimind.bouncycastle.util.Integers;
 
 /**
  * base class for an elliptic curve

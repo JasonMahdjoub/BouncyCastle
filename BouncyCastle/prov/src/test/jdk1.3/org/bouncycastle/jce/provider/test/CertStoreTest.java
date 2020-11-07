@@ -1,24 +1,24 @@
-package org.bouncycastle.jce.provider.test;
+package com.distrimind.bouncycastle.jce.provider.test;
  
 import java.io.ByteArrayInputStream;
 import java.security.Security;
 
-import org.bouncycastle.jce.PrincipalUtil;
-import org.bouncycastle.jce.cert.CertStore;
+import com.distrimind.bouncycastle.jce.PrincipalUtil;
+import com.distrimind.bouncycastle.jce.cert.CertStore;
 import java.security.cert.CertificateFactory;
-import org.bouncycastle.jce.cert.CollectionCertStoreParameters;
+import com.distrimind.bouncycastle.jce.cert.CollectionCertStoreParameters;
 import java.security.cert.X509CRL;
-import org.bouncycastle.jce.cert.X509CRLSelector;
-import org.bouncycastle.jce.cert.X509CertSelector;
+import com.distrimind.bouncycastle.jce.cert.X509CRLSelector;
+import com.distrimind.bouncycastle.jce.cert.X509CertSelector;
 import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.test.SimpleTestResult;
-import org.bouncycastle.util.test.Test;
-import org.bouncycastle.util.test.TestResult;
+import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
+import com.distrimind.bouncycastle.util.test.SimpleTestResult;
+import com.distrimind.bouncycastle.util.test.Test;
+import com.distrimind.bouncycastle.util.test.TestResult;
 
 public class CertStoreTest
     implements Test

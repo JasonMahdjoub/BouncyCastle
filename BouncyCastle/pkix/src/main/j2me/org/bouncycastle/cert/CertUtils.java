@@ -1,4 +1,4 @@
-package org.bouncycastle.cert;
+package com.distrimind.bouncycastle.cert;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -10,25 +10,25 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1EncodableVector;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.DERBitString;
-import org.bouncycastle.asn1.ASN1GeneralizedTime;
-import org.bouncycastle.asn1.DERNull;
-import org.bouncycastle.asn1.ASN1Encoding;
-import org.bouncycastle.asn1.ASN1OutputStream;
-import org.bouncycastle.asn1.DERSequence;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x509.AttributeCertificate;
-import org.bouncycastle.asn1.x509.AttributeCertificateInfo;
-import org.bouncycastle.asn1.x509.Certificate;
-import org.bouncycastle.asn1.x509.CertificateList;
-import org.bouncycastle.asn1.x509.Extensions;
-import org.bouncycastle.asn1.x509.ExtensionsGenerator;
-import org.bouncycastle.asn1.x509.TBSCertList;
-import org.bouncycastle.asn1.x509.TBSCertificate;
-import org.bouncycastle.operator.ContentSigner;
+import com.distrimind.bouncycastle.asn1.ASN1Encodable;
+import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.DERBitString;
+import com.distrimind.bouncycastle.asn1.ASN1GeneralizedTime;
+import com.distrimind.bouncycastle.asn1.DERNull;
+import com.distrimind.bouncycastle.asn1.ASN1Encoding;
+import com.distrimind.bouncycastle.asn1.ASN1OutputStream;
+import com.distrimind.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.asn1.x509.AttributeCertificate;
+import com.distrimind.bouncycastle.asn1.x509.AttributeCertificateInfo;
+import com.distrimind.bouncycastle.asn1.x509.Certificate;
+import com.distrimind.bouncycastle.asn1.x509.CertificateList;
+import com.distrimind.bouncycastle.asn1.x509.Extensions;
+import com.distrimind.bouncycastle.asn1.x509.ExtensionsGenerator;
+import com.distrimind.bouncycastle.asn1.x509.TBSCertList;
+import com.distrimind.bouncycastle.asn1.x509.TBSCertificate;
+import com.distrimind.bouncycastle.operator.ContentSigner;
 
 class CertUtils
 {

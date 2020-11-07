@@ -1,4 +1,4 @@
-package org.bouncycastle.asn1;
+package com.distrimind.bouncycastle.asn1;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -6,7 +6,7 @@ import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Arrays;
 
 /**
  * Class representing the ASN.1 OBJECT IDENTIFIER type.

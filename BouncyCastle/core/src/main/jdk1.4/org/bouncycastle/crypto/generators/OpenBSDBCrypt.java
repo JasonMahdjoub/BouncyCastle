@@ -1,12 +1,12 @@
-package org.bouncycastle.crypto.generators;
+package com.distrimind.bouncycastle.crypto.generators;
 
 import java.io.ByteArrayOutputStream;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.bouncycastle.crypto.DataLengthException;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.crypto.DataLengthException;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Strings;
 
 /**
  * Password hashing scheme BCrypt,

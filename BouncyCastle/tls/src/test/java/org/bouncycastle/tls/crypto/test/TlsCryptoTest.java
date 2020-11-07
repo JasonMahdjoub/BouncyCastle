@@ -1,25 +1,25 @@
-package org.bouncycastle.tls.crypto.test;
+package com.distrimind.bouncycastle.tls.crypto.test;
 
 import java.io.IOException;
 
-import org.bouncycastle.tls.DefaultTlsDHGroupVerifier;
-import org.bouncycastle.tls.HashAlgorithm;
-import org.bouncycastle.tls.NamedGroup;
-import org.bouncycastle.tls.TlsDHUtils;
-import org.bouncycastle.tls.TlsUtils;
-import org.bouncycastle.tls.crypto.DHGroup;
-import org.bouncycastle.tls.crypto.TlsAgreement;
-import org.bouncycastle.tls.crypto.TlsCrypto;
-import org.bouncycastle.tls.crypto.TlsCryptoUtils;
-import org.bouncycastle.tls.crypto.TlsDHConfig;
-import org.bouncycastle.tls.crypto.TlsDHDomain;
-import org.bouncycastle.tls.crypto.TlsECConfig;
-import org.bouncycastle.tls.crypto.TlsECDomain;
-import org.bouncycastle.tls.crypto.TlsHMAC;
-import org.bouncycastle.tls.crypto.TlsHash;
-import org.bouncycastle.tls.crypto.TlsSecret;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.encoders.Hex;
+import com.distrimind.bouncycastle.tls.DefaultTlsDHGroupVerifier;
+import com.distrimind.bouncycastle.tls.HashAlgorithm;
+import com.distrimind.bouncycastle.tls.NamedGroup;
+import com.distrimind.bouncycastle.tls.TlsDHUtils;
+import com.distrimind.bouncycastle.tls.TlsUtils;
+import com.distrimind.bouncycastle.tls.crypto.DHGroup;
+import com.distrimind.bouncycastle.tls.crypto.TlsAgreement;
+import com.distrimind.bouncycastle.tls.crypto.TlsCrypto;
+import com.distrimind.bouncycastle.tls.crypto.TlsCryptoUtils;
+import com.distrimind.bouncycastle.tls.crypto.TlsDHConfig;
+import com.distrimind.bouncycastle.tls.crypto.TlsDHDomain;
+import com.distrimind.bouncycastle.tls.crypto.TlsECConfig;
+import com.distrimind.bouncycastle.tls.crypto.TlsECDomain;
+import com.distrimind.bouncycastle.tls.crypto.TlsHMAC;
+import com.distrimind.bouncycastle.tls.crypto.TlsHash;
+import com.distrimind.bouncycastle.tls.crypto.TlsSecret;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.encoders.Hex;
 
 import junit.framework.TestCase;
 

@@ -1,4 +1,4 @@
-package org.bouncycastle.crypto.agreement.jpake;
+package com.distrimind.bouncycastle.crypto.agreement.jpake;
 
 import java.math.BigInteger;
 

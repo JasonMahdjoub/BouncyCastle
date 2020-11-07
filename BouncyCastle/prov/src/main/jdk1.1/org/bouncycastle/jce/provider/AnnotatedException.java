@@ -1,4 +1,4 @@
-package org.bouncycastle.jce.provider;
+package com.distrimind.bouncycastle.jce.provider;
 
 public class AnnotatedException
     extends Exception

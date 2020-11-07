@@ -1,15 +1,15 @@
-package org.bouncycastle.tls;
+package com.distrimind.bouncycastle.tls;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.math.BigInteger;
 
-import org.bouncycastle.tls.crypto.DHGroup;
-import org.bouncycastle.tls.crypto.DHStandardGroups;
-import org.bouncycastle.tls.crypto.TlsDHConfig;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.BigIntegers;
+import com.distrimind.bouncycastle.tls.crypto.DHGroup;
+import com.distrimind.bouncycastle.tls.crypto.DHStandardGroups;
+import com.distrimind.bouncycastle.tls.crypto.TlsDHConfig;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.BigIntegers;
 
 public class TlsDHUtils
 {

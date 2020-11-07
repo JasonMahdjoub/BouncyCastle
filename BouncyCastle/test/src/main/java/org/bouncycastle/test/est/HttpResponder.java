@@ -1,4 +1,4 @@
-package org.bouncycastle.test.est;
+package com.distrimind.bouncycastle.test.est;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
@@ -29,8 +29,8 @@ import javax.net.ssl.SSLServerSocket;
 import javax.net.ssl.SSLServerSocketFactory;
 import javax.security.cert.X509Certificate;
 
-import org.bouncycastle.cert.X509CertificateHolder;
-import org.bouncycastle.util.io.pem.PemReader;
+import com.distrimind.bouncycastle.cert.X509CertificateHolder;
+import com.distrimind.bouncycastle.util.io.pem.PemReader;
 
 /**
  * Accept a connection and responds with a pre baked message.

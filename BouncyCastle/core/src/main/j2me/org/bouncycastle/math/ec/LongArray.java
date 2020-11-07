@@ -1,6 +1,6 @@
-package org.bouncycastle.math.ec;
+package com.distrimind.bouncycastle.math.ec;
 
-import org.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Arrays;
 
 import java.math.BigInteger;
 

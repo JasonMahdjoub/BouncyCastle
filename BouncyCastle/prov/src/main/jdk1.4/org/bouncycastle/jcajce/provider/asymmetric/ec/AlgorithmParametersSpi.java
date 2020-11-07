@@ -1,20 +1,20 @@
-package org.bouncycastle.jcajce.provider.asymmetric.ec;
+package com.distrimind.bouncycastle.jcajce.provider.asymmetric.ec;
 
 import java.io.IOException;
 import java.security.spec.AlgorithmParameterSpec;
-import org.bouncycastle.jce.spec.ECNamedCurveGenParameterSpec;
-import org.bouncycastle.jce.spec.ECNamedCurveParameterSpec;
-import org.bouncycastle.jce.spec.ECParameterSpec;
+import com.distrimind.bouncycastle.jce.spec.ECNamedCurveGenParameterSpec;
+import com.distrimind.bouncycastle.jce.spec.ECNamedCurveParameterSpec;
+import com.distrimind.bouncycastle.jce.spec.ECParameterSpec;
 import java.security.spec.InvalidParameterSpecException;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.DERNull;
-import org.bouncycastle.asn1.x9.ECNamedCurveTable;
-import org.bouncycastle.asn1.x9.X962Parameters;
-import org.bouncycastle.asn1.x9.X9ECParameters;
-import org.bouncycastle.asn1.x9.X9ECPoint;
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.math.ec.ECCurve;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.DERNull;
+import com.distrimind.bouncycastle.asn1.x9.ECNamedCurveTable;
+import com.distrimind.bouncycastle.asn1.x9.X962Parameters;
+import com.distrimind.bouncycastle.asn1.x9.X9ECParameters;
+import com.distrimind.bouncycastle.asn1.x9.X9ECPoint;
+import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
+import com.distrimind.bouncycastle.math.ec.ECCurve;
 
 public class AlgorithmParametersSpi
     extends java.security.AlgorithmParametersSpi

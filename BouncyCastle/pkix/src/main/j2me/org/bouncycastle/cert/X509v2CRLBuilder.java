@@ -1,22 +1,22 @@
-package org.bouncycastle.cert;
+package com.distrimind.bouncycastle.cert;
 
 import java.math.BigInteger;
 import java.util.Date;
 import java.util.Enumeration;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1GeneralizedTime;
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.asn1.x509.Extensions;
-import org.bouncycastle.asn1.x509.ExtensionsGenerator;
-import org.bouncycastle.asn1.x509.TBSCertList;
-import org.bouncycastle.asn1.x509.Time;
-import org.bouncycastle.asn1.x509.V2TBSCertListGenerator;
-import org.bouncycastle.asn1.x509.X509Extensions;
-import org.bouncycastle.operator.ContentSigner;
+import com.distrimind.bouncycastle.asn1.ASN1Encodable;
+import com.distrimind.bouncycastle.asn1.ASN1GeneralizedTime;
+import com.distrimind.bouncycastle.asn1.ASN1Integer;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.ASN1Sequence;
+import com.distrimind.bouncycastle.asn1.x500.X500Name;
+import com.distrimind.bouncycastle.asn1.x509.Extensions;
+import com.distrimind.bouncycastle.asn1.x509.ExtensionsGenerator;
+import com.distrimind.bouncycastle.asn1.x509.TBSCertList;
+import com.distrimind.bouncycastle.asn1.x509.Time;
+import com.distrimind.bouncycastle.asn1.x509.V2TBSCertListGenerator;
+import com.distrimind.bouncycastle.asn1.x509.X509Extensions;
+import com.distrimind.bouncycastle.operator.ContentSigner;
 
 /**
  * class to produce an X.509 Version 2 CRL.

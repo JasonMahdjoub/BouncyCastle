@@ -1,12 +1,12 @@
-package org.bouncycastle.tls.crypto.impl.jcajce;
+package com.distrimind.bouncycastle.tls.crypto.impl.jcajce;
 
 import java.security.Provider;
 import java.security.Security;
 
-import org.bouncycastle.tls.HashAlgorithm;
-import org.bouncycastle.tls.SignatureAlgorithm;
-import org.bouncycastle.tls.SignatureAndHashAlgorithm;
-import org.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.tls.HashAlgorithm;
+import com.distrimind.bouncycastle.tls.SignatureAlgorithm;
+import com.distrimind.bouncycastle.tls.SignatureAndHashAlgorithm;
+import com.distrimind.bouncycastle.util.Strings;
 
 class JcaUtils
 {

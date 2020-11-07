@@ -1,4 +1,4 @@
-package org.bouncycastle.tls;
+package com.distrimind.bouncycastle.tls;
 
 /**
  * Base interface for an object sending and receiving DTLS data.

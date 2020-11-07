@@ -1,17 +1,17 @@
-package org.bouncycastle.tls.crypto.impl.bc;
+package com.distrimind.bouncycastle.tls.crypto.impl.bc;
 
-import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.macs.HMac;
-import org.bouncycastle.crypto.params.KeyParameter;
-import org.bouncycastle.tls.HashAlgorithm;
-import org.bouncycastle.tls.PRFAlgorithm;
-import org.bouncycastle.tls.TlsUtils;
-import org.bouncycastle.tls.crypto.TlsCryptoUtils;
-import org.bouncycastle.tls.crypto.TlsSecret;
-import org.bouncycastle.tls.crypto.impl.AbstractTlsCrypto;
-import org.bouncycastle.tls.crypto.impl.AbstractTlsSecret;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.crypto.Digest;
+import com.distrimind.bouncycastle.crypto.macs.HMac;
+import com.distrimind.bouncycastle.crypto.params.KeyParameter;
+import com.distrimind.bouncycastle.tls.HashAlgorithm;
+import com.distrimind.bouncycastle.tls.PRFAlgorithm;
+import com.distrimind.bouncycastle.tls.TlsUtils;
+import com.distrimind.bouncycastle.tls.crypto.TlsCryptoUtils;
+import com.distrimind.bouncycastle.tls.crypto.TlsSecret;
+import com.distrimind.bouncycastle.tls.crypto.impl.AbstractTlsCrypto;
+import com.distrimind.bouncycastle.tls.crypto.impl.AbstractTlsSecret;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Strings;
 
 /**
  * BC light-weight support class for handling TLS secrets and deriving key material and other secrets from them.

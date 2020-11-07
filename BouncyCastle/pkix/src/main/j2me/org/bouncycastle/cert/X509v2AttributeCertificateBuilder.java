@@ -1,18 +1,18 @@
-package org.bouncycastle.cert;
+package com.distrimind.bouncycastle.cert;
 
 import java.math.BigInteger;
 import java.util.Date;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1GeneralizedTime;
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.DERSet;
-import org.bouncycastle.asn1.x509.AttCertIssuer;
-import org.bouncycastle.asn1.x509.Attribute;
-import org.bouncycastle.asn1.x509.ExtensionsGenerator;
-import org.bouncycastle.asn1.x509.V2AttributeCertificateInfoGenerator;
-import org.bouncycastle.operator.ContentSigner;
+import com.distrimind.bouncycastle.asn1.ASN1Encodable;
+import com.distrimind.bouncycastle.asn1.ASN1GeneralizedTime;
+import com.distrimind.bouncycastle.asn1.ASN1Integer;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.DERSet;
+import com.distrimind.bouncycastle.asn1.x509.AttCertIssuer;
+import com.distrimind.bouncycastle.asn1.x509.Attribute;
+import com.distrimind.bouncycastle.asn1.x509.ExtensionsGenerator;
+import com.distrimind.bouncycastle.asn1.x509.V2AttributeCertificateInfoGenerator;
+import com.distrimind.bouncycastle.operator.ContentSigner;
 
 /**
  * class to produce an X.509 Version 2 AttributeCertificate.

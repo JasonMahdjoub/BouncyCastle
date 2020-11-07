@@ -1,4 +1,4 @@
-package org.bouncycastle.tls;
+package com.distrimind.bouncycastle.tls;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -8,11 +8,11 @@ import java.io.OutputStream;
 import java.util.Hashtable;
 import java.util.Vector;
 
-import org.bouncycastle.tls.crypto.TlsAgreement;
-import org.bouncycastle.tls.crypto.TlsCrypto;
-import org.bouncycastle.tls.crypto.TlsDHConfig;
-import org.bouncycastle.tls.crypto.TlsECConfig;
-import org.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.tls.crypto.TlsAgreement;
+import com.distrimind.bouncycastle.tls.crypto.TlsCrypto;
+import com.distrimind.bouncycastle.tls.crypto.TlsDHConfig;
+import com.distrimind.bouncycastle.tls.crypto.TlsECConfig;
+import com.distrimind.bouncycastle.util.Arrays;
 
 public class TlsServerProtocol
     extends TlsProtocol

@@ -1,4 +1,4 @@
-package org.bouncycastle.jce.provider.test;
+package com.distrimind.bouncycastle.jce.provider.test;
 
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
@@ -6,12 +6,12 @@ import java.security.SecureRandom;
 import java.security.Security;
 import java.security.Signature;
 
-import org.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.jce.spec.ECNamedCurveGenParameterSpec;
-import org.bouncycastle.jce.spec.GOST3410ParameterSpec;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
+import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
+import com.distrimind.bouncycastle.jce.spec.ECNamedCurveGenParameterSpec;
+import com.distrimind.bouncycastle.jce.spec.GOST3410ParameterSpec;
+import com.distrimind.bouncycastle.util.encoders.Hex;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 public class SignatureTest
     extends SimpleTest

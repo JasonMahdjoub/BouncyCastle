@@ -1,4 +1,4 @@
-package org.bouncycastle.jsse.provider.test;
+package com.distrimind.bouncycastle.jsse.provider.test;
 
 import java.security.SecureRandom;
 import java.util.concurrent.CountDownLatch;
@@ -12,10 +12,10 @@ import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManagerFactory;
 
-import org.bouncycastle.jsse.BCSSLConnection;
-import org.bouncycastle.jsse.BCSSLParameters;
-import org.bouncycastle.jsse.BCSSLSocket;
-import org.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.jsse.BCSSLConnection;
+import com.distrimind.bouncycastle.jsse.BCSSLParameters;
+import com.distrimind.bouncycastle.jsse.BCSSLSocket;
+import com.distrimind.bouncycastle.util.Arrays;
 
 import junit.framework.TestCase;
 

@@ -1,6 +1,6 @@
-package org.bouncycastle.tls.crypto;
+package com.distrimind.bouncycastle.tls.crypto;
 
-import org.bouncycastle.tls.TlsException;
+import com.distrimind.bouncycastle.tls.TlsException;
 
 /**
  * Basic exception class for crypto services to pass back a cause.

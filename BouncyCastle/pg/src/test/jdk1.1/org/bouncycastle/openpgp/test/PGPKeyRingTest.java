@@ -1,4 +1,4 @@
-package org.bouncycastle.openpgp.test;
+package com.distrimind.bouncycastle.openpgp.test;
 
 import java.io.ByteArrayInputStream;
 import java.math.BigInteger;
@@ -10,38 +10,38 @@ import java.util.Iterator;
 
 import javax.crypto.Cipher;
 
-import org.bouncycastle.bcpg.HashAlgorithmTags;
-import org.bouncycastle.bcpg.SymmetricKeyAlgorithmTags;
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.jce.spec.ElGamalParameterSpec;
-import org.bouncycastle.openpgp.PGPEncryptedData;
-import org.bouncycastle.openpgp.PGPException;
-import org.bouncycastle.openpgp.PGPKeyPair;
-import org.bouncycastle.openpgp.PGPKeyRingGenerator;
-import org.bouncycastle.openpgp.PGPPrivateKey;
-import org.bouncycastle.openpgp.PGPPublicKey;
-import org.bouncycastle.openpgp.PGPPublicKeyRing;
-import org.bouncycastle.openpgp.PGPSecretKey;
-import org.bouncycastle.openpgp.PGPSecretKeyRing;
-import org.bouncycastle.openpgp.PGPSignature;
-import org.bouncycastle.openpgp.jcajce.JcaPGPPublicKeyRing;
-import org.bouncycastle.openpgp.jcajce.JcaPGPPublicKeyRingCollection;
-import org.bouncycastle.openpgp.jcajce.JcaPGPSecretKeyRingCollection;
-import org.bouncycastle.openpgp.operator.PGPDigestCalculator;
-import org.bouncycastle.openpgp.operator.PGPDigestCalculatorProvider;
-import org.bouncycastle.openpgp.operator.jcajce.JcaKeyFingerprintCalculator;
-import org.bouncycastle.openpgp.operator.jcajce.JcaPGPContentSignerBuilder;
-import org.bouncycastle.openpgp.operator.jcajce.JcaPGPContentVerifierBuilderProvider;
-import org.bouncycastle.openpgp.operator.jcajce.JcaPGPDigestCalculatorProviderBuilder;
-import org.bouncycastle.openpgp.operator.jcajce.JcaPGPKeyConverter;
-import org.bouncycastle.openpgp.operator.jcajce.JcaPGPKeyPair;
-import org.bouncycastle.openpgp.operator.jcajce.JcaPGPPrivateKey;
-import org.bouncycastle.openpgp.operator.jcajce.JcePBESecretKeyDecryptorBuilder;
-import org.bouncycastle.openpgp.operator.jcajce.JcePBESecretKeyEncryptorBuilder;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.encoders.Base64;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.bcpg.HashAlgorithmTags;
+import com.distrimind.bouncycastle.bcpg.SymmetricKeyAlgorithmTags;
+import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
+import com.distrimind.bouncycastle.jce.spec.ElGamalParameterSpec;
+import com.distrimind.bouncycastle.openpgp.PGPEncryptedData;
+import com.distrimind.bouncycastle.openpgp.PGPException;
+import com.distrimind.bouncycastle.openpgp.PGPKeyPair;
+import com.distrimind.bouncycastle.openpgp.PGPKeyRingGenerator;
+import com.distrimind.bouncycastle.openpgp.PGPPrivateKey;
+import com.distrimind.bouncycastle.openpgp.PGPPublicKey;
+import com.distrimind.bouncycastle.openpgp.PGPPublicKeyRing;
+import com.distrimind.bouncycastle.openpgp.PGPSecretKey;
+import com.distrimind.bouncycastle.openpgp.PGPSecretKeyRing;
+import com.distrimind.bouncycastle.openpgp.PGPSignature;
+import com.distrimind.bouncycastle.openpgp.jcajce.JcaPGPPublicKeyRing;
+import com.distrimind.bouncycastle.openpgp.jcajce.JcaPGPPublicKeyRingCollection;
+import com.distrimind.bouncycastle.openpgp.jcajce.JcaPGPSecretKeyRingCollection;
+import com.distrimind.bouncycastle.openpgp.operator.PGPDigestCalculator;
+import com.distrimind.bouncycastle.openpgp.operator.PGPDigestCalculatorProvider;
+import com.distrimind.bouncycastle.openpgp.operator.jcajce.JcaKeyFingerprintCalculator;
+import com.distrimind.bouncycastle.openpgp.operator.jcajce.JcaPGPContentSignerBuilder;
+import com.distrimind.bouncycastle.openpgp.operator.jcajce.JcaPGPContentVerifierBuilderProvider;
+import com.distrimind.bouncycastle.openpgp.operator.jcajce.JcaPGPDigestCalculatorProviderBuilder;
+import com.distrimind.bouncycastle.openpgp.operator.jcajce.JcaPGPKeyConverter;
+import com.distrimind.bouncycastle.openpgp.operator.jcajce.JcaPGPKeyPair;
+import com.distrimind.bouncycastle.openpgp.operator.jcajce.JcaPGPPrivateKey;
+import com.distrimind.bouncycastle.openpgp.operator.jcajce.JcePBESecretKeyDecryptorBuilder;
+import com.distrimind.bouncycastle.openpgp.operator.jcajce.JcePBESecretKeyEncryptorBuilder;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.encoders.Base64;
+import com.distrimind.bouncycastle.util.encoders.Hex;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 public class PGPKeyRingTest
     extends SimpleTest

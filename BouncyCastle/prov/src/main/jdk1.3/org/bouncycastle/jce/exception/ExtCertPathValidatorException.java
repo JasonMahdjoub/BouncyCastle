@@ -1,7 +1,7 @@
-package org.bouncycastle.jce.exception;
+package com.distrimind.bouncycastle.jce.exception;
 
-import org.bouncycastle.jce.cert.CertPath;
-import org.bouncycastle.jce.cert.CertPathValidatorException;
+import com.distrimind.bouncycastle.jce.cert.CertPath;
+import com.distrimind.bouncycastle.jce.cert.CertPathValidatorException;
 
 public class ExtCertPathValidatorException
     extends CertPathValidatorException

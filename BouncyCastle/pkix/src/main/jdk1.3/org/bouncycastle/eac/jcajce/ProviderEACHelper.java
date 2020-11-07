@@ -1,4 +1,4 @@
-package org.bouncycastle.eac.jcajce;
+package com.distrimind.bouncycastle.eac.jcajce;
 
 import java.security.KeyFactory;
 import java.security.NoSuchAlgorithmException;

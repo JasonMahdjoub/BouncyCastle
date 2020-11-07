@@ -1,4 +1,4 @@
-package org.bouncycastle.jcajce.provider.drbg;
+package com.distrimind.bouncycastle.jcajce.provider.drbg;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,24 +10,24 @@ import java.security.SecureRandom;
 import java.security.SecureRandomSpi;
 import java.security.Security;
 
-import org.bouncycastle.crypto.digests.SHA512Digest;
-import org.bouncycastle.crypto.macs.HMac;
-import org.bouncycastle.crypto.prng.EntropySource;
-import org.bouncycastle.crypto.prng.EntropySourceProvider;
-import org.bouncycastle.crypto.prng.SP800SecureRandom;
-import org.bouncycastle.crypto.prng.SP800SecureRandomBuilder;
-import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
-import org.bouncycastle.jcajce.provider.symmetric.util.ClassUtil;
-import org.bouncycastle.jcajce.provider.util.AsymmetricAlgorithmProvider;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Pack;
-import org.bouncycastle.util.Properties;
-import org.bouncycastle.util.Strings;
-import org.bouncycastle.util.Integers;
+import com.distrimind.bouncycastle.crypto.digests.SHA512Digest;
+import com.distrimind.bouncycastle.crypto.macs.HMac;
+import com.distrimind.bouncycastle.crypto.prng.EntropySource;
+import com.distrimind.bouncycastle.crypto.prng.EntropySourceProvider;
+import com.distrimind.bouncycastle.crypto.prng.SP800SecureRandom;
+import com.distrimind.bouncycastle.crypto.prng.SP800SecureRandomBuilder;
+import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
+import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.ClassUtil;
+import com.distrimind.bouncycastle.jcajce.provider.util.AsymmetricAlgorithmProvider;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Pack;
+import com.distrimind.bouncycastle.util.Properties;
+import com.distrimind.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.util.Integers;
 
 /**
  * <b>DRBG Configuration</b><br/>
- * <p>org.bouncycastle.drbg.gather_pause_secs - is to stop the entropy collection thread from grabbing all
+ * <p>com.distrimind.bouncycastle.drbg.gather_pause_secs - is to stop the entropy collection thread from grabbing all
  * available entropy on the system. The original motivation for the hybrid infrastructure was virtual machines
  * sometimes produce very few bits of entropy a second, the original approach (which "worked" at least for BC) was
  * to just read on the second thread and allow things to progress around it, but it did tend to hog the system
@@ -36,7 +36,7 @@ import org.bouncycastle.util.Integers;
  * enough to allow everyone to work together, but small enough to ensure the provider's DRBG is being regularly
  * reseeded.
  * </p>
- * <p>org.bouncycastle.drbg.entropysource - is the class name for an implementation of EntropySourceProvider.
+ * <p>com.distrimind.bouncycastle.drbg.entropysource - is the class name for an implementation of EntropySourceProvider.
  * For example, one could be provided which just reads directly from /dev/random and the extra infrastructure used here
  * could be avoided.</p>
  */
@@ -116,7 +116,7 @@ public class DRBG
 
     private static EntropySourceProvider createEntropySource()
     {
-        final String sourceClass = Properties.getPropertyValue("org.bouncycastle.drbg.entropysource");
+        final String sourceClass = Properties.getPropertyValue("com.distrimind.bouncycastle.drbg.entropysource");
 
         return (EntropySourceProvider)AccessController.doPrivileged(new PrivilegedAction()
         {
@@ -138,7 +138,7 @@ public class DRBG
 
     private static SecureRandom createBaseRandom(boolean isPredictionResistant)
     {
-        if (Properties.getPropertyValue("org.bouncycastle.drbg.entropysource") != null)
+        if (Properties.getPropertyValue("com.distrimind.bouncycastle.drbg.entropysource") != null)
         {
             EntropySourceProvider entropyProvider = createEntropySource();
 
@@ -454,7 +454,7 @@ public class DRBG
                 public void run()
                 {
                     long ms;
-                    String pause = Properties.getPropertyValue("org.bouncycastle.drbg.gather_pause_secs");
+                    String pause = Properties.getPropertyValue("com.distrimind.bouncycastle.drbg.gather_pause_secs");
 
                     if (pause != null)
                     {

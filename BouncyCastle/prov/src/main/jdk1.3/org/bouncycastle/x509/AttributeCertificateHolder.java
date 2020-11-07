@@ -1,4 +1,4 @@
-package org.bouncycastle.x509;
+package com.distrimind.bouncycastle.x509;
 
 import java.io.IOException;
 import java.math.BigInteger;
@@ -11,21 +11,21 @@ import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x509.GeneralName;
-import org.bouncycastle.asn1.x509.GeneralNames;
-import org.bouncycastle.asn1.x509.Holder;
-import org.bouncycastle.asn1.x509.IssuerSerial;
-import org.bouncycastle.asn1.x509.ObjectDigestInfo;
-import org.bouncycastle.jce.PrincipalUtil;
-import org.bouncycastle.jce.X509Principal;
-import org.bouncycastle.jce.cert.CertSelector;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Selector;
+import com.distrimind.bouncycastle.asn1.ASN1Encodable;
+import com.distrimind.bouncycastle.asn1.ASN1Integer;
+import com.distrimind.bouncycastle.asn1.ASN1Sequence;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.asn1.x509.GeneralName;
+import com.distrimind.bouncycastle.asn1.x509.GeneralNames;
+import com.distrimind.bouncycastle.asn1.x509.Holder;
+import com.distrimind.bouncycastle.asn1.x509.IssuerSerial;
+import com.distrimind.bouncycastle.asn1.x509.ObjectDigestInfo;
+import com.distrimind.bouncycastle.jce.PrincipalUtil;
+import com.distrimind.bouncycastle.jce.X509Principal;
+import com.distrimind.bouncycastle.jce.cert.CertSelector;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Selector;
 
 /**
  * The Holder object.
@@ -42,7 +42,7 @@ import org.bouncycastle.util.Selector;
  *                         -- for example, an executable
  *          }
  * </pre>
- * @deprecated use org.bouncycastle.cert.AttributeCertificateHolder
+ * @deprecated use com.distrimind.bouncycastle.cert.AttributeCertificateHolder
  */
 public class AttributeCertificateHolder
     implements CertSelector, Selector
@@ -57,7 +57,7 @@ public class AttributeCertificateHolder
     public AttributeCertificateHolder(X509Principal issuerName,
         BigInteger serialNumber)
     {
-        holder = new org.bouncycastle.asn1.x509.Holder(new IssuerSerial(
+        holder = new com.distrimind.bouncycastle.asn1.x509.Holder(new IssuerSerial(
             new GeneralNames(new GeneralName(issuerName)),
             new ASN1Integer(serialNumber)));
     }

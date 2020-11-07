@@ -1,4 +1,4 @@
-package org.bouncycastle.tls;
+package com.distrimind.bouncycastle.tls;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -6,8 +6,8 @@ import java.io.OutputStream;
 import java.math.BigInteger;
 import java.util.Hashtable;
 
-import org.bouncycastle.util.BigIntegers;
-import org.bouncycastle.util.Integers;
+import com.distrimind.bouncycastle.util.BigIntegers;
+import com.distrimind.bouncycastle.util.Integers;
 
 public class TlsSRPUtils
 {

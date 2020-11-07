@@ -1,4 +1,4 @@
-package org.bouncycastle.jce.provider;
+package com.distrimind.bouncycastle.jce.provider;
 
 import java.security.cert.CertStore;
 import java.security.cert.CertStoreException;
@@ -12,12 +12,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import org.bouncycastle.jce.provider.AnnotatedException;
-import org.bouncycastle.util.Store;
-import org.bouncycastle.util.StoreException;
+import com.distrimind.bouncycastle.jce.provider.AnnotatedException;
+import com.distrimind.bouncycastle.util.Store;
+import com.distrimind.bouncycastle.util.StoreException;
 
-import org.bouncycastle.x509.*;
-import org.bouncycastle.jcajce.*;
+import com.distrimind.bouncycastle.x509.*;
+import com.distrimind.bouncycastle.jcajce.*;
 
 class PKIXCRLUtil
 {
@@ -138,7 +138,7 @@ class PKIXCRLUtil
      * Return a Collection of all CRLs found in the X509Store's that are
      * matching the crlSelect criteriums.
      *
-     * @param crlSelect a {@link org.bouncycastle.x509.X509CRLStoreSelector} object that will be used
+     * @param crlSelect a {@link com.distrimind.bouncycastle.x509.X509CRLStoreSelector} object that will be used
      *            to select the CRLs
      * @param crlStores a List containing only
      *            {@link X509Store  X509Store} objects.

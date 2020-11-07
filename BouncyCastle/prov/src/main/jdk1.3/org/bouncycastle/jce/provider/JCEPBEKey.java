@@ -1,14 +1,14 @@
-package org.bouncycastle.jce.provider;
+package com.distrimind.bouncycastle.jce.provider;
 
 import javax.crypto.SecretKey;
 import javax.crypto.spec.PBEKeySpec;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.PBEParametersGenerator;
-import org.bouncycastle.crypto.params.KeyParameter;
-import org.bouncycastle.crypto.params.ParametersWithIV;
-import org.bouncycastle.jcajce.provider.symmetric.util.PBE;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.crypto.CipherParameters;
+import com.distrimind.bouncycastle.crypto.PBEParametersGenerator;
+import com.distrimind.bouncycastle.crypto.params.KeyParameter;
+import com.distrimind.bouncycastle.crypto.params.ParametersWithIV;
+import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.PBE;
 
 public class JCEPBEKey
     implements SecretKey

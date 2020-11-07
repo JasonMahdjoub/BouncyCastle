@@ -1,4 +1,4 @@
-package org.bouncycastle.jsse.provider;
+package com.distrimind.bouncycastle.jsse.provider;
 
 import java.net.Socket;
 import java.security.Principal;
@@ -7,8 +7,8 @@ import java.security.cert.X509Certificate;
 
 import javax.net.ssl.X509KeyManager;
 
-import org.bouncycastle.jsse.BCX509ExtendedKeyManager;
-import org.bouncycastle.jsse.BCX509Key;
+import com.distrimind.bouncycastle.jsse.BCX509ExtendedKeyManager;
+import com.distrimind.bouncycastle.jsse.BCX509Key;
 
 /*
  * Note that chooseEngineClientAlias() and chooseEngineServerAlias() are inherited (they return

@@ -1,4 +1,4 @@
-package org.bouncycastle.jce.cert;
+package com.distrimind.bouncycastle.jce.cert;
 
 import java.io.InputStream;
 import java.security.NoSuchProviderException;

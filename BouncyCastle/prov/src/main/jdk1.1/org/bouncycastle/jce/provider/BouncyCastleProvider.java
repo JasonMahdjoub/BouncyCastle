@@ -1,4 +1,4 @@
-package org.bouncycastle.jce.provider;
+package com.distrimind.bouncycastle.jce.provider;
 
 import java.io.IOException;
 import java.security.PrivateKey;
@@ -8,19 +8,19 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Iterator;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
-import org.bouncycastle.jcajce.provider.config.ProviderConfiguration;
-import org.bouncycastle.jcajce.provider.util.AlgorithmProvider;
-import org.bouncycastle.jcajce.provider.util.AsymmetricKeyInfoConverter;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
+import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
+import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
+import com.distrimind.bouncycastle.jcajce.provider.config.ProviderConfiguration;
+import com.distrimind.bouncycastle.jcajce.provider.util.AlgorithmProvider;
+import com.distrimind.bouncycastle.jcajce.provider.util.AsymmetricKeyInfoConverter;
 
 /**
  * To add the provider at runtime use:
  * <pre>
  * import java.security.Security;
- * import org.bouncycastle.jce.provider.BouncyCastleProvider;
+ * import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
  *
  * Security.addProvider(new BouncyCastleProvider());
  * </pre>
@@ -32,7 +32,7 @@ import org.bouncycastle.jcajce.provider.util.AsymmetricKeyInfoConverter;
  * a line:
  * <pre>
  * <code>
- *    security.provider.&lt;n&gt;=org.bouncycastle.jce.provider.BouncyCastleProvider
+ *    security.provider.&lt;n&gt;=com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider
  * </code>
  * </pre>
  * Where &lt;n&gt; is the preference you want the provider at (1 being the
@@ -54,7 +54,7 @@ public final class BouncyCastleProvider extends Provider
     /*
      * Configurable symmetric ciphers
      */
-    private static final String SYMMETRIC_PACKAGE = "org.bouncycastle.jcajce.provider.symmetric.";
+    private static final String SYMMETRIC_PACKAGE = "com.distrimind.bouncycastle.jcajce.provider.symmetric.";
 
     private static final String[] SYMMETRIC_GENERIC =
     {
@@ -77,7 +77,7 @@ public final class BouncyCastleProvider extends Provider
      /*
      * Configurable asymmetric ciphers
      */
-    private static final String ASYMMETRIC_PACKAGE = "org.bouncycastle.jcajce.provider.asymmetric.";
+    private static final String ASYMMETRIC_PACKAGE = "com.distrimind.bouncycastle.jcajce.provider.asymmetric.";
 
     // this one is required for GNU class path - it needs to be loaded first as the
     // later ones configure it.
@@ -94,7 +94,7 @@ public final class BouncyCastleProvider extends Provider
     /*
      * Configurable digests
      */
-    private static final String DIGEST_PACKAGE = "org.bouncycastle.jcajce.provider.digest.";
+    private static final String DIGEST_PACKAGE = "com.distrimind.bouncycastle.jcajce.provider.digest.";
     private static final String[] DIGESTS =
     {
         "GOST3411", "Keccak", "MD2", "MD4", "MD5", "SHA1", "RIPEMD128", "RIPEMD160", "RIPEMD256", "RIPEMD320", "SHA224",
@@ -105,7 +105,7 @@ public final class BouncyCastleProvider extends Provider
     /*
      * Configurable keystores
      */
-    private static final String KEYSTORE_PACKAGE = "org.bouncycastle.jcajce.provider.keystore.";
+    private static final String KEYSTORE_PACKAGE = "com.distrimind.bouncycastle.jcajce.provider.keystore.";
     private static final String[] KEYSTORES =
     {
         "BC", "BCFKS", "PKCS12"
@@ -142,44 +142,44 @@ public final class BouncyCastleProvider extends Provider
         //
         // X509Store
         //
-        put("X509Store.CERTIFICATE/COLLECTION", "org.bouncycastle.jce.provider.X509StoreCertCollection");
-        put("X509Store.ATTRIBUTECERTIFICATE/COLLECTION", "org.bouncycastle.jce.provider.X509StoreAttrCertCollection");
-        put("X509Store.CRL/COLLECTION", "org.bouncycastle.jce.provider.X509StoreCRLCollection");
-        put("X509Store.CERTIFICATEPAIR/COLLECTION", "org.bouncycastle.jce.provider.X509StoreCertPairCollection");
+        put("X509Store.CERTIFICATE/COLLECTION", "com.distrimind.bouncycastle.jce.provider.X509StoreCertCollection");
+        put("X509Store.ATTRIBUTECERTIFICATE/COLLECTION", "com.distrimind.bouncycastle.jce.provider.X509StoreAttrCertCollection");
+        put("X509Store.CRL/COLLECTION", "com.distrimind.bouncycastle.jce.provider.X509StoreCRLCollection");
+        put("X509Store.CERTIFICATEPAIR/COLLECTION", "com.distrimind.bouncycastle.jce.provider.X509StoreCertPairCollection");
 
-        put("X509Store.CERTIFICATE/LDAP", "org.bouncycastle.jce.provider.X509StoreLDAPCerts");
-        put("X509Store.CRL/LDAP", "org.bouncycastle.jce.provider.X509StoreLDAPCRLs");
-        put("X509Store.ATTRIBUTECERTIFICATE/LDAP", "org.bouncycastle.jce.provider.X509StoreLDAPAttrCerts");
-        put("X509Store.CERTIFICATEPAIR/LDAP", "org.bouncycastle.jce.provider.X509StoreLDAPCertPairs");
+        put("X509Store.CERTIFICATE/LDAP", "com.distrimind.bouncycastle.jce.provider.X509StoreLDAPCerts");
+        put("X509Store.CRL/LDAP", "com.distrimind.bouncycastle.jce.provider.X509StoreLDAPCRLs");
+        put("X509Store.ATTRIBUTECERTIFICATE/LDAP", "com.distrimind.bouncycastle.jce.provider.X509StoreLDAPAttrCerts");
+        put("X509Store.CERTIFICATEPAIR/LDAP", "com.distrimind.bouncycastle.jce.provider.X509StoreLDAPCertPairs");
         
         //
         // X509StreamParser
         //
-        put("X509StreamParser.CERTIFICATE", "org.bouncycastle.jce.provider.X509CertParser");
-        put("X509StreamParser.ATTRIBUTECERTIFICATE", "org.bouncycastle.jce.provider.X509AttrCertParser");
-        put("X509StreamParser.CRL", "org.bouncycastle.jce.provider.X509CRLParser");
-        put("X509StreamParser.CERTIFICATEPAIR", "org.bouncycastle.jce.provider.X509CertPairParser");
+        put("X509StreamParser.CERTIFICATE", "com.distrimind.bouncycastle.jce.provider.X509CertParser");
+        put("X509StreamParser.ATTRIBUTECERTIFICATE", "com.distrimind.bouncycastle.jce.provider.X509AttrCertParser");
+        put("X509StreamParser.CRL", "com.distrimind.bouncycastle.jce.provider.X509CRLParser");
+        put("X509StreamParser.CERTIFICATEPAIR", "com.distrimind.bouncycastle.jce.provider.X509CertPairParser");
 
         //
         // cipher engines
         //
-        put("Cipher.BROKENPBEWITHMD5ANDDES", "org.bouncycastle.jce.provider.BrokenJCEBlockCipher$BrokePBEWithMD5AndDES");
+        put("Cipher.BROKENPBEWITHMD5ANDDES", "com.distrimind.bouncycastle.jce.provider.BrokenJCEBlockCipher$BrokePBEWithMD5AndDES");
 
-        put("Cipher.BROKENPBEWITHSHA1ANDDES", "org.bouncycastle.jce.provider.BrokenJCEBlockCipher$BrokePBEWithSHA1AndDES");
+        put("Cipher.BROKENPBEWITHSHA1ANDDES", "com.distrimind.bouncycastle.jce.provider.BrokenJCEBlockCipher$BrokePBEWithSHA1AndDES");
 
 
-        put("Cipher.OLDPBEWITHSHAANDTWOFISH-CBC", "org.bouncycastle.jce.provider.BrokenJCEBlockCipher$OldPBEWithSHAAndTwofish");
+        put("Cipher.OLDPBEWITHSHAANDTWOFISH-CBC", "com.distrimind.bouncycastle.jce.provider.BrokenJCEBlockCipher$OldPBEWithSHAAndTwofish");
 
         // Certification Path API
-        put("CertPathValidator.RFC3281", "org.bouncycastle.jce.provider.PKIXAttrCertPathValidatorSpi");
-        put("CertPathBuilder.RFC3281", "org.bouncycastle.jce.provider.PKIXAttrCertPathBuilderSpi");
-        put("CertPathValidator.RFC3280", "org.bouncycastle.jce.provider.PKIXCertPathValidatorSpi");
-        put("CertPathBuilder.RFC3280", "org.bouncycastle.jce.provider.PKIXCertPathBuilderSpi");
-        put("CertPathValidator.PKIX", "org.bouncycastle.jce.provider.PKIXCertPathValidatorSpi");
-        put("CertPathBuilder.PKIX", "org.bouncycastle.jce.provider.PKIXCertPathBuilderSpi");
-        put("CertStore.Collection", "org.bouncycastle.jce.provider.CertStoreCollectionSpi");
-        put("CertStore.LDAP", "org.bouncycastle.jce.provider.X509LDAPCertStoreSpi");
-        put("CertStore.Multi", "org.bouncycastle.jce.provider.MultiCertStoreSpi");
+        put("CertPathValidator.RFC3281", "com.distrimind.bouncycastle.jce.provider.PKIXAttrCertPathValidatorSpi");
+        put("CertPathBuilder.RFC3281", "com.distrimind.bouncycastle.jce.provider.PKIXAttrCertPathBuilderSpi");
+        put("CertPathValidator.RFC3280", "com.distrimind.bouncycastle.jce.provider.PKIXCertPathValidatorSpi");
+        put("CertPathBuilder.RFC3280", "com.distrimind.bouncycastle.jce.provider.PKIXCertPathBuilderSpi");
+        put("CertPathValidator.PKIX", "com.distrimind.bouncycastle.jce.provider.PKIXCertPathValidatorSpi");
+        put("CertPathBuilder.PKIX", "com.distrimind.bouncycastle.jce.provider.PKIXCertPathBuilderSpi");
+        put("CertStore.Collection", "com.distrimind.bouncycastle.jce.provider.CertStoreCollectionSpi");
+        put("CertStore.LDAP", "com.distrimind.bouncycastle.jce.provider.X509LDAPCertStoreSpi");
+        put("CertStore.Multi", "com.distrimind.bouncycastle.jce.provider.MultiCertStoreSpi");
         put("Alg.Alias.CertStore.X509LDAP", "LDAP");
     }
 

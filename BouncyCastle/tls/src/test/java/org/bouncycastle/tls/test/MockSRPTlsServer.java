@@ -1,4 +1,4 @@
-package org.bouncycastle.tls.test;
+package com.distrimind.bouncycastle.tls.test;
 
 import java.io.IOException;
 import java.io.PrintStream;
@@ -6,26 +6,26 @@ import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.util.Vector;
 
-import org.bouncycastle.crypto.agreement.srp.SRP6VerifierGenerator;
-import org.bouncycastle.crypto.digests.SHA1Digest;
-import org.bouncycastle.tls.AlertDescription;
-import org.bouncycastle.tls.AlertLevel;
-import org.bouncycastle.tls.BasicTlsSRPIdentity;
-import org.bouncycastle.tls.ProtocolVersion;
-import org.bouncycastle.tls.SRPTlsServer;
-import org.bouncycastle.tls.SignatureAlgorithm;
-import org.bouncycastle.tls.SimulatedTlsSRPIdentityManager;
-import org.bouncycastle.tls.TlsCredentialedSigner;
-import org.bouncycastle.tls.TlsSRPIdentity;
-import org.bouncycastle.tls.TlsSRPIdentityManager;
-import org.bouncycastle.tls.TlsSRPLoginParameters;
-import org.bouncycastle.tls.crypto.SRP6Group;
-import org.bouncycastle.tls.crypto.SRP6StandardGroups;
-import org.bouncycastle.tls.crypto.TlsCrypto;
-import org.bouncycastle.tls.crypto.TlsSRPConfig;
-import org.bouncycastle.tls.crypto.impl.bc.BcTlsCrypto;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.crypto.agreement.srp.SRP6VerifierGenerator;
+import com.distrimind.bouncycastle.crypto.digests.SHA1Digest;
+import com.distrimind.bouncycastle.tls.AlertDescription;
+import com.distrimind.bouncycastle.tls.AlertLevel;
+import com.distrimind.bouncycastle.tls.BasicTlsSRPIdentity;
+import com.distrimind.bouncycastle.tls.ProtocolVersion;
+import com.distrimind.bouncycastle.tls.SRPTlsServer;
+import com.distrimind.bouncycastle.tls.SignatureAlgorithm;
+import com.distrimind.bouncycastle.tls.SimulatedTlsSRPIdentityManager;
+import com.distrimind.bouncycastle.tls.TlsCredentialedSigner;
+import com.distrimind.bouncycastle.tls.TlsSRPIdentity;
+import com.distrimind.bouncycastle.tls.TlsSRPIdentityManager;
+import com.distrimind.bouncycastle.tls.TlsSRPLoginParameters;
+import com.distrimind.bouncycastle.tls.crypto.SRP6Group;
+import com.distrimind.bouncycastle.tls.crypto.SRP6StandardGroups;
+import com.distrimind.bouncycastle.tls.crypto.TlsCrypto;
+import com.distrimind.bouncycastle.tls.crypto.TlsSRPConfig;
+import com.distrimind.bouncycastle.tls.crypto.impl.bc.BcTlsCrypto;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Strings;
 
 class MockSRPTlsServer
     extends SRPTlsServer

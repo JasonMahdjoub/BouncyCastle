@@ -1,16 +1,16 @@
-package org.bouncycastle.jce.provider;
+package com.distrimind.bouncycastle.jce.provider;
 
 import java.security.InvalidAlgorithmParameterException;
 import java.security.PublicKey;
-import org.bouncycastle.jce.cert.CertPath;
-import org.bouncycastle.jce.cert.CertPathParameters;
-import org.bouncycastle.jce.cert.CertPathValidatorException;
-import org.bouncycastle.jce.cert.CertPathValidatorResult;
-import org.bouncycastle.jce.cert.CertPathValidatorSpi;
-import org.bouncycastle.jce.cert.PKIXCertPathChecker;
-import org.bouncycastle.jce.cert.PKIXCertPathValidatorResult;
-import org.bouncycastle.jce.cert.PKIXParameters;
-import org.bouncycastle.jce.cert.TrustAnchor;
+import com.distrimind.bouncycastle.jce.cert.CertPath;
+import com.distrimind.bouncycastle.jce.cert.CertPathParameters;
+import com.distrimind.bouncycastle.jce.cert.CertPathValidatorException;
+import com.distrimind.bouncycastle.jce.cert.CertPathValidatorResult;
+import com.distrimind.bouncycastle.jce.cert.CertPathValidatorSpi;
+import com.distrimind.bouncycastle.jce.cert.PKIXCertPathChecker;
+import com.distrimind.bouncycastle.jce.cert.PKIXCertPathValidatorResult;
+import com.distrimind.bouncycastle.jce.cert.PKIXParameters;
+import com.distrimind.bouncycastle.jce.cert.TrustAnchor;
 import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -18,16 +18,16 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.jcajce.PKIXExtendedBuilderParameters;
-import org.bouncycastle.jcajce.PKIXExtendedParameters;
-import org.bouncycastle.jcajce.util.BCJcaJceHelper;
-import org.bouncycastle.jcajce.util.JcaJceHelper;
-import org.bouncycastle.jce.exception.ExtCertPathValidatorException;
-import org.bouncycastle.x509.ExtendedPKIXParameters;
+import com.distrimind.bouncycastle.asn1.ASN1Encodable;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.x500.X500Name;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.jcajce.PKIXExtendedBuilderParameters;
+import com.distrimind.bouncycastle.jcajce.PKIXExtendedParameters;
+import com.distrimind.bouncycastle.jcajce.util.BCJcaJceHelper;
+import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
+import com.distrimind.bouncycastle.jce.exception.ExtCertPathValidatorException;
+import com.distrimind.bouncycastle.x509.ExtendedPKIXParameters;
 
 /**
  * CertPathValidatorSpi implementation for X.509 Certificate validation � la RFC

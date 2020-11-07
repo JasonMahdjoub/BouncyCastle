@@ -1,17 +1,17 @@
-package org.bouncycastle.jce.provider.test;
+package com.distrimind.bouncycastle.jce.provider.test;
 
-import org.bouncycastle.util.test.SimpleTest;
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.jce.MultiCertStoreParameters;
-import org.bouncycastle.jce.PrincipalUtil;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
+import com.distrimind.bouncycastle.jce.MultiCertStoreParameters;
+import com.distrimind.bouncycastle.jce.PrincipalUtil;
 
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
 import java.security.cert.X509CRL;
-import org.bouncycastle.jce.cert.CollectionCertStoreParameters;
-import org.bouncycastle.jce.cert.CertStore;
-import org.bouncycastle.jce.cert.X509CertSelector;
-import org.bouncycastle.jce.cert.X509CRLSelector;
+import com.distrimind.bouncycastle.jce.cert.CollectionCertStoreParameters;
+import com.distrimind.bouncycastle.jce.cert.CertStore;
+import com.distrimind.bouncycastle.jce.cert.X509CertSelector;
+import com.distrimind.bouncycastle.jce.cert.X509CRLSelector;
 import java.security.Security;
 import java.io.ByteArrayInputStream;
 import java.util.List;

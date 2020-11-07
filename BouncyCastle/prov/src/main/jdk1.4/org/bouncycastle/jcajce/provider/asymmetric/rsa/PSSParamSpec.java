@@ -1,4 +1,4 @@
-package org.bouncycastle.jcajce.provider.asymmetric.rsa;
+package com.distrimind.bouncycastle.jcajce.provider.asymmetric.rsa;
 
 import java.security.spec.PSSParameterSpec;
 

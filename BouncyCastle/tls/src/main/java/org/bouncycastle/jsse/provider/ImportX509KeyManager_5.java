@@ -1,4 +1,4 @@
-package org.bouncycastle.jsse.provider;
+package com.distrimind.bouncycastle.jsse.provider;
 
 import java.net.Socket;
 import java.security.Principal;
@@ -9,8 +9,8 @@ import javax.net.ssl.SSLEngine;
 import javax.net.ssl.X509ExtendedKeyManager;
 import javax.net.ssl.X509KeyManager;
 
-import org.bouncycastle.jsse.BCX509ExtendedKeyManager;
-import org.bouncycastle.jsse.BCX509Key;
+import com.distrimind.bouncycastle.jsse.BCX509ExtendedKeyManager;
+import com.distrimind.bouncycastle.jsse.BCX509Key;
 
 final class ImportX509KeyManager_5
     extends BCX509ExtendedKeyManager

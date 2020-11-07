@@ -1,4 +1,4 @@
-package org.bouncycastle.cert.path.test;
+package com.distrimind.bouncycastle.cert.path.test;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -9,19 +9,19 @@ import java.security.NoSuchProviderException;
 import java.security.PublicKey;
 import java.security.Security;
 import java.security.SignatureException;
-import org.bouncycastle.jce.cert.CertPath;
-import org.bouncycastle.jce.cert.CertPathBuilder;
-import org.bouncycastle.jce.cert.CertPathBuilderException;
-import org.bouncycastle.jce.cert.CertPathBuilderResult;
-import org.bouncycastle.jce.cert.CertStore;
+import com.distrimind.bouncycastle.jce.cert.CertPath;
+import com.distrimind.bouncycastle.jce.cert.CertPathBuilder;
+import com.distrimind.bouncycastle.jce.cert.CertPathBuilderException;
+import com.distrimind.bouncycastle.jce.cert.CertPathBuilderResult;
+import com.distrimind.bouncycastle.jce.cert.CertStore;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateEncodingException;
 import java.security.cert.CertificateException;
-import org.bouncycastle.jce.cert.CertificateFactory;
-import org.bouncycastle.jce.cert.CollectionCertStoreParameters;
-import org.bouncycastle.jce.cert.PKIXBuilderParameters;
-import org.bouncycastle.jce.cert.TrustAnchor;
-import org.bouncycastle.jce.cert.X509CertSelector;
+import com.distrimind.bouncycastle.jce.cert.CertificateFactory;
+import com.distrimind.bouncycastle.jce.cert.CollectionCertStoreParameters;
+import com.distrimind.bouncycastle.jce.cert.PKIXBuilderParameters;
+import com.distrimind.bouncycastle.jce.cert.TrustAnchor;
+import com.distrimind.bouncycastle.jce.cert.X509CertSelector;
 import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -31,10 +31,10 @@ import java.util.List;
 import java.util.Set;
 import java.util.Vector;
 
-import org.bouncycastle.jce.X509Principal;
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.encoders.Base64;
-import org.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.jce.X509Principal;
+import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
+import com.distrimind.bouncycastle.util.encoders.Base64;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 public class CertPathTest
     extends SimpleTest

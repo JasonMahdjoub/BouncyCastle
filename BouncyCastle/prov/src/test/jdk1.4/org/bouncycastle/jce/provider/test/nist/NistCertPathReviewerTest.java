@@ -1,4 +1,4 @@
-package org.bouncycastle.jce.provider.test.nist;
+package com.distrimind.bouncycastle.jce.provider.test.nist;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -26,12 +26,12 @@ import java.util.TimeZone;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import org.bouncycastle.asn1.ASN1Encoding;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.x509.X509Extension;
-import org.bouncycastle.i18n.ErrorBundle;
-import org.bouncycastle.x509.PKIXCertPathReviewer;
-import org.bouncycastle.x509.extension.X509ExtensionUtil;
+import com.distrimind.bouncycastle.asn1.ASN1Encoding;
+import com.distrimind.bouncycastle.asn1.ASN1Primitive;
+import com.distrimind.bouncycastle.asn1.x509.X509Extension;
+import com.distrimind.bouncycastle.i18n.ErrorBundle;
+import com.distrimind.bouncycastle.x509.PKIXCertPathReviewer;
+import com.distrimind.bouncycastle.x509.extension.X509ExtensionUtil;
 
 /**
  * NIST CertPath test data for RFC 3280
@@ -697,7 +697,7 @@ public class NistCertPathReviewerTest
     {
         if (Security.getProvider("BC") == null)
         {
-            Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
+            Security.addProvider(new com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider());
         }
     }
     

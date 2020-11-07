@@ -1,4 +1,4 @@
-package org.bouncycastle.jsse.provider;
+package com.distrimind.bouncycastle.jsse.provider;
 
 import java.security.cert.CertPathBuilder;
 import java.security.cert.PKIXBuilderParameters;
@@ -16,10 +16,10 @@ import javax.net.ssl.SNIMatcher;
 import javax.net.ssl.SNIServerName;
 import javax.net.ssl.StandardConstants;
 
-import org.bouncycastle.jsse.BCSNIHostName;
-import org.bouncycastle.jsse.BCSNIMatcher;
-import org.bouncycastle.jsse.BCSNIServerName;
-import org.bouncycastle.jsse.BCStandardConstants;
+import com.distrimind.bouncycastle.jsse.BCSNIHostName;
+import com.distrimind.bouncycastle.jsse.BCSNIMatcher;
+import com.distrimind.bouncycastle.jsse.BCSNIServerName;
+import com.distrimind.bouncycastle.jsse.BCStandardConstants;
 
 abstract class JsseUtils_8
     extends JsseUtils_7

@@ -1,4 +1,4 @@
-package org.bouncycastle.jsse.provider.test;
+package com.distrimind.bouncycastle.jsse.provider.test;
 
 import java.security.KeyPair;
 import java.security.KeyStore;
@@ -16,9 +16,9 @@ import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManagerFactory;
 import javax.security.auth.x500.X500Principal;
 
-import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.jsse.BCX509ExtendedKeyManager;
-import org.bouncycastle.jsse.BCX509Key;
+import com.distrimind.bouncycastle.asn1.x500.X500Name;
+import com.distrimind.bouncycastle.jsse.BCX509ExtendedKeyManager;
+import com.distrimind.bouncycastle.jsse.BCX509Key;
 
 import junit.framework.TestCase;
 

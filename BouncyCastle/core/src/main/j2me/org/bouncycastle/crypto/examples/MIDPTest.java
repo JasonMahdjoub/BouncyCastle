@@ -1,4 +1,4 @@
-package org.bouncycastle.crypto.examples;
+package com.distrimind.bouncycastle.crypto.examples;
 
 import java.io.*;
 import java.lang.*;
@@ -6,14 +6,14 @@ import java.lang.*;
 import javax.microedition.midlet.MIDlet;
 import javax.microedition.lcdui.*;
 
-import org.bouncycastle.util.test.*;
-import org.bouncycastle.util.encoders.*;
+import com.distrimind.bouncycastle.util.test.*;
+import com.distrimind.bouncycastle.util.encoders.*;
 
-import org.bouncycastle.crypto.*;
-import org.bouncycastle.crypto.paddings.*;
-import org.bouncycastle.crypto.engines.*;
-import org.bouncycastle.crypto.modes.*;
-import org.bouncycastle.crypto.params.*;
+import com.distrimind.bouncycastle.crypto.*;
+import com.distrimind.bouncycastle.crypto.paddings.*;
+import com.distrimind.bouncycastle.crypto.engines.*;
+import com.distrimind.bouncycastle.crypto.modes.*;
+import com.distrimind.bouncycastle.crypto.params.*;
 
 /**
  * MIDP is a simple graphics application for the J2ME CLDC/MIDP.

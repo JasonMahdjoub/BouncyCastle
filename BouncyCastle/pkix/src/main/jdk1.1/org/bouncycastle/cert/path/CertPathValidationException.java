@@ -1,4 +1,4 @@
-package org.bouncycastle.cert.path;
+package com.distrimind.bouncycastle.cert.path;
 
 public class CertPathValidationException
     extends Exception

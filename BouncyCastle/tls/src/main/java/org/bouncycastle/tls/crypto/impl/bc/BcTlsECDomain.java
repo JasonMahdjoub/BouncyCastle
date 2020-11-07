@@ -1,26 +1,26 @@
-package org.bouncycastle.tls.crypto.impl.bc;
+package com.distrimind.bouncycastle.tls.crypto.impl.bc;
 
 import java.io.IOException;
 import java.math.BigInteger;
 
-import org.bouncycastle.asn1.x9.ECNamedCurveTable;
-import org.bouncycastle.asn1.x9.X9ECParameters;
-import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
-import org.bouncycastle.crypto.agreement.ECDHBasicAgreement;
-import org.bouncycastle.crypto.ec.CustomNamedCurves;
-import org.bouncycastle.crypto.generators.ECKeyPairGenerator;
-import org.bouncycastle.crypto.params.ECDomainParameters;
-import org.bouncycastle.crypto.params.ECKeyGenerationParameters;
-import org.bouncycastle.crypto.params.ECPrivateKeyParameters;
-import org.bouncycastle.crypto.params.ECPublicKeyParameters;
-import org.bouncycastle.math.ec.ECPoint;
-import org.bouncycastle.tls.AlertDescription;
-import org.bouncycastle.tls.NamedGroup;
-import org.bouncycastle.tls.TlsFatalAlert;
-import org.bouncycastle.tls.crypto.TlsAgreement;
-import org.bouncycastle.tls.crypto.TlsECConfig;
-import org.bouncycastle.tls.crypto.TlsECDomain;
-import org.bouncycastle.util.BigIntegers;
+import com.distrimind.bouncycastle.asn1.x9.ECNamedCurveTable;
+import com.distrimind.bouncycastle.asn1.x9.X9ECParameters;
+import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
+import com.distrimind.bouncycastle.crypto.agreement.ECDHBasicAgreement;
+import com.distrimind.bouncycastle.crypto.ec.CustomNamedCurves;
+import com.distrimind.bouncycastle.crypto.generators.ECKeyPairGenerator;
+import com.distrimind.bouncycastle.crypto.params.ECDomainParameters;
+import com.distrimind.bouncycastle.crypto.params.ECKeyGenerationParameters;
+import com.distrimind.bouncycastle.crypto.params.ECPrivateKeyParameters;
+import com.distrimind.bouncycastle.crypto.params.ECPublicKeyParameters;
+import com.distrimind.bouncycastle.math.ec.ECPoint;
+import com.distrimind.bouncycastle.tls.AlertDescription;
+import com.distrimind.bouncycastle.tls.NamedGroup;
+import com.distrimind.bouncycastle.tls.TlsFatalAlert;
+import com.distrimind.bouncycastle.tls.crypto.TlsAgreement;
+import com.distrimind.bouncycastle.tls.crypto.TlsECConfig;
+import com.distrimind.bouncycastle.tls.crypto.TlsECDomain;
+import com.distrimind.bouncycastle.util.BigIntegers;
 
 /**
  * EC domain class for generating key pairs and performing key agreement.

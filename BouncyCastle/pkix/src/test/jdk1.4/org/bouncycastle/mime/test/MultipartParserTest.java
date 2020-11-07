@@ -1,4 +1,4 @@
-package org.bouncycastle.mime.test;
+package com.distrimind.bouncycastle.mime.test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -12,28 +12,28 @@ import java.util.List;
 import java.util.Map;
 
 import junit.framework.TestCase;
-import org.bouncycastle.cert.X509CertificateHolder;
-import org.bouncycastle.cms.CMSException;
-import org.bouncycastle.cms.SignerInformation;
-import org.bouncycastle.cms.SignerInformationStore;
-import org.bouncycastle.cms.jcajce.JcaSimpleSignerInfoVerifierBuilder;
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.mime.BasicMimeParser;
-import org.bouncycastle.mime.ConstantMimeContext;
-import org.bouncycastle.mime.Headers;
-import org.bouncycastle.mime.MimeContext;
-import org.bouncycastle.mime.MimeMultipartContext;
-import org.bouncycastle.mime.MimeParser;
-import org.bouncycastle.mime.MimeParserContext;
-import org.bouncycastle.mime.MimeParserListener;
-import org.bouncycastle.mime.MimeParserProvider;
-import org.bouncycastle.mime.smime.SMimeParserListener;
-import org.bouncycastle.mime.smime.SMimeParserProvider;
-import org.bouncycastle.operator.OperatorCreationException;
-import org.bouncycastle.operator.bc.BcDigestCalculatorProvider;
-import org.bouncycastle.util.Store;
-import org.bouncycastle.util.Strings;
-import org.bouncycastle.util.io.Streams;
+import com.distrimind.bouncycastle.cert.X509CertificateHolder;
+import com.distrimind.bouncycastle.cms.CMSException;
+import com.distrimind.bouncycastle.cms.SignerInformation;
+import com.distrimind.bouncycastle.cms.SignerInformationStore;
+import com.distrimind.bouncycastle.cms.jcajce.JcaSimpleSignerInfoVerifierBuilder;
+import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
+import com.distrimind.bouncycastle.mime.BasicMimeParser;
+import com.distrimind.bouncycastle.mime.ConstantMimeContext;
+import com.distrimind.bouncycastle.mime.Headers;
+import com.distrimind.bouncycastle.mime.MimeContext;
+import com.distrimind.bouncycastle.mime.MimeMultipartContext;
+import com.distrimind.bouncycastle.mime.MimeParser;
+import com.distrimind.bouncycastle.mime.MimeParserContext;
+import com.distrimind.bouncycastle.mime.MimeParserListener;
+import com.distrimind.bouncycastle.mime.MimeParserProvider;
+import com.distrimind.bouncycastle.mime.smime.SMimeParserListener;
+import com.distrimind.bouncycastle.mime.smime.SMimeParserProvider;
+import com.distrimind.bouncycastle.operator.OperatorCreationException;
+import com.distrimind.bouncycastle.operator.bc.BcDigestCalculatorProvider;
+import com.distrimind.bouncycastle.util.Store;
+import com.distrimind.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.util.io.Streams;
 
 /*
  This needs to be here to avoid issues with the 1.5 filter editing the html tags.

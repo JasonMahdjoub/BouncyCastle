@@ -1,15 +1,15 @@
-package org.bouncycastle.tls.crypto.impl.jcajce;
+package com.distrimind.bouncycastle.tls.crypto.impl.jcajce;
 
 import java.io.IOException;
 import java.security.KeyPair;
 
 
 
-import org.bouncycastle.jce.interfaces.ECPrivateKey;
-import org.bouncycastle.jce.interfaces.ECPublicKey;
-import org.bouncycastle.jce.spec.ECPrivateKeySpec;
-import org.bouncycastle.tls.crypto.TlsAgreement;
-import org.bouncycastle.tls.crypto.TlsSecret;
+import com.distrimind.bouncycastle.jce.interfaces.ECPrivateKey;
+import com.distrimind.bouncycastle.jce.interfaces.ECPublicKey;
+import com.distrimind.bouncycastle.jce.spec.ECPrivateKeySpec;
+import com.distrimind.bouncycastle.tls.crypto.TlsAgreement;
+import com.distrimind.bouncycastle.tls.crypto.TlsSecret;
 
 /**
  * Support class for ephemeral Elliptic Curve Diffie-Hellman using the JCE.

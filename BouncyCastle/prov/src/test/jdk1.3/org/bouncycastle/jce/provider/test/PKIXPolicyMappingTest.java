@@ -1,4 +1,4 @@
-package org.bouncycastle.jce.provider.test;
+package com.distrimind.bouncycastle.jce.provider.test;
 
 import java.io.IOException;
 import java.math.BigInteger;
@@ -9,15 +9,15 @@ import java.security.NoSuchProviderException;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.Security;
-import org.bouncycastle.jce.PrincipalUtil;
-import org.bouncycastle.jce.cert.CertPathBuilder;
-import org.bouncycastle.jce.cert.CertStore;
-import org.bouncycastle.jce.cert.CollectionCertStoreParameters;
-import org.bouncycastle.jce.cert.PKIXBuilderParameters;
-import org.bouncycastle.jce.cert.PKIXCertPathBuilderResult;
-import org.bouncycastle.jce.cert.TrustAnchor;
-import org.bouncycastle.jce.cert.X509CertSelector;
-import org.bouncycastle.jce.cert.CertPathBuilderException;
+import com.distrimind.bouncycastle.jce.PrincipalUtil;
+import com.distrimind.bouncycastle.jce.cert.CertPathBuilder;
+import com.distrimind.bouncycastle.jce.cert.CertStore;
+import com.distrimind.bouncycastle.jce.cert.CollectionCertStoreParameters;
+import com.distrimind.bouncycastle.jce.cert.PKIXBuilderParameters;
+import com.distrimind.bouncycastle.jce.cert.PKIXCertPathBuilderResult;
+import com.distrimind.bouncycastle.jce.cert.TrustAnchor;
+import com.distrimind.bouncycastle.jce.cert.X509CertSelector;
+import com.distrimind.bouncycastle.jce.cert.CertPathBuilderException;
 import java.security.cert.X509Certificate;
 import java.security.cert.CertificateEncodingException;
 import java.security.spec.RSAPrivateCrtKeySpec;
@@ -27,18 +27,18 @@ import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Set;
 
-import org.bouncycastle.asn1.ASN1EncodableVector;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.DERSequence;
-import org.bouncycastle.asn1.x509.BasicConstraints;
-import org.bouncycastle.asn1.x509.PolicyInformation;
-import org.bouncycastle.asn1.x509.PolicyMappings;
-import org.bouncycastle.asn1.x509.X509Extensions;
-import org.bouncycastle.jce.X509Principal;
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.test.SimpleTest;
-import org.bouncycastle.util.test.TestFailedException;
-import org.bouncycastle.x509.X509V3CertificateGenerator;
+import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.asn1.x509.BasicConstraints;
+import com.distrimind.bouncycastle.asn1.x509.PolicyInformation;
+import com.distrimind.bouncycastle.asn1.x509.PolicyMappings;
+import com.distrimind.bouncycastle.asn1.x509.X509Extensions;
+import com.distrimind.bouncycastle.jce.X509Principal;
+import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.util.test.TestFailedException;
+import com.distrimind.bouncycastle.x509.X509V3CertificateGenerator;
 
 public class PKIXPolicyMappingTest
     extends SimpleTest

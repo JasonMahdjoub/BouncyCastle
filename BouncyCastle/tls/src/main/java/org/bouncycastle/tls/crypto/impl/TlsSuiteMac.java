@@ -1,4 +1,4 @@
-package org.bouncycastle.tls.crypto.impl;
+package com.distrimind.bouncycastle.tls.crypto.impl;
 
 /**
  * Base interface for a generic TLS MAC implementation for use with a cipher suite.

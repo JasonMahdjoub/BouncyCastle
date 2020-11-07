@@ -1,4 +1,4 @@
-package org.bouncycastle.openssl.test;
+package com.distrimind.bouncycastle.openssl.test;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
@@ -20,27 +20,27 @@ import java.security.interfaces.DSAPrivateKey;
 import java.security.interfaces.RSAPrivateCrtKey;
 import java.security.interfaces.RSAPrivateKey;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.cms.CMSObjectIdentifiers;
-import org.bouncycastle.asn1.cms.ContentInfo;
-import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.asn1.x9.ECNamedCurveTable;
-import org.bouncycastle.asn1.x9.X9ECParameters;
-import org.bouncycastle.cert.X509CertificateHolder;
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.openssl.PEMDecryptorProvider;
-import org.bouncycastle.openssl.PEMEncryptedKeyPair;
-import org.bouncycastle.openssl.PEMKeyPair;
-import org.bouncycastle.openssl.PEMParser;
-import org.bouncycastle.openssl.PEMWriter;
-import org.bouncycastle.openssl.PasswordFinder;
-import org.bouncycastle.openssl.jcajce.JcaPEMKeyConverter;
-import org.bouncycastle.openssl.jcajce.JceOpenSSLPKCS8DecryptorProviderBuilder;
-import org.bouncycastle.openssl.jcajce.JcePEMDecryptorProviderBuilder;
-import org.bouncycastle.operator.InputDecryptorProvider;
-import org.bouncycastle.pkcs.PKCS8EncryptedPrivateKeyInfo;
-import org.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.cms.CMSObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.cms.ContentInfo;
+import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
+import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
+import com.distrimind.bouncycastle.asn1.x9.ECNamedCurveTable;
+import com.distrimind.bouncycastle.asn1.x9.X9ECParameters;
+import com.distrimind.bouncycastle.cert.X509CertificateHolder;
+import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
+import com.distrimind.bouncycastle.openssl.PEMDecryptorProvider;
+import com.distrimind.bouncycastle.openssl.PEMEncryptedKeyPair;
+import com.distrimind.bouncycastle.openssl.PEMKeyPair;
+import com.distrimind.bouncycastle.openssl.PEMParser;
+import com.distrimind.bouncycastle.openssl.PEMWriter;
+import com.distrimind.bouncycastle.openssl.PasswordFinder;
+import com.distrimind.bouncycastle.openssl.jcajce.JcaPEMKeyConverter;
+import com.distrimind.bouncycastle.openssl.jcajce.JceOpenSSLPKCS8DecryptorProviderBuilder;
+import com.distrimind.bouncycastle.openssl.jcajce.JcePEMDecryptorProviderBuilder;
+import com.distrimind.bouncycastle.operator.InputDecryptorProvider;
+import com.distrimind.bouncycastle.pkcs.PKCS8EncryptedPrivateKeyInfo;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 /**
  * basic class for reading test.pem - the password is "secret"
@@ -272,7 +272,7 @@ public class ParserTest
         doDudPasswordTest("3ee7a8", 10, "DER length more than 4 bytes: 57");
         doDudPasswordTest("41af75", 11, "unknown tag 16 encountered");
         doDudPasswordTest("1704a5", 12, "corrupted stream detected");
-        doDudPasswordTest("1c5822", 13, "unknown object in getInstance: org.bouncycastle.asn1.DERUTF8String");
+        doDudPasswordTest("1c5822", 13, "unknown object in getInstance: com.distrimind.bouncycastle.asn1.DERUTF8String");
         doDudPasswordTest("5a3d16", 14, "corrupted stream detected");
         doDudPasswordTest("8d0c97", 15, "corrupted stream detected");
         doDudPasswordTest("bc0daf", 16, "corrupted stream detected");

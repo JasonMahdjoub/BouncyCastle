@@ -1,4 +1,4 @@
-package org.bouncycastle.jcajce.provider.asymmetric.edec;
+package com.distrimind.bouncycastle.jcajce.provider.asymmetric.edec;
 
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
@@ -8,26 +8,26 @@ import java.security.interfaces.XECPrivateKey;
 import java.security.interfaces.XECPublicKey;
 import java.security.spec.AlgorithmParameterSpec;
 
-import org.bouncycastle.crypto.DerivationFunction;
-import org.bouncycastle.crypto.RawAgreement;
-import org.bouncycastle.crypto.agreement.X25519Agreement;
-import org.bouncycastle.crypto.agreement.X448Agreement;
-import org.bouncycastle.crypto.agreement.XDHUnifiedAgreement;
-import org.bouncycastle.crypto.agreement.kdf.ConcatenationKDFGenerator;
-import org.bouncycastle.crypto.generators.KDF2BytesGenerator;
-import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
-import org.bouncycastle.crypto.params.X25519PrivateKeyParameters;
-import org.bouncycastle.crypto.params.X25519PublicKeyParameters;
-import org.bouncycastle.crypto.params.X448PrivateKeyParameters;
-import org.bouncycastle.crypto.params.X448PublicKeyParameters;
-import org.bouncycastle.crypto.params.XDHUPrivateParameters;
-import org.bouncycastle.crypto.params.XDHUPublicParameters;
-import org.bouncycastle.crypto.util.DigestFactory;
-import org.bouncycastle.jcajce.provider.asymmetric.util.BaseAgreementSpi;
-import org.bouncycastle.jcajce.spec.DHUParameterSpec;
-import org.bouncycastle.jcajce.spec.UserKeyingMaterialSpec;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.BigIntegers;
+import com.distrimind.bouncycastle.crypto.DerivationFunction;
+import com.distrimind.bouncycastle.crypto.RawAgreement;
+import com.distrimind.bouncycastle.crypto.agreement.X25519Agreement;
+import com.distrimind.bouncycastle.crypto.agreement.X448Agreement;
+import com.distrimind.bouncycastle.crypto.agreement.XDHUnifiedAgreement;
+import com.distrimind.bouncycastle.crypto.agreement.kdf.ConcatenationKDFGenerator;
+import com.distrimind.bouncycastle.crypto.generators.KDF2BytesGenerator;
+import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
+import com.distrimind.bouncycastle.crypto.params.X25519PrivateKeyParameters;
+import com.distrimind.bouncycastle.crypto.params.X25519PublicKeyParameters;
+import com.distrimind.bouncycastle.crypto.params.X448PrivateKeyParameters;
+import com.distrimind.bouncycastle.crypto.params.X448PublicKeyParameters;
+import com.distrimind.bouncycastle.crypto.params.XDHUPrivateParameters;
+import com.distrimind.bouncycastle.crypto.params.XDHUPublicParameters;
+import com.distrimind.bouncycastle.crypto.util.DigestFactory;
+import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.BaseAgreementSpi;
+import com.distrimind.bouncycastle.jcajce.spec.DHUParameterSpec;
+import com.distrimind.bouncycastle.jcajce.spec.UserKeyingMaterialSpec;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.BigIntegers;
 
 public class KeyAgreementSpi
     extends BaseAgreementSpi

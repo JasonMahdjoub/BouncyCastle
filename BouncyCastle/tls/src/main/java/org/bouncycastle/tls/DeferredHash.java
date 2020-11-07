@@ -1,12 +1,12 @@
-package org.bouncycastle.tls;
+package com.distrimind.bouncycastle.tls;
 
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
-import org.bouncycastle.tls.crypto.TlsHash;
-import org.bouncycastle.util.Shorts;
+import com.distrimind.bouncycastle.tls.crypto.TlsHash;
+import com.distrimind.bouncycastle.util.Shorts;
 
 /**
  * Buffers input until the hash algorithm is determined.

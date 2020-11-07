@@ -1,4 +1,4 @@
-package org.bouncycastle.i18n;
+package com.distrimind.bouncycastle.i18n;
 
 import java.net.URL;
 import java.net.URLClassLoader;

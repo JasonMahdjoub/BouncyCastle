@@ -1,4 +1,4 @@
-package org.bouncycastle.jcajce;
+package com.distrimind.bouncycastle.jcajce;
 
 import java.security.InvalidParameterException;
 import java.security.cert.CertPathParameters;

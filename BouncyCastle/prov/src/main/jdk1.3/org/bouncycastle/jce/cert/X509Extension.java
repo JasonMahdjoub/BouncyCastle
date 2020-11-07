@@ -1,5 +1,5 @@
 
-package org.bouncycastle.jce.cert;
+package com.distrimind.bouncycastle.jce.cert;
 
 import java.util.Set;
 

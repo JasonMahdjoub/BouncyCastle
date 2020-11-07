@@ -1,6 +1,6 @@
-package org.bouncycastle.jsse.provider;
+package com.distrimind.bouncycastle.jsse.provider;
 
-import org.bouncycastle.jsse.BCX509ExtendedTrustManager;
+import com.distrimind.bouncycastle.jsse.BCX509ExtendedTrustManager;
 
 interface ExportX509TrustManager
 {

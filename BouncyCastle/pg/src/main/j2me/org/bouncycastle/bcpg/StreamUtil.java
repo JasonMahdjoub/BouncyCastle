@@ -1,4 +1,4 @@
-package org.bouncycastle.bcpg;
+package com.distrimind.bouncycastle.bcpg;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;

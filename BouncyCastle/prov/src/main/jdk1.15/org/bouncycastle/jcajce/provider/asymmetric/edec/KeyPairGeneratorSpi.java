@@ -1,4 +1,4 @@
-package org.bouncycastle.jcajce.provider.asymmetric.edec;
+package com.distrimind.bouncycastle.jcajce.provider.asymmetric.edec;
 
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidParameterException;
@@ -8,22 +8,22 @@ import java.security.spec.AlgorithmParameterSpec;
 import java.security.spec.ECGenParameterSpec;
 import java.security.spec.NamedParameterSpec;
 
-import org.bouncycastle.asn1.edec.EdECObjectIdentifiers;
-import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
-import org.bouncycastle.crypto.AsymmetricCipherKeyPairGenerator;
-import org.bouncycastle.crypto.CryptoServicesRegistrar;
-import org.bouncycastle.crypto.generators.Ed25519KeyPairGenerator;
-import org.bouncycastle.crypto.generators.Ed448KeyPairGenerator;
-import org.bouncycastle.crypto.generators.X25519KeyPairGenerator;
-import org.bouncycastle.crypto.generators.X448KeyPairGenerator;
-import org.bouncycastle.crypto.params.Ed25519KeyGenerationParameters;
-import org.bouncycastle.crypto.params.Ed448KeyGenerationParameters;
-import org.bouncycastle.crypto.params.X25519KeyGenerationParameters;
-import org.bouncycastle.crypto.params.X448KeyGenerationParameters;
-import org.bouncycastle.jcajce.provider.asymmetric.util.ECUtil;
-import org.bouncycastle.jcajce.spec.EdDSAParameterSpec;
-import org.bouncycastle.jcajce.spec.XDHParameterSpec;
-import org.bouncycastle.jce.spec.ECNamedCurveGenParameterSpec;
+import com.distrimind.bouncycastle.asn1.edec.EdECObjectIdentifiers;
+import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
+import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPairGenerator;
+import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
+import com.distrimind.bouncycastle.crypto.generators.Ed25519KeyPairGenerator;
+import com.distrimind.bouncycastle.crypto.generators.Ed448KeyPairGenerator;
+import com.distrimind.bouncycastle.crypto.generators.X25519KeyPairGenerator;
+import com.distrimind.bouncycastle.crypto.generators.X448KeyPairGenerator;
+import com.distrimind.bouncycastle.crypto.params.Ed25519KeyGenerationParameters;
+import com.distrimind.bouncycastle.crypto.params.Ed448KeyGenerationParameters;
+import com.distrimind.bouncycastle.crypto.params.X25519KeyGenerationParameters;
+import com.distrimind.bouncycastle.crypto.params.X448KeyGenerationParameters;
+import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.ECUtil;
+import com.distrimind.bouncycastle.jcajce.spec.EdDSAParameterSpec;
+import com.distrimind.bouncycastle.jcajce.spec.XDHParameterSpec;
+import com.distrimind.bouncycastle.jce.spec.ECNamedCurveGenParameterSpec;
 
 public class KeyPairGeneratorSpi
     extends java.security.KeyPairGeneratorSpi

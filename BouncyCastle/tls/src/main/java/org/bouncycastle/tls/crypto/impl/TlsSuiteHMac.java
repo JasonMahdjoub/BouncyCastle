@@ -1,11 +1,11 @@
-package org.bouncycastle.tls.crypto.impl;
+package com.distrimind.bouncycastle.tls.crypto.impl;
 
-import org.bouncycastle.tls.ProtocolVersion;
-import org.bouncycastle.tls.TlsUtils;
-import org.bouncycastle.tls.crypto.TlsCryptoParameters;
-import org.bouncycastle.tls.crypto.TlsHMAC;
-import org.bouncycastle.tls.crypto.TlsMAC;
-import org.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.tls.ProtocolVersion;
+import com.distrimind.bouncycastle.tls.TlsUtils;
+import com.distrimind.bouncycastle.tls.crypto.TlsCryptoParameters;
+import com.distrimind.bouncycastle.tls.crypto.TlsHMAC;
+import com.distrimind.bouncycastle.tls.crypto.TlsMAC;
+import com.distrimind.bouncycastle.util.Arrays;
 
 /**
  * A generic TLS MAC implementation, acting as an HMAC based on some underlying Digest.

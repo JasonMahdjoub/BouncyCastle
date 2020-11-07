@@ -1,6 +1,6 @@
-package org.bouncycastle.x509;
+package com.distrimind.bouncycastle.x509;
 
-import org.bouncycastle.util.Selector;
+import com.distrimind.bouncycastle.util.Selector;
 
 import java.security.cert.X509CRLSelector;
 import java.security.cert.CRL;

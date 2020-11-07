@@ -1,4 +1,4 @@
-package org.bouncycastle.cms.test;
+package com.distrimind.bouncycastle.cms.test;
 
 import javax.crypto.Cipher;
 

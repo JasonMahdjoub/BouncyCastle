@@ -1,4 +1,4 @@
-package org.bouncycastle.pqc.jcajce.interfaces;
+package com.distrimind.bouncycastle.pqc.jcajce.interfaces;
 
 import java.security.InvalidKeyException;
 import java.security.PrivateKey;

@@ -1,4 +1,4 @@
-package org.bouncycastle.openpgp.operator.jcajce;
+package com.distrimind.bouncycastle.openpgp.operator.jcajce;
 
 import java.io.IOException;
 import java.math.BigInteger;
@@ -20,24 +20,24 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.KeyAgreement;
 import javax.crypto.spec.SecretKeySpec;
 
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.asn1.x9.X962Parameters;
-import org.bouncycastle.asn1.x9.X9ECParameters;
-import org.bouncycastle.asn1.x9.X9ECPoint;
-import org.bouncycastle.bcpg.ECDHPublicBCPGKey;
-import org.bouncycastle.bcpg.MPInteger;
-import org.bouncycastle.bcpg.PublicKeyAlgorithmTags;
-import org.bouncycastle.jcajce.spec.UserKeyingMaterialSpec;
-import org.bouncycastle.jcajce.util.DefaultJcaJceHelper;
-import org.bouncycastle.jcajce.util.NamedJcaJceHelper;
-import org.bouncycastle.jcajce.util.ProviderJcaJceHelper;
-import org.bouncycastle.math.ec.ECPoint;
-import org.bouncycastle.openpgp.PGPException;
-import org.bouncycastle.openpgp.PGPPublicKey;
-import org.bouncycastle.openpgp.PGPUtil;
-import org.bouncycastle.openpgp.operator.PGPPad;
-import org.bouncycastle.openpgp.operator.PublicKeyKeyEncryptionMethodGenerator;
-import org.bouncycastle.openpgp.operator.RFC6637Utils;
+import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
+import com.distrimind.bouncycastle.asn1.x9.X962Parameters;
+import com.distrimind.bouncycastle.asn1.x9.X9ECParameters;
+import com.distrimind.bouncycastle.asn1.x9.X9ECPoint;
+import com.distrimind.bouncycastle.bcpg.ECDHPublicBCPGKey;
+import com.distrimind.bouncycastle.bcpg.MPInteger;
+import com.distrimind.bouncycastle.bcpg.PublicKeyAlgorithmTags;
+import com.distrimind.bouncycastle.jcajce.spec.UserKeyingMaterialSpec;
+import com.distrimind.bouncycastle.jcajce.util.DefaultJcaJceHelper;
+import com.distrimind.bouncycastle.jcajce.util.NamedJcaJceHelper;
+import com.distrimind.bouncycastle.jcajce.util.ProviderJcaJceHelper;
+import com.distrimind.bouncycastle.math.ec.ECPoint;
+import com.distrimind.bouncycastle.openpgp.PGPException;
+import com.distrimind.bouncycastle.openpgp.PGPPublicKey;
+import com.distrimind.bouncycastle.openpgp.PGPUtil;
+import com.distrimind.bouncycastle.openpgp.operator.PGPPad;
+import com.distrimind.bouncycastle.openpgp.operator.PublicKeyKeyEncryptionMethodGenerator;
+import com.distrimind.bouncycastle.openpgp.operator.RFC6637Utils;
 
 public class JcePublicKeyKeyEncryptionMethodGenerator
     extends PublicKeyKeyEncryptionMethodGenerator
@@ -101,7 +101,7 @@ public class JcePublicKeyKeyEncryptionMethodGenerator
 
                 ecAlgParams.init(new X962Parameters(ecKey.getCurveOID()).getEncoded());
 
-                org.bouncycastle.jcajce.provider.asymmetric.ec.KeyPairGeneratorSpi.EC kpGen = (org.bouncycastle.jcajce.provider.asymmetric.ec.KeyPairGeneratorSpi.EC)helper.createKeyPairGenerator("EC");
+                com.distrimind.bouncycastle.jcajce.provider.asymmetric.ec.KeyPairGeneratorSpi.EC kpGen = (com.distrimind.bouncycastle.jcajce.provider.asymmetric.ec.KeyPairGeneratorSpi.EC)helper.createKeyPairGenerator("EC");
 
                 kpGen.initialize(ecAlgParams.getParameterSpec(AlgorithmParameterSpec.class), random);
 

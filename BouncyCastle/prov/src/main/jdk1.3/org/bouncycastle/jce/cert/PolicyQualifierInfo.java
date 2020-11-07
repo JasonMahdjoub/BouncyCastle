@@ -1,16 +1,16 @@
-package org.bouncycastle.jce.cert;
+package com.distrimind.bouncycastle.jce.cert;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-import org.bouncycastle.asn1.ASN1InputStream;
-import org.bouncycastle.asn1.ASN1Object;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1OutputStream;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.ASN1Encoding;
-import org.bouncycastle.asn1.util.ASN1Dump;
+import com.distrimind.bouncycastle.asn1.ASN1InputStream;
+import com.distrimind.bouncycastle.asn1.ASN1Object;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.ASN1OutputStream;
+import com.distrimind.bouncycastle.asn1.ASN1Sequence;
+import com.distrimind.bouncycastle.asn1.ASN1Encoding;
+import com.distrimind.bouncycastle.asn1.util.ASN1Dump;
 
 /**
  * An immutable policy qualifier represented by the ASN.1 PolicyQualifierInfo
@@ -64,11 +64,11 @@ import org.bouncycastle.asn1.util.ASN1Dump;
  * allows them to be passed around to various pieces of code without worrying
  * about coordinating access.<br />
  * <br />
- * Uses {@link org.bouncycastle.asn1.ASN1InputStream ASN1InputStream},
- * {@link org.bouncycastle.asn1.ASN1Sequence ASN1Sequence},
- * {@link org.bouncycastle.asn1.ASN1ObjectIdentifier ASN1ObjectIdentifier},
- * {@link org.bouncycastle.asn1.ASN1OutputStream DEROutputStream},
- * {@link org.bouncycastle.asn1.ASN1Object ASN1Object}
+ * Uses {@link com.distrimind.bouncycastle.asn1.ASN1InputStream ASN1InputStream},
+ * {@link com.distrimind.bouncycastle.asn1.ASN1Sequence ASN1Sequence},
+ * {@link com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier ASN1ObjectIdentifier},
+ * {@link com.distrimind.bouncycastle.asn1.ASN1OutputStream DEROutputStream},
+ * {@link com.distrimind.bouncycastle.asn1.ASN1Object ASN1Object}
  */
 public final class PolicyQualifierInfo
 {
@@ -82,10 +82,10 @@ public final class PolicyQualifierInfo
      * Creates an instance of <code>PolicyQualifierInfo</code> from the
      * encoded bytes. The encoded byte array is copied on construction.<br />
      * <br />
-     * Uses {@link org.bouncycastle.asn1.ASN1InputStream ASN1InputStream},
-     * {@link org.bouncycastle.asn1.ASN1Sequence ASN1Sequence},
-     * {@link org.bouncycastle.asn1.ASN1ObjectIdentifier ASN1ObjectIdentifier} and
-     * {@link org.bouncycastle.asn1.ASN1OutputStream DEROutputStream}
+     * Uses {@link com.distrimind.bouncycastle.asn1.ASN1InputStream ASN1InputStream},
+     * {@link com.distrimind.bouncycastle.asn1.ASN1Sequence ASN1Sequence},
+     * {@link com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier ASN1ObjectIdentifier} and
+     * {@link com.distrimind.bouncycastle.asn1.ASN1OutputStream DEROutputStream}
      * 
      * @param encoded
      *            a byte array containing the qualifier in DER encoding
@@ -166,8 +166,8 @@ public final class PolicyQualifierInfo
      * Return a printable representation of this
      * <code>PolicyQualifierInfo</code>.<br />
      * <br />
-     * Uses {@link org.bouncycastle.asn1.ASN1InputStream ASN1InputStream},
-     * {@link org.bouncycastle.asn1.ASN1Object ASN1Object}
+     * Uses {@link com.distrimind.bouncycastle.asn1.ASN1InputStream ASN1InputStream},
+     * {@link com.distrimind.bouncycastle.asn1.ASN1Object ASN1Object}
      * 
      * @return a <code>String</code> describing the contents of this
      *         <code>PolicyQualifierInfo</code>

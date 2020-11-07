@@ -1,6 +1,6 @@
-package org.bouncycastle.util;
+package com.distrimind.bouncycastle.util;
 
-import org.bouncycastle.math.raw.Bits;
+import com.distrimind.bouncycastle.math.raw.Bits;
 
 public class Longs
 {

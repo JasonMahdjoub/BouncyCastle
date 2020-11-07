@@ -1,4 +1,4 @@
-package org.bouncycastle.tls.test;
+package com.distrimind.bouncycastle.tls.test;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,44 +16,44 @@ import java.util.Vector;
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.TrustManagerFactory;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.edec.EdECObjectIdentifiers;
-import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
-import org.bouncycastle.asn1.pkcs.RSAPrivateKey;
-import org.bouncycastle.asn1.sec.ECPrivateKey;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x9.X9ObjectIdentifiers;
-import org.bouncycastle.crypto.digests.SHA256Digest;
-import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
-import org.bouncycastle.crypto.params.RSAPrivateCrtKeyParameters;
-import org.bouncycastle.crypto.util.PrivateKeyFactory;
-import org.bouncycastle.tls.AlertDescription;
-import org.bouncycastle.tls.Certificate;
-import org.bouncycastle.tls.SignatureAlgorithm;
-import org.bouncycastle.tls.SignatureAndHashAlgorithm;
-import org.bouncycastle.tls.TlsContext;
-import org.bouncycastle.tls.TlsCredentialedAgreement;
-import org.bouncycastle.tls.TlsCredentialedDecryptor;
-import org.bouncycastle.tls.TlsCredentialedSigner;
-import org.bouncycastle.tls.TlsFatalAlert;
-import org.bouncycastle.tls.TlsUtils;
-import org.bouncycastle.tls.crypto.TlsCertificate;
-import org.bouncycastle.tls.crypto.TlsCrypto;
-import org.bouncycastle.tls.crypto.TlsCryptoParameters;
-import org.bouncycastle.tls.crypto.impl.bc.BcDefaultTlsCredentialedAgreement;
-import org.bouncycastle.tls.crypto.impl.bc.BcDefaultTlsCredentialedDecryptor;
-import org.bouncycastle.tls.crypto.impl.bc.BcDefaultTlsCredentialedSigner;
-import org.bouncycastle.tls.crypto.impl.bc.BcTlsCrypto;
-import org.bouncycastle.tls.crypto.impl.jcajce.JcaDefaultTlsCredentialedSigner;
-import org.bouncycastle.tls.crypto.impl.jcajce.JcaTlsCrypto;
-import org.bouncycastle.tls.crypto.impl.jcajce.JceDefaultTlsCredentialedAgreement;
-import org.bouncycastle.tls.crypto.impl.jcajce.JceDefaultTlsCredentialedDecryptor;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.encoders.Base64;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.io.pem.PemObject;
-import org.bouncycastle.util.io.pem.PemReader;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.edec.EdECObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
+import com.distrimind.bouncycastle.asn1.pkcs.RSAPrivateKey;
+import com.distrimind.bouncycastle.asn1.sec.ECPrivateKey;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.asn1.x9.X9ObjectIdentifiers;
+import com.distrimind.bouncycastle.crypto.digests.SHA256Digest;
+import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
+import com.distrimind.bouncycastle.crypto.params.RSAPrivateCrtKeyParameters;
+import com.distrimind.bouncycastle.crypto.util.PrivateKeyFactory;
+import com.distrimind.bouncycastle.tls.AlertDescription;
+import com.distrimind.bouncycastle.tls.Certificate;
+import com.distrimind.bouncycastle.tls.SignatureAlgorithm;
+import com.distrimind.bouncycastle.tls.SignatureAndHashAlgorithm;
+import com.distrimind.bouncycastle.tls.TlsContext;
+import com.distrimind.bouncycastle.tls.TlsCredentialedAgreement;
+import com.distrimind.bouncycastle.tls.TlsCredentialedDecryptor;
+import com.distrimind.bouncycastle.tls.TlsCredentialedSigner;
+import com.distrimind.bouncycastle.tls.TlsFatalAlert;
+import com.distrimind.bouncycastle.tls.TlsUtils;
+import com.distrimind.bouncycastle.tls.crypto.TlsCertificate;
+import com.distrimind.bouncycastle.tls.crypto.TlsCrypto;
+import com.distrimind.bouncycastle.tls.crypto.TlsCryptoParameters;
+import com.distrimind.bouncycastle.tls.crypto.impl.bc.BcDefaultTlsCredentialedAgreement;
+import com.distrimind.bouncycastle.tls.crypto.impl.bc.BcDefaultTlsCredentialedDecryptor;
+import com.distrimind.bouncycastle.tls.crypto.impl.bc.BcDefaultTlsCredentialedSigner;
+import com.distrimind.bouncycastle.tls.crypto.impl.bc.BcTlsCrypto;
+import com.distrimind.bouncycastle.tls.crypto.impl.jcajce.JcaDefaultTlsCredentialedSigner;
+import com.distrimind.bouncycastle.tls.crypto.impl.jcajce.JcaTlsCrypto;
+import com.distrimind.bouncycastle.tls.crypto.impl.jcajce.JceDefaultTlsCredentialedAgreement;
+import com.distrimind.bouncycastle.tls.crypto.impl.jcajce.JceDefaultTlsCredentialedDecryptor;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.encoders.Base64;
+import com.distrimind.bouncycastle.util.encoders.Hex;
+import com.distrimind.bouncycastle.util.io.pem.PemObject;
+import com.distrimind.bouncycastle.util.io.pem.PemReader;
 
 public class TlsTestUtils
 {
@@ -79,7 +79,7 @@ public class TlsTestUtils
             + "0lAQH/BAgwBgYEVR0lADAcBgNVHREBAf8EEjAQgQ50ZXN0QHRlc3QudGVzdDANBgkqhkiG9w0BAQQFAANBAJg55PBS"
             + "weg6obRUKF4FF6fCrWFi6oCYSQ99LWcAeupc5BofW5MstFMhCOaEucuGVqunwT5G7/DweazzCIrSzB0=");
 
-    static String fingerprint(org.bouncycastle.asn1.x509.Certificate c)
+    static String fingerprint(com.distrimind.bouncycastle.asn1.x509.Certificate c)
         throws IOException
     {
         byte[] der = c.getEncoded();
@@ -327,13 +327,13 @@ public class TlsTestUtils
         return new Certificate(chain);
     }
 
-    static org.bouncycastle.asn1.x509.Certificate loadBcCertificateResource(String resource)
+    static com.distrimind.bouncycastle.asn1.x509.Certificate loadBcCertificateResource(String resource)
         throws IOException
     {
         PemObject pem = loadPemResource(resource);
         if (pem.getType().endsWith("CERTIFICATE"))
         {
-            return org.bouncycastle.asn1.x509.Certificate.getInstance(pem.getContent());
+            return com.distrimind.bouncycastle.asn1.x509.Certificate.getInstance(pem.getContent());
         }
         throw new IllegalArgumentException("'resource' doesn't specify a valid certificate");
     }

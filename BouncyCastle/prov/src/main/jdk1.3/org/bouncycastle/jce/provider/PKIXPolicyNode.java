@@ -1,6 +1,6 @@
-package org.bouncycastle.jce.provider;
+package com.distrimind.bouncycastle.jce.provider;
 
-import org.bouncycastle.jce.cert.PolicyNode;
+import com.distrimind.bouncycastle.jce.cert.PolicyNode;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;

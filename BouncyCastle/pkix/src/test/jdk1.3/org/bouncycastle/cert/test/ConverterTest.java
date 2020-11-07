@@ -1,17 +1,17 @@
-package org.bouncycastle.cert.test;
+package com.distrimind.bouncycastle.cert.test;
 
 import java.math.BigInteger;
-import org.bouncycastle.jce.cert.X509CertSelector;
+import com.distrimind.bouncycastle.jce.cert.X509CertSelector;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import org.bouncycastle.asn1.DEROctetString;
-import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.cert.selector.X509CertificateHolderSelector;
-import org.bouncycastle.cert.selector.jcajce.JcaSelectorConverter;
-import org.bouncycastle.cert.selector.jcajce.JcaX509CertSelectorConverter;
-import org.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.asn1.DEROctetString;
+import com.distrimind.bouncycastle.asn1.x500.X500Name;
+import com.distrimind.bouncycastle.cert.selector.X509CertificateHolderSelector;
+import com.distrimind.bouncycastle.cert.selector.jcajce.JcaSelectorConverter;
+import com.distrimind.bouncycastle.cert.selector.jcajce.JcaX509CertSelectorConverter;
+import com.distrimind.bouncycastle.util.Arrays;
 
 public class ConverterTest
     extends TestCase

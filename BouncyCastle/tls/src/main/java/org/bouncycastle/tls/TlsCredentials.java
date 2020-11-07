@@ -1,4 +1,4 @@
-package org.bouncycastle.tls;
+package com.distrimind.bouncycastle.tls;
 
 /**
  * Base interface for interfaces/classes carrying TLS credentials.

@@ -1,4 +1,4 @@
-package org.bouncycastle.tls.crypto;
+package com.distrimind.bouncycastle.tls.crypto;
 
 /**
  * Basic config for Diffie-Hellman.

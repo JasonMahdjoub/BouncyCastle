@@ -1,14 +1,14 @@
-package org.bouncycastle.asn1.x509;
+package com.distrimind.bouncycastle.asn1.x509;
 
 import java.util.Calendar;
 import java.util.Date;
 
-import org.bouncycastle.asn1.ASN1Choice;
-import org.bouncycastle.asn1.ASN1Object;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.ASN1TaggedObject;
-import org.bouncycastle.asn1.ASN1GeneralizedTime;
-import org.bouncycastle.asn1.ASN1UTCTime;
+import com.distrimind.bouncycastle.asn1.ASN1Choice;
+import com.distrimind.bouncycastle.asn1.ASN1Object;
+import com.distrimind.bouncycastle.asn1.ASN1Primitive;
+import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
+import com.distrimind.bouncycastle.asn1.ASN1GeneralizedTime;
+import com.distrimind.bouncycastle.asn1.ASN1UTCTime;
 
 public class Time
     extends ASN1Object

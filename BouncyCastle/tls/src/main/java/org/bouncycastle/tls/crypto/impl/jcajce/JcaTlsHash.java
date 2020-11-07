@@ -1,8 +1,8 @@
-package org.bouncycastle.tls.crypto.impl.jcajce;
+package com.distrimind.bouncycastle.tls.crypto.impl.jcajce;
 
 import java.security.MessageDigest;
 
-import org.bouncycastle.tls.crypto.TlsHash;
+import com.distrimind.bouncycastle.tls.crypto.TlsHash;
 
 /**
  * Wrapper class for providing support methods for a TlsHash based on the JCA MessageDigest class.

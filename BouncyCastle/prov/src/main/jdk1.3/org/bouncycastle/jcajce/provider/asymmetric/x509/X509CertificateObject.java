@@ -1,4 +1,4 @@
-package org.bouncycastle.jcajce.provider.asymmetric.x509;
+package com.distrimind.bouncycastle.jcajce.provider.asymmetric.x509;
 
 import java.security.PublicKey;
 import java.security.cert.CertificateEncodingException;
@@ -8,17 +8,17 @@ import java.security.cert.CertificateParsingException;
 import java.util.Date;
 import java.util.Enumeration;
 
-import org.bouncycastle.asn1.ASN1BitString;
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1Encoding;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.DERBitString;
-import org.bouncycastle.asn1.x509.BasicConstraints;
-import org.bouncycastle.jcajce.provider.asymmetric.util.PKCS12BagAttributeCarrierImpl;
-import org.bouncycastle.jcajce.util.JcaJceHelper;
-import org.bouncycastle.jce.interfaces.PKCS12BagAttributeCarrier;
-import org.bouncycastle.jce.X509Principal;
+import com.distrimind.bouncycastle.asn1.ASN1BitString;
+import com.distrimind.bouncycastle.asn1.ASN1Encodable;
+import com.distrimind.bouncycastle.asn1.ASN1Encoding;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.ASN1Primitive;
+import com.distrimind.bouncycastle.asn1.DERBitString;
+import com.distrimind.bouncycastle.asn1.x509.BasicConstraints;
+import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.PKCS12BagAttributeCarrierImpl;
+import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
+import com.distrimind.bouncycastle.jce.interfaces.PKCS12BagAttributeCarrier;
+import com.distrimind.bouncycastle.jce.X509Principal;
 
 class X509CertificateObject
     extends X509CertificateImpl
@@ -36,7 +36,7 @@ class X509CertificateObject
 
     private PKCS12BagAttributeCarrier   attrCarrier = new PKCS12BagAttributeCarrierImpl();
 
-    X509CertificateObject(JcaJceHelper bcHelper, org.bouncycastle.asn1.x509.Certificate c)
+    X509CertificateObject(JcaJceHelper bcHelper, com.distrimind.bouncycastle.asn1.x509.Certificate c)
         throws CertificateParsingException
     {
         super(bcHelper, c, createBasicConstraints(c), createKeyUsage(c), createSigAlgName(c), createSigAlgParams(c));
@@ -226,7 +226,7 @@ class X509CertificateObject
         }
     }
 
-    private static BasicConstraints createBasicConstraints(org.bouncycastle.asn1.x509.Certificate c)
+    private static BasicConstraints createBasicConstraints(com.distrimind.bouncycastle.asn1.x509.Certificate c)
         throws CertificateParsingException
     {
         try
@@ -245,7 +245,7 @@ class X509CertificateObject
         }
     }
 
-    private static boolean[] createKeyUsage(org.bouncycastle.asn1.x509.Certificate c) throws CertificateParsingException
+    private static boolean[] createKeyUsage(com.distrimind.bouncycastle.asn1.x509.Certificate c) throws CertificateParsingException
     {
         try
         {
@@ -275,7 +275,7 @@ class X509CertificateObject
         }
     }
 
-    private static String createSigAlgName(org.bouncycastle.asn1.x509.Certificate c) throws CertificateParsingException
+    private static String createSigAlgName(com.distrimind.bouncycastle.asn1.x509.Certificate c) throws CertificateParsingException
     {
         try
         {
@@ -287,7 +287,7 @@ class X509CertificateObject
         }
     }
 
-    private static byte[] createSigAlgParams(org.bouncycastle.asn1.x509.Certificate c) throws CertificateParsingException
+    private static byte[] createSigAlgParams(com.distrimind.bouncycastle.asn1.x509.Certificate c) throws CertificateParsingException
     {
         try
         {

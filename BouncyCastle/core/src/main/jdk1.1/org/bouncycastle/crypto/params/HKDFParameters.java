@@ -1,7 +1,7 @@
-package org.bouncycastle.crypto.params;
+package com.distrimind.bouncycastle.crypto.params;
 
-import org.bouncycastle.crypto.DerivationParameters;
-import org.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.crypto.DerivationParameters;
+import com.distrimind.bouncycastle.util.Arrays;
 
 /**
  * Parameter class for the HKDFBytesGenerator class.

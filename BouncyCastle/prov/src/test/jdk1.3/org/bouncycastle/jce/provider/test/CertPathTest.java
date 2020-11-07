@@ -1,4 +1,4 @@
-package org.bouncycastle.jce.provider.test;
+package com.distrimind.bouncycastle.jce.provider.test;
  
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -20,13 +20,13 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
 
-import org.bouncycastle.jce.cert.CertPath;
-import org.bouncycastle.jce.cert.CertificateFactory;
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTestResult;
-import org.bouncycastle.util.test.Test;
-import org.bouncycastle.util.test.TestResult;
+import com.distrimind.bouncycastle.jce.cert.CertPath;
+import com.distrimind.bouncycastle.jce.cert.CertificateFactory;
+import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
+import com.distrimind.bouncycastle.util.encoders.Hex;
+import com.distrimind.bouncycastle.util.test.SimpleTestResult;
+import com.distrimind.bouncycastle.util.test.Test;
+import com.distrimind.bouncycastle.util.test.TestResult;
 
 public class CertPathTest
     implements Test

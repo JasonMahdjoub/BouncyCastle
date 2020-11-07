@@ -1,12 +1,12 @@
-package org.bouncycastle.jsse.provider;
+package com.distrimind.bouncycastle.jsse.provider;
 
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.bouncycastle.tls.NamedGroup;
-import org.bouncycastle.tls.SignatureScheme;
+import com.distrimind.bouncycastle.tls.NamedGroup;
+import com.distrimind.bouncycastle.tls.SignatureScheme;
 
 abstract class FipsUtils
 {
@@ -18,7 +18,7 @@ abstract class FipsUtils
     private static final boolean provAllowGCMCiphers = false;
 
     private static final boolean provAllowRSAKeyExchange = PropertyUtils
-        .getBooleanSystemProperty("org.bouncycastle.jsse.fips.allowRSAKeyExchange", true);
+        .getBooleanSystemProperty("com.distrimind.bouncycastle.jsse.fips.allowRSAKeyExchange", true);
 
     private static final Set<String> FIPS_SUPPORTED_CIPHERSUITES = createFipsSupportedCipherSuites();
     private static final Set<String> FIPS_SUPPORTED_PROTOCOLS = createFipsSupportedProtocols();

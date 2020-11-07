@@ -1,4 +1,4 @@
-package org.bouncycastle.tls;
+package com.distrimind.bouncycastle.tls;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -7,7 +7,7 @@ import java.io.OutputStream;
 import java.util.Hashtable;
 import java.util.Vector;
 
-import org.bouncycastle.tls.crypto.TlsCertificate;
+import com.distrimind.bouncycastle.tls.crypto.TlsCertificate;
 
 /**
  * Parsing and encoding of a <i>Certificate</i> struct from RFC 4346.
@@ -19,7 +19,7 @@ import org.bouncycastle.tls.crypto.TlsCertificate;
  * } Certificate;
  * </pre>
  *
- * @see org.bouncycastle.asn1.x509.Certificate
+ * @see com.distrimind.bouncycastle.asn1.x509.Certificate
  */
 public class Certificate
 {
@@ -76,7 +76,7 @@ public class Certificate
     }
 
     /**
-     * @return an array of {@link org.bouncycastle.asn1.x509.Certificate} representing a certificate
+     * @return an array of {@link com.distrimind.bouncycastle.asn1.x509.Certificate} representing a certificate
      *         chain.
      */
     public TlsCertificate[] getCertificateList()

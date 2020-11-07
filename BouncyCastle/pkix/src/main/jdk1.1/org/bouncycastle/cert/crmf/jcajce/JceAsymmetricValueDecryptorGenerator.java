@@ -1,4 +1,4 @@
-package org.bouncycastle.cert.crmf.jcajce;
+package com.distrimind.bouncycastle.cert.crmf.jcajce;
 
 import java.io.InputStream;
 import java.security.InvalidKeyException;
@@ -13,14 +13,14 @@ import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.spec.SecretKeySpec;
 
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.cert.crmf.CRMFException;
-import org.bouncycastle.cert.crmf.ValueDecryptorGenerator;
-import org.bouncycastle.jcajce.io.CipherInputStream;
-import org.bouncycastle.jcajce.util.DefaultJcaJceHelper;
-import org.bouncycastle.jcajce.util.NamedJcaJceHelper;
-import org.bouncycastle.jcajce.util.ProviderJcaJceHelper;
-import org.bouncycastle.operator.InputDecryptor;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.cert.crmf.CRMFException;
+import com.distrimind.bouncycastle.cert.crmf.ValueDecryptorGenerator;
+import com.distrimind.bouncycastle.jcajce.io.CipherInputStream;
+import com.distrimind.bouncycastle.jcajce.util.DefaultJcaJceHelper;
+import com.distrimind.bouncycastle.jcajce.util.NamedJcaJceHelper;
+import com.distrimind.bouncycastle.jcajce.util.ProviderJcaJceHelper;
+import com.distrimind.bouncycastle.operator.InputDecryptor;
 
 public class JceAsymmetricValueDecryptorGenerator
     implements ValueDecryptorGenerator

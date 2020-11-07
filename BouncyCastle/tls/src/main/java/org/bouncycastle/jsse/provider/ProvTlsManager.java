@@ -1,11 +1,11 @@
-package org.bouncycastle.jsse.provider;
+package com.distrimind.bouncycastle.jsse.provider;
 
 import java.io.IOException;
 import java.security.Principal;
 import java.security.cert.X509Certificate;
 import java.util.List;
 
-import org.bouncycastle.jsse.BCX509Key;
+import com.distrimind.bouncycastle.jsse.BCX509Key;
 
 interface ProvTlsManager
 {

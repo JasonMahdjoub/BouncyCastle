@@ -1,13 +1,13 @@
-package org.bouncycastle.tls.crypto;
+package com.distrimind.bouncycastle.tls.crypto;
 
 import java.io.IOException;
 import java.math.BigInteger;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.tls.ConnectionEnd;
-import org.bouncycastle.tls.KeyExchangeAlgorithm;
-import org.bouncycastle.tls.SignatureAlgorithm;
+import com.distrimind.bouncycastle.asn1.ASN1Encodable;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.tls.ConnectionEnd;
+import com.distrimind.bouncycastle.tls.KeyExchangeAlgorithm;
+import com.distrimind.bouncycastle.tls.SignatureAlgorithm;
 
 /**
  * Interface providing the functional representation of a single X.509 certificate.

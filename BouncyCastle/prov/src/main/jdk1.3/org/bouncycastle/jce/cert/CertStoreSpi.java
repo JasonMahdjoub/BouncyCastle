@@ -1,4 +1,4 @@
-package org.bouncycastle.jce.cert;
+package com.distrimind.bouncycastle.jce.cert;
 
 import java.security.InvalidAlgorithmParameterException;
 import java.util.Collection;

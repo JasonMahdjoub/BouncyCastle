@@ -1,45 +1,45 @@
-package org.bouncycastle.jcajce.provider.asymmetric.util;
+package com.distrimind.bouncycastle.jcajce.provider.asymmetric.util;
 
 import java.math.BigInteger;
 import java.security.InvalidKeyException;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.anssi.ANSSINamedCurves;
-import org.bouncycastle.asn1.cryptopro.ECGOST3410NamedCurves;
-import org.bouncycastle.asn1.gm.GMNamedCurves;
-import org.bouncycastle.asn1.nist.NISTNamedCurves;
-import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
-import org.bouncycastle.asn1.sec.SECNamedCurves;
-import org.bouncycastle.asn1.teletrust.TeleTrusTNamedCurves;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.asn1.x9.ECNamedCurveTable;
-import org.bouncycastle.asn1.x9.X962NamedCurves;
-import org.bouncycastle.asn1.x9.X962Parameters;
-import org.bouncycastle.asn1.x9.X9ECParameters;
-import org.bouncycastle.crypto.ec.CustomNamedCurves;
-import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
-import org.bouncycastle.crypto.params.ECDomainParameters;
-import org.bouncycastle.crypto.params.ECNamedDomainParameters;
-import org.bouncycastle.crypto.params.ECPrivateKeyParameters;
-import org.bouncycastle.crypto.params.ECPublicKeyParameters;
-import org.bouncycastle.jcajce.provider.config.ProviderConfiguration;
-import org.bouncycastle.jce.interfaces.ECPrivateKey;
-import org.bouncycastle.jce.interfaces.ECPublicKey;
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.jce.spec.ECNamedCurveParameterSpec;
-import org.bouncycastle.jce.spec.ECParameterSpec;
-import org.bouncycastle.math.ec.ECCurve;
-import org.bouncycastle.math.ec.ECPoint;
-import org.bouncycastle.math.ec.FixedPointCombMultiplier;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Fingerprint;
-import org.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.anssi.ANSSINamedCurves;
+import com.distrimind.bouncycastle.asn1.cryptopro.ECGOST3410NamedCurves;
+import com.distrimind.bouncycastle.asn1.gm.GMNamedCurves;
+import com.distrimind.bouncycastle.asn1.nist.NISTNamedCurves;
+import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
+import com.distrimind.bouncycastle.asn1.sec.SECNamedCurves;
+import com.distrimind.bouncycastle.asn1.teletrust.TeleTrusTNamedCurves;
+import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
+import com.distrimind.bouncycastle.asn1.x9.ECNamedCurveTable;
+import com.distrimind.bouncycastle.asn1.x9.X962NamedCurves;
+import com.distrimind.bouncycastle.asn1.x9.X962Parameters;
+import com.distrimind.bouncycastle.asn1.x9.X9ECParameters;
+import com.distrimind.bouncycastle.crypto.ec.CustomNamedCurves;
+import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
+import com.distrimind.bouncycastle.crypto.params.ECDomainParameters;
+import com.distrimind.bouncycastle.crypto.params.ECNamedDomainParameters;
+import com.distrimind.bouncycastle.crypto.params.ECPrivateKeyParameters;
+import com.distrimind.bouncycastle.crypto.params.ECPublicKeyParameters;
+import com.distrimind.bouncycastle.jcajce.provider.config.ProviderConfiguration;
+import com.distrimind.bouncycastle.jce.interfaces.ECPrivateKey;
+import com.distrimind.bouncycastle.jce.interfaces.ECPublicKey;
+import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
+import com.distrimind.bouncycastle.jce.spec.ECNamedCurveParameterSpec;
+import com.distrimind.bouncycastle.jce.spec.ECParameterSpec;
+import com.distrimind.bouncycastle.math.ec.ECCurve;
+import com.distrimind.bouncycastle.math.ec.ECPoint;
+import com.distrimind.bouncycastle.math.ec.FixedPointCombMultiplier;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Fingerprint;
+import com.distrimind.bouncycastle.util.Strings;
 
 /**
  * utility class for converting jce/jca ECDSA, ECDH, and ECDHC
- * objects into their org.bouncycastle.crypto counterparts.
+ * objects into their com.distrimind.bouncycastle.crypto counterparts.
  */
 public class ECUtil
 {
@@ -115,7 +115,7 @@ public class ECUtil
 
     public static ECDomainParameters getDomainParameters(
         ProviderConfiguration configuration,
-        org.bouncycastle.jce.spec.ECParameterSpec params)
+        com.distrimind.bouncycastle.jce.spec.ECParameterSpec params)
     {
         ECDomainParameters domainParameters;
 
@@ -128,7 +128,7 @@ public class ECUtil
         }
         else if (params == null)
         {
-            org.bouncycastle.jce.spec.ECParameterSpec iSpec = configuration.getEcImplicitlyCa();
+            com.distrimind.bouncycastle.jce.spec.ECParameterSpec iSpec = configuration.getEcImplicitlyCa();
 
             domainParameters = new ECDomainParameters(iSpec.getCurve(), iSpec.getG(), iSpec.getN(), iSpec.getH(), iSpec.getSeed());
         }
@@ -155,7 +155,7 @@ public class ECUtil
         }
         else if (params.isImplicitlyCA())
         {
-            org.bouncycastle.jce.spec.ECParameterSpec iSpec = configuration.getEcImplicitlyCa();
+            com.distrimind.bouncycastle.jce.spec.ECParameterSpec iSpec = configuration.getEcImplicitlyCa();
 
             domainParameters = new ECDomainParameters(iSpec.getCurve(), iSpec.getG(), iSpec.getN(), iSpec.getH(), iSpec.getSeed());
         }
@@ -347,12 +347,12 @@ public class ECUtil
         return name;
     }
 
-    public static String privateKeyToString(String algorithm, BigInteger d, org.bouncycastle.jce.spec.ECParameterSpec spec)
+    public static String privateKeyToString(String algorithm, BigInteger d, com.distrimind.bouncycastle.jce.spec.ECParameterSpec spec)
     {
         StringBuffer buf = new StringBuffer();
         String nl = Strings.lineSeparator();
 
-        org.bouncycastle.math.ec.ECPoint q = new FixedPointCombMultiplier().multiply(spec.getG(), d).normalize();
+        com.distrimind.bouncycastle.math.ec.ECPoint q = new FixedPointCombMultiplier().multiply(spec.getG(), d).normalize();
 
         buf.append(algorithm);
         buf.append(" Private Key [").append(ECUtil.generateKeyFingerprint(q, spec)).append("]").append(nl);
@@ -362,7 +362,7 @@ public class ECUtil
         return buf.toString();
     }
 
-    public static String publicKeyToString(String algorithm, org.bouncycastle.math.ec.ECPoint q, org.bouncycastle.jce.spec.ECParameterSpec spec)
+    public static String publicKeyToString(String algorithm, com.distrimind.bouncycastle.math.ec.ECPoint q, com.distrimind.bouncycastle.jce.spec.ECParameterSpec spec)
     {
         StringBuffer buf = new StringBuffer();
         String nl = Strings.lineSeparator();
@@ -375,7 +375,7 @@ public class ECUtil
         return buf.toString();
     }
 
-    public static String generateKeyFingerprint(ECPoint publicPoint, org.bouncycastle.jce.spec.ECParameterSpec spec)
+    public static String generateKeyFingerprint(ECPoint publicPoint, com.distrimind.bouncycastle.jce.spec.ECParameterSpec spec)
     {
         ECCurve curve = spec.getCurve();
         ECPoint g = spec.getG();

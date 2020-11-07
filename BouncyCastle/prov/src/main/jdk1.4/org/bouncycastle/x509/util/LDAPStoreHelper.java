@@ -1,4 +1,4 @@
-package org.bouncycastle.x509.util;
+package com.distrimind.bouncycastle.x509.util;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -27,31 +27,31 @@ import javax.naming.directory.SearchControls;
 import javax.naming.directory.SearchResult;
 import javax.security.auth.x500.X500Principal;
 
-import org.bouncycastle.asn1.ASN1InputStream;
-import org.bouncycastle.asn1.x509.Certificate;
-import org.bouncycastle.asn1.x509.CertificatePair;
-import org.bouncycastle.jce.X509LDAPCertStoreParameters;
-import org.bouncycastle.jce.provider.X509AttrCertParser;
-import org.bouncycastle.jce.provider.X509CRLParser;
-import org.bouncycastle.jce.provider.X509CertPairParser;
-import org.bouncycastle.jce.provider.X509CertParser;
-import org.bouncycastle.util.StoreException;
-import org.bouncycastle.x509.X509AttributeCertStoreSelector;
-import org.bouncycastle.x509.X509AttributeCertificate;
-import org.bouncycastle.x509.X509CRLStoreSelector;
-import org.bouncycastle.x509.X509CertPairStoreSelector;
-import org.bouncycastle.x509.X509CertStoreSelector;
-import org.bouncycastle.x509.X509CertificatePair;
+import com.distrimind.bouncycastle.asn1.ASN1InputStream;
+import com.distrimind.bouncycastle.asn1.x509.Certificate;
+import com.distrimind.bouncycastle.asn1.x509.CertificatePair;
+import com.distrimind.bouncycastle.jce.X509LDAPCertStoreParameters;
+import com.distrimind.bouncycastle.jce.provider.X509AttrCertParser;
+import com.distrimind.bouncycastle.jce.provider.X509CRLParser;
+import com.distrimind.bouncycastle.jce.provider.X509CertPairParser;
+import com.distrimind.bouncycastle.jce.provider.X509CertParser;
+import com.distrimind.bouncycastle.util.StoreException;
+import com.distrimind.bouncycastle.x509.X509AttributeCertStoreSelector;
+import com.distrimind.bouncycastle.x509.X509AttributeCertificate;
+import com.distrimind.bouncycastle.x509.X509CRLStoreSelector;
+import com.distrimind.bouncycastle.x509.X509CertPairStoreSelector;
+import com.distrimind.bouncycastle.x509.X509CertStoreSelector;
+import com.distrimind.bouncycastle.x509.X509CertificatePair;
 
 /**
  * This is a general purpose implementation to get X.509 certificates, CRLs,
  * attribute certificates and cross certificates from a LDAP location.
  * <p>
  * At first a search is performed in the ldap*AttributeNames of the
- * {@link org.bouncycastle.jce.X509LDAPCertStoreParameters} with the given
+ * {@link com.distrimind.bouncycastle.jce.X509LDAPCertStoreParameters} with the given
  * information of the subject (for all kind of certificates) or issuer (for
- * CRLs), respectively, if a {@link org.bouncycastle.x509.X509CertStoreSelector} or
- * {@link org.bouncycastle.x509.X509AttributeCertificate} is given with that
+ * CRLs), respectively, if a {@link com.distrimind.bouncycastle.x509.X509CertStoreSelector} or
+ * {@link com.distrimind.bouncycastle.x509.X509AttributeCertificate} is given with that
  * details.
  * </p><p>
  * For the used schemes see:
@@ -250,7 +250,7 @@ public class LDAPStoreHelper
     /**
      * Can use the subject of the forward certificate of the set certificate
      * pair or the subject of the forward
-     * {@link org.bouncycastle.x509.X509CertStoreSelector} of the given
+     * {@link com.distrimind.bouncycastle.x509.X509CertStoreSelector} of the given
      * selector.
      *
      * @param xselector             The selector with the search criteria.

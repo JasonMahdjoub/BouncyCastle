@@ -1,4 +1,4 @@
-package org.bouncycastle.jcajce.provider.asymmetric.rsa;
+package com.distrimind.bouncycastle.jcajce.provider.asymmetric.rsa;
 
 import java.security.InvalidKeyException;
 import java.security.PrivateKey;
@@ -9,22 +9,22 @@ import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 import java.security.spec.AlgorithmParameterSpec;
 
-import org.bouncycastle.crypto.AsymmetricBlockCipher;
-import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.digests.MD5Digest;
-import org.bouncycastle.crypto.digests.RIPEMD128Digest;
-import org.bouncycastle.crypto.digests.RIPEMD160Digest;
-import org.bouncycastle.crypto.digests.SHA1Digest;
-import org.bouncycastle.crypto.digests.SHA224Digest;
-import org.bouncycastle.crypto.digests.SHA256Digest;
-import org.bouncycastle.crypto.digests.SHA384Digest;
-import org.bouncycastle.crypto.digests.SHA512Digest;
-import org.bouncycastle.crypto.digests.WhirlpoolDigest;
-import org.bouncycastle.crypto.digests.SHA512tDigest;
-import org.bouncycastle.crypto.engines.RSABlindedEngine;
-import org.bouncycastle.crypto.signers.ISO9796d2Signer;
-import org.bouncycastle.crypto.signers.X931Signer;
+import com.distrimind.bouncycastle.crypto.AsymmetricBlockCipher;
+import com.distrimind.bouncycastle.crypto.CipherParameters;
+import com.distrimind.bouncycastle.crypto.Digest;
+import com.distrimind.bouncycastle.crypto.digests.MD5Digest;
+import com.distrimind.bouncycastle.crypto.digests.RIPEMD128Digest;
+import com.distrimind.bouncycastle.crypto.digests.RIPEMD160Digest;
+import com.distrimind.bouncycastle.crypto.digests.SHA1Digest;
+import com.distrimind.bouncycastle.crypto.digests.SHA224Digest;
+import com.distrimind.bouncycastle.crypto.digests.SHA256Digest;
+import com.distrimind.bouncycastle.crypto.digests.SHA384Digest;
+import com.distrimind.bouncycastle.crypto.digests.SHA512Digest;
+import com.distrimind.bouncycastle.crypto.digests.WhirlpoolDigest;
+import com.distrimind.bouncycastle.crypto.digests.SHA512tDigest;
+import com.distrimind.bouncycastle.crypto.engines.RSABlindedEngine;
+import com.distrimind.bouncycastle.crypto.signers.ISO9796d2Signer;
+import com.distrimind.bouncycastle.crypto.signers.X931Signer;
 
 public class X931SignatureSpi
     extends Signature

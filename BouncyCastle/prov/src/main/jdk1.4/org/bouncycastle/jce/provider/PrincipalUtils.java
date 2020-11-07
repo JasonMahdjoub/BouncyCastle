@@ -1,4 +1,4 @@
-package org.bouncycastle.jce.provider;
+package com.distrimind.bouncycastle.jce.provider;
 
 import java.security.cert.TrustAnchor;
 import java.security.cert.X509CRL;
@@ -7,9 +7,9 @@ import java.security.cert.X509Certificate;
 
 import javax.security.auth.x500.X500Principal;
 
-import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.asn1.x500.style.RFC4519Style;
-import org.bouncycastle.x509.X509AttributeCertificate;
+import com.distrimind.bouncycastle.asn1.x500.X500Name;
+import com.distrimind.bouncycastle.asn1.x500.style.RFC4519Style;
+import com.distrimind.bouncycastle.x509.X509AttributeCertificate;
 
 class PrincipalUtils
 {

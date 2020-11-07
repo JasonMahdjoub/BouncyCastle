@@ -1,4 +1,4 @@
-package org.bouncycastle.jcajce.util;
+package com.distrimind.bouncycastle.jcajce.util;
 
 import java.security.AlgorithmParameterGenerator;
 import java.security.AlgorithmParameters;
@@ -27,7 +27,7 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKeyFactory;
 
 
-import org.bouncycastle.crypto.CryptoServicesRegistrar;
+import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
 
 /**
  * {@link JcaJceHelper} that obtains all algorithms using the default JCA/JCE mechanism (i.e.

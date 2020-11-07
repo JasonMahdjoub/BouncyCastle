@@ -1,4 +1,4 @@
-package org.bouncycastle.jcajce.provider.asymmetric.util;
+package com.distrimind.bouncycastle.jcajce.provider.asymmetric.util;
 
 import java.math.BigInteger;
 import java.security.InvalidKeyException;
@@ -8,10 +8,10 @@ import java.security.Signature;
 import java.security.SignatureException;
 import java.security.spec.AlgorithmParameterSpec;
 
-import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.asn1.x509.X509ObjectIdentifiers;
-import org.bouncycastle.crypto.DSA;
-import org.bouncycastle.crypto.Digest;
+import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.x509.X509ObjectIdentifiers;
+import com.distrimind.bouncycastle.crypto.DSA;
+import com.distrimind.bouncycastle.crypto.Digest;
 
 public abstract class DSABase
     extends Signature

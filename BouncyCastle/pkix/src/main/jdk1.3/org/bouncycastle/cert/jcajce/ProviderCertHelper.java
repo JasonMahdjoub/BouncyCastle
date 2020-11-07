@@ -1,4 +1,4 @@
-package org.bouncycastle.cert.jcajce;
+package com.distrimind.bouncycastle.cert.jcajce;
 
 import java.security.Provider;
 import java.security.NoSuchProviderException;

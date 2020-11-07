@@ -1,4 +1,4 @@
-package org.bouncycastle.jcajce.provider.test;
+package com.distrimind.bouncycastle.jcajce.provider.test;
 
 import java.security.KeyFactory;
 import java.security.KeyPair;
@@ -17,10 +17,10 @@ import javax.crypto.KeyAgreement;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import org.bouncycastle.jcajce.interfaces.XDHPrivateKey;
-import org.bouncycastle.jcajce.interfaces.XDHPublicKey;
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.jcajce.interfaces.XDHPrivateKey;
+import com.distrimind.bouncycastle.jcajce.interfaces.XDHPublicKey;
+import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
+import com.distrimind.bouncycastle.util.Arrays;
 
 
 /**

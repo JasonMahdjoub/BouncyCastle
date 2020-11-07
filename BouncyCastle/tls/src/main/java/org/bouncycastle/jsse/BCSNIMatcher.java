@@ -1,6 +1,6 @@
-package org.bouncycastle.jsse;
+package com.distrimind.bouncycastle.jsse;
 
-import org.bouncycastle.tls.TlsUtils;
+import com.distrimind.bouncycastle.tls.TlsUtils;
 
 public abstract class BCSNIMatcher
 {

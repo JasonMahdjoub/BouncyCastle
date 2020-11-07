@@ -1,22 +1,22 @@
-package org.bouncycastle.cms.test;
+package com.distrimind.bouncycastle.cms.test;
 
 import java.util.Collection;
 import java.util.Iterator;
 
-import org.bouncycastle.asn1.nist.NISTObjectIdentifiers;
-import org.bouncycastle.cert.X509CertificateHolder;
-import org.bouncycastle.cms.CMSEnvelopedData;
-import org.bouncycastle.cms.CMSEnvelopedDataGenerator;
-import org.bouncycastle.cms.CMSProcessableByteArray;
-import org.bouncycastle.cms.RecipientInformation;
-import org.bouncycastle.cms.RecipientInformationStore;
-import org.bouncycastle.cms.bc.BcCMSContentEncryptorBuilder;
-import org.bouncycastle.cms.bc.BcRSAKeyTransEnvelopedRecipient;
-import org.bouncycastle.cms.bc.BcRSAKeyTransRecipientInfoGenerator;
-import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
-import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.asn1.nist.NISTObjectIdentifiers;
+import com.distrimind.bouncycastle.cert.X509CertificateHolder;
+import com.distrimind.bouncycastle.cms.CMSEnvelopedData;
+import com.distrimind.bouncycastle.cms.CMSEnvelopedDataGenerator;
+import com.distrimind.bouncycastle.cms.CMSProcessableByteArray;
+import com.distrimind.bouncycastle.cms.RecipientInformation;
+import com.distrimind.bouncycastle.cms.RecipientInformationStore;
+import com.distrimind.bouncycastle.cms.bc.BcCMSContentEncryptorBuilder;
+import com.distrimind.bouncycastle.cms.bc.BcRSAKeyTransEnvelopedRecipient;
+import com.distrimind.bouncycastle.cms.bc.BcRSAKeyTransRecipientInfoGenerator;
+import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
+import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 public class BcEnvelopedDataTest
     extends SimpleTest

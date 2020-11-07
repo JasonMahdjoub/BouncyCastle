@@ -1,4 +1,4 @@
-package org.bouncycastle.openpgp;
+package com.distrimind.bouncycastle.openpgp;
 
 public class PGPSignatureException
     extends PGPException

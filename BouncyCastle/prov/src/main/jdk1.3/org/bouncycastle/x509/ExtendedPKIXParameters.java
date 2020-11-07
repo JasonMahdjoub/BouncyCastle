@@ -1,16 +1,16 @@
-package org.bouncycastle.x509;
+package com.distrimind.bouncycastle.x509;
 
-import org.bouncycastle.util.Selector;
-import org.bouncycastle.util.Store;
+import com.distrimind.bouncycastle.util.Selector;
+import com.distrimind.bouncycastle.util.Store;
 
 import java.security.InvalidAlgorithmParameterException;
-import org.bouncycastle.jce.cert.CertSelector;
-import org.bouncycastle.jce.cert.CertStore;
-import org.bouncycastle.jce.cert.CollectionCertStoreParameters;
-import org.bouncycastle.jce.cert.LDAPCertStoreParameters;
-import org.bouncycastle.jce.cert.PKIXParameters;
-import org.bouncycastle.jce.cert.TrustAnchor;
-import org.bouncycastle.jce.cert.X509CertSelector;
+import com.distrimind.bouncycastle.jce.cert.CertSelector;
+import com.distrimind.bouncycastle.jce.cert.CertStore;
+import com.distrimind.bouncycastle.jce.cert.CollectionCertStoreParameters;
+import com.distrimind.bouncycastle.jce.cert.LDAPCertStoreParameters;
+import com.distrimind.bouncycastle.jce.cert.PKIXParameters;
+import com.distrimind.bouncycastle.jce.cert.TrustAnchor;
+import com.distrimind.bouncycastle.jce.cert.X509CertSelector;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -244,7 +244,7 @@ public class ExtendedPKIXParameters
                 {
                     throw new ClassCastException(
                         "All elements of list must be "
-                            + "of type org.bouncycastle.util.Store.");
+                            + "of type com.distrimind.bouncycastle.util.Store.");
                 }
             }
             this.stores = new ArrayList(stores);

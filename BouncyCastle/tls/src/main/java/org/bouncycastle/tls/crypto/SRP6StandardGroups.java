@@ -1,8 +1,8 @@
-package org.bouncycastle.tls.crypto;
+package com.distrimind.bouncycastle.tls.crypto;
 
 import java.math.BigInteger;
 
-import org.bouncycastle.util.encoders.Hex;
+import com.distrimind.bouncycastle.util.encoders.Hex;
 
 /**
  * A selection of standard groups for SRP-6.

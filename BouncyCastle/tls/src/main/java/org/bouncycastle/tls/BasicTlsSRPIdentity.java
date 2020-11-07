@@ -1,7 +1,7 @@
-package org.bouncycastle.tls;
+package com.distrimind.bouncycastle.tls;
 
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Strings;
 
 /**
  * A basic SRP Identity holder.

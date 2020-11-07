@@ -1,6 +1,6 @@
-package org.bouncycastle.asn1.eac;
+package com.distrimind.bouncycastle.asn1.eac;
 
-import org.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Arrays;
 
 /**
  * EAC encoding date object

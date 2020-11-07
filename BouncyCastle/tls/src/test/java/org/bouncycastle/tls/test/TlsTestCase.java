@@ -1,4 +1,4 @@
-package org.bouncycastle.tls.test;
+package com.distrimind.bouncycastle.tls.test;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,9 +9,9 @@ import java.io.PipedOutputStream;
 import java.security.SecureRandom;
 
 import junit.framework.TestCase;
-import org.bouncycastle.tls.ProtocolVersion;
-import org.bouncycastle.tls.TlsProtocol;
-import org.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.tls.ProtocolVersion;
+import com.distrimind.bouncycastle.tls.TlsProtocol;
+import com.distrimind.bouncycastle.util.Arrays;
 
 public class TlsTestCase extends TestCase
 {

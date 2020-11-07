@@ -1,6 +1,6 @@
-package org.bouncycastle.tls.test;
+package com.distrimind.bouncycastle.tls.test;
 
-import org.bouncycastle.tls.ProtocolVersion;
+import com.distrimind.bouncycastle.tls.ProtocolVersion;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;

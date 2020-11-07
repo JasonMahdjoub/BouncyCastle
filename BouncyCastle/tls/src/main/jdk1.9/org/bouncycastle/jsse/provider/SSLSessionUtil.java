@@ -1,9 +1,9 @@
-package org.bouncycastle.jsse.provider;
+package com.distrimind.bouncycastle.jsse.provider;
 
 import javax.net.ssl.ExtendedSSLSession;
 import javax.net.ssl.SSLSession;
 
-import org.bouncycastle.jsse.BCExtendedSSLSession;
+import com.distrimind.bouncycastle.jsse.BCExtendedSSLSession;
 
 abstract class SSLSessionUtil
 {

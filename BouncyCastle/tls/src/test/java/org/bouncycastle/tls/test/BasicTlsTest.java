@@ -1,4 +1,4 @@
-package org.bouncycastle.tls.test;
+package com.distrimind.bouncycastle.tls.test;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -8,19 +8,19 @@ import java.net.Socket;
 import java.security.SecureRandom;
 import java.util.Vector;
 
-import org.bouncycastle.tls.AlertDescription;
-import org.bouncycastle.tls.AlertLevel;
-import org.bouncycastle.tls.DefaultTlsClient;
-import org.bouncycastle.tls.HashAlgorithm;
-import org.bouncycastle.tls.ServerOnlyTlsAuthentication;
-import org.bouncycastle.tls.SignatureAlgorithm;
-import org.bouncycastle.tls.SignatureAndHashAlgorithm;
-import org.bouncycastle.tls.TlsAuthentication;
-import org.bouncycastle.tls.TlsClientProtocol;
-import org.bouncycastle.tls.TlsServerCertificate;
-import org.bouncycastle.tls.crypto.impl.bc.BcTlsCrypto;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.encoders.Hex;
+import com.distrimind.bouncycastle.tls.AlertDescription;
+import com.distrimind.bouncycastle.tls.AlertLevel;
+import com.distrimind.bouncycastle.tls.DefaultTlsClient;
+import com.distrimind.bouncycastle.tls.HashAlgorithm;
+import com.distrimind.bouncycastle.tls.ServerOnlyTlsAuthentication;
+import com.distrimind.bouncycastle.tls.SignatureAlgorithm;
+import com.distrimind.bouncycastle.tls.SignatureAndHashAlgorithm;
+import com.distrimind.bouncycastle.tls.TlsAuthentication;
+import com.distrimind.bouncycastle.tls.TlsClientProtocol;
+import com.distrimind.bouncycastle.tls.TlsServerCertificate;
+import com.distrimind.bouncycastle.tls.crypto.impl.bc.BcTlsCrypto;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.encoders.Hex;
 
 import junit.framework.TestCase;
 import junit.framework.TestSuite;

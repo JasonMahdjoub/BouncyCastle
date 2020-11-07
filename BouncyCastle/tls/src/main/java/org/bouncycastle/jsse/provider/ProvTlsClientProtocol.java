@@ -1,11 +1,11 @@
-package org.bouncycastle.jsse.provider;
+package com.distrimind.bouncycastle.jsse.provider;
 
 import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import org.bouncycastle.tls.TlsClientProtocol;
+import com.distrimind.bouncycastle.tls.TlsClientProtocol;
 
 class ProvTlsClientProtocol extends TlsClientProtocol
 {

@@ -1,6 +1,6 @@
-package org.bouncycastle.operator.bc;
+package com.distrimind.bouncycastle.operator.bc;
 
-import org.bouncycastle.operator.GenericKey;
+import com.distrimind.bouncycastle.operator.GenericKey;
 
 class OperatorUtils
 {

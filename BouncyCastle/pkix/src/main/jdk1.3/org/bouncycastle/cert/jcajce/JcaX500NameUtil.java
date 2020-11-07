@@ -1,10 +1,10 @@
-package org.bouncycastle.cert.jcajce;
+package com.distrimind.bouncycastle.cert.jcajce;
 
 import java.security.cert.X509Certificate;
 
-import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.asn1.x500.X500NameStyle;
-import org.bouncycastle.jce.PrincipalUtil;
+import com.distrimind.bouncycastle.asn1.x500.X500Name;
+import com.distrimind.bouncycastle.asn1.x500.X500NameStyle;
+import com.distrimind.bouncycastle.jce.PrincipalUtil;
 
 public class JcaX500NameUtil
 {

@@ -1,8 +1,8 @@
-package org.bouncycastle.tls;
+package com.distrimind.bouncycastle.tls;
 
 import java.util.Vector;
 
-import org.bouncycastle.tls.crypto.TlsSecret;
+import com.distrimind.bouncycastle.tls.crypto.TlsSecret;
 
 /**
  * Carrier class for general security parameters.

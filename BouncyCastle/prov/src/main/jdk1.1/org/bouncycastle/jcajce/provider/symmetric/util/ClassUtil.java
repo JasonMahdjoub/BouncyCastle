@@ -1,4 +1,4 @@
-package org.bouncycastle.jcajce.provider.symmetric.util;
+package com.distrimind.bouncycastle.jcajce.provider.symmetric.util;
 
 public class ClassUtil
 {

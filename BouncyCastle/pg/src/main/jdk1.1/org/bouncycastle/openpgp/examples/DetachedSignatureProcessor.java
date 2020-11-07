@@ -1,4 +1,4 @@
-package org.bouncycastle.openpgp.examples;
+package com.distrimind.bouncycastle.openpgp.examples;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -11,24 +11,24 @@ import java.security.GeneralSecurityException;
 import java.security.SignatureException;
 import java.security.Security;
 
-import org.bouncycastle.bcpg.ArmoredOutputStream;
-import org.bouncycastle.bcpg.BCPGOutputStream;
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.openpgp.PGPCompressedData;
-import org.bouncycastle.openpgp.PGPException;
-import org.bouncycastle.openpgp.PGPObjectFactory;
-import org.bouncycastle.openpgp.PGPPrivateKey;
-import org.bouncycastle.openpgp.PGPPublicKey;
-import org.bouncycastle.openpgp.PGPPublicKeyRingCollection;
-import org.bouncycastle.openpgp.PGPSecretKey;
-import org.bouncycastle.openpgp.PGPSignature;
-import org.bouncycastle.openpgp.PGPSignatureGenerator;
-import org.bouncycastle.openpgp.PGPSignatureList;
-import org.bouncycastle.openpgp.PGPUtil;
-import org.bouncycastle.openpgp.operator.bc.BcKeyFingerprintCalculator;
-import org.bouncycastle.openpgp.operator.jcajce.JcaPGPContentSignerBuilder;
-import org.bouncycastle.openpgp.operator.jcajce.JcaPGPContentVerifierBuilderProvider;
-import org.bouncycastle.openpgp.operator.jcajce.JcePBESecretKeyDecryptorBuilder;
+import com.distrimind.bouncycastle.bcpg.ArmoredOutputStream;
+import com.distrimind.bouncycastle.bcpg.BCPGOutputStream;
+import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
+import com.distrimind.bouncycastle.openpgp.PGPCompressedData;
+import com.distrimind.bouncycastle.openpgp.PGPException;
+import com.distrimind.bouncycastle.openpgp.PGPObjectFactory;
+import com.distrimind.bouncycastle.openpgp.PGPPrivateKey;
+import com.distrimind.bouncycastle.openpgp.PGPPublicKey;
+import com.distrimind.bouncycastle.openpgp.PGPPublicKeyRingCollection;
+import com.distrimind.bouncycastle.openpgp.PGPSecretKey;
+import com.distrimind.bouncycastle.openpgp.PGPSignature;
+import com.distrimind.bouncycastle.openpgp.PGPSignatureGenerator;
+import com.distrimind.bouncycastle.openpgp.PGPSignatureList;
+import com.distrimind.bouncycastle.openpgp.PGPUtil;
+import com.distrimind.bouncycastle.openpgp.operator.bc.BcKeyFingerprintCalculator;
+import com.distrimind.bouncycastle.openpgp.operator.jcajce.JcaPGPContentSignerBuilder;
+import com.distrimind.bouncycastle.openpgp.operator.jcajce.JcaPGPContentVerifierBuilderProvider;
+import com.distrimind.bouncycastle.openpgp.operator.jcajce.JcePBESecretKeyDecryptorBuilder;
 
 /**
  * A simple utility class that creates seperate signatures for files and verifies them.
