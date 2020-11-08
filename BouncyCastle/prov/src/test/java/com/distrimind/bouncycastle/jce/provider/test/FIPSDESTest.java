@@ -4,10 +4,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.IOException;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.Key;
-import java.security.KeyException;
-import java.security.Security;
+import java.security.*;
 
 import javax.crypto.Cipher;
 import javax.crypto.CipherInputStream;

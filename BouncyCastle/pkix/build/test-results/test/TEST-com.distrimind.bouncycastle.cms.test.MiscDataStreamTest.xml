@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.cms.test.MiscDataStreamTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2020-11-08T08:33:44" hostname="Garage" time="0.249">
+  <properties/>
+  <testcase name="testSHA1WithRSA" classname="com.distrimind.bouncycastle.cms.test.MiscDataStreamTest" time="0.004"/>
+  <testcase name="testDigestedData" classname="com.distrimind.bouncycastle.cms.test.MiscDataStreamTest" time="0.001"/>
+  <testcase name="testSHA1WithRSA" classname="com.distrimind.bouncycastle.cms.test.MiscDataStreamTest" time="0.004"/>
+  <testcase name="testDigestedData" classname="com.distrimind.bouncycastle.cms.test.MiscDataStreamTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

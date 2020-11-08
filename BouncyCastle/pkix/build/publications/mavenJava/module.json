@@ -1,0 +1,77 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.distrimind.bouncycastle",
+    "module": "pkix",
+    "version": "1.67-DMRECOMPILE",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "6.1.1",
+      "buildId": "rlud44iesnbxjgjjti6qdflg4y"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "pkix-1.67-DMRECOMPILE.jar",
+          "url": "pkix-1.67-DMRECOMPILE.jar",
+          "size": 1060828,
+          "sha512": "62cf92766a5e9d8d4b98adfae1675430f73e8c8ddeb4844557c1155bbd0a024cec2112a49a898996120898d09112e88f50eae9ed76d267f0ee74e93660704d71",
+          "sha256": "92376eede92556e63ba788a79ab379118d08172d060c60d4880de1e7e8c440de",
+          "sha1": "3207037faa7c11879dcc3dd8d04f1b9468d2f4a1",
+          "md5": "8216e1c820cab7b5153c817ae5fe7613"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "com.distrimind.bouncycastle",
+          "module": "core",
+          "version": {
+            "requires": "1.67-DMRECOMPILE"
+          }
+        },
+        {
+          "group": "com.distrimind.bouncycastle",
+          "module": "prov",
+          "version": {
+            "requires": "1.67-DMRECOMPILE"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "pkix-1.67-DMRECOMPILE.jar",
+          "url": "pkix-1.67-DMRECOMPILE.jar",
+          "size": 1060828,
+          "sha512": "62cf92766a5e9d8d4b98adfae1675430f73e8c8ddeb4844557c1155bbd0a024cec2112a49a898996120898d09112e88f50eae9ed76d267f0ee74e93660704d71",
+          "sha256": "92376eede92556e63ba788a79ab379118d08172d060c60d4880de1e7e8c440de",
+          "sha1": "3207037faa7c11879dcc3dd8d04f1b9468d2f4a1",
+          "md5": "8216e1c820cab7b5153c817ae5fe7613"
+        }
+      ]
+    }
+  ]
+}

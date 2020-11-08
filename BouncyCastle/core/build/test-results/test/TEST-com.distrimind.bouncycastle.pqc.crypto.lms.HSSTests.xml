@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.pqc.crypto.lms.HSSTests" tests="11" skipped="0" failures="0" errors="0" timestamp="2020-11-08T08:32:56" hostname="Garage" time="18.423">
+  <properties/>
+  <testcase name="testGenerate" classname="com.distrimind.bouncycastle.pqc.crypto.lms.HSSTests" time="0.081"/>
+  <testcase name="testSignUnitExhaustion" classname="com.distrimind.bouncycastle.pqc.crypto.lms.HSSTests" time="8.492"/>
+  <testcase name="testVectorsFromReference" classname="com.distrimind.bouncycastle.pqc.crypto.lms.HSSTests" time="8.623"/>
+  <testcase name="testSharding" classname="com.distrimind.bouncycastle.pqc.crypto.lms.HSSTests" time="0.044"/>
+  <testcase name="testHSSVector_1" classname="com.distrimind.bouncycastle.pqc.crypto.lms.HSSTests" time="0.004"/>
+  <testcase name="testHSSVector_2" classname="com.distrimind.bouncycastle.pqc.crypto.lms.HSSTests" time="0.003"/>
+  <testcase name="testVectorsFromReference_Expanded" classname="com.distrimind.bouncycastle.pqc.crypto.lms.HSSTests" time="0.594"/>
+  <testcase name="testGenPublicKeys_L0" classname="com.distrimind.bouncycastle.pqc.crypto.lms.HSSTests" time="0.421"/>
+  <testcase name="testGenPublicKeys_L1" classname="com.distrimind.bouncycastle.pqc.crypto.lms.HSSTests" time="0.103"/>
+  <testcase name="testHssKeySerialisation" classname="com.distrimind.bouncycastle.pqc.crypto.lms.HSSTests" time="0.034"/>
+  <testcase name="testRemaining" classname="com.distrimind.bouncycastle.pqc.crypto.lms.HSSTests" time="0.023"/>
+  <system-out><![CDATA[
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

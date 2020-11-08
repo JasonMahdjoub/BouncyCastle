@@ -74,7 +74,7 @@ allprojects {
         testImplementation group: 'junit', name: 'junit', version: '4.13'
    }
 	tasks.withType(JavaExec) {
-		jvmArgs = ['-Xms4g', '-Xmx4g']
+		jvmArgs = ['-Xms8g', '-Xmx8g']
 	}
 
 }
@@ -91,6 +91,9 @@ task printProperties {
 }
 
 subprojects {
+	tasks.withType(JavaExec) {
+		jvmArgs = ['-Xms8g', '-Xmx8g']
+	}
 	if (propFile.canRead())
 	{
 	    props.load(new FileInputStream(propFile))
@@ -101,7 +104,7 @@ subprojects {
     sourceCompatibility = JavaVersionSource
     targetCompatibility = JavaVersionTarget
 
-    version = '1.66-DMRECOMPILE'
+    version = '1.67-DMRECOMPILE'
 
 	compileJava.options.compilerArgs.addAll(['--release', JavaVersionTarget] as Collection<? extends String>)
 	if (project.hasProperty('javaHomeVersion') && JavaVersionTarget.toFloat()>1.8)

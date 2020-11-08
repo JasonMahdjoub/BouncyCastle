@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.pqc.crypto.test.XMSSMTPrivateKeyTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2020-11-08T08:30:38" hostname="Garage" time="2.721">
+  <properties/>
+  <testcase name="testPrivateKeySerialisation" classname="com.distrimind.bouncycastle.pqc.crypto.test.XMSSMTPrivateKeyTest" time="2.7"/>
+  <testcase name="testPrivateKeyParsingSHA256" classname="com.distrimind.bouncycastle.pqc.crypto.test.XMSSMTPrivateKeyTest" time="0.021"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

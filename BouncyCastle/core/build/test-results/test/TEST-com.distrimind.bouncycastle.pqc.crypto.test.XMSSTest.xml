@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.pqc.crypto.test.XMSSTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2020-11-08T08:31:13" hostname="Garage" time="39.529">
+  <properties/>
+  <testcase name="testGenKeyPairSHA256" classname="com.distrimind.bouncycastle.pqc.crypto.test.XMSSTest" time="2.592"/>
+  <testcase name="testGenKeyPairSHA512" classname="com.distrimind.bouncycastle.pqc.crypto.test.XMSSTest" time="8.137"/>
+  <testcase name="testVerifySignatureSHA256" classname="com.distrimind.bouncycastle.pqc.crypto.test.XMSSTest" time="0.074"/>
+  <testcase name="testVerifySignatureSHA512" classname="com.distrimind.bouncycastle.pqc.crypto.test.XMSSTest" time="0.231"/>
+  <testcase name="testImportKeysSHA512" classname="com.distrimind.bouncycastle.pqc.crypto.test.XMSSTest" time="0.321"/>
+  <testcase name="testBDSImport" classname="com.distrimind.bouncycastle.pqc.crypto.test.XMSSTest" time="0.056"/>
+  <testcase name="testImportStateSHA256" classname="com.distrimind.bouncycastle.pqc.crypto.test.XMSSTest" time="0.106"/>
+  <testcase name="testRandom" classname="com.distrimind.bouncycastle.pqc.crypto.test.XMSSTest" time="0.277"/>
+  <testcase name="testSignSHA256CompleteEvenHeight1" classname="com.distrimind.bouncycastle.pqc.crypto.test.XMSSTest" time="0.106"/>
+  <testcase name="testSignSHA256CompleteEvenHeight2" classname="com.distrimind.bouncycastle.pqc.crypto.test.XMSSTest" time="14.239"/>
+  <testcase name="testSignSHA256" classname="com.distrimind.bouncycastle.pqc.crypto.test.XMSSTest" time="2.64"/>
+  <testcase name="testSignSHA512" classname="com.distrimind.bouncycastle.pqc.crypto.test.XMSSTest" time="8.149"/>
+  <testcase name="testAuthPath" classname="com.distrimind.bouncycastle.pqc.crypto.test.XMSSTest" time="2.6"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

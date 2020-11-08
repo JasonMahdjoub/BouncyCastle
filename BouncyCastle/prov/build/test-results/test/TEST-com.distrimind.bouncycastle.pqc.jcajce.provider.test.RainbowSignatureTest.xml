@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.pqc.jcajce.provider.test.RainbowSignatureTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2020-11-08T08:51:05" hostname="Garage" time="9.128">
+  <properties/>
+  <testcase name="testRainbowWithSHA224" classname="com.distrimind.bouncycastle.pqc.jcajce.provider.test.RainbowSignatureTest" time="0.13"/>
+  <testcase name="testRainbowWithSHA384" classname="com.distrimind.bouncycastle.pqc.jcajce.provider.test.RainbowSignatureTest" time="0.102"/>
+  <testcase name="testRainbowWithSHA512" classname="com.distrimind.bouncycastle.pqc.jcajce.provider.test.RainbowSignatureTest" time="0.093"/>
+  <testcase name="testSignVerifyWithRandomParams" classname="com.distrimind.bouncycastle.pqc.jcajce.provider.test.RainbowSignatureTest" time="7.04"/>
+  <testcase name="test_KeyFactory" classname="com.distrimind.bouncycastle.pqc.jcajce.provider.test.RainbowSignatureTest" time="0.085"/>
+  <testcase name="testRainbowithSHA256" classname="com.distrimind.bouncycastle.pqc.jcajce.provider.test.RainbowSignatureTest" time="0.082"/>
+  <testcase name="testSignVerifyWithDefaultParams" classname="com.distrimind.bouncycastle.pqc.jcajce.provider.test.RainbowSignatureTest" time="1.596"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.cms.test.AuthEnvelopedDataTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2020-11-08T08:33:44" hostname="Garage" time="0.315">
+  <properties/>
+  <testcase name="testAttributes" classname="com.distrimind.bouncycastle.cms.test.AuthEnvelopedDataTest" time="0.01"/>
+  <testcase name="testSample1" classname="com.distrimind.bouncycastle.cms.test.AuthEnvelopedDataTest" time="0.001"/>
+  <testcase name="testAttributes" classname="com.distrimind.bouncycastle.cms.test.AuthEnvelopedDataTest" time="0.004"/>
+  <testcase name="testSample1" classname="com.distrimind.bouncycastle.cms.test.AuthEnvelopedDataTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

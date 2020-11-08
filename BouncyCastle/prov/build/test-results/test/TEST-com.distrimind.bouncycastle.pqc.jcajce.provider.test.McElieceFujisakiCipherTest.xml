@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.pqc.jcajce.provider.test.McElieceFujisakiCipherTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-11-08T08:51:14" hostname="Garage" time="2.087">
+  <properties/>
+  <testcase name="testEnDecryption_SHA224_11_50" classname="com.distrimind.bouncycastle.pqc.jcajce.provider.test.McElieceFujisakiCipherTest" time="0.85"/>
+  <testcase name="testEnDecryption_SHA1_11_50" classname="com.distrimind.bouncycastle.pqc.jcajce.provider.test.McElieceFujisakiCipherTest" time="0.814"/>
+  <testcase name="testEnDecryption_SHA256_11_50" classname="com.distrimind.bouncycastle.pqc.jcajce.provider.test.McElieceFujisakiCipherTest" time="0.423"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

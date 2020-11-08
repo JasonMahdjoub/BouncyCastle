@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.pqc.crypto.test.XMSSMTTest" tests="16" skipped="0" failures="0" errors="0" timestamp="2020-11-08T08:30:41" hostname="Garage" time="21.45">
+  <properties/>
+  <testcase name="testGenKeyPairSHA256" classname="com.distrimind.bouncycastle.pqc.crypto.test.XMSSMTTest" time="0.086"/>
+  <testcase name="testGenKeyPairSHA512" classname="com.distrimind.bouncycastle.pqc.crypto.test.XMSSMTTest" time="0.272"/>
+  <testcase name="testVerifySignerSHA256" classname="com.distrimind.bouncycastle.pqc.crypto.test.XMSSMTTest" time="0.249"/>
+  <testcase name="testVerifySignerSHA512" classname="com.distrimind.bouncycastle.pqc.crypto.test.XMSSMTTest" time="0.759"/>
+  <testcase name="testVerifySignatureSHA256" classname="com.distrimind.bouncycastle.pqc.crypto.test.XMSSMTTest" time="0.312"/>
+  <testcase name="testVerifySignatureSHA512" classname="com.distrimind.bouncycastle.pqc.crypto.test.XMSSMTTest" time="0.958"/>
+  <testcase name="testImportKeysSHA256" classname="com.distrimind.bouncycastle.pqc.crypto.test.XMSSMTTest" time="0.255"/>
+  <testcase name="testImportKeysSHA512" classname="com.distrimind.bouncycastle.pqc.crypto.test.XMSSMTTest" time="0.811"/>
+  <testcase name="testBDSImport" classname="com.distrimind.bouncycastle.pqc.crypto.test.XMSSMTTest" time="0.098"/>
+  <testcase name="testSignSHA256Complete1" classname="com.distrimind.bouncycastle.pqc.crypto.test.XMSSMTTest" time="0.627"/>
+  <testcase name="testSignSHA256Complete2" classname="com.distrimind.bouncycastle.pqc.crypto.test.XMSSMTTest" time="0.172"/>
+  <testcase name="testSignSHA256Complete3" classname="com.distrimind.bouncycastle.pqc.crypto.test.XMSSMTTest" time="15.033"/>
+  <testcase name="testPublicSeed" classname="com.distrimind.bouncycastle.pqc.crypto.test.XMSSMTTest" time="0.389"/>
+  <testcase name="testRandom" classname="com.distrimind.bouncycastle.pqc.crypto.test.XMSSMTTest" time="1.086"/>
+  <testcase name="testSignSHA256" classname="com.distrimind.bouncycastle.pqc.crypto.test.XMSSMTTest" time="0.16"/>
+  <testcase name="testSignSHA512" classname="com.distrimind.bouncycastle.pqc.crypto.test.XMSSMTTest" time="0.182"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

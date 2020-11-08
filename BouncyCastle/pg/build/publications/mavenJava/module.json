@@ -1,0 +1,77 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.distrimind.bouncycastle",
+    "module": "pg",
+    "version": "1.67-DMRECOMPILE",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "6.1.1",
+      "buildId": "rlud44iesnbxjgjjti6qdflg4y"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "pg-1.67-DMRECOMPILE.jar",
+          "url": "pg-1.67-DMRECOMPILE.jar",
+          "size": 413126,
+          "sha512": "6b17d514237a3e546fb0d05f9f142dd038c4b7d17e243f8ddc498d209d6953318ceaf5f1ea70e7928ed2a239ac1e8a436098de638b08518f7b0e78cefbb53883",
+          "sha256": "323df451b6faa9b860fd1404002cf749d6976cc10ac8d46c41381e2c0b2c146a",
+          "sha1": "60f4f786771c1a572a70284ba54ae8e18dfa7088",
+          "md5": "51c8d3ba9c1b661baea9505fc0143eee"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "com.distrimind.bouncycastle",
+          "module": "core",
+          "version": {
+            "requires": "1.67-DMRECOMPILE"
+          }
+        },
+        {
+          "group": "com.distrimind.bouncycastle",
+          "module": "prov",
+          "version": {
+            "requires": "1.67-DMRECOMPILE"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "pg-1.67-DMRECOMPILE.jar",
+          "url": "pg-1.67-DMRECOMPILE.jar",
+          "size": 413126,
+          "sha512": "6b17d514237a3e546fb0d05f9f142dd038c4b7d17e243f8ddc498d209d6953318ceaf5f1ea70e7928ed2a239ac1e8a436098de638b08518f7b0e78cefbb53883",
+          "sha256": "323df451b6faa9b860fd1404002cf749d6976cc10ac8d46c41381e2c0b2c146a",
+          "sha1": "60f4f786771c1a572a70284ba54ae8e18dfa7088",
+          "md5": "51c8d3ba9c1b661baea9505fc0143eee"
+        }
+      ]
+    }
+  ]
+}

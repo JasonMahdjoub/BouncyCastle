@@ -1,0 +1,91 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.distrimind.bouncycastle",
+    "module": "mail",
+    "version": "1.67-DMRECOMPILE",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "6.1.1",
+      "buildId": "rlud44iesnbxjgjjti6qdflg4y"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "mail-1.67-DMRECOMPILE.jar",
+          "url": "mail-1.67-DMRECOMPILE.jar",
+          "size": 124838,
+          "sha512": "683a5466cb6745c91c5b8f2370439f1ca98ebe3c3332aefbf2156b559c8203d92fb922e3828d4d0a116703cf7d0ea417826f192522a390c4fdc0b4c9d7534b1c",
+          "sha256": "e8063662566a167624c3b81144dbaf1f887b7ec1bf367aeacf5966bbd0a426c7",
+          "sha1": "3506fd2727f1de282a65605cb45ce6782bfcf3b0",
+          "md5": "155ab94000d24271960f749bd1421156"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "com.distrimind.bouncycastle",
+          "module": "core",
+          "version": {
+            "requires": "1.67-DMRECOMPILE"
+          }
+        },
+        {
+          "group": "com.distrimind.bouncycastle",
+          "module": "pkix",
+          "version": {
+            "requires": "1.67-DMRECOMPILE"
+          }
+        },
+        {
+          "group": "com.distrimind.bouncycastle",
+          "module": "prov",
+          "version": {
+            "requires": "1.67-DMRECOMPILE"
+          }
+        },
+        {
+          "group": "javax.mail",
+          "module": "mail",
+          "version": {
+            "requires": "1.4"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "mail-1.67-DMRECOMPILE.jar",
+          "url": "mail-1.67-DMRECOMPILE.jar",
+          "size": 124838,
+          "sha512": "683a5466cb6745c91c5b8f2370439f1ca98ebe3c3332aefbf2156b559c8203d92fb922e3828d4d0a116703cf7d0ea417826f192522a390c4fdc0b4c9d7534b1c",
+          "sha256": "e8063662566a167624c3b81144dbaf1f887b7ec1bf367aeacf5966bbd0a426c7",
+          "sha1": "3506fd2727f1de282a65605cb45ce6782bfcf3b0",
+          "md5": "155ab94000d24271960f749bd1421156"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.pqc.jcajce.provider.test.NewHopeTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-11-08T08:51:22" hostname="Garage" time="0.357">
+  <properties/>
+  <testcase name="testKeyExchange" classname="com.distrimind.bouncycastle.pqc.jcajce.provider.test.NewHopeTest" time="0.355"/>
+  <testcase name="testPrivateKeyRecovery" classname="com.distrimind.bouncycastle.pqc.jcajce.provider.test.NewHopeTest" time="0.002"/>
+  <testcase name="testPublicKeyRecovery" classname="com.distrimind.bouncycastle.pqc.jcajce.provider.test.NewHopeTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

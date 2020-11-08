@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.mail.smime.test.SMIMEToolkitTest" tests="28" skipped="0" failures="0" errors="0" timestamp="2020-11-08T08:33:19" hostname="Garage" time="1.336">
+  <properties/>
+  <testcase name="testEncryptedMimeBodyPart" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMEToolkitTest" time="0.082"/>
+  <testcase name="testSignedMessageVerificationMultipart" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMEToolkitTest" time="0.044"/>
+  <testcase name="testEncryptedSignedMultipart" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMEToolkitTest" time="0.018"/>
+  <testcase name="testEncryptedMimeBodyPartWithPKIXIdentity" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMEToolkitTest" time="0.012"/>
+  <testcase name="testSignedMessageVerificationEncapsulatedWithPKIXIdentity" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMEToolkitTest" time="0.023"/>
+  <testcase name="testEncryptedMessage" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMEToolkitTest" time="0.004"/>
+  <testcase name="testSignedMessageGenerationEncapsulated" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMEToolkitTest" time="0.028"/>
+  <testcase name="testCertificateExtractionMultipart" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMEToolkitTest" time="0.012"/>
+  <testcase name="testCertificateExtractionEncapsulated" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMEToolkitTest" time="0.009"/>
+  <testcase name="testEncryptedRecognition" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMEToolkitTest" time="0.005"/>
+  <testcase name="testSignedMessageRecognitionEncapsulated" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMEToolkitTest" time="0.001"/>
+  <testcase name="testSignedMessageGenerationMultipart" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMEToolkitTest" time="0.012"/>
+  <testcase name="testSignedMessageVerificationEncapsulated" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMEToolkitTest" time="0.009"/>
+  <testcase name="testSignedMessageRecognitionMultipart" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMEToolkitTest" time="0.001"/>
+  <testcase name="testEncryptedMimeBodyPart" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMEToolkitTest" time="0.002"/>
+  <testcase name="testSignedMessageVerificationMultipart" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMEToolkitTest" time="0.004"/>
+  <testcase name="testEncryptedSignedMultipart" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMEToolkitTest" time="0.005"/>
+  <testcase name="testEncryptedMimeBodyPartWithPKIXIdentity" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMEToolkitTest" time="0.004"/>
+  <testcase name="testSignedMessageVerificationEncapsulatedWithPKIXIdentity" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMEToolkitTest" time="0.016"/>
+  <testcase name="testEncryptedMessage" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMEToolkitTest" time="0.003"/>
+  <testcase name="testSignedMessageGenerationEncapsulated" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMEToolkitTest" time="0.008"/>
+  <testcase name="testCertificateExtractionMultipart" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMEToolkitTest" time="0.006"/>
+  <testcase name="testCertificateExtractionEncapsulated" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMEToolkitTest" time="0.007"/>
+  <testcase name="testEncryptedRecognition" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMEToolkitTest" time="0.002"/>
+  <testcase name="testSignedMessageRecognitionEncapsulated" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMEToolkitTest" time="0.001"/>
+  <testcase name="testSignedMessageGenerationMultipart" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMEToolkitTest" time="0.01"/>
+  <testcase name="testSignedMessageVerificationEncapsulated" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMEToolkitTest" time="0.005"/>
+  <testcase name="testSignedMessageRecognitionMultipart" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMEToolkitTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

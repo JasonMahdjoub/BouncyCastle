@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.pkcs.test.PKCS8Test" tests="9" skipped="0" failures="0" errors="0" timestamp="2020-11-08T08:33:32" hostname="Garage" time="0.17">
+  <properties/>
+  <testcase name="testCCMEncryption" classname="com.distrimind.bouncycastle.pkcs.test.PKCS8Test" time="0.036"/>
+  <testcase name="testGOST3411" classname="com.distrimind.bouncycastle.pkcs.test.PKCS8Test" time="0.047"/>
+  <testcase name="testScryptEncryption" classname="com.distrimind.bouncycastle.pkcs.test.PKCS8Test" time="0.003"/>
+  <testcase name="testSHA3_256Encryption" classname="com.distrimind.bouncycastle.pkcs.test.PKCS8Test" time="0.021"/>
+  <testcase name="testGCMEncryption" classname="com.distrimind.bouncycastle.pkcs.test.PKCS8Test" time="0.02"/>
+  <testcase name="testKWPEncryption" classname="com.distrimind.bouncycastle.pkcs.test.PKCS8Test" time="0.021"/>
+  <testcase name="testSHA256" classname="com.distrimind.bouncycastle.pkcs.test.PKCS8Test" time="0.01"/>
+  <testcase name="testScrypt" classname="com.distrimind.bouncycastle.pkcs.test.PKCS8Test" time="0.002"/>
+  <testcase name="testSHA256Encryption" classname="com.distrimind.bouncycastle.pkcs.test.PKCS8Test" time="0.008"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

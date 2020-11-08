@@ -167,7 +167,7 @@ public class RegressionTest
             new Ed25519Test(),
             new Ed448Test(),
             new CSHAKETest(),
-            new Argon2Test(),
+            //new Argon2Test(),
             new OpenSSHKeyParsingTests(),
             new EthereumIESTest(),
             new BigIntegersTest(),
