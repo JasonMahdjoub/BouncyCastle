@@ -19,7 +19,7 @@ if (JavaVersion.current().isJava8Compatible()) {
 }
 
 Properties props = new Properties()
-def propFile = file('gradle.properties')
+def propFile = file('../credentials.properties')
 def artifactory_Url="https://artifactory.distri-mind.fr/artifactory"
 def user=""
 def pwd=""
