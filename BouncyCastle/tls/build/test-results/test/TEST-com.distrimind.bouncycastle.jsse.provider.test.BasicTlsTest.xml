@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.jsse.provider.test.BasicTlsTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-05-27T14:26:09" hostname="Garage" time="0.092">
+  <properties/>
+  <testcase name="testBasicTlsConnection" classname="com.distrimind.bouncycastle.jsse.provider.test.BasicTlsTest" time="0.059"/>
+  <testcase name="testNullRandomJsseInit" classname="com.distrimind.bouncycastle.jsse.provider.test.BasicTlsTest" time="0.004"/>
+  <testcase name="testBasicTlsConnectionLayered" classname="com.distrimind.bouncycastle.jsse.provider.test.BasicTlsTest" time="0.029"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

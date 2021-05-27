@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.distrimind.bouncycastle.math.ec.test.ECPointTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2020-11-08T08:28:54" hostname="Garage" time="6.726">
+<testsuite name="com.distrimind.bouncycastle.math.ec.test.ECPointTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2021-05-27T13:42:55" hostname="Garage" time="4.722">
   <properties/>
   <testcase name="testThreeTimes" classname="com.distrimind.bouncycastle.math.ec.test.ECPointTest" time="0.001"/>
   <testcase name="testAdd" classname="com.distrimind.bouncycastle.math.ec.test.ECPointTest" time="0.0"/>
-  <testcase name="testAddSubtractMultiplySimple" classname="com.distrimind.bouncycastle.math.ec.test.ECPointTest" time="0.015"/>
+  <testcase name="testAddSubtractMultiplySimple" classname="com.distrimind.bouncycastle.math.ec.test.ECPointTest" time="0.008"/>
   <testcase name="testTwice" classname="com.distrimind.bouncycastle.math.ec.test.ECPointTest" time="0.0"/>
-  <testcase name="testAllPoints" classname="com.distrimind.bouncycastle.math.ec.test.ECPointTest" time="0.006"/>
-  <testcase name="testAddSubtractMultiplyTwiceEncoding" classname="com.distrimind.bouncycastle.math.ec.test.ECPointTest" time="5.095"/>
-  <testcase name="testExampleFpB0" classname="com.distrimind.bouncycastle.math.ec.test.ECPointTest" time="1.608"/>
+  <testcase name="testAllPoints" classname="com.distrimind.bouncycastle.math.ec.test.ECPointTest" time="0.002"/>
+  <testcase name="testAddSubtractMultiplyTwiceEncoding" classname="com.distrimind.bouncycastle.math.ec.test.ECPointTest" time="3.549"/>
+  <testcase name="testExampleFpB0" classname="com.distrimind.bouncycastle.math.ec.test.ECPointTest" time="1.161"/>
   <testcase name="testPointCreationConsistency" classname="com.distrimind.bouncycastle.math.ec.test.ECPointTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

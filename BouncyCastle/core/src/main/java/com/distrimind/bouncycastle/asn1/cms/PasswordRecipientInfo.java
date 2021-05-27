@@ -12,7 +12,7 @@ import com.distrimind.bouncycastle.asn1.DERTaggedObject;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 
 /**
- * <a href="http://tools.ietf.org/html/rfc5652#section-10.2.7">RFC 5652</a>:
+ * <a href="https://tools.ietf.org/html/rfc5652#section-10.2.7">RFC 5652</a>:
  * Content encryption key delivery mechanisms.
  * <pre>
  * PasswordRecipientInfo ::= SEQUENCE {

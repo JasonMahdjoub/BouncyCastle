@@ -3,15 +3,14 @@
   "component": {
     "group": "com.distrimind.bouncycastle",
     "module": "mail",
-    "version": "1.67-DMRECOMPILE",
+    "version": "1.68-DMRECOMPILE",
     "attributes": {
       "org.gradle.status": "release"
     }
   },
   "createdBy": {
     "gradle": {
-      "version": "6.1.1",
-      "buildId": "rlud44iesnbxjgjjti6qdflg4y"
+      "version": "7.0.2"
     }
   },
   "variants": [
@@ -26,13 +25,13 @@
       },
       "files": [
         {
-          "name": "mail-1.67-DMRECOMPILE.jar",
-          "url": "mail-1.67-DMRECOMPILE.jar",
-          "size": 124838,
-          "sha512": "683a5466cb6745c91c5b8f2370439f1ca98ebe3c3332aefbf2156b559c8203d92fb922e3828d4d0a116703cf7d0ea417826f192522a390c4fdc0b4c9d7534b1c",
-          "sha256": "e8063662566a167624c3b81144dbaf1f887b7ec1bf367aeacf5966bbd0a426c7",
-          "sha1": "3506fd2727f1de282a65605cb45ce6782bfcf3b0",
-          "md5": "155ab94000d24271960f749bd1421156"
+          "name": "mail-1.68-DMRECOMPILE.jar",
+          "url": "mail-1.68-DMRECOMPILE.jar",
+          "size": 124872,
+          "sha512": "c9627af003ef3233b6c3616d280696455446ea56ecc3c75613e4e94a00fbac35671a30f9c02db1e83b7c5ac1f4a24d075eddc73050a4842794cb119abb4675e1",
+          "sha256": "bf09f986617c29de8d8202e48255a44e79a10ecea951e2c03d75e99c9873c3ea",
+          "sha1": "82ae61c3420dd802148e3b16810ac0ff9579af57",
+          "md5": "85881037bf3372c966afa70c29180440"
         }
       ]
     },
@@ -50,21 +49,21 @@
           "group": "com.distrimind.bouncycastle",
           "module": "core",
           "version": {
-            "requires": "1.67-DMRECOMPILE"
+            "requires": "1.68-DMRECOMPILE"
           }
         },
         {
           "group": "com.distrimind.bouncycastle",
           "module": "pkix",
           "version": {
-            "requires": "1.67-DMRECOMPILE"
+            "requires": "1.68-DMRECOMPILE"
           }
         },
         {
           "group": "com.distrimind.bouncycastle",
           "module": "prov",
           "version": {
-            "requires": "1.67-DMRECOMPILE"
+            "requires": "1.68-DMRECOMPILE"
           }
         },
         {
@@ -77,13 +76,13 @@
       ],
       "files": [
         {
-          "name": "mail-1.67-DMRECOMPILE.jar",
-          "url": "mail-1.67-DMRECOMPILE.jar",
-          "size": 124838,
-          "sha512": "683a5466cb6745c91c5b8f2370439f1ca98ebe3c3332aefbf2156b559c8203d92fb922e3828d4d0a116703cf7d0ea417826f192522a390c4fdc0b4c9d7534b1c",
-          "sha256": "e8063662566a167624c3b81144dbaf1f887b7ec1bf367aeacf5966bbd0a426c7",
-          "sha1": "3506fd2727f1de282a65605cb45ce6782bfcf3b0",
-          "md5": "155ab94000d24271960f749bd1421156"
+          "name": "mail-1.68-DMRECOMPILE.jar",
+          "url": "mail-1.68-DMRECOMPILE.jar",
+          "size": 124872,
+          "sha512": "c9627af003ef3233b6c3616d280696455446ea56ecc3c75613e4e94a00fbac35671a30f9c02db1e83b7c5ac1f4a24d075eddc73050a4842794cb119abb4675e1",
+          "sha256": "bf09f986617c29de8d8202e48255a44e79a10ecea951e2c03d75e99c9873c3ea",
+          "sha1": "82ae61c3420dd802148e3b16810ac0ff9579af57",
+          "md5": "85881037bf3372c966afa70c29180440"
         }
       ]
     }

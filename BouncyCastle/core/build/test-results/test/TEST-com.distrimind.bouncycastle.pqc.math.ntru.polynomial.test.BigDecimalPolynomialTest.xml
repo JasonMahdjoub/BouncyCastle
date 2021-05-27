@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.distrimind.bouncycastle.pqc.math.ntru.polynomial.test.BigDecimalPolynomialTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-11-08T08:30:23" hostname="Garage" time="0.117">
+<testsuite name="com.distrimind.bouncycastle.pqc.math.ntru.polynomial.test.BigDecimalPolynomialTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-05-27T13:44:04" hostname="Garage" time="0.058">
   <properties/>
-  <testcase name="testMult" classname="com.distrimind.bouncycastle.pqc.math.ntru.polynomial.test.BigDecimalPolynomialTest" time="0.117"/>
+  <testcase name="testMult" classname="com.distrimind.bouncycastle.pqc.math.ntru.polynomial.test.BigDecimalPolynomialTest" time="0.058"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

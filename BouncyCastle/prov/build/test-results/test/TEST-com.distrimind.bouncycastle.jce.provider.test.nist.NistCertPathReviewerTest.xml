@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" tests="32" skipped="0" failures="0" errors="0" timestamp="2020-11-08T08:50:25" hostname="Garage" time="0.1">
+<testsuite name="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" tests="32" skipped="0" failures="0" errors="0" timestamp="2021-05-27T14:24:30" hostname="Garage" time="0.056">
   <properties/>
-  <testcase name="testOverlappingPoliciesTest6" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.017"/>
+  <testcase name="testOverlappingPoliciesTest6" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.012"/>
   <testcase name="testDifferentPoliciesTest12" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.001"/>
   <testcase name="testInvalidDSASignaturesTest6" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.003"/>
-  <testcase name="testInvalidValidPre2000UTCNotAfterDateTest7" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.007"/>
-  <testcase name="testAllCertificatesNoPoliciesTest2" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.003"/>
-  <testcase name="testDifferentPoliciesTest3" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.007"/>
-  <testcase name="testDifferentPoliciesTest4" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.002"/>
-  <testcase name="testDifferentPoliciesTest5" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.003"/>
-  <testcase name="testDifferentPoliciesTest7" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.003"/>
-  <testcase name="testDifferentPoliciesTest8" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.002"/>
-  <testcase name="testDifferentPoliciesTest9" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.003"/>
-  <testcase name="testValidGeneralizedTimeNotBeforeDateTest4" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.001"/>
-  <testcase name="testInvalidEENotBeforeDateTest2" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.002"/>
-  <testcase name="testInvalidEENotAfterDateTest6" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.003"/>
-  <testcase name="testAllCertificatesAnyPolicyTest11" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.003"/>
-  <testcase name="testAllCertificatesSamePolicyTest1" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.004"/>
-  <testcase name="testInvalidCASignatureTest2" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.002"/>
-  <testcase name="testInvalidNegativeSerialNumberTest15" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.009"/>
-  <testcase name="testAllCertificatesSamePoliciesTest10" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.004"/>
-  <testcase name="testAllCertificatesSamePoliciesTest13" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.002"/>
+  <testcase name="testInvalidValidPre2000UTCNotAfterDateTest7" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.004"/>
+  <testcase name="testAllCertificatesNoPoliciesTest2" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.001"/>
+  <testcase name="testDifferentPoliciesTest3" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.003"/>
+  <testcase name="testDifferentPoliciesTest4" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.001"/>
+  <testcase name="testDifferentPoliciesTest5" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.0"/>
+  <testcase name="testDifferentPoliciesTest7" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.002"/>
+  <testcase name="testDifferentPoliciesTest8" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.001"/>
+  <testcase name="testDifferentPoliciesTest9" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.002"/>
+  <testcase name="testValidGeneralizedTimeNotBeforeDateTest4" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.0"/>
+  <testcase name="testInvalidEENotBeforeDateTest2" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.001"/>
+  <testcase name="testInvalidEENotAfterDateTest6" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.001"/>
+  <testcase name="testAllCertificatesAnyPolicyTest11" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.001"/>
+  <testcase name="testAllCertificatesSamePolicyTest1" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.002"/>
+  <testcase name="testInvalidCASignatureTest2" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.001"/>
+  <testcase name="testInvalidNegativeSerialNumberTest15" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.004"/>
+  <testcase name="testAllCertificatesSamePoliciesTest10" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.002"/>
+  <testcase name="testAllCertificatesSamePoliciesTest13" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.001"/>
   <testcase name="testCANotBeforeDateTest1" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.001"/>
   <testcase name="testValidDSASignaturesTest4" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.001"/>
   <testcase name="testValidSignaturesTest1" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.001"/>
-  <testcase name="testValidPre2000UTCNotBeforeDateTest3" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.001"/>
-  <testcase name="testInvalidEESignatureTest3" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.002"/>
+  <testcase name="testValidPre2000UTCNotBeforeDateTest3" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.0"/>
+  <testcase name="testInvalidEESignatureTest3" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.001"/>
   <testcase name="testAnyPolicyTest14" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.001"/>
-  <testcase name="testInvalidCANotAfterDateTest5" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.002"/>
-  <testcase name="testUserNoticeQualifierTest15" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.002"/>
-  <testcase name="testUserNoticeQualifierTest16" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.003"/>
-  <testcase name="testUserNoticeQualifierTest17" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.002"/>
+  <testcase name="testInvalidCANotAfterDateTest5" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.001"/>
+  <testcase name="testUserNoticeQualifierTest15" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.001"/>
+  <testcase name="testUserNoticeQualifierTest16" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.002"/>
+  <testcase name="testUserNoticeQualifierTest17" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.001"/>
   <testcase name="testUserNoticeQualifierTest18" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.001"/>
   <testcase name="testUserNoticeQualifierTest19" classname="com.distrimind.bouncycastle.jce.provider.test.nist.NistCertPathReviewerTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>

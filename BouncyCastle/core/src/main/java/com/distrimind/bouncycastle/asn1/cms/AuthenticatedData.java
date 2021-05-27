@@ -15,7 +15,7 @@ import com.distrimind.bouncycastle.asn1.DERTaggedObject;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 
 /**
- * <a href="http://tools.ietf.org/html/rfc5652#section-9.1">RFC 5652</a> section 9.1:
+ * <a href="https://tools.ietf.org/html/rfc5652#section-9.1">RFC 5652</a> section 9.1:
  * The AuthenticatedData carries AuthAttributes and other data
  * which define what really is being signed.
  * <pre>

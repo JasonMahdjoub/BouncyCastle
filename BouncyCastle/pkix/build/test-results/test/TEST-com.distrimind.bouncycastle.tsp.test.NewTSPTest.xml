@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.distrimind.bouncycastle.tsp.test.NewTSPTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-11-08T08:33:45" hostname="Garage" time="0.173">
+<testsuite name="com.distrimind.bouncycastle.tsp.test.NewTSPTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-05-27T14:24:28" hostname="Garage" time="0.07">
   <properties/>
-  <testcase name="testSM2withSM3" classname="com.distrimind.bouncycastle.tsp.test.NewTSPTest" time="0.007"/>
-  <testcase name="testGeneral" classname="com.distrimind.bouncycastle.tsp.test.NewTSPTest" time="0.101"/>
-  <testcase name="testCertOrdering" classname="com.distrimind.bouncycastle.tsp.test.NewTSPTest" time="0.065"/>
+  <testcase name="testSM2withSM3" classname="com.distrimind.bouncycastle.tsp.test.NewTSPTest" time="0.005"/>
+  <testcase name="testGeneral" classname="com.distrimind.bouncycastle.tsp.test.NewTSPTest" time="0.042"/>
+  <testcase name="testCertOrdering" classname="com.distrimind.bouncycastle.tsp.test.NewTSPTest" time="0.023"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

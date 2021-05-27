@@ -24,6 +24,7 @@ import com.distrimind.bouncycastle.asn1.ASN1InputStream;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.ASN1OctetString;
+import com.distrimind.bouncycastle.asn1.ASN1OutputStream;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
 import com.distrimind.bouncycastle.asn1.ASN1GeneralizedTime;
@@ -2299,7 +2300,6 @@ public class X509CertSelector implements CertSelector
             }
             catch (Exception ex)
             {
-                ex.printStackTrace();
                 return false;
             }
         }
@@ -2359,7 +2359,6 @@ public class X509CertSelector implements CertSelector
             }
             catch (Exception ex)
             {
-                ex.printStackTrace();
                 return false;
             }
         }

@@ -4,7 +4,10 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.IOException;
-import java.security.*;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.Key;
+import java.security.KeyException;
+import java.security.Security;
 
 import javax.crypto.Cipher;
 import javax.crypto.CipherInputStream;
@@ -20,7 +23,7 @@ import com.distrimind.bouncycastle.util.test.TestResult;
 
 /**
  * basic FIPS test class for a block cipher, just to make sure ECB/CBC/OFB/CFB are behaving
- * correctly. Tests from <a href=http://www.itl.nist.gov/fipspubs/fip81.htm>FIPS 81</a>.
+ * correctly. Tests from <a href=https://www.itl.nist.gov/fipspubs/fip81.htm>FIPS 81</a>.
  */
 public class FIPSDESTest
     implements Test

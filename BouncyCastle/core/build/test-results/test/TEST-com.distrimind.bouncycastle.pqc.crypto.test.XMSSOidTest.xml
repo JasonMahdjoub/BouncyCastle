@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.distrimind.bouncycastle.pqc.crypto.test.XMSSOidTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2020-11-08T08:31:02" hostname="Garage" time="0.0">
+<testsuite name="com.distrimind.bouncycastle.pqc.crypto.test.XMSSOidTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-05-27T13:44:35" hostname="Garage" time="0.001">
   <properties/>
   <testcase name="testXMSSOidException1" classname="com.distrimind.bouncycastle.pqc.crypto.test.XMSSOidTest" time="0.0"/>
   <testcase name="testXMSSOidException2" classname="com.distrimind.bouncycastle.pqc.crypto.test.XMSSOidTest" time="0.0"/>

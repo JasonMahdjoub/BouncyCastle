@@ -9,7 +9,7 @@ import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.DERSequence;
 
 /**
- * <a href="http://tools.ietf.org/html/rfc5652#section-10.2.7">RFC 5652</a>: OtherKeyAttribute object.
+ * <a href="https://tools.ietf.org/html/rfc5652#section-10.2.7">RFC 5652</a>: OtherKeyAttribute object.
  * <p>
  * <pre>
  * OtherKeyAttribute ::= SEQUENCE {

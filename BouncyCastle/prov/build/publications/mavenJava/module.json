@@ -3,15 +3,14 @@
   "component": {
     "group": "com.distrimind.bouncycastle",
     "module": "prov",
-    "version": "1.67-DMRECOMPILE",
+    "version": "1.68-DMRECOMPILE",
     "attributes": {
       "org.gradle.status": "release"
     }
   },
   "createdBy": {
     "gradle": {
-      "version": "6.1.1",
-      "buildId": "rlud44iesnbxjgjjti6qdflg4y"
+      "version": "7.0.2"
     }
   },
   "variants": [
@@ -26,13 +25,13 @@
       },
       "files": [
         {
-          "name": "prov-1.67-DMRECOMPILE.jar",
-          "url": "prov-1.67-DMRECOMPILE.jar",
-          "size": 1937747,
-          "sha512": "d42fc5ee8a5b321b033cc121e13d7ebc4b3994cef773104a41cd5372bc8966433841978aeb840bfc728c21de6fe1c0c7717cb4b85c06f96500d2b22927099a38",
-          "sha256": "e2106dd9c1c19341c6b78572e782204d99bd906bff4374b858539a7fbb998c02",
-          "sha1": "0dfdd6f5422e0260a7983c31d55879442d82820b",
-          "md5": "863801bd34d2e242d59b340133ad7871"
+          "name": "prov-1.68-DMRECOMPILE.jar",
+          "url": "prov-1.68-DMRECOMPILE.jar",
+          "size": 1937124,
+          "sha512": "b680322873a8ae00ff021444fbb0aff5f38061047428aea70a0ba2976bff1c38d7fc4331259ed6322fc57884c90e157f0d97d123f27c2ae423589fdd27289055",
+          "sha256": "bc8421678bbd54e8ec0aca678a33aed598a337ed206264b9284acd561bf8e753",
+          "sha1": "dadf53ed2534f52d7a08b56f383df4fafc5ab3cf",
+          "md5": "48693dbee18ed3cb56483f077862b692"
         }
       ]
     },
@@ -50,19 +49,19 @@
           "group": "com.distrimind.bouncycastle",
           "module": "core",
           "version": {
-            "requires": "1.67-DMRECOMPILE"
+            "requires": "1.68-DMRECOMPILE"
           }
         }
       ],
       "files": [
         {
-          "name": "prov-1.67-DMRECOMPILE.jar",
-          "url": "prov-1.67-DMRECOMPILE.jar",
-          "size": 1937747,
-          "sha512": "d42fc5ee8a5b321b033cc121e13d7ebc4b3994cef773104a41cd5372bc8966433841978aeb840bfc728c21de6fe1c0c7717cb4b85c06f96500d2b22927099a38",
-          "sha256": "e2106dd9c1c19341c6b78572e782204d99bd906bff4374b858539a7fbb998c02",
-          "sha1": "0dfdd6f5422e0260a7983c31d55879442d82820b",
-          "md5": "863801bd34d2e242d59b340133ad7871"
+          "name": "prov-1.68-DMRECOMPILE.jar",
+          "url": "prov-1.68-DMRECOMPILE.jar",
+          "size": 1937124,
+          "sha512": "b680322873a8ae00ff021444fbb0aff5f38061047428aea70a0ba2976bff1c38d7fc4331259ed6322fc57884c90e157f0d97d123f27c2ae423589fdd27289055",
+          "sha256": "bc8421678bbd54e8ec0aca678a33aed598a337ed206264b9284acd561bf8e753",
+          "sha1": "dadf53ed2534f52d7a08b56f383df4fafc5ab3cf",
+          "md5": "48693dbee18ed3cb56483f077862b692"
         }
       ]
     }

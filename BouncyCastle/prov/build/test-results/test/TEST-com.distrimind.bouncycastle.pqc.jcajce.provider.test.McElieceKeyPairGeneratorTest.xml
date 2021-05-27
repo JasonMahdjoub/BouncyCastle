@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.distrimind.bouncycastle.pqc.jcajce.provider.test.McElieceKeyPairGeneratorTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-11-08T08:51:21" hostname="Garage" time="0.454">
+<testsuite name="com.distrimind.bouncycastle.pqc.jcajce.provider.test.McElieceKeyPairGeneratorTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-05-27T14:25:06" hostname="Garage" time="0.239">
   <properties/>
   <testcase name="testKeyFactory" classname="com.distrimind.bouncycastle.pqc.jcajce.provider.test.McElieceKeyPairGeneratorTest" time="0.0"/>
-  <testcase name="testKeyPairEncoding_9_33" classname="com.distrimind.bouncycastle.pqc.jcajce.provider.test.McElieceKeyPairGeneratorTest" time="0.215"/>
-  <testcase name="testKeyPairEncoding_CCA2" classname="com.distrimind.bouncycastle.pqc.jcajce.provider.test.McElieceKeyPairGeneratorTest" time="0.239"/>
+  <testcase name="testKeyPairEncoding_9_33" classname="com.distrimind.bouncycastle.pqc.jcajce.provider.test.McElieceKeyPairGeneratorTest" time="0.138"/>
+  <testcase name="testKeyPairEncoding_CCA2" classname="com.distrimind.bouncycastle.pqc.jcajce.provider.test.McElieceKeyPairGeneratorTest" time="0.101"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

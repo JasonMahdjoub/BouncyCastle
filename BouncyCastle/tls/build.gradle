@@ -1,10 +1,10 @@
 dependencies {
-    compile project(':core')
-    compile project(':prov')
-    compile project(':pkix')
+    implementation project(':core')
+    implementation project(':prov')
+    implementation project(':pkix')
 }
 
-jar.baseName = "bctls-$vmrange"
+jar.archiveBaseName= "bctls-$vmrange"
 
 sourceSets {
     main {
@@ -14,17 +14,6 @@ sourceSets {
     }
 }
 
-task sourcesJar(type: Jar) {
-  baseName = jar.baseName
-  classifier = 'sources'
-  from sourceSets.main.allSource
-}
-
-task javadocJar(type: Jar, dependsOn: javadoc) {
-  baseName = jar.baseName
-  classifier = 'javadoc'
-  from javadoc.destinationDir
-}
 
 artifacts {
     archives jar

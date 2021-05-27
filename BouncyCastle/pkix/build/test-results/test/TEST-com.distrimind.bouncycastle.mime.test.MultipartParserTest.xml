@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.distrimind.bouncycastle.mime.test.MultipartParserTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2020-11-08T08:33:42" hostname="Garage" time="0.026">
+<testsuite name="com.distrimind.bouncycastle.mime.test.MultipartParserTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2021-05-27T14:24:26" hostname="Garage" time="0.013">
   <properties/>
-  <testcase name="testSignedMultipart" classname="com.distrimind.bouncycastle.mime.test.MultipartParserTest" time="0.011"/>
-  <testcase name="testInvalidSha256SignedMultipart" classname="com.distrimind.bouncycastle.mime.test.MultipartParserTest" time="0.004"/>
+  <testcase name="testSignedMultipart" classname="com.distrimind.bouncycastle.mime.test.MultipartParserTest" time="0.006"/>
+  <testcase name="testInvalidSha256SignedMultipart" classname="com.distrimind.bouncycastle.mime.test.MultipartParserTest" time="0.002"/>
   <testcase name="testParseContentTypeHeader_broken" classname="com.distrimind.bouncycastle.mime.test.MultipartParserTest" time="0.0"/>
   <testcase name="testMimeMultipart" classname="com.distrimind.bouncycastle.mime.test.MultipartParserTest" time="0.001"/>
   <testcase name="testParseContentTypeHeader_wellformed" classname="com.distrimind.bouncycastle.mime.test.MultipartParserTest" time="0.0"/>
   <testcase name="testParseContentTypeHeader_wellformed_multi" classname="com.distrimind.bouncycastle.mime.test.MultipartParserTest" time="0.0"/>
-  <testcase name="testMultipartAlternative" classname="com.distrimind.bouncycastle.mime.test.MultipartParserTest" time="0.006"/>
-  <testcase name="testEmbeddedMultipart" classname="com.distrimind.bouncycastle.mime.test.MultipartParserTest" time="0.004"/>
+  <testcase name="testMultipartAlternative" classname="com.distrimind.bouncycastle.mime.test.MultipartParserTest" time="0.002"/>
+  <testcase name="testEmbeddedMultipart" classname="com.distrimind.bouncycastle.mime.test.MultipartParserTest" time="0.002"/>
   <testcase name="testParseContentTypeHeader_empty_micalg" classname="com.distrimind.bouncycastle.mime.test.MultipartParserTest" time="0.0"/>
   <system-out><![CDATA[#######################################################################
 This is a testmail with a very long line that needs to be broken and some non-ascii chars to enforce quoted-printable encoding: àéè

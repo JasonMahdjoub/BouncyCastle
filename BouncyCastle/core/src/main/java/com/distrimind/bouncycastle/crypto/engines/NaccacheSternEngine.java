@@ -2,7 +2,6 @@ package com.distrimind.bouncycastle.crypto.engines;
 
 import java.math.BigInteger;
 import java.util.Vector;
-import com.distrimind.bouncycastle.util.Arrays;
 
 import com.distrimind.bouncycastle.crypto.AsymmetricBlockCipher;
 import com.distrimind.bouncycastle.crypto.CipherParameters;
@@ -11,10 +10,11 @@ import com.distrimind.bouncycastle.crypto.InvalidCipherTextException;
 import com.distrimind.bouncycastle.crypto.params.NaccacheSternKeyParameters;
 import com.distrimind.bouncycastle.crypto.params.NaccacheSternPrivateKeyParameters;
 import com.distrimind.bouncycastle.crypto.params.ParametersWithRandom;
+import com.distrimind.bouncycastle.util.Arrays;
 
 /**
  * NaccacheStern Engine. For details on this cipher, please see
- * http://www.gemplus.com/smart/rd/publications/pdf/NS98pkcs.pdf
+ * https://www.gemplus.com/smart/rd/publications/pdf/NS98pkcs.pdf
  */
 public class NaccacheSternEngine
     implements AsymmetricBlockCipher

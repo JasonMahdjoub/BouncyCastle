@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.distrimind.bouncycastle.pkcs.test.PfxPduTest" tests="17" skipped="0" failures="0" errors="0" timestamp="2020-11-08T08:33:31" hostname="Garage" time="0.721">
+<testsuite name="com.distrimind.bouncycastle.pkcs.test.PfxPduTest" tests="17" skipped="0" failures="0" errors="0" timestamp="2021-05-27T14:24:19" hostname="Garage" time="0.599">
   <properties/>
-  <testcase name="testExceptions" classname="com.distrimind.bouncycastle.pkcs.test.PfxPduTest" time="0.013"/>
-  <testcase name="testCreateTripleDESAndSHA1" classname="com.distrimind.bouncycastle.pkcs.test.PfxPduTest" time="0.161"/>
-  <testcase name="testBasicPKCS12" classname="com.distrimind.bouncycastle.pkcs.test.PfxPduTest" time="0.005"/>
-  <testcase name="testEncryptedPrivateKeyInfoPKCS5" classname="com.distrimind.bouncycastle.pkcs.test.PfxPduTest" time="0.007"/>
-  <testcase name="testGOST1" classname="com.distrimind.bouncycastle.pkcs.test.PfxPduTest" time="0.204"/>
-  <testcase name="testGOST2" classname="com.distrimind.bouncycastle.pkcs.test.PfxPduTest" time="0.107"/>
-  <testcase name="testPKCS5" classname="com.distrimind.bouncycastle.pkcs.test.PfxPduTest" time="0.065"/>
-  <testcase name="testPfxPduMac" classname="com.distrimind.bouncycastle.pkcs.test.PfxPduTest" time="0.025"/>
-  <testcase name="testEncryptedPrivateKeyInfoDESWithMD5" classname="com.distrimind.bouncycastle.pkcs.test.PfxPduTest" time="0.012"/>
-  <testcase name="testBcEncryptedPrivateKeyInfo" classname="com.distrimind.bouncycastle.pkcs.test.PfxPduTest" time="0.011"/>
-  <testcase name="testCreateAES256andSHA256" classname="com.distrimind.bouncycastle.pkcs.test.PfxPduTest" time="0.036"/>
-  <testcase name="testEncryptedPrivateKeyInfoDESWithSHA1" classname="com.distrimind.bouncycastle.pkcs.test.PfxPduTest" time="0.004"/>
-  <testcase name="testKeyBag" classname="com.distrimind.bouncycastle.pkcs.test.PfxPduTest" time="0.006"/>
-  <testcase name="testPfxPdu" classname="com.distrimind.bouncycastle.pkcs.test.PfxPduTest" time="0.016"/>
+  <testcase name="testExceptions" classname="com.distrimind.bouncycastle.pkcs.test.PfxPduTest" time="0.005"/>
+  <testcase name="testCreateTripleDESAndSHA1" classname="com.distrimind.bouncycastle.pkcs.test.PfxPduTest" time="0.103"/>
+  <testcase name="testBasicPKCS12" classname="com.distrimind.bouncycastle.pkcs.test.PfxPduTest" time="0.003"/>
+  <testcase name="testEncryptedPrivateKeyInfoPKCS5" classname="com.distrimind.bouncycastle.pkcs.test.PfxPduTest" time="0.006"/>
+  <testcase name="testGOST1" classname="com.distrimind.bouncycastle.pkcs.test.PfxPduTest" time="0.143"/>
+  <testcase name="testGOST2" classname="com.distrimind.bouncycastle.pkcs.test.PfxPduTest" time="0.13"/>
+  <testcase name="testPKCS5" classname="com.distrimind.bouncycastle.pkcs.test.PfxPduTest" time="0.041"/>
+  <testcase name="testPfxPduMac" classname="com.distrimind.bouncycastle.pkcs.test.PfxPduTest" time="0.023"/>
+  <testcase name="testEncryptedPrivateKeyInfoDESWithMD5" classname="com.distrimind.bouncycastle.pkcs.test.PfxPduTest" time="0.01"/>
+  <testcase name="testBcEncryptedPrivateKeyInfo" classname="com.distrimind.bouncycastle.pkcs.test.PfxPduTest" time="0.014"/>
+  <testcase name="testCreateAES256andSHA256" classname="com.distrimind.bouncycastle.pkcs.test.PfxPduTest" time="0.055"/>
+  <testcase name="testEncryptedPrivateKeyInfoDESWithSHA1" classname="com.distrimind.bouncycastle.pkcs.test.PfxPduTest" time="0.002"/>
+  <testcase name="testKeyBag" classname="com.distrimind.bouncycastle.pkcs.test.PfxPduTest" time="0.007"/>
+  <testcase name="testPfxPdu" classname="com.distrimind.bouncycastle.pkcs.test.PfxPduTest" time="0.02"/>
   <testcase name="testSafeBagRecovery" classname="com.distrimind.bouncycastle.pkcs.test.PfxPduTest" time="0.023"/>
-  <testcase name="testEncryptedPrivateKeyInfo" classname="com.distrimind.bouncycastle.pkcs.test.PfxPduTest" time="0.016"/>
-  <testcase name="testSHA256withPKCS5" classname="com.distrimind.bouncycastle.pkcs.test.PfxPduTest" time="0.004"/>
+  <testcase name="testEncryptedPrivateKeyInfo" classname="com.distrimind.bouncycastle.pkcs.test.PfxPduTest" time="0.009"/>
+  <testcase name="testSHA256withPKCS5" classname="com.distrimind.bouncycastle.pkcs.test.PfxPduTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

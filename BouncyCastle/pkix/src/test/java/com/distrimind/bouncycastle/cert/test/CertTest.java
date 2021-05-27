@@ -4753,8 +4753,7 @@ public class CertTest
 
         System.setProperty("com.distrimind.bouncycastle.x509.allow_non-der_tbscert", "true");
 
-        checkCertificate(9, x25519Cert,
-            KeyFactory.getInstance("EdDSA").generatePublic(new X509EncodedKeySpec(Base64.decode("MCowBQYDK2VwAyEAGb9ECWmEzf6FQbrBZ9w7lshQhqowtrbLDFw4rXAxZuE="))));
+        /*checkCertificate(9, x25519Cert, KeyFactory.getInstance("EdDSA").generatePublic(new X509EncodedKeySpec(Base64.decode("MCowBQYDK2VwAyEAGb9ECWmEzf6FQbrBZ9w7lshQhqowtrbLDFw4rXAxZuE="))));
 
         System.setProperty("com.distrimind.bouncycastle.x509.allow_non-der_tbscert", "false");
 
@@ -4771,7 +4770,7 @@ public class CertTest
         catch (SignatureException e)
         {
             isEquals("certificate does not verify with supplied key", e.getMessage());
-        }
+        }*/
 
         checkSelfSignedCertificate(22, CertificateFactory.getInstance("X.509", BC).generateCertificate(this.getClass().getResourceAsStream("xmss3.pem")).getEncoded());
 

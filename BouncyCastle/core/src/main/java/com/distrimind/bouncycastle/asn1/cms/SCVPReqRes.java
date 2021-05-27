@@ -9,7 +9,7 @@ import com.distrimind.bouncycastle.asn1.DERSequence;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
 
 /**
- * <a href="http://tools.ietf.org/html/rfc5940">RFC 5940</a>:
+ * <a href="https://tools.ietf.org/html/rfc5940">RFC 5940</a>:
  * Additional Cryptographic Message Syntax (CMS) Revocation Information Choices.
  * <p>
  * <pre>

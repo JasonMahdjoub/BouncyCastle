@@ -5,16 +5,16 @@ import com.distrimind.bouncycastle.crypto.Mac;
 import com.distrimind.bouncycastle.crypto.engines.DESEngine;
 import com.distrimind.bouncycastle.crypto.macs.CBCBlockCipherMac;
 import com.distrimind.bouncycastle.crypto.macs.CFBBlockCipherMac;
+import com.distrimind.bouncycastle.crypto.paddings.PKCS7Padding;
 import com.distrimind.bouncycastle.crypto.params.KeyParameter;
 import com.distrimind.bouncycastle.crypto.params.ParametersWithIV;
-import com.distrimind.bouncycastle.crypto.paddings.PKCS7Padding;
 import com.distrimind.bouncycastle.util.encoders.Hex;
 import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 /**
  * MAC tester - vectors from 
- * <a href=http://www.itl.nist.gov/fipspubs/fip81.htm>FIP 81</a> and 
- * <a href=http://www.itl.nist.gov/fipspubs/fip113.htm>FIP 113</a>.
+ * <a href=https://www.itl.nist.gov/fipspubs/fip81.htm>FIP 81</a> and 
+ * <a href=https://www.itl.nist.gov/fipspubs/fip113.htm>FIP 113</a>.
  */
 public class MacTest
     extends SimpleTest

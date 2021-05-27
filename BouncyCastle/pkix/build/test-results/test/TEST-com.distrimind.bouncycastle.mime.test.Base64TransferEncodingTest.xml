@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.distrimind.bouncycastle.mime.test.Base64TransferEncodingTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2020-11-08T08:33:42" hostname="Garage" time="0.006">
+<testsuite name="com.distrimind.bouncycastle.mime.test.Base64TransferEncodingTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2021-05-27T14:24:26" hostname="Garage" time="0.003">
   <properties/>
   <testcase name="testEmpty" classname="com.distrimind.bouncycastle.mime.test.Base64TransferEncodingTest" time="0.0"/>
-  <testcase name="testDecodeLongLines" classname="com.distrimind.bouncycastle.mime.test.Base64TransferEncodingTest" time="0.002"/>
+  <testcase name="testDecodeLongLines" classname="com.distrimind.bouncycastle.mime.test.Base64TransferEncodingTest" time="0.001"/>
   <testcase name="testDecodeWithoutCR" classname="com.distrimind.bouncycastle.mime.test.Base64TransferEncodingTest" time="0.0"/>
   <testcase name="testDecodeWellFormed" classname="com.distrimind.bouncycastle.mime.test.Base64TransferEncodingTest" time="0.0"/>
-  <testcase name="testMultilined" classname="com.distrimind.bouncycastle.mime.test.Base64TransferEncodingTest" time="0.001"/>
-  <testcase name="testExcessiveLongLine" classname="com.distrimind.bouncycastle.mime.test.Base64TransferEncodingTest" time="0.001"/>
+  <testcase name="testMultilined" classname="com.distrimind.bouncycastle.mime.test.Base64TransferEncodingTest" time="0.0"/>
+  <testcase name="testExcessiveLongLine" classname="com.distrimind.bouncycastle.mime.test.Base64TransferEncodingTest" time="0.0"/>
   <testcase name="testEncode" classname="com.distrimind.bouncycastle.mime.test.Base64TransferEncodingTest" time="0.001"/>
-  <testcase name="testDecodeLengths" classname="com.distrimind.bouncycastle.mime.test.Base64TransferEncodingTest" time="0.001"/>
+  <testcase name="testDecodeLengths" classname="com.distrimind.bouncycastle.mime.test.Base64TransferEncodingTest" time="0.0"/>
   <testcase name="testPartialLineEnding" classname="com.distrimind.bouncycastle.mime.test.Base64TransferEncodingTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

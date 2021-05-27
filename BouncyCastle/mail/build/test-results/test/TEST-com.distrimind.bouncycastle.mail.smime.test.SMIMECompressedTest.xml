@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.distrimind.bouncycastle.mail.smime.test.SMIMECompressedTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2020-11-08T08:33:19" hostname="Garage" time="0.892">
+<testsuite name="com.distrimind.bouncycastle.mail.smime.test.SMIMECompressedTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2021-05-27T13:46:23" hostname="Garage" time="0.49">
   <properties/>
-  <testcase name="testBasic" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMECompressedTest" time="0.004"/>
-  <testcase name="testCompressedSHA1WithRSA" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMECompressedTest" time="0.009"/>
+  <testcase name="testBasic" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMECompressedTest" time="0.002"/>
+  <testcase name="testCompressedSHA1WithRSA" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMECompressedTest" time="0.005"/>
   <testcase name="testHeaders" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMECompressedTest" time="0.0"/>
-  <testcase name="testParser" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMECompressedTest" time="0.002"/>
-  <testcase name="testBasic" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMECompressedTest" time="0.001"/>
-  <testcase name="testCompressedSHA1WithRSA" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMECompressedTest" time="0.004"/>
-  <testcase name="testHeaders" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMECompressedTest" time="0.001"/>
-  <testcase name="testParser" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMECompressedTest" time="0.0"/>
+  <testcase name="testParser" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMECompressedTest" time="0.001"/>
+  <testcase name="testBasic" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMECompressedTest" time="0.0"/>
+  <testcase name="testCompressedSHA1WithRSA" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMECompressedTest" time="0.001"/>
+  <testcase name="testHeaders" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMECompressedTest" time="0.0"/>
+  <testcase name="testParser" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMECompressedTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

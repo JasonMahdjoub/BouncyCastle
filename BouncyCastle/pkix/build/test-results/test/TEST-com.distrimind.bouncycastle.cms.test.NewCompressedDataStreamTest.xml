@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.distrimind.bouncycastle.cms.test.NewCompressedDataStreamTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-11-08T08:33:44" hostname="Garage" time="0.008">
+<testsuite name="com.distrimind.bouncycastle.cms.test.NewCompressedDataStreamTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-05-27T14:24:28" hostname="Garage" time="0.006">
   <properties/>
-  <testcase name="test1000" classname="com.distrimind.bouncycastle.cms.test.NewCompressedDataStreamTest" time="0.008"/>
+  <testcase name="test1000" classname="com.distrimind.bouncycastle.cms.test.NewCompressedDataStreamTest" time="0.006"/>
   <testcase name="testEach" classname="com.distrimind.bouncycastle.cms.test.NewCompressedDataStreamTest" time="0.0"/>
   <testcase name="testWorkingData" classname="com.distrimind.bouncycastle.cms.test.NewCompressedDataStreamTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>

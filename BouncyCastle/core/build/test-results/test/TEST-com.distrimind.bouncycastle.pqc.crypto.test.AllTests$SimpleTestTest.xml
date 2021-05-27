@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.distrimind.bouncycastle.pqc.crypto.test.AllTests$SimpleTestTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-11-08T08:31:53" hostname="Garage" time="63.384">
+<testsuite name="com.distrimind.bouncycastle.pqc.crypto.test.AllTests$SimpleTestTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-05-27T13:45:15" hostname="Garage" time="51.952">
   <properties/>
-  <testcase name="testPQC" classname="com.distrimind.bouncycastle.pqc.crypto.test.AllTests$SimpleTestTest" time="63.384"/>
+  <testcase name="testPQC" classname="com.distrimind.bouncycastle.pqc.crypto.test.AllTests$SimpleTestTest" time="51.952"/>
   <system-out><![CDATA[############### test: 1
 test okay
 

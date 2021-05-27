@@ -6,7 +6,7 @@ import com.distrimind.bouncycastle.util.encoders.Hex;
 import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 /**
- * blowfish tester - vectors from http://www.counterpane.com/vectors.txt
+ * blowfish tester - vectors from https://www.counterpane.com/vectors.txt
  */
 public class BlowfishTest
     extends CipherTest

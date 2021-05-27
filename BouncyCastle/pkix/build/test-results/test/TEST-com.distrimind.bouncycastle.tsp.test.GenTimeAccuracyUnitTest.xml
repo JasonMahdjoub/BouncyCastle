@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.distrimind.bouncycastle.tsp.test.GenTimeAccuracyUnitTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2020-11-08T08:33:45" hostname="Garage" time="0.0">
+<testsuite name="com.distrimind.bouncycastle.tsp.test.GenTimeAccuracyUnitTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2021-05-27T14:24:29" hostname="Garage" time="0.0">
   <properties/>
   <testcase name="testTwoThreeTwo" classname="com.distrimind.bouncycastle.tsp.test.GenTimeAccuracyUnitTest" time="0.0"/>
   <testcase name="testThreeTwoNull" classname="com.distrimind.bouncycastle.tsp.test.GenTimeAccuracyUnitTest" time="0.0"/>

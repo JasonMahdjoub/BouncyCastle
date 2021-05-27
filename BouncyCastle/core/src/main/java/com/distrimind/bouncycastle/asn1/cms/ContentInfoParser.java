@@ -8,7 +8,7 @@ import com.distrimind.bouncycastle.asn1.ASN1SequenceParser;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObjectParser;
 
 /**
- * <a href="http://tools.ietf.org/html/rfc5652#section-3">RFC 5652</a> {@link ContentInfo} object parser.
+ * <a href="https://tools.ietf.org/html/rfc5652#section-3">RFC 5652</a> {@link ContentInfo} object parser.
  *
  * <pre>
  * ContentInfo ::= SEQUENCE {

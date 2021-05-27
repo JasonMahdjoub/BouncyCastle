@@ -9,6 +9,7 @@ import java.security.Security;
 
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.ASN1OutputStream;
 import com.distrimind.bouncycastle.asn1.DERIA5String;
 import com.distrimind.bouncycastle.asn1.ASN1Encoding;
 import com.distrimind.bouncycastle.asn1.OIDTokenizer;

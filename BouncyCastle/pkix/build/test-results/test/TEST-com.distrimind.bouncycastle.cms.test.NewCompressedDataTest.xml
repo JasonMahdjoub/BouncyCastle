@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.distrimind.bouncycastle.cms.test.NewCompressedDataTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2020-11-08T08:33:43" hostname="Garage" time="1.003">
+<testsuite name="com.distrimind.bouncycastle.cms.test.NewCompressedDataTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2021-05-27T14:24:27" hostname="Garage" time="0.598">
   <properties/>
-  <testcase name="testLimitOver" classname="com.distrimind.bouncycastle.cms.test.NewCompressedDataTest" time="0.002"/>
+  <testcase name="testLimitOver" classname="com.distrimind.bouncycastle.cms.test.NewCompressedDataTest" time="0.001"/>
   <testcase name="testEach" classname="com.distrimind.bouncycastle.cms.test.NewCompressedDataTest" time="0.0"/>
-  <testcase name="testWorkingData" classname="com.distrimind.bouncycastle.cms.test.NewCompressedDataTest" time="0.0"/>
+  <testcase name="testWorkingData" classname="com.distrimind.bouncycastle.cms.test.NewCompressedDataTest" time="0.001"/>
   <testcase name="testLimitEqual" classname="com.distrimind.bouncycastle.cms.test.NewCompressedDataTest" time="0.0"/>
   <testcase name="testLimitUnder" classname="com.distrimind.bouncycastle.cms.test.NewCompressedDataTest" time="0.0"/>
   <testcase name="testLimitOver" classname="com.distrimind.bouncycastle.cms.test.NewCompressedDataTest" time="0.0"/>
   <testcase name="testEach" classname="com.distrimind.bouncycastle.cms.test.NewCompressedDataTest" time="0.0"/>
   <testcase name="testWorkingData" classname="com.distrimind.bouncycastle.cms.test.NewCompressedDataTest" time="0.0"/>
-  <testcase name="testLimitEqual" classname="com.distrimind.bouncycastle.cms.test.NewCompressedDataTest" time="0.0"/>
+  <testcase name="testLimitEqual" classname="com.distrimind.bouncycastle.cms.test.NewCompressedDataTest" time="0.001"/>
   <testcase name="testLimitUnder" classname="com.distrimind.bouncycastle.cms.test.NewCompressedDataTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

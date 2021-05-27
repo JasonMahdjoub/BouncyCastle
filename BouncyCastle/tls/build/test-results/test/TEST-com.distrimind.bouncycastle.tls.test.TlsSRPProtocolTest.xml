@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.tls.test.TlsSRPProtocolTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-05-27T14:26:15" hostname="Garage" time="0.006">
+  <properties/>
+  <testcase name="testClientServer" classname="com.distrimind.bouncycastle.tls.test.TlsSRPProtocolTest" time="0.006"/>
+  <system-out><![CDATA[TLS-SRP server negotiated TLS 1.2
+TLS-SRP client negotiated TLS 1.2
+TLS-SRP client received server certificate chain of length 1
+    fingerprint:SHA-256 CA:2E:0C:52:D8:ED:49:86:8C:0B:60:13:28:49:ED:83:6A:74:3F:22:7D:E0:D4:91:3C:51:B1:53:33:B5:CF:7F (CN=BouncyCastle Test Server)
+TLS-SRP server completed handshake for SRP identity: client
+TLS-SRP client raised alert: warning(1), close_notify(0)
+> Connection closed
+TLS-SRP server received alert: warning(1), close_notify(0)
+TLS-SRP server raised alert: warning(1), close_notify(0)
+> Connection closed
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

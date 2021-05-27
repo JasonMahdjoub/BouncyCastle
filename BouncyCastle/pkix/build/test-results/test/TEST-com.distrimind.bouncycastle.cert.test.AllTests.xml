@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.distrimind.bouncycastle.cert.test.AllTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-11-08T08:33:32" hostname="Garage" time="8.717">
+<testsuite name="com.distrimind.bouncycastle.cert.test.AllTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-05-27T14:24:20" hostname="Garage" time="6.0">
   <properties/>
-  <testcase name="testSimpleTests" classname="com.distrimind.bouncycastle.cert.test.AllTests" time="8.717"/>
+  <testcase name="testSimpleTests" classname="com.distrimind.bouncycastle.cert.test.AllTests" time="6.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

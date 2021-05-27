@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.distrimind.bouncycastle.pqc.crypto.lms.LMSKeyGenTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-11-08T08:33:15" hostname="Garage" time="0.106">
+<testsuite name="com.distrimind.bouncycastle.pqc.crypto.lms.LMSKeyGenTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-05-27T13:46:22" hostname="Garage" time="0.083">
   <properties/>
-  <testcase name="testGeneratePrivateKey" classname="com.distrimind.bouncycastle.pqc.crypto.lms.LMSKeyGenTests" time="0.106"/>
+  <testcase name="testGeneratePrivateKey" classname="com.distrimind.bouncycastle.pqc.crypto.lms.LMSKeyGenTests" time="0.083"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

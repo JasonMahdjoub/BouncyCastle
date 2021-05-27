@@ -69,7 +69,6 @@ public abstract class Mod
 
         int bits = (len32 << 5) - Integers.numberOfLeadingZeros(m[len32 - 1]);
         int len30 = (bits + 29) / 30;
-        int m0Inv30x4 = -inverse32(m[0]) << 2;
 
         int[] t = new int[4];
         int[] D = new int[len30];
@@ -84,28 +83,25 @@ public abstract class Mod
         System.arraycopy(M, 0, F, 0, len30);
 
         int eta = -1;
+        int m0Inv32 = inverse32(M[0]);
         int maxDivsteps = getMaximumDivsteps(bits);
 
         for (int divSteps = 0; divSteps < maxDivsteps; divSteps += 30)
         {
             eta = divsteps30(eta, F[0], G[0], t);
-            updateDE30(len30, D, E, t, m0Inv30x4, M);
+            updateDE30(len30, D, E, t, m0Inv32, M);
             updateFG30(len30, F, G, t);
         }
 
         int signF = F[len30 - 1] >> 31;
-//        assert -1 == signF | 0 == signF;
-
         cnegate30(len30, signF, F);
 
-        int signD = cnegate30(len30, signF, D);
-//        assert -1 == signD | 0 == signD;
-
-        // TODO 'D' should already be in [P, -P), but absent a proof we support [-2P, 2P)  
-        signD = csub30(len30, ~signD, D, M);
-        signD = cadd30(len30,  signD, D, M);
-        signD = cadd30(len30,  signD, D, M);
-//        assert 0 == signD;
+        /*
+         * D is in the range (-2.M, M). First, conditionally add M if D is negative, to bring it
+         * into the range (-M, M). Then normalize by conditionally negating (according to signF)
+         * and/or then adding M, to bring it into the range [0, M).
+         */
+        cnormalize30(len30, signF, D, M);
 
         decode30(bits, D, 0, z, 0);
 //        assert 0 != Nat.lessThan(len32, z, m);
@@ -122,7 +118,6 @@ public abstract class Mod
 
         int bits = (len32 << 5) - Integers.numberOfLeadingZeros(m[len32 - 1]);
         int len30 = (bits + 29) / 30;
-        int m0Inv30x4 = -inverse32(m[0]) << 2;
 
         int[] t = new int[4];
         int[] D = new int[len30];
@@ -139,6 +134,7 @@ public abstract class Mod
         int clzG = Integers.numberOfLeadingZeros(G[len30 - 1] | 1) - (len30 * 30 + 2 - bits);
         int eta = -1 - clzG;
         int lenDE = len30, lenFG = len30;
+        int m0Inv32 = inverse32(M[0]);
         int maxDivsteps = getMaximumDivsteps(bits);
 
         int divsteps = 0;
@@ -152,7 +148,7 @@ public abstract class Mod
             divsteps += 30;
 
             eta = divsteps30Var(eta, F[0], G[0], t);
-            updateDE30(lenDE, D, E, t, m0Inv30x4, M);
+            updateDE30(lenDE, D, E, t, m0Inv32, M);
             updateFG30(lenFG, F, G, t);
 
             int fn = F[lenFG - 1];
@@ -171,34 +167,32 @@ public abstract class Mod
         }
 
         int signF = F[lenFG - 1] >> 31;
-//        assert -1 == signF || 0 == signF;
 
-        if (0 != signF)
+        /*
+         * D is in the range (-2.M, M). First, conditionally add M if D is negative, to bring it
+         * into the range (-M, M). Then normalize by conditionally negating (according to signF)
+         * and/or then adding M, to bring it into the range [0, M).
+         */
+        int signD = D[lenDE - 1] >> 31;
+        if (signD < 0)
         {
-            negate30(lenFG, F);
-            negate30(lenDE, D);
+            signD = add30(lenDE, D, M);
         }
+        if (signF < 0)
+        {
+            signD = negate30(lenDE, D);
+            signF = negate30(lenFG, F);
+        }
+//        assert 0 == signF;
 
         if (!Nat.isOne(lenFG, F))
         {
             return false;
         }
 
-        int signD = D[lenDE - 1] >> 31;
-//        assert -1 == signD || 0 == signD;
-
-        // TODO 'D' should already be in [P, -P), but absent a proof we support [-2P, 2P)  
         if (signD < 0)
         {
-            signD = add30(len30, D, M);
-        }
-        else
-        {
-            signD = sub30(len30, D, M);
-        }
-        if (signD < 0)
-        {
-            signD = add30(len30, D, M);
+            signD = add30(lenDE, D, M);
         }
 //        assert 0 == signD;
 
@@ -262,24 +256,7 @@ public abstract class Mod
         return c;
     }
 
-    private static int cadd30(int len30, int cond, int[] D, int[] M)
-    {
-//        assert len30 > 0;
-//        assert D.length >= len30;
-//        assert M.length >= len30;
-
-        int c = 0, last = len30 - 1;
-        for (int i = 0; i < last; ++i)
-        {
-            c += D[i] + (M[i] & cond);
-            D[i] = c & M30; c >>= 30;
-        }
-        c += D[last] + (M[last] & cond);
-        D[last] = c; c >>= 30;
-        return c;
-    }
-
-    private static int cnegate30(int len30, int cond, int[] D)
+    private static void cnegate30(int len30, int cond, int[] D)
     {
 //        assert len30 > 0;
 //        assert D.length >= len30;
@@ -291,25 +268,45 @@ public abstract class Mod
             D[i] = c & M30; c >>= 30;
         }
         c += (D[last] ^ cond) - cond;
-        D[last] = c; c >>= 30;
-        return c;
+        D[last] = c;
     }
 
-    private static int csub30(int len30, int cond, int[] D, int[] M)
+    private static void cnormalize30(int len30, int condNegate, int[] D, int[] M)
     {
 //        assert len30 > 0;
 //        assert D.length >= len30;
 //        assert M.length >= len30;
 
-        int c = 0, last = len30 - 1;
-        for (int i = 0; i < last; ++i)
+        int last = len30 - 1;
+
         {
-            c += D[i] - (M[i] & cond);
-            D[i] = c & M30; c >>= 30;
+            int c = 0, condAdd = D[last] >> 31;
+            for (int i = 0; i < last; ++i)
+            {
+                int di = D[i] + (M[i] & condAdd);
+                di = (di ^ condNegate) - condNegate;
+                c += di; D[i] = c & M30; c >>= 30;
+            }
+            {
+                int di = D[last] + (M[last] & condAdd);
+                di = (di ^ condNegate) - condNegate;
+                c += di; D[last] = c;
+            }
         }
-        c += D[last] - (M[last] & cond);
-        D[last] = c; c >>= 30;
-        return c;
+
+        {
+            int c = 0, condAdd = D[last] >> 31;
+            for (int i = 0; i < last; ++i)
+            {
+                int di = D[i] + (M[i] & condAdd);
+                c += di; D[i] = c & M30; c >>= 30;
+            }
+            {
+                int di = D[last] + (M[last] & condAdd);
+                c += di; D[last] = c;
+            }
+//            assert c >> 30 == 0;
+        }
     }
 
     private static void decode30(int bits, int[] x, int xOff, int[] z, int zOff)
@@ -484,46 +481,46 @@ public abstract class Mod
         return c;
     }
 
-    private static int sub30(int len30, int[] D, int[] M)
-    {
-//        assert len30 > 0;
-//        assert D.length >= len30;
-//        assert M.length >= len30;
-
-        int c = 0, last = len30 - 1;
-        for (int i = 0; i < last; ++i)
-        {
-            c += D[i] - M[i];
-            D[i] = c & M30; c >>= 30;
-        }
-        c += D[last] - M[last];
-        D[last] = c; c >>= 30;
-        return c;
-    }
-
-    private static void updateDE30(int len30, int[] D, int[] E, int[] t, int m0Inv30x4, int[] M)
+    private static void updateDE30(int len30, int[] D, int[] E, int[] t, int m0Inv32, int[] M)
     {
 //        assert len30 > 0;
 //        assert D.length >= len30;
 //        assert E.length >= len30;
 //        assert M.length >= len30;
-//        assert m0Inv30x4 * M[0] == -1 << 2;
+//        assert m0Inv32 * M[0] == 1;
 
         final int u = t[0], v = t[1], q = t[2], r = t[3];
-        int di, ei, i, md, me;
+        int di, ei, i, md, me, mi, sd, se;
         long cd, ce;
 
+        /*
+         * We accept D (E) in the range (-2.M, M) and conceptually add the modulus to the input
+         * value if it is initially negative. Instead of adding it explicitly, we add u and/or v (q
+         * and/or r) to md (me).
+         */
+        sd = D[len30 - 1] >> 31;
+        se = E[len30 - 1] >> 31;
+
+        md = (u & sd) + (v & se);
+        me = (q & sd) + (r & se);
+
+        mi = M[0];
         di = D[0];
         ei = E[0];
 
         cd = (long)u * di + (long)v * ei;
         ce = (long)q * di + (long)r * ei;
 
-        md = (m0Inv30x4 * (int)cd) >> 2;
-        me = (m0Inv30x4 * (int)ce) >> 2;
+        /*
+         * Subtract from md/me an extra term in the range [0, 2^30) such that the low 30 bits of the
+         * intermediate D/E values will be 0, allowing clean division by 2^30. The final D/E are
+         * thus in the range (-2.M, M), consistent with the input constraint.
+         */
+        md -= (m0Inv32 * (int)cd + md) & M30;
+        me -= (m0Inv32 * (int)ce + me) & M30;
 
-        cd += (long)M[0] * md;
-        ce += (long)M[0] * me;
+        cd += (long)mi * md;
+        ce += (long)mi * me;
 
 //        assert ((int)cd & M30) == 0;
 //        assert ((int)ce & M30) == 0;
@@ -533,14 +530,12 @@ public abstract class Mod
 
         for (i = 1; i < len30; ++i)
         {
+            mi = M[i];
             di = D[i];
             ei = E[i];
 
-            cd += (long)u * di + (long)v * ei;
-            ce += (long)q * di + (long)r * ei;
-
-            cd += (long)M[i] * md;
-            ce += (long)M[i] * me;
+            cd += (long)u * di + (long)v * ei + (long)mi * md;
+            ce += (long)q * di + (long)r * ei + (long)mi * me;
 
             D[i - 1] = (int)cd & M30; cd >>= 30;
             E[i - 1] = (int)ce & M30; ce >>= 30;

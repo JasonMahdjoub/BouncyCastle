@@ -11,7 +11,7 @@ import com.distrimind.bouncycastle.asn1.DERTaggedObject;
 import com.distrimind.bouncycastle.asn1.cms.OriginatorPublicKey;
 
 /**
- * <a href="http://tools.ietf.org/html/rfc5753">RFC 5753/3278</a>: MQVuserKeyingMaterial object.
+ * <a href="https://tools.ietf.org/html/rfc5753">RFC 5753/3278</a>: MQVuserKeyingMaterial object.
  * <pre>
  * MQVuserKeyingMaterial ::= SEQUENCE {
  *   ephemeralPublicKey OriginatorPublicKey,

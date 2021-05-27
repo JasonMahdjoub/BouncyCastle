@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.distrimind.bouncycastle.crypto.agreement.test.JPAKEParticipantTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2020-11-08T08:30:23" hostname="Garage" time="0.03">
+<testsuite name="com.distrimind.bouncycastle.crypto.agreement.test.JPAKEParticipantTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2021-05-27T13:44:04" hostname="Garage" time="0.02">
   <properties/>
-  <testcase name="testStateValidation" classname="com.distrimind.bouncycastle.crypto.agreement.test.JPAKEParticipantTest" time="0.006"/>
+  <testcase name="testStateValidation" classname="com.distrimind.bouncycastle.crypto.agreement.test.JPAKEParticipantTest" time="0.003"/>
   <testcase name="testConstruction" classname="com.distrimind.bouncycastle.crypto.agreement.test.JPAKEParticipantTest" time="0.0"/>
-  <testcase name="testValidateRound2PayloadReceived" classname="com.distrimind.bouncycastle.crypto.agreement.test.JPAKEParticipantTest" time="0.012"/>
-  <testcase name="testValidateRound1PayloadReceived" classname="com.distrimind.bouncycastle.crypto.agreement.test.JPAKEParticipantTest" time="0.003"/>
-  <testcase name="testSuccessfulExchange" classname="com.distrimind.bouncycastle.crypto.agreement.test.JPAKEParticipantTest" time="0.004"/>
-  <testcase name="testIncorrectPassword" classname="com.distrimind.bouncycastle.crypto.agreement.test.JPAKEParticipantTest" time="0.005"/>
+  <testcase name="testValidateRound2PayloadReceived" classname="com.distrimind.bouncycastle.crypto.agreement.test.JPAKEParticipantTest" time="0.009"/>
+  <testcase name="testValidateRound1PayloadReceived" classname="com.distrimind.bouncycastle.crypto.agreement.test.JPAKEParticipantTest" time="0.002"/>
+  <testcase name="testSuccessfulExchange" classname="com.distrimind.bouncycastle.crypto.agreement.test.JPAKEParticipantTest" time="0.003"/>
+  <testcase name="testIncorrectPassword" classname="com.distrimind.bouncycastle.crypto.agreement.test.JPAKEParticipantTest" time="0.003"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

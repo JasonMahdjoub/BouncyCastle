@@ -3,15 +3,14 @@
   "component": {
     "group": "com.distrimind.bouncycastle",
     "module": "pg",
-    "version": "1.67-DMRECOMPILE",
+    "version": "1.68-DMRECOMPILE",
     "attributes": {
       "org.gradle.status": "release"
     }
   },
   "createdBy": {
     "gradle": {
-      "version": "6.1.1",
-      "buildId": "rlud44iesnbxjgjjti6qdflg4y"
+      "version": "7.0.2"
     }
   },
   "variants": [
@@ -26,13 +25,13 @@
       },
       "files": [
         {
-          "name": "pg-1.67-DMRECOMPILE.jar",
-          "url": "pg-1.67-DMRECOMPILE.jar",
-          "size": 413126,
-          "sha512": "6b17d514237a3e546fb0d05f9f142dd038c4b7d17e243f8ddc498d209d6953318ceaf5f1ea70e7928ed2a239ac1e8a436098de638b08518f7b0e78cefbb53883",
-          "sha256": "323df451b6faa9b860fd1404002cf749d6976cc10ac8d46c41381e2c0b2c146a",
-          "sha1": "60f4f786771c1a572a70284ba54ae8e18dfa7088",
-          "md5": "51c8d3ba9c1b661baea9505fc0143eee"
+          "name": "pg-1.68-DMRECOMPILE.jar",
+          "url": "pg-1.68-DMRECOMPILE.jar",
+          "size": 414253,
+          "sha512": "599c350aa5751e269740f126980be72375dc6c6d1e15e6f64bc490a9c8bb03761d0f3c8371114c7ebd0b384d34aba1e3c98ac739b9a70fade4fe66be8ee5b18f",
+          "sha256": "68c0cef0ffa3c145f881c2ed92f3e4b6369e66f9359246edfc995e299342a0e9",
+          "sha1": "05df84188048a7628f63381adf07928c5988f6d4",
+          "md5": "658e2b7fbd932abd4252c75ed4bdbec3"
         }
       ]
     },
@@ -50,26 +49,26 @@
           "group": "com.distrimind.bouncycastle",
           "module": "core",
           "version": {
-            "requires": "1.67-DMRECOMPILE"
+            "requires": "1.68-DMRECOMPILE"
           }
         },
         {
           "group": "com.distrimind.bouncycastle",
           "module": "prov",
           "version": {
-            "requires": "1.67-DMRECOMPILE"
+            "requires": "1.68-DMRECOMPILE"
           }
         }
       ],
       "files": [
         {
-          "name": "pg-1.67-DMRECOMPILE.jar",
-          "url": "pg-1.67-DMRECOMPILE.jar",
-          "size": 413126,
-          "sha512": "6b17d514237a3e546fb0d05f9f142dd038c4b7d17e243f8ddc498d209d6953318ceaf5f1ea70e7928ed2a239ac1e8a436098de638b08518f7b0e78cefbb53883",
-          "sha256": "323df451b6faa9b860fd1404002cf749d6976cc10ac8d46c41381e2c0b2c146a",
-          "sha1": "60f4f786771c1a572a70284ba54ae8e18dfa7088",
-          "md5": "51c8d3ba9c1b661baea9505fc0143eee"
+          "name": "pg-1.68-DMRECOMPILE.jar",
+          "url": "pg-1.68-DMRECOMPILE.jar",
+          "size": 414253,
+          "sha512": "599c350aa5751e269740f126980be72375dc6c6d1e15e6f64bc490a9c8bb03761d0f3c8371114c7ebd0b384d34aba1e3c98ac739b9a70fade4fe66be8ee5b18f",
+          "sha256": "68c0cef0ffa3c145f881c2ed92f3e4b6369e66f9359246edfc995e299342a0e9",
+          "sha1": "05df84188048a7628f63381adf07928c5988f6d4",
+          "md5": "658e2b7fbd932abd4252c75ed4bdbec3"
         }
       ]
     }

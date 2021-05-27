@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.distrimind.bouncycastle.mail.smime.test.SignedMailValidatorTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2020-11-08T08:33:19" hostname="Garage" time="0.129">
+<testsuite name="com.distrimind.bouncycastle.mail.smime.test.SignedMailValidatorTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2021-05-27T13:46:23" hostname="Garage" time="0.073">
   <properties/>
-  <testcase name="testExpired" classname="com.distrimind.bouncycastle.mail.smime.test.SignedMailValidatorTest" time="0.039"/>
+  <testcase name="testExpired" classname="com.distrimind.bouncycastle.mail.smime.test.SignedMailValidatorTest" time="0.022"/>
   <testcase name="testNotYetValid" classname="com.distrimind.bouncycastle.mail.smime.test.SignedMailValidatorTest" time="0.003"/>
-  <testcase name="testCreateCertPath" classname="com.distrimind.bouncycastle.mail.smime.test.SignedMailValidatorTest" time="0.004"/>
-  <testcase name="testCircular" classname="com.distrimind.bouncycastle.mail.smime.test.SignedMailValidatorTest" time="0.008"/>
-  <testcase name="testExtendedReviewer" classname="com.distrimind.bouncycastle.mail.smime.test.SignedMailValidatorTest" time="0.003"/>
-  <testcase name="testSelfSignedCert" classname="com.distrimind.bouncycastle.mail.smime.test.SignedMailValidatorTest" time="0.034"/>
-  <testcase name="testShortKey" classname="com.distrimind.bouncycastle.mail.smime.test.SignedMailValidatorTest" time="0.003"/>
-  <testcase name="testMultiEmail" classname="com.distrimind.bouncycastle.mail.smime.test.SignedMailValidatorTest" time="0.001"/>
-  <testcase name="testRevoked" classname="com.distrimind.bouncycastle.mail.smime.test.SignedMailValidatorTest" time="0.018"/>
-  <testcase name="testKeyUsage" classname="com.distrimind.bouncycastle.mail.smime.test.SignedMailValidatorTest" time="0.004"/>
-  <testcase name="testLongValidity" classname="com.distrimind.bouncycastle.mail.smime.test.SignedMailValidatorTest" time="0.003"/>
-  <testcase name="testNoEmail" classname="com.distrimind.bouncycastle.mail.smime.test.SignedMailValidatorTest" time="0.003"/>
-  <testcase name="testExtKeyUsage" classname="com.distrimind.bouncycastle.mail.smime.test.SignedMailValidatorTest" time="0.003"/>
+  <testcase name="testCreateCertPath" classname="com.distrimind.bouncycastle.mail.smime.test.SignedMailValidatorTest" time="0.003"/>
+  <testcase name="testCircular" classname="com.distrimind.bouncycastle.mail.smime.test.SignedMailValidatorTest" time="0.004"/>
+  <testcase name="testExtendedReviewer" classname="com.distrimind.bouncycastle.mail.smime.test.SignedMailValidatorTest" time="0.002"/>
+  <testcase name="testSelfSignedCert" classname="com.distrimind.bouncycastle.mail.smime.test.SignedMailValidatorTest" time="0.022"/>
+  <testcase name="testShortKey" classname="com.distrimind.bouncycastle.mail.smime.test.SignedMailValidatorTest" time="0.001"/>
+  <testcase name="testMultiEmail" classname="com.distrimind.bouncycastle.mail.smime.test.SignedMailValidatorTest" time="0.0"/>
+  <testcase name="testRevoked" classname="com.distrimind.bouncycastle.mail.smime.test.SignedMailValidatorTest" time="0.008"/>
+  <testcase name="testKeyUsage" classname="com.distrimind.bouncycastle.mail.smime.test.SignedMailValidatorTest" time="0.002"/>
+  <testcase name="testLongValidity" classname="com.distrimind.bouncycastle.mail.smime.test.SignedMailValidatorTest" time="0.001"/>
+  <testcase name="testNoEmail" classname="com.distrimind.bouncycastle.mail.smime.test.SignedMailValidatorTest" time="0.002"/>
+  <testcase name="testExtKeyUsage" classname="com.distrimind.bouncycastle.mail.smime.test.SignedMailValidatorTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

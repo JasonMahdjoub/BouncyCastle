@@ -11,7 +11,7 @@ import com.distrimind.bouncycastle.asn1.DERSequence;
 import com.distrimind.bouncycastle.util.Arrays;
 
 /**
- * <a href="http://tools.ietf.org/html/rfc5084">RFC 5084</a>: CCMParameters object.
+ * <a href="https://tools.ietf.org/html/rfc5084">RFC 5084</a>: CCMParameters object.
  * <p>
  * <pre>
  CCMParameters ::= SEQUENCE {

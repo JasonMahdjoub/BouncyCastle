@@ -7,7 +7,7 @@ import com.distrimind.bouncycastle.crypto.OutputLengthException;
 import com.distrimind.bouncycastle.crypto.params.ParametersWithIV;
 
 /**
- * Implements OpenPGP's rather strange version of Cipher-FeedBack (CFB) mode on top of a simple cipher. For further info see <a href="http://www.ietf.org/rfc/rfc2440.html">RFC 2440</a>.
+ * Implements OpenPGP's rather strange version of Cipher-FeedBack (CFB) mode on top of a simple cipher. For further info see <a href="https://www.ietf.org/rfc/rfc2440.html">RFC 2440</a>.
  */
 public class PGPCFBBlockCipher
     implements BlockCipher

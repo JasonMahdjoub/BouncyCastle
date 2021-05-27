@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.distrimind.bouncycastle.cert.crmf.test.AllTests" tests="13" skipped="0" failures="0" errors="0" timestamp="2020-11-08T08:33:41" hostname="Garage" time="0.461">
+<testsuite name="com.distrimind.bouncycastle.cert.crmf.test.AllTests" tests="13" skipped="0" failures="0" errors="0" timestamp="2021-05-27T14:24:26" hostname="Garage" time="0.186">
   <properties/>
-  <testcase name="testEncryptedValue" classname="com.distrimind.bouncycastle.cert.crmf.test.AllTests" time="0.019"/>
-  <testcase name="testEncryptedValuePassphrase" classname="com.distrimind.bouncycastle.cert.crmf.test.AllTests" time="0.01"/>
-  <testcase name="testBcEncryptedValueWithKey" classname="com.distrimind.bouncycastle.cert.crmf.test.AllTests" time="0.01"/>
-  <testcase name="testProofOfPossessionWithSender" classname="com.distrimind.bouncycastle.cert.crmf.test.AllTests" time="0.016"/>
-  <testcase name="testProofOfPossessionWithTemplate" classname="com.distrimind.bouncycastle.cert.crmf.test.AllTests" time="0.009"/>
-  <testcase name="testEncryptedValueWithKey" classname="com.distrimind.bouncycastle.cert.crmf.test.AllTests" time="0.009"/>
-  <testcase name="testBasicMessage" classname="com.distrimind.bouncycastle.cert.crmf.test.AllTests" time="0.015"/>
-  <testcase name="testBasicMessageWithArchiveControl" classname="com.distrimind.bouncycastle.cert.crmf.test.AllTests" time="0.01"/>
-  <testcase name="testEncryptedValuePassphraseWithPadding" classname="com.distrimind.bouncycastle.cert.crmf.test.AllTests" time="0.01"/>
-  <testcase name="testKeySizes" classname="com.distrimind.bouncycastle.cert.crmf.test.AllTests" time="0.004"/>
-  <testcase name="testEncryptedValueOAEP1" classname="com.distrimind.bouncycastle.cert.crmf.test.AllTests" time="0.04"/>
-  <testcase name="testEncryptedValueOAEP2" classname="com.distrimind.bouncycastle.cert.crmf.test.AllTests" time="0.295"/>
-  <testcase name="testProofOfPossessionWithoutSender" classname="com.distrimind.bouncycastle.cert.crmf.test.AllTests" time="0.012"/>
+  <testcase name="testEncryptedValue" classname="com.distrimind.bouncycastle.cert.crmf.test.AllTests" time="0.008"/>
+  <testcase name="testEncryptedValuePassphrase" classname="com.distrimind.bouncycastle.cert.crmf.test.AllTests" time="0.004"/>
+  <testcase name="testBcEncryptedValueWithKey" classname="com.distrimind.bouncycastle.cert.crmf.test.AllTests" time="0.006"/>
+  <testcase name="testProofOfPossessionWithSender" classname="com.distrimind.bouncycastle.cert.crmf.test.AllTests" time="0.009"/>
+  <testcase name="testProofOfPossessionWithTemplate" classname="com.distrimind.bouncycastle.cert.crmf.test.AllTests" time="0.008"/>
+  <testcase name="testEncryptedValueWithKey" classname="com.distrimind.bouncycastle.cert.crmf.test.AllTests" time="0.007"/>
+  <testcase name="testBasicMessage" classname="com.distrimind.bouncycastle.cert.crmf.test.AllTests" time="0.004"/>
+  <testcase name="testBasicMessageWithArchiveControl" classname="com.distrimind.bouncycastle.cert.crmf.test.AllTests" time="0.008"/>
+  <testcase name="testEncryptedValuePassphraseWithPadding" classname="com.distrimind.bouncycastle.cert.crmf.test.AllTests" time="0.009"/>
+  <testcase name="testKeySizes" classname="com.distrimind.bouncycastle.cert.crmf.test.AllTests" time="0.002"/>
+  <testcase name="testEncryptedValueOAEP1" classname="com.distrimind.bouncycastle.cert.crmf.test.AllTests" time="0.045"/>
+  <testcase name="testEncryptedValueOAEP2" classname="com.distrimind.bouncycastle.cert.crmf.test.AllTests" time="0.068"/>
+  <testcase name="testProofOfPossessionWithoutSender" classname="com.distrimind.bouncycastle.cert.crmf.test.AllTests" time="0.008"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
