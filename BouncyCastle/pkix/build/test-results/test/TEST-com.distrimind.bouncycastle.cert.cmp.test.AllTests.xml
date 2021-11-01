@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.cert.cmp.test.AllTests" tests="7" skipped="0" failures="0" errors="0" timestamp="2021-11-01T15:41:11" hostname="basic" time="0.064">
+  <properties/>
+  <testcase name="testSampleCr" classname="com.distrimind.bouncycastle.cert.cmp.test.AllTests" time="0.004"/>
+  <testcase name="testSubsequentMessage" classname="com.distrimind.bouncycastle.cert.cmp.test.AllTests" time="0.009"/>
+  <testcase name="testConfirmationMessage" classname="com.distrimind.bouncycastle.cert.cmp.test.AllTests" time="0.012"/>
+  <testcase name="testServerSideKey" classname="com.distrimind.bouncycastle.cert.cmp.test.AllTests" time="0.017"/>
+  <testcase name="testNotBeforeNotAfter" classname="com.distrimind.bouncycastle.cert.cmp.test.AllTests" time="0.006"/>
+  <testcase name="testMacProtectedMessage" classname="com.distrimind.bouncycastle.cert.cmp.test.AllTests" time="0.008"/>
+  <testcase name="testProtectedMessage" classname="com.distrimind.bouncycastle.cert.cmp.test.AllTests" time="0.006"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

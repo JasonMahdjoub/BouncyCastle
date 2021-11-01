@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.pqc.crypto.test.NTRUEncryptTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-11-01T15:26:07" hostname="basic" time="0.14">
+  <properties/>
+  <testcase name="testEncodedKeysFast" classname="com.distrimind.bouncycastle.pqc.crypto.test.NTRUEncryptTest" time="0.008"/>
+  <testcase name="testEncodedKeysSlow" classname="com.distrimind.bouncycastle.pqc.crypto.test.NTRUEncryptTest" time="0.031"/>
+  <testcase name="testEncryptDecrypt" classname="com.distrimind.bouncycastle.pqc.crypto.test.NTRUEncryptTest" time="0.101"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

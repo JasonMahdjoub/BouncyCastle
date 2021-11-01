@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.crypto.test.GCMReorderTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-11-01T15:25:33" hostname="basic" time="0.011">
+  <properties/>
+  <testcase name="testExp" classname="com.distrimind.bouncycastle.crypto.test.GCMReorderTest" time="0.003"/>
+  <testcase name="testConcatCrypt" classname="com.distrimind.bouncycastle.crypto.test.GCMReorderTest" time="0.003"/>
+  <testcase name="testCombine" classname="com.distrimind.bouncycastle.crypto.test.GCMReorderTest" time="0.002"/>
+  <testcase name="testMultiply" classname="com.distrimind.bouncycastle.crypto.test.GCMReorderTest" time="0.001"/>
+  <testcase name="testConcatAuth" classname="com.distrimind.bouncycastle.crypto.test.GCMReorderTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

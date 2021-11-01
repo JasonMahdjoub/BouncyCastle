@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.mail.smime.test.SMIMECompressedTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-11-01T15:29:45" hostname="basic" time="0.016">
+  <properties/>
+  <testcase name="testBasic" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMECompressedTest" time="0.006"/>
+  <testcase name="testCompressedSHA1WithRSA" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMECompressedTest" time="0.007"/>
+  <testcase name="testHeaders" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMECompressedTest" time="0.0"/>
+  <testcase name="testParser" classname="com.distrimind.bouncycastle.mail.smime.test.SMIMECompressedTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

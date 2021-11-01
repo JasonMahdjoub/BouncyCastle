@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.pqc.math.ntru.euclid.test.BigIntEuclideanTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-11-01T15:29:42" hostname="basic" time="0.0">
+  <properties/>
+  <testcase name="testCalculate" classname="com.distrimind.bouncycastle.pqc.math.ntru.euclid.test.BigIntEuclideanTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.openpgp.test.DSA2Test" tests="15" skipped="0" failures="0" errors="0" timestamp="2021-11-01T15:29:52" hostname="basic" time="0.168">
+  <properties/>
+  <testcase name="testGenerateK2048H256" classname="com.distrimind.bouncycastle.openpgp.test.DSA2Test" time="0.003"/>
+  <testcase name="testGenerateK2048H512" classname="com.distrimind.bouncycastle.openpgp.test.DSA2Test" time="0.003"/>
+  <testcase name="testK2048H224" classname="com.distrimind.bouncycastle.openpgp.test.DSA2Test" time="0.003"/>
+  <testcase name="testK15360H512" classname="com.distrimind.bouncycastle.openpgp.test.DSA2Test" time="0.118"/>
+  <testcase name="testK7680H384" classname="com.distrimind.bouncycastle.openpgp.test.DSA2Test" time="0.024"/>
+  <testcase name="testK3072H256" classname="com.distrimind.bouncycastle.openpgp.test.DSA2Test" time="0.003"/>
+  <testcase name="testGenerateK1024H224" classname="com.distrimind.bouncycastle.openpgp.test.DSA2Test" time="0.001"/>
+  <testcase name="testGenerateK1024H256" classname="com.distrimind.bouncycastle.openpgp.test.DSA2Test" time="0.002"/>
+  <testcase name="testGenerateK1024H384" classname="com.distrimind.bouncycastle.openpgp.test.DSA2Test" time="0.002"/>
+  <testcase name="testGenerateK1024H512" classname="com.distrimind.bouncycastle.openpgp.test.DSA2Test" time="0.001"/>
+  <testcase name="testK1024H160" classname="com.distrimind.bouncycastle.openpgp.test.DSA2Test" time="0.001"/>
+  <testcase name="testK1024H224" classname="com.distrimind.bouncycastle.openpgp.test.DSA2Test" time="0.001"/>
+  <testcase name="testK1024H256" classname="com.distrimind.bouncycastle.openpgp.test.DSA2Test" time="0.001"/>
+  <testcase name="testK1024H384" classname="com.distrimind.bouncycastle.openpgp.test.DSA2Test" time="0.0"/>
+  <testcase name="testK1024H512" classname="com.distrimind.bouncycastle.openpgp.test.DSA2Test" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

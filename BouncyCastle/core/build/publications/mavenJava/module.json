@@ -1,0 +1,60 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.distrimind.bouncycastle",
+    "module": "core",
+    "version": "1.69-DMRECOMPILE",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.2"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "core-1.69-DMRECOMPILE.jar",
+          "url": "core-1.69-DMRECOMPILE.jar",
+          "size": 3310684,
+          "sha512": "c64aea81c6d028404862efb6eec5e65ce066e3fc7eabc66cb84e4ed37fa25def2466f61b179bae9ca58f6c1724acb01703425d7de9c51a8101c8a7b02c3f66b5",
+          "sha256": "db68b5d4daa5c0e85a69f71df7d4f04810560926647f95df5a0d8236ff491de9",
+          "sha1": "57bd9c5bf33973ce1c3959216e158370efe34864",
+          "md5": "63720fcc14d13632332ad302818fde43"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "core-1.69-DMRECOMPILE.jar",
+          "url": "core-1.69-DMRECOMPILE.jar",
+          "size": 3310684,
+          "sha512": "c64aea81c6d028404862efb6eec5e65ce066e3fc7eabc66cb84e4ed37fa25def2466f61b179bae9ca58f6c1724acb01703425d7de9c51a8101c8a7b02c3f66b5",
+          "sha256": "db68b5d4daa5c0e85a69f71df7d4f04810560926647f95df5a0d8236ff491de9",
+          "sha1": "57bd9c5bf33973ce1c3959216e158370efe34864",
+          "md5": "63720fcc14d13632332ad302818fde43"
+        }
+      ]
+    }
+  ]
+}

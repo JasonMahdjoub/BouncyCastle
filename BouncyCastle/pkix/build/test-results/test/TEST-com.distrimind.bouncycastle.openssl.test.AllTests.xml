@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.openssl.test.AllTests" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-11-01T15:41:09" hostname="basic" time="1.212">
+  <properties/>
+  <testcase name="testOpenSSL" classname="com.distrimind.bouncycastle.openssl.test.AllTests" time="0.764"/>
+  <testcase name="testPKCS8Encrypted" classname="com.distrimind.bouncycastle.openssl.test.AllTests" time="0.41"/>
+  <testcase name="testVectors" classname="com.distrimind.bouncycastle.openssl.test.AllTests" time="0.008"/>
+  <testcase name="testPKCS8PlainNew" classname="com.distrimind.bouncycastle.openssl.test.AllTests" time="0.029"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

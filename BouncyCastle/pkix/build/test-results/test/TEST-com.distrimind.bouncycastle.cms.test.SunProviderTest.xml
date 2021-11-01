@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.cms.test.SunProviderTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2021-11-01T15:41:14" hostname="basic" time="0.007">
+  <properties/>
+  <testcase name="testKeyTransAES128" classname="com.distrimind.bouncycastle.cms.test.SunProviderTest" time="0.001"/>
+  <testcase name="testKeyTransAES192" classname="com.distrimind.bouncycastle.cms.test.SunProviderTest" time="0.0"/>
+  <testcase name="testKeyTransAES256" classname="com.distrimind.bouncycastle.cms.test.SunProviderTest" time="0.001"/>
+  <testcase name="testSHA1WithRSAEncapsulated" classname="com.distrimind.bouncycastle.cms.test.SunProviderTest" time="0.001"/>
+  <testcase name="testKeyTransDES" classname="com.distrimind.bouncycastle.cms.test.SunProviderTest" time="0.002"/>
+  <testcase name="testSHA1WithRSAStream" classname="com.distrimind.bouncycastle.cms.test.SunProviderTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

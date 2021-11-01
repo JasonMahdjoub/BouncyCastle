@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.pqc.crypto.test.AllTests$SimpleTestTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-11-01T15:27:27" hostname="basic" time="117.865">
+  <properties/>
+  <testcase name="testPQC" classname="com.distrimind.bouncycastle.pqc.crypto.test.AllTests$SimpleTestTest" time="59.206"/>
+  <testcase name="testPQC" classname="com.distrimind.bouncycastle.pqc.crypto.test.AllTests$SimpleTestTest" time="58.658"/>
+  <system-out><![CDATA[############### test: 1
+test okay
+
+############### test: 2
+test okay
+
+############### test: 3
+test okay
+
+############### test: 4
+test okay
+
+############### test: 5
+test okay
+
+############### test: 6
+test okay
+
+############### test: 7
+test okay
+
+############### test: 8
+test okay
+
+############### test: 9
+test okay
+
+############### test: 10
+test okay
+
+############### test: 1
+test okay
+
+############### test: 2
+test okay
+
+############### test: 3
+test okay
+
+############### test: 4
+test okay
+
+############### test: 5
+test okay
+
+############### test: 6
+test okay
+
+############### test: 7
+test okay
+
+############### test: 8
+test okay
+
+############### test: 9
+test okay
+
+############### test: 10
+test okay
+
+############### test: 1
+test okay
+
+############### test: 2
+test okay
+
+############### test: 3
+test okay
+
+############### test: 4
+test okay
+
+############### test: 5
+test okay
+
+############### test: 6
+test okay
+
+############### test: 7
+test okay
+
+############### test: 8
+test okay
+
+############### test: 9
+test okay
+
+############### test: 10
+test okay
+
+############### test: 1
+test okay
+
+############### test: 2
+test okay
+
+############### test: 3
+test okay
+
+############### test: 4
+test okay
+
+############### test: 5
+test okay
+
+############### test: 6
+test okay
+
+############### test: 7
+test okay
+
+############### test: 8
+test okay
+
+############### test: 9
+test okay
+
+############### test: 10
+test okay
+
+############### test: 1
+test okay
+
+############### test: 2
+test okay
+
+############### test: 3
+test okay
+
+############### test: 4
+test okay
+
+############### test: 5
+test okay
+
+############### test: 6
+test okay
+
+############### test: 7
+test okay
+
+############### test: 8
+test okay
+
+############### test: 9
+test okay
+
+############### test: 10
+test okay
+
+############### test: 1
+test okay
+
+############### test: 2
+test okay
+
+############### test: 3
+test okay
+
+############### test: 4
+test okay
+
+############### test: 5
+test okay
+
+############### test: 6
+test okay
+
+############### test: 7
+test okay
+
+############### test: 8
+test okay
+
+############### test: 9
+test okay
+
+############### test: 10
+test okay
+
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

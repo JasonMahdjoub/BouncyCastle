@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.tls.test.BasicTlsTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-11-01T15:51:02" hostname="basic" time="1.118">
+  <properties/>
+  <testcase name="testConnection" classname="com.distrimind.bouncycastle.tls.test.BasicTlsTest" time="1.118"/>
+  <system-out><![CDATA[TLS client received alert: warning(1), close_notify(0)
+TLS client raised alert: warning(1), close_notify(0)
+> Connection closed
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

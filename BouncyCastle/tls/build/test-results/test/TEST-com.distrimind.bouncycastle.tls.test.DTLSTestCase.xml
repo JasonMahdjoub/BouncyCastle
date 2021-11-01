@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.tls.test.DTLSTestCase" tests="8" skipped="0" failures="0" errors="0" timestamp="2021-11-01T15:51:04" hostname="basic" time="1.781">
+  <properties/>
+  <testcase name="FallbackGood" classname="com.distrimind.bouncycastle.tls.test.DTLSTestCase" time="0.232"/>
+  <testcase name="FallbackNone" classname="com.distrimind.bouncycastle.tls.test.DTLSTestCase" time="0.227"/>
+  <testcase name="DTLS10_GoodDefault" classname="com.distrimind.bouncycastle.tls.test.DTLSTestCase" time="0.23"/>
+  <testcase name="DTLS10_GoodNoCertReq" classname="com.distrimind.bouncycastle.tls.test.DTLSTestCase" time="0.214"/>
+  <testcase name="DTLS10_GoodOptionalCertReqDeclined" classname="com.distrimind.bouncycastle.tls.test.DTLSTestCase" time="0.215"/>
+  <testcase name="DTLS12_GoodDefault" classname="com.distrimind.bouncycastle.tls.test.DTLSTestCase" time="0.227"/>
+  <testcase name="DTLS12_GoodNoCertReq" classname="com.distrimind.bouncycastle.tls.test.DTLSTestCase" time="0.216"/>
+  <testcase name="DTLS12_GoodOptionalCertReqDeclined" classname="com.distrimind.bouncycastle.tls.test.DTLSTestCase" time="0.216"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

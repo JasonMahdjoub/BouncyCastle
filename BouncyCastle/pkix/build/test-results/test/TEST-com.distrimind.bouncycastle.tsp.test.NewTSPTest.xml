@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.tsp.test.NewTSPTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-11-01T15:41:11" hostname="basic" time="0.156">
+  <properties/>
+  <testcase name="testSM2withSM3" classname="com.distrimind.bouncycastle.tsp.test.NewTSPTest" time="0.019"/>
+  <testcase name="testGeneral" classname="com.distrimind.bouncycastle.tsp.test.NewTSPTest" time="0.086"/>
+  <testcase name="testCertOrdering" classname="com.distrimind.bouncycastle.tsp.test.NewTSPTest" time="0.051"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,83 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.distrimind.bouncycastle",
+    "module": "pkix",
+    "version": "1.69-DMRECOMPILE",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.2"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "pkix-1.69-DMRECOMPILE.jar",
+          "url": "pkix-1.69-DMRECOMPILE.jar",
+          "size": 1050218,
+          "sha512": "c52de47458f385d81c913a250d170c577a7e2c8a6c93a0f5bf1615a62bef2470a59207f6f79a588fd167a7fbcff0ec9d905fcb5e86deb3b67244552fb312a878",
+          "sha256": "e2f7994258c3670d9c41e282dbd5ceb375b9d0e98033e0965eb83c22327fe574",
+          "sha1": "45349d1825c15606cda669b8b7d01baba2110abf",
+          "md5": "21a5518d3113df4cc1f0b9d4cda44cc0"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "com.distrimind.bouncycastle",
+          "module": "core",
+          "version": {
+            "requires": "1.69-DMRECOMPILE"
+          }
+        },
+        {
+          "group": "com.distrimind.bouncycastle",
+          "module": "prov",
+          "version": {
+            "requires": "1.69-DMRECOMPILE"
+          }
+        },
+        {
+          "group": "com.distrimind.bouncycastle",
+          "module": "util",
+          "version": {
+            "requires": "1.69-DMRECOMPILE"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "pkix-1.69-DMRECOMPILE.jar",
+          "url": "pkix-1.69-DMRECOMPILE.jar",
+          "size": 1050218,
+          "sha512": "c52de47458f385d81c913a250d170c577a7e2c8a6c93a0f5bf1615a62bef2470a59207f6f79a588fd167a7fbcff0ec9d905fcb5e86deb3b67244552fb312a878",
+          "sha256": "e2f7994258c3670d9c41e282dbd5ceb375b9d0e98033e0965eb83c22327fe574",
+          "sha1": "45349d1825c15606cda669b8b7d01baba2110abf",
+          "md5": "21a5518d3113df4cc1f0b9d4cda44cc0"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.asn1.test.AllTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-11-01T15:25:33" hostname="basic" time="1.111">
+  <properties/>
+  <testcase name="testASN1" classname="com.distrimind.bouncycastle.asn1.test.AllTests" time="1.111"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

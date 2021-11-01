@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.pqc.crypto.test.XMSSSignatureTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-11-01T15:26:42" hostname="basic" time="9.404">
+  <properties/>
+  <testcase name="testSignatureParsingSHA256" classname="com.distrimind.bouncycastle.pqc.crypto.test.XMSSSignatureTest" time="2.439"/>
+  <testcase name="testSignatureParsingSHA512" classname="com.distrimind.bouncycastle.pqc.crypto.test.XMSSSignatureTest" time="6.965"/>
+  <testcase name="testConstructor" classname="com.distrimind.bouncycastle.pqc.crypto.test.XMSSSignatureTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

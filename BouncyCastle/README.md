@@ -40,23 +40,23 @@ If you want to try create a build for yourself, using your own environment, the 
 
 To view some examples, look at the test programs in the packages:
 
-*   **org.bouncycastle.crypto.test**
+*   **com.distrimind.bouncycastle.crypto.test**
 
-*   **org.bouncycastle.jce.provider.test**
+*   **com.distrimind.bouncycastle.jce.provider.test**
 
-*   **org.bouncycastle.cms.test**
+*   **com.distrimind.bouncycastle.cms.test**
 
-*   **org.bouncycastle.mail.smime.test**
+*   **com.distrimind.bouncycastle.mail.smime.test**
 
-*   **org.bouncycastle.openpgp.test**
+*   **com.distrimind.bouncycastle.openpgp.test**
 
-*   **org.bouncycastle.tsp.test**
+*   **com.distrimind.bouncycastle.tsp.test**
 
 There are also some specific example programs for dealing with SMIME and OpenPGP. They can be found in:
 
-*   **org.bouncycastle.mail.smime.examples**
+*   **com.distrimind.bouncycastle.mail.smime.examples**
 
-*   **org.bouncycastle.openpgp.examples**
+*   **com.distrimind.bouncycastle.openpgp.examples**
 
 ## Mailing Lists
 

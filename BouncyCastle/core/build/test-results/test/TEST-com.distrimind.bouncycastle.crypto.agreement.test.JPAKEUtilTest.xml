@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.crypto.agreement.test.JPAKEUtilTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2021-11-01T15:25:33" hostname="basic" time="0.017">
+  <properties/>
+  <testcase name="testValidateNotNull" classname="com.distrimind.bouncycastle.crypto.agreement.test.JPAKEUtilTest" time="0.0"/>
+  <testcase name="testValidateGx4" classname="com.distrimind.bouncycastle.crypto.agreement.test.JPAKEUtilTest" time="0.001"/>
+  <testcase name="testValidateMacTag" classname="com.distrimind.bouncycastle.crypto.agreement.test.JPAKEUtilTest" time="0.003"/>
+  <testcase name="testValidateGa" classname="com.distrimind.bouncycastle.crypto.agreement.test.JPAKEUtilTest" time="0.0"/>
+  <testcase name="testValidateZeroKnowledgeProof" classname="com.distrimind.bouncycastle.crypto.agreement.test.JPAKEUtilTest" time="0.013"/>
+  <testcase name="testValidateParticipantIdsDiffer" classname="com.distrimind.bouncycastle.crypto.agreement.test.JPAKEUtilTest" time="0.0"/>
+  <testcase name="testValidateParticipantIdsEqual" classname="com.distrimind.bouncycastle.crypto.agreement.test.JPAKEUtilTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
