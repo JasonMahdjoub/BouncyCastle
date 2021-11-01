@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.distrimind.bouncycastle.jsse.provider.test.TrustManagerFactoryTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-05-27T14:26:09" hostname="Garage" time="0.01">
-  <properties/>
-  <testcase name="testCertPathTrustManagerParameters" classname="com.distrimind.bouncycastle.jsse.provider.test.TrustManagerFactoryTest" time="0.009"/>
-  <testcase name="testCertPathTrustManagerParametersFailure" classname="com.distrimind.bouncycastle.jsse.provider.test.TrustManagerFactoryTest" time="0.001"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

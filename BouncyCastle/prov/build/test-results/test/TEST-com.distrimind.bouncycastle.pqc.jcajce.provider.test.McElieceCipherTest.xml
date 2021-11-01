@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.distrimind.bouncycastle.pqc.jcajce.provider.test.McElieceCipherTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-05-27T14:25:04" hostname="Garage" time="2.617">
-  <properties/>
-  <testcase name="testEnDecryption_9_33" classname="com.distrimind.bouncycastle.pqc.jcajce.provider.test.McElieceCipherTest" time="0.278"/>
-  <testcase name="testEnDecryption_11_50" classname="com.distrimind.bouncycastle.pqc.jcajce.provider.test.McElieceCipherTest" time="2.339"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

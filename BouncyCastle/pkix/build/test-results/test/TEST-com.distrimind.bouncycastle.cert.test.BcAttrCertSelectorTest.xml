@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.distrimind.bouncycastle.cert.test.BcAttrCertSelectorTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-05-27T14:24:26" hostname="Garage" time="0.001">
-  <properties/>
-  <testcase name="AttrCertSelector" classname="com.distrimind.bouncycastle.cert.test.BcAttrCertSelectorTest" time="0.0"/>
-  <testcase name="AttrCertSelector" classname="com.distrimind.bouncycastle.cert.test.BcAttrCertSelectorTest" time="0.001"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

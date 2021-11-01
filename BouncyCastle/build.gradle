@@ -5,9 +5,6 @@ buildscript {
        }
    }
 
-   /*dependencies {
-        classpath "net.saliman:gradle-cobertura-plugin:3.0.0"
-   }*/
 }
 
 if (JavaVersion.current().isJava8Compatible()) {
@@ -89,7 +86,6 @@ task printProperties {
 		println bcTestDataHome
 	}
 }
-
 subprojects {
 	tasks.withType(JavaExec) {
 		jvmArgs = ['-Xms8g', '-Xmx8g']
@@ -99,26 +95,36 @@ subprojects {
 	    props.load(new FileInputStream(propFile))
 	}
 
-    apply plugin: 'idea'
-	ext.vmrange='jdk15to18'
-    sourceCompatibility = JavaVersionSource
-    targetCompatibility = JavaVersionTarget
+	apply plugin: 'idea'
+	apply plugin: 'eclipse'
 
-    version = '1.68-DMRECOMPILE'
+	JavaVersion current = JavaVersion.current();
+	if (current.compareTo(JavaVersion.VERSION_1_8) <= 0)
+	{
+		ext.vmrange='jdk15to18'
+		sourceCompatibility = 1.5
+		targetCompatibility = 1.5
+	}
+	else
+	{
+		compileJava.options.compilerArgs.addAll(['--release', JavaVersionTarget] as Collection<? extends String>)
+		if (project.hasProperty('javaHomeVersion') && JavaVersionTarget.toFloat()>1.8)
+			javadoc.options.addStringOption("html5", "-quiet")
+		ext.vmrange='jdk18on'
+		sourceCompatibility = 1.8
+		targetCompatibility = 1.8
+	}
 
-	compileJava.options.compilerArgs.addAll(['--release', JavaVersionTarget] as Collection<? extends String>)
-	if (project.hasProperty('javaHomeVersion') && JavaVersionTarget.toFloat()>1.8)
-		javadoc.options.addStringOption("html5", "-quiet")
+	version = '1.69-DMRECOMPILE'
 
+	test {
+		systemProperty 'bc.test.data.home', bcTestDataHome
 
-    test {
-        systemProperty 'bc.test.data.home', bcTestDataHome
-
-        filter {
-            includeTestsMatching "*AllTests"
-        }
-    }
-    task sourcesJar(type: Jar, dependsOn: classes) {
+		filter {
+			includeTestsMatching "AllTest*"
+		}
+	}
+	task sourcesJar(type: Jar, dependsOn: classes) {
 		archiveClassifier.set("sources")
 	    from sourceSets.main.allSource
 	    from "../../LICENSE"
@@ -188,8 +194,6 @@ subprojects {
 			options.addBooleanOption('html5', true)
 		}
 	}
-
-
 }
+test.dependsOn([':core:test', ':prov:test', ':pkix:test', ':mail:test', 'pg:test', ':tls:test'])
 
-test.dependsOn([':core:test', ':prov:test', ':pkix:test', ':mail:test', 'pg:test'])

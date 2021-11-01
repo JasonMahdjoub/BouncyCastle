@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.distrimind.bouncycastle.jce.provider.test.SimpleTestTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-05-27T14:24:30" hostname="Garage" time="26.083">
-  <properties/>
-  <testcase name="testJCE" classname="com.distrimind.bouncycastle.jce.provider.test.SimpleTestTest" time="26.083"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

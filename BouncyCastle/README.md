@@ -8,7 +8,7 @@ The Legion also gratefully acknowledges the contributions made to this package b
 
 The package is organised so that it contains a light-weight API suitable for use in any environment (including the newly released J2ME) with the additional infrastructure to conform the algorithms to the JCE framework.
 
-Except where otherwise stated, this software is distributed under a license based on the MIT X Consortium license. To view the license, [see here](https://www.bouncycastle.org/licence.html). The OpenPGP library also includes a modified BZIP2 library which is licensed under the [Apache Software License, Version 2.0](http://www.apache.org/licenses/). 
+Except where otherwise stated, this software is distributed under a license based on the MIT X Consortium license. To view the license, [see here](https://www.bouncycastle.org/licence.html). The OpenPGP library also includes a modified BZIP2 library which is licensed under the [Apache Software License, Version 2.0](https://www.apache.org/licenses/). 
 
 **Note**: this source tree is not the FIPS version of the APIs - if you are interested in our FIPS version please contact us directly at  [office@bouncycastle.org](mailto:office@bouncycastle.org).
 
@@ -19,6 +19,8 @@ The clean room JCE, for use with JDK 1.1 to JDK 1.3 is in the jce/src/main/java 
 The **core** module provides all the functionality in the ligthweight APIs.
 
 The **prov** module provides all the JCA/JCE provider functionality.
+
+The **util** module is the home for code which is used by other modules that does not need to be in prov. At the moment this is largely ASN.1 classes for the PKIX module.
 
 The **pkix** module is the home for code for X.509 certificate generation and the APIs for standards that rely on ASN.1 such
 as CMS, TSP, PKCS#12, OCSP, CRMF, and CMP.
@@ -38,23 +40,23 @@ If you want to try create a build for yourself, using your own environment, the 
 
 To view some examples, look at the test programs in the packages:
 
-*   **com.distrimind.bouncycastle.crypto.test**
+*   **org.bouncycastle.crypto.test**
 
-*   **com.distrimind.bouncycastle.jce.provider.test**
+*   **org.bouncycastle.jce.provider.test**
 
-*   **com.distrimind.bouncycastle.cms.test**
+*   **org.bouncycastle.cms.test**
 
-*   **com.distrimind.bouncycastle.mail.smime.test**
+*   **org.bouncycastle.mail.smime.test**
 
-*   **com.distrimind.bouncycastle.openpgp.test**
+*   **org.bouncycastle.openpgp.test**
 
-*   **com.distrimind.bouncycastle.tsp.test**
+*   **org.bouncycastle.tsp.test**
 
 There are also some specific example programs for dealing with SMIME and OpenPGP. They can be found in:
 
-*   **com.distrimind.bouncycastle.mail.smime.examples**
+*   **org.bouncycastle.mail.smime.examples**
 
-*   **com.distrimind.bouncycastle.openpgp.examples**
+*   **org.bouncycastle.openpgp.examples**
 
 ## Mailing Lists
 
