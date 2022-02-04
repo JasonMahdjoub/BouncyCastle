@@ -12,10 +12,10 @@
   <version>1.69-DMRECOMPILE</version>
   <name>BouncyCastle recompiled By DistriMind</name>
   <description>Encryption tools</description>
-  <url>https://github.com/JazZ51/BouncyCastle</url>
+  <url>https://github.com/JasonMahdjoub/BouncyCastle</url>
   <organization>
     <name>DistriMind</name>
-    <url>https://github.com/JazZ51</url>
+    <url>https://github.com/JasonMahdjoub</url>
   </organization>
   <licenses>
     <license>
@@ -31,11 +31,11 @@
     </developer>
   </developers>
   <scm>
-    <connection>https://github.com/JazZ51/BouncyCastle</connection>
+    <connection>https://github.com/JasonMahdjoub/BouncyCastle</connection>
   </scm>
   <issueManagement>
     <system>GitHub</system>
-    <url>https://github.com/JazZ51/BouncyCastle/issues</url>
+    <url>https://github.com/JasonMahdjoub/BouncyCastle/issues</url>
   </issueManagement>
   <dependencies>
     <dependency>

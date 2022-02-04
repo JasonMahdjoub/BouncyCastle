@@ -144,7 +144,7 @@ subprojects {
 				pom {
 					name = 'BouncyCastle recompiled By DistriMind'
 					description = 'Encryption tools'
-					url = 'https://github.com/JazZ51/BouncyCastle'
+					url = 'https://github.com/JasonMahdjoub/BouncyCastle'
 					developers {
 						developer {
 							id = 'mahdjoub'
@@ -154,14 +154,14 @@ subprojects {
 					}
 					organization {
 						name = 'DistriMind'
-						url = 'https://github.com/JazZ51'
+						url = 'https://github.com/JasonMahdjoub'
 					}
 					issueManagement {
 						system = 'GitHub'
-						url = 'https://github.com/JazZ51/BouncyCastle/issues'
+						url = 'https://github.com/JasonMahdjoub/BouncyCastle/issues'
 					}
 					scm {
-						connection = 'https://github.com/JazZ51/BouncyCastle'
+						connection = 'https://github.com/JasonMahdjoub/BouncyCastle'
 					}
 					licenses {
 						license {
