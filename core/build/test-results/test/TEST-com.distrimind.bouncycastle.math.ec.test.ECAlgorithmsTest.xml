@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.math.ec.test.ECAlgorithmsTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2022-03-31T09:26:10" hostname="Garage2" time="16.788">
+  <properties/>
+  <testcase name="testSumOfMultiplies" classname="com.distrimind.bouncycastle.math.ec.test.ECAlgorithmsTest" time="0.018"/>
+  <testcase name="testSumOfTwoMultipliesComplete" classname="com.distrimind.bouncycastle.math.ec.test.ECAlgorithmsTest" time="10.428"/>
+  <testcase name="testSumOfMultipliesComplete" classname="com.distrimind.bouncycastle.math.ec.test.ECAlgorithmsTest" time="6.339"/>
+  <testcase name="testSumOfTwoMultiplies" classname="com.distrimind.bouncycastle.math.ec.test.ECAlgorithmsTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

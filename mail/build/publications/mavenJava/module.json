@@ -1,0 +1,97 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.distrimind.bouncycastle",
+    "module": "mail",
+    "version": "1.69-DMRECOMPILE",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.4.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "mail-1.69-DMRECOMPILE.jar",
+          "url": "mail-1.69-DMRECOMPILE.jar",
+          "size": 124872,
+          "sha512": "5f1b0ca54d66080bc255b74ff74dd8d3c0fb139392515bffacc2d8b351d8483ad5cb95fdd8879a145d0213c3b128e95177c584ebb2e3c632b332cac958121be8",
+          "sha256": "be88faf569e5f3030c88cb93ab08344044b9fabb6c9afb1c4fc4687e23b514e9",
+          "sha1": "c5c36151c96319db5f23708eba3baedca0d787a8",
+          "md5": "86b5a81ceb41b83a108a0b5b05fa63c4"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "com.distrimind.bouncycastle",
+          "module": "core",
+          "version": {
+            "requires": "1.69-DMRECOMPILE"
+          }
+        },
+        {
+          "group": "com.distrimind.bouncycastle",
+          "module": "util",
+          "version": {
+            "requires": "1.69-DMRECOMPILE"
+          }
+        },
+        {
+          "group": "com.distrimind.bouncycastle",
+          "module": "pkix",
+          "version": {
+            "requires": "1.69-DMRECOMPILE"
+          }
+        },
+        {
+          "group": "com.distrimind.bouncycastle",
+          "module": "prov",
+          "version": {
+            "requires": "1.69-DMRECOMPILE"
+          }
+        },
+        {
+          "group": "javax.mail",
+          "module": "mail",
+          "version": {
+            "requires": "1.4"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "mail-1.69-DMRECOMPILE.jar",
+          "url": "mail-1.69-DMRECOMPILE.jar",
+          "size": 124872,
+          "sha512": "5f1b0ca54d66080bc255b74ff74dd8d3c0fb139392515bffacc2d8b351d8483ad5cb95fdd8879a145d0213c3b128e95177c584ebb2e3c632b332cac958121be8",
+          "sha256": "be88faf569e5f3030c88cb93ab08344044b9fabb6c9afb1c4fc4687e23b514e9",
+          "sha1": "c5c36151c96319db5f23708eba3baedca0d787a8",
+          "md5": "86b5a81ceb41b83a108a0b5b05fa63c4"
+        }
+      ]
+    }
+  ]
+}

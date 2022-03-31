@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.pqc.crypto.test.QTESLATest" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-03-31T09:27:45" hostname="Garage2" time="11.785">
+  <properties/>
+  <testcase name="testKATVectors" classname="com.distrimind.bouncycastle.pqc.crypto.test.QTESLATest" time="11.635"/>
+  <testcase name="testSignQ1p" classname="com.distrimind.bouncycastle.pqc.crypto.test.QTESLATest" time="0.024"/>
+  <testcase name="testSignQ3p" classname="com.distrimind.bouncycastle.pqc.crypto.test.QTESLATest" time="0.125"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

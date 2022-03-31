@@ -1,0 +1,76 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.distrimind.bouncycastle",
+    "module": "util",
+    "version": "1.69-DMRECOMPILE",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.4.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "util-1.69-DMRECOMPILE.jar",
+          "url": "util-1.69-DMRECOMPILE.jar",
+          "size": 414292,
+          "sha512": "304fa8310cc17e8bff0adb0fb503c8b2cb98f4f86be35909c526789691e509637e383d4811663601ab513f370405dc863838820f6b78bbb4751cfd64c1436d84",
+          "sha256": "194f2395c5a5b8acfee0afed9ace1e244540160c5c99e784bff88e0f5b42f848",
+          "sha1": "0532dcd1d2b9e8f8c1730ead4e4881b38b37ae63",
+          "md5": "790339cff2425c0f50d17afe8d54baac"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "com.distrimind.bouncycastle",
+          "module": "core",
+          "version": {
+            "requires": "1.69-DMRECOMPILE"
+          }
+        },
+        {
+          "group": "junit",
+          "module": "junit",
+          "version": {
+            "requires": "4.13"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "util-1.69-DMRECOMPILE.jar",
+          "url": "util-1.69-DMRECOMPILE.jar",
+          "size": 414292,
+          "sha512": "304fa8310cc17e8bff0adb0fb503c8b2cb98f4f86be35909c526789691e509637e383d4811663601ab513f370405dc863838820f6b78bbb4751cfd64c1436d84",
+          "sha256": "194f2395c5a5b8acfee0afed9ace1e244540160c5c99e784bff88e0f5b42f848",
+          "sha1": "0532dcd1d2b9e8f8c1730ead4e4881b38b37ae63",
+          "md5": "790339cff2425c0f50d17afe8d54baac"
+        }
+      ]
+    }
+  ]
+}

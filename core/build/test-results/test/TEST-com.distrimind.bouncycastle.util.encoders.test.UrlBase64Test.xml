@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.util.encoders.test.UrlBase64Test" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-03-31T09:29:59" hostname="Garage2" time="0.021">
+  <properties/>
+  <testcase name="testSamples" classname="com.distrimind.bouncycastle.util.encoders.test.UrlBase64Test" time="0.0"/>
+  <testcase name="testInvalidInput" classname="com.distrimind.bouncycastle.util.encoders.test.UrlBase64Test" time="0.001"/>
+  <testcase name="testEncode" classname="com.distrimind.bouncycastle.util.encoders.test.UrlBase64Test" time="0.02"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.pqc.jcajce.provider.test.McElieceKeyPairGeneratorTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-03-31T09:30:34" hostname="Garage2" time="0.283">
+  <properties/>
+  <testcase name="testKeyFactory" classname="com.distrimind.bouncycastle.pqc.jcajce.provider.test.McElieceKeyPairGeneratorTest" time="0.0"/>
+  <testcase name="testKeyPairEncoding_9_33" classname="com.distrimind.bouncycastle.pqc.jcajce.provider.test.McElieceKeyPairGeneratorTest" time="0.139"/>
+  <testcase name="testKeyPairEncoding_CCA2" classname="com.distrimind.bouncycastle.pqc.jcajce.provider.test.McElieceKeyPairGeneratorTest" time="0.144"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

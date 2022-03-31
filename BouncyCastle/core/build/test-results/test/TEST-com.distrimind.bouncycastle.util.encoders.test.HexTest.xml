@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.distrimind.bouncycastle.util.encoders.test.HexTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-11-01T15:25:35" hostname="basic" time="0.029">
-  <properties/>
-  <testcase name="testLength" classname="com.distrimind.bouncycastle.util.encoders.test.HexTest" time="0.0"/>
-  <testcase name="testInvalidInput" classname="com.distrimind.bouncycastle.util.encoders.test.HexTest" time="0.001"/>
-  <testcase name="testEncode" classname="com.distrimind.bouncycastle.util.encoders.test.HexTest" time="0.028"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

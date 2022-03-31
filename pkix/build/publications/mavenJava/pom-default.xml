@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!-- This module was also published with a richer model, Gradle metadata,  -->
+  <!-- which should be used instead. Do not delete the following line which  -->
+  <!-- is to indicate to Gradle or any Gradle module metadata file consumer  -->
+  <!-- that they should prefer consuming it instead. -->
+  <!-- do_not_remove: published-with-gradle-metadata -->
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.distrimind.bouncycastle</groupId>
+  <artifactId>pkix</artifactId>
+  <version>1.69-DMRECOMPILE</version>
+  <name>BouncyCastle recompiled By DistriMind</name>
+  <description>Encryption tools</description>
+  <url>https://github.com/JasonMahdjoub/BouncyCastle</url>
+  <organization>
+    <name>DistriMind</name>
+    <url>https://github.com/JasonMahdjoub</url>
+  </organization>
+  <licenses>
+    <license>
+      <name>The Bouncy Castle License</name>
+      <url>http://www.bouncycastle.org</url>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <id>mahdjoub</id>
+      <name>Jason Mahdjoub</name>
+      <email>jason.mahdjoub@distri-mind.fr</email>
+    </developer>
+  </developers>
+  <scm>
+    <connection>https://github.com/JasonMahdjoub/BouncyCastle</connection>
+    <developerConnection>https://github.com/JasonMahdjoub/BouncyCastle</developerConnection>
+    <url>https://github.com/JasonMahdjoub/BouncyCastle</url>
+  </scm>
+  <issueManagement>
+    <system>GitHub</system>
+    <url>https://github.com/JasonMahdjoub/BouncyCastle/issues</url>
+  </issueManagement>
+  <dependencies>
+    <dependency>
+      <groupId>com.distrimind.bouncycastle</groupId>
+      <artifactId>core</artifactId>
+      <version>1.69-DMRECOMPILE</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.distrimind.bouncycastle</groupId>
+      <artifactId>prov</artifactId>
+      <version>1.69-DMRECOMPILE</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.distrimind.bouncycastle</groupId>
+      <artifactId>util</artifactId>
+      <version>1.69-DMRECOMPILE</version>
+      <scope>runtime</scope>
+    </dependency>
+  </dependencies>
+</project>

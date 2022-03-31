@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.pqc.crypto.test.NTRUSignatureKeyTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-03-31T09:27:45" hostname="Garage2" time="0.164">
+  <properties/>
+  <testcase name="testEncode" classname="com.distrimind.bouncycastle.pqc.crypto.test.NTRUSignatureKeyTest" time="0.164"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

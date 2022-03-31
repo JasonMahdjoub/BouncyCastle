@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.openpgp.test.PGPUnicodeTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-03-31T09:30:11" hostname="Garage2" time="0.029">
+  <properties/>
+  <testcase name="test_CyrillicPassphrase" classname="com.distrimind.bouncycastle.openpgp.test.PGPUnicodeTest" time="0.014"/>
+  <testcase name="test_UmlautPassphrase" classname="com.distrimind.bouncycastle.openpgp.test.PGPUnicodeTest" time="0.014"/>
+  <testcase name="test_ASCIIPassphrase" classname="com.distrimind.bouncycastle.openpgp.test.PGPUnicodeTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

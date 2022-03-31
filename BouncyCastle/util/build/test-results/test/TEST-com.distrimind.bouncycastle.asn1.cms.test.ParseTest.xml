@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.distrimind.bouncycastle.asn1.cms.test.ParseTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-11-01T15:52:42" hostname="basic" time="0.001">
-  <properties/>
-  <testcase name="testLongTag" classname="com.distrimind.bouncycastle.asn1.cms.test.ParseTest" time="0.0"/>
-  <testcase name="testClassCast" classname="com.distrimind.bouncycastle.asn1.cms.test.ParseTest" time="0.001"/>
-  <testcase name="testDerExp" classname="com.distrimind.bouncycastle.asn1.cms.test.ParseTest" time="0.0"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

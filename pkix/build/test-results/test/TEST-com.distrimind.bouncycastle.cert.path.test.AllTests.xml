@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.distrimind.bouncycastle.cert.path.test.AllTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-03-31T09:30:12" hostname="Garage2" time="0.032">
+  <properties/>
+  <testcase name="testSimpleTests" classname="com.distrimind.bouncycastle.cert.path.test.AllTests" time="0.032"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

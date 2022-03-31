@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.distrimind.bouncycastle.openpgp.test.AllTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-11-01T15:29:47" hostname="basic" time="5.343">
-  <properties/>
-  <testcase name="testPGP" classname="com.distrimind.bouncycastle.openpgp.test.AllTests" time="5.343"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
