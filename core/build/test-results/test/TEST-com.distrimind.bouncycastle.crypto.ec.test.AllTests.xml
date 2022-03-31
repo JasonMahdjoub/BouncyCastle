@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.distrimind.bouncycastle.crypto.ec.test.AllTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-03-31T09:26:10" hostname="Garage2" time="0.049">
-  <properties/>
-  <testcase name="testCrypto" classname="com.distrimind.bouncycastle.crypto.ec.test.AllTests" time="0.049"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

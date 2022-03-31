@@ -78,7 +78,7 @@ allprojects {
 	}
 
    dependencies {
-        testImplementation group: 'junit', name: 'junit', version: '4.13'
+        testImplementation group: 'junit', name: 'junit', version: '4.13.2'
    }
 	tasks.withType(JavaExec) {
 		jvmArgs = ['-Xms8g', '-Xmx8g']

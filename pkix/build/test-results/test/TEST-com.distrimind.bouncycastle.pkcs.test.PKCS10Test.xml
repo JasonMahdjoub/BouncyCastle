@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.distrimind.bouncycastle.pkcs.test.PKCS10Test" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-03-31T09:30:15" hostname="Garage2" time="0.003">
-  <properties/>
-  <testcase name="testRequest" classname="com.distrimind.bouncycastle.pkcs.test.PKCS10Test" time="0.001"/>
-  <testcase name="testLeaveOffEmpty" classname="com.distrimind.bouncycastle.pkcs.test.PKCS10Test" time="0.002"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

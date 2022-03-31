@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.distrimind.bouncycastle.mime.test.TestSMIMEEnveloped" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-03-31T09:30:14" hostname="Garage2" time="0.064">
-  <properties/>
-  <testcase name="testKeyTransAES128" classname="com.distrimind.bouncycastle.mime.test.TestSMIMEEnveloped" time="0.062"/>
-  <testcase name="testSMIMEEnveloped" classname="com.distrimind.bouncycastle.mime.test.TestSMIMEEnveloped" time="0.002"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.distrimind.bouncycastle.i18n.test.LocalizedMessageTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-03-31T09:26:10" hostname="Garage2" time="0.015">
-  <properties/>
-  <testcase name="testLocalizedArgs" classname="com.distrimind.bouncycastle.i18n.test.LocalizedMessageTest" time="0.006"/>
-  <testcase name="testGetEntry" classname="com.distrimind.bouncycastle.i18n.test.LocalizedMessageTest" time="0.009"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

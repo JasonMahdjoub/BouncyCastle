@@ -1,8 +1,9 @@
-/.gradle/
-/bin/
+.gradle/
+bin/
 /gradle.properties
-/build/
-
+build/
+*~
+*.*~
 .DS_Store
 /test/bin
 ### JetBrains template
