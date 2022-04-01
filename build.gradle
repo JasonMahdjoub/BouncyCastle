@@ -125,7 +125,7 @@ subprojects {
 		targetCompatibility = 1.8
 	}
 
-	version = '1.69-DMRECOMPILE'
+	version = '1.69'
 
 	test {
 		systemProperty 'bc.test.data.home', bcTestDataHome
@@ -155,16 +155,6 @@ subprojects {
 					name = 'BouncyCastle recompiled By DistriMind'
 					description = 'Encryption tools'
 					url = 'https://github.com/JasonMahdjoub/BouncyCastle'
-					developers {
-						developer {
-							id = 'jmahdjoub'
-							name = 'Jason Mahdjoub'
-							email = 'jason.mahdjoub@distri-mind.fr'
-							organization = 'DistriMind'
-							roles.add('Entrepreneur')
-							roles.add('Developer')
-						}
-					}
 					organization {
 						name = 'DistriMind'
 						url = 'https://github.com/JasonMahdjoub'
