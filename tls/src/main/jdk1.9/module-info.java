@@ -1,19 +1,19 @@
-module com.distrimind.bouncycastle.tls
+module org.bouncycastle.tls
 {
-    provides java.security.Provider with com.distrimind.bouncycastle.jsse.provider.BouncyCastleJsseProvider;
+    provides java.security.Provider with org.bouncycastle.jsse.provider.BouncyCastleJsseProvider;
     
     requires java.logging;
-    requires com.distrimind.bouncycastle.provider;
-    requires com.distrimind.bouncycastle.util;
+    requires org.bouncycastle.provider;
+    requires org.bouncycastle.util;
 
-    exports com.distrimind.bouncycastle.jsse;
-    exports com.distrimind.bouncycastle.tls;
-    exports com.distrimind.bouncycastle.jsse.provider;
-    exports com.distrimind.bouncycastle.jsse.java.security;
-    exports com.distrimind.bouncycastle.jsse.util;
-    exports com.distrimind.bouncycastle.tls.crypto;
-    exports com.distrimind.bouncycastle.tls.crypto.impl;
-    exports com.distrimind.bouncycastle.tls.crypto.impl.bc;
-    exports com.distrimind.bouncycastle.tls.crypto.impl.jcajce;
-    exports com.distrimind.bouncycastle.tls.crypto.impl.jcajce.srp;
+    exports org.bouncycastle.jsse;
+    exports org.bouncycastle.tls;
+    exports org.bouncycastle.jsse.provider;
+    exports org.bouncycastle.jsse.java.security;
+    exports org.bouncycastle.jsse.util;
+    exports org.bouncycastle.tls.crypto;
+    exports org.bouncycastle.tls.crypto.impl;
+    exports org.bouncycastle.tls.crypto.impl.bc;
+    exports org.bouncycastle.tls.crypto.impl.jcajce;
+    exports org.bouncycastle.tls.crypto.impl.jcajce.srp;
 }

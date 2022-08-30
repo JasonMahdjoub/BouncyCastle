@@ -3,6 +3,7 @@ dependencies {
   implementation project(":core")
   implementation project(":mail")
   implementation project(":pg")
+  implementation project(":util")
   implementation project(":pkix")
   implementation project(":prov")
   implementation project(":tls")

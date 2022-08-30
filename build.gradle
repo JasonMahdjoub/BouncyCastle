@@ -6,7 +6,11 @@ buildscript {
    }
 
 }
-
+plugins {
+	id "io.spring.nohttp" version "0.0.9"
+	id "checkstyle"
+	id "jacoco"
+}
 if (JavaVersion.current().isJava8Compatible()) {
     allprojects {
         tasks.withType(Javadoc) {
@@ -48,13 +52,13 @@ def JavaVersionTarget=8
 sourceCompatibility = JavaVersionSource
 targetCompatibility= JavaVersionTarget
 
-
-
 allprojects {
-   apply plugin: 'java'
-   apply plugin: 'idea'
-   apply plugin: 'maven-publish'
-   apply plugin: 'signing'
+	apply plugin: 'java'
+	apply plugin: 'idea'
+	apply plugin: 'maven-publish'
+	apply plugin: 'signing'
+	apply plugin: 'checkstyle'
+	apply plugin: 'jacoco'
    group='com.distrimind.bouncycastle'
 
 	compileJava.options.compilerArgs.addAll(['--release', JavaVersionTarget] as Collection<? extends String>)
@@ -125,15 +129,47 @@ subprojects {
 		targetCompatibility = 1.8
 	}
 
-	version = '1.69'
+	version = '1.71'
 
-	test {
+	task testFull(type:Test) {
+		systemProperties = [
+				'bc.test.data.home': bcTestDataHome,
+				'test.full':'true'
+		]
 		systemProperty 'bc.test.data.home', bcTestDataHome
+		maxHeapSize = "1536m"
+
+		finalizedBy jacocoTestReport
 
 		filter {
 			includeTestsMatching "AllTest*"
 		}
 	}
+
+	test {
+		systemProperty 'bc.test.data.home', bcTestDataHome
+		maxHeapSize = "1536m"
+
+		filter {
+			includeTestsMatching "AllTest*"
+		}
+	}
+
+	checkstyle {
+		configFile file("$rootDir/config/checkstyle/checkstyle.xml");
+		toolVersion '9.0'; // your choice here
+		sourceSets = [project.sourceSets.main]
+	}
+
+
+	jacocoTestReport {
+		dependsOn test // tests are required to run before generating the report
+	}
+
+	jacoco {
+		reportsDirectory =  layout.buildDirectory.dir("jacoco")
+	}
+
 	task sourcesJar(type: Jar, dependsOn: classes) {
 		archiveClassifier.set("sources")
 	    from sourceSets.main.allSource
