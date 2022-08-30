@@ -1,17 +1,15 @@
 package org.bouncycastle.jce.provider.test;
 
-import java.security.Provider;
-import java.security.Security;
-
+import com.distrimind.bouncycastle.util.test.Test;
 import junit.framework.TestCase;
-import org.bouncycastle.util.test.SimpleTestResult;
+import com.distrimind.bouncycastle.util.test.SimpleTestResult;
 
 public class SimpleTestTest
     extends TestCase
 {
     public void testJCE()
     {
-        org.bouncycastle.util.test.Test[] tests = RegressionTest.tests;
+        Test[] tests = RegressionTest.tests;
 
         for (int i = 0; i != tests.length; i++)
         {

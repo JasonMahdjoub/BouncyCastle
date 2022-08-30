@@ -2,8 +2,8 @@ package org.bouncycastle.openpgp.operator.bc;
 
 import java.io.OutputStream;
 
-import org.bouncycastle.crypto.Signer;
-import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
+import com.distrimind.bouncycastle.crypto.Signer;
+import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
 import org.bouncycastle.openpgp.PGPException;
 import org.bouncycastle.openpgp.PGPPublicKey;
 import org.bouncycastle.openpgp.operator.PGPContentVerifier;

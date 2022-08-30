@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.SimpleTimeZone;
 
-import org.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Arrays;
 
 /**
  * EAC encoding date object

@@ -1,6 +1,6 @@
 package org.bouncycastle.cms;
 
-import org.bouncycastle.asn1.ASN1Set;
+import com.distrimind.bouncycastle.asn1.ASN1Set;
 
 interface AuthAttributesProvider
 {

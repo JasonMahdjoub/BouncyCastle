@@ -10,10 +10,10 @@ import java.util.Iterator;
 import javax.crypto.spec.OAEPParameterSpec;
 
 import junit.framework.TestCase;
-import org.bouncycastle.asn1.ASN1OctetString;
-import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x509.Extension;
+import com.distrimind.bouncycastle.asn1.ASN1OctetString;
+import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.asn1.x509.Extension;
 import org.bouncycastle.cms.CMSAlgorithm;
 import org.bouncycastle.cms.CMSEnvelopedData;
 import org.bouncycastle.cms.CMSEnvelopedDataGenerator;

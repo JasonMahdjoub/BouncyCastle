@@ -13,16 +13,16 @@ import java.util.Arrays;
 import java.util.Date;
 
 import org.bouncycastle.bcpg.PublicKeyAlgorithmTags;
-import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
-import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
+import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
+import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.openpgp.PGPException;
 import org.bouncycastle.openpgp.PGPKeyPair;
 import org.bouncycastle.openpgp.operator.bc.BcPGPKeyConverter;
 import org.bouncycastle.openpgp.operator.bc.BcPGPKeyPair;
 import org.bouncycastle.openpgp.operator.jcajce.JcaPGPKeyPair;
-import org.bouncycastle.util.encoders.Base64;
-import org.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.util.encoders.Base64;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 public class BcPGPEd25519JcaKeyPairConversionTest
     extends SimpleTest

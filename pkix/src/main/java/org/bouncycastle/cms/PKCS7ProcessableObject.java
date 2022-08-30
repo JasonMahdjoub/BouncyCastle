@@ -4,10 +4,10 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Iterator;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1Encoding;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1Sequence;
+import com.distrimind.bouncycastle.asn1.ASN1Encodable;
+import com.distrimind.bouncycastle.asn1.ASN1Encoding;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 
 public class PKCS7ProcessableObject
     implements CMSTypedData

@@ -1,10 +1,10 @@
 package org.bouncycastle.jcajce.provider.symmetric;
 
-import org.bouncycastle.crypto.CipherKeyGenerator;
-import org.bouncycastle.crypto.engines.Zuc128Engine;
-import org.bouncycastle.crypto.engines.Zuc256Engine;
-import org.bouncycastle.crypto.macs.Zuc128Mac;
-import org.bouncycastle.crypto.macs.Zuc256Mac;
+import com.distrimind.bouncycastle.crypto.CipherKeyGenerator;
+import com.distrimind.bouncycastle.crypto.engines.Zuc128Engine;
+import com.distrimind.bouncycastle.crypto.engines.Zuc256Engine;
+import com.distrimind.bouncycastle.crypto.macs.Zuc128Mac;
+import com.distrimind.bouncycastle.crypto.macs.Zuc256Mac;
 import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import org.bouncycastle.jcajce.provider.symmetric.util.BaseKeyGenerator;
 import org.bouncycastle.jcajce.provider.symmetric.util.BaseMac;

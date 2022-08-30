@@ -7,21 +7,21 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1EncodableVector;
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.DERBitString;
-import org.bouncycastle.asn1.DERSequence;
-import org.bouncycastle.asn1.DERUTF8String;
-import org.bouncycastle.asn1.DLSequence;
+import com.distrimind.bouncycastle.asn1.ASN1Encodable;
+import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
+import com.distrimind.bouncycastle.asn1.ASN1Integer;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.DERBitString;
+import com.distrimind.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.asn1.DERUTF8String;
+import com.distrimind.bouncycastle.asn1.DLSequence;
 import org.bouncycastle.asn1.cmp.PKIFailureInfo;
 import org.bouncycastle.asn1.cmp.PKIFreeText;
 import org.bouncycastle.asn1.cmp.PKIStatus;
 import org.bouncycastle.asn1.cmp.PKIStatusInfo;
 import org.bouncycastle.asn1.cms.ContentInfo;
 import org.bouncycastle.asn1.tsp.TimeStampResp;
-import org.bouncycastle.asn1.x509.Extensions;
+import com.distrimind.bouncycastle.asn1.x509.Extensions;
 
 /**
  * Generator for RFC 3161 Time Stamp Responses.

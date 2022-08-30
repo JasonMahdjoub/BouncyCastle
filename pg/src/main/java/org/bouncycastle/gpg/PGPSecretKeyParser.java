@@ -6,7 +6,7 @@ import java.io.InputStream;
 
 import org.bouncycastle.openpgp.OpenedPGPKeyData;
 import org.bouncycastle.openpgp.PGPExtendedKeyHeader;
-import org.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.util.Strings;
 
 public class PGPSecretKeyParser
 {

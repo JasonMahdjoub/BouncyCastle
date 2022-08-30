@@ -15,11 +15,11 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
-import org.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.encoders.Hex;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 /**
  * basic test class for the GOST28147 cipher

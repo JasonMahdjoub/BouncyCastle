@@ -7,12 +7,12 @@ import java.security.Provider;
 import java.security.Signature;
 import java.security.interfaces.ECPrivateKey;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.nist.NISTObjectIdentifiers;
-import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
-import org.bouncycastle.asn1.sec.SECObjectIdentifiers;
-import org.bouncycastle.asn1.teletrust.TeleTrusTObjectIdentifiers;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.nist.NISTObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
+import com.distrimind.bouncycastle.asn1.sec.SECObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.teletrust.TeleTrusTObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.its.ITSCertificate;
 import org.bouncycastle.its.operator.ITSContentSigner;
 import org.bouncycastle.jcajce.util.DefaultJcaJceHelper;
@@ -23,7 +23,7 @@ import org.bouncycastle.operator.DigestCalculator;
 import org.bouncycastle.operator.DigestCalculatorProvider;
 import org.bouncycastle.operator.OperatorCreationException;
 import org.bouncycastle.operator.jcajce.JcaDigestCalculatorProviderBuilder;
-import org.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Arrays;
 
 public class JcaITSContentSigner
     implements ITSContentSigner

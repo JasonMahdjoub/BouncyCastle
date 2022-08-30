@@ -7,11 +7,11 @@ import java.security.SecureRandom;
 import java.security.SignatureException;
 import java.security.spec.AlgorithmParameterSpec;
 
-import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.digests.NullDigest;
-import org.bouncycastle.crypto.params.ParametersWithRandom;
-import org.bouncycastle.pqc.crypto.sphincsplus.SPHINCSPlusSigner;
+import com.distrimind.bouncycastle.crypto.CipherParameters;
+import com.distrimind.bouncycastle.crypto.Digest;
+import com.distrimind.bouncycastle.crypto.digests.NullDigest;
+import com.distrimind.bouncycastle.crypto.params.ParametersWithRandom;
+import com.distrimind.bouncycastle.pqc.crypto.sphincsplus.SPHINCSPlusSigner;
 
 public class SignatureSpi
     extends java.security.SignatureSpi

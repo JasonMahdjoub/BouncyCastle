@@ -7,14 +7,14 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.test.SimpleTestResult;
+import com.distrimind.bouncycastle.util.test.SimpleTestResult;
 
 public class AllTests
     extends TestCase
 {
     public void testSimpleTests()
     {
-        org.bouncycastle.util.test.Test[] tests = new org.bouncycastle.util.test.Test[] {
+        com.distrimind.bouncycastle.util.test.Test[] tests = new com.distrimind.bouncycastle.util.test.Test[] {
             new CertPathTest(), new CertPathValidationTest(), new BasicConstraintsTest(),
                 new PKITSBasicConstraintsTest() };
 

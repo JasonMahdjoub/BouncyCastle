@@ -8,7 +8,7 @@ import org.bouncycastle.bcpg.MPInteger;
 import org.bouncycastle.bcpg.PublicKeyEncSessionPacket;
 import org.bouncycastle.openpgp.PGPException;
 import org.bouncycastle.openpgp.PGPPublicKey;
-import org.bouncycastle.util.Properties;
+import com.distrimind.bouncycastle.util.Properties;
 
 public abstract class PublicKeyKeyEncryptionMethodGenerator
     extends PGPKeyEncryptionMethodGenerator

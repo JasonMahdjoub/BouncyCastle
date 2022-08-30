@@ -8,12 +8,12 @@ import javax.crypto.Mac;
 import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
 
-import org.bouncycastle.asn1.DERNull;
-import org.bouncycastle.asn1.nist.NISTObjectIdentifiers;
-import org.bouncycastle.asn1.pkcs.PBKDF2Params;
-import org.bouncycastle.asn1.pkcs.PBMAC1Params;
-import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.asn1.DERNull;
+import com.distrimind.bouncycastle.asn1.nist.NISTObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.pkcs.PBKDF2Params;
+import com.distrimind.bouncycastle.asn1.pkcs.PBMAC1Params;
+import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.jcajce.io.MacOutputStream;
 import org.bouncycastle.jcajce.spec.PBKDF2KeySpec;
 import org.bouncycastle.jcajce.util.DefaultJcaJceHelper;
@@ -25,7 +25,7 @@ import org.bouncycastle.operator.GenericKey;
 import org.bouncycastle.operator.MacAlgorithmIdentifierFinder;
 import org.bouncycastle.operator.MacCalculator;
 import org.bouncycastle.operator.OperatorCreationException;
-import org.bouncycastle.util.BigIntegers;
+import com.distrimind.bouncycastle.util.BigIntegers;
 
 /**
  * A builder for RFC 8018 PBE based MAC calculators.

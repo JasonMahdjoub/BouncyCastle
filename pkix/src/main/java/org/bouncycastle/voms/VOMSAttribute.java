@@ -3,11 +3,11 @@ package org.bouncycastle.voms;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.bouncycastle.asn1.ASN1IA5String;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1OctetString;
-import org.bouncycastle.asn1.x509.Attribute;
-import org.bouncycastle.asn1.x509.IetfAttrSyntax;
+import com.distrimind.bouncycastle.asn1.ASN1IA5String;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.ASN1OctetString;
+import com.distrimind.bouncycastle.asn1.x509.Attribute;
+import com.distrimind.bouncycastle.asn1.x509.IetfAttrSyntax;
 import org.bouncycastle.cert.X509AttributeCertificateHolder;
 
 /**

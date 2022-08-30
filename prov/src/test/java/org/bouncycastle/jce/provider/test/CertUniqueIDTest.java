@@ -14,8 +14,8 @@ import java.util.Vector;
 
 import org.bouncycastle.jce.X509Principal;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 import org.bouncycastle.x509.X509V3CertificateGenerator;
 
 public class CertUniqueIDTest

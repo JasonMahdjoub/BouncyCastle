@@ -12,7 +12,7 @@ import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.ShortBufferException;
 
-import org.bouncycastle.crypto.CryptoServicesRegistrar;
+import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
 
 
 /**

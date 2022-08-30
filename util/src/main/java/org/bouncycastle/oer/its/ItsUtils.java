@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.DERSequence;
-import org.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.asn1.ASN1Encodable;
+import com.distrimind.bouncycastle.asn1.ASN1Sequence;
+import com.distrimind.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.util.Arrays;
 
 public class ItsUtils
 {

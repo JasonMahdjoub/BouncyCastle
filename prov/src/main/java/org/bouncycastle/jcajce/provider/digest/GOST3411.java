@@ -1,12 +1,12 @@
 package org.bouncycastle.jcajce.provider.digest;
 
-import org.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
-import org.bouncycastle.asn1.rosstandart.RosstandartObjectIdentifiers;
-import org.bouncycastle.crypto.CipherKeyGenerator;
-import org.bouncycastle.crypto.digests.GOST3411Digest;
-import org.bouncycastle.crypto.digests.GOST3411_2012_256Digest;
-import org.bouncycastle.crypto.digests.GOST3411_2012_512Digest;
-import org.bouncycastle.crypto.macs.HMac;
+import com.distrimind.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.rosstandart.RosstandartObjectIdentifiers;
+import com.distrimind.bouncycastle.crypto.CipherKeyGenerator;
+import com.distrimind.bouncycastle.crypto.digests.GOST3411Digest;
+import com.distrimind.bouncycastle.crypto.digests.GOST3411_2012_256Digest;
+import com.distrimind.bouncycastle.crypto.digests.GOST3411_2012_512Digest;
+import com.distrimind.bouncycastle.crypto.macs.HMac;
 import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import org.bouncycastle.jcajce.provider.symmetric.util.BaseKeyGenerator;
 import org.bouncycastle.jcajce.provider.symmetric.util.BaseMac;

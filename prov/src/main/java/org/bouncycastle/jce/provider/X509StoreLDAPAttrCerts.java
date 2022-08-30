@@ -6,8 +6,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.bouncycastle.jce.X509LDAPCertStoreParameters;
-import org.bouncycastle.util.Selector;
-import org.bouncycastle.util.StoreException;
+import com.distrimind.bouncycastle.util.Selector;
+import com.distrimind.bouncycastle.util.StoreException;
 import org.bouncycastle.x509.X509AttributeCertStoreSelector;
 import org.bouncycastle.x509.X509StoreParameters;
 import org.bouncycastle.x509.X509StoreSpi;

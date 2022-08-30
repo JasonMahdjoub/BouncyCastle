@@ -2,13 +2,13 @@ package org.bouncycastle.operator.bc;
 
 import java.security.SecureRandom;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.crypto.AsymmetricBlockCipher;
-import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.InvalidCipherTextException;
-import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
-import org.bouncycastle.crypto.params.ParametersWithRandom;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.crypto.AsymmetricBlockCipher;
+import com.distrimind.bouncycastle.crypto.CipherParameters;
+import com.distrimind.bouncycastle.crypto.InvalidCipherTextException;
+import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
+import com.distrimind.bouncycastle.crypto.params.ParametersWithRandom;
 import org.bouncycastle.operator.AsymmetricKeyWrapper;
 import org.bouncycastle.operator.GenericKey;
 import org.bouncycastle.operator.OperatorException;

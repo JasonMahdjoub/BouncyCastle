@@ -2,7 +2,7 @@ package org.bouncycastle.jcajce.spec;
 
 import java.security.spec.KeySpec;
 
-import org.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Arrays;
 
 /**
  * Key Spec class for generating TLS key/iv material.

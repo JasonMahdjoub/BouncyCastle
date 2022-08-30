@@ -7,14 +7,14 @@ import java.security.spec.AlgorithmParameterSpec;
 
 import javax.crypto.spec.DHParameterSpec;
 
-import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
-import org.bouncycastle.crypto.CryptoServicesRegistrar;
-import org.bouncycastle.crypto.generators.ElGamalKeyPairGenerator;
-import org.bouncycastle.crypto.generators.ElGamalParametersGenerator;
-import org.bouncycastle.crypto.params.ElGamalKeyGenerationParameters;
-import org.bouncycastle.crypto.params.ElGamalParameters;
-import org.bouncycastle.crypto.params.ElGamalPrivateKeyParameters;
-import org.bouncycastle.crypto.params.ElGamalPublicKeyParameters;
+import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
+import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
+import com.distrimind.bouncycastle.crypto.generators.ElGamalKeyPairGenerator;
+import com.distrimind.bouncycastle.crypto.generators.ElGamalParametersGenerator;
+import com.distrimind.bouncycastle.crypto.params.ElGamalKeyGenerationParameters;
+import com.distrimind.bouncycastle.crypto.params.ElGamalParameters;
+import com.distrimind.bouncycastle.crypto.params.ElGamalPrivateKeyParameters;
+import com.distrimind.bouncycastle.crypto.params.ElGamalPublicKeyParameters;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.jce.spec.ElGamalParameterSpec;
 

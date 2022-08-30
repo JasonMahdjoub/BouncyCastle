@@ -9,15 +9,15 @@ import java.util.Random;
 import java.util.Set;
 import java.util.Vector;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1Exception;
-import org.bouncycastle.asn1.ASN1OctetString;
-import org.bouncycastle.asn1.DEROctetString;
-import org.bouncycastle.asn1.ocsp.OCSPObjectIdentifiers;
-import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.asn1.x509.Extension;
-import org.bouncycastle.asn1.x509.ExtensionsGenerator;
-import org.bouncycastle.asn1.x509.GeneralName;
+import com.distrimind.bouncycastle.asn1.ASN1Encodable;
+import com.distrimind.bouncycastle.asn1.ASN1Exception;
+import com.distrimind.bouncycastle.asn1.ASN1OctetString;
+import com.distrimind.bouncycastle.asn1.DEROctetString;
+import com.distrimind.bouncycastle.asn1.ocsp.OCSPObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.x500.X500Name;
+import com.distrimind.bouncycastle.asn1.x509.Extension;
+import com.distrimind.bouncycastle.asn1.x509.ExtensionsGenerator;
+import com.distrimind.bouncycastle.asn1.x509.GeneralName;
 import org.bouncycastle.cert.CertIOException;
 import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.cert.jcajce.JcaX509CertificateHolder;
@@ -38,8 +38,8 @@ import org.bouncycastle.operator.DigestCalculatorProvider;
 import org.bouncycastle.operator.jcajce.JcaContentSignerBuilder;
 import org.bouncycastle.operator.jcajce.JcaContentVerifierProviderBuilder;
 import org.bouncycastle.operator.jcajce.JcaDigestCalculatorProviderBuilder;
-import org.bouncycastle.util.encoders.Base64;
-import org.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.util.encoders.Base64;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 public class OCSPTest
     extends SimpleTest

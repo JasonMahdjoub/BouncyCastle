@@ -12,14 +12,14 @@ import java.security.spec.ECPoint;
 import java.security.spec.ECPrivateKeySpec;
 import java.security.spec.EllipticCurve;
 
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.nist.NISTNamedCurves;
-import org.bouncycastle.asn1.x9.X9ECParameters;
+import com.distrimind.bouncycastle.asn1.ASN1Integer;
+import com.distrimind.bouncycastle.asn1.ASN1Sequence;
+import com.distrimind.bouncycastle.asn1.nist.NISTNamedCurves;
+import com.distrimind.bouncycastle.asn1.x9.X9ECParameters;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.math.ec.ECCurve;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.math.ec.ECCurve;
+import com.distrimind.bouncycastle.util.encoders.Hex;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 /**
  * Tests are taken from RFC 6979 - "Deterministic Usage of the Digital Signature Algorithm (DSA) and Elliptic Curve Digital Signature Algorithm (ECDSA)"

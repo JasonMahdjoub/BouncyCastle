@@ -14,16 +14,16 @@ import java.util.Date;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.x509.AuthorityKeyIdentifier;
-import org.bouncycastle.asn1.x509.BasicConstraints;
-import org.bouncycastle.asn1.x509.ExtendedKeyUsage;
-import org.bouncycastle.asn1.x509.Extension;
-import org.bouncycastle.asn1.x509.KeyPurposeId;
-import org.bouncycastle.asn1.x509.SubjectKeyIdentifier;
-import org.bouncycastle.asn1.x509.X509Name;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.x509.AuthorityKeyIdentifier;
+import com.distrimind.bouncycastle.asn1.x509.BasicConstraints;
+import com.distrimind.bouncycastle.asn1.x509.ExtendedKeyUsage;
+import com.distrimind.bouncycastle.asn1.x509.Extension;
+import com.distrimind.bouncycastle.asn1.x509.KeyPurposeId;
+import com.distrimind.bouncycastle.asn1.x509.SubjectKeyIdentifier;
+import com.distrimind.bouncycastle.asn1.x509.X509Name;
 import org.bouncycastle.cert.jcajce.JcaX509ExtensionUtils;
-import org.bouncycastle.util.encoders.Base64;
+import com.distrimind.bouncycastle.util.encoders.Base64;
 import org.bouncycastle.x509.X509V3CertificateGenerator;
 
 public class TSPTestUtil

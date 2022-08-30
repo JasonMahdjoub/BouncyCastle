@@ -5,11 +5,11 @@ import java.security.SignatureException;
 import java.security.SignatureSpi;
 import java.security.spec.AlgorithmParameterSpec;
 
-import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.asn1.x509.X509ObjectIdentifiers;
-import org.bouncycastle.crypto.DSAExt;
-import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.signers.DSAEncoding;
+import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.x509.X509ObjectIdentifiers;
+import com.distrimind.bouncycastle.crypto.DSAExt;
+import com.distrimind.bouncycastle.crypto.Digest;
+import com.distrimind.bouncycastle.crypto.signers.DSAEncoding;
 
 public abstract class DSABase
     extends SignatureSpi

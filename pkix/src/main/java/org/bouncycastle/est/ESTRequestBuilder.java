@@ -2,7 +2,7 @@ package org.bouncycastle.est;
 
 import java.net.URL;
 
-import org.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Arrays;
 
 /**
  * Builder for basic EST requests

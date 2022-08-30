@@ -15,24 +15,24 @@ import javax.crypto.SecretKey;
 import javax.crypto.ShortBufferException;
 import javax.crypto.spec.SecretKeySpec;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
-import org.bouncycastle.asn1.gnu.GNUObjectIdentifiers;
-import org.bouncycastle.asn1.kisa.KISAObjectIdentifiers;
-import org.bouncycastle.asn1.misc.MiscObjectIdentifiers;
-import org.bouncycastle.asn1.nist.NISTObjectIdentifiers;
-import org.bouncycastle.asn1.ntt.NTTObjectIdentifiers;
-import org.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
-import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.crypto.DerivationFunction;
-import org.bouncycastle.crypto.agreement.kdf.DHKDFParameters;
-import org.bouncycastle.crypto.agreement.kdf.DHKEKGenerator;
-import org.bouncycastle.crypto.params.DESParameters;
-import org.bouncycastle.crypto.params.KDFParameters;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.gnu.GNUObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.kisa.KISAObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.misc.MiscObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.nist.NISTObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.ntt.NTTObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
+import com.distrimind.bouncycastle.crypto.DerivationFunction;
+import com.distrimind.bouncycastle.crypto.agreement.kdf.DHKDFParameters;
+import com.distrimind.bouncycastle.crypto.agreement.kdf.DHKEKGenerator;
+import com.distrimind.bouncycastle.crypto.params.DESParameters;
+import com.distrimind.bouncycastle.crypto.params.KDFParameters;
 import org.bouncycastle.jcajce.spec.HybridValueParameterSpec;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Integers;
-import org.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Integers;
+import com.distrimind.bouncycastle.util.Strings;
 
 public abstract class BaseAgreementSpi
     extends KeyAgreementSpi

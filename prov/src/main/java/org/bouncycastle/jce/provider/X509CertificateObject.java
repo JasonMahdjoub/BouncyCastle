@@ -31,38 +31,38 @@ import java.util.Set;
 
 import javax.security.auth.x500.X500Principal;
 
-import org.bouncycastle.asn1.ASN1BitString;
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1Encoding;
-import org.bouncycastle.asn1.ASN1IA5String;
-import org.bouncycastle.asn1.ASN1InputStream;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.ASN1String;
-import org.bouncycastle.asn1.DERBitString;
-import org.bouncycastle.asn1.DERNull;
-import org.bouncycastle.asn1.DEROctetString;
-import org.bouncycastle.asn1.misc.MiscObjectIdentifiers;
-import org.bouncycastle.asn1.misc.NetscapeCertType;
-import org.bouncycastle.asn1.misc.NetscapeRevocationURL;
-import org.bouncycastle.asn1.misc.VerisignCzagExtension;
-import org.bouncycastle.asn1.util.ASN1Dump;
-import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.asn1.x500.style.RFC4519Style;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x509.BasicConstraints;
-import org.bouncycastle.asn1.x509.Extension;
-import org.bouncycastle.asn1.x509.Extensions;
-import org.bouncycastle.asn1.x509.GeneralName;
-import org.bouncycastle.asn1.x509.KeyUsage;
+import com.distrimind.bouncycastle.asn1.ASN1BitString;
+import com.distrimind.bouncycastle.asn1.ASN1Encodable;
+import com.distrimind.bouncycastle.asn1.ASN1Encoding;
+import com.distrimind.bouncycastle.asn1.ASN1IA5String;
+import com.distrimind.bouncycastle.asn1.ASN1InputStream;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.ASN1Primitive;
+import com.distrimind.bouncycastle.asn1.ASN1Sequence;
+import com.distrimind.bouncycastle.asn1.ASN1String;
+import com.distrimind.bouncycastle.asn1.DERBitString;
+import com.distrimind.bouncycastle.asn1.DERNull;
+import com.distrimind.bouncycastle.asn1.DEROctetString;
+import com.distrimind.bouncycastle.asn1.misc.MiscObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.misc.NetscapeCertType;
+import com.distrimind.bouncycastle.asn1.misc.NetscapeRevocationURL;
+import com.distrimind.bouncycastle.asn1.misc.VerisignCzagExtension;
+import com.distrimind.bouncycastle.asn1.util.ASN1Dump;
+import com.distrimind.bouncycastle.asn1.x500.X500Name;
+import com.distrimind.bouncycastle.asn1.x500.style.RFC4519Style;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.asn1.x509.BasicConstraints;
+import com.distrimind.bouncycastle.asn1.x509.Extension;
+import com.distrimind.bouncycastle.asn1.x509.Extensions;
+import com.distrimind.bouncycastle.asn1.x509.GeneralName;
+import com.distrimind.bouncycastle.asn1.x509.KeyUsage;
 import org.bouncycastle.jcajce.provider.asymmetric.util.PKCS12BagAttributeCarrierImpl;
 import org.bouncycastle.jce.X509Principal;
 import org.bouncycastle.jce.interfaces.PKCS12BagAttributeCarrier;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Integers;
-import org.bouncycastle.util.Strings;
-import org.bouncycastle.util.encoders.Hex;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Integers;
+import com.distrimind.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.util.encoders.Hex;
 
 /**
  * @deprecated Do not use this class directly - either use org.bouncycastle.cert (bcpkix) or CertificateFactory.
@@ -71,7 +71,7 @@ public class X509CertificateObject
     extends X509Certificate
     implements PKCS12BagAttributeCarrier
 {
-    private org.bouncycastle.asn1.x509.Certificate    c;
+    private com.distrimind.bouncycastle.asn1.x509.Certificate c;
     private BasicConstraints            basicConstraints;
     private boolean[]                   keyUsage;
     private boolean                     hashValueSet;
@@ -80,7 +80,7 @@ public class X509CertificateObject
     private PKCS12BagAttributeCarrier   attrCarrier = new PKCS12BagAttributeCarrierImpl();
 
     public X509CertificateObject(
-        org.bouncycastle.asn1.x509.Certificate    c)
+        com.distrimind.bouncycastle.asn1.x509.Certificate c)
         throws CertificateParsingException
     {
         this.c = c;

@@ -2,8 +2,8 @@ package org.bouncycastle.eac;
 
 import java.io.OutputStream;
 
-import org.bouncycastle.asn1.ASN1Encoding;
-import org.bouncycastle.asn1.DERApplicationSpecific;
+import com.distrimind.bouncycastle.asn1.ASN1Encoding;
+import com.distrimind.bouncycastle.asn1.DERApplicationSpecific;
 import org.bouncycastle.asn1.eac.CVCertificate;
 import org.bouncycastle.asn1.eac.CertificateBody;
 import org.bouncycastle.asn1.eac.CertificateHolderAuthorization;

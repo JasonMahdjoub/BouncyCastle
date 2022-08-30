@@ -4,18 +4,18 @@ import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.security.SecureRandom;
 
-import org.bouncycastle.asn1.DERNull;
+import com.distrimind.bouncycastle.asn1.DERNull;
 import org.bouncycastle.asn1.cmp.CMPObjectIdentifiers;
 import org.bouncycastle.asn1.cmp.PBMParameter;
-import org.bouncycastle.asn1.iana.IANAObjectIdentifiers;
-import org.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.asn1.iana.IANAObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.operator.GenericKey;
 import org.bouncycastle.operator.MacCalculator;
 import org.bouncycastle.operator.OperatorCreationException;
 import org.bouncycastle.operator.PBEMacCalculatorProvider;
 import org.bouncycastle.operator.RuntimeOperatorException;
-import org.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.util.Strings;
 
 public class PKMACBuilder
     implements PBEMacCalculatorProvider

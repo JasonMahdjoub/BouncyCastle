@@ -3,7 +3,7 @@ package org.bouncycastle.bcpg;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import org.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Arrays;
 
 /**
  * Basic type for a user attribute sub-packet.

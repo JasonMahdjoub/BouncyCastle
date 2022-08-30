@@ -2,7 +2,7 @@ package org.bouncycastle.jcajce.spec;
 
 import java.security.spec.AlgorithmParameterSpec;
 
-import org.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Arrays;
 
 public class FPEParameterSpec
     implements AlgorithmParameterSpec

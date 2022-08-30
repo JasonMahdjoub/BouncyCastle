@@ -18,28 +18,19 @@ import java.util.List;
 import java.util.Map;
 import java.util.WeakHashMap;
 
-import org.bouncycastle.asn1.ASN1EncodableVector;
-import org.bouncycastle.asn1.ASN1GeneralizedTime;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1OctetString;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.DERSequence;
-import org.bouncycastle.asn1.ocsp.BasicOCSPResponse;
-import org.bouncycastle.asn1.ocsp.CertID;
-import org.bouncycastle.asn1.ocsp.OCSPObjectIdentifiers;
-import org.bouncycastle.asn1.ocsp.OCSPRequest;
-import org.bouncycastle.asn1.ocsp.OCSPResponse;
-import org.bouncycastle.asn1.ocsp.OCSPResponseStatus;
-import org.bouncycastle.asn1.ocsp.Request;
-import org.bouncycastle.asn1.ocsp.ResponseBytes;
-import org.bouncycastle.asn1.ocsp.ResponseData;
-import org.bouncycastle.asn1.ocsp.SingleResponse;
-import org.bouncycastle.asn1.ocsp.TBSRequest;
-import org.bouncycastle.asn1.x509.Extensions;
+import com.distrimind.bouncycastle.asn1.ocsp.*;
+import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
+import com.distrimind.bouncycastle.asn1.ASN1GeneralizedTime;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.ASN1OctetString;
+import com.distrimind.bouncycastle.asn1.ASN1Sequence;
+import com.distrimind.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.asn1.ocsp.OCSPResponse;
+import com.distrimind.bouncycastle.asn1.ocsp.TBSRequest;
+import com.distrimind.bouncycastle.asn1.x509.Extensions;
 import org.bouncycastle.jcajce.PKIXCertRevocationCheckerParameters;
 import org.bouncycastle.jcajce.util.JcaJceHelper;
-import org.bouncycastle.util.BigIntegers;
-import org.bouncycastle.util.io.Streams;
+import com.distrimind.bouncycastle.util.io.Streams;
 
 class OcspCache
 {
@@ -137,7 +128,7 @@ class OcspCache
                 nonce = value;
             }
 
-            requestExtensions.add(new org.bouncycastle.asn1.x509.Extension(
+            requestExtensions.add(new com.distrimind.bouncycastle.asn1.x509.Extension(
                 new ASN1ObjectIdentifier(ext.getId()), ext.isCritical(), value));
         }
 
@@ -145,7 +136,7 @@ class OcspCache
         TBSRequest tbsReq = new TBSRequest(null, new DERSequence(requests),
             Extensions.getInstance(new DERSequence(requestExtensions)));
 
-        org.bouncycastle.asn1.ocsp.Signature signature = null;
+        Signature signature = null;
 
         try
         {

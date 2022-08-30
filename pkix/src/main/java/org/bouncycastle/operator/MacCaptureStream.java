@@ -3,7 +3,7 @@ package org.bouncycastle.operator;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import org.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Arrays;
 
 /**
  * A generic class for capturing the mac data at the end of a encrypted data stream.

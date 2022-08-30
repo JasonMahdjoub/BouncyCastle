@@ -16,18 +16,18 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-import org.bouncycastle.asn1.ASN1InputStream;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.ASN1Set;
-import org.bouncycastle.asn1.ASN1TaggedObject;
-import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.asn1.pkcs.SignedData;
-import org.bouncycastle.asn1.x509.Certificate;
-import org.bouncycastle.asn1.x509.CertificateList;
+import com.distrimind.bouncycastle.asn1.ASN1InputStream;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.ASN1Sequence;
+import com.distrimind.bouncycastle.asn1.ASN1Set;
+import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
+import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.pkcs.SignedData;
+import com.distrimind.bouncycastle.asn1.x509.Certificate;
+import com.distrimind.bouncycastle.asn1.x509.CertificateList;
 import org.bouncycastle.jcajce.util.BCJcaJceHelper;
 import org.bouncycastle.jcajce.util.JcaJceHelper;
-import org.bouncycastle.util.io.Streams;
+import com.distrimind.bouncycastle.util.io.Streams;
 
 /**
  * class for dealing with X509 certificates.

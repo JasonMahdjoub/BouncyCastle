@@ -4,18 +4,18 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import org.bouncycastle.asn1.ASN1OctetString;
-import org.bouncycastle.asn1.DERBitString;
+import com.distrimind.bouncycastle.asn1.ASN1OctetString;
+import com.distrimind.bouncycastle.asn1.DERBitString;
 import org.bouncycastle.asn1.crmf.EncryptedValue;
-import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.operator.KeyWrapper;
 import org.bouncycastle.operator.OperatorException;
 import org.bouncycastle.operator.OutputEncryptor;
 import org.bouncycastle.pkcs.PKCS8EncryptedPrivateKeyInfo;
 import org.bouncycastle.pkcs.PKCS8EncryptedPrivateKeyInfoBuilder;
-import org.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.util.Strings;
 
 /**
  * Builder for EncryptedValue structures.

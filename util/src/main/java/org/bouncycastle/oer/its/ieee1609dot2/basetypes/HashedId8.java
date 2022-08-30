@@ -1,6 +1,6 @@
 package org.bouncycastle.oer.its.ieee1609dot2.basetypes;
 
-import org.bouncycastle.asn1.ASN1OctetString;
+import com.distrimind.bouncycastle.asn1.ASN1OctetString;
 
 public class HashedId8
     extends HashedId

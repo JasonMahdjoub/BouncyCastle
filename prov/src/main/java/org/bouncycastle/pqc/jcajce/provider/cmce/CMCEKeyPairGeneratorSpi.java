@@ -7,13 +7,13 @@ import java.security.spec.AlgorithmParameterSpec;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
-import org.bouncycastle.crypto.CryptoServicesRegistrar;
-import org.bouncycastle.pqc.crypto.cmce.CMCEKeyGenerationParameters;
-import org.bouncycastle.pqc.crypto.cmce.CMCEKeyPairGenerator;
-import org.bouncycastle.pqc.crypto.cmce.CMCEParameters;
-import org.bouncycastle.pqc.crypto.cmce.CMCEPrivateKeyParameters;
-import org.bouncycastle.pqc.crypto.cmce.CMCEPublicKeyParameters;
+import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
+import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
+import com.distrimind.bouncycastle.pqc.crypto.cmce.CMCEKeyGenerationParameters;
+import com.distrimind.bouncycastle.pqc.crypto.cmce.CMCEKeyPairGenerator;
+import com.distrimind.bouncycastle.pqc.crypto.cmce.CMCEParameters;
+import com.distrimind.bouncycastle.pqc.crypto.cmce.CMCEPrivateKeyParameters;
+import com.distrimind.bouncycastle.pqc.crypto.cmce.CMCEPublicKeyParameters;
 import org.bouncycastle.pqc.jcajce.provider.util.SpecUtil;
 import org.bouncycastle.pqc.jcajce.spec.CMCEParameterSpec;
 

@@ -13,12 +13,12 @@ import java.security.spec.EllipticCurve;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 
-import org.bouncycastle.asn1.ASN1InputStream;
-import org.bouncycastle.asn1.DERNull;
-import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.asn1.x9.ECNamedCurveTable;
-import org.bouncycastle.asn1.x9.X9ECParameters;
+import com.distrimind.bouncycastle.asn1.ASN1InputStream;
+import com.distrimind.bouncycastle.asn1.DERNull;
+import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
+import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
+import com.distrimind.bouncycastle.asn1.x9.ECNamedCurveTable;
+import com.distrimind.bouncycastle.asn1.x9.X9ECParameters;
 import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import org.bouncycastle.jce.ECPointUtil;
 import org.bouncycastle.jce.interfaces.ECPrivateKey;
@@ -27,9 +27,9 @@ import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.jce.spec.ECParameterSpec;
 import org.bouncycastle.jce.spec.ECPrivateKeySpec;
 import org.bouncycastle.jce.spec.ECPublicKeySpec;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.FixedSecureRandom;
-import org.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.util.encoders.Hex;
+import com.distrimind.bouncycastle.util.test.FixedSecureRandom;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 public class ImplicitlyCaTest
     extends SimpleTest

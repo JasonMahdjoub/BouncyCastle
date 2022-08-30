@@ -3,7 +3,7 @@ package org.bouncycastle.pqc.jcajce.provider.test;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 
-import org.bouncycastle.util.test.FixedSecureRandom;
+import com.distrimind.bouncycastle.util.test.FixedSecureRandom;
 
 /**
  * Factory for producing FixedSecureRandom objects for use with testsing

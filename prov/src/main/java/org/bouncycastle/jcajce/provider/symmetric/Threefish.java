@@ -1,8 +1,8 @@
 package org.bouncycastle.jcajce.provider.symmetric;
 
-import org.bouncycastle.crypto.CipherKeyGenerator;
-import org.bouncycastle.crypto.engines.ThreefishEngine;
-import org.bouncycastle.crypto.macs.CMac;
+import com.distrimind.bouncycastle.crypto.CipherKeyGenerator;
+import com.distrimind.bouncycastle.crypto.engines.ThreefishEngine;
+import com.distrimind.bouncycastle.crypto.macs.CMac;
 import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import org.bouncycastle.jcajce.provider.symmetric.util.BaseBlockCipher;
 import org.bouncycastle.jcajce.provider.symmetric.util.BaseKeyGenerator;

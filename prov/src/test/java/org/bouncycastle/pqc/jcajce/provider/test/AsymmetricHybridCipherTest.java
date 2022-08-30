@@ -9,7 +9,7 @@ import java.security.spec.AlgorithmParameterSpec;
 import javax.crypto.Cipher;
 
 import org.bouncycastle.pqc.jcajce.provider.util.AsymmetricHybridCipher;
-import org.bouncycastle.pqc.math.linearalgebra.ByteUtils;
+import com.distrimind.bouncycastle.pqc.math.linearalgebra.ByteUtils;
 
 /**
  * Base class for unit tests of {@link AsymmetricHybridCipher}s.

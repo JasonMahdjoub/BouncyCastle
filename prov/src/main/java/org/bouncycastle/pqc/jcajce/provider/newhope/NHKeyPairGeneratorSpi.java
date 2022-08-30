@@ -5,12 +5,12 @@ import java.security.KeyPair;
 import java.security.SecureRandom;
 import java.security.spec.AlgorithmParameterSpec;
 
-import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
-import org.bouncycastle.crypto.CryptoServicesRegistrar;
-import org.bouncycastle.crypto.KeyGenerationParameters;
-import org.bouncycastle.pqc.crypto.newhope.NHKeyPairGenerator;
-import org.bouncycastle.pqc.crypto.newhope.NHPrivateKeyParameters;
-import org.bouncycastle.pqc.crypto.newhope.NHPublicKeyParameters;
+import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
+import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
+import com.distrimind.bouncycastle.crypto.KeyGenerationParameters;
+import com.distrimind.bouncycastle.pqc.crypto.newhope.NHKeyPairGenerator;
+import com.distrimind.bouncycastle.pqc.crypto.newhope.NHPrivateKeyParameters;
+import com.distrimind.bouncycastle.pqc.crypto.newhope.NHPublicKeyParameters;
 
 public class NHKeyPairGeneratorSpi
     extends java.security.KeyPairGenerator

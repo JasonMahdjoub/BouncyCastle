@@ -1,13 +1,13 @@
 package org.bouncycastle.pqc.jcajce.provider.frodo;
 
-import org.bouncycastle.asn1.ASN1Set;
-import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
-import org.bouncycastle.pqc.crypto.frodo.FrodoPrivateKeyParameters;
-import org.bouncycastle.pqc.crypto.util.PrivateKeyFactory;
-import org.bouncycastle.pqc.crypto.util.PrivateKeyInfoFactory;
+import com.distrimind.bouncycastle.asn1.ASN1Set;
+import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
+import com.distrimind.bouncycastle.pqc.crypto.frodo.FrodoPrivateKeyParameters;
+import com.distrimind.bouncycastle.pqc.crypto.util.PrivateKeyFactory;
+import com.distrimind.bouncycastle.pqc.crypto.util.PrivateKeyInfoFactory;
 import org.bouncycastle.pqc.jcajce.interfaces.FrodoKey;
 import org.bouncycastle.pqc.jcajce.spec.FrodoParameterSpec;
-import org.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Arrays;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;

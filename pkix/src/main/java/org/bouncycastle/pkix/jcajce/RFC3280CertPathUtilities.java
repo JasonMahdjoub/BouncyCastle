@@ -19,27 +19,27 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1EncodableVector;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.DERSequence;
-import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.asn1.x509.BasicConstraints;
-import org.bouncycastle.asn1.x509.CRLDistPoint;
-import org.bouncycastle.asn1.x509.CRLReason;
-import org.bouncycastle.asn1.x509.DistributionPoint;
-import org.bouncycastle.asn1.x509.DistributionPointName;
-import org.bouncycastle.asn1.x509.Extension;
-import org.bouncycastle.asn1.x509.GeneralName;
-import org.bouncycastle.asn1.x509.GeneralNames;
-import org.bouncycastle.asn1.x509.IssuingDistributionPoint;
+import com.distrimind.bouncycastle.asn1.ASN1Encodable;
+import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
+import com.distrimind.bouncycastle.asn1.ASN1Primitive;
+import com.distrimind.bouncycastle.asn1.ASN1Sequence;
+import com.distrimind.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.asn1.x500.X500Name;
+import com.distrimind.bouncycastle.asn1.x509.BasicConstraints;
+import com.distrimind.bouncycastle.asn1.x509.CRLDistPoint;
+import com.distrimind.bouncycastle.asn1.x509.CRLReason;
+import com.distrimind.bouncycastle.asn1.x509.DistributionPoint;
+import com.distrimind.bouncycastle.asn1.x509.DistributionPointName;
+import com.distrimind.bouncycastle.asn1.x509.Extension;
+import com.distrimind.bouncycastle.asn1.x509.GeneralName;
+import com.distrimind.bouncycastle.asn1.x509.GeneralNames;
+import com.distrimind.bouncycastle.asn1.x509.IssuingDistributionPoint;
 import org.bouncycastle.jcajce.PKIXCRLStoreSelector;
 import org.bouncycastle.jcajce.PKIXCertStoreSelector;
 import org.bouncycastle.jcajce.PKIXExtendedBuilderParameters;
 import org.bouncycastle.jcajce.PKIXExtendedParameters;
 import org.bouncycastle.jcajce.util.JcaJceHelper;
-import org.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Arrays;
 
 class RFC3280CertPathUtilities
 {

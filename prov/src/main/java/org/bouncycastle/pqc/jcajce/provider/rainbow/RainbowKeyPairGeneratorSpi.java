@@ -5,13 +5,13 @@ import java.security.KeyPair;
 import java.security.SecureRandom;
 import java.security.spec.AlgorithmParameterSpec;
 
-import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
-import org.bouncycastle.crypto.CryptoServicesRegistrar;
-import org.bouncycastle.pqc.crypto.rainbow.RainbowKeyGenerationParameters;
-import org.bouncycastle.pqc.crypto.rainbow.RainbowKeyPairGenerator;
-import org.bouncycastle.pqc.crypto.rainbow.RainbowParameters;
-import org.bouncycastle.pqc.crypto.rainbow.RainbowPrivateKeyParameters;
-import org.bouncycastle.pqc.crypto.rainbow.RainbowPublicKeyParameters;
+import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
+import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
+import com.distrimind.bouncycastle.pqc.crypto.rainbow.RainbowKeyGenerationParameters;
+import com.distrimind.bouncycastle.pqc.crypto.rainbow.RainbowKeyPairGenerator;
+import com.distrimind.bouncycastle.pqc.crypto.rainbow.RainbowParameters;
+import com.distrimind.bouncycastle.pqc.crypto.rainbow.RainbowPrivateKeyParameters;
+import com.distrimind.bouncycastle.pqc.crypto.rainbow.RainbowPublicKeyParameters;
 import org.bouncycastle.pqc.jcajce.spec.RainbowParameterSpec;
 
 public class RainbowKeyPairGeneratorSpi

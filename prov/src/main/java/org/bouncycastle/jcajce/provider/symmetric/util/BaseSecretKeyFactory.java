@@ -9,7 +9,7 @@ import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactorySpi;
 import javax.crypto.spec.SecretKeySpec;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 
 public class BaseSecretKeyFactory
     extends SecretKeyFactorySpi

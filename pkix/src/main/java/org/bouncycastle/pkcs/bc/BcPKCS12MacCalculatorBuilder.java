@@ -2,12 +2,12 @@ package org.bouncycastle.pkcs.bc;
 
 import java.security.SecureRandom;
 
-import org.bouncycastle.asn1.DERNull;
-import org.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
-import org.bouncycastle.asn1.pkcs.PKCS12PBEParams;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.crypto.ExtendedDigest;
-import org.bouncycastle.crypto.digests.SHA1Digest;
+import com.distrimind.bouncycastle.asn1.DERNull;
+import com.distrimind.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.pkcs.PKCS12PBEParams;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.crypto.ExtendedDigest;
+import com.distrimind.bouncycastle.crypto.digests.SHA1Digest;
 import org.bouncycastle.operator.MacCalculator;
 import org.bouncycastle.pkcs.PKCS12MacCalculatorBuilder;
 

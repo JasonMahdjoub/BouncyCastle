@@ -9,8 +9,8 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.util.encoders.Hex;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 public class OCBTest
     extends SimpleTest

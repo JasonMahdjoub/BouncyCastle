@@ -2,15 +2,15 @@ package org.bouncycastle.pkcs;
 
 import java.io.IOException;
 
-import org.bouncycastle.asn1.ASN1OctetString;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.pkcs.ContentInfo;
-import org.bouncycastle.asn1.pkcs.MacData;
-import org.bouncycastle.asn1.pkcs.PKCS12PBEParams;
-import org.bouncycastle.asn1.pkcs.Pfx;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.asn1.ASN1OctetString;
+import com.distrimind.bouncycastle.asn1.ASN1Primitive;
+import com.distrimind.bouncycastle.asn1.ASN1Sequence;
+import com.distrimind.bouncycastle.asn1.pkcs.ContentInfo;
+import com.distrimind.bouncycastle.asn1.pkcs.MacData;
+import com.distrimind.bouncycastle.asn1.pkcs.PKCS12PBEParams;
+import com.distrimind.bouncycastle.asn1.pkcs.Pfx;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.util.Arrays;
 
 /**
  * A holding class for the PKCS12 Pfx structure.

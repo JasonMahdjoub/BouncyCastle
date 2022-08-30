@@ -8,9 +8,9 @@ import java.security.spec.AlgorithmParameterSpec;
 import javax.crypto.spec.DHGenParameterSpec;
 import javax.crypto.spec.DHParameterSpec;
 
-import org.bouncycastle.crypto.CryptoServicesRegistrar;
-import org.bouncycastle.crypto.generators.ElGamalParametersGenerator;
-import org.bouncycastle.crypto.params.ElGamalParameters;
+import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
+import com.distrimind.bouncycastle.crypto.generators.ElGamalParametersGenerator;
+import com.distrimind.bouncycastle.crypto.params.ElGamalParameters;
 import org.bouncycastle.jcajce.provider.asymmetric.util.BaseAlgorithmParameterGeneratorSpi;
 
 public class AlgorithmParameterGeneratorSpi

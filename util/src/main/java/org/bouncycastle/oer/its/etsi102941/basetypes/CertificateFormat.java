@@ -2,10 +2,10 @@ package org.bouncycastle.oer.its.etsi102941.basetypes;
 
 import java.math.BigInteger;
 
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.ASN1Object;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.util.BigIntegers;
+import com.distrimind.bouncycastle.asn1.ASN1Integer;
+import com.distrimind.bouncycastle.asn1.ASN1Object;
+import com.distrimind.bouncycastle.asn1.ASN1Primitive;
+import com.distrimind.bouncycastle.util.BigIntegers;
 
 /**
  * CertificateFormat::= INTEGER {

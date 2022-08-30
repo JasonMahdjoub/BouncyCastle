@@ -1,12 +1,12 @@
 package org.bouncycastle.asn1.cmp;
 
-import org.bouncycastle.asn1.ASN1Choice;
-import org.bouncycastle.asn1.ASN1Object;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.ASN1TaggedObject;
-import org.bouncycastle.asn1.DERTaggedObject;
-import org.bouncycastle.asn1.x509.DistributionPointName;
-import org.bouncycastle.asn1.x509.GeneralNames;
+import com.distrimind.bouncycastle.asn1.ASN1Choice;
+import com.distrimind.bouncycastle.asn1.ASN1Object;
+import com.distrimind.bouncycastle.asn1.ASN1Primitive;
+import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
+import com.distrimind.bouncycastle.asn1.DERTaggedObject;
+import com.distrimind.bouncycastle.asn1.x509.DistributionPointName;
+import com.distrimind.bouncycastle.asn1.x509.GeneralNames;
 
 /**
  * GenMsg:    {id-it TBD1}, SEQUENCE SIZE (1..MAX) OF CRLStatus

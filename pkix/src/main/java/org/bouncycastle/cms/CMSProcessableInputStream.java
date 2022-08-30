@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import org.bouncycastle.util.io.Streams;
+import com.distrimind.bouncycastle.util.io.Streams;
 
 class CMSProcessableInputStream implements CMSProcessable, CMSReadable
 {

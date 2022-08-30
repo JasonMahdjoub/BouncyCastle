@@ -3,30 +3,30 @@ package org.bouncycastle.openpgp.operator.bc;
 import java.io.IOException;
 import java.math.BigInteger;
 
-import org.bouncycastle.asn1.cryptlib.CryptlibObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.cryptlib.CryptlibObjectIdentifiers;
 import org.bouncycastle.bcpg.ECDHPublicBCPGKey;
 import org.bouncycastle.bcpg.PublicKeyAlgorithmTags;
-import org.bouncycastle.crypto.AsymmetricBlockCipher;
-import org.bouncycastle.crypto.BlockCipher;
-import org.bouncycastle.crypto.BufferedAsymmetricBlockCipher;
-import org.bouncycastle.crypto.InvalidCipherTextException;
-import org.bouncycastle.crypto.Wrapper;
-import org.bouncycastle.crypto.agreement.ECDHBasicAgreement;
-import org.bouncycastle.crypto.agreement.X25519Agreement;
-import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
-import org.bouncycastle.crypto.params.ECDomainParameters;
-import org.bouncycastle.crypto.params.ECPrivateKeyParameters;
-import org.bouncycastle.crypto.params.ECPublicKeyParameters;
-import org.bouncycastle.crypto.params.ElGamalPrivateKeyParameters;
-import org.bouncycastle.crypto.params.KeyParameter;
-import org.bouncycastle.crypto.params.X25519PublicKeyParameters;
+import com.distrimind.bouncycastle.crypto.AsymmetricBlockCipher;
+import com.distrimind.bouncycastle.crypto.BlockCipher;
+import com.distrimind.bouncycastle.crypto.BufferedAsymmetricBlockCipher;
+import com.distrimind.bouncycastle.crypto.InvalidCipherTextException;
+import com.distrimind.bouncycastle.crypto.Wrapper;
+import com.distrimind.bouncycastle.crypto.agreement.ECDHBasicAgreement;
+import com.distrimind.bouncycastle.crypto.agreement.X25519Agreement;
+import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
+import com.distrimind.bouncycastle.crypto.params.ECDomainParameters;
+import com.distrimind.bouncycastle.crypto.params.ECPrivateKeyParameters;
+import com.distrimind.bouncycastle.crypto.params.ECPublicKeyParameters;
+import com.distrimind.bouncycastle.crypto.params.ElGamalPrivateKeyParameters;
+import com.distrimind.bouncycastle.crypto.params.KeyParameter;
+import com.distrimind.bouncycastle.crypto.params.X25519PublicKeyParameters;
 import org.bouncycastle.openpgp.PGPException;
 import org.bouncycastle.openpgp.PGPPrivateKey;
 import org.bouncycastle.openpgp.operator.PGPDataDecryptor;
 import org.bouncycastle.openpgp.operator.PGPPad;
 import org.bouncycastle.openpgp.operator.PublicKeyDataDecryptorFactory;
 import org.bouncycastle.openpgp.operator.RFC6637Utils;
-import org.bouncycastle.util.BigIntegers;
+import com.distrimind.bouncycastle.util.BigIntegers;
 
 /**
  * A decryptor factory for handling public key decryption operations.

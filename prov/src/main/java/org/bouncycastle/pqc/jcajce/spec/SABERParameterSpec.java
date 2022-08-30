@@ -1,7 +1,7 @@
 package org.bouncycastle.pqc.jcajce.spec;
 
-import org.bouncycastle.pqc.crypto.saber.SABERParameters;
-import org.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.pqc.crypto.saber.SABERParameters;
+import com.distrimind.bouncycastle.util.Strings;
 
 import java.security.spec.AlgorithmParameterSpec;
 import java.util.HashMap;

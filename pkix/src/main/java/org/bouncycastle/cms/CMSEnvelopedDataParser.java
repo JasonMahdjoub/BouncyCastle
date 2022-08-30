@@ -4,19 +4,19 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1EncodableVector;
-import org.bouncycastle.asn1.ASN1OctetStringParser;
-import org.bouncycastle.asn1.ASN1SequenceParser;
-import org.bouncycastle.asn1.ASN1Set;
-import org.bouncycastle.asn1.ASN1SetParser;
-import org.bouncycastle.asn1.BERTags;
-import org.bouncycastle.asn1.DERSet;
+import com.distrimind.bouncycastle.asn1.ASN1Encodable;
+import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
+import com.distrimind.bouncycastle.asn1.ASN1OctetStringParser;
+import com.distrimind.bouncycastle.asn1.ASN1SequenceParser;
+import com.distrimind.bouncycastle.asn1.ASN1Set;
+import com.distrimind.bouncycastle.asn1.ASN1SetParser;
+import com.distrimind.bouncycastle.asn1.BERTags;
+import com.distrimind.bouncycastle.asn1.DERSet;
 import org.bouncycastle.asn1.cms.AttributeTable;
 import org.bouncycastle.asn1.cms.EncryptedContentInfoParser;
 import org.bouncycastle.asn1.cms.EnvelopedDataParser;
 import org.bouncycastle.asn1.cms.OriginatorInfo;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 
 /**
  * Parsing class for an CMS Enveloped Data object from an input stream.

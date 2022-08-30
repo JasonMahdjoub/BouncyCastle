@@ -4,9 +4,9 @@ import java.io.IOException;
 import java.io.Writer;
 
 import org.bouncycastle.openssl.PEMEncryptor;
-import org.bouncycastle.util.io.pem.PemGenerationException;
-import org.bouncycastle.util.io.pem.PemObjectGenerator;
-import org.bouncycastle.util.io.pem.PemWriter;
+import com.distrimind.bouncycastle.util.io.pem.PemGenerationException;
+import com.distrimind.bouncycastle.util.io.pem.PemObjectGenerator;
+import com.distrimind.bouncycastle.util.io.pem.PemWriter;
 
 /**
  * General purpose writer for OpenSSL PEM objects based on JCA/JCE classes.

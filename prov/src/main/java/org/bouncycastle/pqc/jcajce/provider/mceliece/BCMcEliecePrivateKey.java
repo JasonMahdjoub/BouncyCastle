@@ -3,18 +3,18 @@ package org.bouncycastle.pqc.jcajce.provider.mceliece;
 import java.io.IOException;
 import java.security.PrivateKey;
 
-import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
-import org.bouncycastle.pqc.asn1.McEliecePrivateKey;
-import org.bouncycastle.pqc.asn1.PQCObjectIdentifiers;
-import org.bouncycastle.pqc.crypto.mceliece.McElieceKeyPairGenerator;
-import org.bouncycastle.pqc.crypto.mceliece.McEliecePrivateKeyParameters;
-import org.bouncycastle.pqc.math.linearalgebra.GF2Matrix;
-import org.bouncycastle.pqc.math.linearalgebra.GF2mField;
-import org.bouncycastle.pqc.math.linearalgebra.Permutation;
-import org.bouncycastle.pqc.math.linearalgebra.PolynomialGF2mSmallM;
+import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.crypto.CipherParameters;
+import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
+import com.distrimind.bouncycastle.pqc.asn1.McEliecePrivateKey;
+import com.distrimind.bouncycastle.pqc.asn1.PQCObjectIdentifiers;
+import com.distrimind.bouncycastle.pqc.crypto.mceliece.McElieceKeyPairGenerator;
+import com.distrimind.bouncycastle.pqc.crypto.mceliece.McEliecePrivateKeyParameters;
+import com.distrimind.bouncycastle.pqc.math.linearalgebra.GF2Matrix;
+import com.distrimind.bouncycastle.pqc.math.linearalgebra.GF2mField;
+import com.distrimind.bouncycastle.pqc.math.linearalgebra.Permutation;
+import com.distrimind.bouncycastle.pqc.math.linearalgebra.PolynomialGF2mSmallM;
 
 /**
  * This class implements a McEliece private key and is usually instantiated by

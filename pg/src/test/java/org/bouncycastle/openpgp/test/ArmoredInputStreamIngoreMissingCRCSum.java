@@ -6,9 +6,9 @@ import java.security.Security;
 
 import org.bouncycastle.bcpg.ArmoredInputStream;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.Strings;
-import org.bouncycastle.util.io.Streams;
-import org.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.util.io.Streams;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 public class ArmoredInputStreamIngoreMissingCRCSum
         extends SimpleTest

@@ -3,12 +3,12 @@ package org.bouncycastle.its.bc;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import org.bouncycastle.asn1.nist.NISTObjectIdentifiers;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.params.ECPublicKeyParameters;
-import org.bouncycastle.crypto.signers.DSADigestSigner;
-import org.bouncycastle.crypto.signers.ECDSASigner;
+import com.distrimind.bouncycastle.asn1.nist.NISTObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.crypto.Digest;
+import com.distrimind.bouncycastle.crypto.params.ECPublicKeyParameters;
+import com.distrimind.bouncycastle.crypto.signers.DSADigestSigner;
+import com.distrimind.bouncycastle.crypto.signers.ECDSASigner;
 import org.bouncycastle.its.ITSCertificate;
 import org.bouncycastle.its.operator.ITSContentVerifierProvider;
 import org.bouncycastle.oer.OEREncoder;
@@ -19,7 +19,7 @@ import org.bouncycastle.oer.its.template.ieee1609dot2.IEEE1609dot2;
 import org.bouncycastle.operator.ContentVerifier;
 import org.bouncycastle.operator.OperatorCreationException;
 import org.bouncycastle.operator.bc.BcDefaultDigestProvider;
-import org.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Arrays;
 
 public class BcITSContentVerifierProvider
     implements ITSContentVerifierProvider

@@ -18,8 +18,8 @@ import org.bouncycastle.jcajce.spec.KEMGenerateSpec;
 import org.bouncycastle.jcajce.spec.KEMParameterSpec;
 import org.bouncycastle.pqc.jcajce.provider.BouncyCastlePQCProvider;
 import org.bouncycastle.pqc.jcajce.spec.CMCEParameterSpec;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.encoders.Hex;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.encoders.Hex;
 
 
 /**

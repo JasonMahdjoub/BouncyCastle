@@ -7,7 +7,7 @@ import junit.framework.TestCase;
 import org.bouncycastle.oer.OERInputStream;
 import org.bouncycastle.oer.its.etsi103097.EtsiTs103097DataEncrypted;
 import org.bouncycastle.oer.its.template.ieee1609dot2.IEEE1609dot2;
-import org.bouncycastle.util.encoders.Hex;
+import com.distrimind.bouncycastle.util.encoders.Hex;
 
 public class TestFromVector extends TestCase
 {

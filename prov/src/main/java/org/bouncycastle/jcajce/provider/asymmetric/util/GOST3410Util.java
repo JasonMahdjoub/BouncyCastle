@@ -4,10 +4,10 @@ import java.security.InvalidKeyException;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 
-import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
-import org.bouncycastle.crypto.params.GOST3410Parameters;
-import org.bouncycastle.crypto.params.GOST3410PrivateKeyParameters;
-import org.bouncycastle.crypto.params.GOST3410PublicKeyParameters;
+import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
+import com.distrimind.bouncycastle.crypto.params.GOST3410Parameters;
+import com.distrimind.bouncycastle.crypto.params.GOST3410PrivateKeyParameters;
+import com.distrimind.bouncycastle.crypto.params.GOST3410PublicKeyParameters;
 import org.bouncycastle.jce.interfaces.GOST3410PrivateKey;
 import org.bouncycastle.jce.interfaces.GOST3410PublicKey;
 import org.bouncycastle.jce.spec.GOST3410PublicKeyParameterSetSpec;

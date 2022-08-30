@@ -1,10 +1,10 @@
 package org.bouncycastle.pqc.jcajce.provider;
 
-import org.bouncycastle.asn1.bc.BCObjectIdentifiers;
-import org.bouncycastle.asn1.isara.IsaraObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.bc.BCObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.isara.IsaraObjectIdentifiers;
 import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import org.bouncycastle.jcajce.provider.util.AsymmetricAlgorithmProvider;
-import org.bouncycastle.pqc.asn1.PQCObjectIdentifiers;
+import com.distrimind.bouncycastle.pqc.asn1.PQCObjectIdentifiers;
 import org.bouncycastle.pqc.jcajce.provider.xmss.XMSSKeyFactorySpi;
 import org.bouncycastle.pqc.jcajce.provider.xmss.XMSSMTKeyFactorySpi;
 

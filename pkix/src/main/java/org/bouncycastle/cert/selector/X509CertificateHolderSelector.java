@@ -2,13 +2,13 @@ package org.bouncycastle.cert.selector;
 
 import java.math.BigInteger;
 
-import org.bouncycastle.asn1.ASN1OctetString;
+import com.distrimind.bouncycastle.asn1.ASN1OctetString;
 import org.bouncycastle.asn1.cms.IssuerAndSerialNumber;
-import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.asn1.x509.Extension;
+import com.distrimind.bouncycastle.asn1.x500.X500Name;
+import com.distrimind.bouncycastle.asn1.x509.Extension;
 import org.bouncycastle.cert.X509CertificateHolder;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Selector;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Selector;
 
 /**
  * a basic index for a X509CertificateHolder class

@@ -4,13 +4,13 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.math.BigInteger;
 
-import org.bouncycastle.asn1.ASN1OctetString;
-import org.bouncycastle.asn1.x509.AuthorityKeyIdentifier;
-import org.bouncycastle.asn1.x509.Extension;
-import org.bouncycastle.asn1.x509.GeneralName;
-import org.bouncycastle.asn1.x509.GeneralNames;
-import org.bouncycastle.asn1.x509.SubjectKeyIdentifier;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
+import com.distrimind.bouncycastle.asn1.ASN1OctetString;
+import com.distrimind.bouncycastle.asn1.x509.AuthorityKeyIdentifier;
+import com.distrimind.bouncycastle.asn1.x509.Extension;
+import com.distrimind.bouncycastle.asn1.x509.GeneralName;
+import com.distrimind.bouncycastle.asn1.x509.GeneralNames;
+import com.distrimind.bouncycastle.asn1.x509.SubjectKeyIdentifier;
+import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
 import org.bouncycastle.operator.DigestCalculator;
 
 /**

@@ -1,14 +1,14 @@
 package org.bouncycastle.jce.provider;
 
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.asn1.x509.GeneralName;
-import org.bouncycastle.asn1.x509.GeneralSubtree;
-import org.bouncycastle.asn1.x509.NameConstraintValidatorException;
+import com.distrimind.bouncycastle.asn1.ASN1Sequence;
+import com.distrimind.bouncycastle.asn1.x500.X500Name;
+import com.distrimind.bouncycastle.asn1.x509.GeneralName;
+import com.distrimind.bouncycastle.asn1.x509.GeneralSubtree;
+import com.distrimind.bouncycastle.asn1.x509.NameConstraintValidatorException;
 
 public class PKIXNameConstraintValidator
 {
-    org.bouncycastle.asn1.x509.PKIXNameConstraintValidator validator = new org.bouncycastle.asn1.x509.PKIXNameConstraintValidator();
+    com.distrimind.bouncycastle.asn1.x509.PKIXNameConstraintValidator validator = new com.distrimind.bouncycastle.asn1.x509.PKIXNameConstraintValidator();
 
     public PKIXNameConstraintValidator()
     {

@@ -1,6 +1,6 @@
 package org.bouncycastle.jcajce.provider.asymmetric;
 
-import org.bouncycastle.asn1.bc.BCObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.bc.BCObjectIdentifiers;
 import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import org.bouncycastle.jcajce.provider.util.AsymmetricAlgorithmProvider;
 import org.bouncycastle.jcajce.provider.util.AsymmetricKeyInfoConverter;

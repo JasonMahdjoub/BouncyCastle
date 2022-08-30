@@ -1,8 +1,8 @@
 package org.bouncycastle.oer.its.ieee1609dot2;
 
-import org.bouncycastle.asn1.ASN1Object;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.ASN1Sequence;
+import com.distrimind.bouncycastle.asn1.ASN1Object;
+import com.distrimind.bouncycastle.asn1.ASN1Primitive;
+import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import org.bouncycastle.oer.its.ItsUtils;
 
 /**

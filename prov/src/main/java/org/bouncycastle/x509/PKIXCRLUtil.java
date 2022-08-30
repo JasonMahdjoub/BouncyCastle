@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.bouncycastle.jce.provider.AnnotatedException;
-import org.bouncycastle.util.StoreException;
+import com.distrimind.bouncycastle.util.StoreException;
 
 abstract class PKIXCRLUtil
 {

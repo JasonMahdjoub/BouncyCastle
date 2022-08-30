@@ -7,13 +7,13 @@ import java.security.spec.AlgorithmParameterSpec;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
-import org.bouncycastle.crypto.CryptoServicesRegistrar;
-import org.bouncycastle.pqc.crypto.sphincsplus.SPHINCSPlusKeyGenerationParameters;
-import org.bouncycastle.pqc.crypto.sphincsplus.SPHINCSPlusKeyPairGenerator;
-import org.bouncycastle.pqc.crypto.sphincsplus.SPHINCSPlusParameters;
-import org.bouncycastle.pqc.crypto.sphincsplus.SPHINCSPlusPrivateKeyParameters;
-import org.bouncycastle.pqc.crypto.sphincsplus.SPHINCSPlusPublicKeyParameters;
+import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
+import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
+import com.distrimind.bouncycastle.pqc.crypto.sphincsplus.SPHINCSPlusKeyGenerationParameters;
+import com.distrimind.bouncycastle.pqc.crypto.sphincsplus.SPHINCSPlusKeyPairGenerator;
+import com.distrimind.bouncycastle.pqc.crypto.sphincsplus.SPHINCSPlusParameters;
+import com.distrimind.bouncycastle.pqc.crypto.sphincsplus.SPHINCSPlusPrivateKeyParameters;
+import com.distrimind.bouncycastle.pqc.crypto.sphincsplus.SPHINCSPlusPublicKeyParameters;
 import org.bouncycastle.pqc.jcajce.provider.util.SpecUtil;
 import org.bouncycastle.pqc.jcajce.spec.SPHINCSPlusParameterSpec;
 

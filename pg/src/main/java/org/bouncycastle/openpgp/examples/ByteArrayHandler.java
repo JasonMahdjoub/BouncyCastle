@@ -10,6 +10,7 @@ import java.security.SecureRandom;
 import java.security.Security;
 import java.util.Date;
 
+import com.distrimind.bouncycastle.util.encoders.Hex;
 import org.bouncycastle.bcpg.ArmoredOutputStream;
 import org.bouncycastle.bcpg.CompressionAlgorithmTags;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
@@ -27,7 +28,7 @@ import org.bouncycastle.openpgp.operator.jcajce.JcaPGPDigestCalculatorProviderBu
 import org.bouncycastle.openpgp.operator.jcajce.JcePBEDataDecryptorFactoryBuilder;
 import org.bouncycastle.openpgp.operator.jcajce.JcePBEKeyEncryptionMethodGenerator;
 import org.bouncycastle.openpgp.operator.jcajce.JcePGPDataEncryptorBuilder;
-import org.bouncycastle.util.io.Streams;
+import com.distrimind.bouncycastle.util.io.Streams;
 
 /**
  * Simple routine to encrypt and decrypt using a passphrase.
@@ -198,7 +199,7 @@ public class ByteArrayHandler
         
         encrypted = encrypt(original, passArray, "iway", PGPEncryptedDataGenerator.AES_256, false);
 
-        System.out.println("\nencrypted data = '"+new String(org.bouncycastle.util.encoders.Hex.encode(encrypted))+"'");
+        System.out.println("\nencrypted data = '"+new String(Hex.encode(encrypted))+"'");
         decrypted= decrypt(encrypted, passArray);
 
         System.out.println("\ndecrypted data = '"+new String(decrypted)+"'");

@@ -16,7 +16,7 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 
 import org.bouncycastle.cms.CMSEnvelopedGenerator;
-import org.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.util.Strings;
 
 /**
  * super class of the various generators.

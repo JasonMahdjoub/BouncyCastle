@@ -20,25 +20,25 @@ import java.util.HashSet;
 import java.util.Set;
 
 import junit.framework.TestCase;
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.DERSequence;
-import org.bouncycastle.asn1.bc.BCObjectIdentifiers;
-import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
-import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.Xof;
-import org.bouncycastle.crypto.digests.SHA256Digest;
-import org.bouncycastle.crypto.digests.SHA512Digest;
-import org.bouncycastle.crypto.digests.SHAKEDigest;
+import com.distrimind.bouncycastle.asn1.ASN1Encodable;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.ASN1Sequence;
+import com.distrimind.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.asn1.bc.BCObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
+import com.distrimind.bouncycastle.crypto.Digest;
+import com.distrimind.bouncycastle.crypto.Xof;
+import com.distrimind.bouncycastle.crypto.digests.SHA256Digest;
+import com.distrimind.bouncycastle.crypto.digests.SHA512Digest;
+import com.distrimind.bouncycastle.crypto.digests.SHAKEDigest;
 import org.bouncycastle.pqc.jcajce.interfaces.StateAwareSignature;
 import org.bouncycastle.pqc.jcajce.interfaces.XMSSMTKey;
 import org.bouncycastle.pqc.jcajce.interfaces.XMSSMTPrivateKey;
 import org.bouncycastle.pqc.jcajce.provider.BouncyCastlePQCProvider;
 import org.bouncycastle.pqc.jcajce.spec.XMSSMTParameterSpec;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Strings;
-import org.bouncycastle.util.encoders.Base64;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.util.encoders.Base64;
 
 /**
  * Test cases for the use of XMSS^MT with the BCPQC provider.

@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-import org.bouncycastle.asn1.x509.GeneralName;
+import com.distrimind.bouncycastle.asn1.x509.GeneralName;
 import org.bouncycastle.cert.AttributeCertificateHolder;
 import org.bouncycastle.cert.AttributeCertificateIssuer;
 import org.bouncycastle.cert.X509AttributeCertificateHolder;
@@ -129,7 +129,7 @@ public class X509AttributeCertificateHolderSelectorBuilder
      *
      * @param names A collection of target names.
      * @throws java.io.IOException if a parsing error occurs.
-     * @see #addTargetName(org.bouncycastle.asn1.x509.GeneralName)
+     * @see #addTargetName(GeneralName)
      */
     public void setTargetNames(Collection names) throws IOException
     {
@@ -162,7 +162,7 @@ public class X509AttributeCertificateHolderSelectorBuilder
      *
      * @param names A collection of target groups.
      * @throws java.io.IOException if a parsing error occurs.
-     * @see #addTargetGroup(org.bouncycastle.asn1.x509.GeneralName)
+     * @see #addTargetGroup(GeneralName)
      */
     public void setTargetGroups(Collection names) throws IOException
     {

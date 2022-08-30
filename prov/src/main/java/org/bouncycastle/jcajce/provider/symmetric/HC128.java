@@ -1,7 +1,7 @@
 package org.bouncycastle.jcajce.provider.symmetric;
 
-import org.bouncycastle.crypto.CipherKeyGenerator;
-import org.bouncycastle.crypto.engines.HC128Engine;
+import com.distrimind.bouncycastle.crypto.CipherKeyGenerator;
+import com.distrimind.bouncycastle.crypto.engines.HC128Engine;
 import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import org.bouncycastle.jcajce.provider.symmetric.util.BaseKeyGenerator;
 import org.bouncycastle.jcajce.provider.symmetric.util.BaseStreamCipher;

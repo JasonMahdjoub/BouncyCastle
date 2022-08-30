@@ -19,13 +19,13 @@ import java.security.spec.RSAPrivateKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 
 import junit.framework.TestCase;
-import org.bouncycastle.asn1.ua.DSTU4145NamedCurves;
-import org.bouncycastle.asn1.ua.UAObjectIdentifiers;
-import org.bouncycastle.crypto.params.ECDomainParameters;
+import com.distrimind.bouncycastle.asn1.ua.DSTU4145NamedCurves;
+import com.distrimind.bouncycastle.asn1.ua.UAObjectIdentifiers;
+import com.distrimind.bouncycastle.crypto.params.ECDomainParameters;
 import org.bouncycastle.jcajce.spec.DSTU4145ParameterSpec;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.math.ec.ECCurve;
-import org.bouncycastle.util.encoders.Base64;
+import com.distrimind.bouncycastle.math.ec.ECCurve;
+import com.distrimind.bouncycastle.util.encoders.Base64;
 
 
 public class GeneralKeyTest

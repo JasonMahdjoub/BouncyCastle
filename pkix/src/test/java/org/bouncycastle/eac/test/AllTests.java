@@ -29,8 +29,8 @@ import org.bouncycastle.eac.operator.jcajce.JcaEACSignerBuilder;
 import org.bouncycastle.jce.ECNamedCurveTable;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.jce.spec.ECParameterSpec;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.io.Streams;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.io.Streams;
 
 public class AllTests
     extends TestCase

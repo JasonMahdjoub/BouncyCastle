@@ -1,11 +1,11 @@
 package org.bouncycastle.jcajce.provider.symmetric;
 
-import org.bouncycastle.crypto.BlockCipher;
-import org.bouncycastle.crypto.CipherKeyGenerator;
-import org.bouncycastle.crypto.engines.CAST6Engine;
-import org.bouncycastle.crypto.generators.Poly1305KeyGenerator;
-import org.bouncycastle.crypto.macs.GMac;
-import org.bouncycastle.crypto.modes.GCMBlockCipher;
+import com.distrimind.bouncycastle.crypto.BlockCipher;
+import com.distrimind.bouncycastle.crypto.CipherKeyGenerator;
+import com.distrimind.bouncycastle.crypto.engines.CAST6Engine;
+import com.distrimind.bouncycastle.crypto.generators.Poly1305KeyGenerator;
+import com.distrimind.bouncycastle.crypto.macs.GMac;
+import com.distrimind.bouncycastle.crypto.modes.GCMBlockCipher;
 import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import org.bouncycastle.jcajce.provider.symmetric.util.BaseBlockCipher;
 import org.bouncycastle.jcajce.provider.symmetric.util.BaseKeyGenerator;
@@ -57,7 +57,7 @@ public final class CAST6
     {
         public Poly1305()
         {
-            super(new org.bouncycastle.crypto.macs.Poly1305(new CAST6Engine()));
+            super(new com.distrimind.bouncycastle.crypto.macs.Poly1305(new CAST6Engine()));
         }
     }
 

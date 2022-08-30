@@ -6,8 +6,8 @@ import junit.framework.TestCase;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.operator.MacCalculator;
 import org.bouncycastle.pkcs.jcajce.JcePBMac1CalculatorBuilder;
-import org.bouncycastle.util.Strings;
-import org.bouncycastle.util.encoders.Hex;
+import com.distrimind.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.util.encoders.Hex;
 
 public class PBETest
     extends TestCase

@@ -1,6 +1,7 @@
 package org.bouncycastle.asn1.isismtt;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.x509.SubjectDirectoryAttributes;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 
 /**
  * ISISMT -- Industrial Signature Interoperability Specification
@@ -170,7 +171,7 @@ public interface ISISMTTObjectIdentifiers
      * </pre>
      * 
      * Used in
-     * {@link org.bouncycastle.asn1.x509.SubjectDirectoryAttributes SubjectDirectoryAttributes}
+     * {@link SubjectDirectoryAttributes SubjectDirectoryAttributes}
      * <p>
      * OID: 1.3.36.8.3.14
      */

@@ -22,8 +22,8 @@ import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.openpgp.PGPPublicKey;
 import org.bouncycastle.openpgp.PGPPublicKeyRing;
 import org.bouncycastle.openpgp.operator.bc.BcKeyFingerprintCalculator;
-import org.bouncycastle.util.io.Streams;
-import org.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.util.io.Streams;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 public class KeyBoxTest
     extends SimpleTest

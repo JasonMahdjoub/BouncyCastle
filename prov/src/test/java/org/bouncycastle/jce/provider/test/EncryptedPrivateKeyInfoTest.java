@@ -19,9 +19,9 @@ import javax.crypto.spec.PBEParameterSpec;
 
 import org.bouncycastle.jcajce.PKCS12KeyWithParameters;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.test.SimpleTest;
-import org.bouncycastle.util.test.Test;
-import org.bouncycastle.util.test.TestResult;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.util.test.Test;
+import com.distrimind.bouncycastle.util.test.TestResult;
 
 public class EncryptedPrivateKeyInfoTest
     extends SimpleTest

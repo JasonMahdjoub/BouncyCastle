@@ -7,8 +7,8 @@ import java.util.Vector;
 
 import org.bouncycastle.bcpg.sig.IssuerKeyID;
 import org.bouncycastle.bcpg.sig.SignatureCreationTime;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.io.Streams;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.io.Streams;
 
 /**
  * generic signature packet

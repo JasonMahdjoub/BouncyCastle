@@ -1,13 +1,13 @@
 package org.bouncycastle.jcajce.provider.asymmetric.edec;
 
-import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
-import org.bouncycastle.crypto.params.Ed25519PublicKeyParameters;
-import org.bouncycastle.crypto.params.Ed448PublicKeyParameters;
-import org.bouncycastle.crypto.params.X25519PublicKeyParameters;
-import org.bouncycastle.crypto.params.X448PublicKeyParameters;
-import org.bouncycastle.util.Fingerprint;
-import org.bouncycastle.util.Strings;
-import org.bouncycastle.util.encoders.Hex;
+import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
+import com.distrimind.bouncycastle.crypto.params.Ed25519PublicKeyParameters;
+import com.distrimind.bouncycastle.crypto.params.Ed448PublicKeyParameters;
+import com.distrimind.bouncycastle.crypto.params.X25519PublicKeyParameters;
+import com.distrimind.bouncycastle.crypto.params.X448PublicKeyParameters;
+import com.distrimind.bouncycastle.util.Fingerprint;
+import com.distrimind.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.util.encoders.Hex;
 
 class Utils
 {

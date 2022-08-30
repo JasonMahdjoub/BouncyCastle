@@ -1,6 +1,6 @@
 package org.bouncycastle.oer.its.etsi102941;
 
-import org.bouncycastle.asn1.ASN1OctetString;
+import com.distrimind.bouncycastle.asn1.ASN1OctetString;
 import org.bouncycastle.oer.its.ieee1609dot2.basetypes.HashedId;
 
 public class CrlEntry

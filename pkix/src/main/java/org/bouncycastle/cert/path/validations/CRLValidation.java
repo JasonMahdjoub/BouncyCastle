@@ -3,15 +3,15 @@ package org.bouncycastle.cert.path.validations;
 import java.util.Collection;
 import java.util.Iterator;
 
-import org.bouncycastle.asn1.x500.X500Name;
+import com.distrimind.bouncycastle.asn1.x500.X500Name;
 import org.bouncycastle.cert.X509CRLHolder;
 import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.cert.path.CertPathValidation;
 import org.bouncycastle.cert.path.CertPathValidationContext;
 import org.bouncycastle.cert.path.CertPathValidationException;
-import org.bouncycastle.util.Memoable;
-import org.bouncycastle.util.Selector;
-import org.bouncycastle.util.Store;
+import com.distrimind.bouncycastle.util.Memoable;
+import com.distrimind.bouncycastle.util.Selector;
+import com.distrimind.bouncycastle.util.Store;
 
 public class CRLValidation
     implements CertPathValidation

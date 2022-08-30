@@ -6,8 +6,8 @@ import java.security.spec.InvalidParameterSpecException;
 
 import javax.crypto.spec.DHParameterSpec;
 
-import org.bouncycastle.asn1.ASN1Encoding;
-import org.bouncycastle.asn1.pkcs.DHParameter;
+import com.distrimind.bouncycastle.asn1.ASN1Encoding;
+import com.distrimind.bouncycastle.asn1.pkcs.DHParameter;
 
 public class AlgorithmParametersSpi
     extends java.security.AlgorithmParametersSpi

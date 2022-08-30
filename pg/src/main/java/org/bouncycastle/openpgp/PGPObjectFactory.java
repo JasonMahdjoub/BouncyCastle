@@ -12,7 +12,7 @@ import org.bouncycastle.bcpg.BCPGInputStream;
 import org.bouncycastle.bcpg.PacketTags;
 import org.bouncycastle.bcpg.UnsupportedPacketVersionException;
 import org.bouncycastle.openpgp.operator.KeyFingerPrintCalculator;
-import org.bouncycastle.util.Iterable;
+import com.distrimind.bouncycastle.util.Iterable;
 
 /**
  * General class for reading a PGP object stream.

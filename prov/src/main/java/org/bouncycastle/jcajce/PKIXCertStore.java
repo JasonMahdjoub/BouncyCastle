@@ -3,9 +3,9 @@ package org.bouncycastle.jcajce;
 import java.security.cert.Certificate;
 import java.util.Collection;
 
-import org.bouncycastle.util.Selector;
-import org.bouncycastle.util.Store;
-import org.bouncycastle.util.StoreException;
+import com.distrimind.bouncycastle.util.Selector;
+import com.distrimind.bouncycastle.util.Store;
+import com.distrimind.bouncycastle.util.StoreException;
 
 /**
  * Generic interface for a PKIX based certificate store.

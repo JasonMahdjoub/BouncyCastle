@@ -7,13 +7,13 @@ import java.security.spec.AlgorithmParameterSpec;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
-import org.bouncycastle.crypto.CryptoServicesRegistrar;
-import org.bouncycastle.pqc.crypto.frodo.FrodoKeyGenerationParameters;
-import org.bouncycastle.pqc.crypto.frodo.FrodoKeyPairGenerator;
-import org.bouncycastle.pqc.crypto.frodo.FrodoParameters;
-import org.bouncycastle.pqc.crypto.frodo.FrodoPrivateKeyParameters;
-import org.bouncycastle.pqc.crypto.frodo.FrodoPublicKeyParameters;
+import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
+import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
+import com.distrimind.bouncycastle.pqc.crypto.frodo.FrodoKeyGenerationParameters;
+import com.distrimind.bouncycastle.pqc.crypto.frodo.FrodoKeyPairGenerator;
+import com.distrimind.bouncycastle.pqc.crypto.frodo.FrodoParameters;
+import com.distrimind.bouncycastle.pqc.crypto.frodo.FrodoPrivateKeyParameters;
+import com.distrimind.bouncycastle.pqc.crypto.frodo.FrodoPublicKeyParameters;
 import org.bouncycastle.pqc.jcajce.provider.util.SpecUtil;
 import org.bouncycastle.pqc.jcajce.spec.FrodoParameterSpec;
 

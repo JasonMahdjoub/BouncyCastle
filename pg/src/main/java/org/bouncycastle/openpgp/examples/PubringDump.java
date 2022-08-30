@@ -11,7 +11,7 @@ import org.bouncycastle.openpgp.PGPPublicKeyRing;
 import org.bouncycastle.openpgp.PGPPublicKeyRingCollection;
 import org.bouncycastle.openpgp.PGPUtil;
 import org.bouncycastle.openpgp.operator.jcajce.JcaKeyFingerprintCalculator;
-import org.bouncycastle.util.encoders.Hex;
+import com.distrimind.bouncycastle.util.encoders.Hex;
 
 /**
  * Basic class which just lists the contents of the public key file passed

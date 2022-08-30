@@ -8,10 +8,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.bouncycastle.util.CollectionStore;
-import org.bouncycastle.util.Selector;
-import org.bouncycastle.util.Store;
-import org.bouncycastle.util.StoreException;
+import com.distrimind.bouncycastle.util.CollectionStore;
+import com.distrimind.bouncycastle.util.Selector;
+import com.distrimind.bouncycastle.util.Store;
+import com.distrimind.bouncycastle.util.StoreException;
 
 /**
  * Class storing DANEEntry objects.

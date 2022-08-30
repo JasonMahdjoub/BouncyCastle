@@ -2,7 +2,7 @@ package org.bouncycastle.gpg.keybox;
 
 import java.io.IOException;
 
-import org.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Arrays;
 
 public class KeyInformation
 {

@@ -26,7 +26,7 @@ import junit.framework.Assert;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import org.bouncycastle.asn1.nist.NISTObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.nist.NISTObjectIdentifiers;
 import org.bouncycastle.cert.jcajce.JcaCertStore;
 import org.bouncycastle.cert.jcajce.JcaX509CertificateHolder;
 import org.bouncycastle.cms.CMSAlgorithm;
@@ -48,8 +48,8 @@ import org.bouncycastle.openssl.jcajce.JcaPKIXIdentityBuilder;
 import org.bouncycastle.operator.OperatorCreationException;
 import org.bouncycastle.operator.bc.BcDigestCalculatorProvider;
 import org.bouncycastle.pkix.jcajce.JcaPKIXIdentity;
-import org.bouncycastle.util.CollectionStore;
-import org.bouncycastle.util.Store;
+import com.distrimind.bouncycastle.util.CollectionStore;
+import com.distrimind.bouncycastle.util.Store;
 
 public class SMIMEToolkitTest
     extends TestCase

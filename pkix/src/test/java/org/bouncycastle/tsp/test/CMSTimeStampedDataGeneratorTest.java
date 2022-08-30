@@ -13,9 +13,9 @@ import java.util.Date;
 import java.util.List;
 
 import junit.framework.TestCase;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.nist.NISTObjectIdentifiers;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.nist.NISTObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.cert.jcajce.JcaCertStore;
 import org.bouncycastle.cms.jcajce.JcaSimpleSignerInfoGeneratorBuilder;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
@@ -32,9 +32,9 @@ import org.bouncycastle.tsp.TimeStampTokenGenerator;
 import org.bouncycastle.tsp.cms.CMSTimeStampedData;
 import org.bouncycastle.tsp.cms.CMSTimeStampedDataGenerator;
 import org.bouncycastle.tsp.cms.CMSTimeStampedDataParser;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Store;
-import org.bouncycastle.util.io.Streams;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Store;
+import com.distrimind.bouncycastle.util.io.Streams;
 
 public class CMSTimeStampedDataGeneratorTest
     extends TestCase

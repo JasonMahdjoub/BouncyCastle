@@ -5,8 +5,8 @@ import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.bouncycastle.util.StringList;
-import org.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.util.StringList;
+import com.distrimind.bouncycastle.util.Strings;
 
 /**
  * reader for Base64 armored objects - read the headers and then start returning

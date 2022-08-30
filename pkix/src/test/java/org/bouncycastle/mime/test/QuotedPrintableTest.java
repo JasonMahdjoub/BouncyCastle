@@ -6,8 +6,8 @@ import java.io.IOException;
 
 import junit.framework.TestCase;
 import org.bouncycastle.mime.encoding.QuotedPrintableInputStream;
-import org.bouncycastle.util.Strings;
-import org.bouncycastle.util.io.Streams;
+import com.distrimind.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.util.io.Streams;
 
 public class QuotedPrintableTest
     extends TestCase

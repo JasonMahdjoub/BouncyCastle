@@ -4,7 +4,7 @@ import java.security.KeyFactory;
 import java.security.KeyPairGenerator;
 import java.security.SecureRandom;
 
-import org.bouncycastle.pqc.asn1.PQCObjectIdentifiers;
+import com.distrimind.bouncycastle.pqc.asn1.PQCObjectIdentifiers;
 
 
 /**

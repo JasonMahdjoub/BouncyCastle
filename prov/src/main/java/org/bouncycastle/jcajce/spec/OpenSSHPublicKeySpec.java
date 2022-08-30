@@ -2,8 +2,8 @@ package org.bouncycastle.jcajce.spec;
 
 import java.security.spec.EncodedKeySpec;
 
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Strings;
 
 /**
  * Holds an OpenSSH encoded public key.

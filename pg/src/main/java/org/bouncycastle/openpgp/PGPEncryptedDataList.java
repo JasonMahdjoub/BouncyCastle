@@ -13,7 +13,7 @@ import org.bouncycastle.bcpg.Packet;
 import org.bouncycastle.bcpg.PacketTags;
 import org.bouncycastle.bcpg.PublicKeyEncSessionPacket;
 import org.bouncycastle.bcpg.SymmetricKeyEncSessionPacket;
-import org.bouncycastle.util.Iterable;
+import com.distrimind.bouncycastle.util.Iterable;
 
 /**
  * A holder for a list of PGP encryption method packets and the encrypted data associated with them.

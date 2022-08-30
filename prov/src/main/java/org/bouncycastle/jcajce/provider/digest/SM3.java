@@ -1,9 +1,9 @@
 package org.bouncycastle.jcajce.provider.digest;
 
-import org.bouncycastle.asn1.gm.GMObjectIdentifiers;
-import org.bouncycastle.crypto.CipherKeyGenerator;
-import org.bouncycastle.crypto.digests.SM3Digest;
-import org.bouncycastle.crypto.macs.HMac;
+import com.distrimind.bouncycastle.asn1.gm.GMObjectIdentifiers;
+import com.distrimind.bouncycastle.crypto.CipherKeyGenerator;
+import com.distrimind.bouncycastle.crypto.digests.SM3Digest;
+import com.distrimind.bouncycastle.crypto.macs.HMac;
 import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import org.bouncycastle.jcajce.provider.symmetric.util.BaseKeyGenerator;
 import org.bouncycastle.jcajce.provider.symmetric.util.BaseMac;

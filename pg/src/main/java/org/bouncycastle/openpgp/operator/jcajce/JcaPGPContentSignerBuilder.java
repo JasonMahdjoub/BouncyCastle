@@ -19,7 +19,7 @@ import org.bouncycastle.openpgp.PGPRuntimeOperationException;
 import org.bouncycastle.openpgp.operator.PGPContentSigner;
 import org.bouncycastle.openpgp.operator.PGPContentSignerBuilder;
 import org.bouncycastle.openpgp.operator.PGPDigestCalculator;
-import org.bouncycastle.util.io.TeeOutputStream;
+import com.distrimind.bouncycastle.util.io.TeeOutputStream;
 
 public class JcaPGPContentSignerBuilder
     implements PGPContentSignerBuilder

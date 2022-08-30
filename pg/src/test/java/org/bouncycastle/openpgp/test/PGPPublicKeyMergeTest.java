@@ -10,8 +10,8 @@ import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.openpgp.PGPException;
 import org.bouncycastle.openpgp.PGPPublicKeyRing;
 import org.bouncycastle.openpgp.operator.bc.BcKeyFingerprintCalculator;
-import org.bouncycastle.util.Strings;
-import org.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 /**
  * Test for certificate merging.

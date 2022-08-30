@@ -2,10 +2,10 @@ package org.bouncycastle.jcajce.provider.asymmetric.dh;
 
 import java.math.BigInteger;
 
-import org.bouncycastle.crypto.params.DHParameters;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Fingerprint;
-import org.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.crypto.params.DHParameters;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Fingerprint;
+import com.distrimind.bouncycastle.util.Strings;
 
 class DHUtil
 {

@@ -3,7 +3,7 @@ package org.bouncycastle.bcpg;
 import java.io.*;
 import java.math.BigInteger;
 
-import org.bouncycastle.util.BigIntegers;
+import com.distrimind.bouncycastle.util.BigIntegers;
 
 /**
  * base class for an RSA Secret (or Private) Key.

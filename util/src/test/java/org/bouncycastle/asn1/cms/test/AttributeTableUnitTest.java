@@ -2,12 +2,12 @@ package org.bouncycastle.asn1.cms.test;
 
 import java.util.Hashtable;
 
-import org.bouncycastle.asn1.ASN1EncodableVector;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.DERSet;
+import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.DERSet;
 import org.bouncycastle.asn1.cms.Attribute;
 import org.bouncycastle.asn1.cms.AttributeTable;
-import org.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 public class AttributeTableUnitTest 
     extends SimpleTest

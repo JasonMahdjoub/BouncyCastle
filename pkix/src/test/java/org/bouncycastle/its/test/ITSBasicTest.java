@@ -7,20 +7,20 @@ import java.security.SecureRandom;
 import java.util.Date;
 
 import junit.framework.TestCase;
-import org.bouncycastle.asn1.ASN1Object;
-import org.bouncycastle.asn1.DERIA5String;
-import org.bouncycastle.asn1.DEROctetString;
-import org.bouncycastle.asn1.nist.NISTNamedCurves;
-import org.bouncycastle.asn1.sec.SECObjectIdentifiers;
-import org.bouncycastle.asn1.x9.X9ECParameters;
-import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
-import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.digests.SHA256Digest;
-import org.bouncycastle.crypto.generators.ECKeyPairGenerator;
-import org.bouncycastle.crypto.params.ECKeyGenerationParameters;
-import org.bouncycastle.crypto.params.ECNamedDomainParameters;
-import org.bouncycastle.crypto.params.ECPrivateKeyParameters;
-import org.bouncycastle.crypto.params.ECPublicKeyParameters;
+import com.distrimind.bouncycastle.asn1.ASN1Object;
+import com.distrimind.bouncycastle.asn1.DERIA5String;
+import com.distrimind.bouncycastle.asn1.DEROctetString;
+import com.distrimind.bouncycastle.asn1.nist.NISTNamedCurves;
+import com.distrimind.bouncycastle.asn1.sec.SECObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.x9.X9ECParameters;
+import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
+import com.distrimind.bouncycastle.crypto.Digest;
+import com.distrimind.bouncycastle.crypto.digests.SHA256Digest;
+import com.distrimind.bouncycastle.crypto.generators.ECKeyPairGenerator;
+import com.distrimind.bouncycastle.crypto.params.ECKeyGenerationParameters;
+import com.distrimind.bouncycastle.crypto.params.ECNamedDomainParameters;
+import com.distrimind.bouncycastle.crypto.params.ECPrivateKeyParameters;
+import com.distrimind.bouncycastle.crypto.params.ECPublicKeyParameters;
 import org.bouncycastle.its.ITSCertificate;
 import org.bouncycastle.its.ITSValidityPeriod;
 import org.bouncycastle.its.bc.BcITSContentSigner;
@@ -69,9 +69,9 @@ import org.bouncycastle.oer.its.ieee1609dot2dot1.EeRaCertRequest;
 import org.bouncycastle.oer.its.template.ieee1609dot2.IEEE1609dot2;
 import org.bouncycastle.oer.its.template.ieee1609dot2dot1.Ieee1609Dot2Dot1EcaEeInterface;
 import org.bouncycastle.oer.its.template.ieee1609dot2dot1.Ieee1609Dot2Dot1EeRaInterface;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.BigIntegers;
-import org.bouncycastle.util.encoders.Hex;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.BigIntegers;
+import com.distrimind.bouncycastle.util.encoders.Hex;
 
 public class ITSBasicTest
     extends TestCase

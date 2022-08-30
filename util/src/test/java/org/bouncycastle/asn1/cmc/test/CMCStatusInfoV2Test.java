@@ -2,8 +2,8 @@ package org.bouncycastle.asn1.cmc.test;
 
 import java.util.Date;
 
-import org.bouncycastle.asn1.DERGeneralizedTime;
-import org.bouncycastle.asn1.DEROctetString;
+import com.distrimind.bouncycastle.asn1.DERGeneralizedTime;
+import com.distrimind.bouncycastle.asn1.DEROctetString;
 import org.bouncycastle.asn1.cmc.BodyPartID;
 import org.bouncycastle.asn1.cmc.CMCFailInfo;
 import org.bouncycastle.asn1.cmc.CMCStatus;
@@ -11,9 +11,9 @@ import org.bouncycastle.asn1.cmc.CMCStatusInfoV2;
 import org.bouncycastle.asn1.cmc.CMCStatusInfoV2Builder;
 import org.bouncycastle.asn1.cmc.ExtendedFailInfo;
 import org.bouncycastle.asn1.cmc.PendInfo;
-import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.util.Strings;
-import org.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
+import com.distrimind.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 
 public class CMCStatusInfoV2Test

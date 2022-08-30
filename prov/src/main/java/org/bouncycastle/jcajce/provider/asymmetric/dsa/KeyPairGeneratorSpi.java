@@ -8,20 +8,20 @@ import java.security.spec.AlgorithmParameterSpec;
 import java.security.spec.DSAParameterSpec;
 import java.util.Hashtable;
 
-import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
-import org.bouncycastle.crypto.CryptoServicesRegistrar;
-import org.bouncycastle.crypto.digests.SHA256Digest;
-import org.bouncycastle.crypto.generators.DSAKeyPairGenerator;
-import org.bouncycastle.crypto.generators.DSAParametersGenerator;
-import org.bouncycastle.crypto.params.DSAKeyGenerationParameters;
-import org.bouncycastle.crypto.params.DSAParameterGenerationParameters;
-import org.bouncycastle.crypto.params.DSAParameters;
-import org.bouncycastle.crypto.params.DSAPrivateKeyParameters;
-import org.bouncycastle.crypto.params.DSAPublicKeyParameters;
+import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
+import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
+import com.distrimind.bouncycastle.crypto.digests.SHA256Digest;
+import com.distrimind.bouncycastle.crypto.generators.DSAKeyPairGenerator;
+import com.distrimind.bouncycastle.crypto.generators.DSAParametersGenerator;
+import com.distrimind.bouncycastle.crypto.params.DSAKeyGenerationParameters;
+import com.distrimind.bouncycastle.crypto.params.DSAParameterGenerationParameters;
+import com.distrimind.bouncycastle.crypto.params.DSAParameters;
+import com.distrimind.bouncycastle.crypto.params.DSAPrivateKeyParameters;
+import com.distrimind.bouncycastle.crypto.params.DSAPublicKeyParameters;
 import org.bouncycastle.jcajce.provider.asymmetric.util.PrimeCertaintyCalculator;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.Integers;
-import org.bouncycastle.util.Properties;
+import com.distrimind.bouncycastle.util.Integers;
+import com.distrimind.bouncycastle.util.Properties;
 
 public class KeyPairGeneratorSpi
     extends java.security.KeyPairGenerator

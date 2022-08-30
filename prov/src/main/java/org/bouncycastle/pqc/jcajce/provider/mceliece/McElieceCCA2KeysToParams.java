@@ -4,7 +4,7 @@ import java.security.InvalidKeyException;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 
-import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
+import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
 
 /**
  * utility class for converting jce/jca McElieceCCA2 objects

@@ -9,11 +9,11 @@ import java.security.PrivilegedExceptionAction;
 import java.security.spec.AlgorithmParameterSpec;
 import java.security.spec.InvalidParameterSpecException;
 
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.internal.asn1.cms.GCMParameters;
-import org.bouncycastle.crypto.params.AEADParameters;
-import org.bouncycastle.crypto.params.KeyParameter;
-import org.bouncycastle.util.Integers;
+import com.distrimind.bouncycastle.asn1.ASN1Primitive;
+import com.distrimind.bouncycastle.internal.asn1.cms.GCMParameters;
+import com.distrimind.bouncycastle.crypto.params.AEADParameters;
+import com.distrimind.bouncycastle.crypto.params.KeyParameter;
+import com.distrimind.bouncycastle.util.Integers;
 
 public class GcmSpecUtil
 {

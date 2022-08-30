@@ -9,7 +9,7 @@ import java.util.List;
 
 import org.bouncycastle.asn1.tsp.PartialHashtree;
 import org.bouncycastle.operator.DigestCalculator;
-import org.bouncycastle.util.io.Streams;
+import com.distrimind.bouncycastle.util.io.Streams;
 
 class ERSUtil
 {

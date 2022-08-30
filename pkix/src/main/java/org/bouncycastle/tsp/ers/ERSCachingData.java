@@ -3,7 +3,7 @@ package org.bouncycastle.tsp.ers;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.operator.DigestCalculator;
 
 /**

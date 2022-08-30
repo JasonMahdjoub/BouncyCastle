@@ -9,14 +9,14 @@ import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 import java.security.spec.AlgorithmParameterSpec;
 
-import org.bouncycastle.crypto.AsymmetricBlockCipher;
-import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.digests.RIPEMD160Digest;
-import org.bouncycastle.crypto.digests.WhirlpoolDigest;
-import org.bouncycastle.crypto.engines.RSABlindedEngine;
-import org.bouncycastle.crypto.signers.ISO9796d2Signer;
-import org.bouncycastle.crypto.util.DigestFactory;
+import com.distrimind.bouncycastle.crypto.AsymmetricBlockCipher;
+import com.distrimind.bouncycastle.crypto.CipherParameters;
+import com.distrimind.bouncycastle.crypto.Digest;
+import com.distrimind.bouncycastle.crypto.digests.RIPEMD160Digest;
+import com.distrimind.bouncycastle.crypto.digests.WhirlpoolDigest;
+import com.distrimind.bouncycastle.crypto.engines.RSABlindedEngine;
+import com.distrimind.bouncycastle.crypto.signers.ISO9796d2Signer;
+import com.distrimind.bouncycastle.crypto.util.DigestFactory;
 
 public class ISOSignatureSpi
     extends SignatureSpi

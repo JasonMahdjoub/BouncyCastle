@@ -9,13 +9,13 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import javax.security.auth.DestroyFailedException;
 
-import org.bouncycastle.crypto.SecretWithEncapsulation;
+import com.distrimind.bouncycastle.crypto.SecretWithEncapsulation;
 import org.bouncycastle.jcajce.SecretKeyWithEncapsulation;
 import org.bouncycastle.jcajce.spec.KEMExtractSpec;
 import org.bouncycastle.jcajce.spec.KEMGenerateSpec;
-import org.bouncycastle.pqc.crypto.saber.SABERKEMExtractor;
-import org.bouncycastle.pqc.crypto.saber.SABERKEMGenerator;
-import org.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.pqc.crypto.saber.SABERKEMExtractor;
+import com.distrimind.bouncycastle.pqc.crypto.saber.SABERKEMGenerator;
+import com.distrimind.bouncycastle.util.Arrays;
 
 public class SABERKeyGeneratorSpi
         extends KeyGeneratorSpi

@@ -1,7 +1,7 @@
 package org.bouncycastle.openpgp.test;
 
 import org.bouncycastle.bcpg.sig.Features;
-import org.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 public class PGPFeaturesTest
     extends SimpleTest

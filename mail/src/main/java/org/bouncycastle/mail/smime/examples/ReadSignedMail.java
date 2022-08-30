@@ -20,7 +20,7 @@ import org.bouncycastle.cms.SignerInformationStore;
 import org.bouncycastle.cms.jcajce.JcaSimpleSignerInfoVerifierBuilder;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.mail.smime.SMIMESigned;
-import org.bouncycastle.util.Store;
+import com.distrimind.bouncycastle.util.Store;
 
 /**
  * a simple example that reads a basic SMIME signed mail file.

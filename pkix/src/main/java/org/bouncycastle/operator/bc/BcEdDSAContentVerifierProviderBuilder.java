@@ -2,14 +2,14 @@ package org.bouncycastle.operator.bc;
 
 import java.io.IOException;
 
-import org.bouncycastle.asn1.edec.EdECObjectIdentifiers;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.crypto.Signer;
-import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
-import org.bouncycastle.crypto.signers.Ed25519Signer;
-import org.bouncycastle.crypto.signers.Ed448Signer;
-import org.bouncycastle.crypto.util.PublicKeyFactory;
+import com.distrimind.bouncycastle.asn1.edec.EdECObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
+import com.distrimind.bouncycastle.crypto.Signer;
+import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
+import com.distrimind.bouncycastle.crypto.signers.Ed25519Signer;
+import com.distrimind.bouncycastle.crypto.signers.Ed448Signer;
+import com.distrimind.bouncycastle.crypto.util.PublicKeyFactory;
 import org.bouncycastle.operator.OperatorCreationException;
 
 public class BcEdDSAContentVerifierProviderBuilder

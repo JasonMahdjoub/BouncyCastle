@@ -4,11 +4,11 @@ import java.math.BigInteger;
 import java.util.Date;
 import java.util.Locale;
 
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.asn1.x509.Time;
-import org.bouncycastle.asn1.x509.V1TBSCertificateGenerator;
+import com.distrimind.bouncycastle.asn1.ASN1Integer;
+import com.distrimind.bouncycastle.asn1.x500.X500Name;
+import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
+import com.distrimind.bouncycastle.asn1.x509.Time;
+import com.distrimind.bouncycastle.asn1.x509.V1TBSCertificateGenerator;
 import org.bouncycastle.operator.ContentSigner;
 
 

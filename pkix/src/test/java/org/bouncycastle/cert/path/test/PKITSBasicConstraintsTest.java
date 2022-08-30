@@ -3,8 +3,8 @@ package org.bouncycastle.cert.path.test;
 import java.io.IOException;
 import java.security.Security;
 
-import org.bouncycastle.asn1.ASN1InputStream;
-import org.bouncycastle.asn1.x509.Certificate;
+import com.distrimind.bouncycastle.asn1.ASN1InputStream;
+import com.distrimind.bouncycastle.asn1.x509.Certificate;
 import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.cert.X509ContentVerifierProviderBuilder;
 import org.bouncycastle.cert.jcajce.JcaX509ContentVerifierProviderBuilder;
@@ -15,7 +15,7 @@ import org.bouncycastle.cert.path.validations.BasicConstraintsValidation;
 import org.bouncycastle.cert.path.validations.KeyUsageValidation;
 import org.bouncycastle.cert.path.validations.ParentCertIssuedValidation;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 public class PKITSBasicConstraintsTest
     extends SimpleTest

@@ -19,17 +19,17 @@ import javax.crypto.ShortBufferException;
 import javax.crypto.spec.SecretKeySpec;
 import javax.security.auth.DestroyFailedException;
 
-import org.bouncycastle.crypto.CryptoServicesRegistrar;
-import org.bouncycastle.crypto.InvalidCipherTextException;
-import org.bouncycastle.crypto.SecretWithEncapsulation;
-import org.bouncycastle.crypto.Wrapper;
-import org.bouncycastle.crypto.params.KeyParameter;
+import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
+import com.distrimind.bouncycastle.crypto.InvalidCipherTextException;
+import com.distrimind.bouncycastle.crypto.SecretWithEncapsulation;
+import com.distrimind.bouncycastle.crypto.Wrapper;
+import com.distrimind.bouncycastle.crypto.params.KeyParameter;
 import org.bouncycastle.jcajce.spec.KEMParameterSpec;
-import org.bouncycastle.pqc.crypto.cmce.CMCEKEMExtractor;
-import org.bouncycastle.pqc.crypto.cmce.CMCEKEMGenerator;
+import com.distrimind.bouncycastle.pqc.crypto.cmce.CMCEKEMExtractor;
+import com.distrimind.bouncycastle.pqc.crypto.cmce.CMCEKEMGenerator;
 import org.bouncycastle.pqc.jcajce.provider.util.WrapUtil;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Exceptions;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Exceptions;
 
 class CMCECipherSpi
     extends CipherSpi

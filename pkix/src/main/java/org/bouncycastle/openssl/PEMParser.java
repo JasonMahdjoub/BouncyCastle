@@ -10,32 +10,34 @@ import java.util.Map;
 import java.util.Set;
 import java.util.StringTokenizer;
 
-import org.bouncycastle.asn1.ASN1InputStream;
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.DERNull;
+import com.distrimind.bouncycastle.asn1.pkcs.RSAPrivateKey;
+import com.distrimind.bouncycastle.asn1.sec.ECPrivateKey;
+import com.distrimind.bouncycastle.asn1.ASN1InputStream;
+import com.distrimind.bouncycastle.asn1.ASN1Integer;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.ASN1Primitive;
+import com.distrimind.bouncycastle.asn1.ASN1Sequence;
+import com.distrimind.bouncycastle.asn1.DERNull;
 import org.bouncycastle.asn1.cms.ContentInfo;
-import org.bouncycastle.asn1.pkcs.EncryptedPrivateKeyInfo;
-import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
-import org.bouncycastle.asn1.pkcs.RSAPublicKey;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x509.DSAParameter;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.asn1.x9.X9ECParameters;
-import org.bouncycastle.asn1.x9.X9ObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.pkcs.EncryptedPrivateKeyInfo;
+import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
+import com.distrimind.bouncycastle.asn1.pkcs.RSAPublicKey;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.asn1.x509.DSAParameter;
+import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
+import com.distrimind.bouncycastle.asn1.x9.X9ECParameters;
+import com.distrimind.bouncycastle.asn1.x9.X9ObjectIdentifiers;
 import org.bouncycastle.cert.X509AttributeCertificateHolder;
 import org.bouncycastle.cert.X509CRLHolder;
 import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.pkcs.PKCS10CertificationRequest;
 import org.bouncycastle.pkcs.PKCS8EncryptedPrivateKeyInfo;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.io.pem.PemHeader;
-import org.bouncycastle.util.io.pem.PemObject;
-import org.bouncycastle.util.io.pem.PemObjectParser;
-import org.bouncycastle.util.io.pem.PemReader;
+import com.distrimind.bouncycastle.util.encoders.Hex;
+import com.distrimind.bouncycastle.util.io.pem.PemHeader;
+import com.distrimind.bouncycastle.util.io.pem.PemObject;
+import com.distrimind.bouncycastle.util.io.pem.PemObjectParser;
+import com.distrimind.bouncycastle.util.io.pem.PemReader;
 
 /**
  * Class for parsing OpenSSL PEM encoded streams containing
@@ -263,7 +265,7 @@ public class PEMParser
             {
                 ASN1Sequence seq = ASN1Sequence.getInstance(encoding);
 
-                org.bouncycastle.asn1.sec.ECPrivateKey pKey = org.bouncycastle.asn1.sec.ECPrivateKey.getInstance(seq);
+                ECPrivateKey pKey = ECPrivateKey.getInstance(seq);
                 AlgorithmIdentifier algId = new AlgorithmIdentifier(X9ObjectIdentifiers.id_ecPublicKey,
                     pKey.getParametersObject());
                 PrivateKeyInfo privInfo = new PrivateKeyInfo(algId, pKey);
@@ -306,7 +308,7 @@ public class PEMParser
                     throw new PEMException("malformed sequence in RSA private key");
                 }
 
-                org.bouncycastle.asn1.pkcs.RSAPrivateKey keyStruct = org.bouncycastle.asn1.pkcs.RSAPrivateKey.getInstance(seq);
+                RSAPrivateKey keyStruct = RSAPrivateKey.getInstance(seq);
 
                 RSAPublicKey pubSpec = new RSAPublicKey(
                     keyStruct.getModulus(), keyStruct.getPublicExponent());

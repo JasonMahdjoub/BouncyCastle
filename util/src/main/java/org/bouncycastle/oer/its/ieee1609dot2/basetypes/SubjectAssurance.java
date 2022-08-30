@@ -1,7 +1,7 @@
 package org.bouncycastle.oer.its.ieee1609dot2.basetypes;
 
-import org.bouncycastle.asn1.ASN1OctetString;
-import org.bouncycastle.asn1.DEROctetString;
+import com.distrimind.bouncycastle.asn1.ASN1OctetString;
+import com.distrimind.bouncycastle.asn1.DEROctetString;
 
 /**
  * SubjectAssurance ::= OCTET STRING (SIZE(1))

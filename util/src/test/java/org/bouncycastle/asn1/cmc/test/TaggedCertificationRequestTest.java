@@ -3,8 +3,8 @@ package org.bouncycastle.asn1.cmc.test;
 import org.bouncycastle.asn1.cmc.BodyPartID;
 import org.bouncycastle.asn1.cmc.CertificationRequest;
 import org.bouncycastle.asn1.cmc.TaggedCertificationRequest;
-import org.bouncycastle.util.encoders.Base64;
-import org.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.util.encoders.Base64;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 
 public class TaggedCertificationRequestTest

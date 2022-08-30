@@ -14,7 +14,7 @@ import javax.net.ssl.SSLSocketFactory;
 
 import org.bouncycastle.est.ESTClientSourceProvider;
 import org.bouncycastle.est.Source;
-import org.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.util.Strings;
 
 class DefaultESTClientSourceProvider
     implements ESTClientSourceProvider

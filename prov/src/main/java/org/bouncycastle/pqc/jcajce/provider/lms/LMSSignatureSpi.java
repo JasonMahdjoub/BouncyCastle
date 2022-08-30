@@ -8,13 +8,13 @@ import java.security.Signature;
 import java.security.SignatureException;
 import java.security.spec.AlgorithmParameterSpec;
 
-import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.digests.NullDigest;
-import org.bouncycastle.pqc.crypto.ExhaustedPrivateKeyException;
-import org.bouncycastle.pqc.crypto.MessageSigner;
-import org.bouncycastle.pqc.crypto.lms.LMSContext;
-import org.bouncycastle.pqc.crypto.lms.LMSContextBasedSigner;
-import org.bouncycastle.pqc.crypto.lms.LMSContextBasedVerifier;
+import com.distrimind.bouncycastle.crypto.Digest;
+import com.distrimind.bouncycastle.crypto.digests.NullDigest;
+import com.distrimind.bouncycastle.pqc.crypto.ExhaustedPrivateKeyException;
+import com.distrimind.bouncycastle.pqc.crypto.MessageSigner;
+import com.distrimind.bouncycastle.pqc.crypto.lms.LMSContext;
+import com.distrimind.bouncycastle.pqc.crypto.lms.LMSContextBasedSigner;
+import com.distrimind.bouncycastle.pqc.crypto.lms.LMSContextBasedVerifier;
 
 public class LMSSignatureSpi
     extends Signature

@@ -7,8 +7,8 @@ import java.security.Security;
 import java.util.Enumeration;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.encoders.Base64;
-import org.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.util.encoders.Base64;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 // Test for "PBE" dependency issue in Oracle PKCS12.
 public class PKCS12StorePBETest

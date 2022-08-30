@@ -1,8 +1,8 @@
 package org.bouncycastle.jce.provider.test;
 
-import org.bouncycastle.asn1.ntt.NTTObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.ntt.NTTObjectIdentifiers;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.encoders.Hex;
+import com.distrimind.bouncycastle.util.encoders.Hex;
 
 import javax.crypto.Cipher;
 import javax.crypto.CipherInputStream;

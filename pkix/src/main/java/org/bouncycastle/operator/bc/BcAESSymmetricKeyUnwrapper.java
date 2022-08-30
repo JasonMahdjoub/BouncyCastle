@@ -1,7 +1,7 @@
 package org.bouncycastle.operator.bc;
 
-import org.bouncycastle.crypto.engines.AESWrapEngine;
-import org.bouncycastle.crypto.params.KeyParameter;
+import com.distrimind.bouncycastle.crypto.engines.AESWrapEngine;
+import com.distrimind.bouncycastle.crypto.params.KeyParameter;
 
 public class BcAESSymmetricKeyUnwrapper
     extends BcSymmetricKeyUnwrapper

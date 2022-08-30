@@ -10,18 +10,18 @@ import java.security.SignatureException;
 import java.security.SignatureSpi;
 import java.security.spec.AlgorithmParameterSpec;
 
-import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.asn1.x509.X509ObjectIdentifiers;
-import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.DSAExt;
-import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.digests.NullDigest;
-import org.bouncycastle.crypto.digests.RIPEMD160Digest;
-import org.bouncycastle.crypto.params.ParametersWithRandom;
-import org.bouncycastle.crypto.signers.DSAEncoding;
-import org.bouncycastle.crypto.signers.HMacDSAKCalculator;
-import org.bouncycastle.crypto.signers.StandardDSAEncoding;
-import org.bouncycastle.crypto.util.DigestFactory;
+import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.x509.X509ObjectIdentifiers;
+import com.distrimind.bouncycastle.crypto.CipherParameters;
+import com.distrimind.bouncycastle.crypto.DSAExt;
+import com.distrimind.bouncycastle.crypto.Digest;
+import com.distrimind.bouncycastle.crypto.digests.NullDigest;
+import com.distrimind.bouncycastle.crypto.digests.RIPEMD160Digest;
+import com.distrimind.bouncycastle.crypto.params.ParametersWithRandom;
+import com.distrimind.bouncycastle.crypto.signers.DSAEncoding;
+import com.distrimind.bouncycastle.crypto.signers.HMacDSAKCalculator;
+import com.distrimind.bouncycastle.crypto.signers.StandardDSAEncoding;
+import com.distrimind.bouncycastle.crypto.util.DigestFactory;
 
 public class DSASigner
     extends SignatureSpi
@@ -166,7 +166,7 @@ public class DSASigner
     {
         public stdDSA()
         {
-            super(DigestFactory.createSHA1(), new org.bouncycastle.crypto.signers.DSASigner());
+            super(DigestFactory.createSHA1(), new com.distrimind.bouncycastle.crypto.signers.DSASigner());
         }
     }
 
@@ -175,7 +175,7 @@ public class DSASigner
     {
         public detDSA()
         {
-            super(DigestFactory.createSHA1(), new org.bouncycastle.crypto.signers.DSASigner(new HMacDSAKCalculator(DigestFactory.createSHA1())));
+            super(DigestFactory.createSHA1(), new com.distrimind.bouncycastle.crypto.signers.DSASigner(new HMacDSAKCalculator(DigestFactory.createSHA1())));
         }
     }
 
@@ -184,7 +184,7 @@ public class DSASigner
     {
         public dsaRMD160()
         {
-            super(new RIPEMD160Digest(), new org.bouncycastle.crypto.signers.DSASigner());
+            super(new RIPEMD160Digest(), new com.distrimind.bouncycastle.crypto.signers.DSASigner());
         }
     }
 
@@ -193,7 +193,7 @@ public class DSASigner
     {
         public dsa224()
         {
-            super(DigestFactory.createSHA224(), new org.bouncycastle.crypto.signers.DSASigner());
+            super(DigestFactory.createSHA224(), new com.distrimind.bouncycastle.crypto.signers.DSASigner());
         }
     }
 
@@ -202,7 +202,7 @@ public class DSASigner
     {
         public detDSA224()
         {
-            super(DigestFactory.createSHA224(), new org.bouncycastle.crypto.signers.DSASigner(new HMacDSAKCalculator(DigestFactory.createSHA224())));
+            super(DigestFactory.createSHA224(), new com.distrimind.bouncycastle.crypto.signers.DSASigner(new HMacDSAKCalculator(DigestFactory.createSHA224())));
         }
     }
 
@@ -211,7 +211,7 @@ public class DSASigner
     {
         public dsa256()
         {
-            super(DigestFactory.createSHA256(), new org.bouncycastle.crypto.signers.DSASigner());
+            super(DigestFactory.createSHA256(), new com.distrimind.bouncycastle.crypto.signers.DSASigner());
         }
     }
 
@@ -220,7 +220,7 @@ public class DSASigner
     {
         public detDSA256()
         {
-            super(DigestFactory.createSHA256(), new org.bouncycastle.crypto.signers.DSASigner(new HMacDSAKCalculator(DigestFactory.createSHA256())));
+            super(DigestFactory.createSHA256(), new com.distrimind.bouncycastle.crypto.signers.DSASigner(new HMacDSAKCalculator(DigestFactory.createSHA256())));
         }
     }
 
@@ -229,7 +229,7 @@ public class DSASigner
     {
         public dsa384()
         {
-            super(DigestFactory.createSHA384(), new org.bouncycastle.crypto.signers.DSASigner());
+            super(DigestFactory.createSHA384(), new com.distrimind.bouncycastle.crypto.signers.DSASigner());
         }
     }
 
@@ -238,7 +238,7 @@ public class DSASigner
     {
         public detDSA384()
         {
-            super(DigestFactory.createSHA384(), new org.bouncycastle.crypto.signers.DSASigner(new HMacDSAKCalculator(DigestFactory.createSHA384())));
+            super(DigestFactory.createSHA384(), new com.distrimind.bouncycastle.crypto.signers.DSASigner(new HMacDSAKCalculator(DigestFactory.createSHA384())));
         }
     }
 
@@ -247,7 +247,7 @@ public class DSASigner
     {
         public dsa512()
         {
-            super(DigestFactory.createSHA512(), new org.bouncycastle.crypto.signers.DSASigner());
+            super(DigestFactory.createSHA512(), new com.distrimind.bouncycastle.crypto.signers.DSASigner());
         }
     }
 
@@ -256,7 +256,7 @@ public class DSASigner
     {
         public detDSA512()
         {
-            super(DigestFactory.createSHA512(), new org.bouncycastle.crypto.signers.DSASigner(new HMacDSAKCalculator(DigestFactory.createSHA512())));
+            super(DigestFactory.createSHA512(), new com.distrimind.bouncycastle.crypto.signers.DSASigner(new HMacDSAKCalculator(DigestFactory.createSHA512())));
         }
     }
 
@@ -265,7 +265,7 @@ public class DSASigner
     {
         public dsaSha3_224()
         {
-            super(DigestFactory.createSHA3_224(), new org.bouncycastle.crypto.signers.DSASigner());
+            super(DigestFactory.createSHA3_224(), new com.distrimind.bouncycastle.crypto.signers.DSASigner());
         }
     }
 
@@ -274,7 +274,7 @@ public class DSASigner
     {
         public detDSASha3_224()
         {
-            super(DigestFactory.createSHA3_224(), new org.bouncycastle.crypto.signers.DSASigner(new HMacDSAKCalculator(DigestFactory.createSHA3_224())));
+            super(DigestFactory.createSHA3_224(), new com.distrimind.bouncycastle.crypto.signers.DSASigner(new HMacDSAKCalculator(DigestFactory.createSHA3_224())));
         }
     }
 
@@ -283,7 +283,7 @@ public class DSASigner
     {
         public dsaSha3_256()
         {
-            super(DigestFactory.createSHA3_256(), new org.bouncycastle.crypto.signers.DSASigner());
+            super(DigestFactory.createSHA3_256(), new com.distrimind.bouncycastle.crypto.signers.DSASigner());
         }
     }
 
@@ -292,7 +292,7 @@ public class DSASigner
     {
         public detDSASha3_256()
         {
-            super(DigestFactory.createSHA3_256(), new org.bouncycastle.crypto.signers.DSASigner(new HMacDSAKCalculator(DigestFactory.createSHA3_256())));
+            super(DigestFactory.createSHA3_256(), new com.distrimind.bouncycastle.crypto.signers.DSASigner(new HMacDSAKCalculator(DigestFactory.createSHA3_256())));
         }
     }
 
@@ -301,7 +301,7 @@ public class DSASigner
     {
         public dsaSha3_384()
         {
-            super(DigestFactory.createSHA3_384(), new org.bouncycastle.crypto.signers.DSASigner());
+            super(DigestFactory.createSHA3_384(), new com.distrimind.bouncycastle.crypto.signers.DSASigner());
         }
     }
 
@@ -310,7 +310,7 @@ public class DSASigner
     {
         public detDSASha3_384()
         {
-            super(DigestFactory.createSHA3_384(), new org.bouncycastle.crypto.signers.DSASigner(new HMacDSAKCalculator(DigestFactory.createSHA3_384())));
+            super(DigestFactory.createSHA3_384(), new com.distrimind.bouncycastle.crypto.signers.DSASigner(new HMacDSAKCalculator(DigestFactory.createSHA3_384())));
         }
     }
 
@@ -319,7 +319,7 @@ public class DSASigner
     {
         public dsaSha3_512()
         {
-            super(DigestFactory.createSHA3_512(), new org.bouncycastle.crypto.signers.DSASigner());
+            super(DigestFactory.createSHA3_512(), new com.distrimind.bouncycastle.crypto.signers.DSASigner());
         }
     }
 
@@ -328,7 +328,7 @@ public class DSASigner
     {
         public detDSASha3_512()
         {
-            super(DigestFactory.createSHA3_512(), new org.bouncycastle.crypto.signers.DSASigner(new HMacDSAKCalculator(DigestFactory.createSHA3_512())));
+            super(DigestFactory.createSHA3_512(), new com.distrimind.bouncycastle.crypto.signers.DSASigner(new HMacDSAKCalculator(DigestFactory.createSHA3_512())));
         }
     }
 
@@ -337,7 +337,7 @@ public class DSASigner
     {
         public noneDSA()
         {
-            super(new NullDigest(), new org.bouncycastle.crypto.signers.DSASigner());
+            super(new NullDigest(), new com.distrimind.bouncycastle.crypto.signers.DSASigner());
         }
     }
 }

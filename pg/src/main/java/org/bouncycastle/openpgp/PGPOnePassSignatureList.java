@@ -2,8 +2,8 @@ package org.bouncycastle.openpgp;
 
 import java.util.Iterator;
 
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Iterable;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Iterable;
 
 /**
  * Holder for a list of PGPOnePassSignatures

@@ -12,7 +12,7 @@ import java.security.interfaces.ECPublicKey;
 import java.security.spec.ECGenParameterSpec;
 
 import junit.framework.TestCase;
-import org.bouncycastle.asn1.ASN1Encodable;
+import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import org.bouncycastle.its.ETSIEncryptedData;
 import org.bouncycastle.its.ETSIEncryptedDataBuilder;
 import org.bouncycastle.its.ETSIRecipientID;
@@ -35,10 +35,10 @@ import org.bouncycastle.oer.its.ieee1609dot2.Opaque;
 import org.bouncycastle.oer.its.ieee1609dot2.SignedData;
 import org.bouncycastle.oer.its.template.etsi102941.EtsiTs102941MessagesCa;
 import org.bouncycastle.oer.its.template.etsi102941.EtsiTs102941TypesEnrolment;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Strings;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.FixedSecureRandom;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.util.encoders.Hex;
+import com.distrimind.bouncycastle.util.test.FixedSecureRandom;
 
 public class ETSIEncryptedDataTest
     extends TestCase

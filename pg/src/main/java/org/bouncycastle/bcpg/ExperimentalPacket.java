@@ -2,7 +2,7 @@ package org.bouncycastle.bcpg;
 
 import java.io.IOException;
 
-import org.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Arrays;
 
 /**
  * basic packet for an experimental packet.

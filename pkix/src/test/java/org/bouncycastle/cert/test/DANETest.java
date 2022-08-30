@@ -9,9 +9,9 @@ import org.bouncycastle.cert.dane.DANEEntryFactory;
 import org.bouncycastle.cert.dane.DANEException;
 import org.bouncycastle.cert.dane.TruncatingDigestCalculator;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.encoders.Base64;
-import org.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.encoders.Base64;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 public class DANETest
     extends SimpleTest

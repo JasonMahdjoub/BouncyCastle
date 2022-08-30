@@ -3,7 +3,7 @@ package org.bouncycastle.mime;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.util.Strings;
 
 public class BoundaryLimitedInputStream
     extends InputStream

@@ -3,7 +3,7 @@ package org.bouncycastle.openpgp;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.bouncycastle.util.encoders.Hex;
+import com.distrimind.bouncycastle.util.encoders.Hex;
 
 public class PGPSessionKey
 {

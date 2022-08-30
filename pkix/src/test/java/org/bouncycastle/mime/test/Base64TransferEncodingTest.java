@@ -8,8 +8,8 @@ import java.security.SecureRandom;
 import junit.framework.TestCase;
 import org.bouncycastle.mime.encoding.Base64InputStream;
 import org.bouncycastle.mime.encoding.Base64OutputStream;
-import org.bouncycastle.util.Strings;
-import org.bouncycastle.util.encoders.Base64;
+import com.distrimind.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.util.encoders.Base64;
 
 public class Base64TransferEncodingTest
     extends TestCase

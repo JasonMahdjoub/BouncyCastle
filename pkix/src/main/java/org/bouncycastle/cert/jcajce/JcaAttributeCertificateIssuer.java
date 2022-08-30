@@ -4,7 +4,7 @@ import java.security.cert.X509Certificate;
 
 import javax.security.auth.x500.X500Principal;
 
-import org.bouncycastle.asn1.x500.X500Name;
+import com.distrimind.bouncycastle.asn1.x500.X500Name;
 import org.bouncycastle.cert.AttributeCertificateIssuer;
 
 public class JcaAttributeCertificateIssuer

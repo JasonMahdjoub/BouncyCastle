@@ -2,8 +2,8 @@ package org.bouncycastle.jce.spec;
 
 import java.math.BigInteger;
 
-import org.bouncycastle.math.ec.ECCurve;
-import org.bouncycastle.math.ec.ECPoint;
+import com.distrimind.bouncycastle.math.ec.ECCurve;
+import com.distrimind.bouncycastle.math.ec.ECPoint;
 
 /**
  * specification signifying that the curve parameters can also be

@@ -1,7 +1,7 @@
 package org.bouncycastle.pqc.jcajce.provider.util;
 
-import org.bouncycastle.crypto.Wrapper;
-import org.bouncycastle.crypto.engines.*;
+import com.distrimind.bouncycastle.crypto.Wrapper;
+import com.distrimind.bouncycastle.crypto.engines.*;
 
 public class WrapUtil
 {

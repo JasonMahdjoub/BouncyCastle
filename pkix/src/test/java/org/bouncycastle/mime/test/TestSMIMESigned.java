@@ -11,6 +11,7 @@ import java.security.cert.X509Certificate;
 import java.util.Collection;
 import java.util.Iterator;
 
+import com.distrimind.bouncycastle.util.Arrays;
 import junit.framework.TestCase;
 import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.cert.jcajce.JcaX509CertificateHolder;
@@ -31,10 +32,10 @@ import org.bouncycastle.mime.smime.SMimeParserListener;
 import org.bouncycastle.mime.smime.SMimeParserProvider;
 import org.bouncycastle.operator.OperatorCreationException;
 import org.bouncycastle.operator.bc.BcDigestCalculatorProvider;
-import org.bouncycastle.util.Store;
-import org.bouncycastle.util.Strings;
-import org.bouncycastle.util.encoders.Base64;
-import org.bouncycastle.util.io.Streams;
+import com.distrimind.bouncycastle.util.Store;
+import com.distrimind.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.util.encoders.Base64;
+import com.distrimind.bouncycastle.util.io.Streams;
 
 public class TestSMIMESigned
     extends TestCase
@@ -155,7 +156,7 @@ public class TestSMIMESigned
             {
                 byte[] content = Streams.readAll(inputStream);
 
-                assertTrue(org.bouncycastle.util.Arrays.areEqual(messageContent, content));
+                assertTrue(Arrays.areEqual(messageContent, content));
             }
 
             public void signedData(MimeParserContext parserContext, Headers headers, Store certificates, Store CRLs, Store attributeCertificates, SignerInformationStore signers)

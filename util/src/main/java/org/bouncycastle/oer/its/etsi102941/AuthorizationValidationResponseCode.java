@@ -2,7 +2,7 @@ package org.bouncycastle.oer.its.etsi102941;
 
 import java.math.BigInteger;
 
-import org.bouncycastle.asn1.ASN1Enumerated;
+import com.distrimind.bouncycastle.asn1.ASN1Enumerated;
 
 public class AuthorizationValidationResponseCode
     extends ASN1Enumerated

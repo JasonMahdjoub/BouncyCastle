@@ -1,7 +1,7 @@
 package org.bouncycastle.asn1.cmp;
 
-import org.bouncycastle.asn1.ASN1BitString;
-import org.bouncycastle.asn1.DERBitString;
+import com.distrimind.bouncycastle.asn1.ASN1BitString;
+import com.distrimind.bouncycastle.asn1.DERBitString;
 
 /**
  * <pre>

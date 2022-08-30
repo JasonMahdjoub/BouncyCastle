@@ -3,7 +3,7 @@ package org.bouncycastle.cert.dane;
 import java.io.IOException;
 
 import org.bouncycastle.cert.X509CertificateHolder;
-import org.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Arrays;
 
 /**
  * Carrier class for a DANE entry.

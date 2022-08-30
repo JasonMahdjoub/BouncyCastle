@@ -3,8 +3,8 @@ package org.bouncycastle.bcpg;
 import java.io.IOException;
 import java.math.BigInteger;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.math.ec.ECPoint;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.math.ec.ECPoint;
 
 /**
  * base class for an ECDSA Public Key.

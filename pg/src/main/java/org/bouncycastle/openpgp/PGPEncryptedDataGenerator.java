@@ -15,7 +15,7 @@ import org.bouncycastle.openpgp.operator.PGPDataEncryptor;
 import org.bouncycastle.openpgp.operator.PGPDataEncryptorBuilder;
 import org.bouncycastle.openpgp.operator.PGPDigestCalculator;
 import org.bouncycastle.openpgp.operator.PGPKeyEncryptionMethodGenerator;
-import org.bouncycastle.util.io.TeeOutputStream;
+import com.distrimind.bouncycastle.util.io.TeeOutputStream;
 
 /**
  * Generator for encrypted objects.

@@ -12,7 +12,7 @@ import org.bouncycastle.cms.CMSCompressedDataParser;
 import org.bouncycastle.cms.CMSCompressedDataStreamGenerator;
 import org.bouncycastle.cms.jcajce.ZlibCompressor;
 import org.bouncycastle.cms.jcajce.ZlibExpanderProvider;
-import org.bouncycastle.util.encoders.Base64;
+import com.distrimind.bouncycastle.util.encoders.Base64;
 
 public class NewCompressedDataStreamTest
     extends TestCase

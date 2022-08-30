@@ -4,7 +4,7 @@ import java.io.ByteArrayOutputStream;
 
 import org.bouncycastle.bcpg.SignatureSubpacket;
 import org.bouncycastle.bcpg.SignatureSubpacketTags;
-import org.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.util.Strings;
 
 /**
  * Class provided a NotationData object according to

@@ -3,7 +3,7 @@ package org.bouncycastle.gpg.keybox;
 import java.io.IOException;
 
 import org.bouncycastle.openpgp.operator.KeyFingerPrintCalculator;
-import org.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.util.Strings;
 
 /**
  * GnuPG keybox blob.

@@ -1,14 +1,14 @@
 package org.bouncycastle.pqc.jcajce.provider.mceliece;
 
-import org.bouncycastle.pqc.crypto.mceliece.McElieceCCA2PrivateKeyParameters;
-import org.bouncycastle.pqc.crypto.mceliece.McElieceCCA2PublicKeyParameters;
-import org.bouncycastle.pqc.math.linearalgebra.GF2Matrix;
-import org.bouncycastle.pqc.math.linearalgebra.GF2Vector;
-import org.bouncycastle.pqc.math.linearalgebra.GF2mField;
-import org.bouncycastle.pqc.math.linearalgebra.GoppaCode;
-import org.bouncycastle.pqc.math.linearalgebra.Permutation;
-import org.bouncycastle.pqc.math.linearalgebra.PolynomialGF2mSmallM;
-import org.bouncycastle.pqc.math.linearalgebra.Vector;
+import com.distrimind.bouncycastle.pqc.crypto.mceliece.McElieceCCA2PrivateKeyParameters;
+import com.distrimind.bouncycastle.pqc.crypto.mceliece.McElieceCCA2PublicKeyParameters;
+import com.distrimind.bouncycastle.pqc.math.linearalgebra.GF2Matrix;
+import com.distrimind.bouncycastle.pqc.math.linearalgebra.GF2Vector;
+import com.distrimind.bouncycastle.pqc.math.linearalgebra.GF2mField;
+import com.distrimind.bouncycastle.pqc.math.linearalgebra.GoppaCode;
+import com.distrimind.bouncycastle.pqc.math.linearalgebra.Permutation;
+import com.distrimind.bouncycastle.pqc.math.linearalgebra.PolynomialGF2mSmallM;
+import com.distrimind.bouncycastle.pqc.math.linearalgebra.Vector;
 
 /**
  * Core operations for the CCA-secure variants of McEliece.

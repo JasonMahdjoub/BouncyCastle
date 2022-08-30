@@ -1,10 +1,10 @@
 package org.bouncycastle.pkcs;
 
-import org.bouncycastle.asn1.ASN1OctetString;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.pkcs.ContentInfo;
-import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.asn1.pkcs.SafeBag;
+import com.distrimind.bouncycastle.asn1.ASN1OctetString;
+import com.distrimind.bouncycastle.asn1.ASN1Sequence;
+import com.distrimind.bouncycastle.asn1.pkcs.ContentInfo;
+import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.pkcs.SafeBag;
 import org.bouncycastle.cms.CMSEncryptedData;
 import org.bouncycastle.cms.CMSException;
 import org.bouncycastle.operator.InputDecryptorProvider;

@@ -11,31 +11,31 @@ import java.util.Map;
 
 import javax.crypto.spec.IvParameterSpec;
 
-import org.bouncycastle.asn1.bc.BCObjectIdentifiers;
-import org.bouncycastle.internal.asn1.cms.CCMParameters;
-import org.bouncycastle.internal.asn1.cms.GCMParameters;
-import org.bouncycastle.asn1.nist.NISTObjectIdentifiers;
-import org.bouncycastle.crypto.BlockCipher;
-import org.bouncycastle.crypto.BufferedBlockCipher;
-import org.bouncycastle.crypto.CipherKeyGenerator;
-import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.CryptoServicesRegistrar;
-import org.bouncycastle.crypto.DataLengthException;
-import org.bouncycastle.crypto.InvalidCipherTextException;
-import org.bouncycastle.crypto.Mac;
-import org.bouncycastle.crypto.engines.AESEngine;
-import org.bouncycastle.crypto.engines.AESWrapEngine;
-import org.bouncycastle.crypto.engines.AESWrapPadEngine;
-import org.bouncycastle.crypto.engines.RFC3211WrapEngine;
-import org.bouncycastle.crypto.engines.RFC5649WrapEngine;
-import org.bouncycastle.crypto.generators.Poly1305KeyGenerator;
-import org.bouncycastle.crypto.macs.CMac;
-import org.bouncycastle.crypto.macs.GMac;
-import org.bouncycastle.crypto.modes.CBCBlockCipher;
-import org.bouncycastle.crypto.modes.CCMBlockCipher;
-import org.bouncycastle.crypto.modes.CFBBlockCipher;
-import org.bouncycastle.crypto.modes.GCMBlockCipher;
-import org.bouncycastle.crypto.modes.OFBBlockCipher;
+import com.distrimind.bouncycastle.asn1.bc.BCObjectIdentifiers;
+import com.distrimind.bouncycastle.internal.asn1.cms.CCMParameters;
+import com.distrimind.bouncycastle.internal.asn1.cms.GCMParameters;
+import com.distrimind.bouncycastle.asn1.nist.NISTObjectIdentifiers;
+import com.distrimind.bouncycastle.crypto.BlockCipher;
+import com.distrimind.bouncycastle.crypto.BufferedBlockCipher;
+import com.distrimind.bouncycastle.crypto.CipherKeyGenerator;
+import com.distrimind.bouncycastle.crypto.CipherParameters;
+import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
+import com.distrimind.bouncycastle.crypto.DataLengthException;
+import com.distrimind.bouncycastle.crypto.InvalidCipherTextException;
+import com.distrimind.bouncycastle.crypto.Mac;
+import com.distrimind.bouncycastle.crypto.engines.AESEngine;
+import com.distrimind.bouncycastle.crypto.engines.AESWrapEngine;
+import com.distrimind.bouncycastle.crypto.engines.AESWrapPadEngine;
+import com.distrimind.bouncycastle.crypto.engines.RFC3211WrapEngine;
+import com.distrimind.bouncycastle.crypto.engines.RFC5649WrapEngine;
+import com.distrimind.bouncycastle.crypto.generators.Poly1305KeyGenerator;
+import com.distrimind.bouncycastle.crypto.macs.CMac;
+import com.distrimind.bouncycastle.crypto.macs.GMac;
+import com.distrimind.bouncycastle.crypto.modes.CBCBlockCipher;
+import com.distrimind.bouncycastle.crypto.modes.CCMBlockCipher;
+import com.distrimind.bouncycastle.crypto.modes.CFBBlockCipher;
+import com.distrimind.bouncycastle.crypto.modes.GCMBlockCipher;
+import com.distrimind.bouncycastle.crypto.modes.OFBBlockCipher;
 import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import org.bouncycastle.jcajce.provider.symmetric.util.BaseAlgorithmParameterGenerator;
 import org.bouncycastle.jcajce.provider.symmetric.util.BaseAlgorithmParameters;
@@ -221,7 +221,7 @@ public final class AES
     {
         public Poly1305()
         {
-            super(new org.bouncycastle.crypto.macs.Poly1305(new AESEngine()));
+            super(new com.distrimind.bouncycastle.crypto.macs.Poly1305(new AESEngine()));
         }
     }
 

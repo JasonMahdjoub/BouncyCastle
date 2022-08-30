@@ -1,6 +1,5 @@
 package org.bouncycastle.jcajce.provider.symmetric.util;
 
-import java.io.ByteArrayOutputStream;
 import java.lang.reflect.Constructor;
 import java.nio.ByteBuffer;
 import java.security.AlgorithmParameters;
@@ -24,54 +23,54 @@ import javax.crypto.spec.PBEParameterSpec;
 import javax.crypto.spec.RC2ParameterSpec;
 import javax.crypto.spec.RC5ParameterSpec;
 
-import org.bouncycastle.asn1.DEROctetString;
-import org.bouncycastle.crypto.fpe.FPEEngine;
-import org.bouncycastle.crypto.fpe.FPEFF1Engine;
-import org.bouncycastle.crypto.fpe.FPEFF3_1Engine;
-import org.bouncycastle.crypto.params.FPEParameters;
-import org.bouncycastle.internal.asn1.cms.GCMParameters;
-import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.crypto.BlockCipher;
-import org.bouncycastle.crypto.BufferedBlockCipher;
-import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.CryptoServicesRegistrar;
-import org.bouncycastle.crypto.DataLengthException;
-import org.bouncycastle.crypto.InvalidCipherTextException;
-import org.bouncycastle.crypto.OutputLengthException;
-import org.bouncycastle.crypto.engines.DSTU7624Engine;
-import org.bouncycastle.crypto.modes.AEADBlockCipher;
-import org.bouncycastle.crypto.modes.AEADCipher;
-import org.bouncycastle.crypto.modes.CBCBlockCipher;
-import org.bouncycastle.crypto.modes.CCMBlockCipher;
-import org.bouncycastle.crypto.modes.CFBBlockCipher;
-import org.bouncycastle.crypto.modes.CTSBlockCipher;
-import org.bouncycastle.crypto.modes.EAXBlockCipher;
-import org.bouncycastle.crypto.modes.GCFBBlockCipher;
-import org.bouncycastle.crypto.modes.GCMBlockCipher;
-import org.bouncycastle.crypto.modes.GCMSIVBlockCipher;
-import org.bouncycastle.crypto.modes.GOFBBlockCipher;
-import org.bouncycastle.crypto.modes.KCCMBlockCipher;
-import org.bouncycastle.crypto.modes.KCTRBlockCipher;
-import org.bouncycastle.crypto.modes.KGCMBlockCipher;
-import org.bouncycastle.crypto.modes.OCBBlockCipher;
-import org.bouncycastle.crypto.modes.OFBBlockCipher;
-import org.bouncycastle.crypto.modes.OpenPGPCFBBlockCipher;
-import org.bouncycastle.crypto.modes.PGPCFBBlockCipher;
-import org.bouncycastle.crypto.modes.SICBlockCipher;
-import org.bouncycastle.crypto.paddings.BlockCipherPadding;
-import org.bouncycastle.crypto.paddings.ISO10126d2Padding;
-import org.bouncycastle.crypto.paddings.ISO7816d4Padding;
-import org.bouncycastle.crypto.paddings.PaddedBufferedBlockCipher;
-import org.bouncycastle.crypto.paddings.TBCPadding;
-import org.bouncycastle.crypto.paddings.X923Padding;
-import org.bouncycastle.crypto.paddings.ZeroBytePadding;
-import org.bouncycastle.crypto.params.AEADParameters;
-import org.bouncycastle.crypto.params.KeyParameter;
-import org.bouncycastle.crypto.params.ParametersWithIV;
-import org.bouncycastle.crypto.params.ParametersWithRandom;
-import org.bouncycastle.crypto.params.ParametersWithSBox;
-import org.bouncycastle.crypto.params.RC2Parameters;
-import org.bouncycastle.crypto.params.RC5Parameters;
+import com.distrimind.bouncycastle.asn1.DEROctetString;
+import com.distrimind.bouncycastle.crypto.fpe.FPEEngine;
+import com.distrimind.bouncycastle.crypto.fpe.FPEFF1Engine;
+import com.distrimind.bouncycastle.crypto.fpe.FPEFF3_1Engine;
+import com.distrimind.bouncycastle.crypto.params.FPEParameters;
+import com.distrimind.bouncycastle.internal.asn1.cms.GCMParameters;
+import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
+import com.distrimind.bouncycastle.crypto.BlockCipher;
+import com.distrimind.bouncycastle.crypto.BufferedBlockCipher;
+import com.distrimind.bouncycastle.crypto.CipherParameters;
+import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
+import com.distrimind.bouncycastle.crypto.DataLengthException;
+import com.distrimind.bouncycastle.crypto.InvalidCipherTextException;
+import com.distrimind.bouncycastle.crypto.OutputLengthException;
+import com.distrimind.bouncycastle.crypto.engines.DSTU7624Engine;
+import com.distrimind.bouncycastle.crypto.modes.AEADBlockCipher;
+import com.distrimind.bouncycastle.crypto.modes.AEADCipher;
+import com.distrimind.bouncycastle.crypto.modes.CBCBlockCipher;
+import com.distrimind.bouncycastle.crypto.modes.CCMBlockCipher;
+import com.distrimind.bouncycastle.crypto.modes.CFBBlockCipher;
+import com.distrimind.bouncycastle.crypto.modes.CTSBlockCipher;
+import com.distrimind.bouncycastle.crypto.modes.EAXBlockCipher;
+import com.distrimind.bouncycastle.crypto.modes.GCFBBlockCipher;
+import com.distrimind.bouncycastle.crypto.modes.GCMBlockCipher;
+import com.distrimind.bouncycastle.crypto.modes.GCMSIVBlockCipher;
+import com.distrimind.bouncycastle.crypto.modes.GOFBBlockCipher;
+import com.distrimind.bouncycastle.crypto.modes.KCCMBlockCipher;
+import com.distrimind.bouncycastle.crypto.modes.KCTRBlockCipher;
+import com.distrimind.bouncycastle.crypto.modes.KGCMBlockCipher;
+import com.distrimind.bouncycastle.crypto.modes.OCBBlockCipher;
+import com.distrimind.bouncycastle.crypto.modes.OFBBlockCipher;
+import com.distrimind.bouncycastle.crypto.modes.OpenPGPCFBBlockCipher;
+import com.distrimind.bouncycastle.crypto.modes.PGPCFBBlockCipher;
+import com.distrimind.bouncycastle.crypto.modes.SICBlockCipher;
+import com.distrimind.bouncycastle.crypto.paddings.BlockCipherPadding;
+import com.distrimind.bouncycastle.crypto.paddings.ISO10126d2Padding;
+import com.distrimind.bouncycastle.crypto.paddings.ISO7816d4Padding;
+import com.distrimind.bouncycastle.crypto.paddings.PaddedBufferedBlockCipher;
+import com.distrimind.bouncycastle.crypto.paddings.TBCPadding;
+import com.distrimind.bouncycastle.crypto.paddings.X923Padding;
+import com.distrimind.bouncycastle.crypto.paddings.ZeroBytePadding;
+import com.distrimind.bouncycastle.crypto.params.AEADParameters;
+import com.distrimind.bouncycastle.crypto.params.KeyParameter;
+import com.distrimind.bouncycastle.crypto.params.ParametersWithIV;
+import com.distrimind.bouncycastle.crypto.params.ParametersWithRandom;
+import com.distrimind.bouncycastle.crypto.params.ParametersWithSBox;
+import com.distrimind.bouncycastle.crypto.params.RC2Parameters;
+import com.distrimind.bouncycastle.crypto.params.RC5Parameters;
 import org.bouncycastle.jcajce.PBKDF1Key;
 import org.bouncycastle.jcajce.PBKDF1KeyWithParameters;
 import org.bouncycastle.jcajce.PKCS12Key;
@@ -80,8 +79,8 @@ import org.bouncycastle.jcajce.spec.AEADParameterSpec;
 import org.bouncycastle.jcajce.spec.FPEParameterSpec;
 import org.bouncycastle.jcajce.spec.GOST28147ParameterSpec;
 import org.bouncycastle.jcajce.spec.RepeatedSecretKeySpec;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Strings;
 
 public class BaseBlockCipher
     extends BaseWrapCipher
@@ -194,14 +193,14 @@ public class BaseBlockCipher
     }
 
     protected BaseBlockCipher(
-        org.bouncycastle.crypto.BlockCipher engine,
+        BlockCipher engine,
         int ivLength)
     {
         this(engine, true, ivLength);
     }
 
     protected BaseBlockCipher(
-        org.bouncycastle.crypto.BlockCipher engine,
+        BlockCipher engine,
         boolean fixedIv,
         int ivLength)
     {
@@ -1247,7 +1246,7 @@ public class BaseBlockCipher
 
         public String getAlgorithmName();
 
-        public org.bouncycastle.crypto.BlockCipher getUnderlyingCipher();
+        public BlockCipher getUnderlyingCipher();
 
         public int getOutputSize(int len);
 
@@ -1276,12 +1275,12 @@ public class BaseBlockCipher
             this.cipher = cipher;
         }
 
-        BufferedGenericBlockCipher(org.bouncycastle.crypto.BlockCipher cipher)
+        BufferedGenericBlockCipher(BlockCipher cipher)
         {
             this.cipher = new PaddedBufferedBlockCipher(cipher);
         }
 
-        BufferedGenericBlockCipher(org.bouncycastle.crypto.BlockCipher cipher, BlockCipherPadding padding)
+        BufferedGenericBlockCipher(BlockCipher cipher, BlockCipherPadding padding)
         {
             this.cipher = new PaddedBufferedBlockCipher(cipher, padding);
         }
@@ -1302,7 +1301,7 @@ public class BaseBlockCipher
             return cipher.getUnderlyingCipher().getAlgorithmName();
         }
 
-        public org.bouncycastle.crypto.BlockCipher getUnderlyingCipher()
+        public BlockCipher getUnderlyingCipher()
         {
             return cipher.getUnderlyingCipher();
         }
@@ -1375,7 +1374,7 @@ public class BaseBlockCipher
             return cipher.getAlgorithmName();
         }
 
-        public org.bouncycastle.crypto.BlockCipher getUnderlyingCipher()
+        public BlockCipher getUnderlyingCipher()
         {
             throw new IllegalStateException("not applicable for FPE");
         }
@@ -1483,7 +1482,7 @@ public class BaseBlockCipher
             return false;
         }
 
-        public org.bouncycastle.crypto.BlockCipher getUnderlyingCipher()
+        public BlockCipher getUnderlyingCipher()
         {
             if (cipher instanceof AEADBlockCipher)
             {

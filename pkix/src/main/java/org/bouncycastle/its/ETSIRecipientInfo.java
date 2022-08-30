@@ -10,7 +10,7 @@ import org.bouncycastle.oer.its.ieee1609dot2.RecipientInfo;
 import org.bouncycastle.oer.its.ieee1609dot2.SymmetricCiphertext;
 import org.bouncycastle.oer.its.ieee1609dot2.basetypes.EccP256CurvePoint;
 import org.bouncycastle.oer.its.ieee1609dot2.basetypes.EciesP256EncryptedKey;
-import org.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Arrays;
 
 public class ETSIRecipientInfo
 {

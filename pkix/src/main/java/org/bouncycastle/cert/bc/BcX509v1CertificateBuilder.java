@@ -4,10 +4,10 @@ import java.io.IOException;
 import java.math.BigInteger;
 import java.util.Date;
 
-import org.bouncycastle.asn1.x500.X500Name;
+import com.distrimind.bouncycastle.asn1.x500.X500Name;
 import org.bouncycastle.cert.X509v1CertificateBuilder;
-import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
-import org.bouncycastle.crypto.util.SubjectPublicKeyInfoFactory;
+import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
+import com.distrimind.bouncycastle.crypto.util.SubjectPublicKeyInfoFactory;
 
 /**
  * JCA helper class to allow BC lightweight objects to be used in the construction of a Version 1 certificate.

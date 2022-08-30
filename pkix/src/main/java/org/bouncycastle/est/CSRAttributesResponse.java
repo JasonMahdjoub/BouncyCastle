@@ -4,11 +4,11 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1Primitive;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import org.bouncycastle.asn1.est.AttrOrOID;
 import org.bouncycastle.asn1.est.CsrAttrs;
-import org.bouncycastle.util.Encodable;
+import com.distrimind.bouncycastle.util.Encodable;
 
 /**
  * Wrapper class around a CsrAttrs structure.

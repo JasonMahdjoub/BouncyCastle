@@ -3,8 +3,8 @@ package org.bouncycastle.openpgp.test;
 import java.util.Arrays;
 
 import org.bouncycastle.bcpg.sig.RegularExpression;
-import org.bouncycastle.util.Strings;
-import org.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 public class RegexTest
     extends SimpleTest

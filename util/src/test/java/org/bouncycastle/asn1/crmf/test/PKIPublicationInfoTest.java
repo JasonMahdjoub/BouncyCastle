@@ -4,9 +4,9 @@ import java.io.IOException;
 
 import org.bouncycastle.asn1.crmf.PKIPublicationInfo;
 import org.bouncycastle.asn1.crmf.SinglePubInfo;
-import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.asn1.x509.GeneralName;
-import org.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.asn1.x500.X500Name;
+import com.distrimind.bouncycastle.asn1.x509.GeneralName;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 
 public class PKIPublicationInfoTest

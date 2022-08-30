@@ -8,7 +8,7 @@ import java.security.spec.AlgorithmParameterSpec;
 
 import javax.crypto.Cipher;
 
-import org.bouncycastle.pqc.math.linearalgebra.ByteUtils;
+import com.distrimind.bouncycastle.pqc.math.linearalgebra.ByteUtils;
 
 
 public abstract class AsymmetricBlockCipherTest

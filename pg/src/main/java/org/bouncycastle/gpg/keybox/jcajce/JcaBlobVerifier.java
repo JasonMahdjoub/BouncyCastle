@@ -7,7 +7,7 @@ import java.security.NoSuchProviderException;
 
 import org.bouncycastle.gpg.keybox.BlobVerifier;
 import org.bouncycastle.jcajce.util.JcaJceHelper;
-import org.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Arrays;
 
 public class JcaBlobVerifier
     implements BlobVerifier

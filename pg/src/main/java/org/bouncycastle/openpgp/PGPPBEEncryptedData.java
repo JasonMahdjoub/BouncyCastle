@@ -11,8 +11,8 @@ import org.bouncycastle.bcpg.SymmetricKeyEncSessionPacket;
 import org.bouncycastle.openpgp.operator.PBEDataDecryptorFactory;
 import org.bouncycastle.openpgp.operator.PGPDataDecryptor;
 import org.bouncycastle.openpgp.operator.SessionKeyDataDecryptorFactory;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.io.TeeInputStream;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.io.TeeInputStream;
 
 /**
  * A password based encryption object.

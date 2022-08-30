@@ -1,9 +1,9 @@
 package org.bouncycastle.jcajce.provider.digest;
 
-import org.bouncycastle.asn1.ua.UAObjectIdentifiers;
-import org.bouncycastle.crypto.CipherKeyGenerator;
-import org.bouncycastle.crypto.digests.DSTU7564Digest;
-import org.bouncycastle.crypto.macs.DSTU7564Mac;
+import com.distrimind.bouncycastle.asn1.ua.UAObjectIdentifiers;
+import com.distrimind.bouncycastle.crypto.CipherKeyGenerator;
+import com.distrimind.bouncycastle.crypto.digests.DSTU7564Digest;
+import com.distrimind.bouncycastle.crypto.macs.DSTU7564Mac;
 import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import org.bouncycastle.jcajce.provider.symmetric.util.BaseKeyGenerator;
 import org.bouncycastle.jcajce.provider.symmetric.util.BaseMac;

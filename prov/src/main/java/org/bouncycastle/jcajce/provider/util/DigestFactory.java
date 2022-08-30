@@ -5,12 +5,12 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.nist.NISTObjectIdentifiers;
-import org.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
-import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.nist.NISTObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
+import com.distrimind.bouncycastle.crypto.Digest;
+import com.distrimind.bouncycastle.util.Strings;
 
 public class DigestFactory
 {
@@ -139,60 +139,60 @@ public class DigestFactory
         
         if (sha1.contains(digestName))
         {
-            return org.bouncycastle.crypto.util.DigestFactory.createSHA1();
+            return com.distrimind.bouncycastle.crypto.util.DigestFactory.createSHA1();
         }
         if (md5.contains(digestName))
         {
-            return org.bouncycastle.crypto.util.DigestFactory.createMD5();
+            return com.distrimind.bouncycastle.crypto.util.DigestFactory.createMD5();
         }
         if (sha224.contains(digestName))
         {
-            return org.bouncycastle.crypto.util.DigestFactory.createSHA224();
+            return com.distrimind.bouncycastle.crypto.util.DigestFactory.createSHA224();
         }
         if (sha256.contains(digestName))
         {
-            return org.bouncycastle.crypto.util.DigestFactory.createSHA256();
+            return com.distrimind.bouncycastle.crypto.util.DigestFactory.createSHA256();
         }
         if (sha384.contains(digestName))
         {
-            return org.bouncycastle.crypto.util.DigestFactory.createSHA384();
+            return com.distrimind.bouncycastle.crypto.util.DigestFactory.createSHA384();
         }
         if (sha512.contains(digestName))
         {
-            return org.bouncycastle.crypto.util.DigestFactory.createSHA512();
+            return com.distrimind.bouncycastle.crypto.util.DigestFactory.createSHA512();
         }
         if (sha512_224.contains(digestName))
         {
-            return org.bouncycastle.crypto.util.DigestFactory.createSHA512_224();
+            return com.distrimind.bouncycastle.crypto.util.DigestFactory.createSHA512_224();
         }
         if (sha512_256.contains(digestName))
         {
-            return org.bouncycastle.crypto.util.DigestFactory.createSHA512_256();
+            return com.distrimind.bouncycastle.crypto.util.DigestFactory.createSHA512_256();
         }
 
         if (sha3_224.contains(digestName))
         {
-            return org.bouncycastle.crypto.util.DigestFactory.createSHA3_224();
+            return com.distrimind.bouncycastle.crypto.util.DigestFactory.createSHA3_224();
         }
         if (sha3_256.contains(digestName))
         {
-            return org.bouncycastle.crypto.util.DigestFactory.createSHA3_256();
+            return com.distrimind.bouncycastle.crypto.util.DigestFactory.createSHA3_256();
         }
         if (sha3_384.contains(digestName))
         {
-            return org.bouncycastle.crypto.util.DigestFactory.createSHA3_384();
+            return com.distrimind.bouncycastle.crypto.util.DigestFactory.createSHA3_384();
         }
         if (sha3_512.contains(digestName))
         {
-            return org.bouncycastle.crypto.util.DigestFactory.createSHA3_512();
+            return com.distrimind.bouncycastle.crypto.util.DigestFactory.createSHA3_512();
         }
         if (shake128.contains(digestName))
         {
-            return org.bouncycastle.crypto.util.DigestFactory.createSHAKE128();
+            return com.distrimind.bouncycastle.crypto.util.DigestFactory.createSHAKE128();
         }
         if (shake256.contains(digestName))
         {
-            return org.bouncycastle.crypto.util.DigestFactory.createSHAKE256();
+            return com.distrimind.bouncycastle.crypto.util.DigestFactory.createSHAKE256();
         }
 
         return null;

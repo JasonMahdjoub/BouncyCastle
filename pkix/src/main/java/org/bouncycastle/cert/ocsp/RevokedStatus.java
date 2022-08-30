@@ -2,9 +2,9 @@ package org.bouncycastle.cert.ocsp;
 
 import java.util.Date;
 
-import org.bouncycastle.asn1.ASN1GeneralizedTime;
-import org.bouncycastle.asn1.ocsp.RevokedInfo;
-import org.bouncycastle.asn1.x509.CRLReason;
+import com.distrimind.bouncycastle.asn1.ASN1GeneralizedTime;
+import com.distrimind.bouncycastle.asn1.ocsp.RevokedInfo;
+import com.distrimind.bouncycastle.asn1.x509.CRLReason;
 
 /**
  * wrapper for the RevokedInfo object

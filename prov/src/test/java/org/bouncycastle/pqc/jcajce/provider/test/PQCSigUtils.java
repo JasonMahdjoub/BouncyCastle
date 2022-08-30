@@ -1,6 +1,6 @@
 package org.bouncycastle.pqc.jcajce.provider.test;
 
-import org.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Arrays;
 
 public class PQCSigUtils
 {

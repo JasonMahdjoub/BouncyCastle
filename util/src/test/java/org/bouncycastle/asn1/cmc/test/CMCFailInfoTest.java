@@ -5,9 +5,9 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import org.bouncycastle.asn1.ASN1Integer;
+import com.distrimind.bouncycastle.asn1.ASN1Integer;
 import org.bouncycastle.asn1.cmc.CMCFailInfo;
-import org.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 public class CMCFailInfoTest
     extends SimpleTest

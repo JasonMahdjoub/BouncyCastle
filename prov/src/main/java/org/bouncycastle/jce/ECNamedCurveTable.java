@@ -2,8 +2,9 @@ package org.bouncycastle.jce;
 
 import java.util.Enumeration;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.x9.X9ECParameters;
+import com.distrimind.bouncycastle.crypto.ec.CustomNamedCurves;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.x9.X9ECParameters;
 import org.bouncycastle.jce.spec.ECNamedCurveParameterSpec;
 
 /**
@@ -21,12 +22,12 @@ public class ECNamedCurveTable
     public static ECNamedCurveParameterSpec getParameterSpec(
         String  name)
     {
-        X9ECParameters  ecP = org.bouncycastle.crypto.ec.CustomNamedCurves.getByName(name);
+        X9ECParameters  ecP = CustomNamedCurves.getByName(name);
         if (ecP == null)
         {
             try
             {
-                ecP = org.bouncycastle.crypto.ec.CustomNamedCurves.getByOID(new ASN1ObjectIdentifier(name));
+                ecP = CustomNamedCurves.getByOID(new ASN1ObjectIdentifier(name));
             }
             catch (IllegalArgumentException e)
             {
@@ -35,12 +36,12 @@ public class ECNamedCurveTable
 
             if (ecP == null)
             {
-                ecP = org.bouncycastle.asn1.x9.ECNamedCurveTable.getByName(name);
+                ecP = com.distrimind.bouncycastle.asn1.x9.ECNamedCurveTable.getByName(name);
                 if (ecP == null)
                 {
                     try
                     {
-                        ecP = org.bouncycastle.asn1.x9.ECNamedCurveTable.getByOID(new ASN1ObjectIdentifier(name));
+                        ecP = com.distrimind.bouncycastle.asn1.x9.ECNamedCurveTable.getByOID(new ASN1ObjectIdentifier(name));
                     }
                     catch (IllegalArgumentException e)
                     {
@@ -71,6 +72,6 @@ public class ECNamedCurveTable
      */
     public static Enumeration getNames()
     {
-        return org.bouncycastle.asn1.x9.ECNamedCurveTable.getNames();
+        return com.distrimind.bouncycastle.asn1.x9.ECNamedCurveTable.getNames();
     }
 }

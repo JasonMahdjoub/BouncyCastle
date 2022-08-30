@@ -14,10 +14,10 @@ import java.util.Set;
 
 import org.bouncycastle.openpgp.PGPExtendedKeyAttribute;
 import org.bouncycastle.openpgp.PGPRuntimeOperationException;
-import org.bouncycastle.util.Characters;
-import org.bouncycastle.util.Strings;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.io.Streams;
+import com.distrimind.bouncycastle.util.Characters;
+import com.distrimind.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.util.encoders.Hex;
+import com.distrimind.bouncycastle.util.io.Streams;
 
 public class SExpression
 {

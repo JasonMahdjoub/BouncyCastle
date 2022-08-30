@@ -1,7 +1,7 @@
 package org.bouncycastle.oer.its.template.etsi103097.extension;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1Integer;
+import com.distrimind.bouncycastle.asn1.ASN1Encodable;
+import com.distrimind.bouncycastle.asn1.ASN1Integer;
 import org.bouncycastle.oer.Element;
 import org.bouncycastle.oer.OERDefinition;
 import org.bouncycastle.oer.Switch;

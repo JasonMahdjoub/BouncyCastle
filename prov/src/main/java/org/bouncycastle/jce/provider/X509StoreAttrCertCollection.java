@@ -2,8 +2,8 @@ package org.bouncycastle.jce.provider;
 
 import java.util.Collection;
 
-import org.bouncycastle.util.CollectionStore;
-import org.bouncycastle.util.Selector;
+import com.distrimind.bouncycastle.util.CollectionStore;
+import com.distrimind.bouncycastle.util.Selector;
 import org.bouncycastle.x509.X509CollectionStoreParameters;
 import org.bouncycastle.x509.X509StoreParameters;
 import org.bouncycastle.x509.X509StoreSpi;

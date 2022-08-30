@@ -6,7 +6,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.bouncycastle.asn1.ASN1Encodable;
+import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import org.bouncycastle.oer.Element;
 import org.bouncycastle.oer.OEREncoder;
 import org.bouncycastle.oer.OERInputStream;
@@ -15,8 +15,8 @@ import org.bouncycastle.oer.its.ieee1609dot2.EncryptedData;
 import org.bouncycastle.oer.its.ieee1609dot2.Ieee1609Dot2Content;
 import org.bouncycastle.oer.its.ieee1609dot2.RecipientInfo;
 import org.bouncycastle.oer.its.template.etsi103097.EtsiTs103097Module;
-import org.bouncycastle.util.CollectionStore;
-import org.bouncycastle.util.Store;
+import com.distrimind.bouncycastle.util.CollectionStore;
+import com.distrimind.bouncycastle.util.Store;
 
 public class ETSIEncryptedData
 {

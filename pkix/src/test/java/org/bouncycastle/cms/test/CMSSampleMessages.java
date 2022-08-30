@@ -1,6 +1,6 @@
 package org.bouncycastle.cms.test;
 
-import org.bouncycastle.util.encoders.Base64;
+import com.distrimind.bouncycastle.util.encoders.Base64;
 
 public class CMSSampleMessages
 {

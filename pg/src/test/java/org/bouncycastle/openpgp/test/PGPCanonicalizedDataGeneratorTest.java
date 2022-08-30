@@ -8,9 +8,9 @@ import java.util.Date;
 
 import org.bouncycastle.openpgp.PGPCanonicalizedDataGenerator;
 import org.bouncycastle.openpgp.PGPLiteralData;
-import org.bouncycastle.util.Strings;
-import org.bouncycastle.util.io.Streams;
-import org.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.util.io.Streams;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 public class PGPCanonicalizedDataGeneratorTest
     extends SimpleTest

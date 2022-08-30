@@ -9,7 +9,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.bouncycastle.cert.X509CRLHolder;
-import org.bouncycastle.util.CollectionStore;
+import com.distrimind.bouncycastle.util.CollectionStore;
 
 /**
  * Class for storing CRLs for later lookup.

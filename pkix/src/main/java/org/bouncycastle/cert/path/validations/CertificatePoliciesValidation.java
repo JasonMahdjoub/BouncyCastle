@@ -2,14 +2,14 @@ package org.bouncycastle.cert.path.validations;
 
 import java.math.BigInteger;
 
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.x509.Extension;
-import org.bouncycastle.asn1.x509.PolicyConstraints;
+import com.distrimind.bouncycastle.asn1.ASN1Integer;
+import com.distrimind.bouncycastle.asn1.x509.Extension;
+import com.distrimind.bouncycastle.asn1.x509.PolicyConstraints;
 import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.cert.path.CertPathValidation;
 import org.bouncycastle.cert.path.CertPathValidationContext;
 import org.bouncycastle.cert.path.CertPathValidationException;
-import org.bouncycastle.util.Memoable;
+import com.distrimind.bouncycastle.util.Memoable;
 
 public class CertificatePoliciesValidation
     implements CertPathValidation

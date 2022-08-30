@@ -2,9 +2,9 @@ package org.bouncycastle.asn1.cms;
 
 import java.io.IOException;
 
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.ASN1SequenceParser;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.asn1.ASN1Integer;
+import com.distrimind.bouncycastle.asn1.ASN1SequenceParser;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 
 /**
  * Parser of <a href="https://tools.ietf.org/html/rfc3274">RFC 3274</a> {@link CompressedData} object.

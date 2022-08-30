@@ -3,7 +3,7 @@ package org.bouncycastle.pqc.jcajce.provider.test;
 import java.security.KeyFactory;
 import java.security.KeyPairGenerator;
 
-import org.bouncycastle.pqc.asn1.PQCObjectIdentifiers;
+import com.distrimind.bouncycastle.pqc.asn1.PQCObjectIdentifiers;
 import org.bouncycastle.pqc.jcajce.spec.McElieceCCA2KeyGenParameterSpec;
 
 

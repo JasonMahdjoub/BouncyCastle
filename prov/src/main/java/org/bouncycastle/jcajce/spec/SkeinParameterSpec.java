@@ -13,8 +13,11 @@ import java.util.Iterator;
 import java.util.Locale;
 import java.util.Map;
 
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Integers;
+import com.distrimind.bouncycastle.crypto.digests.SkeinDigest;
+import com.distrimind.bouncycastle.crypto.digests.SkeinEngine;
+import com.distrimind.bouncycastle.crypto.macs.SkeinMac;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Integers;
 
 /**
  * Parameters for the Skein hash function - a series of byte[] strings identified by integer tags.
@@ -32,9 +35,9 @@ import org.bouncycastle.util.Integers;
  * {@link org.bouncycastle.jcajce.spec.SkeinParameterSpec.Builder#setPersonalisation(byte[]) arbitrary} personalisation string.</li>
  * </ul>
  *
- * @see org.bouncycastle.crypto.digests.SkeinEngine
- * @see org.bouncycastle.crypto.digests.SkeinDigest
- * @see org.bouncycastle.crypto.macs.SkeinMac
+ * @see SkeinEngine
+ * @see SkeinDigest
+ * @see SkeinMac
  */
 public class SkeinParameterSpec
     implements AlgorithmParameterSpec

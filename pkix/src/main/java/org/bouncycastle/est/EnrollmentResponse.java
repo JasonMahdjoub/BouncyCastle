@@ -1,7 +1,7 @@
 package org.bouncycastle.est;
 
 import org.bouncycastle.cert.X509CertificateHolder;
-import org.bouncycastle.util.Store;
+import com.distrimind.bouncycastle.util.Store;
 
 
 /**

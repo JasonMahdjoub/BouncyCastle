@@ -2,11 +2,11 @@ package org.bouncycastle.asn1.cmc.test;
 
 import java.math.BigInteger;
 
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.asn1.ASN1Integer;
+import com.distrimind.bouncycastle.asn1.DERSequence;
 import org.bouncycastle.asn1.cmc.GetCert;
-import org.bouncycastle.asn1.x509.GeneralName;
-import org.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.asn1.x509.GeneralName;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 
 public class GetCertTest

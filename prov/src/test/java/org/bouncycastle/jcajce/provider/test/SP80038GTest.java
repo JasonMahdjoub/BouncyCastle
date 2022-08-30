@@ -8,12 +8,12 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
 import junit.framework.TestCase;
-import org.bouncycastle.crypto.AlphabetMapper;
-import org.bouncycastle.crypto.util.BasicAlphabetMapper;
+import com.distrimind.bouncycastle.crypto.AlphabetMapper;
+import com.distrimind.bouncycastle.crypto.util.BasicAlphabetMapper;
 import org.bouncycastle.jcajce.spec.FPEParameterSpec;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.encoders.Hex;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.encoders.Hex;
 
 public class SP80038GTest
     extends TestCase

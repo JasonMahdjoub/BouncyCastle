@@ -2,9 +2,9 @@ package org.bouncycastle.oer.its.template.ieee1609dot2;
 
 import java.math.BigInteger;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.DERBitString;
+import com.distrimind.bouncycastle.asn1.ASN1Encodable;
+import com.distrimind.bouncycastle.asn1.ASN1Integer;
+import com.distrimind.bouncycastle.asn1.DERBitString;
 import org.bouncycastle.oer.Element;
 import org.bouncycastle.oer.ElementSupplier;
 import org.bouncycastle.oer.OERDefinition;
@@ -12,7 +12,7 @@ import org.bouncycastle.oer.Switch;
 import org.bouncycastle.oer.SwitchIndexer;
 import org.bouncycastle.oer.its.template.etsi103097.extension.EtsiTs103097ExtensionModule;
 import org.bouncycastle.oer.its.template.ieee1609dot2.basetypes.Ieee1609Dot2BaseTypes;
-import org.bouncycastle.util.BigIntegers;
+import com.distrimind.bouncycastle.util.BigIntegers;
 
 /**
  * OER forward definition builders for OER encoded data.

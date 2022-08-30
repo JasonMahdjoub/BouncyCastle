@@ -2,7 +2,7 @@ package org.bouncycastle.jcajce.provider.asymmetric.x509;
 
 import java.security.cert.CRLException;
 
-import org.bouncycastle.asn1.x509.CertificateList;
+import com.distrimind.bouncycastle.asn1.x509.CertificateList;
 import org.bouncycastle.jcajce.util.JcaJceHelper;
 
 /**

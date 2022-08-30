@@ -18,9 +18,9 @@ import org.bouncycastle.bcpg.PacketTags;
 import org.bouncycastle.bcpg.PublicKeyPacket;
 import org.bouncycastle.bcpg.TrustPacket;
 import org.bouncycastle.openpgp.operator.KeyFingerPrintCalculator;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Iterable;
-import org.bouncycastle.util.Longs;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Iterable;
+import com.distrimind.bouncycastle.util.Longs;
 
 /**
  * Class to hold a single master public key and its subkeys.

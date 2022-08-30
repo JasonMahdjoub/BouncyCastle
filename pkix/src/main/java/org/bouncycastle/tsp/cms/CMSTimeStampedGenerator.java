@@ -2,11 +2,11 @@ package org.bouncycastle.tsp.cms;
 
 import java.net.URI;
 
-import org.bouncycastle.asn1.ASN1Boolean;
-import org.bouncycastle.asn1.ASN1IA5String;
-import org.bouncycastle.asn1.ASN1UTF8String;
-import org.bouncycastle.asn1.DERIA5String;
-import org.bouncycastle.asn1.DERUTF8String;
+import com.distrimind.bouncycastle.asn1.ASN1Boolean;
+import com.distrimind.bouncycastle.asn1.ASN1IA5String;
+import com.distrimind.bouncycastle.asn1.ASN1UTF8String;
+import com.distrimind.bouncycastle.asn1.DERIA5String;
+import com.distrimind.bouncycastle.asn1.DERUTF8String;
 import org.bouncycastle.asn1.cms.Attributes;
 import org.bouncycastle.asn1.cms.MetaData;
 import org.bouncycastle.cms.CMSException;

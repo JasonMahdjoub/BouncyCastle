@@ -12,27 +12,27 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.cryptopro.ECGOST3410NamedCurves;
-import org.bouncycastle.asn1.cryptopro.GOST3410PublicKeyAlgParameters;
-import org.bouncycastle.asn1.x9.ECNamedCurveTable;
-import org.bouncycastle.asn1.x9.X962Parameters;
-import org.bouncycastle.asn1.x9.X9ECParameters;
-import org.bouncycastle.asn1.x9.X9ECParametersHolder;
-import org.bouncycastle.crypto.ec.CustomNamedCurves;
-import org.bouncycastle.crypto.params.ECDomainParameters;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.ASN1Sequence;
+import com.distrimind.bouncycastle.asn1.cryptopro.ECGOST3410NamedCurves;
+import com.distrimind.bouncycastle.asn1.cryptopro.GOST3410PublicKeyAlgParameters;
+import com.distrimind.bouncycastle.asn1.x9.ECNamedCurveTable;
+import com.distrimind.bouncycastle.asn1.x9.X962Parameters;
+import com.distrimind.bouncycastle.asn1.x9.X9ECParameters;
+import com.distrimind.bouncycastle.asn1.x9.X9ECParametersHolder;
+import com.distrimind.bouncycastle.crypto.ec.CustomNamedCurves;
+import com.distrimind.bouncycastle.crypto.params.ECDomainParameters;
 import org.bouncycastle.jcajce.provider.config.ProviderConfiguration;
 import org.bouncycastle.jce.ECGOST3410NamedCurveTable;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.jce.spec.ECNamedCurveParameterSpec;
 import org.bouncycastle.jce.spec.ECNamedCurveSpec;
-import org.bouncycastle.math.ec.ECAlgorithms;
-import org.bouncycastle.math.ec.ECCurve;
-import org.bouncycastle.math.field.FiniteField;
-import org.bouncycastle.math.field.Polynomial;
-import org.bouncycastle.math.field.PolynomialExtensionField;
-import org.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.math.ec.ECAlgorithms;
+import com.distrimind.bouncycastle.math.ec.ECCurve;
+import com.distrimind.bouncycastle.math.field.FiniteField;
+import com.distrimind.bouncycastle.math.field.Polynomial;
+import com.distrimind.bouncycastle.math.field.PolynomialExtensionField;
+import com.distrimind.bouncycastle.util.Arrays;
 
 public class EC5Util
 {
@@ -326,7 +326,7 @@ public class EC5Util
     {
         ECCurve curve = convertCurve(ecSpec.getCurve());
 
-        org.bouncycastle.math.ec.ECPoint g = convertPoint(curve, ecSpec.getGenerator());
+        com.distrimind.bouncycastle.math.ec.ECPoint g = convertPoint(curve, ecSpec.getGenerator());
         BigInteger n = ecSpec.getOrder();
         BigInteger h = BigInteger.valueOf(ecSpec.getCofactor());
         byte[] seed = ecSpec.getCurve().getSeed();
@@ -342,17 +342,17 @@ public class EC5Util
         }
     }
 
-    public static org.bouncycastle.math.ec.ECPoint convertPoint(ECParameterSpec ecSpec, ECPoint point)
+    public static com.distrimind.bouncycastle.math.ec.ECPoint convertPoint(ECParameterSpec ecSpec, ECPoint point)
     {
         return convertPoint(convertCurve(ecSpec.getCurve()), point);
     }
 
-    public static org.bouncycastle.math.ec.ECPoint convertPoint(ECCurve curve, ECPoint point)
+    public static com.distrimind.bouncycastle.math.ec.ECPoint convertPoint(ECCurve curve, ECPoint point)
     {
         return curve.createPoint(point.getAffineX(), point.getAffineY());
     }
 
-    public static ECPoint convertPoint(org.bouncycastle.math.ec.ECPoint point)
+    public static ECPoint convertPoint(com.distrimind.bouncycastle.math.ec.ECPoint point)
     {
         point = point.normalize();
 

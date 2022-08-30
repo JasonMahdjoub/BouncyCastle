@@ -3,8 +3,8 @@ package org.bouncycastle.its;
 import org.bouncycastle.oer.its.ieee1609dot2.PKRecipientInfo;
 import org.bouncycastle.oer.its.ieee1609dot2.RecipientInfo;
 import org.bouncycastle.oer.its.ieee1609dot2.basetypes.HashedId8;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Selector;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Selector;
 
 public class ETSIRecipientID
     implements Selector<ETSIRecipientInfo>

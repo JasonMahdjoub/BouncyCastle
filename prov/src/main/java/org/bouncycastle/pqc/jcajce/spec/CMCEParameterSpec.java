@@ -4,8 +4,8 @@ import java.security.spec.AlgorithmParameterSpec;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.bouncycastle.pqc.crypto.cmce.CMCEParameters;
-import org.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.pqc.crypto.cmce.CMCEParameters;
+import com.distrimind.bouncycastle.util.Strings;
 
 public class CMCEParameterSpec
     implements AlgorithmParameterSpec

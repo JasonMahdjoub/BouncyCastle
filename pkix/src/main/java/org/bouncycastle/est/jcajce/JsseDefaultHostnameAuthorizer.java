@@ -14,13 +14,13 @@ import java.util.logging.Logger;
 
 import javax.net.ssl.SSLSession;
 
-import org.bouncycastle.asn1.x500.AttributeTypeAndValue;
-import org.bouncycastle.asn1.x500.RDN;
-import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.asn1.x500.style.BCStyle;
+import com.distrimind.bouncycastle.asn1.x500.AttributeTypeAndValue;
+import com.distrimind.bouncycastle.asn1.x500.RDN;
+import com.distrimind.bouncycastle.asn1.x500.X500Name;
+import com.distrimind.bouncycastle.asn1.x500.style.BCStyle;
 import org.bouncycastle.est.ESTException;
-import org.bouncycastle.util.Strings;
-import org.bouncycastle.util.encoders.Hex;
+import com.distrimind.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.util.encoders.Hex;
 
 
 /**

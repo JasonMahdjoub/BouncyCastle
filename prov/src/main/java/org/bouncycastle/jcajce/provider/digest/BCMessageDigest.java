@@ -3,7 +3,7 @@ package org.bouncycastle.jcajce.provider.digest;
 import java.security.DigestException;
 import java.security.MessageDigest;
 
-import org.bouncycastle.crypto.Digest;
+import com.distrimind.bouncycastle.crypto.Digest;
 
 public class BCMessageDigest
     extends MessageDigest

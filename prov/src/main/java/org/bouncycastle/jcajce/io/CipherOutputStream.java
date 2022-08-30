@@ -9,7 +9,7 @@ import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 
-import org.bouncycastle.crypto.io.InvalidCipherTextIOException;
+import com.distrimind.bouncycastle.crypto.io.InvalidCipherTextIOException;
 
 /**
  * A CipherOutputStream is composed of an OutputStream and a cipher so that write() methods process

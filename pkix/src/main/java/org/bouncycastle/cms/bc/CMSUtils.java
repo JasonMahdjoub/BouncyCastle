@@ -1,7 +1,7 @@
 package org.bouncycastle.cms.bc;
 
-import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.params.KeyParameter;
+import com.distrimind.bouncycastle.crypto.CipherParameters;
+import com.distrimind.bouncycastle.crypto.params.KeyParameter;
 import org.bouncycastle.operator.GenericKey;
 
 class CMSUtils

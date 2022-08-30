@@ -6,14 +6,14 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.SimpleTimeZone;
 
-import org.bouncycastle.asn1.ASN1Choice;
-import org.bouncycastle.asn1.ASN1GeneralizedTime;
-import org.bouncycastle.asn1.ASN1Object;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.ASN1TaggedObject;
-import org.bouncycastle.asn1.ASN1UTCTime;
-import org.bouncycastle.asn1.DERGeneralizedTime;
-import org.bouncycastle.asn1.DERUTCTime;
+import com.distrimind.bouncycastle.asn1.ASN1Choice;
+import com.distrimind.bouncycastle.asn1.ASN1GeneralizedTime;
+import com.distrimind.bouncycastle.asn1.ASN1Object;
+import com.distrimind.bouncycastle.asn1.ASN1Primitive;
+import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
+import com.distrimind.bouncycastle.asn1.ASN1UTCTime;
+import com.distrimind.bouncycastle.asn1.DERGeneralizedTime;
+import com.distrimind.bouncycastle.asn1.DERUTCTime;
 
 /**
  * <a href="https://tools.ietf.org/html/rfc5652#section-11.3">RFC 5652</a>:
@@ -26,10 +26,10 @@ import org.bouncycastle.asn1.DERUTCTime;
  * </pre>
  * <p>
  * This has a constructor using java.util.Date for input which generates
- * a {@link org.bouncycastle.asn1.DERUTCTime DERUTCTime} object if the
+ * a {@link DERUTCTime DERUTCTime} object if the
  * supplied datetime is in range 1950-01-01-00:00:00 UTC until 2049-12-31-23:59:60 UTC.
  * If the datetime value is outside that range, the generated object will be
- * {@link org.bouncycastle.asn1.DERGeneralizedTime DERGeneralizedTime}.
+ * {@link DERGeneralizedTime DERGeneralizedTime}.
  */
 public class Time
     extends ASN1Object
@@ -122,8 +122,8 @@ public class Time
      * <ul>
      * <li> null &rarr; null
      * <li> {@link Time} object
-     * <li> {@link org.bouncycastle.asn1.DERUTCTime DERUTCTime} object
-     * <li> {@link org.bouncycastle.asn1.DERGeneralizedTime DERGeneralizedTime} object
+     * <li> {@link DERUTCTime DERUTCTime} object
+     * <li> {@link DERGeneralizedTime DERGeneralizedTime} object
      * </ul>
      *
      * @param obj the object we want converted.

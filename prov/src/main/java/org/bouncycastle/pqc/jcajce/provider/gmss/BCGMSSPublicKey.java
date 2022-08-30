@@ -2,21 +2,22 @@ package org.bouncycastle.pqc.jcajce.provider.gmss;
 
 import java.security.PublicKey;
 
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.pqc.asn1.GMSSPublicKey;
-import org.bouncycastle.pqc.asn1.PQCObjectIdentifiers;
-import org.bouncycastle.pqc.asn1.ParSet;
-import org.bouncycastle.pqc.crypto.gmss.GMSSParameters;
-import org.bouncycastle.pqc.crypto.gmss.GMSSPublicKeyParameters;
+import com.distrimind.bouncycastle.pqc.crypto.gmss.GMSSKeyPairGenerator;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.crypto.CipherParameters;
+import com.distrimind.bouncycastle.pqc.asn1.GMSSPublicKey;
+import com.distrimind.bouncycastle.pqc.asn1.PQCObjectIdentifiers;
+import com.distrimind.bouncycastle.pqc.asn1.ParSet;
+import com.distrimind.bouncycastle.pqc.crypto.gmss.GMSSParameters;
+import com.distrimind.bouncycastle.pqc.crypto.gmss.GMSSPublicKeyParameters;
 import org.bouncycastle.pqc.jcajce.provider.util.KeyUtil;
-import org.bouncycastle.util.encoders.Hex;
+import com.distrimind.bouncycastle.util.encoders.Hex;
 
 /**
  * This class implements the GMSS public key and is usually initiated by the <a
  * href="GMSSKeyPairGenerator">GMSSKeyPairGenerator</a>.
  *
- * @see org.bouncycastle.pqc.crypto.gmss.GMSSKeyPairGenerator
+ * @see GMSSKeyPairGenerator
  */
 public class BCGMSSPublicKey
     implements CipherParameters, PublicKey
@@ -45,7 +46,7 @@ public class BCGMSSPublicKey
      *
      * @param pub              a raw GMSS public key
      * @param gmssParameterSet an instance of GMSS Parameterset
-     * @see org.bouncycastle.pqc.crypto.gmss.GMSSKeyPairGenerator
+     * @see GMSSKeyPairGenerator
      */
     public BCGMSSPublicKey(byte[] pub, GMSSParameters gmssParameterSet)
     {

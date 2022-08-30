@@ -10,7 +10,7 @@ import org.bouncycastle.asn1.dvcs.DVCSTime;
 import org.bouncycastle.asn1.dvcs.Data;
 import org.bouncycastle.asn1.dvcs.ServiceType;
 import org.bouncycastle.asn1.dvcs.TargetEtcChain;
-import org.bouncycastle.asn1.x509.Extension;
+import com.distrimind.bouncycastle.asn1.x509.Extension;
 import org.bouncycastle.cert.X509CertificateHolder;
 
 /**

@@ -5,7 +5,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import javax.security.auth.Destroyable;
 
-import org.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Arrays;
 
 /**
  * SP 800-56C Hybrid Value spec, to allow the secret in a key agreement to be

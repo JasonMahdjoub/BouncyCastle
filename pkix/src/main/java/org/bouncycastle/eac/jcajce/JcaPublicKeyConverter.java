@@ -16,19 +16,19 @@ import java.security.spec.EllipticCurve;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.RSAPublicKeySpec;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import org.bouncycastle.asn1.eac.EACObjectIdentifiers;
 import org.bouncycastle.asn1.eac.ECDSAPublicKey;
 import org.bouncycastle.asn1.eac.PublicKeyDataObject;
 import org.bouncycastle.asn1.eac.RSAPublicKey;
 import org.bouncycastle.eac.EACException;
-import org.bouncycastle.math.ec.ECAlgorithms;
-import org.bouncycastle.math.ec.ECCurve;
-import org.bouncycastle.math.ec.ECPoint;
-import org.bouncycastle.math.field.FiniteField;
-import org.bouncycastle.math.field.Polynomial;
-import org.bouncycastle.math.field.PolynomialExtensionField;
-import org.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.math.ec.ECAlgorithms;
+import com.distrimind.bouncycastle.math.ec.ECCurve;
+import com.distrimind.bouncycastle.math.ec.ECPoint;
+import com.distrimind.bouncycastle.math.field.FiniteField;
+import com.distrimind.bouncycastle.math.field.Polynomial;
+import com.distrimind.bouncycastle.math.field.PolynomialExtensionField;
+import com.distrimind.bouncycastle.util.Arrays;
 
 public class JcaPublicKeyConverter
 {
@@ -160,7 +160,7 @@ public class JcaPublicKeyConverter
         }
     }
 
-    private static org.bouncycastle.math.ec.ECPoint convertPoint(
+    private static ECPoint convertPoint(
         ECCurve curve,
         java.security.spec.ECPoint point)
     {

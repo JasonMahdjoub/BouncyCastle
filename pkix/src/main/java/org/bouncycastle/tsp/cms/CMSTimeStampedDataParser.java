@@ -6,8 +6,8 @@ import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import org.bouncycastle.asn1.ASN1IA5String;
-import org.bouncycastle.asn1.BERTags;
+import com.distrimind.bouncycastle.asn1.ASN1IA5String;
+import com.distrimind.bouncycastle.asn1.BERTags;
 import org.bouncycastle.asn1.cms.AttributeTable;
 import org.bouncycastle.asn1.cms.CMSObjectIdentifiers;
 import org.bouncycastle.asn1.cms.ContentInfoParser;
@@ -18,7 +18,7 @@ import org.bouncycastle.operator.DigestCalculator;
 import org.bouncycastle.operator.DigestCalculatorProvider;
 import org.bouncycastle.operator.OperatorCreationException;
 import org.bouncycastle.tsp.TimeStampToken;
-import org.bouncycastle.util.io.Streams;
+import com.distrimind.bouncycastle.util.io.Streams;
 
 public class CMSTimeStampedDataParser
     extends CMSContentInfoParser

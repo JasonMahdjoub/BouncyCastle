@@ -1,6 +1,6 @@
 package org.bouncycastle.x509;
 
-import org.bouncycastle.util.Selector;
+import com.distrimind.bouncycastle.util.Selector;
 
 /**
  * This class is an <code>Selector</code> like implementation to select

@@ -1,6 +1,6 @@
 package org.bouncycastle.jcajce.provider.symmetric;
 
-import org.bouncycastle.crypto.CipherKeyGenerator;
+import com.distrimind.bouncycastle.crypto.CipherKeyGenerator;
 import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import org.bouncycastle.jcajce.provider.symmetric.util.BaseKeyGenerator;
 import org.bouncycastle.jcajce.provider.symmetric.util.BaseMac;
@@ -17,7 +17,7 @@ public final class SipHash128
     {
         public Mac24()
         {
-            super(new org.bouncycastle.crypto.macs.SipHash128());
+            super(new com.distrimind.bouncycastle.crypto.macs.SipHash128());
         }
     }
 
@@ -26,7 +26,7 @@ public final class SipHash128
     {
         public Mac48()
         {
-            super(new org.bouncycastle.crypto.macs.SipHash128(4, 8));
+            super(new com.distrimind.bouncycastle.crypto.macs.SipHash128(4, 8));
         }
     }
 

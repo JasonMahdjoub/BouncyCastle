@@ -1,9 +1,9 @@
 package org.bouncycastle.gpg.keybox.bc;
 
-import org.bouncycastle.crypto.digests.MD5Digest;
-import org.bouncycastle.crypto.digests.SHA1Digest;
+import com.distrimind.bouncycastle.crypto.digests.MD5Digest;
+import com.distrimind.bouncycastle.crypto.digests.SHA1Digest;
 import org.bouncycastle.gpg.keybox.BlobVerifier;
-import org.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Arrays;
 
 public class BcBlobVerifier
     implements BlobVerifier

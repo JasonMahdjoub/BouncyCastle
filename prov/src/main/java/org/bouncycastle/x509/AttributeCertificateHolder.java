@@ -14,21 +14,21 @@ import java.util.List;
 
 import javax.security.auth.x500.X500Principal;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.DERSequence;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x509.GeneralName;
-import org.bouncycastle.asn1.x509.GeneralNames;
-import org.bouncycastle.asn1.x509.Holder;
-import org.bouncycastle.asn1.x509.IssuerSerial;
-import org.bouncycastle.asn1.x509.ObjectDigestInfo;
+import com.distrimind.bouncycastle.asn1.ASN1Encodable;
+import com.distrimind.bouncycastle.asn1.ASN1Integer;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.ASN1Sequence;
+import com.distrimind.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.asn1.x509.GeneralName;
+import com.distrimind.bouncycastle.asn1.x509.GeneralNames;
+import com.distrimind.bouncycastle.asn1.x509.Holder;
+import com.distrimind.bouncycastle.asn1.x509.IssuerSerial;
+import com.distrimind.bouncycastle.asn1.x509.ObjectDigestInfo;
 import org.bouncycastle.jce.PrincipalUtil;
 import org.bouncycastle.jce.X509Principal;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Selector;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Selector;
 
 /**
  * The Holder object.
@@ -60,7 +60,7 @@ public class AttributeCertificateHolder
     public AttributeCertificateHolder(X509Principal issuerName,
         BigInteger serialNumber)
     {
-        holder = new org.bouncycastle.asn1.x509.Holder(new IssuerSerial(
+        holder = new Holder(new IssuerSerial(
             GeneralNames.getInstance(new DERSequence(new GeneralName(issuerName))),
             new ASN1Integer(serialNumber)));
     }

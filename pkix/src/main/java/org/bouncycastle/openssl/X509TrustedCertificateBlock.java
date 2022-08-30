@@ -2,10 +2,10 @@ package org.bouncycastle.openssl;
 
 import java.io.IOException;
 
-import org.bouncycastle.asn1.ASN1InputStream;
-import org.bouncycastle.asn1.ASN1Object;
+import com.distrimind.bouncycastle.asn1.ASN1InputStream;
+import com.distrimind.bouncycastle.asn1.ASN1Object;
 import org.bouncycastle.cert.X509CertificateHolder;
-import org.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Arrays;
 
 /**
  * Holder for an OpenSSL trusted certificate block.

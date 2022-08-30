@@ -1,7 +1,7 @@
 package org.bouncycastle.cert.ocsp;
 
-import org.bouncycastle.asn1.ocsp.Request;
-import org.bouncycastle.asn1.x509.Extensions;
+import com.distrimind.bouncycastle.asn1.ocsp.Request;
+import com.distrimind.bouncycastle.asn1.x509.Extensions;
 
 public class Req
 {

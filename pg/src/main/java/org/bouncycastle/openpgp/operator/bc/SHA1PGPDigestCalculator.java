@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import org.bouncycastle.bcpg.HashAlgorithmTags;
-import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.digests.SHA1Digest;
+import com.distrimind.bouncycastle.crypto.Digest;
+import com.distrimind.bouncycastle.crypto.digests.SHA1Digest;
 import org.bouncycastle.openpgp.operator.PGPDigestCalculator;
 
 class SHA1PGPDigestCalculator

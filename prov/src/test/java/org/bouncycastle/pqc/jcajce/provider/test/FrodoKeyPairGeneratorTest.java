@@ -1,6 +1,6 @@
 package org.bouncycastle.pqc.jcajce.provider.test;
 
-import org.bouncycastle.asn1.bc.BCObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.bc.BCObjectIdentifiers;
 import org.bouncycastle.pqc.jcajce.spec.FrodoParameterSpec;
 
 import java.security.KeyFactory;

@@ -2,8 +2,8 @@ package org.bouncycastle.pqc.jcajce.spec;
 
 import java.security.spec.AlgorithmParameterSpec;
 
-import org.bouncycastle.pqc.crypto.lms.LMOtsParameters;
-import org.bouncycastle.pqc.crypto.lms.LMSigParameters;
+import com.distrimind.bouncycastle.pqc.crypto.lms.LMOtsParameters;
+import com.distrimind.bouncycastle.pqc.crypto.lms.LMSigParameters;
 
 /**
  * ParameterSpec for the Leighton-Micali Hash-Based Signature (LMS) scheme.

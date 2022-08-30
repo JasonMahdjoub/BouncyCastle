@@ -5,10 +5,10 @@ import java.util.Date;
 
 import org.bouncycastle.asn1.dvcs.DVCSRequestInformation;
 import org.bouncycastle.asn1.dvcs.DVCSTime;
-import org.bouncycastle.asn1.x509.GeneralNames;
-import org.bouncycastle.asn1.x509.PolicyInformation;
+import com.distrimind.bouncycastle.asn1.x509.GeneralNames;
+import com.distrimind.bouncycastle.asn1.x509.PolicyInformation;
 import org.bouncycastle.tsp.TimeStampToken;
-import org.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Arrays;
 
 /**
  * Information piece of DVCS requests.

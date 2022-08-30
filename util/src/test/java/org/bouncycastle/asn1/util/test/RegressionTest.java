@@ -61,8 +61,8 @@ import org.bouncycastle.asn1.isismtt.test.ProcurationSyntaxUnitTest;
 import org.bouncycastle.asn1.isismtt.test.RequestedCertificateUnitTest;
 import org.bouncycastle.asn1.isismtt.test.RestrictionUnitTest;
 import org.bouncycastle.asn1.smime.test.SMIMETest;
-import org.bouncycastle.util.test.SimpleTest;
-import org.bouncycastle.util.test.Test;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.util.test.Test;
 
 public class RegressionTest
 {

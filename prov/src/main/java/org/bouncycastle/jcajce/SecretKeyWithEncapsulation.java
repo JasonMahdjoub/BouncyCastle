@@ -2,7 +2,7 @@ package org.bouncycastle.jcajce;
 
 import javax.crypto.SecretKey;
 
-import org.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Arrays;
 
 /**
  * Carrier class for a KEM/KTS secret key plus its encapsulation.

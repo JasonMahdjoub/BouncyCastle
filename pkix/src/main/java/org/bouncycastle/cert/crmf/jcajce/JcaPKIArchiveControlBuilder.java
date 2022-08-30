@@ -4,9 +4,9 @@ import java.security.PrivateKey;
 
 import javax.security.auth.x500.X500Principal;
 
-import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
-import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.asn1.x509.GeneralName;
+import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
+import com.distrimind.bouncycastle.asn1.x500.X500Name;
+import com.distrimind.bouncycastle.asn1.x509.GeneralName;
 import org.bouncycastle.cert.crmf.PKIArchiveControlBuilder;
 
 public class JcaPKIArchiveControlBuilder

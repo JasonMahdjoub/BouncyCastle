@@ -1,7 +1,7 @@
 package org.bouncycastle.oer.its.etsi103097.extension;
 
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.ASN1Sequence;
+import com.distrimind.bouncycastle.asn1.ASN1Integer;
+import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import org.bouncycastle.oer.its.ieee1609dot2.basetypes.HashedId8;
 
 /**

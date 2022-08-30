@@ -8,7 +8,7 @@ import junit.framework.TestCase;
 import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.cert.jcajce.JcaX509CertificateConverter;
 import org.bouncycastle.est.jcajce.JsseDefaultHostnameAuthorizer;
-import org.bouncycastle.util.io.pem.PemReader;
+import com.distrimind.bouncycastle.util.io.pem.PemReader;
 
 /**
  * TestHostNameAuthorizer tests the hostname authorizer only. EST related functions

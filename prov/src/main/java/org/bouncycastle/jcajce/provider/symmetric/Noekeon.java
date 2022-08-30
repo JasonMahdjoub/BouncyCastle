@@ -7,13 +7,13 @@ import java.security.spec.AlgorithmParameterSpec;
 
 import javax.crypto.spec.IvParameterSpec;
 
-import org.bouncycastle.crypto.BlockCipher;
-import org.bouncycastle.crypto.CipherKeyGenerator;
-import org.bouncycastle.crypto.CryptoServicesRegistrar;
-import org.bouncycastle.crypto.engines.NoekeonEngine;
-import org.bouncycastle.crypto.generators.Poly1305KeyGenerator;
-import org.bouncycastle.crypto.macs.GMac;
-import org.bouncycastle.crypto.modes.GCMBlockCipher;
+import com.distrimind.bouncycastle.crypto.BlockCipher;
+import com.distrimind.bouncycastle.crypto.CipherKeyGenerator;
+import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
+import com.distrimind.bouncycastle.crypto.engines.NoekeonEngine;
+import com.distrimind.bouncycastle.crypto.generators.Poly1305KeyGenerator;
+import com.distrimind.bouncycastle.crypto.macs.GMac;
+import com.distrimind.bouncycastle.crypto.modes.GCMBlockCipher;
 import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import org.bouncycastle.jcajce.provider.symmetric.util.BaseAlgorithmParameterGenerator;
 import org.bouncycastle.jcajce.provider.symmetric.util.BaseBlockCipher;
@@ -66,7 +66,7 @@ public final class Noekeon
     {
         public Poly1305()
         {
-            super(new org.bouncycastle.crypto.macs.Poly1305(new NoekeonEngine()));
+            super(new com.distrimind.bouncycastle.crypto.macs.Poly1305(new NoekeonEngine()));
         }
     }
 

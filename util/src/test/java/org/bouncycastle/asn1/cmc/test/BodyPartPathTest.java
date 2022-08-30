@@ -3,10 +3,10 @@ package org.bouncycastle.asn1.cmc.test;
 
 import java.util.Random;
 
-import org.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.asn1.DERSequence;
 import org.bouncycastle.asn1.cmc.BodyPartID;
 import org.bouncycastle.asn1.cmc.BodyPartPath;
-import org.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 public class BodyPartPathTest
     extends SimpleTest

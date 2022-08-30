@@ -1,7 +1,7 @@
 package org.bouncycastle.jcajce;
 
-import org.bouncycastle.crypto.CharToByteConverter;
-import org.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.crypto.CharToByteConverter;
+import com.distrimind.bouncycastle.util.Arrays;
 
 /**
  * A password based key for use with PBKDF2 as defined in PKCS#5.

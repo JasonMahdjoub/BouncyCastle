@@ -2,8 +2,8 @@ package org.bouncycastle.asn1.util.test;
 
 import java.math.BigInteger;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.asn1.ASN1Encodable;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 public abstract class ASN1UnitTest
     extends SimpleTest

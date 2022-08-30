@@ -4,8 +4,8 @@ import java.security.spec.AlgorithmParameterSpec;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.bouncycastle.pqc.crypto.frodo.FrodoParameters;
-import org.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.pqc.crypto.frodo.FrodoParameters;
+import com.distrimind.bouncycastle.util.Strings;
 
 public class FrodoParameterSpec
     implements AlgorithmParameterSpec

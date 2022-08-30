@@ -2,7 +2,6 @@ package org.bouncycastle.its;
 
 import java.util.Date;
 
-import org.bouncycastle.asn1.ASN1Integer;
 import org.bouncycastle.oer.its.ieee1609dot2.basetypes.Duration;
 import org.bouncycastle.oer.its.ieee1609dot2.basetypes.Time32;
 import org.bouncycastle.oer.its.ieee1609dot2.basetypes.UINT16;

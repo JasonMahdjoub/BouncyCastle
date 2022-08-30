@@ -5,15 +5,16 @@ import java.security.interfaces.ECPublicKey;
 import java.security.spec.ECParameterSpec;
 import java.security.spec.ECPoint;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1OctetString;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.asn1.x9.ECNamedCurveTable;
-import org.bouncycastle.asn1.x9.X962Parameters;
-import org.bouncycastle.asn1.x9.X9ECParameters;
-import org.bouncycastle.asn1.x9.X9ECParametersHolder;
-import org.bouncycastle.asn1.x9.X9ECPoint;
-import org.bouncycastle.crypto.ec.CustomNamedCurves;
+import com.distrimind.bouncycastle.math.ec.ECCurve;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.ASN1OctetString;
+import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
+import com.distrimind.bouncycastle.asn1.x9.ECNamedCurveTable;
+import com.distrimind.bouncycastle.asn1.x9.X962Parameters;
+import com.distrimind.bouncycastle.asn1.x9.X9ECParameters;
+import com.distrimind.bouncycastle.asn1.x9.X9ECParametersHolder;
+import com.distrimind.bouncycastle.asn1.x9.X9ECPoint;
+import com.distrimind.bouncycastle.crypto.ec.CustomNamedCurves;
 
 /**
  * Utility class for EC Keys.
@@ -63,7 +64,7 @@ public class ECKeyUtil
 
             X962Parameters params = X962Parameters.getInstance(publicKeyInfo.getAlgorithm().getParameters());
 
-            org.bouncycastle.math.ec.ECCurve curve;
+            ECCurve curve;
 
             if (params.isNamedCurve())
             {
@@ -86,7 +87,7 @@ public class ECKeyUtil
                 curve = x9.getCurve();
             }
 
-            org.bouncycastle.math.ec.ECPoint p = curve.decodePoint(publicKeyInfo.getPublicKeyData().getOctets());
+            com.distrimind.bouncycastle.math.ec.ECPoint p = curve.decodePoint(publicKeyInfo.getPublicKeyData().getOctets());
             ASN1OctetString pEnc = ASN1OctetString.getInstance(new X9ECPoint(p,true).toASN1Primitive());
 
             try

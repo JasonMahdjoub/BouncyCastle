@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 import junit.framework.TestCase;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 public class KeyBoxByteBufferTest
     extends SimpleTest

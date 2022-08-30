@@ -8,8 +8,8 @@ import org.bouncycastle.asn1.crmf.EncryptedValue;
 import org.bouncycastle.cert.crmf.CRMFException;
 import org.bouncycastle.cert.crmf.EncryptedValueBuilder;
 import org.bouncycastle.cert.jcajce.JcaX509CertificateHolder;
-import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
-import org.bouncycastle.crypto.util.PrivateKeyInfoFactory;
+import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
+import com.distrimind.bouncycastle.crypto.util.PrivateKeyInfoFactory;
 import org.bouncycastle.operator.KeyWrapper;
 import org.bouncycastle.operator.OutputEncryptor;
 

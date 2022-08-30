@@ -2,10 +2,10 @@ package org.bouncycastle.cert.ocsp;
 
 import java.util.Date;
 
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.ocsp.ResponseData;
-import org.bouncycastle.asn1.ocsp.SingleResponse;
-import org.bouncycastle.asn1.x509.Extensions;
+import com.distrimind.bouncycastle.asn1.ASN1Sequence;
+import com.distrimind.bouncycastle.asn1.ocsp.ResponseData;
+import com.distrimind.bouncycastle.asn1.ocsp.SingleResponse;
+import com.distrimind.bouncycastle.asn1.x509.Extensions;
 
 /**
  * OCSP RFC 2560, RFC 6960
