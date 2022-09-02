@@ -1,18 +1,18 @@
-//package org.bouncycastle.math.ec.test;
+//package com.distrimind.bouncycastle.math.ec.test;
 //
 //import java.math.BigInteger;
 //import java.util.Random;
 //
 //import junit.framework.TestCase;
 //
-//import org.bouncycastle.asn1.sec.SECNamedCurves;
-//import org.bouncycastle.asn1.x9.X9ECParameters;
-//import org.bouncycastle.math.ec.ECCurve;
-//import org.bouncycastle.math.ec.ECPoint;
-//import org.bouncycastle.math.ec.NafL2RMultiplier;
-//import org.bouncycastle.math.ec.ReferenceMultiplier;
-//import org.bouncycastle.math.ec.WNafL2RMultiplier;
-//import org.bouncycastle.math.ec.WTauNafMultiplier;
+//import com.distrimind.bouncycastle.asn1.sec.SECNamedCurves;
+//import com.distrimind.bouncycastle.asn1.x9.X9ECParameters;
+//import com.distrimind.bouncycastle.math.ec.ECCurve;
+//import com.distrimind.bouncycastle.math.ec.ECPoint;
+//import com.distrimind.bouncycastle.math.ec.NafL2RMultiplier;
+//import com.distrimind.bouncycastle.math.ec.ReferenceMultiplier;
+//import com.distrimind.bouncycastle.math.ec.WNafL2RMultiplier;
+//import com.distrimind.bouncycastle.math.ec.WTauNafMultiplier;
 //
 //public class TnafTest extends TestCase
 //{

@@ -1,7 +1,7 @@
-package org.bouncycastle.pqc.crypto.util;
+package com.distrimind.bouncycastle.pqc.crypto.util;
 
-import org.bouncycastle.crypto.SecretWithEncapsulation;
-import org.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.crypto.SecretWithEncapsulation;
+import com.distrimind.bouncycastle.util.Arrays;
 
 public class SecretWithEncapsulationImpl
     implements SecretWithEncapsulation

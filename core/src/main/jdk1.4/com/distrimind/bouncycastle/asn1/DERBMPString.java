@@ -1,4 +1,4 @@
-package org.bouncycastle.asn1;
+package com.distrimind.bouncycastle.asn1;
 
 /**
  * DER BMPString object encodes BMP (<i>Basic Multilingual Plane</i>) subset

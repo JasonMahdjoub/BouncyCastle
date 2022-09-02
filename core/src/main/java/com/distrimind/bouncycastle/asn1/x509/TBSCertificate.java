@@ -221,9 +221,9 @@ public class TBSCertificate
 
     public ASN1Primitive toASN1Primitive()
     {
-        if (Properties.getPropertyValue("org.bouncycastle.x509.allow_non-der_tbscert") != null)
+        if (Properties.getPropertyValue("com.distrimind.bouncycastle.x509.allow_non-der_tbscert") != null)
         {
-            if (Properties.isOverrideSet("org.bouncycastle.x509.allow_non-der_tbscert"))
+            if (Properties.isOverrideSet("com.distrimind.bouncycastle.x509.allow_non-der_tbscert"))
             {
                 return seq;
             }

@@ -1,4 +1,4 @@
-package org.bouncycastle.asn1;
+package com.distrimind.bouncycastle.asn1;
 
 public class DERVideotexString
     extends ASN1VideotexString

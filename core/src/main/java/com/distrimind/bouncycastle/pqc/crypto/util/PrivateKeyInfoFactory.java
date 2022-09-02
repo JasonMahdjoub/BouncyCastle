@@ -17,7 +17,7 @@ import com.distrimind.bouncycastle.pqc.crypto.sphincs.SPHINCSPrivateKeyParameter
 import com.distrimind.bouncycastle.pqc.crypto.sphincsplus.SPHINCSPlusPrivateKeyParameters;
 import com.distrimind.bouncycastle.util.Pack;
 import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
-import org.bouncycastle.pqc.asn1.*;
+import com.distrimind.bouncycastle.pqc.asn1.*;
 import com.distrimind.bouncycastle.pqc.crypto.cmce.CMCEPrivateKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.lms.Composer;
 import com.distrimind.bouncycastle.pqc.crypto.lms.HSSPrivateKeyParameters;

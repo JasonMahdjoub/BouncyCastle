@@ -65,7 +65,7 @@ public class FrodoVectorTest
         {
             String name = files[fileIndex];
             System.out.println("testing: " + name);
-            InputStream src = SphincsPlusTest.class.getResourceAsStream("/org/bouncycastle/pqc/crypto/test/frodo/" + name);
+            InputStream src = SphincsPlusTest.class.getResourceAsStream("/com/distrimind/bouncycastle/pqc/crypto/test/frodo/" + name);
             BufferedReader bin = new BufferedReader(new InputStreamReader(src));
 
             String line = null;

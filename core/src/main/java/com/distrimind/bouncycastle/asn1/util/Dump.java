@@ -7,7 +7,7 @@ import com.distrimind.bouncycastle.asn1.ASN1InputStream;
 /**
  * Command line ASN.1 Dump utility.
  * <p>
- *     Usage: org.bouncycastle.asn1.util.Dump ber_encoded_file
+ *     Usage: com.distrimind.bouncycastle.asn1.util.Dump ber_encoded_file
  * </p>
  */
 public class Dump

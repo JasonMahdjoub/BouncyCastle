@@ -92,7 +92,7 @@ public class CMCEVectorTest
         {
             String name = files[fileIndex];
             System.out.println("testing: " + name);
-            InputStream src = CMCEVectorTest.class.getResourceAsStream("/org/bouncycastle/pqc/crypto/test/cmce/" + name);
+            InputStream src = CMCEVectorTest.class.getResourceAsStream("/com/distrimind/bouncycastle/pqc/crypto/test/cmce/" + name);
             BufferedReader bin = new BufferedReader(new InputStreamReader(src));
 
             String line = null;

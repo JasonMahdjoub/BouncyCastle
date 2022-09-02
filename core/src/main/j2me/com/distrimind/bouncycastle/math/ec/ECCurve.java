@@ -1,4 +1,4 @@
-package org.bouncycastle.math.ec;
+package com.distrimind.bouncycastle.math.ec;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
@@ -8,16 +8,16 @@ import java.util.Hashtable;
 import java.util.Random;
 import java.util.Set;
 
-import org.bouncycastle.crypto.CryptoServicesRegistrar;
-import org.bouncycastle.math.Primes;
-import org.bouncycastle.math.ec.endo.ECEndomorphism;
-import org.bouncycastle.math.ec.endo.GLVEndomorphism;
-import org.bouncycastle.math.field.FiniteField;
-import org.bouncycastle.math.field.FiniteFields;
-import org.bouncycastle.math.raw.Nat;
-import org.bouncycastle.util.BigIntegers;
-import org.bouncycastle.util.Integers;
-import org.bouncycastle.util.Properties;
+import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
+import com.distrimind.bouncycastle.math.Primes;
+import com.distrimind.bouncycastle.math.ec.endo.ECEndomorphism;
+import com.distrimind.bouncycastle.math.ec.endo.GLVEndomorphism;
+import com.distrimind.bouncycastle.math.field.FiniteField;
+import com.distrimind.bouncycastle.math.field.FiniteFields;
+import com.distrimind.bouncycastle.math.raw.Nat;
+import com.distrimind.bouncycastle.util.BigIntegers;
+import com.distrimind.bouncycastle.util.Integers;
+import com.distrimind.bouncycastle.util.Properties;
 
 /**
  * base class for an elliptic curve
@@ -707,8 +707,8 @@ public abstract class ECCurve
             }
             else
             {
-                int maxBitLength = Properties.asInteger("org.bouncycastle.ec.fp_max_size", 1042); // 2 * 521
-                int certainty = Properties.asInteger("org.bouncycastle.ec.fp_certainty", 100);
+                int maxBitLength = Properties.asInteger("com.distrimind.bouncycastle.ec.fp_max_size", 1042); // 2 * 521
+                int certainty = Properties.asInteger("com.distrimind.bouncycastle.ec.fp_certainty", 100);
 
                 int qBitLength = q.bitLength();
                 if (maxBitLength < qBitLength)

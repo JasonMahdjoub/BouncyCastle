@@ -1,4 +1,4 @@
-package org.bouncycastle.crypto.test;
+package com.distrimind.bouncycastle.crypto.test;
 
 public class CryptoRegressionTest
 {

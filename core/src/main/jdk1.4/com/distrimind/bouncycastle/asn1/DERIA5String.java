@@ -1,4 +1,4 @@
-package org.bouncycastle.asn1;
+package com.distrimind.bouncycastle.asn1;
 
 /**
  * DER IA5String object - this is a ISO 646 (ASCII) string encoding code points 0 to 127.

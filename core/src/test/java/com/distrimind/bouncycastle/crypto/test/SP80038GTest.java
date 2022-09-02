@@ -280,7 +280,7 @@ public class SP80038GTest
     private void testDisable()
         throws Exception
     {
-        System.setProperty("org.bouncycastle.fpe.disable", "true");
+        System.setProperty("com.distrimind.bouncycastle.fpe.disable", "true");
         try
         {
             testFF1();
@@ -300,9 +300,9 @@ public class SP80038GTest
         {
             isEquals("FPE disabled", e.getMessage());
         }
-        System.setProperty("org.bouncycastle.fpe.disable", "false");
+        System.setProperty("com.distrimind.bouncycastle.fpe.disable", "false");
 
-        System.setProperty("org.bouncycastle.fpe.disable_ff1", "true");
+        System.setProperty("com.distrimind.bouncycastle.fpe.disable_ff1", "true");
         try
         {
             testFF1();
@@ -314,7 +314,7 @@ public class SP80038GTest
         }
 
         testFF3_1();
-        System.setProperty("org.bouncycastle.fpe.disable_ff1", "false");
+        System.setProperty("com.distrimind.bouncycastle.fpe.disable_ff1", "false");
     }
 
     private void testFF3_1_255()

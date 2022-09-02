@@ -1,4 +1,4 @@
-package org.bouncycastle.util;
+package com.distrimind.bouncycastle.util;
 
 import java.security.AccessController;
 import java.security.PrivilegedAction;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 import java.util.Iterator;
-import org.bouncycastle.util.encoders.UTF8;
+import com.distrimind.bouncycastle.util.encoders.UTF8;
 
 public final class Strings
 {

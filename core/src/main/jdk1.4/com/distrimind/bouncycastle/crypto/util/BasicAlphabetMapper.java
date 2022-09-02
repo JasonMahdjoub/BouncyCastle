@@ -1,10 +1,10 @@
-package org.bouncycastle.crypto.util;
+package com.distrimind.bouncycastle.crypto.util;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import org.bouncycastle.crypto.AlphabetMapper;
-import org.bouncycastle.util.Integers;
+import com.distrimind.bouncycastle.crypto.AlphabetMapper;
+import com.distrimind.bouncycastle.util.Integers;
 
 /**
  * A basic alphabet mapper that just creates a mapper based on the

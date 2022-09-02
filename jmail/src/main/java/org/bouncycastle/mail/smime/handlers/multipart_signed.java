@@ -1,4 +1,4 @@
-package org.bouncycastle.mail.smime.handlers;
+package com.distrimind.bouncycastle.mail.smime.handlers;
 
 import java.awt.datatransfer.DataFlavor;
 import java.io.BufferedInputStream;
@@ -17,8 +17,8 @@ import jakarta.mail.internet.ContentType;
 import jakarta.mail.internet.MimeBodyPart;
 import jakarta.mail.internet.MimeMultipart;
 
-import org.bouncycastle.mail.smime.SMIMEStreamingProcessor;
-import org.bouncycastle.mail.smime.SMIMEUtil;
+import com.distrimind.bouncycastle.mail.smime.SMIMEStreamingProcessor;
+import com.distrimind.bouncycastle.mail.smime.SMIMEUtil;
 
 public class multipart_signed 
     implements DataContentHandler 

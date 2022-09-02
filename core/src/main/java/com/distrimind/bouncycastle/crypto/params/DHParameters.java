@@ -95,7 +95,7 @@ public class DHParameters
             }
         }
 
-        if (m > p.bitLength() && !Properties.isOverrideSet("org.bouncycastle.dh.allow_unsafe_p_value"))
+        if (m > p.bitLength() && !Properties.isOverrideSet("com.distrimind.bouncycastle.dh.allow_unsafe_p_value"))
         {
             throw new IllegalArgumentException("unsafe p value so small specific l required");
         }

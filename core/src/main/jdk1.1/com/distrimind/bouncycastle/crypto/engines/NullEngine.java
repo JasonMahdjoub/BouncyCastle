@@ -1,9 +1,9 @@
-package org.bouncycastle.crypto.engines;
+package com.distrimind.bouncycastle.crypto.engines;
 
-import org.bouncycastle.crypto.BlockCipher;
-import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.DataLengthException;
-import org.bouncycastle.crypto.OutputLengthException;
+import com.distrimind.bouncycastle.crypto.BlockCipher;
+import com.distrimind.bouncycastle.crypto.CipherParameters;
+import com.distrimind.bouncycastle.crypto.DataLengthException;
+import com.distrimind.bouncycastle.crypto.OutputLengthException;
 
 /**
  * The no-op engine that just copies bytes through, irrespective of whether encrypting and decrypting.
@@ -34,7 +34,7 @@ public class NullEngine implements BlockCipher
     }
 
     /* (non-Javadoc)
-     * @see org.bouncycastle.crypto.BlockCipher#init(boolean, org.bouncycastle.crypto.CipherParameters)
+     * @see com.distrimind.bouncycastle.crypto.BlockCipher#init(boolean, com.distrimind.bouncycastle.crypto.CipherParameters)
      */
     public void init(boolean forEncryption, CipherParameters params) throws IllegalArgumentException
     {
@@ -43,7 +43,7 @@ public class NullEngine implements BlockCipher
     }
 
     /* (non-Javadoc)
-     * @see org.bouncycastle.crypto.BlockCipher#getAlgorithmName()
+     * @see com.distrimind.bouncycastle.crypto.BlockCipher#getAlgorithmName()
      */
     public String getAlgorithmName()
     {
@@ -51,7 +51,7 @@ public class NullEngine implements BlockCipher
     }
 
     /* (non-Javadoc)
-     * @see org.bouncycastle.crypto.BlockCipher#getBlockSize()
+     * @see com.distrimind.bouncycastle.crypto.BlockCipher#getBlockSize()
      */
     public int getBlockSize()
     {
@@ -59,7 +59,7 @@ public class NullEngine implements BlockCipher
     }
 
     /* (non-Javadoc)
-     * @see org.bouncycastle.crypto.BlockCipher#processBlock(byte[], int, byte[], int)
+     * @see com.distrimind.bouncycastle.crypto.BlockCipher#processBlock(byte[], int, byte[], int)
      */
     public int processBlock(byte[] in, int inOff, byte[] out, int outOff)
         throws DataLengthException, IllegalStateException
@@ -87,7 +87,7 @@ public class NullEngine implements BlockCipher
     }
 
     /* (non-Javadoc)
-     * @see org.bouncycastle.crypto.BlockCipher#reset()
+     * @see com.distrimind.bouncycastle.crypto.BlockCipher#reset()
      */
     public void reset()
     {

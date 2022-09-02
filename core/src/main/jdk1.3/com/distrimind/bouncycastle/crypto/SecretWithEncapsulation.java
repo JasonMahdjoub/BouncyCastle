@@ -1,4 +1,4 @@
-package org.bouncycastle.crypto;
+package com.distrimind.bouncycastle.crypto;
 
 /**
  * Interface describing secret with encapsulation details.

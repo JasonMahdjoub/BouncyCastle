@@ -1,18 +1,18 @@
-package org.bouncycastle.crypto.prng;
+package com.distrimind.bouncycastle.crypto.prng;
 
 import java.security.SecureRandom;
 
-import org.bouncycastle.crypto.BlockCipher;
-import org.bouncycastle.crypto.CryptoServicesRegistrar;
-import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.Mac;
-import org.bouncycastle.crypto.engines.DESedeEngine;
-import org.bouncycastle.crypto.macs.HMac;
-import org.bouncycastle.crypto.prng.drbg.CTRSP800DRBG;
-import org.bouncycastle.crypto.prng.drbg.HMacSP800DRBG;
-import org.bouncycastle.crypto.prng.drbg.HashSP800DRBG;
-import org.bouncycastle.crypto.prng.drbg.SP80090DRBG;
-import org.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.crypto.BlockCipher;
+import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
+import com.distrimind.bouncycastle.crypto.Digest;
+import com.distrimind.bouncycastle.crypto.Mac;
+import com.distrimind.bouncycastle.crypto.engines.DESedeEngine;
+import com.distrimind.bouncycastle.crypto.macs.HMac;
+import com.distrimind.bouncycastle.crypto.prng.drbg.CTRSP800DRBG;
+import com.distrimind.bouncycastle.crypto.prng.drbg.HMacSP800DRBG;
+import com.distrimind.bouncycastle.crypto.prng.drbg.HashSP800DRBG;
+import com.distrimind.bouncycastle.crypto.prng.drbg.SP80090DRBG;
+import com.distrimind.bouncycastle.util.Arrays;
 
 /**
  * Builder class for making SecureRandom objects based on SP 800-90A Deterministic Random Bit Generators (DRBG).

@@ -1,11 +1,11 @@
-package org.bouncycastle.crypto.params;
+package com.distrimind.bouncycastle.crypto.params;
 
 import java.math.BigInteger;
 
-import org.bouncycastle.crypto.CryptoServicesRegistrar;
-import org.bouncycastle.math.Primes;
-import org.bouncycastle.util.BigIntegers;
-import org.bouncycastle.util.Properties;
+import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
+import com.distrimind.bouncycastle.math.Primes;
+import com.distrimind.bouncycastle.util.BigIntegers;
+import com.distrimind.bouncycastle.util.Properties;
 
 public class RSAKeyParameters
     extends AsymmetricKeyParameter
@@ -66,12 +66,12 @@ public class RSAKeyParameters
 
         // If you need to set this you need to have a serious word to whoever is generating
         // your keys.
-        if (Properties.isOverrideSet("org.bouncycastle.rsa.allow_unsafe_mod"))
+        if (Properties.isOverrideSet("com.distrimind.bouncycastle.rsa.allow_unsafe_mod"))
         {
             return modulus;
         }
 
-        int maxBitLength = Properties.asInteger("org.bouncycastle.rsa.max_size", 15360);
+        int maxBitLength = Properties.asInteger("com.distrimind.bouncycastle.rsa.max_size", 15360);
 
         int modBitLength = modulus.bitLength();
         if (maxBitLength < modBitLength)

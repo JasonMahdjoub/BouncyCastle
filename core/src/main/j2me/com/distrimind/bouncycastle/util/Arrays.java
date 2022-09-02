@@ -1,4 +1,4 @@
-package org.bouncycastle.util;
+package com.distrimind.bouncycastle.util;
 
 import java.math.BigInteger;
 import java.util.Iterator;

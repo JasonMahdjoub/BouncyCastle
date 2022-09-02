@@ -33,7 +33,7 @@ public class ECMQVBasicAgreement
 
     public BigInteger calculateAgreement(CipherParameters pubKey)
     {
-        if (Properties.isOverrideSet("org.bouncycastle.ec.disable_mqv"))
+        if (Properties.isOverrideSet("com.distrimind.bouncycastle.ec.disable_mqv"))
         {
             throw new IllegalStateException("ECMQV explicitly disabled");
         }

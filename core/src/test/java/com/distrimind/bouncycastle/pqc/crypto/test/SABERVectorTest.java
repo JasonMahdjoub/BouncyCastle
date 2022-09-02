@@ -70,7 +70,7 @@ public class SABERVectorTest
         {
             String name = files[fileIndex];
             System.out.println("testing: " + name);
-            InputStream src = SABERVectorTest.class.getResourceAsStream("/org/bouncycastle/pqc/crypto/test/saber/" + name);
+            InputStream src = SABERVectorTest.class.getResourceAsStream("/com/distrimind/bouncycastle/pqc/crypto/test/saber/" + name);
             BufferedReader bin = new BufferedReader(new InputStreamReader(src));
 
             String line = null;

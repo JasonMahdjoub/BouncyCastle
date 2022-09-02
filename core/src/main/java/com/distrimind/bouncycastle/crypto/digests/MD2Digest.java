@@ -2,7 +2,7 @@ package com.distrimind.bouncycastle.crypto.digests;
 
 import com.distrimind.bouncycastle.crypto.ExtendedDigest;
 import com.distrimind.bouncycastle.util.Memoable;
-import org.bouncycastle.crypto.*;
+import com.distrimind.bouncycastle.crypto.*;
 
 /**
  * implementation of MD2

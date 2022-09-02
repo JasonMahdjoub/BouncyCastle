@@ -1,4 +1,4 @@
-package org.bouncycastle.util;
+package com.distrimind.bouncycastle.util;
 
 /**
  * Utility methods and constants for shorts.

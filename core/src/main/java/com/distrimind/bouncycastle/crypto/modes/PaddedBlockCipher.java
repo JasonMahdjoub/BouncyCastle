@@ -13,7 +13,7 @@ import com.distrimind.bouncycastle.crypto.OutputLengthException;
  * or on a doFinal (unless the current block in the buffer is a pad block).
  * The padding mechanism used is the one outlined in PKCS5/PKCS7.
  *
- * @deprecated use org.bouncycastle.crypto.paddings.PaddedBufferedBlockCipher instead.
+ * @deprecated use com.distrimind.bouncycastle.crypto.paddings.PaddedBufferedBlockCipher instead.
  */
 public class PaddedBlockCipher
     extends BufferedBlockCipher

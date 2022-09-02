@@ -21,17 +21,17 @@ public class PKCS1Encoding
     /**
      * @deprecated use NOT_STRICT_LENGTH_ENABLED_PROPERTY
      */
-    public static final String STRICT_LENGTH_ENABLED_PROPERTY = "org.bouncycastle.pkcs1.strict";
+    public static final String STRICT_LENGTH_ENABLED_PROPERTY = "com.distrimind.bouncycastle.pkcs1.strict";
 
     /**
      * some providers fail to include the leading zero in PKCS1 encoded blocks. If you need to
-     * work with one of these set the system property org.bouncycastle.pkcs1.not_strict to true.
+     * work with one of these set the system property com.distrimind.bouncycastle.pkcs1.not_strict to true.
      * <p>
      * The system property is checked during construction of the encoding object, it is set to
      * false by default.
      * </p>
      */
-    public static final String NOT_STRICT_LENGTH_ENABLED_PROPERTY = "org.bouncycastle.pkcs1.not_strict";
+    public static final String NOT_STRICT_LENGTH_ENABLED_PROPERTY = "com.distrimind.bouncycastle.pkcs1.not_strict";
 
     private static final int HEADER_LENGTH = 10;
 

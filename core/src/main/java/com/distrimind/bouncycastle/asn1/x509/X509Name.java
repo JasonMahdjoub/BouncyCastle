@@ -33,7 +33,7 @@ import com.distrimind.bouncycastle.util.Strings;
  *                                   type  OBJECT IDENTIFIER,
  *                                   value ANY }
  * </pre>
- * @deprecated use org.bouncycastle.asn1.x500.X500Name.
+ * @deprecated use com.distrimind.bouncycastle.asn1.x500.X500Name.
  */
 public class X509Name
     extends ASN1Object

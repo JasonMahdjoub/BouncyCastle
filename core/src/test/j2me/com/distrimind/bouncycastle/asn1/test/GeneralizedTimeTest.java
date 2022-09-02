@@ -1,11 +1,11 @@
-package org.bouncycastle.asn1.test;
+package com.distrimind.bouncycastle.asn1.test;
 
 import java.util.Date;
 import java.util.TimeZone;
 
-import org.bouncycastle.asn1.ASN1GeneralizedTime;
-import org.bouncycastle.asn1.DERGeneralizedTime;
-import org.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.asn1.ASN1GeneralizedTime;
+import com.distrimind.bouncycastle.asn1.DERGeneralizedTime;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 /**
  * X.690 test example

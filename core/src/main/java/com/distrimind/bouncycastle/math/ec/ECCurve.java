@@ -708,8 +708,8 @@ public abstract class ECCurve
             }
             else
             {
-                int maxBitLength = Properties.asInteger("org.bouncycastle.ec.fp_max_size", 1042); // 2 * 521
-                int certainty = Properties.asInteger("org.bouncycastle.ec.fp_certainty", 100);
+                int maxBitLength = Properties.asInteger("com.distrimind.bouncycastle.ec.fp_max_size", 1042); // 2 * 521
+                int certainty = Properties.asInteger("com.distrimind.bouncycastle.ec.fp_certainty", 100);
 
                 int qBitLength = q.bitLength();
                 if (maxBitLength < qBitLength)

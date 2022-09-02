@@ -18,8 +18,8 @@ import com.distrimind.bouncycastle.util.Pack;
  */
 class SP80038G
 {
-    static final String FPE_DISABLED = "org.bouncycastle.fpe.disable";
-    static final String FF1_DISABLED = "org.bouncycastle.fpe.disable_ff1";
+    static final String FPE_DISABLED = "com.distrimind.bouncycastle.fpe.disable";
+    static final String FF1_DISABLED = "com.distrimind.bouncycastle.fpe.disable_ff1";
 
     protected static final int BLOCK_SIZE = 16;
     protected static final double LOG2 = Math.log(2.0);

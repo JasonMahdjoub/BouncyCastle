@@ -1,4 +1,4 @@
-package org.bouncycastle.mail.smime.handlers;
+package com.distrimind.bouncycastle.mail.smime.handlers;
 
 import java.awt.datatransfer.DataFlavor;
 import java.io.BufferedInputStream;
@@ -12,7 +12,7 @@ import jakarta.activation.DataSource;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeBodyPart;
 
-import org.bouncycastle.mail.smime.SMIMEStreamingProcessor;
+import com.distrimind.bouncycastle.mail.smime.SMIMEStreamingProcessor;
 
 public class PKCS7ContentHandler 
     implements DataContentHandler 

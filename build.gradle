@@ -8,7 +8,6 @@ buildscript {
 }
 plugins {
 	id "io.spring.nohttp" version "0.0.9"
-	id "checkstyle"
 	id "jacoco"
 }
 if (JavaVersion.current().isJava8Compatible()) {
@@ -57,7 +56,6 @@ allprojects {
 	apply plugin: 'idea'
 	apply plugin: 'maven-publish'
 	apply plugin: 'signing'
-	apply plugin: 'checkstyle'
 	apply plugin: 'jacoco'
    group='com.distrimind.bouncycastle'
 
@@ -113,7 +111,7 @@ subprojects {
 	apply plugin: 'eclipse'
 
 	JavaVersion current = JavaVersion.current();
-	if (current.compareTo(JavaVersion.VERSION_1_8) <= 0)
+	if (current <= JavaVersion.VERSION_1_8)
 	{
 		ext.vmrange='jdk15to18'
 		sourceCompatibility = 1.5
@@ -153,12 +151,6 @@ subprojects {
 		filter {
 			includeTestsMatching "AllTest*"
 		}
-	}
-
-	checkstyle {
-		configFile file("$rootDir/config/checkstyle/checkstyle.xml");
-		toolVersion '9.0'; // your choice here
-		sourceSets = [project.sourceSets.main]
 	}
 
 
@@ -217,7 +209,7 @@ subprojects {
 					licenses {
 						license {
 							name = 'The Bouncy Castle License'
-							url = 'http://www.bouncycastle.org'
+							url = 'https://www.bouncycastle.org'
 						}
 					}
 

@@ -1,4 +1,4 @@
-package org.bouncycastle.asn1;
+package com.distrimind.bouncycastle.asn1;
 
 /**
  * ASN.1 GENERAL-STRING data type.

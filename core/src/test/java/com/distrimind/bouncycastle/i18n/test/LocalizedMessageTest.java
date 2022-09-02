@@ -17,8 +17,8 @@ import com.distrimind.bouncycastle.i18n.filter.TrustedInput;
 public class LocalizedMessageTest extends TestCase
 {
 
-    private static final String TEST_RESOURCE = "org.bouncycastle.i18n.test.I18nTestMessages";
-    private static final String UTF8_TEST_RESOURCE = "org.bouncycastle.i18n.test.I18nUTF8TestMessages";
+    private static final String TEST_RESOURCE = "com.distrimind.bouncycastle.i18n.test.I18nTestMessages";
+    private static final String UTF8_TEST_RESOURCE = "com.distrimind.bouncycastle.i18n.test.I18nUTF8TestMessages";
 
     /*
      * test message id's
@@ -31,7 +31,7 @@ public class LocalizedMessageTest extends TestCase
     private static final String utf8TestId = "utf8";
 
     /*
-     * Test method for 'org.bouncycastle.i18n.LocalizedMessage.getEntry(String,
+     * Test method for 'com.distrimind.bouncycastle.i18n.LocalizedMessage.getEntry(String,
      * Locale, TimeZone)'
      */
     public void testGetEntry()
@@ -183,7 +183,7 @@ public class LocalizedMessageTest extends TestCase
         }
         catch (MissingEntryException e)
         {
-            assertEquals("Can't find entry noname in resource file org.bouncycastle.i18n.test.I18nTestMessages.", e.getMessage());
+            assertEquals("Can't find entry noname in resource file com.distrimind.bouncycastle.i18n.test.I18nTestMessages.", e.getMessage());
         }
     }
 

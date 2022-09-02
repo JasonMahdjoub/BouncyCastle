@@ -1,7 +1,7 @@
 package com.distrimind.bouncycastle.crypto.util;
 
 /**
- * @deprecated use org.bouncycastle.util.pack
+ * @deprecated use com.distrimind.bouncycastle.util.pack
  */
 public abstract class Pack
 {

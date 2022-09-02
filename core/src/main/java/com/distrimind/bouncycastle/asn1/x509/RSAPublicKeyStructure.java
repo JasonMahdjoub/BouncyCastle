@@ -12,7 +12,7 @@ import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
 import com.distrimind.bouncycastle.asn1.DERSequence;
 
 /**
- * @deprecated use org.bouncycastle.asn1.pkcs.RSAPublicKey
+ * @deprecated use com.distrimind.bouncycastle.asn1.pkcs.RSAPublicKey
  */
 public class RSAPublicKeyStructure
     extends ASN1Object

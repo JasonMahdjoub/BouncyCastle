@@ -1,11 +1,11 @@
-package org.bouncycastle.util;
+package com.distrimind.bouncycastle.util;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.util.Map;
 
-import org.bouncycastle.math.raw.Mod;
-import org.bouncycastle.math.raw.Nat;
+import com.distrimind.bouncycastle.math.raw.Mod;
+import com.distrimind.bouncycastle.math.raw.Nat;
 
 /**
  * BigInteger utilities.

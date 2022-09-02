@@ -27,7 +27,7 @@ import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.ASN1OctetString;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
-import org.bouncycastle.pqc.asn1.*;
+import com.distrimind.bouncycastle.pqc.asn1.*;
 import com.distrimind.bouncycastle.pqc.crypto.cmce.CMCEParameters;
 import com.distrimind.bouncycastle.pqc.crypto.cmce.CMCEPrivateKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.lms.HSSPrivateKeyParameters;

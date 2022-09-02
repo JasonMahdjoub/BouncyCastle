@@ -1,24 +1,24 @@
-package org.bouncycastle.crypto.test;
+package com.distrimind.bouncycastle.crypto.test;
 
 import java.math.BigInteger;
 
-import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
-import org.bouncycastle.crypto.InvalidCipherTextException;
-import org.bouncycastle.crypto.engines.SM2Engine;
-import org.bouncycastle.crypto.generators.ECKeyPairGenerator;
-import org.bouncycastle.crypto.params.ECDomainParameters;
-import org.bouncycastle.crypto.params.ECKeyGenerationParameters;
-import org.bouncycastle.crypto.params.ECPrivateKeyParameters;
-import org.bouncycastle.crypto.params.ECPublicKeyParameters;
-import org.bouncycastle.crypto.params.ParametersWithRandom;
-import org.bouncycastle.math.ec.ECConstants;
-import org.bouncycastle.math.ec.ECCurve;
-import org.bouncycastle.math.ec.ECPoint;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.Strings;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
-import org.bouncycastle.util.test.TestRandomBigInteger;
+import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
+import com.distrimind.bouncycastle.crypto.InvalidCipherTextException;
+import com.distrimind.bouncycastle.crypto.engines.SM2Engine;
+import com.distrimind.bouncycastle.crypto.generators.ECKeyPairGenerator;
+import com.distrimind.bouncycastle.crypto.params.ECDomainParameters;
+import com.distrimind.bouncycastle.crypto.params.ECKeyGenerationParameters;
+import com.distrimind.bouncycastle.crypto.params.ECPrivateKeyParameters;
+import com.distrimind.bouncycastle.crypto.params.ECPublicKeyParameters;
+import com.distrimind.bouncycastle.crypto.params.ParametersWithRandom;
+import com.distrimind.bouncycastle.math.ec.ECConstants;
+import com.distrimind.bouncycastle.math.ec.ECCurve;
+import com.distrimind.bouncycastle.math.ec.ECPoint;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.util.encoders.Hex;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.util.test.TestRandomBigInteger;
 
 public class SM2EngineTest
     extends SimpleTest
