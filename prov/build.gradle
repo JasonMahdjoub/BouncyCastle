@@ -1,8 +1,8 @@
 dependencies {
-    implementation(project(':core'))
+    implementation project(':core')
 }
 
-jar.archiveBaseName= "bcprov-$vmrange"
+jar.archiveBaseName = "bcprov-$vmrange"
 
 
 
@@ -11,3 +11,4 @@ artifacts {
     archives javadocJar
     archives sourcesJar
 }
+

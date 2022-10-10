@@ -1,10 +1,10 @@
 dependencies {
-    implementation(project(':core'))
-    implementation(project(':prov'))
-    implementation(project(':util'))
+  implementation project(':core')
+  implementation project(':util')
+  implementation project(':prov')
 }
 
-jar.archiveBaseName="bcpkix-$vmrange"
+jar.archiveBaseName = "bcpkix-$vmrange"
 
 
 artifacts {
@@ -12,3 +12,4 @@ artifacts {
     archives javadocJar
     archives sourcesJar
 }
+

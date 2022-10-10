@@ -12,14 +12,14 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-import com.distrimind.bouncycastle.asn1.ASN1InputStream;
-import com.distrimind.bouncycastle.asn1.ASN1Object;
-import com.distrimind.bouncycastle.asn1.ASN1OctetString;
-import com.distrimind.bouncycastle.asn1.ASN1Sequence;
-import com.distrimind.bouncycastle.asn1.ASN1Integer;
-import com.distrimind.bouncycastle.asn1.x509.X509Extensions;
-import com.distrimind.bouncycastle.asn1.x509.X509Name;
-import com.distrimind.bouncycastle.jce.PrincipalUtil;
+import org.bouncycastle.asn1.ASN1InputStream;
+import org.bouncycastle.asn1.ASN1Object;
+import org.bouncycastle.asn1.ASN1OctetString;
+import org.bouncycastle.asn1.ASN1Sequence;
+import org.bouncycastle.asn1.ASN1Integer;
+import org.bouncycastle.asn1.x509.X509Extensions;
+import org.bouncycastle.asn1.x509.X509Name;
+import org.bouncycastle.jce.PrincipalUtil;
 
 /**
  * A <code>CRLSelector</code> that selects <code>X509CRLs</code> that match
@@ -47,12 +47,12 @@ import com.distrimind.bouncycastle.jce.PrincipalUtil;
  * locking. Multiple threads each manipulating separate objects need not
  * synchronize.<br />
  * <br />
- * Uses {@link com.distrimind.bouncycastle.asn1.ASN1InputStream ASN1InputStream},
- * {@link com.distrimind.bouncycastle.asn1.ASN1Sequence ASN1Sequence},
- * {@link com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier ASN1ObjectIdentifier},
- * {@link com.distrimind.bouncycastle.asn1.DEROutputStream DEROutputStream},
- * {@link com.distrimind.bouncycastle.asn1.ASN1Object ASN1Object},
- * {@link com.distrimind.bouncycastle.asn1.x509.X509Name X509Name}
+ * Uses {@link org.bouncycastle.asn1.ASN1InputStream ASN1InputStream},
+ * {@link org.bouncycastle.asn1.ASN1Sequence ASN1Sequence},
+ * {@link org.bouncycastle.asn1.ASN1ObjectIdentifier ASN1ObjectIdentifier},
+ * {@link org.bouncycastle.asn1.DEROutputStream DEROutputStream},
+ * {@link org.bouncycastle.asn1.ASN1Object ASN1Object},
+ * {@link org.bouncycastle.asn1.x509.X509Name X509Name}
  * 
  * @see CRLSelector
  * @see X509CRL
@@ -184,7 +184,7 @@ public class X509CRLSelector implements CRLSelector
      * any previous value for the issuerNames criterion. If the specified name
      * is a duplicate, it may be ignored.<br />
      * <br />
-     * Uses {@link com.distrimind.bouncycastle.asn1.x509.X509Name X509Name} for parsing the
+     * Uses {@link org.bouncycastle.asn1.x509.X509Name X509Name} for parsing the
      * name
      * 
      * @param name
@@ -233,10 +233,10 @@ public class X509CRLSelector implements CRLSelector
      * Note that the byte array supplied here is cloned to protect against
      * subsequent modifications.<br />
      * <br />
-     * Uses {@link com.distrimind.bouncycastle.asn1.x509.X509Name X509Name} for parsing the
-     * name, {@link com.distrimind.bouncycastle.asn1.ASN1InputStream ASN1InputStream},
-     * {@link com.distrimind.bouncycastle.asn1.ASN1Object ASN1Object} and
-     * {@link com.distrimind.bouncycastle.asn1.ASN1Sequence ASN1Sequence}
+     * Uses {@link org.bouncycastle.asn1.x509.X509Name X509Name} for parsing the
+     * name, {@link org.bouncycastle.asn1.ASN1InputStream ASN1InputStream},
+     * {@link org.bouncycastle.asn1.ASN1Object ASN1Object} and
+     * {@link org.bouncycastle.asn1.ASN1Sequence ASN1Sequence}
      * 
      * @param name
      *            a byte array containing the name in ASN.1 DER encoded form
@@ -457,7 +457,7 @@ public class X509CRLSelector implements CRLSelector
      * Returns a printable representation of the <code>X509CRLSelector</code>.<br />
      * <br />
      * Uses
-     * {@link com.distrimind.bouncycastle.asn1.x509.X509Name#toString X509Name.toString} to
+     * {@link org.bouncycastle.asn1.x509.X509Name#toString X509Name.toString} to
      * format the output
      * 
      * @return a <code>String</code> describing the contents of the
@@ -500,9 +500,9 @@ public class X509CRLSelector implements CRLSelector
      * Decides whether a <code>CRL</code> should be selected.<br />
      * <br />
      * Uses
-     * {@link com.distrimind.bouncycastle.asn1.x509.X509Name#toString X509Name.toString} to
+     * {@link org.bouncycastle.asn1.x509.X509Name#toString X509Name.toString} to
      * parse and to compare the crl parameter issuer and
-     * {@link com.distrimind.bouncycastle.asn1.x509.X509Extensions#CRLNumber CRLNumber} to
+     * {@link org.bouncycastle.asn1.x509.X509Extensions#CRLNumber CRLNumber} to
      * access the CRL number extension.
      * 
      * @param crl
