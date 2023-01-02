@@ -1,9 +1,9 @@
 package com.distrimind.bouncycastle.oer.its.template.ieee1609dot2dot1;
 
-import com.distrimind.bouncycastle.asn1.ASN1Integer;
 import com.distrimind.bouncycastle.oer.OERDefinition;
 import com.distrimind.bouncycastle.oer.its.template.ieee1609dot2.IEEE1609dot2;
 import com.distrimind.bouncycastle.oer.its.template.ieee1609dot2.basetypes.Ieee1609Dot2BaseTypes;
+import com.distrimind.bouncycastle.asn1.ASN1Integer;
 
 public class Ieee1609Dot2Dot1EeRaInterface
 {

@@ -1,8 +1,8 @@
 package com.distrimind.bouncycastle.oer.its.etsi102941;
 
-import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.oer.its.etsi103097.EtsiTs103097DataSigned;
 import com.distrimind.bouncycastle.oer.its.ieee1609dot2.Ieee1609Dot2Content;
+import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 
 public class TlmLinkCertificateMessage
     extends EtsiTs103097DataSigned

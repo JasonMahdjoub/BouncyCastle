@@ -5,6 +5,9 @@ import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.DERSequence;
 
+/**
+ * <pre>GenMsgContent ::= SEQUENCE OF InfoTypeAndValue</pre>
+ */
 public class GenMsgContent
     extends ASN1Object
 {

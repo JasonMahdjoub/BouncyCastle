@@ -1,12 +1,12 @@
 package com.distrimind.bouncycastle.asn1.cmc;
 
+import com.distrimind.bouncycastle.asn1.cms.ContentInfo;
 import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
 import com.distrimind.bouncycastle.asn1.DERSequence;
-import com.distrimind.bouncycastle.asn1.cms.ContentInfo;
 
 /**
  * <pre>

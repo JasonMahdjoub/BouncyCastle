@@ -171,7 +171,7 @@ public class OERDefinition
 
     public static Builder deferred(ElementSupplier elementSupplier)
     {
-        return new OERDefinition.Builder(BaseType.Supplier).elementSupplier(elementSupplier);
+        return new Builder(BaseType.Supplier).elementSupplier(elementSupplier);
     }
 
 
@@ -382,7 +382,7 @@ public class OERDefinition
         {
             if (extensionList.isEmpty())
             {
-                Builder stub = new OERDefinition.Builder(BaseType.EXTENSION);
+                Builder stub = new Builder(BaseType.EXTENSION);
                 stub.block = extensionList.block;
                 b.children.add(stub);
                 return;

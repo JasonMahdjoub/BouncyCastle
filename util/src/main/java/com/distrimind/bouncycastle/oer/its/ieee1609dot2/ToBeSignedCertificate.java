@@ -2,14 +2,14 @@ package com.distrimind.bouncycastle.oer.its.ieee1609dot2;
 
 import java.util.Iterator;
 
+import com.distrimind.bouncycastle.oer.OEROptional;
+import com.distrimind.bouncycastle.oer.its.ItsUtils;
 import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1Null;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.DERNull;
-import com.distrimind.bouncycastle.oer.OEROptional;
-import com.distrimind.bouncycastle.oer.its.ItsUtils;
 import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.CrlSeries;
 import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.GeographicRegion;
 import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.HashedId3;

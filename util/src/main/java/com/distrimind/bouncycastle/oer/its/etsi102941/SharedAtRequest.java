@@ -1,5 +1,6 @@
 package com.distrimind.bouncycastle.oer.its.etsi102941;
 
+import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.HashedId8;
 import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1OctetString;
@@ -9,7 +10,6 @@ import com.distrimind.bouncycastle.asn1.DEROctetString;
 import com.distrimind.bouncycastle.asn1.DERSequence;
 import com.distrimind.bouncycastle.oer.its.etsi102941.basetypes.CertificateFormat;
 import com.distrimind.bouncycastle.oer.its.etsi102941.basetypes.CertificateSubjectAttributes;
-import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.HashedId8;
 
 /**
  * SharedAtRequest ::= SEQUENCE {

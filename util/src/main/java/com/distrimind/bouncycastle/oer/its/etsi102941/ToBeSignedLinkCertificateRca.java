@@ -1,8 +1,8 @@
 package com.distrimind.bouncycastle.oer.its.etsi102941;
 
-import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.oer.its.ieee1609dot2.HashedData;
 import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.Time32;
+import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 
 public class ToBeSignedLinkCertificateRca
     extends ToBeSignedLinkCertificate

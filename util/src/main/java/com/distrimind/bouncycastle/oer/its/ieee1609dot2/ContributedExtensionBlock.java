@@ -5,19 +5,19 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+import com.distrimind.bouncycastle.oer.its.ItsUtils;
 import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.oer.its.etsi103097.extension.EtsiOriginatingHeaderInfoExtension;
-import com.distrimind.bouncycastle.oer.its.ItsUtils;
 
 /**
  * ContributedExtensionBlock ::= SEQUENCE {
  * contributorId IEEE1609DOT2-HEADERINFO-CONTRIBUTED-EXTENSION.
- * &id({Ieee1609Dot2HeaderInfoContributedExtensions}),
+ * &amp;id({Ieee1609Dot2HeaderInfoContributedExtensions}),
  * extns   SEQUENCE (SIZE(1..MAX)) OF IEEE1609DOT2-HEADERINFO-CONTRIBUTED-EXTENSION.
- * &Extn({Ieee1609Dot2HeaderInfoContributedExtensions}{@.contributorId})
+ * &amp;Extn({Ieee1609Dot2HeaderInfoContributedExtensions}{&#64;.contributorId})
  * }
  */
 public class ContributedExtensionBlock

@@ -1,0 +1,42 @@
+package com.distrimind.bouncycastle.pqc.crypto.hqc;
+
+import java.security.SecureRandom;
+
+import com.distrimind.bouncycastle.crypto.EncapsulatedSecretGenerator;
+import com.distrimind.bouncycastle.crypto.SecretWithEncapsulation;
+import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
+import com.distrimind.bouncycastle.pqc.crypto.util.SecretWithEncapsulationImpl;
+import com.distrimind.bouncycastle.util.Arrays;
+
+public class HQCKEMGenerator
+    implements EncapsulatedSecretGenerator
+{
+    private final SecureRandom sr;
+
+    public HQCKEMGenerator(SecureRandom random)
+    {
+        this.sr = random;
+    }
+
+    public SecretWithEncapsulation generateEncapsulated(AsymmetricKeyParameter recipientKey)
+    {
+        HQCPublicKeyParameters key = (HQCPublicKeyParameters)recipientKey;
+        HQCEngine engine = key.getParameters().getEngine();
+
+        byte[] K = new byte[key.getParameters().getSHA512_BYTES()];
+        byte[] u = new byte[key.getParameters().getN_BYTES()];
+        byte[] v = new byte[key.getParameters().getN1N2_BYTES()];
+        byte[] d = new byte[key.getParameters().getSHA512_BYTES()];
+        byte[] pk = key.getPublicKey();
+        byte[] seed = new byte[48];
+
+        sr.nextBytes(seed);
+
+        engine.encaps(u, v, K, d, pk, seed);
+
+        byte[] cipherText = Arrays.concatenate(u, v);
+        cipherText = Arrays.concatenate(cipherText, d);
+
+        return new SecretWithEncapsulationImpl(Arrays.copyOfRange(K, 0, key.getParameters().getK()), cipherText);
+    }
+}

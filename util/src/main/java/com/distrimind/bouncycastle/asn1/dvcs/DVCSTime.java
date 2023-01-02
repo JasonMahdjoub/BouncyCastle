@@ -2,12 +2,12 @@ package com.distrimind.bouncycastle.asn1.dvcs;
 
 import java.util.Date;
 
+import com.distrimind.bouncycastle.asn1.cms.ContentInfo;
 import com.distrimind.bouncycastle.asn1.ASN1Choice;
 import com.distrimind.bouncycastle.asn1.ASN1GeneralizedTime;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
-import com.distrimind.bouncycastle.asn1.cms.ContentInfo;
 
 /**
  * <pre>

@@ -55,8 +55,8 @@ public class SignerIdentifier
      * <li> null &rarr; null
      * <li> {@link SignerIdentifier} object
      * <li> {@link IssuerAndSerialNumber} object
-     * <li> {@link ASN1OctetString#getInstance(java.lang.Object) ASN1OctetString} input formats with SignerIdentifier structure inside
-     * <li> {@link ASN1Primitive ASN1Primitive} for SignerIdentifier constructor.
+     * <li> {@link com.distrimind.bouncycastle.asn1.ASN1OctetString#getInstance(Object) ASN1OctetString} input formats with SignerIdentifier structure inside
+     * <li> {@link com.distrimind.bouncycastle.asn1.ASN1Primitive ASN1Primitive} for SignerIdentifier constructor.
      * </ul>
      *
      * @param o the object we want converted.

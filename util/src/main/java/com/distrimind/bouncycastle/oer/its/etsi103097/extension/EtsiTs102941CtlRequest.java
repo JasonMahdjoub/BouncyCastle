@@ -1,13 +1,13 @@
 package com.distrimind.bouncycastle.oer.its.etsi103097.extension;
 
+import com.distrimind.bouncycastle.oer.OEROptional;
+import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.HashedId8;
 import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1Integer;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.DERSequence;
-import com.distrimind.bouncycastle.oer.OEROptional;
-import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.HashedId8;
 
 /**
  * EtsiTs102941CtlRequest::= SEQUENCE {

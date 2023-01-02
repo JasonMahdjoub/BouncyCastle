@@ -1,12 +1,12 @@
 package com.distrimind.bouncycastle.oer.its.etsi102941;
 
+import com.distrimind.bouncycastle.oer.OEROptional;
+import com.distrimind.bouncycastle.oer.its.etsi103097.EtsiTs103097Certificate;
 import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.DERSequence;
-import com.distrimind.bouncycastle.oer.OEROptional;
-import com.distrimind.bouncycastle.oer.its.etsi103097.EtsiTs103097Certificate;
 
 
 /**

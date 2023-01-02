@@ -1,8 +1,8 @@
 package com.distrimind.bouncycastle.oer.its.etsi103097.extension;
 
+import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.HashedId8;
 import com.distrimind.bouncycastle.asn1.ASN1Integer;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
-import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.HashedId8;
 
 /**
  * EtsiTs102941DeltaCtlRequest::= EtsiTs102941CtlRequest

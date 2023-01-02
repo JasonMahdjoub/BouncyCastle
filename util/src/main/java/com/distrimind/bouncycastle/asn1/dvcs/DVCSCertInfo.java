@@ -1,5 +1,6 @@
 package com.distrimind.bouncycastle.asn1.dvcs;
 
+import com.distrimind.bouncycastle.asn1.cmp.PKIStatusInfo;
 import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
 import com.distrimind.bouncycastle.asn1.ASN1Integer;
@@ -10,7 +11,6 @@ import com.distrimind.bouncycastle.asn1.ASN1Set;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
 import com.distrimind.bouncycastle.asn1.DERSequence;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
-import com.distrimind.bouncycastle.asn1.cmp.PKIStatusInfo;
 import com.distrimind.bouncycastle.asn1.x509.DigestInfo;
 import com.distrimind.bouncycastle.asn1.x509.Extensions;
 import com.distrimind.bouncycastle.asn1.x509.PolicyInformation;

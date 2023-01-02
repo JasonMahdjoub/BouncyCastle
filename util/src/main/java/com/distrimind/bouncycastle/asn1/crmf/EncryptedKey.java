@@ -1,12 +1,12 @@
 package com.distrimind.bouncycastle.asn1.crmf;
 
+import com.distrimind.bouncycastle.asn1.cms.EnvelopedData;
 import com.distrimind.bouncycastle.asn1.ASN1Choice;
 import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
-import com.distrimind.bouncycastle.asn1.cms.EnvelopedData;
 
 /**
  * EncryptedKey ::= CHOICE {
@@ -29,10 +29,6 @@ public class EncryptedKey
         else if (o instanceof ASN1TaggedObject)
         {
             return new EncryptedKey(EnvelopedData.getInstance((ASN1TaggedObject)o, false));
-        }
-        else if (o instanceof EncryptedValue)
-        {
-            return new EncryptedKey((EncryptedValue)o);
         }
         else
         {

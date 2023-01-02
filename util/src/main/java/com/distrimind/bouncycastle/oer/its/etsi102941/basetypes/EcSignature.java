@@ -1,13 +1,13 @@
 package com.distrimind.bouncycastle.oer.its.etsi102941.basetypes;
 
+import com.distrimind.bouncycastle.oer.its.etsi103097.EtsiTs103097DataEncrypted;
+import com.distrimind.bouncycastle.oer.its.etsi103097.EtsiTs103097DataSignedExternalPayload;
 import com.distrimind.bouncycastle.asn1.ASN1Choice;
 import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
-import com.distrimind.bouncycastle.oer.its.etsi103097.EtsiTs103097DataEncrypted;
-import com.distrimind.bouncycastle.oer.its.etsi103097.EtsiTs103097DataSignedExternalPayload;
 
 /**
  * EcSignature::= CHOICE {

@@ -1,10 +1,9 @@
 package com.distrimind.bouncycastle.oer.its.template.etsi102941;
 
 import com.distrimind.bouncycastle.oer.OERDefinition;
-import com.distrimind.bouncycastle.oer.its.template.etsi102941.basetypes.EtsiTs102941BaseTypes;
+import com.distrimind.bouncycastle.oer.its.template.etsi103097.EtsiTs103097Module;
 import com.distrimind.bouncycastle.oer.its.template.ieee1609dot2.basetypes.Ieee1609Dot2BaseTypes;
-
-import static com.distrimind.bouncycastle.oer.its.template.etsi103097.EtsiTs103097Module.EtsiTs103097Certificate;
+import com.distrimind.bouncycastle.oer.its.template.etsi102941.basetypes.EtsiTs102941BaseTypes;
 
 public class EtsiTs102941TrustLists
 {
@@ -69,7 +68,7 @@ public class EtsiTs102941TrustLists
      * }
      */
     public static final OERDefinition.Builder AaEntry = OERDefinition.seq(
-        EtsiTs103097Certificate.label("aaCertificate"),
+        EtsiTs103097Module.EtsiTs103097Certificate.label("aaCertificate"),
         Url.label("accessPoint")
     ).typeName("AaEntry");
 
@@ -82,7 +81,7 @@ public class EtsiTs102941TrustLists
      * }
      */
     public static final OERDefinition.Builder EaEntry = OERDefinition.seq(
-        EtsiTs103097Certificate.label("eaCertificate"),
+        EtsiTs103097Module.EtsiTs103097Certificate.label("eaCertificate"),
         Url.label("aaAccessPoint"),
         OERDefinition.optional(Url.label("itsAccessPoint"))
     ).typeName("EaEntry");
@@ -95,8 +94,8 @@ public class EtsiTs102941TrustLists
      * }
      */
     public static final OERDefinition.Builder RootCaEntry = OERDefinition.seq(
-        EtsiTs103097Certificate.label("selfsignedRootCa"),
-        OERDefinition.optional(EtsiTs103097Certificate.label("successorTo"))
+        EtsiTs103097Module.EtsiTs103097Certificate.label("selfsignedRootCa"),
+        OERDefinition.optional(EtsiTs103097Module.EtsiTs103097Certificate.label("successorTo"))
     ).typeName("RootCaEntry");
 
     /**
@@ -108,8 +107,8 @@ public class EtsiTs102941TrustLists
      */
 
     public static final OERDefinition.Builder TlmEntry = OERDefinition.seq(
-        EtsiTs103097Certificate.label("selfSignedTLMCertificate"),
-        OERDefinition.optional(EtsiTs103097Certificate.label("successorTo")),
+        EtsiTs103097Module.EtsiTs103097Certificate.label("selfSignedTLMCertificate"),
+        OERDefinition.optional(EtsiTs103097Module.EtsiTs103097Certificate.label("successorTo")),
         Url.label("accessPoint")
     ).typeName("TlmEntry");
 

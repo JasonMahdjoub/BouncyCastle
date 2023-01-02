@@ -1,0 +1,65 @@
+package com.distrimind.bouncycastle.pqc.crypto.lms;
+
+import com.distrimind.bouncycastle.crypto.Digest;
+
+class LMOtsPrivateKey
+{
+    private final LMOtsParameters parameter;
+    private final byte[] I;
+    private final int q;
+    private final byte[] masterSecret;
+
+    public LMOtsPrivateKey(LMOtsParameters parameter, byte[] i, int q, byte[] masterSecret)
+    {
+        this.parameter = parameter;
+        I = i;
+        this.q = q;
+        this.masterSecret = masterSecret;
+    }
+
+    LMSContext getSignatureContext(LMSigParameters sigParams, byte[][] path)
+    {
+        byte[] C = new byte[LM_OTS.SEED_LEN];
+
+        SeedDerive derive = getDerivationFunction();
+        derive.setJ(LM_OTS.SEED_RANDOMISER_INDEX); // This value from reference impl.
+        derive.deriveSeed(C, false);
+
+        Digest ctx = DigestUtil.getDigest(parameter.getDigestOID());
+
+        LmsUtils.byteArray(this.getI(), ctx);
+        LmsUtils.u32str(this.getQ(), ctx);
+        LmsUtils.u16str(LM_OTS.D_MESG, ctx);
+        LmsUtils.byteArray(C, ctx);
+
+        return new LMSContext(this, sigParams, ctx, C, path);
+    }
+
+    SeedDerive getDerivationFunction()
+    {
+        SeedDerive derive = new SeedDerive(I, masterSecret, DigestUtil.getDigest(parameter.getDigestOID()));
+        derive.setQ(q);
+        return derive;
+    }
+
+
+    public LMOtsParameters getParameter()
+    {
+        return parameter;
+    }
+
+    public byte[] getI()
+    {
+        return I;
+    }
+
+    public int getQ()
+    {
+        return q;
+    }
+
+    public byte[] getMasterSecret()
+    {
+        return masterSecret;
+    }
+}

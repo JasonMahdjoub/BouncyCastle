@@ -1,9 +1,9 @@
 package com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes;
 
+import com.distrimind.bouncycastle.oer.its.ItsUtils;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
-import com.distrimind.bouncycastle.oer.its.ItsUtils;
 
 /**
  * <pre>

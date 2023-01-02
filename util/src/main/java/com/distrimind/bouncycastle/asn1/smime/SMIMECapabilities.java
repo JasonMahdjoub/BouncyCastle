@@ -3,11 +3,11 @@ package com.distrimind.bouncycastle.asn1.smime;
 import java.util.Enumeration;
 import java.util.Vector;
 
+import com.distrimind.bouncycastle.asn1.cms.Attribute;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
-import com.distrimind.bouncycastle.asn1.cms.Attribute;
 import com.distrimind.bouncycastle.asn1.nist.NISTObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 

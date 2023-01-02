@@ -3,10 +3,8 @@ package com.distrimind.bouncycastle.oer.its.template.etsi102941;
 import java.math.BigInteger;
 
 import com.distrimind.bouncycastle.oer.OERDefinition;
-import com.distrimind.bouncycastle.oer.its.template.etsi102941.basetypes.EtsiTs102941BaseTypes;
 import com.distrimind.bouncycastle.oer.its.template.etsi103097.EtsiTs103097Module;
-
-import static com.distrimind.bouncycastle.oer.its.template.etsi103097.EtsiTs103097Module.EtsiTs103097Data_Signed;
+import com.distrimind.bouncycastle.oer.its.template.etsi102941.basetypes.EtsiTs102941BaseTypes;
 
 
 public class EtsiTs102941TypesEnrolment
@@ -87,7 +85,7 @@ public class EtsiTs102941TypesEnrolment
      * InnerEcRequestSignedForPop::= EtsiTs103097Data-Signed{InnerEcRequest}
      */
     public static final OERDefinition.Builder InnerEcRequestSignedForPop =
-        EtsiTs103097Data_Signed.typeName("InnerEcRequestSignedForPop");
+        EtsiTs103097Module.EtsiTs103097Data_Signed.typeName("InnerEcRequestSignedForPop");
 
 
 }

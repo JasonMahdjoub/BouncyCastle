@@ -13,6 +13,17 @@ import com.distrimind.bouncycastle.asn1.DERTaggedObject;
 import com.distrimind.bouncycastle.asn1.crmf.CertId;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 
+/**
+ * <pre>
+ * OOBCertHash ::= SEQUENCE {
+ * hashAlg     [0] AlgorithmIdentifier     OPTIONAL,
+ * certId      [1] CertId                  OPTIONAL,
+ * hashVal         BIT STRING
+ * -- hashVal is calculated over the DER encoding of the
+ * -- self-signed certificate with the identifier certID.
+ * }
+ * </pre>
+ */
 public class OOBCertHash
     extends ASN1Object
 {

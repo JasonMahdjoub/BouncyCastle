@@ -1,14 +1,14 @@
 package com.distrimind.bouncycastle.oer.its.ieee1609dot2dot1;
 
+import com.distrimind.bouncycastle.oer.OEROptional;
+import com.distrimind.bouncycastle.oer.its.ItsUtils;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
-import com.distrimind.bouncycastle.oer.OEROptional;
-import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.Time32;
-import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.UINT8;
-import com.distrimind.bouncycastle.oer.its.ItsUtils;
 import com.distrimind.bouncycastle.oer.its.ieee1609dot2.CertificateType;
 import com.distrimind.bouncycastle.oer.its.ieee1609dot2.ToBeSignedCertificate;
+import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.Time32;
+import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.UINT8;
 
 /**
  * EeRaCertRequest ::= SEQUENCE {

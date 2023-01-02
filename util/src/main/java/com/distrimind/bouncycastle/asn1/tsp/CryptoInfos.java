@@ -1,11 +1,11 @@
 package com.distrimind.bouncycastle.asn1.tsp;
 
+import com.distrimind.bouncycastle.asn1.cms.Attribute;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
 import com.distrimind.bouncycastle.asn1.DERSequence;
-import com.distrimind.bouncycastle.asn1.cms.Attribute;
 
 /**
  * Implementation of the CryptoInfos element defined in RFC 4998:

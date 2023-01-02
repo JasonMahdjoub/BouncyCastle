@@ -1,9 +1,9 @@
 package com.distrimind.bouncycastle.oer.its.etsi103097;
 
-import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.oer.its.ieee1609dot2.Ieee1609Dot2Content;
 import com.distrimind.bouncycastle.oer.its.ieee1609dot2.Ieee1609Dot2Data;
 import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.UINT8;
+import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 
 /**
  * EtsiTs103097Data::=Ieee1609Dot2Data (WITH COMPONENTS {...,

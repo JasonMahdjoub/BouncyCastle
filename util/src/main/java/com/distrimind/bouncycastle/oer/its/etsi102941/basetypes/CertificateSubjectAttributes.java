@@ -1,17 +1,17 @@
 package com.distrimind.bouncycastle.oer.its.etsi102941.basetypes;
 
+import com.distrimind.bouncycastle.oer.OEROptional;
+import com.distrimind.bouncycastle.oer.its.ieee1609dot2.CertificateId;
+import com.distrimind.bouncycastle.oer.its.ieee1609dot2.SequenceOfPsidGroupPermissions;
+import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.GeographicRegion;
+import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.SequenceOfPsidSsp;
+import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.SubjectAssurance;
+import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.ValidityPeriod;
 import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.DERSequence;
-import com.distrimind.bouncycastle.oer.OEROptional;
-import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.GeographicRegion;
-import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.SequenceOfPsidSsp;
-import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.SubjectAssurance;
-import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.ValidityPeriod;
-import com.distrimind.bouncycastle.oer.its.ieee1609dot2.CertificateId;
-import com.distrimind.bouncycastle.oer.its.ieee1609dot2.SequenceOfPsidGroupPermissions;
 
 
 /**

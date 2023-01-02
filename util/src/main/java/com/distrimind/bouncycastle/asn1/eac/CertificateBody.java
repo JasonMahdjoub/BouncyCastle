@@ -247,7 +247,7 @@ public class CertificateBody
      * set the public Key
      *
      * @param publicKey : the ASN1ApplicationSpecific containing the public key
-     * @throws java.io.IOException
+     * @throws IOException
      */
     private void setPublicKey(PublicKeyDataObject publicKey)
     {

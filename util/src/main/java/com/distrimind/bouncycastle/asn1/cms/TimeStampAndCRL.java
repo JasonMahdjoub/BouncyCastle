@@ -44,7 +44,7 @@ public class TimeStampAndCRL
      * <ul>
      * <li> null &rarr; null
      * <li> {@link TimeStampAndCRL} object
-     * <li> {@link ASN1Sequence#getInstance(java.lang.Object) ASN1Sequence} input formats with TimeStampAndCRL structure inside
+     * <li> {@link com.distrimind.bouncycastle.asn1.ASN1Sequence#getInstance(Object) ASN1Sequence} input formats with TimeStampAndCRL structure inside
      * </ul>
      *
      * @param obj the object we want converted.

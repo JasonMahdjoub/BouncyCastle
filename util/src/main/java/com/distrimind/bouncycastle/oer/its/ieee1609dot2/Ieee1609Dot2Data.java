@@ -2,12 +2,11 @@ package com.distrimind.bouncycastle.oer.its.ieee1609dot2;
 
 import java.util.Iterator;
 
+import com.distrimind.bouncycastle.oer.its.ItsUtils;
 import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
-import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.UINT8;
-import com.distrimind.bouncycastle.oer.its.ItsUtils;
 import com.distrimind.bouncycastle.oer.its.etsi102941.InnerEcRequestSignedForPop;
 import com.distrimind.bouncycastle.oer.its.etsi103097.EtsiTs103097Data;
 import com.distrimind.bouncycastle.oer.its.etsi103097.EtsiTs103097DataEncrypted;
@@ -17,6 +16,7 @@ import com.distrimind.bouncycastle.oer.its.etsi103097.EtsiTs103097DataSignedAndE
 import com.distrimind.bouncycastle.oer.its.etsi103097.EtsiTs103097DataSignedAndEncryptedUnicast;
 import com.distrimind.bouncycastle.oer.its.etsi103097.EtsiTs103097DataSignedExternalPayload;
 import com.distrimind.bouncycastle.oer.its.etsi103097.EtsiTs103097DataUnsecured;
+import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.UINT8;
 
 /**
  * <pre>

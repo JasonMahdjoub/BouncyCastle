@@ -1,5 +1,6 @@
 package com.distrimind.bouncycastle.asn1.crmf;
 
+import com.distrimind.bouncycastle.asn1.cms.EnvelopedData;
 import com.distrimind.bouncycastle.asn1.ASN1Choice;
 import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1Integer;
@@ -8,7 +9,6 @@ import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
 import com.distrimind.bouncycastle.asn1.DERBitString;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
-import com.distrimind.bouncycastle.asn1.cms.EnvelopedData;
 
 public class POPOPrivKey
     extends ASN1Object

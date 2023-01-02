@@ -1,16 +1,16 @@
 package com.distrimind.bouncycastle.oer.its.ieee1609dot2dot1;
 
+import com.distrimind.bouncycastle.oer.OEROptional;
+import com.distrimind.bouncycastle.oer.its.ItsUtils;
 import com.distrimind.bouncycastle.asn1.ASN1IA5String;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.DERIA5String;
-import com.distrimind.bouncycastle.oer.OEROptional;
-import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.Time32;
-import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.UINT8;
-import com.distrimind.bouncycastle.oer.its.ItsUtils;
 import com.distrimind.bouncycastle.oer.its.ieee1609dot2.CertificateType;
 import com.distrimind.bouncycastle.oer.its.ieee1609dot2.ToBeSignedCertificate;
+import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.Time32;
+import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.UINT8;
 
 /**
  * EeEcaCertRequest ::= SEQUENCE {
@@ -74,7 +74,7 @@ public class EeEcaCertRequest
 
     }
 
-    public static EeEcaCertRequest.Builder builder()
+    public static Builder builder()
     {
         return new Builder();
     }
@@ -137,37 +137,37 @@ public class EeEcaCertRequest
         private ToBeSignedCertificate tbsCert;
         private DERIA5String canonicalId;
 
-        public EeEcaCertRequest.Builder setVersion(UINT8 version)
+        public Builder setVersion(UINT8 version)
         {
             this.version = version;
             return this;
         }
 
-        public EeEcaCertRequest.Builder setGenerationTime(Time32 generationTime)
+        public Builder setGenerationTime(Time32 generationTime)
         {
             this.generationTime = generationTime;
             return this;
         }
 
-        public EeEcaCertRequest.Builder setType(CertificateType type)
+        public Builder setType(CertificateType type)
         {
             this.type = type;
             return this;
         }
 
-        public EeEcaCertRequest.Builder setTbsCert(ToBeSignedCertificate tbsCert)
+        public Builder setTbsCert(ToBeSignedCertificate tbsCert)
         {
             this.tbsCert = tbsCert;
             return this;
         }
 
-        public EeEcaCertRequest.Builder setCanonicalId(DERIA5String canonicalId)
+        public Builder setCanonicalId(DERIA5String canonicalId)
         {
             this.canonicalId = canonicalId;
             return this;
         }
 
-        public EeEcaCertRequest.Builder setCanonicalId(String canonicalId)
+        public Builder setCanonicalId(String canonicalId)
         {
             this.canonicalId = new DERIA5String(canonicalId);
             return this;

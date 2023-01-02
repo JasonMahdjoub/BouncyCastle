@@ -1,5 +1,6 @@
 package com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes;
 
+import com.distrimind.bouncycastle.oer.its.ieee1609dot2.Opaque;
 import com.distrimind.bouncycastle.asn1.ASN1Choice;
 import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
@@ -8,7 +9,6 @@ import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
 import com.distrimind.bouncycastle.asn1.DEROctetString;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
-import com.distrimind.bouncycastle.oer.its.ieee1609dot2.Opaque;
 
 /**
  * ServiceSpecificPermissions ::= CHOICE {

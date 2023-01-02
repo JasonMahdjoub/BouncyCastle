@@ -1,5 +1,8 @@
 package com.distrimind.bouncycastle.asn1.dvcs;
 
+import com.distrimind.bouncycastle.asn1.cmp.PKIStatusInfo;
+import com.distrimind.bouncycastle.asn1.cms.ContentInfo;
+import com.distrimind.bouncycastle.asn1.smime.SMIMECapabilities;
 import com.distrimind.bouncycastle.asn1.ASN1Choice;
 import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
@@ -7,9 +10,6 @@ import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
-import com.distrimind.bouncycastle.asn1.smime.SMIMECapabilities;
-import com.distrimind.bouncycastle.asn1.cmp.PKIStatusInfo;
-import com.distrimind.bouncycastle.asn1.cms.ContentInfo;
 import com.distrimind.bouncycastle.asn1.ess.ESSCertID;
 import com.distrimind.bouncycastle.asn1.ocsp.CertID;
 import com.distrimind.bouncycastle.asn1.ocsp.CertStatus;

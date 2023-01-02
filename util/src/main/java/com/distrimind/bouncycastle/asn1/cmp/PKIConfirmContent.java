@@ -5,6 +5,9 @@ import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.DERNull;
 
+/**
+ *  PKIConfirmContent ::= NULL
+ */
 public class PKIConfirmContent
     extends ASN1Object
 {

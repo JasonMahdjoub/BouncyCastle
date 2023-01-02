@@ -8,8 +8,8 @@ import com.distrimind.bouncycastle.asn1.DERSequence;
 import com.distrimind.bouncycastle.asn1.crmf.CertTemplate;
 
 /**
- * GenMsg:    {id-it 19}, < absent >
- * GenRep:    {id-it 19}, CertReqTemplateContent | < absent >
+ * GenMsg:    {id-it 19}, &lt; absent &gt;
+ * GenRep:    {id-it 19}, CertReqTemplateContent | &lt; absent &gt;
  * <p>
  * CertReqTemplateValue  ::= CertReqTemplateContent
  * <p>
@@ -79,7 +79,7 @@ public class CertReqTemplateContent
 
     public ASN1Primitive toASN1Primitive()
     {
-        ASN1EncodableVector v = new ASN1EncodableVector();
+        ASN1EncodableVector v = new ASN1EncodableVector(2);
         v.add(certTemplate);
         if (keySpec != null)
         {

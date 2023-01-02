@@ -3,8 +3,8 @@ package com.distrimind.bouncycastle.oer.its.template.ieee1609dot2.basetypes;
 
 import java.math.BigInteger;
 
-import com.distrimind.bouncycastle.asn1.ASN1Integer;
 import com.distrimind.bouncycastle.oer.OERDefinition;
+import com.distrimind.bouncycastle.asn1.ASN1Integer;
 
 public class Ieee1609Dot2BaseTypes
 {

@@ -5,8 +5,18 @@ import com.distrimind.bouncycastle.asn1.cmp.test.PKIFailureInfoTest;
 import com.distrimind.bouncycastle.asn1.cmp.test.PollReqContentTest;
 import com.distrimind.bouncycastle.asn1.cms.test.AttributeTableUnitTest;
 import com.distrimind.bouncycastle.asn1.cms.test.CMSTest;
+import com.distrimind.bouncycastle.asn1.crmf.test.DhSigStaticTest;
+import com.distrimind.bouncycastle.asn1.crmf.test.PKIPublicationInfoTest;
+import com.distrimind.bouncycastle.asn1.esf.test.CommitmentTypeIndicationUnitTest;
+import com.distrimind.bouncycastle.asn1.esf.test.CommitmentTypeQualifierUnitTest;
 import com.distrimind.bouncycastle.asn1.esf.test.SignerLocationUnitTest;
-import com.distrimind.bouncycastle.asn1.smime.test.SMIMETest;
+import com.distrimind.bouncycastle.asn1.ess.test.ContentHintsUnitTest;
+import com.distrimind.bouncycastle.asn1.ess.test.ESSCertIDv2UnitTest;
+import com.distrimind.bouncycastle.asn1.ess.test.OtherCertIDUnitTest;
+import com.distrimind.bouncycastle.asn1.ess.test.OtherSigningCertificateUnitTest;
+import com.distrimind.bouncycastle.asn1.icao.test.CscaMasterListTest;
+import com.distrimind.bouncycastle.asn1.icao.test.DataGroupHashUnitTest;
+import com.distrimind.bouncycastle.asn1.icao.test.LDSSecurityObjectUnitTest;
 import com.distrimind.bouncycastle.asn1.cmc.test.BodyPartIDTest;
 import com.distrimind.bouncycastle.asn1.cmc.test.BodyPartListTest;
 import com.distrimind.bouncycastle.asn1.cmc.test.BodyPartPathTest;
@@ -40,17 +50,6 @@ import com.distrimind.bouncycastle.asn1.cmc.test.TaggedAttributeTest;
 import com.distrimind.bouncycastle.asn1.cmc.test.TaggedCertificationRequestTest;
 import com.distrimind.bouncycastle.asn1.cmc.test.TaggedContentInfoTest;
 import com.distrimind.bouncycastle.asn1.cmc.test.TaggedRequestTest;
-import com.distrimind.bouncycastle.asn1.crmf.test.DhSigStaticTest;
-import com.distrimind.bouncycastle.asn1.crmf.test.PKIPublicationInfoTest;
-import com.distrimind.bouncycastle.asn1.esf.test.CommitmentTypeIndicationUnitTest;
-import com.distrimind.bouncycastle.asn1.esf.test.CommitmentTypeQualifierUnitTest;
-import com.distrimind.bouncycastle.asn1.ess.test.ContentHintsUnitTest;
-import com.distrimind.bouncycastle.asn1.ess.test.ESSCertIDv2UnitTest;
-import com.distrimind.bouncycastle.asn1.ess.test.OtherCertIDUnitTest;
-import com.distrimind.bouncycastle.asn1.ess.test.OtherSigningCertificateUnitTest;
-import com.distrimind.bouncycastle.asn1.icao.test.CscaMasterListTest;
-import com.distrimind.bouncycastle.asn1.icao.test.DataGroupHashUnitTest;
-import com.distrimind.bouncycastle.asn1.icao.test.LDSSecurityObjectUnitTest;
 import com.distrimind.bouncycastle.asn1.isismtt.test.AdditionalInformationSyntaxUnitTest;
 import com.distrimind.bouncycastle.asn1.isismtt.test.AdmissionSyntaxUnitTest;
 import com.distrimind.bouncycastle.asn1.isismtt.test.AdmissionsUnitTest;
@@ -61,6 +60,7 @@ import com.distrimind.bouncycastle.asn1.isismtt.test.NamingAuthorityUnitTest;
 import com.distrimind.bouncycastle.asn1.isismtt.test.ProcurationSyntaxUnitTest;
 import com.distrimind.bouncycastle.asn1.isismtt.test.RequestedCertificateUnitTest;
 import com.distrimind.bouncycastle.asn1.isismtt.test.RestrictionUnitTest;
+import com.distrimind.bouncycastle.asn1.smime.test.SMIMETest;
 import com.distrimind.bouncycastle.util.test.SimpleTest;
 import com.distrimind.bouncycastle.util.test.Test;
 
@@ -116,7 +116,7 @@ public class RegressionTest
         new ESSCertIDv2UnitTest(),
         new OtherCertIDUnitTest(),
         new OtherSigningCertificateUnitTest(),
-        //new CscaMasterListTest(),
+        new CscaMasterListTest(),
         new DataGroupHashUnitTest(),
         new LDSSecurityObjectUnitTest(),
         new AdditionalInformationSyntaxUnitTest(),

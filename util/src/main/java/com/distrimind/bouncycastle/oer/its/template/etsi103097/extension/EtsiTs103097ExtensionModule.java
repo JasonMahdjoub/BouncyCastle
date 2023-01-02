@@ -1,12 +1,12 @@
 package com.distrimind.bouncycastle.oer.its.template.etsi103097.extension;
 
-import com.distrimind.bouncycastle.asn1.ASN1Encodable;
-import com.distrimind.bouncycastle.asn1.ASN1Integer;
 import com.distrimind.bouncycastle.oer.Element;
 import com.distrimind.bouncycastle.oer.OERDefinition;
 import com.distrimind.bouncycastle.oer.Switch;
 import com.distrimind.bouncycastle.oer.SwitchIndexer;
 import com.distrimind.bouncycastle.oer.its.template.ieee1609dot2.basetypes.Ieee1609Dot2BaseTypes;
+import com.distrimind.bouncycastle.asn1.ASN1Encodable;
+import com.distrimind.bouncycastle.asn1.ASN1Integer;
 
 
 /**
@@ -60,8 +60,8 @@ public class EtsiTs103097ExtensionModule
 
     /**
      * Extension {EXT-TYPE : ExtensionTypes} ::= SEQUENCE {
-     * id      EXT-TYPE.&extId({ExtensionTypes}),
-     * content EXT-TYPE.&ExtContent({ExtensionTypes}{@.id})
+     * id      EXT-TYPE.&amp;extId({ExtensionTypes}),
+     * content EXT-TYPE.&amp;ExtContent({ExtensionTypes}{&#64;.id})
      * }
      * <p>
      * This uses a switch to determine which OER definition to use based on the value of id.

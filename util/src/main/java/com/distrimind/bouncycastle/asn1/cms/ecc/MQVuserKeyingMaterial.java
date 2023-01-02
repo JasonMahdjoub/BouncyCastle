@@ -1,5 +1,6 @@
 package com.distrimind.bouncycastle.asn1.cms.ecc;
 
+import com.distrimind.bouncycastle.asn1.cms.OriginatorPublicKey;
 import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1OctetString;
@@ -8,7 +9,6 @@ import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
 import com.distrimind.bouncycastle.asn1.DERSequence;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
-import com.distrimind.bouncycastle.asn1.cms.OriginatorPublicKey;
 
 /**
  * <a href="https://tools.ietf.org/html/rfc5753">RFC 5753/3278</a>: MQVuserKeyingMaterial object.
@@ -78,7 +78,7 @@ public class MQVuserKeyingMaterial
      * <ul>
      * <li> null &rarr; null
      * <li> {@link MQVuserKeyingMaterial} object
-     * <li> {@link ASN1Sequence ASN1Sequence} with MQVuserKeyingMaterial inside it.
+     * <li> {@link com.distrimind.bouncycastle.asn1.ASN1Sequence ASN1Sequence} with MQVuserKeyingMaterial inside it.
      * </ul>
      *
      * @param obj the object we want converted.

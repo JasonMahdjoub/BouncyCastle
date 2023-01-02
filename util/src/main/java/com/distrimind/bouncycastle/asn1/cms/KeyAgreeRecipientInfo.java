@@ -93,7 +93,7 @@ public class KeyAgreeRecipientInfo
      * <ul>
      * <li> null &rarr; null
      * <li> {@link KeyAgreeRecipientInfo} object
-     * <li> {@link ASN1Sequence#getInstance(java.lang.Object) ASN1Sequence} input formats with KeyAgreeRecipientInfo structure inside
+     * <li> {@link com.distrimind.bouncycastle.asn1.ASN1Sequence#getInstance(Object) ASN1Sequence} input formats with KeyAgreeRecipientInfo structure inside
      * </ul>
      *
      * @param obj the object we want converted.

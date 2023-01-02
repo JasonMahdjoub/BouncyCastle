@@ -4,7 +4,6 @@ import com.distrimind.bouncycastle.asn1.isismtt.ocsp.CertHash;
 import com.distrimind.bouncycastle.asn1.isismtt.ocsp.RequestedCertificate;
 import com.distrimind.bouncycastle.asn1.isismtt.x509.AdditionalInformationSyntax;
 import com.distrimind.bouncycastle.asn1.isismtt.x509.Restriction;
-import com.distrimind.bouncycastle.asn1.x509.SubjectDirectoryAttributes;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 
 /**
@@ -175,7 +174,7 @@ public interface ISISMTTObjectIdentifiers
      * </pre>
      * 
      * Used in
-     * {@link SubjectDirectoryAttributes SubjectDirectoryAttributes}
+     * {@link com.distrimind.bouncycastle.asn1.x509.SubjectDirectoryAttributes SubjectDirectoryAttributes}
      * <p>
      * OID: 1.3.36.8.3.14
      */

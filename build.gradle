@@ -7,9 +7,9 @@ buildscript {
 
 }
 plugins {
-	id "io.spring.nohttp" version "0.0.10"
+	//id "io.spring.nohttp" version "0.0.10"
 	id "jacoco"
-	id "net.ltgt.errorprone" version "2.0.2"
+	id "net.ltgt.errorprone" version "3.0.0"
 }
 if (JavaVersion.current().isJava8Compatible()) {
     allprojects {
@@ -47,7 +47,7 @@ if (propFile.canRead())
 		sonatypePwd=props.get("sonatype_password")
 }
 apply plugin: 'java-library'
-def JavaVersionSource=8
+def JavaVersionSource=11
 def JavaVersionTarget=11
 sourceCompatibility = JavaVersionSource
 targetCompatibility= JavaVersionTarget
@@ -207,6 +207,10 @@ subprojects {
 	apply plugin: 'idea'
 	apply plugin: 'eclipse'
 
+	dependencies {
+		errorprone "com.google.errorprone:error_prone_core:2.15.0"
+	}
+
 	JavaVersion current = JavaVersion.current();
 	if (current <= JavaVersion.VERSION_1_8)
 	{
@@ -220,11 +224,11 @@ subprojects {
 		if (project.hasProperty('javaHomeVersion') && JavaVersionTarget.toFloat()>1.8)
 			javadoc.options.addStringOption("html5", "-quiet")
 		ext.vmrange='jdk18on'
-		sourceCompatibility = 1.8
-		targetCompatibility = 1.11
+		sourceCompatibility = 11
+		targetCompatibility = 11
 	}
 
-	version = '1.72'
+	version = '1.72c'
 
 	task testFull(type:Test) {
 		systemProperties = [
@@ -232,7 +236,7 @@ subprojects {
 				'test.full':'true'
 		]
 		systemProperty 'bc.test.data.home', bcTestDataHome
-		maxHeapSize = "1536m"
+		maxHeapSize = "8192m"
 
 		finalizedBy jacocoTestReport
 
@@ -242,8 +246,11 @@ subprojects {
 	}
 
 	test {
+		/*testLogging {
+			events "PASSED", "SKIPPED", "FAILED", "STANDARD_OUT", "STANDARD_ERROR"
+		}*/
 		systemProperty 'bc.test.data.home', bcTestDataHome
-		maxHeapSize = "1536m"
+		maxHeapSize = "8192m"
 
 		filter {
 			includeTestsMatching "AllTest*"

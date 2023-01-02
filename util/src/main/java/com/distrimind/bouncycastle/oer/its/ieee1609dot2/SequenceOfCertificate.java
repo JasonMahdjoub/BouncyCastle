@@ -6,11 +6,11 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+import com.distrimind.bouncycastle.oer.its.ItsUtils;
 import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
-import com.distrimind.bouncycastle.oer.its.ItsUtils;
 
 /**
  * <pre>

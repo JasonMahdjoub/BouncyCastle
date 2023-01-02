@@ -25,7 +25,7 @@ public class AllTests
             
             if (!result.isSuccessful())
             {
-                fail(result.toString()+" ; "+tests[i].getClass());
+                fail(result.toString());
             }
         }
     }

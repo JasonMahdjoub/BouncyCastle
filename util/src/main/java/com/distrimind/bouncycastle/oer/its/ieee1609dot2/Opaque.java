@@ -7,13 +7,13 @@ import java.lang.reflect.Method;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
 
+import com.distrimind.bouncycastle.oer.Element;
+import com.distrimind.bouncycastle.oer.OERInputStream;
 import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1OctetString;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.DEROctetString;
-import com.distrimind.bouncycastle.oer.Element;
-import com.distrimind.bouncycastle.oer.OERInputStream;
 import com.distrimind.bouncycastle.util.Arrays;
 
 public class Opaque
