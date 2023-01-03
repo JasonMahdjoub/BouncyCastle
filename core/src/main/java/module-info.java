@@ -84,6 +84,7 @@ module com.distrimind.bouncycastle.core {
 	exports com.distrimind.bouncycastle.pqc.crypto.sphincs;
 	exports com.distrimind.bouncycastle.pqc.crypto.sphincsplus;
 	exports com.distrimind.bouncycastle.pqc.crypto.xmss;
+	exports com.distrimind.bouncycastle.pqc.crypto;
 	exports com.distrimind.bouncycastle.pqc.asn1;
 	exports com.distrimind.bouncycastle.pqc.math.ntru.parameters;
 	exports com.distrimind.bouncycastle.pqc.math.ntru;
@@ -100,6 +101,7 @@ module com.distrimind.bouncycastle.core {
 	exports com.distrimind.bouncycastle.pqc.legacy.math.ntru.polynomial;
 	exports com.distrimind.bouncycastle.pqc.legacy.math.linearalgebra;
 
+
 	exports com.distrimind.bouncycastle.math.ec.custom.sec;
 	exports com.distrimind.bouncycastle.math.ec.custom.djb;
 	exports com.distrimind.bouncycastle.math.ec.endo;
@@ -113,8 +115,6 @@ module com.distrimind.bouncycastle.core {
 	exports com.distrimind.bouncycastle.internal.asn1.isismtt to com.distrimind.bouncycastle.prov;
 	exports com.distrimind.bouncycastle.internal.asn1.bsi to com.distrimind.bouncycastle.prov;
 	exports com.distrimind.bouncycastle.internal.asn1.eac to com.distrimind.bouncycastle.prov;
-	exports com.distrimind.bouncycastle.pqc.crypto to com.distrimind.bouncycastle.prov;
 	exports com.distrimind.bouncycastle.internal.asn1.cms to com.distrimind.bouncycastle.prov;
-
 
 }
