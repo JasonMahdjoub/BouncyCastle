@@ -4,12 +4,11 @@
 
   <!-- ignore intellij out directory and out directory -->
   <suppress files="out.+" checks="NoHttp"/>
-  <suppress files=".+\.(?:rsp|tsr|ers|pem|crt|cer|eml|cnf|sig|message)$" checks="NoHttp"/>
+  <suppress files="(core|pg|pkix|prov|tls|util)[\\/]build.+" checks="NoHttp"/>
   <suppress files="test[\\/]est.+" checks="NoHttp"/>
 
-
   <!-- Suppress warnings in certificates, signatures, configs and emails for testing -->
-  <suppress files=".+\.(?:rsp|pem|crt|cer|eml|cnf|sig|message)$" checks="NoHttp"/>
+  <suppress files=".+\.(?:tsr|ers|pem|crt|cer|eml|cnf|sig|message)$" checks="NoHttp"/>
 
   <!-- This tests server doesn't seem to support HTTPS -->
   <suppress message="http://testrfc7030.com/" checks="NoHttp"/>

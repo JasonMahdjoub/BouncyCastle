@@ -4,7 +4,7 @@
 
 The Bouncy Castle Crypto package is a Java implementation of cryptographic algorithms, it was developed by the Legion of the Bouncy Castle, a registered Australian Charity, with a little help! The Legion, and the latest goings on with this package, can be found at [https://www.bouncycastle.org](https://www.bouncycastle.org).
 
-The Legion also gratefully acknowledges the contributions made to this package by others (see [here](https://www.bouncycastle.org/contributors.html) for the current list). If you would like to contribute to our efforts please feel free to get in touch with us or visit our [donations page](https://www.bouncycastle.org/donate), sponsor some specific work, or purchase a support contract through [Crypto Workshop](https://www.cryptoworkshop.com).
+The Legion also gratefully acknowledges the contributions made to this package by others (see [here](https://www.bouncycastle.org/contributors.html) for the current list). If you would like to contribute to our efforts please feel free to get in touch with us or visit our [donations page](https://www.bouncycastle.org/donate), sponsor some specific work, or purchase a support contract through [Crypto Workshop](https://www.keyfactor.com/platform/bouncy-castle-support/) (now part of Keyfactor).
 
 The package is organised so that it contains a light-weight API suitable for use in any environment (including the newly released J2ME) with the additional infrastructure to conform the algorithms to the JCE framework.
 
@@ -35,28 +35,30 @@ The build scripts that come with the full distribution allow creation of the dif
 
 If you want to try create a build for yourself, using your own environment, the best way to do it is to start with the build for the distribution you are interested in, make sure that builds, and then modify your build scripts to do the required exclusions and file copies for your setup, otherwise you are likely to get class not found exceptions. The final caveat to this is that as the j2me distribution includes some compatibility classes starting in the java package, you need to use an obfuscator to change the package names before attempting to import a midlet using the BC API.
 
+**Important**: You will also need to check out the [bc-test-data](https://github.com/bcgit/bc-test-data) repository at the same level as the bc-java repository if you want to run the tests.
+
 
 ## Examples and Tests
 
 To view some examples, look at the test programs in the packages:
 
-*   **com.distrimind.bouncycastle.crypto.test**
+*   **org.bouncycastle.crypto.test**
 
-*   **com.distrimind.bouncycastle.jce.provider.test**
+*   **org.bouncycastle.jce.provider.test**
 
-*   **com.distrimind.bouncycastle.cms.test**
+*   **org.bouncycastle.cms.test**
 
-*   **com.distrimind.bouncycastle.mail.smime.test**
+*   **org.bouncycastle.mail.smime.test**
 
-*   **com.distrimind.bouncycastle.openpgp.test**
+*   **org.bouncycastle.openpgp.test**
 
-*   **com.distrimind.bouncycastle.tsp.test**
+*   **org.bouncycastle.tsp.test**
 
 There are also some specific example programs for dealing with SMIME and OpenPGP. They can be found in:
 
-*   **com.distrimind.bouncycastle.mail.smime.examples**
+*   **org.bouncycastle.mail.smime.examples**
 
-*   **com.distrimind.bouncycastle.openpgp.examples**
+*   **org.bouncycastle.openpgp.examples**
 
 ## Mailing Lists
 

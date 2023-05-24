@@ -228,7 +228,7 @@ subprojects {
 		targetCompatibility = 11
 	}
 
-	version = '1.72c'
+	version = '1.73'
 
 	task testFull(type:Test) {
 		systemProperties = [
@@ -242,6 +242,9 @@ subprojects {
 
 		filter {
 			includeTestsMatching "AllTest*"
+			if (project.hasProperty('excludeTests')) {
+				excludeTestsMatching "${excludeTests}"
+			}
 		}
 	}
 
@@ -254,6 +257,9 @@ subprojects {
 
 		filter {
 			includeTestsMatching "AllTest*"
+			if (project.hasProperty('excludeTests')) {
+				excludeTestsMatching "${excludeTests}"
+			}
 		}
 	}
 
