@@ -272,16 +272,38 @@ subprojects {
 		reportsDirectory =  layout.buildDirectory.dir("jacoco")
 	}
 
+	jar {
+		manifest {
+			attributes('Implementation-Title': project.name,
+					'Implementation-Version': project.version)
+		}
+		from "../LICENSE"
+	}
+
+
 	task sourcesJar(type: Jar, dependsOn: classes) {
+		manifest {
+			attributes('Implementation-Title': project.name,
+					'Implementation-Version': project.version)
+		}
 		archiveClassifier.set("sources")
 	    from sourceSets.main.allSource
-	    from "../../LICENSE"
+	    from "../LICENSE"
 	}
 
 	task javadocJar(type: Jar, dependsOn: javadoc) {
+		manifest {
+			attributes('Implementation-Title': project.name,
+					'Implementation-Version': project.version)
+		}
 		archiveClassifier.set("javadoc")
 	    from javadoc.destinationDir
-	    from "../../LICENSE"
+	    from "../LICENSE"
+	}
+	artifacts {
+		archives jar
+		archives sourcesJar
+		archives javadocJar
 	}
 	publishing {
 		publications {
