@@ -1,0 +1,129 @@
+package com.distrimind.bouncycastle.pqc.jcajce.provider.bike;
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.security.PrivateKey;
+
+import com.distrimind.bouncycastle.asn1.ASN1Set;
+import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
+import com.distrimind.bouncycastle.pqc.crypto.bike.BIKEPrivateKeyParameters;
+import com.distrimind.bouncycastle.pqc.crypto.util.PrivateKeyFactory;
+import com.distrimind.bouncycastle.pqc.crypto.util.PrivateKeyInfoFactory;
+import com.distrimind.bouncycastle.pqc.jcajce.interfaces.BIKEKey;
+import com.distrimind.bouncycastle.pqc.jcajce.spec.BIKEParameterSpec;
+import com.distrimind.bouncycastle.util.Arrays;
+
+public class BCBIKEPrivateKey
+    implements PrivateKey, BIKEKey
+{
+    private static final long serialVersionUID = 1L;
+
+    private transient BIKEPrivateKeyParameters params;
+    private transient ASN1Set attributes;
+
+    public BCBIKEPrivateKey(
+            BIKEPrivateKeyParameters params)
+    {
+        this.params = params;
+    }
+
+    public BCBIKEPrivateKey(PrivateKeyInfo keyInfo)
+            throws IOException
+    {
+        init(keyInfo);
+    }
+
+    private void init(PrivateKeyInfo keyInfo)
+            throws IOException
+    {
+        this.attributes = keyInfo.getAttributes();
+        this.params = (BIKEPrivateKeyParameters) PrivateKeyFactory.createKey(keyInfo);
+    }
+
+    /**
+     * Compare this private key with another object.
+     *
+     * @param o the other object
+     * @return the result of the comparison
+     */
+    public boolean equals(Object o)
+    {
+        if (o == this)
+        {
+            return true;
+        }
+
+        if (o instanceof BCBIKEPrivateKey)
+        {
+            BCBIKEPrivateKey otherKey = (BCBIKEPrivateKey)o;
+
+            return Arrays.areEqual(params.getEncoded(), otherKey.params.getEncoded());
+        }
+
+        return false;
+    }
+
+    public int hashCode()
+    {
+        return Arrays.hashCode(params.getEncoded());
+    }
+
+    /**
+     * @return name of the algorithm - "BIKE"
+     */
+    public final String getAlgorithm()
+    {
+        return "BIKE";
+    }
+
+    public byte[] getEncoded()
+    {
+
+        try
+        {
+            PrivateKeyInfo pki = PrivateKeyInfoFactory.createPrivateKeyInfo(params, attributes);
+
+            return pki.getEncoded();
+        }
+        catch (IOException e)
+        {
+            return null;
+        }
+    }
+
+    public BIKEParameterSpec getParameterSpec()
+    {
+        return BIKEParameterSpec.fromName(params.getParameters().getName());
+    }
+
+    public String getFormat()
+    {
+        return "PKCS#8";
+    }
+
+    BIKEPrivateKeyParameters getKeyParams()
+    {
+        return params;
+    }
+
+    private void readObject(
+            ObjectInputStream in)
+            throws IOException, ClassNotFoundException
+    {
+        in.defaultReadObject();
+
+        byte[] enc = (byte[])in.readObject();
+
+        init(PrivateKeyInfo.getInstance(enc));
+    }
+
+    private void writeObject(
+            ObjectOutputStream out)
+            throws IOException
+    {
+        out.defaultWriteObject();
+
+        out.writeObject(this.getEncoded());
+    }
+}

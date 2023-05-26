@@ -1,20 +1,20 @@
-module org.bouncycastle.pg
+module com.distrimind.bouncycastle.pg
 {
-    requires org.bouncycastle.provider;
+    requires com.distrimind.bouncycastle.provider;
     requires java.logging;
 
-    exports org.bouncycastle.bcpg;
-    exports org.bouncycastle.gpg;
-    exports org.bouncycastle.openpgp;
-    exports org.bouncycastle.bcpg.attr;
-    exports org.bouncycastle.bcpg.sig;
-    exports org.bouncycastle.gpg.keybox;
-    exports org.bouncycastle.gpg.keybox.bc;
-    exports org.bouncycastle.gpg.keybox.jcajce;
-    exports org.bouncycastle.openpgp.bc;
-    exports org.bouncycastle.openpgp.examples;
-    exports org.bouncycastle.openpgp.jcajce;
-    exports org.bouncycastle.openpgp.operator;
-    exports org.bouncycastle.openpgp.operator.bc;
-    exports org.bouncycastle.openpgp.operator.jcajce;
+    exports com.distrimind.bouncycastle.bcpg;
+    exports com.distrimind.bouncycastle.gpg;
+    exports com.distrimind.bouncycastle.openpgp;
+    exports com.distrimind.bouncycastle.bcpg.attr;
+    exports com.distrimind.bouncycastle.bcpg.sig;
+    exports com.distrimind.bouncycastle.gpg.keybox;
+    exports com.distrimind.bouncycastle.gpg.keybox.bc;
+    exports com.distrimind.bouncycastle.gpg.keybox.jcajce;
+    exports com.distrimind.bouncycastle.openpgp.bc;
+    exports com.distrimind.bouncycastle.openpgp.examples;
+    exports com.distrimind.bouncycastle.openpgp.jcajce;
+    exports com.distrimind.bouncycastle.openpgp.operator;
+    exports com.distrimind.bouncycastle.openpgp.operator.bc;
+    exports com.distrimind.bouncycastle.openpgp.operator.jcajce;
 }
