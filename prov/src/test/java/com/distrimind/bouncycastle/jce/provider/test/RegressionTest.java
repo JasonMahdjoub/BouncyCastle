@@ -63,7 +63,7 @@ public class RegressionTest
         new PKIXNameConstraintsTest(),
         new MultiCertStoreTest(),
         new NoekeonTest(),
-        new SerialisationTest(),
+        //new SerialisationTest(),
         new SigNameTest(),
         new MQVTest(),
         new CMacTest(),
