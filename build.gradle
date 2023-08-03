@@ -212,11 +212,12 @@ subprojects {
 	}
 
 	JavaVersion current = JavaVersion.current();
+	def javaVersion = JavaVersion.VERSION_11
+
 	if (current <= JavaVersion.VERSION_1_8)
 	{
 		ext.vmrange='jdk15to18'
-		sourceCompatibility = 1.5
-		targetCompatibility = 1.5
+		javaVersion = JavaVersion.VERSION_1_5
 	}
 	else
 	{
@@ -224,8 +225,11 @@ subprojects {
 		if (project.hasProperty('javaHomeVersion') && JavaVersionTarget.toFloat()>1.8)
 			javadoc.options.addStringOption("html5", "-quiet")
 		ext.vmrange='jdk18on'
-		sourceCompatibility = 11
-		targetCompatibility = 11
+		javaVersion = JavaVersion.VERSION_11
+	}
+	java {
+		sourceCompatibility = javaVersion
+		targetCompatibility = javaVersion
 	}
 
 	version = '1.73'
