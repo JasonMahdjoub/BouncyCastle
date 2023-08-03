@@ -47,10 +47,12 @@ if (propFile.canRead())
 		sonatypePwd=props.get("sonatype_password")
 }
 apply plugin: 'java-library'
-def JavaVersionSource=11
-def JavaVersionTarget=11
-sourceCompatibility = JavaVersionSource
-targetCompatibility= JavaVersionTarget
+def javaVersion = JavaVersion.VERSION_11
+java {
+
+	sourceCompatibility = javaVersion
+	targetCompatibility = javaVersion
+}
 
 allprojects {
 	apply plugin: 'java'
@@ -61,7 +63,7 @@ allprojects {
 	apply plugin: 'net.ltgt.errorprone'
    group='com.distrimind.bouncycastle'
 
-	compileJava.options.compilerArgs.addAll(['--release', JavaVersionTarget] as Collection<? extends String>)
+	compileJava.options.compilerArgs.addAll(['--release', javaVersion] as Collection<? extends String>)
 	if (project.hasProperty('javaHomeVersion') && JavaVersionTarget.toFloat()>1.8)
 		javadoc.options.addStringOption("html5", "-quiet")
 
@@ -211,22 +213,11 @@ subprojects {
 		errorprone "com.google.errorprone:error_prone_core:2.15.0"
 	}
 
-	JavaVersion current = JavaVersion.current();
-	def javaVersion = JavaVersion.VERSION_11
+	compileJava.options.compilerArgs.addAll(['--release', javaVersion] as Collection<? extends String>)
+	if (project.hasProperty('javaHomeVersion') && JavaVersionTarget.toFloat()>1.8)
+		javadoc.options.addStringOption("html5", "-quiet")
+	ext.vmrange='jdk18on'
 
-	if (current <= JavaVersion.VERSION_1_8)
-	{
-		ext.vmrange='jdk15to18'
-		javaVersion = JavaVersion.VERSION_1_5
-	}
-	else
-	{
-		compileJava.options.compilerArgs.addAll(['--release', JavaVersionTarget] as Collection<? extends String>)
-		if (project.hasProperty('javaHomeVersion') && JavaVersionTarget.toFloat()>1.8)
-			javadoc.options.addStringOption("html5", "-quiet")
-		ext.vmrange='jdk18on'
-		javaVersion = JavaVersion.VERSION_11
-	}
 	java {
 		sourceCompatibility = javaVersion
 		targetCompatibility = javaVersion
@@ -281,7 +272,11 @@ subprojects {
 			attributes('Implementation-Title': project.name,
 					'Implementation-Version': project.version)
 		}
-		from "../LICENSE"
+		from('../LICENSE') {
+			rename { fileName ->
+				"LICENSE-BouncyCastle"
+			}
+		}
 	}
 
 
@@ -292,7 +287,11 @@ subprojects {
 		}
 		archiveClassifier.set("sources")
 	    from sourceSets.main.allSource
-	    from "../LICENSE"
+		from('../LICENSE') {
+			rename { fileName ->
+				"LICENSE-BouncyCastle"
+			}
+		}
 	}
 
 	task javadocJar(type: Jar, dependsOn: javadoc) {
@@ -302,7 +301,11 @@ subprojects {
 		}
 		archiveClassifier.set("javadoc")
 	    from javadoc.destinationDir
-	    from "../LICENSE"
+		from('../LICENSE') {
+			rename { fileName ->
+				"LICENSE-BouncyCastle"
+			}
+		}
 	}
 	artifacts {
 		archives jar
