@@ -4,16 +4,16 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.Date;
 
-import com.distrimind.bouncycastle.cert.X509CertificateHolder;
-import com.distrimind.bouncycastle.cms.SignerInformationVerifier;
-import com.distrimind.bouncycastle.tsp.TSPException;
-import com.distrimind.bouncycastle.tsp.TimeStampToken;
 import com.distrimind.bouncycastle.asn1.tsp.ArchiveTimeStamp;
 import com.distrimind.bouncycastle.asn1.tsp.PartialHashtree;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.cert.X509CertificateHolder;
+import com.distrimind.bouncycastle.cms.SignerInformationVerifier;
 import com.distrimind.bouncycastle.operator.DigestCalculator;
 import com.distrimind.bouncycastle.operator.DigestCalculatorProvider;
 import com.distrimind.bouncycastle.operator.OperatorCreationException;
+import com.distrimind.bouncycastle.tsp.TSPException;
+import com.distrimind.bouncycastle.tsp.TimeStampToken;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Store;
 

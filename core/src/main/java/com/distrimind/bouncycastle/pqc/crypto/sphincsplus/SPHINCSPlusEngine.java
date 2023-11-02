@@ -5,13 +5,13 @@ import com.distrimind.bouncycastle.crypto.Xof;
 import com.distrimind.bouncycastle.crypto.digests.SHA256Digest;
 import com.distrimind.bouncycastle.crypto.digests.SHA512Digest;
 import com.distrimind.bouncycastle.crypto.digests.SHAKEDigest;
+import com.distrimind.bouncycastle.crypto.generators.MGF1BytesGenerator;
 import com.distrimind.bouncycastle.crypto.macs.HMac;
 import com.distrimind.bouncycastle.crypto.params.KeyParameter;
 import com.distrimind.bouncycastle.crypto.params.MGFParameters;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Memoable;
 import com.distrimind.bouncycastle.util.Pack;
-import com.distrimind.bouncycastle.crypto.generators.MGF1BytesGenerator;
 
 abstract class SPHINCSPlusEngine
 {

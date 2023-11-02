@@ -6,7 +6,6 @@ import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
-import com.distrimind.bouncycastle.asn1.DERBitString;
 import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.x500.X500Name;
 
@@ -65,7 +64,7 @@ public class X509CertificateStructure
             tbsCert = TBSCertificateStructure.getInstance(seq.getObjectAt(0));
             sigAlgId = AlgorithmIdentifier.getInstance(seq.getObjectAt(1));
 
-            sig = DERBitString.getInstance(seq.getObjectAt(2));
+            sig = ASN1BitString.getInstance(seq.getObjectAt(2));
         }
         else
         {

@@ -13,14 +13,14 @@ import javax.crypto.SecretKey;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.cert.crmf.CRMFException;
-import com.distrimind.bouncycastle.jcajce.io.CipherOutputStream;
-import com.distrimind.bouncycastle.jcajce.util.DefaultJcaJceHelper;
-import com.distrimind.bouncycastle.jcajce.util.NamedJcaJceHelper;
-import com.distrimind.bouncycastle.jcajce.util.ProviderJcaJceHelper;
 import com.distrimind.bouncycastle.operator.DefaultSecretKeySizeProvider;
 import com.distrimind.bouncycastle.operator.GenericKey;
 import com.distrimind.bouncycastle.operator.OutputEncryptor;
 import com.distrimind.bouncycastle.operator.SecretKeySizeProvider;
+import com.distrimind.bouncycastle.jcajce.io.CipherOutputStream;
+import com.distrimind.bouncycastle.jcajce.util.DefaultJcaJceHelper;
+import com.distrimind.bouncycastle.jcajce.util.NamedJcaJceHelper;
+import com.distrimind.bouncycastle.jcajce.util.ProviderJcaJceHelper;
 import com.distrimind.bouncycastle.operator.jcajce.JceGenericKey;
 
 public class JceCRMFEncryptorBuilder

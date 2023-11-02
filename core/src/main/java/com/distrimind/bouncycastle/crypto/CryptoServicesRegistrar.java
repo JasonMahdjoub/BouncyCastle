@@ -11,13 +11,13 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.logging.Logger;
 
+import com.distrimind.bouncycastle.asn1.x9.X9ECParameters;
 import com.distrimind.bouncycastle.crypto.params.DHParameters;
 import com.distrimind.bouncycastle.crypto.params.DHValidationParameters;
 import com.distrimind.bouncycastle.crypto.params.DSAParameters;
 import com.distrimind.bouncycastle.crypto.params.DSAValidationParameters;
-import com.distrimind.bouncycastle.asn1.x9.X9ECParameters;
-import com.distrimind.bouncycastle.util.Properties;
 import com.distrimind.bouncycastle.util.encoders.Hex;
+import com.distrimind.bouncycastle.util.Properties;
 
 /**
  * Basic registrar class for providing defaults for cryptography services in this module.
@@ -33,19 +33,13 @@ public final class CryptoServicesRegistrar
 
     private static final ThreadLocal<Map<String, Object[]>> threadProperties = new ThreadLocal<Map<String, Object[]>>();
     private static final Map<String, Object[]> globalProperties = Collections.synchronizedMap(new HashMap<String, Object[]>());
-    private static final SecureRandomProvider defaultRandomProviderImpl = new SecureRandomProvider()
-    {
-        public SecureRandom get()
-        {
-            return new SecureRandom();
-        }
-    };
+    private static final SecureRandomProvider defaultRandomProviderImpl = new ThreadLocalSecureRandomProvider();
 
     private static final CryptoServicesConstraints noConstraintsImpl = new CryptoServicesConstraints()
     {
         public void check(CryptoServiceProperties service)
         {
-             // anything goes.
+            // anything goes.
         }
     };
 
@@ -525,6 +519,22 @@ public final class CryptoServicesRegistrar
         {
             this.name = name;
             this.type = type;
+        }
+    }
+
+    private static class ThreadLocalSecureRandomProvider
+        implements SecureRandomProvider
+    {
+        final ThreadLocal<SecureRandom> defaultRandoms = new ThreadLocal<SecureRandom>();
+
+        public SecureRandom get()
+        {
+            if (defaultRandoms.get() == null)
+            {
+                defaultRandoms.set(new SecureRandom());
+            }
+
+            return defaultRandoms.get();
         }
     }
 }

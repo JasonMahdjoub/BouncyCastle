@@ -1,8 +1,8 @@
 package com.distrimind.bouncycastle.cms.bc;
 
+import com.distrimind.bouncycastle.asn1.cms.KEKIdentifier;
 import com.distrimind.bouncycastle.cms.KEKRecipientInfoGenerator;
 import com.distrimind.bouncycastle.operator.bc.BcSymmetricKeyWrapper;
-import com.distrimind.bouncycastle.asn1.cms.KEKIdentifier;
 
 public class BcKEKRecipientInfoGenerator
     extends KEKRecipientInfoGenerator

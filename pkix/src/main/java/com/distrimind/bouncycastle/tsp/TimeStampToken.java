@@ -10,6 +10,8 @@ import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.cert.X509AttributeCertificateHolder;
 import com.distrimind.bouncycastle.cert.X509CRLHolder;
 import com.distrimind.bouncycastle.cert.X509CertificateHolder;
+import com.distrimind.bouncycastle.operator.DigestCalculator;
+import com.distrimind.bouncycastle.operator.OperatorCreationException;
 import com.distrimind.bouncycastle.asn1.cms.Attribute;
 import com.distrimind.bouncycastle.asn1.cms.AttributeTable;
 import com.distrimind.bouncycastle.asn1.cms.ContentInfo;
@@ -31,8 +33,6 @@ import com.distrimind.bouncycastle.cms.CMSSignedData;
 import com.distrimind.bouncycastle.cms.SignerId;
 import com.distrimind.bouncycastle.cms.SignerInformation;
 import com.distrimind.bouncycastle.cms.SignerInformationVerifier;
-import com.distrimind.bouncycastle.operator.DigestCalculator;
-import com.distrimind.bouncycastle.operator.OperatorCreationException;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Store;
 

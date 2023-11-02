@@ -2,6 +2,8 @@ package com.distrimind.bouncycastle.crypto.util;
 
 import java.security.SecureRandom;
 
+import com.distrimind.bouncycastle.crypto.generators.DESKeyGenerator;
+import com.distrimind.bouncycastle.crypto.generators.DESedeKeyGenerator;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.kisa.KISAObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.nist.NISTObjectIdentifiers;
@@ -10,8 +12,6 @@ import com.distrimind.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import com.distrimind.bouncycastle.crypto.CipherKeyGenerator;
 import com.distrimind.bouncycastle.crypto.KeyGenerationParameters;
-import com.distrimind.bouncycastle.crypto.generators.DESKeyGenerator;
-import com.distrimind.bouncycastle.crypto.generators.DESedeKeyGenerator;
 
 /**
  * Factory methods for generating secret key generators for symmetric ciphers.

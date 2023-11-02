@@ -6,11 +6,11 @@ import java.io.OutputStream;
 
 import com.distrimind.bouncycastle.asn1.ASN1OctetString;
 import com.distrimind.bouncycastle.asn1.BEROctetString;
+import com.distrimind.bouncycastle.operator.OutputCompressor;
 import com.distrimind.bouncycastle.asn1.cms.CMSObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.cms.CompressedData;
 import com.distrimind.bouncycastle.asn1.cms.ContentInfo;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import com.distrimind.bouncycastle.operator.OutputCompressor;
 
 /**
  * General class for generating a compressed CMS message.

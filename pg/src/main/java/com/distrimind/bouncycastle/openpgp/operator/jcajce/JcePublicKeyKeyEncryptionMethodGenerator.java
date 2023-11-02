@@ -19,13 +19,14 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.KeyAgreement;
 import javax.crypto.spec.SecretKeySpec;
 
+import com.distrimind.bouncycastle.asn1.cryptlib.CryptlibObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
 import com.distrimind.bouncycastle.asn1.x9.X962Parameters;
 import com.distrimind.bouncycastle.asn1.x9.X9ECParameters;
-import com.distrimind.bouncycastle.bcpg.ECDHPublicBCPGKey;
-import com.distrimind.bouncycastle.bcpg.PublicKeyAlgorithmTags;
 import com.distrimind.bouncycastle.bcpg.PublicKeyPacket;
+import com.distrimind.bouncycastle.bcpg.ECDHPublicBCPGKey;
 import com.distrimind.bouncycastle.bcpg.MPInteger;
+import com.distrimind.bouncycastle.bcpg.PublicKeyAlgorithmTags;
 import com.distrimind.bouncycastle.jcajce.spec.UserKeyingMaterialSpec;
 import com.distrimind.bouncycastle.jcajce.util.DefaultJcaJceHelper;
 import com.distrimind.bouncycastle.jcajce.util.NamedJcaJceHelper;

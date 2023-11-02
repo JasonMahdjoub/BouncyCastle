@@ -4,11 +4,11 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import com.distrimind.bouncycastle.cert.X509CertificateHolder;
 import com.distrimind.bouncycastle.asn1.crmf.EncryptedValue;
 import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.asn1.x509.Certificate;
+import com.distrimind.bouncycastle.cert.X509CertificateHolder;
 import com.distrimind.bouncycastle.operator.InputDecryptor;
 import com.distrimind.bouncycastle.util.Strings;
 import com.distrimind.bouncycastle.util.io.Streams;
@@ -63,14 +63,7 @@ public class EncryptedValueParser
             value.getEncValue().getBytes()));
         try
         {
-            byte[] data = Streams.readAll(dataIn);
-
-            if (padder != null)
-            {
-                return padder.getUnpaddedData(data);
-            }
-            
-            return data;
+            return unpadData(Streams.readAll(dataIn));
         }
         catch (IOException e)
         {
@@ -115,5 +108,15 @@ public class EncryptedValueParser
         throws CRMFException
     {
         return Strings.fromUTF8ByteArray(decryptValue(decGen)).toCharArray();
+    }
+
+    private byte[] unpadData(byte[] data)
+    {
+        if (padder != null)
+        {
+            return padder.getUnpaddedData(data);
+        }
+
+        return data;
     }
 }

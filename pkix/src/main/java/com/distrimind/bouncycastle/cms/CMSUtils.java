@@ -25,6 +25,8 @@ import com.distrimind.bouncycastle.asn1.DLSet;
 import com.distrimind.bouncycastle.cert.X509AttributeCertificateHolder;
 import com.distrimind.bouncycastle.cert.X509CRLHolder;
 import com.distrimind.bouncycastle.cert.X509CertificateHolder;
+import com.distrimind.bouncycastle.operator.DigestAlgorithmIdentifierFinder;
+import com.distrimind.bouncycastle.operator.DigestCalculator;
 import com.distrimind.bouncycastle.asn1.cms.CMSObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.cms.ContentInfo;
 import com.distrimind.bouncycastle.asn1.cms.OtherRevocationInfoFormat;
@@ -37,8 +39,6 @@ import com.distrimind.bouncycastle.asn1.rosstandart.RosstandartObjectIdentifiers
 import com.distrimind.bouncycastle.asn1.sec.SECObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.asn1.x9.X9ObjectIdentifiers;
-import com.distrimind.bouncycastle.operator.DigestAlgorithmIdentifierFinder;
-import com.distrimind.bouncycastle.operator.DigestCalculator;
 import com.distrimind.bouncycastle.util.Store;
 import com.distrimind.bouncycastle.util.Strings;
 import com.distrimind.bouncycastle.util.io.Streams;

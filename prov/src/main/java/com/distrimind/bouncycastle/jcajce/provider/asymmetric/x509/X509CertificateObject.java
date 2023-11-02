@@ -17,11 +17,10 @@ import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1Encoding;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
-import com.distrimind.bouncycastle.asn1.DERBitString;
 import com.distrimind.bouncycastle.asn1.x509.BasicConstraints;
+import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.PKCS12BagAttributeCarrierImpl;
 import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
 import com.distrimind.bouncycastle.jce.interfaces.PKCS12BagAttributeCarrier;
-import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.PKCS12BagAttributeCarrierImpl;
 import com.distrimind.bouncycastle.util.Arrays;
 
 class X509CertificateObject
@@ -314,7 +313,7 @@ class X509CertificateObject
                 return null;
             }
 
-            ASN1BitString bits = DERBitString.getInstance(ASN1Primitive.fromByteArray(extOctets));
+            ASN1BitString bits = ASN1BitString.getInstance(ASN1Primitive.fromByteArray(extOctets));
 
             byte[] bytes = bits.getBytes();
             int length = (bytes.length * 8) - bits.getPadBits();

@@ -3,10 +3,10 @@ package com.distrimind.bouncycastle.cert.selector;
 import java.math.BigInteger;
 
 import com.distrimind.bouncycastle.asn1.ASN1OctetString;
-import com.distrimind.bouncycastle.cert.X509CertificateHolder;
 import com.distrimind.bouncycastle.asn1.cms.IssuerAndSerialNumber;
 import com.distrimind.bouncycastle.asn1.x500.X500Name;
 import com.distrimind.bouncycastle.asn1.x509.Extension;
+import com.distrimind.bouncycastle.cert.X509CertificateHolder;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Selector;
 

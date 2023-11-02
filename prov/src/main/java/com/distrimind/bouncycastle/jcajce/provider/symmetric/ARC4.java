@@ -3,10 +3,10 @@ package com.distrimind.bouncycastle.jcajce.provider.symmetric;
 import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import com.distrimind.bouncycastle.crypto.CipherKeyGenerator;
 import com.distrimind.bouncycastle.crypto.engines.RC4Engine;
-import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseKeyGenerator;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseStreamCipher;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.PBESecretKeyFactory;
+import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import com.distrimind.bouncycastle.jcajce.provider.util.AlgorithmProvider;
 
 public final class ARC4

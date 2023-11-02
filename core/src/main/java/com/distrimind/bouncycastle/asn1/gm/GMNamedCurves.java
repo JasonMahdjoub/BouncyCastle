@@ -9,9 +9,9 @@ import com.distrimind.bouncycastle.asn1.x9.X9ECParametersHolder;
 import com.distrimind.bouncycastle.asn1.x9.X9ECPoint;
 import com.distrimind.bouncycastle.math.ec.ECCurve;
 import com.distrimind.bouncycastle.math.ec.WNafUtil;
-import com.distrimind.bouncycastle.util.Strings;
 import com.distrimind.bouncycastle.util.encoders.Hex;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.util.Strings;
 
 /**
  * Chinese standard GM named curves.

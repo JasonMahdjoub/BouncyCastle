@@ -6,9 +6,9 @@ import java.util.zip.Deflater;
 import java.util.zip.DeflaterOutputStream;
 
 import com.distrimind.bouncycastle.apache.bzip2.CBZip2OutputStream;
+import com.distrimind.bouncycastle.bcpg.PacketTags;
 import com.distrimind.bouncycastle.bcpg.BCPGOutputStream;
 import com.distrimind.bouncycastle.bcpg.CompressionAlgorithmTags;
-import com.distrimind.bouncycastle.bcpg.PacketTags;
 
 /**
  * Generator for producing compressed data packets.
@@ -42,7 +42,7 @@ public class PGPCompressedDataGenerator
     private int                     compression;
 
     private OutputStream            dOut;
-    private BCPGOutputStream pkOut;
+    private BCPGOutputStream        pkOut;
 
     /**
      * Construct a new compressed data generator.

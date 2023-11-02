@@ -2,12 +2,12 @@ package com.distrimind.bouncycastle.crypto.commitments;
 
 import java.security.SecureRandom;
 
-import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.crypto.Commitment;
 import com.distrimind.bouncycastle.crypto.Committer;
 import com.distrimind.bouncycastle.crypto.DataLengthException;
 import com.distrimind.bouncycastle.crypto.Digest;
 import com.distrimind.bouncycastle.crypto.ExtendedDigest;
+import com.distrimind.bouncycastle.util.Arrays;
 
 /**
  * A basic hash-committer as described in "Making Mix Nets Robust for Electronic Voting by Randomized Partial Checking",

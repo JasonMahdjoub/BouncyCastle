@@ -8,12 +8,12 @@ import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import com.distrimind.bouncycastle.jcajce.util.DefaultJcaJceHelper;
-import com.distrimind.bouncycastle.jcajce.util.NamedJcaJceHelper;
-import com.distrimind.bouncycastle.jcajce.util.ProviderJcaJceHelper;
 import com.distrimind.bouncycastle.operator.GenericKey;
 import com.distrimind.bouncycastle.operator.OperatorException;
 import com.distrimind.bouncycastle.operator.SymmetricKeyUnwrapper;
+import com.distrimind.bouncycastle.jcajce.util.DefaultJcaJceHelper;
+import com.distrimind.bouncycastle.jcajce.util.NamedJcaJceHelper;
+import com.distrimind.bouncycastle.jcajce.util.ProviderJcaJceHelper;
 
 public class JceSymmetricKeyUnwrapper
     extends SymmetricKeyUnwrapper

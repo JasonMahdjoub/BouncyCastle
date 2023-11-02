@@ -7,13 +7,13 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.text.DecimalFormat;
 
+import com.distrimind.bouncycastle.pqc.legacy.math.ntru.polynomial.DenseTernaryPolynomial;
+import com.distrimind.bouncycastle.pqc.legacy.math.ntru.polynomial.SparseTernaryPolynomial;
 import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
 import com.distrimind.bouncycastle.crypto.Digest;
 import com.distrimind.bouncycastle.crypto.KeyGenerationParameters;
 import com.distrimind.bouncycastle.crypto.digests.SHA256Digest;
 import com.distrimind.bouncycastle.crypto.digests.SHA512Digest;
-import com.distrimind.bouncycastle.pqc.legacy.math.ntru.polynomial.DenseTernaryPolynomial;
-import com.distrimind.bouncycastle.pqc.legacy.math.ntru.polynomial.SparseTernaryPolynomial;
 
 /**
  * A set of parameters for NtruSign. Several predefined parameter sets are available and new ones can be created as well.

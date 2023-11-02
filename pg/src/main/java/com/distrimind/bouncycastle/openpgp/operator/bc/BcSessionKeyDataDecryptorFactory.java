@@ -1,5 +1,7 @@
 package com.distrimind.bouncycastle.openpgp.operator.bc;
 
+import com.distrimind.bouncycastle.bcpg.AEADEncDataPacket;
+import com.distrimind.bouncycastle.bcpg.SymmetricEncIntegrityPacket;
 import com.distrimind.bouncycastle.crypto.BlockCipher;
 import com.distrimind.bouncycastle.openpgp.PGPException;
 import com.distrimind.bouncycastle.openpgp.PGPSessionKey;
@@ -19,11 +21,14 @@ public class BcSessionKeyDataDecryptorFactory
         this.sessionKey = sessionKey;
     }
 
+    @Override
     public PGPSessionKey getSessionKey()
     {
         return sessionKey;
     }
 
+    // OpenPGP v4
+    @Override
     public PGPDataDecryptor createDataDecryptor(boolean withIntegrityPacket, int encAlgorithm, byte[] key)
         throws PGPException
     {
@@ -31,10 +36,21 @@ public class BcSessionKeyDataDecryptorFactory
 
         return BcUtil.createDataDecryptor(withIntegrityPacket, engine, key);
     }
-    
-    public PGPDataDecryptor createDataDecryptor(int aeadAlgorithm, byte[] iv, int chunkSize, int encAlgorithm, byte[] key)
+
+    // OpenPGP v5
+    @Override
+    public PGPDataDecryptor createDataDecryptor(AEADEncDataPacket aeadEncDataPacket, PGPSessionKey sessionKey)
         throws PGPException
     {
-        return BcUtil.createDataDecryptor(aeadAlgorithm, iv, chunkSize, encAlgorithm, key);
+        return BcAEADUtil.createOpenPgpV5DataDecryptor(aeadEncDataPacket, sessionKey);
     }
+
+    // OpenPGP v6
+    @Override
+    public PGPDataDecryptor createDataDecryptor(SymmetricEncIntegrityPacket seipd, PGPSessionKey sessionKey)
+            throws PGPException
+    {
+        return BcAEADUtil.createOpenPgpV6DataDecryptor(seipd, sessionKey);
+    }
+
 }

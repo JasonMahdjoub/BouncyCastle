@@ -13,6 +13,7 @@ import com.distrimind.bouncycastle.pqc.crypto.util.PrivateKeyInfoFactory;
 import com.distrimind.bouncycastle.pqc.jcajce.interfaces.CMCEKey;
 import com.distrimind.bouncycastle.pqc.jcajce.spec.CMCEParameterSpec;
 import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Strings;
 
 public class BCCMCEPrivateKey
     implements PrivateKey, CMCEKey
@@ -74,7 +75,7 @@ public class BCCMCEPrivateKey
      */
     public final String getAlgorithm()
     {
-        return "CMCE";
+        return Strings.toUpperCase(params.getParameters().getName());
     }
 
     public byte[] getEncoded()

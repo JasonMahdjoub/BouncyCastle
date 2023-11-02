@@ -14,6 +14,7 @@ import com.distrimind.bouncycastle.cert.path.CertPathValidationResult;
 import com.distrimind.bouncycastle.cert.path.validations.BasicConstraintsValidation;
 import com.distrimind.bouncycastle.cert.path.validations.KeyUsageValidation;
 import com.distrimind.bouncycastle.cert.path.validations.ParentCertIssuedValidation;
+import com.distrimind.bouncycastle.test.TestResourceFinder;
 import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
 import com.distrimind.bouncycastle.util.test.SimpleTest;
 
@@ -30,8 +31,7 @@ public class PKITSBasicConstraintsTest
     private static X509CertificateHolder readPKITSCert(String fileName)
         throws IOException
     {
-        Class l = PKITSBasicConstraintsTest.class;
-        ASN1InputStream asn1In = new ASN1InputStream(l.getResourceAsStream(PKITS_DATA_RESOURCE_PREFIX + fileName));
+        ASN1InputStream asn1In = new ASN1InputStream(TestResourceFinder.findTestResource(PKITS_DATA_RESOURCE_PREFIX, fileName));
         return new X509CertificateHolder(Certificate.getInstance(asn1In.readObject()));
     }
 

@@ -9,6 +9,7 @@ import java.util.List;
 import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.ASN1Set;
+import com.distrimind.bouncycastle.operator.DigestCalculator;
 import com.distrimind.bouncycastle.asn1.cms.CMSObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.cms.KEKRecipientInfo;
 import com.distrimind.bouncycastle.asn1.cms.KEMRecipientInfo;
@@ -18,7 +19,6 @@ import com.distrimind.bouncycastle.asn1.cms.OtherRecipientInfo;
 import com.distrimind.bouncycastle.asn1.cms.PasswordRecipientInfo;
 import com.distrimind.bouncycastle.asn1.cms.RecipientInfo;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import com.distrimind.bouncycastle.operator.DigestCalculator;
 
 class CMSEnvelopedHelper
 {

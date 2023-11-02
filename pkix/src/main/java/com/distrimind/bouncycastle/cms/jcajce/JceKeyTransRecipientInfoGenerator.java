@@ -7,11 +7,11 @@ import java.security.cert.X509Certificate;
 
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.cert.jcajce.JcaX509CertificateHolder;
-import com.distrimind.bouncycastle.cms.KeyTransRecipientInfoGenerator;
-import com.distrimind.bouncycastle.operator.jcajce.JceAsymmetricKeyWrapper;
 import com.distrimind.bouncycastle.asn1.cms.IssuerAndSerialNumber;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.cms.KeyTransRecipientInfoGenerator;
 import com.distrimind.bouncycastle.operator.AsymmetricKeyWrapper;
+import com.distrimind.bouncycastle.operator.jcajce.JceAsymmetricKeyWrapper;
 
 public class JceKeyTransRecipientInfoGenerator
     extends KeyTransRecipientInfoGenerator

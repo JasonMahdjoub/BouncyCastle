@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
-import com.distrimind.bouncycastle.test.PrintTestResult;
 import junit.extensions.TestSetup;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import com.distrimind.bouncycastle.test.PrintTestResult;
 
 public class AllTests
     extends TestCase

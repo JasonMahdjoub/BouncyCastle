@@ -1,7 +1,7 @@
 package com.distrimind.bouncycastle.crypto.prng.drbg;
 
-import com.distrimind.bouncycastle.crypto.params.KeyParameter;
 import com.distrimind.bouncycastle.crypto.Mac;
+import com.distrimind.bouncycastle.crypto.params.KeyParameter;
 import com.distrimind.bouncycastle.crypto.prng.EntropySource;
 import com.distrimind.bouncycastle.util.Arrays;
 

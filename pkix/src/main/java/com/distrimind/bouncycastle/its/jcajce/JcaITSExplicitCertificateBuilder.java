@@ -3,10 +3,10 @@ package com.distrimind.bouncycastle.its.jcajce;
 import java.security.Provider;
 import java.security.interfaces.ECPublicKey;
 
+import com.distrimind.bouncycastle.its.operator.ITSContentSigner;
 import com.distrimind.bouncycastle.its.ITSCertificate;
 import com.distrimind.bouncycastle.its.ITSExplicitCertificateBuilder;
 import com.distrimind.bouncycastle.its.ITSPublicEncryptionKey;
-import com.distrimind.bouncycastle.its.operator.ITSContentSigner;
 import com.distrimind.bouncycastle.jcajce.util.DefaultJcaJceHelper;
 import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
 import com.distrimind.bouncycastle.jcajce.util.NamedJcaJceHelper;

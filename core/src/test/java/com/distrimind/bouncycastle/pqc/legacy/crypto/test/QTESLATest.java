@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import com.distrimind.bouncycastle.test.TestResourceFinder;
 import junit.framework.TestCase;
 import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
 import com.distrimind.bouncycastle.crypto.params.ParametersWithRandom;
@@ -21,6 +20,7 @@ import com.distrimind.bouncycastle.pqc.legacy.crypto.qtesla.QTESLAPrivateKeyPara
 import com.distrimind.bouncycastle.pqc.legacy.crypto.qtesla.QTESLAPublicKeyParameters;
 import com.distrimind.bouncycastle.pqc.legacy.crypto.qtesla.QTESLASecurityCategory;
 import com.distrimind.bouncycastle.pqc.legacy.crypto.qtesla.QTESLASigner;
+import com.distrimind.bouncycastle.test.TestResourceFinder;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Integers;
 import com.distrimind.bouncycastle.util.encoders.Hex;

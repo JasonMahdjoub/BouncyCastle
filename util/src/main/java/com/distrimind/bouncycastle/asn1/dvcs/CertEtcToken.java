@@ -6,11 +6,12 @@ import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
+import com.distrimind.bouncycastle.asn1.BERTags;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
+import com.distrimind.bouncycastle.asn1.smime.SMIMECapabilities;
 import com.distrimind.bouncycastle.asn1.cmp.PKIStatusInfo;
 import com.distrimind.bouncycastle.asn1.cms.ContentInfo;
 import com.distrimind.bouncycastle.asn1.ess.ESSCertID;
-import com.distrimind.bouncycastle.asn1.smime.SMIMECapabilities;
 import com.distrimind.bouncycastle.asn1.ocsp.CertID;
 import com.distrimind.bouncycastle.asn1.ocsp.CertStatus;
 import com.distrimind.bouncycastle.asn1.ocsp.OCSPResponse;
@@ -79,19 +80,19 @@ public class CertEtcToken
             value = Certificate.getInstance(choice, false);
             break;
         case TAG_ESSCERTID:
-            value = ESSCertID.getInstance(choice.getObject());
+            value = ESSCertID.getInstance(choice.getExplicitBaseObject());
             break;
         case TAG_PKISTATUS:
             value = PKIStatusInfo.getInstance(choice, false);
             break;
         case TAG_ASSERTION:
-            value = ContentInfo.getInstance(choice.getObject());
+            value = ContentInfo.getInstance(choice.getExplicitBaseObject());
             break;
         case TAG_CRL:
             value = CertificateList.getInstance(choice, false);
             break;
         case TAG_OCSPCERTSTATUS:
-            value = CertStatus.getInstance(choice.getObject());
+            value = CertStatus.getInstance(choice.getExplicitBaseObject());
             break;
         case TAG_OCSPCERTID:
             value = CertID.getInstance(choice, false);
@@ -100,7 +101,7 @@ public class CertEtcToken
             value = OCSPResponse.getInstance(choice, false);
             break;
         case TAG_CAPABILITIES:
-            value = SMIMECapabilities.getInstance(choice.getObject());
+            value = SMIMECapabilities.getInstance(choice.getExplicitBaseObject());
             break;
         default:
             throw new IllegalArgumentException("Unknown tag: " + tagNo);
@@ -115,7 +116,7 @@ public class CertEtcToken
         }
         else if (obj instanceof ASN1TaggedObject)
         {
-            return new CertEtcToken((ASN1TaggedObject)obj);
+            return new CertEtcToken(ASN1TaggedObject.getInstance(obj, BERTags.CONTEXT_SPECIFIC));
         }
         else if (obj != null)
         {

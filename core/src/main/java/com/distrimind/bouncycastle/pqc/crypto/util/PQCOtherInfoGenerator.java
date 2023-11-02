@@ -10,9 +10,6 @@ import com.distrimind.bouncycastle.crypto.EncapsulatedSecretGenerator;
 import com.distrimind.bouncycastle.crypto.SecretWithEncapsulation;
 import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
 import com.distrimind.bouncycastle.crypto.util.DEROtherInfo;
-import com.distrimind.bouncycastle.pqc.crypto.newhope.NHAgreement;
-import com.distrimind.bouncycastle.pqc.crypto.ntru.NTRUKEMGenerator;
-import com.distrimind.bouncycastle.pqc.crypto.ntru.NTRUKeyPairGenerator;
 import com.distrimind.bouncycastle.pqc.crypto.KEMParameters;
 import com.distrimind.bouncycastle.pqc.crypto.crystals.kyber.KyberKEMExtractor;
 import com.distrimind.bouncycastle.pqc.crypto.crystals.kyber.KyberKEMGenerator;
@@ -21,7 +18,9 @@ import com.distrimind.bouncycastle.pqc.crypto.crystals.kyber.KyberKeyPairGenerat
 import com.distrimind.bouncycastle.pqc.crypto.crystals.kyber.KyberParameters;
 import com.distrimind.bouncycastle.pqc.crypto.crystals.kyber.KyberPrivateKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.ntru.NTRUKEMExtractor;
+import com.distrimind.bouncycastle.pqc.crypto.ntru.NTRUKEMGenerator;
 import com.distrimind.bouncycastle.pqc.crypto.ntru.NTRUKeyGenerationParameters;
+import com.distrimind.bouncycastle.pqc.crypto.ntru.NTRUKeyPairGenerator;
 import com.distrimind.bouncycastle.pqc.crypto.ntru.NTRUParameters;
 import com.distrimind.bouncycastle.pqc.crypto.ntru.NTRUPrivateKeyParameters;
 
@@ -58,8 +57,6 @@ public class PQCOtherInfoGenerator
     {
         private AsymmetricCipherKeyPair aKp;
         private EncapsulatedSecretExtractor encSE;
-
-        private NHAgreement agreement = new NHAgreement();
 
         /**
          * Create a basic builder with just the compulsory fields for the initiator.

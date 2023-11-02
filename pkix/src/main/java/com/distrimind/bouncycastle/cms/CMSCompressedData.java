@@ -5,10 +5,10 @@ import java.io.InputStream;
 
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.ASN1OctetString;
-import com.distrimind.bouncycastle.asn1.cms.CompressedData;
-import com.distrimind.bouncycastle.asn1.cms.ContentInfo;
 import com.distrimind.bouncycastle.operator.InputExpander;
 import com.distrimind.bouncycastle.operator.InputExpanderProvider;
+import com.distrimind.bouncycastle.asn1.cms.CompressedData;
+import com.distrimind.bouncycastle.asn1.cms.ContentInfo;
 import com.distrimind.bouncycastle.util.Encodable;
 
 /**
@@ -74,7 +74,7 @@ public class CMSCompressedData
         ContentInfo     content = comData.getEncapContentInfo();
 
         ASN1OctetString bytes = (ASN1OctetString)content.getContent();
-        InputExpander   expander = expanderProvider.get(comData.getCompressionAlgorithmIdentifier());
+        InputExpander expander = expanderProvider.get(comData.getCompressionAlgorithmIdentifier());
         InputStream     zIn = expander.getInputStream(bytes.getOctetStream());
 
         return new CMSTypedStream(content.getContentType(), zIn);

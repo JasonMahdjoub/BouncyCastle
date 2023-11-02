@@ -2,7 +2,6 @@ package com.distrimind.bouncycastle.crypto.agreement.kdf;
 
 import java.io.IOException;
 
-import com.distrimind.bouncycastle.util.Pack;
 import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
 import com.distrimind.bouncycastle.asn1.ASN1Encoding;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
@@ -14,6 +13,7 @@ import com.distrimind.bouncycastle.crypto.DerivationFunction;
 import com.distrimind.bouncycastle.crypto.DerivationParameters;
 import com.distrimind.bouncycastle.crypto.Digest;
 import com.distrimind.bouncycastle.crypto.OutputLengthException;
+import com.distrimind.bouncycastle.util.Pack;
 
 /**
  * RFC 2631 Diffie-hellman KEK derivation function.

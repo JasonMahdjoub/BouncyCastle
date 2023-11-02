@@ -3,12 +3,12 @@ package com.distrimind.bouncycastle.cms.bc;
 import com.distrimind.bouncycastle.cert.X509CertificateHolder;
 import com.distrimind.bouncycastle.cms.CMSSignatureAlgorithmNameGenerator;
 import com.distrimind.bouncycastle.cms.SignerInformationVerifier;
-import com.distrimind.bouncycastle.operator.bc.BcRSAContentVerifierProviderBuilder;
 import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
 import com.distrimind.bouncycastle.operator.DigestAlgorithmIdentifierFinder;
 import com.distrimind.bouncycastle.operator.DigestCalculatorProvider;
 import com.distrimind.bouncycastle.operator.OperatorCreationException;
 import com.distrimind.bouncycastle.operator.SignatureAlgorithmIdentifierFinder;
+import com.distrimind.bouncycastle.operator.bc.BcRSAContentVerifierProviderBuilder;
 
 public class BcRSASignerInfoVerifierBuilder
 {

@@ -14,8 +14,8 @@ import com.distrimind.bouncycastle.pqc.crypto.falcon.FalconKeyPairGenerator;
 import com.distrimind.bouncycastle.pqc.crypto.falcon.FalconParameters;
 import com.distrimind.bouncycastle.pqc.crypto.falcon.FalconPrivateKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.falcon.FalconPublicKeyParameters;
-import com.distrimind.bouncycastle.pqc.jcajce.spec.FalconParameterSpec;
 import com.distrimind.bouncycastle.pqc.jcajce.provider.util.SpecUtil;
+import com.distrimind.bouncycastle.pqc.jcajce.spec.FalconParameterSpec;
 import com.distrimind.bouncycastle.util.Strings;
 
 public class FalconKeyPairGeneratorSpi

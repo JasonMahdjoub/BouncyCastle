@@ -5,8 +5,8 @@
 package com.distrimind.bouncycastle.crypto.modes;
 
 import com.distrimind.bouncycastle.crypto.BlockCipher;
-import com.distrimind.bouncycastle.crypto.BufferedBlockCipher;
 import com.distrimind.bouncycastle.crypto.DataLengthException;
+import com.distrimind.bouncycastle.crypto.DefaultBufferedBlockCipher;
 import com.distrimind.bouncycastle.crypto.InvalidCipherTextException;
 import com.distrimind.bouncycastle.crypto.OutputLengthException;
 
@@ -18,7 +18,7 @@ import com.distrimind.bouncycastle.crypto.OutputLengthException;
  * </p>
  */
 public class NISTCTSBlockCipher
-    extends BufferedBlockCipher
+    extends DefaultBufferedBlockCipher
 {
     public static final int CS1 = 1;
     public static final int CS2 = 2;
@@ -38,7 +38,7 @@ public class NISTCTSBlockCipher
         BlockCipher cipher)
     {
         this.type = type;
-        this.cipher = new CBCBlockCipher(cipher);
+        this.cipher = CBCBlockCipher.newInstance(cipher);
 
         blockSize = cipher.getBlockSize();
 
@@ -272,9 +272,9 @@ public class NISTCTSBlockCipher
             {
                 if (this.type == CS3 || (this.type == CS2 && ((buf.length - bufOff) % blockSize) != 0))
                 {
-                    if (cipher instanceof CBCBlockCipher)
+                    if (cipher instanceof CBCModeCipher)
                     {
-                        BlockCipher c = ((CBCBlockCipher)cipher).getUnderlyingCipher();
+                        BlockCipher c = ((CBCModeCipher)cipher).getUnderlyingCipher();
 
                         c.processBlock(buf, 0, block, 0);
                     }
@@ -295,7 +295,7 @@ public class NISTCTSBlockCipher
                 }
                 else
                 {
-                    BlockCipher c = ((CBCBlockCipher)cipher).getUnderlyingCipher();
+                    BlockCipher c = ((CBCModeCipher)cipher).getUnderlyingCipher();
 
                     c.processBlock(buf, bufOff - blockSize, lastBlock, 0);
 

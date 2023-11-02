@@ -34,11 +34,11 @@ import com.distrimind.bouncycastle.crypto.params.ECPublicKeyParameters;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.EC5Util;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.ECUtil;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.KeyUtil;
+import com.distrimind.bouncycastle.jce.spec.ECNamedCurveParameterSpec;
+import com.distrimind.bouncycastle.jce.spec.ECNamedCurveSpec;
 import com.distrimind.bouncycastle.jcajce.provider.config.ProviderConfiguration;
 import com.distrimind.bouncycastle.jce.interfaces.ECPointEncoder;
 import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
-import com.distrimind.bouncycastle.jce.spec.ECNamedCurveParameterSpec;
-import com.distrimind.bouncycastle.jce.spec.ECNamedCurveSpec;
 import com.distrimind.bouncycastle.math.ec.ECCurve;
 
 public class BCDSTU4145PublicKey
@@ -229,7 +229,7 @@ public class BCDSTU4145PublicKey
                     reverseBytes(b_bytes);
                 }
                 DSTU4145BinaryField field = binary.getField();
-                ECCurve curve = new ECCurve.F2m(field.getM(), field.getK1(), field.getK2(), field.getK3(), binary.getA(), new BigInteger(1, b_bytes));
+                ECCurve curve = new ECCurve.F2m(field.getM(), field.getK1(), field.getK2(), field.getK3(), binary.getA(), new BigInteger(1, b_bytes), null, null);
                 byte[] g_bytes = binary.getG();
                 if (info.getAlgorithm().getAlgorithm().equals(UAObjectIdentifiers.dstu4145le))
                 {

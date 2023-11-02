@@ -8,6 +8,7 @@ import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
 import com.distrimind.bouncycastle.asn1.ASN1UTF8String;
+import com.distrimind.bouncycastle.asn1.BERTags;
 import com.distrimind.bouncycastle.asn1.DERSequence;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
 import com.distrimind.bouncycastle.asn1.DERUTF8String;
@@ -39,7 +40,7 @@ public class SignerLocation
 
         while (e.hasMoreElements())
         {
-            ASN1TaggedObject o = (ASN1TaggedObject)e.nextElement();
+            ASN1TaggedObject o = ASN1TaggedObject.getInstance(e.nextElement(), BERTags.CONTEXT_SPECIFIC);
 
             switch (o.getTagNo())
             {

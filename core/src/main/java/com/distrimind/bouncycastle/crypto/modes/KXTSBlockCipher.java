@@ -2,9 +2,9 @@ package com.distrimind.bouncycastle.crypto.modes;
 
 import com.distrimind.bouncycastle.crypto.params.ParametersWithIV;
 import com.distrimind.bouncycastle.crypto.BlockCipher;
-import com.distrimind.bouncycastle.crypto.BufferedBlockCipher;
 import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.DataLengthException;
+import com.distrimind.bouncycastle.crypto.DefaultBufferedBlockCipher;
 import com.distrimind.bouncycastle.crypto.OutputLengthException;
 import com.distrimind.bouncycastle.util.Pack;
 
@@ -12,7 +12,7 @@ import com.distrimind.bouncycastle.util.Pack;
  * Implementation of DSTU7624 XTS mode
  */
 public class KXTSBlockCipher
-    extends BufferedBlockCipher
+    extends DefaultBufferedBlockCipher
 {
     /*
      * Constants for GF(2^m) operations
@@ -126,13 +126,13 @@ public class KXTSBlockCipher
 
         for (int pos = 0; pos < len; pos += blockSize)
         {
-            processBlock(input, inOff + pos, output, outOff + pos);
+            processBlocks(input, inOff + pos, output, outOff + pos);
         }
 
         return len;
     }
 
-    private void processBlock(byte[] input, int inOff, byte[] output, int outOff)
+    private void processBlocks(byte[] input, int inOff, byte[] output, int outOff)
     {
         /*
          * A somewhat arbitrary limit of 2^32 - 1 blocks

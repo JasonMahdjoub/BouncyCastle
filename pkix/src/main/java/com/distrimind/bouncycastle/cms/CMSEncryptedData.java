@@ -3,11 +3,11 @@ package com.distrimind.bouncycastle.cms;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
+import com.distrimind.bouncycastle.operator.InputDecryptor;
+import com.distrimind.bouncycastle.operator.InputDecryptorProvider;
 import com.distrimind.bouncycastle.asn1.cms.ContentInfo;
 import com.distrimind.bouncycastle.asn1.cms.EncryptedContentInfo;
 import com.distrimind.bouncycastle.asn1.cms.EncryptedData;
-import com.distrimind.bouncycastle.operator.InputDecryptor;
-import com.distrimind.bouncycastle.operator.InputDecryptorProvider;
 
 public class CMSEncryptedData
 {

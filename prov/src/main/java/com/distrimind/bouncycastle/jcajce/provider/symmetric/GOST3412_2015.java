@@ -8,10 +8,10 @@ import com.distrimind.bouncycastle.crypto.modes.G3413CBCBlockCipher;
 import com.distrimind.bouncycastle.crypto.modes.G3413CFBBlockCipher;
 import com.distrimind.bouncycastle.crypto.modes.G3413CTRBlockCipher;
 import com.distrimind.bouncycastle.crypto.modes.G3413OFBBlockCipher;
-import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseBlockCipher;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseKeyGenerator;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseMac;
+import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import com.distrimind.bouncycastle.jcajce.provider.util.AlgorithmProvider;
 
 

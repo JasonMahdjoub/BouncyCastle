@@ -22,11 +22,11 @@ import com.distrimind.bouncycastle.asn1.x9.X9ECParameters;
 import com.distrimind.bouncycastle.asn1.x9.X9ECParametersHolder;
 import com.distrimind.bouncycastle.crypto.ec.CustomNamedCurves;
 import com.distrimind.bouncycastle.crypto.params.ECDomainParameters;
-import com.distrimind.bouncycastle.jcajce.provider.config.ProviderConfiguration;
 import com.distrimind.bouncycastle.jce.ECGOST3410NamedCurveTable;
-import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
 import com.distrimind.bouncycastle.jce.spec.ECNamedCurveParameterSpec;
 import com.distrimind.bouncycastle.jce.spec.ECNamedCurveSpec;
+import com.distrimind.bouncycastle.jcajce.provider.config.ProviderConfiguration;
+import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
 import com.distrimind.bouncycastle.math.ec.ECAlgorithms;
 import com.distrimind.bouncycastle.math.ec.ECCurve;
 import com.distrimind.bouncycastle.math.field.FiniteField;
@@ -278,14 +278,14 @@ public class EC5Util
 
         if (field instanceof ECFieldFp)
         {
-            return CustomCurves.substitute(new ECCurve.Fp(((ECFieldFp)field).getP(), a, b));
+            return CustomCurves.substitute(new ECCurve.Fp(((ECFieldFp)field).getP(), a, b, null, null));
         }
         else
         {
             ECFieldF2m fieldF2m = (ECFieldF2m)field;
             int m = fieldF2m.getM();
             int ks[] = ECUtil.convertMidTerms(fieldF2m.getMidTermsOfReductionPolynomial());
-            return new ECCurve.F2m(m, ks[0], ks[1], ks[2], a, b); 
+            return new ECCurve.F2m(m, ks[0], ks[1], ks[2], a, b, null, null);
         }
     }
 

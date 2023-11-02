@@ -5,6 +5,7 @@ import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
+import com.distrimind.bouncycastle.asn1.BERTags;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
 import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.HashAlgorithm;
 import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.HashedId8;
@@ -57,7 +58,7 @@ public class IssuerIdentifier
     private IssuerIdentifier(ASN1TaggedObject ato)
     {
         choice = ato.getTagNo();
-        Object o = ato.getObject();
+        Object o = ato.getExplicitBaseObject();
         switch (choice)
         {
         case sha384AndDigest: // sha384AndDigest  HashedId8
@@ -82,7 +83,7 @@ public class IssuerIdentifier
 
         if (choice != null)
         {
-            return new IssuerIdentifier(ASN1TaggedObject.getInstance(choice));
+            return new IssuerIdentifier(ASN1TaggedObject.getInstance(choice, BERTags.CONTEXT_SPECIFIC));
         }
 
         return null;

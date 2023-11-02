@@ -10,7 +10,6 @@ import java.util.Map;
 import javax.crypto.Cipher;
 
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
-import com.distrimind.bouncycastle.operator.jcajce.JceGenericKey;
 import com.distrimind.bouncycastle.asn1.cms.CMSORIforKEMOtherInfo;
 import com.distrimind.bouncycastle.asn1.cms.KEMRecipientInfo;
 import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
@@ -19,6 +18,7 @@ import com.distrimind.bouncycastle.jcajce.spec.KTSParameterSpec;
 import com.distrimind.bouncycastle.operator.AsymmetricKeyUnwrapper;
 import com.distrimind.bouncycastle.operator.GenericKey;
 import com.distrimind.bouncycastle.operator.OperatorException;
+import com.distrimind.bouncycastle.operator.jcajce.JceGenericKey;
 import com.distrimind.bouncycastle.util.Arrays;
 
 class JceCMSKEMKeyUnwrapper

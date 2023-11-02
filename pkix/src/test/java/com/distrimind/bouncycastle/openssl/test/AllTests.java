@@ -11,7 +11,6 @@ import java.security.NoSuchProviderException;
 import java.security.PrivateKey;
 import java.security.Security;
 
-import com.distrimind.bouncycastle.test.PrintTestResult;
 import junit.extensions.TestSetup;
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -30,6 +29,7 @@ import com.distrimind.bouncycastle.openssl.jcajce.JceOpenSSLPKCS8EncryptorBuilde
 import com.distrimind.bouncycastle.operator.OperatorCreationException;
 import com.distrimind.bouncycastle.pkcs.PKCS8EncryptedPrivateKeyInfo;
 import com.distrimind.bouncycastle.pkcs.PKCSException;
+import com.distrimind.bouncycastle.test.PrintTestResult;
 import com.distrimind.bouncycastle.util.encoders.Base64;
 import com.distrimind.bouncycastle.util.test.SimpleTestResult;
 

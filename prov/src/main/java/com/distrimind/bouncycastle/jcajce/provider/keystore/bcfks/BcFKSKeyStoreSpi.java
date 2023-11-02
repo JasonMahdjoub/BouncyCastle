@@ -92,12 +92,12 @@ import com.distrimind.bouncycastle.crypto.util.ScryptConfig;
 import com.distrimind.bouncycastle.jcajce.BCFKSLoadStoreParameter;
 import com.distrimind.bouncycastle.jcajce.BCFKSStoreParameter;
 import com.distrimind.bouncycastle.jcajce.BCLoadStoreParameter;
+import com.distrimind.bouncycastle.jcajce.provider.keystore.util.AdaptingKeyStoreSpi;
 import com.distrimind.bouncycastle.jcajce.provider.keystore.util.ParameterUtil;
 import com.distrimind.bouncycastle.jcajce.util.BCJcaJceHelper;
 import com.distrimind.bouncycastle.jcajce.util.DefaultJcaJceHelper;
 import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
 import com.distrimind.bouncycastle.jce.interfaces.ECKey;
-import com.distrimind.bouncycastle.jcajce.provider.keystore.util.AdaptingKeyStoreSpi;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Strings;
 

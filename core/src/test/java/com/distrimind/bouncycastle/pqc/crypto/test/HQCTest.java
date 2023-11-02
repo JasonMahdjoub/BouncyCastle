@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Random;
 
-import com.distrimind.bouncycastle.test.TestResourceFinder;
 import junit.framework.TestCase;
 import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
 import com.distrimind.bouncycastle.crypto.SecretWithEncapsulation;
@@ -21,6 +20,7 @@ import com.distrimind.bouncycastle.pqc.crypto.util.PrivateKeyFactory;
 import com.distrimind.bouncycastle.pqc.crypto.util.PrivateKeyInfoFactory;
 import com.distrimind.bouncycastle.pqc.crypto.util.PublicKeyFactory;
 import com.distrimind.bouncycastle.pqc.crypto.util.SubjectPublicKeyInfoFactory;
+import com.distrimind.bouncycastle.test.TestResourceFinder;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.encoders.Hex;
 import com.distrimind.bouncycastle.util.test.FixedSecureRandom;

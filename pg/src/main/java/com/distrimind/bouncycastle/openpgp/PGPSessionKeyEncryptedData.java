@@ -2,10 +2,10 @@ package com.distrimind.bouncycastle.openpgp;
 
 import java.io.InputStream;
 
-import com.distrimind.bouncycastle.bcpg.InputStreamPacket;
-import com.distrimind.bouncycastle.bcpg.SymmetricEncIntegrityPacket;
 import com.distrimind.bouncycastle.openpgp.operator.SessionKeyDataDecryptorFactory;
 import com.distrimind.bouncycastle.bcpg.AEADEncDataPacket;
+import com.distrimind.bouncycastle.bcpg.InputStreamPacket;
+import com.distrimind.bouncycastle.bcpg.SymmetricEncIntegrityPacket;
 
 /**
  * The basis of PGP encrypted data - encrypted data encrypted using a symmetric session key.

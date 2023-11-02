@@ -1,11 +1,11 @@
 package com.distrimind.bouncycastle.asn1.x509;
 
-import com.distrimind.bouncycastle.util.Strings;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
 import com.distrimind.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.util.Strings;
 
 public class CRLDistPoint
     extends ASN1Object

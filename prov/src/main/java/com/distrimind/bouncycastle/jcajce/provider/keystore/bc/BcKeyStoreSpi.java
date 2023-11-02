@@ -155,7 +155,7 @@ public class BcKeyStoreSpi
             dOut.writeInt(iterationCount);
 
             Cipher              cipher = makePBECipher(KEY_CIPHER, Cipher.ENCRYPT_MODE, password, salt, iterationCount);
-            CipherOutputStream cOut = new CipherOutputStream(dOut, cipher);
+            CipherOutputStream  cOut = new CipherOutputStream(dOut, cipher);
 
             dOut = new DataOutputStream(cOut);
 

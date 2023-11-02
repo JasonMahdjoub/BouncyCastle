@@ -81,6 +81,7 @@ import com.distrimind.bouncycastle.util.Objects;
 /**
  * PKIXCertPathReviewer<br>
  * Validation of X.509 Certificate Paths. Tries to find as much errors in the Path as possible.
+ * @deprecated use com.distrimind.bouncycastle.pkix.jcajce.PKIXCertPathReviewer in the bcpkix package
  */
 public class PKIXCertPathReviewer extends CertPathValidatorUtilities
 {
@@ -521,7 +522,7 @@ public class PKIXCertPathReviewer extends CertPathValidatorUtilities
 //                            switch(o.getTagNo())            TODO - move resources to PKIXNameConstraints
 //                            {
 //                            case 1:
-//                                String email = DERIA5String.getInstance(o, true).getString();
+//                                String email = ASN1IA5String.getInstance(o, true).getString();
 //
 //                                try
 //                                {
@@ -667,11 +668,8 @@ public class PKIXCertPathReviewer extends CertPathValidatorUtilities
 
         X509Certificate cert = null;
 
-        int i;
         for (int index = certs.size() - 1; index > 0; index--)
         {
-            i = n - index;
-
             cert = (X509Certificate) certs.get(index);
 
             // l)
@@ -692,8 +690,7 @@ public class PKIXCertPathReviewer extends CertPathValidatorUtilities
             BasicConstraints bc;
             try
             {
-                bc = BasicConstraints.getInstance(getExtensionValue(cert,
-                        BASIC_CONSTRAINTS));
+                bc = BasicConstraints.getInstance(getExtensionValue(cert, BASIC_CONSTRAINTS));
             }
             catch (AnnotatedException ae)
             {
@@ -702,21 +699,14 @@ public class PKIXCertPathReviewer extends CertPathValidatorUtilities
                 bc = null;
             }
 
-            if (bc != null)
+            if (bc != null && bc.isCA())
             {
-                BigInteger _pathLengthConstraint = bc.getPathLenConstraint();
-
-                if (_pathLengthConstraint != null)
+                ASN1Integer pathLenConstraint = bc.getPathLenConstraintInteger();
+                if (pathLenConstraint != null)
                 {
-                    int _plc = _pathLengthConstraint.intValue();
-
-                    if (_plc < maxPathLength)
-                    {
-                        maxPathLength = _plc;
-                    }
+                    maxPathLength = Math.min(maxPathLength, pathLenConstraint.intPositiveValueExact());
                 }
             }
-
         }
 
         ErrorBundle msg = new ErrorBundle(RESOURCE_NAME,"CertPathReviewer.totalPathLength",
@@ -783,7 +773,7 @@ public class PKIXCertPathReviewer extends CertPathValidatorUtilities
 
                 try
                 {
-                    CertPathValidatorUtilities.verifyX509Certificate(cert, trustPublicKey,
+                    verifyX509Certificate(cert, trustPublicKey,
                         pkixParams.getSigProvider());
                 }
                 catch (SignatureException e)
@@ -905,7 +895,7 @@ public class PKIXCertPathReviewer extends CertPathValidatorUtilities
             {
                 try
                 {
-                    CertPathValidatorUtilities.verifyX509Certificate(cert, workingPublicKey,
+                    verifyX509Certificate(cert, workingPublicKey,
                         pkixParams.getSigProvider());
                 }
                 catch (GeneralSecurityException ex)
@@ -919,7 +909,7 @@ public class PKIXCertPathReviewer extends CertPathValidatorUtilities
             {
                 try
                 {
-                    CertPathValidatorUtilities.verifyX509Certificate(cert, cert.getPublicKey(),
+                    verifyX509Certificate(cert, cert.getPublicKey(),
                         pkixParams.getSigProvider());
                     ErrorBundle msg = new ErrorBundle(RESOURCE_NAME,"CertPathReviewer.rootKeyIsValidButNotATrustAnchor");
                     addError(msg, index);

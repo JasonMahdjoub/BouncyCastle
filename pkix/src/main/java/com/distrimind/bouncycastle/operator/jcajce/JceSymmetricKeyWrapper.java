@@ -16,12 +16,12 @@ import com.distrimind.bouncycastle.asn1.nist.NISTObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.ntt.NTTObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import com.distrimind.bouncycastle.jcajce.util.DefaultJcaJceHelper;
-import com.distrimind.bouncycastle.jcajce.util.NamedJcaJceHelper;
-import com.distrimind.bouncycastle.jcajce.util.ProviderJcaJceHelper;
 import com.distrimind.bouncycastle.operator.GenericKey;
 import com.distrimind.bouncycastle.operator.OperatorException;
 import com.distrimind.bouncycastle.operator.SymmetricKeyWrapper;
+import com.distrimind.bouncycastle.jcajce.util.DefaultJcaJceHelper;
+import com.distrimind.bouncycastle.jcajce.util.NamedJcaJceHelper;
+import com.distrimind.bouncycastle.jcajce.util.ProviderJcaJceHelper;
 
 public class JceSymmetricKeyWrapper
     extends SymmetricKeyWrapper

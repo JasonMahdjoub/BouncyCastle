@@ -1,12 +1,12 @@
 package com.distrimind.bouncycastle.crypto.engines;
 
+import com.distrimind.bouncycastle.crypto.constraints.DefaultServiceProperties;
 import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
 import com.distrimind.bouncycastle.crypto.DataLengthException;
 import com.distrimind.bouncycastle.crypto.DefaultMultiBlockCipher;
 import com.distrimind.bouncycastle.crypto.MultiBlockCipher;
 import com.distrimind.bouncycastle.crypto.OutputLengthException;
-import com.distrimind.bouncycastle.crypto.constraints.DefaultServiceProperties;
 import com.distrimind.bouncycastle.crypto.params.KeyParameter;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Pack;
@@ -433,6 +433,7 @@ private static final int[] Tinv0 =
 
     /**
      * default constructor - 128 bit block size.
+     * @deprecated use AESEngine.newInstance()
      */
     public AESEngine()
     {

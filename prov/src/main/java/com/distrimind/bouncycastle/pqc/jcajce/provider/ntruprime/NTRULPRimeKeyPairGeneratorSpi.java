@@ -14,8 +14,8 @@ import com.distrimind.bouncycastle.pqc.crypto.ntruprime.NTRULPRimeKeyPairGenerat
 import com.distrimind.bouncycastle.pqc.crypto.ntruprime.NTRULPRimeParameters;
 import com.distrimind.bouncycastle.pqc.crypto.ntruprime.NTRULPRimePrivateKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.ntruprime.NTRULPRimePublicKeyParameters;
-import com.distrimind.bouncycastle.pqc.jcajce.spec.NTRULPRimeParameterSpec;
 import com.distrimind.bouncycastle.pqc.jcajce.provider.util.SpecUtil;
+import com.distrimind.bouncycastle.pqc.jcajce.spec.NTRULPRimeParameterSpec;
 import com.distrimind.bouncycastle.util.Strings;
 
 public class NTRULPRimeKeyPairGeneratorSpi

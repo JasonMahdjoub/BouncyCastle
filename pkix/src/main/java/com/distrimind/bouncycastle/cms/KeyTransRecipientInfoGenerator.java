@@ -1,13 +1,13 @@
 package com.distrimind.bouncycastle.cms;
 
 import com.distrimind.bouncycastle.asn1.DEROctetString;
+import com.distrimind.bouncycastle.operator.AsymmetricKeyWrapper;
+import com.distrimind.bouncycastle.operator.GenericKey;
+import com.distrimind.bouncycastle.operator.OperatorException;
 import com.distrimind.bouncycastle.asn1.cms.IssuerAndSerialNumber;
 import com.distrimind.bouncycastle.asn1.cms.KeyTransRecipientInfo;
 import com.distrimind.bouncycastle.asn1.cms.RecipientIdentifier;
 import com.distrimind.bouncycastle.asn1.cms.RecipientInfo;
-import com.distrimind.bouncycastle.operator.AsymmetricKeyWrapper;
-import com.distrimind.bouncycastle.operator.GenericKey;
-import com.distrimind.bouncycastle.operator.OperatorException;
 
 public abstract class KeyTransRecipientInfoGenerator
     implements RecipientInfoGenerator

@@ -9,6 +9,7 @@ import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
+import com.distrimind.bouncycastle.asn1.BERTags;
 import com.distrimind.bouncycastle.asn1.DERPrintableString;
 import com.distrimind.bouncycastle.asn1.DERSequence;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
@@ -83,7 +84,7 @@ public class DeclarationOfMajority
 
         if (obj instanceof ASN1TaggedObject)
         {
-            return new DeclarationOfMajority((ASN1TaggedObject)obj);
+            return new DeclarationOfMajority(ASN1TaggedObject.getInstance(obj, BERTags.CONTEXT_SPECIFIC));
         }
 
         throw new IllegalArgumentException("illegal object in getInstance: "

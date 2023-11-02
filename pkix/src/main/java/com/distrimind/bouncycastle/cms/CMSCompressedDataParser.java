@@ -7,10 +7,10 @@ import java.io.InputStream;
 import com.distrimind.bouncycastle.asn1.ASN1OctetStringParser;
 import com.distrimind.bouncycastle.asn1.ASN1SequenceParser;
 import com.distrimind.bouncycastle.asn1.BERTags;
-import com.distrimind.bouncycastle.asn1.cms.CompressedDataParser;
-import com.distrimind.bouncycastle.asn1.cms.ContentInfoParser;
 import com.distrimind.bouncycastle.operator.InputExpander;
 import com.distrimind.bouncycastle.operator.InputExpanderProvider;
+import com.distrimind.bouncycastle.asn1.cms.CompressedDataParser;
+import com.distrimind.bouncycastle.asn1.cms.ContentInfoParser;
 
 /**
  * Class for reading a CMS Compressed Data stream.

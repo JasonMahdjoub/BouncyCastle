@@ -5,15 +5,15 @@ import java.io.OutputStream;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import com.distrimind.bouncycastle.mime.Headers;
-import com.distrimind.bouncycastle.mime.MimeIOException;
-import com.distrimind.bouncycastle.mime.MimeWriter;
 import com.distrimind.bouncycastle.mime.encoding.Base64OutputStream;
 import com.distrimind.bouncycastle.cms.CMSAttributeTableGenerator;
 import com.distrimind.bouncycastle.cms.CMSEnvelopedDataStreamGenerator;
 import com.distrimind.bouncycastle.cms.CMSException;
 import com.distrimind.bouncycastle.cms.OriginatorInformation;
 import com.distrimind.bouncycastle.cms.RecipientInfoGenerator;
+import com.distrimind.bouncycastle.mime.Headers;
+import com.distrimind.bouncycastle.mime.MimeIOException;
+import com.distrimind.bouncycastle.mime.MimeWriter;
 import com.distrimind.bouncycastle.operator.OutputEncryptor;
 import com.distrimind.bouncycastle.util.Strings;
 

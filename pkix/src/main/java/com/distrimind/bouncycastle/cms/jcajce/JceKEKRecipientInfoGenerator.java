@@ -5,9 +5,9 @@ import java.security.SecureRandom;
 
 import javax.crypto.SecretKey;
 
+import com.distrimind.bouncycastle.asn1.cms.KEKIdentifier;
 import com.distrimind.bouncycastle.cms.KEKRecipientInfoGenerator;
 import com.distrimind.bouncycastle.operator.jcajce.JceSymmetricKeyWrapper;
-import com.distrimind.bouncycastle.asn1.cms.KEKIdentifier;
 
 public class JceKEKRecipientInfoGenerator
     extends KEKRecipientInfoGenerator

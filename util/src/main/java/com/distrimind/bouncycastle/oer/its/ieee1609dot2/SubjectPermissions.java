@@ -6,6 +6,7 @@ import com.distrimind.bouncycastle.asn1.ASN1Null;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
+import com.distrimind.bouncycastle.asn1.BERTags;
 import com.distrimind.bouncycastle.asn1.DERNull;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
 import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.SequenceOfPsidSspRange;
@@ -56,10 +57,10 @@ public class SubjectPermissions
         switch (choice)
         {
         case explicit:
-            subjectPermissions = SequenceOfPsidSspRange.getInstance(ato.getObject());
+            subjectPermissions = SequenceOfPsidSspRange.getInstance(ato.getExplicitBaseObject());
             break;
         case all:
-            subjectPermissions = ASN1Null.getInstance(ato.getObject());
+            subjectPermissions = ASN1Null.getInstance(ato.getExplicitBaseObject());
             break;
         default:
             throw new IllegalArgumentException("invalid choice value " + choice);
@@ -76,7 +77,7 @@ public class SubjectPermissions
 
         if (src != null)
         {
-            return new SubjectPermissions(ASN1TaggedObject.getInstance(src));
+            return new SubjectPermissions(ASN1TaggedObject.getInstance(src, BERTags.CONTEXT_SPECIFIC));
         }
         return null;
     }

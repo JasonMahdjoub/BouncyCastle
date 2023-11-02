@@ -2,8 +2,8 @@ package com.distrimind.bouncycastle.pqc.legacy.math.ntru.polynomial;
 
 import java.security.SecureRandom;
 
-import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.pqc.legacy.math.ntru.util.Util;
+import com.distrimind.bouncycastle.util.Arrays;
 
 /**
  * A <code>TernaryPolynomial</code> with a "high" number of nonzero coefficients.

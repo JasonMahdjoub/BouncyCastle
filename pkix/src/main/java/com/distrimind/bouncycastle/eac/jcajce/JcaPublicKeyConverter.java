@@ -17,11 +17,11 @@ import java.security.spec.InvalidKeySpecException;
 import java.security.spec.RSAPublicKeySpec;
 
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
-import com.distrimind.bouncycastle.eac.EACException;
 import com.distrimind.bouncycastle.asn1.eac.EACObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.eac.ECDSAPublicKey;
 import com.distrimind.bouncycastle.asn1.eac.PublicKeyDataObject;
 import com.distrimind.bouncycastle.asn1.eac.RSAPublicKey;
+import com.distrimind.bouncycastle.eac.EACException;
 import com.distrimind.bouncycastle.math.ec.ECAlgorithms;
 import com.distrimind.bouncycastle.math.ec.ECCurve;
 import com.distrimind.bouncycastle.math.ec.ECPoint;

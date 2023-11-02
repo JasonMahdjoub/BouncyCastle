@@ -5,9 +5,9 @@ import java.io.InputStream;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
-import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.pqc.legacy.math.ntru.util.ArrayEncoder;
 import com.distrimind.bouncycastle.pqc.legacy.math.ntru.util.Util;
+import com.distrimind.bouncycastle.util.Arrays;
 
 /**
  * A <code>TernaryPolynomial</code> with a "low" number of nonzero coefficients.

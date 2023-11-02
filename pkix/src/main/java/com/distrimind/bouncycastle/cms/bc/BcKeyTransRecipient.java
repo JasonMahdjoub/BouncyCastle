@@ -3,11 +3,11 @@ package com.distrimind.bouncycastle.cms.bc;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.cms.CMSException;
 import com.distrimind.bouncycastle.cms.KeyTransRecipient;
-import com.distrimind.bouncycastle.operator.bc.BcRSAAsymmetricKeyUnwrapper;
 import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
 import com.distrimind.bouncycastle.operator.AsymmetricKeyUnwrapper;
 import com.distrimind.bouncycastle.operator.OperatorException;
+import com.distrimind.bouncycastle.operator.bc.BcRSAAsymmetricKeyUnwrapper;
 
 public abstract class BcKeyTransRecipient
     implements KeyTransRecipient

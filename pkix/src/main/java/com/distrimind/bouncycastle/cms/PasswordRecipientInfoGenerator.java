@@ -7,12 +7,12 @@ import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.ASN1OctetString;
 import com.distrimind.bouncycastle.asn1.DEROctetString;
 import com.distrimind.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.operator.GenericKey;
 import com.distrimind.bouncycastle.asn1.cms.PasswordRecipientInfo;
 import com.distrimind.bouncycastle.asn1.cms.RecipientInfo;
 import com.distrimind.bouncycastle.asn1.pkcs.PBKDF2Params;
 import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import com.distrimind.bouncycastle.operator.GenericKey;
 import com.distrimind.bouncycastle.util.Arrays;
 
 public abstract class PasswordRecipientInfoGenerator

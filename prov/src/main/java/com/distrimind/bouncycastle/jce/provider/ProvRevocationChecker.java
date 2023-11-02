@@ -20,9 +20,9 @@ import com.distrimind.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.rosstandart.RosstandartObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.x9.X9ObjectIdentifiers;
-import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
 import com.distrimind.bouncycastle.jcajce.PKIXCertRevocationChecker;
 import com.distrimind.bouncycastle.jcajce.PKIXCertRevocationCheckerParameters;
+import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
 
 class ProvRevocationChecker
     extends PKIXRevocationChecker

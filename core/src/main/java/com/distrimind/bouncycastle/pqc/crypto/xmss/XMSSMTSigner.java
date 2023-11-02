@@ -2,8 +2,8 @@ package com.distrimind.bouncycastle.pqc.crypto.xmss;
 
 import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
-import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.pqc.crypto.StateAwareMessageSigner;
+import com.distrimind.bouncycastle.util.Arrays;
 
 /**
  * XMSS^MT Signer class.

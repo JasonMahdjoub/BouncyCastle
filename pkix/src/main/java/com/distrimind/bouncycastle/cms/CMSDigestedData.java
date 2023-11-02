@@ -6,12 +6,12 @@ import java.io.OutputStream;
 
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.ASN1OctetString;
-import com.distrimind.bouncycastle.asn1.cms.ContentInfo;
-import com.distrimind.bouncycastle.asn1.cms.DigestedData;
-import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.operator.DigestCalculator;
 import com.distrimind.bouncycastle.operator.DigestCalculatorProvider;
 import com.distrimind.bouncycastle.operator.OperatorCreationException;
+import com.distrimind.bouncycastle.asn1.cms.ContentInfo;
+import com.distrimind.bouncycastle.asn1.cms.DigestedData;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Encodable;
 

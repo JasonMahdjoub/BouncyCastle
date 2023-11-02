@@ -2,9 +2,9 @@ package com.distrimind.bouncycastle.pqc.legacy.crypto.gmss;
 
 import java.util.Vector;
 
-import com.distrimind.bouncycastle.crypto.Digest;
 import com.distrimind.bouncycastle.pqc.legacy.crypto.gmss.util.GMSSRandom;
 import com.distrimind.bouncycastle.pqc.legacy.crypto.gmss.util.WinternitzOTSignature;
+import com.distrimind.bouncycastle.crypto.Digest;
 import com.distrimind.bouncycastle.util.Arrays;
 
 

@@ -21,7 +21,7 @@ public class SimpleTestTest
                 {
                     result.getException().printStackTrace();
                 }
-                fail(result.toString());
+                fail(i+" -> "+  result.toString());
             }
         }
     }

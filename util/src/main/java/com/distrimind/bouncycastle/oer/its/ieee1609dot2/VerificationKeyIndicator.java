@@ -5,6 +5,7 @@ import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
+import com.distrimind.bouncycastle.asn1.BERTags;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
 import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.EccP256CurvePoint;
 import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.PublicVerificationKey;
@@ -41,10 +42,10 @@ public class VerificationKeyIndicator
         switch (choice)
         {
         case verificationKey:
-            verificationKeyIndicator = PublicVerificationKey.getInstance(ato.getObject());
+            verificationKeyIndicator = PublicVerificationKey.getInstance(ato.getExplicitBaseObject());
             break;
         case reconstructionValue:
-            verificationKeyIndicator = EccP256CurvePoint.getInstance(ato.getObject());
+            verificationKeyIndicator = EccP256CurvePoint.getInstance(ato.getExplicitBaseObject());
             break;
 
         default:
@@ -73,7 +74,7 @@ public class VerificationKeyIndicator
 
         if (src != null)
         {
-            return new VerificationKeyIndicator(ASN1TaggedObject.getInstance(src));
+            return new VerificationKeyIndicator(ASN1TaggedObject.getInstance(src, BERTags.CONTEXT_SPECIFIC));
         }
 
         return null;

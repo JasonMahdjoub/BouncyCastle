@@ -3,10 +3,10 @@ package com.distrimind.bouncycastle.asn1.x509;
 import java.math.BigInteger;
 import java.util.Hashtable;
 
-import com.distrimind.bouncycastle.util.Integers;
 import com.distrimind.bouncycastle.asn1.ASN1Enumerated;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
+import com.distrimind.bouncycastle.util.Integers;
 
 /**
  * The CRLReason enumeration.

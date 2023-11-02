@@ -12,7 +12,6 @@ import com.distrimind.bouncycastle.asn1.ASN1Integer;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.ASN1OctetString;
 import com.distrimind.bouncycastle.asn1.ASN1OctetStringParser;
-import com.distrimind.bouncycastle.asn1.ASN1OutputStream;
 import com.distrimind.bouncycastle.asn1.ASN1SequenceParser;
 import com.distrimind.bouncycastle.asn1.ASN1StreamParser;
 import com.distrimind.bouncycastle.asn1.BEROctetString;
@@ -24,6 +23,8 @@ import com.distrimind.bouncycastle.asn1.cms.CMSObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.cms.CompressedDataParser;
 import com.distrimind.bouncycastle.asn1.cms.ContentInfoParser;
 import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.encoders.Base64;
+import com.distrimind.bouncycastle.util.encoders.Hex;
 
 public class OctetStringTest 
     extends TestCase 
@@ -142,16 +143,11 @@ public class OctetStringTest
                 new BEROctetString(new byte[20])
             });
 
-        ByteArrayOutputStream bOut = new ByteArrayOutputStream();
-        ASN1OutputStream aOut = ASN1OutputStream.create(bOut);
+        byte[] encoding = str.getEncoded();
 
-        aOut.writeObject(str);
+        ASN1OctetString decoded = ASN1OctetString.getInstance(encoding);
 
-        aOut.close();
-
-        ASN1InputStream aIn = new ASN1InputStream(bOut.toByteArray());
-
-        assertTrue(Arrays.areEqual(new byte[30], ASN1OctetString.getInstance(aIn.readObject()).getOctets()));
+        assertTrue(Arrays.areEqual(new byte[30], decoded.getOctets()));
     }
 
     public void testNestedStructure()
@@ -221,7 +217,39 @@ public class OctetStringTest
 
         assertEquals(28, count);
     }
-    
+
+    public void testShortConstructed()
+           throws Exception
+    {
+        byte[] data = Hex.decode("2480040a000000000000000000000000");
+                    
+        ASN1InputStream aIn = new ASN1InputStream(data);
+
+        assertTrue(Arrays.areEqual(data, aIn.readObject().getEncoded()));
+    }
+
+    public void testLongConstructed()
+           throws Exception
+    {
+        byte[] data = Base64.decode("JIAEggPoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" +
+            "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" +
+            "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" +
+            "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" +
+            "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" +
+            "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" +
+            "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" +
+            "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" +
+            "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAASCAfQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" +
+            "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" +
+            "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" +
+            "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" +
+            "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+
+        ASN1InputStream aIn = new ASN1InputStream(data);
+
+        assertTrue(Arrays.areEqual(data, aIn.readObject().getEncoded()));
+    }
+
     public static Test suite()
     {
         return new TestSuite(OctetStringTest.class);

@@ -7,13 +7,13 @@ import java.security.MessageDigest;
 import java.security.Provider;
 
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.operator.DigestCalculator;
+import com.distrimind.bouncycastle.operator.DigestCalculatorProvider;
+import com.distrimind.bouncycastle.operator.OperatorCreationException;
 import com.distrimind.bouncycastle.jcajce.util.DefaultJcaJceHelper;
 import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
 import com.distrimind.bouncycastle.jcajce.util.NamedJcaJceHelper;
 import com.distrimind.bouncycastle.jcajce.util.ProviderJcaJceHelper;
-import com.distrimind.bouncycastle.operator.DigestCalculator;
-import com.distrimind.bouncycastle.operator.DigestCalculatorProvider;
-import com.distrimind.bouncycastle.operator.OperatorCreationException;
 
 public class JcaDigestCalculatorProviderBuilder
 {

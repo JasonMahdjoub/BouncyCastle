@@ -836,7 +836,7 @@ public class CBZip2OutputStream
         {
             throw new IllegalStateException();
         }
-        if (nSelectors >= 32768 || nSelectors > MAX_SELECTORS)
+        if (nSelectors >= 32768 || nSelectors > BZip2Constants.MAX_SELECTORS)
         {
             throw new IllegalStateException();
         }

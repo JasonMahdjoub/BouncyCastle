@@ -4,9 +4,9 @@ import com.distrimind.bouncycastle.asn1.bc.BCObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.isara.IsaraObjectIdentifiers;
 import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import com.distrimind.bouncycastle.jcajce.provider.util.AsymmetricAlgorithmProvider;
-import com.distrimind.bouncycastle.pqc.asn1.PQCObjectIdentifiers;
 import com.distrimind.bouncycastle.pqc.jcajce.provider.xmss.XMSSKeyFactorySpi;
 import com.distrimind.bouncycastle.pqc.jcajce.provider.xmss.XMSSMTKeyFactorySpi;
+import com.distrimind.bouncycastle.pqc.asn1.PQCObjectIdentifiers;
 
 public class XMSS
 {

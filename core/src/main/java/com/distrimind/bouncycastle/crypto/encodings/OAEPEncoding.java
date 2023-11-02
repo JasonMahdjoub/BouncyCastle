@@ -2,16 +2,16 @@ package com.distrimind.bouncycastle.crypto.encodings;
 
 import java.security.SecureRandom;
 
-import com.distrimind.bouncycastle.crypto.params.ParametersWithRandom;
-import com.distrimind.bouncycastle.crypto.util.DigestFactory;
-import com.distrimind.bouncycastle.util.Arrays;
-import com.distrimind.bouncycastle.util.Pack;
 import com.distrimind.bouncycastle.crypto.AsymmetricBlockCipher;
 import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
 import com.distrimind.bouncycastle.crypto.DataLengthException;
 import com.distrimind.bouncycastle.crypto.Digest;
 import com.distrimind.bouncycastle.crypto.InvalidCipherTextException;
+import com.distrimind.bouncycastle.crypto.params.ParametersWithRandom;
+import com.distrimind.bouncycastle.crypto.util.DigestFactory;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Pack;
 
 /**
  * Optimal Asymmetric Encryption Padding (OAEP) - see PKCS 1 V 2.
@@ -20,7 +20,7 @@ public class OAEPEncoding
     implements AsymmetricBlockCipher
 {
     private byte[]                  defHash;
-    private Digest mgf1Hash;
+    private Digest                  mgf1Hash;
 
     private AsymmetricBlockCipher   engine;
     private SecureRandom            random;
@@ -74,7 +74,7 @@ public class OAEPEncoding
 
     public void init(
         boolean             forEncryption,
-        CipherParameters param)
+        CipherParameters    param)
     {
         if (param instanceof ParametersWithRandom)
         {

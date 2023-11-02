@@ -2,7 +2,6 @@ package com.distrimind.bouncycastle.asn1.x509;
 
 import java.io.IOException;
 
-import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.asn1.ASN1Boolean;
 import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
@@ -13,6 +12,7 @@ import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.DEROctetString;
 import com.distrimind.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.util.Arrays;
 
 /**
  * an object for the elements in the X.509 V3 extension block.

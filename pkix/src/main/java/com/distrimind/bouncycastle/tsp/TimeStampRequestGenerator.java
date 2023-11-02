@@ -7,12 +7,12 @@ import com.distrimind.bouncycastle.asn1.ASN1Boolean;
 import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1Integer;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.operator.DefaultDigestAlgorithmIdentifierFinder;
 import com.distrimind.bouncycastle.asn1.tsp.MessageImprint;
 import com.distrimind.bouncycastle.asn1.tsp.TimeStampReq;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.asn1.x509.Extensions;
 import com.distrimind.bouncycastle.asn1.x509.ExtensionsGenerator;
-import com.distrimind.bouncycastle.operator.DefaultDigestAlgorithmIdentifierFinder;
 
 /**
  * Generator for RFC 3161 Time Stamp Request objects.

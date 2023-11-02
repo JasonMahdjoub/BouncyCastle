@@ -1,11 +1,11 @@
 package com.distrimind.bouncycastle.crypto.agreement.kdf;
 
-import com.distrimind.bouncycastle.crypto.params.KDFParameters;
 import com.distrimind.bouncycastle.crypto.DataLengthException;
 import com.distrimind.bouncycastle.crypto.DerivationFunction;
 import com.distrimind.bouncycastle.crypto.DerivationParameters;
 import com.distrimind.bouncycastle.crypto.Digest;
 import com.distrimind.bouncycastle.crypto.OutputLengthException;
+import com.distrimind.bouncycastle.crypto.params.KDFParameters;
 
 /**
  * Generator for Concatenation Key Derivation Function defined in NIST SP 800-56A, Sect 5.8.1
@@ -13,7 +13,7 @@ import com.distrimind.bouncycastle.crypto.OutputLengthException;
 public class ConcatenationKDFGenerator
     implements DerivationFunction
 {
-    private Digest digest;
+    private Digest  digest;
     private byte[]  shared;
     private byte[]  otherInfo;
     private int     hLen;
@@ -29,7 +29,7 @@ public class ConcatenationKDFGenerator
     }
 
     public void init(
-        DerivationParameters param)
+        DerivationParameters    param)
     {
         if (param instanceof KDFParameters)
         {

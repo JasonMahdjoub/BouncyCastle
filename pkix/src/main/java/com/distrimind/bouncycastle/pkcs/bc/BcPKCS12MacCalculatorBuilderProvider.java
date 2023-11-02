@@ -3,9 +3,9 @@ package com.distrimind.bouncycastle.pkcs.bc;
 import com.distrimind.bouncycastle.asn1.DERNull;
 import com.distrimind.bouncycastle.asn1.pkcs.PKCS12PBEParams;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import com.distrimind.bouncycastle.operator.bc.BcDigestProvider;
 import com.distrimind.bouncycastle.operator.MacCalculator;
 import com.distrimind.bouncycastle.operator.OperatorCreationException;
+import com.distrimind.bouncycastle.operator.bc.BcDigestProvider;
 import com.distrimind.bouncycastle.pkcs.PKCS12MacCalculatorBuilder;
 import com.distrimind.bouncycastle.pkcs.PKCS12MacCalculatorBuilderProvider;
 

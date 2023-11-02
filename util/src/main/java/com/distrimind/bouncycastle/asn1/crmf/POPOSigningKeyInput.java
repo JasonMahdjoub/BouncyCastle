@@ -6,6 +6,7 @@ import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
+import com.distrimind.bouncycastle.asn1.ASN1Util;
 import com.distrimind.bouncycastle.asn1.DERSequence;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
 import com.distrimind.bouncycastle.asn1.x509.GeneralName;
@@ -25,12 +26,8 @@ public class POPOSigningKeyInput
         if (authInfo instanceof ASN1TaggedObject)
         {
             ASN1TaggedObject tagObj = (ASN1TaggedObject)authInfo;
-            if (tagObj.getTagNo() != 0)
-            {
-                throw new IllegalArgumentException(
-                    "Unknown authInfo tag: " + tagObj.getTagNo());
-            }
-            sender = GeneralName.getInstance(tagObj.getObject());
+
+            sender = GeneralName.getInstance(ASN1Util.getExplicitContextBaseObject(tagObj, 0));
         }
         else
         {

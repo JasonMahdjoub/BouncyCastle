@@ -5,6 +5,7 @@ import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
+import com.distrimind.bouncycastle.asn1.BERTags;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
 import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.HashedId8;
 
@@ -54,7 +55,7 @@ public class CtlDelete
 
     private CtlDelete(ASN1TaggedObject value)
     {
-        this(value.getTagNo(), value.getObject());
+        this(value.getTagNo(), value.getExplicitBaseObject());
     }
 
     public static CtlDelete getInstance(Object o)
@@ -66,7 +67,7 @@ public class CtlDelete
 
         if (o != null)
         {
-            return new CtlDelete(ASN1TaggedObject.getInstance(o));
+            return new CtlDelete(ASN1TaggedObject.getInstance(o, BERTags.CONTEXT_SPECIFIC));
         }
         return null;
     }

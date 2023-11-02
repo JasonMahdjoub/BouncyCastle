@@ -14,8 +14,8 @@ import com.distrimind.bouncycastle.pqc.crypto.picnic.PicnicKeyPairGenerator;
 import com.distrimind.bouncycastle.pqc.crypto.picnic.PicnicParameters;
 import com.distrimind.bouncycastle.pqc.crypto.picnic.PicnicPrivateKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.picnic.PicnicPublicKeyParameters;
-import com.distrimind.bouncycastle.pqc.jcajce.spec.PicnicParameterSpec;
 import com.distrimind.bouncycastle.pqc.jcajce.provider.util.SpecUtil;
+import com.distrimind.bouncycastle.pqc.jcajce.spec.PicnicParameterSpec;
 import com.distrimind.bouncycastle.util.Strings;
 
 public class PicnicKeyPairGeneratorSpi

@@ -11,7 +11,6 @@ import java.security.cert.X509Certificate;
 import java.util.Collection;
 import java.util.Iterator;
 
-import com.distrimind.bouncycastle.cms.test.CMSTestUtil;
 import com.distrimind.bouncycastle.util.Arrays;
 import junit.framework.TestCase;
 import com.distrimind.bouncycastle.cert.X509CertificateHolder;
@@ -22,6 +21,7 @@ import com.distrimind.bouncycastle.cms.SignerInformationStore;
 import com.distrimind.bouncycastle.cms.jcajce.JcaSignerId;
 import com.distrimind.bouncycastle.cms.jcajce.JcaSimpleSignerInfoGeneratorBuilder;
 import com.distrimind.bouncycastle.cms.jcajce.JcaSimpleSignerInfoVerifierBuilder;
+import com.distrimind.bouncycastle.cms.test.CMSTestUtil;
 import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
 import com.distrimind.bouncycastle.mime.Headers;
 import com.distrimind.bouncycastle.mime.MimeParser;

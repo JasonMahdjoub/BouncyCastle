@@ -6,15 +6,15 @@ import java.util.Vector;
 
 import com.distrimind.bouncycastle.crypto.constraints.ConstraintUtils;
 import com.distrimind.bouncycastle.crypto.constraints.DefaultServiceProperties;
-import com.distrimind.bouncycastle.crypto.params.NaccacheSternKeyGenerationParameters;
-import com.distrimind.bouncycastle.crypto.params.NaccacheSternKeyParameters;
-import com.distrimind.bouncycastle.crypto.params.NaccacheSternPrivateKeyParameters;
-import com.distrimind.bouncycastle.util.BigIntegers;
 import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
 import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPairGenerator;
 import com.distrimind.bouncycastle.crypto.CryptoServicePurpose;
 import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
 import com.distrimind.bouncycastle.crypto.KeyGenerationParameters;
+import com.distrimind.bouncycastle.crypto.params.NaccacheSternKeyGenerationParameters;
+import com.distrimind.bouncycastle.crypto.params.NaccacheSternKeyParameters;
+import com.distrimind.bouncycastle.crypto.params.NaccacheSternPrivateKeyParameters;
+import com.distrimind.bouncycastle.util.BigIntegers;
 
 /**
  * Key generation parameters for NaccacheStern cipher. For details on this cipher, please see
@@ -22,7 +22,7 @@ import com.distrimind.bouncycastle.crypto.KeyGenerationParameters;
  * https://www.gemplus.com/smart/rd/publications/pdf/NS98pkcs.pdf
  */
 public class NaccacheSternKeyPairGenerator 
-    implements AsymmetricCipherKeyPairGenerator
+    implements AsymmetricCipherKeyPairGenerator 
 {
 
     private static int[] smallPrimes =

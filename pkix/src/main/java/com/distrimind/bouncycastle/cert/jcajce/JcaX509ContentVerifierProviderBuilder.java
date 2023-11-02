@@ -6,9 +6,9 @@ import java.security.cert.CertificateException;
 import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
 import com.distrimind.bouncycastle.cert.X509CertificateHolder;
 import com.distrimind.bouncycastle.cert.X509ContentVerifierProviderBuilder;
-import com.distrimind.bouncycastle.operator.jcajce.JcaContentVerifierProviderBuilder;
 import com.distrimind.bouncycastle.operator.ContentVerifierProvider;
 import com.distrimind.bouncycastle.operator.OperatorCreationException;
+import com.distrimind.bouncycastle.operator.jcajce.JcaContentVerifierProviderBuilder;
 
 public class JcaX509ContentVerifierProviderBuilder
     implements X509ContentVerifierProviderBuilder

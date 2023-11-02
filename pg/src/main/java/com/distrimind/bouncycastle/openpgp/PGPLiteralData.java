@@ -5,10 +5,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Date;
 
-import com.distrimind.bouncycastle.bcpg.LiteralDataPacket;
-import com.distrimind.bouncycastle.bcpg.Packet;
-import com.distrimind.bouncycastle.bcpg.PacketTags;
 import com.distrimind.bouncycastle.bcpg.BCPGInputStream;
+import com.distrimind.bouncycastle.bcpg.LiteralDataPacket;
+import com.distrimind.bouncycastle.bcpg.PacketTags;
+import com.distrimind.bouncycastle.bcpg.Packet;
 
 /**
  * A single literal data packet in a PGP object stream.
@@ -70,7 +70,7 @@ public class PGPLiteralData
      * @throws IOException if an error occurs reading from the PGP input.
      */
     public PGPLiteralData(
-        BCPGInputStream    pIn)
+        BCPGInputStream pIn)
         throws IOException
     {
         Packet packet = pIn.readPacket();

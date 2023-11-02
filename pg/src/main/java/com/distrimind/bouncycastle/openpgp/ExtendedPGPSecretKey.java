@@ -3,10 +3,10 @@ package com.distrimind.bouncycastle.openpgp;
 import java.util.Collections;
 import java.util.List;
 
-import com.distrimind.bouncycastle.bcpg.SecretKeyPacket;
 import com.distrimind.bouncycastle.openpgp.operator.PBESecretKeyEncryptor;
 import com.distrimind.bouncycastle.openpgp.operator.PGPContentSignerBuilder;
 import com.distrimind.bouncycastle.openpgp.operator.PGPDigestCalculator;
+import com.distrimind.bouncycastle.bcpg.SecretKeyPacket;
 
 public class ExtendedPGPSecretKey
     extends PGPSecretKey

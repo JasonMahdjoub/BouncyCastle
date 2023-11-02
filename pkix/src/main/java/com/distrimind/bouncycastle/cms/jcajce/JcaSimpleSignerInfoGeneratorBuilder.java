@@ -5,19 +5,19 @@ import java.security.Provider;
 import java.security.cert.CertificateEncodingException;
 import java.security.cert.X509Certificate;
 
-import com.distrimind.bouncycastle.cert.X509CertificateHolder;
 import com.distrimind.bouncycastle.cert.jcajce.JcaX509CertificateHolder;
+import com.distrimind.bouncycastle.asn1.cms.AttributeTable;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.cert.X509CertificateHolder;
 import com.distrimind.bouncycastle.cms.CMSAttributeTableGenerator;
 import com.distrimind.bouncycastle.cms.DefaultSignedAttributeTableGenerator;
 import com.distrimind.bouncycastle.cms.SignerInfoGenerator;
 import com.distrimind.bouncycastle.cms.SignerInfoGeneratorBuilder;
-import com.distrimind.bouncycastle.operator.jcajce.JcaContentSignerBuilder;
-import com.distrimind.bouncycastle.operator.jcajce.JcaDigestCalculatorProviderBuilder;
-import com.distrimind.bouncycastle.asn1.cms.AttributeTable;
-import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.operator.ContentSigner;
 import com.distrimind.bouncycastle.operator.DigestCalculatorProvider;
 import com.distrimind.bouncycastle.operator.OperatorCreationException;
+import com.distrimind.bouncycastle.operator.jcajce.JcaContentSignerBuilder;
+import com.distrimind.bouncycastle.operator.jcajce.JcaDigestCalculatorProviderBuilder;
 
 /**
  * Use this class if you are using a provider that has all the facilities you

@@ -5,6 +5,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.math.BigInteger;
 
+import com.distrimind.bouncycastle.crypto.generators.EphemeralKeyPairGenerator;
 import com.distrimind.bouncycastle.crypto.BasicAgreement;
 import com.distrimind.bouncycastle.crypto.BufferedBlockCipher;
 import com.distrimind.bouncycastle.crypto.CipherParameters;
@@ -19,7 +20,6 @@ import com.distrimind.bouncycastle.crypto.KeyParser;
 import com.distrimind.bouncycastle.crypto.Mac;
 import com.distrimind.bouncycastle.crypto.OutputLengthException;
 import com.distrimind.bouncycastle.crypto.digests.SHA256Digest;
-import com.distrimind.bouncycastle.crypto.generators.EphemeralKeyPairGenerator;
 import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
 import com.distrimind.bouncycastle.crypto.params.IESParameters;
 import com.distrimind.bouncycastle.crypto.params.IESWithCipherParameters;
@@ -251,7 +251,7 @@ public class EthereumIESEngine
         // Ethereum change:
         // Instead of initializing the mac with the bytes, we initialize with the hash of the bytes.
         // Old code: mac.init(new KeyParameter(K2));
-        Digest hash = new SHA256Digest();
+        Digest hash = SHA256Digest.newInstance();
         byte[] K2hash = new byte[hash.getDigestSize()];
         hash.reset();
         hash.update(K2, 0, K2.length);
@@ -367,7 +367,7 @@ public class EthereumIESEngine
         // Ethereum change:
         // Instead of initializing the mac with the bytes, we initialize with the hash of the bytes.
         // Old code: mac.init(new KeyParameter(K2));
-        Digest hash = new SHA256Digest();
+        Digest hash = SHA256Digest.newInstance();
         byte[] K2hash = new byte[hash.getDigestSize()];
         hash.reset();
         hash.update(K2, 0, K2.length);

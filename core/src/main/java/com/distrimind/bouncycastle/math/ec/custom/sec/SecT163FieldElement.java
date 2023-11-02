@@ -2,9 +2,9 @@ package com.distrimind.bouncycastle.math.ec.custom.sec;
 
 import java.math.BigInteger;
 
+import com.distrimind.bouncycastle.math.ec.ECFieldElement;
 import com.distrimind.bouncycastle.math.raw.Nat192;
 import com.distrimind.bouncycastle.util.Arrays;
-import com.distrimind.bouncycastle.math.ec.ECFieldElement;
 
 public class SecT163FieldElement extends ECFieldElement.AbstractF2m
 {

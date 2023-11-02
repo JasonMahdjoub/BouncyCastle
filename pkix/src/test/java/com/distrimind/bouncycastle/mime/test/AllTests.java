@@ -2,11 +2,11 @@ package com.distrimind.bouncycastle.mime.test;
 
 import java.security.Security;
 
-import com.distrimind.bouncycastle.test.PrintTestResult;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
+import com.distrimind.bouncycastle.test.PrintTestResult;
 
 public class AllTests
     extends TestCase

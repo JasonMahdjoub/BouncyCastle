@@ -6,10 +6,10 @@ import java.io.FileOutputStream;
 import java.security.Security;
 import java.util.Iterator;
 
-import com.distrimind.bouncycastle.bcpg.ArmoredOutputStream;
 import com.distrimind.bouncycastle.openpgp.operator.jcajce.JcaKeyFingerprintCalculator;
 import com.distrimind.bouncycastle.openpgp.operator.jcajce.JcaPGPContentSignerBuilder;
 import com.distrimind.bouncycastle.openpgp.operator.jcajce.JcePBESecretKeyDecryptorBuilder;
+import com.distrimind.bouncycastle.bcpg.ArmoredOutputStream;
 import com.distrimind.bouncycastle.bcpg.sig.NotationData;
 import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
 import com.distrimind.bouncycastle.openpgp.PGPPrivateKey;

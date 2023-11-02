@@ -1,10 +1,14 @@
 package com.distrimind.bouncycastle.pqc.asn1;
 
-
-import com.distrimind.bouncycastle.asn1.*;
+import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
+import com.distrimind.bouncycastle.asn1.ASN1Integer;
+import com.distrimind.bouncycastle.asn1.ASN1Object;
+import com.distrimind.bouncycastle.asn1.ASN1OctetString;
+import com.distrimind.bouncycastle.asn1.ASN1Primitive;
+import com.distrimind.bouncycastle.asn1.ASN1Sequence;
+import com.distrimind.bouncycastle.asn1.DEROctetString;
+import com.distrimind.bouncycastle.asn1.DERSequence;
 import com.distrimind.bouncycastle.util.Arrays;
-import com.distrimind.bouncycastle.util.BigIntegers;
-import com.distrimind.bouncycastle.asn1.*;
 
 /**
  * ASN.1 Encoding for a
@@ -70,18 +74,18 @@ public class FalconPrivateKey
 
     private FalconPrivateKey(ASN1Sequence seq)
     {
-        version = BigIntegers.intValueExact(ASN1Integer.getInstance(seq.getObjectAt(0)).getValue());
+        version = ASN1Integer.getInstance(seq.getObjectAt(0)).intValueExact();
         if (version != 0)
         {
             throw new IllegalArgumentException("unrecognized version");
         }
+
         f = Arrays.clone(ASN1OctetString.getInstance(seq.getObjectAt(1)).getOctets());
 
         g = Arrays.clone(ASN1OctetString.getInstance(seq.getObjectAt(2)).getOctets());
 
         F = Arrays.clone(ASN1OctetString.getInstance(seq.getObjectAt(3)).getOctets());
 
-        // todo optional publickey
         if(seq.size() == 5)
         {
             publicKey = FalconPublicKey.getInstance(seq.getObjectAt(4));

@@ -9,9 +9,8 @@ import com.distrimind.bouncycastle.crypto.Digest;
 import com.distrimind.bouncycastle.crypto.params.ECPublicKeyParameters;
 import com.distrimind.bouncycastle.crypto.signers.DSADigestSigner;
 import com.distrimind.bouncycastle.crypto.signers.ECDSASigner;
-import com.distrimind.bouncycastle.its.ITSCertificate;
 import com.distrimind.bouncycastle.its.operator.ITSContentVerifierProvider;
-import com.distrimind.bouncycastle.operator.bc.BcDefaultDigestProvider;
+import com.distrimind.bouncycastle.its.ITSCertificate;
 import com.distrimind.bouncycastle.oer.OEREncoder;
 import com.distrimind.bouncycastle.oer.its.ieee1609dot2.ToBeSignedCertificate;
 import com.distrimind.bouncycastle.oer.its.ieee1609dot2.VerificationKeyIndicator;
@@ -19,6 +18,7 @@ import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.PublicVerifica
 import com.distrimind.bouncycastle.oer.its.template.ieee1609dot2.IEEE1609dot2;
 import com.distrimind.bouncycastle.operator.ContentVerifier;
 import com.distrimind.bouncycastle.operator.OperatorCreationException;
+import com.distrimind.bouncycastle.operator.bc.BcDefaultDigestProvider;
 import com.distrimind.bouncycastle.util.Arrays;
 
 public class BcITSContentVerifierProvider

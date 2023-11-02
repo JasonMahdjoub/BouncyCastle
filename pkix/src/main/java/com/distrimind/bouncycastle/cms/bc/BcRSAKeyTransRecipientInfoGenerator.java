@@ -4,8 +4,8 @@ import java.io.IOException;
 
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.cert.X509CertificateHolder;
-import com.distrimind.bouncycastle.operator.bc.BcRSAAsymmetricKeyWrapper;
 import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
+import com.distrimind.bouncycastle.operator.bc.BcRSAAsymmetricKeyWrapper;
 
 public class BcRSAKeyTransRecipientInfoGenerator
     extends BcKeyTransRecipientInfoGenerator

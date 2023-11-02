@@ -1,6 +1,5 @@
 package com.distrimind.bouncycastle.asn1.x509;
 
-import com.distrimind.bouncycastle.util.Properties;
 import com.distrimind.bouncycastle.asn1.ASN1BitString;
 import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
 import com.distrimind.bouncycastle.asn1.ASN1Integer;
@@ -8,10 +7,10 @@ import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
-import com.distrimind.bouncycastle.asn1.DERBitString;
 import com.distrimind.bouncycastle.asn1.DERSequence;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
 import com.distrimind.bouncycastle.asn1.x500.X500Name;
+import com.distrimind.bouncycastle.util.Properties;
 
 /**
  * The TBSCertificate object.
@@ -140,10 +139,10 @@ public class TBSCertificate
             switch (extra.getTagNo())
             {
             case 1:
-                issuerUniqueId = DERBitString.getInstance(extra, false);
+                issuerUniqueId = ASN1BitString.getInstance(extra, false);
                 break;
             case 2:
-                subjectUniqueId = DERBitString.getInstance(extra, false);
+                subjectUniqueId = ASN1BitString.getInstance(extra, false);
                 break;
             case 3:
                 if (isV2)

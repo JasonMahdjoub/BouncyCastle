@@ -28,15 +28,15 @@ import com.distrimind.bouncycastle.asn1.BERTaggedObject;
 import com.distrimind.bouncycastle.asn1.BERTags;
 import com.distrimind.bouncycastle.asn1.DERSet;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
+import com.distrimind.bouncycastle.operator.DefaultDigestAlgorithmIdentifierFinder;
+import com.distrimind.bouncycastle.operator.DigestCalculator;
+import com.distrimind.bouncycastle.operator.DigestCalculatorProvider;
+import com.distrimind.bouncycastle.operator.OperatorCreationException;
 import com.distrimind.bouncycastle.asn1.cms.CMSObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.cms.ContentInfoParser;
 import com.distrimind.bouncycastle.asn1.cms.SignedDataParser;
 import com.distrimind.bouncycastle.asn1.cms.SignerInfo;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import com.distrimind.bouncycastle.operator.DefaultDigestAlgorithmIdentifierFinder;
-import com.distrimind.bouncycastle.operator.DigestCalculator;
-import com.distrimind.bouncycastle.operator.DigestCalculatorProvider;
-import com.distrimind.bouncycastle.operator.OperatorCreationException;
 import com.distrimind.bouncycastle.util.Store;
 import com.distrimind.bouncycastle.util.io.Streams;
 
@@ -443,7 +443,7 @@ public class CMSSignedDataParser
         for (Iterator it = signerInformationStore.getSigners().iterator(); it.hasNext();)
         {
             SignerInformation signer = (SignerInformation)it.next();
-            digestAlgs.add(CMSSignedHelper.INSTANCE.fixDigestAlgID(signer.getDigestAlgorithmID(), dgstAlgFinder));
+            digestAlgs.add(HELPER.fixDigestAlgID(signer.getDigestAlgorithmID(), dgstAlgFinder));
         }
 
         sigGen.getRawOutputStream().write(new DERSet(digestAlgs).getEncoded());

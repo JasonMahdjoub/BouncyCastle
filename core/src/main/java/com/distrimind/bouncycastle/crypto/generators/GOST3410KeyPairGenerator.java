@@ -5,17 +5,17 @@ import java.security.SecureRandom;
 
 import com.distrimind.bouncycastle.crypto.constraints.ConstraintUtils;
 import com.distrimind.bouncycastle.crypto.constraints.DefaultServiceProperties;
+import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
+import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPairGenerator;
+import com.distrimind.bouncycastle.crypto.CryptoServicePurpose;
+import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
+import com.distrimind.bouncycastle.crypto.KeyGenerationParameters;
 import com.distrimind.bouncycastle.crypto.params.GOST3410KeyGenerationParameters;
 import com.distrimind.bouncycastle.crypto.params.GOST3410Parameters;
 import com.distrimind.bouncycastle.crypto.params.GOST3410PrivateKeyParameters;
 import com.distrimind.bouncycastle.crypto.params.GOST3410PublicKeyParameters;
 import com.distrimind.bouncycastle.math.ec.WNafUtil;
 import com.distrimind.bouncycastle.util.BigIntegers;
-import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
-import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPairGenerator;
-import com.distrimind.bouncycastle.crypto.CryptoServicePurpose;
-import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
-import com.distrimind.bouncycastle.crypto.KeyGenerationParameters;
 
 /**
  * a GOST3410 key pair generator.
@@ -38,7 +38,7 @@ public class GOST3410KeyPairGenerator
         public AsymmetricCipherKeyPair generateKeyPair()
         {
             BigInteger      p, q, a, x, y;
-            GOST3410Parameters GOST3410Params = param.getParameters();
+            GOST3410Parameters   GOST3410Params = param.getParameters();
             SecureRandom    random = param.getRandom();
 
             q = GOST3410Params.getQ();

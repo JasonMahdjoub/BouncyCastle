@@ -8,6 +8,7 @@ import com.distrimind.bouncycastle.crypto.SkippingStreamCipher;
 import com.distrimind.bouncycastle.crypto.engines.AESEngine;
 import com.distrimind.bouncycastle.crypto.engines.ChaChaEngine;
 import com.distrimind.bouncycastle.crypto.engines.Salsa20Engine;
+import com.distrimind.bouncycastle.crypto.modes.CTRModeCipher;
 import com.distrimind.bouncycastle.crypto.modes.SICBlockCipher;
 import com.distrimind.bouncycastle.crypto.params.KeyParameter;
 import com.distrimind.bouncycastle.crypto.params.ParametersWithIV;
@@ -23,8 +24,8 @@ public class BigSkippingCipherTest
     {
         CipherParameters externalCounterParams = new ParametersWithIV(new KeyParameter(Hex.decode("5F060D3716B345C253F6749ABAC10917")), Hex.decode("00000000000000000000000000000000"));
         CipherParameters internalCounterParams = new ParametersWithIV(new KeyParameter(Hex.decode("5F060D3716B345C253F6749ABAC10917")), Hex.decode("00000000000000000000"));
-        SICBlockCipher linearEngine = new SICBlockCipher(new AESEngine());
-        SICBlockCipher skippingEngine = new SICBlockCipher(new AESEngine());
+        CTRModeCipher linearEngine = SICBlockCipher.newInstance(AESEngine.newInstance());
+        CTRModeCipher skippingEngine = SICBlockCipher.newInstance(AESEngine.newInstance());
         Random random = new Random();
 
         linearEngine.init(true, externalCounterParams);

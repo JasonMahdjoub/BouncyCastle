@@ -14,8 +14,8 @@ import com.distrimind.bouncycastle.pqc.crypto.saber.SABERKeyPairGenerator;
 import com.distrimind.bouncycastle.pqc.crypto.saber.SABERParameters;
 import com.distrimind.bouncycastle.pqc.crypto.saber.SABERPrivateKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.saber.SABERPublicKeyParameters;
-import com.distrimind.bouncycastle.pqc.jcajce.spec.SABERParameterSpec;
 import com.distrimind.bouncycastle.pqc.jcajce.provider.util.SpecUtil;
+import com.distrimind.bouncycastle.pqc.jcajce.spec.SABERParameterSpec;
 import com.distrimind.bouncycastle.util.Strings;
 
 public class SABERKeyPairGeneratorSpi

@@ -4,8 +4,8 @@ import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.Digest;
 import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
 import com.distrimind.bouncycastle.crypto.params.ParametersWithRandom;
-import com.distrimind.bouncycastle.util.Memoable;
 import com.distrimind.bouncycastle.pqc.crypto.StateAwareMessageSigner;
+import com.distrimind.bouncycastle.util.Memoable;
 
 /**
  * This class implements the GMSS signature scheme, but allows multiple signatures to be generated.

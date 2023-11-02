@@ -12,12 +12,6 @@ import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
 import com.distrimind.bouncycastle.asn1.ASN1Encoding;
 import com.distrimind.bouncycastle.asn1.ASN1OctetString;
 import com.distrimind.bouncycastle.asn1.DERSequence;
-import com.distrimind.bouncycastle.cert.X509CertificateHolder;
-import com.distrimind.bouncycastle.cms.SignerInformationVerifier;
-import com.distrimind.bouncycastle.tsp.TSPException;
-import com.distrimind.bouncycastle.tsp.TimeStampRequest;
-import com.distrimind.bouncycastle.tsp.TimeStampRequestGenerator;
-import com.distrimind.bouncycastle.tsp.TimeStampResponse;
 import com.distrimind.bouncycastle.asn1.cms.CMSObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.cms.ContentInfo;
 import com.distrimind.bouncycastle.asn1.cms.SignedData;
@@ -28,9 +22,15 @@ import com.distrimind.bouncycastle.asn1.tsp.ArchiveTimeStampSequence;
 import com.distrimind.bouncycastle.asn1.tsp.EvidenceRecord;
 import com.distrimind.bouncycastle.asn1.tsp.TSTInfo;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.cert.X509CertificateHolder;
+import com.distrimind.bouncycastle.cms.SignerInformationVerifier;
 import com.distrimind.bouncycastle.operator.DigestCalculator;
 import com.distrimind.bouncycastle.operator.DigestCalculatorProvider;
 import com.distrimind.bouncycastle.operator.OperatorCreationException;
+import com.distrimind.bouncycastle.tsp.TSPException;
+import com.distrimind.bouncycastle.tsp.TimeStampRequest;
+import com.distrimind.bouncycastle.tsp.TimeStampRequestGenerator;
+import com.distrimind.bouncycastle.tsp.TimeStampResponse;
 import com.distrimind.bouncycastle.util.io.Streams;
 
 /**

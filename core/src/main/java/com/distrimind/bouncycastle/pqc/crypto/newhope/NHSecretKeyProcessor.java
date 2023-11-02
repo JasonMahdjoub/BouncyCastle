@@ -6,8 +6,8 @@ import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
 import com.distrimind.bouncycastle.crypto.KeyGenerationParameters;
 import com.distrimind.bouncycastle.crypto.Xof;
 import com.distrimind.bouncycastle.crypto.digests.SHAKEDigest;
-import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.pqc.crypto.ExchangePair;
+import com.distrimind.bouncycastle.util.Arrays;
 
 /**
  * A processor with associated builders for doing secret key transformation using

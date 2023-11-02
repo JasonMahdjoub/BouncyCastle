@@ -11,7 +11,6 @@ import java.security.Security;
 import java.security.cert.CertificateEncodingException;
 import java.security.cert.X509Certificate;
 
-import com.distrimind.bouncycastle.cms.test.CMSTestUtil;
 import junit.framework.TestCase;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
@@ -19,6 +18,7 @@ import com.distrimind.bouncycastle.cms.CMSAlgorithm;
 import com.distrimind.bouncycastle.cms.CMSException;
 import com.distrimind.bouncycastle.cms.jcajce.JceCMSContentEncryptorBuilder;
 import com.distrimind.bouncycastle.cms.jcajce.JceKeyTransRecipientInfoGenerator;
+import com.distrimind.bouncycastle.cms.test.CMSTestUtil;
 import com.distrimind.bouncycastle.crypto.util.JournaledAlgorithm;
 import com.distrimind.bouncycastle.crypto.util.JournalingSecureRandom;
 import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;

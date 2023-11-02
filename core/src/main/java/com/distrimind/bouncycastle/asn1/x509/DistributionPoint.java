@@ -1,14 +1,14 @@
 package com.distrimind.bouncycastle.asn1.x509;
 
-import com.distrimind.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.asn1.ASN1BitString;
 import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
-import com.distrimind.bouncycastle.asn1.DERBitString;
 import com.distrimind.bouncycastle.asn1.DERSequence;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
+import com.distrimind.bouncycastle.util.Strings;
 
 /**
  * The DistributionPoint object.
@@ -63,7 +63,7 @@ public class DistributionPoint
                 distributionPoint = DistributionPointName.getInstance(t, true);
                 break;
             case 1:
-                reasons = new ReasonFlags(DERBitString.getInstance(t, false));
+                reasons = new ReasonFlags(ASN1BitString.getInstance(t, false));
                 break;
             case 2:
                 cRLIssuer = GeneralNames.getInstance(t, false);

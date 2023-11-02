@@ -20,7 +20,6 @@ import com.distrimind.bouncycastle.crypto.signers.PlainDSAEncoding;
 import com.distrimind.bouncycastle.crypto.signers.StandardDSAEncoding;
 import com.distrimind.bouncycastle.crypto.util.DigestFactory;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.DSABase;
-import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.ECUtil;
 
 public class SignatureSpi
     extends DSABase
@@ -43,7 +42,7 @@ public class SignatureSpi
         PrivateKey privateKey)
         throws InvalidKeyException
     {
-        CipherParameters param = ECUtil.generatePrivateKeyParameter(privateKey);
+        CipherParameters param = ECUtils.generatePrivateKeyParameter(privateKey);
 
         digest.reset();
 

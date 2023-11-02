@@ -51,7 +51,7 @@ class Utils
         int off = 0;
         for (int i = 0; i < output.length; i++)
         {
-            output[i] = (int) Pack.littleEndianToShort(tmp, off) & 0xffff;
+            output[i] = (int)Pack.littleEndianToShort(tmp, off) & 0xffff;
             off += 2;
         }
     }

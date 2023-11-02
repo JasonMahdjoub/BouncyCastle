@@ -49,7 +49,7 @@ import com.distrimind.bouncycastle.pqc.jcajce.provider.sphincs.Sphincs256KeyFact
 public final class BouncyCastleProvider extends Provider
     implements ConfigurableProvider
 {
-    private static String info = "BouncyCastle Security Provider v1.73";
+    private static String info = "BouncyCastle Security Provider v1.76";
 
     public static final String PROVIDER_NAME = "BC";
 
@@ -133,7 +133,7 @@ public final class BouncyCastleProvider extends Provider
      */
     public BouncyCastleProvider()
     {
-        super(PROVIDER_NAME, 1.73, info);
+        super(PROVIDER_NAME, 1.76, info);
 
         AccessController.doPrivileged(new PrivilegedAction()
         {

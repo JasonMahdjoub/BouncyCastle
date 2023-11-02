@@ -2,11 +2,8 @@ package com.distrimind.bouncycastle.pqc.crypto.util;
 
 import java.io.IOException;
 
-import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
-import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
 import com.distrimind.bouncycastle.pqc.crypto.crystals.dilithium.DilithiumPrivateKeyParameters;
+import com.distrimind.bouncycastle.pqc.crypto.crystals.dilithium.DilithiumPublicKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.crystals.kyber.KyberPrivateKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.falcon.FalconPrivateKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.frodo.FrodoPrivateKeyParameters;
@@ -20,14 +17,16 @@ import com.distrimind.bouncycastle.pqc.crypto.sphincs.SPHINCSPrivateKeyParameter
 import com.distrimind.bouncycastle.pqc.crypto.sphincsplus.SPHINCSPlusPrivateKeyParameters;
 import com.distrimind.bouncycastle.pqc.legacy.crypto.mceliece.McElieceCCA2PrivateKeyParameters;
 import com.distrimind.bouncycastle.pqc.legacy.crypto.qtesla.QTESLAPrivateKeyParameters;
-import com.distrimind.bouncycastle.pqc.legacy.crypto.sike.SIKEPrivateKeyParameters;
-import com.distrimind.bouncycastle.util.Pack;
 import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
 import com.distrimind.bouncycastle.asn1.ASN1Integer;
 import com.distrimind.bouncycastle.asn1.ASN1Set;
 import com.distrimind.bouncycastle.asn1.DERBitString;
 import com.distrimind.bouncycastle.asn1.DEROctetString;
 import com.distrimind.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
 import com.distrimind.bouncycastle.pqc.asn1.CMCEPrivateKey;
 import com.distrimind.bouncycastle.pqc.asn1.CMCEPublicKey;
 import com.distrimind.bouncycastle.pqc.asn1.FalconPrivateKey;
@@ -55,6 +54,7 @@ import com.distrimind.bouncycastle.pqc.crypto.xmss.BDSStateMap;
 import com.distrimind.bouncycastle.pqc.crypto.xmss.XMSSMTPrivateKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.xmss.XMSSPrivateKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.xmss.XMSSUtil;
+import com.distrimind.bouncycastle.util.Pack;
 
 /**
  * Factory to create ASN.1 private key info objects from lightweight private keys.
@@ -63,7 +63,6 @@ public class PrivateKeyInfoFactory
 {
     private PrivateKeyInfoFactory()
     {
-
     }
 
     /**
@@ -100,7 +99,7 @@ public class PrivateKeyInfoFactory
         {
             SPHINCSPrivateKeyParameters params = (SPHINCSPrivateKeyParameters)privateKey;
             AlgorithmIdentifier algorithmIdentifier = new AlgorithmIdentifier(PQCObjectIdentifiers.sphincs256,
-                                    new SPHINCS256KeyParams(Utils.sphincs256LookupTreeAlgID(params.getTreeDigest())));
+                new SPHINCS256KeyParams(Utils.sphincs256LookupTreeAlgID(params.getTreeDigest())));
 
             return new PrivateKeyInfo(algorithmIdentifier, new DEROctetString(params.getKeyData()));
         }
@@ -152,7 +151,6 @@ public class PrivateKeyInfoFactory
         }
         else if (privateKey instanceof PicnicPrivateKeyParameters)
         {
-
             PicnicPrivateKeyParameters params = (PicnicPrivateKeyParameters)privateKey;
 
             byte[] encoding = params.getEncoded();
@@ -164,7 +162,6 @@ public class PrivateKeyInfoFactory
         {
             CMCEPrivateKeyParameters params = (CMCEPrivateKeyParameters)privateKey;
 
-            byte[] encoding = params.getEncoded();
             //todo either make CMCEPrivateKey split the parameters from the private key or
             // (current) Make CMCEPrivateKey take parts of the private key splitted in the params
 
@@ -217,16 +214,6 @@ public class PrivateKeyInfoFactory
             byte[] encoding = params.getEncoded();
 
             AlgorithmIdentifier algorithmIdentifier = new AlgorithmIdentifier(Utils.saberOidLookup(params.getParameters()));
-
-            return new PrivateKeyInfo(algorithmIdentifier, new DEROctetString(encoding), attributes);
-        }
-        else if (privateKey instanceof SIKEPrivateKeyParameters)
-        {
-            SIKEPrivateKeyParameters params = (SIKEPrivateKeyParameters)privateKey;
-
-            byte[] encoding = params.getEncoded();
-
-            AlgorithmIdentifier algorithmIdentifier = new AlgorithmIdentifier(Utils.sikeOidLookup(params.getParameters()));
 
             return new PrivateKeyInfo(algorithmIdentifier, new DEROctetString(encoding), attributes);
         }
@@ -309,11 +296,9 @@ public class PrivateKeyInfoFactory
 
             AlgorithmIdentifier algorithmIdentifier = new AlgorithmIdentifier(Utils.dilithiumOidLookup(params.getParameters()));
 
-            ASN1EncodableVector vPub = new ASN1EncodableVector();
-            vPub.add(new DEROctetString(params.getRho()));
-            vPub.add(new DEROctetString(params.getT1()));
+            DilithiumPublicKeyParameters pubParams = params.getPublicKeyParameters();
 
-            return new PrivateKeyInfo(algorithmIdentifier, new DERSequence(v), attributes, new DERSequence(vPub).getEncoded());
+            return new PrivateKeyInfo(algorithmIdentifier, new DERSequence(v), attributes, pubParams.getEncoded());
         }
         else if (privateKey instanceof BIKEPrivateKeyParameters)
         {

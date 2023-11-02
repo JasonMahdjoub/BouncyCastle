@@ -1,9 +1,9 @@
 package com.distrimind.bouncycastle.math.ec.custom.djb;
 
-import com.distrimind.bouncycastle.math.raw.Nat256;
 import com.distrimind.bouncycastle.math.ec.ECCurve;
 import com.distrimind.bouncycastle.math.ec.ECFieldElement;
 import com.distrimind.bouncycastle.math.ec.ECPoint;
+import com.distrimind.bouncycastle.math.raw.Nat256;
 
 public class Curve25519Point extends ECPoint.AbstractFp
 {

@@ -1,8 +1,8 @@
 package com.distrimind.bouncycastle.crypto.modes;
 
 import com.distrimind.bouncycastle.crypto.BlockCipher;
-import com.distrimind.bouncycastle.crypto.BufferedBlockCipher;
 import com.distrimind.bouncycastle.crypto.DataLengthException;
+import com.distrimind.bouncycastle.crypto.DefaultBufferedBlockCipher;
 import com.distrimind.bouncycastle.crypto.InvalidCipherTextException;
 import com.distrimind.bouncycastle.crypto.OutputLengthException;
 import com.distrimind.bouncycastle.crypto.StreamBlockCipher;
@@ -12,7 +12,7 @@ import com.distrimind.bouncycastle.crypto.StreamBlockCipher;
  * be used to produce cipher text which is the same length as the plain text.
  */
 public class CTSBlockCipher
-    extends BufferedBlockCipher
+    extends DefaultBufferedBlockCipher
 {
     private int     blockSize;
 
@@ -221,9 +221,9 @@ public class CTSBlockCipher
                     buf[i] ^= block[i - blockSize];
                 }
 
-                if (cipher instanceof CBCBlockCipher)
+                if (cipher instanceof CBCModeCipher)
                 {
-                    BlockCipher c = ((CBCBlockCipher)cipher).getUnderlyingCipher();
+                    BlockCipher c = ((CBCModeCipher)cipher).getUnderlyingCipher();
 
                     c.processBlock(buf, blockSize, out, outOff);
                 }
@@ -250,9 +250,9 @@ public class CTSBlockCipher
 
             if (bufOff > blockSize)
             {
-                if (cipher instanceof CBCBlockCipher)
+                if (cipher instanceof CBCModeCipher)
                 {
-                    BlockCipher c = ((CBCBlockCipher)cipher).getUnderlyingCipher();
+                    BlockCipher c = ((CBCModeCipher)cipher).getUnderlyingCipher();
 
                     c.processBlock(buf, 0, block, 0);
                 }

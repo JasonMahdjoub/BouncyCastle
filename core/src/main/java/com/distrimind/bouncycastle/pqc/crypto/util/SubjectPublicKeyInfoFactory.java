@@ -2,13 +2,6 @@ package com.distrimind.bouncycastle.pqc.crypto.util;
 
 import java.io.IOException;
 
-import com.distrimind.bouncycastle.asn1.DEROctetString;
-import com.distrimind.bouncycastle.asn1.DERSequence;
-import com.distrimind.bouncycastle.asn1.isara.IsaraObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
-import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
 import com.distrimind.bouncycastle.pqc.crypto.crystals.dilithium.DilithiumPublicKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.crystals.kyber.KyberPublicKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.falcon.FalconPublicKeyParameters;
@@ -25,9 +18,13 @@ import com.distrimind.bouncycastle.pqc.crypto.xmss.XMSSMTPublicKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.xmss.XMSSPublicKeyParameters;
 import com.distrimind.bouncycastle.pqc.legacy.crypto.mceliece.McElieceCCA2PublicKeyParameters;
 import com.distrimind.bouncycastle.pqc.legacy.crypto.qtesla.QTESLAPublicKeyParameters;
-import com.distrimind.bouncycastle.pqc.legacy.crypto.sike.SIKEPublicKeyParameters;
-import com.distrimind.bouncycastle.util.Arrays;
-import com.distrimind.bouncycastle.pqc.asn1.CMCEPublicKey;
+import com.distrimind.bouncycastle.asn1.DEROctetString;
+import com.distrimind.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.asn1.isara.IsaraObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
+import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
 import com.distrimind.bouncycastle.pqc.asn1.McElieceCCA2PublicKey;
 import com.distrimind.bouncycastle.pqc.asn1.PQCObjectIdentifiers;
 import com.distrimind.bouncycastle.pqc.asn1.SPHINCS256KeyParams;
@@ -120,8 +117,7 @@ public class SubjectPublicKeyInfoFactory
 
             AlgorithmIdentifier algorithmIdentifier = new AlgorithmIdentifier(Utils.mcElieceOidLookup(params.getParameters()));
 
-            // https://datatracker.ietf.org/doc/draft-uni-qsckeys/
-            return new SubjectPublicKeyInfo(algorithmIdentifier, new CMCEPublicKey(encoding));
+            return new SubjectPublicKeyInfo(algorithmIdentifier, encoding);
         }
         else if (publicKey instanceof XMSSPublicKeyParameters)
         {
@@ -180,7 +176,7 @@ public class SubjectPublicKeyInfoFactory
 
             AlgorithmIdentifier algorithmIdentifier = new AlgorithmIdentifier(Utils.frodoOidLookup(params.getParameters()));
 
-            return new SubjectPublicKeyInfo(algorithmIdentifier, (new DEROctetString(encoding)));
+            return new SubjectPublicKeyInfo(algorithmIdentifier, new DEROctetString(encoding));
         }
         else if (publicKey instanceof SABERPublicKeyParameters)
         {
@@ -199,14 +195,6 @@ public class SubjectPublicKeyInfoFactory
             byte[] encoding = params.getEncoded();
 
             AlgorithmIdentifier algorithmIdentifier = new AlgorithmIdentifier(Utils.picnicOidLookup(params.getParameters()));
-            return new SubjectPublicKeyInfo(algorithmIdentifier, new DEROctetString(encoding));
-        }
-        else if (publicKey instanceof SIKEPublicKeyParameters)
-        {
-            SIKEPublicKeyParameters params = (SIKEPublicKeyParameters)publicKey;
-
-            byte[] encoding = params.getEncoded();
-            AlgorithmIdentifier algorithmIdentifier = new AlgorithmIdentifier(Utils.sikeOidLookup(params.getParameters()));
             return new SubjectPublicKeyInfo(algorithmIdentifier, new DEROctetString(encoding));
         }
         else if (publicKey instanceof NTRUPublicKeyParameters)
@@ -236,11 +224,8 @@ public class SubjectPublicKeyInfoFactory
             KyberPublicKeyParameters params = (KyberPublicKeyParameters)publicKey;
 
             AlgorithmIdentifier algorithmIdentifier = new AlgorithmIdentifier(Utils.kyberOidLookup(params.getParameters()));
-//            ASN1EncodableVector v = new ASN1EncodableVector();
-//            v.add(new DEROctetString(params.getT()));
-//            v.add(new DEROctetString(params.getRho()));
-//            return new SubjectPublicKeyInfo(algorithmIdentifier, new DERSequence(v));
-            return new SubjectPublicKeyInfo(algorithmIdentifier, Arrays.concatenate(params.getT(), params.getRho()));
+
+            return new SubjectPublicKeyInfo(algorithmIdentifier, params.getEncoded());
         }
         else if (publicKey instanceof NTRULPRimePublicKeyParameters)
         {
@@ -266,7 +251,7 @@ public class SubjectPublicKeyInfoFactory
 
             AlgorithmIdentifier algorithmIdentifier = new AlgorithmIdentifier(Utils.dilithiumOidLookup(params.getParameters()));
 
-            return new SubjectPublicKeyInfo(algorithmIdentifier, Arrays.concatenate(params.getRho(), params.getT1()));
+            return new SubjectPublicKeyInfo(algorithmIdentifier, params.getEncoded());
         }
         else if (publicKey instanceof BIKEPublicKeyParameters)
         {
@@ -276,7 +261,7 @@ public class SubjectPublicKeyInfoFactory
 
             AlgorithmIdentifier algorithmIdentifier = new AlgorithmIdentifier(Utils.bikeOidLookup(params.getParameters()));
 
-            return new SubjectPublicKeyInfo(algorithmIdentifier, new DEROctetString(encoding));
+            return new SubjectPublicKeyInfo(algorithmIdentifier, encoding);
         }
         else if (publicKey instanceof HQCPublicKeyParameters)
         {
@@ -286,7 +271,7 @@ public class SubjectPublicKeyInfoFactory
 
             AlgorithmIdentifier algorithmIdentifier = new AlgorithmIdentifier(Utils.hqcOidLookup(params.getParameters()));
 
-            return new SubjectPublicKeyInfo(algorithmIdentifier, new DEROctetString(encoding));
+            return new SubjectPublicKeyInfo(algorithmIdentifier, encoding);
         }
         else if (publicKey instanceof RainbowPublicKeyParameters)
         {

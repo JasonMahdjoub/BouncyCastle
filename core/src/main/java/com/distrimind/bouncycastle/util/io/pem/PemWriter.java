@@ -5,8 +5,8 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.Iterator;
 
-import com.distrimind.bouncycastle.util.encoders.Base64;
 import com.distrimind.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.util.encoders.Base64;
 
 /**
  * A generic PEM writer, based on RFC 1421

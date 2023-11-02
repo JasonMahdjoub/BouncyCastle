@@ -44,7 +44,7 @@ import com.distrimind.bouncycastle.asn1.DERSequence;
 public class RainbowPrivateKey
     extends ASN1Object
 {
-    private ASN1Integer version;
+    private ASN1Integer  version;
     private ASN1ObjectIdentifier oid;
 
     private byte[][] invA1;

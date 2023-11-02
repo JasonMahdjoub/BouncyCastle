@@ -11,17 +11,6 @@ public class BERTaggedObject
     extends ASN1TaggedObject
 {
     /**
-     * create an implicitly tagged object that contains a zero
-     * length sequence.
-     * 
-     * @deprecated Will be removed.
-     */
-    public BERTaggedObject(int tagNo)
-    {
-        super(false, tagNo, new BERSequence());
-    }
-
-    /**
      * @param tagNo the tag number for this object.
      * @param obj the tagged object.
      */
@@ -106,11 +95,6 @@ public class BERTaggedObject
         {
             primitive.encode(out, false);
         }
-    }
-
-    String getASN1Encoding()
-    {
-        return ASN1Encoding.BER;
     }
 
     ASN1Sequence rebuildConstructed(ASN1Primitive primitive)

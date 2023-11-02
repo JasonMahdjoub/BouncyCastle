@@ -12,6 +12,7 @@ import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.InvalidCipherTextException;
 import com.distrimind.bouncycastle.crypto.KeyEncoder;
 import com.distrimind.bouncycastle.crypto.KeyGenerationParameters;
+import com.distrimind.bouncycastle.crypto.SecretWithEncapsulation;
 import com.distrimind.bouncycastle.crypto.agreement.ECDHBasicAgreement;
 import com.distrimind.bouncycastle.crypto.digests.SHA1Digest;
 import com.distrimind.bouncycastle.crypto.digests.SHA512Digest;
@@ -20,7 +21,8 @@ import com.distrimind.bouncycastle.crypto.engines.TwofishEngine;
 import com.distrimind.bouncycastle.crypto.generators.ECKeyPairGenerator;
 import com.distrimind.bouncycastle.crypto.generators.EphemeralKeyPairGenerator;
 import com.distrimind.bouncycastle.crypto.generators.KDF2BytesGenerator;
-import com.distrimind.bouncycastle.crypto.kems.ECIESKeyEncapsulation;
+import com.distrimind.bouncycastle.crypto.kems.ECIESKEMExtractor;
+import com.distrimind.bouncycastle.crypto.kems.ECIESKEMGenerator;
 import com.distrimind.bouncycastle.crypto.macs.HMac;
 import com.distrimind.bouncycastle.crypto.modes.CBCBlockCipher;
 import com.distrimind.bouncycastle.crypto.paddings.PaddedBufferedBlockCipher;
@@ -523,14 +525,16 @@ public class ECIESTest
         int myKeyLen = 256 / 8;
 
         /* Create agreement */
-        ECIESKeyEncapsulation myAgreement = new ECIESKeyEncapsulation(new KDF2BytesGenerator(new SHA512Digest()), myRandom, newCofactorMode, oldCofactorMode, false);
-        myAgreement.init(myPair.getPublic());
-        KeyParameter mySender = (KeyParameter) myAgreement.encrypt(myMessage, myKeyLen);
+        ECIESKEMGenerator kemGen = new ECIESKEMGenerator(myKeyLen, new KDF2BytesGenerator(new SHA512Digest()), myRandom, newCofactorMode, oldCofactorMode, false);
+
+        SecretWithEncapsulation secEnc = kemGen.generateEncapsulated(myPair.getPublic());
+        KeyParameter mySender = new KeyParameter(secEnc.getSecret());
         byte[] mySenderKey = mySender.getKey();
 
         /* Accept agreement */
-        myAgreement.init(myPair.getPrivate());
-        KeyParameter myReceiver = (KeyParameter) myAgreement.decrypt(myMessage, myKeyLen);
+        ECIESKEMExtractor kemExt = new ECIESKEMExtractor((ECPrivateKeyParameters)myPair.getPrivate(), myKeyLen, new KDF2BytesGenerator(new SHA512Digest()), newCofactorMode, oldCofactorMode, false);
+
+        KeyParameter myReceiver = new KeyParameter(kemExt.extractSecret(secEnc.getEncapsulation()));
         byte[] myReceiverKey = myReceiver.getKey();
 
         /* Check that keys match  */

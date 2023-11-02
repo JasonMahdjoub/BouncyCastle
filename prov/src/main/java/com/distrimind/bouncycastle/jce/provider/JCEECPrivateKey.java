@@ -16,11 +16,9 @@ import com.distrimind.bouncycastle.asn1.ASN1Encoding;
 import com.distrimind.bouncycastle.asn1.ASN1Integer;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
-import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.DERNull;
 import com.distrimind.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
-import com.distrimind.bouncycastle.asn1.sec.ECPrivateKeyStructure;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
 import com.distrimind.bouncycastle.asn1.x9.X962Parameters;
@@ -29,11 +27,11 @@ import com.distrimind.bouncycastle.asn1.x9.X9ECPoint;
 import com.distrimind.bouncycastle.asn1.x9.X9ObjectIdentifiers;
 import com.distrimind.bouncycastle.crypto.params.ECDomainParameters;
 import com.distrimind.bouncycastle.crypto.params.ECPrivateKeyParameters;
-import com.distrimind.bouncycastle.jce.interfaces.ECPointEncoder;
-import com.distrimind.bouncycastle.jce.interfaces.PKCS12BagAttributeCarrier;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.EC5Util;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.ECUtil;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.PKCS12BagAttributeCarrierImpl;
+import com.distrimind.bouncycastle.jce.interfaces.ECPointEncoder;
+import com.distrimind.bouncycastle.jce.interfaces.PKCS12BagAttributeCarrier;
 import com.distrimind.bouncycastle.jce.spec.ECNamedCurveSpec;
 import com.distrimind.bouncycastle.math.ec.ECCurve;
 import com.distrimind.bouncycastle.util.Strings;
@@ -230,7 +228,7 @@ public class JCEECPrivateKey
         }
         else
         {
-            ECPrivateKeyStructure ec = new ECPrivateKeyStructure((ASN1Sequence)privKey);
+            com.distrimind.bouncycastle.asn1.sec.ECPrivateKey ec = com.distrimind.bouncycastle.asn1.sec.ECPrivateKey.getInstance(privKey);
 
             this.d = ec.getKey();
             this.publicKey = ec.getPublicKey();
@@ -290,15 +288,25 @@ public class JCEECPrivateKey
         }
         
         PrivateKeyInfo          info;
-        ECPrivateKeyStructure keyStructure;
+        com.distrimind.bouncycastle.asn1.sec.ECPrivateKey keyStructure;
 
-        if (publicKey != null)
+        int orderBitLength;
+        if (ecSpec == null)
         {
-            keyStructure = new ECPrivateKeyStructure(this.getS(), publicKey, params);
+            orderBitLength = ECUtil.getOrderBitLength(null, null, this.getS());
         }
         else
         {
-            keyStructure = new ECPrivateKeyStructure(this.getS(), params);
+            orderBitLength = ECUtil.getOrderBitLength(null, ecSpec.getOrder(), this.getS());
+        }
+
+        if (publicKey != null)
+        {
+            keyStructure = new com.distrimind.bouncycastle.asn1.sec.ECPrivateKey(orderBitLength, this.getS(), publicKey, params);
+        }
+        else
+        {
+            keyStructure = new com.distrimind.bouncycastle.asn1.sec.ECPrivateKey(orderBitLength, this.getS(), params);
         }
 
         try

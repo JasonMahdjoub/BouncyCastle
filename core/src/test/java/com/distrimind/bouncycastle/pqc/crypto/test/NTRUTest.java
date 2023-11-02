@@ -6,7 +6,6 @@ import java.io.InputStream;
 import java.security.SecureRandom;
 import java.util.List;
 
-import com.distrimind.bouncycastle.test.TestResourceFinder;
 import junit.framework.Assert;
 import junit.framework.TestCase;
 import com.distrimind.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
@@ -22,6 +21,7 @@ import com.distrimind.bouncycastle.pqc.crypto.ntru.NTRUParameters;
 import com.distrimind.bouncycastle.pqc.crypto.ntru.NTRUPrivateKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.ntru.NTRUPublicKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.util.PQCOtherInfoGenerator;
+import com.distrimind.bouncycastle.test.TestResourceFinder;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.encoders.Hex;
 

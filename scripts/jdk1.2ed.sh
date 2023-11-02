@@ -1,10 +1,11 @@
 #
 # JDK 1.2 edits
 
-for i in com/distrimind/bouncycastle/pqc/jcajce/provider/*/*.java  com/distrimind/bouncycastle/pqc/*/*/*.java com/distrimind/bouncycastle/pqc/*/*/*/*.java  com/distrimind/bouncycastle/crypto/digests/*.java com/distrimind/bouncycastle/cert/cmp/*.java com/distrimind/bouncycastle/crypto/engines/*.java com/distrimind/bouncycastle/openpgp/*.java com/distrimind/bouncycastle/bcpg/*.java com/distrimind/bouncycastle/openpgp/test/*.java
+for i in com/distrimind/bouncycastle/pqc/jcajce/provider/*/*.java  com/distrimind/bouncycastle/pqc/*/*/*.java com/distrimind/bouncycastle/pqc/*/*/*/*.java  com/distrimind/bouncycastle/crypto/digests/*.java com/distrimind/bouncycastle/cert/cmp/*.java com/distrimind/bouncycastle/crypto/engines/*.java com/distrimind/bouncycastle/openpgp/operator/*.java com/distrimind/bouncycastle/openpgp/operator/jcajce/*.java com/distrimind/bouncycastle/openpgp/operator/bc/*.java com/distrimind/bouncycastle/openpgp/*.java com/distrimind/bouncycastle/bcpg/*.java com/distrimind/bouncycastle/openpgp/test/*.java com/distrimind/bouncycastle/bcpg/sig/*
 do
 ed $i <<%%
-g/.Override/d
+g/ .Override/d
+g/	.Override/d
 w
 q
 %%
@@ -176,6 +177,20 @@ w
 q
 %
 
+ed com/distrimind/bouncycastle/bcpg/ArmoredOutputStream.java <<%
+g/private final/s/final//
+g/\\.\\.\\./s//[]/
+w
+q
+%
+
+ed com/distrimind/bouncycastle/bcpg/ArmoredInputStream.java <<%
+g/private static final/s/final//
+g/private final/s/final//
+w
+q
+%
+
 ed com/distrimind/bouncycastle/openpgp/PGPExtendedKeyAttribute.java <<%
 g/private final/s/final//
 w
@@ -190,6 +205,18 @@ q
 
 ed com/distrimind/bouncycastle/openpgp/operator/jcajce/JcePublicKeyDataDecryptorFactoryBuilder.java <<%
 g/RSAKey/s//RSAPrivateKey/g
+w
+q
+%
+
+ed com/distrimind/bouncycastle/openpgp/operator/jcajce/JcePGPDataEncryptorBuilder.java <<%
+g/private final/s//private/g
+w
+q
+%
+
+ed com/distrimind/bouncycastle/openpgp/operator/bc/BcPGPDataEncryptorBuilder.java <<%
+g/private final/s//private/g
 w
 q
 %

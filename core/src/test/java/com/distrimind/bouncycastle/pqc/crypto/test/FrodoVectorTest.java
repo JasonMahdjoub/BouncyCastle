@@ -5,7 +5,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 
-import com.distrimind.bouncycastle.test.TestResourceFinder;
 import junit.framework.TestCase;
 import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
 import com.distrimind.bouncycastle.crypto.SecretWithEncapsulation;
@@ -16,6 +15,11 @@ import com.distrimind.bouncycastle.pqc.crypto.frodo.FrodoKeyPairGenerator;
 import com.distrimind.bouncycastle.pqc.crypto.frodo.FrodoParameters;
 import com.distrimind.bouncycastle.pqc.crypto.frodo.FrodoPrivateKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.frodo.FrodoPublicKeyParameters;
+import com.distrimind.bouncycastle.pqc.crypto.util.PrivateKeyFactory;
+import com.distrimind.bouncycastle.pqc.crypto.util.PrivateKeyInfoFactory;
+import com.distrimind.bouncycastle.pqc.crypto.util.PublicKeyFactory;
+import com.distrimind.bouncycastle.pqc.crypto.util.SubjectPublicKeyInfoFactory;
+import com.distrimind.bouncycastle.test.TestResourceFinder;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.encoders.Hex;
 
@@ -100,8 +104,10 @@ public class FrodoVectorTest
                         kpGen.init(genParams);
                         AsymmetricCipherKeyPair kp = kpGen.generateKeyPair();
 
-                        FrodoPublicKeyParameters pubParams = (FrodoPublicKeyParameters) kp.getPublic();
-                        FrodoPrivateKeyParameters privParams = (FrodoPrivateKeyParameters) kp.getPrivate();
+                        FrodoPublicKeyParameters pubParams = (FrodoPublicKeyParameters)PublicKeyFactory.createKey(
+                            SubjectPublicKeyInfoFactory.createSubjectPublicKeyInfo((FrodoPublicKeyParameters)kp.getPublic()));
+                        FrodoPrivateKeyParameters privParams = (FrodoPrivateKeyParameters)PrivateKeyFactory.createKey(
+                            PrivateKeyInfoFactory.createPrivateKeyInfo((FrodoPrivateKeyParameters)kp.getPrivate()));
 
                         assertTrue(name + " " + count + ": public key", Arrays.areEqual(pk, pubParams.getPublicKey()));
                         assertTrue(name + " " + count + ": secret key", Arrays.areEqual(sk, privParams.getPrivateKey()));

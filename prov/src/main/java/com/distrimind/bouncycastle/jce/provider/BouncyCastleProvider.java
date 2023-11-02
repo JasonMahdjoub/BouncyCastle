@@ -9,6 +9,7 @@ import java.security.PublicKey;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -24,24 +25,25 @@ import com.distrimind.bouncycastle.crypto.CryptoServicePurpose;
 import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
 import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import com.distrimind.bouncycastle.jcajce.provider.config.ProviderConfiguration;
+import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.ClassUtil;
 import com.distrimind.bouncycastle.jcajce.provider.util.AlgorithmProvider;
 import com.distrimind.bouncycastle.jcajce.provider.util.AsymmetricKeyInfoConverter;
-import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.ClassUtil;
-import com.distrimind.bouncycastle.pqc.asn1.PQCObjectIdentifiers;
+import com.distrimind.bouncycastle.pqc.jcajce.provider.bike.BIKEKeyFactorySpi;
+import com.distrimind.bouncycastle.pqc.jcajce.provider.cmce.CMCEKeyFactorySpi;
 import com.distrimind.bouncycastle.pqc.jcajce.provider.dilithium.DilithiumKeyFactorySpi;
 import com.distrimind.bouncycastle.pqc.jcajce.provider.falcon.FalconKeyFactorySpi;
+import com.distrimind.bouncycastle.pqc.jcajce.provider.hqc.HQCKeyFactorySpi;
 import com.distrimind.bouncycastle.pqc.jcajce.provider.kyber.KyberKeyFactorySpi;
 import com.distrimind.bouncycastle.pqc.jcajce.provider.lms.LMSKeyFactorySpi;
-import com.distrimind.bouncycastle.pqc.jcajce.provider.mceliece.McElieceCCA2KeyFactorySpi;
-import com.distrimind.bouncycastle.pqc.jcajce.provider.mceliece.McElieceKeyFactorySpi;
 import com.distrimind.bouncycastle.pqc.jcajce.provider.newhope.NHKeyFactorySpi;
 import com.distrimind.bouncycastle.pqc.jcajce.provider.ntru.NTRUKeyFactorySpi;
 import com.distrimind.bouncycastle.pqc.jcajce.provider.picnic.PicnicKeyFactorySpi;
-import com.distrimind.bouncycastle.pqc.jcajce.provider.rainbow.RainbowKeyFactorySpi;
 import com.distrimind.bouncycastle.pqc.jcajce.provider.sphincs.Sphincs256KeyFactorySpi;
 import com.distrimind.bouncycastle.pqc.jcajce.provider.sphincsplus.SPHINCSPlusKeyFactorySpi;
 import com.distrimind.bouncycastle.pqc.jcajce.provider.xmss.XMSSKeyFactorySpi;
 import com.distrimind.bouncycastle.pqc.jcajce.provider.xmss.XMSSMTKeyFactorySpi;
+import com.distrimind.bouncycastle.pqc.asn1.PQCObjectIdentifiers;
+import com.distrimind.bouncycastle.util.Strings;
 
 /**
  * To add the provider at runtime use:
@@ -72,7 +74,7 @@ public final class BouncyCastleProvider extends Provider
 {
     private static final Logger LOG = Logger.getLogger(BouncyCastleProvider.class.getName());
 
-    private static String info = "BouncyCastle Security Provider v1.73";
+    private static String info = "BouncyCastle Security Provider v1.76";
 
     public static final String PROVIDER_NAME = "BC";
 
@@ -124,7 +126,7 @@ public final class BouncyCastleProvider extends Provider
 
     private static final String[] ASYMMETRIC_CIPHERS =
     {
-        "DSA", "DH", "EC", "RSA", "GOST", "ECGOST", "ElGamal", "DSTU4145", "GM", "EdEC", "LMS", "SPHINCSPlus"
+        "DSA", "DH", "EC", "RSA", "GOST", "ECGOST", "ElGamal", "DSTU4145", "GM", "EdEC", "LMS", "SPHINCSPlus", "Dilithium", "Falcon", "NTRU"
     };
 
     /*
@@ -156,6 +158,8 @@ public final class BouncyCastleProvider extends Provider
         "DRBG"
     };
 
+    private Map<String, Service> serviceMap = new ConcurrentHashMap<String, Service>();
+
     /**
      * Construct a new provider.  This should only be required when
      * using runtime registration of the provider using the
@@ -163,7 +167,7 @@ public final class BouncyCastleProvider extends Provider
      */
     public BouncyCastleProvider()
     {
-        super(PROVIDER_NAME, 1.73, info);
+        super(PROVIDER_NAME, 1.76, info);
 
         AccessController.doPrivileged(new PrivilegedAction()
         {
@@ -249,6 +253,50 @@ public final class BouncyCastleProvider extends Provider
         put("CertStore.LDAP", "com.distrimind.bouncycastle.jce.provider.X509LDAPCertStoreSpi");
         put("CertStore.Multi", "com.distrimind.bouncycastle.jce.provider.MultiCertStoreSpi");
         put("Alg.Alias.CertStore.X509LDAP", "LDAP");
+
+        getService("SecureRandom", "DEFAULT");  // prime for new SecureRandom() on 1.8 JVMs.
+    }
+
+    public final Service getService(final String type, final String algorithm)
+    {
+        String upperCaseAlgName = Strings.toUpperCase(algorithm);
+        final String key = type + "." + upperCaseAlgName;
+
+        Service service = serviceMap.get(key);
+
+        if (service == null)
+        {
+            synchronized (this)
+            {
+                if (!serviceMap.containsKey(key))
+                {
+                    service = AccessController.doPrivileged(new PrivilegedAction<Service>()
+                    {
+                        @Override
+                        public Service run()
+                        {
+                            Service service = BouncyCastleProvider.super.getService(type, algorithm);
+                            if (service == null)
+                            {
+                                return null;
+                            }
+                            serviceMap.put(key, service);
+                            // remove legacy entry and swap to service entry
+                            BouncyCastleProvider.super.remove(service.getType() + "." + service.getAlgorithm());
+                            BouncyCastleProvider.super.putService(service);
+
+                            return service;
+                        }
+                    });
+                }
+                else
+                {
+                    service = serviceMap.get(key);
+                }
+            }
+        }
+
+        return service;
     }
 
     private void loadAlgorithms(String packageName, String[] names)
@@ -319,15 +367,30 @@ public final class BouncyCastleProvider extends Provider
         addKeyInfoConverter(BCObjectIdentifiers.sphincsPlus_shake_256f_r3, new SPHINCSPlusKeyFactorySpi());
         addKeyInfoConverter(BCObjectIdentifiers.sphincsPlus_haraka_256s_r3, new SPHINCSPlusKeyFactorySpi());
         addKeyInfoConverter(BCObjectIdentifiers.sphincsPlus_haraka_256f_r3, new SPHINCSPlusKeyFactorySpi());
+        addKeyInfoConverter(BCObjectIdentifiers.sphincsPlus_sha2_128s_r3_simple, new SPHINCSPlusKeyFactorySpi());
+        addKeyInfoConverter(BCObjectIdentifiers.sphincsPlus_sha2_128f_r3_simple, new SPHINCSPlusKeyFactorySpi());
+        addKeyInfoConverter(BCObjectIdentifiers.sphincsPlus_shake_128s_r3_simple, new SPHINCSPlusKeyFactorySpi());
+        addKeyInfoConverter(BCObjectIdentifiers.sphincsPlus_shake_128f_r3_simple, new SPHINCSPlusKeyFactorySpi());
+        addKeyInfoConverter(BCObjectIdentifiers.sphincsPlus_haraka_128s_r3_simple, new SPHINCSPlusKeyFactorySpi());
+        addKeyInfoConverter(BCObjectIdentifiers.sphincsPlus_haraka_128f_r3_simple, new SPHINCSPlusKeyFactorySpi());
+        addKeyInfoConverter(BCObjectIdentifiers.sphincsPlus_sha2_192s_r3_simple, new SPHINCSPlusKeyFactorySpi());
+        addKeyInfoConverter(BCObjectIdentifiers.sphincsPlus_sha2_192f_r3_simple, new SPHINCSPlusKeyFactorySpi());
+        addKeyInfoConverter(BCObjectIdentifiers.sphincsPlus_shake_192s_r3_simple, new SPHINCSPlusKeyFactorySpi());
+        addKeyInfoConverter(BCObjectIdentifiers.sphincsPlus_shake_192f_r3_simple, new SPHINCSPlusKeyFactorySpi());
+        addKeyInfoConverter(BCObjectIdentifiers.sphincsPlus_haraka_192s_r3_simple, new SPHINCSPlusKeyFactorySpi());
+        addKeyInfoConverter(BCObjectIdentifiers.sphincsPlus_haraka_192f_r3_simple, new SPHINCSPlusKeyFactorySpi());
+        addKeyInfoConverter(BCObjectIdentifiers.sphincsPlus_sha2_256s_r3_simple, new SPHINCSPlusKeyFactorySpi());
+        addKeyInfoConverter(BCObjectIdentifiers.sphincsPlus_sha2_256f_r3_simple, new SPHINCSPlusKeyFactorySpi());
+        addKeyInfoConverter(BCObjectIdentifiers.sphincsPlus_shake_256s_r3_simple, new SPHINCSPlusKeyFactorySpi());
+        addKeyInfoConverter(BCObjectIdentifiers.sphincsPlus_shake_256f_r3_simple, new SPHINCSPlusKeyFactorySpi());
+        addKeyInfoConverter(BCObjectIdentifiers.sphincsPlus_haraka_256s_r3_simple, new SPHINCSPlusKeyFactorySpi());
+        addKeyInfoConverter(BCObjectIdentifiers.sphincsPlus_haraka_256f_r3_simple, new SPHINCSPlusKeyFactorySpi());
         addKeyInfoConverter(PQCObjectIdentifiers.sphincs256, new Sphincs256KeyFactorySpi());
         addKeyInfoConverter(PQCObjectIdentifiers.newHope, new NHKeyFactorySpi());
         addKeyInfoConverter(PQCObjectIdentifiers.xmss, new XMSSKeyFactorySpi());
         addKeyInfoConverter(IsaraObjectIdentifiers.id_alg_xmss, new XMSSKeyFactorySpi());
         addKeyInfoConverter(PQCObjectIdentifiers.xmss_mt, new XMSSMTKeyFactorySpi());
         addKeyInfoConverter(IsaraObjectIdentifiers.id_alg_xmssmt, new XMSSMTKeyFactorySpi());
-        addKeyInfoConverter(PQCObjectIdentifiers.mcEliece, new McElieceKeyFactorySpi());
-        addKeyInfoConverter(PQCObjectIdentifiers.mcElieceCca2, new McElieceCCA2KeyFactorySpi());
-        addKeyInfoConverter(PQCObjectIdentifiers.rainbow, new RainbowKeyFactorySpi());
         addKeyInfoConverter(PKCSObjectIdentifiers.id_alg_hss_lms_hashsig, new LMSKeyFactorySpi());
         addKeyInfoConverter(BCObjectIdentifiers.picnic_key, new PicnicKeyFactorySpi());
         addKeyInfoConverter(BCObjectIdentifiers.falcon_512, new FalconKeyFactorySpi());
@@ -340,6 +403,18 @@ public final class BouncyCastleProvider extends Provider
         addKeyInfoConverter(BCObjectIdentifiers.dilithium5_aes, new DilithiumKeyFactorySpi());
         addKeyInfoConverter(BCObjectIdentifiers.kyber512, new KyberKeyFactorySpi());
         addKeyInfoConverter(BCObjectIdentifiers.kyber768, new KyberKeyFactorySpi());
+        addKeyInfoConverter(BCObjectIdentifiers.kyber1024, new KyberKeyFactorySpi());
+        addKeyInfoConverter(BCObjectIdentifiers.mceliece348864_r3, new CMCEKeyFactorySpi());
+        addKeyInfoConverter(BCObjectIdentifiers.mceliece460896_r3, new CMCEKeyFactorySpi());
+        addKeyInfoConverter(BCObjectIdentifiers.mceliece6688128_r3, new CMCEKeyFactorySpi());
+        addKeyInfoConverter(BCObjectIdentifiers.mceliece6960119_r3, new CMCEKeyFactorySpi());
+        addKeyInfoConverter(BCObjectIdentifiers.mceliece8192128_r3, new CMCEKeyFactorySpi());
+        addKeyInfoConverter(BCObjectIdentifiers.bike128, new BIKEKeyFactorySpi());
+        addKeyInfoConverter(BCObjectIdentifiers.bike192, new BIKEKeyFactorySpi());
+        addKeyInfoConverter(BCObjectIdentifiers.bike256, new BIKEKeyFactorySpi());
+        addKeyInfoConverter(BCObjectIdentifiers.hqc128, new HQCKeyFactorySpi());
+        addKeyInfoConverter(BCObjectIdentifiers.hqc192, new HQCKeyFactorySpi());
+        addKeyInfoConverter(BCObjectIdentifiers.hqc256, new HQCKeyFactorySpi());
         addKeyInfoConverter(BCObjectIdentifiers.kyber1024, new KyberKeyFactorySpi());
         addKeyInfoConverter(BCObjectIdentifiers.kyber512_aes, new KyberKeyFactorySpi());
         addKeyInfoConverter(BCObjectIdentifiers.kyber768_aes, new KyberKeyFactorySpi());

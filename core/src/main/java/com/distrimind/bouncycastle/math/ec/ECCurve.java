@@ -8,16 +8,16 @@ import java.util.Hashtable;
 import java.util.Random;
 import java.util.Set;
 
-import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
 import com.distrimind.bouncycastle.math.ec.endo.ECEndomorphism;
 import com.distrimind.bouncycastle.math.ec.endo.GLVEndomorphism;
 import com.distrimind.bouncycastle.math.field.FiniteField;
 import com.distrimind.bouncycastle.math.field.FiniteFields;
 import com.distrimind.bouncycastle.math.raw.Nat;
+import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
+import com.distrimind.bouncycastle.math.Primes;
 import com.distrimind.bouncycastle.util.BigIntegers;
 import com.distrimind.bouncycastle.util.Integers;
 import com.distrimind.bouncycastle.util.Properties;
-import com.distrimind.bouncycastle.math.Primes;
 
 /**
  * base class for an elliptic curve

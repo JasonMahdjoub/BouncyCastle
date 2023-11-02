@@ -62,7 +62,7 @@ class BIKEUtils
         for (int i = weight - 1; i >= 0; i--)
         {
             digest.doOutput(buf, 0, 4);
-            long temp = ((long) Pack.littleEndianToInt(buf, 0)) & 0xFFFFFFFFL;
+            long temp = ((long)Pack.littleEndianToInt(buf, 0)) & 0xFFFFFFFFL;
             temp = temp * (size - i) >> 32;
             rand_pos = (int) temp;
 

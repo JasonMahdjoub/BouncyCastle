@@ -5,16 +5,16 @@ import java.math.BigInteger;
 import com.distrimind.bouncycastle.crypto.BasicAgreement;
 import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
-import com.distrimind.bouncycastle.math.ec.ECAlgorithms;
-import com.distrimind.bouncycastle.math.ec.ECConstants;
-import com.distrimind.bouncycastle.math.ec.ECCurve;
-import com.distrimind.bouncycastle.math.ec.ECPoint;
-import com.distrimind.bouncycastle.util.Properties;
 import com.distrimind.bouncycastle.crypto.params.ECDomainParameters;
 import com.distrimind.bouncycastle.crypto.params.ECPrivateKeyParameters;
 import com.distrimind.bouncycastle.crypto.params.ECPublicKeyParameters;
 import com.distrimind.bouncycastle.crypto.params.MQVPrivateParameters;
 import com.distrimind.bouncycastle.crypto.params.MQVPublicParameters;
+import com.distrimind.bouncycastle.math.ec.ECAlgorithms;
+import com.distrimind.bouncycastle.math.ec.ECConstants;
+import com.distrimind.bouncycastle.math.ec.ECCurve;
+import com.distrimind.bouncycastle.math.ec.ECPoint;
+import com.distrimind.bouncycastle.util.Properties;
 
 public class ECMQVBasicAgreement
     implements BasicAgreement
@@ -68,7 +68,7 @@ public class ECMQVBasicAgreement
         ECDomainParameters      parameters,
         ECPrivateKeyParameters  d1U,
         ECPrivateKeyParameters  d2U,
-        ECPublicKeyParameters Q2U,
+        ECPublicKeyParameters   Q2U,
         ECPublicKeyParameters   Q1V,
         ECPublicKeyParameters   Q2V)
     {

@@ -2,7 +2,6 @@ package com.distrimind.bouncycastle.asn1.x509;
 
 import java.util.Enumeration;
 
-import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1OctetString;
@@ -11,6 +10,7 @@ import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
 import com.distrimind.bouncycastle.asn1.DEROctetString;
 import com.distrimind.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.util.Arrays;
 
 /**
  * The DigestInfo object.

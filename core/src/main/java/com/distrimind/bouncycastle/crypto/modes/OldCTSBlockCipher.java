@@ -1,8 +1,8 @@
 package com.distrimind.bouncycastle.crypto.modes;
 
 import com.distrimind.bouncycastle.crypto.BlockCipher;
-import com.distrimind.bouncycastle.crypto.BufferedBlockCipher;
 import com.distrimind.bouncycastle.crypto.DataLengthException;
+import com.distrimind.bouncycastle.crypto.DefaultBufferedBlockCipher;
 import com.distrimind.bouncycastle.crypto.InvalidCipherTextException;
 import com.distrimind.bouncycastle.crypto.OutputLengthException;
 
@@ -15,7 +15,7 @@ import com.distrimind.bouncycastle.crypto.OutputLengthException;
  * </p>
  */
 public class OldCTSBlockCipher
-    extends BufferedBlockCipher
+    extends DefaultBufferedBlockCipher
 {
     private int     blockSize;
 

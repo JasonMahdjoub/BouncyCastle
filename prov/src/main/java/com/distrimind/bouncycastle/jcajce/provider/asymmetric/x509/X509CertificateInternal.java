@@ -18,8 +18,8 @@ class X509CertificateInternal extends X509CertificateImpl
     private final CertificateEncodingException exception;
 
     X509CertificateInternal(JcaJceHelper bcHelper, Certificate c,
-							BasicConstraints basicConstraints, boolean[] keyUsage, String sigAlgName, byte[] sigAlgParams, byte[] encoding,
-							CertificateEncodingException exception)
+        BasicConstraints basicConstraints, boolean[] keyUsage, String sigAlgName, byte[] sigAlgParams, byte[] encoding,
+        CertificateEncodingException exception)
     {
         super(bcHelper, c, basicConstraints, keyUsage, sigAlgName, sigAlgParams);
 

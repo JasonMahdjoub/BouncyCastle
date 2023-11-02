@@ -1,19 +1,20 @@
 package com.distrimind.bouncycastle.openpgp.operator;
 
-import java.io.IOException;
-import java.math.BigInteger;
-
 import com.distrimind.bouncycastle.bcpg.ContainedPacket;
-import com.distrimind.bouncycastle.bcpg.PublicKeyEncSessionPacket;
 import com.distrimind.bouncycastle.bcpg.MPInteger;
+import com.distrimind.bouncycastle.bcpg.PublicKeyEncSessionPacket;
 import com.distrimind.bouncycastle.openpgp.PGPException;
 import com.distrimind.bouncycastle.openpgp.PGPPublicKey;
 import com.distrimind.bouncycastle.util.Properties;
+
+import java.io.IOException;
+import java.math.BigInteger;
 
 public abstract class PublicKeyKeyEncryptionMethodGenerator
     extends PGPKeyEncryptionMethodGenerator
 {
     public static final String SESSION_KEY_OBFUSCATION_PROPERTY = "com.distrimind.bouncycastle.openpgp.session_key_obfuscation";
+    public static final long WILDCARD = 0L;
 
     private static boolean getSessionKeyObfuscationDefault()
     {
@@ -24,6 +25,7 @@ public abstract class PublicKeyKeyEncryptionMethodGenerator
     private PGPPublicKey pubKey;
 
     protected boolean sessionKeyObfuscation;
+    protected boolean useWildcardKeyID;
 
     protected PublicKeyKeyEncryptionMethodGenerator(
         PGPPublicKey pubKey)
@@ -62,6 +64,19 @@ public abstract class PublicKeyKeyEncryptionMethodGenerator
     public PublicKeyKeyEncryptionMethodGenerator setSessionKeyObfuscation(boolean enabled)
     {
         this.sessionKeyObfuscation = enabled;
+
+        return this;
+    }
+
+    /**
+     * Controls whether the recipient key ID is hidden (replaced by a wildcard ID <pre>0</pre>).
+     *
+     * @param enabled boolean
+     * @return this
+     */
+    public PublicKeyKeyEncryptionMethodGenerator setUseWildcardKeyID(boolean enabled)
+    {
+        this.useWildcardKeyID = enabled;
 
         return this;
     }
@@ -120,7 +135,32 @@ public abstract class PublicKeyKeyEncryptionMethodGenerator
     public ContainedPacket generate(int encAlgorithm, byte[] sessionInfo)
         throws PGPException
     {
-        return new PublicKeyEncSessionPacket(pubKey.getKeyID(), pubKey.getAlgorithm(), processSessionInfo(encryptSessionInfo(pubKey, sessionInfo)));
+        long keyId;
+        if (useWildcardKeyID)
+        {
+            keyId = WILDCARD;
+        }
+        else
+        {
+            keyId = pubKey.getKeyID();
+        }
+        return PublicKeyEncSessionPacket.createV3PKESKPacket(keyId, pubKey.getAlgorithm(), processSessionInfo(encryptSessionInfo(pubKey, sessionInfo)));
+    }
+
+    @Override
+    public ContainedPacket generateV5(int encAlgorithm, int aeadAlgorithm, byte[] sessionInfo)
+            throws PGPException
+    {
+        // TODO: Implement
+        return null;
+    }
+
+    @Override
+    public ContainedPacket generateV6(int encAlgorithm, int aeadAlgorithm, byte[] sessionInfo)
+            throws PGPException
+    {
+        // TODO: Implement
+        return null;
     }
 
     abstract protected byte[] encryptSessionInfo(PGPPublicKey pubKey, byte[] sessionInfo)

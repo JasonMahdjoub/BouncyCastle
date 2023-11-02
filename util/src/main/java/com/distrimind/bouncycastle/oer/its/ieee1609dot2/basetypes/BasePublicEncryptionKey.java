@@ -5,6 +5,7 @@ import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
+import com.distrimind.bouncycastle.asn1.BERTags;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
 
 /**
@@ -31,7 +32,7 @@ public class BasePublicEncryptionKey
         {
         case eciesNistP256:
         case eciesBrainpoolP256r1:
-            basePublicEncryptionKey = EccP256CurvePoint.getInstance(dto.getObject());
+            basePublicEncryptionKey = EccP256CurvePoint.getInstance(dto.getExplicitBaseObject());
             break;
         default:
             throw new IllegalArgumentException("invalid choice value " + dto.getTagNo());
@@ -53,7 +54,7 @@ public class BasePublicEncryptionKey
 
         if (objectAt != null)
         {
-            return new BasePublicEncryptionKey(ASN1TaggedObject.getInstance(objectAt));
+            return new BasePublicEncryptionKey(ASN1TaggedObject.getInstance(objectAt, BERTags.CONTEXT_SPECIFIC));
         }
         return null;
     }

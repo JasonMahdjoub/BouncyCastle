@@ -5,6 +5,7 @@ import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
+import com.distrimind.bouncycastle.asn1.BERTags;
 import com.distrimind.bouncycastle.asn1.DERNull;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
 
@@ -68,7 +69,7 @@ public class SspRange
 
     private SspRange(ASN1TaggedObject ato)
     {
-        this(ato.getTagNo(), ato.getObject());
+        this(ato.getTagNo(), ato.getExplicitBaseObject());
     }
 
 
@@ -81,7 +82,7 @@ public class SspRange
 
         if (src != null)
         {
-            return new SspRange(ASN1TaggedObject.getInstance(src));
+            return new SspRange(ASN1TaggedObject.getInstance(src, BERTags.CONTEXT_SPECIFIC));
         }
 
         return null;

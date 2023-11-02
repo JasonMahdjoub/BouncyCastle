@@ -13,6 +13,7 @@ import com.distrimind.bouncycastle.pqc.crypto.util.PrivateKeyInfoFactory;
 import com.distrimind.bouncycastle.pqc.jcajce.interfaces.BIKEKey;
 import com.distrimind.bouncycastle.pqc.jcajce.spec.BIKEParameterSpec;
 import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Strings;
 
 public class BCBIKEPrivateKey
     implements PrivateKey, BIKEKey
@@ -70,11 +71,11 @@ public class BCBIKEPrivateKey
     }
 
     /**
-     * @return name of the algorithm - "BIKE"
+     * @return name of the algorithm - "BIKE[128|192|256]"
      */
     public final String getAlgorithm()
     {
-        return "BIKE";
+        return Strings.toUpperCase(params.getParameters().getName());
     }
 
     public byte[] getEncoded()

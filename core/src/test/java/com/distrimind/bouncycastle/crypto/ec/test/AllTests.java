@@ -1,10 +1,10 @@
 package com.distrimind.bouncycastle.crypto.ec.test;
 
-import com.distrimind.bouncycastle.test.PrintTestResult;
 import junit.extensions.TestSetup;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import com.distrimind.bouncycastle.test.PrintTestResult;
 import com.distrimind.bouncycastle.util.test.SimpleTestResult;
 
 public class AllTests

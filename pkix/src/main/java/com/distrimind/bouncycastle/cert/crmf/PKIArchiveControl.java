@@ -2,14 +2,14 @@ package com.distrimind.bouncycastle.cert.crmf;
 
 import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
-import com.distrimind.bouncycastle.cms.CMSEnvelopedData;
-import com.distrimind.bouncycastle.cms.CMSException;
 import com.distrimind.bouncycastle.asn1.cms.CMSObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.cms.ContentInfo;
 import com.distrimind.bouncycastle.asn1.cms.EnvelopedData;
 import com.distrimind.bouncycastle.asn1.crmf.CRMFObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.crmf.EncryptedKey;
 import com.distrimind.bouncycastle.asn1.crmf.PKIArchiveOptions;
+import com.distrimind.bouncycastle.cms.CMSEnvelopedData;
+import com.distrimind.bouncycastle.cms.CMSException;
 
 /**
  * Carrier for a PKIArchiveOptions structure.

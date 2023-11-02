@@ -23,12 +23,12 @@ import com.distrimind.bouncycastle.crypto.params.ECDomainParameters;
 import com.distrimind.bouncycastle.crypto.params.ECNamedDomainParameters;
 import com.distrimind.bouncycastle.crypto.params.ECPrivateKeyParameters;
 import com.distrimind.bouncycastle.crypto.params.ECPublicKeyParameters;
+import com.distrimind.bouncycastle.jce.spec.ECNamedCurveParameterSpec;
+import com.distrimind.bouncycastle.jce.spec.ECParameterSpec;
 import com.distrimind.bouncycastle.jcajce.provider.config.ProviderConfiguration;
 import com.distrimind.bouncycastle.jce.interfaces.ECPrivateKey;
 import com.distrimind.bouncycastle.jce.interfaces.ECPublicKey;
 import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
-import com.distrimind.bouncycastle.jce.spec.ECNamedCurveParameterSpec;
-import com.distrimind.bouncycastle.jce.spec.ECParameterSpec;
 import com.distrimind.bouncycastle.math.ec.ECCurve;
 import com.distrimind.bouncycastle.math.ec.ECPoint;
 import com.distrimind.bouncycastle.math.ec.FixedPointCombMultiplier;
@@ -291,6 +291,11 @@ public class ECUtil
     {
         if (order == null)     // implicitly CA
         {
+            if (configuration == null)
+            {
+                return privateValue.bitLength();   // a guess but better than an exception!
+            }
+
             ECParameterSpec implicitCA = configuration.getEcImplicitlyCa();
 
             if (implicitCA == null)

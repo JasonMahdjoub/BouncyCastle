@@ -796,7 +796,7 @@ public class OAEPTest
         //
         // OAEP - public encrypt, private decrypt, differing hashes
         //
-        AsymmetricBlockCipher cipher = new OAEPEncoding(new RSAEngine(), new SHA256Digest(), new SHA1Digest(), new byte[10]);
+        AsymmetricBlockCipher cipher = new OAEPEncoding(new RSAEngine(), SHA256Digest.newInstance(), new SHA1Digest(), new byte[10]);
 
         cipher.init(true, new ParametersWithRandom(pubParam, new SecureRandom()));
 
@@ -816,7 +816,7 @@ public class OAEPTest
             }
         }
 
-        cipher = new OAEPEncoding(new RSAEngine(), new SHA1Digest(), new SHA256Digest(), new byte[10]);
+        cipher = new OAEPEncoding(new RSAEngine(), new SHA1Digest(), SHA256Digest.newInstance(), new byte[10]);
 
         cipher.init(true, new ParametersWithRandom(pubParam, new SecureRandom()));
 
@@ -841,7 +841,7 @@ public class OAEPTest
         AsymmetricKeyParameter pri2048 = PrivateKeyFactory.createKey(encPri2048);
 
         input = Strings.toByteArray("OAEP SHA-256 Test");
-        cipher = new OAEPEncoding(new RSAEngine(), new SHA256Digest());
+        cipher = new OAEPEncoding(new RSAEngine(), SHA256Digest.newInstance());
 
         cipher.init(true, new ParametersWithRandom(pub2048,
             new FixedSecureRandom(encPub2048)));

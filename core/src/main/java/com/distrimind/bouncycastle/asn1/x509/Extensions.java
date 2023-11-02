@@ -12,6 +12,7 @@ import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
 import com.distrimind.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.util.Properties;
 
 /**
  * <pre>
@@ -78,7 +79,10 @@ public class Extensions
 
             if (extensions.containsKey(ext.getExtnId()))
             {
-                throw new IllegalArgumentException("repeated extension found: " + ext.getExtnId());
+                if (!Properties.isOverrideSet("com.distrimind.bouncycastle.x509.ignore_repeated_extensions"))
+                {
+                    throw new IllegalArgumentException("repeated extension found: " + ext.getExtnId());
+                }
             }
             
             extensions.put(ext.getExtnId(), ext);

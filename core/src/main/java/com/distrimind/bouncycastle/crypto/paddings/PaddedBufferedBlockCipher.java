@@ -1,12 +1,12 @@
 package com.distrimind.bouncycastle.crypto.paddings;
 
-import com.distrimind.bouncycastle.crypto.params.ParametersWithRandom;
 import com.distrimind.bouncycastle.crypto.BlockCipher;
-import com.distrimind.bouncycastle.crypto.BufferedBlockCipher;
 import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.DataLengthException;
+import com.distrimind.bouncycastle.crypto.DefaultBufferedBlockCipher;
 import com.distrimind.bouncycastle.crypto.InvalidCipherTextException;
 import com.distrimind.bouncycastle.crypto.OutputLengthException;
+import com.distrimind.bouncycastle.crypto.params.ParametersWithRandom;
 
 /**
  * A wrapper class that allows block ciphers to be used to process data in
@@ -16,7 +16,7 @@ import com.distrimind.bouncycastle.crypto.OutputLengthException;
  * The default padding mechanism used is the one outlined in PKCS5/PKCS7.
  */
 public class PaddedBufferedBlockCipher
-    extends BufferedBlockCipher
+    extends DefaultBufferedBlockCipher
 {
     BlockCipherPadding  padding;
 
@@ -27,7 +27,7 @@ public class PaddedBufferedBlockCipher
      * @param padding the padding type.
      */
     public PaddedBufferedBlockCipher(
-        BlockCipher cipher,
+        BlockCipher         cipher,
         BlockCipherPadding  padding)
     {
         this.cipher = cipher;
@@ -59,7 +59,7 @@ public class PaddedBufferedBlockCipher
      */
     public void init(
         boolean             forEncryption,
-        CipherParameters params)
+        CipherParameters    params)
         throws IllegalArgumentException
     {
         this.forEncryption = forEncryption;

@@ -7,6 +7,7 @@ import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
+import com.distrimind.bouncycastle.asn1.BERTags;
 import com.distrimind.bouncycastle.asn1.DERSequence;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
 import com.distrimind.bouncycastle.asn1.ocsp.BasicOCSPResponse;
@@ -52,11 +53,11 @@ public class RevocationValues
         Enumeration e = seq.getObjects();
         while (e.hasMoreElements())
         {
-            ASN1TaggedObject o = (ASN1TaggedObject)e.nextElement();
+            ASN1TaggedObject o = ASN1TaggedObject.getInstance(e.nextElement(), BERTags.CONTEXT_SPECIFIC);
             switch (o.getTagNo())
             {
                 case 0:
-                    ASN1Sequence crlValsSeq = (ASN1Sequence)o.getObject();
+                    ASN1Sequence crlValsSeq = (ASN1Sequence)o.getExplicitBaseObject();
                     Enumeration crlValsEnum = crlValsSeq.getObjects();
                     while (crlValsEnum.hasMoreElements())
                     {
@@ -65,7 +66,7 @@ public class RevocationValues
                     this.crlVals = crlValsSeq;
                     break;
                 case 1:
-                    ASN1Sequence ocspValsSeq = (ASN1Sequence)o.getObject();
+                    ASN1Sequence ocspValsSeq = (ASN1Sequence)o.getExplicitBaseObject();
                     Enumeration ocspValsEnum = ocspValsSeq.getObjects();
                     while (ocspValsEnum.hasMoreElements())
                     {
@@ -74,7 +75,7 @@ public class RevocationValues
                     this.ocspVals = ocspValsSeq;
                     break;
                 case 2:
-                    this.otherRevVals = OtherRevVals.getInstance(o.getObject());
+                    this.otherRevVals = OtherRevVals.getInstance(o.getExplicitBaseObject());
                     break;
                 default:
                     throw new IllegalArgumentException("invalid tag: "

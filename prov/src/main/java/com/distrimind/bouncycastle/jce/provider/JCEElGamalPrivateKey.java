@@ -18,10 +18,10 @@ import com.distrimind.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.crypto.params.ElGamalPrivateKeyParameters;
-import com.distrimind.bouncycastle.jce.interfaces.ElGamalPrivateKey;
-import com.distrimind.bouncycastle.jce.interfaces.PKCS12BagAttributeCarrier;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.KeyUtil;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.PKCS12BagAttributeCarrierImpl;
+import com.distrimind.bouncycastle.jce.interfaces.ElGamalPrivateKey;
+import com.distrimind.bouncycastle.jce.interfaces.PKCS12BagAttributeCarrier;
 import com.distrimind.bouncycastle.jce.spec.ElGamalParameterSpec;
 import com.distrimind.bouncycastle.jce.spec.ElGamalPrivateKeySpec;
 
@@ -32,7 +32,7 @@ public class JCEElGamalPrivateKey
         
     BigInteger      x;
 
-    ElGamalParameterSpec   elSpec;
+    ElGamalParameterSpec elSpec;
 
     private PKCS12BagAttributeCarrierImpl attrCarrier = new PKCS12BagAttributeCarrierImpl();
 
@@ -55,7 +55,7 @@ public class JCEElGamalPrivateKey
     }
     
     JCEElGamalPrivateKey(
-        ElGamalPrivateKeySpec    spec)
+        ElGamalPrivateKeySpec spec)
     {
         this.x = spec.getX();
         this.elSpec = new ElGamalParameterSpec(spec.getParams().getP(), spec.getParams().getG());

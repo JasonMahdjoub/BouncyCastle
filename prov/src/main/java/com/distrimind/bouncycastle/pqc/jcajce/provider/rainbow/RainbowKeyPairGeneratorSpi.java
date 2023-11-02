@@ -14,8 +14,8 @@ import com.distrimind.bouncycastle.pqc.crypto.rainbow.RainbowKeyPairGenerator;
 import com.distrimind.bouncycastle.pqc.crypto.rainbow.RainbowParameters;
 import com.distrimind.bouncycastle.pqc.crypto.rainbow.RainbowPrivateKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.rainbow.RainbowPublicKeyParameters;
-import com.distrimind.bouncycastle.pqc.jcajce.spec.RainbowParameterSpec;
 import com.distrimind.bouncycastle.pqc.jcajce.provider.util.SpecUtil;
+import com.distrimind.bouncycastle.pqc.jcajce.spec.RainbowParameterSpec;
 import com.distrimind.bouncycastle.util.Strings;
 
 public class RainbowKeyPairGeneratorSpi

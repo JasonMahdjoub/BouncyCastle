@@ -4,13 +4,13 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import com.distrimind.bouncycastle.bcpg.BCPGOutputStream;
+import com.distrimind.bouncycastle.bcpg.BCPGInputStream;
 import com.distrimind.bouncycastle.bcpg.OnePassSignaturePacket;
-import com.distrimind.bouncycastle.bcpg.Packet;
 import com.distrimind.bouncycastle.openpgp.operator.PGPContentVerifier;
 import com.distrimind.bouncycastle.openpgp.operator.PGPContentVerifierBuilder;
 import com.distrimind.bouncycastle.openpgp.operator.PGPContentVerifierBuilderProvider;
-import com.distrimind.bouncycastle.bcpg.BCPGInputStream;
+import com.distrimind.bouncycastle.bcpg.BCPGOutputStream;
+import com.distrimind.bouncycastle.bcpg.Packet;
 
 /**
  * A one pass signature object.
@@ -35,7 +35,7 @@ public class PGPOnePassSignature
     }
 
     public PGPOnePassSignature(
-        BCPGInputStream    pIn)
+        BCPGInputStream pIn)
         throws IOException, PGPException
     {
         this(cast(pIn.readPacket()));

@@ -15,8 +15,8 @@ import com.distrimind.bouncycastle.pqc.crypto.crystals.dilithium.DilithiumKeyPai
 import com.distrimind.bouncycastle.pqc.crypto.crystals.dilithium.DilithiumParameters;
 import com.distrimind.bouncycastle.pqc.crypto.crystals.dilithium.DilithiumPrivateKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.crystals.dilithium.DilithiumPublicKeyParameters;
-import com.distrimind.bouncycastle.pqc.jcajce.spec.DilithiumParameterSpec;
 import com.distrimind.bouncycastle.pqc.jcajce.provider.util.SpecUtil;
+import com.distrimind.bouncycastle.pqc.jcajce.spec.DilithiumParameterSpec;
 import com.distrimind.bouncycastle.util.Strings;
 
 public class DilithiumKeyPairGeneratorSpi

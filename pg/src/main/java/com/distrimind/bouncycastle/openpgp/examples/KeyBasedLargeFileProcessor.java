@@ -13,12 +13,12 @@ import java.security.SecureRandom;
 import java.security.Security;
 import java.util.Iterator;
 
-import com.distrimind.bouncycastle.bcpg.ArmoredOutputStream;
-import com.distrimind.bouncycastle.openpgp.jcajce.JcaPGPObjectFactory;
+import com.distrimind.bouncycastle.openpgp.operator.PGPDataEncryptorBuilder;
 import com.distrimind.bouncycastle.openpgp.operator.jcajce.JcaKeyFingerprintCalculator;
 import com.distrimind.bouncycastle.openpgp.operator.jcajce.JcePGPDataEncryptorBuilder;
 import com.distrimind.bouncycastle.openpgp.operator.jcajce.JcePublicKeyDataDecryptorFactoryBuilder;
 import com.distrimind.bouncycastle.openpgp.operator.jcajce.JcePublicKeyKeyEncryptionMethodGenerator;
+import com.distrimind.bouncycastle.bcpg.ArmoredOutputStream;
 import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
 import com.distrimind.bouncycastle.openpgp.PGPCompressedData;
 import com.distrimind.bouncycastle.openpgp.PGPCompressedDataGenerator;
@@ -33,6 +33,7 @@ import com.distrimind.bouncycastle.openpgp.PGPPublicKey;
 import com.distrimind.bouncycastle.openpgp.PGPPublicKeyEncryptedData;
 import com.distrimind.bouncycastle.openpgp.PGPSecretKeyRingCollection;
 import com.distrimind.bouncycastle.openpgp.PGPUtil;
+import com.distrimind.bouncycastle.openpgp.jcajce.JcaPGPObjectFactory;
 import com.distrimind.bouncycastle.util.io.Streams;
 
 /**
@@ -86,7 +87,7 @@ public class KeyBasedLargeFileProcessor
         
         try
         {
-            JcaPGPObjectFactory pgpF = new JcaPGPObjectFactory(in);
+            JcaPGPObjectFactory        pgpF = new JcaPGPObjectFactory(in);
             PGPEncryptedDataList    enc;
 
             Object                  o = pgpF.nextObject();
@@ -214,8 +215,13 @@ public class KeyBasedLargeFileProcessor
         }
         
         try
-        {    
-            PGPEncryptedDataGenerator   cPk = new PGPEncryptedDataGenerator(new JcePGPDataEncryptorBuilder(PGPEncryptedData.CAST5).setWithIntegrityPacket(withIntegrityCheck).setSecureRandom(new SecureRandom()).setProvider("BC"));
+        {
+            PGPDataEncryptorBuilder encryptorBuilder = new JcePGPDataEncryptorBuilder(PGPEncryptedData.CAST5)
+                    .setProvider("BC")
+                    .setSecureRandom(new SecureRandom())
+                    .setWithIntegrityPacket(withIntegrityCheck);
+    
+            PGPEncryptedDataGenerator   cPk = new PGPEncryptedDataGenerator(encryptorBuilder);
                 
             cPk.addMethod(new JcePublicKeyKeyEncryptionMethodGenerator(encKey).setProvider("BC"));
             

@@ -1,6 +1,5 @@
 package com.distrimind.bouncycastle.pqc.asn1;
 
-import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1OctetString;
@@ -8,6 +7,7 @@ import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.DEROctetString;
 import com.distrimind.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.util.Arrays;
 
 /**
  *
@@ -33,6 +33,9 @@ public class KyberPublicKey
         this.rho = rho;
     }
 
+    /**
+     * @deprecated use getInstance()
+     */
     public KyberPublicKey(ASN1Sequence seq)
     {
         t = Arrays.clone(ASN1OctetString.getInstance(seq.getObjectAt(0)).getOctets());

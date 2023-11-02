@@ -4,6 +4,7 @@ package com.distrimind.bouncycastle.crypto.digests;
 import com.distrimind.bouncycastle.crypto.CryptoServiceProperties;
 import com.distrimind.bouncycastle.crypto.CryptoServicePurpose;
 import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
+import com.distrimind.bouncycastle.crypto.Digest;
 import com.distrimind.bouncycastle.crypto.SavableDigest;
 import com.distrimind.bouncycastle.util.Memoable;
 import com.distrimind.bouncycastle.util.Pack;
@@ -30,6 +31,31 @@ public class SHA256Digest
 
     private int[]   X = new int[64];
     private int     xOff;
+
+    public static SavableDigest newInstance()
+    {
+        return new SHA256Digest();
+    }
+
+    public static SavableDigest newInstance(CryptoServicePurpose purpose)
+    {
+        return new SHA256Digest(purpose);
+    }
+
+    public static SavableDigest newInstance(Digest digest)
+    {
+        if (digest instanceof SHA256Digest)
+        {
+            return new SHA256Digest((SHA256Digest) digest);
+        }
+
+        throw new IllegalArgumentException("receiver digest not available for input type " + (digest != null ? digest.getClass().getName() : "null"));
+    }
+
+    public static SavableDigest newInstance(byte[] encoded)
+    {
+        return new SHA256Digest(encoded);
+    }
 
     /**
      * Standard constructor

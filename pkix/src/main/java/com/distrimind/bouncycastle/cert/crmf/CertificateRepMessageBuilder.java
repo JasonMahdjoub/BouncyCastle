@@ -3,13 +3,13 @@ package com.distrimind.bouncycastle.cert.crmf;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.distrimind.bouncycastle.cert.X509CertificateHolder;
 import com.distrimind.bouncycastle.asn1.cmp.CMPCertificate;
 import com.distrimind.bouncycastle.asn1.cmp.CertRepMessage;
 import com.distrimind.bouncycastle.asn1.cmp.CertResponse;
+import com.distrimind.bouncycastle.cert.X509CertificateHolder;
 
 /**
- * Builder for a CertRepMessage.
+ * Builder for a CertificateRepMessage.
  */
 public class CertificateRepMessageBuilder
 {

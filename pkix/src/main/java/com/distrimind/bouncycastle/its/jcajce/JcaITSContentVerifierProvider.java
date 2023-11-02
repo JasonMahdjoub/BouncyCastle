@@ -8,10 +8,9 @@ import java.security.interfaces.ECPublicKey;
 
 import com.distrimind.bouncycastle.asn1.nist.NISTObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.its.operator.ITSContentVerifierProvider;
 import com.distrimind.bouncycastle.its.ITSCertificate;
 import com.distrimind.bouncycastle.its.ITSPublicVerificationKey;
-import com.distrimind.bouncycastle.its.operator.ITSContentVerifierProvider;
-import com.distrimind.bouncycastle.operator.jcajce.JcaDigestCalculatorProviderBuilder;
 import com.distrimind.bouncycastle.jcajce.util.DefaultJcaJceHelper;
 import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
 import com.distrimind.bouncycastle.jcajce.util.NamedJcaJceHelper;
@@ -25,6 +24,7 @@ import com.distrimind.bouncycastle.operator.ContentVerifier;
 import com.distrimind.bouncycastle.operator.DigestCalculator;
 import com.distrimind.bouncycastle.operator.DigestCalculatorProvider;
 import com.distrimind.bouncycastle.operator.OperatorCreationException;
+import com.distrimind.bouncycastle.operator.jcajce.JcaDigestCalculatorProviderBuilder;
 import com.distrimind.bouncycastle.util.Arrays;
 
 public class JcaITSContentVerifierProvider

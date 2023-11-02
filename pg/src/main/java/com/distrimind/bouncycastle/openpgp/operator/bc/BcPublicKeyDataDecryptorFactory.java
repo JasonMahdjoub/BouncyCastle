@@ -3,8 +3,11 @@ package com.distrimind.bouncycastle.openpgp.operator.bc;
 import java.io.IOException;
 import java.math.BigInteger;
 
+import com.distrimind.bouncycastle.asn1.cryptlib.CryptlibObjectIdentifiers;
+import com.distrimind.bouncycastle.bcpg.AEADEncDataPacket;
 import com.distrimind.bouncycastle.bcpg.ECDHPublicBCPGKey;
 import com.distrimind.bouncycastle.bcpg.PublicKeyAlgorithmTags;
+import com.distrimind.bouncycastle.bcpg.SymmetricEncIntegrityPacket;
 import com.distrimind.bouncycastle.crypto.AsymmetricBlockCipher;
 import com.distrimind.bouncycastle.crypto.BlockCipher;
 import com.distrimind.bouncycastle.crypto.BufferedAsymmetricBlockCipher;
@@ -21,6 +24,7 @@ import com.distrimind.bouncycastle.crypto.params.KeyParameter;
 import com.distrimind.bouncycastle.crypto.params.X25519PublicKeyParameters;
 import com.distrimind.bouncycastle.openpgp.PGPException;
 import com.distrimind.bouncycastle.openpgp.PGPPrivateKey;
+import com.distrimind.bouncycastle.openpgp.PGPSessionKey;
 import com.distrimind.bouncycastle.openpgp.operator.PGPDataDecryptor;
 import com.distrimind.bouncycastle.openpgp.operator.PGPPad;
 import com.distrimind.bouncycastle.openpgp.operator.PublicKeyDataDecryptorFactory;
@@ -42,6 +46,7 @@ public class BcPublicKeyDataDecryptorFactory
         this.pgpPrivKey = pgpPrivKey;
     }
 
+    @Override
     public byte[] recoverSessionData(int keyAlgorithm, byte[][] secKeyData)
         throws PGPException
     {
@@ -178,6 +183,8 @@ public class BcPublicKeyDataDecryptorFactory
 
     }
 
+    // OpenPGP v4
+    @Override
     public PGPDataDecryptor createDataDecryptor(boolean withIntegrityPacket, int encAlgorithm, byte[] key)
         throws PGPException
     {
@@ -186,9 +193,19 @@ public class BcPublicKeyDataDecryptorFactory
         return BcUtil.createDataDecryptor(withIntegrityPacket, engine, key);
     }
 
-    public PGPDataDecryptor createDataDecryptor(final int aeadAlgorithm, final byte[] iv, final int chunkSize, final int encAlgorithm, byte[] key)
+    // OpenPGP v5
+    @Override
+    public PGPDataDecryptor createDataDecryptor(AEADEncDataPacket aeadEncDataPacket, PGPSessionKey sessionKey)
         throws PGPException
     {
-        return BcUtil.createDataDecryptor(aeadAlgorithm, iv, chunkSize, encAlgorithm, key);
+        return BcAEADUtil.createOpenPgpV5DataDecryptor(aeadEncDataPacket, sessionKey);
+    }
+
+    // OpenPGP v6
+    @Override
+    public PGPDataDecryptor createDataDecryptor(SymmetricEncIntegrityPacket seipd, PGPSessionKey sessionKey)
+            throws PGPException
+    {
+        return BcAEADUtil.createOpenPgpV6DataDecryptor(seipd, sessionKey);
     }
 }

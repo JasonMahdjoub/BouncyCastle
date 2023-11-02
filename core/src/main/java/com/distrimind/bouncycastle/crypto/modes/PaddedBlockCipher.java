@@ -1,8 +1,8 @@
 package com.distrimind.bouncycastle.crypto.modes;
 
 import com.distrimind.bouncycastle.crypto.BlockCipher;
-import com.distrimind.bouncycastle.crypto.BufferedBlockCipher;
 import com.distrimind.bouncycastle.crypto.DataLengthException;
+import com.distrimind.bouncycastle.crypto.DefaultBufferedBlockCipher;
 import com.distrimind.bouncycastle.crypto.InvalidCipherTextException;
 import com.distrimind.bouncycastle.crypto.OutputLengthException;
 
@@ -16,7 +16,7 @@ import com.distrimind.bouncycastle.crypto.OutputLengthException;
  * @deprecated use com.distrimind.bouncycastle.crypto.paddings.PaddedBufferedBlockCipher instead.
  */
 public class PaddedBlockCipher
-    extends BufferedBlockCipher
+    extends DefaultBufferedBlockCipher
 {
     /**
      * Create a buffered block cipher with, or without, padding.

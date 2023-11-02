@@ -14,8 +14,8 @@ import com.distrimind.bouncycastle.pqc.crypto.crystals.kyber.KyberKeyPairGenerat
 import com.distrimind.bouncycastle.pqc.crypto.crystals.kyber.KyberParameters;
 import com.distrimind.bouncycastle.pqc.crypto.crystals.kyber.KyberPrivateKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.crystals.kyber.KyberPublicKeyParameters;
-import com.distrimind.bouncycastle.pqc.jcajce.spec.KyberParameterSpec;
 import com.distrimind.bouncycastle.pqc.jcajce.provider.util.SpecUtil;
+import com.distrimind.bouncycastle.pqc.jcajce.spec.KyberParameterSpec;
 import com.distrimind.bouncycastle.util.Strings;
 
 public class KyberKeyPairGeneratorSpi

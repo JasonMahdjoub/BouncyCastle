@@ -8,8 +8,8 @@ import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
 import com.distrimind.bouncycastle.pqc.crypto.falcon.FalconPublicKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.util.PublicKeyFactory;
 import com.distrimind.bouncycastle.pqc.jcajce.interfaces.FalconPublicKey;
-import com.distrimind.bouncycastle.pqc.jcajce.spec.FalconParameterSpec;
 import com.distrimind.bouncycastle.pqc.jcajce.provider.util.KeyUtil;
+import com.distrimind.bouncycastle.pqc.jcajce.spec.FalconParameterSpec;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Strings;
 

@@ -2,10 +2,10 @@ package com.distrimind.bouncycastle.math.ec.custom.sec;
 
 import java.math.BigInteger;
 
+import com.distrimind.bouncycastle.math.ec.ECFieldElement;
 import com.distrimind.bouncycastle.math.raw.Nat192;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.encoders.Hex;
-import com.distrimind.bouncycastle.math.ec.ECFieldElement;
 
 public class SecP192K1FieldElement extends ECFieldElement.AbstractFp
 {

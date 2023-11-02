@@ -8,10 +8,10 @@ import java.util.Iterator;
 import java.util.Map;
 
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
-import com.distrimind.bouncycastle.cms.CMSException;
-import com.distrimind.bouncycastle.cms.KEMRecipient;
 import com.distrimind.bouncycastle.asn1.cms.KEMRecipientInfo;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.cms.CMSException;
+import com.distrimind.bouncycastle.cms.KEMRecipient;
 import com.distrimind.bouncycastle.operator.OperatorException;
 
 public abstract class JceKEMRecipient

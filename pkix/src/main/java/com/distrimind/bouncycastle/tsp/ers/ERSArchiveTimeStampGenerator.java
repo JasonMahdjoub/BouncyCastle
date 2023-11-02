@@ -9,16 +9,16 @@ import java.util.List;
 import java.util.Set;
 
 import com.distrimind.bouncycastle.asn1.ASN1Encoding;
-import com.distrimind.bouncycastle.tsp.TSPException;
-import com.distrimind.bouncycastle.tsp.TimeStampRequest;
-import com.distrimind.bouncycastle.tsp.TimeStampRequestGenerator;
-import com.distrimind.bouncycastle.tsp.TimeStampResponse;
 import com.distrimind.bouncycastle.asn1.cms.ContentInfo;
 import com.distrimind.bouncycastle.asn1.tsp.ArchiveTimeStamp;
 import com.distrimind.bouncycastle.asn1.tsp.ArchiveTimeStampSequence;
 import com.distrimind.bouncycastle.asn1.tsp.PartialHashtree;
 import com.distrimind.bouncycastle.asn1.tsp.TSTInfo;
 import com.distrimind.bouncycastle.operator.DigestCalculator;
+import com.distrimind.bouncycastle.tsp.TSPException;
+import com.distrimind.bouncycastle.tsp.TimeStampRequest;
+import com.distrimind.bouncycastle.tsp.TimeStampRequestGenerator;
+import com.distrimind.bouncycastle.tsp.TimeStampResponse;
 import com.distrimind.bouncycastle.util.Arrays;
 
 /**

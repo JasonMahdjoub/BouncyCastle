@@ -16,11 +16,11 @@ import com.distrimind.bouncycastle.asn1.BERSet;
 import com.distrimind.bouncycastle.asn1.DEROctetString;
 import com.distrimind.bouncycastle.asn1.DERSet;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
+import com.distrimind.bouncycastle.operator.DigestCalculator;
+import com.distrimind.bouncycastle.operator.MacCalculator;
 import com.distrimind.bouncycastle.asn1.cms.AuthenticatedData;
 import com.distrimind.bouncycastle.asn1.cms.CMSObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import com.distrimind.bouncycastle.operator.DigestCalculator;
-import com.distrimind.bouncycastle.operator.MacCalculator;
 import com.distrimind.bouncycastle.util.io.TeeOutputStream;
 
 /**

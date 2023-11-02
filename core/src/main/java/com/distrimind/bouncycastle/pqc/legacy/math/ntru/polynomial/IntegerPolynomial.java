@@ -14,10 +14,10 @@ import java.util.concurrent.Future;
 import java.util.concurrent.LinkedBlockingQueue;
 
 import com.distrimind.bouncycastle.pqc.legacy.crypto.ntru.NTRUSigningParameters;
-import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.pqc.legacy.math.ntru.euclid.BigIntEuclidean;
 import com.distrimind.bouncycastle.pqc.legacy.math.ntru.util.ArrayEncoder;
 import com.distrimind.bouncycastle.pqc.legacy.math.ntru.util.Util;
+import com.distrimind.bouncycastle.util.Arrays;
 
 /**
  * A polynomial with <code>int</code> coefficients.<br>

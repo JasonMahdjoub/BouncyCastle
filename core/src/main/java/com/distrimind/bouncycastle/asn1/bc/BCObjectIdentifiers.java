@@ -58,7 +58,7 @@ public interface BCObjectIdentifiers
     ASN1ObjectIdentifier bc_pbe_sha1_pkcs12 = bc_pbe_sha1.branch("2");
 
     /**
-     * SHA-256.PKCS12; 1.3.6.1.4.1.22554.1.2.1.1
+     * SHA-256.PKCS5; 1.3.6.1.4.1.22554.1.2.1.1
      */
     ASN1ObjectIdentifier bc_pbe_sha256_pkcs5 = bc_pbe_sha256.branch("1");
     /**
@@ -134,41 +134,6 @@ public interface BCObjectIdentifiers
     ASN1ObjectIdentifier xmss_mt_SHAKE128 = xmss_mt.branch("7");
     ASN1ObjectIdentifier xmss_mt_SHAKE256 = xmss_mt.branch("8");
 
-    // old OIDs.
-    /**
-     * @deprecated use xmss_SHA256ph
-     */
-    ASN1ObjectIdentifier xmss_with_SHA256 = xmss_SHA256ph;
-    /**
-     * @deprecated use xmss_SHA512ph
-     */
-    ASN1ObjectIdentifier xmss_with_SHA512 = xmss_SHA512ph;
-    /**
-     * @deprecated use xmss_SHAKE128ph
-     */
-    ASN1ObjectIdentifier xmss_with_SHAKE128 = xmss_SHAKE128ph;
-    /**
-     * @deprecated use xmss_SHAKE256ph
-     */
-    ASN1ObjectIdentifier xmss_with_SHAKE256 = xmss_SHAKE256ph;
-
-    /**
-     * @deprecated use xmss_mt_SHA256ph
-     */
-    ASN1ObjectIdentifier xmss_mt_with_SHA256 = xmss_mt_SHA256ph;
-    /**
-     * @deprecated use xmss_mt_SHA512ph
-     */
-    ASN1ObjectIdentifier xmss_mt_with_SHA512 = xmss_mt_SHA512ph;
-    /**
-     * @deprecated use xmss_mt_SHAKE128ph
-     */
-    ASN1ObjectIdentifier xmss_mt_with_SHAKE128 = xmss_mt_SHAKE128;
-    /**
-     * @deprecated use xmss_mt_SHAKE256ph
-     */
-    ASN1ObjectIdentifier xmss_mt_with_SHAKE256 = xmss_mt_SHAKE256;
-
     /**
      * qTESLA
      */
@@ -208,6 +173,27 @@ public interface BCObjectIdentifiers
     ASN1ObjectIdentifier sphincsPlus_shake_256f_r3 = sphincsPlus.branch("16");
     ASN1ObjectIdentifier sphincsPlus_haraka_256s_r3 = sphincsPlus.branch("17");
     ASN1ObjectIdentifier sphincsPlus_haraka_256f_r3 = sphincsPlus.branch("18");
+
+    ASN1ObjectIdentifier sphincsPlus_sha2_128s_r3_simple = sphincsPlus.branch("19");
+    ASN1ObjectIdentifier sphincsPlus_sha2_128f_r3_simple = sphincsPlus.branch("20");
+    ASN1ObjectIdentifier sphincsPlus_shake_128s_r3_simple = sphincsPlus.branch("21");
+    ASN1ObjectIdentifier sphincsPlus_shake_128f_r3_simple = sphincsPlus.branch("22");
+    ASN1ObjectIdentifier sphincsPlus_haraka_128s_r3_simple = sphincsPlus.branch("23");
+    ASN1ObjectIdentifier sphincsPlus_haraka_128f_r3_simple = sphincsPlus.branch("24");
+
+    ASN1ObjectIdentifier sphincsPlus_sha2_192s_r3_simple = sphincsPlus.branch("25");
+    ASN1ObjectIdentifier sphincsPlus_sha2_192f_r3_simple = sphincsPlus.branch("26");
+    ASN1ObjectIdentifier sphincsPlus_shake_192s_r3_simple = sphincsPlus.branch("27");
+    ASN1ObjectIdentifier sphincsPlus_shake_192f_r3_simple = sphincsPlus.branch("28");
+    ASN1ObjectIdentifier sphincsPlus_haraka_192s_r3_simple = sphincsPlus.branch("29");
+    ASN1ObjectIdentifier sphincsPlus_haraka_192f_r3_simple = sphincsPlus.branch("30");
+
+    ASN1ObjectIdentifier sphincsPlus_sha2_256s_r3_simple = sphincsPlus.branch("31");
+    ASN1ObjectIdentifier sphincsPlus_sha2_256f_r3_simple = sphincsPlus.branch("32");
+    ASN1ObjectIdentifier sphincsPlus_shake_256s_r3_simple = sphincsPlus.branch("33");
+    ASN1ObjectIdentifier sphincsPlus_shake_256f_r3_simple = sphincsPlus.branch("34");
+    ASN1ObjectIdentifier sphincsPlus_haraka_256s_r3_simple = sphincsPlus.branch("35");
+    ASN1ObjectIdentifier sphincsPlus_haraka_256f_r3_simple = sphincsPlus.branch("36");
 
     /**
      * Picnic
@@ -261,7 +247,6 @@ public interface BCObjectIdentifiers
      */
     ASN1ObjectIdentifier rainbow = bc_sig.branch("9");
 
-    // OpenSSL OIDs
     ASN1ObjectIdentifier rainbow_III_classic = rainbow.branch("1");
     ASN1ObjectIdentifier rainbow_III_circumzenithal = rainbow.branch("2");
     ASN1ObjectIdentifier rainbow_III_compressed = rainbow.branch("3");
@@ -408,6 +393,7 @@ public interface BCObjectIdentifiers
      * BIKE
      **/
     ASN1ObjectIdentifier pqc_kem_bike = bc_kem.branch("8");
+
     ASN1ObjectIdentifier bike128 = pqc_kem_bike.branch("1");
     ASN1ObjectIdentifier bike192 = pqc_kem_bike.branch("2");
     ASN1ObjectIdentifier bike256 = pqc_kem_bike.branch("3");
@@ -416,6 +402,7 @@ public interface BCObjectIdentifiers
      * HQC
      **/
     ASN1ObjectIdentifier pqc_kem_hqc = bc_kem.branch("9");
+
     ASN1ObjectIdentifier hqc128 = pqc_kem_hqc.branch("1");
     ASN1ObjectIdentifier hqc192 = pqc_kem_hqc.branch("2");
     ASN1ObjectIdentifier hqc256 = pqc_kem_hqc.branch("3");

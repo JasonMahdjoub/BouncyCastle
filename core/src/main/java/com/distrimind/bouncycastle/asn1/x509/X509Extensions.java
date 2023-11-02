@@ -12,6 +12,7 @@ import com.distrimind.bouncycastle.asn1.ASN1OctetString;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
+import com.distrimind.bouncycastle.asn1.BERTags;
 import com.distrimind.bouncycastle.asn1.DERSequence;
 
 /**
@@ -236,7 +237,9 @@ public class X509Extensions
 
         if (obj instanceof ASN1TaggedObject)
         {
-            return getInstance(((ASN1TaggedObject)obj).getObject());
+            ASN1TaggedObject taggedObject = ASN1TaggedObject.getInstance(obj, BERTags.CONTEXT_SPECIFIC);
+
+            return getInstance(taggedObject.getBaseObject().toASN1Primitive());
         }
 
         throw new IllegalArgumentException("illegal object in getInstance: " + obj.getClass().getName());

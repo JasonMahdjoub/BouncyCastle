@@ -22,6 +22,7 @@ import com.distrimind.bouncycastle.asn1.ASN1Integer;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.LocaleUtil;
 import com.distrimind.bouncycastle.cert.X509CertificateHolder;
+import com.distrimind.bouncycastle.operator.DigestCalculator;
 import com.distrimind.bouncycastle.asn1.cms.AttributeTable;
 import com.distrimind.bouncycastle.asn1.ess.ESSCertID;
 import com.distrimind.bouncycastle.asn1.ess.ESSCertIDv2;
@@ -45,7 +46,6 @@ import com.distrimind.bouncycastle.cms.CMSProcessableByteArray;
 import com.distrimind.bouncycastle.cms.CMSSignedData;
 import com.distrimind.bouncycastle.cms.CMSSignedDataGenerator;
 import com.distrimind.bouncycastle.cms.SignerInfoGenerator;
-import com.distrimind.bouncycastle.operator.DigestCalculator;
 import com.distrimind.bouncycastle.util.CollectionStore;
 import com.distrimind.bouncycastle.util.Store;
 
@@ -137,7 +137,7 @@ public class TimeStampTokenGenerator
      */
     public TimeStampTokenGenerator(
         final SignerInfoGenerator       signerInfoGen,
-        DigestCalculator                digestCalculator,
+        DigestCalculator digestCalculator,
         ASN1ObjectIdentifier            tsaPolicy)
         throws IllegalArgumentException, TSPException
     {

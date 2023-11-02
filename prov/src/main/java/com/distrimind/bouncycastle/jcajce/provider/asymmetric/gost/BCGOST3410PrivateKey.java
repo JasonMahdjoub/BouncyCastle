@@ -20,12 +20,12 @@ import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.crypto.params.GOST3410PrivateKeyParameters;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.GOST3410Util;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.PKCS12BagAttributeCarrierImpl;
-import com.distrimind.bouncycastle.jce.interfaces.GOST3410Params;
-import com.distrimind.bouncycastle.jce.interfaces.GOST3410PrivateKey;
-import com.distrimind.bouncycastle.jce.interfaces.PKCS12BagAttributeCarrier;
 import com.distrimind.bouncycastle.jce.spec.GOST3410ParameterSpec;
 import com.distrimind.bouncycastle.jce.spec.GOST3410PrivateKeySpec;
 import com.distrimind.bouncycastle.jce.spec.GOST3410PublicKeyParameterSetSpec;
+import com.distrimind.bouncycastle.jce.interfaces.GOST3410Params;
+import com.distrimind.bouncycastle.jce.interfaces.GOST3410PrivateKey;
+import com.distrimind.bouncycastle.jce.interfaces.PKCS12BagAttributeCarrier;
 
 public class BCGOST3410PrivateKey
     implements GOST3410PrivateKey, PKCS12BagAttributeCarrier
@@ -34,7 +34,7 @@ public class BCGOST3410PrivateKey
 
     private BigInteger          x;
 
-    private transient GOST3410Params gost3410Spec;
+    private transient   GOST3410Params      gost3410Spec;
     private transient   PKCS12BagAttributeCarrier attrCarrier = new PKCS12BagAttributeCarrierImpl();
 
     protected BCGOST3410PrivateKey()

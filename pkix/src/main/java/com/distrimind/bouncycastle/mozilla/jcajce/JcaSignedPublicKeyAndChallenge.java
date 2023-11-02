@@ -10,11 +10,11 @@ import java.security.spec.X509EncodedKeySpec;
 
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
+import com.distrimind.bouncycastle.mozilla.SignedPublicKeyAndChallenge;
 import com.distrimind.bouncycastle.jcajce.util.DefaultJcaJceHelper;
 import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
 import com.distrimind.bouncycastle.jcajce.util.NamedJcaJceHelper;
 import com.distrimind.bouncycastle.jcajce.util.ProviderJcaJceHelper;
-import com.distrimind.bouncycastle.mozilla.SignedPublicKeyAndChallenge;
 
 /**
  * This is designed to parse the SignedPublicKeyAndChallenge created by the

@@ -8,16 +8,16 @@ import java.net.URISyntaxException;
 
 import com.distrimind.bouncycastle.asn1.ASN1IA5String;
 import com.distrimind.bouncycastle.asn1.BERTags;
-import com.distrimind.bouncycastle.cms.CMSContentInfoParser;
-import com.distrimind.bouncycastle.cms.CMSException;
-import com.distrimind.bouncycastle.tsp.TimeStampToken;
 import com.distrimind.bouncycastle.asn1.cms.AttributeTable;
 import com.distrimind.bouncycastle.asn1.cms.CMSObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.cms.ContentInfoParser;
 import com.distrimind.bouncycastle.asn1.cms.TimeStampedDataParser;
+import com.distrimind.bouncycastle.cms.CMSContentInfoParser;
+import com.distrimind.bouncycastle.cms.CMSException;
 import com.distrimind.bouncycastle.operator.DigestCalculator;
 import com.distrimind.bouncycastle.operator.DigestCalculatorProvider;
 import com.distrimind.bouncycastle.operator.OperatorCreationException;
+import com.distrimind.bouncycastle.tsp.TimeStampToken;
 import com.distrimind.bouncycastle.util.io.Streams;
 
 public class CMSTimeStampedDataParser
@@ -79,7 +79,7 @@ public class CMSTimeStampedDataParser
     public URI getDataUri()
         throws URISyntaxException
     {
-        ASN1IA5String dataURI = this.timeStampedData.getDataUri();
+        ASN1IA5String dataURI = this.timeStampedData.getDataUriIA5();
 
         if (dataURI != null)
         {

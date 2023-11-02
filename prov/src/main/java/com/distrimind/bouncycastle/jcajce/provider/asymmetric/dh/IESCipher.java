@@ -44,11 +44,11 @@ import com.distrimind.bouncycastle.crypto.parsers.DHIESPublicKeyParser;
 import com.distrimind.bouncycastle.crypto.util.DigestFactory;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.BaseCipherSpi;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.DHUtil;
+import com.distrimind.bouncycastle.jce.spec.IESParameterSpec;
 import com.distrimind.bouncycastle.jcajce.provider.util.BadBlockException;
 import com.distrimind.bouncycastle.jcajce.util.BCJcaJceHelper;
 import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
 import com.distrimind.bouncycastle.jce.interfaces.IESKey;
-import com.distrimind.bouncycastle.jce.spec.IESParameterSpec;
 import com.distrimind.bouncycastle.util.BigIntegers;
 import com.distrimind.bouncycastle.util.Strings;
 
@@ -527,7 +527,7 @@ public class IESCipher
             super(new IESEngine(new DHBasicAgreement(),
                 new KDF2BytesGenerator(DigestFactory.createSHA1()),
                 new HMac(DigestFactory.createSHA1()),
-                new PaddedBufferedBlockCipher(new CBCBlockCipher(new DESedeEngine()))), 8);
+                new PaddedBufferedBlockCipher(CBCBlockCipher.newInstance(new DESedeEngine()))), 8);
         }
     }
 
@@ -539,7 +539,7 @@ public class IESCipher
             super(new IESEngine(new DHBasicAgreement(),
                 new KDF2BytesGenerator(DigestFactory.createSHA1()),
                 new HMac(DigestFactory.createSHA1()),
-                new PaddedBufferedBlockCipher(new CBCBlockCipher(new AESEngine()))), 16);
+                new PaddedBufferedBlockCipher(CBCBlockCipher.newInstance(AESEngine.newInstance()))), 16);
         }
     }
 }

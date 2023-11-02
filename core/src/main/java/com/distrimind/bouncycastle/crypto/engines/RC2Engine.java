@@ -1,8 +1,8 @@
 package com.distrimind.bouncycastle.crypto.engines;
 
 import com.distrimind.bouncycastle.crypto.*;
-import com.distrimind.bouncycastle.crypto.*;
 import com.distrimind.bouncycastle.crypto.constraints.DefaultServiceProperties;
+import com.distrimind.bouncycastle.crypto.*;
 import com.distrimind.bouncycastle.crypto.params.KeyParameter;
 import com.distrimind.bouncycastle.crypto.params.RC2Parameters;
 

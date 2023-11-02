@@ -26,7 +26,7 @@ public interface EACObjectIdentifiers
      * </pre>
      * OID: 0.4.0.127.0.7
      */
-    static final ASN1ObjectIdentifier bsi_de      = new ASN1ObjectIdentifier("0.4.0.127.0.7");
+    static final ASN1ObjectIdentifier    bsi_de      = new ASN1ObjectIdentifier("0.4.0.127.0.7");
 
     /**
      * <pre>

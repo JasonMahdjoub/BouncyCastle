@@ -263,8 +263,8 @@ public class LDAPStoreHelper
      * @throws StoreException if an error occurs while searching.
      */
     private List crossCertificatePairSubjectSearch(
-        X509CertPairStoreSelector xselector, String[] attrs,
-        String attrNames[], String subjectAttributeNames[])
+			X509CertPairStoreSelector xselector, String[] attrs,
+			String attrNames[], String subjectAttributeNames[])
         throws StoreException
     {
         List list = new ArrayList();
@@ -319,8 +319,8 @@ public class LDAPStoreHelper
      * @throws StoreException if an error occurs while searching.
      */
     private List attrCertSubjectSerialSearch(
-        X509AttributeCertStoreSelector xselector, String[] attrs,
-        String attrNames[], String subjectAttributeNames[])
+			X509AttributeCertStoreSelector xselector, String[] attrs,
+			String attrNames[], String subjectAttributeNames[])
         throws StoreException
     {
         List list = new ArrayList();
@@ -422,7 +422,7 @@ public class LDAPStoreHelper
      * @throws StoreException if an error occurs while searching.
      */
     private List cRLIssuerSearch(X509CRLStoreSelector xselector,
-                                 String[] attrs, String attrNames[], String issuerAttributeNames[])
+								 String[] attrs, String attrNames[], String issuerAttributeNames[])
         throws StoreException
     {
         List list = new ArrayList();

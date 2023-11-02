@@ -1,10 +1,10 @@
 package com.distrimind.bouncycastle.math.ec.custom.sec;
 
-import com.distrimind.bouncycastle.math.raw.Nat;
-import com.distrimind.bouncycastle.math.raw.Nat256;
 import com.distrimind.bouncycastle.math.ec.ECCurve;
 import com.distrimind.bouncycastle.math.ec.ECFieldElement;
 import com.distrimind.bouncycastle.math.ec.ECPoint;
+import com.distrimind.bouncycastle.math.raw.Nat;
+import com.distrimind.bouncycastle.math.raw.Nat256;
 
 public class SecP256K1Point extends ECPoint.AbstractFp
 {

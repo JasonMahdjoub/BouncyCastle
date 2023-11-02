@@ -10,12 +10,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.distrimind.bouncycastle.bcpg.BCPGInputStream;
+import com.distrimind.bouncycastle.bcpg.PacketTags;
+import com.distrimind.bouncycastle.bcpg.SymmetricKeyEncSessionPacket;
 import com.distrimind.bouncycastle.bcpg.InputStreamPacket;
 import com.distrimind.bouncycastle.bcpg.Packet;
-import com.distrimind.bouncycastle.bcpg.PacketTags;
 import com.distrimind.bouncycastle.bcpg.PublicKeyEncSessionPacket;
 import com.distrimind.bouncycastle.bcpg.SymmetricEncIntegrityPacket;
-import com.distrimind.bouncycastle.bcpg.SymmetricKeyEncSessionPacket;
 import com.distrimind.bouncycastle.bcpg.UnsupportedPacketVersionException;
 import com.distrimind.bouncycastle.util.Iterable;
 

@@ -14,10 +14,10 @@ import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.DERSequence;
 import com.distrimind.bouncycastle.asn1.x500.X500Name;
+import com.distrimind.bouncycastle.asn1.x509.Extension;
 import com.distrimind.bouncycastle.asn1.x509.GeneralName;
 import com.distrimind.bouncycastle.asn1.x509.Target;
 import com.distrimind.bouncycastle.asn1.x509.TargetInformation;
-import com.distrimind.bouncycastle.asn1.x509.X509Extension;
 import com.distrimind.bouncycastle.cert.AttributeCertificateHolder;
 import com.distrimind.bouncycastle.cert.AttributeCertificateIssuer;
 import com.distrimind.bouncycastle.cert.X509AttributeCertificateHolder;
@@ -152,7 +152,7 @@ public class AttrCertSelectorTest
         targets[1] = targetGroup;
         TargetInformation targetInformation = new TargetInformation(targets);
 
-        gen.addExtension(X509Extension.targetInformation, true, targetInformation);
+        gen.addExtension(Extension.targetInformation, true, targetInformation);
 
         return gen.build(sigGen);
     }

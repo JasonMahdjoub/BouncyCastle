@@ -135,23 +135,23 @@ public class GF2Matrix
         switch (typeOfMatrix)
         {
 
-        case MATRIX_TYPE_ZERO:
+        case Matrix.MATRIX_TYPE_ZERO:
             assignZeroMatrix(n, n);
             break;
 
-        case MATRIX_TYPE_UNIT:
+        case Matrix.MATRIX_TYPE_UNIT:
             assignUnitMatrix(n);
             break;
 
-        case MATRIX_TYPE_RANDOM_LT:
+        case Matrix.MATRIX_TYPE_RANDOM_LT:
             assignRandomLowerTriangularMatrix(n, sr);
             break;
 
-        case MATRIX_TYPE_RANDOM_UT:
+        case Matrix.MATRIX_TYPE_RANDOM_UT:
             assignRandomUpperTriangularMatrix(n, sr);
             break;
 
-        case MATRIX_TYPE_RANDOM_REGULAR:
+        case Matrix.MATRIX_TYPE_RANDOM_REGULAR:
             assignRandomRegularMatrix(n, sr);
             break;
 
@@ -323,8 +323,8 @@ public class GF2Matrix
         numColumns = n;
         length = (n + 31) >>> 5;
         matrix = new int[numRows][length];
-        GF2Matrix lm = new GF2Matrix(n, MATRIX_TYPE_RANDOM_LT, sr);
-        GF2Matrix um = new GF2Matrix(n, MATRIX_TYPE_RANDOM_UT, sr);
+        GF2Matrix lm = new GF2Matrix(n, Matrix.MATRIX_TYPE_RANDOM_LT, sr);
+        GF2Matrix um = new GF2Matrix(n, Matrix.MATRIX_TYPE_RANDOM_UT, sr);
         GF2Matrix rm = (GF2Matrix)lm.rightMultiply(um);
         Permutation perm = new Permutation(n, sr);
         int[] p = perm.getVector();
@@ -353,8 +353,8 @@ public class GF2Matrix
 
         // ------
         int length = (n + 31) >> 5;
-        GF2Matrix lm = new GF2Matrix(n, MATRIX_TYPE_RANDOM_LT, sr);
-        GF2Matrix um = new GF2Matrix(n, MATRIX_TYPE_RANDOM_UT, sr);
+        GF2Matrix lm = new GF2Matrix(n, Matrix.MATRIX_TYPE_RANDOM_LT, sr);
+        GF2Matrix um = new GF2Matrix(n, Matrix.MATRIX_TYPE_RANDOM_UT, sr);
         GF2Matrix rm = (GF2Matrix)lm.rightMultiply(um);
         Permutation p = new Permutation(n, sr);
         int[] pVec = p.getVector();
@@ -372,7 +372,7 @@ public class GF2Matrix
         // ------------------------------------
 
         // inverse to lm
-        GF2Matrix invLm = new GF2Matrix(n, MATRIX_TYPE_UNIT);
+        GF2Matrix invLm = new GF2Matrix(n, Matrix.MATRIX_TYPE_UNIT);
         for (int i = 0; i < n; i++)
         {
             int rest = i & 0x1f;
@@ -391,7 +391,7 @@ public class GF2Matrix
             }
         }
         // inverse to um
-        GF2Matrix invUm = new GF2Matrix(n, MATRIX_TYPE_UNIT);
+        GF2Matrix invUm = new GF2Matrix(n, Matrix.MATRIX_TYPE_UNIT);
         for (int i = n - 1; i >= 0; i--)
         {
             int rest = i & 0x1f;

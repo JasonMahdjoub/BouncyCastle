@@ -9,6 +9,7 @@ import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
 import com.distrimind.bouncycastle.asn1.BERSequence;
 import com.distrimind.bouncycastle.asn1.BERTaggedObject;
+import com.distrimind.bouncycastle.asn1.BERTags;
 import com.distrimind.bouncycastle.asn1.DEROctetString;
 import com.distrimind.bouncycastle.asn1.DERSequence;
 import com.distrimind.bouncycastle.asn1.DLSequence;
@@ -84,13 +85,13 @@ public class ContentInfo
 
         if (seq.size() > 1)
         {
-            ASN1TaggedObject tagged = (ASN1TaggedObject)seq.getObjectAt(1);
+            ASN1TaggedObject tagged = ASN1TaggedObject.getInstance(seq.getObjectAt(1), BERTags.CONTEXT_SPECIFIC);
             if (!tagged.isExplicit() || tagged.getTagNo() != 0)
             {
                 throw new IllegalArgumentException("Bad tag for 'content'");
             }
 
-            content = tagged.getObject();
+            content = tagged.getExplicitBaseObject();
         }
         else
         {

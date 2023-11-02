@@ -2,16 +2,17 @@ package com.distrimind.bouncycastle.asn1.bc;
 
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.asn1.x509.Certificate;
-import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.asn1.ASN1BitString;
 import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
+import com.distrimind.bouncycastle.asn1.BERTags;
 import com.distrimind.bouncycastle.asn1.DERBitString;
 import com.distrimind.bouncycastle.asn1.DERSequence;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
+import com.distrimind.bouncycastle.util.Arrays;
 
 /**
  * <pre>
@@ -51,13 +52,13 @@ public class SignatureCheck
         int index = 1;
         if (seq.getObjectAt(1) instanceof ASN1TaggedObject)
         {
-            this.certificates = ASN1Sequence.getInstance(ASN1TaggedObject.getInstance(seq.getObjectAt(index++)).getObject());
+            this.certificates = ASN1Sequence.getInstance(ASN1TaggedObject.getInstance(seq.getObjectAt(index++)).getBaseUniversal(true, BERTags.SEQUENCE));
         }
         else
         {
             this.certificates = null;
         }
-        this.signatureValue = DERBitString.getInstance(seq.getObjectAt(index));
+        this.signatureValue = ASN1BitString.getInstance(seq.getObjectAt(index));
     }
 
     public static SignatureCheck getInstance(Object o)

@@ -26,6 +26,9 @@ import com.distrimind.bouncycastle.asn1.pkcs.PBKDF2Params;
 import com.distrimind.bouncycastle.asn1.pkcs.PKCS12PBEParams;
 import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.operator.GenericKey;
+import com.distrimind.bouncycastle.operator.OperatorCreationException;
+import com.distrimind.bouncycastle.operator.OutputEncryptor;
 import com.distrimind.bouncycastle.operator.jcajce.JceGenericKey;
 import com.distrimind.bouncycastle.jcajce.PKCS12KeyWithParameters;
 import com.distrimind.bouncycastle.jcajce.io.CipherOutputStream;
@@ -33,9 +36,6 @@ import com.distrimind.bouncycastle.jcajce.util.DefaultJcaJceHelper;
 import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
 import com.distrimind.bouncycastle.jcajce.util.NamedJcaJceHelper;
 import com.distrimind.bouncycastle.jcajce.util.ProviderJcaJceHelper;
-import com.distrimind.bouncycastle.operator.GenericKey;
-import com.distrimind.bouncycastle.operator.OperatorCreationException;
-import com.distrimind.bouncycastle.operator.OutputEncryptor;
 
 public class JceOpenSSLPKCS8EncryptorBuilder
 {

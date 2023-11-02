@@ -3,14 +3,14 @@ package com.distrimind.bouncycastle.math.ec.custom.sec;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
-import com.distrimind.bouncycastle.math.raw.Nat224;
-import com.distrimind.bouncycastle.util.encoders.Hex;
 import com.distrimind.bouncycastle.math.ec.AbstractECLookupTable;
 import com.distrimind.bouncycastle.math.ec.ECConstants;
 import com.distrimind.bouncycastle.math.ec.ECCurve;
 import com.distrimind.bouncycastle.math.ec.ECFieldElement;
 import com.distrimind.bouncycastle.math.ec.ECLookupTable;
 import com.distrimind.bouncycastle.math.ec.ECPoint;
+import com.distrimind.bouncycastle.math.raw.Nat224;
+import com.distrimind.bouncycastle.util.encoders.Hex;
 
 public class SecP224R1Curve extends ECCurve.AbstractFp
 {

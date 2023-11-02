@@ -14,6 +14,8 @@ import com.distrimind.bouncycastle.asn1.DERTaggedObject;
 import com.distrimind.bouncycastle.cert.X509AttributeCertificateHolder;
 import com.distrimind.bouncycastle.cert.X509CRLHolder;
 import com.distrimind.bouncycastle.cert.X509CertificateHolder;
+import com.distrimind.bouncycastle.operator.DefaultDigestAlgorithmIdentifierFinder;
+import com.distrimind.bouncycastle.operator.DigestAlgorithmIdentifierFinder;
 import com.distrimind.bouncycastle.asn1.cms.CMSObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.cms.OtherRevocationInfoFormat;
 import com.distrimind.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
@@ -24,8 +26,6 @@ import com.distrimind.bouncycastle.asn1.rosstandart.RosstandartObjectIdentifiers
 import com.distrimind.bouncycastle.asn1.teletrust.TeleTrusTObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.asn1.x9.X9ObjectIdentifiers;
-import com.distrimind.bouncycastle.operator.DefaultDigestAlgorithmIdentifierFinder;
-import com.distrimind.bouncycastle.operator.DigestAlgorithmIdentifierFinder;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Store;
 

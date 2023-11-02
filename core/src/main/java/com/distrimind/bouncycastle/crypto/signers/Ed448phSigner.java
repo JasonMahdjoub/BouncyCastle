@@ -1,12 +1,12 @@
 package com.distrimind.bouncycastle.crypto.signers;
 
+import com.distrimind.bouncycastle.math.ec.rfc8032.Ed448;
 import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
 import com.distrimind.bouncycastle.crypto.Signer;
 import com.distrimind.bouncycastle.crypto.Xof;
 import com.distrimind.bouncycastle.crypto.params.Ed448PrivateKeyParameters;
 import com.distrimind.bouncycastle.crypto.params.Ed448PublicKeyParameters;
-import com.distrimind.bouncycastle.math.ec.rfc8032.Ed448;
 import com.distrimind.bouncycastle.util.Arrays;
 
 public class Ed448phSigner

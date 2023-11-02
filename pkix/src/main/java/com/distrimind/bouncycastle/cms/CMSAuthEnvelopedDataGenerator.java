@@ -14,14 +14,14 @@ import com.distrimind.bouncycastle.asn1.BEROctetString;
 import com.distrimind.bouncycastle.asn1.DEROctetString;
 import com.distrimind.bouncycastle.asn1.DERSet;
 import com.distrimind.bouncycastle.asn1.DLSet;
+import com.distrimind.bouncycastle.operator.GenericKey;
+import com.distrimind.bouncycastle.operator.OutputAEADEncryptor;
 import com.distrimind.bouncycastle.asn1.cms.AttributeTable;
 import com.distrimind.bouncycastle.asn1.cms.AuthEnvelopedData;
 import com.distrimind.bouncycastle.asn1.cms.CMSObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.cms.ContentInfo;
 import com.distrimind.bouncycastle.asn1.cms.EncryptedContentInfo;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import com.distrimind.bouncycastle.operator.GenericKey;
-import com.distrimind.bouncycastle.operator.OutputAEADEncryptor;
 
 public class CMSAuthEnvelopedDataGenerator
     extends CMSAuthEnvelopedGenerator

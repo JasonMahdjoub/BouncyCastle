@@ -5,12 +5,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import com.distrimind.bouncycastle.bcpg.InputStreamPacket;
-import com.distrimind.bouncycastle.bcpg.SymmetricEncIntegrityPacket;
-import com.distrimind.bouncycastle.bcpg.SymmetricKeyAlgorithmTags;
 import com.distrimind.bouncycastle.openpgp.operator.PGPDataDecryptor;
 import com.distrimind.bouncycastle.openpgp.operator.PGPDataDecryptorFactory;
 import com.distrimind.bouncycastle.openpgp.operator.PGPDigestCalculator;
+import com.distrimind.bouncycastle.bcpg.InputStreamPacket;
+import com.distrimind.bouncycastle.bcpg.SymmetricEncIntegrityPacket;
+import com.distrimind.bouncycastle.bcpg.SymmetricKeyAlgorithmTags;
 import com.distrimind.bouncycastle.util.Arrays;
 
 /**

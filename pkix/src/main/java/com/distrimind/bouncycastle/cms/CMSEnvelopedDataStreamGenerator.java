@@ -14,13 +14,13 @@ import com.distrimind.bouncycastle.asn1.BERSet;
 import com.distrimind.bouncycastle.asn1.DERSet;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
 import com.distrimind.bouncycastle.asn1.DLSet;
+import com.distrimind.bouncycastle.operator.GenericKey;
+import com.distrimind.bouncycastle.operator.OutputAEADEncryptor;
+import com.distrimind.bouncycastle.operator.OutputEncryptor;
 import com.distrimind.bouncycastle.asn1.cms.AttributeTable;
 import com.distrimind.bouncycastle.asn1.cms.CMSObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.cms.EnvelopedData;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import com.distrimind.bouncycastle.operator.GenericKey;
-import com.distrimind.bouncycastle.operator.OutputAEADEncryptor;
-import com.distrimind.bouncycastle.operator.OutputEncryptor;
 
 /**
  * General class for generating a CMS enveloped-data message stream.
@@ -87,7 +87,7 @@ public class CMSEnvelopedDataStreamGenerator
     private OutputStream doOpen(
         ASN1ObjectIdentifier dataType,
         OutputStream         out,
-        OutputEncryptor      encryptor)
+        OutputEncryptor encryptor)
         throws IOException, CMSException
     {
         ASN1EncodableVector recipientInfos = new ASN1EncodableVector();

@@ -10,13 +10,13 @@ import java.security.SecureRandom;
 import java.security.Security;
 import java.util.Date;
 
-import com.distrimind.bouncycastle.bcpg.ArmoredOutputStream;
-import com.distrimind.bouncycastle.bcpg.CompressionAlgorithmTags;
 import com.distrimind.bouncycastle.openpgp.operator.jcajce.JcaPGPDigestCalculatorProviderBuilder;
 import com.distrimind.bouncycastle.openpgp.operator.jcajce.JcePBEDataDecryptorFactoryBuilder;
 import com.distrimind.bouncycastle.openpgp.operator.jcajce.JcePBEKeyEncryptionMethodGenerator;
 import com.distrimind.bouncycastle.openpgp.operator.jcajce.JcePGPDataEncryptorBuilder;
 import com.distrimind.bouncycastle.util.encoders.Hex;
+import com.distrimind.bouncycastle.bcpg.ArmoredOutputStream;
+import com.distrimind.bouncycastle.bcpg.CompressionAlgorithmTags;
 import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
 import com.distrimind.bouncycastle.openpgp.PGPCompressedData;
 import com.distrimind.bouncycastle.openpgp.PGPCompressedDataGenerator;
@@ -140,7 +140,10 @@ public class ByteArrayHandler
             out = new ArmoredOutputStream(out);
         }
 
-        PGPEncryptedDataGenerator encGen = new PGPEncryptedDataGenerator(new JcePGPDataEncryptorBuilder(algorithm).setSecureRandom(new SecureRandom()).setProvider("BC"));
+        JcePGPDataEncryptorBuilder encryptorBuilder = new JcePGPDataEncryptorBuilder(algorithm)
+            .setSecureRandom(new SecureRandom()).setProvider("BC");
+
+        PGPEncryptedDataGenerator encGen = new PGPEncryptedDataGenerator(encryptorBuilder);
         encGen.addMethod(new JcePBEKeyEncryptionMethodGenerator(passPhrase).setProvider("BC"));
 
         OutputStream encOut = encGen.open(out, compressedData.length);

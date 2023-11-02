@@ -14,9 +14,9 @@ import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
 import com.distrimind.bouncycastle.asn1.pkcs.SafeBag;
 import com.distrimind.bouncycastle.asn1.x509.Certificate;
 import com.distrimind.bouncycastle.asn1.x509.CertificateList;
+import com.distrimind.bouncycastle.operator.OutputEncryptor;
 import com.distrimind.bouncycastle.cert.X509CRLHolder;
 import com.distrimind.bouncycastle.cert.X509CertificateHolder;
-import com.distrimind.bouncycastle.operator.OutputEncryptor;
 
 public class PKCS12SafeBagBuilder
 {

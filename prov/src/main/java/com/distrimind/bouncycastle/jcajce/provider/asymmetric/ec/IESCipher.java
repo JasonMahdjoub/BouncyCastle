@@ -42,13 +42,12 @@ import com.distrimind.bouncycastle.crypto.params.ParametersWithIV;
 import com.distrimind.bouncycastle.crypto.parsers.ECIESPublicKeyParser;
 import com.distrimind.bouncycastle.crypto.util.DigestFactory;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.BaseCipherSpi;
-import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.ECUtil;
+import com.distrimind.bouncycastle.jce.spec.IESParameterSpec;
 import com.distrimind.bouncycastle.jcajce.provider.util.BadBlockException;
 import com.distrimind.bouncycastle.jcajce.util.BCJcaJceHelper;
 import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
 import com.distrimind.bouncycastle.jce.interfaces.ECKey;
 import com.distrimind.bouncycastle.jce.interfaces.IESKey;
-import com.distrimind.bouncycastle.jce.spec.IESParameterSpec;
 import com.distrimind.bouncycastle.math.ec.ECCurve;
 import com.distrimind.bouncycastle.util.Strings;
 
@@ -315,7 +314,7 @@ public class IESCipher
                 IESKey ieKey = (IESKey)key;
 
                 this.key = ECUtils.generatePublicKeyParameter(ieKey.getPublic());
-                this.otherKeyParameter = ECUtil.generatePrivateKeyParameter(ieKey.getPrivate());
+                this.otherKeyParameter = ECUtils.generatePrivateKeyParameter(ieKey.getPrivate());
             }
             else
             {
@@ -326,14 +325,14 @@ public class IESCipher
         {
             if (key instanceof PrivateKey)
             {
-                this.key = ECUtil.generatePrivateKeyParameter((PrivateKey)key);
+                this.key = ECUtils.generatePrivateKeyParameter((PrivateKey)key);
             }
             else if (key instanceof IESKey)
             {
                 IESKey ieKey = (IESKey)key;
 
                 this.otherKeyParameter = ECUtils.generatePublicKeyParameter(ieKey.getPublic());
-                this.key = ECUtil.generatePrivateKeyParameter(ieKey.getPrivate());
+                this.key = ECUtils.generatePrivateKeyParameter(ieKey.getPrivate());
             }
             else
             {
@@ -576,7 +575,7 @@ public class IESCipher
     {
         public ECIESwithDESedeCBC()
         {
-            super(new CBCBlockCipher(new DESedeEngine()), 8);
+            super(CBCBlockCipher.newInstance(new DESedeEngine()), 8);
         }
     }
 
@@ -585,7 +584,7 @@ public class IESCipher
     {
         public ECIESwithSHA256andDESedeCBC()
         {
-            super(new CBCBlockCipher(new DESedeEngine()), 8, DigestFactory.createSHA256(), DigestFactory.createSHA256());
+            super(CBCBlockCipher.newInstance(new DESedeEngine()), 8, DigestFactory.createSHA256(), DigestFactory.createSHA256());
         }
     }
 
@@ -594,7 +593,7 @@ public class IESCipher
     {
         public ECIESwithSHA384andDESedeCBC()
         {
-            super(new CBCBlockCipher(new DESedeEngine()), 8, DigestFactory.createSHA384(), DigestFactory.createSHA384());
+            super(CBCBlockCipher.newInstance(new DESedeEngine()), 8, DigestFactory.createSHA384(), DigestFactory.createSHA384());
         }
     }
 
@@ -603,7 +602,7 @@ public class IESCipher
     {
         public ECIESwithSHA512andDESedeCBC()
         {
-            super(new CBCBlockCipher(new DESedeEngine()), 8, DigestFactory.createSHA512(), DigestFactory.createSHA512());
+            super(CBCBlockCipher.newInstance(new DESedeEngine()), 8, DigestFactory.createSHA512(), DigestFactory.createSHA512());
         }
     }
 
@@ -612,7 +611,7 @@ public class IESCipher
     {
         public ECIESwithAESCBC()
         {
-            super(new CBCBlockCipher(new AESEngine()), 16);
+            super(CBCBlockCipher.newInstance(AESEngine.newInstance()), 16);
         }
     }
 
@@ -621,7 +620,7 @@ public class IESCipher
     {
         public ECIESwithSHA256andAESCBC()
         {
-            super(new CBCBlockCipher(new AESEngine()), 16, DigestFactory.createSHA256(), DigestFactory.createSHA256());
+            super(CBCBlockCipher.newInstance(AESEngine.newInstance()), 16, DigestFactory.createSHA256(), DigestFactory.createSHA256());
         }
     }
 
@@ -630,7 +629,7 @@ public class IESCipher
     {
         public ECIESwithSHA384andAESCBC()
         {
-            super(new CBCBlockCipher(new AESEngine()), 16, DigestFactory.createSHA384(), DigestFactory.createSHA384());
+            super(CBCBlockCipher.newInstance(AESEngine.newInstance()), 16, DigestFactory.createSHA384(), DigestFactory.createSHA384());
         }
     }
 
@@ -639,7 +638,7 @@ public class IESCipher
     {
         public ECIESwithSHA512andAESCBC()
         {
-            super(new CBCBlockCipher(new AESEngine()), 16, DigestFactory.createSHA512(), DigestFactory.createSHA512());
+            super(CBCBlockCipher.newInstance(AESEngine.newInstance()), 16, DigestFactory.createSHA512(), DigestFactory.createSHA512());
         }
     }
 }

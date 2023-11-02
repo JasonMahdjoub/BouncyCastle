@@ -7,9 +7,9 @@ import java.util.Iterator;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-import com.distrimind.bouncycastle.crypto.ec.CustomNamedCurves;
 import com.distrimind.bouncycastle.asn1.x9.ECNamedCurveTable;
 import com.distrimind.bouncycastle.asn1.x9.X9ECParametersHolder;
+import com.distrimind.bouncycastle.crypto.ec.CustomNamedCurves;
 import com.distrimind.bouncycastle.math.ec.ECAlgorithms;
 import com.distrimind.bouncycastle.math.ec.ECCurve;
 import com.distrimind.bouncycastle.math.ec.ECFieldElement;

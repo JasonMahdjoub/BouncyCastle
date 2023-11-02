@@ -8,8 +8,6 @@ import java.net.URISyntaxException;
 
 import com.distrimind.bouncycastle.asn1.ASN1IA5String;
 import com.distrimind.bouncycastle.asn1.ASN1InputStream;
-import com.distrimind.bouncycastle.cms.CMSException;
-import com.distrimind.bouncycastle.tsp.TimeStampToken;
 import com.distrimind.bouncycastle.asn1.cms.AttributeTable;
 import com.distrimind.bouncycastle.asn1.cms.CMSObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.cms.ContentInfo;
@@ -17,9 +15,11 @@ import com.distrimind.bouncycastle.asn1.cms.Evidence;
 import com.distrimind.bouncycastle.asn1.cms.TimeStampAndCRL;
 import com.distrimind.bouncycastle.asn1.cms.TimeStampTokenEvidence;
 import com.distrimind.bouncycastle.asn1.cms.TimeStampedData;
+import com.distrimind.bouncycastle.cms.CMSException;
 import com.distrimind.bouncycastle.operator.DigestCalculator;
 import com.distrimind.bouncycastle.operator.DigestCalculatorProvider;
 import com.distrimind.bouncycastle.operator.OperatorCreationException;
+import com.distrimind.bouncycastle.tsp.TimeStampToken;
 
 public class CMSTimeStampedData
 {
@@ -92,7 +92,7 @@ public class CMSTimeStampedData
 
         newTimeStamps[timeStamps.length] = new TimeStampAndCRL(token.toCMSSignedData().toASN1Structure());
 
-        return new CMSTimeStampedData(new ContentInfo(CMSObjectIdentifiers.timestampedData, new TimeStampedData(timeStampedData.getDataUri(), timeStampedData.getMetaData(), timeStampedData.getContent(), new Evidence(new TimeStampTokenEvidence(newTimeStamps)))));
+        return new CMSTimeStampedData(new ContentInfo(CMSObjectIdentifiers.timestampedData, new TimeStampedData(timeStampedData.getDataUriIA5(), timeStampedData.getMetaData(), timeStampedData.getContent(), new Evidence(new TimeStampTokenEvidence(newTimeStamps)))));
     }
 
     public byte[] getContent()
@@ -108,7 +108,7 @@ public class CMSTimeStampedData
     public URI getDataUri()
         throws URISyntaxException
     {
-        ASN1IA5String dataURI = this.timeStampedData.getDataUri();
+        ASN1IA5String dataURI = this.timeStampedData.getDataUriIA5();
 
         if (dataURI != null)
         {

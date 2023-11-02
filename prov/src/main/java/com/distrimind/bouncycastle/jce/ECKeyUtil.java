@@ -21,8 +21,8 @@ import com.distrimind.bouncycastle.asn1.x9.X962Parameters;
 import com.distrimind.bouncycastle.asn1.x9.X9ECParameters;
 import com.distrimind.bouncycastle.asn1.x9.X9ECPoint;
 import com.distrimind.bouncycastle.asn1.x9.X9ObjectIdentifiers;
-import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.ECUtil;
+import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
 
 /**
  * Utility class to allow conversion of EC key parameters to explicit from named

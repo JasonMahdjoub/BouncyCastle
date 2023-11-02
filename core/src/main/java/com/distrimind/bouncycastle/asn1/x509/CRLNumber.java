@@ -2,10 +2,10 @@ package com.distrimind.bouncycastle.asn1.x509;
 
 import java.math.BigInteger;
 
-import com.distrimind.bouncycastle.util.BigIntegers;
 import com.distrimind.bouncycastle.asn1.ASN1Integer;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
+import com.distrimind.bouncycastle.util.BigIntegers;
 
 /**
  * The CRLNumber object.

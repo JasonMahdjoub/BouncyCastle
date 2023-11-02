@@ -6,6 +6,8 @@ import com.distrimind.bouncycastle.util.CollectionStore;
 import com.distrimind.bouncycastle.util.Selector;
 import com.distrimind.bouncycastle.x509.*;
 import com.distrimind.bouncycastle.x509.X509CollectionStoreParameters;
+import com.distrimind.bouncycastle.x509.X509StoreParameters;
+import com.distrimind.bouncycastle.x509.X509StoreSpi;
 
 /**
  * This class is a collection based Bouncy Castle

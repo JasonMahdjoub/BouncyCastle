@@ -6,10 +6,14 @@ import com.distrimind.bouncycastle.crypto.modes.AEADBlockCipher;
 import com.distrimind.bouncycastle.crypto.modes.CBCBlockCipher;
 import com.distrimind.bouncycastle.crypto.modes.CCMBlockCipher;
 import com.distrimind.bouncycastle.crypto.modes.GCMBlockCipher;
+import com.distrimind.bouncycastle.crypto.paddings.PKCS7Padding;
+import com.distrimind.bouncycastle.crypto.paddings.PaddedBufferedBlockCipher;
 import com.distrimind.bouncycastle.crypto.params.AEADParameters;
 import com.distrimind.bouncycastle.crypto.params.KeyParameter;
 import com.distrimind.bouncycastle.crypto.params.ParametersWithIV;
 import com.distrimind.bouncycastle.crypto.params.RC2Parameters;
+import com.distrimind.bouncycastle.internal.asn1.cms.CCMParameters;
+import com.distrimind.bouncycastle.internal.asn1.cms.GCMParameters;
 import com.distrimind.bouncycastle.asn1.ASN1Null;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.ASN1OctetString;
@@ -34,10 +38,6 @@ import com.distrimind.bouncycastle.crypto.engines.DESedeEngine;
 import com.distrimind.bouncycastle.crypto.engines.RC2Engine;
 import com.distrimind.bouncycastle.crypto.engines.RC4Engine;
 import com.distrimind.bouncycastle.crypto.io.CipherOutputStream;
-import com.distrimind.bouncycastle.crypto.paddings.PKCS7Padding;
-import com.distrimind.bouncycastle.crypto.paddings.PaddedBufferedBlockCipher;
-import com.distrimind.bouncycastle.internal.asn1.cms.CCMParameters;
-import com.distrimind.bouncycastle.internal.asn1.cms.GCMParameters;
 
 /**
  * Factory methods for creating Cipher objects and CipherOutputStreams.
@@ -177,13 +177,13 @@ public class CipherFactory
             || NISTObjectIdentifiers.id_aes192_GCM.equals(algorithm)
             || NISTObjectIdentifiers.id_aes256_GCM.equals(algorithm))
         {
-            return new GCMBlockCipher(new AESEngine());
+            return GCMBlockCipher.newInstance(AESEngine.newInstance());
         }
         if (NISTObjectIdentifiers.id_aes128_CCM.equals(algorithm)
             || NISTObjectIdentifiers.id_aes192_CCM.equals(algorithm)
             || NISTObjectIdentifiers.id_aes256_CCM.equals(algorithm))
         {
-            return new CCMBlockCipher(new AESEngine());
+            return CCMBlockCipher.newInstance(AESEngine.newInstance());
         }
         else
         {
@@ -200,23 +200,23 @@ public class CipherFactory
             || NISTObjectIdentifiers.id_aes192_CBC.equals(algorithm)
             || NISTObjectIdentifiers.id_aes256_CBC.equals(algorithm))
         {
-            cipher = new CBCBlockCipher(new AESEngine());
+            cipher = CBCBlockCipher.newInstance(AESEngine.newInstance());
         }
         else if (PKCSObjectIdentifiers.des_EDE3_CBC.equals(algorithm))
         {
-            cipher = new CBCBlockCipher(new DESedeEngine());
+            cipher = CBCBlockCipher.newInstance(new DESedeEngine());
         }
         else if (OIWObjectIdentifiers.desCBC.equals(algorithm))
         {
-            cipher = new CBCBlockCipher(new DESEngine());
+            cipher = CBCBlockCipher.newInstance(new DESEngine());
         }
         else if (PKCSObjectIdentifiers.RC2_CBC.equals(algorithm))
         {
-            cipher = new CBCBlockCipher(new RC2Engine());
+            cipher = CBCBlockCipher.newInstance(new RC2Engine());
         }
         else if (MiscObjectIdentifiers.cast5CBC.equals(algorithm))
         {
-            cipher = new CBCBlockCipher(new CAST5Engine());
+            cipher = CBCBlockCipher.newInstance(new CAST5Engine());
         }
         else
         {

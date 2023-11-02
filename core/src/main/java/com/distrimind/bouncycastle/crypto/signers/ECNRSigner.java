@@ -3,12 +3,12 @@ package com.distrimind.bouncycastle.crypto.signers;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
+import com.distrimind.bouncycastle.crypto.generators.ECKeyPairGenerator;
 import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
 import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
 import com.distrimind.bouncycastle.crypto.DSAExt;
 import com.distrimind.bouncycastle.crypto.DataLengthException;
-import com.distrimind.bouncycastle.crypto.generators.ECKeyPairGenerator;
 import com.distrimind.bouncycastle.crypto.params.ECKeyGenerationParameters;
 import com.distrimind.bouncycastle.crypto.params.ECKeyParameters;
 import com.distrimind.bouncycastle.crypto.params.ECPrivateKeyParameters;

@@ -6,11 +6,11 @@ import java.io.OutputStream;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
 import com.distrimind.bouncycastle.cert.X509CertificateHolder;
-import com.distrimind.bouncycastle.crypto.Signer;
-import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
 import com.distrimind.bouncycastle.operator.ContentVerifier;
 import com.distrimind.bouncycastle.operator.ContentVerifierProvider;
 import com.distrimind.bouncycastle.operator.OperatorCreationException;
+import com.distrimind.bouncycastle.crypto.Signer;
+import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
 
 public abstract class BcContentVerifierProviderBuilder
 {

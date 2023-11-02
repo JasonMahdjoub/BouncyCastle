@@ -12,9 +12,9 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.distrimind.bouncycastle.jcajce.PKIXExtendedParameters;
 import com.distrimind.bouncycastle.jcajce.util.BCJcaJceHelper;
 import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
-import com.distrimind.bouncycastle.jcajce.PKIXExtendedParameters;
 import com.distrimind.bouncycastle.util.Selector;
 import com.distrimind.bouncycastle.x509.ExtendedPKIXParameters;
 import com.distrimind.bouncycastle.x509.X509AttributeCertStoreSelector;

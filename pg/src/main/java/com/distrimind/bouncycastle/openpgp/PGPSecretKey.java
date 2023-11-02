@@ -15,6 +15,8 @@ import com.distrimind.bouncycastle.bcpg.BCPGObject;
 import com.distrimind.bouncycastle.bcpg.BCPGOutputStream;
 import com.distrimind.bouncycastle.bcpg.DSASecretBCPGKey;
 import com.distrimind.bouncycastle.bcpg.ECSecretBCPGKey;
+import com.distrimind.bouncycastle.bcpg.Ed25519SecretBCPGKey;
+import com.distrimind.bouncycastle.bcpg.Ed448SecretBCPGKey;
 import com.distrimind.bouncycastle.bcpg.EdSecretBCPGKey;
 import com.distrimind.bouncycastle.bcpg.ElGamalSecretBCPGKey;
 import com.distrimind.bouncycastle.bcpg.HashAlgorithmTags;
@@ -30,6 +32,8 @@ import com.distrimind.bouncycastle.bcpg.SymmetricKeyAlgorithmTags;
 import com.distrimind.bouncycastle.bcpg.TrustPacket;
 import com.distrimind.bouncycastle.bcpg.UserAttributePacket;
 import com.distrimind.bouncycastle.bcpg.UserIDPacket;
+import com.distrimind.bouncycastle.bcpg.X25519SecretBCPGKey;
+import com.distrimind.bouncycastle.bcpg.X448SecretBCPGKey;
 import com.distrimind.bouncycastle.openpgp.operator.KeyFingerPrintCalculator;
 import com.distrimind.bouncycastle.openpgp.operator.PBEProtectionRemoverFactory;
 import com.distrimind.bouncycastle.openpgp.operator.PBESecretKeyDecryptor;
@@ -666,6 +670,14 @@ public class PGPSecretKey
                 EdSecretBCPGKey edPriv = new EdSecretBCPGKey(in);
 
                 return new PGPPrivateKey(this.getKeyID(), pubPk, edPriv);
+            case PGPPublicKey.X25519:
+                return new PGPPrivateKey(this.getKeyID(), pubPk, new X25519SecretBCPGKey(in));
+            case PGPPublicKey.X448:
+                return new PGPPrivateKey(this.getKeyID(), pubPk, new X448SecretBCPGKey(in));
+            case PGPPublicKey.Ed25519:
+                return new PGPPrivateKey(this.getKeyID(), pubPk, new Ed25519SecretBCPGKey(in));
+            case PGPPublicKey.Ed448:
+                return new PGPPrivateKey(this.getKeyID(), pubPk, new Ed448SecretBCPGKey(in));
             default:
                 throw new PGPException("unknown public key algorithm encountered");
             }

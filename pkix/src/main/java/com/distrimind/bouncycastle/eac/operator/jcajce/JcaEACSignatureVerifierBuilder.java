@@ -15,11 +15,11 @@ import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
 import com.distrimind.bouncycastle.asn1.ASN1Integer;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.DERSequence;
-import com.distrimind.bouncycastle.asn1.eac.EACObjectIdentifiers;
 import com.distrimind.bouncycastle.eac.operator.EACSignatureVerifier;
 import com.distrimind.bouncycastle.operator.OperatorCreationException;
 import com.distrimind.bouncycastle.operator.OperatorStreamException;
 import com.distrimind.bouncycastle.operator.RuntimeOperatorException;
+import com.distrimind.bouncycastle.asn1.eac.EACObjectIdentifiers;
 
 public class JcaEACSignatureVerifierBuilder
 {

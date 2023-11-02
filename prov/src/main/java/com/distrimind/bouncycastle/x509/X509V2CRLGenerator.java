@@ -38,8 +38,8 @@ import com.distrimind.bouncycastle.asn1.x509.X509ExtensionsGenerator;
 import com.distrimind.bouncycastle.asn1.x509.X509Name;
 import com.distrimind.bouncycastle.jcajce.util.BCJcaJceHelper;
 import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
-import com.distrimind.bouncycastle.jce.provider.X509CRLObject;
 import com.distrimind.bouncycastle.jce.X509Principal;
+import com.distrimind.bouncycastle.jce.provider.X509CRLObject;
 
 /**
  * class to produce an X.509 Version 2 CRL.

@@ -3,12 +3,13 @@ package com.distrimind.bouncycastle.openpgp;
 import java.io.EOFException;
 import java.io.InputStream;
 
-import com.distrimind.bouncycastle.bcpg.InputStreamPacket;
-import com.distrimind.bouncycastle.bcpg.SymmetricEncIntegrityPacket;
+import com.distrimind.bouncycastle.bcpg.BCPGInputStream;
 import com.distrimind.bouncycastle.openpgp.operator.PGPDataDecryptor;
 import com.distrimind.bouncycastle.openpgp.operator.PGPDataDecryptorFactory;
 import com.distrimind.bouncycastle.bcpg.AEADEncDataPacket;
-import com.distrimind.bouncycastle.bcpg.BCPGInputStream;
+import com.distrimind.bouncycastle.bcpg.InputStreamPacket;
+import com.distrimind.bouncycastle.bcpg.SymmetricEncIntegrityPacket;
+import com.distrimind.bouncycastle.bcpg.UnsupportedPacketVersionException;
 import com.distrimind.bouncycastle.util.io.TeeInputStream;
 
 public class PGPSymmetricKeyEncryptedData
@@ -22,6 +23,7 @@ public class PGPSymmetricKeyEncryptedData
     protected InputStream createDecryptionStream(PGPDataDecryptorFactory dataDecryptorFactory, PGPSessionKey sessionKey)
         throws PGPException
     {
+        // OpenPGP v5
         if (encData instanceof AEADEncDataPacket)
         {
             AEADEncDataPacket aeadData = (AEADEncDataPacket)encData;
@@ -31,18 +33,41 @@ public class PGPSymmetricKeyEncryptedData
                 throw new PGPException("session key and AEAD algorithm mismatch");
             }
 
-            PGPDataDecryptor dataDecryptor = dataDecryptorFactory.createDataDecryptor(aeadData.getAEADAlgorithm(), aeadData.getIV(), aeadData.getChunkSize(), sessionKey.getAlgorithm(), sessionKey.getKey());
-
+            PGPDataDecryptor dataDecryptor = dataDecryptorFactory.createDataDecryptor(
+                    aeadData, sessionKey);
             BCPGInputStream encIn = encData.getInputStream();
 
             return new BCPGInputStream(dataDecryptor.getInputStream(encIn));
         }
+        else if (encData instanceof SymmetricEncIntegrityPacket)
+        {
+            SymmetricEncIntegrityPacket seipd = (SymmetricEncIntegrityPacket) encData;
+
+            // OpenPGP v4 (SEIPD v1 with integrity protection)
+            if (seipd.getVersion() == SymmetricEncIntegrityPacket.VERSION_1)
+            {
+                PGPDataDecryptor dataDecryptor = dataDecryptorFactory.createDataDecryptor(true, sessionKey.getAlgorithm(), sessionKey.getKey());
+                return getDataStream(true, dataDecryptor);
+            }
+
+            // OpenPGP v6 (AEAD with SEIPD v2)
+            else if (seipd.getVersion() == SymmetricEncIntegrityPacket.VERSION_2)
+            {
+                PGPDataDecryptor dataDecryptor = dataDecryptorFactory.createDataDecryptor(seipd, sessionKey);
+                return new BCPGInputStream(dataDecryptor.getInputStream(encData.getInputStream()));
+            }
+
+            // Unsupported
+            else
+            {
+                throw new UnsupportedPacketVersionException("Unsupported SEIPD packet version: " + seipd.getVersion());
+            }
+        }
+        // OpenPGP v3,v4 (SED without integrity protection)
         else
         {
-            boolean withIntegrityPacket = encData instanceof SymmetricEncIntegrityPacket;
-            PGPDataDecryptor dataDecryptor = dataDecryptorFactory.createDataDecryptor(withIntegrityPacket, sessionKey.getAlgorithm(), sessionKey.getKey());
-
-            return getDataStream(withIntegrityPacket, dataDecryptor);
+            PGPDataDecryptor dataDecryptor = dataDecryptorFactory.createDataDecryptor(false, sessionKey.getAlgorithm(), sessionKey.getKey());
+            return getDataStream(false, dataDecryptor);
         }
     }
 

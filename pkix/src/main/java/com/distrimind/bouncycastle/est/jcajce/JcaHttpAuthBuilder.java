@@ -4,8 +4,8 @@ import java.security.Provider;
 import java.security.SecureRandom;
 
 import com.distrimind.bouncycastle.est.HttpAuth;
-import com.distrimind.bouncycastle.operator.jcajce.JcaDigestCalculatorProviderBuilder;
 import com.distrimind.bouncycastle.operator.OperatorCreationException;
+import com.distrimind.bouncycastle.operator.jcajce.JcaDigestCalculatorProviderBuilder;
 
 /**
  * Builder for HttpAuth operator that handles digest auth using a JCA provider.

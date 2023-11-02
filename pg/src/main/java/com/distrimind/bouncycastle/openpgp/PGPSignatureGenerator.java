@@ -7,13 +7,13 @@ import java.math.BigInteger;
 import java.util.Date;
 
 import com.distrimind.bouncycastle.bcpg.OnePassSignaturePacket;
-import com.distrimind.bouncycastle.bcpg.PublicKeyAlgorithmTags;
-import com.distrimind.bouncycastle.bcpg.SignaturePacket;
 import com.distrimind.bouncycastle.bcpg.sig.IssuerKeyID;
 import com.distrimind.bouncycastle.bcpg.sig.SignatureCreationTime;
 import com.distrimind.bouncycastle.openpgp.operator.PGPContentSigner;
 import com.distrimind.bouncycastle.openpgp.operator.PGPContentSignerBuilder;
 import com.distrimind.bouncycastle.bcpg.MPInteger;
+import com.distrimind.bouncycastle.bcpg.PublicKeyAlgorithmTags;
+import com.distrimind.bouncycastle.bcpg.SignaturePacket;
 import com.distrimind.bouncycastle.bcpg.SignatureSubpacket;
 import com.distrimind.bouncycastle.bcpg.SignatureSubpacketTags;
 import com.distrimind.bouncycastle.bcpg.UserAttributeSubpacket;

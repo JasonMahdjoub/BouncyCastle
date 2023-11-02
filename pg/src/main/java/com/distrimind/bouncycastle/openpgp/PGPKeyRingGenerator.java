@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import com.distrimind.bouncycastle.bcpg.PublicSubkeyPacket;
 import com.distrimind.bouncycastle.openpgp.operator.PBESecretKeyDecryptor;
 import com.distrimind.bouncycastle.openpgp.operator.PBESecretKeyEncryptor;
 import com.distrimind.bouncycastle.openpgp.operator.PGPContentSignerBuilder;
 import com.distrimind.bouncycastle.openpgp.operator.PGPDigestCalculator;
-import com.distrimind.bouncycastle.bcpg.PublicSubkeyPacket;
 import com.distrimind.bouncycastle.bcpg.SignatureSubpacket;
 import com.distrimind.bouncycastle.bcpg.SignatureSubpacketTags;
 

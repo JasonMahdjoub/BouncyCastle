@@ -13,14 +13,14 @@ import com.distrimind.bouncycastle.asn1.ASN1Set;
 import com.distrimind.bouncycastle.asn1.ASN1SetParser;
 import com.distrimind.bouncycastle.asn1.BERTags;
 import com.distrimind.bouncycastle.asn1.DERSet;
+import com.distrimind.bouncycastle.operator.DigestCalculatorProvider;
+import com.distrimind.bouncycastle.operator.OperatorCreationException;
 import com.distrimind.bouncycastle.asn1.cms.AttributeTable;
 import com.distrimind.bouncycastle.asn1.cms.AuthenticatedDataParser;
 import com.distrimind.bouncycastle.asn1.cms.CMSAttributes;
 import com.distrimind.bouncycastle.asn1.cms.ContentInfoParser;
 import com.distrimind.bouncycastle.asn1.cms.OriginatorInfo;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import com.distrimind.bouncycastle.operator.DigestCalculatorProvider;
-import com.distrimind.bouncycastle.operator.OperatorCreationException;
 import com.distrimind.bouncycastle.util.Arrays;
 
 /**

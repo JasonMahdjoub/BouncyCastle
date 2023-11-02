@@ -1,7 +1,6 @@
 package com.distrimind.bouncycastle.jce.provider;
 
 import java.io.IOException;
-import java.math.BigInteger;
 import java.security.GeneralSecurityException;
 import java.security.PublicKey;
 import java.security.cert.CertPath;
@@ -52,6 +51,7 @@ import com.distrimind.bouncycastle.asn1.x509.GeneralSubtree;
 import com.distrimind.bouncycastle.asn1.x509.IssuingDistributionPoint;
 import com.distrimind.bouncycastle.asn1.x509.NameConstraints;
 import com.distrimind.bouncycastle.asn1.x509.PolicyInformation;
+import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.ClassUtil;
 import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
 import com.distrimind.bouncycastle.jce.exception.ExtCertPathValidatorException;
 import com.distrimind.bouncycastle.jcajce.PKIXCRLStore;
@@ -60,7 +60,6 @@ import com.distrimind.bouncycastle.jcajce.PKIXCertRevocationCheckerParameters;
 import com.distrimind.bouncycastle.jcajce.PKIXCertStoreSelector;
 import com.distrimind.bouncycastle.jcajce.PKIXExtendedBuilderParameters;
 import com.distrimind.bouncycastle.jcajce.PKIXExtendedParameters;
-import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.ClassUtil;
 import com.distrimind.bouncycastle.util.Arrays;
 
 class RFC3280CertPathUtilities
@@ -2095,18 +2094,12 @@ class RFC3280CertPathUtilities
             throw new ExtCertPathValidatorException("Basic constraints extension cannot be decoded.", e, certPath,
                 index);
         }
-        if (bc != null)
+        if (bc != null && bc.isCA())  // if there is a path len constraint and we're not a CA, ignore it! (yes, it happens).
         {
-            BigInteger _pathLengthConstraint = bc.getPathLenConstraint();
-
-            if (_pathLengthConstraint != null)
+            ASN1Integer pathLenConstraint = bc.getPathLenConstraintInteger();
+            if (pathLenConstraint != null)
             {
-                int _plc = _pathLengthConstraint.intValue();
-
-                if (_plc < maxPathLength)
-                {
-                    return _plc;
-                }
+                maxPathLength = Math.min(maxPathLength, pathLenConstraint.intPositiveValueExact());
             }
         }
         return maxPathLength;

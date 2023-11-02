@@ -4,6 +4,8 @@ import com.distrimind.bouncycastle.asn1.ASN1Choice;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
+import com.distrimind.bouncycastle.asn1.ASN1Util;
+import com.distrimind.bouncycastle.asn1.BERTags;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
 import com.distrimind.bouncycastle.asn1.crmf.EncryptedKey;
 import com.distrimind.bouncycastle.asn1.crmf.EncryptedValue;
@@ -23,17 +25,17 @@ public class CertOrEncCert
 
     private CertOrEncCert(ASN1TaggedObject tagged)
     {
-        if (tagged.getTagNo() == 0)
+        if (tagged.hasContextTag(0))
         {
-            certificate = CMPCertificate.getInstance(tagged.getObject());
+            certificate = CMPCertificate.getInstance(tagged.getExplicitBaseObject());
         }
-        else if (tagged.getTagNo() == 1)
+        else if (tagged.hasContextTag(1))
         {
-            encryptedCert = EncryptedKey.getInstance(tagged.getObject());
+            encryptedCert = EncryptedKey.getInstance(tagged.getExplicitBaseObject());
         }
         else
         {
-            throw new IllegalArgumentException("unknown tag: " + tagged.getTagNo());
+            throw new IllegalArgumentException("unknown tag: " + ASN1Util.getTagText(tagged));
         }
     }
 
@@ -47,24 +49,24 @@ public class CertOrEncCert
         this.certificate = certificate;
     }
 
-    public CertOrEncCert(EncryptedValue encryptedCert)
+    public CertOrEncCert(EncryptedValue encryptedValue)
     {
-        if (encryptedCert == null)
+        if (encryptedValue == null)
         {
             throw new IllegalArgumentException("'encryptedCert' cannot be null");
         }
 
-        this.encryptedCert = new EncryptedKey(encryptedCert);
+        this.encryptedCert = new EncryptedKey(encryptedValue);
     }
 
-    public CertOrEncCert(EncryptedKey encryptedCert)
+    public CertOrEncCert(EncryptedKey encryptedKey)
     {
-        if (encryptedCert == null)
+        if (encryptedKey == null)
         {
             throw new IllegalArgumentException("'encryptedCert' cannot be null");
         }
 
-        this.encryptedCert = encryptedCert;
+        this.encryptedCert = encryptedKey;
     }
 
     public static CertOrEncCert getInstance(Object o)
@@ -76,7 +78,7 @@ public class CertOrEncCert
 
         if (o instanceof ASN1TaggedObject)
         {
-            return new CertOrEncCert((ASN1TaggedObject)o);
+            return new CertOrEncCert(ASN1TaggedObject.getInstance(o, BERTags.CONTEXT_SPECIFIC));
         }
 
         return null;

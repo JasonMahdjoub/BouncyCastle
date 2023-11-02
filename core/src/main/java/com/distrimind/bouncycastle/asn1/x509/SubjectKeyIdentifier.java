@@ -1,11 +1,11 @@
 package com.distrimind.bouncycastle.asn1.x509;
 
-import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1OctetString;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
 import com.distrimind.bouncycastle.asn1.DEROctetString;
+import com.distrimind.bouncycastle.util.Arrays;
 
 /**
  * The SubjectKeyIdentifier object.

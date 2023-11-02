@@ -3,7 +3,6 @@ package com.distrimind.bouncycastle.asn1.sec;
 import java.math.BigInteger;
 import java.util.Enumeration;
 
-import com.distrimind.bouncycastle.util.BigIntegers;
 import com.distrimind.bouncycastle.asn1.ASN1BitString;
 import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
@@ -17,6 +16,7 @@ import com.distrimind.bouncycastle.asn1.BERTags;
 import com.distrimind.bouncycastle.asn1.DEROctetString;
 import com.distrimind.bouncycastle.asn1.DERSequence;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
+import com.distrimind.bouncycastle.util.BigIntegers;
 
 /**
  * the elliptic curve private key object from SEC 1

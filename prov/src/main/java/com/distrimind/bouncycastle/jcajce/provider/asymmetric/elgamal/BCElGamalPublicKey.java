@@ -16,9 +16,9 @@ import com.distrimind.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
 import com.distrimind.bouncycastle.crypto.params.ElGamalPublicKeyParameters;
-import com.distrimind.bouncycastle.jce.interfaces.ElGamalPublicKey;
 import com.distrimind.bouncycastle.jce.spec.ElGamalParameterSpec;
 import com.distrimind.bouncycastle.jce.spec.ElGamalPublicKeySpec;
+import com.distrimind.bouncycastle.jce.interfaces.ElGamalPublicKey;
 
 public class BCElGamalPublicKey
     implements ElGamalPublicKey, DHPublicKey

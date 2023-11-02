@@ -1,9 +1,14 @@
 package com.distrimind.bouncycastle.pqc.asn1;
 
-import com.distrimind.bouncycastle.asn1.*;
+import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
+import com.distrimind.bouncycastle.asn1.ASN1Integer;
+import com.distrimind.bouncycastle.asn1.ASN1Object;
+import com.distrimind.bouncycastle.asn1.ASN1OctetString;
+import com.distrimind.bouncycastle.asn1.ASN1Primitive;
+import com.distrimind.bouncycastle.asn1.ASN1Sequence;
+import com.distrimind.bouncycastle.asn1.DEROctetString;
+import com.distrimind.bouncycastle.asn1.DERSequence;
 import com.distrimind.bouncycastle.util.Arrays;
-import com.distrimind.bouncycastle.util.BigIntegers;
-import com.distrimind.bouncycastle.asn1.*;
 
 /**
  * See https://datatracker.ietf.org/doc/draft-uni-qsckeys-sphincsplus/00/ for details
@@ -60,18 +65,21 @@ public class SPHINCSPLUSPrivateKey
         this.PublicKey = publicKey;
     }
 
+    /**
+     * @deprecated use getInstance()
+     */
     public SPHINCSPLUSPrivateKey(ASN1Sequence seq)
     {
-        version = BigIntegers.intValueExact(ASN1Integer.getInstance(seq.getObjectAt(0)).getValue());
+        version = ASN1Integer.getInstance(seq.getObjectAt(0)).intValueExact();
         if (version != 0)
         {
             throw new IllegalArgumentException("unrecognized version");
         }
+
         skseed = Arrays.clone(ASN1OctetString.getInstance(seq.getObjectAt(1)).getOctets());
 
         skprf = Arrays.clone(ASN1OctetString.getInstance(seq.getObjectAt(2)).getOctets());
 
-        // todo optional publickey
         if(seq.size() == 4)
         {
             PublicKey = SPHINCSPLUSPublicKey.getInstance(seq.getObjectAt(3));

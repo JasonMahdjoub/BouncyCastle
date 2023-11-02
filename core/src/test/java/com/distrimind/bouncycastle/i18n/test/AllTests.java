@@ -1,12 +1,12 @@
 
 package com.distrimind.bouncycastle.i18n.test;
 
+import com.distrimind.bouncycastle.i18n.filter.test.HTMLFilterTest;
+import com.distrimind.bouncycastle.i18n.filter.test.SQLFilterTest;
 import junit.extensions.TestSetup;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import com.distrimind.bouncycastle.i18n.filter.test.HTMLFilterTest;
-import com.distrimind.bouncycastle.i18n.filter.test.SQLFilterTest;
 import com.distrimind.bouncycastle.test.PrintTestResult;
 
 public class AllTests extends TestCase

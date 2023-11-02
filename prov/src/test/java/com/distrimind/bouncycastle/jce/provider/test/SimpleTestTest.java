@@ -1,7 +1,10 @@
 package com.distrimind.bouncycastle.jce.provider.test;
 
+import java.security.Security;
+
 import com.distrimind.bouncycastle.util.test.Test;
 import junit.framework.TestCase;
+import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
 import com.distrimind.bouncycastle.util.test.SimpleTestResult;
 
 public class SimpleTestTest
@@ -9,6 +12,12 @@ public class SimpleTestTest
 {
     public void testJCE()
     {
+
+        if (Security.getProvider(BouncyCastleProvider.PROVIDER_NAME) == null)
+        {
+            Security.addProvider(new BouncyCastleProvider());
+        }
+
         Test[] tests = RegressionTest.tests;
 
         for (int i = 0; i != tests.length; i++)

@@ -17,7 +17,7 @@ class X509CRLInternal extends X509CRLImpl
     private final CRLException exception;
 
     X509CRLInternal(JcaJceHelper bcHelper, CertificateList c, String sigAlgName, byte[] sigAlgParams, boolean isIndirect,
-					byte[] encoding, CRLException exception)
+        byte[] encoding, CRLException exception)
     {
         super(bcHelper, c, sigAlgName, sigAlgParams, isIndirect);
 

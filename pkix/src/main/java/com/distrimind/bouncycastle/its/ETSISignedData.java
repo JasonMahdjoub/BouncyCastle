@@ -8,6 +8,7 @@ import java.io.OutputStream;
 import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.its.operator.ECDSAEncoder;
 import com.distrimind.bouncycastle.its.operator.ITSContentVerifierProvider;
+import com.distrimind.bouncycastle.operator.ContentVerifier;
 import com.distrimind.bouncycastle.oer.Element;
 import com.distrimind.bouncycastle.oer.OEREncoder;
 import com.distrimind.bouncycastle.oer.OERInputStream;
@@ -18,7 +19,6 @@ import com.distrimind.bouncycastle.oer.its.ieee1609dot2.SignedData;
 import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.Signature;
 import com.distrimind.bouncycastle.oer.its.template.etsi103097.EtsiTs103097Module;
 import com.distrimind.bouncycastle.oer.its.template.ieee1609dot2.IEEE1609dot2;
-import com.distrimind.bouncycastle.operator.ContentVerifier;
 
 public class ETSISignedData
 {

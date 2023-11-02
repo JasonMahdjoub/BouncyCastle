@@ -1,9 +1,9 @@
 package com.distrimind.bouncycastle.cms.bc;
 
+import com.distrimind.bouncycastle.asn1.cms.IssuerAndSerialNumber;
 import com.distrimind.bouncycastle.cert.X509CertificateHolder;
 import com.distrimind.bouncycastle.cms.KeyTransRecipientInfoGenerator;
 import com.distrimind.bouncycastle.operator.bc.BcAsymmetricKeyWrapper;
-import com.distrimind.bouncycastle.asn1.cms.IssuerAndSerialNumber;
 
 public abstract class BcKeyTransRecipientInfoGenerator
     extends KeyTransRecipientInfoGenerator

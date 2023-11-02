@@ -9,9 +9,13 @@ import java.util.Iterator;
 import java.util.List;
 
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.cryptlib.CryptlibObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.gnu.GNUObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.x9.ECNamedCurveTable;
 import com.distrimind.bouncycastle.asn1.x9.X9ECParametersHolder;
+import com.distrimind.bouncycastle.bcpg.PublicKeyPacket;
+import com.distrimind.bouncycastle.bcpg.PublicSubkeyPacket;
+import com.distrimind.bouncycastle.bcpg.TrustPacket;
 import com.distrimind.bouncycastle.openpgp.operator.KeyFingerPrintCalculator;
 import com.distrimind.bouncycastle.bcpg.BCPGKey;
 import com.distrimind.bouncycastle.bcpg.BCPGOutputStream;
@@ -19,11 +23,8 @@ import com.distrimind.bouncycastle.bcpg.DSAPublicBCPGKey;
 import com.distrimind.bouncycastle.bcpg.ECPublicBCPGKey;
 import com.distrimind.bouncycastle.bcpg.ElGamalPublicBCPGKey;
 import com.distrimind.bouncycastle.bcpg.PublicKeyAlgorithmTags;
-import com.distrimind.bouncycastle.bcpg.PublicKeyPacket;
-import com.distrimind.bouncycastle.bcpg.PublicSubkeyPacket;
 import com.distrimind.bouncycastle.bcpg.RSAPublicBCPGKey;
 import com.distrimind.bouncycastle.bcpg.SignatureSubpacketTags;
-import com.distrimind.bouncycastle.bcpg.TrustPacket;
 import com.distrimind.bouncycastle.bcpg.UserAttributePacket;
 import com.distrimind.bouncycastle.bcpg.UserDataPacket;
 import com.distrimind.bouncycastle.bcpg.UserIDPacket;
@@ -57,14 +58,14 @@ public class PGPPublicKey
 
         this.fingerprint = fingerPrintCalculator.calculateFingerprint(publicPk);
 
-        if (publicPk.getVersion() <= 3)
+        if (publicPk.getVersion() <= PublicKeyPacket.VERSION_3)
         {
             RSAPublicBCPGKey rK = (RSAPublicBCPGKey)key;
 
             this.keyID = rK.getModulus().longValue();
             this.keyStrength = rK.getModulus().bitLength();
         }
-        else
+        else if (publicPk.getVersion() == PublicKeyPacket.VERSION_4)
         {
             this.keyID = ((long)(fingerprint[fingerprint.length - 8] & 0xff) << 56)
                 | ((long)(fingerprint[fingerprint.length - 7] & 0xff) << 48)
@@ -74,7 +75,22 @@ public class PGPPublicKey
                 | ((long)(fingerprint[fingerprint.length - 3] & 0xff) << 16)
                 | ((long)(fingerprint[fingerprint.length - 2] & 0xff) << 8)
                 | ((fingerprint[fingerprint.length - 1] & 0xff));
+        }
+        else if (publicPk.getVersion() == PublicKeyPacket.VERSION_6)
+        {
+            this.keyID = ((long) (fingerprint[0] & 0xff) << 56)
+                    | ((long)(fingerprint[1] & 0xff) << 48)
+                    | ((long)(fingerprint[2] & 0xff) << 40)
+                    | ((long) (fingerprint[3] & 0xff) << 32)
+                    | ((long) (fingerprint[4] & 0xff) << 24)
+                    | ((long) (fingerprint[5] & 0xff) << 16)
+                    | ((long) (fingerprint[6] & 0xff) << 8)
+                    | ((long) (fingerprint[7] & 0xff));
+        }
 
+        // key strength
+        if (publicPk.getVersion() >= PublicKeyPacket.VERSION_4)
+        {
             if (key instanceof RSAPublicBCPGKey)
             {
                 this.keyStrength = ((RSAPublicBCPGKey)key).getModulus().bitLength();
@@ -255,7 +271,7 @@ public class PGPPublicKey
      */
     public int getValidDays()
     {
-        if (publicPk.getVersion() > 3)
+        if (publicPk.getVersion() > PublicKeyPacket.VERSION_3)
         {
             long delta = this.getValidSeconds() % (24 * 60 * 60);
             int days = (int)(this.getValidSeconds() / (24 * 60 * 60));
@@ -296,7 +312,7 @@ public class PGPPublicKey
      */
     public long getValidSeconds()
     {
-        if (publicPk.getVersion() > 3)
+        if (publicPk.getVersion() > PublicKeyPacket.VERSION_3)
         {
             if (this.isMasterKey())
             {

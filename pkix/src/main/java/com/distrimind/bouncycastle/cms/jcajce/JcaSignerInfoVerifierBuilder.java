@@ -9,13 +9,13 @@ import com.distrimind.bouncycastle.cert.X509CertificateHolder;
 import com.distrimind.bouncycastle.cms.CMSSignatureAlgorithmNameGenerator;
 import com.distrimind.bouncycastle.cms.DefaultCMSSignatureAlgorithmNameGenerator;
 import com.distrimind.bouncycastle.cms.SignerInformationVerifier;
-import com.distrimind.bouncycastle.operator.jcajce.JcaContentVerifierProviderBuilder;
-import com.distrimind.bouncycastle.operator.jcajce.JcaDigestCalculatorProviderBuilder;
 import com.distrimind.bouncycastle.operator.ContentVerifierProvider;
 import com.distrimind.bouncycastle.operator.DefaultSignatureAlgorithmIdentifierFinder;
 import com.distrimind.bouncycastle.operator.DigestCalculatorProvider;
 import com.distrimind.bouncycastle.operator.OperatorCreationException;
 import com.distrimind.bouncycastle.operator.SignatureAlgorithmIdentifierFinder;
+import com.distrimind.bouncycastle.operator.jcajce.JcaContentVerifierProviderBuilder;
+import com.distrimind.bouncycastle.operator.jcajce.JcaDigestCalculatorProviderBuilder;
 
 public class JcaSignerInfoVerifierBuilder
 {

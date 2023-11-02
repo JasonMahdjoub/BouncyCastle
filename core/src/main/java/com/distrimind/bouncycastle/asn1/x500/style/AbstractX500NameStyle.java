@@ -4,14 +4,14 @@ import java.io.IOException;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
-import com.distrimind.bouncycastle.asn1.x500.AttributeTypeAndValue;
-import com.distrimind.bouncycastle.asn1.x500.X500NameStyle;
 import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.ASN1ParsingException;
 import com.distrimind.bouncycastle.asn1.DERUTF8String;
+import com.distrimind.bouncycastle.asn1.x500.AttributeTypeAndValue;
 import com.distrimind.bouncycastle.asn1.x500.RDN;
 import com.distrimind.bouncycastle.asn1.x500.X500Name;
+import com.distrimind.bouncycastle.asn1.x500.X500NameStyle;
 
 /**
  * This class provides some default behavior and common implementation for a

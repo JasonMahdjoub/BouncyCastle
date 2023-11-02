@@ -31,18 +31,18 @@ import java.util.Set;
 
 import javax.security.auth.x500.X500Principal;
 
-import com.distrimind.bouncycastle.asn1.x509.Certificate;
+import com.distrimind.bouncycastle.asn1.x509.*;
 import com.distrimind.bouncycastle.asn1.ASN1BitString;
 import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1Encoding;
 import com.distrimind.bouncycastle.asn1.ASN1IA5String;
 import com.distrimind.bouncycastle.asn1.ASN1InputStream;
+import com.distrimind.bouncycastle.asn1.ASN1Integer;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.ASN1OctetString;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.ASN1String;
-import com.distrimind.bouncycastle.asn1.DERBitString;
 import com.distrimind.bouncycastle.asn1.DERNull;
 import com.distrimind.bouncycastle.asn1.DEROctetString;
 import com.distrimind.bouncycastle.asn1.misc.MiscObjectIdentifiers;
@@ -52,18 +52,14 @@ import com.distrimind.bouncycastle.asn1.misc.VerisignCzagExtension;
 import com.distrimind.bouncycastle.asn1.util.ASN1Dump;
 import com.distrimind.bouncycastle.asn1.x500.X500Name;
 import com.distrimind.bouncycastle.asn1.x500.style.RFC4519Style;
-import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import com.distrimind.bouncycastle.asn1.x509.BasicConstraints;
 import com.distrimind.bouncycastle.asn1.x509.Extension;
 import com.distrimind.bouncycastle.asn1.x509.Extensions;
 import com.distrimind.bouncycastle.asn1.x509.GeneralName;
-import com.distrimind.bouncycastle.asn1.x509.KeyUsage;
-import com.distrimind.bouncycastle.asn1.x509.TBSCertificate;
 import com.distrimind.bouncycastle.jcajce.CompositePublicKey;
+import com.distrimind.bouncycastle.jce.X509Principal;
 import com.distrimind.bouncycastle.jcajce.interfaces.BCX509Certificate;
 import com.distrimind.bouncycastle.jcajce.io.OutputStreamFactory;
 import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
-import com.distrimind.bouncycastle.jce.X509Principal;
 import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Exceptions;
@@ -299,29 +295,21 @@ abstract class X509CertificateImpl
             throw new CertificateParsingException("error processing extended key usage extension");
         }
     }
-    
+
     public int getBasicConstraints()
     {
-        if (basicConstraints != null)
+        if (basicConstraints == null || !basicConstraints.isCA())
         {
-            if (basicConstraints.isCA())
-            {
-                if (basicConstraints.getPathLenConstraint() == null)
-                {
-                    return Integer.MAX_VALUE;
-                }
-                else
-                {
-                    return basicConstraints.getPathLenConstraint().intValue();
-                }
-            }
-            else
-            {
-                return -1;
-            }
+            return -1;
         }
 
-        return -1;
+        ASN1Integer pathLenConstraint = basicConstraints.getPathLenConstraintInteger();
+        if (pathLenConstraint == null)
+        {
+            return Integer.MAX_VALUE;
+        }
+
+        return pathLenConstraint.intPositiveValueExact();
     }
 
     public Collection getSubjectAlternativeNames()
@@ -515,7 +503,7 @@ abstract class X509CertificateImpl
                         }
                         else if (oid.equals(MiscObjectIdentifiers.netscapeCertType))
                         {
-                            buf.append(new NetscapeCertType(DERBitString.getInstance(dIn.readObject()))).append(nl);
+                            buf.append(new NetscapeCertType(ASN1BitString.getInstance(dIn.readObject()))).append(nl);
                         }
                         else if (oid.equals(MiscObjectIdentifiers.netscapeRevocationURL))
                         {
@@ -635,7 +623,7 @@ abstract class X509CertificateImpl
         {
             List<PublicKey> pubKeys = ((CompositePublicKey)key).getPublicKeys();
             ASN1Sequence keySeq = ASN1Sequence.getInstance(c.getSignatureAlgorithm().getParameters());
-            ASN1Sequence sigSeq = ASN1Sequence.getInstance(DERBitString.getInstance(c.getSignature()).getBytes());
+            ASN1Sequence sigSeq = ASN1Sequence.getInstance(ASN1BitString.getInstance(c.getSignature()).getBytes());
 
             boolean success = false;
             for (int i = 0; i != pubKeys.size(); i++)
@@ -656,7 +644,7 @@ abstract class X509CertificateImpl
                     checkSignature(
                         (PublicKey)pubKeys.get(i), signature,
                         sigAlg.getParameters(),
-                        DERBitString.getInstance(sigSeq.getObjectAt(i)).getBytes());
+                        ASN1BitString.getInstance(sigSeq.getObjectAt(i)).getBytes());
                     success = true;
                 }
                 catch (SignatureException e)
@@ -678,7 +666,7 @@ abstract class X509CertificateImpl
         else if (X509SignatureUtil.isCompositeAlgorithm(c.getSignatureAlgorithm()))
         {
             ASN1Sequence keySeq = ASN1Sequence.getInstance(c.getSignatureAlgorithm().getParameters());
-            ASN1Sequence sigSeq = ASN1Sequence.getInstance(DERBitString.getInstance(c.getSignature()).getBytes());
+            ASN1Sequence sigSeq = ASN1Sequence.getInstance(ASN1BitString.getInstance(c.getSignature()).getBytes());
 
             boolean success = false;
             for (int i = 0; i != sigSeq.size(); i++)
@@ -695,7 +683,7 @@ abstract class X509CertificateImpl
                     checkSignature(
                         key, signature,
                         sigAlg.getParameters(),
-                        DERBitString.getInstance(sigSeq.getObjectAt(i)).getBytes());
+                        ASN1BitString.getInstance(sigSeq.getObjectAt(i)).getBytes());
 
                     success = true;
                 }

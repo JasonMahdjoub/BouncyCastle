@@ -1,8 +1,8 @@
 package com.distrimind.bouncycastle.pqc.asn1;
 
 import com.distrimind.bouncycastle.asn1.*;
-import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.asn1.*;
+import com.distrimind.bouncycastle.util.Arrays;
 
 /**
  * See https://datatracker.ietf.org/doc/draft-uni-qsckeys-sphincsplus/00/ for details.
@@ -27,6 +27,9 @@ public class SPHINCSPLUSPublicKey
         this.pkroot = pkroot;
     }
 
+    /**
+     * @deprecated use getInstance()
+     */
     public SPHINCSPLUSPublicKey(ASN1Sequence seq)
     {
         pkseed = Arrays.clone(ASN1OctetString.getInstance(seq.getObjectAt(0)).getOctets());

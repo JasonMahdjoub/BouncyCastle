@@ -6,18 +6,14 @@ import java.security.InvalidKeyException;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.KeyStore;
-import java.security.PrivateKey;
-import java.security.PublicKey;
 import java.security.Security;
 import java.security.SignatureException;
 import java.security.cert.Certificate;
 import java.security.cert.X509Certificate;
 import java.security.spec.ECGenParameterSpec;
-import java.util.Date;
 
 import com.distrimind.bouncycastle.asn1.ASN1InputStream;
 import com.distrimind.bouncycastle.asn1.x9.X9ECParameters;
-import com.distrimind.bouncycastle.jce.X509Principal;
 import com.distrimind.bouncycastle.jce.interfaces.ECPointEncoder;
 import com.distrimind.bouncycastle.jce.interfaces.ECPrivateKey;
 import com.distrimind.bouncycastle.jce.interfaces.ECPublicKey;
@@ -26,7 +22,6 @@ import com.distrimind.bouncycastle.jce.spec.ECParameterSpec;
 import com.distrimind.bouncycastle.math.ec.ECCurve;
 import com.distrimind.bouncycastle.util.encoders.Hex;
 import com.distrimind.bouncycastle.util.test.SimpleTest;
-import com.distrimind.bouncycastle.x509.X509V3CertificateGenerator;
 
 public class ECEncodingTest
     extends SimpleTest
@@ -67,7 +62,7 @@ public class ECEncodingTest
     private void testPointCompression() 
         throws Exception
     {
-        ECCurve curve = new ECCurve.F2m(m, k1, k2, k3, a, b);
+        ECCurve curve = new ECCurve.F2m(m, k1, k2, k3, a, b, null, null);
         curve.decodePoint(enc);
         
         int ks[] = new int[3];
@@ -211,7 +206,6 @@ public class ECEncodingTest
     private X509Certificate generateSelfSignedSoftECCert(KeyPair kp,
             boolean compress) throws Exception
     {
-        X509V3CertificateGenerator certGen = new X509V3CertificateGenerator();
         ECPrivateKey privECKey = (ECPrivateKey)kp.getPrivate();
         ECPublicKey pubECKey = (ECPublicKey)kp.getPublic();
         if (!compress)
@@ -219,15 +213,8 @@ public class ECEncodingTest
             ((ECPointEncoder)privECKey).setPointFormat("UNCOMPRESSED");
             ((ECPointEncoder)pubECKey).setPointFormat("UNCOMPRESSED");
         }
-        certGen.setSignatureAlgorithm("ECDSAwithSHA1");
-        certGen.setSerialNumber(BigInteger.valueOf(1));
-        certGen.setIssuerDN(new X509Principal("CN=Software emul (EC Cert)"));
-        certGen.setNotBefore(new Date(System.currentTimeMillis() - 50000));
-        certGen.setNotAfter(new Date(System.currentTimeMillis() + 50000000));
-        certGen.setSubjectDN(new X509Principal("CN=Software emul (EC Cert)"));
-        certGen.setPublicKey((PublicKey)pubECKey);
 
-        return certGen.generate((PrivateKey)privECKey);
+        return TestCertificateGen.createSelfSignedCert("CN=Software emul (EC Cert)", "SHA1withECDSA", kp);
     }
     
     public static void main(

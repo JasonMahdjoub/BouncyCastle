@@ -5,13 +5,13 @@ import java.io.OutputStream;
 
 import com.distrimind.bouncycastle.its.operator.ECDSAEncoder;
 import com.distrimind.bouncycastle.its.operator.ITSContentVerifierProvider;
+import com.distrimind.bouncycastle.operator.ContentVerifier;
 import com.distrimind.bouncycastle.oer.OEREncoder;
 import com.distrimind.bouncycastle.oer.its.ieee1609dot2.CertificateBase;
 import com.distrimind.bouncycastle.oer.its.ieee1609dot2.IssuerIdentifier;
 import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.PublicEncryptionKey;
 import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.Signature;
 import com.distrimind.bouncycastle.oer.its.template.ieee1609dot2.IEEE1609dot2;
-import com.distrimind.bouncycastle.operator.ContentVerifier;
 import com.distrimind.bouncycastle.util.Encodable;
 
 public class ITSCertificate

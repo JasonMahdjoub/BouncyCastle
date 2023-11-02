@@ -7,13 +7,13 @@ import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
 import com.distrimind.bouncycastle.asn1.ASN1Encoding;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.DERSequence;
-import com.distrimind.bouncycastle.cert.X509CertificateHolder;
 import com.distrimind.bouncycastle.asn1.cmp.CMPCertificate;
 import com.distrimind.bouncycastle.asn1.cmp.CMPObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.cmp.PKIBody;
 import com.distrimind.bouncycastle.asn1.cmp.PKIHeader;
 import com.distrimind.bouncycastle.asn1.cmp.PKIMessage;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.cert.X509CertificateHolder;
 import com.distrimind.bouncycastle.operator.ContentVerifier;
 import com.distrimind.bouncycastle.operator.ContentVerifierProvider;
 import com.distrimind.bouncycastle.operator.MacCalculator;
@@ -83,7 +83,7 @@ public class ProtectedPKIMessage
     }
 
     /**
-     * Determine whether the message is protected by a the CMP password based MAC. Use verify(PBEMacCalculatorProvider, char[])
+     * Determine whether the message is protected by a CMP password based MAC. Use verify(PBEMacCalculatorProvider, char[])
      * to verify the message if this method returns true.
      *
      * @return true if protection MAC PBE based, false otherwise.

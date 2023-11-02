@@ -5,7 +5,6 @@ import com.distrimind.bouncycastle.crypto.BlockCipher;
 import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.DataLengthException;
 import com.distrimind.bouncycastle.crypto.OutputLengthException;
-import com.distrimind.bouncycastle.crypto.SkippingStreamCipher;
 import com.distrimind.bouncycastle.crypto.StreamBlockCipher;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Pack;
@@ -16,7 +15,7 @@ import com.distrimind.bouncycastle.util.Pack;
  */
 public class SICBlockCipher
     extends StreamBlockCipher
-    implements SkippingStreamCipher
+    implements CTRModeCipher
 {
     private final BlockCipher     cipher;
     private final int             blockSize;
@@ -27,9 +26,20 @@ public class SICBlockCipher
     private int             byteCount;
 
     /**
+     * Return a new SIC/CTR mode cipher based on the passed in base cipher
+     *
+     * @param cipher the base cipher for the SIC/CTR mode.
+     */
+    public static CTRModeCipher newInstance(BlockCipher cipher)
+    {
+        return new SICBlockCipher(cipher);
+    }
+
+    /**
      * Basic constructor.
      *
      * @param c the block cipher to be used.
+     * @deprecated use newInstance() method.
      */
     public SICBlockCipher(BlockCipher c)
     {
@@ -112,7 +122,7 @@ public class SICBlockCipher
         {
             out[outOff + i] = (byte)(in[inOff + i] ^ counterOut[i]);
         }
-        incrementCounterChecked();
+        incrementCounter();
         return blockSize;
     }
 
@@ -131,8 +141,11 @@ public class SICBlockCipher
         for (int i = 0; i < len; ++i)
         {
             byte next;
+
             if (byteCount == 0)
             {
+                checkLastIncrement();
+
                 cipher.processBlock(counter, 0, counterOut, 0);
                 next = (byte)(in[inOff + i] ^ counterOut[byteCount++]);
             }
@@ -142,7 +155,7 @@ public class SICBlockCipher
                 if (byteCount == counter.length)
                 {
                     byteCount = 0;
-                    incrementCounterChecked();
+                    incrementCounter();
                 }
             }
             out[outOff + i] = next;
@@ -156,6 +169,8 @@ public class SICBlockCipher
     {
         if (byteCount == 0)
         {
+            checkLastIncrement();
+
             cipher.processBlock(counter, 0, counterOut, 0);
 
             return (byte)(counterOut[byteCount++] ^ in);
@@ -166,8 +181,7 @@ public class SICBlockCipher
         if (byteCount == counter.length)
         {
             byteCount = 0;
-
-            incrementCounterChecked();
+            incrementCounter();
         }
 
         return rv;
@@ -178,7 +192,7 @@ public class SICBlockCipher
         // if the IV is the same as the blocksize we assume the user knows what they are doing
         if (IV.length < blockSize)
         {
-            for (int i = 0; i != IV.length; i++)
+            for (int i = IV.length - 1; i >= 0; i--)
             {
                 if (counter[i] != IV[i])
                 {
@@ -188,7 +202,19 @@ public class SICBlockCipher
         }
     }
 
-    private void incrementCounterChecked()
+    private void checkLastIncrement()
+    {
+        // if the IV is the same as the blocksize we assume the user knows what they are doing
+        if (IV.length < blockSize)
+        {
+            if (counter[IV.length - 1] != IV[IV.length - 1])
+            {
+                throw new IllegalStateException("Counter in CTR/SIC mode out of range.");
+            }
+        }
+    }
+
+    private void incrementCounter()
     {
         int i = counter.length;
         while (--i >= 0)
@@ -196,15 +222,6 @@ public class SICBlockCipher
             if (++counter[i] != 0)
             {
                 break;
-            }
-        }
-
-        if (i < IV.length)
-        {
-            // if the IV is the same as the blocksize we assume the user knows what they are doing
-            if (IV.length < blockSize)
-            {
-                throw new IllegalStateException("Counter in CTR/SIC mode out of range.");
             }
         }
     }

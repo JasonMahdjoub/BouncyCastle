@@ -1,5 +1,6 @@
 package com.distrimind.bouncycastle.pqc.crypto.saber;
 
+import com.distrimind.bouncycastle.crypto.StreamCipher;
 import com.distrimind.bouncycastle.crypto.Xof;
 import com.distrimind.bouncycastle.crypto.digests.SHA256Digest;
 import com.distrimind.bouncycastle.crypto.digests.SHA3Digest;
@@ -53,24 +54,20 @@ abstract class Symmetric
             shakeDigest.update(in, 0, inLen);
             shakeDigest.doFinal(out, 0, outLen);
         }
-
-
     }
+    
     static class AesSymmetric
         extends Symmetric
     {
-
         private final SHA256Digest sha256Digest;
         private final SHA512Digest sha512Digest;
-
-        private final SICBlockCipher cipher;
-
+        private final StreamCipher cipher;
 
         AesSymmetric()
         {
             sha256Digest = new SHA256Digest();
             sha512Digest = new SHA512Digest();
-            this.cipher = new SICBlockCipher(new AESEngine());
+            this.cipher = SICBlockCipher.newInstance(AESEngine.newInstance());
         }
         @Override
         void hash_h(byte[] out, byte[] in, int outOffset)

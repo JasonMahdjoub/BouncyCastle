@@ -4,10 +4,10 @@ import java.security.SecureRandom;
 
 import com.distrimind.bouncycastle.crypto.Digest;
 import com.distrimind.bouncycastle.crypto.digests.SHA512Digest;
+import com.distrimind.bouncycastle.math.ec.rfc7748.X25519;
 import com.distrimind.bouncycastle.math.ec.rfc7748.X25519Field;
 import com.distrimind.bouncycastle.math.raw.Interleave;
 import com.distrimind.bouncycastle.math.raw.Nat256;
-import com.distrimind.bouncycastle.math.ec.rfc7748.X25519;
 
 /**
  * A low-level implementation of the Ed25519, Ed25519ctx, and Ed25519ph instantiations of the Edwards-Curve
@@ -667,16 +667,6 @@ public abstract class Ed25519
         F.copy(u, 0, points[0].z, 0);
     }
 
-//    private static boolean isNeutralElementVar(int[] x, int[] y)
-//    {
-//        return F.isZeroVar(x) && F.isOneVar(y);
-//    }
-
-    private static boolean isNeutralElementVar(int[] x, int[] y, int[] z)
-    {
-        return F.isZeroVar(x) && F.areEqualVar(y, z);
-    }
-
     private static void normalizeToAffine(PointAccum p, PointAffine r)
     {
         F.inv(p.z, r.y);
@@ -692,7 +682,7 @@ public abstract class Ed25519
         F.normalize(p.y);
         F.normalize(p.z);
 
-        return isNeutralElementVar(p.x, p.y, p.z);
+        return F.isZeroVar(p.x) && F.areEqualVar(p.y, p.z);
     }
 
     private static void pointAdd(PointExtended p, PointExtended q, PointExtended r, PointTemp t)

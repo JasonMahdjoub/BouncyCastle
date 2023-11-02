@@ -14,8 +14,8 @@ import com.distrimind.bouncycastle.pqc.crypto.sphincsplus.SPHINCSPlusKeyPairGene
 import com.distrimind.bouncycastle.pqc.crypto.sphincsplus.SPHINCSPlusParameters;
 import com.distrimind.bouncycastle.pqc.crypto.sphincsplus.SPHINCSPlusPrivateKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.sphincsplus.SPHINCSPlusPublicKeyParameters;
-import com.distrimind.bouncycastle.pqc.jcajce.spec.SPHINCSPlusParameterSpec;
 import com.distrimind.bouncycastle.pqc.jcajce.provider.util.SpecUtil;
+import com.distrimind.bouncycastle.pqc.jcajce.spec.SPHINCSPlusParameterSpec;
 import com.distrimind.bouncycastle.util.Strings;
 
 public class SPHINCSPlusKeyPairGeneratorSpi

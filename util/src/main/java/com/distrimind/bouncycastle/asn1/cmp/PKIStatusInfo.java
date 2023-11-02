@@ -9,7 +9,6 @@ import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
-import com.distrimind.bouncycastle.asn1.DERBitString;
 import com.distrimind.bouncycastle.asn1.DERSequence;
 
 /**
@@ -37,7 +36,7 @@ public class PKIStatusInfo
         if (seq.size() > 2)
         {
             this.statusString = PKIFreeText.getInstance(seq.getObjectAt(1));
-            this.failInfo = DERBitString.getInstance(seq.getObjectAt(2));
+            this.failInfo = ASN1BitString.getInstance(seq.getObjectAt(2));
         }
         else if (seq.size() > 1)
         {

@@ -1,7 +1,7 @@
 package com.distrimind.bouncycastle.math.ec.rfc8032;
 
-import com.distrimind.bouncycastle.math.raw.Nat256;
 import com.distrimind.bouncycastle.math.raw.Nat;
+import com.distrimind.bouncycastle.math.raw.Nat256;
 
 abstract class Scalar25519
 {

@@ -19,12 +19,12 @@ import java.util.Iterator;
 import java.util.List;
 
 import com.distrimind.bouncycastle.asn1.x509.Extension;
-import com.distrimind.bouncycastle.jcajce.util.BCJcaJceHelper;
-import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
 import com.distrimind.bouncycastle.jcajce.PKIXCertStore;
 import com.distrimind.bouncycastle.jcajce.PKIXExtendedBuilderParameters;
 import com.distrimind.bouncycastle.jcajce.PKIXExtendedParameters;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.x509.CertificateFactory;
+import com.distrimind.bouncycastle.jcajce.util.BCJcaJceHelper;
+import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
 import com.distrimind.bouncycastle.x509.ExtendedPKIXBuilderParameters;
 import com.distrimind.bouncycastle.x509.ExtendedPKIXParameters;
 

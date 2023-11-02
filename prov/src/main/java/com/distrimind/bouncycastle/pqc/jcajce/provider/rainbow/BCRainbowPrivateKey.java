@@ -11,8 +11,8 @@ import com.distrimind.bouncycastle.pqc.crypto.rainbow.RainbowPublicKeyParameters
 import com.distrimind.bouncycastle.pqc.crypto.util.PrivateKeyFactory;
 import com.distrimind.bouncycastle.pqc.jcajce.interfaces.RainbowPrivateKey;
 import com.distrimind.bouncycastle.pqc.jcajce.interfaces.RainbowPublicKey;
-import com.distrimind.bouncycastle.pqc.jcajce.spec.RainbowParameterSpec;
 import com.distrimind.bouncycastle.pqc.jcajce.provider.util.KeyUtil;
+import com.distrimind.bouncycastle.pqc.jcajce.spec.RainbowParameterSpec;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Strings;
 

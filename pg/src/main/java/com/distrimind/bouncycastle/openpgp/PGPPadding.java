@@ -2,9 +2,9 @@ package com.distrimind.bouncycastle.openpgp;
 
 import java.io.IOException;
 
-import com.distrimind.bouncycastle.bcpg.Packet;
-import com.distrimind.bouncycastle.bcpg.PaddingPacket;
 import com.distrimind.bouncycastle.bcpg.BCPGInputStream;
+import com.distrimind.bouncycastle.bcpg.PaddingPacket;
+import com.distrimind.bouncycastle.bcpg.Packet;
 
 /**
  * The PGPPadding contains random data, and can be used to defend against traffic analysis on version 2 SEIPD messages

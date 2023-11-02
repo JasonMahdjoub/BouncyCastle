@@ -7,7 +7,6 @@ import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
-import com.distrimind.bouncycastle.asn1.DERBitString;
 import com.distrimind.bouncycastle.asn1.DERSequence;
 
 /**
@@ -59,7 +58,7 @@ public class DHValidationParms extends ASN1Object
             throw new IllegalArgumentException("Bad sequence size: " + seq.size());
         }
 
-        this.seed = DERBitString.getInstance(seq.getObjectAt(0));
+        this.seed = ASN1BitString.getInstance(seq.getObjectAt(0));
         this.pgenCounter = ASN1Integer.getInstance(seq.getObjectAt(1));
     }
 

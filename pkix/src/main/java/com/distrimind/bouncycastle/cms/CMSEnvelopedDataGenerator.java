@@ -12,15 +12,15 @@ import com.distrimind.bouncycastle.asn1.ASN1Set;
 import com.distrimind.bouncycastle.asn1.BEROctetString;
 import com.distrimind.bouncycastle.asn1.BERSet;
 import com.distrimind.bouncycastle.asn1.DERSet;
+import com.distrimind.bouncycastle.operator.GenericKey;
+import com.distrimind.bouncycastle.operator.OutputAEADEncryptor;
+import com.distrimind.bouncycastle.operator.OutputEncryptor;
 import com.distrimind.bouncycastle.asn1.cms.AttributeTable;
 import com.distrimind.bouncycastle.asn1.cms.CMSObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.cms.ContentInfo;
 import com.distrimind.bouncycastle.asn1.cms.EncryptedContentInfo;
 import com.distrimind.bouncycastle.asn1.cms.EnvelopedData;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import com.distrimind.bouncycastle.operator.GenericKey;
-import com.distrimind.bouncycastle.operator.OutputAEADEncryptor;
-import com.distrimind.bouncycastle.operator.OutputEncryptor;
 
 /**
  * General class for generating a CMS enveloped-data message.

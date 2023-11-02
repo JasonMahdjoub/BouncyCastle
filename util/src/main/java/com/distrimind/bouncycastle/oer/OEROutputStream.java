@@ -9,6 +9,7 @@ import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.List;
 
+import com.distrimind.bouncycastle.asn1.ASN1BitString;
 import com.distrimind.bouncycastle.asn1.ASN1Boolean;
 import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1Enumerated;
@@ -21,7 +22,6 @@ import com.distrimind.bouncycastle.asn1.ASN1Set;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
 import com.distrimind.bouncycastle.asn1.ASN1UTF8String;
 import com.distrimind.bouncycastle.asn1.BERTags;
-import com.distrimind.bouncycastle.asn1.DERBitString;
 import com.distrimind.bouncycastle.util.BigIntegers;
 import com.distrimind.bouncycastle.util.Pack;
 import com.distrimind.bouncycastle.util.Strings;
@@ -581,8 +581,7 @@ public class OEROutputStream
         }
         case BIT_STRING:
         {
-
-            DERBitString bitString = DERBitString.getInstance(encodable);
+            ASN1BitString bitString = ASN1BitString.getInstance(encodable);
             byte[] bytes = bitString.getBytes();
             if (oerElement.isFixedLength())
             {

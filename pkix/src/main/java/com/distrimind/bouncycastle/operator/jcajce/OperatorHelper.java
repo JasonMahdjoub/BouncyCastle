@@ -38,11 +38,11 @@ import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
 import com.distrimind.bouncycastle.cert.X509CertificateHolder;
 import com.distrimind.bouncycastle.cms.CMSException;
+import com.distrimind.bouncycastle.operator.DefaultSignatureNameFinder;
+import com.distrimind.bouncycastle.operator.OperatorCreationException;
 import com.distrimind.bouncycastle.jcajce.util.AlgorithmParametersUtils;
 import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
 import com.distrimind.bouncycastle.jcajce.util.MessageDigestUtils;
-import com.distrimind.bouncycastle.operator.DefaultSignatureNameFinder;
-import com.distrimind.bouncycastle.operator.OperatorCreationException;
 import com.distrimind.bouncycastle.util.Integers;
 
 class OperatorHelper

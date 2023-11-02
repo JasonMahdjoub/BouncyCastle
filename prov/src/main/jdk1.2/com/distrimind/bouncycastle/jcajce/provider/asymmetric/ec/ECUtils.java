@@ -3,6 +3,7 @@ package com.distrimind.bouncycastle.jcajce.provider.asymmetric.ec;
 import java.math.BigInteger;
 import java.security.InvalidKeyException;
 import java.security.PublicKey;
+import java.security.PrivateKey;
 
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.DERNull;
@@ -18,6 +19,14 @@ import com.distrimind.bouncycastle.math.ec.ECPoint;
 
 class ECUtils
 {
+    static AsymmetricKeyParameter generatePrivateKeyParameter(
+                PrivateKey key)
+        throws InvalidKeyException
+    {
+        return (key instanceof BCECPrivateKey) ? ((BCECPrivateKey)key).engineGetKeyParameters() : ECUtil.generatePrivateKeyParameter(key);
+    }
+
+
     static AsymmetricKeyParameter generatePublicKeyParameter(
             PublicKey key)
         throws InvalidKeyException

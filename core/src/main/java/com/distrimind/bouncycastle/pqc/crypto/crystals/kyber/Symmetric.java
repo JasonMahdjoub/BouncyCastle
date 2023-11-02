@@ -1,6 +1,7 @@
 package com.distrimind.bouncycastle.pqc.crypto.crystals.kyber;
 
 import com.distrimind.bouncycastle.crypto.ExtendedDigest;
+import com.distrimind.bouncycastle.crypto.StreamCipher;
 import com.distrimind.bouncycastle.crypto.digests.SHA256Digest;
 import com.distrimind.bouncycastle.crypto.digests.SHA3Digest;
 import com.distrimind.bouncycastle.crypto.digests.SHA512Digest;
@@ -104,14 +105,14 @@ abstract class Symmetric
     {
         private final SHA256Digest sha256Digest;
         private final SHA512Digest sha512Digest;
-        private final SICBlockCipher cipher;
+        private final StreamCipher cipher;
 
         AesSymmetric()
         {
             super(64);
             this.sha256Digest = new SHA256Digest();
             this.sha512Digest = new SHA512Digest();
-            this.cipher = new SICBlockCipher(new AESEngine());
+            this.cipher = SICBlockCipher.newInstance(AESEngine.newInstance());
         }
 
         private void doDigest(ExtendedDigest digest, byte[] out, byte[] in, int outOffset)

@@ -20,9 +20,9 @@ import com.distrimind.bouncycastle.crypto.params.Ed448KeyGenerationParameters;
 import com.distrimind.bouncycastle.crypto.params.X25519KeyGenerationParameters;
 import com.distrimind.bouncycastle.crypto.params.X448KeyGenerationParameters;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.ECUtil;
+import com.distrimind.bouncycastle.jce.spec.ECNamedCurveGenParameterSpec;
 import com.distrimind.bouncycastle.jcajce.spec.EdDSAParameterSpec;
 import com.distrimind.bouncycastle.jcajce.spec.XDHParameterSpec;
-import com.distrimind.bouncycastle.jce.spec.ECNamedCurveGenParameterSpec;
 
 public class KeyPairGeneratorSpi
     extends java.security.KeyPairGeneratorSpi

@@ -7,6 +7,7 @@ import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1OctetString;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
+import com.distrimind.bouncycastle.asn1.BERTags;
 import com.distrimind.bouncycastle.asn1.DERNull;
 import com.distrimind.bouncycastle.asn1.DEROctetString;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
@@ -46,16 +47,16 @@ public class CertificateId
         switch (choice)
         {
         case linkageData:
-            certificateId = LinkageData.getInstance(asn1TaggedObject.getObject());
+            certificateId = LinkageData.getInstance(asn1TaggedObject.getExplicitBaseObject());
             break;
         case name:
-            certificateId = Hostname.getInstance(asn1TaggedObject.getObject());
+            certificateId = Hostname.getInstance(asn1TaggedObject.getExplicitBaseObject());
             break;
         case binaryId:
-            certificateId = DEROctetString.getInstance(asn1TaggedObject.getObject());
+            certificateId = DEROctetString.getInstance(asn1TaggedObject.getExplicitBaseObject());
             break;
         case none:
-            certificateId = ASN1Null.getInstance(asn1TaggedObject.getObject());
+            certificateId = ASN1Null.getInstance(asn1TaggedObject.getExplicitBaseObject());
             break;
 
         default:
@@ -97,7 +98,7 @@ public class CertificateId
 
         if (o != null)
         {
-            return new CertificateId(ASN1TaggedObject.getInstance(o));
+            return new CertificateId(ASN1TaggedObject.getInstance(o, BERTags.CONTEXT_SPECIFIC));
         }
 
         return null;

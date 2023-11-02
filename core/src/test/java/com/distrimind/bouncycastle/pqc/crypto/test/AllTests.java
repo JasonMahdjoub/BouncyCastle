@@ -1,10 +1,10 @@
 package com.distrimind.bouncycastle.pqc.crypto.test;
 
-import com.distrimind.bouncycastle.test.PrintTestResult;
 import junit.extensions.TestSetup;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import com.distrimind.bouncycastle.test.PrintTestResult;
 import com.distrimind.bouncycastle.util.test.SimpleTestResult;
 
 public class AllTests
@@ -34,7 +34,6 @@ public class AllTests
         suite.addTestSuite(CMCEVectorTest.class);
         suite.addTestSuite(FrodoVectorTest.class);
         suite.addTestSuite(SABERVectorTest.class);
-        suite.addTestSuite(SIKEVectorTest.class);
         suite.addTestSuite(NTRUTest.class);
         suite.addTestSuite(NTRUParametersTest.class);
         suite.addTestSuite(FalconTest.class);

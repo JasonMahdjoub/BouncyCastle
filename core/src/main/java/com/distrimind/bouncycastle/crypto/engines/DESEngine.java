@@ -1,11 +1,11 @@
 package com.distrimind.bouncycastle.crypto.engines;
 
+import com.distrimind.bouncycastle.crypto.constraints.DefaultServiceProperties;
 import com.distrimind.bouncycastle.crypto.BlockCipher;
 import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
 import com.distrimind.bouncycastle.crypto.DataLengthException;
 import com.distrimind.bouncycastle.crypto.OutputLengthException;
-import com.distrimind.bouncycastle.crypto.constraints.DefaultServiceProperties;
 import com.distrimind.bouncycastle.crypto.params.KeyParameter;
 import com.distrimind.bouncycastle.util.Pack;
 
@@ -43,7 +43,7 @@ public class DESEngine
     {
         if (params instanceof KeyParameter)
         {
-            if (((KeyParameter)params).getKey().length > 8)
+            if (((KeyParameter)params).getKeyLength() > 8)
             {
                 throw new IllegalArgumentException("DES key too long - should be 8 bytes");
             }

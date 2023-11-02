@@ -1,9 +1,9 @@
 package com.distrimind.bouncycastle.pqc.crypto.picnic;
 
-import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.util.Arrays;
-import com.distrimind.bouncycastle.util.Pack;
+import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.pqc.crypto.MessageSigner;
+import com.distrimind.bouncycastle.util.Pack;
 
 public class PicnicSigner
     implements MessageSigner

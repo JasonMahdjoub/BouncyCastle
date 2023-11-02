@@ -2,9 +2,9 @@ package com.distrimind.bouncycastle.crypto.test;
 
 import com.distrimind.bouncycastle.crypto.DataLengthException;
 import com.distrimind.bouncycastle.crypto.DerivationFunction;
-import com.distrimind.bouncycastle.crypto.digests.ShortenedDigest;
 import com.distrimind.bouncycastle.crypto.digests.SHA1Digest;
 import com.distrimind.bouncycastle.crypto.digests.SHA256Digest;
+import com.distrimind.bouncycastle.crypto.digests.ShortenedDigest;
 import com.distrimind.bouncycastle.crypto.generators.KDF1BytesGenerator;
 import com.distrimind.bouncycastle.crypto.params.ISO18033KDFParameters;
 import com.distrimind.bouncycastle.util.encoders.Hex;
@@ -46,9 +46,9 @@ public class KDF1GeneratorTest
     
     public void performTest()
     {
-        checkMask(1, new KDF1BytesGenerator(new ShortenedDigest(new SHA256Digest(), 20)), seed1, mask1);
+        checkMask(1, new KDF1BytesGenerator(new ShortenedDigest(SHA256Digest.newInstance(), 20)), seed1, mask1);
         checkMask(2, new KDF1BytesGenerator(new SHA1Digest()), seed2, mask2);
-        checkMask(3, new KDF1BytesGenerator(new ShortenedDigest(new SHA256Digest(), 20)), seed3, mask3);
+        checkMask(3, new KDF1BytesGenerator(new ShortenedDigest(SHA256Digest.newInstance(), 20)), seed3, mask3);
         
         try
         {

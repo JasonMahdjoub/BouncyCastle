@@ -2,16 +2,16 @@ package com.distrimind.bouncycastle.pqc.legacy.crypto.gmss;
 
 import java.security.SecureRandom;
 
-import com.distrimind.bouncycastle.crypto.CipherParameters;
-import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
-import com.distrimind.bouncycastle.crypto.Digest;
-import com.distrimind.bouncycastle.crypto.params.ParametersWithRandom;
 import com.distrimind.bouncycastle.pqc.legacy.crypto.gmss.util.GMSSRandom;
 import com.distrimind.bouncycastle.pqc.legacy.crypto.gmss.util.GMSSUtil;
 import com.distrimind.bouncycastle.pqc.legacy.crypto.gmss.util.WinternitzOTSVerify;
 import com.distrimind.bouncycastle.pqc.legacy.crypto.gmss.util.WinternitzOTSignature;
-import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.crypto.CipherParameters;
+import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
+import com.distrimind.bouncycastle.crypto.Digest;
+import com.distrimind.bouncycastle.crypto.params.ParametersWithRandom;
 import com.distrimind.bouncycastle.pqc.crypto.MessageSigner;
+import com.distrimind.bouncycastle.util.Arrays;
 
 /**
  * This class implements the GMSS signature scheme.

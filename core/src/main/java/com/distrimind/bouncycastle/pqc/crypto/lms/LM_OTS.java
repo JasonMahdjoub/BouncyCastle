@@ -12,7 +12,6 @@ class LM_OTS
     private static final int ITER_PREV = 23;
     private static final int ITER_J = 22;
     static final int SEED_RANDOMISER_INDEX = ~2;
-    static final int SEED_LEN = 32;
     static final int MAX_HASH = 32;
 
     static final short D_MESG = (short)0x8181;
@@ -54,12 +53,10 @@ class LM_OTS
 
     static byte[] lms_ots_generatePublicKey(LMOtsParameters parameter, byte[] I, int q, byte[] masterSecret)
     {
-
-
         //
         // Start hash that computes the final value.
         //
-        Digest publicContext = DigestUtil.getDigest(parameter.getDigestOID());
+        Digest publicContext = DigestUtil.getDigest(parameter);
         byte[] prehashPrefix = Composer.compose()
             .bytes(I)
             .u32str(q)
@@ -68,7 +65,7 @@ class LM_OTS
             .build();
         publicContext.update(prehashPrefix, 0, prehashPrefix.length);
 
-        Digest ctx = DigestUtil.getDigest(parameter.getDigestOID());
+        Digest ctx = DigestUtil.getDigest(parameter);
 
         byte[] buf = Composer.compose()
             .bytes(I)
@@ -77,7 +74,7 @@ class LM_OTS
             .build();
 
 
-        SeedDerive derive = new SeedDerive(I, masterSecret, DigestUtil.getDigest(parameter.getDigestOID()));
+        SeedDerive derive = new SeedDerive(I, masterSecret, DigestUtil.getDigest(parameter));
         derive.setQ(q);
         derive.setJ(0);
 
@@ -126,8 +123,10 @@ class LM_OTS
         }
         else
         {
-            C = new byte[SEED_LEN];
-            System.arraycopy(message, 0, Q, 0, privateKey.getParameter().getN());
+            int n = privateKey.getParameter().getN();
+            
+            C = new byte[n];
+            System.arraycopy(message, 0, Q, 0, n);
         }
 
         return lm_ots_generate_signature(privateKey, Q, C);
@@ -143,7 +142,7 @@ class LM_OTS
 
         byte[] sigComposer = new byte[p * n];
 
-        Digest ctx = DigestUtil.getDigest(parameter.getDigestOID());
+        Digest ctx = DigestUtil.getDigest(parameter);
 
         SeedDerive derive = privateKey.getDerivationFunction();
 
@@ -217,7 +216,7 @@ class LM_OTS
         byte[] I = publicKey.getI();
         int    q = publicKey.getQ();
 
-        Digest finalContext = DigestUtil.getDigest(parameter.getDigestOID());
+        Digest finalContext = DigestUtil.getDigest(parameter);
         LmsUtils.byteArray(I, finalContext);
         LmsUtils.u32str(q, finalContext);
         LmsUtils.u16str(D_PBLC, finalContext);
@@ -231,7 +230,7 @@ class LM_OTS
 
         byte[] y = signature.getY();
 
-        Digest ctx = DigestUtil.getDigest(parameter.getDigestOID());
+        Digest ctx = DigestUtil.getDigest(parameter);
         for (int i = 0; i < p; i++)
         {
             Pack.shortToBigEndian((short)i, tmp, ITER_K);

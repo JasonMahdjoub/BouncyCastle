@@ -67,7 +67,7 @@ public class DefaultSignedAttributeTableGenerator
         if (!std.containsKey(CMSAttributes.contentType))
         {
             ASN1ObjectIdentifier contentType = ASN1ObjectIdentifier.getInstance(
-                parameters.get(CMSAttributeTableGenerator.CONTENT_TYPE));
+                parameters.get(CONTENT_TYPE));
 
             // contentType will be null if we're trying to generate a counter signature.
             if (contentType != null)
@@ -89,7 +89,7 @@ public class DefaultSignedAttributeTableGenerator
         if (!std.containsKey(CMSAttributes.messageDigest))
         {
             byte[] messageDigest = (byte[])parameters.get(
-                CMSAttributeTableGenerator.DIGEST);
+					DIGEST);
             Attribute attr = new Attribute(CMSAttributes.messageDigest,
                 new DERSet(new DEROctetString(messageDigest)));
             std.put(attr.getAttrType(), attr);
@@ -98,8 +98,8 @@ public class DefaultSignedAttributeTableGenerator
         if (!std.contains(CMSAttributes.cmsAlgorithmProtect))
         {
             Attribute attr = new Attribute(CMSAttributes.cmsAlgorithmProtect, new DERSet(new CMSAlgorithmProtection(
-                (AlgorithmIdentifier)parameters.get(CMSAttributeTableGenerator.DIGEST_ALGORITHM_IDENTIFIER),
-                CMSAlgorithmProtection.SIGNATURE, (AlgorithmIdentifier)parameters.get(CMSAttributeTableGenerator.SIGNATURE_ALGORITHM_IDENTIFIER))));
+                (AlgorithmIdentifier)parameters.get(DIGEST_ALGORITHM_IDENTIFIER),
+                CMSAlgorithmProtection.SIGNATURE, (AlgorithmIdentifier)parameters.get(SIGNATURE_ALGORITHM_IDENTIFIER))));
             std.put(attr.getAttrType(), attr);
         }
 

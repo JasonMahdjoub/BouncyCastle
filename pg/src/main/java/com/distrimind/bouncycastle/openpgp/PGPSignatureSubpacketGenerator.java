@@ -5,12 +5,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.distrimind.bouncycastle.bcpg.CompressionAlgorithmTags;
-import com.distrimind.bouncycastle.bcpg.HashAlgorithmTags;
-import com.distrimind.bouncycastle.bcpg.SymmetricKeyAlgorithmTags;
+import com.distrimind.bouncycastle.bcpg.*;
 import com.distrimind.bouncycastle.bcpg.sig.*;
-import com.distrimind.bouncycastle.bcpg.SignatureSubpacket;
-import com.distrimind.bouncycastle.bcpg.SignatureSubpacketTags;
 import com.distrimind.bouncycastle.bcpg.sig.EmbeddedSignature;
 import com.distrimind.bouncycastle.bcpg.sig.Exportable;
 import com.distrimind.bouncycastle.bcpg.sig.Features;
@@ -242,7 +238,25 @@ public class PGPSignatureSubpacketGenerator
         packets.add(new SignerUserID(isCritical, userID));
     }
 
+    /**
+     * Add a signer user-id to the signature.
+     *
+     * @param isCritical true if should be treated as critical, false otherwise.
+     * @param rawUserID     signer user-id
+     * @deprecated use {@link #addSignerUserID(boolean, byte[])} instead.
+     */
     public void setSignerUserID(boolean isCritical, byte[] rawUserID)
+    {
+        addSignerUserID(isCritical, rawUserID);
+    }
+
+    /**
+     * Add a signer user-id to the signature.
+     *
+     * @param isCritical true if should be treated as critical, false otherwise.
+     * @param rawUserID     signer user-id
+     */
+    public void addSignerUserID(boolean isCritical, byte[] rawUserID)
     {
         if (rawUserID == null)
         {

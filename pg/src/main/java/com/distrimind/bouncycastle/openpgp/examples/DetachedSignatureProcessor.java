@@ -10,13 +10,12 @@ import java.io.OutputStream;
 import java.security.GeneralSecurityException;
 import java.security.Security;
 
-import com.distrimind.bouncycastle.bcpg.ArmoredOutputStream;
-import com.distrimind.bouncycastle.bcpg.BCPGOutputStream;
-import com.distrimind.bouncycastle.openpgp.jcajce.JcaPGPObjectFactory;
 import com.distrimind.bouncycastle.openpgp.operator.jcajce.JcaKeyFingerprintCalculator;
 import com.distrimind.bouncycastle.openpgp.operator.jcajce.JcaPGPContentSignerBuilder;
 import com.distrimind.bouncycastle.openpgp.operator.jcajce.JcaPGPContentVerifierBuilderProvider;
 import com.distrimind.bouncycastle.openpgp.operator.jcajce.JcePBESecretKeyDecryptorBuilder;
+import com.distrimind.bouncycastle.bcpg.ArmoredOutputStream;
+import com.distrimind.bouncycastle.bcpg.BCPGOutputStream;
 import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
 import com.distrimind.bouncycastle.openpgp.PGPCompressedData;
 import com.distrimind.bouncycastle.openpgp.PGPException;
@@ -28,6 +27,7 @@ import com.distrimind.bouncycastle.openpgp.PGPSignature;
 import com.distrimind.bouncycastle.openpgp.PGPSignatureGenerator;
 import com.distrimind.bouncycastle.openpgp.PGPSignatureList;
 import com.distrimind.bouncycastle.openpgp.PGPUtil;
+import com.distrimind.bouncycastle.openpgp.jcajce.JcaPGPObjectFactory;
 
 /**
  * A simple utility class that creates seperate signatures for files and verifies them.
@@ -74,7 +74,7 @@ public class DetachedSignatureProcessor
     {
         in = PGPUtil.getDecoderStream(in);
         
-        JcaPGPObjectFactory pgpFact = new JcaPGPObjectFactory(in);
+        JcaPGPObjectFactory    pgpFact = new JcaPGPObjectFactory(in);
         PGPSignatureList    p3;
 
         Object    o = pgpFact.nextObject();
@@ -160,7 +160,7 @@ public class DetachedSignatureProcessor
         
         sGen.init(PGPSignature.BINARY_DOCUMENT, pgpPrivKey);
         
-        BCPGOutputStream bOut = new BCPGOutputStream(out);
+        BCPGOutputStream         bOut = new BCPGOutputStream(out);
         
         InputStream              fIn = new BufferedInputStream(new FileInputStream(fileName));
 

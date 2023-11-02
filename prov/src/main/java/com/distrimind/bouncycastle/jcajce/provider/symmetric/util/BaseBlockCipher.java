@@ -30,6 +30,7 @@ import com.distrimind.bouncycastle.crypto.BufferedBlockCipher;
 import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
 import com.distrimind.bouncycastle.crypto.DataLengthException;
+import com.distrimind.bouncycastle.crypto.DefaultBufferedBlockCipher;
 import com.distrimind.bouncycastle.crypto.InvalidCipherTextException;
 import com.distrimind.bouncycastle.crypto.OutputLengthException;
 import com.distrimind.bouncycastle.crypto.engines.DSTU7624Engine;
@@ -58,6 +59,7 @@ import com.distrimind.bouncycastle.crypto.modes.SICBlockCipher;
 import com.distrimind.bouncycastle.crypto.paddings.BlockCipherPadding;
 import com.distrimind.bouncycastle.crypto.paddings.ISO10126d2Padding;
 import com.distrimind.bouncycastle.crypto.paddings.ISO7816d4Padding;
+import com.distrimind.bouncycastle.crypto.paddings.PKCS7Padding;
 import com.distrimind.bouncycastle.crypto.paddings.PaddedBufferedBlockCipher;
 import com.distrimind.bouncycastle.crypto.paddings.TBCPadding;
 import com.distrimind.bouncycastle.crypto.paddings.X923Padding;
@@ -92,14 +94,14 @@ public class BaseBlockCipher
     // specs we can handle.
     //
     private static final Class[] availableSpecs =
-    {
-        RC2ParameterSpec.class,
-        RC5ParameterSpec.class,
-        GcmSpecUtil.gcmSpecClass,
-        GOST28147ParameterSpec.class,
-        IvParameterSpec.class,
-        PBEParameterSpec.class
-    };
+        {
+            RC2ParameterSpec.class,
+            RC5ParameterSpec.class,
+            GcmSpecUtil.gcmSpecClass,
+            GOST28147ParameterSpec.class,
+            IvParameterSpec.class,
+            PBEParameterSpec.class
+        };
 
     private BlockCipher baseEngine;
     private BlockCipherProvider engineProvider;
@@ -347,7 +349,7 @@ public class BaseBlockCipher
         {
             ivLength = baseEngine.getBlockSize();
             cipher = new BufferedGenericBlockCipher(
-                new CBCBlockCipher(baseEngine));
+                CBCBlockCipher.newInstance(baseEngine));
         }
         else if (modeName.startsWith("OFB"))
         {
@@ -373,12 +375,12 @@ public class BaseBlockCipher
                 int wordSize = Integer.parseInt(modeName.substring(3));
 
                 cipher = new BufferedGenericBlockCipher(
-                    new CFBBlockCipher(baseEngine, wordSize));
+                    CFBBlockCipher.newInstance(baseEngine, wordSize));
             }
             else
             {
                 cipher = new BufferedGenericBlockCipher(
-                    new CFBBlockCipher(baseEngine, 8 * baseEngine.getBlockSize()));
+                    CFBBlockCipher.newInstance(baseEngine, 8 * baseEngine.getBlockSize()));
             }
         }
         else if (modeName.startsWith("PGPCFB"))
@@ -420,8 +422,8 @@ public class BaseBlockCipher
                 throw new IllegalArgumentException("Warning: SIC-Mode can become a twotime-pad if the blocksize of the cipher is too small. Use a cipher with a block size of at least 128 bits (e.g. AES)");
             }
             fixedIv = false;
-            cipher = new BufferedGenericBlockCipher(new BufferedBlockCipher(
-                new SICBlockCipher(baseEngine)));
+            cipher = new BufferedGenericBlockCipher(new DefaultBufferedBlockCipher(
+                SICBlockCipher.newInstance(baseEngine)));
         }
         else if (modeName.equals("CTR"))
         {
@@ -429,31 +431,31 @@ public class BaseBlockCipher
             fixedIv = false;
             if (baseEngine instanceof DSTU7624Engine)
             {
-                cipher = new BufferedGenericBlockCipher(new BufferedBlockCipher(
+                cipher = new BufferedGenericBlockCipher(new DefaultBufferedBlockCipher(
                     new KCTRBlockCipher(baseEngine)));
             }
             else
             {
-                cipher = new BufferedGenericBlockCipher(new BufferedBlockCipher(
-                    new SICBlockCipher(baseEngine)));
+                cipher = new BufferedGenericBlockCipher(new DefaultBufferedBlockCipher(
+                    SICBlockCipher.newInstance(baseEngine)));
             }
         }
         else if (modeName.equals("GOFB"))
         {
             ivLength = baseEngine.getBlockSize();
-            cipher = new BufferedGenericBlockCipher(new BufferedBlockCipher(
+            cipher = new BufferedGenericBlockCipher(new DefaultBufferedBlockCipher(
                 new GOFBBlockCipher(baseEngine)));
         }
         else if (modeName.equals("GCFB"))
         {
             ivLength = baseEngine.getBlockSize();
-            cipher = new BufferedGenericBlockCipher(new BufferedBlockCipher(
+            cipher = new BufferedGenericBlockCipher(new DefaultBufferedBlockCipher(
                 new GCFBBlockCipher(baseEngine)));
         }
         else if (modeName.equals("CTS"))
         {
             ivLength = baseEngine.getBlockSize();
-            cipher = new BufferedGenericBlockCipher(new CTSBlockCipher(new CBCBlockCipher(baseEngine)));
+            cipher = new BufferedGenericBlockCipher(new CTSBlockCipher(CBCBlockCipher.newInstance(baseEngine)));
         }
         else if (modeName.equals("CCM"))
         {
@@ -464,7 +466,7 @@ public class BaseBlockCipher
             }
             else
             {
-                cipher = new AEADGenericBlockCipher(new CCMBlockCipher(baseEngine));
+                cipher = new AEADGenericBlockCipher(CCMBlockCipher.newInstance(baseEngine));
             }
         }
         else if (modeName.equals("OCB"))
@@ -502,7 +504,7 @@ public class BaseBlockCipher
             else
             {
                 ivLength = 12;
-                cipher = new AEADGenericBlockCipher(new GCMBlockCipher(baseEngine));
+                cipher = new AEADGenericBlockCipher(GCMBlockCipher.newInstance(baseEngine));
             }
         }
         else
@@ -526,7 +528,7 @@ public class BaseBlockCipher
         {
             if (cipher.wrapOnNoPadding())
             {
-                cipher = new BufferedGenericBlockCipher(new BufferedBlockCipher(cipher.getUnderlyingCipher()));
+                cipher = new BufferedGenericBlockCipher(new DefaultBufferedBlockCipher(cipher.getUnderlyingCipher()));
             }
         }
         else if (paddingName.equals("WITHCTS") || paddingName.equals("CTSPADDING") || paddingName.equals("CS3PADDING"))
@@ -797,7 +799,7 @@ public class BaseBlockCipher
             GOST28147ParameterSpec gost28147Param = (GOST28147ParameterSpec)params;
 
             param = new ParametersWithSBox(
-                new KeyParameter(key.getEncoded()), ((GOST28147ParameterSpec)params).getSbox());
+                new KeyParameter(key.getEncoded()), ((GOST28147ParameterSpec)params).getSBox());
 
             if (gost28147Param.getIV() != null && ivLength != 0)
             {
@@ -981,7 +983,7 @@ public class BaseBlockCipher
                 // need to pick up IV and SBox.
                 GOST28147ParameterSpec gost28147Param = (GOST28147ParameterSpec)params;
 
-                param = new ParametersWithSBox(param, gost28147Param.getSbox());
+                param = new ParametersWithSBox(param, gost28147Param.getSBox());
 
                 if (gost28147Param.getIV() != null && ivLength != 0)
                 {
@@ -1004,7 +1006,7 @@ public class BaseBlockCipher
                 // need to pick up IV and SBox.
                 GOST28147ParameterSpec gost28147Param = (GOST28147ParameterSpec)params;
 
-                param = new ParametersWithSBox(param, gost28147Param.getSbox());
+                param = new ParametersWithSBox(param, gost28147Param.getSBox());
 
                 if (gost28147Param.getIV() != null && ivLength != 0)
                 {
@@ -1276,7 +1278,7 @@ public class BaseBlockCipher
 
         BufferedGenericBlockCipher(BlockCipher cipher)
         {
-            this.cipher = new PaddedBufferedBlockCipher(cipher);
+            this(cipher, new PKCS7Padding());
         }
 
         BufferedGenericBlockCipher(BlockCipher cipher, BlockCipherPadding padding)

@@ -1,9 +1,9 @@
 package com.distrimind.bouncycastle.pkcs.test;
 
-import com.distrimind.bouncycastle.test.PrintTestResult;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import com.distrimind.bouncycastle.test.PrintTestResult;
 
 public class AllTests
     extends TestCase

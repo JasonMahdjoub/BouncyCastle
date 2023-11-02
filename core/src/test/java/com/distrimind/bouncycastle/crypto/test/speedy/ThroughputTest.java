@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.security.SecureRandom;
 
 import com.distrimind.bouncycastle.crypto.BlockCipher;
-import com.distrimind.bouncycastle.crypto.engines.AESFastEngine;
+import com.distrimind.bouncycastle.crypto.engines.AESEngine;
 import com.distrimind.bouncycastle.crypto.engines.ThreefishEngine;
 import com.distrimind.bouncycastle.crypto.params.KeyParameter;
 import com.distrimind.bouncycastle.crypto.params.TweakableBlockCipherParameters;
@@ -39,7 +39,7 @@ public class ThroughputTest
 //        speedTestCipher(new Skein3FishEngine(), input);
 //        speedTestCipher(new ThreefishEngine(ThreefishEngine.BLOCKSIZE_1024), input);
 //        speedTestCipher(new ThreefishReferenceEngine(), input);
-        speedTestCipher(new AESFastEngine(), input);
+        speedTestCipher(AESEngine.newInstance(), input);
 //        speedTestCipher(new TwofishEngine(), input);
 //        speedTestCipher(new BlowfishEngine(), input);
     }

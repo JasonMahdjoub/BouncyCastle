@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import com.distrimind.bouncycastle.test.TestResourceFinder;
 import junit.framework.TestCase;
 import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
 import com.distrimind.bouncycastle.crypto.params.ParametersWithRandom;
@@ -18,6 +17,7 @@ import com.distrimind.bouncycastle.pqc.crypto.gemss.GeMSSParameters;
 import com.distrimind.bouncycastle.pqc.crypto.gemss.GeMSSPrivateKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.gemss.GeMSSPublicKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.gemss.GeMSSSigner;
+import com.distrimind.bouncycastle.test.TestResourceFinder;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.encoders.Hex;
 

@@ -4,9 +4,9 @@ import java.security.Provider;
 
 import com.distrimind.bouncycastle.its.ITSCertificate;
 import com.distrimind.bouncycastle.its.ITSImplicitCertificateBuilder;
-import com.distrimind.bouncycastle.operator.jcajce.JcaDigestCalculatorProviderBuilder;
 import com.distrimind.bouncycastle.oer.its.ieee1609dot2.ToBeSignedCertificate;
 import com.distrimind.bouncycastle.operator.OperatorCreationException;
+import com.distrimind.bouncycastle.operator.jcajce.JcaDigestCalculatorProviderBuilder;
 
 public class JcaITSImplicitCertificateBuilderBuilder
 {

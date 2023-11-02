@@ -5,13 +5,14 @@ import java.security.SecureRandom;
 
 import com.distrimind.bouncycastle.crypto.CryptoException;
 import com.distrimind.bouncycastle.crypto.Digest;
-import com.distrimind.bouncycastle.crypto.digests.SHA256Digest;
+import com.distrimind.bouncycastle.crypto.SavableDigest;
+import com.distrimind.bouncycastle.crypto.agreement.jpake.JPAKEParticipant;
 import com.distrimind.bouncycastle.crypto.agreement.jpake.JPAKEPrimeOrderGroup;
 import com.distrimind.bouncycastle.crypto.agreement.jpake.JPAKEPrimeOrderGroups;
-import com.distrimind.bouncycastle.crypto.agreement.jpake.JPAKEParticipant;
 import com.distrimind.bouncycastle.crypto.agreement.jpake.JPAKERound1Payload;
 import com.distrimind.bouncycastle.crypto.agreement.jpake.JPAKERound2Payload;
 import com.distrimind.bouncycastle.crypto.agreement.jpake.JPAKERound3Payload;
+import com.distrimind.bouncycastle.crypto.digests.SHA256Digest;
 
 /**
  * An example of a J-PAKE exchange.
@@ -57,7 +58,7 @@ public class JPAKEExample
         /*
          * Both participants must use the same hashing algorithm.
          */
-        Digest digest = new SHA256Digest();
+        Digest digest = SHA256Digest.newInstance();
         SecureRandom random = new SecureRandom();
 
         JPAKEParticipant alice = new JPAKEParticipant("alice", alicePassword.toCharArray(), group, digest, random);
@@ -201,7 +202,7 @@ public class JPAKEExample
          * 
          * For the purposes of this example, I'm just going to use a hash of the keying material.
          */
-        SHA256Digest digest = new SHA256Digest();
+        SavableDigest digest = SHA256Digest.newInstance();
         
         byte[] keyByteArray = keyingMaterial.toByteArray();
         

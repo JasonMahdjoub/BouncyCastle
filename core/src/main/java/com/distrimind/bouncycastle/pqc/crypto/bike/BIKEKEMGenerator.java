@@ -2,10 +2,10 @@ package com.distrimind.bouncycastle.pqc.crypto.bike;
 
 import java.security.SecureRandom;
 
+import com.distrimind.bouncycastle.pqc.crypto.util.SecretWithEncapsulationImpl;
 import com.distrimind.bouncycastle.crypto.EncapsulatedSecretGenerator;
 import com.distrimind.bouncycastle.crypto.SecretWithEncapsulation;
 import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
-import com.distrimind.bouncycastle.pqc.crypto.util.SecretWithEncapsulationImpl;
 import com.distrimind.bouncycastle.util.Arrays;
 
 public class BIKEKEMGenerator

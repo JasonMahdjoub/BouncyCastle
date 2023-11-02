@@ -5,10 +5,6 @@ import java.io.OutputStream;
 
 import com.distrimind.bouncycastle.asn1.ASN1Encoding;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
-import com.distrimind.bouncycastle.cms.CMSException;
-import com.distrimind.bouncycastle.tsp.TSPException;
-import com.distrimind.bouncycastle.tsp.TimeStampToken;
-import com.distrimind.bouncycastle.tsp.TimeStampTokenInfo;
 import com.distrimind.bouncycastle.asn1.cms.AttributeTable;
 import com.distrimind.bouncycastle.asn1.cms.ContentInfo;
 import com.distrimind.bouncycastle.asn1.cms.Evidence;
@@ -16,9 +12,13 @@ import com.distrimind.bouncycastle.asn1.cms.TimeStampAndCRL;
 import com.distrimind.bouncycastle.asn1.cms.TimeStampedData;
 import com.distrimind.bouncycastle.asn1.cms.TimeStampedDataParser;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.cms.CMSException;
 import com.distrimind.bouncycastle.operator.DigestCalculator;
 import com.distrimind.bouncycastle.operator.DigestCalculatorProvider;
 import com.distrimind.bouncycastle.operator.OperatorCreationException;
+import com.distrimind.bouncycastle.tsp.TSPException;
+import com.distrimind.bouncycastle.tsp.TimeStampToken;
+import com.distrimind.bouncycastle.tsp.TimeStampTokenInfo;
 import com.distrimind.bouncycastle.util.Arrays;
 
 class TimeStampDataUtil

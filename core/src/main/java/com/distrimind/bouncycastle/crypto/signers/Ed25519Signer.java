@@ -2,12 +2,12 @@ package com.distrimind.bouncycastle.crypto.signers;
 
 import java.io.ByteArrayOutputStream;
 
+import com.distrimind.bouncycastle.math.ec.rfc8032.Ed25519;
 import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
 import com.distrimind.bouncycastle.crypto.Signer;
 import com.distrimind.bouncycastle.crypto.params.Ed25519PrivateKeyParameters;
 import com.distrimind.bouncycastle.crypto.params.Ed25519PublicKeyParameters;
-import com.distrimind.bouncycastle.math.ec.rfc8032.Ed25519;
 import com.distrimind.bouncycastle.util.Arrays;
 
 public class Ed25519Signer

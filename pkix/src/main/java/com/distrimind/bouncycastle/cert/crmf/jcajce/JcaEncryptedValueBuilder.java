@@ -4,13 +4,13 @@ import java.security.PrivateKey;
 import java.security.cert.CertificateEncodingException;
 import java.security.cert.X509Certificate;
 
-import com.distrimind.bouncycastle.asn1.crmf.EncryptedValue;
-import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
 import com.distrimind.bouncycastle.cert.crmf.CRMFException;
 import com.distrimind.bouncycastle.cert.crmf.EncryptedValueBuilder;
 import com.distrimind.bouncycastle.cert.jcajce.JcaX509CertificateHolder;
 import com.distrimind.bouncycastle.operator.KeyWrapper;
 import com.distrimind.bouncycastle.operator.OutputEncryptor;
+import com.distrimind.bouncycastle.asn1.crmf.EncryptedValue;
+import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
 
 /**
  * JCA convenience class for EncryptedValueBuilder

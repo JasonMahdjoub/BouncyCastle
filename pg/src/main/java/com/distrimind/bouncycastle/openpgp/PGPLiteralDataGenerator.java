@@ -5,8 +5,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Date;
 
-import com.distrimind.bouncycastle.bcpg.BCPGOutputStream;
 import com.distrimind.bouncycastle.bcpg.PacketTags;
+import com.distrimind.bouncycastle.bcpg.BCPGOutputStream;
 import com.distrimind.bouncycastle.util.Strings;
 
 /**
@@ -53,7 +53,7 @@ public class PGPLiteralDataGenerator implements StreamGenerator
      */
     public static final Date    NOW = PGPLiteralData.NOW;
 
-    private BCPGOutputStream pkOut;
+    private BCPGOutputStream    pkOut;
     private boolean             oldFormat = false;
 
     /**

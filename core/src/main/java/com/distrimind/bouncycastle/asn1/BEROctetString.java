@@ -1,8 +1,6 @@
 package com.distrimind.bouncycastle.asn1;
 
 import java.io.IOException;
-import java.util.Enumeration;
-import java.util.NoSuchElementException;
 
 /**
  * ASN.1 OctetStrings, with indefinite length rules, and <i>constructed form</i> support.
@@ -87,7 +85,7 @@ public class BEROctetString
      */
     public BEROctetString(byte[] string, int segmentLimit)
     {
-        this(string, new ASN1OctetString[] { new DEROctetString(string) }, segmentLimit);
+        this(string, null, segmentLimit);
     }
 
     /**
@@ -109,74 +107,14 @@ public class BEROctetString
         this.segmentLimit = segmentLimit;
     }
 
-    /**
-     * Return the OCTET STRINGs that make up this string.
-     *
-     * @return an Enumeration of the component OCTET STRINGs.
-     * 
-     * @deprecated Will be removed.
-     */
-    public Enumeration getObjects()
-    {
-        if (elements == null)
-        {
-            return new Enumeration()
-            {
-                int pos = 0;
-
-                public boolean hasMoreElements()
-                {
-                    return pos < string.length;
-                }
-
-                public Object nextElement()
-                {
-                    if (pos < string.length)
-                    {
-                        int length = Math.min(string.length - pos, segmentLimit);
-                        byte[] segment = new byte[length];
-                        System.arraycopy(string, pos, segment, 0, length);
-                        pos += length;
-                        return new DEROctetString(segment);
-                    }
-                    throw new NoSuchElementException();
-                }
-            };
-        }
-
-        return new Enumeration()
-        {
-            int counter = 0;
-
-            public boolean hasMoreElements()
-            {
-                return counter < elements.length;
-            }
-
-            public Object nextElement()
-            {
-                if (counter < elements.length)
-                {
-                    return elements[counter++];
-                }
-                throw new NoSuchElementException();
-            }
-        };
-    }
-
     boolean encodeConstructed()
     {
-        return null != elements || string.length > segmentLimit;
+        return true;
     }
 
     int encodedLength(boolean withTag)
         throws IOException
     {
-        if (!encodeConstructed())
-        {
-            return DEROctetString.encodedLength(withTag, string.length);
-        }
-
         int totalLength = withTag ? 4 : 3;
 
         if (null != elements)
@@ -203,12 +141,6 @@ public class BEROctetString
 
     void encode(ASN1OutputStream out, boolean withTag) throws IOException
     {
-        if (!encodeConstructed())
-        {
-            DEROctetString.encode(out, withTag, string, 0, string.length);
-            return;
-        }
-
         out.writeIdentifier(withTag, BERTags.CONSTRUCTED | BERTags.OCTET_STRING);
         out.write(0x80);
 

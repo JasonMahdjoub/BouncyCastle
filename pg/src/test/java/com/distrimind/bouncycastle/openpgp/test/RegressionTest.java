@@ -34,14 +34,15 @@ public class RegressionTest
         new PGPEdDSATest(),
         new PGPPublicKeyMergeTest(),
         new SExprTest(),
-        new ArmoredInputStreamTest(),
         new PGPUtilTest(),
         new BcPGPEd25519JcaKeyPairConversionTest(),
         new RewindStreamWhenDecryptingMultiSKESKMessageTest(),
         new PGPFeaturesTest(),
+        new ArmoredInputStreamTest(),
         new ArmoredInputStreamBackslashTRVFTest(),
         new ArmoredInputStreamCRCErrorGetsThrownTest(),
         new ArmoredInputStreamIngoreMissingCRCSum(),
+        new ArmoredOutputStreamTest(),
         new PGPSessionKeyTest(),
         new PGPCanonicalizedDataGeneratorTest(),
         new RegexTest(),
@@ -51,7 +52,10 @@ public class RegressionTest
         new IgnoreUnknownEncryptedSessionKeys(),
         new PGPEncryptedDataTest(),
         new PGPAeadTest(),
-        new CRC24Test()
+        new CRC24Test(),
+        new WildcardKeyIDTest(),
+        new ArmorCRCTest(),
+        new UnknownPacketTest()
     };
 
     public static void main(String[] args)

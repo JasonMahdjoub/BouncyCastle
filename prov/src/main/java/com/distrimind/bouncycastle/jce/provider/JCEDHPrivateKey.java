@@ -19,11 +19,11 @@ import com.distrimind.bouncycastle.asn1.pkcs.DHParameter;
 import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import com.distrimind.bouncycastle.asn1.x9.DHDomainParameters;
+import com.distrimind.bouncycastle.asn1.x9.DomainParameters;
 import com.distrimind.bouncycastle.asn1.x9.X9ObjectIdentifiers;
 import com.distrimind.bouncycastle.crypto.params.DHPrivateKeyParameters;
-import com.distrimind.bouncycastle.jce.interfaces.PKCS12BagAttributeCarrier;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.PKCS12BagAttributeCarrierImpl;
+import com.distrimind.bouncycastle.jce.interfaces.PKCS12BagAttributeCarrier;
 
 public class JCEDHPrivateKey
     implements DHPrivateKey, PKCS12BagAttributeCarrier
@@ -81,9 +81,9 @@ public class JCEDHPrivateKey
         }
         else if (id.equals(X9ObjectIdentifiers.dhpublicnumber))
         {
-            DHDomainParameters params = DHDomainParameters.getInstance(seq);
+            DomainParameters params = DomainParameters.getInstance(seq);
 
-            this.dhSpec = new DHParameterSpec(params.getP().getValue(), params.getG().getValue());
+            this.dhSpec = new DHParameterSpec(params.getP(), params.getG());
         }
         else
         {

@@ -4,6 +4,7 @@ import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.DERNull;
 import com.distrimind.bouncycastle.asn1.DEROctetString;
+import com.distrimind.bouncycastle.operator.GenericKey;
 import com.distrimind.bouncycastle.asn1.cms.KeyAgreeRecipientInfo;
 import com.distrimind.bouncycastle.asn1.cms.OriginatorIdentifierOrKey;
 import com.distrimind.bouncycastle.asn1.cms.OriginatorPublicKey;
@@ -13,7 +14,6 @@ import com.distrimind.bouncycastle.asn1.cryptopro.Gost2814789KeyWrapParameters;
 import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
-import com.distrimind.bouncycastle.operator.GenericKey;
 
 public abstract class KeyAgreeRecipientInfoGenerator
     implements RecipientInfoGenerator

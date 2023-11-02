@@ -7,6 +7,7 @@ import com.distrimind.bouncycastle.asn1.ASN1GeneralizedTime;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
+import com.distrimind.bouncycastle.asn1.BERTags;
 import com.distrimind.bouncycastle.asn1.cms.ContentInfo;
 
 /**
@@ -65,7 +66,12 @@ public class DVCSTime
         ASN1TaggedObject obj,
         boolean explicit)
     {
-        return getInstance(obj.getObject()); // must be explicitly tagged
+        if (!explicit)
+        {
+            throw new IllegalArgumentException("choice item must be explicitly tagged");
+        }
+
+        return getInstance(ASN1TaggedObject.getInstance(obj, BERTags.CONTEXT_SPECIFIC).getExplicitBaseObject()); // must be explicitly tagged
     }
 
 

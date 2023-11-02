@@ -137,7 +137,6 @@ module com.distrimind.bouncycastle.provider
     exports com.distrimind.bouncycastle.pqc.crypto.picnic;
     exports com.distrimind.bouncycastle.pqc.crypto.rainbow;
     exports com.distrimind.bouncycastle.pqc.crypto.saber;
-    exports com.distrimind.bouncycastle.pqc.legacy.crypto.sike;
     exports com.distrimind.bouncycastle.pqc.crypto.sphincs;
     exports com.distrimind.bouncycastle.pqc.crypto.sphincsplus;
     exports com.distrimind.bouncycastle.pqc.crypto.util;

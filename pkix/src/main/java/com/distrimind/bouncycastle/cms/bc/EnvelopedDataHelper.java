@@ -14,7 +14,6 @@ import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.cms.CMSAlgorithm;
 import com.distrimind.bouncycastle.cms.CMSException;
-import com.distrimind.bouncycastle.operator.bc.BcDigestProvider;
 import com.distrimind.bouncycastle.crypto.CipherKeyGenerator;
 import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.ExtendedDigest;
@@ -34,6 +33,7 @@ import com.distrimind.bouncycastle.crypto.util.AlgorithmIdentifierFactory;
 import com.distrimind.bouncycastle.crypto.util.CipherFactory;
 import com.distrimind.bouncycastle.crypto.util.CipherKeyGeneratorFactory;
 import com.distrimind.bouncycastle.operator.OperatorCreationException;
+import com.distrimind.bouncycastle.operator.bc.BcDigestProvider;
 
 class EnvelopedDataHelper
 {
@@ -65,7 +65,7 @@ class EnvelopedDataHelper
         {
             public ExtendedDigest get(AlgorithmIdentifier digestAlgorithmIdentifier)
             {
-                return new SHA256Digest();
+                return SHA256Digest.newInstance();
             }
         });
         table.put(PKCSObjectIdentifiers.id_hmacWithSHA384, new BcDigestProvider()
@@ -124,7 +124,7 @@ class EnvelopedDataHelper
             || NISTObjectIdentifiers.id_aes192_CBC.equals(algorithm)
             || NISTObjectIdentifiers.id_aes256_CBC.equals(algorithm))
         {
-            return new RFC3211WrapEngine(new AESEngine());
+            return new RFC3211WrapEngine(AESEngine.newInstance());
         }
         else if (PKCSObjectIdentifiers.des_EDE3_CBC.equals(algorithm))
         {

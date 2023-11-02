@@ -15,6 +15,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.mime.encoding.Base64OutputStream;
 import com.distrimind.bouncycastle.cert.X509CertificateHolder;
 import com.distrimind.bouncycastle.cms.CMSAlgorithm;
 import com.distrimind.bouncycastle.cms.CMSException;
@@ -22,7 +23,6 @@ import com.distrimind.bouncycastle.cms.CMSSignedDataStreamGenerator;
 import com.distrimind.bouncycastle.cms.SignerInfoGenerator;
 import com.distrimind.bouncycastle.mime.Headers;
 import com.distrimind.bouncycastle.mime.MimeWriter;
-import com.distrimind.bouncycastle.mime.encoding.Base64OutputStream;
 import com.distrimind.bouncycastle.util.Store;
 import com.distrimind.bouncycastle.util.Strings;
 

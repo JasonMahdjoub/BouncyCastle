@@ -5,6 +5,7 @@ import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
+import com.distrimind.bouncycastle.asn1.BERTags;
 import com.distrimind.bouncycastle.asn1.DEROctetString;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
 
@@ -42,10 +43,10 @@ public class PublicVerificationKey
         {
         case ecdsaNistP256:
         case ecdsaBrainpoolP256r1:
-            publicVerificationKey = EccP256CurvePoint.getInstance(taggedObject.getObject());
+            publicVerificationKey = EccP256CurvePoint.getInstance(taggedObject.getExplicitBaseObject());
             return;
         case ecdsaBrainpoolP384r1:
-            publicVerificationKey = EccP384CurvePoint.getInstance(taggedObject.getObject());
+            publicVerificationKey = EccP384CurvePoint.getInstance(taggedObject.getExplicitBaseObject());
             return;
         }
         throw new IllegalArgumentException("invalid choice value " + taggedObject.getTagNo());
@@ -78,7 +79,7 @@ public class PublicVerificationKey
 
         if (object != null)
         {
-            return new PublicVerificationKey(ASN1TaggedObject.getInstance(object));
+            return new PublicVerificationKey(ASN1TaggedObject.getInstance(object, BERTags.CONTEXT_SPECIFIC));
         }
         return null;
     }

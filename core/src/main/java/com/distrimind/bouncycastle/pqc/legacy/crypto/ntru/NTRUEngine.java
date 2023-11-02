@@ -2,20 +2,20 @@ package com.distrimind.bouncycastle.pqc.legacy.crypto.ntru;
 
 import java.security.SecureRandom;
 
-import com.distrimind.bouncycastle.crypto.params.ParametersWithRandom;
-import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.crypto.AsymmetricBlockCipher;
 import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
 import com.distrimind.bouncycastle.crypto.DataLengthException;
 import com.distrimind.bouncycastle.crypto.Digest;
 import com.distrimind.bouncycastle.crypto.InvalidCipherTextException;
+import com.distrimind.bouncycastle.crypto.params.ParametersWithRandom;
 import com.distrimind.bouncycastle.pqc.legacy.math.ntru.polynomial.DenseTernaryPolynomial;
 import com.distrimind.bouncycastle.pqc.legacy.math.ntru.polynomial.IntegerPolynomial;
 import com.distrimind.bouncycastle.pqc.legacy.math.ntru.polynomial.Polynomial;
 import com.distrimind.bouncycastle.pqc.legacy.math.ntru.polynomial.ProductFormPolynomial;
 import com.distrimind.bouncycastle.pqc.legacy.math.ntru.polynomial.SparseTernaryPolynomial;
 import com.distrimind.bouncycastle.pqc.legacy.math.ntru.polynomial.TernaryPolynomial;
+import com.distrimind.bouncycastle.util.Arrays;
 
 /**
  * Encrypts, decrypts data and generates key pairs.<br>

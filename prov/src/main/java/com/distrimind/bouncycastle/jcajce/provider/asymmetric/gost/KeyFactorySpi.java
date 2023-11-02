@@ -13,11 +13,11 @@ import com.distrimind.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
 import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.BaseKeyFactorySpi;
-import com.distrimind.bouncycastle.jce.interfaces.GOST3410PrivateKey;
-import com.distrimind.bouncycastle.jce.interfaces.GOST3410PublicKey;
 import com.distrimind.bouncycastle.jce.spec.GOST3410PrivateKeySpec;
 import com.distrimind.bouncycastle.jce.spec.GOST3410PublicKeyParameterSetSpec;
 import com.distrimind.bouncycastle.jce.spec.GOST3410PublicKeySpec;
+import com.distrimind.bouncycastle.jce.interfaces.GOST3410PrivateKey;
+import com.distrimind.bouncycastle.jce.interfaces.GOST3410PublicKey;
 
 public class KeyFactorySpi
     extends BaseKeyFactorySpi

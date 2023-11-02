@@ -12,14 +12,14 @@ import com.distrimind.bouncycastle.asn1.ASN1Set;
 import com.distrimind.bouncycastle.asn1.DEROctetString;
 import com.distrimind.bouncycastle.asn1.DERSet;
 import com.distrimind.bouncycastle.cert.X509CertificateHolder;
+import com.distrimind.bouncycastle.operator.ContentSigner;
+import com.distrimind.bouncycastle.operator.DigestCalculator;
 import com.distrimind.bouncycastle.asn1.cms.AttributeTable;
 import com.distrimind.bouncycastle.asn1.cms.SignerIdentifier;
 import com.distrimind.bouncycastle.asn1.cms.SignerInfo;
 import com.distrimind.bouncycastle.asn1.edec.EdECObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.nist.NISTObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import com.distrimind.bouncycastle.operator.ContentSigner;
-import com.distrimind.bouncycastle.operator.DigestCalculator;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.io.TeeOutputStream;
 

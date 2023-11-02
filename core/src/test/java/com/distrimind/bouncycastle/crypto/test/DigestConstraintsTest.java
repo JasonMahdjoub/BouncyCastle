@@ -4,7 +4,39 @@ import com.distrimind.bouncycastle.crypto.CryptoServiceConstraintsException;
 import com.distrimind.bouncycastle.crypto.CryptoServicePurpose;
 import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
 import com.distrimind.bouncycastle.crypto.constraints.BitsOfSecurityConstraint;
-import com.distrimind.bouncycastle.crypto.digests.*;
+import com.distrimind.bouncycastle.crypto.digests.Blake2bDigest;
+import com.distrimind.bouncycastle.crypto.digests.Blake2sDigest;
+import com.distrimind.bouncycastle.crypto.digests.Blake2xsDigest;
+import com.distrimind.bouncycastle.crypto.digests.Blake3Digest;
+import com.distrimind.bouncycastle.crypto.digests.CSHAKEDigest;
+import com.distrimind.bouncycastle.crypto.digests.DSTU7564Digest;
+import com.distrimind.bouncycastle.crypto.digests.GOST3411Digest;
+import com.distrimind.bouncycastle.crypto.digests.GOST3411_2012_256Digest;
+import com.distrimind.bouncycastle.crypto.digests.GOST3411_2012_512Digest;
+import com.distrimind.bouncycastle.crypto.digests.Haraka256Digest;
+import com.distrimind.bouncycastle.crypto.digests.Haraka512Digest;
+import com.distrimind.bouncycastle.crypto.digests.Kangaroo;
+import com.distrimind.bouncycastle.crypto.digests.KeccakDigest;
+import com.distrimind.bouncycastle.crypto.digests.MD2Digest;
+import com.distrimind.bouncycastle.crypto.digests.MD4Digest;
+import com.distrimind.bouncycastle.crypto.digests.MD5Digest;
+import com.distrimind.bouncycastle.crypto.digests.ParallelHash;
+import com.distrimind.bouncycastle.crypto.digests.RIPEMD128Digest;
+import com.distrimind.bouncycastle.crypto.digests.RIPEMD160Digest;
+import com.distrimind.bouncycastle.crypto.digests.RIPEMD256Digest;
+import com.distrimind.bouncycastle.crypto.digests.RIPEMD320Digest;
+import com.distrimind.bouncycastle.crypto.digests.SHA1Digest;
+import com.distrimind.bouncycastle.crypto.digests.SHA224Digest;
+import com.distrimind.bouncycastle.crypto.digests.SHA256Digest;
+import com.distrimind.bouncycastle.crypto.digests.SHA384Digest;
+import com.distrimind.bouncycastle.crypto.digests.SHA3Digest;
+import com.distrimind.bouncycastle.crypto.digests.SHA512Digest;
+import com.distrimind.bouncycastle.crypto.digests.SHAKEDigest;
+import com.distrimind.bouncycastle.crypto.digests.SM3Digest;
+import com.distrimind.bouncycastle.crypto.digests.SkeinDigest;
+import com.distrimind.bouncycastle.crypto.digests.TigerDigest;
+import com.distrimind.bouncycastle.crypto.digests.TupleHash;
+import com.distrimind.bouncycastle.crypto.digests.WhirlpoolDigest;
 import com.distrimind.bouncycastle.crypto.macs.KMAC;
 import com.distrimind.bouncycastle.util.test.SimpleTest;
 
@@ -139,7 +171,7 @@ public class DigestConstraintsTest
 
         try
         {
-            new SHA256Digest();
+            SHA256Digest.newInstance();
             fail("no exception");
         }
         catch (CryptoServiceConstraintsException e)

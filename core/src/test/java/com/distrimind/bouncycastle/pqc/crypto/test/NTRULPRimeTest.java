@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-import com.distrimind.bouncycastle.test.TestResourceFinder;
 import junit.framework.TestCase;
 import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
 import com.distrimind.bouncycastle.crypto.SecretWithEncapsulation;
@@ -15,6 +14,7 @@ import com.distrimind.bouncycastle.pqc.crypto.ntruprime.NTRULPRimeKeyPairGenerat
 import com.distrimind.bouncycastle.pqc.crypto.ntruprime.NTRULPRimeParameters;
 import com.distrimind.bouncycastle.pqc.crypto.ntruprime.NTRULPRimePrivateKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.ntruprime.NTRULPRimePublicKeyParameters;
+import com.distrimind.bouncycastle.test.TestResourceFinder;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.encoders.Hex;
 

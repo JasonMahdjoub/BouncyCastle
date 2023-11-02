@@ -5,6 +5,7 @@ import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
+import com.distrimind.bouncycastle.asn1.BERTags;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
 
 /**
@@ -33,7 +34,7 @@ public class EncryptionKey
         }
         if (o != null)
         {
-            return new EncryptionKey(ASN1TaggedObject.getInstance(o));
+            return new EncryptionKey(ASN1TaggedObject.getInstance(o, BERTags.CONTEXT_SPECIFIC));
         }
         return null;
     }
@@ -66,7 +67,7 @@ public class EncryptionKey
 
     private EncryptionKey(ASN1TaggedObject value)
     {
-        this(value.getTagNo(), value.getObject());
+        this(value.getTagNo(), value.getExplicitBaseObject());
     }
 
     public int getChoice()

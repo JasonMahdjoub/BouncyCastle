@@ -4,9 +4,9 @@ import com.distrimind.bouncycastle.asn1.teletrust.TeleTrusTObjectIdentifiers;
 import com.distrimind.bouncycastle.crypto.CipherKeyGenerator;
 import com.distrimind.bouncycastle.crypto.digests.RIPEMD128Digest;
 import com.distrimind.bouncycastle.crypto.macs.HMac;
-import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseKeyGenerator;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseMac;
+import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 
 public class RIPEMD128
 {

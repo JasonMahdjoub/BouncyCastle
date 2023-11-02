@@ -2,8 +2,8 @@ package com.distrimind.bouncycastle.pqc.asn1;
 
 
 import com.distrimind.bouncycastle.asn1.*;
-import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.asn1.*;
+import com.distrimind.bouncycastle.util.Arrays;
 
 /**
  *
@@ -30,6 +30,9 @@ public class FalconPublicKey
         return h;
     }
 
+    /**
+     * @deprecated use getInstance()
+     */
     public FalconPublicKey(ASN1Sequence seq)
     {
         h = Arrays.clone(ASN1OctetString.getInstance(seq.getObjectAt(0)).getOctets());

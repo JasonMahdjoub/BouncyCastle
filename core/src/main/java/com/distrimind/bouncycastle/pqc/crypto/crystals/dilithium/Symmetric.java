@@ -1,5 +1,6 @@
 package com.distrimind.bouncycastle.pqc.crypto.crystals.dilithium;
 
+import com.distrimind.bouncycastle.crypto.StreamCipher;
 import com.distrimind.bouncycastle.crypto.digests.SHAKEDigest;
 import com.distrimind.bouncycastle.crypto.engines.AESEngine;
 import com.distrimind.bouncycastle.crypto.modes.SICBlockCipher;
@@ -30,12 +31,12 @@ abstract class Symmetric
         extends Symmetric
     {
 
-        private final SICBlockCipher cipher;
+        private final StreamCipher cipher;
 
         AesSymmetric()
         {
             super(64, 64);
-            cipher = new SICBlockCipher(new AESEngine());
+            cipher = SICBlockCipher.newInstance(AESEngine.newInstance());
         }
 
         private void aes128(byte[] out, int offset, int size)

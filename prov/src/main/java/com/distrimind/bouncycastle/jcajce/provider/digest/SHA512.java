@@ -7,9 +7,9 @@ import com.distrimind.bouncycastle.crypto.digests.SHA512Digest;
 import com.distrimind.bouncycastle.crypto.digests.SHA512tDigest;
 import com.distrimind.bouncycastle.crypto.macs.HMac;
 import com.distrimind.bouncycastle.crypto.macs.OldHMac;
-import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseKeyGenerator;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseMac;
+import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 
 public class SHA512
 {

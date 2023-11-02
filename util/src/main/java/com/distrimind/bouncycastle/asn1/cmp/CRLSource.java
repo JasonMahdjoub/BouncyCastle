@@ -4,6 +4,7 @@ import com.distrimind.bouncycastle.asn1.ASN1Choice;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
+import com.distrimind.bouncycastle.asn1.ASN1Util;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
 import com.distrimind.bouncycastle.asn1.x509.DistributionPointName;
 import com.distrimind.bouncycastle.asn1.x509.GeneralNames;
@@ -28,18 +29,19 @@ public class CRLSource
 
     private CRLSource(ASN1TaggedObject ato)
     {
-        switch (ato.getTagNo())
+        if (ato.hasContextTag(0))
         {
-        case 0:
             dpn = DistributionPointName.getInstance(ato, true);
             issuer = null;
-            break;
-        case 1:
+        }
+        else if (ato.hasContextTag(1))
+        {
             dpn = null;
             issuer = GeneralNames.getInstance(ato, true);
-            break;
-        default:
-            throw new IllegalArgumentException("unknown tag " + ato.getTagNo());
+        }
+        else
+        {
+            throw new IllegalArgumentException("unknown tag " + ASN1Util.getTagText(ato));
         }
     }
 

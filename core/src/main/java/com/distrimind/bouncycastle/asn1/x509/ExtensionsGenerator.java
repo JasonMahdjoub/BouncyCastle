@@ -8,7 +8,6 @@ import java.util.Hashtable;
 import java.util.Set;
 import java.util.Vector;
 
-import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
 import com.distrimind.bouncycastle.asn1.ASN1Encoding;
@@ -17,6 +16,7 @@ import com.distrimind.bouncycastle.asn1.ASN1ParsingException;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.DEROctetString;
 import com.distrimind.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.util.Arrays;
 
 /**
  * Generator for X.509 extensions

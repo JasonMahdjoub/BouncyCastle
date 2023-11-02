@@ -60,11 +60,11 @@ import com.distrimind.bouncycastle.asn1.x509.KeyPurposeId;
 import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
 import com.distrimind.bouncycastle.asn1.x9.X9ObjectIdentifiers;
 import com.distrimind.bouncycastle.internal.asn1.eac.EACObjectIdentifiers;
+import com.distrimind.bouncycastle.jcajce.PKIXCertRevocationChecker;
+import com.distrimind.bouncycastle.jcajce.PKIXCertRevocationCheckerParameters;
 import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
 import com.distrimind.bouncycastle.jcajce.util.MessageDigestUtils;
 import com.distrimind.bouncycastle.jce.exception.ExtCertPathValidatorException;
-import com.distrimind.bouncycastle.jcajce.PKIXCertRevocationChecker;
-import com.distrimind.bouncycastle.jcajce.PKIXCertRevocationCheckerParameters;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Properties;
 

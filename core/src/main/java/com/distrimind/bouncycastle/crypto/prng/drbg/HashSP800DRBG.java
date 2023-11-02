@@ -2,8 +2,8 @@ package com.distrimind.bouncycastle.crypto.prng.drbg;
 
 import java.util.Hashtable;
 
-import com.distrimind.bouncycastle.crypto.prng.EntropySource;
 import com.distrimind.bouncycastle.crypto.Digest;
+import com.distrimind.bouncycastle.crypto.prng.EntropySource;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Integers;
 

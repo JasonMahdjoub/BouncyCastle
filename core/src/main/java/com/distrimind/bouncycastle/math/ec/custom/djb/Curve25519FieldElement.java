@@ -2,9 +2,9 @@ package com.distrimind.bouncycastle.math.ec.custom.djb;
 
 import java.math.BigInteger;
 
+import com.distrimind.bouncycastle.math.ec.ECFieldElement;
 import com.distrimind.bouncycastle.math.raw.Nat256;
 import com.distrimind.bouncycastle.util.Arrays;
-import com.distrimind.bouncycastle.math.ec.ECFieldElement;
 
 public class Curve25519FieldElement extends ECFieldElement.AbstractFp
 {

@@ -4,9 +4,9 @@ import java.io.IOException;
 
 import com.distrimind.bouncycastle.asn1.ASN1Encoding;
 import com.distrimind.bouncycastle.asn1.ASN1String;
-import com.distrimind.bouncycastle.cms.CMSException;
 import com.distrimind.bouncycastle.asn1.cms.Attributes;
 import com.distrimind.bouncycastle.asn1.cms.MetaData;
+import com.distrimind.bouncycastle.cms.CMSException;
 import com.distrimind.bouncycastle.operator.DigestCalculator;
 
 class MetaDataUtil
@@ -48,7 +48,7 @@ class MetaDataUtil
     {
         if (metaData != null)
         {
-            return convertString(metaData.getMediaType());
+            return convertString(metaData.getMediaTypeIA5());
         }
 
         return null;

@@ -7,6 +7,9 @@ import java.math.BigInteger;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.nist.NISTObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.operator.DigestCalculator;
+import com.distrimind.bouncycastle.operator.DigestCalculatorProvider;
+import com.distrimind.bouncycastle.operator.OperatorCreationException;
 import com.distrimind.bouncycastle.oer.its.ieee1609dot2.CertificateBase;
 import com.distrimind.bouncycastle.oer.its.ieee1609dot2.CertificateId;
 import com.distrimind.bouncycastle.oer.its.ieee1609dot2.CertificateType;
@@ -16,9 +19,6 @@ import com.distrimind.bouncycastle.oer.its.ieee1609dot2.VerificationKeyIndicator
 import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.EccP256CurvePoint;
 import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.HashedId8;
 import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.PublicEncryptionKey;
-import com.distrimind.bouncycastle.operator.DigestCalculator;
-import com.distrimind.bouncycastle.operator.DigestCalculatorProvider;
-import com.distrimind.bouncycastle.operator.OperatorCreationException;
 import com.distrimind.bouncycastle.util.Arrays;
 
 public class ITSImplicitCertificateBuilder

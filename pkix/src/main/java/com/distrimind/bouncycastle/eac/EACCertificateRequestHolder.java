@@ -5,9 +5,9 @@ import java.io.OutputStream;
 
 import com.distrimind.bouncycastle.asn1.ASN1Encoding;
 import com.distrimind.bouncycastle.asn1.ASN1ParsingException;
+import com.distrimind.bouncycastle.eac.operator.EACSignatureVerifier;
 import com.distrimind.bouncycastle.asn1.eac.CVCertificateRequest;
 import com.distrimind.bouncycastle.asn1.eac.PublicKeyDataObject;
-import com.distrimind.bouncycastle.eac.operator.EACSignatureVerifier;
 
 public class EACCertificateRequestHolder
 {

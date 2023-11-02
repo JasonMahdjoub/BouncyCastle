@@ -3,12 +3,11 @@ package com.distrimind.bouncycastle.cert.crmf;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.distrimind.bouncycastle.asn1.ASN1Encodable;
-import com.distrimind.bouncycastle.cert.X509CertificateHolder;
 import com.distrimind.bouncycastle.asn1.cmp.CMPCertificate;
 import com.distrimind.bouncycastle.asn1.cmp.CertRepMessage;
 import com.distrimind.bouncycastle.asn1.cmp.CertResponse;
 import com.distrimind.bouncycastle.asn1.cmp.PKIBody;
+import com.distrimind.bouncycastle.cert.X509CertificateHolder;
 
 public class CertificateRepMessage
 {
@@ -102,7 +101,7 @@ public class CertificateRepMessage
         return certs;
     }
 
-    public ASN1Encodable toASN1Structure()
+    public CertRepMessage toASN1Structure()
     {
         return new CertRepMessage(caCerts, resps);
     }

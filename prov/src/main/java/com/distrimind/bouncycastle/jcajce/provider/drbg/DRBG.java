@@ -20,8 +20,8 @@ import com.distrimind.bouncycastle.crypto.prng.EntropySourceProvider;
 import com.distrimind.bouncycastle.crypto.prng.SP800SecureRandom;
 import com.distrimind.bouncycastle.crypto.prng.SP800SecureRandomBuilder;
 import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
-import com.distrimind.bouncycastle.jcajce.provider.util.AsymmetricAlgorithmProvider;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.ClassUtil;
+import com.distrimind.bouncycastle.jcajce.provider.util.AsymmetricAlgorithmProvider;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Pack;
 import com.distrimind.bouncycastle.util.Properties;
@@ -269,7 +269,15 @@ public class DRBG
 
     private static EntropySourceProvider createCoreEntropySourceProvider()
     {
-        if (Security.getProperty("securerandom.source") == null)
+        String source = AccessController.doPrivileged(new PrivilegedAction<String>()
+        {
+            public String run()
+            {
+                return Security.getProperty("securerandom.source");
+            }
+        });
+
+        if (source == null)
         {
             return createInitialEntropySource();
         }
@@ -277,8 +285,6 @@ public class DRBG
         {
             try
             {
-                String source = Security.getProperty("securerandom.source");
-
                 return new URLSeededEntropySourceProvider(new URL(source));
             }
             catch (Exception e)
@@ -496,7 +502,7 @@ public class DRBG
             return bytesRequired * 8;
         }
 
-        private class SignallingEntropySource
+        private static class SignallingEntropySource
             implements IncrementalEntropySource
         {
             private final EntropyDaemon entropyDaemon;
@@ -571,7 +577,7 @@ public class DRBG
         private final AtomicInteger samples = new AtomicInteger(0);
 
         private final SP800SecureRandom drbg;
-        private final SignallingEntropySource entropySource;
+        private final OneShotSignallingEntropySource entropySource;
         private final int bytesRequired;
         private final byte[] additionalInput = Pack.longToBigEndian(System.currentTimeMillis());
 
@@ -580,7 +586,7 @@ public class DRBG
             EntropySourceProvider entropyProvider = createCoreEntropySourceProvider();
             bytesRequired = (bitsRequired + 7) / 8;
             // remember for the seed generator we need the correct security strength for SHA-512
-            entropySource = new SignallingEntropySource(seedAvailable, entropyProvider, 256);
+            entropySource = new OneShotSignallingEntropySource(seedAvailable, entropyProvider, 256);
             drbg = new SP800SecureRandomBuilder(new EntropySourceProvider()
             {
                 public EntropySource get(final int bitsRequired)
@@ -626,7 +632,7 @@ public class DRBG
             return bytesRequired * 8;
         }
 
-        private class SignallingEntropySource
+        private static class OneShotSignallingEntropySource
             implements IncrementalEntropySource
         {
             private final AtomicBoolean seedAvailable;
@@ -635,7 +641,7 @@ public class DRBG
             private final AtomicReference entropy = new AtomicReference();
             private final AtomicBoolean scheduled = new AtomicBoolean(false);
 
-            SignallingEntropySource(AtomicBoolean seedAvailable, EntropySourceProvider baseRandom, int bitsRequired)
+            OneShotSignallingEntropySource(AtomicBoolean seedAvailable, EntropySourceProvider baseRandom, int bitsRequired)
             {
                 this.seedAvailable = seedAvailable;
                 this.entropySource = (IncrementalEntropySource)baseRandom.get(bitsRequired);

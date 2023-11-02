@@ -3,10 +3,10 @@ package com.distrimind.bouncycastle.cert.cmp;
 import java.io.IOException;
 
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
-import com.distrimind.bouncycastle.cert.CertIOException;
 import com.distrimind.bouncycastle.asn1.cmp.PKIBody;
 import com.distrimind.bouncycastle.asn1.cmp.PKIHeader;
 import com.distrimind.bouncycastle.asn1.cmp.PKIMessage;
+import com.distrimind.bouncycastle.cert.CertIOException;
 
 /**
  * General wrapper for a generic PKIMessage
@@ -72,7 +72,7 @@ public class GeneralPKIMessage
      */
     public boolean hasProtection()
     {
-        return pkiMessage.getHeader().getProtectionAlg() != null;
+        return pkiMessage.getProtection() != null;
     }
 
     public PKIMessage toASN1Structure()

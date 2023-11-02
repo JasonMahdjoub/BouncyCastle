@@ -21,14 +21,14 @@ import com.distrimind.bouncycastle.crypto.params.ECPublicKeyParameters;
 import com.distrimind.bouncycastle.crypto.util.OpenSSHPublicKeyUtil;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.BaseKeyFactorySpi;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.EC5Util;
+import com.distrimind.bouncycastle.jce.spec.ECParameterSpec;
+import com.distrimind.bouncycastle.jce.spec.ECPrivateKeySpec;
+import com.distrimind.bouncycastle.jce.spec.ECPublicKeySpec;
 import com.distrimind.bouncycastle.jcajce.provider.config.ProviderConfiguration;
 import com.distrimind.bouncycastle.jcajce.provider.util.AsymmetricKeyInfoConverter;
 import com.distrimind.bouncycastle.jcajce.spec.OpenSSHPrivateKeySpec;
 import com.distrimind.bouncycastle.jcajce.spec.OpenSSHPublicKeySpec;
 import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
-import com.distrimind.bouncycastle.jce.spec.ECParameterSpec;
-import com.distrimind.bouncycastle.jce.spec.ECPrivateKeySpec;
-import com.distrimind.bouncycastle.jce.spec.ECPublicKeySpec;
 
 public class KeyFactorySpi
     extends BaseKeyFactorySpi

@@ -32,10 +32,10 @@ import com.distrimind.bouncycastle.crypto.encodings.OAEPEncoding;
 import com.distrimind.bouncycastle.crypto.encodings.PKCS1Encoding;
 import com.distrimind.bouncycastle.crypto.engines.ElGamalEngine;
 import com.distrimind.bouncycastle.crypto.params.ParametersWithRandom;
+import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.BaseCipherSpi;
 import com.distrimind.bouncycastle.jcajce.provider.util.BadBlockException;
 import com.distrimind.bouncycastle.jcajce.provider.util.DigestFactory;
 import com.distrimind.bouncycastle.jce.interfaces.ElGamalKey;
-import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.BaseCipherSpi;
 import com.distrimind.bouncycastle.util.Strings;
 
 public class CipherSpi

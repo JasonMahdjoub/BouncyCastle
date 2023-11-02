@@ -8,8 +8,8 @@ import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
 import com.distrimind.bouncycastle.pqc.crypto.crystals.kyber.KyberPublicKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.util.PublicKeyFactory;
 import com.distrimind.bouncycastle.pqc.jcajce.interfaces.KyberPublicKey;
-import com.distrimind.bouncycastle.pqc.jcajce.spec.KyberParameterSpec;
 import com.distrimind.bouncycastle.pqc.jcajce.provider.util.KeyUtil;
+import com.distrimind.bouncycastle.pqc.jcajce.spec.KyberParameterSpec;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Strings;
 

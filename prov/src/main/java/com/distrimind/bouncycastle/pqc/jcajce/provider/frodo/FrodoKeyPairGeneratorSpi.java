@@ -14,8 +14,8 @@ import com.distrimind.bouncycastle.pqc.crypto.frodo.FrodoKeyPairGenerator;
 import com.distrimind.bouncycastle.pqc.crypto.frodo.FrodoParameters;
 import com.distrimind.bouncycastle.pqc.crypto.frodo.FrodoPrivateKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.frodo.FrodoPublicKeyParameters;
-import com.distrimind.bouncycastle.pqc.jcajce.spec.FrodoParameterSpec;
 import com.distrimind.bouncycastle.pqc.jcajce.provider.util.SpecUtil;
+import com.distrimind.bouncycastle.pqc.jcajce.spec.FrodoParameterSpec;
 import com.distrimind.bouncycastle.util.Strings;
 
 public class FrodoKeyPairGeneratorSpi

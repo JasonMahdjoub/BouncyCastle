@@ -1,7 +1,7 @@
 package com.distrimind.bouncycastle.openpgp;
 
-import com.distrimind.bouncycastle.bcpg.BCPGKey;
 import com.distrimind.bouncycastle.bcpg.PublicKeyPacket;
+import com.distrimind.bouncycastle.bcpg.BCPGKey;
 
 /**
  * general class to contain a private key for use with other openPGP

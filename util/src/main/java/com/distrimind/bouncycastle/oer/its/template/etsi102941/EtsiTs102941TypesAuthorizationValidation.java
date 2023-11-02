@@ -5,8 +5,6 @@ import java.math.BigInteger;
 import com.distrimind.bouncycastle.oer.OERDefinition;
 import com.distrimind.bouncycastle.oer.its.template.etsi102941.basetypes.EtsiTs102941BaseTypes;
 
-import static com.distrimind.bouncycastle.oer.its.template.etsi102941.EtsiTs102941TypesAuthorization.SharedAtRequest;
-
 public class EtsiTs102941TypesAuthorizationValidation
 {
 
@@ -54,7 +52,7 @@ public class EtsiTs102941TypesAuthorizationValidation
      * }
      */
     public static final OERDefinition.Builder AuthorizationValidationRequest = OERDefinition.seq(
-        SharedAtRequest.label("sharedAtRequest"),
+        EtsiTs102941TypesAuthorization.SharedAtRequest.label("sharedAtRequest"),
         EtsiTs102941BaseTypes.EcSignature.label("ecSignature"),
         OERDefinition.extension()
     ).typeName("AuthorizationValidationRequest");

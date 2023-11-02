@@ -7,6 +7,7 @@ import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
+import com.distrimind.bouncycastle.asn1.BERTags;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
 import com.distrimind.bouncycastle.asn1.x509.AttributeCertificate;
 import com.distrimind.bouncycastle.asn1.x509.Certificate;
@@ -60,7 +61,7 @@ public class CMPCertificate
         {
             if (isExplicit)
             {
-                return CMPCertificate.getInstance(ato.getObject());
+                return CMPCertificate.getInstance(ato.getExplicitBaseObject());
             }
             else
             {
@@ -96,9 +97,9 @@ public class CMPCertificate
 
         if (o instanceof ASN1TaggedObject)
         {
-            ASN1TaggedObject taggedObject = (ASN1TaggedObject)o;
+            ASN1TaggedObject taggedObject = ASN1TaggedObject.getInstance(o, BERTags.CONTEXT_SPECIFIC);
 
-            return new CMPCertificate(taggedObject.getTagNo(), taggedObject.getObject());
+            return new CMPCertificate(taggedObject.getTagNo(), taggedObject.getBaseObject());
         }
 
         throw new IllegalArgumentException("Invalid object: " + o.getClass().getName());

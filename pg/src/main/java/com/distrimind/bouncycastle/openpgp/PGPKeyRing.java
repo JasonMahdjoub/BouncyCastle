@@ -9,10 +9,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.distrimind.bouncycastle.bcpg.BCPGInputStream;
-import com.distrimind.bouncycastle.bcpg.Packet;
 import com.distrimind.bouncycastle.bcpg.PacketTags;
-import com.distrimind.bouncycastle.bcpg.SignaturePacket;
 import com.distrimind.bouncycastle.bcpg.TrustPacket;
+import com.distrimind.bouncycastle.bcpg.Packet;
+import com.distrimind.bouncycastle.bcpg.SignaturePacket;
 import com.distrimind.bouncycastle.bcpg.UnsupportedPacketVersionException;
 import com.distrimind.bouncycastle.bcpg.UserAttributePacket;
 import com.distrimind.bouncycastle.bcpg.UserDataPacket;
@@ -127,9 +127,16 @@ public abstract class PGPKeyRing
     /**
      * Return an iterator containing all the public keys carrying signatures issued from key keyID.
      *
-     * @return a an iterator (possibly empty) of the public keys associated with keyID.
+     * @return an iterator (possibly empty) of the public keys associated with keyID.
      */
     public abstract Iterator<PGPPublicKey> getKeysWithSignaturesBy(long keyID);
+
+    /**
+     * Return the number of keys in the key ring.
+     *
+     * @return number of keys (master key + subkey).
+     */
+    public abstract int size();
 
     public abstract void encode(OutputStream outStream)
         throws IOException;

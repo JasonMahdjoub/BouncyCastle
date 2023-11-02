@@ -11,7 +11,6 @@ import com.distrimind.bouncycastle.asn1.ASN1Encoding;
 import com.distrimind.bouncycastle.asn1.ASN1GeneralizedTime;
 import com.distrimind.bouncycastle.asn1.DERBitString;
 import com.distrimind.bouncycastle.asn1.DERSequence;
-import com.distrimind.bouncycastle.cert.X509CertificateHolder;
 import com.distrimind.bouncycastle.cert.crmf.CertificateRepMessage;
 import com.distrimind.bouncycastle.cert.crmf.CertificateReqMessages;
 import com.distrimind.bouncycastle.asn1.cmp.CMPCertificate;
@@ -23,6 +22,7 @@ import com.distrimind.bouncycastle.asn1.cmp.PKIHeaderBuilder;
 import com.distrimind.bouncycastle.asn1.cmp.PKIMessage;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.asn1.x509.GeneralName;
+import com.distrimind.bouncycastle.cert.X509CertificateHolder;
 import com.distrimind.bouncycastle.operator.ContentSigner;
 import com.distrimind.bouncycastle.operator.MacCalculator;
 
@@ -192,7 +192,7 @@ public class ProtectedPKIMessageBuilder
     {
         if (!CertificateRepMessage.isCertificateRepMessage(bodyType))
         {
-            throw new IllegalArgumentException("body type " + bodyType + " does not match CMP type CertReqMessages");
+            throw new IllegalArgumentException("body type " + bodyType + " does not match CMP type CertRepMessage");
         }
 
         this.body = new PKIBody(bodyType, certificateRepMessage.toASN1Structure());

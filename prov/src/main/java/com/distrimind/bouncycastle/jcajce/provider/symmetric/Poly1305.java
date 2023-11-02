@@ -1,9 +1,9 @@
 package com.distrimind.bouncycastle.jcajce.provider.symmetric;
 
 import com.distrimind.bouncycastle.crypto.generators.Poly1305KeyGenerator;
-import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseKeyGenerator;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseMac;
+import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import com.distrimind.bouncycastle.jcajce.provider.util.AlgorithmProvider;
 
 public class Poly1305

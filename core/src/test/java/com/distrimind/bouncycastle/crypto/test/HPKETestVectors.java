@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import com.distrimind.bouncycastle.test.TestResourceFinder;
 import junit.framework.TestCase;
 import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
 import com.distrimind.bouncycastle.crypto.InvalidCipherTextException;
@@ -17,6 +16,7 @@ import com.distrimind.bouncycastle.crypto.hpke.HPKE;
 import com.distrimind.bouncycastle.crypto.hpke.HPKEContext;
 import com.distrimind.bouncycastle.crypto.hpke.HPKEContextWithEncapsulation;
 import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
+import com.distrimind.bouncycastle.test.TestResourceFinder;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.encoders.Hex;
 

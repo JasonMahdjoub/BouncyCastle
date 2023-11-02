@@ -13,11 +13,11 @@ import javax.crypto.spec.DHParameterSpec;
 import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
 import com.distrimind.bouncycastle.crypto.params.DHParameters;
 import com.distrimind.bouncycastle.crypto.params.DSAParameters;
+import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.EC5Util;
 import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import com.distrimind.bouncycastle.jcajce.provider.config.ProviderConfiguration;
 import com.distrimind.bouncycastle.jcajce.provider.config.ProviderConfigurationPermission;
 import com.distrimind.bouncycastle.jcajce.spec.DHDomainParameterSpec;
-import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.EC5Util;
 import com.distrimind.bouncycastle.jce.spec.ECParameterSpec;
 
 class BouncyCastleProviderConfiguration

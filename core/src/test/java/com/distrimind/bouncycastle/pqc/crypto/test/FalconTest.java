@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 import java.security.SecureRandom;
 import java.util.HashMap;
 
-import com.distrimind.bouncycastle.test.TestResourceFinder;
 import junit.framework.TestCase;
 import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
 import com.distrimind.bouncycastle.crypto.params.ParametersWithRandom;
@@ -16,6 +15,11 @@ import com.distrimind.bouncycastle.pqc.crypto.falcon.FalconParameters;
 import com.distrimind.bouncycastle.pqc.crypto.falcon.FalconPrivateKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.falcon.FalconPublicKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.falcon.FalconSigner;
+import com.distrimind.bouncycastle.pqc.crypto.util.PrivateKeyFactory;
+import com.distrimind.bouncycastle.pqc.crypto.util.PrivateKeyInfoFactory;
+import com.distrimind.bouncycastle.pqc.crypto.util.PublicKeyFactory;
+import com.distrimind.bouncycastle.pqc.crypto.util.SubjectPublicKeyInfoFactory;
+import com.distrimind.bouncycastle.test.TestResourceFinder;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Strings;
 import com.distrimind.bouncycastle.util.encoders.Hex;
@@ -78,9 +82,15 @@ public class FalconTest
                         FalconKeyGenerationParameters kparam = new FalconKeyGenerationParameters(random, parameters[fileindex]);
                         FalconKeyPairGenerator kpg = new FalconKeyPairGenerator();
                         kpg.init(kparam);
-                        AsymmetricCipherKeyPair ackp = kpg.generateKeyPair();
-                        byte[] respk = ((FalconPublicKeyParameters)ackp.getPublic()).getH();
-                        byte[] ressk = ((FalconPrivateKeyParameters)ackp.getPrivate()).getEncoded();
+                        AsymmetricCipherKeyPair kp = kpg.generateKeyPair();
+
+                        FalconPublicKeyParameters pubParams = (FalconPublicKeyParameters)PublicKeyFactory.createKey(
+                            SubjectPublicKeyInfoFactory.createSubjectPublicKeyInfo((FalconPublicKeyParameters)kp.getPublic()));
+                        FalconPrivateKeyParameters privParams = (FalconPrivateKeyParameters)PrivateKeyFactory.createKey(
+                            PrivateKeyInfoFactory.createPrivateKeyInfo((FalconPrivateKeyParameters)kp.getPrivate()));
+
+                        byte[] respk = pubParams.getH();
+                        byte[] ressk = privParams.getEncoded();
 
                         //keygen
                         assertTrue(name + " " + count + " public key", Arrays.areEqual(respk, 0, respk.length, pk, 1, pk.length));
@@ -88,7 +98,7 @@ public class FalconTest
 
                         // sign
                         FalconSigner signer = new FalconSigner();
-                        ParametersWithRandom skwrand = new ParametersWithRandom(ackp.getPrivate(), random);
+                        ParametersWithRandom skwrand = new ParametersWithRandom(kp.getPrivate(), random);
                         signer.init(true, skwrand);
                         byte[] sig = signer.generateSignature(msg);
                         // reconstruct test vector signature
@@ -102,7 +112,7 @@ public class FalconTest
 
                         // verify
                         FalconSigner verifier = new FalconSigner();
-                        FalconPublicKeyParameters pkparam = (FalconPublicKeyParameters)ackp.getPublic();
+                        FalconPublicKeyParameters pkparam = (FalconPublicKeyParameters)kp.getPublic();
                         verifier.init(false, pkparam);
                         boolean vrfyrespass = verifier.verifySignature(msg, sig);
                         sig[11]++; // changing the signature by 1 byte should cause it to fail

@@ -4,6 +4,7 @@ import com.distrimind.bouncycastle.asn1.ASN1Choice;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
+import com.distrimind.bouncycastle.asn1.BERTags;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
 
 /**
@@ -54,7 +55,7 @@ public class Duration
         case years:
             try
             {
-                duration = UINT16.getInstance(taggedObject.getObject());
+                duration = UINT16.getInstance(taggedObject.getExplicitBaseObject());
             }
             catch (Exception ioex)
             {
@@ -75,7 +76,7 @@ public class Duration
 
         if (o != null)
         {
-            return new Duration(ASN1TaggedObject.getInstance(o));
+            return new Duration(ASN1TaggedObject.getInstance(o, BERTags.CONTEXT_SPECIFIC));
         }
 
         return null;

@@ -2,6 +2,8 @@ package com.distrimind.bouncycastle.openpgp.operator.jcajce;
 
 import java.security.Provider;
 
+import com.distrimind.bouncycastle.bcpg.AEADEncDataPacket;
+import com.distrimind.bouncycastle.bcpg.SymmetricEncIntegrityPacket;
 import com.distrimind.bouncycastle.jcajce.util.DefaultJcaJceHelper;
 import com.distrimind.bouncycastle.jcajce.util.NamedJcaJceHelper;
 import com.distrimind.bouncycastle.jcajce.util.ProviderJcaJceHelper;
@@ -56,29 +58,44 @@ public class JceSessionKeyDataDecryptorFactoryBuilder
         implements SessionKeyDataDecryptorFactory
     {
         private final OperatorHelper helper;
+        private final JceAEADUtil aeadHelper;
         private final PGPSessionKey sessionKey;
 
         public JceSessionKeyDataDecryptorFactory(OperatorHelper helper, PGPSessionKey sessionKey)
         {
             this.helper = helper;
+            this.aeadHelper = new JceAEADUtil(helper);
             this.sessionKey = sessionKey;
         }
 
+        @Override
         public PGPSessionKey getSessionKey()
         {
             return sessionKey;
         }
 
+        // OpenPGP v4
+        @Override
         public PGPDataDecryptor createDataDecryptor(boolean withIntegrityPacket, int encAlgorithm, byte[] key)
             throws PGPException
         {
             return helper.createDataDecryptor(withIntegrityPacket, encAlgorithm, key);
         }
 
-        public PGPDataDecryptor createDataDecryptor(int aeadAlgorithm, byte[] iv, int chunkSize, int encAlgorithm, byte[] key)
+        // OpenPGP v5
+        @Override
+        public PGPDataDecryptor createDataDecryptor(AEADEncDataPacket aeadEncDataPacket, PGPSessionKey sessionKey)
             throws PGPException
         {
-            return helper.createDataDecryptor(aeadAlgorithm, iv, chunkSize, encAlgorithm, key);
+            return aeadHelper.createOpenPgpV5DataDecryptor(aeadEncDataPacket, sessionKey);
+        }
+
+        // OpenPGP v6
+        @Override
+        public PGPDataDecryptor createDataDecryptor(SymmetricEncIntegrityPacket seipd, PGPSessionKey sessionKey)
+                throws PGPException
+        {
+            return aeadHelper.createOpenPgpV6DataDecryptor(seipd, sessionKey);
         }
     }
 }

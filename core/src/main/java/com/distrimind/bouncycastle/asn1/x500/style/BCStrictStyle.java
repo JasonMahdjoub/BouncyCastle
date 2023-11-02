@@ -1,8 +1,8 @@
 package com.distrimind.bouncycastle.asn1.x500.style;
 
-import com.distrimind.bouncycastle.asn1.x500.X500NameStyle;
 import com.distrimind.bouncycastle.asn1.x500.RDN;
 import com.distrimind.bouncycastle.asn1.x500.X500Name;
+import com.distrimind.bouncycastle.asn1.x500.X500NameStyle;
 
 /**
  * Variation of BCStyle that insists on strict ordering for equality

@@ -4,8 +4,8 @@ import java.io.FileInputStream;
 import java.security.Security;
 import java.util.Iterator;
 
-import com.distrimind.bouncycastle.bcpg.PublicKeyAlgorithmTags;
 import com.distrimind.bouncycastle.openpgp.operator.jcajce.JcaKeyFingerprintCalculator;
+import com.distrimind.bouncycastle.bcpg.PublicKeyAlgorithmTags;
 import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
 import com.distrimind.bouncycastle.openpgp.PGPPublicKey;
 import com.distrimind.bouncycastle.openpgp.PGPPublicKeyRing;

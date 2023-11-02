@@ -25,7 +25,6 @@ import com.distrimind.bouncycastle.asn1.x9.X9IntegerConverter;
 import com.distrimind.bouncycastle.asn1.x9.X9ObjectIdentifiers;
 import com.distrimind.bouncycastle.crypto.params.ECDomainParameters;
 import com.distrimind.bouncycastle.crypto.params.ECPublicKeyParameters;
-import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.ECUtil;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.KeyUtil;
 import com.distrimind.bouncycastle.jcajce.provider.config.ProviderConfiguration;
 import com.distrimind.bouncycastle.jce.ECGOST3410NamedCurveTable;
@@ -37,6 +36,7 @@ import com.distrimind.bouncycastle.jce.spec.ECParameterSpec;
 import com.distrimind.bouncycastle.jce.spec.ECPublicKeySpec;
 import com.distrimind.bouncycastle.math.ec.ECCurve;
 import com.distrimind.bouncycastle.math.ec.ECPoint;
+import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.ECUtil;
 
 public class BCECGOST3410PublicKey
     implements ECPublicKey, ECPointEncoder

@@ -1,11 +1,11 @@
 package com.distrimind.bouncycastle.pqc.crypto.ntru;
 
-import com.distrimind.bouncycastle.util.Arrays;
-import com.distrimind.bouncycastle.pqc.math.ntru.HPSPolynomial;
-import com.distrimind.bouncycastle.pqc.math.ntru.Polynomial;
 import com.distrimind.bouncycastle.pqc.math.ntru.parameters.NTRUHPSParameterSet;
 import com.distrimind.bouncycastle.pqc.math.ntru.parameters.NTRUHRSSParameterSet;
 import com.distrimind.bouncycastle.pqc.math.ntru.parameters.NTRUParameterSet;
+import com.distrimind.bouncycastle.pqc.math.ntru.HPSPolynomial;
+import com.distrimind.bouncycastle.pqc.math.ntru.Polynomial;
+import com.distrimind.bouncycastle.util.Arrays;
 
 /**
  * An OW-CPA secure deterministic public key encryption scheme (DPKE).

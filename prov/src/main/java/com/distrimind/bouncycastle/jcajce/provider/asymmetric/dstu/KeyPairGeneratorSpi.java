@@ -19,11 +19,11 @@ import com.distrimind.bouncycastle.crypto.params.ECKeyGenerationParameters;
 import com.distrimind.bouncycastle.crypto.params.ECPrivateKeyParameters;
 import com.distrimind.bouncycastle.crypto.params.ECPublicKeyParameters;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.EC5Util;
-import com.distrimind.bouncycastle.jcajce.spec.DSTU4145ParameterSpec;
-import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
 import com.distrimind.bouncycastle.jce.spec.ECNamedCurveGenParameterSpec;
 import com.distrimind.bouncycastle.jce.spec.ECNamedCurveSpec;
 import com.distrimind.bouncycastle.jce.spec.ECParameterSpec;
+import com.distrimind.bouncycastle.jcajce.spec.DSTU4145ParameterSpec;
+import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
 import com.distrimind.bouncycastle.math.ec.ECCurve;
 import com.distrimind.bouncycastle.math.ec.ECPoint;
 

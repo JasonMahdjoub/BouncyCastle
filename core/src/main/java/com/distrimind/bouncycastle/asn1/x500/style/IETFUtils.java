@@ -5,18 +5,18 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Vector;
 
-import com.distrimind.bouncycastle.asn1.x500.AttributeTypeAndValue;
-import com.distrimind.bouncycastle.asn1.x500.X500NameStyle;
-import com.distrimind.bouncycastle.util.Strings;
-import com.distrimind.bouncycastle.util.encoders.Hex;
 import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1Encoding;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1String;
 import com.distrimind.bouncycastle.asn1.ASN1UniversalString;
+import com.distrimind.bouncycastle.asn1.x500.AttributeTypeAndValue;
 import com.distrimind.bouncycastle.asn1.x500.RDN;
 import com.distrimind.bouncycastle.asn1.x500.X500NameBuilder;
+import com.distrimind.bouncycastle.asn1.x500.X500NameStyle;
+import com.distrimind.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.util.encoders.Hex;
 
 public class IETFUtils
 {

@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.Enumeration;
 
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import com.distrimind.bouncycastle.util.BigIntegers;
 import com.distrimind.bouncycastle.asn1.ASN1BitString;
 import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
@@ -19,6 +18,7 @@ import com.distrimind.bouncycastle.asn1.DERBitString;
 import com.distrimind.bouncycastle.asn1.DEROctetString;
 import com.distrimind.bouncycastle.asn1.DERSequence;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
+import com.distrimind.bouncycastle.util.BigIntegers;
 
 /**
  * RFC 5958
@@ -164,7 +164,7 @@ public class PrivateKeyInfo
                     throw new IllegalArgumentException("'publicKey' requires version v2(1) or later");
                 }
 
-                this.publicKey = DERBitString.getInstance(tagged, false);
+                this.publicKey = ASN1BitString.getInstance(tagged, false);
                 break;
             }
             default:
@@ -193,6 +193,11 @@ public class PrivateKeyInfo
     public ASN1OctetString getPrivateKey()
     {
         return new DEROctetString(privateKey.getOctets());
+    }
+
+    public int getPrivateKeyLength()
+    {
+        return privateKey.getOctetsLength();
     }
 
     public ASN1Encodable parsePrivateKey()

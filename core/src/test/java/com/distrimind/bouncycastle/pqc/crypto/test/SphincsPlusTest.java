@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import com.distrimind.bouncycastle.test.TestResourceFinder;
 import junit.framework.TestCase;
 import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
 import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
@@ -25,6 +24,7 @@ import com.distrimind.bouncycastle.pqc.crypto.util.PrivateKeyFactory;
 import com.distrimind.bouncycastle.pqc.crypto.util.PrivateKeyInfoFactory;
 import com.distrimind.bouncycastle.pqc.crypto.util.PublicKeyFactory;
 import com.distrimind.bouncycastle.pqc.crypto.util.SubjectPublicKeyInfoFactory;
+import com.distrimind.bouncycastle.test.TestResourceFinder;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.encoders.Hex;
 import com.distrimind.bouncycastle.util.test.FixedSecureRandom;
@@ -153,6 +153,15 @@ public class SphincsPlusTest
 
                         SPHINCSPlusPublicKeyParameters pubParams = (SPHINCSPlusPublicKeyParameters)kp.getPublic();
                         SPHINCSPlusPrivateKeyParameters privParams = (SPHINCSPlusPrivateKeyParameters)kp.getPrivate();
+
+                        // FIXME No OIDs for simple variants of SPHINCS+
+                        if (name.indexOf("-simple") < 0)
+                        {
+                            pubParams = (SPHINCSPlusPublicKeyParameters)PublicKeyFactory.createKey(
+                                SubjectPublicKeyInfoFactory.createSubjectPublicKeyInfo(pubParams));
+                            privParams = (SPHINCSPlusPrivateKeyParameters)PrivateKeyFactory.createKey(
+                                PrivateKeyInfoFactory.createPrivateKeyInfo(privParams));
+                        }
 
 //                            System.err.println(Hex.toHexString(pubParams.getEncoded()));
 //                            System.err.println(Hex.toHexString(Arrays.concatenate(pubParams.getParameters().getEncoded(), pk)));

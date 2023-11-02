@@ -1,5 +1,6 @@
 package com.distrimind.bouncycastle.crypto.macs;
 
+import com.distrimind.bouncycastle.crypto.generators.Poly1305KeyGenerator;
 import com.distrimind.bouncycastle.crypto.params.KeyParameter;
 import com.distrimind.bouncycastle.crypto.params.ParametersWithIV;
 import com.distrimind.bouncycastle.crypto.BlockCipher;
@@ -7,7 +8,6 @@ import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.DataLengthException;
 import com.distrimind.bouncycastle.crypto.Mac;
 import com.distrimind.bouncycastle.crypto.OutputLengthException;
-import com.distrimind.bouncycastle.crypto.generators.Poly1305KeyGenerator;
 import com.distrimind.bouncycastle.util.Pack;
 
 /**

@@ -2,10 +2,10 @@ package com.distrimind.bouncycastle.pqc.crypto.ntru;
 
 import java.security.SecureRandom;
 
+import com.distrimind.bouncycastle.pqc.math.ntru.parameters.NTRUParameterSet;
 import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
 import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPairGenerator;
 import com.distrimind.bouncycastle.crypto.KeyGenerationParameters;
-import com.distrimind.bouncycastle.pqc.math.ntru.parameters.NTRUParameterSet;
 
 /**
  * Key generator for NTRU.

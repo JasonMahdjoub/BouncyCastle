@@ -12,8 +12,8 @@ import com.distrimind.bouncycastle.asn1.x9.X9ECParameters;
 import com.distrimind.bouncycastle.crypto.ec.CustomNamedCurves;
 import com.distrimind.bouncycastle.math.ec.ECCurve;
 import com.distrimind.bouncycastle.math.ec.ECPoint;
-import com.distrimind.bouncycastle.openpgp.PGPUtil;
 import com.distrimind.bouncycastle.openpgp.PGPException;
+import com.distrimind.bouncycastle.openpgp.PGPUtil;
 import com.distrimind.bouncycastle.util.BigIntegers;
 
 /**

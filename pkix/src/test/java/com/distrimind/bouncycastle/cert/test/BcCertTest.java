@@ -18,11 +18,11 @@ import java.util.List;
 import java.util.Set;
 
 import junit.framework.TestCase;
+import com.distrimind.bouncycastle.asn1.ASN1BitString;
 import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
 import com.distrimind.bouncycastle.asn1.ASN1Enumerated;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
-import com.distrimind.bouncycastle.asn1.DERBitString;
 import com.distrimind.bouncycastle.asn1.DERSequence;
 import com.distrimind.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
@@ -499,7 +499,7 @@ public class BcCertTest
 
             X509CertificateHolder certHld = new X509CertificateHolder(bytes);
 
-            if ((DERBitString.getInstance(certHld.getExtension(Extension.keyUsage).getParsedValue()).getBytes()[0] & 0x01) != 0)
+            if ((ASN1BitString.getInstance(certHld.getExtension(Extension.keyUsage).getParsedValue()).getBytes()[0] & 0x01) != 0)
             {
                 fail("error generating cert - key usage wrong.");
             }

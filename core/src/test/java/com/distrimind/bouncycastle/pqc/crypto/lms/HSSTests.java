@@ -8,10 +8,10 @@ import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.distrimind.bouncycastle.test.TestResourceFinder;
 import junit.framework.TestCase;
 import com.distrimind.bouncycastle.crypto.prng.FixedSecureRandom;
 import com.distrimind.bouncycastle.pqc.crypto.ExhaustedPrivateKeyException;
+import com.distrimind.bouncycastle.test.TestResourceFinder;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Pack;
 import com.distrimind.bouncycastle.util.encoders.Hex;

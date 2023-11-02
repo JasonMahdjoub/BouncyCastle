@@ -39,8 +39,8 @@ import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
 import com.distrimind.bouncycastle.asn1.x9.X9ObjectIdentifiers;
-import com.distrimind.bouncycastle.cms.CMSAlgorithm;
 import com.distrimind.bouncycastle.cert.crmf.CRMFException;
+import com.distrimind.bouncycastle.cms.CMSAlgorithm;
 import com.distrimind.bouncycastle.jcajce.util.AlgorithmParametersUtils;
 import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
 

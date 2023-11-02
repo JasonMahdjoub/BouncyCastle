@@ -2,9 +2,9 @@ package com.distrimind.bouncycastle.pqc.crypto.xmss;
 
 import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
-import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.pqc.crypto.ExhaustedPrivateKeyException;
 import com.distrimind.bouncycastle.pqc.crypto.StateAwareMessageSigner;
+import com.distrimind.bouncycastle.util.Arrays;
 
 public class XMSSSigner
     implements StateAwareMessageSigner

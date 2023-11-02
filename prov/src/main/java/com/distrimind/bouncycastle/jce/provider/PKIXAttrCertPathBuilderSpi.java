@@ -26,10 +26,10 @@ import java.util.Set;
 import javax.security.auth.x500.X500Principal;
 
 import com.distrimind.bouncycastle.asn1.x509.Extension;
-import com.distrimind.bouncycastle.jce.exception.ExtCertPathBuilderException;
 import com.distrimind.bouncycastle.jcajce.PKIXCertStoreSelector;
 import com.distrimind.bouncycastle.jcajce.PKIXExtendedBuilderParameters;
 import com.distrimind.bouncycastle.jcajce.PKIXExtendedParameters;
+import com.distrimind.bouncycastle.jce.exception.ExtCertPathBuilderException;
 import com.distrimind.bouncycastle.util.Selector;
 import com.distrimind.bouncycastle.util.Store;
 import com.distrimind.bouncycastle.util.StoreException;

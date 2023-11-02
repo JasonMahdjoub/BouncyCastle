@@ -7,7 +7,6 @@ import java.io.ObjectOutputStream;
 import com.distrimind.bouncycastle.asn1.ASN1Set;
 import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
 import com.distrimind.bouncycastle.pqc.crypto.crystals.kyber.KyberPrivateKeyParameters;
-import com.distrimind.bouncycastle.pqc.crypto.crystals.kyber.KyberPublicKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.util.PrivateKeyFactory;
 import com.distrimind.bouncycastle.pqc.crypto.util.PrivateKeyInfoFactory;
 import com.distrimind.bouncycastle.pqc.jcajce.interfaces.KyberPrivateKey;
@@ -98,7 +97,7 @@ public class BCKyberPrivateKey
 
     public KyberPublicKey getPublicKey()
     {
-        return new BCKyberPublicKey(new KyberPublicKeyParameters(params.getParameters(), params.getPublicKey()));
+        return new BCKyberPublicKey(params.getPublicKeyParameters());
     }
 
     public KyberParameterSpec getParameterSpec()

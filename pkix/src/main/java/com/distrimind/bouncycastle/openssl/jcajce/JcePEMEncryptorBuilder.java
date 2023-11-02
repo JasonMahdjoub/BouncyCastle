@@ -3,12 +3,12 @@ package com.distrimind.bouncycastle.openssl.jcajce;
 import java.security.Provider;
 import java.security.SecureRandom;
 
+import com.distrimind.bouncycastle.openssl.PEMEncryptor;
+import com.distrimind.bouncycastle.openssl.PEMException;
 import com.distrimind.bouncycastle.jcajce.util.DefaultJcaJceHelper;
 import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
 import com.distrimind.bouncycastle.jcajce.util.NamedJcaJceHelper;
 import com.distrimind.bouncycastle.jcajce.util.ProviderJcaJceHelper;
-import com.distrimind.bouncycastle.openssl.PEMEncryptor;
-import com.distrimind.bouncycastle.openssl.PEMException;
 
 public class JcePEMEncryptorBuilder
 {

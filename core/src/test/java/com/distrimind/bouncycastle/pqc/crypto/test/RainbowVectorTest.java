@@ -5,7 +5,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 
-import com.distrimind.bouncycastle.test.TestResourceFinder;
 import junit.framework.TestCase;
 import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
 import com.distrimind.bouncycastle.crypto.params.ParametersWithRandom;
@@ -16,6 +15,7 @@ import com.distrimind.bouncycastle.pqc.crypto.rainbow.RainbowParameters;
 import com.distrimind.bouncycastle.pqc.crypto.rainbow.RainbowPrivateKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.rainbow.RainbowPublicKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.rainbow.RainbowSigner;
+import com.distrimind.bouncycastle.test.TestResourceFinder;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.encoders.Hex;
 

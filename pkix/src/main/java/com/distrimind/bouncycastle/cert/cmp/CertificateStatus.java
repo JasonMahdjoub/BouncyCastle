@@ -2,11 +2,11 @@ package com.distrimind.bouncycastle.cert.cmp;
 
 import java.math.BigInteger;
 
-import com.distrimind.bouncycastle.cert.X509CertificateHolder;
 import com.distrimind.bouncycastle.asn1.cmp.CMPCertificate;
 import com.distrimind.bouncycastle.asn1.cmp.CertStatus;
 import com.distrimind.bouncycastle.asn1.cmp.PKIStatusInfo;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.cert.X509CertificateHolder;
 import com.distrimind.bouncycastle.operator.DigestAlgorithmIdentifierFinder;
 import com.distrimind.bouncycastle.operator.DigestCalculator;
 import com.distrimind.bouncycastle.operator.DigestCalculatorProvider;

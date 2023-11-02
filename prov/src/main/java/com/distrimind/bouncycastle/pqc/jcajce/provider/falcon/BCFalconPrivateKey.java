@@ -11,8 +11,8 @@ import com.distrimind.bouncycastle.pqc.crypto.falcon.FalconPublicKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.util.PrivateKeyFactory;
 import com.distrimind.bouncycastle.pqc.jcajce.interfaces.FalconPrivateKey;
 import com.distrimind.bouncycastle.pqc.jcajce.interfaces.FalconPublicKey;
-import com.distrimind.bouncycastle.pqc.jcajce.spec.FalconParameterSpec;
 import com.distrimind.bouncycastle.pqc.jcajce.provider.util.KeyUtil;
+import com.distrimind.bouncycastle.pqc.jcajce.spec.FalconParameterSpec;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Strings;
 

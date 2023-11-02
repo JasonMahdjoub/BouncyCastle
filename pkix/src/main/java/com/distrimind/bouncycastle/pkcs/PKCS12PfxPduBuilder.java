@@ -12,10 +12,10 @@ import com.distrimind.bouncycastle.asn1.pkcs.ContentInfo;
 import com.distrimind.bouncycastle.asn1.pkcs.MacData;
 import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.pkcs.Pfx;
+import com.distrimind.bouncycastle.operator.OutputEncryptor;
 import com.distrimind.bouncycastle.cms.CMSEncryptedDataGenerator;
 import com.distrimind.bouncycastle.cms.CMSException;
 import com.distrimind.bouncycastle.cms.CMSProcessableByteArray;
-import com.distrimind.bouncycastle.operator.OutputEncryptor;
 
 /**
  * A builder for the PKCS#12 Pfx key and certificate store.

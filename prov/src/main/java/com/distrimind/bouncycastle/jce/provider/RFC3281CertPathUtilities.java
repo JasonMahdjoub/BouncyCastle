@@ -40,14 +40,14 @@ import com.distrimind.bouncycastle.asn1.x509.TargetInformation;
 import com.distrimind.bouncycastle.asn1.x509.X509Extensions;
 import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
 import com.distrimind.bouncycastle.jce.exception.ExtCertPathValidatorException;
+import com.distrimind.bouncycastle.x509.PKIXAttrCertChecker;
+import com.distrimind.bouncycastle.x509.X509AttributeCertificate;
+import com.distrimind.bouncycastle.x509.X509CertStoreSelector;
 import com.distrimind.bouncycastle.jcajce.PKIXCRLStore;
 import com.distrimind.bouncycastle.jcajce.PKIXCertRevocationCheckerParameters;
 import com.distrimind.bouncycastle.jcajce.PKIXCertStoreSelector;
 import com.distrimind.bouncycastle.jcajce.PKIXExtendedBuilderParameters;
 import com.distrimind.bouncycastle.jcajce.PKIXExtendedParameters;
-import com.distrimind.bouncycastle.x509.PKIXAttrCertChecker;
-import com.distrimind.bouncycastle.x509.X509AttributeCertificate;
-import com.distrimind.bouncycastle.x509.X509CertStoreSelector;
 
 class RFC3281CertPathUtilities
 {
@@ -65,8 +65,8 @@ class RFC3281CertPathUtilities
         .getId();
 
     protected static void processAttrCert7(X509AttributeCertificate attrCert,
-        CertPath certPath, CertPath holderCertPath,
-        PKIXExtendedParameters pkixParams, Set attrCertCheckers) throws CertPathValidatorException
+										   CertPath certPath, CertPath holderCertPath,
+										   PKIXExtendedParameters pkixParams, Set attrCertCheckers) throws CertPathValidatorException
     {
         // TODO:
         // AA Controls

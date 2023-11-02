@@ -13,7 +13,6 @@ import com.distrimind.bouncycastle.asn1.ASN1Null;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.DERNull;
 import com.distrimind.bouncycastle.asn1.DERSequence;
-import com.distrimind.bouncycastle.cert.CertIOException;
 import com.distrimind.bouncycastle.asn1.crmf.AttributeTypeAndValue;
 import com.distrimind.bouncycastle.asn1.crmf.CertReqMsg;
 import com.distrimind.bouncycastle.asn1.crmf.CertRequest;
@@ -29,6 +28,7 @@ import com.distrimind.bouncycastle.asn1.x509.ExtensionsGenerator;
 import com.distrimind.bouncycastle.asn1.x509.GeneralName;
 import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
 import com.distrimind.bouncycastle.asn1.x509.Time;
+import com.distrimind.bouncycastle.cert.CertIOException;
 import com.distrimind.bouncycastle.operator.ContentSigner;
 
 /**
@@ -103,6 +103,16 @@ public class CertificateRequestMessageBuilder
         if (serialNumber != null)
         {
             templateBuilder.setSerialNumber(new ASN1Integer(serialNumber));
+        }
+
+        return this;
+    }
+
+    public CertificateRequestMessageBuilder setSerialNumber(ASN1Integer serialNumber)
+    {
+        if (serialNumber != null)
+        {
+            templateBuilder.setSerialNumber(serialNumber);
         }
 
         return this;
@@ -193,7 +203,7 @@ public class CertificateRequestMessageBuilder
         }
         if (type != ProofOfPossession.TYPE_KEY_ENCIPHERMENT && type != ProofOfPossession.TYPE_KEY_AGREEMENT)
         {
-            throw new IllegalArgumentException("type must be ProofOfPossession.TYPE_KEY_ENCIPHERMENT || ProofOfPossession.TYPE_KEY_AGREEMENT");
+            throw new IllegalArgumentException("type must be ProofOfPossession.TYPE_KEY_ENCIPHERMENT or ProofOfPossession.TYPE_KEY_AGREEMENT");
         }
 
         this.popoType = type;
@@ -249,7 +259,7 @@ public class CertificateRequestMessageBuilder
     public CertificateRequestMessage build()
         throws CRMFException
     {
-        ASN1EncodableVector v = new ASN1EncodableVector();
+        ASN1EncodableVector v = new ASN1EncodableVector(3);
 
         v.add(new ASN1Integer(certReqId));
 
@@ -276,15 +286,16 @@ public class CertificateRequestMessageBuilder
 
         CertRequest request = CertRequest.getInstance(new DERSequence(v));
 
-        ProofOfPossession proofOfPossession = new ProofOfPossession();
+        ProofOfPossession proofOfPossession;
         if (popSigner != null)
         {
             CertTemplate template = request.getCertTemplate();
 
+            ProofOfPossessionSigningKeyBuilder builder;
             if (template.getSubject() == null || template.getPublicKey() == null)
             {
                 SubjectPublicKeyInfo pubKeyInfo = request.getCertTemplate().getPublicKey();
-                ProofOfPossessionSigningKeyBuilder builder = new ProofOfPossessionSigningKeyBuilder(pubKeyInfo);
+                builder = new ProofOfPossessionSigningKeyBuilder(pubKeyInfo);
 
                 if (sender != null)
                 {
@@ -292,17 +303,15 @@ public class CertificateRequestMessageBuilder
                 }
                 else
                 {
-                    PKMACValueGenerator pkmacGenerator = new PKMACValueGenerator(pkmacBuilder);
-
-                    builder.setPublicKeyMac(pkmacGenerator, password);
+                    builder.setPublicKeyMac(pkmacBuilder, password);
                 }
-                proofOfPossession = new ProofOfPossession(builder.build(popSigner));
             }
             else
             {
-                ProofOfPossessionSigningKeyBuilder builder = new ProofOfPossessionSigningKeyBuilder(request);
-                proofOfPossession = new ProofOfPossession(builder.build(popSigner));
+                builder = new ProofOfPossessionSigningKeyBuilder(request);
             }
+
+            proofOfPossession = new ProofOfPossession(builder.build(popSigner));
         }
         else if (popoPrivKey != null)
         {
@@ -313,6 +322,10 @@ public class CertificateRequestMessageBuilder
             proofOfPossession = new ProofOfPossession(ProofOfPossession.TYPE_KEY_AGREEMENT, new POPOPrivKey(agreeMAC));
         }
         else if (popRaVerified != null)
+        {
+            proofOfPossession = new ProofOfPossession();
+        }
+        else
         {
             proofOfPossession = new ProofOfPossession();
         }

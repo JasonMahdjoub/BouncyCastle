@@ -15,12 +15,11 @@ import javax.crypto.SecretKey;
 import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.DERNull;
-import com.distrimind.bouncycastle.cms.CMSException;
-import com.distrimind.bouncycastle.operator.jcajce.JceGenericKey;
 import com.distrimind.bouncycastle.asn1.cms.GCMParameters;
 import com.distrimind.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.cms.CMSException;
 import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
 import com.distrimind.bouncycastle.jcajce.io.CipherOutputStream;
 import com.distrimind.bouncycastle.operator.DefaultSecretKeySizeProvider;
@@ -29,6 +28,7 @@ import com.distrimind.bouncycastle.operator.MacCaptureStream;
 import com.distrimind.bouncycastle.operator.OutputAEADEncryptor;
 import com.distrimind.bouncycastle.operator.OutputEncryptor;
 import com.distrimind.bouncycastle.operator.SecretKeySizeProvider;
+import com.distrimind.bouncycastle.operator.jcajce.JceGenericKey;
 
 /**
  * Builder for the content encryptor in EnvelopedData - used to encrypt the actual transmitted content.

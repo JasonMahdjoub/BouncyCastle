@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import com.distrimind.bouncycastle.test.PrintTestResult;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import com.distrimind.bouncycastle.test.PrintTestResult;
 import com.distrimind.bouncycastle.util.io.pem.PemHeader;
 import com.distrimind.bouncycastle.util.io.pem.PemObject;
 import com.distrimind.bouncycastle.util.io.pem.PemReader;
@@ -75,7 +75,7 @@ public class AllTests
 
     public static Test suite()
     {
-        TestSuite suite = new TestSuite("Lightweight PQ Crypto Tests");
+        TestSuite suite = new TestSuite("PEM Tests");
         suite.addTestSuite(AllTests.class);
         return suite;
     }

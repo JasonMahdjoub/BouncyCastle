@@ -2,14 +2,14 @@ package com.distrimind.bouncycastle.crypto.kems;
 
 import java.math.BigInteger;
 
+import com.distrimind.bouncycastle.crypto.constraints.ConstraintUtils;
+import com.distrimind.bouncycastle.crypto.constraints.DefaultServiceProperties;
 import com.distrimind.bouncycastle.crypto.params.ECDomainParameters;
 import com.distrimind.bouncycastle.crypto.params.ECPrivateKeyParameters;
 import com.distrimind.bouncycastle.crypto.CryptoServicePurpose;
 import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
 import com.distrimind.bouncycastle.crypto.DerivationFunction;
 import com.distrimind.bouncycastle.crypto.EncapsulatedSecretExtractor;
-import com.distrimind.bouncycastle.crypto.constraints.ConstraintUtils;
-import com.distrimind.bouncycastle.crypto.constraints.DefaultServiceProperties;
 import com.distrimind.bouncycastle.math.ec.ECCurve;
 import com.distrimind.bouncycastle.math.ec.ECPoint;
 

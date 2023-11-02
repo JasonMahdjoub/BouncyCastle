@@ -9,16 +9,13 @@ import com.distrimind.bouncycastle.asn1.crmf.PKMACValue;
 import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
 import com.distrimind.bouncycastle.operator.MacCalculator;
 
-class PKMACValueGenerator
+abstract class PKMACValueGenerator
 {
-    private PKMACBuilder builder;
-
-    public PKMACValueGenerator(PKMACBuilder builder)
+    private PKMACValueGenerator()
     {
-        this.builder = builder;
     }
 
-    public PKMACValue generate(char[] password, SubjectPublicKeyInfo keyInfo)
+    public static PKMACValue generate(PKMACBuilder builder, char[] password, SubjectPublicKeyInfo keyInfo)
         throws CRMFException
     {
         MacCalculator calculator = builder.build(password);

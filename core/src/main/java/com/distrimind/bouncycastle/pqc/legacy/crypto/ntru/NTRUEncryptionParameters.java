@@ -7,12 +7,12 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Arrays;
 
+import com.distrimind.bouncycastle.pqc.legacy.math.ntru.polynomial.DenseTernaryPolynomial;
+import com.distrimind.bouncycastle.pqc.legacy.math.ntru.polynomial.SparseTernaryPolynomial;
 import com.distrimind.bouncycastle.crypto.Digest;
 import com.distrimind.bouncycastle.crypto.digests.SHA256Digest;
 import com.distrimind.bouncycastle.crypto.digests.SHA512Digest;
 import com.distrimind.bouncycastle.crypto.util.DigestFactory;
-import com.distrimind.bouncycastle.pqc.legacy.math.ntru.polynomial.DenseTernaryPolynomial;
-import com.distrimind.bouncycastle.pqc.legacy.math.ntru.polynomial.SparseTernaryPolynomial;
 
 /**
  * A set of parameters for NtruEncrypt. Several predefined parameter sets are available and new ones can be created as well.

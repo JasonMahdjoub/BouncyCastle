@@ -3,6 +3,7 @@ package com.distrimind.bouncycastle.crypto.signers;
 import java.io.IOException;
 import java.util.Hashtable;
 
+import com.distrimind.bouncycastle.crypto.encodings.PKCS1Encoding;
 import com.distrimind.bouncycastle.asn1.ASN1Encoding;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.DERNull;
@@ -18,7 +19,6 @@ import com.distrimind.bouncycastle.crypto.CryptoException;
 import com.distrimind.bouncycastle.crypto.DataLengthException;
 import com.distrimind.bouncycastle.crypto.Digest;
 import com.distrimind.bouncycastle.crypto.Signer;
-import com.distrimind.bouncycastle.crypto.encodings.PKCS1Encoding;
 import com.distrimind.bouncycastle.crypto.engines.RSABlindedEngine;
 import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
 import com.distrimind.bouncycastle.crypto.params.ParametersWithRandom;

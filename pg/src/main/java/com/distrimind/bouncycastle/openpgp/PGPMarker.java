@@ -8,9 +8,9 @@ package com.distrimind.bouncycastle.openpgp;
 
 import java.io.IOException;
 
+import com.distrimind.bouncycastle.bcpg.BCPGInputStream;
 import com.distrimind.bouncycastle.bcpg.MarkerPacket;
 import com.distrimind.bouncycastle.bcpg.Packet;
-import com.distrimind.bouncycastle.bcpg.BCPGInputStream;
 
 /**
  * a PGP marker packet - in general these should be ignored other than where
@@ -27,7 +27,7 @@ public class PGPMarker
      * @throws IOException
      */
     public PGPMarker(
-        BCPGInputStream in) 
+        BCPGInputStream in)
         throws IOException
     {
         Packet packet = in.readPacket();

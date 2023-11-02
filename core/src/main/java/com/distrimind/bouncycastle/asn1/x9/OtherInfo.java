@@ -70,13 +70,13 @@ public class OtherInfo
         {
             ASN1TaggedObject o = (ASN1TaggedObject)e.nextElement();
 
-            if (o.getTagNo() == 0)
+            if (o.hasContextTag(0))
             {
-                partyAInfo = (ASN1OctetString)o.getObject();
+                partyAInfo = (ASN1OctetString)o.getExplicitBaseObject();
             }
-            else if (o.getTagNo() == 2)
+            else if (o.hasContextTag(2))
             {
-                suppPubInfo = (ASN1OctetString)o.getObject();
+                suppPubInfo = (ASN1OctetString)o.getExplicitBaseObject();
             }
         }
     }

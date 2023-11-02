@@ -1,11 +1,11 @@
 package com.distrimind.bouncycastle.crypto.generators;
 
-import com.distrimind.bouncycastle.crypto.params.MGFParameters;
 import com.distrimind.bouncycastle.crypto.DataLengthException;
 import com.distrimind.bouncycastle.crypto.DerivationFunction;
 import com.distrimind.bouncycastle.crypto.DerivationParameters;
 import com.distrimind.bouncycastle.crypto.Digest;
 import com.distrimind.bouncycastle.crypto.OutputLengthException;
+import com.distrimind.bouncycastle.crypto.params.MGFParameters;
 
 /**
  * Generator for MGF1 as defined in PKCS 1v2
@@ -13,7 +13,7 @@ import com.distrimind.bouncycastle.crypto.OutputLengthException;
 public class MGF1BytesGenerator
     implements DerivationFunction
 {
-    private Digest digest;
+    private Digest  digest;
     private byte[]  seed;
     private int     hLen;
 
@@ -28,7 +28,7 @@ public class MGF1BytesGenerator
     }
 
     public void init(
-        DerivationParameters param)
+        DerivationParameters    param)
     {
         if (!(param instanceof MGFParameters))
         {

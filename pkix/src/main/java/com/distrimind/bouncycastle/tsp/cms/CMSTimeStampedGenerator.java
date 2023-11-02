@@ -7,9 +7,9 @@ import com.distrimind.bouncycastle.asn1.ASN1IA5String;
 import com.distrimind.bouncycastle.asn1.ASN1UTF8String;
 import com.distrimind.bouncycastle.asn1.DERIA5String;
 import com.distrimind.bouncycastle.asn1.DERUTF8String;
-import com.distrimind.bouncycastle.cms.CMSException;
 import com.distrimind.bouncycastle.asn1.cms.Attributes;
 import com.distrimind.bouncycastle.asn1.cms.MetaData;
+import com.distrimind.bouncycastle.cms.CMSException;
 import com.distrimind.bouncycastle.operator.DigestCalculator;
 
 public class CMSTimeStampedGenerator

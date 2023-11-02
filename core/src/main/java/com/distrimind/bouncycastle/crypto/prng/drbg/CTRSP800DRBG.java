@@ -1,8 +1,8 @@
 package com.distrimind.bouncycastle.crypto.prng.drbg;
 
+import com.distrimind.bouncycastle.crypto.BlockCipher;
 import com.distrimind.bouncycastle.crypto.params.KeyParameter;
 import com.distrimind.bouncycastle.crypto.prng.EntropySource;
-import com.distrimind.bouncycastle.crypto.BlockCipher;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.encoders.Hex;
 
@@ -17,7 +17,7 @@ public class CTRSP800DRBG
     private static final int        TDEA_MAX_BITS_REQUEST = 1 << (13 - 1);
     private static final int        AES_MAX_BITS_REQUEST = 1 << (19 - 1);
 
-    private EntropySource _entropySource;
+    private EntropySource          _entropySource;
     private BlockCipher           _engine;
     private int                   _keySizeInBits;
     private int                   _seedLength;

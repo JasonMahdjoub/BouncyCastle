@@ -11,7 +11,6 @@ import java.security.Security;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
 
-import com.distrimind.bouncycastle.cms.test.CMSTestUtil;
 import com.distrimind.bouncycastle.util.Arrays;
 import junit.framework.TestCase;
 import com.distrimind.bouncycastle.cms.CMSAlgorithm;
@@ -23,6 +22,7 @@ import com.distrimind.bouncycastle.cms.jcajce.JceCMSContentEncryptorBuilder;
 import com.distrimind.bouncycastle.cms.jcajce.JceKeyTransEnvelopedRecipient;
 import com.distrimind.bouncycastle.cms.jcajce.JceKeyTransRecipientId;
 import com.distrimind.bouncycastle.cms.jcajce.JceKeyTransRecipientInfoGenerator;
+import com.distrimind.bouncycastle.cms.test.CMSTestUtil;
 import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
 import com.distrimind.bouncycastle.mime.Headers;
 import com.distrimind.bouncycastle.mime.MimeParser;

@@ -4,9 +4,9 @@ import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import com.distrimind.bouncycastle.crypto.CipherKeyGenerator;
 import com.distrimind.bouncycastle.crypto.digests.MD2Digest;
 import com.distrimind.bouncycastle.crypto.macs.HMac;
-import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseKeyGenerator;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseMac;
+import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 
 public class MD2
 {

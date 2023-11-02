@@ -1,7 +1,6 @@
 package com.distrimind.bouncycastle.util;
 
 import java.io.IOException;
-import java.io.InvalidObjectException;
 
 public class Exceptions
 {

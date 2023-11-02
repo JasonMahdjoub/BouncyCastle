@@ -3,7 +3,11 @@ package com.distrimind.bouncycastle.eac;
 import java.io.OutputStream;
 
 import com.distrimind.bouncycastle.asn1.ASN1Encoding;
-import com.distrimind.bouncycastle.asn1.DERApplicationSpecific;
+import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
+import com.distrimind.bouncycastle.asn1.BERTags;
+import com.distrimind.bouncycastle.asn1.DEROctetString;
+import com.distrimind.bouncycastle.asn1.DERTaggedObject;
+import com.distrimind.bouncycastle.eac.operator.EACSigner;
 import com.distrimind.bouncycastle.asn1.eac.CVCertificate;
 import com.distrimind.bouncycastle.asn1.eac.CertificateBody;
 import com.distrimind.bouncycastle.asn1.eac.CertificateHolderAuthorization;
@@ -12,7 +16,6 @@ import com.distrimind.bouncycastle.asn1.eac.CertificationAuthorityReference;
 import com.distrimind.bouncycastle.asn1.eac.EACTags;
 import com.distrimind.bouncycastle.asn1.eac.PackedDate;
 import com.distrimind.bouncycastle.asn1.eac.PublicKeyDataObject;
-import com.distrimind.bouncycastle.eac.operator.EACSigner;
 
 public class EACCertificateBuilder
 {
@@ -43,10 +46,10 @@ public class EACCertificateBuilder
 
     private CertificateBody buildBody()
     {
-        DERApplicationSpecific  certificateProfileIdentifier;
+        ASN1TaggedObject certificateProfileIdentifier;
 
-        certificateProfileIdentifier = new DERApplicationSpecific(
-                EACTags.INTERCHANGE_PROFILE, ZeroArray);
+        certificateProfileIdentifier = new DERTaggedObject(false, BERTags.APPLICATION,
+                EACTags.INTERCHANGE_PROFILE, new DEROctetString(ZeroArray));
 
         CertificateBody body = new CertificateBody(
                 certificateProfileIdentifier,

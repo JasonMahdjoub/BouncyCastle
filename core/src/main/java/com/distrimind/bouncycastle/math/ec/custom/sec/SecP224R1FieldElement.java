@@ -2,12 +2,12 @@ package com.distrimind.bouncycastle.math.ec.custom.sec;
 
 import java.math.BigInteger;
 
+import com.distrimind.bouncycastle.math.ec.ECFieldElement;
 import com.distrimind.bouncycastle.math.raw.Mod;
 import com.distrimind.bouncycastle.math.raw.Nat;
 import com.distrimind.bouncycastle.math.raw.Nat224;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.encoders.Hex;
-import com.distrimind.bouncycastle.math.ec.ECFieldElement;
 
 public class SecP224R1FieldElement extends ECFieldElement.AbstractFp
 {

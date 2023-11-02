@@ -34,11 +34,11 @@ import com.distrimind.bouncycastle.asn1.x509.Time;
 import com.distrimind.bouncycastle.asn1.x509.V3TBSCertificateGenerator;
 import com.distrimind.bouncycastle.asn1.x509.X509ExtensionsGenerator;
 import com.distrimind.bouncycastle.asn1.x509.X509Name;
+import com.distrimind.bouncycastle.jcajce.provider.asymmetric.x509.CertificateFactory;
 import com.distrimind.bouncycastle.jcajce.util.BCJcaJceHelper;
 import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
-import com.distrimind.bouncycastle.x509.extension.X509ExtensionUtil;
-import com.distrimind.bouncycastle.jcajce.provider.asymmetric.x509.CertificateFactory;
 import com.distrimind.bouncycastle.jce.X509Principal;
+import com.distrimind.bouncycastle.x509.extension.X509ExtensionUtil;
 
 /**
  * class to produce an X.509 Version 3 certificate.

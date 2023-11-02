@@ -7,12 +7,11 @@ import java.io.ObjectOutputStream;
 import com.distrimind.bouncycastle.asn1.ASN1Set;
 import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
 import com.distrimind.bouncycastle.pqc.crypto.crystals.dilithium.DilithiumPrivateKeyParameters;
-import com.distrimind.bouncycastle.pqc.crypto.crystals.dilithium.DilithiumPublicKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.util.PrivateKeyFactory;
 import com.distrimind.bouncycastle.pqc.jcajce.interfaces.DilithiumPrivateKey;
 import com.distrimind.bouncycastle.pqc.jcajce.interfaces.DilithiumPublicKey;
-import com.distrimind.bouncycastle.pqc.jcajce.spec.DilithiumParameterSpec;
 import com.distrimind.bouncycastle.pqc.jcajce.provider.util.KeyUtil;
+import com.distrimind.bouncycastle.pqc.jcajce.spec.DilithiumParameterSpec;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Strings;
 
@@ -99,7 +98,7 @@ public class BCDilithiumPrivateKey
 
     public DilithiumPublicKey getPublicKey()
     {
-        return new BCDilithiumPublicKey(new DilithiumPublicKeyParameters(params.getParameters(), params.getRho(), params.getT1()));
+        return new BCDilithiumPublicKey(params.getPublicKeyParameters());
     }
 
     public DilithiumParameterSpec getParameterSpec()

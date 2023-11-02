@@ -16,10 +16,10 @@ import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
 import com.distrimind.bouncycastle.asn1.BERSequenceGenerator;
 import com.distrimind.bouncycastle.asn1.BERTaggedObject;
 import com.distrimind.bouncycastle.asn1.DERSet;
+import com.distrimind.bouncycastle.operator.DigestAlgorithmIdentifierFinder;
 import com.distrimind.bouncycastle.asn1.cms.CMSObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.cms.SignerInfo;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import com.distrimind.bouncycastle.operator.DigestAlgorithmIdentifierFinder;
 
 /**
  * General class for generating a pkcs7-signature message stream.

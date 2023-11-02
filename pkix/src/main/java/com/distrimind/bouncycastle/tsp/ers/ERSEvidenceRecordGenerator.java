@@ -3,9 +3,9 @@ package com.distrimind.bouncycastle.tsp.ers;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.distrimind.bouncycastle.tsp.TSPException;
 import com.distrimind.bouncycastle.asn1.tsp.EvidenceRecord;
 import com.distrimind.bouncycastle.operator.DigestCalculatorProvider;
+import com.distrimind.bouncycastle.tsp.TSPException;
 
 public class ERSEvidenceRecordGenerator
 {

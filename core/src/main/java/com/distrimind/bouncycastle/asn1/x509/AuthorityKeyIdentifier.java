@@ -3,9 +3,7 @@ package com.distrimind.bouncycastle.asn1.x509;
 import java.math.BigInteger;
 import java.util.Enumeration;
 
-import com.distrimind.bouncycastle.crypto.Digest;
 import com.distrimind.bouncycastle.crypto.digests.SHA1Digest;
-import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.encoders.Hex;
 import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
 import com.distrimind.bouncycastle.asn1.ASN1Integer;
@@ -17,6 +15,8 @@ import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
 import com.distrimind.bouncycastle.asn1.DEROctetString;
 import com.distrimind.bouncycastle.asn1.DERSequence;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
+import com.distrimind.bouncycastle.crypto.Digest;
+import com.distrimind.bouncycastle.util.Arrays;
 
 /**
  * The AuthorityKeyIdentifier object.
@@ -121,7 +121,7 @@ public class AuthorityKeyIdentifier
         GeneralNames            name,
         BigInteger              serialNumber)
     {
-        Digest digest = new SHA1Digest();
+        Digest  digest = new SHA1Digest();
         byte[]  resBuf = new byte[digest.getDigestSize()];
 
         byte[] bytes = spki.getPublicKeyData().getBytes();

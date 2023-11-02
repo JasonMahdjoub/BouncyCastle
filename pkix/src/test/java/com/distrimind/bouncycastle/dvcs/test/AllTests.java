@@ -6,8 +6,6 @@ import java.security.Security;
 import java.security.cert.CertificateEncodingException;
 import java.security.cert.X509Certificate;
 
-import com.distrimind.bouncycastle.cms.test.CMSTestUtil;
-import com.distrimind.bouncycastle.test.PrintTestResult;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -21,6 +19,7 @@ import com.distrimind.bouncycastle.cms.SignerInformationVerifier;
 import com.distrimind.bouncycastle.cms.SignerInformationVerifierProvider;
 import com.distrimind.bouncycastle.cms.jcajce.JcaSignerInfoGeneratorBuilder;
 import com.distrimind.bouncycastle.cms.jcajce.JcaSimpleSignerInfoVerifierBuilder;
+import com.distrimind.bouncycastle.cms.test.CMSTestUtil;
 import com.distrimind.bouncycastle.dvcs.CCPDRequestBuilder;
 import com.distrimind.bouncycastle.dvcs.CCPDRequestData;
 import com.distrimind.bouncycastle.dvcs.CPDRequestBuilder;
@@ -40,6 +39,7 @@ import com.distrimind.bouncycastle.operator.ContentSigner;
 import com.distrimind.bouncycastle.operator.OperatorCreationException;
 import com.distrimind.bouncycastle.operator.jcajce.JcaContentSignerBuilder;
 import com.distrimind.bouncycastle.operator.jcajce.JcaDigestCalculatorProviderBuilder;
+import com.distrimind.bouncycastle.test.PrintTestResult;
 import com.distrimind.bouncycastle.util.Arrays;
 
 public class AllTests

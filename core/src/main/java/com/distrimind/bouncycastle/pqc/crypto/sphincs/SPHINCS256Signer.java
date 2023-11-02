@@ -3,8 +3,8 @@ package com.distrimind.bouncycastle.pqc.crypto.sphincs;
 import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.Digest;
 import com.distrimind.bouncycastle.crypto.params.ParametersWithRandom;
-import com.distrimind.bouncycastle.util.Pack;
 import com.distrimind.bouncycastle.pqc.crypto.MessageSigner;
+import com.distrimind.bouncycastle.util.Pack;
 
 /**
  * SPHINCS-256 signer.

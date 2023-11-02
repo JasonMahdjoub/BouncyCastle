@@ -4,15 +4,15 @@ import java.math.BigInteger;
 
 import com.distrimind.bouncycastle.crypto.constraints.ConstraintUtils;
 import com.distrimind.bouncycastle.crypto.constraints.DefaultServiceProperties;
-import com.distrimind.bouncycastle.crypto.params.DHKeyGenerationParameters;
-import com.distrimind.bouncycastle.crypto.params.DHParameters;
-import com.distrimind.bouncycastle.crypto.params.DHPrivateKeyParameters;
-import com.distrimind.bouncycastle.crypto.params.DHPublicKeyParameters;
 import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
 import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPairGenerator;
 import com.distrimind.bouncycastle.crypto.CryptoServicePurpose;
 import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
 import com.distrimind.bouncycastle.crypto.KeyGenerationParameters;
+import com.distrimind.bouncycastle.crypto.params.DHKeyGenerationParameters;
+import com.distrimind.bouncycastle.crypto.params.DHParameters;
+import com.distrimind.bouncycastle.crypto.params.DHPrivateKeyParameters;
+import com.distrimind.bouncycastle.crypto.params.DHPublicKeyParameters;
 
 /**
  * a Diffie-Hellman key pair generator.

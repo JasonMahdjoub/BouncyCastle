@@ -18,16 +18,6 @@ class DLTaggedObjectParser
     }
 
     /**
-     * Return true if this tagged object is marked as constructed.
-     *
-     * @return true if constructed, false otherwise.
-     */
-    public boolean isConstructed()
-    {
-        return _constructed;
-    }
-
-    /**
      * Return an in-memory, encodable, representation of the tagged object.
      *
      * @return an ASN1TaggedObject.
@@ -78,13 +68,6 @@ class DLTaggedObjectParser
 
     public ASN1TaggedObjectParser parseImplicitBaseTagged(int baseTagClass, int baseTagNo) throws IOException
     {
-        // TODO[asn1] Special handling can be removed once ASN1ApplicationSpecific types removed.
-        if (BERTags.APPLICATION == baseTagClass)
-        {
-            // This cast is ensuring the current user-expected return type.
-            return (DLApplicationSpecific)_parser.loadTaggedDL(baseTagClass, baseTagNo, _constructed);
-        }
-
         return new DLTaggedObjectParser(baseTagClass, baseTagNo, _constructed, _parser);
     }
 }

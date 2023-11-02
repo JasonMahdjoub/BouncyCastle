@@ -3,10 +3,10 @@ package com.distrimind.bouncycastle.cms.bc;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.cms.CMSException;
 import com.distrimind.bouncycastle.cms.KEKRecipient;
-import com.distrimind.bouncycastle.operator.bc.BcSymmetricKeyUnwrapper;
 import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.operator.OperatorException;
 import com.distrimind.bouncycastle.operator.SymmetricKeyUnwrapper;
+import com.distrimind.bouncycastle.operator.bc.BcSymmetricKeyUnwrapper;
 
 public abstract class BcKEKRecipient
     implements KEKRecipient

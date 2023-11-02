@@ -13,12 +13,13 @@ import java.security.SecureRandom;
 import java.security.Security;
 import java.util.Iterator;
 
-import com.distrimind.bouncycastle.bcpg.ArmoredOutputStream;
-import com.distrimind.bouncycastle.bcpg.CompressionAlgorithmTags;
+import com.distrimind.bouncycastle.openpgp.operator.PGPDataEncryptorBuilder;
 import com.distrimind.bouncycastle.openpgp.operator.jcajce.JcaKeyFingerprintCalculator;
 import com.distrimind.bouncycastle.openpgp.operator.jcajce.JcePGPDataEncryptorBuilder;
 import com.distrimind.bouncycastle.openpgp.operator.jcajce.JcePublicKeyDataDecryptorFactoryBuilder;
 import com.distrimind.bouncycastle.openpgp.operator.jcajce.JcePublicKeyKeyEncryptionMethodGenerator;
+import com.distrimind.bouncycastle.bcpg.ArmoredOutputStream;
+import com.distrimind.bouncycastle.bcpg.CompressionAlgorithmTags;
 import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
 import com.distrimind.bouncycastle.openpgp.PGPCompressedData;
 import com.distrimind.bouncycastle.openpgp.PGPEncryptedData;
@@ -216,8 +217,12 @@ public class KeyBasedFileProcessor
         {
             byte[] bytes = PGPExampleUtil.compressFile(fileName, CompressionAlgorithmTags.ZIP);
 
-            PGPEncryptedDataGenerator encGen = new PGPEncryptedDataGenerator(
-                new JcePGPDataEncryptorBuilder(PGPEncryptedData.CAST5).setWithIntegrityPacket(withIntegrityCheck).setSecureRandom(new SecureRandom()).setProvider("BC"));
+            PGPDataEncryptorBuilder encryptorBuilder = new JcePGPDataEncryptorBuilder(PGPEncryptedData.CAST5)
+                        .setProvider("BC")
+                        .setSecureRandom(new SecureRandom())
+                        .setWithIntegrityPacket(withIntegrityCheck);
+
+            PGPEncryptedDataGenerator encGen = new PGPEncryptedDataGenerator(encryptorBuilder);
 
             encGen.addMethod(new JcePublicKeyKeyEncryptionMethodGenerator(encKey).setProvider("BC"));
 

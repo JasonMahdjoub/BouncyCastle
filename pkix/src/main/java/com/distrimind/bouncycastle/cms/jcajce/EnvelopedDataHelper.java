@@ -47,13 +47,13 @@ import com.distrimind.bouncycastle.cms.CMSAlgorithm;
 import com.distrimind.bouncycastle.cms.CMSEnvelopedDataGenerator;
 import com.distrimind.bouncycastle.cms.CMSException;
 import com.distrimind.bouncycastle.cms.PasswordRecipient;
-import com.distrimind.bouncycastle.operator.jcajce.JceAsymmetricKeyUnwrapper;
-import com.distrimind.bouncycastle.operator.jcajce.JceKTSKeyUnwrapper;
 import com.distrimind.bouncycastle.operator.AsymmetricKeyUnwrapper;
 import com.distrimind.bouncycastle.operator.DefaultSecretKeySizeProvider;
 import com.distrimind.bouncycastle.operator.GenericKey;
 import com.distrimind.bouncycastle.operator.SecretKeySizeProvider;
 import com.distrimind.bouncycastle.operator.SymmetricKeyUnwrapper;
+import com.distrimind.bouncycastle.operator.jcajce.JceAsymmetricKeyUnwrapper;
+import com.distrimind.bouncycastle.operator.jcajce.JceKTSKeyUnwrapper;
 
 public class EnvelopedDataHelper
 {

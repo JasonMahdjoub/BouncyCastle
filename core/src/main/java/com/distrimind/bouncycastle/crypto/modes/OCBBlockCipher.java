@@ -4,13 +4,14 @@ import java.util.Vector;
 
 import com.distrimind.bouncycastle.crypto.params.AEADParameters;
 import com.distrimind.bouncycastle.crypto.params.KeyParameter;
-import com.distrimind.bouncycastle.crypto.params.ParametersWithIV;
 import com.distrimind.bouncycastle.crypto.BlockCipher;
 import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.DataLengthException;
 import com.distrimind.bouncycastle.crypto.InvalidCipherTextException;
 import com.distrimind.bouncycastle.crypto.OutputLengthException;
+import com.distrimind.bouncycastle.crypto.params.ParametersWithIV;
 import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Longs;
 
 /**
  * An implementation of <a href="https://tools.ietf.org/html/rfc7253">RFC 7253 on The OCB
@@ -21,7 +22,7 @@ import com.distrimind.bouncycastle.util.Arrays;
  * </p>
  * Text reproduced below.
  * <blockquote>
- * Phillip Rogaway <rogaway@cs.ucdavis.edu> Sat, 27 February 2021 02:46 UTCShow header
+ * Phillip Rogaway &gt;rogaway@cs.ucdavis.edu&lt; Sat, 27 February 2021 02:46 UTCShow header
  *
  * I can confirm that I have abandoned all OCB patents
  * and placed into the public domain all OCB-related IP of mine.
@@ -570,18 +571,7 @@ public class OCBBlockCipher
 
     protected static int OCB_ntz(long x)
     {
-        if (x == 0)
-        {
-            return 64;
-        }
-
-        int n = 0;
-        while ((x & 1L) == 0L)
-        {
-            ++n;
-            x >>>= 1;
-        }
-        return n;
+        return Longs.numberOfTrailingZeros(x);
     }
 
     protected static int shiftLeft(byte[] block, byte[] output)

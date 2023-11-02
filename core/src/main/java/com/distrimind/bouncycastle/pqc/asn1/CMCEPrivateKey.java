@@ -1,7 +1,5 @@
 package com.distrimind.bouncycastle.pqc.asn1;
 
-import com.distrimind.bouncycastle.util.Arrays;
-import com.distrimind.bouncycastle.util.BigIntegers;
 import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
 import com.distrimind.bouncycastle.asn1.ASN1Integer;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
@@ -10,6 +8,7 @@ import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.DEROctetString;
 import com.distrimind.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.util.Arrays;
 
 /**
  * ASN.1 Encoding for a
@@ -60,11 +59,12 @@ public class CMCEPrivateKey
 
     private CMCEPrivateKey(ASN1Sequence seq)
     {
-        version = BigIntegers.intValueExact(ASN1Integer.getInstance(seq.getObjectAt(0)).getValue());
+        version = ASN1Integer.getInstance(seq.getObjectAt(0)).intValueExact();
         if (version != 0)
         {
              throw new IllegalArgumentException("unrecognized version");
         }
+
         delta = Arrays.clone(ASN1OctetString.getInstance(seq.getObjectAt(1)).getOctets());
 
         C = Arrays.clone(ASN1OctetString.getInstance(seq.getObjectAt(2)).getOctets());
@@ -75,7 +75,6 @@ public class CMCEPrivateKey
 
         s = Arrays.clone(ASN1OctetString.getInstance(seq.getObjectAt(5)).getOctets());
 
-        // todo optional publickey
         if(seq.size() == 7)
         {
             PublicKey = CMCEPublicKey.getInstance(seq.getObjectAt(6));

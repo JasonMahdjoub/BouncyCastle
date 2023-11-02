@@ -3,16 +3,6 @@ package com.distrimind.bouncycastle.pqc.crypto.util;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
-import com.distrimind.bouncycastle.asn1.DERNull;
-import com.distrimind.bouncycastle.asn1.bc.BCObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.nist.NISTObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import com.distrimind.bouncycastle.crypto.Digest;
-import com.distrimind.bouncycastle.crypto.digests.SHA256Digest;
-import com.distrimind.bouncycastle.crypto.digests.SHA512Digest;
-import com.distrimind.bouncycastle.crypto.digests.SHAKEDigest;
 import com.distrimind.bouncycastle.pqc.crypto.crystals.dilithium.DilithiumParameters;
 import com.distrimind.bouncycastle.pqc.crypto.crystals.kyber.KyberParameters;
 import com.distrimind.bouncycastle.pqc.crypto.falcon.FalconParameters;
@@ -26,14 +16,23 @@ import com.distrimind.bouncycastle.pqc.crypto.sphincs.SPHINCSKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.sphincsplus.SPHINCSPlusParameters;
 import com.distrimind.bouncycastle.pqc.crypto.xmss.XMSSKeyParameters;
 import com.distrimind.bouncycastle.pqc.legacy.crypto.qtesla.QTESLASecurityCategory;
-import com.distrimind.bouncycastle.pqc.legacy.crypto.sike.SIKEParameters;
-import com.distrimind.bouncycastle.util.Integers;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.DERNull;
+import com.distrimind.bouncycastle.asn1.bc.BCObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.nist.NISTObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.crypto.Digest;
+import com.distrimind.bouncycastle.crypto.digests.SHA256Digest;
+import com.distrimind.bouncycastle.crypto.digests.SHA512Digest;
+import com.distrimind.bouncycastle.crypto.digests.SHAKEDigest;
 import com.distrimind.bouncycastle.pqc.asn1.PQCObjectIdentifiers;
 import com.distrimind.bouncycastle.pqc.asn1.SPHINCS256KeyParams;
 import com.distrimind.bouncycastle.pqc.crypto.bike.BIKEParameters;
 import com.distrimind.bouncycastle.pqc.crypto.cmce.CMCEParameters;
 import com.distrimind.bouncycastle.pqc.crypto.hqc.HQCParameters;
 import com.distrimind.bouncycastle.pqc.crypto.ntru.NTRUParameters;
+import com.distrimind.bouncycastle.util.Integers;
 
 class Utils
 {
@@ -201,24 +200,6 @@ class Utils
         picnicParams.put(BCObjectIdentifiers.picnicl3full, PicnicParameters.picnicl3full);
         picnicParams.put(BCObjectIdentifiers.picnicl5full, PicnicParameters.picnicl5full);
 
-        sikeOids.put(SIKEParameters.sikep434, BCObjectIdentifiers.sikep434);
-        sikeOids.put(SIKEParameters.sikep503, BCObjectIdentifiers.sikep503);
-        sikeOids.put(SIKEParameters.sikep610, BCObjectIdentifiers.sikep610);
-        sikeOids.put(SIKEParameters.sikep751, BCObjectIdentifiers.sikep751);
-        sikeOids.put(SIKEParameters.sikep434_compressed, BCObjectIdentifiers.sikep434_compressed);
-        sikeOids.put(SIKEParameters.sikep503_compressed, BCObjectIdentifiers.sikep503_compressed);
-        sikeOids.put(SIKEParameters.sikep610_compressed, BCObjectIdentifiers.sikep610_compressed);
-        sikeOids.put(SIKEParameters.sikep751_compressed, BCObjectIdentifiers.sikep751_compressed);
-
-        sikeParams.put(BCObjectIdentifiers.sikep434, SIKEParameters.sikep434);
-        sikeParams.put(BCObjectIdentifiers.sikep503, SIKEParameters.sikep503);
-        sikeParams.put(BCObjectIdentifiers.sikep610, SIKEParameters.sikep610);
-        sikeParams.put(BCObjectIdentifiers.sikep751, SIKEParameters.sikep751);
-        sikeParams.put(BCObjectIdentifiers.sikep434_compressed, SIKEParameters.sikep434_compressed);
-        sikeParams.put(BCObjectIdentifiers.sikep503_compressed, SIKEParameters.sikep503_compressed);
-        sikeParams.put(BCObjectIdentifiers.sikep610_compressed, SIKEParameters.sikep610_compressed);
-        sikeParams.put(BCObjectIdentifiers.sikep751_compressed, SIKEParameters.sikep751_compressed);
-
         ntruOids.put(NTRUParameters.ntruhps2048509, BCObjectIdentifiers.ntruhps2048509);
         ntruOids.put(NTRUParameters.ntruhps2048677, BCObjectIdentifiers.ntruhps2048677);
         ntruOids.put(NTRUParameters.ntruhps4096821, BCObjectIdentifiers.ntruhps4096821);
@@ -340,6 +321,25 @@ class Utils
         sphincsPlusOids.put(SPHINCSPlusParameters.haraka_256s, BCObjectIdentifiers.sphincsPlus_haraka_256s_r3);
         sphincsPlusOids.put(SPHINCSPlusParameters.haraka_256f, BCObjectIdentifiers.sphincsPlus_haraka_256f_r3);
 
+        sphincsPlusOids.put(SPHINCSPlusParameters.sha2_128s_simple, BCObjectIdentifiers.sphincsPlus_sha2_128s_r3_simple);
+        sphincsPlusOids.put(SPHINCSPlusParameters.sha2_128f_simple, BCObjectIdentifiers.sphincsPlus_sha2_128f_r3_simple);
+        sphincsPlusOids.put(SPHINCSPlusParameters.shake_128s_simple, BCObjectIdentifiers.sphincsPlus_shake_128s_r3_simple);
+        sphincsPlusOids.put(SPHINCSPlusParameters.shake_128f_simple, BCObjectIdentifiers.sphincsPlus_shake_128f_r3_simple);
+        sphincsPlusOids.put(SPHINCSPlusParameters.haraka_128s_simple, BCObjectIdentifiers.sphincsPlus_haraka_128s_r3_simple);
+        sphincsPlusOids.put(SPHINCSPlusParameters.haraka_128f_simple, BCObjectIdentifiers.sphincsPlus_haraka_128f_r3_simple);
+        sphincsPlusOids.put(SPHINCSPlusParameters.sha2_192s_simple, BCObjectIdentifiers.sphincsPlus_sha2_192s_r3_simple);
+        sphincsPlusOids.put(SPHINCSPlusParameters.sha2_192f_simple, BCObjectIdentifiers.sphincsPlus_sha2_192f_r3_simple);
+        sphincsPlusOids.put(SPHINCSPlusParameters.shake_192s_simple, BCObjectIdentifiers.sphincsPlus_shake_192s_r3_simple);
+        sphincsPlusOids.put(SPHINCSPlusParameters.shake_192f_simple, BCObjectIdentifiers.sphincsPlus_shake_192f_r3_simple);
+        sphincsPlusOids.put(SPHINCSPlusParameters.haraka_192s_simple, BCObjectIdentifiers.sphincsPlus_haraka_192s_r3_simple);
+        sphincsPlusOids.put(SPHINCSPlusParameters.haraka_192f_simple, BCObjectIdentifiers.sphincsPlus_haraka_192f_r3_simple);
+        sphincsPlusOids.put(SPHINCSPlusParameters.sha2_256s_simple, BCObjectIdentifiers.sphincsPlus_sha2_256s_r3_simple);
+        sphincsPlusOids.put(SPHINCSPlusParameters.sha2_256f_simple, BCObjectIdentifiers.sphincsPlus_sha2_256f_r3_simple);
+        sphincsPlusOids.put(SPHINCSPlusParameters.shake_256s_simple, BCObjectIdentifiers.sphincsPlus_shake_256s_r3_simple);
+        sphincsPlusOids.put(SPHINCSPlusParameters.shake_256f_simple, BCObjectIdentifiers.sphincsPlus_shake_256f_r3_simple);
+        sphincsPlusOids.put(SPHINCSPlusParameters.haraka_256s_simple, BCObjectIdentifiers.sphincsPlus_haraka_256s_r3_simple);
+        sphincsPlusOids.put(SPHINCSPlusParameters.haraka_256f_simple, BCObjectIdentifiers.sphincsPlus_haraka_256f_r3_simple);
+
         sphincsPlusParams.put(BCObjectIdentifiers.sphincsPlus_sha2_128s_r3, SPHINCSPlusParameters.sha2_128s);
         sphincsPlusParams.put(BCObjectIdentifiers.sphincsPlus_sha2_128f_r3, SPHINCSPlusParameters.sha2_128f);
         sphincsPlusParams.put(BCObjectIdentifiers.sphincsPlus_shake_128s_r3, SPHINCSPlusParameters.shake_128s);
@@ -359,6 +359,24 @@ class Utils
         sphincsPlusParams.put(BCObjectIdentifiers.sphincsPlus_haraka_256s_r3, SPHINCSPlusParameters.haraka_256s);
         sphincsPlusParams.put(BCObjectIdentifiers.sphincsPlus_haraka_256f_r3, SPHINCSPlusParameters.haraka_256f);
 
+        sphincsPlusParams.put(BCObjectIdentifiers.sphincsPlus_sha2_128s_r3_simple, SPHINCSPlusParameters.sha2_128s_simple);
+        sphincsPlusParams.put(BCObjectIdentifiers.sphincsPlus_sha2_128f_r3_simple, SPHINCSPlusParameters.sha2_128f_simple);
+        sphincsPlusParams.put(BCObjectIdentifiers.sphincsPlus_shake_128s_r3_simple, SPHINCSPlusParameters.shake_128s_simple);
+        sphincsPlusParams.put(BCObjectIdentifiers.sphincsPlus_shake_128f_r3_simple, SPHINCSPlusParameters.shake_128f_simple);
+        sphincsPlusParams.put(BCObjectIdentifiers.sphincsPlus_haraka_128s_r3_simple, SPHINCSPlusParameters.haraka_128s_simple);
+        sphincsPlusParams.put(BCObjectIdentifiers.sphincsPlus_haraka_128f_r3_simple, SPHINCSPlusParameters.haraka_128f_simple);
+        sphincsPlusParams.put(BCObjectIdentifiers.sphincsPlus_sha2_192s_r3_simple, SPHINCSPlusParameters.sha2_192s_simple);
+        sphincsPlusParams.put(BCObjectIdentifiers.sphincsPlus_sha2_192f_r3_simple, SPHINCSPlusParameters.sha2_192f_simple);
+        sphincsPlusParams.put(BCObjectIdentifiers.sphincsPlus_shake_192s_r3_simple, SPHINCSPlusParameters.shake_192s_simple);
+        sphincsPlusParams.put(BCObjectIdentifiers.sphincsPlus_shake_192f_r3_simple, SPHINCSPlusParameters.shake_192f_simple);
+        sphincsPlusParams.put(BCObjectIdentifiers.sphincsPlus_haraka_192s_r3_simple, SPHINCSPlusParameters.haraka_192s_simple);
+        sphincsPlusParams.put(BCObjectIdentifiers.sphincsPlus_haraka_192f_r3_simple, SPHINCSPlusParameters.haraka_192f_simple);
+        sphincsPlusParams.put(BCObjectIdentifiers.sphincsPlus_sha2_256s_r3_simple, SPHINCSPlusParameters.sha2_256s_simple);
+        sphincsPlusParams.put(BCObjectIdentifiers.sphincsPlus_sha2_256f_r3_simple, SPHINCSPlusParameters.sha2_256f_simple);
+        sphincsPlusParams.put(BCObjectIdentifiers.sphincsPlus_shake_256s_r3_simple, SPHINCSPlusParameters.shake_256s_simple);
+        sphincsPlusParams.put(BCObjectIdentifiers.sphincsPlus_shake_256f_r3_simple, SPHINCSPlusParameters.shake_256f_simple);
+        sphincsPlusParams.put(BCObjectIdentifiers.sphincsPlus_haraka_256s_r3_simple, SPHINCSPlusParameters.haraka_256s_simple);
+        sphincsPlusParams.put(BCObjectIdentifiers.sphincsPlus_haraka_256f_r3_simple, SPHINCSPlusParameters.haraka_256f_simple);
     }
 
     static int qTeslaLookupSecurityCategory(AlgorithmIdentifier algorithm)
@@ -515,6 +533,7 @@ class Utils
     {
         return (ASN1ObjectIdentifier)sphincsPlusOids.get(params);
     }
+
     static SPHINCSPlusParameters sphincsPlusParamsLookup(ASN1ObjectIdentifier oid)
     {
         return (SPHINCSPlusParameters)sphincsPlusParams.get(oid);
@@ -558,16 +577,6 @@ class Utils
     static PicnicParameters picnicParamsLookup(ASN1ObjectIdentifier oid)
     {
         return (PicnicParameters)picnicParams.get(oid);
-    }
-
-    static ASN1ObjectIdentifier sikeOidLookup(SIKEParameters params)
-    {
-        return (ASN1ObjectIdentifier)sikeOids.get(params);
-    }
-
-    static SIKEParameters sikeParamsLookup(ASN1ObjectIdentifier oid)
-    {
-        return (SIKEParameters)sikeParams.get(oid);
     }
 
     static ASN1ObjectIdentifier falconOidLookup(FalconParameters params)
@@ -639,7 +648,7 @@ class Utils
     {
         return (BIKEParameters)bikeParams.get(oid);
     }
-    
+
     static ASN1ObjectIdentifier hqcOidLookup(HQCParameters params)
     {
         return (ASN1ObjectIdentifier)hqcOids.get(params);

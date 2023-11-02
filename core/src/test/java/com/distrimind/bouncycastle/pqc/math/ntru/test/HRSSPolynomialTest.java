@@ -10,13 +10,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.distrimind.bouncycastle.test.TestResourceFinder;
 import junit.framework.TestCase;
 import com.distrimind.bouncycastle.pqc.math.ntru.HRSSPolynomial;
 import com.distrimind.bouncycastle.pqc.math.ntru.Polynomial;
 import com.distrimind.bouncycastle.pqc.math.ntru.parameters.NTRUHRSS701;
 import com.distrimind.bouncycastle.pqc.math.ntru.parameters.NTRUHRSSParameterSet;
 import com.distrimind.bouncycastle.pqc.math.ntru.parameters.NTRUParameterSet;
+import com.distrimind.bouncycastle.test.TestResourceFinder;
 
 public class HRSSPolynomialTest
     extends TestCase

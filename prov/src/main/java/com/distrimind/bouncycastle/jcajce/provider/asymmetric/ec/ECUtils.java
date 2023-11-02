@@ -2,6 +2,7 @@ package com.distrimind.bouncycastle.jcajce.provider.asymmetric.ec;
 
 import java.math.BigInteger;
 import java.security.InvalidKeyException;
+import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.spec.ECGenParameterSpec;
 import java.security.spec.ECParameterSpec;
@@ -15,8 +16,8 @@ import com.distrimind.bouncycastle.asn1.x9.X9ECPoint;
 import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.EC5Util;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.ECUtil;
-import com.distrimind.bouncycastle.jcajce.provider.config.ProviderConfiguration;
 import com.distrimind.bouncycastle.jce.spec.ECNamedCurveSpec;
+import com.distrimind.bouncycastle.jcajce.provider.config.ProviderConfiguration;
 import com.distrimind.bouncycastle.math.ec.ECCurve;
 
 class ECUtils
@@ -26,6 +27,13 @@ class ECUtils
         throws InvalidKeyException
     {
         return (key instanceof BCECPublicKey) ? ((BCECPublicKey)key).engineGetKeyParameters() : ECUtil.generatePublicKeyParameter(key);
+    }
+
+    static AsymmetricKeyParameter generatePrivateKeyParameter(
+            PrivateKey key)
+        throws InvalidKeyException
+    {
+        return (key instanceof BCECPrivateKey) ? ((BCECPrivateKey)key).engineGetKeyParameters() : ECUtil.generatePrivateKeyParameter(key);
     }
 
     static X9ECParameters getDomainParametersFromGenSpec(ECGenParameterSpec genSpec, ProviderConfiguration configuration)

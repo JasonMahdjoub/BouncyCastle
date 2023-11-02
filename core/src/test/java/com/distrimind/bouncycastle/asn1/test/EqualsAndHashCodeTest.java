@@ -17,7 +17,6 @@ import com.distrimind.bouncycastle.asn1.BEROctetString;
 import com.distrimind.bouncycastle.asn1.BERSequence;
 import com.distrimind.bouncycastle.asn1.BERSet;
 import com.distrimind.bouncycastle.asn1.BERTaggedObject;
-import com.distrimind.bouncycastle.asn1.DERApplicationSpecific;
 import com.distrimind.bouncycastle.asn1.DERBMPString;
 import com.distrimind.bouncycastle.asn1.DERBitString;
 import com.distrimind.bouncycastle.asn1.DERGeneralString;
@@ -55,7 +54,6 @@ public class EqualsAndHashCodeTest
                 new BERSequence(new DERPrintableString("hello world")),
                 new BERSet(new DERPrintableString("hello world")),
                 new BERTaggedObject(0, new DERPrintableString("hello world")),
-                new DERApplicationSpecific(0, data),
                 new DERBitString(data),
                 new DERBMPString("hello world"),
                 ASN1Boolean.getInstance(true),

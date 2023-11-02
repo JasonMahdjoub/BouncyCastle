@@ -5,6 +5,7 @@ import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
+import com.distrimind.bouncycastle.asn1.BERTags;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
 
 /**
@@ -45,16 +46,16 @@ public class GeographicRegion
         switch (choice)
         {
         case circularRegion:
-            geographicRegion = CircularRegion.getInstance(taggedObject.getObject());
+            geographicRegion = CircularRegion.getInstance(taggedObject.getExplicitBaseObject());
             break;
         case rectangularRegion:
-            geographicRegion = SequenceOfRectangularRegion.getInstance(taggedObject.getObject());
+            geographicRegion = SequenceOfRectangularRegion.getInstance(taggedObject.getExplicitBaseObject());
             break;
         case polygonalRegion:
-            geographicRegion = PolygonalRegion.getInstance(taggedObject.getObject());
+            geographicRegion = PolygonalRegion.getInstance(taggedObject.getExplicitBaseObject());
             break;
         case identifiedRegion:
-            geographicRegion = SequenceOfIdentifiedRegion.getInstance(taggedObject.getObject());
+            geographicRegion = SequenceOfIdentifiedRegion.getInstance(taggedObject.getExplicitBaseObject());
             break;
         default:
             throw new IllegalArgumentException("invalid choice value " + choice);
@@ -90,7 +91,7 @@ public class GeographicRegion
         }
         if (o != null)
         {
-            return new GeographicRegion(ASN1TaggedObject.getInstance(o));
+            return new GeographicRegion(ASN1TaggedObject.getInstance(o, BERTags.CONTEXT_SPECIFIC));
         }
 
         return null;

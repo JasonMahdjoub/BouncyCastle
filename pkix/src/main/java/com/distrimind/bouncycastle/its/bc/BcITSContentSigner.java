@@ -14,10 +14,10 @@ import com.distrimind.bouncycastle.crypto.params.ECNamedDomainParameters;
 import com.distrimind.bouncycastle.crypto.params.ECPrivateKeyParameters;
 import com.distrimind.bouncycastle.crypto.signers.DSADigestSigner;
 import com.distrimind.bouncycastle.crypto.signers.ECDSASigner;
-import com.distrimind.bouncycastle.its.ITSCertificate;
 import com.distrimind.bouncycastle.its.operator.ITSContentSigner;
-import com.distrimind.bouncycastle.operator.bc.BcDefaultDigestProvider;
+import com.distrimind.bouncycastle.its.ITSCertificate;
 import com.distrimind.bouncycastle.operator.OperatorCreationException;
+import com.distrimind.bouncycastle.operator.bc.BcDefaultDigestProvider;
 import com.distrimind.bouncycastle.util.Arrays;
 
 public class BcITSContentSigner

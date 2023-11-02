@@ -5,6 +5,7 @@ import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
+import com.distrimind.bouncycastle.asn1.BERTags;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
 
 /**
@@ -57,10 +58,10 @@ public class Signature
         {
         case ecdsaNistP256Signature:
         case ecdsaBrainpoolP256r1Signature:
-            signature = EcdsaP256Signature.getInstance(ato.getObject());
+            signature = EcdsaP256Signature.getInstance(ato.getExplicitBaseObject());
             break;
         case ecdsaBrainpoolP384r1Signature:
-            signature = EcdsaP384Signature.getInstance(ato.getObject());
+            signature = EcdsaP384Signature.getInstance(ato.getExplicitBaseObject());
             break;
         default:
             throw new IllegalArgumentException("invalid choice value " + ato.getTagNo());
@@ -78,7 +79,7 @@ public class Signature
 
         if (objectAt != null)
         {
-            return new Signature(ASN1TaggedObject.getInstance(objectAt));
+            return new Signature(ASN1TaggedObject.getInstance(objectAt, BERTags.CONTEXT_SPECIFIC));
         }
 
         return null;

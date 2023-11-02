@@ -6,10 +6,10 @@ import java.io.OutputStream;
 
 import com.distrimind.bouncycastle.asn1.ASN1OctetString;
 import com.distrimind.bouncycastle.asn1.DERBitString;
-import com.distrimind.bouncycastle.cert.X509CertificateHolder;
 import com.distrimind.bouncycastle.asn1.crmf.EncryptedValue;
 import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.cert.X509CertificateHolder;
 import com.distrimind.bouncycastle.operator.KeyWrapper;
 import com.distrimind.bouncycastle.operator.OperatorException;
 import com.distrimind.bouncycastle.operator.OutputEncryptor;

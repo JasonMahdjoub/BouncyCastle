@@ -15,12 +15,12 @@ import java.security.SignatureException;
 import java.util.Iterator;
 
 import com.distrimind.bouncycastle.bcpg.ArmoredInputStream;
-import com.distrimind.bouncycastle.bcpg.ArmoredOutputStream;
-import com.distrimind.bouncycastle.bcpg.BCPGOutputStream;
 import com.distrimind.bouncycastle.openpgp.operator.jcajce.JcaKeyFingerprintCalculator;
 import com.distrimind.bouncycastle.openpgp.operator.jcajce.JcaPGPContentSignerBuilder;
 import com.distrimind.bouncycastle.openpgp.operator.jcajce.JcaPGPContentVerifierBuilderProvider;
 import com.distrimind.bouncycastle.openpgp.operator.jcajce.JcePBESecretKeyDecryptorBuilder;
+import com.distrimind.bouncycastle.bcpg.ArmoredOutputStream;
+import com.distrimind.bouncycastle.bcpg.BCPGOutputStream;
 import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
 import com.distrimind.bouncycastle.openpgp.PGPException;
 import com.distrimind.bouncycastle.openpgp.PGPPrivateKey;
@@ -297,7 +297,7 @@ public class ClearSignedFileProcessor
 
         aOut.endClearText();
         
-        BCPGOutputStream bOut = new BCPGOutputStream(aOut);
+        BCPGOutputStream            bOut = new BCPGOutputStream(aOut);
         
         sGen.generate().encode(bOut);
 

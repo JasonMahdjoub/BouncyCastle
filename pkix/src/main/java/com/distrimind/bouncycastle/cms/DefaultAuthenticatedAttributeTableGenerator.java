@@ -72,7 +72,7 @@ public class DefaultAuthenticatedAttributeTableGenerator
         if (!std.containsKey(CMSAttributes.contentType))
         {
             ASN1ObjectIdentifier contentType = ASN1ObjectIdentifier.getInstance(
-                parameters.get(CONTENT_TYPE));
+                parameters.get(CMSAttributeTableGenerator.CONTENT_TYPE));
             Attribute attr = new Attribute(CMSAttributes.contentType,
                 new DERSet(contentType));
             std.put(attr.getAttrType(), attr);
@@ -81,7 +81,7 @@ public class DefaultAuthenticatedAttributeTableGenerator
         if (!std.containsKey(CMSAttributes.messageDigest))
         {
             byte[] messageDigest = (byte[])parameters.get(
-					DIGEST);
+                CMSAttributeTableGenerator.DIGEST);
             Attribute attr = new Attribute(CMSAttributes.messageDigest,
                 new DERSet(new DEROctetString(messageDigest)));
             std.put(attr.getAttrType(), attr);
@@ -90,8 +90,8 @@ public class DefaultAuthenticatedAttributeTableGenerator
         if (!std.contains(CMSAttributes.cmsAlgorithmProtect))
         {
             Attribute attr = new Attribute(CMSAttributes.cmsAlgorithmProtect, new DERSet(new CMSAlgorithmProtection(
-                (AlgorithmIdentifier)parameters.get(DIGEST_ALGORITHM_IDENTIFIER),
-                CMSAlgorithmProtection.MAC, (AlgorithmIdentifier)parameters.get(MAC_ALGORITHM_IDENTIFIER))));
+                (AlgorithmIdentifier)parameters.get(CMSAttributeTableGenerator.DIGEST_ALGORITHM_IDENTIFIER),
+                CMSAlgorithmProtection.MAC, (AlgorithmIdentifier)parameters.get(CMSAttributeTableGenerator.MAC_ALGORITHM_IDENTIFIER))));
             std.put(attr.getAttrType(), attr);
         }
 

@@ -1,7 +1,5 @@
 package com.distrimind.bouncycastle.pqc.asn1;
 
-import com.distrimind.bouncycastle.util.Arrays;
-import com.distrimind.bouncycastle.util.BigIntegers;
 import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
 import com.distrimind.bouncycastle.asn1.ASN1Integer;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
@@ -10,6 +8,7 @@ import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.DEROctetString;
 import com.distrimind.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.util.Arrays;
 
 /**
  *
@@ -76,20 +75,18 @@ public class KyberPrivateKey
 
     private KyberPrivateKey(ASN1Sequence seq)
     {
-        int skipPubKey = 1;
-        if (seq.size() == 5)
-            skipPubKey = 0; // dont skip
-
-        version = BigIntegers.intValueExact(ASN1Integer.getInstance(seq.getObjectAt(0)).getValue());
+        version = ASN1Integer.getInstance(seq.getObjectAt(0)).intValueExact();
         if (version != 0)
         {
             throw new IllegalArgumentException("unrecognized version");
         }
+
         s = Arrays.clone(ASN1OctetString.getInstance(seq.getObjectAt(1)).getOctets());
 
-        // todo optional publickey
+        int skipPubKey = 1;
         if (seq.size() == 5)
         {
+            skipPubKey = 0; 
             publicKey = KyberPublicKey.getInstance(seq.getObjectAt(2));
         }
 

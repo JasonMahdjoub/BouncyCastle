@@ -12,10 +12,12 @@ import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.ASN1Set;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
+import com.distrimind.bouncycastle.asn1.BERTags;
 import com.distrimind.bouncycastle.asn1.DERNull;
 import com.distrimind.bouncycastle.cert.X509AttributeCertificateHolder;
 import com.distrimind.bouncycastle.cert.X509CRLHolder;
 import com.distrimind.bouncycastle.cert.X509CertificateHolder;
+import com.distrimind.bouncycastle.operator.DigestAlgorithmIdentifierFinder;
 import com.distrimind.bouncycastle.asn1.cms.OtherRevocationInfoFormat;
 import com.distrimind.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.eac.EACObjectIdentifiers;
@@ -30,7 +32,6 @@ import com.distrimind.bouncycastle.asn1.x509.Certificate;
 import com.distrimind.bouncycastle.asn1.x509.CertificateList;
 import com.distrimind.bouncycastle.asn1.x509.X509ObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.x9.X9ObjectIdentifiers;
-import com.distrimind.bouncycastle.operator.DigestAlgorithmIdentifierFinder;
 import com.distrimind.bouncycastle.util.CollectionStore;
 import com.distrimind.bouncycastle.util.Store;
 
@@ -190,7 +191,7 @@ class CMSSignedHelper
                     //     other [3] IMPLICIT OtherCertificateFormat }
                     if (tObj.getTagNo() == 1 || tObj.getTagNo() == 2)
                     {
-                        certList.add(new X509AttributeCertificateHolder(AttributeCertificate.getInstance(tObj.getObject())));
+                        certList.add(new X509AttributeCertificateHolder(AttributeCertificate.getInstance(tObj.getBaseUniversal(false, BERTags.SEQUENCE))));
                     }
                 }
             }

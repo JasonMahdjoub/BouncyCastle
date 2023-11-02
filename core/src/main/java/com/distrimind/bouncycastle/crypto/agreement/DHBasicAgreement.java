@@ -23,13 +23,13 @@ public class DHBasicAgreement
 {
     private static final BigInteger ONE = BigInteger.valueOf(1);
 
-    private DHPrivateKeyParameters key;
-    private DHParameters dhParams;
+    private DHPrivateKeyParameters  key;
+    private DHParameters            dhParams;
 
     public void init(
-        CipherParameters param)
+        CipherParameters    param)
     {
-        AsymmetricKeyParameter kParam;
+        AsymmetricKeyParameter  kParam;
 
         if (param instanceof ParametersWithRandom)
         {
@@ -64,7 +64,7 @@ public class DHBasicAgreement
     public BigInteger calculateAgreement(
         CipherParameters   pubKey)
     {
-        DHPublicKeyParameters pub = (DHPublicKeyParameters)pubKey;
+        DHPublicKeyParameters   pub = (DHPublicKeyParameters)pubKey;
 
         if (!pub.getParameters().equals(dhParams))
         {

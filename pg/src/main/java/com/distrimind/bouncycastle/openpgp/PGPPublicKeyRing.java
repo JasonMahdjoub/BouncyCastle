@@ -15,13 +15,13 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.distrimind.bouncycastle.openpgp.operator.KeyFingerPrintCalculator;
-import com.distrimind.bouncycastle.bcpg.ArmoredInputException;
 import com.distrimind.bouncycastle.bcpg.BCPGInputStream;
-import com.distrimind.bouncycastle.bcpg.Packet;
 import com.distrimind.bouncycastle.bcpg.PacketTags;
 import com.distrimind.bouncycastle.bcpg.PublicKeyPacket;
 import com.distrimind.bouncycastle.bcpg.TrustPacket;
+import com.distrimind.bouncycastle.openpgp.operator.KeyFingerPrintCalculator;
+import com.distrimind.bouncycastle.bcpg.ArmoredInputException;
+import com.distrimind.bouncycastle.bcpg.Packet;
 import com.distrimind.bouncycastle.bcpg.UserDataPacket;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Iterable;
@@ -261,6 +261,16 @@ public class PGPPublicKeyRing
         this.encode(bOut, forTransfer);
 
         return bOut.toByteArray();
+    }
+
+    /**
+     * Return the number of keys in the key ring.
+     *
+     * @return number of keys (master key + subkey).
+     */
+    public int size()
+    {
+        return keys.size();
     }
 
     public void encode(

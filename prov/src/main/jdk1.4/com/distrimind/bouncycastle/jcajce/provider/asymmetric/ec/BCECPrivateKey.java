@@ -20,10 +20,12 @@ import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
 import com.distrimind.bouncycastle.asn1.sec.ECPrivateKeyStructure;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
+import com.distrimind.bouncycastle.asn1.x9.ECNamedCurveTable;
 import com.distrimind.bouncycastle.asn1.x9.X962Parameters;
 import com.distrimind.bouncycastle.asn1.x9.X9ECParameters;
 import com.distrimind.bouncycastle.asn1.x9.X9ObjectIdentifiers;
 import com.distrimind.bouncycastle.crypto.params.ECDomainParameters;
+import com.distrimind.bouncycastle.crypto.params.ECNamedDomainParameters;
 import com.distrimind.bouncycastle.crypto.params.ECPrivateKeyParameters;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.ECUtil;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.KeyUtil;
@@ -51,6 +53,7 @@ public class BCECPrivateKey
     private transient ProviderConfiguration   configuration;
     private transient ASN1BitString           publicKey;
 
+    private transient ECPrivateKeyParameters baseKey;
     private transient PKCS12BagAttributeCarrierImpl attrCarrier = new PKCS12BagAttributeCarrierImpl();
 
     protected BCECPrivateKey()
@@ -65,6 +68,7 @@ public class BCECPrivateKey
         this.algorithm = key.getAlgorithm();
         this.ecSpec = key.getParameters();
         this.configuration = configuration;
+        this.baseKey = convertToBaseKey(this);
     }
 
     public BCECPrivateKey(
@@ -76,6 +80,7 @@ public class BCECPrivateKey
         this.d = spec.getD();
         this.ecSpec = spec.getParams();
         this.configuration = configuration;
+        this.baseKey = convertToBaseKey(this);
     }
 
     public BCECPrivateKey(
@@ -105,7 +110,8 @@ public class BCECPrivateKey
             this.ecSpec = spec;
         }
 
-        publicKey = getPublicKeyDetails(pubKey);
+        this.publicKey = getPublicKeyDetails(pubKey);
+        this.baseKey = convertToBaseKey(this);
     }
 
     public BCECPrivateKey(
@@ -117,6 +123,7 @@ public class BCECPrivateKey
         this.d = params.getD();
         this.ecSpec = null;
         this.configuration = configuration;
+        this.baseKey = convertToBaseKey(this);
     }
 
     public BCECPrivateKey(
@@ -198,6 +205,7 @@ public class BCECPrivateKey
             this.d = ec.getKey();
             this.publicKey = ec.getPublicKey();
         }
+        this.baseKey = convertToBaseKey(this);
     }
 
     public String getAlgorithm()
@@ -259,6 +267,11 @@ public class BCECPrivateKey
         }
     }
 
+    ECPrivateKeyParameters engineGetKeyParameters()
+    {
+        return baseKey;
+    }
+
     public ECParameterSpec getParams()
     {
         return (ECParameterSpec)ecSpec;
@@ -268,7 +281,7 @@ public class BCECPrivateKey
     {
         return (ECParameterSpec)ecSpec;
     }
-    
+
     public BigInteger getD()
     {
         return d;
@@ -291,7 +304,7 @@ public class BCECPrivateKey
     {
         return attrCarrier.getBagAttributeKeys();
     }
-    
+
     public void setPointFormat(String style)
     {
        withCompression = !("UNCOMPRESSED".equalsIgnoreCase(style));
@@ -364,5 +377,32 @@ public class BCECPrivateKey
         out.defaultWriteObject();
 
         out.writeObject(this.getEncoded());
+    }
+
+    private static ECPrivateKeyParameters convertToBaseKey(BCECPrivateKey key)
+    {
+        com.distrimind.bouncycastle.jce.interfaces.ECPrivateKey k = (com.distrimind.bouncycastle.jce.interfaces.ECPrivateKey)key;
+        com.distrimind.bouncycastle.jce.spec.ECParameterSpec s = k.getParameters();
+
+        if (s == null)
+        {
+            s = BouncyCastleProvider.CONFIGURATION.getEcImplicitlyCa();
+        }
+
+        if (k.getParameters() instanceof ECNamedCurveParameterSpec)
+        {
+            String name = ((ECNamedCurveParameterSpec)k.getParameters()).getName();
+            if (name != null)
+            {
+                return new ECPrivateKeyParameters(
+                    k.getD(),
+                    new ECNamedDomainParameters(ECNamedCurveTable.getOID(name),
+                        s.getCurve(), s.getG(), s.getN(), s.getH(), s.getSeed()));
+            }
+        }
+
+        return new ECPrivateKeyParameters(
+            k.getD(),
+            new ECDomainParameters(s.getCurve(), s.getG(), s.getN(), s.getH(), s.getSeed()));
     }
 }

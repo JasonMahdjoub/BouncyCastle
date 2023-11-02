@@ -2,9 +2,9 @@ package com.distrimind.bouncycastle.pqc.legacy.crypto.rainbow;
 
 import java.security.SecureRandom;
 
-import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.pqc.legacy.crypto.rainbow.util.GF2Field;
 import com.distrimind.bouncycastle.pqc.legacy.crypto.rainbow.util.RainbowUtil;
+import com.distrimind.bouncycastle.util.Arrays;
 
 
 /**

@@ -23,8 +23,6 @@ import com.distrimind.bouncycastle.asn1.ASN1Encoding;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.ASN1OctetString;
 import com.distrimind.bouncycastle.asn1.DERNull;
-import com.distrimind.bouncycastle.cms.CMSException;
-import com.distrimind.bouncycastle.cms.KeyAgreeRecipient;
 import com.distrimind.bouncycastle.asn1.cms.ecc.ECCCMSSharedInfo;
 import com.distrimind.bouncycastle.asn1.cms.ecc.MQVuserKeyingMaterial;
 import com.distrimind.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
@@ -34,6 +32,8 @@ import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
 import com.distrimind.bouncycastle.asn1.x9.X9ObjectIdentifiers;
+import com.distrimind.bouncycastle.cms.CMSException;
+import com.distrimind.bouncycastle.cms.KeyAgreeRecipient;
 import com.distrimind.bouncycastle.jcajce.spec.GOST28147WrapParameterSpec;
 import com.distrimind.bouncycastle.jcajce.spec.MQVParameterSpec;
 import com.distrimind.bouncycastle.jcajce.spec.UserKeyingMaterialSpec;
@@ -145,8 +145,8 @@ public abstract class JceKeyAgreeRecipient
             MQVuserKeyingMaterial ukm = MQVuserKeyingMaterial.getInstance(userKeyingMaterial.getOctets());
 
             SubjectPublicKeyInfo pubInfo = new SubjectPublicKeyInfo(
-                                                getPrivateKeyAlgorithmIdentifier(),
-                                                ukm.getEphemeralPublicKey().getPublicKey().getBytes());
+                getPrivateKeyAlgorithmIdentifier(),
+                ukm.getEphemeralPublicKey().getPublicKeyData());
 
             X509EncodedKeySpec pubSpec = new X509EncodedKeySpec(pubInfo.getEncoded());
             KeyFactory fact = helper.createKeyFactory(keyEncAlg.getAlgorithm());

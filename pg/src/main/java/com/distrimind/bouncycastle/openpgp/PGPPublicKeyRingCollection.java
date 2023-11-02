@@ -12,8 +12,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import com.distrimind.bouncycastle.bcpg.BCPGOutputStream;
 import com.distrimind.bouncycastle.openpgp.operator.KeyFingerPrintCalculator;
+import com.distrimind.bouncycastle.bcpg.BCPGOutputStream;
 import com.distrimind.bouncycastle.util.Iterable;
 import com.distrimind.bouncycastle.util.Longs;
 import com.distrimind.bouncycastle.util.Strings;

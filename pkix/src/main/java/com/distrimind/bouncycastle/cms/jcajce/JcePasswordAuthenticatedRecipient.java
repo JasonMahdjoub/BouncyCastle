@@ -8,10 +8,10 @@ import javax.crypto.Mac;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.cms.CMSException;
 import com.distrimind.bouncycastle.cms.RecipientOperator;
-import com.distrimind.bouncycastle.operator.jcajce.JceGenericKey;
 import com.distrimind.bouncycastle.jcajce.io.MacOutputStream;
 import com.distrimind.bouncycastle.operator.GenericKey;
 import com.distrimind.bouncycastle.operator.MacCalculator;
+import com.distrimind.bouncycastle.operator.jcajce.JceGenericKey;
 
 public class JcePasswordAuthenticatedRecipient
     extends JcePasswordRecipient

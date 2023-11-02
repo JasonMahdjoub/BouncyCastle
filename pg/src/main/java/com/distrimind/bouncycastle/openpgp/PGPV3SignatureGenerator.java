@@ -7,11 +7,11 @@ import java.math.BigInteger;
 import java.util.Date;
 
 import com.distrimind.bouncycastle.bcpg.OnePassSignaturePacket;
-import com.distrimind.bouncycastle.bcpg.PublicKeyAlgorithmTags;
-import com.distrimind.bouncycastle.bcpg.SignaturePacket;
 import com.distrimind.bouncycastle.openpgp.operator.PGPContentSigner;
 import com.distrimind.bouncycastle.openpgp.operator.PGPContentSignerBuilder;
 import com.distrimind.bouncycastle.bcpg.MPInteger;
+import com.distrimind.bouncycastle.bcpg.PublicKeyAlgorithmTags;
+import com.distrimind.bouncycastle.bcpg.SignaturePacket;
 
 /**
  * Generator for old style PGP V3 Signatures.

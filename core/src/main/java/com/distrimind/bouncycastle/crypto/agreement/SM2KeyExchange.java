@@ -6,17 +6,17 @@ import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
 import com.distrimind.bouncycastle.crypto.Digest;
 import com.distrimind.bouncycastle.crypto.digests.SM3Digest;
+import com.distrimind.bouncycastle.crypto.params.ECDomainParameters;
+import com.distrimind.bouncycastle.crypto.params.ECPrivateKeyParameters;
+import com.distrimind.bouncycastle.crypto.params.ParametersWithID;
+import com.distrimind.bouncycastle.crypto.params.SM2KeyExchangePrivateParameters;
+import com.distrimind.bouncycastle.crypto.params.SM2KeyExchangePublicParameters;
 import com.distrimind.bouncycastle.math.ec.ECAlgorithms;
 import com.distrimind.bouncycastle.math.ec.ECFieldElement;
 import com.distrimind.bouncycastle.math.ec.ECPoint;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Memoable;
 import com.distrimind.bouncycastle.util.Pack;
-import com.distrimind.bouncycastle.crypto.params.ECDomainParameters;
-import com.distrimind.bouncycastle.crypto.params.ECPrivateKeyParameters;
-import com.distrimind.bouncycastle.crypto.params.ParametersWithID;
-import com.distrimind.bouncycastle.crypto.params.SM2KeyExchangePrivateParameters;
-import com.distrimind.bouncycastle.crypto.params.SM2KeyExchangePublicParameters;
 
 /**
  * SM2 Key Exchange protocol - based on https://tools.ietf.org/html/draft-shen-sm2-ecdsa-02

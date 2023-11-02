@@ -8,9 +8,9 @@ import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
 import com.distrimind.bouncycastle.crypto.params.GOST3410Parameters;
 import com.distrimind.bouncycastle.crypto.params.GOST3410PrivateKeyParameters;
 import com.distrimind.bouncycastle.crypto.params.GOST3410PublicKeyParameters;
+import com.distrimind.bouncycastle.jce.spec.GOST3410PublicKeyParameterSetSpec;
 import com.distrimind.bouncycastle.jce.interfaces.GOST3410PrivateKey;
 import com.distrimind.bouncycastle.jce.interfaces.GOST3410PublicKey;
-import com.distrimind.bouncycastle.jce.spec.GOST3410PublicKeyParameterSetSpec;
 
 /**
  * utility class for converting jce/jca GOST3410-94 objects

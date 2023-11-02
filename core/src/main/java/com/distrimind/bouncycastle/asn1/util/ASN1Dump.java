@@ -1,8 +1,6 @@
 package com.distrimind.bouncycastle.asn1.util;
 
-import com.distrimind.bouncycastle.util.Strings;
 import com.distrimind.bouncycastle.util.encoders.Hex;
-import com.distrimind.bouncycastle.asn1.ASN1ApplicationSpecific;
 import com.distrimind.bouncycastle.asn1.ASN1BMPString;
 import com.distrimind.bouncycastle.asn1.ASN1BitString;
 import com.distrimind.bouncycastle.asn1.ASN1Boolean;
@@ -39,6 +37,7 @@ import com.distrimind.bouncycastle.asn1.DERSequence;
 import com.distrimind.bouncycastle.asn1.DERSet;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
 import com.distrimind.bouncycastle.asn1.DLBitString;
+import com.distrimind.bouncycastle.util.Strings;
 
 /**
  * Utility class for dumping ASN.1 objects as (hopefully) human friendly strings.
@@ -115,10 +114,6 @@ public class ASN1Dump
             {
                 _dumpAsString(elementsIndent, verbose, set.getObjectAt(i).toASN1Primitive(), buf);
             }
-        }
-        else if (obj instanceof ASN1ApplicationSpecific)
-        {
-            _dumpAsString(indent, verbose, ((ASN1ApplicationSpecific)obj).getTaggedObject(), buf);
         }
         else if (obj instanceof ASN1TaggedObject)
         {

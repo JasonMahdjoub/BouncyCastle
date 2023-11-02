@@ -5,9 +5,9 @@ import java.io.IOException;
 
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.nist.NISTObjectIdentifiers;
+import com.distrimind.bouncycastle.bcpg.PublicKeyPacket;
 import com.distrimind.bouncycastle.bcpg.ECDHPublicBCPGKey;
 import com.distrimind.bouncycastle.bcpg.HashAlgorithmTags;
-import com.distrimind.bouncycastle.bcpg.PublicKeyPacket;
 import com.distrimind.bouncycastle.bcpg.SymmetricKeyAlgorithmTags;
 import com.distrimind.bouncycastle.openpgp.PGPException;
 import com.distrimind.bouncycastle.util.encoders.Hex;

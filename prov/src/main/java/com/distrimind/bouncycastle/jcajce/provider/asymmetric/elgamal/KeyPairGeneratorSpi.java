@@ -15,8 +15,8 @@ import com.distrimind.bouncycastle.crypto.params.ElGamalKeyGenerationParameters;
 import com.distrimind.bouncycastle.crypto.params.ElGamalParameters;
 import com.distrimind.bouncycastle.crypto.params.ElGamalPrivateKeyParameters;
 import com.distrimind.bouncycastle.crypto.params.ElGamalPublicKeyParameters;
-import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
 import com.distrimind.bouncycastle.jce.spec.ElGamalParameterSpec;
+import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
 
 public class KeyPairGeneratorSpi
     extends java.security.KeyPairGenerator

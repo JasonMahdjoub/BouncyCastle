@@ -3,7 +3,6 @@ package com.distrimind.bouncycastle.pqc.crypto.lms;
 import com.distrimind.bouncycastle.crypto.Digest;
 
 import static com.distrimind.bouncycastle.pqc.crypto.lms.LM_OTS.D_MESG;
-import static com.distrimind.bouncycastle.pqc.crypto.lms.LM_OTS.SEED_LEN;
 import static com.distrimind.bouncycastle.pqc.crypto.lms.LM_OTS.SEED_RANDOMISER_INDEX;
 
 class LMOtsPrivateKey
@@ -23,13 +22,13 @@ class LMOtsPrivateKey
 
     LMSContext getSignatureContext(LMSigParameters sigParams, byte[][] path)
     {
-        byte[] C = new byte[SEED_LEN];
+        byte[] C = new byte[parameter.getN()];
 
         SeedDerive derive = getDerivationFunction();
         derive.setJ(SEED_RANDOMISER_INDEX); // This value from reference impl.
         derive.deriveSeed(C, false);
 
-        Digest ctx = DigestUtil.getDigest(parameter.getDigestOID());
+        Digest ctx = DigestUtil.getDigest(parameter);
 
         LmsUtils.byteArray(this.getI(), ctx);
         LmsUtils.u32str(this.getQ(), ctx);
@@ -41,7 +40,7 @@ class LMOtsPrivateKey
 
     SeedDerive getDerivationFunction()
     {
-        SeedDerive derive = new SeedDerive(I, masterSecret, DigestUtil.getDigest(parameter.getDigestOID()));
+        SeedDerive derive = new SeedDerive(I, masterSecret, DigestUtil.getDigest(parameter));
         derive.setQ(q);
         return derive;
     }

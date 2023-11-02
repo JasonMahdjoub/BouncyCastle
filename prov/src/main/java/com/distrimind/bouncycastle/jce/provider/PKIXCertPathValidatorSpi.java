@@ -26,13 +26,13 @@ import com.distrimind.bouncycastle.asn1.x500.X500Name;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.asn1.x509.Extension;
 import com.distrimind.bouncycastle.asn1.x509.TBSCertificate;
+import com.distrimind.bouncycastle.jcajce.PKIXExtendedBuilderParameters;
+import com.distrimind.bouncycastle.jcajce.PKIXExtendedParameters;
 import com.distrimind.bouncycastle.jcajce.interfaces.BCX509Certificate;
 import com.distrimind.bouncycastle.jcajce.util.BCJcaJceHelper;
 import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
-import com.distrimind.bouncycastle.jce.exception.ExtCertPathValidatorException;
-import com.distrimind.bouncycastle.jcajce.PKIXExtendedBuilderParameters;
-import com.distrimind.bouncycastle.jcajce.PKIXExtendedParameters;
 import com.distrimind.bouncycastle.x509.ExtendedPKIXParameters;
+import com.distrimind.bouncycastle.jce.exception.ExtCertPathValidatorException;
 
 /**
  * CertPathValidatorSpi implementation for X.509 Certificate validation � la RFC

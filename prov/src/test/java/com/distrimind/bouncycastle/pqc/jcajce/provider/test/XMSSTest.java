@@ -101,7 +101,7 @@ public class XMSSTest
     public void test160PrivateKeyRecovery()
         throws Exception
     {
-        /*KeyFactory kFact = KeyFactory.getInstance("XMSS", "BCPQC");
+        KeyFactory kFact = KeyFactory.getInstance("XMSS", "BCPQC");
 
         XMSSKey privKey = (XMSSKey)kFact.generatePrivate(new PKCS8EncodedKeySpec(priv160Pkcs8));
 
@@ -109,13 +109,13 @@ public class XMSSTest
 
         XMSSKey privKey2 = (XMSSKey)oIn.readObject();
 
-        assertEquals(privKey, privKey2);*/
+        assertEquals(privKey, privKey2);
     }
 
     public void testPrivateKeyRecovery()
         throws Exception
     {
-        /*KeyFactory kFact = KeyFactory.getInstance("XMSS", "BCPQC");
+        KeyFactory kFact = KeyFactory.getInstance("XMSS", "BCPQC");
 
         XMSSKey privKey = (XMSSKey)kFact.generatePrivate(new PKCS8EncodedKeySpec(testPrivKey));
 
@@ -130,7 +130,7 @@ public class XMSSTest
 
         XMSSKey privKey2 = (XMSSKey)oIn.readObject();
 
-        assertEquals(privKey, privKey2);*/
+        assertEquals(privKey, privKey2);
     }
 
     public void testPublicKeyRecovery()

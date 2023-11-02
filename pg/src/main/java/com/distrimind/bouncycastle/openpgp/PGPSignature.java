@@ -10,17 +10,17 @@ import java.util.List;
 import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
 import com.distrimind.bouncycastle.asn1.ASN1Integer;
 import com.distrimind.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.bcpg.BCPGInputStream;
+import com.distrimind.bouncycastle.bcpg.TrustPacket;
 import com.distrimind.bouncycastle.openpgp.operator.PGPContentVerifier;
 import com.distrimind.bouncycastle.openpgp.operator.PGPContentVerifierBuilder;
 import com.distrimind.bouncycastle.openpgp.operator.PGPContentVerifierBuilderProvider;
-import com.distrimind.bouncycastle.bcpg.BCPGInputStream;
 import com.distrimind.bouncycastle.bcpg.BCPGOutputStream;
 import com.distrimind.bouncycastle.bcpg.MPInteger;
 import com.distrimind.bouncycastle.bcpg.Packet;
 import com.distrimind.bouncycastle.bcpg.PublicKeyAlgorithmTags;
 import com.distrimind.bouncycastle.bcpg.SignaturePacket;
 import com.distrimind.bouncycastle.bcpg.SignatureSubpacket;
-import com.distrimind.bouncycastle.bcpg.TrustPacket;
 import com.distrimind.bouncycastle.bcpg.UserAttributeSubpacket;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.BigIntegers;
@@ -49,12 +49,13 @@ public class PGPSignature
     public static final int TIMESTAMP = 0x40;
     public static final int THIRD_PARTY_CONFIRMATION = 0x50;
 
-    private SignaturePacket sigPck;
-    private int signatureType;
-    private TrustPacket trustPck;
-    private PGPContentVerifier verifier;
-    private byte lastb;
-    private OutputStream sigOut;
+    private final int signatureType;
+    private final SignaturePacket sigPck;
+    private final TrustPacket trustPck;
+
+    private volatile PGPContentVerifier verifier;
+    private volatile byte lastb;
+    private volatile OutputStream sigOut;
 
     private static SignaturePacket cast(Packet packet)
         throws IOException
@@ -74,19 +75,25 @@ public class PGPSignature
     }
 
     PGPSignature(
+        PGPSignature signature)
+    {
+        sigPck = signature.sigPck;
+        signatureType = signature.signatureType;
+        trustPck = signature.trustPck;
+    }
+
+    PGPSignature(
         SignaturePacket sigPacket)
     {
-        sigPck = sigPacket;
-        signatureType = sigPck.getSignatureType();
-        trustPck = null;
+        this(sigPacket, null);
     }
 
     PGPSignature(
         SignaturePacket sigPacket,
         TrustPacket trustPacket)
     {
-        this(sigPacket);
-
+        this.sigPck = sigPacket;
+        this.signatureType = sigPck.getSignatureType();
         this.trustPck = trustPacket;
     }
 
@@ -143,12 +150,22 @@ public class PGPSignature
     public void init(PGPContentVerifierBuilderProvider verifierBuilderProvider, PGPPublicKey pubKey)
         throws PGPException
     {
-        PGPContentVerifierBuilder verifierBuilder = verifierBuilderProvider.get(sigPck.getKeyAlgorithm(), sigPck.getHashAlgorithm());
+        PGPContentVerifierBuilder verifierBuilder = createVerifierProvider(verifierBuilderProvider);
 
-        verifier = verifierBuilder.build(pubKey);
+        init(verifierBuilder.build(pubKey));
+    }
 
-        lastb = 0;
-        sigOut = verifier.getOutputStream();
+    PGPContentVerifierBuilder createVerifierProvider(PGPContentVerifierBuilderProvider verifierBuilderProvider)
+        throws PGPException
+    {
+        return verifierBuilderProvider.get(sigPck.getKeyAlgorithm(), sigPck.getHashAlgorithm());
+    }
+
+    void init(PGPContentVerifier verifier)
+    {
+        this.verifier = verifier;
+        this.lastb = 0;
+        this.sigOut = verifier.getOutputStream();
     }
 
     public void update(
@@ -290,6 +307,20 @@ public class PGPSignature
             throw new PGPException("PGPSignature not initialised - call init().");
         }
 
+        if (!PGPSignature.isCertification(signatureType)
+            && PGPSignature.CERTIFICATION_REVOCATION != signatureType)
+        {
+            throw new PGPException("signature is neither a certification signature nor a certification revocation.");
+        }
+
+        return doVerifyCertification(userAttributes, key);
+    }
+
+    boolean doVerifyCertification(
+        PGPUserAttributeSubpacketVector userAttributes,
+        PGPPublicKey key)
+        throws PGPException
+    {
         updateWithPublicKey(key);
 
         //
@@ -329,21 +360,7 @@ public class PGPSignature
         PGPPublicKey key)
         throws PGPException
     {
-        if (verifier == null)
-        {
-            throw new PGPException("PGPSignature not initialised - call init().");
-        }
-
-        updateWithPublicKey(key);
-
-        //
-        // hash in the id
-        //
-        updateWithIdData(0xb4, Strings.toUTF8ByteArray(id));
-
-        addTrailer();
-
-        return verifier.verify(this.getSignature());
+        return verifyCertification(Strings.toUTF8ByteArray(id), key);
     }
 
     /**
@@ -365,6 +382,18 @@ public class PGPSignature
             throw new PGPException("PGPSignature not initialised - call init().");
         }
 
+        if (!PGPSignature.isCertification(signatureType)
+            && PGPSignature.CERTIFICATION_REVOCATION != signatureType)
+        {
+            throw new PGPException("signature is neither a certification signature nor a certification revocation.");
+        }
+
+        return doVerifyCertification(rawID, key);
+    }
+
+    boolean doVerifyCertification(byte[] rawID, PGPPublicKey key)
+        throws PGPException
+    {
         updateWithPublicKey(key);
 
         //
@@ -396,6 +425,21 @@ public class PGPSignature
             throw new PGPException("PGPSignature not initialised - call init().");
         }
 
+        if (PGPSignature.SUBKEY_BINDING != signatureType
+            && PGPSignature.PRIMARYKEY_BINDING != signatureType
+            && PGPSignature.SUBKEY_REVOCATION != signatureType)
+        {
+            throw new PGPException("signature is not a key binding signature.");
+        }
+
+        return doVerifyCertification(masterKey, pubKey);
+    }
+
+    boolean doVerifyCertification(
+        PGPPublicKey masterKey,
+        PGPPublicKey pubKey)
+        throws PGPException
+    {
         updateWithPublicKey(masterKey);
         updateWithPublicKey(pubKey);
 
@@ -435,12 +479,18 @@ public class PGPSignature
         }
 
         if (this.getSignatureType() != KEY_REVOCATION
-            && this.getSignatureType() != SUBKEY_REVOCATION
             && this.getSignatureType() != DIRECT_KEY)
         {
             throw new PGPException("signature is not a key signature");
         }
 
+        return doVerifyCertification(pubKey);
+    }
+
+    boolean doVerifyCertification(
+        PGPPublicKey pubKey)
+        throws PGPException
+    {
         updateWithPublicKey(pubKey);
 
         addTrailer();

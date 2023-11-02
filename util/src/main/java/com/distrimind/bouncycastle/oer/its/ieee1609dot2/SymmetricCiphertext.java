@@ -5,6 +5,7 @@ import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
+import com.distrimind.bouncycastle.asn1.BERTags;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
 
 /**
@@ -35,7 +36,7 @@ public class SymmetricCiphertext
         switch (choice)
         {
         case aes128ccm:
-            symmetricCiphertext = AesCcmCiphertext.getInstance(ato.getObject());
+            symmetricCiphertext = AesCcmCiphertext.getInstance(ato.getExplicitBaseObject());
             break;
         default:
             throw new IllegalArgumentException("invalid choice value " + choice);
@@ -58,7 +59,7 @@ public class SymmetricCiphertext
 
         if (o != null)
         {
-            return new SymmetricCiphertext(ASN1TaggedObject.getInstance(o));
+            return new SymmetricCiphertext(ASN1TaggedObject.getInstance(o, BERTags.CONTEXT_SPECIFIC));
         }
 
         return null;

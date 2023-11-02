@@ -2,10 +2,8 @@ package com.distrimind.bouncycastle.crypto.fpe;
 
 import com.distrimind.bouncycastle.crypto.engines.AESEngine;
 import com.distrimind.bouncycastle.crypto.params.FPEParameters;
-import com.distrimind.bouncycastle.crypto.params.KeyParameter;
 import com.distrimind.bouncycastle.crypto.BlockCipher;
 import com.distrimind.bouncycastle.crypto.CipherParameters;
-import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Properties;
 
 /**
@@ -20,7 +18,7 @@ public class FPEFF3_1Engine
      */
     public FPEFF3_1Engine()
     {
-        this(new AESEngine());
+        this(AESEngine.newInstance());
     }
 
     /**
@@ -49,7 +47,7 @@ public class FPEFF3_1Engine
 
         this.fpeParameters = (FPEParameters)parameters;
 
-        baseCipher.init(!fpeParameters.isUsingInverseFunction(), new KeyParameter(Arrays.reverse(fpeParameters.getKey().getKey())));
+        baseCipher.init(!fpeParameters.isUsingInverseFunction(), fpeParameters.getKey().reverse());
 
         if (fpeParameters.getTweak().length != 7)
         {

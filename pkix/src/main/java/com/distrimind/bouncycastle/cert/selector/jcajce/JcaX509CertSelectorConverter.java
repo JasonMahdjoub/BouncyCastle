@@ -7,6 +7,7 @@ import java.security.cert.X509CertSelector;
 import com.distrimind.bouncycastle.asn1.DEROctetString;
 import com.distrimind.bouncycastle.asn1.x500.X500Name;
 import com.distrimind.bouncycastle.cert.selector.X509CertificateHolderSelector;
+import com.distrimind.bouncycastle.util.Exceptions;
 
 public class JcaX509CertSelectorConverter
 {
@@ -26,7 +27,7 @@ public class JcaX509CertSelectorConverter
             }
             catch (IOException e)
             {
-                throw new IllegalArgumentException("unable to convert issuer: " + e.getMessage());
+                throw Exceptions.illegalArgumentException("unable to convert issuer: " + e.getMessage(), e);
             }
         }
 
@@ -43,7 +44,7 @@ public class JcaX509CertSelectorConverter
             }
             catch (IOException e)
             {
-                throw new IllegalArgumentException("unable to convert issuer: " + e.getMessage());
+                throw Exceptions.illegalArgumentException("unable to convert subjectKeyIdentifier: " + e.getMessage(), e);
             }
         }
 

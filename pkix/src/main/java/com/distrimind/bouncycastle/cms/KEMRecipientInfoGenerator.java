@@ -2,14 +2,14 @@ package com.distrimind.bouncycastle.cms;
 
 import com.distrimind.bouncycastle.asn1.ASN1Integer;
 import com.distrimind.bouncycastle.asn1.DEROctetString;
+import com.distrimind.bouncycastle.operator.GenericKey;
+import com.distrimind.bouncycastle.operator.OperatorException;
 import com.distrimind.bouncycastle.asn1.cms.CMSObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.cms.IssuerAndSerialNumber;
 import com.distrimind.bouncycastle.asn1.cms.KEMRecipientInfo;
 import com.distrimind.bouncycastle.asn1.cms.OtherRecipientInfo;
 import com.distrimind.bouncycastle.asn1.cms.RecipientIdentifier;
 import com.distrimind.bouncycastle.asn1.cms.RecipientInfo;
-import com.distrimind.bouncycastle.operator.GenericKey;
-import com.distrimind.bouncycastle.operator.OperatorException;
 
 public abstract class KEMRecipientInfoGenerator
     implements RecipientInfoGenerator

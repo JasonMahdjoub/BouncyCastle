@@ -5,9 +5,9 @@ import java.security.cert.Certificate;
 import java.security.cert.X509Certificate;
 import java.util.Date;
 
-import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
 import com.distrimind.bouncycastle.jcajce.PKIXCertRevocationChecker;
 import com.distrimind.bouncycastle.jcajce.PKIXCertRevocationCheckerParameters;
+import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
 
 class ProvCrlRevocationChecker
     implements PKIXCertRevocationChecker

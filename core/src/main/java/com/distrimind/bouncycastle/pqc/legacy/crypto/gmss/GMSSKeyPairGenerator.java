@@ -3,13 +3,13 @@ package com.distrimind.bouncycastle.pqc.legacy.crypto.gmss;
 import java.security.SecureRandom;
 import java.util.Vector;
 
+import com.distrimind.bouncycastle.pqc.legacy.crypto.gmss.util.GMSSRandom;
+import com.distrimind.bouncycastle.pqc.legacy.crypto.gmss.util.WinternitzOTSVerify;
+import com.distrimind.bouncycastle.pqc.legacy.crypto.gmss.util.WinternitzOTSignature;
 import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
 import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPairGenerator;
 import com.distrimind.bouncycastle.crypto.Digest;
 import com.distrimind.bouncycastle.crypto.KeyGenerationParameters;
-import com.distrimind.bouncycastle.pqc.legacy.crypto.gmss.util.GMSSRandom;
-import com.distrimind.bouncycastle.pqc.legacy.crypto.gmss.util.WinternitzOTSVerify;
-import com.distrimind.bouncycastle.pqc.legacy.crypto.gmss.util.WinternitzOTSignature;
 
 
 /**

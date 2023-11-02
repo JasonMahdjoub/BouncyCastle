@@ -16,8 +16,8 @@ import com.distrimind.bouncycastle.asn1.ASN1Set;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
 import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.pkcs.SignedData;
-import com.distrimind.bouncycastle.x509.util.StreamParsingException;
 import com.distrimind.bouncycastle.x509.X509StreamParserSpi;
+import com.distrimind.bouncycastle.x509.util.StreamParsingException;
 
 /**
  * @deprecated use CertificateFactory or the PEMParser in the openssl package (pkix jar).

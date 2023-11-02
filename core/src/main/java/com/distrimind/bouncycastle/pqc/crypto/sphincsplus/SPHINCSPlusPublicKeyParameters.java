@@ -1,7 +1,6 @@
 package com.distrimind.bouncycastle.pqc.crypto.sphincsplus;
 
 import com.distrimind.bouncycastle.util.Arrays;
-import com.distrimind.bouncycastle.util.Pack;
 
 public class SPHINCSPlusPublicKeyParameters
     extends SPHINCSPlusKeyParameters
@@ -37,6 +36,6 @@ public class SPHINCSPlusPublicKeyParameters
 
     public byte[] getEncoded()
     {
-        return Arrays.concatenate(Pack.intToBigEndian(SPHINCSPlusParameters.getID(getParameters()).intValue()), pk.seed, pk.root);
+        return Arrays.concatenate(getParameters().getEncoded(), pk.seed, pk.root);
     }
 }

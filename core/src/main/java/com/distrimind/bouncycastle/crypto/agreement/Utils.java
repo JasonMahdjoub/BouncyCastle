@@ -1,9 +1,9 @@
 package com.distrimind.bouncycastle.crypto.agreement;
 
-import com.distrimind.bouncycastle.crypto.CryptoServiceProperties;
-import com.distrimind.bouncycastle.crypto.CryptoServicePurpose;
 import com.distrimind.bouncycastle.crypto.constraints.ConstraintUtils;
 import com.distrimind.bouncycastle.crypto.constraints.DefaultServiceProperties;
+import com.distrimind.bouncycastle.crypto.CryptoServiceProperties;
+import com.distrimind.bouncycastle.crypto.CryptoServicePurpose;
 import com.distrimind.bouncycastle.crypto.params.DHKeyParameters;
 import com.distrimind.bouncycastle.crypto.params.ECKeyParameters;
 import com.distrimind.bouncycastle.crypto.params.X25519PrivateKeyParameters;

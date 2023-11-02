@@ -3,9 +3,9 @@ package com.distrimind.bouncycastle.crypto.hpke;
 import com.distrimind.bouncycastle.crypto.digests.SHA256Digest;
 import com.distrimind.bouncycastle.crypto.digests.SHA384Digest;
 import com.distrimind.bouncycastle.crypto.digests.SHA512Digest;
+import com.distrimind.bouncycastle.crypto.generators.HKDFBytesGenerator;
 import com.distrimind.bouncycastle.crypto.params.HKDFParameters;
 import com.distrimind.bouncycastle.crypto.Digest;
-import com.distrimind.bouncycastle.crypto.generators.HKDFBytesGenerator;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Pack;
 

@@ -11,12 +11,12 @@ import javax.crypto.spec.SecretKeySpec;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.cert.crmf.CRMFException;
 import com.distrimind.bouncycastle.cert.crmf.ValueDecryptorGenerator;
+import com.distrimind.bouncycastle.operator.InputDecryptor;
+import com.distrimind.bouncycastle.operator.OperatorException;
 import com.distrimind.bouncycastle.jcajce.io.CipherInputStream;
 import com.distrimind.bouncycastle.jcajce.util.DefaultJcaJceHelper;
 import com.distrimind.bouncycastle.jcajce.util.NamedJcaJceHelper;
 import com.distrimind.bouncycastle.jcajce.util.ProviderJcaJceHelper;
-import com.distrimind.bouncycastle.operator.InputDecryptor;
-import com.distrimind.bouncycastle.operator.OperatorException;
 import com.distrimind.bouncycastle.operator.jcajce.JceAsymmetricKeyUnwrapper;
 
 public class JceAsymmetricValueDecryptorGenerator

@@ -7,9 +7,6 @@ import java.io.InputStreamReader;
 import java.security.SecureRandom;
 import java.util.HashMap;
 
-import com.distrimind.bouncycastle.test.TestResourceFinder;
-import junit.framework.Assert;
-import junit.framework.TestCase;
 import com.distrimind.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
@@ -23,8 +20,16 @@ import com.distrimind.bouncycastle.pqc.crypto.crystals.kyber.KyberParameters;
 import com.distrimind.bouncycastle.pqc.crypto.crystals.kyber.KyberPrivateKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.crystals.kyber.KyberPublicKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.util.PQCOtherInfoGenerator;
+import com.distrimind.bouncycastle.pqc.crypto.util.PrivateKeyFactory;
+import com.distrimind.bouncycastle.pqc.crypto.util.PrivateKeyInfoFactory;
+import com.distrimind.bouncycastle.pqc.crypto.util.PublicKeyFactory;
+import com.distrimind.bouncycastle.pqc.crypto.util.SubjectPublicKeyInfoFactory;
+import com.distrimind.bouncycastle.test.TestResourceFinder;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.encoders.Hex;
+
+import junit.framework.Assert;
+import junit.framework.TestCase;
 
 public class CrystalsKyberTest
     extends TestCase
@@ -72,11 +77,11 @@ public class CrystalsKyberTest
 
         AsymmetricCipherKeyPair keyPair = keyGen.generateKeyPair();
         // System.out.print("public key = ");
-        // Helper.printByteArray(((KyberPublicKeyParameters) keyPair.getPublic()).getPublicKey());
-        assertTrue(Arrays.areEqual(Hex.decode(expectedPubKey), ((KyberPublicKeyParameters)keyPair.getPublic()).getPublicKey()));
+        // Helper.printByteArray(((KyberPublicKeyParameters) keyPair.getPublic()).getEncoded());
+        assertTrue(Arrays.areEqual(Hex.decode(expectedPubKey), ((KyberPublicKeyParameters)keyPair.getPublic()).getEncoded()));
 
         // System.out.print("secret Key = ");
-        // Helper.printByteArray(((KyberPrivateKeyParameters) keyPair.getPrivate()).getPrivateKey());
+        // Helper.printByteArray(((KyberPrivateKeyParameters) keyPair.getPrivate()).getEncoded());
         assertTrue(Arrays.areEqual(Hex.decode(expectedPrivKey), ((KyberPrivateKeyParameters)keyPair.getPrivate()).getEncoded()));
 
         KyberKEMGenerator kemGen = new KyberKEMGenerator(random);
@@ -189,11 +194,13 @@ public class CrystalsKyberTest
                         kpGen.init(genParam);
                         AsymmetricCipherKeyPair kp = kpGen.generateKeyPair();
 
-                        KyberPublicKeyParameters pubParams = (KyberPublicKeyParameters)(KyberPublicKeyParameters)kp.getPublic();
-                        KyberPrivateKeyParameters privParams = (KyberPrivateKeyParameters)(KyberPrivateKeyParameters)kp.getPrivate();
+                        KyberPublicKeyParameters pubParams = (KyberPublicKeyParameters)PublicKeyFactory.createKey(
+                            SubjectPublicKeyInfoFactory.createSubjectPublicKeyInfo((KyberPublicKeyParameters)kp.getPublic()));
+                        KyberPrivateKeyParameters privParams = (KyberPrivateKeyParameters)PrivateKeyFactory.createKey(
+                            PrivateKeyInfoFactory.createPrivateKeyInfo((KyberPrivateKeyParameters)kp.getPrivate()));
 
-                        assertTrue(name + " " + count + ": public key", Arrays.areEqual(pk, pubParams.getPublicKey()));
-                        assertTrue(name + " " + count + ": secret key", Arrays.areEqual(sk, privParams.getPrivateKey()));
+                        assertTrue(name + " " + count + ": public key", Arrays.areEqual(pk, pubParams.getEncoded()));
+                        assertTrue(name + " " + count + ": secret key", Arrays.areEqual(sk, privParams.getEncoded()));
 
                         // KEM Enc
                         KyberKEMGenerator KyberEncCipher = new KyberKEMGenerator(random);

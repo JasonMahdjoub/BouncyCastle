@@ -24,27 +24,37 @@ import com.distrimind.bouncycastle.crypto.InvalidCipherTextException;
 import com.distrimind.bouncycastle.crypto.SecretWithEncapsulation;
 import com.distrimind.bouncycastle.crypto.Wrapper;
 import com.distrimind.bouncycastle.crypto.params.KeyParameter;
-import com.distrimind.bouncycastle.jcajce.spec.KEMParameterSpec;
 import com.distrimind.bouncycastle.pqc.jcajce.provider.util.WrapUtil;
+import com.distrimind.bouncycastle.jcajce.spec.KEMParameterSpec;
+import com.distrimind.bouncycastle.jcajce.spec.KTSParameterSpec;
 import com.distrimind.bouncycastle.pqc.crypto.hqc.HQCKEMExtractor;
 import com.distrimind.bouncycastle.pqc.crypto.hqc.HQCKEMGenerator;
+import com.distrimind.bouncycastle.pqc.crypto.hqc.HQCParameters;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Exceptions;
+import com.distrimind.bouncycastle.util.Strings;
 
 class HQCCipherSpi
         extends CipherSpi
 {
     private final String algorithmName;
     private HQCKEMGenerator kemGen;
-    private KEMParameterSpec kemParameterSpec;
+    private KTSParameterSpec kemParameterSpec;
     private BCHQCPublicKey wrapKey;
     private BCHQCPrivateKey unwrapKey;
     private AlgorithmParameters engineParams;
+    private HQCParameters hqcParameters;
 
     HQCCipherSpi(String algorithmName)
             throws NoSuchAlgorithmException
     {
         this.algorithmName = algorithmName;
+    }
+
+    HQCCipherSpi(HQCParameters hqcParameters)
+    {
+        this.hqcParameters = hqcParameters;
+        this.algorithmName = Strings.toUpperCase(hqcParameters.getName());
     }
 
     @Override
@@ -131,12 +141,12 @@ class HQCCipherSpi
         }
         else
         {
-            if (!(paramSpec instanceof KEMParameterSpec))
+            if (!(paramSpec instanceof KTSParameterSpec))
             {
                 throw new InvalidAlgorithmParameterException(algorithmName + " can only accept KTSParameterSpec");
             }
 
-            kemParameterSpec = (KEMParameterSpec)paramSpec;
+            kemParameterSpec = (KTSParameterSpec)paramSpec;
         }
 
         if (opmode == Cipher.WRAP_MODE)
@@ -165,6 +175,15 @@ class HQCCipherSpi
         else
         {
             throw new InvalidParameterException("Cipher only valid for wrapping/unwrapping");
+        }
+
+        if (hqcParameters != null)
+        {
+            String canonicalAlgName = Strings.toUpperCase(hqcParameters.getName());
+            if (!canonicalAlgName.equals(key.getAlgorithm()))
+            {
+                throw new InvalidKeyException("cipher locked to " + canonicalAlgName);
+            }
         }
     }
 
@@ -272,7 +291,7 @@ class HQCCipherSpi
         try
         {
             HQCKEMExtractor kemExt = new HQCKEMExtractor(unwrapKey.getKeyParams());
-
+          
             byte[] secret = kemExt.extractSecret(Arrays.copyOfRange(wrappedKey, 0, kemExt.getEncapsulationLength()));
 
             Wrapper kWrap = WrapUtil.getWrapper(kemParameterSpec.getKeyAlgorithmName());
@@ -308,6 +327,33 @@ class HQCCipherSpi
                 throws NoSuchAlgorithmException
         {
             super("HQC");
+        }
+    }
+    
+    public static class HQC128
+        extends HQCCipherSpi
+    {
+        public HQC128()
+        {
+            super(HQCParameters.hqc128);
+        }
+    }
+
+    public static class HQC192
+        extends HQCCipherSpi
+    {
+        public HQC192()
+        {
+            super(HQCParameters.hqc192);
+        }
+    }
+
+    public static class HQC256
+        extends HQCCipherSpi
+    {
+        public HQC256()
+        {
+            super(HQCParameters.hqc256);
         }
     }
 }

@@ -41,7 +41,7 @@ public class BCECPublicKey
 
     private transient ECPublicKeyParameters   ecPublicKey;
     private transient ECParameterSpec         ecSpec;
-    private transient ProviderConfiguration configuration;
+    private transient ProviderConfiguration   configuration;
     private transient byte[]                  encoding;
     private transient boolean                 oldPcSet;
 

@@ -1,9 +1,9 @@
 package com.distrimind.bouncycastle.pqc.crypto.ntru;
 
+import com.distrimind.bouncycastle.pqc.math.ntru.parameters.NTRUParameterSet;
 import com.distrimind.bouncycastle.crypto.EncapsulatedSecretExtractor;
 import com.distrimind.bouncycastle.crypto.digests.SHA3Digest;
 import com.distrimind.bouncycastle.util.Arrays;
-import com.distrimind.bouncycastle.pqc.math.ntru.parameters.NTRUParameterSet;
 
 /**
  * NTRU secret encapsulation extractor.

@@ -12,12 +12,12 @@ import java.security.Security;
 import java.security.SignatureException;
 import java.util.Iterator;
 
-import com.distrimind.bouncycastle.bcpg.ArmoredOutputStream;
-import com.distrimind.bouncycastle.bcpg.BCPGOutputStream;
 import com.distrimind.bouncycastle.openpgp.operator.jcajce.JcaKeyFingerprintCalculator;
 import com.distrimind.bouncycastle.openpgp.operator.jcajce.JcaPGPContentSignerBuilder;
 import com.distrimind.bouncycastle.openpgp.operator.jcajce.JcaPGPContentVerifierBuilderProvider;
 import com.distrimind.bouncycastle.openpgp.operator.jcajce.JcePBESecretKeyDecryptorBuilder;
+import com.distrimind.bouncycastle.bcpg.ArmoredOutputStream;
+import com.distrimind.bouncycastle.bcpg.BCPGOutputStream;
 import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
 import com.distrimind.bouncycastle.openpgp.PGPCompressedData;
 import com.distrimind.bouncycastle.openpgp.PGPCompressedDataGenerator;
@@ -150,7 +150,7 @@ public class SignedFileProcessor
         PGPCompressedDataGenerator  cGen = new PGPCompressedDataGenerator(
                                                                 PGPCompressedData.ZLIB);
         
-        BCPGOutputStream bOut = new BCPGOutputStream(cGen.open(out));
+        BCPGOutputStream            bOut = new BCPGOutputStream(cGen.open(out));
         
         sGen.generateOnePassVersion(false).encode(bOut);
         

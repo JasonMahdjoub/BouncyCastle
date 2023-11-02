@@ -104,7 +104,6 @@ import com.distrimind.bouncycastle.jcajce.CompositePrivateKey;
 import com.distrimind.bouncycastle.jcajce.CompositePublicKey;
 import com.distrimind.bouncycastle.jcajce.spec.CompositeAlgorithmSpec;
 import com.distrimind.bouncycastle.jce.X509KeyUsage;
-import com.distrimind.bouncycastle.jce.X509Principal;
 import com.distrimind.bouncycastle.jce.interfaces.ECPointEncoder;
 import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
 import com.distrimind.bouncycastle.jce.spec.ECNamedCurveGenParameterSpec;
@@ -1461,7 +1460,6 @@ public class CertTest
 
     }
 
-
     public void checkSelfSignedCertificate(
         int id,
         byte[] bytes)
@@ -2092,14 +2090,14 @@ public class CertTest
             fail("error setting generating cert - " + e);
         }
 
-        X509Principal pr = new X509Principal("O=\"The Bouncy Castle, The Legion of\",E=feedback-crypto@bouncycastle.org,ST=Victoria,L=Melbourne,C=AU");
+        X500Name pr = new X500Name("O=\"The Bouncy Castle, The Legion of\",E=feedback-crypto@bouncycastle.org,ST=Victoria,L=Melbourne,C=AU");
 
         if (!pr.toString().equals("O=The Bouncy Castle\\, The Legion of,E=feedback-crypto@bouncycastle.org,ST=Victoria,L=Melbourne,C=AU"))
         {
             fail("string based X509Principal test failed.");
         }
 
-        pr = new X509Principal("O=The Bouncy Castle\\, The Legion of,E=feedback-crypto@bouncycastle.org,ST=Victoria,L=Melbourne,C=AU");
+        pr = new X500Name("O=The Bouncy Castle\\, The Legion of,E=feedback-crypto@bouncycastle.org,ST=Victoria,L=Melbourne,C=AU");
 
         if (!pr.toString().equals("O=The Bouncy Castle\\, The Legion of,E=feedback-crypto@bouncycastle.org,ST=Victoria,L=Melbourne,C=AU"))
         {
@@ -3654,6 +3652,57 @@ public class CertTest
     /*
      * we generate a self signed certificate for the sake of testing - SPHINCSPlus
      */
+    public void checkCreationSPHINCSPlusSimple()
+        throws Exception
+    {
+        //
+        // set up the keys
+        //
+        KeyPairGenerator kpg = KeyPairGenerator.getInstance("SPHINCSPlus", "BC");
+
+        kpg.initialize(SPHINCSPlusParameterSpec.sha2_256f_simple, new SecureRandom());
+
+        KeyPair kp = kpg.generateKeyPair();
+
+        PrivateKey privKey = kp.getPrivate();
+        PublicKey pubKey = kp.getPublic();
+
+        //
+        // distinguished name table.
+        //
+        X500NameBuilder builder = createStdBuilder();
+
+        //
+        // create the certificate - version 3
+        //
+        ContentSigner sigGen = new JcaContentSignerBuilder(pubKey.getAlgorithm()).setProvider("BC").build(privKey);
+        X509v3CertificateBuilder certGen = new JcaX509v3CertificateBuilder(builder.build(), BigInteger.valueOf(1), new Date(System.currentTimeMillis() - 50000), new Date(System.currentTimeMillis() + 50000), builder.build(), pubKey);
+
+        X509Certificate cert = new JcaX509CertificateConverter().setProvider(BC).getCertificate(certGen.build(sigGen));
+
+        cert.checkValidity(new Date());
+
+        //
+        // check verifies in general
+        //
+        cert.verify(pubKey);
+
+        //
+        // check verifies with contained key
+        //
+        cert.verify(cert.getPublicKey());
+
+        ByteArrayInputStream bIn = new ByteArrayInputStream(cert.getEncoded());
+        CertificateFactory fact = CertificateFactory.getInstance("X.509", BC);
+
+        cert = (X509Certificate)fact.generateCertificate(bIn);
+
+        //System.out.println(cert);
+    }
+
+    /*
+     * we generate a self signed certificate for the sake of testing - SPHINCSPlus
+     */
     public void checkCreationSPHINCSPlusHaraka()
         throws Exception
     {
@@ -4224,7 +4273,7 @@ public class CertTest
 
         isTrue("oid wrong", BCObjectIdentifiers.dilithium2.getId().equals(baseCert.getSigAlgOID()));
         isTrue("params wrong", null == baseCert.getSigAlgParams());
-        
+
         //
         // copy certificate
         //
@@ -4354,7 +4403,7 @@ public class CertTest
         cert.verify(cert.getPublicKey());
 
         isEquals("name mismatch: " + cert.getSigAlgName(), "SHA256WITHECDSA", cert.getSigAlgName());
-        
+
         // check encoded works
         cert.getEncoded();
 
@@ -4549,9 +4598,12 @@ public class CertTest
 
         cert.verify(lmsPub, "BCPQC");     // lms key only
 
-        cert.verify(ecPub, new BouncyCastleProvider());      // ec key only
-
-        cert.verify(lmsPub, new BouncyCastlePQCProvider());     // lms key only
+        if (System.getProperty("java.version").indexOf("1.5.") < 0)
+        {
+            cert.verify(ecPub, new BouncyCastleProvider());      // ec key only
+                                       
+            cert.verify(lmsPub, new BouncyCastlePQCProvider());     // lms key only
+        }
 
         //
         // check verifies with contained key
@@ -4652,7 +4704,10 @@ public class CertTest
 
         cert.verify(ecPub, "BC");      // ec key only
 
-        cert.verify(ecPub, new BouncyCastleProvider());      // ec key only
+        if (System.getProperty("java.version").indexOf("1.5.") < 0)
+        {
+            cert.verify(ecPub, new BouncyCastleProvider());      // ec key only
+        }
 
         //
         // check verifies with contained key
@@ -5446,6 +5501,7 @@ public class CertTest
         checkCreationEd448();
 
         checkCreationSPHINCSPlus();
+        checkCreationSPHINCSPlusSimple();
         checkCreationSPHINCSPlusHaraka();
         checkCreationDSA();
         checkCreationECDSA();

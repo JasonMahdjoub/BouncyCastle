@@ -2,12 +2,12 @@ package com.distrimind.bouncycastle.mozilla.test;
 
 import java.security.Security;
 
-import com.distrimind.bouncycastle.test.PrintTestResult;
 import junit.extensions.TestSetup;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
+import com.distrimind.bouncycastle.test.PrintTestResult;
 import com.distrimind.bouncycastle.util.test.SimpleTestResult;
 
 public class AllTests

@@ -1,10 +1,10 @@
 package com.distrimind.bouncycastle.crypto.macs;
 
 import com.distrimind.bouncycastle.crypto.modes.CBCBlockCipher;
+import com.distrimind.bouncycastle.crypto.paddings.BlockCipherPadding;
 import com.distrimind.bouncycastle.crypto.BlockCipher;
 import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.Mac;
-import com.distrimind.bouncycastle.crypto.paddings.BlockCipherPadding;
 
 /**
  * standard CBC Block Cipher MAC - if no padding is specified the default of
@@ -18,7 +18,7 @@ public class CBCBlockCipherMac
     private byte[]              buf;
     private int                 bufOff;
     private BlockCipher         cipher;
-    private BlockCipherPadding  padding;
+    private BlockCipherPadding padding;
 
     private int                 macSize;
 
@@ -92,7 +92,7 @@ public class CBCBlockCipherMac
             throw new IllegalArgumentException("MAC size must be multiple of 8");
         }
 
-        this.cipher = new CBCBlockCipher(cipher);
+        this.cipher = CBCBlockCipher.newInstance(cipher);
         this.padding = padding;
         this.macSize = macSizeInBits / 8;
 

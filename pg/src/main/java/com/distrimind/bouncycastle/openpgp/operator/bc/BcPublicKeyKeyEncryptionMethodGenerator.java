@@ -4,10 +4,11 @@ import java.io.IOException;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
-import com.distrimind.bouncycastle.bcpg.ECDHPublicBCPGKey;
-import com.distrimind.bouncycastle.bcpg.PublicKeyAlgorithmTags;
+import com.distrimind.bouncycastle.asn1.cryptlib.CryptlibObjectIdentifiers;
 import com.distrimind.bouncycastle.bcpg.PublicKeyPacket;
+import com.distrimind.bouncycastle.bcpg.ECDHPublicBCPGKey;
 import com.distrimind.bouncycastle.bcpg.MPInteger;
+import com.distrimind.bouncycastle.bcpg.PublicKeyAlgorithmTags;
 import com.distrimind.bouncycastle.crypto.AsymmetricBlockCipher;
 import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
 import com.distrimind.bouncycastle.crypto.InvalidCipherTextException;

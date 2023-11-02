@@ -1,9 +1,8 @@
 package com.distrimind.bouncycastle.cert.crmf;
 
 import com.distrimind.bouncycastle.asn1.ASN1Integer;
+import com.distrimind.bouncycastle.asn1.ASN1OctetString;
 import com.distrimind.bouncycastle.asn1.DEROctetString;
-import com.distrimind.bouncycastle.cert.X509CertificateHolder;
-import com.distrimind.bouncycastle.cms.CMSEnvelopedData;
 import com.distrimind.bouncycastle.asn1.cmp.CMPCertificate;
 import com.distrimind.bouncycastle.asn1.cmp.CertOrEncCert;
 import com.distrimind.bouncycastle.asn1.cmp.CertResponse;
@@ -11,16 +10,19 @@ import com.distrimind.bouncycastle.asn1.cmp.CertifiedKeyPair;
 import com.distrimind.bouncycastle.asn1.cmp.PKIStatusInfo;
 import com.distrimind.bouncycastle.asn1.cms.EnvelopedData;
 import com.distrimind.bouncycastle.asn1.crmf.EncryptedKey;
+import com.distrimind.bouncycastle.cert.X509CertificateHolder;
+import com.distrimind.bouncycastle.cms.CMSEnvelopedData;
 
 /**
  * Builder for CertificateResponse objects (the CertResponse CRMF equivalent).
  */
 public class CertificateResponseBuilder
 {
+    private final ASN1Integer certReqId;
+    private final PKIStatusInfo statusInfo;
+
     private CertifiedKeyPair certKeyPair;
-    private ASN1Integer certReqId;
-    private PKIStatusInfo statusInfo;
-    private DEROctetString rspInfo;
+    private ASN1OctetString rspInfo;
 
     /**
      * Base constructor.

@@ -10,12 +10,12 @@ import com.distrimind.bouncycastle.math.ec.WNafUtil;
 import com.distrimind.bouncycastle.math.ec.endo.GLVTypeBEndomorphism;
 import com.distrimind.bouncycastle.math.ec.endo.GLVTypeBParameters;
 import com.distrimind.bouncycastle.math.ec.endo.ScalarSplitParameters;
-import com.distrimind.bouncycastle.util.Strings;
 import com.distrimind.bouncycastle.util.encoders.Hex;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.x9.X9ECParameters;
 import com.distrimind.bouncycastle.asn1.x9.X9ECParametersHolder;
 import com.distrimind.bouncycastle.asn1.x9.X9ECPoint;
+import com.distrimind.bouncycastle.util.Strings;
 
 public class SECNamedCurves
 {

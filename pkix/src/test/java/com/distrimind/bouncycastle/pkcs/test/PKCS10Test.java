@@ -8,7 +8,6 @@ import java.security.Security;
 import java.security.spec.RSAPrivateCrtKeySpec;
 import java.security.spec.RSAPublicKeySpec;
 
-import com.distrimind.bouncycastle.test.PrintTestResult;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -24,6 +23,7 @@ import com.distrimind.bouncycastle.pkcs.PKCS10CertificationRequest;
 import com.distrimind.bouncycastle.pkcs.PKCS10CertificationRequestBuilder;
 import com.distrimind.bouncycastle.pkcs.jcajce.JcaPKCS10CertificationRequest;
 import com.distrimind.bouncycastle.pkcs.jcajce.JcaPKCS10CertificationRequestBuilder;
+import com.distrimind.bouncycastle.test.PrintTestResult;
 import com.distrimind.bouncycastle.util.encoders.Base64;
 import com.distrimind.bouncycastle.util.encoders.Hex;
 

@@ -18,7 +18,7 @@ import com.distrimind.bouncycastle.crypto.util.DigestFactory;
 public class OpenSSLPBEParametersGenerator
     extends PBEParametersGenerator
 {
-    private final Digest digest;
+    private final Digest  digest;
 
     /**
      * Construct a OpenSSL Parameters generator - digest the original MD5.

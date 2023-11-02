@@ -8,11 +8,11 @@ import java.util.zip.Inflater;
 import java.util.zip.InflaterInputStream;
 
 import com.distrimind.bouncycastle.apache.bzip2.CBZip2InputStream;
+import com.distrimind.bouncycastle.bcpg.BCPGInputStream;
+import com.distrimind.bouncycastle.bcpg.PacketTags;
+import com.distrimind.bouncycastle.bcpg.CompressedDataPacket;
 import com.distrimind.bouncycastle.bcpg.CompressionAlgorithmTags;
 import com.distrimind.bouncycastle.bcpg.Packet;
-import com.distrimind.bouncycastle.bcpg.PacketTags;
-import com.distrimind.bouncycastle.bcpg.BCPGInputStream;
-import com.distrimind.bouncycastle.bcpg.CompressedDataPacket;
 
 /**
  * A PGP compressed data object.
@@ -56,7 +56,7 @@ public class PGPCompressedData
      * @throws IOException if an error occurs reading the packet from the stream.
      */
     public PGPCompressedData(
-        BCPGInputStream    pIn)
+        BCPGInputStream pIn)
         throws IOException
     {
 

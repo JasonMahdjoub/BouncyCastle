@@ -5,9 +5,9 @@ import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.pkcs.ContentInfo;
 import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.pkcs.SafeBag;
+import com.distrimind.bouncycastle.operator.InputDecryptorProvider;
 import com.distrimind.bouncycastle.cms.CMSEncryptedData;
 import com.distrimind.bouncycastle.cms.CMSException;
-import com.distrimind.bouncycastle.operator.InputDecryptorProvider;
 
 public class PKCS12SafeBagFactory
 {

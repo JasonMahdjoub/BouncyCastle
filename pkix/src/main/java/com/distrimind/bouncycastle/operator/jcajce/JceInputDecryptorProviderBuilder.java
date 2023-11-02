@@ -13,15 +13,15 @@ import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.ASN1OctetString;
 import com.distrimind.bouncycastle.asn1.cryptopro.GOST28147Parameters;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.operator.InputDecryptor;
+import com.distrimind.bouncycastle.operator.InputDecryptorProvider;
+import com.distrimind.bouncycastle.operator.OperatorCreationException;
 import com.distrimind.bouncycastle.jcajce.io.CipherInputStream;
 import com.distrimind.bouncycastle.jcajce.spec.GOST28147ParameterSpec;
 import com.distrimind.bouncycastle.jcajce.util.DefaultJcaJceHelper;
 import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
 import com.distrimind.bouncycastle.jcajce.util.NamedJcaJceHelper;
 import com.distrimind.bouncycastle.jcajce.util.ProviderJcaJceHelper;
-import com.distrimind.bouncycastle.operator.InputDecryptor;
-import com.distrimind.bouncycastle.operator.InputDecryptorProvider;
-import com.distrimind.bouncycastle.operator.OperatorCreationException;
 import com.distrimind.bouncycastle.util.Arrays;
 
 /**

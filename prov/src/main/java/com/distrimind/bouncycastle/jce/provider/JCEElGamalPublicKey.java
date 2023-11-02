@@ -15,8 +15,8 @@ import com.distrimind.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
 import com.distrimind.bouncycastle.crypto.params.ElGamalPublicKeyParameters;
-import com.distrimind.bouncycastle.jce.interfaces.ElGamalPublicKey;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.KeyUtil;
+import com.distrimind.bouncycastle.jce.interfaces.ElGamalPublicKey;
 import com.distrimind.bouncycastle.jce.spec.ElGamalParameterSpec;
 import com.distrimind.bouncycastle.jce.spec.ElGamalPublicKeySpec;
 
@@ -26,10 +26,10 @@ public class JCEElGamalPublicKey
     static final long serialVersionUID = 8712728417091216948L;
         
     private BigInteger              y;
-    private ElGamalParameterSpec    elSpec;
+    private ElGamalParameterSpec elSpec;
 
     JCEElGamalPublicKey(
-        ElGamalPublicKeySpec    spec)
+        ElGamalPublicKeySpec spec)
     {
         this.y = spec.getY();
         this.elSpec = new ElGamalParameterSpec(spec.getParams().getP(), spec.getParams().getG());

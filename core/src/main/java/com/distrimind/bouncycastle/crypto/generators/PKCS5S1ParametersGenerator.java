@@ -18,7 +18,7 @@ import com.distrimind.bouncycastle.crypto.params.ParametersWithIV;
 public class PKCS5S1ParametersGenerator
     extends PBEParametersGenerator
 {
-    private Digest digest;
+    private Digest  digest;
 
     /**
      * Construct a PKCS 5 Scheme 1 Parameters generator. 

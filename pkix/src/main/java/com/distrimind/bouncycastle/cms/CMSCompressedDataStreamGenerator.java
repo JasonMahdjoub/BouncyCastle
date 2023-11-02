@@ -6,8 +6,8 @@ import java.io.OutputStream;
 import com.distrimind.bouncycastle.asn1.ASN1Integer;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.BERSequenceGenerator;
-import com.distrimind.bouncycastle.asn1.cms.CMSObjectIdentifiers;
 import com.distrimind.bouncycastle.operator.OutputCompressor;
+import com.distrimind.bouncycastle.asn1.cms.CMSObjectIdentifiers;
 
 /**
  * General class for generating a compressed CMS message stream.

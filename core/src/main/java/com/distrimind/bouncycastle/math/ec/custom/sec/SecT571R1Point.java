@@ -1,12 +1,12 @@
 package com.distrimind.bouncycastle.math.ec.custom.sec;
 
-import com.distrimind.bouncycastle.math.raw.Nat;
-import com.distrimind.bouncycastle.math.raw.Nat576;
 import com.distrimind.bouncycastle.math.ec.ECConstants;
 import com.distrimind.bouncycastle.math.ec.ECCurve;
 import com.distrimind.bouncycastle.math.ec.ECFieldElement;
 import com.distrimind.bouncycastle.math.ec.ECPoint;
 import com.distrimind.bouncycastle.math.ec.ECPoint.AbstractF2m;
+import com.distrimind.bouncycastle.math.raw.Nat;
+import com.distrimind.bouncycastle.math.raw.Nat576;
 
 public class SecT571R1Point extends AbstractF2m
 {

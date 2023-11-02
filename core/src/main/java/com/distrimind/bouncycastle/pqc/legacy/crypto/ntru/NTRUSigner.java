@@ -2,10 +2,10 @@ package com.distrimind.bouncycastle.pqc.legacy.crypto.ntru;
 
 import java.nio.ByteBuffer;
 
-import com.distrimind.bouncycastle.crypto.CipherParameters;
-import com.distrimind.bouncycastle.crypto.Digest;
 import com.distrimind.bouncycastle.pqc.legacy.math.ntru.polynomial.IntegerPolynomial;
 import com.distrimind.bouncycastle.pqc.legacy.math.ntru.polynomial.Polynomial;
+import com.distrimind.bouncycastle.crypto.CipherParameters;
+import com.distrimind.bouncycastle.crypto.Digest;
 
 /**
 * Signs, verifies data and generates key pairs.
