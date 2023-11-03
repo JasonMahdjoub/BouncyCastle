@@ -321,7 +321,7 @@ subprojects {
 				pom {
 					name = 'BouncyCastle recompiled By DistriMind'
 					description = 'Encryption tools'
-					url = 'https://github.com/JasonMahdjoub/BouncyCastle'
+					url = 'https://git.distri-mind.fr/BouncyCastle'
 					developers {
 						developer {
 							id = 'jmahdjoub'
@@ -341,7 +341,7 @@ subprojects {
 						url = 'https://github.com/JasonMahdjoub/BouncyCastle/issues'
 					}
 					scm {
-						connection = 'https://github.com/JasonMahdjoub/BouncyCastle'
+						connection = 'https://git.distri-mind.fr/BouncyCastle'
 						developerConnection = connection
 						url = connection
 					}

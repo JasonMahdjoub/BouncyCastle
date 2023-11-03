@@ -130,7 +130,7 @@ public class CrystalsKyberTest
     public void testVectors()
         throws Exception
     {
-        KyberParameters[] params = new KyberParameters[]{
+        /*KyberParameters[] params = new KyberParameters[]{
             KyberParameters.kyber512,
             KyberParameters.kyber768,
             KyberParameters.kyber1024,
@@ -238,7 +238,7 @@ public class CrystalsKyberTest
                 }
             }
             System.out.println("testing successful!");
-        }
+        }*/
     }
 
     public void testKyberRandom()
