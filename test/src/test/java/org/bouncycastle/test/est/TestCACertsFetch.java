@@ -1,4 +1,4 @@
-package org.bouncycastle.test.est;
+package com.distrimind.bouncycastle.test.est;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -25,27 +25,27 @@ import java.util.concurrent.TimeUnit;
 import javax.net.ssl.SSLHandshakeException;
 import javax.net.ssl.SSLSession;
 
-import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.asn1.x500.X500NameBuilder;
-import org.bouncycastle.asn1.x500.style.BCStyle;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.cert.X509CRLHolder;
-import org.bouncycastle.cert.X509CertificateHolder;
-import org.bouncycastle.est.CACertsResponse;
-import org.bouncycastle.est.ESTClient;
-import org.bouncycastle.est.ESTClientProvider;
-import org.bouncycastle.est.ESTException;
-import org.bouncycastle.est.ESTRequest;
-import org.bouncycastle.est.ESTResponse;
-import org.bouncycastle.est.ESTService;
-import org.bouncycastle.est.ESTServiceBuilder;
-import org.bouncycastle.est.Source;
-import org.bouncycastle.est.jcajce.JcaJceUtils;
-import org.bouncycastle.est.jcajce.JsseESTServiceBuilder;
-import org.bouncycastle.test.est.examples.ExampleUtils;
-import org.bouncycastle.util.Store;
-import org.bouncycastle.util.io.pem.PemReader;
-import org.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.asn1.x500.X500Name;
+import com.distrimind.bouncycastle.asn1.x500.X500NameBuilder;
+import com.distrimind.bouncycastle.asn1.x500.style.BCStyle;
+import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
+import com.distrimind.bouncycastle.cert.X509CRLHolder;
+import com.distrimind.bouncycastle.cert.X509CertificateHolder;
+import com.distrimind.bouncycastle.est.CACertsResponse;
+import com.distrimind.bouncycastle.est.ESTClient;
+import com.distrimind.bouncycastle.est.ESTClientProvider;
+import com.distrimind.bouncycastle.est.ESTException;
+import com.distrimind.bouncycastle.est.ESTRequest;
+import com.distrimind.bouncycastle.est.ESTResponse;
+import com.distrimind.bouncycastle.est.ESTService;
+import com.distrimind.bouncycastle.est.ESTServiceBuilder;
+import com.distrimind.bouncycastle.est.Source;
+import com.distrimind.bouncycastle.est.jcajce.JcaJceUtils;
+import com.distrimind.bouncycastle.est.jcajce.JsseESTServiceBuilder;
+import com.distrimind.bouncycastle.test.est.examples.ExampleUtils;
+import com.distrimind.bouncycastle.util.Store;
+import com.distrimind.bouncycastle.util.io.pem.PemReader;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -103,7 +103,7 @@ public class TestCACertsFetch
         try
         {
             serverInstance = startDefaultServer();
-            System.setProperty("org.bouncycastle.debug.est", "all");
+            System.setProperty("com.distrimind.bouncycastle.debug.est", "all");
 
 //            SSLSocketFactoryCreatorBuilder sfcb = new SSLSocketFactoryCreatorBuilder();
 

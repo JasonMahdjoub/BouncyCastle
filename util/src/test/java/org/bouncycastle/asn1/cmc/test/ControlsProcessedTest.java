@@ -1,13 +1,13 @@
-package org.bouncycastle.asn1.cmc.test;
+package com.distrimind.bouncycastle.asn1.cmc.test;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.DERSequence;
-import org.bouncycastle.asn1.DERUTF8String;
-import org.bouncycastle.asn1.cmc.BodyPartID;
-import org.bouncycastle.asn1.cmc.BodyPartReference;
-import org.bouncycastle.asn1.cmc.ControlsProcessed;
-import org.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.asn1.ASN1Encodable;
+import com.distrimind.bouncycastle.asn1.ASN1Integer;
+import com.distrimind.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.asn1.DERUTF8String;
+import com.distrimind.bouncycastle.asn1.cmc.BodyPartID;
+import com.distrimind.bouncycastle.asn1.cmc.BodyPartReference;
+import com.distrimind.bouncycastle.asn1.cmc.ControlsProcessed;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 public class ControlsProcessedTest
     extends SimpleTest

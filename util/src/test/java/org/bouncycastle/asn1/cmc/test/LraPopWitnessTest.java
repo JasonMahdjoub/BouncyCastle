@@ -1,11 +1,11 @@
-package org.bouncycastle.asn1.cmc.test;
+package com.distrimind.bouncycastle.asn1.cmc.test;
 
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.DERSequence;
-import org.bouncycastle.asn1.cmc.BodyPartID;
-import org.bouncycastle.asn1.cmc.LraPopWitness;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.asn1.ASN1Integer;
+import com.distrimind.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.asn1.cmc.BodyPartID;
+import com.distrimind.bouncycastle.asn1.cmc.LraPopWitness;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 
 public class LraPopWitnessTest

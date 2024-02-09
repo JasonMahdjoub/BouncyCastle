@@ -1,10 +1,10 @@
-package org.bouncycastle.oer.its.ieee1609dot2.basetypes;
+package com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes;
 
 import java.math.BigInteger;
 
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.ASN1Object;
-import org.bouncycastle.asn1.ASN1Primitive;
+import com.distrimind.bouncycastle.asn1.ASN1Integer;
+import com.distrimind.bouncycastle.asn1.ASN1Object;
+import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 
 public abstract class UintBase
     extends ASN1Object

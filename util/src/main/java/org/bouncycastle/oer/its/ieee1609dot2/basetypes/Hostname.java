@@ -1,10 +1,10 @@
-package org.bouncycastle.oer.its.ieee1609dot2.basetypes;
+package com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes;
 
-import org.bouncycastle.asn1.ASN1Object;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.ASN1String;
-import org.bouncycastle.asn1.ASN1UTF8String;
-import org.bouncycastle.asn1.DERUTF8String;
+import com.distrimind.bouncycastle.asn1.ASN1Object;
+import com.distrimind.bouncycastle.asn1.ASN1Primitive;
+import com.distrimind.bouncycastle.asn1.ASN1String;
+import com.distrimind.bouncycastle.asn1.ASN1UTF8String;
+import com.distrimind.bouncycastle.asn1.DERUTF8String;
 
 /**
  * Hostname ::= UTF8String (SIZE(0..255))

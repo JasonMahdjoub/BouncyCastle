@@ -1,8 +1,8 @@
-package org.bouncycastle.oer.its.ieee1609dot2;
+package com.distrimind.bouncycastle.oer.its.ieee1609dot2;
 
-import org.bouncycastle.asn1.ASN1OctetString;
-import org.bouncycastle.oer.its.ieee1609dot2.basetypes.HashedId;
-import org.bouncycastle.oer.its.ieee1609dot2.basetypes.HashedId8;
+import com.distrimind.bouncycastle.asn1.ASN1OctetString;
+import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.HashedId;
+import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.HashedId8;
 
 /**
  * PreSharedKeyRecipientInfo ::= HashedId8

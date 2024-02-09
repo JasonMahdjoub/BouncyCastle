@@ -1,18 +1,18 @@
-package org.bouncycastle.asn1.cmp.test;
+package com.distrimind.bouncycastle.asn1.cmp.test;
 
 
 import java.io.IOException;
 
-import org.bouncycastle.asn1.cmp.CMPCertificate;
-import org.bouncycastle.asn1.cmp.CertOrEncCert;
-import org.bouncycastle.asn1.cmp.CertifiedKeyPair;
-import org.bouncycastle.asn1.crmf.EncryptedKey;
-import org.bouncycastle.asn1.crmf.EncryptedValue;
-import org.bouncycastle.asn1.crmf.PKIPublicationInfo;
-import org.bouncycastle.asn1.x509.Certificate;
-import org.bouncycastle.util.encoders.Base64;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.asn1.cmp.CMPCertificate;
+import com.distrimind.bouncycastle.asn1.cmp.CertOrEncCert;
+import com.distrimind.bouncycastle.asn1.cmp.CertifiedKeyPair;
+import com.distrimind.bouncycastle.asn1.crmf.EncryptedKey;
+import com.distrimind.bouncycastle.asn1.crmf.EncryptedValue;
+import com.distrimind.bouncycastle.asn1.crmf.PKIPublicationInfo;
+import com.distrimind.bouncycastle.asn1.x509.Certificate;
+import com.distrimind.bouncycastle.util.encoders.Base64;
+import com.distrimind.bouncycastle.util.encoders.Hex;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 public class CertifiedKeyPairTest
     extends SimpleTest

@@ -1,11 +1,11 @@
-package org.bouncycastle.asn1.cmc.test;
+package com.distrimind.bouncycastle.asn1.cmc.test;
 
 import java.util.Date;
 
-import org.bouncycastle.asn1.ASN1GeneralizedTime;
-import org.bouncycastle.asn1.DERSequence;
-import org.bouncycastle.asn1.cmc.PendInfo;
-import org.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.asn1.ASN1GeneralizedTime;
+import com.distrimind.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.asn1.cmc.PendInfo;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 
 public class PendInfoTest

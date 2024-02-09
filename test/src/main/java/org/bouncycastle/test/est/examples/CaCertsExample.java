@@ -1,4 +1,4 @@
-package org.bouncycastle.test.est.examples;
+package com.distrimind.bouncycastle.test.est.examples;
 
 
 import java.io.File;
@@ -12,13 +12,13 @@ import java.util.Set;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.X509TrustManager;
 
-import org.bouncycastle.cert.X509CertificateHolder;
-import org.bouncycastle.est.CACertsResponse;
-import org.bouncycastle.est.ESTService;
-import org.bouncycastle.est.jcajce.JcaJceUtils;
-import org.bouncycastle.est.jcajce.JsseDefaultHostnameAuthorizer;
-import org.bouncycastle.est.jcajce.JsseESTServiceBuilder;
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import com.distrimind.bouncycastle.cert.X509CertificateHolder;
+import com.distrimind.bouncycastle.est.CACertsResponse;
+import com.distrimind.bouncycastle.est.ESTService;
+import com.distrimind.bouncycastle.est.jcajce.JcaJceUtils;
+import com.distrimind.bouncycastle.est.jcajce.JsseDefaultHostnameAuthorizer;
+import com.distrimind.bouncycastle.est.jcajce.JsseESTServiceBuilder;
+import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
 
 /**
  * CaCertsExample gives examples of fetching CA certs.

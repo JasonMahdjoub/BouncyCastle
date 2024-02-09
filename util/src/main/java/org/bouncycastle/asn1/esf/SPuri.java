@@ -1,7 +1,7 @@
-package org.bouncycastle.asn1.esf;
+package com.distrimind.bouncycastle.asn1.esf;
 
-import org.bouncycastle.asn1.ASN1IA5String;
-import org.bouncycastle.asn1.ASN1Primitive;
+import com.distrimind.bouncycastle.asn1.ASN1IA5String;
+import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 
 public class SPuri
 {

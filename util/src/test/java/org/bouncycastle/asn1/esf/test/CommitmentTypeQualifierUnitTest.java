@@ -1,14 +1,14 @@
-package org.bouncycastle.asn1.esf.test;
+package com.distrimind.bouncycastle.asn1.esf.test;
 
 import java.io.IOException;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1InputStream;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.esf.CommitmentTypeIdentifier;
-import org.bouncycastle.asn1.esf.CommitmentTypeQualifier;
-import org.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.asn1.ASN1Encodable;
+import com.distrimind.bouncycastle.asn1.ASN1InputStream;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.ASN1Sequence;
+import com.distrimind.bouncycastle.asn1.esf.CommitmentTypeIdentifier;
+import com.distrimind.bouncycastle.asn1.esf.CommitmentTypeQualifier;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 public class CommitmentTypeQualifierUnitTest 
     extends SimpleTest

@@ -1,6 +1,6 @@
-package org.bouncycastle.asn1.cmp;
+package com.distrimind.bouncycastle.asn1.cmp;
 
-import org.bouncycastle.asn1.ASN1Sequence;
+import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 
 /**
  * NestedMessageContent ::= PKIMessages

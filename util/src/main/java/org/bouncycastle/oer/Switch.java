@@ -1,6 +1,6 @@
-package org.bouncycastle.oer;
+package com.distrimind.bouncycastle.oer;
 
-import org.bouncycastle.asn1.ASN1Encodable;
+import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 
 /**
  * A switch is intended to examine the state of the OER decoding stream

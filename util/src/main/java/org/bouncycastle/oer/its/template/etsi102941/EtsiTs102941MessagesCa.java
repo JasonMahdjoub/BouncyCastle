@@ -1,8 +1,8 @@
-package org.bouncycastle.oer.its.template.etsi102941;
+package com.distrimind.bouncycastle.oer.its.template.etsi102941;
 
-import org.bouncycastle.oer.OERDefinition;
-import org.bouncycastle.oer.its.template.etsi102941.basetypes.EtsiTs102941BaseTypes;
-import org.bouncycastle.oer.its.template.etsi103097.EtsiTs103097Module;
+import com.distrimind.bouncycastle.oer.OERDefinition;
+import com.distrimind.bouncycastle.oer.its.template.etsi102941.basetypes.EtsiTs102941BaseTypes;
+import com.distrimind.bouncycastle.oer.its.template.etsi103097.EtsiTs103097Module;
 
 
 public class EtsiTs102941MessagesCa

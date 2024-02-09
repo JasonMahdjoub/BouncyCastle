@@ -1,11 +1,11 @@
-package org.bouncycastle.oer.test;
+package com.distrimind.bouncycastle.oer.test;
 
 import junit.extensions.TestSetup;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import org.bouncycastle.test.PrintTestResult;
-import org.bouncycastle.util.test.SimpleTestResult;
+import com.distrimind.bouncycastle.test.PrintTestResult;
+import com.distrimind.bouncycastle.util.test.SimpleTestResult;
 
 
 public class AllTests
@@ -13,7 +13,7 @@ public class AllTests
 {
     public void testASN1()
     {
-        org.bouncycastle.util.test.Test[] tests = RegressionTest.tests;
+        com.distrimind.bouncycastle.util.test.Test[] tests = RegressionTest.tests;
 
         for (int i = 0; i != tests.length; i++)
         {

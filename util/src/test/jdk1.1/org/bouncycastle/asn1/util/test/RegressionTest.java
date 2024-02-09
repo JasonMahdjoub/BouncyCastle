@@ -1,25 +1,25 @@
-package org.bouncycastle.asn1.util.test;
+package com.distrimind.bouncycastle.asn1.util.test;
 
-import org.bouncycastle.asn1.cmc.test.*;
-import org.bouncycastle.asn1.cmp.test.*;
-import org.bouncycastle.asn1.cms.test.*;
-import org.bouncycastle.asn1.crmf.test.*;
-import org.bouncycastle.asn1.esf.test.*;
-import org.bouncycastle.asn1.ess.test.*;
-import org.bouncycastle.asn1.icao.test.*;
-import org.bouncycastle.asn1.isismtt.test.AdditionalInformationSyntaxUnitTest;
-import org.bouncycastle.asn1.isismtt.test.AdmissionSyntaxUnitTest;
-import org.bouncycastle.asn1.isismtt.test.AdmissionsUnitTest;
-import org.bouncycastle.asn1.isismtt.test.CertHashUnitTest;
-import org.bouncycastle.asn1.isismtt.test.DeclarationOfMajorityUnitTest;
-import org.bouncycastle.asn1.isismtt.test.MonetaryLimitUnitTest;
-import org.bouncycastle.asn1.isismtt.test.NamingAuthorityUnitTest;
-import org.bouncycastle.asn1.isismtt.test.ProcurationSyntaxUnitTest;
-import org.bouncycastle.asn1.isismtt.test.RequestedCertificateUnitTest;
-import org.bouncycastle.asn1.isismtt.test.RestrictionUnitTest;
-import org.bouncycastle.asn1.smime.test.SMIMETest;
-import org.bouncycastle.util.test.SimpleTest;
-import org.bouncycastle.util.test.Test;
+import com.distrimind.bouncycastle.asn1.cmc.test.*;
+import com.distrimind.bouncycastle.asn1.cmp.test.*;
+import com.distrimind.bouncycastle.asn1.cms.test.*;
+import com.distrimind.bouncycastle.asn1.crmf.test.*;
+import com.distrimind.bouncycastle.asn1.esf.test.*;
+import com.distrimind.bouncycastle.asn1.ess.test.*;
+import com.distrimind.bouncycastle.asn1.icao.test.*;
+import com.distrimind.bouncycastle.asn1.isismtt.test.AdditionalInformationSyntaxUnitTest;
+import com.distrimind.bouncycastle.asn1.isismtt.test.AdmissionSyntaxUnitTest;
+import com.distrimind.bouncycastle.asn1.isismtt.test.AdmissionsUnitTest;
+import com.distrimind.bouncycastle.asn1.isismtt.test.CertHashUnitTest;
+import com.distrimind.bouncycastle.asn1.isismtt.test.DeclarationOfMajorityUnitTest;
+import com.distrimind.bouncycastle.asn1.isismtt.test.MonetaryLimitUnitTest;
+import com.distrimind.bouncycastle.asn1.isismtt.test.NamingAuthorityUnitTest;
+import com.distrimind.bouncycastle.asn1.isismtt.test.ProcurationSyntaxUnitTest;
+import com.distrimind.bouncycastle.asn1.isismtt.test.RequestedCertificateUnitTest;
+import com.distrimind.bouncycastle.asn1.isismtt.test.RestrictionUnitTest;
+import com.distrimind.bouncycastle.asn1.smime.test.SMIMETest;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.util.test.Test;
 
 public class RegressionTest
 {

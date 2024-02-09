@@ -1,14 +1,14 @@
-package org.bouncycastle.asn1.icao.test;
+package com.distrimind.bouncycastle.asn1.icao.test;
 
 import java.io.IOException;
 import java.util.Random;
 
-import org.bouncycastle.asn1.ASN1InputStream;
-import org.bouncycastle.asn1.ASN1OctetString;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.DEROctetString;
-import org.bouncycastle.asn1.icao.DataGroupHash;
-import org.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.asn1.ASN1InputStream;
+import com.distrimind.bouncycastle.asn1.ASN1OctetString;
+import com.distrimind.bouncycastle.asn1.ASN1Sequence;
+import com.distrimind.bouncycastle.asn1.DEROctetString;
+import com.distrimind.bouncycastle.asn1.icao.DataGroupHash;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 public class DataGroupHashUnitTest 
     extends SimpleTest

@@ -1,21 +1,21 @@
-package org.bouncycastle.asn1.util.test;
+package com.distrimind.bouncycastle.asn1.util.test;
 
 import junit.extensions.TestSetup;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import org.bouncycastle.asn1.cms.test.OctetStringTest;
-import org.bouncycastle.asn1.cms.test.ParseTest;
-import org.bouncycastle.asn1.misc.test.GetInstanceTest;
-import org.bouncycastle.test.PrintTestResult;
-import org.bouncycastle.util.test.SimpleTestResult;
+import com.distrimind.bouncycastle.asn1.cms.test.OctetStringTest;
+import com.distrimind.bouncycastle.asn1.cms.test.ParseTest;
+import com.distrimind.bouncycastle.asn1.misc.test.GetInstanceTest;
+import com.distrimind.bouncycastle.test.PrintTestResult;
+import com.distrimind.bouncycastle.util.test.SimpleTestResult;
 
 public class AllTests
     extends TestCase
 {
     public void testASN1()
     {   
-        org.bouncycastle.util.test.Test[] tests = RegressionTest.tests;
+        com.distrimind.bouncycastle.util.test.Test[] tests = RegressionTest.tests;
         
         for (int i = 0; i != tests.length; i++)
         {

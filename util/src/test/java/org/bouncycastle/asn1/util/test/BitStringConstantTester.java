@@ -1,4 +1,4 @@
-package org.bouncycastle.asn1.util.test;
+package com.distrimind.bouncycastle.asn1.util.test;
 
 public class BitStringConstantTester
 {

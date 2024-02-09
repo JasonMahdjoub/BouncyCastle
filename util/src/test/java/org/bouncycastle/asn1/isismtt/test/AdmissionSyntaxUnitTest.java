@@ -1,19 +1,19 @@
-package org.bouncycastle.asn1.isismtt.test;
+package com.distrimind.bouncycastle.asn1.isismtt.test;
 
 import java.io.IOException;
 
-import org.bouncycastle.asn1.ASN1InputStream;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.DERSequence;
-import org.bouncycastle.asn1.isismtt.x509.AdmissionSyntax;
-import org.bouncycastle.asn1.isismtt.x509.Admissions;
-import org.bouncycastle.asn1.isismtt.x509.NamingAuthority;
-import org.bouncycastle.asn1.isismtt.x509.ProfessionInfo;
-import org.bouncycastle.asn1.util.test.ASN1UnitTest;
-import org.bouncycastle.asn1.x500.DirectoryString;
-import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.asn1.x509.GeneralName;
+import com.distrimind.bouncycastle.asn1.ASN1InputStream;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.ASN1Sequence;
+import com.distrimind.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.asn1.isismtt.x509.AdmissionSyntax;
+import com.distrimind.bouncycastle.asn1.isismtt.x509.Admissions;
+import com.distrimind.bouncycastle.asn1.isismtt.x509.NamingAuthority;
+import com.distrimind.bouncycastle.asn1.isismtt.x509.ProfessionInfo;
+import com.distrimind.bouncycastle.asn1.util.test.ASN1UnitTest;
+import com.distrimind.bouncycastle.asn1.x500.DirectoryString;
+import com.distrimind.bouncycastle.asn1.x500.X500Name;
+import com.distrimind.bouncycastle.asn1.x509.GeneralName;
 
 public class AdmissionSyntaxUnitTest
     extends ASN1UnitTest

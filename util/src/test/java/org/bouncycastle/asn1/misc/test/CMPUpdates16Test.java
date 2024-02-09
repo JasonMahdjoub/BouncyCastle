@@ -1,18 +1,18 @@
-package org.bouncycastle.asn1.misc.test;
+package com.distrimind.bouncycastle.asn1.misc.test;
 
 import junit.framework.TestCase;
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.DERNull;
-import org.bouncycastle.asn1.DERSequence;
-import org.bouncycastle.asn1.DERTaggedObject;
-import org.bouncycastle.asn1.cmp.CRLSource;
-import org.bouncycastle.asn1.cmp.CRLStatus;
-import org.bouncycastle.asn1.cmp.CertReqTemplateContent;
-import org.bouncycastle.asn1.cmp.DHBMParameter;
-import org.bouncycastle.asn1.cmp.RootCaKeyUpdateContent;
-import org.bouncycastle.asn1.x509.DistributionPointName;
-import org.bouncycastle.asn1.x509.GeneralName;
-import org.bouncycastle.asn1.x509.GeneralNames;
+import com.distrimind.bouncycastle.asn1.ASN1Encodable;
+import com.distrimind.bouncycastle.asn1.DERNull;
+import com.distrimind.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.asn1.DERTaggedObject;
+import com.distrimind.bouncycastle.asn1.cmp.CRLSource;
+import com.distrimind.bouncycastle.asn1.cmp.CRLStatus;
+import com.distrimind.bouncycastle.asn1.cmp.CertReqTemplateContent;
+import com.distrimind.bouncycastle.asn1.cmp.DHBMParameter;
+import com.distrimind.bouncycastle.asn1.cmp.RootCaKeyUpdateContent;
+import com.distrimind.bouncycastle.asn1.x509.DistributionPointName;
+import com.distrimind.bouncycastle.asn1.x509.GeneralName;
+import com.distrimind.bouncycastle.asn1.x509.GeneralNames;
 
 /**
  * Basic sanity checking of classes added from

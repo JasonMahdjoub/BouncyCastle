@@ -1,4 +1,4 @@
-package org.bouncycastle.test.est;
+package com.distrimind.bouncycastle.test.est;
 
 import java.io.File;
 import java.io.IOException;

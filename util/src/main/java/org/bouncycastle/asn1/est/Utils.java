@@ -1,4 +1,4 @@
-package org.bouncycastle.asn1.est;
+package com.distrimind.bouncycastle.asn1.est;
 
 class Utils
 {

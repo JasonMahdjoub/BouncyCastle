@@ -1,8 +1,8 @@
-package org.bouncycastle.oer;
+package com.distrimind.bouncycastle.oer;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1EncodableVector;
-import org.bouncycastle.asn1.ASN1Sequence;
+import com.distrimind.bouncycastle.asn1.ASN1Encodable;
+import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
+import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 
 public abstract class SwitchIndexer
 {

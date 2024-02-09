@@ -1,8 +1,8 @@
-package org.bouncycastle.asn1.cmc.test;
+package com.distrimind.bouncycastle.asn1.cmc.test;
 
 
-import org.bouncycastle.asn1.cmc.BodyPartID;
-import org.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.asn1.cmc.BodyPartID;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 public class BodyPartIDTest
     extends SimpleTest

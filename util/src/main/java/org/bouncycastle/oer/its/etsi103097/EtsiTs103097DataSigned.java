@@ -1,7 +1,7 @@
-package org.bouncycastle.oer.its.etsi103097;
+package com.distrimind.bouncycastle.oer.its.etsi103097;
 
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.oer.its.ieee1609dot2.Ieee1609Dot2Content;
+import com.distrimind.bouncycastle.asn1.ASN1Sequence;
+import com.distrimind.bouncycastle.oer.its.ieee1609dot2.Ieee1609Dot2Content;
 
 /**
  * EtsiTs103097Data-Signed {ToBeSignedDataContent} ::= EtsiTs103097Data (WITH COMPONENTS {...,

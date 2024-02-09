@@ -1,19 +1,19 @@
-package org.bouncycastle.oer.test;
+package com.distrimind.bouncycastle.oer.test;
 
 import java.io.IOException;
 
 import junit.framework.TestCase;
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.ASN1UTF8String;
-import org.bouncycastle.asn1.DERSequence;
-import org.bouncycastle.asn1.DERUTF8String;
-import org.bouncycastle.oer.Element;
-import org.bouncycastle.oer.OERDecoder;
-import org.bouncycastle.oer.OERDefinition;
-import org.bouncycastle.oer.OEREncoder;
-import org.bouncycastle.oer.OEROptional;
+import com.distrimind.bouncycastle.asn1.ASN1Encodable;
+import com.distrimind.bouncycastle.asn1.ASN1Integer;
+import com.distrimind.bouncycastle.asn1.ASN1Sequence;
+import com.distrimind.bouncycastle.asn1.ASN1UTF8String;
+import com.distrimind.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.asn1.DERUTF8String;
+import com.distrimind.bouncycastle.oer.Element;
+import com.distrimind.bouncycastle.oer.OERDecoder;
+import com.distrimind.bouncycastle.oer.OERDefinition;
+import com.distrimind.bouncycastle.oer.OEREncoder;
+import com.distrimind.bouncycastle.oer.OEROptional;
 
 public class OERExtensionTest
     extends TestCase

@@ -1,9 +1,9 @@
-package org.bouncycastle.oer.its.ieee1609dot2.basetypes;
+package com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes;
 
 import java.math.BigInteger;
 
-import org.bouncycastle.asn1.ASN1Enumerated;
-import org.bouncycastle.util.BigIntegers;
+import com.distrimind.bouncycastle.asn1.ASN1Enumerated;
+import com.distrimind.bouncycastle.util.BigIntegers;
 
 /**
  * HashAlgorithm ::= ENUMERATED {

@@ -1,21 +1,21 @@
-package org.bouncycastle.asn1.cms.test;
+package com.distrimind.bouncycastle.asn1.cms.test;
 
 import java.io.IOException;
 
 import junit.framework.TestCase;
-import org.bouncycastle.asn1.ASN1OctetStringParser;
-import org.bouncycastle.asn1.ASN1SequenceParser;
-import org.bouncycastle.asn1.ASN1StreamParser;
-import org.bouncycastle.asn1.ASN1TaggedObjectParser;
-import org.bouncycastle.asn1.BERTags;
-import org.bouncycastle.asn1.cms.ContentInfo;
-import org.bouncycastle.asn1.cms.ContentInfoParser;
-import org.bouncycastle.asn1.cms.EncryptedContentInfoParser;
-import org.bouncycastle.asn1.cms.EnvelopedDataParser;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.encoders.Base64;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.io.Streams;
+import com.distrimind.bouncycastle.asn1.ASN1OctetStringParser;
+import com.distrimind.bouncycastle.asn1.ASN1SequenceParser;
+import com.distrimind.bouncycastle.asn1.ASN1StreamParser;
+import com.distrimind.bouncycastle.asn1.ASN1TaggedObjectParser;
+import com.distrimind.bouncycastle.asn1.BERTags;
+import com.distrimind.bouncycastle.asn1.cms.ContentInfo;
+import com.distrimind.bouncycastle.asn1.cms.ContentInfoParser;
+import com.distrimind.bouncycastle.asn1.cms.EncryptedContentInfoParser;
+import com.distrimind.bouncycastle.asn1.cms.EnvelopedDataParser;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.encoders.Base64;
+import com.distrimind.bouncycastle.util.encoders.Hex;
+import com.distrimind.bouncycastle.util.io.Streams;
 
 public class ParseTest
     extends TestCase

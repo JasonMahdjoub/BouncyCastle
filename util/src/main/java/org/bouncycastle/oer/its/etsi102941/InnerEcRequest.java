@@ -1,16 +1,16 @@
-package org.bouncycastle.oer.its.etsi102941;
+package com.distrimind.bouncycastle.oer.its.etsi102941;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1Object;
-import org.bouncycastle.asn1.ASN1OctetString;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.DEROctetString;
-import org.bouncycastle.asn1.DERSequence;
-import org.bouncycastle.oer.its.etsi102941.basetypes.CertificateFormat;
-import org.bouncycastle.oer.its.etsi102941.basetypes.CertificateSubjectAttributes;
-import org.bouncycastle.oer.its.etsi102941.basetypes.PublicKeys;
-import org.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.asn1.ASN1Encodable;
+import com.distrimind.bouncycastle.asn1.ASN1Object;
+import com.distrimind.bouncycastle.asn1.ASN1OctetString;
+import com.distrimind.bouncycastle.asn1.ASN1Primitive;
+import com.distrimind.bouncycastle.asn1.ASN1Sequence;
+import com.distrimind.bouncycastle.asn1.DEROctetString;
+import com.distrimind.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.oer.its.etsi102941.basetypes.CertificateFormat;
+import com.distrimind.bouncycastle.oer.its.etsi102941.basetypes.CertificateSubjectAttributes;
+import com.distrimind.bouncycastle.oer.its.etsi102941.basetypes.PublicKeys;
+import com.distrimind.bouncycastle.util.Arrays;
 
 /**
  * InnerEcRequest ::= SEQUENCE {

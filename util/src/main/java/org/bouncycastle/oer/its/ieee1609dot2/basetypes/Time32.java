@@ -1,9 +1,9 @@
-package org.bouncycastle.oer.its.ieee1609dot2.basetypes;
+package com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes;
 
 import java.math.BigInteger;
 import java.util.Date;
 
-import org.bouncycastle.asn1.ASN1Integer;
+import com.distrimind.bouncycastle.asn1.ASN1Integer;
 
 // Seconds since ETSI epoch which is 1 Jan 2004 00:00:00 UTC
 public class Time32

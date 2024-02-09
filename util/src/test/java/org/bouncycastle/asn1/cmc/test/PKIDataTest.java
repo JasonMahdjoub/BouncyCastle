@@ -1,21 +1,21 @@
-package org.bouncycastle.asn1.cmc.test;
+package com.distrimind.bouncycastle.asn1.cmc.test;
 
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.DERSequence;
-import org.bouncycastle.asn1.DERSet;
-import org.bouncycastle.asn1.cmc.BodyPartID;
-import org.bouncycastle.asn1.cmc.CertificationRequest;
-import org.bouncycastle.asn1.cmc.OtherMsg;
-import org.bouncycastle.asn1.cmc.PKIData;
-import org.bouncycastle.asn1.cmc.TaggedAttribute;
-import org.bouncycastle.asn1.cmc.TaggedCertificationRequest;
-import org.bouncycastle.asn1.cmc.TaggedContentInfo;
-import org.bouncycastle.asn1.cmc.TaggedRequest;
-import org.bouncycastle.asn1.cms.ContentInfo;
-import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.encoders.Base64;
-import org.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.asn1.ASN1Integer;
+import com.distrimind.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.asn1.DERSet;
+import com.distrimind.bouncycastle.asn1.cmc.BodyPartID;
+import com.distrimind.bouncycastle.asn1.cmc.CertificationRequest;
+import com.distrimind.bouncycastle.asn1.cmc.OtherMsg;
+import com.distrimind.bouncycastle.asn1.cmc.PKIData;
+import com.distrimind.bouncycastle.asn1.cmc.TaggedAttribute;
+import com.distrimind.bouncycastle.asn1.cmc.TaggedCertificationRequest;
+import com.distrimind.bouncycastle.asn1.cmc.TaggedContentInfo;
+import com.distrimind.bouncycastle.asn1.cmc.TaggedRequest;
+import com.distrimind.bouncycastle.asn1.cms.ContentInfo;
+import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
+import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.encoders.Base64;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 
 public class PKIDataTest

@@ -1,14 +1,14 @@
-package org.bouncycastle.oer.its.ieee1609dot2;
+package com.distrimind.bouncycastle.oer.its.ieee1609dot2;
 
-import org.bouncycastle.asn1.ASN1Choice;
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1Object;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.ASN1TaggedObject;
-import org.bouncycastle.asn1.BERTags;
-import org.bouncycastle.asn1.DERTaggedObject;
-import org.bouncycastle.oer.its.ieee1609dot2.basetypes.HashAlgorithm;
-import org.bouncycastle.oer.its.ieee1609dot2.basetypes.HashedId8;
+import com.distrimind.bouncycastle.asn1.ASN1Choice;
+import com.distrimind.bouncycastle.asn1.ASN1Encodable;
+import com.distrimind.bouncycastle.asn1.ASN1Object;
+import com.distrimind.bouncycastle.asn1.ASN1Primitive;
+import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
+import com.distrimind.bouncycastle.asn1.BERTags;
+import com.distrimind.bouncycastle.asn1.DERTaggedObject;
+import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.HashAlgorithm;
+import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.HashedId8;
 
 /**
  * <pre>

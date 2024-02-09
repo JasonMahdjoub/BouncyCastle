@@ -1,11 +1,11 @@
-package org.bouncycastle.oer.its.template.etsi102941;
+package com.distrimind.bouncycastle.oer.its.template.etsi102941;
 
-import org.bouncycastle.oer.OERDefinition;
-import org.bouncycastle.oer.its.template.etsi102941.basetypes.EtsiTs102941BaseTypes;
-import org.bouncycastle.oer.its.template.ieee1609dot2.basetypes.Ieee1609Dot2BaseTypes;
+import com.distrimind.bouncycastle.oer.OERDefinition;
+import com.distrimind.bouncycastle.oer.its.template.etsi102941.basetypes.EtsiTs102941BaseTypes;
+import com.distrimind.bouncycastle.oer.its.template.ieee1609dot2.basetypes.Ieee1609Dot2BaseTypes;
 
-import static org.bouncycastle.oer.its.template.etsi103097.EtsiTs103097Module.EtsiTs103097Certificate;
-import static org.bouncycastle.oer.its.template.ieee1609dot2.basetypes.Ieee1609Dot2BaseTypes.HashedId8;
+import static com.distrimind.bouncycastle.oer.its.template.etsi103097.EtsiTs103097Module.EtsiTs103097Certificate;
+import static com.distrimind.bouncycastle.oer.its.template.ieee1609dot2.basetypes.Ieee1609Dot2BaseTypes.HashedId8;
 
 public class EtsiTs102941TrustLists
 {

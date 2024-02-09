@@ -1,11 +1,11 @@
-package org.bouncycastle.oer.its.template.etsi102941;
+package com.distrimind.bouncycastle.oer.its.template.etsi102941;
 
 import java.math.BigInteger;
 
-import org.bouncycastle.oer.OERDefinition;
-import org.bouncycastle.oer.its.template.etsi102941.basetypes.EtsiTs102941BaseTypes;
+import com.distrimind.bouncycastle.oer.OERDefinition;
+import com.distrimind.bouncycastle.oer.its.template.etsi102941.basetypes.EtsiTs102941BaseTypes;
 
-import static org.bouncycastle.oer.its.template.etsi102941.EtsiTs102941TypesAuthorization.SharedAtRequest;
+import static com.distrimind.bouncycastle.oer.its.template.etsi102941.EtsiTs102941TypesAuthorization.SharedAtRequest;
 
 public class EtsiTs102941TypesAuthorizationValidation
 {

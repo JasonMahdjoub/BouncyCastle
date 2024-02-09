@@ -1,13 +1,13 @@
-package org.bouncycastle.oer.test;
+package com.distrimind.bouncycastle.oer.test;
 
 
 import java.io.ByteArrayInputStream;
 
 import junit.framework.TestCase;
-import org.bouncycastle.oer.OERInputStream;
-import org.bouncycastle.oer.its.etsi103097.EtsiTs103097DataEncrypted;
-import org.bouncycastle.oer.its.template.ieee1609dot2.IEEE1609dot2;
-import org.bouncycastle.util.encoders.Hex;
+import com.distrimind.bouncycastle.oer.OERInputStream;
+import com.distrimind.bouncycastle.oer.its.etsi103097.EtsiTs103097DataEncrypted;
+import com.distrimind.bouncycastle.oer.its.template.ieee1609dot2.IEEE1609dot2;
+import com.distrimind.bouncycastle.util.encoders.Hex;
 
 public class TestFromVector extends TestCase
 {

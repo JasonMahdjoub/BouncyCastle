@@ -1,7 +1,7 @@
-package org.bouncycastle.asn1.cmc;
+package com.distrimind.bouncycastle.asn1.cmc;
 
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.x509.Extension;
+import com.distrimind.bouncycastle.asn1.ASN1Sequence;
+import com.distrimind.bouncycastle.asn1.x509.Extension;
 
 class Utils
 {

@@ -1,8 +1,8 @@
-package org.bouncycastle.oer.its.template.etsi102941;
+package com.distrimind.bouncycastle.oer.its.template.etsi102941;
 
-import org.bouncycastle.oer.OERDefinition;
-import org.bouncycastle.oer.its.template.ieee1609dot2.IEEE1609dot2;
-import org.bouncycastle.oer.its.template.ieee1609dot2.basetypes.Ieee1609Dot2BaseTypes;
+import com.distrimind.bouncycastle.oer.OERDefinition;
+import com.distrimind.bouncycastle.oer.its.template.ieee1609dot2.IEEE1609dot2;
+import com.distrimind.bouncycastle.oer.its.template.ieee1609dot2.basetypes.Ieee1609Dot2BaseTypes;
 
 
 public class EtsiTs102941TypesLinkCertificate

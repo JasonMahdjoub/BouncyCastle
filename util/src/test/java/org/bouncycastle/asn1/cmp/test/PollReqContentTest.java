@@ -1,10 +1,10 @@
-package org.bouncycastle.asn1.cmp.test;
+package com.distrimind.bouncycastle.asn1.cmp.test;
 
 import java.math.BigInteger;
 
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.cmp.PollReqContent;
-import org.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.asn1.ASN1Integer;
+import com.distrimind.bouncycastle.asn1.cmp.PollReqContent;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 public class PollReqContentTest
     extends SimpleTest

@@ -1,8 +1,8 @@
-package org.bouncycastle.asn1.eac;
+package com.distrimind.bouncycastle.asn1.eac;
 
-import org.bouncycastle.asn1.ASN1Object;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1Sequence;
+import com.distrimind.bouncycastle.asn1.ASN1Object;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 
 public abstract class PublicKeyDataObject
     extends ASN1Object

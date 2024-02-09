@@ -1,13 +1,13 @@
-package org.bouncycastle.oer.test;
+package com.distrimind.bouncycastle.oer.test;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.bouncycastle.oer.Element;
-import org.bouncycastle.oer.OERDefinition;
-import org.bouncycastle.oer.its.template.ieee1609dot2.IEEE1609dot2;
+import com.distrimind.bouncycastle.oer.Element;
+import com.distrimind.bouncycastle.oer.OERDefinition;
+import com.distrimind.bouncycastle.oer.its.template.ieee1609dot2.IEEE1609dot2;
 
 public class Exerciser
 {

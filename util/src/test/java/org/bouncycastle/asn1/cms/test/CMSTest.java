@@ -1,32 +1,32 @@
-package org.bouncycastle.asn1.cms.test;
+package com.distrimind.bouncycastle.asn1.cms.test;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
-import org.bouncycastle.asn1.ASN1OctetStringParser;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.ASN1SequenceParser;
-import org.bouncycastle.asn1.ASN1Set;
-import org.bouncycastle.asn1.ASN1SetParser;
-import org.bouncycastle.asn1.ASN1StreamParser;
-import org.bouncycastle.asn1.BERTags;
-import org.bouncycastle.asn1.DERSet;
-import org.bouncycastle.asn1.cms.CMSObjectIdentifiers;
-import org.bouncycastle.asn1.cms.CompressedData;
-import org.bouncycastle.asn1.cms.ContentInfo;
-import org.bouncycastle.asn1.cms.ContentInfoParser;
-import org.bouncycastle.asn1.cms.EncryptedContentInfoParser;
-import org.bouncycastle.asn1.cms.EnvelopedData;
-import org.bouncycastle.asn1.cms.EnvelopedDataParser;
-import org.bouncycastle.asn1.cms.KEKRecipientInfo;
-import org.bouncycastle.asn1.cms.KeyTransRecipientInfo;
-import org.bouncycastle.asn1.cms.RecipientInfo;
-import org.bouncycastle.asn1.cms.SignedData;
-import org.bouncycastle.util.encoders.Base64;
-import org.bouncycastle.util.io.Streams;
-import org.bouncycastle.util.test.SimpleTestResult;
-import org.bouncycastle.util.test.Test;
-import org.bouncycastle.util.test.TestResult;
+import com.distrimind.bouncycastle.asn1.ASN1OctetStringParser;
+import com.distrimind.bouncycastle.asn1.ASN1Primitive;
+import com.distrimind.bouncycastle.asn1.ASN1SequenceParser;
+import com.distrimind.bouncycastle.asn1.ASN1Set;
+import com.distrimind.bouncycastle.asn1.ASN1SetParser;
+import com.distrimind.bouncycastle.asn1.ASN1StreamParser;
+import com.distrimind.bouncycastle.asn1.BERTags;
+import com.distrimind.bouncycastle.asn1.DERSet;
+import com.distrimind.bouncycastle.asn1.cms.CMSObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.cms.CompressedData;
+import com.distrimind.bouncycastle.asn1.cms.ContentInfo;
+import com.distrimind.bouncycastle.asn1.cms.ContentInfoParser;
+import com.distrimind.bouncycastle.asn1.cms.EncryptedContentInfoParser;
+import com.distrimind.bouncycastle.asn1.cms.EnvelopedData;
+import com.distrimind.bouncycastle.asn1.cms.EnvelopedDataParser;
+import com.distrimind.bouncycastle.asn1.cms.KEKRecipientInfo;
+import com.distrimind.bouncycastle.asn1.cms.KeyTransRecipientInfo;
+import com.distrimind.bouncycastle.asn1.cms.RecipientInfo;
+import com.distrimind.bouncycastle.asn1.cms.SignedData;
+import com.distrimind.bouncycastle.util.encoders.Base64;
+import com.distrimind.bouncycastle.util.io.Streams;
+import com.distrimind.bouncycastle.util.test.SimpleTestResult;
+import com.distrimind.bouncycastle.util.test.Test;
+import com.distrimind.bouncycastle.util.test.TestResult;
 
 public class CMSTest
     implements Test

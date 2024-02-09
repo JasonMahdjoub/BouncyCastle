@@ -1,16 +1,16 @@
-package org.bouncycastle.asn1.cmc.test;
+package com.distrimind.bouncycastle.asn1.cmc.test;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.DERSequence;
-import org.bouncycastle.asn1.DERTaggedObject;
-import org.bouncycastle.asn1.DLSequence;
-import org.bouncycastle.asn1.cmc.BodyPartID;
-import org.bouncycastle.asn1.cmc.BodyPartList;
-import org.bouncycastle.asn1.cmc.BodyPartPath;
-import org.bouncycastle.asn1.cmc.ModCertTemplate;
-import org.bouncycastle.asn1.crmf.CertTemplate;
-import org.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.asn1.ASN1Encodable;
+import com.distrimind.bouncycastle.asn1.ASN1Integer;
+import com.distrimind.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.asn1.DERTaggedObject;
+import com.distrimind.bouncycastle.asn1.DLSequence;
+import com.distrimind.bouncycastle.asn1.cmc.BodyPartID;
+import com.distrimind.bouncycastle.asn1.cmc.BodyPartList;
+import com.distrimind.bouncycastle.asn1.cmc.BodyPartPath;
+import com.distrimind.bouncycastle.asn1.cmc.ModCertTemplate;
+import com.distrimind.bouncycastle.asn1.crmf.CertTemplate;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 
 public class ModCertTemplateTest

@@ -1,16 +1,16 @@
-package org.bouncycastle.asn1.isismtt.x509;
+package com.distrimind.bouncycastle.asn1.isismtt.x509;
 
 import java.util.Enumeration;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1EncodableVector;
-import org.bouncycastle.asn1.ASN1Object;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.ASN1TaggedObject;
-import org.bouncycastle.asn1.DERSequence;
-import org.bouncycastle.asn1.DERTaggedObject;
-import org.bouncycastle.asn1.x509.GeneralName;
+import com.distrimind.bouncycastle.asn1.ASN1Encodable;
+import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
+import com.distrimind.bouncycastle.asn1.ASN1Object;
+import com.distrimind.bouncycastle.asn1.ASN1Primitive;
+import com.distrimind.bouncycastle.asn1.ASN1Sequence;
+import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
+import com.distrimind.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.asn1.DERTaggedObject;
+import com.distrimind.bouncycastle.asn1.x509.GeneralName;
 
 /**
  * An Admissions structure.
@@ -23,9 +23,9 @@ import org.bouncycastle.asn1.x509.GeneralName;
  *            }
  * </pre>
  *
- * @see org.bouncycastle.asn1.isismtt.x509.AdmissionSyntax
- * @see org.bouncycastle.asn1.isismtt.x509.ProfessionInfo
- * @see org.bouncycastle.asn1.isismtt.x509.NamingAuthority
+ * @see com.distrimind.bouncycastle.asn1.isismtt.x509.AdmissionSyntax
+ * @see com.distrimind.bouncycastle.asn1.isismtt.x509.ProfessionInfo
+ * @see com.distrimind.bouncycastle.asn1.isismtt.x509.NamingAuthority
  */
 public class Admissions 
     extends ASN1Object

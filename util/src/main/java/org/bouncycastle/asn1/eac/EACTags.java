@@ -1,4 +1,4 @@
-package org.bouncycastle.asn1.eac;
+package com.distrimind.bouncycastle.asn1.eac;
 
 public class EACTags
 {

@@ -1,12 +1,12 @@
-package org.bouncycastle.oer.its.etsi102941;
+package com.distrimind.bouncycastle.oer.its.etsi102941;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1Object;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.DERSequence;
-import org.bouncycastle.oer.its.etsi102941.basetypes.Version;
-import org.bouncycastle.oer.its.ieee1609dot2.Opaque;
+import com.distrimind.bouncycastle.asn1.ASN1Encodable;
+import com.distrimind.bouncycastle.asn1.ASN1Object;
+import com.distrimind.bouncycastle.asn1.ASN1Primitive;
+import com.distrimind.bouncycastle.asn1.ASN1Sequence;
+import com.distrimind.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.oer.its.etsi102941.basetypes.Version;
+import com.distrimind.bouncycastle.oer.its.ieee1609dot2.Opaque;
 
 /**
  * EtsiTs102941Data::= SEQUENCE {

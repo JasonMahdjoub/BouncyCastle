@@ -1,21 +1,21 @@
-package org.bouncycastle.oer.test;
+package com.distrimind.bouncycastle.oer.test;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.oer.OERInputStream;
-import org.bouncycastle.oer.OEROutputStream;
-import org.bouncycastle.oer.its.etsi103097.extension.EtsiTs102941CrlRequest;
-import org.bouncycastle.oer.its.etsi103097.extension.EtsiTs102941DeltaCtlRequest;
-import org.bouncycastle.oer.its.etsi103097.extension.Extension;
-import org.bouncycastle.oer.its.ieee1609dot2.basetypes.HashedId8;
-import org.bouncycastle.oer.its.ieee1609dot2.basetypes.Time32;
-import org.bouncycastle.oer.its.template.etsi103097.extension.EtsiTs103097ExtensionModule;
-import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.SimpleTest;
-import org.bouncycastle.util.test.TestResult;
+import com.distrimind.bouncycastle.asn1.ASN1Encodable;
+import com.distrimind.bouncycastle.asn1.ASN1Integer;
+import com.distrimind.bouncycastle.oer.OERInputStream;
+import com.distrimind.bouncycastle.oer.OEROutputStream;
+import com.distrimind.bouncycastle.oer.its.etsi103097.extension.EtsiTs102941CrlRequest;
+import com.distrimind.bouncycastle.oer.its.etsi103097.extension.EtsiTs102941DeltaCtlRequest;
+import com.distrimind.bouncycastle.oer.its.etsi103097.extension.Extension;
+import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.HashedId8;
+import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.Time32;
+import com.distrimind.bouncycastle.oer.its.template.etsi103097.extension.EtsiTs103097ExtensionModule;
+import com.distrimind.bouncycastle.util.encoders.Hex;
+import com.distrimind.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.util.test.TestResult;
 
 public class ExtensionTest
     extends SimpleTest

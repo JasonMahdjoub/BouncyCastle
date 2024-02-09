@@ -1,19 +1,19 @@
-package org.bouncycastle.oer.its.ieee1609dot2;
+package com.distrimind.bouncycastle.oer.its.ieee1609dot2;
 
 import java.util.Iterator;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1Object;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.DERSequence;
-import org.bouncycastle.oer.OEROptional;
-import org.bouncycastle.oer.its.ieee1609dot2.basetypes.EncryptionKey;
-import org.bouncycastle.oer.its.ieee1609dot2.basetypes.HashedId3;
-import org.bouncycastle.oer.its.ieee1609dot2.basetypes.Psid;
-import org.bouncycastle.oer.its.ieee1609dot2.basetypes.SequenceOfHashedId3;
-import org.bouncycastle.oer.its.ieee1609dot2.basetypes.ThreeDLocation;
-import org.bouncycastle.oer.its.ieee1609dot2.basetypes.Time64;
+import com.distrimind.bouncycastle.asn1.ASN1Encodable;
+import com.distrimind.bouncycastle.asn1.ASN1Object;
+import com.distrimind.bouncycastle.asn1.ASN1Primitive;
+import com.distrimind.bouncycastle.asn1.ASN1Sequence;
+import com.distrimind.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.oer.OEROptional;
+import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.EncryptionKey;
+import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.HashedId3;
+import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.Psid;
+import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.SequenceOfHashedId3;
+import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.ThreeDLocation;
+import com.distrimind.bouncycastle.oer.its.ieee1609dot2.basetypes.Time64;
 
 /**
  * <pre>

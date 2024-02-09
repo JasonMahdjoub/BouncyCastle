@@ -2,10 +2,10 @@
  * EtsiTs103097ExtensionModule
  * {itu-t(0) identified-organization(4) etsi(0) itsDomain(5) wg5(5) secHeaders(103097) extension(2) version1(1)}
  */
-package org.bouncycastle.oer.its.etsi103097.extension;
+package com.distrimind.bouncycastle.oer.its.etsi103097.extension;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1Sequence;
+import com.distrimind.bouncycastle.asn1.ASN1Encodable;
+import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 
 /**
  * Ieee1609Dot2HeaderInfoContributedExtensions

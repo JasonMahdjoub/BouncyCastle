@@ -1,11 +1,11 @@
-package org.bouncycastle.asn1.isismtt.test;
+package com.distrimind.bouncycastle.asn1.isismtt.test;
 
 import java.io.IOException;
 
-import org.bouncycastle.asn1.ASN1InputStream;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.isismtt.x509.MonetaryLimit;
-import org.bouncycastle.asn1.util.test.ASN1UnitTest;
+import com.distrimind.bouncycastle.asn1.ASN1InputStream;
+import com.distrimind.bouncycastle.asn1.ASN1Sequence;
+import com.distrimind.bouncycastle.asn1.isismtt.x509.MonetaryLimit;
+import com.distrimind.bouncycastle.asn1.util.test.ASN1UnitTest;
 
 public class MonetaryLimitUnitTest
     extends ASN1UnitTest

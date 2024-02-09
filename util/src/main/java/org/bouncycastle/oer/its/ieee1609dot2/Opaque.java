@@ -1,4 +1,4 @@
-package org.bouncycastle.oer.its.ieee1609dot2;
+package com.distrimind.bouncycastle.oer.its.ieee1609dot2;
 
 
 import java.io.ByteArrayInputStream;
@@ -7,14 +7,14 @@ import java.lang.reflect.Method;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
 
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1Object;
-import org.bouncycastle.asn1.ASN1OctetString;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.DEROctetString;
-import org.bouncycastle.oer.Element;
-import org.bouncycastle.oer.OERInputStream;
-import org.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.asn1.ASN1Encodable;
+import com.distrimind.bouncycastle.asn1.ASN1Object;
+import com.distrimind.bouncycastle.asn1.ASN1OctetString;
+import com.distrimind.bouncycastle.asn1.ASN1Primitive;
+import com.distrimind.bouncycastle.asn1.DEROctetString;
+import com.distrimind.bouncycastle.oer.Element;
+import com.distrimind.bouncycastle.oer.OERInputStream;
+import com.distrimind.bouncycastle.util.Arrays;
 
 public class Opaque
     extends ASN1Object

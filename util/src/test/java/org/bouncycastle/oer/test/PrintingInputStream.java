@@ -1,9 +1,9 @@
-package org.bouncycastle.oer.test;
+package com.distrimind.bouncycastle.oer.test;
 
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.bouncycastle.util.encoders.Hex;
+import com.distrimind.bouncycastle.util.encoders.Hex;
 
 public class PrintingInputStream
     extends InputStream
