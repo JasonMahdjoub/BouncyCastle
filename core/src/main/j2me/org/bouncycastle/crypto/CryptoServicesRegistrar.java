@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.crypto;
+package org.bouncycastle.crypto;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
@@ -7,13 +7,13 @@ import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
 
-import com.distrimind.bouncycastle.asn1.x9.X9ECParameters;
-import com.distrimind.bouncycastle.crypto.params.DHParameters;
-import com.distrimind.bouncycastle.crypto.params.DHValidationParameters;
-import com.distrimind.bouncycastle.crypto.params.DSAParameters;
-import com.distrimind.bouncycastle.crypto.params.DSAValidationParameters;
-import com.distrimind.bouncycastle.util.encoders.Hex;
-import com.distrimind.bouncycastle.util.Properties;
+import org.bouncycastle.asn1.x9.X9ECParameters;
+import org.bouncycastle.crypto.params.DHParameters;
+import org.bouncycastle.crypto.params.DHValidationParameters;
+import org.bouncycastle.crypto.params.DSAParameters;
+import org.bouncycastle.crypto.params.DSAValidationParameters;
+import org.bouncycastle.util.encoders.Hex;
+import org.bouncycastle.util.Properties;
 
 /**
  * Basic registrar class for providing defaults for cryptography services in this module.
@@ -228,7 +228,7 @@ public final class CryptoServicesRegistrar
 
         if (preconfiguredConstraints)
         {
-            if (Properties.isOverrideSet("com.distrimind.bouncycastle.constraints.allow_override"))
+            if (Properties.isOverrideSet("org.bouncycastle.constraints.allow_override"))
             {
                 servicesConstraints = newConstraints;
             }

@@ -1,4 +1,4 @@
-MIDlet-1: MIDPTTest, , com.distrimind.bouncycastle.crypto.examples.MIDPTest
+MIDlet-1: MIDPTTest, , org.bouncycastle.crypto.examples.MIDPTest
 MIDlet-Name: MIDPTest
 MIDlet-Version: 1.0.0
 MIDlet-Vendor: Jon Eaves

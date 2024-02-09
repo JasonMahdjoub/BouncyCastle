@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.asn1;
+package org.bouncycastle.asn1;
 
 /**
  * Mutable class for building ASN.1 constructed objects such as SETs or SEQUENCEs.

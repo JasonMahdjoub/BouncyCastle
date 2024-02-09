@@ -1,11 +1,11 @@
-package com.distrimind.bouncycastle.asn1;
+package org.bouncycastle.asn1;
 
 import java.io.IOException;
 import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import com.distrimind.bouncycastle.util.Arrays;
+import org.bouncycastle.util.Arrays;
 
 /**
  * ASN.1 <code>SET</code> and <code>SET OF</code> constructs.
@@ -96,7 +96,7 @@ import com.distrimind.bouncycastle.util.Arrays;
  */
 public abstract class ASN1Set
     extends ASN1Primitive
-    implements com.distrimind.bouncycastle.util.Iterable<ASN1Encodable>
+    implements org.bouncycastle.util.Iterable<ASN1Encodable>
 {
     static final ASN1UniversalType TYPE = new ASN1UniversalType(ASN1Set.class, BERTags.SET)
     {

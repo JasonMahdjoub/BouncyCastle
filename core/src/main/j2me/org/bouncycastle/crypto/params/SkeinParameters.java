@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.crypto.params;
+package org.bouncycastle.crypto.params;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -7,11 +7,11 @@ import java.util.Date;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
-import com.distrimind.bouncycastle.crypto.CipherParameters;
-import com.distrimind.bouncycastle.crypto.digests.SkeinDigest;
-import com.distrimind.bouncycastle.crypto.digests.SkeinEngine;
-import com.distrimind.bouncycastle.crypto.macs.SkeinMac;
-import com.distrimind.bouncycastle.util.Integers;
+import org.bouncycastle.crypto.CipherParameters;
+import org.bouncycastle.crypto.digests.SkeinDigest;
+import org.bouncycastle.crypto.digests.SkeinEngine;
+import org.bouncycastle.crypto.macs.SkeinMac;
+import org.bouncycastle.util.Integers;
 
 /**
  * Parameters for the Skein hash function - a series of byte[] strings identified by integer tags.

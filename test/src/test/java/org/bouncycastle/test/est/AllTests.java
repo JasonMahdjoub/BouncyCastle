@@ -1,10 +1,10 @@
-package com.distrimind.bouncycastle.test.est;
+package org.bouncycastle.test.est;
 
 import junit.extensions.TestSetup;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import com.distrimind.bouncycastle.util.test.SimpleTestResult;
+import org.bouncycastle.util.test.SimpleTestResult;
 
 public class AllTests
     extends TestCase
@@ -28,7 +28,7 @@ public class AllTests
     {
         public void testSimple()
         {
-            com.distrimind.bouncycastle.util.test.Test[] tests = new com.distrimind.bouncycastle.util.test.Test[] {
+            org.bouncycastle.util.test.Test[] tests = new org.bouncycastle.util.test.Test[] {
                 // TODO:
             };
 

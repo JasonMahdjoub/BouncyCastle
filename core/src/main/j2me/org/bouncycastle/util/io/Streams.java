@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.util.io;
+package org.bouncycastle.util.io;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

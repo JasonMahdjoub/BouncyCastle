@@ -210,7 +210,7 @@ subprojects {
 	apply plugin: 'eclipse'
 
 	dependencies {
-		errorprone "com.google.errorprone:error_prone_core:2.23.0"
+		errorprone "com.google.errorprone:error_prone_core:2.24.1"
 	}
 
 	compileJava.options.compilerArgs.addAll(['--release', javaVersion] as Collection<? extends String>)
@@ -223,7 +223,7 @@ subprojects {
 		targetCompatibility = javaVersion
 	}
 
-	version = '1.76'
+	version = '1.77'
 
 	task testFull(type:Test) {
 		systemProperties = [

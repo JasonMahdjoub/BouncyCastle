@@ -1,4 +1,4 @@
-package com.distrimind.bouncycastle.asn1;
+package org.bouncycastle.asn1;
 
 import java.util.Calendar;
 import java.util.Date;
