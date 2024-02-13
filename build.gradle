@@ -13,10 +13,12 @@ plugins {
 }
 if (JavaVersion.current().isJava8Compatible()) {
     allprojects {
-        tasks.withType(Javadoc) {
-            options.addStringOption('Xdoclint:none', '-quiet')
-        }
-    }
+        tasks.withType(Javadoc).tap {
+			configureEach {
+				options.addStringOption('Xdoclint:none', '-quiet')
+			}
+		}
+	}
 }
 
 Properties props = new Properties()
@@ -64,8 +66,7 @@ allprojects {
    group='com.distrimind.bouncycastle'
 
 	compileJava.options.compilerArgs.addAll(['--release', javaVersion] as Collection<? extends String>)
-	if (project.hasProperty('javaHomeVersion') && JavaVersionTarget.toFloat()>1.8)
-		javadoc.options.addStringOption("html5", "-quiet")
+	javadoc.options.addStringOption("html5", "-quiet")
 
 
 	repositories {
@@ -86,7 +87,7 @@ allprojects {
    dependencies {
         testImplementation group: 'junit', name: 'junit', version: '4.13.2'
    }
-	tasks.withType(JavaExec) {
+	tasks.withType(JavaExec).configureEach {
 		jvmArgs = ['-Xms8g', '-Xmx8g']
 	}
 	tasks.withType(JavaCompile).configureEach {
@@ -192,13 +193,13 @@ ext {
     bcTestDataHome = file('core/src/test/data').absolutePath
 }
 
-task printProperties {
+tasks.register('printProperties') {
 	doLast {
 		println bcTestDataHome
 	}
 }
 subprojects {
-	tasks.withType(JavaExec) {
+	tasks.withType(JavaExec).configureEach {
 		jvmArgs = ['-Xms8g', '-Xmx8g']
 	}
 	if (propFile.canRead())
@@ -214,8 +215,7 @@ subprojects {
 	}
 
 	compileJava.options.compilerArgs.addAll(['--release', javaVersion] as Collection<? extends String>)
-	if (project.hasProperty('javaHomeVersion') && JavaVersionTarget.toFloat()>1.8)
-		javadoc.options.addStringOption("html5", "-quiet")
+	javadoc.options.addStringOption("html5", "-quiet")
 	ext.vmrange='jdk18on'
 
 	java {
@@ -225,10 +225,10 @@ subprojects {
 
 	version = '1.77'
 
-	task testFull(type:Test) {
+	tasks.register('testFull', Test) {
 		systemProperties = [
 				'bc.test.data.home': bcTestDataHome,
-				'test.full':'true'
+				'test.full'        : 'true'
 		]
 		systemProperty 'bc.test.data.home', bcTestDataHome
 		maxHeapSize = "8192m"
@@ -280,13 +280,14 @@ subprojects {
 	}
 
 
-	task sourcesJar(type: Jar, dependsOn: classes) {
+	tasks.register('sourcesJar', Jar) {
+		dependsOn classes
 		manifest {
 			attributes('Implementation-Title': project.name,
 					'Implementation-Version': project.version)
 		}
 		archiveClassifier.set("sources")
-	    from sourceSets.main.allSource
+		from sourceSets.main.allSource
 		from('../LICENSE') {
 			rename { fileName ->
 				"LICENSE-BouncyCastle"
@@ -294,13 +295,14 @@ subprojects {
 		}
 	}
 
-	task javadocJar(type: Jar, dependsOn: javadoc) {
+	tasks.register('javadocJar', Jar) {
+		dependsOn javadoc
 		manifest {
 			attributes('Implementation-Title': project.name,
 					'Implementation-Version': project.version)
 		}
 		archiveClassifier.set("javadoc")
-	    from javadoc.destinationDir
+		from javadoc.destinationDir
 		from('../LICENSE') {
 			rename { fileName ->
 				"LICENSE-BouncyCastle"

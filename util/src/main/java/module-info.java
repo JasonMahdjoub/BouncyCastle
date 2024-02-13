@@ -1,8 +1,9 @@
 module com.distrimind.bouncycastle.util
 {
     requires com.distrimind.bouncycastle.provider;
+	requires com.distrimind.bouncycastle.core;
 
-    exports com.distrimind.bouncycastle.asn1.bsi;
+	exports com.distrimind.bouncycastle.asn1.bsi;
     exports com.distrimind.bouncycastle.asn1.cmc;
     exports com.distrimind.bouncycastle.asn1.cmp;
     exports com.distrimind.bouncycastle.asn1.cms;
