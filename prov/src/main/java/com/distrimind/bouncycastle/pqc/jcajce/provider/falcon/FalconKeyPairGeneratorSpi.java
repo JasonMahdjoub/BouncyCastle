@@ -2,6 +2,7 @@ package com.distrimind.bouncycastle.pqc.jcajce.provider.falcon;
 
 import java.security.InvalidAlgorithmParameterException;
 import java.security.KeyPair;
+import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.AlgorithmParameterSpec;
 import java.util.HashMap;
@@ -14,6 +15,7 @@ import com.distrimind.bouncycastle.pqc.crypto.falcon.FalconKeyPairGenerator;
 import com.distrimind.bouncycastle.pqc.crypto.falcon.FalconParameters;
 import com.distrimind.bouncycastle.pqc.crypto.falcon.FalconPrivateKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.falcon.FalconPublicKeyParameters;
+import com.distrimind.bouncycastle.pqc.crypto.falcon.FalconSigner;
 import com.distrimind.bouncycastle.pqc.jcajce.provider.util.SpecUtil;
 import com.distrimind.bouncycastle.pqc.jcajce.spec.FalconParameterSpec;
 import com.distrimind.bouncycastle.util.Strings;

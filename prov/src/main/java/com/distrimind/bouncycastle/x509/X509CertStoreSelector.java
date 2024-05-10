@@ -5,15 +5,14 @@ import java.security.cert.Certificate;
 import java.security.cert.X509CertSelector;
 import java.security.cert.X509Certificate;
 
-import com.distrimind.bouncycastle.jce.provider.X509StoreCertCollection;
 import com.distrimind.bouncycastle.util.Selector;
 
 /**
  * This class is a Selector implementation for X.509 certificates.
  * 
- * @see Selector
- * @see X509Store
- * @see X509StoreCertCollection
+ * @see com.distrimind.bouncycastle.util.Selector
+ * @see com.distrimind.bouncycastle.x509.X509Store
+ * @see com.distrimind.bouncycastle.jce.provider.X509StoreCertCollection
  * @deprecated use the classes under com.distrimind.bouncycastle.cert.selector
  */
 public class X509CertStoreSelector

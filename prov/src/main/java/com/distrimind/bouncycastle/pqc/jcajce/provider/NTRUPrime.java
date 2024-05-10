@@ -4,7 +4,8 @@ import com.distrimind.bouncycastle.asn1.bc.BCObjectIdentifiers;
 import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import com.distrimind.bouncycastle.jcajce.provider.util.AsymmetricAlgorithmProvider;
 import com.distrimind.bouncycastle.jcajce.provider.util.AsymmetricKeyInfoConverter;
-import com.distrimind.bouncycastle.pqc.jcajce.provider.ntru.NTRUKeyFactorySpi;
+import com.distrimind.bouncycastle.pqc.jcajce.provider.ntruprime.NTRULPRimeKeyFactorySpi;
+import com.distrimind.bouncycastle.pqc.jcajce.provider.ntruprime.SNTRUPrimeKeyFactorySpi;
 
 public class NTRUPrime
 {
@@ -24,7 +25,7 @@ public class NTRUPrime
 
             provider.addAlgorithm("KeyGenerator.NTRULPRIME", PREFIX + "NTRULPRimeKeyGeneratorSpi");
 
-            AsymmetricKeyInfoConverter keyFact = new NTRUKeyFactorySpi();
+            AsymmetricKeyInfoConverter keyFact = new NTRULPRimeKeyFactorySpi();
 
             provider.addAlgorithm("Cipher.NTRULPRIME", PREFIX + "NTRULPRimeCipherSpi$Base");
             provider.addAlgorithm("Alg.Alias.Cipher." + BCObjectIdentifiers.pqc_kem_ntrulprime, "NTRU");
@@ -41,7 +42,7 @@ public class NTRUPrime
 
             provider.addAlgorithm("KeyGenerator.SNTRUPRIME", PREFIX + "SNTRUPrimeKeyGeneratorSpi");
 
-            keyFact = new NTRUKeyFactorySpi();
+            keyFact = new SNTRUPrimeKeyFactorySpi();
 
             provider.addAlgorithm("Cipher.SNTRUPRIME", PREFIX + "SNTRUPrimeCipherSpi$Base");
             provider.addAlgorithm("Alg.Alias.Cipher." + BCObjectIdentifiers.pqc_kem_sntruprime, "NTRU");

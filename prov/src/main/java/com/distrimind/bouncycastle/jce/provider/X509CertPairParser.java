@@ -11,9 +11,9 @@ import java.util.List;
 import com.distrimind.bouncycastle.asn1.ASN1InputStream;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.x509.CertificatePair;
-import com.distrimind.bouncycastle.x509.util.StreamParsingException;
 import com.distrimind.bouncycastle.x509.X509CertificatePair;
 import com.distrimind.bouncycastle.x509.X509StreamParserSpi;
+import com.distrimind.bouncycastle.x509.util.StreamParsingException;
 
 public class X509CertPairParser
     extends X509StreamParserSpi

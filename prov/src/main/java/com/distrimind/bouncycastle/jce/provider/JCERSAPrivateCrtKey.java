@@ -91,7 +91,7 @@ public class JCERSAPrivateCrtKey
         PrivateKeyInfo  info)
         throws IOException
     {
-        this(RSAPrivateKey.getInstance(info.parsePrivateKey()));
+        this(com.distrimind.bouncycastle.asn1.pkcs.RSAPrivateKey.getInstance(info.parsePrivateKey()));
     }
 
     /**

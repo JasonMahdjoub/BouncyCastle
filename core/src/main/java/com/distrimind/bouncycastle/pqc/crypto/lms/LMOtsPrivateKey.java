@@ -2,6 +2,9 @@ package com.distrimind.bouncycastle.pqc.crypto.lms;
 
 import com.distrimind.bouncycastle.crypto.Digest;
 
+import static com.distrimind.bouncycastle.pqc.crypto.lms.LM_OTS.D_MESG;
+import static com.distrimind.bouncycastle.pqc.crypto.lms.LM_OTS.SEED_RANDOMISER_INDEX;
+
 class LMOtsPrivateKey
 {
     private final LMOtsParameters parameter;
@@ -9,7 +12,7 @@ class LMOtsPrivateKey
     private final int q;
     private final byte[] masterSecret;
 
-    public LMOtsPrivateKey(LMOtsParameters parameter, byte[] i, int q, byte[] masterSecret)
+    LMOtsPrivateKey(LMOtsParameters parameter, byte[] i, int q, byte[] masterSecret)
     {
         this.parameter = parameter;
         I = i;
@@ -22,14 +25,14 @@ class LMOtsPrivateKey
         byte[] C = new byte[parameter.getN()];
 
         SeedDerive derive = getDerivationFunction();
-        derive.setJ(LM_OTS.SEED_RANDOMISER_INDEX); // This value from reference impl.
+        derive.setJ(SEED_RANDOMISER_INDEX); // This value from reference impl.
         derive.deriveSeed(C, false);
 
         Digest ctx = DigestUtil.getDigest(parameter);
 
         LmsUtils.byteArray(this.getI(), ctx);
         LmsUtils.u32str(this.getQ(), ctx);
-        LmsUtils.u16str(LM_OTS.D_MESG, ctx);
+        LmsUtils.u16str(D_MESG, ctx);
         LmsUtils.byteArray(C, ctx);
 
         return new LMSContext(this, sigParams, ctx, C, path);

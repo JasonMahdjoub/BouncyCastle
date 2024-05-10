@@ -3,7 +3,6 @@ package com.distrimind.bouncycastle.asn1.pkcs;
 import java.io.IOException;
 import java.util.Enumeration;
 
-import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.asn1.ASN1BitString;
 import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
@@ -18,6 +17,7 @@ import com.distrimind.bouncycastle.asn1.DERBitString;
 import com.distrimind.bouncycastle.asn1.DEROctetString;
 import com.distrimind.bouncycastle.asn1.DERSequence;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.util.BigIntegers;
 
 /**

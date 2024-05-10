@@ -15,6 +15,7 @@ import com.distrimind.bouncycastle.pqc.jcajce.provider.util.KeyUtil;
 import com.distrimind.bouncycastle.pqc.jcajce.spec.RainbowParameterSpec;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.util.encoders.Hex;
 
 public class BCRainbowPrivateKey
     implements RainbowPrivateKey

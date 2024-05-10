@@ -9,12 +9,12 @@ import java.security.interfaces.DSAPrivateKey;
 import java.security.interfaces.DSAPublicKey;
 
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
-import com.distrimind.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
 import com.distrimind.bouncycastle.asn1.x9.X9ObjectIdentifiers;
 import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
 import com.distrimind.bouncycastle.crypto.params.DSAParameters;
 import com.distrimind.bouncycastle.crypto.params.DSAPrivateKeyParameters;
+import com.distrimind.bouncycastle.internal.asn1.oiw.OIWObjectIdentifiers;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Fingerprint;
 

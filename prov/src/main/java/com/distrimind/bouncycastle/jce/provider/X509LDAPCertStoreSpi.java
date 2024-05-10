@@ -34,13 +34,14 @@ import javax.security.auth.x500.X500Principal;
 import com.distrimind.bouncycastle.asn1.ASN1InputStream;
 import com.distrimind.bouncycastle.asn1.x509.CertificatePair;
 import com.distrimind.bouncycastle.jce.X509LDAPCertStoreParameters;
+import com.distrimind.bouncycastle.util.Strings;
 
 /**
  * This is a general purpose implementation to get X.509 certificates and CRLs
  * from a LDAP location.
  * <p>
  * At first a search is performed in the ldap*AttributeNames of the
- * {@link X509LDAPCertStoreParameters} with the given
+ * {@link com.distrimind.bouncycastle.jce.X509LDAPCertStoreParameters} with the given
  * information of the subject (for all kind of certificates) or issuer (for
  * CRLs), respectively, if a X509CertSelector is given with that details. For
  * CRLs, CA certificates and cross certificates a coarse search is made only for
@@ -126,8 +127,7 @@ public class X509LDAPCertStoreSpi
     private String parseDN(String subject, String subjectAttributeName)
     {
         String temp = subject;
-        int begin = temp.toLowerCase().indexOf(
-            subjectAttributeName.toLowerCase());
+        int begin = Strings.toLowerCase(temp).indexOf(Strings.toLowerCase(subjectAttributeName));
         temp = temp.substring(begin + subjectAttributeName.length());
         int end = temp.indexOf(',');
         if (end == -1)

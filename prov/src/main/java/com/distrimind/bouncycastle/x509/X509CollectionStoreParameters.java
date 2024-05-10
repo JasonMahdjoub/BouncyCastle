@@ -6,7 +6,7 @@ import java.util.Collection;
 /**
  * This class contains a collection for collection based <code>X509Store</code>s.
  * 
- * @see X509Store
+ * @see com.distrimind.bouncycastle.x509.X509Store
  * 
  */
 public class X509CollectionStoreParameters

@@ -1,7 +1,7 @@
 package com.distrimind.bouncycastle.pqc.crypto;
 
-import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
 import com.distrimind.bouncycastle.crypto.Digest;
+import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
 
 
 /**

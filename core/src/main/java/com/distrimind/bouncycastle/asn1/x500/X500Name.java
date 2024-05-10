@@ -1,6 +1,5 @@
 package com.distrimind.bouncycastle.asn1.x500;
 
-import com.distrimind.bouncycastle.asn1.x500.style.BCStyle;
 import com.distrimind.bouncycastle.asn1.ASN1Choice;
 import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
@@ -9,6 +8,7 @@ import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
 import com.distrimind.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.asn1.x500.style.BCStyle;
 
 /**
  * The X.500 Name object.

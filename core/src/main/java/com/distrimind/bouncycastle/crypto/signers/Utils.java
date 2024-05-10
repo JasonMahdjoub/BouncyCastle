@@ -1,10 +1,10 @@
 package com.distrimind.bouncycastle.crypto.signers;
 
-import com.distrimind.bouncycastle.crypto.constraints.ConstraintUtils;
-import com.distrimind.bouncycastle.crypto.constraints.DefaultServiceProperties;
 import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.CryptoServiceProperties;
 import com.distrimind.bouncycastle.crypto.CryptoServicePurpose;
+import com.distrimind.bouncycastle.crypto.constraints.ConstraintUtils;
+import com.distrimind.bouncycastle.crypto.constraints.DefaultServiceProperties;
 import com.distrimind.bouncycastle.crypto.params.DSAKeyParameters;
 import com.distrimind.bouncycastle.crypto.params.ECKeyParameters;
 import com.distrimind.bouncycastle.crypto.params.GOST3410KeyParameters;

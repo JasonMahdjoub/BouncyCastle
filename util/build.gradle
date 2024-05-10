@@ -13,3 +13,13 @@ artifacts {
     archives javadocJar
     archives sourcesJar
 }
+jar {
+    String packages = 'com.distrimind.bouncycastle.asn1.{bsi|cmc|cmp|cms|crmf|cryptlib|dvcs|eac|edec|esf|ess|est|gnu|iana|icao|isara|isismtt|iso|kisa|microsoft|misc|mozilla|nsri|ntt|oiw|rosstandart|smime|tsp}.*'
+    manifest.attributes('Export-Package': "${packages},com.distrimind.bouncycastle.oer.*")
+    manifest.attributes('Import-Package': "java.*;resolution:=optional,javax.*;resolution:=optional,!${packages},!com.distrimind.bouncycastle.oer.*,com.distrimind.bouncycastle.*;version=\"[${version})\"")
+}
+
+test {
+    forkEvery = 1;
+    maxParallelForks = 8;
+}

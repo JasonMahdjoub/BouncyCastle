@@ -33,9 +33,9 @@ import com.distrimind.bouncycastle.asn1.ASN1Encoding;
 import com.distrimind.bouncycastle.asn1.ASN1Integer;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
-import com.distrimind.bouncycastle.asn1.edec.EdECObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
 import com.distrimind.bouncycastle.asn1.x509.Certificate;
+import com.distrimind.bouncycastle.internal.asn1.edec.EdECObjectIdentifiers;
 import com.distrimind.bouncycastle.jcajce.interfaces.EdDSAPrivateKey;
 import com.distrimind.bouncycastle.jcajce.spec.DHUParameterSpec;
 import com.distrimind.bouncycastle.jcajce.spec.EdDSAParameterSpec;
@@ -158,7 +158,7 @@ public class EdECTest
         // yes, the demo certificate is invalid...
         sig.update(x25519Seq.getObjectAt(0).toASN1Primitive().getEncoded(ASN1Encoding.DL));
 
-        isTrue(sig.verify(x25519Cert.getSignature().getBytes()));
+        isTrue(sig.verify(x25519Cert.getSignature().getOctets()));
 
         CertificateFactory certFact = CertificateFactory.getInstance("X.509", "BC");
 

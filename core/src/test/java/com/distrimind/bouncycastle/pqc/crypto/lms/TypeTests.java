@@ -2,7 +2,6 @@ package com.distrimind.bouncycastle.pqc.crypto.lms;
 
 import java.util.Arrays;
 
-import com.distrimind.bouncycastle.pqc.crypto.lms.*;
 import junit.framework.TestCase;
 
 public class TypeTests
@@ -27,7 +26,7 @@ public class TypeTests
         }
 
         {
-            Object o = new HSSPublicKeyParameters(0, null);
+            Object o = new HSSPublicKeyParameters(0, new LMSPublicKeyParameters(null, null, null, null));
             assert (o == HSSPublicKeyParameters.getInstance(o));
         }
 

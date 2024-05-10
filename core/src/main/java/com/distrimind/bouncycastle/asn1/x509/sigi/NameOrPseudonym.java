@@ -24,7 +24,7 @@ import com.distrimind.bouncycastle.asn1.x500.DirectoryString;
  *       }
  * </pre>
  * 
- * @see PersonalData
+ * @see com.distrimind.bouncycastle.asn1.x509.sigi.PersonalData
  * 
  */
 public class NameOrPseudonym

@@ -1,10 +1,10 @@
 package com.distrimind.bouncycastle.pqc.jcajce.provider.mceliece;
 
 import com.distrimind.bouncycastle.asn1.nist.NISTObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.crypto.Digest;
 import com.distrimind.bouncycastle.crypto.util.DigestFactory;
+import com.distrimind.bouncycastle.internal.asn1.oiw.OIWObjectIdentifiers;
 
 class Utils
 {

@@ -5,8 +5,8 @@ import java.util.Map;
 
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.nist.NISTObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.ntt.NTTObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
+import com.distrimind.bouncycastle.internal.asn1.ntt.NTTObjectIdentifiers;
 import com.distrimind.bouncycastle.util.Integers;
 
 public class SecretKeyUtil

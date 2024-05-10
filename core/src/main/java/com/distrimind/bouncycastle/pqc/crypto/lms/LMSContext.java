@@ -2,6 +2,8 @@ package com.distrimind.bouncycastle.pqc.crypto.lms;
 
 import com.distrimind.bouncycastle.crypto.Digest;
 
+import static com.distrimind.bouncycastle.pqc.crypto.lms.LM_OTS.MAX_HASH;
+
 public class LMSContext
     implements Digest
 {
@@ -15,7 +17,7 @@ public class LMSContext
     private LMSSignedPubKey[] signedPubKeys;
     private volatile Digest digest;
 
-    public LMSContext(LMOtsPrivateKey key, LMSigParameters sigParams, Digest digest, byte[] C, byte[][] path)
+    LMSContext(LMOtsPrivateKey key, LMSigParameters sigParams, Digest digest, byte[] C, byte[][] path)
     {
         this.key = key;
         this.sigParams = sigParams;
@@ -26,7 +28,7 @@ public class LMSContext
         this.signature = null;
     }
 
-    public LMSContext(LMOtsPublicKey publicKey, Object signature, Digest digest)
+    LMSContext(LMOtsPublicKey publicKey, Object signature, Digest digest)
     {
         this.publicKey = publicKey;
         this.signature = signature;
@@ -44,7 +46,7 @@ public class LMSContext
 
     byte[] getQ()
     {
-        byte[] Q = new byte[LM_OTS.MAX_HASH + 2];
+        byte[] Q = new byte[MAX_HASH + 2];
 
         digest.doFinal(Q, 0);
         
@@ -63,7 +65,7 @@ public class LMSContext
         return key;
     }
 
-    public LMOtsPublicKey getPublicKey()
+    LMOtsPublicKey getPublicKey()
     {
         return publicKey;
     }

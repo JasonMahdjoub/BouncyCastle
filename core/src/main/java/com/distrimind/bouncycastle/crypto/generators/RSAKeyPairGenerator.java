@@ -2,12 +2,12 @@ package com.distrimind.bouncycastle.crypto.generators;
 
 import java.math.BigInteger;
 
-import com.distrimind.bouncycastle.crypto.constraints.ConstraintUtils;
 import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
 import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPairGenerator;
 import com.distrimind.bouncycastle.crypto.CryptoServicePurpose;
 import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
 import com.distrimind.bouncycastle.crypto.KeyGenerationParameters;
+import com.distrimind.bouncycastle.crypto.constraints.ConstraintUtils;
 import com.distrimind.bouncycastle.crypto.constraints.DefaultServiceProperties;
 import com.distrimind.bouncycastle.crypto.params.RSAKeyGenerationParameters;
 import com.distrimind.bouncycastle.crypto.params.RSAKeyParameters;

@@ -5,16 +5,16 @@ import java.security.spec.KeySpec;
 
 import javax.crypto.SecretKey;
 
-import com.distrimind.bouncycastle.asn1.misc.MiscObjectIdentifiers;
 import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.PasswordConverter;
 import com.distrimind.bouncycastle.crypto.generators.SCrypt;
 import com.distrimind.bouncycastle.crypto.params.KeyParameter;
+import com.distrimind.bouncycastle.internal.asn1.misc.MiscObjectIdentifiers;
+import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BCPBEKey;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseSecretKeyFactory;
-import com.distrimind.bouncycastle.jcajce.spec.ScryptKeySpec;
-import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import com.distrimind.bouncycastle.jcajce.provider.util.AlgorithmProvider;
+import com.distrimind.bouncycastle.jcajce.spec.ScryptKeySpec;
 
 public class SCRYPT
 {

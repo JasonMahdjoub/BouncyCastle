@@ -40,7 +40,7 @@ abstract class PKIXCRLUtil
      * @param crlSelect
      *            a {@link X509CRLStoreSelector} object that will be used to select the CRLs
      * @param crlStores
-     *            a List containing only {@link X509Store X509Store} objects.
+     *            a List containing only {@link com.distrimind.bouncycastle.x509.X509Store X509Store} objects.
      *            These are used to search for CRLs
      */
     private static void findCRLs(HashSet crls, X509CRLStoreSelector crlSelect, List crlStores) throws AnnotatedException

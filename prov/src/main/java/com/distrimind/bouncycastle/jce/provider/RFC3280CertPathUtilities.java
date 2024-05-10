@@ -51,7 +51,6 @@ import com.distrimind.bouncycastle.asn1.x509.GeneralSubtree;
 import com.distrimind.bouncycastle.asn1.x509.IssuingDistributionPoint;
 import com.distrimind.bouncycastle.asn1.x509.NameConstraints;
 import com.distrimind.bouncycastle.asn1.x509.PolicyInformation;
-import com.distrimind.bouncycastle.jce.exception.ExtCertPathValidatorException;
 import com.distrimind.bouncycastle.jcajce.PKIXCRLStore;
 import com.distrimind.bouncycastle.jcajce.PKIXCertRevocationChecker;
 import com.distrimind.bouncycastle.jcajce.PKIXCertRevocationCheckerParameters;
@@ -60,6 +59,7 @@ import com.distrimind.bouncycastle.jcajce.PKIXExtendedBuilderParameters;
 import com.distrimind.bouncycastle.jcajce.PKIXExtendedParameters;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.ClassUtil;
 import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
+import com.distrimind.bouncycastle.jce.exception.ExtCertPathValidatorException;
 import com.distrimind.bouncycastle.util.Arrays;
 
 class RFC3280CertPathUtilities

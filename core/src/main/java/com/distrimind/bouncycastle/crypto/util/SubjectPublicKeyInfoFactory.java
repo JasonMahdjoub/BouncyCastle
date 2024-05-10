@@ -12,10 +12,8 @@ import com.distrimind.bouncycastle.asn1.DERNull;
 import com.distrimind.bouncycastle.asn1.DEROctetString;
 import com.distrimind.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.cryptopro.GOST3410PublicKeyAlgParameters;
-import com.distrimind.bouncycastle.asn1.edec.EdECObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.pkcs.RSAPublicKey;
-import com.distrimind.bouncycastle.asn1.rosstandart.RosstandartObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.asn1.x509.DSAParameter;
 import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
@@ -35,6 +33,8 @@ import com.distrimind.bouncycastle.crypto.params.Ed448PublicKeyParameters;
 import com.distrimind.bouncycastle.crypto.params.RSAKeyParameters;
 import com.distrimind.bouncycastle.crypto.params.X25519PublicKeyParameters;
 import com.distrimind.bouncycastle.crypto.params.X448PublicKeyParameters;
+import com.distrimind.bouncycastle.internal.asn1.edec.EdECObjectIdentifiers;
+import com.distrimind.bouncycastle.internal.asn1.rosstandart.RosstandartObjectIdentifiers;
 
 /**
  * Factory to create ASN.1 subject public key info objects from lightweight public keys.

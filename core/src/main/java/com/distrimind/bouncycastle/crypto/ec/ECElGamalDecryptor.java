@@ -1,7 +1,7 @@
 package com.distrimind.bouncycastle.crypto.ec;
 
-import com.distrimind.bouncycastle.crypto.params.ECPrivateKeyParameters;
 import com.distrimind.bouncycastle.crypto.CipherParameters;
+import com.distrimind.bouncycastle.crypto.params.ECPrivateKeyParameters;
 import com.distrimind.bouncycastle.math.ec.ECAlgorithms;
 import com.distrimind.bouncycastle.math.ec.ECCurve;
 import com.distrimind.bouncycastle.math.ec.ECPoint;

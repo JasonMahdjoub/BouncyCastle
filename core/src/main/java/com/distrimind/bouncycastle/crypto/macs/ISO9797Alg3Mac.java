@@ -1,13 +1,13 @@
 package com.distrimind.bouncycastle.crypto.macs;
 
+import com.distrimind.bouncycastle.crypto.BlockCipher;
+import com.distrimind.bouncycastle.crypto.CipherParameters;
+import com.distrimind.bouncycastle.crypto.Mac;
 import com.distrimind.bouncycastle.crypto.engines.DESEngine;
 import com.distrimind.bouncycastle.crypto.modes.CBCBlockCipher;
 import com.distrimind.bouncycastle.crypto.paddings.BlockCipherPadding;
 import com.distrimind.bouncycastle.crypto.params.KeyParameter;
 import com.distrimind.bouncycastle.crypto.params.ParametersWithIV;
-import com.distrimind.bouncycastle.crypto.BlockCipher;
-import com.distrimind.bouncycastle.crypto.CipherParameters;
-import com.distrimind.bouncycastle.crypto.Mac;
 
 /**
  * DES based CBC Block Cipher MAC according to ISO9797, algorithm 3 (ANSI X9.19 Retail MAC)
@@ -24,10 +24,10 @@ public class ISO9797Alg3Mac
     private byte[]              buf;
     private int                 bufOff;
     private BlockCipher         cipher;
-    private BlockCipherPadding padding;
+    private BlockCipherPadding  padding;
     
     private int                 macSize;
-    private KeyParameter lastKey2;
+    private KeyParameter        lastKey2;
     private KeyParameter        lastKey3;
     
     /**

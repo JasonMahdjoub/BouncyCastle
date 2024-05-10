@@ -44,12 +44,12 @@ import com.distrimind.bouncycastle.crypto.parsers.ECIESPublicKeyParser;
 import com.distrimind.bouncycastle.crypto.util.DigestFactory;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.BaseCipherSpi;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.IESUtil;
-import com.distrimind.bouncycastle.jce.interfaces.ECKey;
-import com.distrimind.bouncycastle.jce.interfaces.IESKey;
-import com.distrimind.bouncycastle.jce.spec.IESParameterSpec;
 import com.distrimind.bouncycastle.jcajce.provider.util.BadBlockException;
 import com.distrimind.bouncycastle.jcajce.util.BCJcaJceHelper;
 import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
+import com.distrimind.bouncycastle.jce.interfaces.ECKey;
+import com.distrimind.bouncycastle.jce.interfaces.IESKey;
+import com.distrimind.bouncycastle.jce.spec.IESParameterSpec;
 import com.distrimind.bouncycastle.math.ec.ECCurve;
 import com.distrimind.bouncycastle.util.Strings;
 

@@ -1,10 +1,10 @@
 package com.distrimind.bouncycastle.crypto.modes;
 
-import com.distrimind.bouncycastle.crypto.params.ParametersWithIV;
 import com.distrimind.bouncycastle.crypto.BlockCipher;
 import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.DataLengthException;
 import com.distrimind.bouncycastle.crypto.OutputLengthException;
+import com.distrimind.bouncycastle.crypto.params.ParametersWithIV;
 
 /**
  * Implements OpenPGP's rather strange version of Cipher-FeedBack (CFB) mode on top of a simple cipher. For further info see <a href="https://www.ietf.org/rfc/rfc2440.html">RFC 2440</a>.

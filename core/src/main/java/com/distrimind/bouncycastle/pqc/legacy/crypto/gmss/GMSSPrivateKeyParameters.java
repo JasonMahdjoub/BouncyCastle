@@ -2,9 +2,9 @@ package com.distrimind.bouncycastle.pqc.legacy.crypto.gmss;
 
 import java.util.Vector;
 
+import com.distrimind.bouncycastle.crypto.Digest;
 import com.distrimind.bouncycastle.pqc.legacy.crypto.gmss.util.GMSSRandom;
 import com.distrimind.bouncycastle.pqc.legacy.crypto.gmss.util.WinternitzOTSignature;
-import com.distrimind.bouncycastle.crypto.Digest;
 import com.distrimind.bouncycastle.util.Arrays;
 
 
@@ -111,7 +111,7 @@ public class GMSSPrivateKeyParameters
      * @param nextRoot         the roots of the next subtree
      * @param currentRootSig   array of signatures of the roots of the current subtrees
      * @param gmssParameterset the GMSS Parameterset
-     * @see GMSSKeyPairGenerator
+     * @see com.distrimind.bouncycastle.pqc.legacy.crypto.gmss.GMSSKeyPairGenerator
      */
 
     public GMSSPrivateKeyParameters(byte[][] currentSeed, byte[][] nextNextSeed,

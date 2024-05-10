@@ -7,6 +7,7 @@ import com.distrimind.bouncycastle.asn1.ASN1OctetString;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
+import com.distrimind.bouncycastle.asn1.BERTags;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
 import com.distrimind.bouncycastle.asn1.x509.SubjectKeyIdentifier;
 
@@ -95,7 +96,7 @@ public class OriginatorIdentifierOrKey
      * <li> null &rarr; null
      * <li> {@link OriginatorIdentifierOrKey} object
      * <li> {@link IssuerAndSerialNumber} object
-     * <li> {@link ASN1TaggedObject#getInstance(java.lang.Object) ASN1TaggedObject} input formats with IssuerAndSerialNumber structure inside
+     * <li> {@link com.distrimind.bouncycastle.asn1.ASN1TaggedObject#getInstance(java.lang.Object) ASN1TaggedObject} input formats with IssuerAndSerialNumber structure inside
      * </ul>
      *
      * @param o the object we want converted.

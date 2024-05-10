@@ -2,12 +2,12 @@ package com.distrimind.bouncycastle.crypto.generators;
 
 import java.security.SecureRandom;
 
-import com.distrimind.bouncycastle.crypto.constraints.DefaultServiceProperties;
 import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
 import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPairGenerator;
 import com.distrimind.bouncycastle.crypto.CryptoServicePurpose;
 import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
 import com.distrimind.bouncycastle.crypto.KeyGenerationParameters;
+import com.distrimind.bouncycastle.crypto.constraints.DefaultServiceProperties;
 import com.distrimind.bouncycastle.crypto.params.Ed25519PrivateKeyParameters;
 import com.distrimind.bouncycastle.crypto.params.Ed25519PublicKeyParameters;
 

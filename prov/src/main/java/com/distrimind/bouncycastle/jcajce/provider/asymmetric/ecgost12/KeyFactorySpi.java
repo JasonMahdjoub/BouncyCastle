@@ -12,14 +12,14 @@ import java.security.spec.KeySpec;
 
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
-import com.distrimind.bouncycastle.asn1.rosstandart.RosstandartObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
+import com.distrimind.bouncycastle.internal.asn1.rosstandart.RosstandartObjectIdentifiers;
+import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.BaseKeyFactorySpi;
+import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.EC5Util;
 import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
 import com.distrimind.bouncycastle.jce.spec.ECParameterSpec;
 import com.distrimind.bouncycastle.jce.spec.ECPrivateKeySpec;
 import com.distrimind.bouncycastle.jce.spec.ECPublicKeySpec;
-import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.BaseKeyFactorySpi;
-import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.EC5Util;
 
 public class KeyFactorySpi
     extends BaseKeyFactorySpi

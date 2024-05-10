@@ -16,11 +16,11 @@ import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
 import com.distrimind.bouncycastle.crypto.params.ECDomainParameters;
 import com.distrimind.bouncycastle.crypto.params.ECPrivateKeyParameters;
 import com.distrimind.bouncycastle.crypto.params.ParametersWithUKM;
+import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.BaseAgreementSpi;
+import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.ECUtil;
 import com.distrimind.bouncycastle.jcajce.spec.UserKeyingMaterialSpec;
 import com.distrimind.bouncycastle.jce.interfaces.ECPrivateKey;
 import com.distrimind.bouncycastle.jce.interfaces.ECPublicKey;
-import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.BaseAgreementSpi;
-import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.ECUtil;
 
 public class KeyAgreementSpi
     extends BaseAgreementSpi

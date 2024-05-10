@@ -56,8 +56,8 @@ import com.distrimind.bouncycastle.asn1.x9.X9ObjectIdentifiers;
 import com.distrimind.bouncycastle.internal.asn1.bsi.BSIObjectIdentifiers;
 import com.distrimind.bouncycastle.internal.asn1.eac.EACObjectIdentifiers;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.ECUtil;
-import com.distrimind.bouncycastle.jcajce.util.ECKeyUtil;
 import com.distrimind.bouncycastle.jcajce.spec.MQVParameterSpec;
+import com.distrimind.bouncycastle.jce.ECKeyUtil;
 import com.distrimind.bouncycastle.jce.ECNamedCurveTable;
 import com.distrimind.bouncycastle.jce.ECPointUtil;
 import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
@@ -246,7 +246,7 @@ public class ECDSA5Test
             KeyPair kp = kpGen.generateKeyPair();
 
             byte[] enc1 = kp.getPublic().getEncoded();
-            byte[] enc2 = ECKeyUtil.createKeyWithCompression((ECPublicKey)kp.getPublic()).getEncoded();
+            byte[] enc2 = com.distrimind.bouncycastle.jcajce.util.ECKeyUtil.createKeyWithCompression((ECPublicKey)kp.getPublic()).getEncoded();
 
             isTrue(enc1.length >= enc2.length + 32);
         }
@@ -674,7 +674,7 @@ public class ECDSA5Test
 
         KeyPair pair = kpGen.generateKeyPair();
 
-        PublicKey pubKey = com.distrimind.bouncycastle.jce.ECKeyUtil.publicToExplicitParameters(pair.getPublic(), "BC");
+        PublicKey pubKey = ECKeyUtil.publicToExplicitParameters(pair.getPublic(), "BC");
 
         SubjectPublicKeyInfo info = SubjectPublicKeyInfo.getInstance(ASN1Primitive.fromByteArray(pubKey.getEncoded()));
         X962Parameters params = X962Parameters.getInstance(info.getAlgorithm().getParameters());
@@ -689,7 +689,7 @@ public class ECDSA5Test
             fail("public key conversion check failed");
         }
 
-        PrivateKey privKey = com.distrimind.bouncycastle.jce.ECKeyUtil.privateToExplicitParameters(pair.getPrivate(), "BC");
+        PrivateKey privKey = ECKeyUtil.privateToExplicitParameters(pair.getPrivate(), "BC");
         PrivateKeyInfo privInfo = PrivateKeyInfo.getInstance(ASN1Primitive.fromByteArray(privKey.getEncoded()));
         params = X962Parameters.getInstance(privInfo.getPrivateKeyAlgorithm().getParameters());
 

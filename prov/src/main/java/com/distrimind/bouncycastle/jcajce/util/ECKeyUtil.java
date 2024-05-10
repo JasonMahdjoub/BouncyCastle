@@ -5,7 +5,6 @@ import java.security.interfaces.ECPublicKey;
 import java.security.spec.ECParameterSpec;
 import java.security.spec.ECPoint;
 
-import com.distrimind.bouncycastle.math.ec.ECCurve;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.ASN1OctetString;
 import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
@@ -64,7 +63,7 @@ public class ECKeyUtil
 
             X962Parameters params = X962Parameters.getInstance(publicKeyInfo.getAlgorithm().getParameters());
 
-            ECCurve curve;
+            com.distrimind.bouncycastle.math.ec.ECCurve curve;
 
             if (params.isNamedCurve())
             {

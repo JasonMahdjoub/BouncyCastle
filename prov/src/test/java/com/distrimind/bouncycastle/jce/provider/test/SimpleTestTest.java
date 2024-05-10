@@ -2,7 +2,6 @@ package com.distrimind.bouncycastle.jce.provider.test;
 
 import java.security.Security;
 
-import com.distrimind.bouncycastle.util.test.Test;
 import junit.framework.TestCase;
 import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
 import com.distrimind.bouncycastle.util.test.SimpleTestResult;
@@ -18,7 +17,7 @@ public class SimpleTestTest
             Security.addProvider(new BouncyCastleProvider());
         }
 
-        Test[] tests = RegressionTest.tests;
+        com.distrimind.bouncycastle.util.test.Test[] tests = RegressionTest.tests;
 
         for (int i = 0; i != tests.length; i++)
         {

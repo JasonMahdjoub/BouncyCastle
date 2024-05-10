@@ -2,12 +2,13 @@ package com.distrimind.bouncycastle.crypto.signers;
 
 import java.io.ByteArrayOutputStream;
 
-import com.distrimind.bouncycastle.math.ec.rfc8032.Ed448;
 import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
 import com.distrimind.bouncycastle.crypto.Signer;
 import com.distrimind.bouncycastle.crypto.params.Ed448PrivateKeyParameters;
 import com.distrimind.bouncycastle.crypto.params.Ed448PublicKeyParameters;
+import com.distrimind.bouncycastle.crypto.params.ParametersWithRandom;
+import com.distrimind.bouncycastle.math.ec.rfc8032.Ed448;
 import com.distrimind.bouncycastle.util.Arrays;
 
 public class Ed448Signer
@@ -33,7 +34,10 @@ public class Ed448Signer
     public void init(boolean forSigning, CipherParameters parameters)
     {
         this.forSigning = forSigning;
-
+        if (parameters instanceof ParametersWithRandom)
+        {
+            parameters = ((ParametersWithRandom)parameters).getParameters();
+        }
         if (forSigning)
         {
             this.privateKey = (Ed448PrivateKeyParameters)parameters;

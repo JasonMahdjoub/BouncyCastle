@@ -2,8 +2,8 @@ package com.distrimind.bouncycastle.crypto.fpe;
 
 import java.math.BigInteger;
 
-import com.distrimind.bouncycastle.crypto.util.RadixConverter;
 import com.distrimind.bouncycastle.crypto.BlockCipher;
+import com.distrimind.bouncycastle.crypto.util.RadixConverter;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.BigIntegers;
 import com.distrimind.bouncycastle.util.Bytes;

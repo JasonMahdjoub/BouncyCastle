@@ -14,14 +14,10 @@ import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.cryptopro.ECGOST3410NamedCurves;
 import com.distrimind.bouncycastle.asn1.cryptopro.GOST3410PublicKeyAlgParameters;
-import com.distrimind.bouncycastle.asn1.edec.EdECObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.oiw.ElGamalParameter;
-import com.distrimind.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.pkcs.DHParameter;
 import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
 import com.distrimind.bouncycastle.asn1.pkcs.RSAPrivateKey;
-import com.distrimind.bouncycastle.asn1.rosstandart.RosstandartObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.sec.ECPrivateKey;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.asn1.x509.DSAParameter;
@@ -47,6 +43,10 @@ import com.distrimind.bouncycastle.crypto.params.ElGamalPrivateKeyParameters;
 import com.distrimind.bouncycastle.crypto.params.RSAPrivateCrtKeyParameters;
 import com.distrimind.bouncycastle.crypto.params.X25519PrivateKeyParameters;
 import com.distrimind.bouncycastle.crypto.params.X448PrivateKeyParameters;
+import com.distrimind.bouncycastle.internal.asn1.edec.EdECObjectIdentifiers;
+import com.distrimind.bouncycastle.internal.asn1.oiw.ElGamalParameter;
+import com.distrimind.bouncycastle.internal.asn1.oiw.OIWObjectIdentifiers;
+import com.distrimind.bouncycastle.internal.asn1.rosstandart.RosstandartObjectIdentifiers;
 import com.distrimind.bouncycastle.util.Arrays;
 
 /**

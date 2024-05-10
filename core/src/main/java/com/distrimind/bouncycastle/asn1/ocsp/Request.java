@@ -1,6 +1,5 @@
 package com.distrimind.bouncycastle.asn1.ocsp;
 
-import com.distrimind.bouncycastle.asn1.x509.Extensions;
 import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
@@ -8,12 +7,13 @@ import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
 import com.distrimind.bouncycastle.asn1.DERSequence;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
+import com.distrimind.bouncycastle.asn1.x509.Extensions;
 
 public class Request
     extends ASN1Object
 {
     CertID            reqCert;
-    Extensions singleRequestExtensions;
+    Extensions    singleRequestExtensions;
 
     public Request(
         CertID          reqCert,

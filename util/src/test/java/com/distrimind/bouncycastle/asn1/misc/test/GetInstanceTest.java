@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.Vector;
 
 import junit.framework.TestCase;
-
 import com.distrimind.bouncycastle.asn1.ASN1BitString;
 import com.distrimind.bouncycastle.asn1.ASN1Choice;
 import com.distrimind.bouncycastle.asn1.ASN1Encodable;
@@ -182,8 +181,6 @@ import com.distrimind.bouncycastle.asn1.isismtt.x509.NamingAuthority;
 import com.distrimind.bouncycastle.asn1.isismtt.x509.ProcurationSyntax;
 import com.distrimind.bouncycastle.asn1.isismtt.x509.ProfessionInfo;
 import com.distrimind.bouncycastle.asn1.isismtt.x509.Restriction;
-import com.distrimind.bouncycastle.asn1.misc.CAST5CBCParameters;
-import com.distrimind.bouncycastle.asn1.misc.IDEACBCPar;
 import com.distrimind.bouncycastle.asn1.mozilla.PublicKeyAndChallenge;
 import com.distrimind.bouncycastle.asn1.nist.NISTObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.ocsp.BasicOCSPResponse;
@@ -297,6 +294,8 @@ import com.distrimind.bouncycastle.asn1.x9.DHPublicKey;
 import com.distrimind.bouncycastle.asn1.x9.DHValidationParms;
 import com.distrimind.bouncycastle.asn1.x9.X962Parameters;
 import com.distrimind.bouncycastle.asn1.x9.X9ECParameters;
+import com.distrimind.bouncycastle.asn1.misc.CAST5CBCParameters;
+import com.distrimind.bouncycastle.asn1.misc.IDEACBCPar;
 import com.distrimind.bouncycastle.util.Integers;
 import com.distrimind.bouncycastle.util.encoders.Base64;
 

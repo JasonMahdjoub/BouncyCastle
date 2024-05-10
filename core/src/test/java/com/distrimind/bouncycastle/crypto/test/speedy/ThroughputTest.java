@@ -8,7 +8,6 @@ import com.distrimind.bouncycastle.crypto.engines.AESEngine;
 import com.distrimind.bouncycastle.crypto.engines.ThreefishEngine;
 import com.distrimind.bouncycastle.crypto.params.KeyParameter;
 import com.distrimind.bouncycastle.crypto.params.TweakableBlockCipherParameters;
-import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.encoders.Hex;
 
 public class ThroughputTest
@@ -90,14 +89,14 @@ public class ThroughputTest
         System.out.println("Plaintext  : " + new String(Hex.encode(plaintext)));
         System.out.println("Expected   : " + new String(Hex.encode(expected)));
         System.out.println("Ciphertext : " + new String(Hex.encode(ciphertext)));
-        System.out.println("  Encrypt  : " + Arrays.areEqual(expected, ciphertext));
+        System.out.println("  Encrypt  : " + com.distrimind.bouncycastle.util.Arrays.areEqual(expected, ciphertext));
 
         cipher.init(false, new TweakableBlockCipherParameters(new KeyParameter(key), tweak));
         byte[] replain = new byte[plaintext.length];
         cipher.processBlock(ciphertext, 0, replain, 0);
 
         System.out.println("Replain    : " + new String(Hex.encode(replain)));
-        System.out.println("  Decrypt  : " + Arrays.areEqual(plaintext, replain));
+        System.out.println("  Decrypt  : " + com.distrimind.bouncycastle.util.Arrays.areEqual(plaintext, replain));
     }
 
     private static void testTF_512_2()

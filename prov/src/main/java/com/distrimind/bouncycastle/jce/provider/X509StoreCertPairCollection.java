@@ -4,15 +4,17 @@ import java.util.Collection;
 
 import com.distrimind.bouncycastle.util.CollectionStore;
 import com.distrimind.bouncycastle.util.Selector;
-import com.distrimind.bouncycastle.x509.*;
+import com.distrimind.bouncycastle.x509.X509CollectionStoreParameters;
+import com.distrimind.bouncycastle.x509.X509StoreParameters;
+import com.distrimind.bouncycastle.x509.X509StoreSpi;
 
 /**
  * This class is a collection based Bouncy Castle
- * {@link X509Store} SPI implementation for certificate
+ * {@link com.distrimind.bouncycastle.x509.X509Store} SPI implementation for certificate
  * pairs.
  *
- * @see X509Store
- * @see X509CertificatePair
+ * @see com.distrimind.bouncycastle.x509.X509Store
+ * @see com.distrimind.bouncycastle.x509.X509CertificatePair
  */
 public class X509StoreCertPairCollection extends X509StoreSpi
 {
@@ -49,8 +51,8 @@ public class X509StoreCertPairCollection extends X509StoreSpi
      * <code>selector</code>.
      * <p>
      * The returned collection contains
-     * {@link X509CertificatePair}s. The selector must be
-     * a {@link X509CertPairStoreSelector} to select
+     * {@link com.distrimind.bouncycastle.x509.X509CertificatePair}s. The selector must be
+     * a {@link com.distrimind.bouncycastle.x509.X509CertPairStoreSelector} to select
      * certificate pairs.
      * </p>
      * @return A collection with matching certificate pairs.

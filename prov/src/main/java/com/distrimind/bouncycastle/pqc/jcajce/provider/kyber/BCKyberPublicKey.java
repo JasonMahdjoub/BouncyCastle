@@ -7,6 +7,7 @@ import java.io.ObjectOutputStream;
 import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
 import com.distrimind.bouncycastle.pqc.crypto.crystals.kyber.KyberPublicKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.util.PublicKeyFactory;
+import com.distrimind.bouncycastle.pqc.crypto.util.SubjectPublicKeyInfoFactory;
 import com.distrimind.bouncycastle.pqc.jcajce.interfaces.KyberPublicKey;
 import com.distrimind.bouncycastle.pqc.jcajce.provider.util.KeyUtil;
 import com.distrimind.bouncycastle.pqc.jcajce.spec.KyberParameterSpec;

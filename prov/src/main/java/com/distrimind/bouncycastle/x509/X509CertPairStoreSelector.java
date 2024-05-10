@@ -6,11 +6,11 @@ import com.distrimind.bouncycastle.util.Selector;
  * This class is an <code>Selector</code> like implementation to select
  * certificates pairs, which are e.g. used for cross certificates. The set of
  * criteria is given from two
- * {@link X509CertStoreSelector}s which must be both
+ * {@link com.distrimind.bouncycastle.x509.X509CertStoreSelector}s which must be both
  * matched.
  * 
- * @see X509AttributeCertificate
- * @see X509Store
+ * @see com.distrimind.bouncycastle.x509.X509AttributeCertificate
+ * @see com.distrimind.bouncycastle.x509.X509Store
  */
 public class X509CertPairStoreSelector implements Selector
 {

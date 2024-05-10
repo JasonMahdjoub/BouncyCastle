@@ -2,13 +2,13 @@ package com.distrimind.bouncycastle.asn1.x509;
 
 import java.io.IOException;
 
-import com.distrimind.bouncycastle.asn1.x500.style.BCStyle;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.DERGeneralizedTime;
 import com.distrimind.bouncycastle.asn1.DERIA5String;
 import com.distrimind.bouncycastle.asn1.DERPrintableString;
 import com.distrimind.bouncycastle.asn1.DERUTF8String;
+import com.distrimind.bouncycastle.asn1.x500.style.BCStyle;
 
 /**
  * The default converter for X509 DN entries when going from their

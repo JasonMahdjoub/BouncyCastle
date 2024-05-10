@@ -32,7 +32,6 @@ import com.distrimind.bouncycastle.asn1.DERNull;
 import com.distrimind.bouncycastle.asn1.DERSequence;
 import com.distrimind.bouncycastle.asn1.bc.BCObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.edec.EdECObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.x500.X500Name;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
@@ -56,6 +55,7 @@ import com.distrimind.bouncycastle.asn1.x509.V3TBSCertificateGenerator;
 import com.distrimind.bouncycastle.asn1.x9.X9ObjectIdentifiers;
 import com.distrimind.bouncycastle.crypto.Digest;
 import com.distrimind.bouncycastle.crypto.digests.SHA1Digest;
+import com.distrimind.bouncycastle.internal.asn1.edec.EdECObjectIdentifiers;
 
 /**
  * Test Utils

@@ -2,7 +2,6 @@ package com.distrimind.bouncycastle.asn1.pkcs;
 
 import java.util.Enumeration;
 
-import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
 import com.distrimind.bouncycastle.asn1.ASN1Integer;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
@@ -14,6 +13,7 @@ import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
 import com.distrimind.bouncycastle.asn1.DEROctetString;
 import com.distrimind.bouncycastle.asn1.DERSequence;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 
 /**
  * a PKCS#7 signer info object.
@@ -23,7 +23,7 @@ public class SignerInfo
 {
     private ASN1Integer              version;
     private IssuerAndSerialNumber   issuerAndSerialNumber;
-    private AlgorithmIdentifier digAlgorithm;
+    private AlgorithmIdentifier     digAlgorithm;
     private ASN1Set                 authenticatedAttributes;
     private AlgorithmIdentifier     digEncryptionAlgorithm;
     private ASN1OctetString         encryptedDigest;

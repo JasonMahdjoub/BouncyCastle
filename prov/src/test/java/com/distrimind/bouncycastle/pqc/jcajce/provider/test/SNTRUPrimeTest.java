@@ -16,6 +16,7 @@ import com.distrimind.bouncycastle.jcajce.SecretKeyWithEncapsulation;
 import com.distrimind.bouncycastle.jcajce.spec.KEMExtractSpec;
 import com.distrimind.bouncycastle.jcajce.spec.KEMGenerateSpec;
 import com.distrimind.bouncycastle.jcajce.spec.KEMParameterSpec;
+import com.distrimind.bouncycastle.jcajce.spec.KTSParameterSpec;
 import com.distrimind.bouncycastle.pqc.jcajce.provider.BouncyCastlePQCProvider;
 import com.distrimind.bouncycastle.pqc.jcajce.spec.SNTRUPrimeParameterSpec;
 import com.distrimind.bouncycastle.util.Arrays;
@@ -55,8 +56,8 @@ public class SNTRUPrimeTest
         KeyPairGenerator kpg = KeyPairGenerator.getInstance("SNTRUPrime", "BCPQC");
         kpg.initialize(SNTRUPrimeParameterSpec.sntrup653, new SecureRandom());
 
-        performKEMScipher(kpg.generateKeyPair(), "SNTRUPrime", new KEMParameterSpec("Camellia"));
-        performKEMScipher(kpg.generateKeyPair(), "SNTRUPrime", new KEMParameterSpec("Camellia-KWP"));
+        performKEMScipher(kpg.generateKeyPair(), "SNTRUPrime", new KTSParameterSpec.Builder("Camellia", 256).build());
+        performKEMScipher(kpg.generateKeyPair(), "SNTRUPrime", new KTSParameterSpec.Builder("Camellia-KWP", 256).build());
     }
 
     public void testBasicKEMSEED()
@@ -65,7 +66,7 @@ public class SNTRUPrimeTest
         KeyPairGenerator kpg = KeyPairGenerator.getInstance("SNTRUPrime", "BCPQC");
         kpg.initialize(SNTRUPrimeParameterSpec.sntrup653, new SecureRandom());
 
-        performKEMScipher(kpg.generateKeyPair(), "SNTRUPrime", new KEMParameterSpec("SEED"));
+        performKEMScipher(kpg.generateKeyPair(), "SNTRUPrime", new KTSParameterSpec.Builder("SEED", 128).build());
     }
 
     public void testBasicKEMARIA()
@@ -78,7 +79,7 @@ public class SNTRUPrimeTest
         performKEMScipher(kpg.generateKeyPair(), "SNTRUPrime", new KEMParameterSpec("ARIA-KWP"));
     }
 
-    private void performKEMScipher(KeyPair kp, String algorithm, KEMParameterSpec ktsParameterSpec)
+    private void performKEMScipher(KeyPair kp, String algorithm, KTSParameterSpec ktsParameterSpec)
             throws Exception
     {
         Cipher w1 = Cipher.getInstance(algorithm, "BCPQC");
@@ -122,7 +123,7 @@ public class SNTRUPrimeTest
         SecretKeyWithEncapsulation secEnc1 = (SecretKeyWithEncapsulation)keyGen.generateKey();
 
         assertEquals("AES", secEnc1.getAlgorithm());
-        assertEquals(16, secEnc1.getEncoded().length);
+        assertEquals(32, secEnc1.getEncoded().length);
 
         keyGen.init(new KEMExtractSpec(kp.getPrivate(), secEnc1.getEncapsulation(), "AES"), new SecureRandom());
 

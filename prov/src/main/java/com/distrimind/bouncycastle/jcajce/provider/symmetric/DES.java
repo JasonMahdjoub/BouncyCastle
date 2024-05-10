@@ -14,7 +14,6 @@ import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
-import com.distrimind.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
@@ -32,6 +31,7 @@ import com.distrimind.bouncycastle.crypto.paddings.ISO7816d4Padding;
 import com.distrimind.bouncycastle.crypto.params.DESParameters;
 import com.distrimind.bouncycastle.crypto.params.KeyParameter;
 import com.distrimind.bouncycastle.crypto.params.ParametersWithIV;
+import com.distrimind.bouncycastle.internal.asn1.oiw.OIWObjectIdentifiers;
 import com.distrimind.bouncycastle.jcajce.PBKDF1Key;
 import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BCPBEKey;

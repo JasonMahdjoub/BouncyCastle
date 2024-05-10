@@ -18,12 +18,12 @@ import com.distrimind.bouncycastle.crypto.digests.GOST3411Digest;
 import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
 import com.distrimind.bouncycastle.crypto.params.ParametersWithRandom;
 import com.distrimind.bouncycastle.crypto.signers.ECGOST3410Signer;
+import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.ECUtil;
+import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.GOST3410Util;
 import com.distrimind.bouncycastle.jce.interfaces.ECKey;
 import com.distrimind.bouncycastle.jce.interfaces.ECPublicKey;
 import com.distrimind.bouncycastle.jce.interfaces.GOST3410Key;
 import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
-import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.ECUtil;
-import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.GOST3410Util;
 
 public class SignatureSpi
     extends java.security.SignatureSpi

@@ -32,7 +32,7 @@ public class CCMParameters
      * <ul>
      * <li> null &rarr; null
      * <li> {@link com.distrimind.bouncycastle.asn1.cms.CCMParameters} object
-     * <li> {@link ASN1Sequence#getInstance(Object) ASN1Sequence} input formats with CCMParameters structure inside
+     * <li> {@link com.distrimind.bouncycastle.asn1.ASN1Sequence#getInstance(Object) ASN1Sequence} input formats with CCMParameters structure inside
      * </ul>
      *
      * @param obj the object we want converted.

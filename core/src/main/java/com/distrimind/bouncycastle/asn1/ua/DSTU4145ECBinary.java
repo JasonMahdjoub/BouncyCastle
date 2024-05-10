@@ -2,10 +2,6 @@ package com.distrimind.bouncycastle.asn1.ua;
 
 import java.math.BigInteger;
 
-import com.distrimind.bouncycastle.crypto.params.ECDomainParameters;
-import com.distrimind.bouncycastle.math.ec.ECAlgorithms;
-import com.distrimind.bouncycastle.math.ec.ECCurve;
-import com.distrimind.bouncycastle.math.field.PolynomialExtensionField;
 import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
 import com.distrimind.bouncycastle.asn1.ASN1Integer;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
@@ -16,6 +12,10 @@ import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
 import com.distrimind.bouncycastle.asn1.DEROctetString;
 import com.distrimind.bouncycastle.asn1.DERSequence;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
+import com.distrimind.bouncycastle.crypto.params.ECDomainParameters;
+import com.distrimind.bouncycastle.math.ec.ECAlgorithms;
+import com.distrimind.bouncycastle.math.ec.ECCurve;
+import com.distrimind.bouncycastle.math.field.PolynomialExtensionField;
 import com.distrimind.bouncycastle.util.Arrays;
 
 public class DSTU4145ECBinary

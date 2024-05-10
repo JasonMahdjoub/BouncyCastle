@@ -1,7 +1,6 @@
 package com.distrimind.bouncycastle.crypto.digests;
 
 import com.distrimind.bouncycastle.crypto.*;
-import com.distrimind.bouncycastle.crypto.*;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Bytes;
 import com.distrimind.bouncycastle.util.Pack;

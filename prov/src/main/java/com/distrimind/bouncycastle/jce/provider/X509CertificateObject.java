@@ -43,10 +43,6 @@ import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.ASN1String;
 import com.distrimind.bouncycastle.asn1.DERNull;
 import com.distrimind.bouncycastle.asn1.DEROctetString;
-import com.distrimind.bouncycastle.asn1.misc.MiscObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.misc.NetscapeCertType;
-import com.distrimind.bouncycastle.asn1.misc.NetscapeRevocationURL;
-import com.distrimind.bouncycastle.asn1.misc.VerisignCzagExtension;
 import com.distrimind.bouncycastle.asn1.util.ASN1Dump;
 import com.distrimind.bouncycastle.asn1.x500.X500Name;
 import com.distrimind.bouncycastle.asn1.x500.style.RFC4519Style;
@@ -56,9 +52,13 @@ import com.distrimind.bouncycastle.asn1.x509.Extension;
 import com.distrimind.bouncycastle.asn1.x509.Extensions;
 import com.distrimind.bouncycastle.asn1.x509.GeneralName;
 import com.distrimind.bouncycastle.asn1.x509.KeyUsage;
-import com.distrimind.bouncycastle.jce.interfaces.PKCS12BagAttributeCarrier;
+import com.distrimind.bouncycastle.internal.asn1.misc.MiscObjectIdentifiers;
+import com.distrimind.bouncycastle.internal.asn1.misc.NetscapeCertType;
+import com.distrimind.bouncycastle.internal.asn1.misc.NetscapeRevocationURL;
+import com.distrimind.bouncycastle.internal.asn1.misc.VerisignCzagExtension;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.PKCS12BagAttributeCarrierImpl;
 import com.distrimind.bouncycastle.jce.X509Principal;
+import com.distrimind.bouncycastle.jce.interfaces.PKCS12BagAttributeCarrier;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Integers;
 import com.distrimind.bouncycastle.util.Strings;
@@ -71,7 +71,7 @@ public class X509CertificateObject
     extends X509Certificate
     implements PKCS12BagAttributeCarrier
 {
-    private com.distrimind.bouncycastle.asn1.x509.Certificate c;
+    private com.distrimind.bouncycastle.asn1.x509.Certificate    c;
     private BasicConstraints            basicConstraints;
     private boolean[]                   keyUsage;
     private boolean                     hashValueSet;
@@ -80,7 +80,7 @@ public class X509CertificateObject
     private PKCS12BagAttributeCarrier   attrCarrier = new PKCS12BagAttributeCarrierImpl();
 
     public X509CertificateObject(
-        com.distrimind.bouncycastle.asn1.x509.Certificate c)
+        com.distrimind.bouncycastle.asn1.x509.Certificate    c)
         throws CertificateParsingException
     {
         this.c = c;

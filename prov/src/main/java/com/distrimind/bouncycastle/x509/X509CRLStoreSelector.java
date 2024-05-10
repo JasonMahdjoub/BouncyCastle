@@ -8,7 +8,6 @@ import java.security.cert.X509CRLSelector;
 
 import com.distrimind.bouncycastle.asn1.ASN1Integer;
 import com.distrimind.bouncycastle.asn1.x509.Extension;
-import com.distrimind.bouncycastle.jce.provider.X509StoreCRLCollection;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Selector;
 import com.distrimind.bouncycastle.x509.extension.X509ExtensionUtil;
@@ -17,9 +16,9 @@ import com.distrimind.bouncycastle.x509.extension.X509ExtensionUtil;
  * This class is a Selector implementation for X.509 certificate revocation
  * lists.
  * 
- * @see Selector
- * @see X509Store
- * @see X509StoreCRLCollection
+ * @see com.distrimind.bouncycastle.util.Selector
+ * @see com.distrimind.bouncycastle.x509.X509Store
+ * @see com.distrimind.bouncycastle.jce.provider.X509StoreCRLCollection
  */
 public class X509CRLStoreSelector
     extends X509CRLSelector

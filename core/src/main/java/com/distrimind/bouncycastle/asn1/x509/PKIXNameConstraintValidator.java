@@ -9,17 +9,17 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-import com.distrimind.bouncycastle.asn1.x500.style.IETFUtils;
-import com.distrimind.bouncycastle.asn1.x500.style.RFC4519Style;
-import com.distrimind.bouncycastle.util.encoders.Hex;
 import com.distrimind.bouncycastle.asn1.ASN1IA5String;
 import com.distrimind.bouncycastle.asn1.ASN1OctetString;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.x500.RDN;
 import com.distrimind.bouncycastle.asn1.x500.X500Name;
+import com.distrimind.bouncycastle.asn1.x500.style.IETFUtils;
+import com.distrimind.bouncycastle.asn1.x500.style.RFC4519Style;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Integers;
 import com.distrimind.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.util.encoders.Hex;
 
 public class PKIXNameConstraintValidator
     implements NameConstraintValidator

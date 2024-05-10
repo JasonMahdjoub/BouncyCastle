@@ -1,6 +1,9 @@
 package com.distrimind.bouncycastle.oer.its.etsi103097;
 
+import com.distrimind.bouncycastle.asn1.ASN1Integer;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
+import com.distrimind.bouncycastle.oer.its.ieee1609dot2.CertificateBase;
+import com.distrimind.bouncycastle.oer.its.ieee1609dot2.CertificateType;
 import com.distrimind.bouncycastle.oer.its.ieee1609dot2.ExplicitCertificate;
 import com.distrimind.bouncycastle.oer.its.ieee1609dot2.IssuerIdentifier;
 import com.distrimind.bouncycastle.oer.its.ieee1609dot2.ToBeSignedCertificate;

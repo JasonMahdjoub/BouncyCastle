@@ -28,11 +28,11 @@ import com.distrimind.bouncycastle.crypto.params.ECPrivateKeyParameters;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.EC5Util;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.ECUtil;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.PKCS12BagAttributeCarrierImpl;
+import com.distrimind.bouncycastle.jcajce.provider.config.ProviderConfiguration;
 import com.distrimind.bouncycastle.jce.interfaces.ECPointEncoder;
 import com.distrimind.bouncycastle.jce.interfaces.PKCS12BagAttributeCarrier;
 import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
 import com.distrimind.bouncycastle.jce.spec.ECNamedCurveParameterSpec;
-import com.distrimind.bouncycastle.jcajce.provider.config.ProviderConfiguration;
 import com.distrimind.bouncycastle.math.ec.ECCurve;
 import com.distrimind.bouncycastle.util.Arrays;
 

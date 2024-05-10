@@ -1,7 +1,5 @@
 package com.distrimind.bouncycastle.asn1.ocsp;
 
-import com.distrimind.bouncycastle.asn1.x509.Extensions;
-import com.distrimind.bouncycastle.asn1.x509.X509Extensions;
 import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
 import com.distrimind.bouncycastle.asn1.ASN1GeneralizedTime;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
@@ -10,6 +8,8 @@ import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
 import com.distrimind.bouncycastle.asn1.DERSequence;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
+import com.distrimind.bouncycastle.asn1.x509.Extensions;
+import com.distrimind.bouncycastle.asn1.x509.X509Extensions;
 
 public class SingleResponse
     extends ASN1Object
@@ -18,7 +18,7 @@ public class SingleResponse
     private CertStatus          certStatus;
     private ASN1GeneralizedTime  thisUpdate;
     private ASN1GeneralizedTime  nextUpdate;
-    private Extensions singleExtensions;
+    private Extensions      singleExtensions;
 
     /**
      * @deprecated use method taking ASN1GeneralizedTime and Extensions

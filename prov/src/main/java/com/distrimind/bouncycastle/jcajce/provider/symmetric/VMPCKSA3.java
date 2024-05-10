@@ -2,9 +2,9 @@ package com.distrimind.bouncycastle.jcajce.provider.symmetric;
 
 import com.distrimind.bouncycastle.crypto.CipherKeyGenerator;
 import com.distrimind.bouncycastle.crypto.engines.VMPCKSA3Engine;
+import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseKeyGenerator;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseStreamCipher;
-import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import com.distrimind.bouncycastle.jcajce.provider.util.AlgorithmProvider;
 
 public final class VMPCKSA3

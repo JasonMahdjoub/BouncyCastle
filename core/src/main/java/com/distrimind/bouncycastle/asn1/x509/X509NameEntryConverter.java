@@ -2,10 +2,10 @@ package com.distrimind.bouncycastle.asn1.x509;
 
 import java.io.IOException;
 
-import com.distrimind.bouncycastle.util.encoders.Hex;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1PrintableString;
+import com.distrimind.bouncycastle.util.encoders.Hex;
 
 /**
  * It turns out that the number of standard ways the fields in a DN should be 

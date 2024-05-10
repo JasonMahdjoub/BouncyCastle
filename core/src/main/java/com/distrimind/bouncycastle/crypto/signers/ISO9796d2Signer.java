@@ -608,7 +608,7 @@ public class ISO9796d2Signer
      * Return true if the full message was recoveredMessage.
      * 
      * @return true on full message recovery, false otherwise.
-     * @see SignerWithRecovery#hasFullMessage()
+     * @see com.distrimind.bouncycastle.crypto.SignerWithRecovery#hasFullMessage()
      */
     public boolean hasFullMessage()
     {
@@ -620,7 +620,7 @@ public class ISO9796d2Signer
      * to a just generated signature, or extracted from a verified one.
      * 
      * @return the full/partial recoveredMessage message.
-     * @see SignerWithRecovery#getRecoveredMessage()
+     * @see com.distrimind.bouncycastle.crypto.SignerWithRecovery#getRecoveredMessage()
      */
     public byte[] getRecoveredMessage()
     {

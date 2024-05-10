@@ -12,7 +12,6 @@ import javax.crypto.spec.DESedeKeySpec;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
-import com.distrimind.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
 import com.distrimind.bouncycastle.crypto.KeyGenerationParameters;
@@ -25,6 +24,7 @@ import com.distrimind.bouncycastle.crypto.macs.CFBBlockCipherMac;
 import com.distrimind.bouncycastle.crypto.macs.CMac;
 import com.distrimind.bouncycastle.crypto.modes.CBCBlockCipher;
 import com.distrimind.bouncycastle.crypto.paddings.ISO7816d4Padding;
+import com.distrimind.bouncycastle.internal.asn1.oiw.OIWObjectIdentifiers;
 import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseAlgorithmParameterGenerator;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseBlockCipher;

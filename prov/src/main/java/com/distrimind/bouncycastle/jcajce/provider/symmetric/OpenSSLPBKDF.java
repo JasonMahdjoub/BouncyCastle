@@ -9,8 +9,8 @@ import javax.crypto.spec.SecretKeySpec;
 
 import com.distrimind.bouncycastle.crypto.generators.OpenSSLPBEParametersGenerator;
 import com.distrimind.bouncycastle.crypto.params.KeyParameter;
-import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseSecretKeyFactory;
 import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
+import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseSecretKeyFactory;
 import com.distrimind.bouncycastle.jcajce.provider.util.AlgorithmProvider;
 import com.distrimind.bouncycastle.util.Strings;
 

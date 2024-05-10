@@ -118,7 +118,7 @@ public class DSTU4145Params
             v.add(ecbinary);
         }
 
-        if (!Arrays.areEqual(dke, DEFAULT_DKE))
+        if (!com.distrimind.bouncycastle.util.Arrays.areEqual(dke, DEFAULT_DKE))
         {
             v.add(new DEROctetString(dke));
         }

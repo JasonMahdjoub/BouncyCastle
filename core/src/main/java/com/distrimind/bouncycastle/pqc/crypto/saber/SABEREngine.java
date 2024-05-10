@@ -2,6 +2,9 @@ package com.distrimind.bouncycastle.pqc.crypto.saber;
 
 import java.security.SecureRandom;
 
+import com.distrimind.bouncycastle.crypto.Xof;
+import com.distrimind.bouncycastle.crypto.digests.SHA3Digest;
+import com.distrimind.bouncycastle.crypto.digests.SHAKEDigest;
 import com.distrimind.bouncycastle.util.Arrays;
 
 class SABEREngine

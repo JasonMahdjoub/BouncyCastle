@@ -9,7 +9,6 @@ import java.security.spec.InvalidParameterSpecException;
 
 import javax.crypto.spec.IvParameterSpec;
 
-import com.distrimind.bouncycastle.asn1.nsri.NSRIObjectIdentifiers;
 import com.distrimind.bouncycastle.crypto.BlockCipher;
 import com.distrimind.bouncycastle.crypto.BufferedBlockCipher;
 import com.distrimind.bouncycastle.crypto.CipherKeyGenerator;
@@ -27,7 +26,7 @@ import com.distrimind.bouncycastle.crypto.modes.GCMBlockCipher;
 import com.distrimind.bouncycastle.crypto.modes.OFBBlockCipher;
 import com.distrimind.bouncycastle.internal.asn1.cms.CCMParameters;
 import com.distrimind.bouncycastle.internal.asn1.cms.GCMParameters;
-import com.distrimind.bouncycastle.jcajce.spec.AEADParameterSpec;
+import com.distrimind.bouncycastle.internal.asn1.nsri.NSRIObjectIdentifiers;
 import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseAlgorithmParameterGenerator;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseAlgorithmParameters;
@@ -39,6 +38,7 @@ import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseWrapCipher
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BlockCipherProvider;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.GcmSpecUtil;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.IvAlgorithmParameters;
+import com.distrimind.bouncycastle.jcajce.spec.AEADParameterSpec;
 
 public final class ARIA
 {

@@ -22,7 +22,7 @@ import java.util.Collection;
  * <code>algorithm</code> parameter to the <code>getInstance</code> methods.
  * <p>
  * Implementations must implement the
- * {@link X509StreamParserSpi}.
+ * {@link com.distrimind.bouncycastle.x509.X509StreamParserSpi}.
  */
 public class X509StreamParser
     implements StreamParser

@@ -9,7 +9,7 @@ import java.util.Collection;
  * This abstract class defines the service provider interface (SPI) for
  * X509StreamParser.
  *
- * @see X509StreamParser
+ * @see com.distrimind.bouncycastle.x509.X509StreamParser
  *
  */
 public abstract class X509StreamParserSpi

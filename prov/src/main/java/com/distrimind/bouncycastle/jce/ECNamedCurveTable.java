@@ -2,7 +2,6 @@ package com.distrimind.bouncycastle.jce;
 
 import java.util.Enumeration;
 
-import com.distrimind.bouncycastle.crypto.ec.CustomNamedCurves;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.x9.X9ECParameters;
 import com.distrimind.bouncycastle.jce.spec.ECNamedCurveParameterSpec;
@@ -35,11 +34,11 @@ public class ECNamedCurveTable
         X9ECParameters ecP;
         if (oid != null)
         {
-            ecP = CustomNamedCurves.getByOID(oid);
+            ecP = com.distrimind.bouncycastle.crypto.ec.CustomNamedCurves.getByOID(oid);
         }
         else
         {
-            ecP = CustomNamedCurves.getByName(name);
+            ecP = com.distrimind.bouncycastle.crypto.ec.CustomNamedCurves.getByName(name);
         }
 
         if (ecP == null)

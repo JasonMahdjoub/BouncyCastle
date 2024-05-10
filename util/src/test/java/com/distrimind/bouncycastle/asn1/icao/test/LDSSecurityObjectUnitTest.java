@@ -5,6 +5,7 @@ import java.util.Random;
 
 import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
 import com.distrimind.bouncycastle.asn1.ASN1InputStream;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.DEROctetString;
 import com.distrimind.bouncycastle.asn1.DERSequence;

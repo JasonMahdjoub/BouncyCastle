@@ -1,7 +1,5 @@
 package com.distrimind.bouncycastle.pqc.asn1;
 
-import com.distrimind.bouncycastle.pqc.legacy.crypto.rainbow.Layer;
-import com.distrimind.bouncycastle.pqc.legacy.crypto.rainbow.util.RainbowUtil;
 import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
 import com.distrimind.bouncycastle.asn1.ASN1Integer;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
@@ -11,6 +9,8 @@ import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.DEROctetString;
 import com.distrimind.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.pqc.legacy.crypto.rainbow.Layer;
+import com.distrimind.bouncycastle.pqc.legacy.crypto.rainbow.util.RainbowUtil;
 
 /**
  * Return the key data to encode in the PrivateKeyInfo structure.

@@ -2,7 +2,6 @@ package com.distrimind.bouncycastle.asn1.pkcs;
 
 import java.math.BigInteger;
 
-import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
 import com.distrimind.bouncycastle.asn1.ASN1Integer;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
@@ -12,7 +11,8 @@ import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
 import com.distrimind.bouncycastle.asn1.DERNull;
 import com.distrimind.bouncycastle.asn1.DERSequence;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
-import com.distrimind.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.internal.asn1.oiw.OIWObjectIdentifiers;
 
 public class RSASSAPSSparams
     extends ASN1Object

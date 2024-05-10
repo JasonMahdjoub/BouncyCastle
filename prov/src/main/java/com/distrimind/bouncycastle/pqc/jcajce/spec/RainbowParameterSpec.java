@@ -4,6 +4,7 @@ import java.security.spec.AlgorithmParameterSpec;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.distrimind.bouncycastle.pqc.crypto.crystals.dilithium.DilithiumParameters;
 import com.distrimind.bouncycastle.pqc.crypto.rainbow.RainbowParameters;
 import com.distrimind.bouncycastle.util.Strings;
 

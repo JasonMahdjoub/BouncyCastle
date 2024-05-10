@@ -1,11 +1,11 @@
 package com.distrimind.bouncycastle.crypto.modes;
 
-import com.distrimind.bouncycastle.crypto.params.ParametersWithIV;
 import com.distrimind.bouncycastle.crypto.BlockCipher;
 import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.DataLengthException;
 import com.distrimind.bouncycastle.crypto.OutputLengthException;
 import com.distrimind.bouncycastle.crypto.StreamBlockCipher;
+import com.distrimind.bouncycastle.crypto.params.ParametersWithIV;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Pack;
 

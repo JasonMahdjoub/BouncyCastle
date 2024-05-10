@@ -1,7 +1,7 @@
 package com.distrimind.bouncycastle.pqc.asn1;
 
-import com.distrimind.bouncycastle.asn1.bc.BCObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.bc.BCObjectIdentifiers;
 
 /**
  * PQC:

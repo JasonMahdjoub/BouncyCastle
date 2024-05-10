@@ -4,8 +4,8 @@ import java.math.BigInteger;
 import java.security.SecureRandom;
 
 import com.distrimind.bouncycastle.crypto.Digest;
-import com.distrimind.bouncycastle.util.BigIntegers;
 import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.BigIntegers;
 
 /**
  * Utility methods for generating primes and testing for primality.

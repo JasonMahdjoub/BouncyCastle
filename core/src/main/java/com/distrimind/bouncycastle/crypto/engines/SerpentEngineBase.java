@@ -1,12 +1,12 @@
 package com.distrimind.bouncycastle.crypto.engines;
 
-import com.distrimind.bouncycastle.crypto.constraints.DefaultServiceProperties;
 import com.distrimind.bouncycastle.crypto.BlockCipher;
 import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.CryptoServicePurpose;
 import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
 import com.distrimind.bouncycastle.crypto.DataLengthException;
 import com.distrimind.bouncycastle.crypto.OutputLengthException;
+import com.distrimind.bouncycastle.crypto.constraints.DefaultServiceProperties;
 import com.distrimind.bouncycastle.crypto.params.KeyParameter;
 
 public abstract class SerpentEngineBase

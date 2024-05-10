@@ -2,7 +2,6 @@ package com.distrimind.bouncycastle.crypto.engines;
 
 import com.distrimind.bouncycastle.crypto.*;
 import com.distrimind.bouncycastle.crypto.constraints.DefaultServiceProperties;
-import com.distrimind.bouncycastle.crypto.*;
 import com.distrimind.bouncycastle.crypto.params.KeyParameter;
 
 /**
@@ -69,7 +68,7 @@ public class RC6Engine
      */
     public void init(
         boolean             forEncryption,
-        CipherParameters params)
+        CipherParameters    params)
     {
         if (!(params instanceof KeyParameter))
         {

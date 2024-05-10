@@ -8,9 +8,9 @@ import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.nist.NISTObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.teletrust.TeleTrusTObjectIdentifiers;
+import com.distrimind.bouncycastle.internal.asn1.oiw.OIWObjectIdentifiers;
 
 /**
  * General JCA/JCE utility methods.

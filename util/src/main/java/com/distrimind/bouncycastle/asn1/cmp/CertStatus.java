@@ -2,6 +2,7 @@ package com.distrimind.bouncycastle.asn1.cmp;
 
 import java.math.BigInteger;
 
+import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
 import com.distrimind.bouncycastle.asn1.ASN1Integer;
 import com.distrimind.bouncycastle.asn1.ASN1Object;

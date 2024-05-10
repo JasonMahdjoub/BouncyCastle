@@ -1,6 +1,5 @@
 package com.distrimind.bouncycastle.asn1.util;
 
-import com.distrimind.bouncycastle.util.encoders.Hex;
 import com.distrimind.bouncycastle.asn1.ASN1BMPString;
 import com.distrimind.bouncycastle.asn1.ASN1BitString;
 import com.distrimind.bouncycastle.asn1.ASN1Boolean;
@@ -38,6 +37,7 @@ import com.distrimind.bouncycastle.asn1.DERSet;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
 import com.distrimind.bouncycastle.asn1.DLBitString;
 import com.distrimind.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.util.encoders.Hex;
 
 /**
  * Utility class for dumping ASN.1 objects as (hopefully) human friendly strings.

@@ -11,16 +11,15 @@ import java.util.Enumeration;
 
 import javax.security.auth.x500.X500Principal;
 
-import com.distrimind.bouncycastle.asn1.x509.Certificate;
 import com.distrimind.bouncycastle.asn1.ASN1BitString;
 import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1Encoding;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.x509.BasicConstraints;
-import com.distrimind.bouncycastle.jce.interfaces.PKCS12BagAttributeCarrier;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.PKCS12BagAttributeCarrierImpl;
 import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
+import com.distrimind.bouncycastle.jce.interfaces.PKCS12BagAttributeCarrier;
 import com.distrimind.bouncycastle.util.Arrays;
 
 class X509CertificateObject
@@ -39,7 +38,7 @@ class X509CertificateObject
 
     private PKCS12BagAttributeCarrier   attrCarrier = new PKCS12BagAttributeCarrierImpl();
 
-    X509CertificateObject(JcaJceHelper bcHelper, Certificate c)
+    X509CertificateObject(JcaJceHelper bcHelper, com.distrimind.bouncycastle.asn1.x509.Certificate c)
         throws CertificateParsingException
     {
         super(bcHelper, c, createBasicConstraints(c), createKeyUsage(c), createSigAlgName(c), createSigAlgParams(c));
@@ -284,7 +283,7 @@ class X509CertificateObject
         }
     }
 
-    private static BasicConstraints createBasicConstraints(Certificate c)
+    private static BasicConstraints createBasicConstraints(com.distrimind.bouncycastle.asn1.x509.Certificate c)
         throws CertificateParsingException
     {
         try
@@ -303,7 +302,7 @@ class X509CertificateObject
         }
     }
 
-    private static boolean[] createKeyUsage(Certificate c) throws CertificateParsingException
+    private static boolean[] createKeyUsage(com.distrimind.bouncycastle.asn1.x509.Certificate c) throws CertificateParsingException
     {
         try
         {
@@ -333,7 +332,7 @@ class X509CertificateObject
         }
     }
 
-    private static String createSigAlgName(Certificate c) throws CertificateParsingException
+    private static String createSigAlgName(com.distrimind.bouncycastle.asn1.x509.Certificate c) throws CertificateParsingException
     {
         try
         {
@@ -345,7 +344,7 @@ class X509CertificateObject
         }
     }
 
-    private static byte[] createSigAlgParams(Certificate c) throws CertificateParsingException
+    private static byte[] createSigAlgParams(com.distrimind.bouncycastle.asn1.x509.Certificate c) throws CertificateParsingException
     {
         try
         {

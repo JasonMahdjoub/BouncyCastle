@@ -4,13 +4,16 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import com.distrimind.bouncycastle.asn1.ASN1Encoding;
 import com.distrimind.bouncycastle.asn1.ASN1Set;
 import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
 import com.distrimind.bouncycastle.pqc.crypto.crystals.kyber.KyberPrivateKeyParameters;
+import com.distrimind.bouncycastle.pqc.crypto.crystals.kyber.KyberPublicKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.util.PrivateKeyFactory;
 import com.distrimind.bouncycastle.pqc.crypto.util.PrivateKeyInfoFactory;
 import com.distrimind.bouncycastle.pqc.jcajce.interfaces.KyberPrivateKey;
 import com.distrimind.bouncycastle.pqc.jcajce.interfaces.KyberPublicKey;
+import com.distrimind.bouncycastle.pqc.jcajce.provider.util.KeyUtil;
 import com.distrimind.bouncycastle.pqc.jcajce.spec.KyberParameterSpec;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Strings;

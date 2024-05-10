@@ -1,6 +1,7 @@
 dependencies {
     implementation project(':core')
-    testImplementation group: 'com.unboundid', name: 'unboundid-ldapsdk', version: '6.0.10'
+    testImplementation group: 'com.unboundid', name: 'unboundid-ldapsdk', version: '7.0.0'
+    testImplementation group: 'junit', name: 'junit', version: '4.13.2'
 }
 
 jar.archiveBaseName = "bcprov-$vmrange"
@@ -13,3 +14,7 @@ artifacts {
     archives sourcesJar
 }
 
+jar {
+    manifest.attributes('Export-Package': '!com.distrimind.bouncycastle.internal.*,com.distrimind.bouncycastle.*')
+    manifest.attributes('Import-Package': 'java.*;resolution:=optional,javax.*;resolution:=optional')
+}

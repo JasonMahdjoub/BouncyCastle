@@ -17,8 +17,8 @@ import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
 import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.pkcs.SignedData;
 import com.distrimind.bouncycastle.asn1.x509.CertificateList;
-import com.distrimind.bouncycastle.x509.util.StreamParsingException;
 import com.distrimind.bouncycastle.x509.X509StreamParserSpi;
+import com.distrimind.bouncycastle.x509.util.StreamParsingException;
 
 public class X509CRLParser
     extends X509StreamParserSpi

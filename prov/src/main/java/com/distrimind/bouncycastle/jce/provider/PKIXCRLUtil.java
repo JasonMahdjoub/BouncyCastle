@@ -19,7 +19,7 @@ abstract class PKIXCRLUtil
     static Set findCRLs(PKIXCRLStoreSelector crlselect, Date validityDate, List certStores, List pkixCrlStores)
         throws AnnotatedException
     {
-        HashSet initialSet = new HashSet();
+        Set initialSet = new HashSet();
 
         // get complete CRL(s)
         try
@@ -55,18 +55,18 @@ abstract class PKIXCRLUtil
     }
 
     /**
-     * Add to a HashSet any and all CRLs found in the X509Store's that are matching the crlSelect
+     * Add to a Set any and all CRLs found in the X509Store's that are matching the crlSelect
      * critera.
      *
      * @param crls
-     *            the {@link HashSet} to add the CRLs to.
+     *            the {@link Set} to add the CRLs to.
      * @param crlSelect
-     *            a {@link PKIXCRLStoreSelector} object that will be used to
+     *            a {@link com.distrimind.bouncycastle.jcajce.PKIXCRLStoreSelector} object that will be used to
      *            select the CRLs
      * @param crlStores
      *            a List containing only {@link Store} objects. These are used to search for CRLs
      */
-    private static void findCRLs(HashSet crls, PKIXCRLStoreSelector crlSelect, List crlStores) throws AnnotatedException
+    private static void findCRLs(Set crls, PKIXCRLStoreSelector crlSelect, List crlStores) throws AnnotatedException
     {
         AnnotatedException lastException = null;
         boolean foundValidStore = false;

@@ -1,9 +1,9 @@
 package com.distrimind.bouncycastle.crypto.macs;
 
-import com.distrimind.bouncycastle.crypto.params.KeyParameter;
 import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.Digest;
 import com.distrimind.bouncycastle.crypto.Mac;
+import com.distrimind.bouncycastle.crypto.params.KeyParameter;
 
 /**
  * HMAC implementation based on RFC2104

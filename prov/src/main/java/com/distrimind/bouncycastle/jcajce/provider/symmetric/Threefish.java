@@ -3,11 +3,11 @@ package com.distrimind.bouncycastle.jcajce.provider.symmetric;
 import com.distrimind.bouncycastle.crypto.CipherKeyGenerator;
 import com.distrimind.bouncycastle.crypto.engines.ThreefishEngine;
 import com.distrimind.bouncycastle.crypto.macs.CMac;
+import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseBlockCipher;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseKeyGenerator;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseMac;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.IvAlgorithmParameters;
-import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import com.distrimind.bouncycastle.jcajce.provider.util.AlgorithmProvider;
 
 public final class Threefish

@@ -9,9 +9,9 @@ import com.distrimind.bouncycastle.asn1.ASN1Encoding;
 import com.distrimind.bouncycastle.asn1.ASN1InputStream;
 import com.distrimind.bouncycastle.asn1.x509.Certificate;
 import com.distrimind.bouncycastle.asn1.x509.CertificatePair;
-import com.distrimind.bouncycastle.jce.provider.X509CertificateObject;
 import com.distrimind.bouncycastle.jcajce.util.BCJcaJceHelper;
 import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
+import com.distrimind.bouncycastle.jce.provider.X509CertificateObject;
 
 /**
  * This class contains a cross certificate pair. Cross certificates pairs may

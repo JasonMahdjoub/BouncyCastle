@@ -2,10 +2,10 @@ package com.distrimind.bouncycastle.asn1.ua;
 
 import java.math.BigInteger;
 
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.crypto.params.ECDomainParameters;
 import com.distrimind.bouncycastle.math.ec.ECCurve;
 import com.distrimind.bouncycastle.math.ec.ECPoint;
-import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 
 public class DSTU4145NamedCurves
 {

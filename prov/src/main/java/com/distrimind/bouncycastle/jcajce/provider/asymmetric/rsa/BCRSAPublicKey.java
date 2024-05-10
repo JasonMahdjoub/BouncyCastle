@@ -72,7 +72,7 @@ public class BCRSAPublicKey
     {
         try
         {
-            com.distrimind.bouncycastle.asn1.pkcs.RSAPublicKey pubKey = com.distrimind.bouncycastle.asn1.pkcs.RSAPublicKey.getInstance(info.parsePublicKey());
+            com.distrimind.bouncycastle.asn1.pkcs.RSAPublicKey  pubKey = com.distrimind.bouncycastle.asn1.pkcs.RSAPublicKey.getInstance(info.parsePublicKey());
 
             this.algorithmIdentifier = info.getAlgorithm();
             this.modulus = pubKey.getModulus();

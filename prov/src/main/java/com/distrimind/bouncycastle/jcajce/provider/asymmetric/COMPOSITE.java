@@ -9,9 +9,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
-import com.distrimind.bouncycastle.asn1.misc.MiscObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
 import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
+import com.distrimind.bouncycastle.internal.asn1.misc.MiscObjectIdentifiers;
 import com.distrimind.bouncycastle.jcajce.CompositePrivateKey;
 import com.distrimind.bouncycastle.jcajce.CompositePublicKey;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.BaseKeyFactorySpi;

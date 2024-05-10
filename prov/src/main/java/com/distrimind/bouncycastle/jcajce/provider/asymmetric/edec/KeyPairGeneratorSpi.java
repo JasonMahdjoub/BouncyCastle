@@ -7,7 +7,6 @@ import java.security.SecureRandom;
 import java.security.spec.AlgorithmParameterSpec;
 import java.security.spec.ECGenParameterSpec;
 
-import com.distrimind.bouncycastle.asn1.edec.EdECObjectIdentifiers;
 import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
 import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPairGenerator;
 import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
@@ -19,6 +18,7 @@ import com.distrimind.bouncycastle.crypto.params.Ed25519KeyGenerationParameters;
 import com.distrimind.bouncycastle.crypto.params.Ed448KeyGenerationParameters;
 import com.distrimind.bouncycastle.crypto.params.X25519KeyGenerationParameters;
 import com.distrimind.bouncycastle.crypto.params.X448KeyGenerationParameters;
+import com.distrimind.bouncycastle.internal.asn1.edec.EdECObjectIdentifiers;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.ECUtil;
 import com.distrimind.bouncycastle.jcajce.spec.EdDSAParameterSpec;
 import com.distrimind.bouncycastle.jcajce.spec.XDHParameterSpec;

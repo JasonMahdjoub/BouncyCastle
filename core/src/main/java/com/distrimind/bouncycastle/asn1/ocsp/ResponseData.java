@@ -1,7 +1,5 @@
 package com.distrimind.bouncycastle.asn1.ocsp;
 
-import com.distrimind.bouncycastle.asn1.x509.Extensions;
-import com.distrimind.bouncycastle.asn1.x509.X509Extensions;
 import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
 import com.distrimind.bouncycastle.asn1.ASN1GeneralizedTime;
 import com.distrimind.bouncycastle.asn1.ASN1Integer;
@@ -11,6 +9,8 @@ import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
 import com.distrimind.bouncycastle.asn1.DERSequence;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
+import com.distrimind.bouncycastle.asn1.x509.Extensions;
+import com.distrimind.bouncycastle.asn1.x509.X509Extensions;
 
 /**
  * OCSP RFC 2560, RFC 6960
@@ -34,7 +34,7 @@ public class ResponseData
     private ResponderID         responderID;
     private ASN1GeneralizedTime  producedAt;
     private ASN1Sequence        responses;
-    private Extensions responseExtensions;
+    private Extensions      responseExtensions;
 
     public ResponseData(
         ASN1Integer          version,

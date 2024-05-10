@@ -1,5 +1,6 @@
 package com.distrimind.bouncycastle.asn1.cmc;
 
+import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 
 /**

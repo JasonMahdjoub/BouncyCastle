@@ -3,7 +3,6 @@ package com.distrimind.bouncycastle.asn1.bc;
 import java.math.BigInteger;
 import java.util.Date;
 
-import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
 import com.distrimind.bouncycastle.asn1.ASN1GeneralizedTime;
 import com.distrimind.bouncycastle.asn1.ASN1Integer;
@@ -14,6 +13,7 @@ import com.distrimind.bouncycastle.asn1.ASN1UTF8String;
 import com.distrimind.bouncycastle.asn1.DERGeneralizedTime;
 import com.distrimind.bouncycastle.asn1.DERSequence;
 import com.distrimind.bouncycastle.asn1.DERUTF8String;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 
 /**
  * <pre>

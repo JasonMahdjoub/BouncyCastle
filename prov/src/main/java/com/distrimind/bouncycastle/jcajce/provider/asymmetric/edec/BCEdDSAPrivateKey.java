@@ -7,7 +7,6 @@ import java.security.PrivateKey;
 
 import com.distrimind.bouncycastle.asn1.ASN1OctetString;
 import com.distrimind.bouncycastle.asn1.ASN1Set;
-import com.distrimind.bouncycastle.asn1.edec.EdECObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
 import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
 import com.distrimind.bouncycastle.crypto.params.Ed25519PrivateKeyParameters;
@@ -15,6 +14,7 @@ import com.distrimind.bouncycastle.crypto.params.Ed25519PublicKeyParameters;
 import com.distrimind.bouncycastle.crypto.params.Ed448PrivateKeyParameters;
 import com.distrimind.bouncycastle.crypto.params.Ed448PublicKeyParameters;
 import com.distrimind.bouncycastle.crypto.util.PrivateKeyInfoFactory;
+import com.distrimind.bouncycastle.internal.asn1.edec.EdECObjectIdentifiers;
 import com.distrimind.bouncycastle.jcajce.interfaces.EdDSAPrivateKey;
 import com.distrimind.bouncycastle.jcajce.interfaces.EdDSAPublicKey;
 import com.distrimind.bouncycastle.util.Arrays;

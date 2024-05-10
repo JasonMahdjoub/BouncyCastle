@@ -1,7 +1,7 @@
 package com.distrimind.bouncycastle.jcajce.provider.asymmetric;
 
 import com.distrimind.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.rosstandart.RosstandartObjectIdentifiers;
+import com.distrimind.bouncycastle.internal.asn1.rosstandart.RosstandartObjectIdentifiers;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.ecgost.KeyFactorySpi;
 import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import com.distrimind.bouncycastle.jcajce.provider.util.AsymmetricAlgorithmProvider;

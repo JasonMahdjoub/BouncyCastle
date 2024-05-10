@@ -13,7 +13,7 @@ import com.distrimind.bouncycastle.util.Selector;
 /**
  * This class is a Selector implementation for certificates.
  * 
- * @see Selector
+ * @see com.distrimind.bouncycastle.util.Selector
  */
 public class PKIXCertStoreSelector<T extends Certificate>
     implements Selector<T>

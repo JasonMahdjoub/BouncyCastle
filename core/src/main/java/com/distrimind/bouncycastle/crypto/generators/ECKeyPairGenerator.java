@@ -3,13 +3,13 @@ package com.distrimind.bouncycastle.crypto.generators;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
-import com.distrimind.bouncycastle.crypto.constraints.ConstraintUtils;
-import com.distrimind.bouncycastle.crypto.constraints.DefaultServiceProperties;
 import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
 import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPairGenerator;
 import com.distrimind.bouncycastle.crypto.CryptoServicePurpose;
 import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
 import com.distrimind.bouncycastle.crypto.KeyGenerationParameters;
+import com.distrimind.bouncycastle.crypto.constraints.ConstraintUtils;
+import com.distrimind.bouncycastle.crypto.constraints.DefaultServiceProperties;
 import com.distrimind.bouncycastle.crypto.params.ECDomainParameters;
 import com.distrimind.bouncycastle.crypto.params.ECKeyGenerationParameters;
 import com.distrimind.bouncycastle.crypto.params.ECPrivateKeyParameters;

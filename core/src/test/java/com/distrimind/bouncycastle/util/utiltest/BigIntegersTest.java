@@ -6,6 +6,7 @@ import junit.framework.Assert;
 import junit.framework.TestCase;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.BigIntegers;
+import com.distrimind.bouncycastle.util.IPAddress;
 import com.distrimind.bouncycastle.util.encoders.Hex;
 
 public class BigIntegersTest

@@ -22,11 +22,11 @@ import com.distrimind.bouncycastle.asn1.x9.X9ECParameters;
 import com.distrimind.bouncycastle.asn1.x9.X9ECParametersHolder;
 import com.distrimind.bouncycastle.crypto.ec.CustomNamedCurves;
 import com.distrimind.bouncycastle.crypto.params.ECDomainParameters;
+import com.distrimind.bouncycastle.jcajce.provider.config.ProviderConfiguration;
 import com.distrimind.bouncycastle.jce.ECGOST3410NamedCurveTable;
 import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
 import com.distrimind.bouncycastle.jce.spec.ECNamedCurveParameterSpec;
 import com.distrimind.bouncycastle.jce.spec.ECNamedCurveSpec;
-import com.distrimind.bouncycastle.jcajce.provider.config.ProviderConfiguration;
 import com.distrimind.bouncycastle.math.ec.ECAlgorithms;
 import com.distrimind.bouncycastle.math.ec.ECCurve;
 import com.distrimind.bouncycastle.math.field.FiniteField;
@@ -333,7 +333,7 @@ public class EC5Util
 
         if (ecSpec instanceof ECNamedCurveSpec)
         {
-            return new ECNamedCurveParameterSpec(((ECNamedCurveSpec)ecSpec).getName(), curve,
+            return new com.distrimind.bouncycastle.jce.spec.ECNamedCurveParameterSpec(((ECNamedCurveSpec)ecSpec).getName(), curve,
                 g, n, h, seed);
         }
         else

@@ -1,16 +1,4 @@
-buildscript {
-   repositories {
-       maven {
-         url "https://plugins.gradle.org/m2/"
-       }
-   }
 
-}
-plugins {
-	//id "io.spring.nohttp" version "0.0.10"
-	id "jacoco"
-	id "net.ltgt.errorprone" version "3.0.0"
-}
 if (JavaVersion.current().isJava8Compatible()) {
     allprojects {
         tasks.withType(Javadoc).tap {
@@ -48,21 +36,21 @@ if (propFile.canRead())
 	if (props!=null && props.containsKey('sonatype_password'))
 		sonatypePwd=props.get("sonatype_password")
 }
-apply plugin: 'java-library'
-def javaVersion = JavaVersion.VERSION_11
-java {
 
-	sourceCompatibility = javaVersion
-	targetCompatibility = javaVersion
-}
+def javaVersion = JavaVersion.VERSION_11
+
 
 allprojects {
-	apply plugin: 'java'
+	//apply plugin: 'java'
+	apply plugin: 'java-library'
 	apply plugin: 'idea'
 	apply plugin: 'maven-publish'
 	apply plugin: 'signing'
-	apply plugin: 'jacoco'
-	apply plugin: 'net.ltgt.errorprone'
+	java {
+
+		sourceCompatibility = javaVersion
+		targetCompatibility = javaVersion
+	}
    group='com.distrimind.bouncycastle'
 
 	compileJava.options.compilerArgs.addAll(['--release', javaVersion] as Collection<? extends String>)
@@ -90,100 +78,7 @@ allprojects {
 	tasks.withType(JavaExec).configureEach {
 		jvmArgs = ['-Xms8g', '-Xmx8g']
 	}
-	tasks.withType(JavaCompile).configureEach {
-		options.errorprone {
-			// Checks that cannot be enabled because implementing their suggestions
-			// would break backward compatibility.
-			check('ComparableType', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('JdkObsolete', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
 
-			// ERROR
-			check('BadShiftAmount', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('BanJNDI', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('BoxedPrimitiveEquality', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('ChainingConstructorIgnoresParameter', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('ConstantOverflow', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('EqualsHashCode', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('EqualsNull', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('HashtableContains', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('ReturnValueIgnored', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('SelfEquals', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-
-			// WARNING
-			check('AlmostJavadoc', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('AlreadyChecked', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('AmbiguousMethodReference', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('AssertionFailureIgnored', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('BadImport', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('BadInstanceof', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('BoxedPrimitiveConstructor', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('CanIgnoreReturnValueSuggester', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('CatchAndPrintStackTrace', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('CatchFail', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('ClassNewInstance', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('CompareToZero', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('DefaultCharset', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('DoubleBraceInitialization', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('EmptyBlockTag', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('EmptyCatch', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('EqualsGetClass', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('EqualsIncompatibleType', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('ErroneousBitwiseExpression', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('FallThrough', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('FloatingPointLiteralPrecision', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('HidingField', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('InconsistentCapitalization', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('InconsistentHashCode', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('IncrementInForLoopAndHeader', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('InputStreamSlowMultibyteRead', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('InstanceOfAndCastMatchWrongType', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('IntLongMath', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('InvalidBlockTag', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('InvalidInlineTag', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('InvalidParam', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('InvalidThrows', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('IsInstanceIncompatibleType', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('IsInstanceOfClass', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('JavaLangClash', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('JavaUtilDate', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('MalformedInlineTag', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('MathAbsoluteRandom', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('MissingCasesInEnumSwitch', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('MissingFail', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('MissingImplementsComparable', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('MissingOverride', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('MissingSummary', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('MixedMutabilityReturnType', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('ModifiedButNotUsed', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('MutablePublicArray', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('NarrowCalculation', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('NarrowingCompoundAssignment', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('NestedInstanceOfConditions', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('NonAtomicVolatileUpdate', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('NonOverridingEquals', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('OperatorPrecedence', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('ProtectedMembersInFinalClass', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('ReferenceEquality', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('ReturnFromVoid', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('ShortCircuitBoolean', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('StringSplitter', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('SynchronizeOnNonFinalField', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('ThreadLocalUsage', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('ThreadPriorityCheck', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('TypeParameterUnusedInFormals', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('UndefinedEquals', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('UnescapedEntity', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('UnicodeEscape', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('UnnecessaryParentheses', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('UnrecognisedJavadocTag', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('UnsynchronizedOverridesSynchronized', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('UnusedMethod', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('UnusedNestedClass', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('UnusedVariable', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('UseCorrectAssertInTests', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-			check('VariableNameSameAsType', net.ltgt.gradle.errorprone.CheckSeverity.OFF)
-		}
-	}
 
 }
 
@@ -210,9 +105,6 @@ subprojects {
 	apply plugin: 'idea'
 	apply plugin: 'eclipse'
 
-	dependencies {
-		errorprone "com.google.errorprone:error_prone_core:2.24.1"
-	}
 
 	compileJava.options.compilerArgs.addAll(['--release', javaVersion] as Collection<? extends String>)
 	javadoc.options.addStringOption("html5", "-quiet")
@@ -223,7 +115,7 @@ subprojects {
 		targetCompatibility = javaVersion
 	}
 
-	version = '1.77'
+	version = '1.78.1'
 
 	tasks.register('testFull', Test) {
 		systemProperties = [
@@ -244,11 +136,11 @@ subprojects {
 	}
 
 	test {
-		/*testLogging {
-			events "PASSED", "SKIPPED", "FAILED", "STANDARD_OUT", "STANDARD_ERROR"
-		}*/
+		forkEvery = 1;
+		maxParallelForks = 1;
 		systemProperty 'bc.test.data.home', bcTestDataHome
 		maxHeapSize = "8192m"
+		testLogging.showStandardStreams = true
 
 		filter {
 			includeTestsMatching "AllTest*"
@@ -259,19 +151,19 @@ subprojects {
 	}
 
 
-	jacocoTestReport {
-		dependsOn test // tests are required to run before generating the report
-	}
-
-	jacoco {
-		reportsDirectory =  layout.buildDirectory.dir("jacoco")
-	}
 
 	jar {
 		manifest {
 			attributes('Implementation-Title': project.name,
 					'Implementation-Version': project.version)
 		}
+
+		manifest.attributes('Multi-Release': 'false')
+		manifest.attributes('Bundle-Name': jar.archiveBaseName)
+		manifest.attributes('Bundle-SymbolicName': jar.archiveBaseName)
+		manifest.attributes('Bundle-RequiredExecutionEnvironment': 'JavaSE-1.11')
+
+
 		from('../LICENSE') {
 			rename { fileName ->
 				"LICENSE-BouncyCastle"
@@ -330,8 +222,6 @@ subprojects {
 							name = 'Jason Mahdjoub'
 							email = 'jason.mahdjoub@distri-mind.fr'
 							organization = 'DistriMind'
-							roles.add('Entrepreneur')
-							roles.add('Developer')
 						}
 					}
 					organization {
@@ -386,5 +276,4 @@ subprojects {
 		}
 	}
 }
-test.dependsOn([':core:test', ':prov:test', ':pkix:test', /*':mail:test',*/ 'pg:test'/*, ':tls:test'*/])
-
+test.dependsOn([':core:test', ':prov:test', /*':pkix:test', 'pg:test', ':tls:test', 'mls:test', 'mail:test', 'jmail:test'*/])

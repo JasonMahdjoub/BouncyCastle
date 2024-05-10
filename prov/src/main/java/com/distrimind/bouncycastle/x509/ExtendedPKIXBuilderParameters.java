@@ -1,6 +1,5 @@
 package com.distrimind.bouncycastle.x509;
 
-import com.distrimind.bouncycastle.jce.provider.PKIXCertPathBuilderSpi;
 import com.distrimind.bouncycastle.util.Selector;
 
 import java.security.InvalidAlgorithmParameterException;
@@ -17,7 +16,7 @@ import java.util.Set;
  * This class contains extended parameters for PKIX certification path builders.
  * 
  * @see java.security.cert.PKIXBuilderParameters
- * @see PKIXCertPathBuilderSpi
+ * @see com.distrimind.bouncycastle.jce.provider.PKIXCertPathBuilderSpi
  * @deprecated use PKIXExtendedBuilderParameters
  */
 public class ExtendedPKIXBuilderParameters extends ExtendedPKIXParameters
@@ -107,7 +106,7 @@ public class ExtendedPKIXBuilderParameters extends ExtendedPKIXParameters
      * @throws InvalidParameterException if <code>maxPathLength</code> is set
      *             to a value less than -1
      * 
-     * @see PKIXCertPathBuilderSpi
+     * @see com.distrimind.bouncycastle.jce.provider.PKIXCertPathBuilderSpi
      * @see #getMaxPathLength
      */
     public void setMaxPathLength(int maxPathLength)
@@ -139,7 +138,7 @@ public class ExtendedPKIXBuilderParameters extends ExtendedPKIXParameters
      * <code>PKIXBuilderParameters</code>.
      * 
      * @param params Parameters to set.
-     * @see ExtendedPKIXParameters#setParams(java.security.cert.PKIXParameters)
+     * @see com.distrimind.bouncycastle.x509.ExtendedPKIXParameters#setParams(java.security.cert.PKIXParameters)
      */
     protected void setParams(PKIXParameters params)
     {

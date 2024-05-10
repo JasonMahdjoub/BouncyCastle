@@ -75,8 +75,8 @@ public class ECIESTest
         byte[] derivation = Hex.decode("202122232425262728292a2b2c2d2e2f");
         byte[] encoding   = Hex.decode("303132333435363738393a3b3c3d3e3f");
 
-        IESCipher c1 = new IESCipher.ECIES();
-        IESCipher c2 = new IESCipher.ECIES();
+        IESCipher c1 = new com.distrimind.bouncycastle.jcajce.provider.asymmetric.ec.IESCipher.ECIES();
+        IESCipher c2 = new com.distrimind.bouncycastle.jcajce.provider.asymmetric.ec.IESCipher.ECIES();
 
         c1 = new IESCipher(new IESEngine(new ECDHBasicAgreement(),
                 new KDF2BytesGenerator(new SHA1Digest()),
@@ -88,8 +88,8 @@ public class ECIESTest
                 new HMac(new SHA1Digest()),
                 new PaddedBufferedBlockCipher(new DESEngine())));
 
-        c1 = new IESCipher.ECIESwithAESCBC();
-        c2 = new IESCipher.ECIESwithAESCBC();
+        c1 = new com.distrimind.bouncycastle.jcajce.provider.asymmetric.ec.IESCipher.ECIESwithAESCBC();
+        c2 = new com.distrimind.bouncycastle.jcajce.provider.asymmetric.ec.IESCipher.ECIESwithAESCBC();
 
         // Testing ECIES with default curve in streaming mode
         KeyPairGenerator g = KeyPairGenerator.getInstance("EC", "BC");

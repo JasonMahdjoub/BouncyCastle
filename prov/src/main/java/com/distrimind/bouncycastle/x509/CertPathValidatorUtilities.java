@@ -50,7 +50,6 @@ import com.distrimind.bouncycastle.asn1.x509.PolicyInformation;
 import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
 import com.distrimind.bouncycastle.asn1.x509.X509Extension;
 import com.distrimind.bouncycastle.jcajce.PKIXCertStoreSelector;
-import com.distrimind.bouncycastle.jcajce.provider.asymmetric.x509.CertificateFactory;
 import com.distrimind.bouncycastle.jce.exception.ExtCertPathValidatorException;
 import com.distrimind.bouncycastle.jce.provider.AnnotatedException;
 import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
@@ -493,7 +492,7 @@ class CertPathValidatorUtilities
      * @param certStores a List containing only {@link X509Store} objects. These
      *                   are used to search for certificates.
      * @return a Collection of all found {@link X509Certificate} or
-     *         {@link X509AttributeCertificate} objects.
+     *         {@link com.distrimind.bouncycastle.x509.X509AttributeCertificate} objects.
      *         May be empty but never <code>null</code>.
      */
     protected static Collection findCertificates(X509CertStoreSelector certSelect,
@@ -502,7 +501,7 @@ class CertPathValidatorUtilities
     {
         Set certs = new HashSet();
         Iterator iter = certStores.iterator();
-        CertificateFactory certFact = new CertificateFactory();
+        com.distrimind.bouncycastle.jcajce.provider.asymmetric.x509.CertificateFactory certFact = new com.distrimind.bouncycastle.jcajce.provider.asymmetric.x509.CertificateFactory();
 
         while (iter.hasNext())
         {
@@ -568,7 +567,7 @@ class CertPathValidatorUtilities
     }
 
     protected static Collection findCertificates(PKIXCertStoreSelector certSelect,
-												 List certStores)
+                                                 List certStores)
         throws AnnotatedException
     {
         Set certs = new HashSet();

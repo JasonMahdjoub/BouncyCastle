@@ -3,11 +3,11 @@ package com.distrimind.bouncycastle.pqc.crypto.test;
 import java.io.IOException;
 import java.security.SecureRandom;
 
-import com.distrimind.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
 import com.distrimind.bouncycastle.crypto.KeyGenerationParameters;
 import com.distrimind.bouncycastle.crypto.util.DEROtherInfo;
+import com.distrimind.bouncycastle.internal.asn1.oiw.OIWObjectIdentifiers;
 import com.distrimind.bouncycastle.pqc.crypto.ExchangePair;
 import com.distrimind.bouncycastle.pqc.crypto.newhope.NHAgreement;
 import com.distrimind.bouncycastle.pqc.crypto.newhope.NHExchangePairGenerator;

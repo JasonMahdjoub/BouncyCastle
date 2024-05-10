@@ -51,7 +51,7 @@ public class ECNamedCurveSpec
     public ECNamedCurveSpec(
         String                              name,
         ECCurve                             curve,
-        com.distrimind.bouncycastle.math.ec.ECPoint g,
+        com.distrimind.bouncycastle.math.ec.ECPoint    g,
         BigInteger                          n)
     {
         super(convertCurve(curve, null), EC5Util.convertPoint(g), n, 1);
@@ -73,7 +73,7 @@ public class ECNamedCurveSpec
     public ECNamedCurveSpec(
         String                              name,
         ECCurve                             curve,
-        com.distrimind.bouncycastle.math.ec.ECPoint g,
+        com.distrimind.bouncycastle.math.ec.ECPoint    g,
         BigInteger                          n,
         BigInteger                          h)
     {
@@ -97,7 +97,7 @@ public class ECNamedCurveSpec
     public ECNamedCurveSpec(
         String                              name,
         ECCurve                             curve,
-        com.distrimind.bouncycastle.math.ec.ECPoint g,
+        com.distrimind.bouncycastle.math.ec.ECPoint    g,
         BigInteger                          n,
         BigInteger                          h,
         byte[]                              seed)

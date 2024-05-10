@@ -4,10 +4,10 @@ import java.io.FilterOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import com.distrimind.bouncycastle.crypto.modes.AEADBlockCipher;
 import com.distrimind.bouncycastle.crypto.BufferedBlockCipher;
 import com.distrimind.bouncycastle.crypto.InvalidCipherTextException;
 import com.distrimind.bouncycastle.crypto.StreamCipher;
+import com.distrimind.bouncycastle.crypto.modes.AEADBlockCipher;
 
 /**
  * A CipherOutputStream is composed of an OutputStream and a cipher so that write() methods process

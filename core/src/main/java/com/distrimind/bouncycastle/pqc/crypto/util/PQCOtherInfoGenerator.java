@@ -4,12 +4,16 @@ import java.io.IOException;
 import java.security.SecureRandom;
 
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
 import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
 import com.distrimind.bouncycastle.crypto.EncapsulatedSecretExtractor;
 import com.distrimind.bouncycastle.crypto.EncapsulatedSecretGenerator;
+import com.distrimind.bouncycastle.crypto.KeyGenerationParameters;
 import com.distrimind.bouncycastle.crypto.SecretWithEncapsulation;
 import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
 import com.distrimind.bouncycastle.crypto.util.DEROtherInfo;
+import com.distrimind.bouncycastle.pqc.asn1.PQCObjectIdentifiers;
+import com.distrimind.bouncycastle.pqc.crypto.ExchangePair;
 import com.distrimind.bouncycastle.pqc.crypto.KEMParameters;
 import com.distrimind.bouncycastle.pqc.crypto.crystals.kyber.KyberKEMExtractor;
 import com.distrimind.bouncycastle.pqc.crypto.crystals.kyber.KyberKEMGenerator;
@@ -17,6 +21,10 @@ import com.distrimind.bouncycastle.pqc.crypto.crystals.kyber.KyberKeyGenerationP
 import com.distrimind.bouncycastle.pqc.crypto.crystals.kyber.KyberKeyPairGenerator;
 import com.distrimind.bouncycastle.pqc.crypto.crystals.kyber.KyberParameters;
 import com.distrimind.bouncycastle.pqc.crypto.crystals.kyber.KyberPrivateKeyParameters;
+import com.distrimind.bouncycastle.pqc.crypto.newhope.NHAgreement;
+import com.distrimind.bouncycastle.pqc.crypto.newhope.NHExchangePairGenerator;
+import com.distrimind.bouncycastle.pqc.crypto.newhope.NHKeyPairGenerator;
+import com.distrimind.bouncycastle.pqc.crypto.newhope.NHPublicKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.ntru.NTRUKEMExtractor;
 import com.distrimind.bouncycastle.pqc.crypto.ntru.NTRUKEMGenerator;
 import com.distrimind.bouncycastle.pqc.crypto.ntru.NTRUKeyGenerationParameters;

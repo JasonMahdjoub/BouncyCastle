@@ -3,8 +3,8 @@ package com.distrimind.bouncycastle.jcajce.provider.asymmetric.util;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.distrimind.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
+import com.distrimind.bouncycastle.internal.asn1.oiw.OIWObjectIdentifiers;
 import com.distrimind.bouncycastle.util.Strings;
 
 public class DESUtil

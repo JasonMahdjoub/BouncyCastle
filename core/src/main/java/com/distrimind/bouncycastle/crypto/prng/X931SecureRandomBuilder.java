@@ -2,9 +2,9 @@ package com.distrimind.bouncycastle.crypto.prng;
 
 import java.security.SecureRandom;
 
-import com.distrimind.bouncycastle.crypto.params.KeyParameter;
 import com.distrimind.bouncycastle.crypto.BlockCipher;
 import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
+import com.distrimind.bouncycastle.crypto.params.KeyParameter;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Pack;
 

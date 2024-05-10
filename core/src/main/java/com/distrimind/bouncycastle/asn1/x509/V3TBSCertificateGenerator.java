@@ -1,13 +1,14 @@
 package com.distrimind.bouncycastle.asn1.x509;
 
-import com.distrimind.bouncycastle.asn1.x500.X500Name;
 import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
 import com.distrimind.bouncycastle.asn1.ASN1Integer;
+import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.ASN1UTCTime;
 import com.distrimind.bouncycastle.asn1.DERBitString;
 import com.distrimind.bouncycastle.asn1.DERSequence;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
+import com.distrimind.bouncycastle.asn1.x500.X500Name;
 
 /**
  * Generator for Version 3 TBSCertificateStructures.
@@ -33,7 +34,7 @@ public class V3TBSCertificateGenerator
 
     ASN1Integer              serialNumber;
     AlgorithmIdentifier     signature;
-    X500Name issuer;
+    X500Name                issuer;
     Time                    startDate, endDate;
     X500Name                subject;
     SubjectPublicKeyInfo    subjectPublicKeyInfo;

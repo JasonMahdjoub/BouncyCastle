@@ -1,19 +1,20 @@
 package com.distrimind.bouncycastle.jce.provider.test;
 
-import com.distrimind.bouncycastle.asn1.kisa.KISAObjectIdentifiers;
-import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
-import com.distrimind.bouncycastle.util.encoders.Hex;
-
-import javax.crypto.Cipher;
-import javax.crypto.CipherInputStream;
-import javax.crypto.CipherOutputStream;
-import javax.crypto.spec.SecretKeySpec;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.security.Key;
 import java.security.Security;
+
+import javax.crypto.Cipher;
+import javax.crypto.CipherInputStream;
+import javax.crypto.CipherOutputStream;
+import javax.crypto.spec.SecretKeySpec;
+
+import com.distrimind.bouncycastle.internal.asn1.kisa.KISAObjectIdentifiers;
+import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
+import com.distrimind.bouncycastle.util.encoders.Hex;
 
 /**
  * basic test class for SEED

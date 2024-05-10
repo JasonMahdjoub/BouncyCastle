@@ -18,6 +18,7 @@ import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
 import com.distrimind.bouncycastle.util.Strings;
 import com.distrimind.bouncycastle.util.encoders.Hex;
 import com.distrimind.bouncycastle.util.test.SimpleTest;
+import com.distrimind.bouncycastle.util.test.TestFailedException;
 
 public class ChaCha20Poly1305Test
     extends SimpleTest
@@ -91,12 +92,18 @@ public class ChaCha20Poly1305Test
 
         // check mac failure
         byte[] faulty = new byte[enc.length];
-        System.arraycopy(enc, 0, faulty, 0, enc.length - 1);
+        System.arraycopy(enc, 0, faulty, 0, enc.length);
 
+        faulty[faulty.length - 1] ^= 0xff;
+        
         try
         {
             decCipher.doFinal(faulty);
             fail("no exception");
+        }
+        catch (TestFailedException e)
+        {
+            throw e;
         }
         catch (Exception e)
         {

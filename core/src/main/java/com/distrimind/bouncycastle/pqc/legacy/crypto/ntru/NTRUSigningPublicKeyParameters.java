@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import com.distrimind.bouncycastle.pqc.legacy.math.ntru.polynomial.IntegerPolynomial;
 import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
+import com.distrimind.bouncycastle.pqc.legacy.math.ntru.polynomial.IntegerPolynomial;
 
 /**
  * A NtruSign public key is essentially a polynomial named <code>h</code>.

@@ -5,6 +5,7 @@ import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
+import com.distrimind.bouncycastle.asn1.DERBitString;
 import com.distrimind.bouncycastle.asn1.DERSequence;
 
 public class AttributeCertificate

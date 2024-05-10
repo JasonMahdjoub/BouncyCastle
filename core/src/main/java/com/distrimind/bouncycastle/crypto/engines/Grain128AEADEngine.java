@@ -2,12 +2,12 @@ package com.distrimind.bouncycastle.crypto.engines;
 
 import java.io.ByteArrayOutputStream;
 
-import com.distrimind.bouncycastle.crypto.constraints.DefaultServiceProperties;
 import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
 import com.distrimind.bouncycastle.crypto.DataLengthException;
 import com.distrimind.bouncycastle.crypto.InvalidCipherTextException;
 import com.distrimind.bouncycastle.crypto.OutputLengthException;
+import com.distrimind.bouncycastle.crypto.constraints.DefaultServiceProperties;
 import com.distrimind.bouncycastle.crypto.modes.AEADCipher;
 import com.distrimind.bouncycastle.crypto.params.KeyParameter;
 import com.distrimind.bouncycastle.crypto.params.ParametersWithIV;
@@ -56,7 +56,7 @@ public class Grain128AEADEngine
     public void init(boolean forEncryption, CipherParameters params)
         throws IllegalArgumentException
     {
-        /**
+        /*
          * Grain encryption and decryption is completely symmetrical, so the
          * 'forEncryption' is irrelevant.
          */
@@ -93,7 +93,7 @@ public class Grain128AEADEngine
         CryptoServicesRegistrar.checkConstraints(new DefaultServiceProperties(
             this.getAlgorithmName(), 128, params, Utils.getPurpose(forEncryption)));
 
-        /**
+        /*
          * Initialize variables.
          */
         workingIV = new byte[16];
@@ -270,7 +270,7 @@ public class Grain128AEADEngine
         workingKey = keyBytes;
         workingIV = ivBytes;
 
-        /**
+        /*
          * Load NFSR and LFSR
          */
         Pack.littleEndianToInt(workingKey, 0, nfsr);

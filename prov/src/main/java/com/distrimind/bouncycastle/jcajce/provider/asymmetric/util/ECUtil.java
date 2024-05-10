@@ -23,12 +23,12 @@ import com.distrimind.bouncycastle.crypto.params.ECDomainParameters;
 import com.distrimind.bouncycastle.crypto.params.ECNamedDomainParameters;
 import com.distrimind.bouncycastle.crypto.params.ECPrivateKeyParameters;
 import com.distrimind.bouncycastle.crypto.params.ECPublicKeyParameters;
+import com.distrimind.bouncycastle.jcajce.provider.config.ProviderConfiguration;
 import com.distrimind.bouncycastle.jce.interfaces.ECPrivateKey;
 import com.distrimind.bouncycastle.jce.interfaces.ECPublicKey;
 import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
 import com.distrimind.bouncycastle.jce.spec.ECNamedCurveParameterSpec;
 import com.distrimind.bouncycastle.jce.spec.ECParameterSpec;
-import com.distrimind.bouncycastle.jcajce.provider.config.ProviderConfiguration;
 import com.distrimind.bouncycastle.math.ec.ECCurve;
 import com.distrimind.bouncycastle.math.ec.ECPoint;
 import com.distrimind.bouncycastle.math.ec.FixedPointCombMultiplier;
@@ -114,7 +114,7 @@ public class ECUtil
 
     public static ECDomainParameters getDomainParameters(
         ProviderConfiguration configuration,
-        ECParameterSpec params)
+        com.distrimind.bouncycastle.jce.spec.ECParameterSpec params)
     {
         ECDomainParameters domainParameters;
 
@@ -127,7 +127,7 @@ public class ECUtil
         }
         else if (params == null)
         {
-            ECParameterSpec iSpec = configuration.getEcImplicitlyCa();
+            com.distrimind.bouncycastle.jce.spec.ECParameterSpec iSpec = configuration.getEcImplicitlyCa();
 
             domainParameters = new ECDomainParameters(iSpec.getCurve(), iSpec.getG(), iSpec.getN(), iSpec.getH(), iSpec.getSeed());
         }
@@ -159,7 +159,7 @@ public class ECUtil
         }
         else if (params.isImplicitlyCA())
         {
-            ECParameterSpec iSpec = configuration.getEcImplicitlyCa();
+            com.distrimind.bouncycastle.jce.spec.ECParameterSpec iSpec = configuration.getEcImplicitlyCa();
 
             domainParameters = new ECDomainParameters(iSpec.getCurve(), iSpec.getG(), iSpec.getN(), iSpec.getH(), iSpec.getSeed());
         }
@@ -348,7 +348,7 @@ public class ECUtil
                 && params.getCurve().equals(ecParameterSpec.getCurve())
                 && params.getG().equals(ecParameterSpec.getG()))
             {
-                return ECNamedCurveTable.getOID(name);
+                return com.distrimind.bouncycastle.asn1.x9.ECNamedCurveTable.getOID(name);
             }
         }
 
@@ -387,12 +387,12 @@ public class ECUtil
         return ECNamedCurveTable.getName(oid);
     }
 
-    public static String privateKeyToString(String algorithm, BigInteger d, ECParameterSpec spec)
+    public static String privateKeyToString(String algorithm, BigInteger d, com.distrimind.bouncycastle.jce.spec.ECParameterSpec spec)
     {
         StringBuffer buf = new StringBuffer();
         String nl = Strings.lineSeparator();
 
-        ECPoint q = new FixedPointCombMultiplier().multiply(spec.getG(), d).normalize();
+        com.distrimind.bouncycastle.math.ec.ECPoint q = new FixedPointCombMultiplier().multiply(spec.getG(), d).normalize();
 
         buf.append(algorithm);
         buf.append(" Private Key [").append(ECUtil.generateKeyFingerprint(q, spec)).append("]").append(nl);
@@ -402,7 +402,7 @@ public class ECUtil
         return buf.toString();
     }
 
-    public static String publicKeyToString(String algorithm, ECPoint q, ECParameterSpec spec)
+    public static String publicKeyToString(String algorithm, com.distrimind.bouncycastle.math.ec.ECPoint q, com.distrimind.bouncycastle.jce.spec.ECParameterSpec spec)
     {
         StringBuffer buf = new StringBuffer();
         String nl = Strings.lineSeparator();
@@ -415,7 +415,7 @@ public class ECUtil
         return buf.toString();
     }
 
-    public static String generateKeyFingerprint(ECPoint publicPoint, ECParameterSpec spec)
+    public static String generateKeyFingerprint(ECPoint publicPoint, com.distrimind.bouncycastle.jce.spec.ECParameterSpec spec)
     {
         ECCurve curve = spec.getCurve();
         ECPoint g = spec.getG();

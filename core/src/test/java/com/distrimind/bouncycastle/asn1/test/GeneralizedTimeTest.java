@@ -8,6 +8,7 @@ import java.util.TimeZone;
 import com.distrimind.bouncycastle.asn1.ASN1Encoding;
 import com.distrimind.bouncycastle.asn1.ASN1GeneralizedTime;
 import com.distrimind.bouncycastle.asn1.DERGeneralizedTime;
+import com.distrimind.bouncycastle.asn1.DERUTCTime;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.encoders.Hex;
 import com.distrimind.bouncycastle.util.test.SimpleTest;

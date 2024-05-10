@@ -31,7 +31,7 @@ public class BCRSAPrivateKey
 
     protected transient AlgorithmIdentifier algorithmIdentifier = BCRSAPublicKey.DEFAULT_ALGORITHM_IDENTIFIER;
     protected transient RSAKeyParameters rsaPrivateKey;
-    protected transient PKCS12BagAttributeCarrierImpl attrCarrier = new PKCS12BagAttributeCarrierImpl();
+    protected transient PKCS12BagAttributeCarrierImpl   attrCarrier = new PKCS12BagAttributeCarrierImpl();
 
     BCRSAPrivateKey(
         RSAKeyParameters key)

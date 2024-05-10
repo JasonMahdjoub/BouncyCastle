@@ -2,14 +2,14 @@ package com.distrimind.bouncycastle.asn1.pkcs;
 
 import java.math.BigInteger;
 
-import com.distrimind.bouncycastle.asn1.x500.X500Name;
-import com.distrimind.bouncycastle.asn1.x509.X509Name;
 import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
 import com.distrimind.bouncycastle.asn1.ASN1Integer;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.asn1.x500.X500Name;
+import com.distrimind.bouncycastle.asn1.x509.X509Name;
 
 public class IssuerAndSerialNumber
     extends ASN1Object
@@ -40,7 +40,7 @@ public class IssuerAndSerialNumber
     }
 
     public IssuerAndSerialNumber(
-        X509Name name,
+        X509Name    name,
         BigInteger  certSerialNumber)
     {
         this.name = X500Name.getInstance(name.toASN1Primitive());

@@ -1,8 +1,8 @@
 package com.distrimind.bouncycastle.crypto.hpke;
 
-import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
 import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
 import com.distrimind.bouncycastle.crypto.InvalidCipherTextException;
+import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Pack;
 import com.distrimind.bouncycastle.util.Strings;
@@ -67,6 +67,29 @@ public class HPKE
         {
             Nk = 32;
         }
+    }
+
+    public int getEncSize()
+    {
+        switch (kemId)
+        {
+            case HPKE.kem_P256_SHA256:
+                return 65;
+            case HPKE.kem_P384_SHA348:
+                return 97;
+            case HPKE.kem_P521_SHA512:
+                return 133;
+            case HPKE.kem_X25519_SHA256:
+                return 32;
+            case HPKE.kem_X448_SHA512:
+                return 56;
+            default:
+                throw new IllegalArgumentException("invalid kem id");
+        }
+    }
+    public short getAeadId()
+    {
+        return aeadId;
     }
 
     private void VerifyPSKInputs(byte mode, byte[] psk, byte[] pskid)

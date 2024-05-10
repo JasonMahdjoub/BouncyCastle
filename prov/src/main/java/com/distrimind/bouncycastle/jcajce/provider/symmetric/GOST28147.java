@@ -17,7 +17,6 @@ import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.cryptopro.GOST28147Parameters;
-import com.distrimind.bouncycastle.asn1.rosstandart.RosstandartObjectIdentifiers;
 import com.distrimind.bouncycastle.crypto.BufferedBlockCipher;
 import com.distrimind.bouncycastle.crypto.CipherKeyGenerator;
 import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
@@ -27,7 +26,7 @@ import com.distrimind.bouncycastle.crypto.engines.GOST28147WrapEngine;
 import com.distrimind.bouncycastle.crypto.macs.GOST28147Mac;
 import com.distrimind.bouncycastle.crypto.modes.CBCBlockCipher;
 import com.distrimind.bouncycastle.crypto.modes.GCFBBlockCipher;
-import com.distrimind.bouncycastle.jcajce.spec.GOST28147ParameterSpec;
+import com.distrimind.bouncycastle.internal.asn1.rosstandart.RosstandartObjectIdentifiers;
 import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseAlgorithmParameterGenerator;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseAlgorithmParameters;
@@ -36,6 +35,7 @@ import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseKeyGenerat
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseMac;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseWrapCipher;
 import com.distrimind.bouncycastle.jcajce.provider.util.AlgorithmProvider;
+import com.distrimind.bouncycastle.jcajce.spec.GOST28147ParameterSpec;
 import com.distrimind.bouncycastle.util.Strings;
 
 public final class GOST28147

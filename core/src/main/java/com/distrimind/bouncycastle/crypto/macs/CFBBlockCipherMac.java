@@ -1,12 +1,12 @@
 package com.distrimind.bouncycastle.crypto.macs;
 
-import com.distrimind.bouncycastle.crypto.paddings.BlockCipherPadding;
-import com.distrimind.bouncycastle.crypto.params.ParametersWithIV;
 import com.distrimind.bouncycastle.crypto.BlockCipher;
 import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.DataLengthException;
 import com.distrimind.bouncycastle.crypto.Mac;
 import com.distrimind.bouncycastle.crypto.OutputLengthException;
+import com.distrimind.bouncycastle.crypto.paddings.BlockCipherPadding;
+import com.distrimind.bouncycastle.crypto.params.ParametersWithIV;
 
 /**
  * implements a Cipher-FeedBack (CFB) mode on top of a simple cipher.
@@ -174,7 +174,7 @@ public class CFBBlockCipherMac
     private byte[]              buf;
     private int                 bufOff;
     private MacCFBBlockCipher   cipher;
-    private BlockCipherPadding padding = null;
+    private BlockCipherPadding  padding = null;
 
 
     private int                 macSize;

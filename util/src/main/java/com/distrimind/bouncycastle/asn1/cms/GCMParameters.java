@@ -32,7 +32,7 @@ public class GCMParameters
      * <ul>
      * <li> null &rarr; null
      * <li> {@link com.distrimind.bouncycastle.asn1.cms.GCMParameters} object
-     * <li> {@link ASN1Sequence#getInstance(Object) ASN1Sequence} input formats with GCMParameters structure inside
+     * <li> {@link com.distrimind.bouncycastle.asn1.ASN1Sequence#getInstance(Object) ASN1Sequence} input formats with GCMParameters structure inside
      * </ul>
      *
      * @param obj the object we want converted.

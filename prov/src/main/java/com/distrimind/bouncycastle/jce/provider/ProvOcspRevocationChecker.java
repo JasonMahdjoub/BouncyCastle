@@ -30,9 +30,7 @@ import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.ASN1String;
 import com.distrimind.bouncycastle.asn1.DERNull;
 import com.distrimind.bouncycastle.asn1.DEROctetString;
-import com.distrimind.bouncycastle.internal.asn1.bsi.BSIObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.isara.IsaraObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.nist.NISTObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.ocsp.BasicOCSPResponse;
 import com.distrimind.bouncycastle.asn1.ocsp.CertID;
@@ -44,10 +42,8 @@ import com.distrimind.bouncycastle.asn1.ocsp.ResponseBytes;
 import com.distrimind.bouncycastle.asn1.ocsp.ResponseData;
 import com.distrimind.bouncycastle.asn1.ocsp.RevokedInfo;
 import com.distrimind.bouncycastle.asn1.ocsp.SingleResponse;
-import com.distrimind.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.pkcs.RSASSAPSSparams;
-import com.distrimind.bouncycastle.asn1.rosstandart.RosstandartObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.x500.X500Name;
 import com.distrimind.bouncycastle.asn1.x500.style.BCStrictStyle;
 import com.distrimind.bouncycastle.asn1.x509.AccessDescription;
@@ -59,12 +55,16 @@ import com.distrimind.bouncycastle.asn1.x509.GeneralName;
 import com.distrimind.bouncycastle.asn1.x509.KeyPurposeId;
 import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
 import com.distrimind.bouncycastle.asn1.x9.X9ObjectIdentifiers;
+import com.distrimind.bouncycastle.internal.asn1.bsi.BSIObjectIdentifiers;
 import com.distrimind.bouncycastle.internal.asn1.eac.EACObjectIdentifiers;
-import com.distrimind.bouncycastle.jcajce.util.MessageDigestUtils;
-import com.distrimind.bouncycastle.jce.exception.ExtCertPathValidatorException;
+import com.distrimind.bouncycastle.internal.asn1.isara.IsaraObjectIdentifiers;
+import com.distrimind.bouncycastle.internal.asn1.oiw.OIWObjectIdentifiers;
+import com.distrimind.bouncycastle.internal.asn1.rosstandart.RosstandartObjectIdentifiers;
 import com.distrimind.bouncycastle.jcajce.PKIXCertRevocationChecker;
 import com.distrimind.bouncycastle.jcajce.PKIXCertRevocationCheckerParameters;
 import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
+import com.distrimind.bouncycastle.jcajce.util.MessageDigestUtils;
+import com.distrimind.bouncycastle.jce.exception.ExtCertPathValidatorException;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Properties;
 
@@ -431,7 +431,7 @@ class ProvOcspRevocationChecker
 
             sig.update(basicResp.getTbsResponseData().getEncoded(ASN1Encoding.DER));
 
-            if (sig.verify(basicResp.getSignature().getBytes()))
+            if (sig.verify(basicResp.getSignature().getOctets()))
             {
                 if (nonce != null)
                 {

@@ -194,14 +194,14 @@ public class BaseBlockCipher
     }
 
     protected BaseBlockCipher(
-        BlockCipher engine,
+        com.distrimind.bouncycastle.crypto.BlockCipher engine,
         int ivLength)
     {
         this(engine, true, ivLength);
     }
 
     protected BaseBlockCipher(
-        BlockCipher engine,
+        com.distrimind.bouncycastle.crypto.BlockCipher engine,
         boolean fixedIv,
         int ivLength)
     {
@@ -1247,7 +1247,7 @@ public class BaseBlockCipher
 
         public String getAlgorithmName();
 
-        public BlockCipher getUnderlyingCipher();
+        public com.distrimind.bouncycastle.crypto.BlockCipher getUnderlyingCipher();
 
         public int getOutputSize(int len);
 
@@ -1276,12 +1276,12 @@ public class BaseBlockCipher
             this.cipher = cipher;
         }
 
-        BufferedGenericBlockCipher(BlockCipher cipher)
+        BufferedGenericBlockCipher(com.distrimind.bouncycastle.crypto.BlockCipher cipher)
         {
             this(cipher, new PKCS7Padding());
         }
 
-        BufferedGenericBlockCipher(BlockCipher cipher, BlockCipherPadding padding)
+        BufferedGenericBlockCipher(com.distrimind.bouncycastle.crypto.BlockCipher cipher, BlockCipherPadding padding)
         {
             this.cipher = new PaddedBufferedBlockCipher(cipher, padding);
         }
@@ -1302,7 +1302,7 @@ public class BaseBlockCipher
             return cipher.getUnderlyingCipher().getAlgorithmName();
         }
 
-        public BlockCipher getUnderlyingCipher()
+        public com.distrimind.bouncycastle.crypto.BlockCipher getUnderlyingCipher()
         {
             return cipher.getUnderlyingCipher();
         }
@@ -1375,7 +1375,7 @@ public class BaseBlockCipher
             return cipher.getAlgorithmName();
         }
 
-        public BlockCipher getUnderlyingCipher()
+        public com.distrimind.bouncycastle.crypto.BlockCipher getUnderlyingCipher()
         {
             throw new IllegalStateException("not applicable for FPE");
         }
@@ -1483,7 +1483,7 @@ public class BaseBlockCipher
             return false;
         }
 
-        public BlockCipher getUnderlyingCipher()
+        public com.distrimind.bouncycastle.crypto.BlockCipher getUnderlyingCipher()
         {
             if (cipher instanceof AEADBlockCipher)
             {

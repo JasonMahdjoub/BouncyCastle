@@ -157,6 +157,13 @@ public class SM2SignerTest
     private void doSignerTest(ECDomainParameters domainParams, Digest d, String ident, String msg, String x, String nonce, String r, String s)
         throws Exception
     {
+        implSignerTest(domainParams, d, ident, msg, x, nonce, r, s);
+        implSignerTestReuse(domainParams, d, ident, msg, x);
+    }
+
+    private void implSignerTest(ECDomainParameters domainParams, Digest d, String ident, String msg, String x, String nonce, String r, String s)
+        throws Exception
+    {
         byte[] idBytes = Strings.toByteArray(ident);
         byte[] msgBytes = Strings.toByteArray(msg);
         AsymmetricCipherKeyPair kp = generateKeyPair(domainParams, x);
@@ -181,6 +188,40 @@ public class SM2SignerTest
         signer.update(msgBytes, 0, msgBytes.length);
 
         isTrue("verification failed", signer.verifySignature(sig));
+    }
+
+    private void implSignerTestReuse(ECDomainParameters domainParams, Digest d, String ident, String msg, String x)
+        throws Exception
+    {
+        byte[] idBytes = Strings.toByteArray(ident);
+        byte[] msgBytes = Strings.toByteArray(msg);
+        AsymmetricCipherKeyPair kp = generateKeyPair(domainParams, x);
+
+        SM2Signer signer = new SM2Signer(d);
+
+        signer.init(true, new ParametersWithID(kp.getPrivate(), idBytes));
+        signer.update(msgBytes, 0, msgBytes.length);
+        byte[] sig1 = signer.generateSignature();
+
+        signer.update(msgBytes, 0, msgBytes.length);
+        byte[] sig2 = signer.generateSignature();
+
+        signer.update((byte)0x00);
+        signer.reset();
+        signer.update(msgBytes, 0, msgBytes.length);
+        byte[] sig3 = signer.generateSignature();
+
+        signer.init(false, new ParametersWithID(kp.getPublic(), idBytes));
+        signer.update(msgBytes, 0, msgBytes.length);
+        isTrue("verification failed", signer.verifySignature(sig1));
+
+        signer.update(msgBytes, 0, msgBytes.length);
+        isTrue("verification failed", signer.verifySignature(sig2));
+
+        signer.update((byte)0x00);
+        signer.reset();
+        signer.update(msgBytes, 0, msgBytes.length);
+        isTrue("verification failed", signer.verifySignature(sig3));
     }
 
     private void doVerifyBoundsCheck()

@@ -23,7 +23,6 @@ import com.distrimind.bouncycastle.asn1.DEROctetString;
 import com.distrimind.bouncycastle.asn1.cryptopro.ECGOST3410NamedCurves;
 import com.distrimind.bouncycastle.asn1.cryptopro.GOST3410PublicKeyAlgParameters;
 import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
-import com.distrimind.bouncycastle.asn1.rosstandart.RosstandartObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
 import com.distrimind.bouncycastle.asn1.x9.X962Parameters;
@@ -31,15 +30,16 @@ import com.distrimind.bouncycastle.asn1.x9.X9ECParameters;
 import com.distrimind.bouncycastle.asn1.x9.X9ECPoint;
 import com.distrimind.bouncycastle.crypto.params.ECDomainParameters;
 import com.distrimind.bouncycastle.crypto.params.ECPrivateKeyParameters;
+import com.distrimind.bouncycastle.internal.asn1.rosstandart.RosstandartObjectIdentifiers;
+import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.EC5Util;
+import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.ECUtil;
+import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.PKCS12BagAttributeCarrierImpl;
 import com.distrimind.bouncycastle.jce.ECGOST3410NamedCurveTable;
 import com.distrimind.bouncycastle.jce.interfaces.ECPointEncoder;
 import com.distrimind.bouncycastle.jce.interfaces.PKCS12BagAttributeCarrier;
 import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
 import com.distrimind.bouncycastle.jce.spec.ECNamedCurveParameterSpec;
 import com.distrimind.bouncycastle.jce.spec.ECNamedCurveSpec;
-import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.EC5Util;
-import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.ECUtil;
-import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.PKCS12BagAttributeCarrierImpl;
 import com.distrimind.bouncycastle.math.ec.ECCurve;
 import com.distrimind.bouncycastle.util.Arrays;
 
@@ -200,7 +200,8 @@ public class BCECGOST3410_2012PrivateKey
     {
         ASN1Primitive p = info.getPrivateKeyAlgorithm().getParameters().toASN1Primitive();
 
-        if (p instanceof ASN1Sequence && (ASN1Sequence.getInstance(p).size() == 2 || ASN1Sequence.getInstance(p).size() == 3))
+        if (p instanceof ASN1Sequence &&
+            (ASN1Sequence.getInstance(p).size() <= 3))
         {
             gostParams = GOST3410PublicKeyAlgParameters.getInstance(info.getPrivateKeyAlgorithm().getParameters());
 

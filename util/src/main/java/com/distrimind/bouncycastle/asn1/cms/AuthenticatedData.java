@@ -148,7 +148,7 @@ public class AuthenticatedData
      * <ul>
      * <li> null &rarr; null
      * <li> {@link AuthenticatedData} object
-     * <li> {@link ASN1Sequence#getInstance(java.lang.Object) ASN1Sequence} input formats with AuthenticatedData structure inside
+     * <li> {@link com.distrimind.bouncycastle.asn1.ASN1Sequence#getInstance(java.lang.Object) ASN1Sequence} input formats with AuthenticatedData structure inside
      * </ul>
      *
      * @param obj the object we want converted.

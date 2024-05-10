@@ -8,7 +8,6 @@ import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.DERSequence;
 import com.distrimind.bouncycastle.util.Arrays;
-import com.distrimind.bouncycastle.util.Iterable;
 
 /**
  * <pre>
@@ -17,7 +16,7 @@ import com.distrimind.bouncycastle.util.Iterable;
  */
 public class ObjectDataSequence
     extends ASN1Object
-    implements Iterable<ASN1Encodable>
+    implements com.distrimind.bouncycastle.util.Iterable<ASN1Encodable>
 {
     private final ASN1Encodable[] dataSequence;
 

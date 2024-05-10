@@ -6,7 +6,6 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 import com.distrimind.bouncycastle.util.Arrays;
-import com.distrimind.bouncycastle.util.Iterable;
 
 /**
  * ASN.1 <code>SET</code> and <code>SET OF</code> constructs.
@@ -97,7 +96,7 @@ import com.distrimind.bouncycastle.util.Iterable;
  */
 public abstract class ASN1Set
     extends ASN1Primitive
-    implements Iterable<ASN1Encodable>
+    implements com.distrimind.bouncycastle.util.Iterable<ASN1Encodable>
 {
     static final ASN1UniversalType TYPE = new ASN1UniversalType(ASN1Set.class, BERTags.SET)
     {

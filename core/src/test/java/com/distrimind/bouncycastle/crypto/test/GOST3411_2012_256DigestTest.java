@@ -4,9 +4,11 @@ import java.util.ArrayList;
 
 import com.distrimind.bouncycastle.crypto.Digest;
 import com.distrimind.bouncycastle.crypto.digests.GOST3411_2012_256Digest;
+import com.distrimind.bouncycastle.crypto.digests.GOST3411_2012_512Digest;
 import com.distrimind.bouncycastle.crypto.macs.HMac;
 import com.distrimind.bouncycastle.crypto.params.KeyParameter;
 import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Strings;
 import com.distrimind.bouncycastle.util.encoders.Hex;
 
 public class GOST3411_2012_256DigestTest

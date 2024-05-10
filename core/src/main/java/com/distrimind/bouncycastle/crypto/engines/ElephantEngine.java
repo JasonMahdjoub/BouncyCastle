@@ -3,12 +3,12 @@ package com.distrimind.bouncycastle.crypto.engines;
 import java.io.ByteArrayOutputStream;
 import java.util.Arrays;
 
-import com.distrimind.bouncycastle.crypto.constraints.DefaultServiceProperties;
 import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
 import com.distrimind.bouncycastle.crypto.DataLengthException;
 import com.distrimind.bouncycastle.crypto.InvalidCipherTextException;
 import com.distrimind.bouncycastle.crypto.OutputLengthException;
+import com.distrimind.bouncycastle.crypto.constraints.DefaultServiceProperties;
 import com.distrimind.bouncycastle.crypto.modes.AEADCipher;
 import com.distrimind.bouncycastle.crypto.params.KeyParameter;
 import com.distrimind.bouncycastle.crypto.params.ParametersWithIV;

@@ -1,6 +1,5 @@
 package com.distrimind.bouncycastle.pqc.crypto.lms;
 
-import com.distrimind.bouncycastle.pqc.crypto.lms.*;
 import junit.framework.TestCase;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.encoders.Hex;

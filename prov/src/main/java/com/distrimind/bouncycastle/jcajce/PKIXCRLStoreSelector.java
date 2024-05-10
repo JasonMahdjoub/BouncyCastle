@@ -20,7 +20,7 @@ import com.distrimind.bouncycastle.util.Selector;
  * This class is a Selector implementation for X.509 certificate revocation
  * lists.
  * 
- * @see Selector
+ * @see com.distrimind.bouncycastle.util.Selector
  */
 public class PKIXCRLStoreSelector<T extends CRL>
     implements Selector<T>

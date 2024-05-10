@@ -18,10 +18,10 @@ import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
 import com.distrimind.bouncycastle.crypto.params.ECKeyParameters;
 import com.distrimind.bouncycastle.crypto.params.ParametersWithRandom;
 import com.distrimind.bouncycastle.crypto.signers.ECGOST3410Signer;
+import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.ECUtil;
 import com.distrimind.bouncycastle.jce.interfaces.ECKey;
 import com.distrimind.bouncycastle.jce.interfaces.ECPublicKey;
 import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
-import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.ECUtil;
 
 /**
  * Signature for GOST34.10 2012 256. Algorithm is the same as for GOST34.10 2001

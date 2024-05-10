@@ -1,5 +1,8 @@
 package com.distrimind.bouncycastle.pqc.crypto.saber;
 
+import com.distrimind.bouncycastle.crypto.Xof;
+import com.distrimind.bouncycastle.crypto.digests.SHAKEDigest;
+
 class Poly
 {
     private static final int KARATSUBA_N = 64;

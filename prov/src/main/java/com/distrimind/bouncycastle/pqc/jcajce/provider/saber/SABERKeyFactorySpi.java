@@ -67,14 +67,14 @@ public class SABERKeyFactorySpi
     public final KeySpec engineGetKeySpec(Key key, Class keySpec)
             throws InvalidKeySpecException
     {
-        if (key instanceof BCSABERPrivateKey)
+        if (key instanceof com.distrimind.bouncycastle.pqc.jcajce.provider.saber.BCSABERPrivateKey)
         {
             if (PKCS8EncodedKeySpec.class.isAssignableFrom(keySpec))
             {
                 return new PKCS8EncodedKeySpec(key.getEncoded());
             }
         }
-        else if (key instanceof BCSABERPublicKey)
+        else if (key instanceof com.distrimind.bouncycastle.pqc.jcajce.provider.saber.BCSABERPublicKey)
         {
             if (X509EncodedKeySpec.class.isAssignableFrom(keySpec))
             {
@@ -94,7 +94,7 @@ public class SABERKeyFactorySpi
     public final Key engineTranslateKey(Key key)
             throws InvalidKeyException
     {
-        if (key instanceof BCSABERPrivateKey || key instanceof BCSABERPublicKey)
+        if (key instanceof com.distrimind.bouncycastle.pqc.jcajce.provider.saber.BCSABERPrivateKey || key instanceof com.distrimind.bouncycastle.pqc.jcajce.provider.saber.BCSABERPublicKey)
         {
             return key;
         }

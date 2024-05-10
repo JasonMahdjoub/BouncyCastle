@@ -4,11 +4,11 @@ import java.io.FilterInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import com.distrimind.bouncycastle.crypto.modes.AEADBlockCipher;
 import com.distrimind.bouncycastle.crypto.BufferedBlockCipher;
 import com.distrimind.bouncycastle.crypto.InvalidCipherTextException;
 import com.distrimind.bouncycastle.crypto.SkippingCipher;
 import com.distrimind.bouncycastle.crypto.StreamCipher;
+import com.distrimind.bouncycastle.crypto.modes.AEADBlockCipher;
 import com.distrimind.bouncycastle.util.Arrays;
 
 /**

@@ -6,13 +6,13 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import com.distrimind.bouncycastle.crypto.params.ECDomainParameters;
-import com.distrimind.bouncycastle.crypto.params.ECNamedDomainParameters;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.nist.NISTNamedCurves;
 import com.distrimind.bouncycastle.asn1.sec.SECObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.x9.X9ECParameters;
 import com.distrimind.bouncycastle.crypto.ec.CustomNamedCurves;
+import com.distrimind.bouncycastle.crypto.params.ECDomainParameters;
+import com.distrimind.bouncycastle.crypto.params.ECNamedDomainParameters;
 import com.distrimind.bouncycastle.math.ec.ECCurve;
 import com.distrimind.bouncycastle.util.Strings;
 

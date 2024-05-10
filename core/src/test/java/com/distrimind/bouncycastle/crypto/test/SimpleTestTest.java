@@ -1,6 +1,5 @@
 package com.distrimind.bouncycastle.crypto.test;
 
-import com.distrimind.bouncycastle.util.test.Test;
 import junit.framework.TestCase;
 import com.distrimind.bouncycastle.util.test.SimpleTestResult;
 
@@ -9,7 +8,7 @@ public class SimpleTestTest
 {
     public void testCrypto()
     {
-        Test[] tests = RegressionTest.tests;
+        com.distrimind.bouncycastle.util.test.Test[] tests = RegressionTest.tests;
 
         for (int i = 0; i != tests.length; i++)
         {

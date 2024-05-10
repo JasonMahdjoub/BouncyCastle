@@ -1,6 +1,7 @@
 module com.distrimind.bouncycastle.provider
 {
     requires java.sql;
+    requires java.logging;
     requires java.naming;
 	requires com.distrimind.bouncycastle.core;
 
@@ -14,6 +15,7 @@ module com.distrimind.bouncycastle.provider
     exports com.distrimind.bouncycastle.jcajce;
     exports com.distrimind.bouncycastle.jcajce.io;
     exports com.distrimind.bouncycastle.jcajce.provider.asymmetric;
+    exports com.distrimind.bouncycastle.jcajce.provider.asymmetric.compositesignatures;
     exports com.distrimind.bouncycastle.jcajce.provider.asymmetric.dh;
     exports com.distrimind.bouncycastle.jcajce.provider.asymmetric.dsa;
     exports com.distrimind.bouncycastle.jcajce.provider.asymmetric.dstu;
@@ -46,6 +48,7 @@ module com.distrimind.bouncycastle.provider
     exports com.distrimind.bouncycastle.jce.netscape;
     exports com.distrimind.bouncycastle.jce.provider;
     exports com.distrimind.bouncycastle.jce.spec;
+
     exports com.distrimind.bouncycastle.pqc.jcajce.interfaces;
     exports com.distrimind.bouncycastle.pqc.jcajce.provider;
     exports com.distrimind.bouncycastle.pqc.jcajce.provider.bike;
@@ -65,12 +68,14 @@ module com.distrimind.bouncycastle.provider
     exports com.distrimind.bouncycastle.pqc.jcajce.provider.rainbow;
     exports com.distrimind.bouncycastle.pqc.jcajce.provider.saber;
     exports com.distrimind.bouncycastle.pqc.jcajce.provider.sphincs;
-    exports com.distrimind.bouncycastle.pqc.jcajce.provider.sphincsplus; 
+    exports com.distrimind.bouncycastle.pqc.jcajce.provider.sphincsplus;
     exports com.distrimind.bouncycastle.pqc.jcajce.provider.util;
     exports com.distrimind.bouncycastle.pqc.jcajce.provider.xmss;
     exports com.distrimind.bouncycastle.pqc.jcajce.spec;
+
     exports com.distrimind.bouncycastle.x509;
     exports com.distrimind.bouncycastle.x509.extension;
     exports com.distrimind.bouncycastle.x509.util;
+
 
 }

@@ -214,7 +214,7 @@ public class PKCS10CertRequestTest
         
         sig.update(req.getCertificationRequestInfo().getEncoded());
         
-        if (!sig.verify(req.getSignature().getBytes()))
+        if (!sig.verify(req.getSignature().getOctets()))
         {
             fail("signature not mapped correctly.");
         }
@@ -293,7 +293,7 @@ public class PKCS10CertRequestTest
 
         sig.update(req.getCertificationRequestInfo().getEncoded());
 
-        if (!sig.verify(req.getSignature().getBytes()))
+        if (!sig.verify(req.getSignature().getOctets()))
         {
             fail("signature not mapped correctly.");
         }
@@ -343,7 +343,7 @@ public class PKCS10CertRequestTest
 
         sig.update(req.getCertificationRequestInfo().getEncoded());
 
-        if (!sig.verify(req.getSignature().getBytes()))
+        if (!sig.verify(req.getSignature().getOctets()))
         {
             fail("signature not mapped correctly.");
         }
@@ -400,7 +400,7 @@ public class PKCS10CertRequestTest
 
         sig.update(req.getCertificationRequestInfo().getEncoded());
 
-        if (!sig.verify(req.getSignature().getBytes()))
+        if (!sig.verify(req.getSignature().getOctets()))
         {
             fail("signature not mapped correctly.");
         }

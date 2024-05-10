@@ -1,6 +1,6 @@
 package com.distrimind.bouncycastle.crypto.util;
 
-import com.distrimind.bouncycastle.asn1.misc.MiscObjectIdentifiers;
+import com.distrimind.bouncycastle.internal.asn1.misc.MiscObjectIdentifiers;
 
 /**
  * Configuration class for a PBKDF based around scrypt.

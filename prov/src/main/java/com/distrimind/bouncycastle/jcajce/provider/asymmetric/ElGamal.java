@@ -1,6 +1,6 @@
 package com.distrimind.bouncycastle.jcajce.provider.asymmetric;
 
-import com.distrimind.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
+import com.distrimind.bouncycastle.internal.asn1.oiw.OIWObjectIdentifiers;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.elgamal.KeyFactorySpi;
 import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import com.distrimind.bouncycastle.jcajce.provider.util.AsymmetricAlgorithmProvider;

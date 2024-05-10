@@ -2,7 +2,6 @@ package com.distrimind.bouncycastle.asn1.x509;
 
 import java.io.IOException;
 
-import com.distrimind.bouncycastle.asn1.x500.X500Name;
 import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
 import com.distrimind.bouncycastle.asn1.ASN1GeneralizedTime;
 import com.distrimind.bouncycastle.asn1.ASN1Integer;
@@ -11,6 +10,7 @@ import com.distrimind.bouncycastle.asn1.ASN1UTCTime;
 import com.distrimind.bouncycastle.asn1.DEROctetString;
 import com.distrimind.bouncycastle.asn1.DERSequence;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
+import com.distrimind.bouncycastle.asn1.x500.X500Name;
 
 /**
  * Generator for Version 2 TBSCertList structures.
@@ -39,7 +39,7 @@ public class V2TBSCertListGenerator
 {
     private ASN1Integer         version = new ASN1Integer(1);
     private AlgorithmIdentifier signature;
-    private X500Name issuer;
+    private X500Name            issuer;
     private Time                thisUpdate, nextUpdate=null;
     private Extensions          extensions = null;
     private ASN1EncodableVector crlentries = new ASN1EncodableVector();

@@ -27,11 +27,11 @@ import com.distrimind.bouncycastle.asn1.x9.X9ECPoint;
 import com.distrimind.bouncycastle.asn1.x9.X9ObjectIdentifiers;
 import com.distrimind.bouncycastle.crypto.params.ECDomainParameters;
 import com.distrimind.bouncycastle.crypto.params.ECPrivateKeyParameters;
-import com.distrimind.bouncycastle.jce.interfaces.ECPointEncoder;
-import com.distrimind.bouncycastle.jce.interfaces.PKCS12BagAttributeCarrier;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.EC5Util;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.ECUtil;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.PKCS12BagAttributeCarrierImpl;
+import com.distrimind.bouncycastle.jce.interfaces.ECPointEncoder;
+import com.distrimind.bouncycastle.jce.interfaces.PKCS12BagAttributeCarrier;
 import com.distrimind.bouncycastle.jce.spec.ECNamedCurveSpec;
 import com.distrimind.bouncycastle.math.ec.ECCurve;
 import com.distrimind.bouncycastle.util.Strings;
@@ -62,7 +62,7 @@ public class JCEECPrivateKey
 
     public JCEECPrivateKey(
         String              algorithm,
-        com.distrimind.bouncycastle.jce.spec.ECPrivateKeySpec spec)
+        com.distrimind.bouncycastle.jce.spec.ECPrivateKeySpec     spec)
     {
         this.algorithm = algorithm;
         this.d = spec.getD();
@@ -136,7 +136,7 @@ public class JCEECPrivateKey
         String                  algorithm,
         ECPrivateKeyParameters  params,
         JCEECPublicKey          pubKey,
-        com.distrimind.bouncycastle.jce.spec.ECParameterSpec spec)
+        com.distrimind.bouncycastle.jce.spec.ECParameterSpec         spec)
     {
         this.algorithm = algorithm;
         this.d = params.getD();

@@ -6,17 +6,21 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-import com.distrimind.bouncycastle.x509.*;
-import com.distrimind.bouncycastle.x509.util.LDAPStoreHelper;
 import com.distrimind.bouncycastle.jce.X509LDAPCertStoreParameters;
 import com.distrimind.bouncycastle.util.Selector;
 import com.distrimind.bouncycastle.util.StoreException;
+import com.distrimind.bouncycastle.x509.X509CertPairStoreSelector;
+import com.distrimind.bouncycastle.x509.X509CertStoreSelector;
+import com.distrimind.bouncycastle.x509.X509CertificatePair;
+import com.distrimind.bouncycastle.x509.X509StoreParameters;
+import com.distrimind.bouncycastle.x509.X509StoreSpi;
+import com.distrimind.bouncycastle.x509.util.LDAPStoreHelper;
 
 /**
  * A SPI implementation of Bouncy Castle <code>X509Store</code> for getting
  * certificates form a LDAP directory.
  *
- * @see X509Store
+ * @see com.distrimind.bouncycastle.x509.X509Store
  */
 public class X509StoreLDAPCerts
     extends X509StoreSpi

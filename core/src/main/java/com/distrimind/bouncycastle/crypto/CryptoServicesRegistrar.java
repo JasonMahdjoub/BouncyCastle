@@ -16,8 +16,9 @@ import com.distrimind.bouncycastle.crypto.params.DHParameters;
 import com.distrimind.bouncycastle.crypto.params.DHValidationParameters;
 import com.distrimind.bouncycastle.crypto.params.DSAParameters;
 import com.distrimind.bouncycastle.crypto.params.DSAValidationParameters;
-import com.distrimind.bouncycastle.util.encoders.Hex;
 import com.distrimind.bouncycastle.util.Properties;
+import com.distrimind.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.util.encoders.Hex;
 
 /**
  * Basic registrar class for providing defaults for cryptography services in this module.

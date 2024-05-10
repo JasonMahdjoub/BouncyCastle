@@ -41,24 +41,10 @@ module com.distrimind.bouncycastle.core {
 	exports com.distrimind.bouncycastle.asn1.anssi;
 	exports com.distrimind.bouncycastle.asn1.bc;
 	exports com.distrimind.bouncycastle.asn1.cryptopro;
-	exports com.distrimind.bouncycastle.asn1.cryptlib;
-	exports com.distrimind.bouncycastle.asn1.edec;
 	exports com.distrimind.bouncycastle.asn1.gm;
-	exports com.distrimind.bouncycastle.asn1.gnu;
-	exports com.distrimind.bouncycastle.asn1.iana;
-	exports com.distrimind.bouncycastle.asn1.isara;
-	exports com.distrimind.bouncycastle.asn1.iso;
-	exports com.distrimind.bouncycastle.asn1.kisa;
-	exports com.distrimind.bouncycastle.asn1.microsoft;
-	exports com.distrimind.bouncycastle.asn1.misc;
-	exports com.distrimind.bouncycastle.asn1.mozilla;
 	exports com.distrimind.bouncycastle.asn1.nist;
-	exports com.distrimind.bouncycastle.asn1.nsri;
-	exports com.distrimind.bouncycastle.asn1.ntt;
 	exports com.distrimind.bouncycastle.asn1.ocsp;
-	exports com.distrimind.bouncycastle.asn1.oiw;
 	exports com.distrimind.bouncycastle.asn1.pkcs;
-	exports com.distrimind.bouncycastle.asn1.rosstandart;
 	exports com.distrimind.bouncycastle.asn1.sec;
 	exports com.distrimind.bouncycastle.asn1.teletrust;
 	exports com.distrimind.bouncycastle.asn1.ua;
@@ -116,6 +102,18 @@ module com.distrimind.bouncycastle.core {
 	exports com.distrimind.bouncycastle.internal.asn1.cms to com.distrimind.bouncycastle.provider;
 	exports com.distrimind.bouncycastle.internal.asn1.eac to com.distrimind.bouncycastle.provider;
 	exports com.distrimind.bouncycastle.internal.asn1.isismtt to com.distrimind.bouncycastle.provider;
+	exports com.distrimind.bouncycastle.internal.asn1.oiw to com.distrimind.bouncycastle.provider;
+	exports com.distrimind.bouncycastle.internal.asn1.gnu to com.distrimind.bouncycastle.provider;
+	exports com.distrimind.bouncycastle.internal.asn1.kisa to com.distrimind.bouncycastle.provider;
+	exports com.distrimind.bouncycastle.internal.asn1.misc to com.distrimind.bouncycastle.provider;
+	exports com.distrimind.bouncycastle.internal.asn1.ntt to com.distrimind.bouncycastle.provider;
+	exports com.distrimind.bouncycastle.internal.asn1.isara to com.distrimind.bouncycastle.provider;
+	exports com.distrimind.bouncycastle.internal.asn1.nsri to com.distrimind.bouncycastle.provider;
+	exports com.distrimind.bouncycastle.internal.asn1.rosstandart to com.distrimind.bouncycastle.provider;
+	exports com.distrimind.bouncycastle.internal.asn1.iana to com.distrimind.bouncycastle.provider;
+	exports com.distrimind.bouncycastle.internal.asn1.iso to com.distrimind.bouncycastle.provider;
+	exports com.distrimind.bouncycastle.internal.asn1.edec to com.distrimind.bouncycastle.provider;
+	exports com.distrimind.bouncycastle.crypto.tls;
 
 
 }

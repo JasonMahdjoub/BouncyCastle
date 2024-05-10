@@ -3,17 +3,14 @@ package com.distrimind.bouncycastle.crypto.hpke;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
+import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
+import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPairGenerator;
+import com.distrimind.bouncycastle.crypto.BasicAgreement;
 import com.distrimind.bouncycastle.crypto.agreement.ECDHCBasicAgreement;
 import com.distrimind.bouncycastle.crypto.agreement.XDHBasicAgreement;
 import com.distrimind.bouncycastle.crypto.generators.ECKeyPairGenerator;
 import com.distrimind.bouncycastle.crypto.generators.X25519KeyPairGenerator;
 import com.distrimind.bouncycastle.crypto.generators.X448KeyPairGenerator;
-import com.distrimind.bouncycastle.math.ec.custom.sec.SecP256R1Curve;
-import com.distrimind.bouncycastle.math.ec.custom.sec.SecP384R1Curve;
-import com.distrimind.bouncycastle.math.ec.custom.sec.SecP521R1Curve;
-import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
-import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPairGenerator;
-import com.distrimind.bouncycastle.crypto.BasicAgreement;
 import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
 import com.distrimind.bouncycastle.crypto.params.ECDomainParameters;
 import com.distrimind.bouncycastle.crypto.params.ECKeyGenerationParameters;
@@ -29,6 +26,9 @@ import com.distrimind.bouncycastle.math.ec.ECCurve;
 import com.distrimind.bouncycastle.math.ec.ECPoint;
 import com.distrimind.bouncycastle.math.ec.FixedPointCombMultiplier;
 import com.distrimind.bouncycastle.math.ec.WNafUtil;
+import com.distrimind.bouncycastle.math.ec.custom.sec.SecP256R1Curve;
+import com.distrimind.bouncycastle.math.ec.custom.sec.SecP384R1Curve;
+import com.distrimind.bouncycastle.math.ec.custom.sec.SecP521R1Curve;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Pack;
 import com.distrimind.bouncycastle.util.Strings;
@@ -50,7 +50,6 @@ class DHKEM
     private int Nsecret;
 
     ECDomainParameters domainParams;
-
 
     protected DHKEM(short kemid)
     {
@@ -187,36 +186,59 @@ class DHKEM
     {
         switch (kemId)
         {
-        case HPKE.kem_P256_SHA256:
-        case HPKE.kem_P384_SHA348:
-        case HPKE.kem_P521_SHA512:
-            ECPoint G = domainParams.getCurve().decodePoint(encoded);
-            return new ECPublicKeyParameters(G, domainParams);
-        case HPKE.kem_X448_SHA512:
-            return new X448PublicKeyParameters(encoded);
-        case HPKE.kem_X25519_SHA256:
-            return new X25519PublicKeyParameters(encoded);
-        default:
-            throw new IllegalStateException("invalid kem id");
+            case HPKE.kem_P256_SHA256:
+            case HPKE.kem_P384_SHA348:
+            case HPKE.kem_P521_SHA512:
+                ECPoint G = domainParams.getCurve().decodePoint(encoded);
+                return new ECPublicKeyParameters(G, domainParams);
+            case HPKE.kem_X448_SHA512:
+                return new X448PublicKeyParameters(encoded);
+            case HPKE.kem_X25519_SHA256:
+                return new X25519PublicKeyParameters(encoded);
+            default:
+                throw new IllegalStateException("invalid kem id");
         }
     }
 
     public AsymmetricCipherKeyPair DeserializePrivateKey(byte[] skEncoded, byte[] pkEncoded)
     {
-        AsymmetricKeyParameter pubParam = DeserializePublicKey(pkEncoded);
+        AsymmetricKeyParameter pubParam = null;
+
+        if (pkEncoded != null)
+        {
+            pubParam = DeserializePublicKey(pkEncoded);
+        }
+
         switch (kemId)
         {
-        case HPKE.kem_P256_SHA256:
-        case HPKE.kem_P384_SHA348:
-        case HPKE.kem_P521_SHA512:
-            BigInteger d = new BigInteger(1, skEncoded);
-            return new AsymmetricCipherKeyPair(pubParam, new ECPrivateKeyParameters(d, ((ECPublicKeyParameters)pubParam).getParameters()));
-        case HPKE.kem_X448_SHA512:
-            return new AsymmetricCipherKeyPair(pubParam, new X448PrivateKeyParameters(skEncoded));
-        case HPKE.kem_X25519_SHA256:
-            return new AsymmetricCipherKeyPair(pubParam, new X25519PrivateKeyParameters(skEncoded));
-        default:
-            throw new IllegalStateException("invalid kem id");
+            case HPKE.kem_P256_SHA256:
+            case HPKE.kem_P384_SHA348:
+            case HPKE.kem_P521_SHA512:
+                BigInteger d = new BigInteger(1, skEncoded);
+                ECPrivateKeyParameters ec = new ECPrivateKeyParameters(d, domainParams);
+
+                if (pubParam == null)
+                {
+                    ECPoint Q = new FixedPointCombMultiplier().multiply(domainParams.getG(), ((ECPrivateKeyParameters)ec).getD());
+                    pubParam = new ECPublicKeyParameters(Q, domainParams);
+                }
+                return new AsymmetricCipherKeyPair(pubParam, ec);
+            case HPKE.kem_X448_SHA512:
+                X448PrivateKeyParameters x448 = new X448PrivateKeyParameters(skEncoded);
+                if (pubParam == null)
+                {
+                    pubParam = x448.generatePublicKey();
+                }
+                return new AsymmetricCipherKeyPair(pubParam, x448);
+            case HPKE.kem_X25519_SHA256:
+                X25519PrivateKeyParameters x25519 = new X25519PrivateKeyParameters(skEncoded);
+                if (pubParam == null)
+                {
+                    pubParam = x25519.generatePublicKey();
+                }
+                return new AsymmetricCipherKeyPair(pubParam, x25519);
+            default:
+                throw new IllegalStateException("invalid kem id");
         }
     }
 
@@ -246,10 +268,10 @@ class DHKEM
 
     public AsymmetricCipherKeyPair DeriveKeyPair(byte[] ikm)
     {
-        if (ikm.length < Nsk)
-        {
-            throw new IllegalArgumentException("input keying material should have length at least " + Nsk + " bytes");
-        }
+//        if (ikm.length < Nsk)
+//        {
+//            throw new IllegalArgumentException("input keying material should have length at least " + Nsk + " bytes");
+//        }
         byte[] suiteID = Arrays.concatenate(Strings.toByteArray("KEM"), Pack.shortToBigEndian(kemId));
         switch (kemId)
         {
@@ -312,7 +334,7 @@ class DHKEM
         agreement.init(kpE.getPrivate());
 
         byte[] temp = agreement.calculateAgreement(pkR).toByteArray();
-        byte [] secret = formatBigIntegerBytes(temp, agreement.getFieldSize());
+        byte[] secret = formatBigIntegerBytes(temp, agreement.getFieldSize());
 
         byte[] enc = SerializePublicKey(kpE.getPublic());
         byte[] pkRm = SerializePublicKey(pkR);

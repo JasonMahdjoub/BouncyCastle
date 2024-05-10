@@ -3,10 +3,10 @@ package com.distrimind.bouncycastle.crypto.agreement;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
-import com.distrimind.bouncycastle.crypto.generators.DHKeyPairGenerator;
 import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
 import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
+import com.distrimind.bouncycastle.crypto.generators.DHKeyPairGenerator;
 import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
 import com.distrimind.bouncycastle.crypto.params.DHKeyGenerationParameters;
 import com.distrimind.bouncycastle.crypto.params.DHParameters;

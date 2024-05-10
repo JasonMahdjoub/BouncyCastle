@@ -1,15 +1,15 @@
 package com.distrimind.bouncycastle.jcajce.provider.digest;
 
-import com.distrimind.bouncycastle.asn1.iana.IANAObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import com.distrimind.bouncycastle.crypto.CipherKeyGenerator;
 import com.distrimind.bouncycastle.crypto.digests.SHA1Digest;
 import com.distrimind.bouncycastle.crypto.macs.HMac;
+import com.distrimind.bouncycastle.internal.asn1.iana.IANAObjectIdentifiers;
+import com.distrimind.bouncycastle.internal.asn1.oiw.OIWObjectIdentifiers;
+import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseKeyGenerator;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseMac;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.PBESecretKeyFactory;
-import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 
 public class SHA1
 {

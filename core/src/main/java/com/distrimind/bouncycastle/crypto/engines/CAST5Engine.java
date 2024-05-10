@@ -1,12 +1,12 @@
 package com.distrimind.bouncycastle.crypto.engines;
 
-import com.distrimind.bouncycastle.crypto.constraints.DefaultServiceProperties;
 import com.distrimind.bouncycastle.crypto.BlockCipher;
 import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.CryptoServicePurpose;
 import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
 import com.distrimind.bouncycastle.crypto.DataLengthException;
 import com.distrimind.bouncycastle.crypto.OutputLengthException;
+import com.distrimind.bouncycastle.crypto.constraints.DefaultServiceProperties;
 import com.distrimind.bouncycastle.crypto.params.KeyParameter;
 
 /**
@@ -742,8 +742,6 @@ public class CAST5Engine
 
         result[0] = Ri;
         result[1] = Li;
-
-        return;
     }
 
     protected final void CAST_Decipher(int L16, int R16, int result[])
@@ -792,8 +790,6 @@ public class CAST5Engine
 
         result[0] = Ri;
         result[1] = Li;
-
-        return;
     }
 
     protected final void Bits32ToInts(int in,  int[] b, int offset)

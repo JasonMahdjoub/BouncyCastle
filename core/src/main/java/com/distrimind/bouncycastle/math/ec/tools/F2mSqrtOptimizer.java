@@ -4,6 +4,7 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Iterator;
+import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -13,6 +14,7 @@ import com.distrimind.bouncycastle.crypto.ec.CustomNamedCurves;
 import com.distrimind.bouncycastle.math.ec.ECAlgorithms;
 import com.distrimind.bouncycastle.math.ec.ECCurve;
 import com.distrimind.bouncycastle.math.ec.ECFieldElement;
+import com.distrimind.bouncycastle.util.Strings;
 
 public class F2mSqrtOptimizer
 {
@@ -59,7 +61,7 @@ public class F2mSqrtOptimizer
         ECFieldElement rootZ = z.sqrt();
 
         // -DM System.out.println
-        System.out.println(rootZ.toBigInteger().toString(16).toUpperCase());
+        System.out.println(Strings.toUpperCase(rootZ.toBigInteger().toString(16)));
 
         if (!rootZ.square().equals(z))
         {
@@ -67,9 +69,9 @@ public class F2mSqrtOptimizer
         }
     }
 
-    private static ArrayList enumToList(Enumeration en)
+    private static List enumToList(Enumeration en)
     {
-        ArrayList rv = new ArrayList();
+        List rv = new ArrayList();
         while (en.hasMoreElements())
         {
             rv.add(en.nextElement());

@@ -1,10 +1,10 @@
 package com.distrimind.bouncycastle.asn1.ua;
 
-import com.distrimind.bouncycastle.math.ec.ECPoint;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1OctetString;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.DEROctetString;
+import com.distrimind.bouncycastle.math.ec.ECPoint;
 
 public class DSTU4145PublicKey
     extends ASN1Object

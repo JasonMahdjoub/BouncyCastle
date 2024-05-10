@@ -2,9 +2,9 @@ package com.distrimind.bouncycastle.crypto.ec;
 
 import java.math.BigInteger;
 
+import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.params.ECDomainParameters;
 import com.distrimind.bouncycastle.crypto.params.ECPublicKeyParameters;
-import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.math.ec.ECAlgorithms;
 import com.distrimind.bouncycastle.math.ec.ECMultiplier;
 import com.distrimind.bouncycastle.math.ec.ECPoint;

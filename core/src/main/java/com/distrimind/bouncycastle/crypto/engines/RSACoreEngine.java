@@ -2,12 +2,12 @@ package com.distrimind.bouncycastle.crypto.engines;
 
 import java.math.BigInteger;
 
-import com.distrimind.bouncycastle.crypto.constraints.ConstraintUtils;
-import com.distrimind.bouncycastle.crypto.constraints.DefaultServiceProperties;
 import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.CryptoServicePurpose;
 import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
 import com.distrimind.bouncycastle.crypto.DataLengthException;
+import com.distrimind.bouncycastle.crypto.constraints.ConstraintUtils;
+import com.distrimind.bouncycastle.crypto.constraints.DefaultServiceProperties;
 import com.distrimind.bouncycastle.crypto.params.ParametersWithRandom;
 import com.distrimind.bouncycastle.crypto.params.RSAKeyParameters;
 import com.distrimind.bouncycastle.crypto.params.RSAPrivateCrtKeyParameters;
@@ -27,24 +27,20 @@ class RSACoreEngine
      * @param forEncryption true if we are encrypting, false otherwise.
      * @param param         the necessary RSA key parameters.
      */
-    public void init(
-        boolean forEncryption,
-        CipherParameters param)
+    public void init(boolean forEncryption, CipherParameters parameters)
     {
-        if (param instanceof ParametersWithRandom)
+        if (parameters instanceof ParametersWithRandom)
         {
-            ParametersWithRandom rParam = (ParametersWithRandom)param;
-
-            key = (RSAKeyParameters)rParam.getParameters();
-        }
-        else
-        {
-            key = (RSAKeyParameters)param;
+            ParametersWithRandom withRandom = (ParametersWithRandom)parameters;
+            parameters = withRandom.getParameters();
         }
 
         this.forEncryption = forEncryption;
+        this.key = (RSAKeyParameters)parameters;
 
-        CryptoServicesRegistrar.checkConstraints(new DefaultServiceProperties("RSA", ConstraintUtils.bitsOfSecurityFor(key.getModulus()), key, getPurpose(key.isPrivate(), forEncryption)));
+        int bitsOfSecurity = ConstraintUtils.bitsOfSecurityFor(key.getModulus());
+        CryptoServicePurpose purpose = getPurpose(key.isPrivate(), forEncryption);
+        CryptoServicesRegistrar.checkConstraints(new DefaultServiceProperties("RSA", bitsOfSecurity, key, purpose));
     }
 
     /**

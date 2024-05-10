@@ -14,16 +14,16 @@ import javax.crypto.spec.DHPrivateKeySpec;
 import javax.crypto.spec.DHPublicKeySpec;
 
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
-import com.distrimind.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
 import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
 import com.distrimind.bouncycastle.asn1.x9.X9ObjectIdentifiers;
+import com.distrimind.bouncycastle.internal.asn1.oiw.OIWObjectIdentifiers;
+import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.BaseKeyFactorySpi;
 import com.distrimind.bouncycastle.jce.interfaces.ElGamalPrivateKey;
 import com.distrimind.bouncycastle.jce.interfaces.ElGamalPublicKey;
 import com.distrimind.bouncycastle.jce.spec.ElGamalPrivateKeySpec;
 import com.distrimind.bouncycastle.jce.spec.ElGamalPublicKeySpec;
-import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.BaseKeyFactorySpi;
 
 public class KeyFactorySpi
     extends BaseKeyFactorySpi

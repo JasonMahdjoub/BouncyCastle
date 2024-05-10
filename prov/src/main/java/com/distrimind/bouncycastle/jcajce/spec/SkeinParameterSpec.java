@@ -13,9 +13,6 @@ import java.util.Iterator;
 import java.util.Locale;
 import java.util.Map;
 
-import com.distrimind.bouncycastle.crypto.digests.SkeinDigest;
-import com.distrimind.bouncycastle.crypto.digests.SkeinEngine;
-import com.distrimind.bouncycastle.crypto.macs.SkeinMac;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Integers;
 
@@ -24,20 +21,20 @@ import com.distrimind.bouncycastle.util.Integers;
  * <p>
  * Parameterised Skein can be used for:
  * <ul>
- * <li>MAC generation, by providing a {@link SkeinParameterSpec.Builder#setKey(byte[]) key}.</li>
- * <li>Randomised hashing, by providing a {@link SkeinParameterSpec.Builder#setNonce(byte[]) nonce}.</li>
+ * <li>MAC generation, by providing a {@link com.distrimind.bouncycastle.jcajce.spec.SkeinParameterSpec.Builder#setKey(byte[]) key}.</li>
+ * <li>Randomised hashing, by providing a {@link com.distrimind.bouncycastle.jcajce.spec.SkeinParameterSpec.Builder#setNonce(byte[]) nonce}.</li>
  * <li>A hash function for digital signatures, associating a
- * {@link SkeinParameterSpec.Builder#setPublicKey(byte[]) public key} with the message digest.</li>
+ * {@link com.distrimind.bouncycastle.jcajce.spec.SkeinParameterSpec.Builder#setPublicKey(byte[]) public key} with the message digest.</li>
  * <li>A key derivation function, by providing a
- * {@link SkeinParameterSpec.Builder#setKeyIdentifier(byte[]) key identifier}.</li>
+ * {@link com.distrimind.bouncycastle.jcajce.spec.SkeinParameterSpec.Builder#setKeyIdentifier(byte[]) key identifier}.</li>
  * <li>Personalised hashing, by providing a
- * {@link SkeinParameterSpec.Builder#setPersonalisation(java.util.Date, String, String) recommended format} or
- * {@link SkeinParameterSpec.Builder#setPersonalisation(byte[]) arbitrary} personalisation string.</li>
+ * {@link com.distrimind.bouncycastle.jcajce.spec.SkeinParameterSpec.Builder#setPersonalisation(java.util.Date, String, String) recommended format} or
+ * {@link com.distrimind.bouncycastle.jcajce.spec.SkeinParameterSpec.Builder#setPersonalisation(byte[]) arbitrary} personalisation string.</li>
  * </ul>
  *
- * @see SkeinEngine
- * @see SkeinDigest
- * @see SkeinMac
+ * @see com.distrimind.bouncycastle.crypto.digests.SkeinEngine
+ * @see com.distrimind.bouncycastle.crypto.digests.SkeinDigest
+ * @see com.distrimind.bouncycastle.crypto.macs.SkeinMac
  */
 public class SkeinParameterSpec
     implements AlgorithmParameterSpec
@@ -149,7 +146,7 @@ public class SkeinParameterSpec
     }
 
     /**
-     * A builder for {@link SkeinParameterSpec}.
+     * A builder for {@link com.distrimind.bouncycastle.jcajce.spec.SkeinParameterSpec}.
      */
     public static class Builder
     {
@@ -172,10 +169,10 @@ public class SkeinParameterSpec
         /**
          * Sets a parameters to apply to the Skein hash function.<br>
          * Parameter types must be in the range 0,5..62, and cannot use the value {@value
-         * SkeinParameterSpec#PARAM_TYPE_MESSAGE} (reserved for message body).
+         * com.distrimind.bouncycastle.jcajce.spec.SkeinParameterSpec#PARAM_TYPE_MESSAGE} (reserved for message body).
          * <p>
-         * Parameters with type &lt; {@value SkeinParameterSpec#PARAM_TYPE_MESSAGE} are processed before
-         * the message content, parameters with type &gt; {@value SkeinParameterSpec#PARAM_TYPE_MESSAGE}
+         * Parameters with type &lt; {@value com.distrimind.bouncycastle.jcajce.spec.SkeinParameterSpec#PARAM_TYPE_MESSAGE} are processed before
+         * the message content, parameters with type &gt; {@value com.distrimind.bouncycastle.jcajce.spec.SkeinParameterSpec#PARAM_TYPE_MESSAGE}
          * are processed after the message and prior to output.
          * </p>
          *
@@ -204,7 +201,7 @@ public class SkeinParameterSpec
         }
 
         /**
-         * Sets the {@link SkeinParameterSpec#PARAM_TYPE_KEY} parameter.
+         * Sets the {@link com.distrimind.bouncycastle.jcajce.spec.SkeinParameterSpec#PARAM_TYPE_KEY} parameter.
          */
         public Builder setKey(byte[] key)
         {
@@ -212,7 +209,7 @@ public class SkeinParameterSpec
         }
 
         /**
-         * Sets the {@link SkeinParameterSpec#PARAM_TYPE_PERSONALISATION} parameter.
+         * Sets the {@link com.distrimind.bouncycastle.jcajce.spec.SkeinParameterSpec#PARAM_TYPE_PERSONALISATION} parameter.
          */
         public Builder setPersonalisation(byte[] personalisation)
         {
@@ -289,7 +286,7 @@ public class SkeinParameterSpec
         }
 
         /**
-         * Sets the {@link SkeinParameterSpec#PARAM_TYPE_KEY_IDENTIFIER} parameter.
+         * Sets the {@link com.distrimind.bouncycastle.jcajce.spec.SkeinParameterSpec#PARAM_TYPE_KEY_IDENTIFIER} parameter.
          *
          * @return the current builder instance.
          */
@@ -299,7 +296,7 @@ public class SkeinParameterSpec
         }
 
         /**
-         * Sets the {@link SkeinParameterSpec#PARAM_TYPE_KEY_IDENTIFIER} parameter.
+         * Sets the {@link com.distrimind.bouncycastle.jcajce.spec.SkeinParameterSpec#PARAM_TYPE_KEY_IDENTIFIER} parameter.
          *
          * @return the current builder instance.
          */
@@ -309,7 +306,7 @@ public class SkeinParameterSpec
         }
 
         /**
-         * Sets the {@link SkeinParameterSpec#PARAM_TYPE_NONCE} parameter.
+         * Sets the {@link com.distrimind.bouncycastle.jcajce.spec.SkeinParameterSpec#PARAM_TYPE_NONCE} parameter.
          *
          * @return the current builder instance.
          */
@@ -319,7 +316,7 @@ public class SkeinParameterSpec
         }
 
         /**
-         * Constructs a new {@link SkeinParameterSpec} instance with the parameters provided to this
+         * Constructs a new {@link com.distrimind.bouncycastle.jcajce.spec.SkeinParameterSpec} instance with the parameters provided to this
          * builder.
          */
         public SkeinParameterSpec build()

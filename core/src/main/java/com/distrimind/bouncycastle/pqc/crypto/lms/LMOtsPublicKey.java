@@ -11,6 +11,8 @@ import com.distrimind.bouncycastle.util.Encodable;
 import com.distrimind.bouncycastle.util.Objects;
 import com.distrimind.bouncycastle.util.io.Streams;
 
+import static com.distrimind.bouncycastle.pqc.crypto.lms.LM_OTS.D_MESG;
+
 class LMOtsPublicKey
     implements Encodable
 {
@@ -19,8 +21,7 @@ class LMOtsPublicKey
     private final int q;
     private final byte[] K;
 
-
-    public LMOtsPublicKey(LMOtsParameters parameter, byte[] i, int q, byte[] k)
+    LMOtsPublicKey(LMOtsParameters parameter, byte[] i, int q, byte[] k)
     {
         this.parameter = parameter;
         this.I = i;
@@ -110,9 +111,9 @@ class LMOtsPublicKey
 
     public int hashCode()
     {
-        int result = Objects.hashCode(parameter);
+        int result = q;
+        result = 31 * result + Objects.hashCode(parameter);
         result = 31 * result + Arrays.hashCode(I);
-        result = 31 * result + q;
         result = 31 * result + Arrays.hashCode(K);
         return result;
     }
@@ -133,7 +134,7 @@ class LMOtsPublicKey
 
         LmsUtils.byteArray(I, ctx);
         LmsUtils.u32str(q, ctx);
-        LmsUtils.u16str(LM_OTS.D_MESG, ctx);
+        LmsUtils.u16str(D_MESG, ctx);
         LmsUtils.byteArray(signature.getC(), ctx);
 
         return new LMSContext(this, signature, ctx);
@@ -145,7 +146,7 @@ class LMOtsPublicKey
 
         LmsUtils.byteArray(I, ctx);
         LmsUtils.u32str(q, ctx);
-        LmsUtils.u16str(LM_OTS.D_MESG, ctx);
+        LmsUtils.u16str(D_MESG, ctx);
         LmsUtils.byteArray(signature.getOtsSignature().getC(), ctx);
 
         return new LMSContext(this, signature, ctx);

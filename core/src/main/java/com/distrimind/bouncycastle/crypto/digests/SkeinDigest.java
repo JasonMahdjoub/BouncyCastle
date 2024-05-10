@@ -1,9 +1,9 @@
 package com.distrimind.bouncycastle.crypto.digests;
 
-import com.distrimind.bouncycastle.crypto.engines.ThreefishEngine;
 import com.distrimind.bouncycastle.crypto.CryptoServicePurpose;
 import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
 import com.distrimind.bouncycastle.crypto.ExtendedDigest;
+import com.distrimind.bouncycastle.crypto.engines.ThreefishEngine;
 import com.distrimind.bouncycastle.crypto.params.SkeinParameters;
 import com.distrimind.bouncycastle.util.Memoable;
 

@@ -2,7 +2,6 @@ package com.distrimind.bouncycastle.pqc.asn1;
 
 import java.util.Vector;
 
-import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
 import com.distrimind.bouncycastle.asn1.ASN1Integer;
@@ -11,6 +10,7 @@ import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.DEROctetString;
 import com.distrimind.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.pqc.legacy.crypto.gmss.GMSSLeaf;
 import com.distrimind.bouncycastle.pqc.legacy.crypto.gmss.GMSSParameters;
 import com.distrimind.bouncycastle.pqc.legacy.crypto.gmss.GMSSRootCalc;
@@ -664,15 +664,15 @@ public class GMSSPrivateKey
     }
 
     public GMSSPrivateKey(int[] index, byte[][] currentSeed,
-						  byte[][] nextNextSeed, byte[][][] currentAuthPath,
-						  byte[][][] nextAuthPath, Treehash[][] currentTreehash,
-						  Treehash[][] nextTreehash, Vector[] currentStack,
-						  Vector[] nextStack, Vector[][] currentRetain,
-						  Vector[][] nextRetain, byte[][][] keep, GMSSLeaf[] nextNextLeaf,
-						  GMSSLeaf[] upperLeaf, GMSSLeaf[] upperTreehashLeaf,
-						  int[] minTreehash, byte[][] nextRoot, GMSSRootCalc[] nextNextRoot,
-						  byte[][] currentRootSig, GMSSRootSig[] nextRootSig,
-						  GMSSParameters gmssParameterset, AlgorithmIdentifier digestAlg)
+                          byte[][] nextNextSeed, byte[][][] currentAuthPath,
+                          byte[][][] nextAuthPath, Treehash[][] currentTreehash,
+                          Treehash[][] nextTreehash, Vector[] currentStack,
+                          Vector[] nextStack, Vector[][] currentRetain,
+                          Vector[][] nextRetain, byte[][][] keep, GMSSLeaf[] nextNextLeaf,
+                          GMSSLeaf[] upperLeaf, GMSSLeaf[] upperTreehashLeaf,
+                          int[] minTreehash, byte[][] nextRoot, GMSSRootCalc[] nextNextRoot,
+                          byte[][] currentRootSig, GMSSRootSig[] nextRootSig,
+                          GMSSParameters gmssParameterset, AlgorithmIdentifier digestAlg)
     {
         AlgorithmIdentifier[] names = new AlgorithmIdentifier[] { digestAlg };
         this.primitive = encode(index, currentSeed, nextNextSeed, currentAuthPath, nextAuthPath, keep, currentTreehash, nextTreehash, currentStack, nextStack, currentRetain, nextRetain, nextNextLeaf, upperLeaf, upperTreehashLeaf, minTreehash, nextRoot, nextNextRoot, currentRootSig, nextRootSig, gmssParameterset, names);

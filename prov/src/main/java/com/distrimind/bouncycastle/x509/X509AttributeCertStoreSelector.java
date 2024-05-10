@@ -25,8 +25,8 @@ import com.distrimind.bouncycastle.util.Selector;
  * This class is an <code>Selector</code> like implementation to select
  * attribute certificates from a given set of criteria.
  * 
- * @see X509AttributeCertificate
- * @see X509Store
+ * @see com.distrimind.bouncycastle.x509.X509AttributeCertificate
+ * @see com.distrimind.bouncycastle.x509.X509Store
  * @deprecated use com.distrimind.bouncycastle.cert.X509AttributeCertificateSelector and com.distrimind.bouncycastle.cert.X509AttributeCertificateSelectorBuilder.
  */
 public class X509AttributeCertStoreSelector

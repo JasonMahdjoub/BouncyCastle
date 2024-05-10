@@ -7,7 +7,6 @@ import java.security.spec.AlgorithmParameterSpec;
 
 import javax.crypto.spec.IvParameterSpec;
 
-import com.distrimind.bouncycastle.asn1.ntt.NTTObjectIdentifiers;
 import com.distrimind.bouncycastle.crypto.BlockCipher;
 import com.distrimind.bouncycastle.crypto.CipherKeyGenerator;
 import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
@@ -18,6 +17,7 @@ import com.distrimind.bouncycastle.crypto.generators.Poly1305KeyGenerator;
 import com.distrimind.bouncycastle.crypto.macs.GMac;
 import com.distrimind.bouncycastle.crypto.modes.CBCBlockCipher;
 import com.distrimind.bouncycastle.crypto.modes.GCMBlockCipher;
+import com.distrimind.bouncycastle.internal.asn1.ntt.NTTObjectIdentifiers;
 import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseAlgorithmParameterGenerator;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseBlockCipher;

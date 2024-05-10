@@ -29,7 +29,7 @@ import com.distrimind.bouncycastle.util.Integers;
 import com.distrimind.bouncycastle.util.encoders.Hex;
 
 /**
- * Test class for {@link ECPoint ECPoint}. All
+ * Test class for {@link com.distrimind.bouncycastle.math.ec.ECPoint ECPoint}. All
  * literature values are taken from "Guide to elliptic curve cryptography",
  * Darrel Hankerson, Alfred J. Menezes, Scott Vanstone, 2004, Springer-Verlag
  * New York, Inc.
@@ -193,6 +193,25 @@ public class ECPointTest extends TestCase
         {
             assertPointsEqual("Adding infinity failed", p[i], p[i].add(infinity));
             assertPointsEqual("Adding to infinity failed", p[i], infinity.add(p[i]));
+        }
+    }
+
+    public void testLargeMInF2m()
+    {
+        int m = 2048;
+        int k1 = 1;
+        BigInteger aTpb = new BigInteger("1000", 2);
+        BigInteger bTpb = new BigInteger("1001", 2);
+        BigInteger n = new BigInteger("23");
+        BigInteger h = new BigInteger("1");
+
+        try
+        {
+            ECCurve.F2m curve = new ECCurve.F2m(m, k1, aTpb, bTpb, n, h);
+        }
+        catch (IllegalArgumentException e)
+        {
+            assertEquals("field size out of range: 2048", e.getMessage());
         }
     }
 

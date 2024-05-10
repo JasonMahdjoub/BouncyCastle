@@ -6,9 +6,11 @@ import java.io.ObjectOutputStream;
 
 import com.distrimind.bouncycastle.asn1.ASN1Set;
 import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
+import com.distrimind.bouncycastle.pqc.crypto.crystals.dilithium.DilithiumPrivateKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.falcon.FalconPrivateKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.falcon.FalconPublicKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.util.PrivateKeyFactory;
+import com.distrimind.bouncycastle.pqc.crypto.util.PrivateKeyInfoFactory;
 import com.distrimind.bouncycastle.pqc.jcajce.interfaces.FalconPrivateKey;
 import com.distrimind.bouncycastle.pqc.jcajce.interfaces.FalconPublicKey;
 import com.distrimind.bouncycastle.pqc.jcajce.provider.util.KeyUtil;

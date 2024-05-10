@@ -11,11 +11,11 @@ import javax.crypto.spec.DHPublicKeySpec;
 
 import com.distrimind.bouncycastle.asn1.ASN1Encoding;
 import com.distrimind.bouncycastle.asn1.ASN1Integer;
-import com.distrimind.bouncycastle.asn1.oiw.ElGamalParameter;
-import com.distrimind.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
 import com.distrimind.bouncycastle.crypto.params.ElGamalPublicKeyParameters;
+import com.distrimind.bouncycastle.internal.asn1.oiw.ElGamalParameter;
+import com.distrimind.bouncycastle.internal.asn1.oiw.OIWObjectIdentifiers;
 import com.distrimind.bouncycastle.jce.interfaces.ElGamalPublicKey;
 import com.distrimind.bouncycastle.jce.spec.ElGamalParameterSpec;
 import com.distrimind.bouncycastle.jce.spec.ElGamalPublicKeySpec;
@@ -26,7 +26,7 @@ public class BCElGamalPublicKey
     static final long serialVersionUID = 8712728417091216948L;
         
     private BigInteger              y;
-    private transient ElGamalParameterSpec elSpec;
+    private transient ElGamalParameterSpec    elSpec;
 
     BCElGamalPublicKey(
         ElGamalPublicKeySpec spec)

@@ -1,7 +1,5 @@
 package com.distrimind.bouncycastle.crypto.agreement.jpake;
 
-import com.distrimind.bouncycastle.crypto.Digest;
-
 import java.math.BigInteger;
 
 /**
@@ -28,7 +26,7 @@ public class JPAKERound3Payload
     /**
      * The value of MacTag, as computed by round 3.
      *
-     * @see JPAKEUtil#calculateMacTag(String, String, BigInteger, BigInteger, BigInteger, BigInteger, BigInteger, Digest)
+     * @see JPAKEUtil#calculateMacTag(String, String, BigInteger, BigInteger, BigInteger, BigInteger, BigInteger, com.distrimind.bouncycastle.crypto.Digest)
      */
     private final BigInteger macTag;
 

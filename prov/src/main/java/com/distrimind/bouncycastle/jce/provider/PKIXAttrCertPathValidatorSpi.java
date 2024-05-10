@@ -15,6 +15,7 @@ import java.util.Set;
 import com.distrimind.bouncycastle.jcajce.PKIXExtendedParameters;
 import com.distrimind.bouncycastle.jcajce.util.BCJcaJceHelper;
 import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
+import com.distrimind.bouncycastle.jce.exception.ExtCertPathValidatorException;
 import com.distrimind.bouncycastle.util.Selector;
 import com.distrimind.bouncycastle.x509.ExtendedPKIXParameters;
 import com.distrimind.bouncycastle.x509.X509AttributeCertStoreSelector;
@@ -23,7 +24,7 @@ import com.distrimind.bouncycastle.x509.X509AttributeCertificate;
 /**
  * CertPathValidatorSpi implementation for X.509 Attribute Certificates la RFC 3281.
  * 
- * @see ExtendedPKIXParameters
+ * @see com.distrimind.bouncycastle.x509.ExtendedPKIXParameters
  */
 public class PKIXAttrCertPathValidatorSpi
     extends CertPathValidatorSpi
@@ -47,7 +48,7 @@ public class PKIXAttrCertPathValidatorSpi
      * necessary to correctly validate this attribute certificate.
      * <p>
      * The attribute certificate issuer must be added to the trusted attribute
-     * issuers with {@link ExtendedPKIXParameters#setTrustedACIssuers(java.util.Set)}.
+     * issuers with {@link com.distrimind.bouncycastle.x509.ExtendedPKIXParameters#setTrustedACIssuers(java.util.Set)}.
      * 
      * @param certPath The certificate path which belongs to the attribute
      *            certificate issuer public key certificate.

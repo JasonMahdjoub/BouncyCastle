@@ -3,13 +3,13 @@ package com.distrimind.bouncycastle.crypto.engines;
 import java.math.BigInteger;
 import java.util.Vector;
 
-import com.distrimind.bouncycastle.crypto.constraints.ConstraintUtils;
-import com.distrimind.bouncycastle.crypto.constraints.DefaultServiceProperties;
 import com.distrimind.bouncycastle.crypto.AsymmetricBlockCipher;
 import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
 import com.distrimind.bouncycastle.crypto.DataLengthException;
 import com.distrimind.bouncycastle.crypto.InvalidCipherTextException;
+import com.distrimind.bouncycastle.crypto.constraints.ConstraintUtils;
+import com.distrimind.bouncycastle.crypto.constraints.DefaultServiceProperties;
 import com.distrimind.bouncycastle.crypto.params.NaccacheSternKeyParameters;
 import com.distrimind.bouncycastle.crypto.params.NaccacheSternPrivateKeyParameters;
 import com.distrimind.bouncycastle.crypto.params.ParametersWithRandom;
@@ -36,8 +36,8 @@ public class NaccacheSternEngine
     /**
      * Initializes this algorithm. Must be called before all other Functions.
      * 
-     * @see AsymmetricBlockCipher#init(boolean,
-     *      CipherParameters)
+     * @see com.distrimind.bouncycastle.crypto.AsymmetricBlockCipher#init(boolean,
+     *      com.distrimind.bouncycastle.crypto.CipherParameters)
      */
     public void init(boolean forEncryption, CipherParameters param)
     {
@@ -98,7 +98,7 @@ public class NaccacheSternEngine
     /**
      * Returns the input block size of this algorithm.
      * 
-     * @see AsymmetricBlockCipher#getInputBlockSize()
+     * @see com.distrimind.bouncycastle.crypto.AsymmetricBlockCipher#getInputBlockSize()
      */
     public int getInputBlockSize()
     {
@@ -117,7 +117,7 @@ public class NaccacheSternEngine
     /**
      * Returns the output block size of this algorithm.
      * 
-     * @see AsymmetricBlockCipher#getOutputBlockSize()
+     * @see com.distrimind.bouncycastle.crypto.AsymmetricBlockCipher#getOutputBlockSize()
      */
     public int getOutputBlockSize()
     {
@@ -136,7 +136,7 @@ public class NaccacheSternEngine
     /**
      * Process a single Block using the Naccache-Stern algorithm.
      * 
-     * @see AsymmetricBlockCipher#processBlock(byte[],
+     * @see com.distrimind.bouncycastle.crypto.AsymmetricBlockCipher#processBlock(byte[],
      *      int, int)
      */
     public byte[] processBlock(byte[] in, int inOff, int len) throws InvalidCipherTextException

@@ -1,8 +1,5 @@
 package com.distrimind.bouncycastle.asn1.bc;
 
-import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import com.distrimind.bouncycastle.asn1.x509.GeneralName;
-import com.distrimind.bouncycastle.asn1.x509.GeneralNames;
 import com.distrimind.bouncycastle.asn1.ASN1BitString;
 import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
@@ -12,6 +9,9 @@ import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.DERBitString;
 import com.distrimind.bouncycastle.asn1.DEROctetString;
 import com.distrimind.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.asn1.x509.GeneralName;
+import com.distrimind.bouncycastle.asn1.x509.GeneralNames;
 import com.distrimind.bouncycastle.util.Arrays;
 
 /**

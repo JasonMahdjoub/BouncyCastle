@@ -28,7 +28,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -75,7 +74,7 @@ public class NistCertPathTest
     {
         if (Security.getProvider("BC") == null)
         {
-            Security.addProvider(new BouncyCastleProvider());
+            Security.addProvider(new com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider());
         }
     }
 

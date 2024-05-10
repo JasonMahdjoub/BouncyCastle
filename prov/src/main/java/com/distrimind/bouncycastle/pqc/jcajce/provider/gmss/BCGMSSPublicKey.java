@@ -2,7 +2,6 @@ package com.distrimind.bouncycastle.pqc.jcajce.provider.gmss;
 
 import java.security.PublicKey;
 
-import com.distrimind.bouncycastle.pqc.legacy.crypto.gmss.GMSSKeyPairGenerator;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.pqc.asn1.GMSSPublicKey;
@@ -17,7 +16,7 @@ import com.distrimind.bouncycastle.util.encoders.Hex;
  * This class implements the GMSS public key and is usually initiated by the <a
  * href="GMSSKeyPairGenerator">GMSSKeyPairGenerator</a>.
  *
- * @see GMSSKeyPairGenerator
+ * @see com.distrimind.bouncycastle.pqc.legacy.crypto.gmss.GMSSKeyPairGenerator
  */
 public class BCGMSSPublicKey
     implements CipherParameters, PublicKey
@@ -46,7 +45,7 @@ public class BCGMSSPublicKey
      *
      * @param pub              a raw GMSS public key
      * @param gmssParameterSet an instance of GMSS Parameterset
-     * @see GMSSKeyPairGenerator
+     * @see com.distrimind.bouncycastle.pqc.legacy.crypto.gmss.GMSSKeyPairGenerator
      */
     public BCGMSSPublicKey(byte[] pub, GMSSParameters gmssParameterSet)
     {

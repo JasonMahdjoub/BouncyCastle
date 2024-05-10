@@ -1,7 +1,7 @@
 package com.distrimind.bouncycastle.pqc.legacy.crypto.gmss;
 
-import com.distrimind.bouncycastle.pqc.legacy.crypto.gmss.util.GMSSRandom;
 import com.distrimind.bouncycastle.crypto.Digest;
+import com.distrimind.bouncycastle.pqc.legacy.crypto.gmss.util.GMSSRandom;
 import com.distrimind.bouncycastle.util.encoders.Hex;
 
 

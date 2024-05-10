@@ -14,9 +14,9 @@ import com.distrimind.bouncycastle.asn1.DERNull;
 import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.crypto.params.RSAKeyParameters;
-import com.distrimind.bouncycastle.jce.interfaces.PKCS12BagAttributeCarrier;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.KeyUtil;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.PKCS12BagAttributeCarrierImpl;
+import com.distrimind.bouncycastle.jce.interfaces.PKCS12BagAttributeCarrier;
 
 public class JCERSAPrivateKey
     implements RSAPrivateKey, PKCS12BagAttributeCarrier

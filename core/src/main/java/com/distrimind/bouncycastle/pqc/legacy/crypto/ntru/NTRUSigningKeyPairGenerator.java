@@ -9,11 +9,11 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-import com.distrimind.bouncycastle.pqc.legacy.math.ntru.euclid.BigIntEuclidean;
 import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
 import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPairGenerator;
 import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
 import com.distrimind.bouncycastle.crypto.KeyGenerationParameters;
+import com.distrimind.bouncycastle.pqc.legacy.math.ntru.euclid.BigIntEuclidean;
 import com.distrimind.bouncycastle.pqc.legacy.math.ntru.polynomial.BigDecimalPolynomial;
 import com.distrimind.bouncycastle.pqc.legacy.math.ntru.polynomial.BigIntPolynomial;
 import com.distrimind.bouncycastle.pqc.legacy.math.ntru.polynomial.DenseTernaryPolynomial;

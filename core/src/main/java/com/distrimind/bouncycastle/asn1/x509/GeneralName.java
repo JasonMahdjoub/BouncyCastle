@@ -3,7 +3,6 @@ package com.distrimind.bouncycastle.asn1.x509;
 import java.io.IOException;
 import java.util.StringTokenizer;
 
-import com.distrimind.bouncycastle.asn1.x500.X500Name;
 import com.distrimind.bouncycastle.asn1.ASN1Choice;
 import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1IA5String;
@@ -16,6 +15,7 @@ import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
 import com.distrimind.bouncycastle.asn1.DERIA5String;
 import com.distrimind.bouncycastle.asn1.DEROctetString;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
+import com.distrimind.bouncycastle.asn1.x500.X500Name;
 import com.distrimind.bouncycastle.util.IPAddress;
 
 /**

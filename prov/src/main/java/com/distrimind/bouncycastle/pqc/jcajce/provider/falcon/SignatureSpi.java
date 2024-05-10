@@ -1,7 +1,9 @@
 package com.distrimind.bouncycastle.pqc.jcajce.provider.falcon;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.SecureRandom;
@@ -12,7 +14,9 @@ import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
 import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.params.ParametersWithRandom;
 import com.distrimind.bouncycastle.pqc.crypto.falcon.FalconParameters;
+import com.distrimind.bouncycastle.pqc.crypto.falcon.FalconPrivateKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.falcon.FalconSigner;
+import com.distrimind.bouncycastle.pqc.jcajce.provider.dilithium.BCDilithiumPublicKey;
 import com.distrimind.bouncycastle.util.Strings;
 
 public class SignatureSpi

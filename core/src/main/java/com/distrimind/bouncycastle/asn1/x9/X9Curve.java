@@ -2,8 +2,6 @@ package com.distrimind.bouncycastle.asn1.x9;
 
 import java.math.BigInteger;
 
-import com.distrimind.bouncycastle.math.ec.ECAlgorithms;
-import com.distrimind.bouncycastle.math.ec.ECCurve;
 import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
 import com.distrimind.bouncycastle.asn1.ASN1Integer;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
@@ -13,6 +11,8 @@ import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.DERBitString;
 import com.distrimind.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.math.ec.ECAlgorithms;
+import com.distrimind.bouncycastle.math.ec.ECCurve;
 import com.distrimind.bouncycastle.util.Arrays;
 
 /**
@@ -23,7 +23,7 @@ public class X9Curve
     extends ASN1Object
     implements X9ObjectIdentifiers
 {
-    private ECCurve curve;
+    private ECCurve     curve;
     private byte[]      seed;
     private ASN1ObjectIdentifier fieldIdentifier = null;
 

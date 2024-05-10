@@ -9,8 +9,8 @@ import javax.crypto.spec.PBEParameterSpec;
 import com.distrimind.bouncycastle.asn1.ASN1Encoding;
 import com.distrimind.bouncycastle.asn1.pkcs.PBEParameter;
 import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseAlgorithmParameters;
 import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
+import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseAlgorithmParameters;
 import com.distrimind.bouncycastle.jcajce.provider.util.AlgorithmProvider;
 
 public class PBEPBKDF1

@@ -1,16 +1,16 @@
 package com.distrimind.bouncycastle.jcajce.provider.digest;
 
 import com.distrimind.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.rosstandart.RosstandartObjectIdentifiers;
 import com.distrimind.bouncycastle.crypto.CipherKeyGenerator;
 import com.distrimind.bouncycastle.crypto.digests.GOST3411Digest;
 import com.distrimind.bouncycastle.crypto.digests.GOST3411_2012_256Digest;
 import com.distrimind.bouncycastle.crypto.digests.GOST3411_2012_512Digest;
 import com.distrimind.bouncycastle.crypto.macs.HMac;
+import com.distrimind.bouncycastle.internal.asn1.rosstandart.RosstandartObjectIdentifiers;
+import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseKeyGenerator;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseMac;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.PBESecretKeyFactory;
-import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 
 public class GOST3411
 {

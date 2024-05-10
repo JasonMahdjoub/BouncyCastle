@@ -1,6 +1,5 @@
 package com.distrimind.bouncycastle.asn1.pkcs;
 
-import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
 import com.distrimind.bouncycastle.asn1.ASN1Integer;
@@ -12,6 +11,7 @@ import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
 import com.distrimind.bouncycastle.asn1.BERSequence;
 import com.distrimind.bouncycastle.asn1.BERTaggedObject;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 
 /**
  * The EncryptedData object.
@@ -66,7 +66,7 @@ public class EncryptedData
 
     public EncryptedData(
         ASN1ObjectIdentifier contentType,
-        AlgorithmIdentifier encryptionAlgorithm,
+        AlgorithmIdentifier     encryptionAlgorithm,
         ASN1Encodable content)
     {
         ASN1EncodableVector v = new ASN1EncodableVector(3);

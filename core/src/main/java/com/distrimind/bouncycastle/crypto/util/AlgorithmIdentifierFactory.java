@@ -2,19 +2,19 @@ package com.distrimind.bouncycastle.crypto.util;
 
 import java.security.SecureRandom;
 
-import com.distrimind.bouncycastle.internal.asn1.cms.CCMParameters;
-import com.distrimind.bouncycastle.internal.asn1.cms.GCMParameters;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.DERNull;
 import com.distrimind.bouncycastle.asn1.DEROctetString;
-import com.distrimind.bouncycastle.asn1.kisa.KISAObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.misc.CAST5CBCParameters;
 import com.distrimind.bouncycastle.asn1.nist.NISTObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.ntt.NTTObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.pkcs.RC2CBCParameter;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.internal.asn1.cms.CCMParameters;
+import com.distrimind.bouncycastle.internal.asn1.cms.GCMParameters;
+import com.distrimind.bouncycastle.internal.asn1.kisa.KISAObjectIdentifiers;
+import com.distrimind.bouncycastle.internal.asn1.misc.CAST5CBCParameters;
+import com.distrimind.bouncycastle.internal.asn1.ntt.NTTObjectIdentifiers;
+import com.distrimind.bouncycastle.internal.asn1.oiw.OIWObjectIdentifiers;
 
 /**
  * Factory methods for common AlgorithmIdentifiers.

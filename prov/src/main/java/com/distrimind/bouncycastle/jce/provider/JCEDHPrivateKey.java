@@ -22,8 +22,8 @@ import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.asn1.x9.DomainParameters;
 import com.distrimind.bouncycastle.asn1.x9.X9ObjectIdentifiers;
 import com.distrimind.bouncycastle.crypto.params.DHPrivateKeyParameters;
-import com.distrimind.bouncycastle.jce.interfaces.PKCS12BagAttributeCarrier;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.PKCS12BagAttributeCarrierImpl;
+import com.distrimind.bouncycastle.jce.interfaces.PKCS12BagAttributeCarrier;
 
 public class JCEDHPrivateKey
     implements DHPrivateKey, PKCS12BagAttributeCarrier

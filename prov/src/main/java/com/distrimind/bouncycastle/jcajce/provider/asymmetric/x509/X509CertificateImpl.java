@@ -31,7 +31,6 @@ import java.util.Set;
 
 import javax.security.auth.x500.X500Principal;
 
-import com.distrimind.bouncycastle.asn1.x509.*;
 import com.distrimind.bouncycastle.asn1.ASN1BitString;
 import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1Encoding;
@@ -43,28 +42,30 @@ import com.distrimind.bouncycastle.asn1.ASN1OctetString;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.ASN1String;
-import com.distrimind.bouncycastle.asn1.DERNull;
 import com.distrimind.bouncycastle.asn1.DEROctetString;
-import com.distrimind.bouncycastle.asn1.misc.MiscObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.misc.NetscapeCertType;
-import com.distrimind.bouncycastle.asn1.misc.NetscapeRevocationURL;
-import com.distrimind.bouncycastle.asn1.misc.VerisignCzagExtension;
 import com.distrimind.bouncycastle.asn1.util.ASN1Dump;
 import com.distrimind.bouncycastle.asn1.x500.X500Name;
 import com.distrimind.bouncycastle.asn1.x500.style.RFC4519Style;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.asn1.x509.BasicConstraints;
+import com.distrimind.bouncycastle.asn1.x509.Extension;
 import com.distrimind.bouncycastle.asn1.x509.Extensions;
+import com.distrimind.bouncycastle.asn1.x509.GeneralName;
+import com.distrimind.bouncycastle.asn1.x509.KeyUsage;
 import com.distrimind.bouncycastle.asn1.x509.TBSCertificate;
+import com.distrimind.bouncycastle.internal.asn1.misc.MiscObjectIdentifiers;
+import com.distrimind.bouncycastle.internal.asn1.misc.NetscapeCertType;
+import com.distrimind.bouncycastle.internal.asn1.misc.NetscapeRevocationURL;
+import com.distrimind.bouncycastle.internal.asn1.misc.VerisignCzagExtension;
 import com.distrimind.bouncycastle.jcajce.CompositePublicKey;
+import com.distrimind.bouncycastle.jcajce.interfaces.BCX509Certificate;
 import com.distrimind.bouncycastle.jcajce.io.OutputStreamFactory;
+import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
 import com.distrimind.bouncycastle.jce.X509Principal;
 import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
-import com.distrimind.bouncycastle.jcajce.interfaces.BCX509Certificate;
-import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Exceptions;
 import com.distrimind.bouncycastle.util.Integers;
-import com.distrimind.bouncycastle.util.Properties;
 import com.distrimind.bouncycastle.util.Strings;
 
 abstract class X509CertificateImpl
@@ -72,12 +73,12 @@ abstract class X509CertificateImpl
     implements BCX509Certificate
 {
     protected JcaJceHelper bcHelper;
-    protected Certificate c;
+    protected com.distrimind.bouncycastle.asn1.x509.Certificate c;
     protected BasicConstraints basicConstraints;
     protected boolean[] keyUsage;
     protected String sigAlgName;
     protected byte[] sigAlgParams;
-    X509CertificateImpl(JcaJceHelper bcHelper, Certificate c,
+    X509CertificateImpl(JcaJceHelper bcHelper, com.distrimind.bouncycastle.asn1.x509.Certificate c,
         BasicConstraints basicConstraints, boolean[] keyUsage, String sigAlgName, byte[] sigAlgParams)
     {
         this.bcHelper = bcHelper;
@@ -623,7 +624,7 @@ abstract class X509CertificateImpl
         {
             List<PublicKey> pubKeys = ((CompositePublicKey)key).getPublicKeys();
             ASN1Sequence keySeq = ASN1Sequence.getInstance(c.getSignatureAlgorithm().getParameters());
-            ASN1Sequence sigSeq = ASN1Sequence.getInstance(ASN1BitString.getInstance(c.getSignature()).getBytes());
+            ASN1Sequence sigSeq = ASN1Sequence.getInstance(c.getSignature().getOctets());
 
             boolean success = false;
             for (int i = 0; i != pubKeys.size(); i++)
@@ -644,7 +645,7 @@ abstract class X509CertificateImpl
                     checkSignature(
                         (PublicKey)pubKeys.get(i), signature,
                         sigAlg.getParameters(),
-                        ASN1BitString.getInstance(sigSeq.getObjectAt(i)).getBytes());
+                        ASN1BitString.getInstance(sigSeq.getObjectAt(i)).getOctets());
                     success = true;
                 }
                 catch (SignatureException e)
@@ -666,7 +667,7 @@ abstract class X509CertificateImpl
         else if (X509SignatureUtil.isCompositeAlgorithm(c.getSignatureAlgorithm()))
         {
             ASN1Sequence keySeq = ASN1Sequence.getInstance(c.getSignatureAlgorithm().getParameters());
-            ASN1Sequence sigSeq = ASN1Sequence.getInstance(ASN1BitString.getInstance(c.getSignature()).getBytes());
+            ASN1Sequence sigSeq = ASN1Sequence.getInstance(c.getSignature().getOctets());
 
             boolean success = false;
             for (int i = 0; i != sigSeq.size(); i++)
@@ -683,7 +684,7 @@ abstract class X509CertificateImpl
                     checkSignature(
                         key, signature,
                         sigAlg.getParameters(),
-                        ASN1BitString.getInstance(sigSeq.getObjectAt(i)).getBytes());
+                        ASN1BitString.getInstance(sigSeq.getObjectAt(i)).getOctets());
 
                     success = true;
                 }
@@ -713,11 +714,11 @@ abstract class X509CertificateImpl
         }
         else
         {
-            String sigName = X509SignatureUtil.getSignatureName(c.getSignatureAlgorithm());
+            Signature signature = signatureCreator.createSignature(getSigAlgName());
 
-            Signature signature = signatureCreator.createSignature(sigName);
-
-            if (key instanceof CompositePublicKey)
+            //Use this only for legacy composite public keys (they have this identifier)
+            if (key instanceof CompositePublicKey
+                && MiscObjectIdentifiers.id_composite_key.equals(((CompositePublicKey)key).getAlgorithmIdentifier()))
             {
                 List<PublicKey> keys = ((CompositePublicKey)key).getPublicKeys();
 
@@ -745,21 +746,16 @@ abstract class X509CertificateImpl
         }
     }
 
-    private void checkSignature(
-        PublicKey key, 
-        Signature signature,
-        ASN1Encodable params,
-        byte[] sigBytes)
-        throws CertificateException, NoSuchAlgorithmException, 
-            SignatureException, InvalidKeyException
+    private void checkSignature(PublicKey key, Signature signature, ASN1Encodable sigAlgParams, byte[] sigBytes)
+        throws CertificateException, InvalidKeyException, NoSuchAlgorithmException, SignatureException
     {
-        if (!isAlgIdEqual(c.getSignatureAlgorithm(), c.getTBSCertificate().getSignature()))
+        if (!X509SignatureUtil.areEquivalentAlgorithms(c.getSignatureAlgorithm(), c.getTBSCertificate().getSignature()))
         {
             throw new CertificateException("signature algorithm in TBS cert not same as outer cert");
         }
 
-        // TODO This should go after the initVerify?
-        X509SignatureUtil.setSignatureParameters(signature, params);
+        // needs to be called before initVerify().
+        X509SignatureUtil.setSignatureParameters(signature, sigAlgParams);
 
         signature.initVerify(key);
 
@@ -782,50 +778,7 @@ abstract class X509CertificateImpl
         }
     }
 
-    private boolean isAlgIdEqual(AlgorithmIdentifier id1, AlgorithmIdentifier id2)
-    {
-        if (!id1.getAlgorithm().equals(id2.getAlgorithm()))
-        {
-            return false;
-        }
-
-        if (Properties.isOverrideSet("com.distrimind.bouncycastle.x509.allow_absent_equiv_NULL"))
-        {
-            if (id1.getParameters() == null)
-            {
-                if (id2.getParameters() != null && !id2.getParameters().equals(DERNull.INSTANCE))
-                {
-                    return false;
-                }
-
-                return true;
-            }
-
-            if (id2.getParameters() == null)
-            {
-                if (id1.getParameters() != null && !id1.getParameters().equals(DERNull.INSTANCE))
-                {
-                    return false;
-                }
-
-                return true;
-            }
-        }
-
-        if (id1.getParameters() != null)
-        {
-            return id1.getParameters().equals(id2.getParameters());
-        }
-
-        if (id2.getParameters() != null)
-        {
-            return id2.getParameters().equals(id1.getParameters());
-        }
-
-        return true;
-    }
-
-    private static Collection getAlternativeNames(Certificate c, String oid)
+    private static Collection getAlternativeNames(com.distrimind.bouncycastle.asn1.x509.Certificate c, String oid)
         throws CertificateParsingException
     {
         byte[] extOctets = getExtensionOctets(c, oid);
@@ -891,7 +844,7 @@ abstract class X509CertificateImpl
         }
     }
 
-    protected static byte[] getExtensionOctets(Certificate c, String oid)
+    protected static byte[] getExtensionOctets(com.distrimind.bouncycastle.asn1.x509.Certificate c, String oid)
     {
         ASN1OctetString extValue = getExtensionValue(c, oid);
         if (null != extValue)
@@ -901,7 +854,7 @@ abstract class X509CertificateImpl
         return null;
     }
 
-    protected static ASN1OctetString getExtensionValue(Certificate c, String oid)
+    protected static ASN1OctetString getExtensionValue(com.distrimind.bouncycastle.asn1.x509.Certificate c, String oid)
     {
         Extensions exts = c.getTBSCertificate().getExtensions();
         if (null != exts)

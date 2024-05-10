@@ -46,11 +46,11 @@ import com.distrimind.bouncycastle.crypto.util.DigestFactory;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.BaseCipherSpi;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.DHUtil;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.IESUtil;
-import com.distrimind.bouncycastle.jce.interfaces.IESKey;
-import com.distrimind.bouncycastle.jce.spec.IESParameterSpec;
 import com.distrimind.bouncycastle.jcajce.provider.util.BadBlockException;
 import com.distrimind.bouncycastle.jcajce.util.BCJcaJceHelper;
 import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
+import com.distrimind.bouncycastle.jce.interfaces.IESKey;
+import com.distrimind.bouncycastle.jce.spec.IESParameterSpec;
 import com.distrimind.bouncycastle.util.BigIntegers;
 import com.distrimind.bouncycastle.util.Strings;
 
@@ -281,14 +281,14 @@ public class IESCipher
         {
             if (key instanceof DHPublicKey)
             {
-                this.key = com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.DHUtil.generatePublicKeyParameter((PublicKey)key);
+                this.key = DHUtil.generatePublicKeyParameter((PublicKey)key);
             }
             else if (key instanceof IESKey)
             {
                 IESKey ieKey = (IESKey)key;
 
-                this.key = com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.DHUtil.generatePublicKeyParameter(ieKey.getPublic());
-                this.otherKeyParameter = com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.DHUtil.generatePrivateKeyParameter(ieKey.getPrivate());
+                this.key = DHUtil.generatePublicKeyParameter(ieKey.getPublic());
+                this.otherKeyParameter = DHUtil.generatePrivateKeyParameter(ieKey.getPrivate());
             }
             else
             {
@@ -299,13 +299,13 @@ public class IESCipher
         {
             if (key instanceof DHPrivateKey)
             {
-                this.key = com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.DHUtil.generatePrivateKeyParameter((PrivateKey)key);
+                this.key = DHUtil.generatePrivateKeyParameter((PrivateKey)key);
             }
             else if (key instanceof IESKey)
             {
                 IESKey ieKey = (IESKey)key;
 
-                this.otherKeyParameter = com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.DHUtil.generatePublicKeyParameter(ieKey.getPublic());
+                this.otherKeyParameter = DHUtil.generatePublicKeyParameter(ieKey.getPublic());
                 this.key = DHUtil.generatePrivateKeyParameter(ieKey.getPrivate());
             }
             else

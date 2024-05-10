@@ -18,13 +18,23 @@ import java.util.List;
 import java.util.Map;
 import java.util.WeakHashMap;
 
-import com.distrimind.bouncycastle.asn1.ocsp.*;
 import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
 import com.distrimind.bouncycastle.asn1.ASN1GeneralizedTime;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.ASN1OctetString;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.asn1.ocsp.BasicOCSPResponse;
+import com.distrimind.bouncycastle.asn1.ocsp.CertID;
+import com.distrimind.bouncycastle.asn1.ocsp.OCSPObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.ocsp.OCSPRequest;
+import com.distrimind.bouncycastle.asn1.ocsp.OCSPResponse;
+import com.distrimind.bouncycastle.asn1.ocsp.OCSPResponseStatus;
+import com.distrimind.bouncycastle.asn1.ocsp.Request;
+import com.distrimind.bouncycastle.asn1.ocsp.ResponseBytes;
+import com.distrimind.bouncycastle.asn1.ocsp.ResponseData;
+import com.distrimind.bouncycastle.asn1.ocsp.SingleResponse;
+import com.distrimind.bouncycastle.asn1.ocsp.TBSRequest;
 import com.distrimind.bouncycastle.asn1.x509.Extensions;
 import com.distrimind.bouncycastle.jcajce.PKIXCertRevocationCheckerParameters;
 import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
@@ -131,10 +141,18 @@ class OcspCache
         }
 
         // TODO: configure originator
-        TBSRequest tbsReq = new TBSRequest(null, new DERSequence(requests),
-            Extensions.getInstance(new DERSequence(requestExtensions)));
+        TBSRequest tbsReq;
+        if (requestExtensions.size() != 0)
+        {
+            tbsReq = new TBSRequest(null, new DERSequence(requests),
+                Extensions.getInstance(new DERSequence(requestExtensions)));
+        }
+        else
+        {
+            tbsReq = new TBSRequest(null, new DERSequence(requests), (Extensions)null);
+        }
 
-        Signature signature = null;
+        com.distrimind.bouncycastle.asn1.ocsp.Signature signature = null;
 
         try
         {
@@ -185,6 +203,10 @@ class OcspCache
                 if (markerRef != null)
                 {
                     responseMap = markerRef.get();
+                }
+
+                if (responseMap != null)
+                {
                     responseMap.put(certID, response);
                 }
                 else

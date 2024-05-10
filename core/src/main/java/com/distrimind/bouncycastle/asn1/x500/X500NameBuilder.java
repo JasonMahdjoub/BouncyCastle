@@ -2,9 +2,9 @@ package com.distrimind.bouncycastle.asn1.x500;
 
 import java.util.Vector;
 
-import com.distrimind.bouncycastle.asn1.x500.style.BCStyle;
 import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.x500.style.BCStyle;
 
 /**
  * A builder class for making X.500 Name objects.

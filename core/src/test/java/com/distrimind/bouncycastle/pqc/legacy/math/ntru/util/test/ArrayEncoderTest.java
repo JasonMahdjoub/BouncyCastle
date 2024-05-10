@@ -3,9 +3,9 @@ package com.distrimind.bouncycastle.pqc.legacy.math.ntru.util.test;
 import java.security.SecureRandom;
 import java.util.Random;
 
-import com.distrimind.bouncycastle.pqc.legacy.math.ntru.polynomial.test.PolynomialGenerator;
 import junit.framework.TestCase;
 import com.distrimind.bouncycastle.pqc.legacy.math.ntru.polynomial.DenseTernaryPolynomial;
+import com.distrimind.bouncycastle.pqc.legacy.math.ntru.polynomial.test.PolynomialGenerator;
 import com.distrimind.bouncycastle.pqc.legacy.math.ntru.util.ArrayEncoder;
 import com.distrimind.bouncycastle.util.Arrays;
 

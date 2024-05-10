@@ -1,9 +1,5 @@
 package com.distrimind.bouncycastle.pqc.asn1;
 
-import com.distrimind.bouncycastle.pqc.legacy.math.linearalgebra.GF2Matrix;
-import com.distrimind.bouncycastle.pqc.legacy.math.linearalgebra.GF2mField;
-import com.distrimind.bouncycastle.pqc.legacy.math.linearalgebra.Permutation;
-import com.distrimind.bouncycastle.pqc.legacy.math.linearalgebra.PolynomialGF2mSmallM;
 import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
 import com.distrimind.bouncycastle.asn1.ASN1Integer;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
@@ -12,6 +8,10 @@ import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.DEROctetString;
 import com.distrimind.bouncycastle.asn1.DERSequence;
+import com.distrimind.bouncycastle.pqc.legacy.math.linearalgebra.GF2Matrix;
+import com.distrimind.bouncycastle.pqc.legacy.math.linearalgebra.GF2mField;
+import com.distrimind.bouncycastle.pqc.legacy.math.linearalgebra.Permutation;
+import com.distrimind.bouncycastle.pqc.legacy.math.linearalgebra.PolynomialGF2mSmallM;
 
 public class McEliecePrivateKey
     extends ASN1Object

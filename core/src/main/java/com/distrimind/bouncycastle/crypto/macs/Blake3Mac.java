@@ -1,10 +1,10 @@
 package com.distrimind.bouncycastle.crypto.macs;
 
+import com.distrimind.bouncycastle.crypto.CipherParameters;
+import com.distrimind.bouncycastle.crypto.Mac;
 import com.distrimind.bouncycastle.crypto.digests.Blake3Digest;
 import com.distrimind.bouncycastle.crypto.params.Blake3Parameters;
 import com.distrimind.bouncycastle.crypto.params.KeyParameter;
-import com.distrimind.bouncycastle.crypto.CipherParameters;
-import com.distrimind.bouncycastle.crypto.Mac;
 
 /**
  * Bouncy implementation of Blake3Mac.

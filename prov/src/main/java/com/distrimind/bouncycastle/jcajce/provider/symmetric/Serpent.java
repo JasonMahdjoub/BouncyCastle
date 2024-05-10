@@ -1,6 +1,5 @@
 package com.distrimind.bouncycastle.jcajce.provider.symmetric;
 
-import com.distrimind.bouncycastle.asn1.gnu.GNUObjectIdentifiers;
 import com.distrimind.bouncycastle.crypto.BlockCipher;
 import com.distrimind.bouncycastle.crypto.BufferedBlockCipher;
 import com.distrimind.bouncycastle.crypto.CipherKeyGenerator;
@@ -12,6 +11,7 @@ import com.distrimind.bouncycastle.crypto.modes.CBCBlockCipher;
 import com.distrimind.bouncycastle.crypto.modes.CFBBlockCipher;
 import com.distrimind.bouncycastle.crypto.modes.GCMBlockCipher;
 import com.distrimind.bouncycastle.crypto.modes.OFBBlockCipher;
+import com.distrimind.bouncycastle.internal.asn1.gnu.GNUObjectIdentifiers;
 import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseBlockCipher;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseKeyGenerator;

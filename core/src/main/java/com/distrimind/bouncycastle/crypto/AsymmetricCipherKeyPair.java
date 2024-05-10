@@ -7,7 +7,7 @@ import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
  */
 public class AsymmetricCipherKeyPair
 {
-    private AsymmetricKeyParameter publicParam;
+    private AsymmetricKeyParameter    publicParam;
     private AsymmetricKeyParameter    privateParam;
 
     /**

@@ -18,7 +18,6 @@ import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.DEROctetString;
 import com.distrimind.bouncycastle.asn1.cryptopro.ECGOST3410NamedCurves;
 import com.distrimind.bouncycastle.asn1.cryptopro.GOST3410PublicKeyAlgParameters;
-import com.distrimind.bouncycastle.asn1.rosstandart.RosstandartObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
 import com.distrimind.bouncycastle.asn1.x9.X962Parameters;
@@ -27,15 +26,16 @@ import com.distrimind.bouncycastle.asn1.x9.X9ECPoint;
 import com.distrimind.bouncycastle.crypto.params.ECDomainParameters;
 import com.distrimind.bouncycastle.crypto.params.ECGOST3410Parameters;
 import com.distrimind.bouncycastle.crypto.params.ECPublicKeyParameters;
+import com.distrimind.bouncycastle.internal.asn1.rosstandart.RosstandartObjectIdentifiers;
+import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.EC5Util;
+import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.ECUtil;
+import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.KeyUtil;
+import com.distrimind.bouncycastle.jcajce.provider.config.ProviderConfiguration;
 import com.distrimind.bouncycastle.jce.ECGOST3410NamedCurveTable;
 import com.distrimind.bouncycastle.jce.interfaces.ECPointEncoder;
 import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
 import com.distrimind.bouncycastle.jce.spec.ECNamedCurveParameterSpec;
 import com.distrimind.bouncycastle.jce.spec.ECNamedCurveSpec;
-import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.EC5Util;
-import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.ECUtil;
-import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.KeyUtil;
-import com.distrimind.bouncycastle.jcajce.provider.config.ProviderConfiguration;
 import com.distrimind.bouncycastle.math.ec.ECCurve;
 
 /**
@@ -261,17 +261,28 @@ public class BCECGOST3410_2012PublicKey
         {
             if (ecSpec instanceof ECNamedCurveSpec)
             {
+                ASN1ObjectIdentifier gostCurveOid = ECGOST3410NamedCurves.getOID(((ECNamedCurveSpec)ecSpec).getName());
                 if (is512)
                 {
                     params = new GOST3410PublicKeyAlgParameters(
-                        ECGOST3410NamedCurves.getOID(((ECNamedCurveSpec)ecSpec).getName()),
+                        gostCurveOid,
                         RosstandartObjectIdentifiers.id_tc26_gost_3411_12_512);
                 }
                 else
                 {
-                    params = new GOST3410PublicKeyAlgParameters(
-                        ECGOST3410NamedCurves.getOID(((ECNamedCurveSpec)ecSpec).getName()),
-                        RosstandartObjectIdentifiers.id_tc26_gost_3411_12_256);
+                    if (gostCurveOid.equals(RosstandartObjectIdentifiers.id_tc26_gost_3410_12_256_paramSetB)
+                        || gostCurveOid.equals(RosstandartObjectIdentifiers.id_tc26_gost_3410_12_256_paramSetC)
+                        || gostCurveOid.equals(RosstandartObjectIdentifiers.id_tc26_gost_3410_12_256_paramSetD))
+                    {
+                        // RFC 9215
+                        params = new GOST3410PublicKeyAlgParameters(gostCurveOid, null);
+                    }
+                    else
+                    {
+                        params = new GOST3410PublicKeyAlgParameters(
+                            gostCurveOid,
+                            RosstandartObjectIdentifiers.id_tc26_gost_3411_12_256);
+                    }
                 }
             }
             else
@@ -438,17 +449,29 @@ public class BCECGOST3410_2012PublicKey
 
             // need to detect key size
             boolean is512 = (bX.bitLength() > 256);
+            ASN1ObjectIdentifier gostCurveOid = ECGOST3410NamedCurves.getOID(((ECNamedCurveSpec)ecSpec).getName());
             if (is512)
             {
                 this.gostParams = new GOST3410PublicKeyAlgParameters(
-                    ECGOST3410NamedCurves.getOID(((ECNamedCurveSpec)ecSpec).getName()),
+                    gostCurveOid,
                     RosstandartObjectIdentifiers.id_tc26_gost_3411_12_512);
             }
             else
             {
-                this.gostParams = new GOST3410PublicKeyAlgParameters(
-                    ECGOST3410NamedCurves.getOID(((ECNamedCurveSpec)ecSpec).getName()),
-                    RosstandartObjectIdentifiers.id_tc26_gost_3411_12_256);
+                if (gostCurveOid.equals(RosstandartObjectIdentifiers.id_tc26_gost_3410_12_256_paramSetB)
+                    || gostCurveOid.equals(RosstandartObjectIdentifiers.id_tc26_gost_3410_12_256_paramSetC)
+                    || gostCurveOid.equals(RosstandartObjectIdentifiers.id_tc26_gost_3410_12_256_paramSetD))
+                {
+                    this.gostParams = new GOST3410PublicKeyAlgParameters(
+                        gostCurveOid,
+                        null);
+                }
+                else
+                {
+                    this.gostParams = new GOST3410PublicKeyAlgParameters(
+                        gostCurveOid,
+                        RosstandartObjectIdentifiers.id_tc26_gost_3411_12_256);
+                }
             }
         }
         return gostParams;

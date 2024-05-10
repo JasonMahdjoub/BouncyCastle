@@ -33,10 +33,10 @@ import com.distrimind.bouncycastle.crypto.engines.SM2Engine;
 import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
 import com.distrimind.bouncycastle.crypto.params.ParametersWithRandom;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.ECUtil;
-import com.distrimind.bouncycastle.jce.interfaces.ECKey;
 import com.distrimind.bouncycastle.jcajce.provider.util.BadBlockException;
 import com.distrimind.bouncycastle.jcajce.util.BCJcaJceHelper;
 import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
+import com.distrimind.bouncycastle.jce.interfaces.ECKey;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Strings;
 

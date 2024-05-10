@@ -23,6 +23,7 @@ import com.distrimind.bouncycastle.crypto.paddings.PaddedBufferedBlockCipher;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.dh.IESCipher;
 import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
 import com.distrimind.bouncycastle.jce.spec.IESParameterSpec;
+import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.encoders.Hex;
 import com.distrimind.bouncycastle.util.test.SimpleTest;
 
@@ -85,8 +86,8 @@ public class DHIESTest
         byte[] encoding   = Hex.decode("303132333435363738393a3b3c3d3e3f");
 
         
-        IESCipher c1 = new IESCipher.IES();
-        IESCipher c2 = new IESCipher.IES();
+        IESCipher c1 = new com.distrimind.bouncycastle.jcajce.provider.asymmetric.dh.IESCipher.IES();
+        IESCipher c2 = new com.distrimind.bouncycastle.jcajce.provider.asymmetric.dh.IESCipher.IES();
         IESParameterSpec params = new IESParameterSpec(derivation,encoding,128);
 
         // Testing DHIES with default prime in streaming mode

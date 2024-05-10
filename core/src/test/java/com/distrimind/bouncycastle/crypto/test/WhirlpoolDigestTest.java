@@ -3,6 +3,7 @@ package com.distrimind.bouncycastle.crypto.test;
 import com.distrimind.bouncycastle.crypto.Digest;
 import com.distrimind.bouncycastle.crypto.digests.WhirlpoolDigest;
 import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.Strings;
 import com.distrimind.bouncycastle.util.encoders.Hex;
 
 /**
@@ -79,7 +80,7 @@ public class WhirlpoolDigestTest
     private void doPerformTest(String testTitle, byte[] inputBytes, String resultsAsHex)
     {
         String resStr = createHexOutputFromDigest(inputBytes);
-        if (!resultsAsHex.equals(resStr.toUpperCase()))
+        if (!resultsAsHex.equals(Strings.toUpperCase(resStr)))
         {
             fail(testTitle, resultsAsHex, resStr);
         }

@@ -24,7 +24,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TimeZone;
 
-import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -732,7 +731,7 @@ public class NistCertPathReviewerTest
     {
         if (Security.getProvider("BC") == null)
         {
-            Security.addProvider(new BouncyCastleProvider());
+            Security.addProvider(new com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider());
         }
     }
     

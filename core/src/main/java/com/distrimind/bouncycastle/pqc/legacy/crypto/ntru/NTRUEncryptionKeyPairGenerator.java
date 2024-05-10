@@ -1,13 +1,13 @@
 package com.distrimind.bouncycastle.pqc.legacy.crypto.ntru;
 
+import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
+import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPairGenerator;
+import com.distrimind.bouncycastle.crypto.KeyGenerationParameters;
 import com.distrimind.bouncycastle.pqc.legacy.math.ntru.polynomial.DenseTernaryPolynomial;
 import com.distrimind.bouncycastle.pqc.legacy.math.ntru.polynomial.IntegerPolynomial;
 import com.distrimind.bouncycastle.pqc.legacy.math.ntru.polynomial.Polynomial;
 import com.distrimind.bouncycastle.pqc.legacy.math.ntru.polynomial.ProductFormPolynomial;
 import com.distrimind.bouncycastle.pqc.legacy.math.ntru.util.Util;
-import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPair;
-import com.distrimind.bouncycastle.crypto.AsymmetricCipherKeyPairGenerator;
-import com.distrimind.bouncycastle.crypto.KeyGenerationParameters;
 
 /**
  * Generates key pairs.<br>

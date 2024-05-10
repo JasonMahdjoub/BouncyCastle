@@ -90,7 +90,7 @@ public class SignerInfo
      * <ul>
      * <li> null &rarr; null
      * <li> {@link SignerInfo} object
-     * <li> {@link ASN1Sequence#getInstance(java.lang.Object) ASN1Sequence} input formats with SignerInfo structure inside
+     * <li> {@link com.distrimind.bouncycastle.asn1.ASN1Sequence#getInstance(java.lang.Object) ASN1Sequence} input formats with SignerInfo structure inside
      * </ul>
      *
      * @param o the object we want converted.

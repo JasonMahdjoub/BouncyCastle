@@ -15,9 +15,9 @@ import com.distrimind.bouncycastle.asn1.x9.X9ECParameters;
 import com.distrimind.bouncycastle.asn1.x9.X9ECPoint;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.EC5Util;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.ECUtil;
+import com.distrimind.bouncycastle.jcajce.provider.config.ProviderConfiguration;
 import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
 import com.distrimind.bouncycastle.jce.spec.ECNamedCurveSpec;
-import com.distrimind.bouncycastle.jcajce.provider.config.ProviderConfiguration;
 import com.distrimind.bouncycastle.math.ec.ECCurve;
 
 public class AlgorithmParametersSpi

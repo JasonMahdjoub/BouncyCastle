@@ -37,7 +37,6 @@ import com.distrimind.bouncycastle.crypto.modes.GCMBlockCipher;
 import com.distrimind.bouncycastle.crypto.modes.OFBBlockCipher;
 import com.distrimind.bouncycastle.internal.asn1.cms.CCMParameters;
 import com.distrimind.bouncycastle.internal.asn1.cms.GCMParameters;
-import com.distrimind.bouncycastle.jcajce.spec.AEADParameterSpec;
 import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseAlgorithmParameterGenerator;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseAlgorithmParameters;
@@ -50,6 +49,7 @@ import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BlockCipherPro
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.GcmSpecUtil;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.IvAlgorithmParameters;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.PBESecretKeyFactory;
+import com.distrimind.bouncycastle.jcajce.spec.AEADParameterSpec;
 
 public final class AES
 {

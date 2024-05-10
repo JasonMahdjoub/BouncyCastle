@@ -25,7 +25,7 @@ import com.distrimind.bouncycastle.asn1.DERTaggedObject;
  *       }
  * </pre>
  * 
- * @see NameConstraints
+ * @see com.distrimind.bouncycastle.asn1.x509.NameConstraints
  * 
  */
 public class GeneralSubtree 

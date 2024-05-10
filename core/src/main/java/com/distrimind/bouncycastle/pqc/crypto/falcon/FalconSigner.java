@@ -4,6 +4,7 @@ import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
 import com.distrimind.bouncycastle.crypto.params.ParametersWithRandom;
 import com.distrimind.bouncycastle.pqc.crypto.MessageSigner;
+import com.distrimind.bouncycastle.util.encoders.Hex;
 
 public class FalconSigner
     implements MessageSigner

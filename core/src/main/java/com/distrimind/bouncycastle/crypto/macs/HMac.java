@@ -2,11 +2,11 @@ package com.distrimind.bouncycastle.crypto.macs;
 
 import java.util.Hashtable;
 
-import com.distrimind.bouncycastle.crypto.params.KeyParameter;
 import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.Digest;
 import com.distrimind.bouncycastle.crypto.ExtendedDigest;
 import com.distrimind.bouncycastle.crypto.Mac;
+import com.distrimind.bouncycastle.crypto.params.KeyParameter;
 import com.distrimind.bouncycastle.util.Integers;
 import com.distrimind.bouncycastle.util.Memoable;
 

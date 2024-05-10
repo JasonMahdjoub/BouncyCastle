@@ -5,11 +5,11 @@ import java.util.Map;
 
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.nist.NISTObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.teletrust.TeleTrusTObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.x509.X509ObjectIdentifiers;
 import com.distrimind.bouncycastle.internal.asn1.cms.CMSObjectIdentifiers;
+import com.distrimind.bouncycastle.internal.asn1.oiw.OIWObjectIdentifiers;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.rsa.KeyFactorySpi;
 import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import com.distrimind.bouncycastle.jcajce.provider.util.AsymmetricAlgorithmProvider;

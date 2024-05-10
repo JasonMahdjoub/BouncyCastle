@@ -1,6 +1,5 @@
 package com.distrimind.bouncycastle.asn1.ocsp;
 
-import com.distrimind.bouncycastle.asn1.x509.CRLReason;
 import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
 import com.distrimind.bouncycastle.asn1.ASN1Enumerated;
 import com.distrimind.bouncycastle.asn1.ASN1GeneralizedTime;
@@ -10,12 +9,13 @@ import com.distrimind.bouncycastle.asn1.ASN1Sequence;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
 import com.distrimind.bouncycastle.asn1.DERSequence;
 import com.distrimind.bouncycastle.asn1.DERTaggedObject;
+import com.distrimind.bouncycastle.asn1.x509.CRLReason;
 
 public class RevokedInfo
     extends ASN1Object
 {
     private ASN1GeneralizedTime  revocationTime;
-    private CRLReason revocationReason;
+    private CRLReason           revocationReason;
 
     public RevokedInfo(ASN1GeneralizedTime revocationTime)
     {

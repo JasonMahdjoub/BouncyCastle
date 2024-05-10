@@ -1,9 +1,9 @@
 package com.distrimind.bouncycastle.crypto.fpe;
 
-import com.distrimind.bouncycastle.crypto.engines.AESEngine;
-import com.distrimind.bouncycastle.crypto.params.FPEParameters;
 import com.distrimind.bouncycastle.crypto.BlockCipher;
 import com.distrimind.bouncycastle.crypto.CipherParameters;
+import com.distrimind.bouncycastle.crypto.engines.AESEngine;
+import com.distrimind.bouncycastle.crypto.params.FPEParameters;
 import com.distrimind.bouncycastle.util.Properties;
 
 /**

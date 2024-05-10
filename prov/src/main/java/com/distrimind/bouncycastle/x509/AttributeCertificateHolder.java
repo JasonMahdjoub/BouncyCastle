@@ -60,7 +60,7 @@ public class AttributeCertificateHolder
     public AttributeCertificateHolder(X509Principal issuerName,
         BigInteger serialNumber)
     {
-        holder = new Holder(new IssuerSerial(
+        holder = new com.distrimind.bouncycastle.asn1.x509.Holder(new IssuerSerial(
             GeneralNames.getInstance(new DERSequence(new GeneralName(issuerName))),
             new ASN1Integer(serialNumber)));
     }

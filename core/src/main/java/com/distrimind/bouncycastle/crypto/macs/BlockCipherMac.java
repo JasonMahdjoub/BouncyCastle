@@ -1,9 +1,9 @@
 package com.distrimind.bouncycastle.crypto.macs;
 
-import com.distrimind.bouncycastle.crypto.modes.CBCBlockCipher;
 import com.distrimind.bouncycastle.crypto.BlockCipher;
 import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.Mac;
+import com.distrimind.bouncycastle.crypto.modes.CBCBlockCipher;
 
 public class BlockCipherMac
     implements Mac

@@ -31,8 +31,8 @@ import com.distrimind.bouncycastle.asn1.x500.DirectoryString;
  *       }
  * </pre>
  *
- * @see NameOrPseudonym
- * @see SigIObjectIdentifiers
+ * @see com.distrimind.bouncycastle.asn1.x509.sigi.NameOrPseudonym
+ * @see com.distrimind.bouncycastle.asn1.x509.sigi.SigIObjectIdentifiers
  */
 public class PersonalData
     extends ASN1Object

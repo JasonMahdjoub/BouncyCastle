@@ -1,9 +1,10 @@
 package com.distrimind.bouncycastle.jcajce.provider.asymmetric;
 
 import com.distrimind.bouncycastle.asn1.bc.BCObjectIdentifiers;
-import com.distrimind.bouncycastle.pqc.jcajce.provider.falcon.FalconKeyFactorySpi;
 import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import com.distrimind.bouncycastle.jcajce.provider.util.AsymmetricAlgorithmProvider;
+import com.distrimind.bouncycastle.jcajce.provider.util.AsymmetricKeyInfoConverter;
+import com.distrimind.bouncycastle.pqc.jcajce.provider.falcon.FalconKeyFactorySpi;
 
 public class Falcon
 {

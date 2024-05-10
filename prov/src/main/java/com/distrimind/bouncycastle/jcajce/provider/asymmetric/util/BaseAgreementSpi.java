@@ -17,18 +17,20 @@ import javax.crypto.spec.SecretKeySpec;
 
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.gnu.GNUObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.kisa.KISAObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.misc.MiscObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.nist.NISTObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.ntt.NTTObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import com.distrimind.bouncycastle.crypto.DerivationFunction;
 import com.distrimind.bouncycastle.crypto.agreement.kdf.DHKDFParameters;
 import com.distrimind.bouncycastle.crypto.agreement.kdf.DHKEKGenerator;
+import com.distrimind.bouncycastle.crypto.generators.HKDFBytesGenerator;
 import com.distrimind.bouncycastle.crypto.params.DESParameters;
+import com.distrimind.bouncycastle.crypto.params.HKDFParameters;
 import com.distrimind.bouncycastle.crypto.params.KDFParameters;
+import com.distrimind.bouncycastle.internal.asn1.gnu.GNUObjectIdentifiers;
+import com.distrimind.bouncycastle.internal.asn1.kisa.KISAObjectIdentifiers;
+import com.distrimind.bouncycastle.internal.asn1.misc.MiscObjectIdentifiers;
+import com.distrimind.bouncycastle.internal.asn1.ntt.NTTObjectIdentifiers;
+import com.distrimind.bouncycastle.internal.asn1.oiw.OIWObjectIdentifiers;
 import com.distrimind.bouncycastle.jcajce.spec.HybridValueParameterSpec;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Integers;
@@ -149,7 +151,8 @@ public abstract class BaseAgreementSpi
     protected final String kaAlgorithm;
     protected final DerivationFunction kdf;
 
-    protected byte[]     ukmParameters;
+    protected byte[] ukmParameters;
+    protected byte[] ukmParametersSalt;
     private HybridValueParameterSpec hybridSpec;
 
     public BaseAgreementSpi(String kaAlgorithm, DerivationFunction kdf)
@@ -223,8 +226,8 @@ public abstract class BaseAgreementSpi
     }
 
     protected void engineInit(
-        Key             key,
-        SecureRandom    random)
+        Key key,
+        SecureRandom random)
         throws InvalidKeyException
     {
         try
@@ -247,6 +250,7 @@ public abstract class BaseAgreementSpi
         if (params instanceof HybridValueParameterSpec)
         {
             this.hybridSpec = (HybridValueParameterSpec)params;
+
             doInitFromKey(key, hybridSpec.getBaseParameterSpec(), random);
         }
         else
@@ -276,8 +280,8 @@ public abstract class BaseAgreementSpi
     }
 
     protected int engineGenerateSecret(
-        byte[]  sharedSecret,
-        int     offset)
+        byte[] sharedSecret,
+        int offset)
         throws IllegalStateException, ShortBufferException
     {
         byte[] secret = engineGenerateSecret();
@@ -304,7 +308,7 @@ public abstract class BaseAgreementSpi
             oidAlgorithm = ((ASN1ObjectIdentifier)oids.get(algKey)).getId();
         }
 
-        int    keySize = getKeySize(oidAlgorithm);
+        int keySize = getKeySize(oidAlgorithm);
 
         byte[] secret = getSharedSecretBytes(calcSecret(), oidAlgorithm, keySize);
 
@@ -348,6 +352,10 @@ public abstract class BaseAgreementSpi
 
                 kdf.init(params);
             }
+            else if (kdf instanceof HKDFBytesGenerator)
+            {
+                kdf.init(new HKDFParameters(secret, ukmParametersSalt, ukmParameters));
+            }
             else
             {
                 KDFParameters params = new KDFParameters(secret, ukmParameters);
@@ -384,7 +392,16 @@ public abstract class BaseAgreementSpi
         {
             // Set Z' to Z || T
             byte[] s = doCalcSecret();
-            byte[] sec = Arrays.concatenate(s, hybridSpec.getT());
+            byte[] sec;
+
+            if (hybridSpec.isPrependedT())
+            {
+                sec = Arrays.concatenate(hybridSpec.getT(), s);
+            }
+            else
+            {
+                sec = Arrays.concatenate(s, hybridSpec.getT());
+            }
 
             Arrays.clear(s);
 

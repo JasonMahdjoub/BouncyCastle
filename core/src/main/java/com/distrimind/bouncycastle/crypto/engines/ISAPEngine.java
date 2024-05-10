@@ -2,12 +2,12 @@ package com.distrimind.bouncycastle.crypto.engines;
 
 import java.io.ByteArrayOutputStream;
 
-import com.distrimind.bouncycastle.crypto.constraints.DefaultServiceProperties;
 import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
 import com.distrimind.bouncycastle.crypto.DataLengthException;
 import com.distrimind.bouncycastle.crypto.InvalidCipherTextException;
 import com.distrimind.bouncycastle.crypto.OutputLengthException;
+import com.distrimind.bouncycastle.crypto.constraints.DefaultServiceProperties;
 import com.distrimind.bouncycastle.crypto.modes.AEADCipher;
 import com.distrimind.bouncycastle.crypto.params.KeyParameter;
 import com.distrimind.bouncycastle.crypto.params.ParametersWithIV;
@@ -20,7 +20,6 @@ import com.distrimind.bouncycastle.util.Pack;
  * ISAP AEAD v2 with reference to C Reference Impl from: https://github.com/isap-lwc/isap-code-package
  * </p>
  */
-
 public class ISAPEngine
     implements AEADCipher
 {
@@ -827,7 +826,7 @@ public class ISAPEngine
         CryptoServicesRegistrar.checkConstraints(new DefaultServiceProperties(
             this.getAlgorithmName(), 128, params, Utils.getPurpose(forEncryption)));
 
-        /**
+        /*
          * Initialize variables.
          */
         npub = new byte[iv.length];

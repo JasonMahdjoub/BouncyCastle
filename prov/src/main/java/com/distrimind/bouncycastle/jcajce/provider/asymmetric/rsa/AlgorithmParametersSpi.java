@@ -20,8 +20,8 @@ import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.pkcs.RSAESOAEPparams;
 import com.distrimind.bouncycastle.asn1.pkcs.RSASSAPSSparams;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import com.distrimind.bouncycastle.jcajce.util.MessageDigestUtils;
 import com.distrimind.bouncycastle.jcajce.provider.util.DigestFactory;
+import com.distrimind.bouncycastle.jcajce.util.MessageDigestUtils;
 
 public abstract class AlgorithmParametersSpi
     extends java.security.AlgorithmParametersSpi

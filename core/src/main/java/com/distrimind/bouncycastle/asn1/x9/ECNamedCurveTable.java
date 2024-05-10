@@ -3,15 +3,15 @@ package com.distrimind.bouncycastle.asn1.x9;
 import java.util.Enumeration;
 import java.util.Vector;
 
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.anssi.ANSSINamedCurves;
-import com.distrimind.bouncycastle.asn1.cryptlib.CryptlibObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.cryptopro.ECGOST3410NamedCurves;
+import com.distrimind.bouncycastle.asn1.gm.GMNamedCurves;
 import com.distrimind.bouncycastle.asn1.nist.NISTNamedCurves;
 import com.distrimind.bouncycastle.asn1.sec.SECNamedCurves;
 import com.distrimind.bouncycastle.asn1.teletrust.TeleTrusTNamedCurves;
 import com.distrimind.bouncycastle.crypto.ec.CustomNamedCurves;
-import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
-import com.distrimind.bouncycastle.asn1.gm.GMNamedCurves;
+import com.distrimind.bouncycastle.internal.asn1.cryptlib.CryptlibObjectIdentifiers;
 
 /**
  * A general class that reads all X9.62 style EC curve tables.

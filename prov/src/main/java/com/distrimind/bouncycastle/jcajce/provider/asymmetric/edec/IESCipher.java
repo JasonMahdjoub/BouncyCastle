@@ -45,13 +45,13 @@ import com.distrimind.bouncycastle.crypto.params.X25519PublicKeyParameters;
 import com.distrimind.bouncycastle.crypto.params.X448PublicKeyParameters;
 import com.distrimind.bouncycastle.crypto.parsers.XIESPublicKeyParser;
 import com.distrimind.bouncycastle.crypto.util.DigestFactory;
+import com.distrimind.bouncycastle.jcajce.interfaces.XDHKey;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.BaseCipherSpi;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.IESUtil;
-import com.distrimind.bouncycastle.jce.spec.IESParameterSpec;
-import com.distrimind.bouncycastle.jcajce.interfaces.XDHKey;
 import com.distrimind.bouncycastle.jcajce.provider.util.BadBlockException;
 import com.distrimind.bouncycastle.jcajce.util.BCJcaJceHelper;
 import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
+import com.distrimind.bouncycastle.jce.spec.IESParameterSpec;
 import com.distrimind.bouncycastle.math.ec.ECCurve;
 import com.distrimind.bouncycastle.util.Strings;
 

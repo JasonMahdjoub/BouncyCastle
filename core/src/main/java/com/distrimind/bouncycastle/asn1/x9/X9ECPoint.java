@@ -1,11 +1,11 @@
 package com.distrimind.bouncycastle.asn1.x9;
 
-import com.distrimind.bouncycastle.math.ec.ECCurve;
-import com.distrimind.bouncycastle.math.ec.ECPoint;
 import com.distrimind.bouncycastle.asn1.ASN1Object;
 import com.distrimind.bouncycastle.asn1.ASN1OctetString;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
 import com.distrimind.bouncycastle.asn1.DEROctetString;
+import com.distrimind.bouncycastle.math.ec.ECCurve;
+import com.distrimind.bouncycastle.math.ec.ECPoint;
 import com.distrimind.bouncycastle.util.Arrays;
 
 /**

@@ -1,9 +1,9 @@
 package com.distrimind.bouncycastle.crypto.digests;
 
-import com.distrimind.bouncycastle.crypto.engines.SparkleEngine;
 import com.distrimind.bouncycastle.crypto.DataLengthException;
 import com.distrimind.bouncycastle.crypto.ExtendedDigest;
 import com.distrimind.bouncycastle.crypto.OutputLengthException;
+import com.distrimind.bouncycastle.crypto.engines.SparkleEngine;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Integers;
 import com.distrimind.bouncycastle.util.Pack;

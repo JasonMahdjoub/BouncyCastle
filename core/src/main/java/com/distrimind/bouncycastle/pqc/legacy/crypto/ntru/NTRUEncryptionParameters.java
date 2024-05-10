@@ -7,8 +7,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Arrays;
 
-import com.distrimind.bouncycastle.pqc.legacy.math.ntru.polynomial.DenseTernaryPolynomial;
-import com.distrimind.bouncycastle.pqc.legacy.math.ntru.polynomial.SparseTernaryPolynomial;
 import com.distrimind.bouncycastle.crypto.Digest;
 import com.distrimind.bouncycastle.crypto.digests.SHA256Digest;
 import com.distrimind.bouncycastle.crypto.digests.SHA512Digest;
@@ -52,12 +50,12 @@ public class NTRUEncryptionParameters
      * @param df           number of ones in the private polynomial <code>f</code>
      * @param dm0          minimum acceptable number of -1's, 0's, and 1's in the polynomial <code>m'</code> in the last encryption step
      * @param db           number of random bits to prepend to the message
-     * @param c            a parameter for the Index Generation Function ({@link IndexGenerator})
+     * @param c            a parameter for the Index Generation Function ({@link com.distrimind.bouncycastle.pqc.legacy.crypto.ntru.IndexGenerator})
      * @param minCallsR    minimum number of hash calls for the IGF to make
      * @param minCallsMask minimum number of calls to generate the masking polynomial
      * @param hashSeed     whether to hash the seed in the MGF first (true) or use the seed directly (false)
      * @param oid          three bytes that uniquely identify the parameter set
-     * @param sparse       whether to treat ternary polynomials as sparsely populated ({@link SparseTernaryPolynomial} vs {@link DenseTernaryPolynomial})
+     * @param sparse       whether to treat ternary polynomials as sparsely populated ({@link com.distrimind.bouncycastle.pqc.legacy.math.ntru.polynomial.SparseTernaryPolynomial} vs {@link com.distrimind.bouncycastle.pqc.legacy.math.ntru.polynomial.DenseTernaryPolynomial})
      * @param fastFp       whether <code>f=1+p*F</code> for a ternary <code>F</code> (true) or <code>f</code> is ternary (false)
      * @param hashAlg      a valid identifier for a <code>java.security.MessageDigest</code> instance such as <code>SHA-256</code>. The <code>MessageDigest</code> must support the <code>getDigestLength()</code> method.
      */
@@ -90,12 +88,12 @@ public class NTRUEncryptionParameters
      * @param df3          number of ones in the private polynomial <code>f3</code>
      * @param dm0          minimum acceptable number of -1's, 0's, and 1's in the polynomial <code>m'</code> in the last encryption step
      * @param db           number of random bits to prepend to the message
-     * @param c            a parameter for the Index Generation Function ({@link  IndexGenerator})
+     * @param c            a parameter for the Index Generation Function ({@link  com.distrimind.bouncycastle.pqc.legacy.crypto.ntru.IndexGenerator})
      * @param minCallsR    minimum number of hash calls for the IGF to make
      * @param minCallsMask minimum number of calls to generate the masking polynomial
      * @param hashSeed     whether to hash the seed in the MGF first (true) or use the seed directly (false)
      * @param oid          three bytes that uniquely identify the parameter set
-     * @param sparse       whether to treat ternary polynomials as sparsely populated ({@link SparseTernaryPolynomial} vs {@link DenseTernaryPolynomial})
+     * @param sparse       whether to treat ternary polynomials as sparsely populated ({@link com.distrimind.bouncycastle.pqc.legacy.math.ntru.polynomial.SparseTernaryPolynomial} vs {@link com.distrimind.bouncycastle.pqc.legacy.math.ntru.polynomial.DenseTernaryPolynomial})
      * @param fastFp       whether <code>f=1+p*F</code> for a ternary <code>F</code> (true) or <code>f</code> is ternary (false)
      * @param hashAlg      a valid identifier for a <code>java.security.MessageDigest</code> instance such as <code>SHA-256</code>
      */

@@ -9,14 +9,14 @@ import java.security.spec.InvalidParameterSpecException;
 
 import javax.crypto.spec.IvParameterSpec;
 
-import com.distrimind.bouncycastle.asn1.misc.IDEACBCPar;
-import com.distrimind.bouncycastle.asn1.misc.MiscObjectIdentifiers;
 import com.distrimind.bouncycastle.crypto.CipherKeyGenerator;
 import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
 import com.distrimind.bouncycastle.crypto.engines.IDEAEngine;
 import com.distrimind.bouncycastle.crypto.macs.CBCBlockCipherMac;
 import com.distrimind.bouncycastle.crypto.macs.CFBBlockCipherMac;
 import com.distrimind.bouncycastle.crypto.modes.CBCBlockCipher;
+import com.distrimind.bouncycastle.internal.asn1.misc.IDEACBCPar;
+import com.distrimind.bouncycastle.internal.asn1.misc.MiscObjectIdentifiers;
 import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseAlgorithmParameterGenerator;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseAlgorithmParameters;

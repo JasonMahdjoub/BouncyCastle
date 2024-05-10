@@ -2,6 +2,12 @@ package com.distrimind.bouncycastle.crypto.modes;
 
 import java.io.ByteArrayOutputStream;
 
+import com.distrimind.bouncycastle.crypto.BlockCipher;
+import com.distrimind.bouncycastle.crypto.BufferedBlockCipher;
+import com.distrimind.bouncycastle.crypto.CipherParameters;
+import com.distrimind.bouncycastle.crypto.DataLengthException;
+import com.distrimind.bouncycastle.crypto.InvalidCipherTextException;
+import com.distrimind.bouncycastle.crypto.OutputLengthException;
 import com.distrimind.bouncycastle.crypto.modes.kgcm.KGCMMultiplier;
 import com.distrimind.bouncycastle.crypto.modes.kgcm.Tables16kKGCMMultiplier_512;
 import com.distrimind.bouncycastle.crypto.modes.kgcm.Tables4kKGCMMultiplier_128;
@@ -9,12 +15,6 @@ import com.distrimind.bouncycastle.crypto.modes.kgcm.Tables8kKGCMMultiplier_256;
 import com.distrimind.bouncycastle.crypto.params.AEADParameters;
 import com.distrimind.bouncycastle.crypto.params.KeyParameter;
 import com.distrimind.bouncycastle.crypto.params.ParametersWithIV;
-import com.distrimind.bouncycastle.crypto.BlockCipher;
-import com.distrimind.bouncycastle.crypto.BufferedBlockCipher;
-import com.distrimind.bouncycastle.crypto.CipherParameters;
-import com.distrimind.bouncycastle.crypto.DataLengthException;
-import com.distrimind.bouncycastle.crypto.InvalidCipherTextException;
-import com.distrimind.bouncycastle.crypto.OutputLengthException;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Pack;
 

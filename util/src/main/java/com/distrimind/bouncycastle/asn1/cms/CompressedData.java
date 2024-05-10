@@ -67,7 +67,7 @@ public class CompressedData
      * <ul>
      * <li> null &rarr; null
      * <li> {@link CompressedData} object
-     * <li> {@link ASN1Sequence#getInstance(java.lang.Object) ASN1Sequence} input formats with CompressedData structure inside
+     * <li> {@link com.distrimind.bouncycastle.asn1.ASN1Sequence#getInstance(java.lang.Object) ASN1Sequence} input formats with CompressedData structure inside
      * </ul>
      *
      * @param obj the object we want converted.

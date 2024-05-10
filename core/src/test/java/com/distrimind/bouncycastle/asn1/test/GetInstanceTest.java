@@ -5,9 +5,7 @@ import java.math.BigInteger;
 import java.util.Date;
 import java.util.Vector;
 
-import com.distrimind.bouncycastle.asn1.pkcs.RSAPublicKey;
 import junit.framework.TestCase;
-
 import com.distrimind.bouncycastle.asn1.ASN1BitString;
 import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
 import com.distrimind.bouncycastle.asn1.ASN1Enumerated;
@@ -33,10 +31,6 @@ import com.distrimind.bouncycastle.asn1.cryptopro.ECGOST3410ParamSetParameters;
 import com.distrimind.bouncycastle.asn1.cryptopro.GOST28147Parameters;
 import com.distrimind.bouncycastle.asn1.cryptopro.GOST3410ParamSetParameters;
 import com.distrimind.bouncycastle.asn1.cryptopro.GOST3410PublicKeyAlgParameters;
-
-import com.distrimind.bouncycastle.asn1.misc.CAST5CBCParameters;
-import com.distrimind.bouncycastle.asn1.misc.IDEACBCPar;
-import com.distrimind.bouncycastle.asn1.mozilla.PublicKeyAndChallenge;
 import com.distrimind.bouncycastle.asn1.ocsp.BasicOCSPResponse;
 import com.distrimind.bouncycastle.asn1.ocsp.CertID;
 import com.distrimind.bouncycastle.asn1.ocsp.CertStatus;
@@ -52,7 +46,6 @@ import com.distrimind.bouncycastle.asn1.ocsp.RevokedInfo;
 import com.distrimind.bouncycastle.asn1.ocsp.Signature;
 import com.distrimind.bouncycastle.asn1.ocsp.SingleResponse;
 import com.distrimind.bouncycastle.asn1.ocsp.TBSRequest;
-import com.distrimind.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.pkcs.AuthenticatedSafe;
 import com.distrimind.bouncycastle.asn1.pkcs.CertificationRequest;
 import com.distrimind.bouncycastle.asn1.pkcs.CertificationRequestInfo;
@@ -140,6 +133,9 @@ import com.distrimind.bouncycastle.asn1.x9.DHPublicKey;
 import com.distrimind.bouncycastle.asn1.x9.DHValidationParms;
 import com.distrimind.bouncycastle.asn1.x9.X962Parameters;
 import com.distrimind.bouncycastle.asn1.x9.X9ECParameters;
+import com.distrimind.bouncycastle.internal.asn1.misc.CAST5CBCParameters;
+import com.distrimind.bouncycastle.internal.asn1.misc.IDEACBCPar;
+import com.distrimind.bouncycastle.internal.asn1.oiw.OIWObjectIdentifiers;
 import com.distrimind.bouncycastle.util.Integers;
 import com.distrimind.bouncycastle.util.encoders.Base64;
 
@@ -363,7 +359,6 @@ public class GetInstanceTest
 
         CAST5CBCParameters.getInstance(null);
         IDEACBCPar.getInstance(null);
-        PublicKeyAndChallenge.getInstance(null);
         BasicOCSPResponse.getInstance(null);
         BasicOCSPResponse.getInstance(null);
 
@@ -496,7 +491,7 @@ public class GetInstanceTest
         PolicyQualifierInfo.getInstance(null);
         PrivateKeyUsagePeriod.getInstance(null);
         doFullGetInstanceTest(RoleSyntax.class, new RoleSyntax(new GeneralNames(new GeneralName(new X500Name("CN=Test"))), new GeneralName(GeneralName.uniformResourceIdentifier, "http://bc")));
-        RSAPublicKey.getInstance(null);
+        com.distrimind.bouncycastle.asn1.pkcs.RSAPublicKey.getInstance(null);
 
         SubjectDirectoryAttributes.getInstance(null);
         SubjectKeyIdentifier.getInstance(null);

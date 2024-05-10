@@ -10,9 +10,9 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Locale;
 
+import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.digests.SkeinDigest;
 import com.distrimind.bouncycastle.crypto.digests.SkeinEngine;
-import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.macs.SkeinMac;
 import com.distrimind.bouncycastle.util.Integers;
 

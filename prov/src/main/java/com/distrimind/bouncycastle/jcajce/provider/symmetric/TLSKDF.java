@@ -13,10 +13,10 @@ import com.distrimind.bouncycastle.crypto.digests.SHA512Digest;
 import com.distrimind.bouncycastle.crypto.macs.HMac;
 import com.distrimind.bouncycastle.crypto.params.KeyParameter;
 import com.distrimind.bouncycastle.crypto.util.DigestFactory;
-import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseSecretKeyFactory;
-import com.distrimind.bouncycastle.jcajce.spec.TLSKeyMaterialSpec;
 import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
+import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseSecretKeyFactory;
 import com.distrimind.bouncycastle.jcajce.provider.util.AlgorithmProvider;
+import com.distrimind.bouncycastle.jcajce.spec.TLSKeyMaterialSpec;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Strings;
 

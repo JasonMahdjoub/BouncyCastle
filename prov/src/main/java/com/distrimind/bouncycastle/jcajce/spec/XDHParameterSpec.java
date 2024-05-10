@@ -2,7 +2,7 @@ package com.distrimind.bouncycastle.jcajce.spec;
 
 import java.security.spec.AlgorithmParameterSpec;
 
-import com.distrimind.bouncycastle.asn1.edec.EdECObjectIdentifiers;
+import com.distrimind.bouncycastle.internal.asn1.edec.EdECObjectIdentifiers;
 
 /**
  * ParameterSpec for XDH key agreement algorithms.

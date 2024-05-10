@@ -7,6 +7,7 @@ import com.distrimind.bouncycastle.crypto.macs.GMac;
 import com.distrimind.bouncycastle.crypto.modes.GCMBlockCipher;
 import com.distrimind.bouncycastle.crypto.params.KeyParameter;
 import com.distrimind.bouncycastle.crypto.params.ParametersWithIV;
+import com.distrimind.bouncycastle.util.Strings;
 import com.distrimind.bouncycastle.util.encoders.Hex;
 import com.distrimind.bouncycastle.util.test.SimpleTest;
 
@@ -131,7 +132,7 @@ public class GMacTest extends SimpleTest
         }
         catch (IllegalArgumentException e)
         {
-            if (!e.getMessage().toLowerCase().startsWith("invalid value for mac size"))
+            if (!Strings.toLowerCase(e.getMessage()).startsWith("invalid value for mac size"))
             {
                 fail("Illegal mac size failed with unexpected message");
             }

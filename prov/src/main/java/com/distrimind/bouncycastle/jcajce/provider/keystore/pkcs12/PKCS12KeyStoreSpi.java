@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.math.BigInteger;
+import java.security.AlgorithmParameters;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.Key;
@@ -47,7 +48,6 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.PBEParameterSpec;
 
-import com.distrimind.bouncycastle.asn1.pkcs.*;
 import com.distrimind.bouncycastle.asn1.ASN1BMPString;
 import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1EncodableVector;
@@ -67,16 +67,19 @@ import com.distrimind.bouncycastle.asn1.DERSequence;
 import com.distrimind.bouncycastle.asn1.DERSet;
 import com.distrimind.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.cryptopro.GOST28147Parameters;
-import com.distrimind.bouncycastle.asn1.misc.MiscObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.nist.NISTObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.ntt.NTTObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.pkcs.AuthenticatedSafe;
 import com.distrimind.bouncycastle.asn1.pkcs.CertBag;
+import com.distrimind.bouncycastle.asn1.pkcs.ContentInfo;
 import com.distrimind.bouncycastle.asn1.pkcs.EncryptedData;
+import com.distrimind.bouncycastle.asn1.pkcs.EncryptionScheme;
+import com.distrimind.bouncycastle.asn1.pkcs.KeyDerivationFunc;
+import com.distrimind.bouncycastle.asn1.pkcs.MacData;
+import com.distrimind.bouncycastle.asn1.pkcs.PBES2Parameters;
 import com.distrimind.bouncycastle.asn1.pkcs.PBKDF2Params;
 import com.distrimind.bouncycastle.asn1.pkcs.PKCS12PBEParams;
 import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.pkcs.Pfx;
 import com.distrimind.bouncycastle.asn1.pkcs.SafeBag;
 import com.distrimind.bouncycastle.asn1.util.ASN1Dump;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
@@ -93,21 +96,26 @@ import com.distrimind.bouncycastle.asn1.x509.X509ObjectIdentifiers;
 import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
 import com.distrimind.bouncycastle.crypto.Digest;
 import com.distrimind.bouncycastle.crypto.util.DigestFactory;
+import com.distrimind.bouncycastle.internal.asn1.cms.GCMParameters;
+import com.distrimind.bouncycastle.internal.asn1.misc.MiscObjectIdentifiers;
+import com.distrimind.bouncycastle.internal.asn1.ntt.NTTObjectIdentifiers;
+import com.distrimind.bouncycastle.internal.asn1.oiw.OIWObjectIdentifiers;
 import com.distrimind.bouncycastle.jcajce.BCLoadStoreParameter;
 import com.distrimind.bouncycastle.jcajce.PKCS12Key;
 import com.distrimind.bouncycastle.jcajce.PKCS12StoreParameter;
+import com.distrimind.bouncycastle.jcajce.provider.keystore.util.AdaptingKeyStoreSpi;
+import com.distrimind.bouncycastle.jcajce.provider.keystore.util.ParameterUtil;
 import com.distrimind.bouncycastle.jcajce.spec.GOST28147ParameterSpec;
 import com.distrimind.bouncycastle.jcajce.spec.PBKDF2KeySpec;
+import com.distrimind.bouncycastle.jcajce.util.BCJcaJceHelper;
 import com.distrimind.bouncycastle.jcajce.util.DefaultJcaJceHelper;
+import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
 import com.distrimind.bouncycastle.jce.interfaces.BCKeyStore;
 import com.distrimind.bouncycastle.jce.interfaces.PKCS12BagAttributeCarrier;
 import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
 import com.distrimind.bouncycastle.jce.provider.JDKPKCS12StoreParameter;
-import com.distrimind.bouncycastle.jcajce.provider.keystore.util.AdaptingKeyStoreSpi;
-import com.distrimind.bouncycastle.jcajce.provider.keystore.util.ParameterUtil;
-import com.distrimind.bouncycastle.jcajce.util.BCJcaJceHelper;
-import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
 import com.distrimind.bouncycastle.util.Arrays;
+import com.distrimind.bouncycastle.util.BigIntegers;
 import com.distrimind.bouncycastle.util.Integers;
 import com.distrimind.bouncycastle.util.Properties;
 import com.distrimind.bouncycastle.util.Strings;
@@ -131,6 +139,8 @@ public class PKCS12KeyStoreSpi
     private IgnoresCaseHashtable certs = new IgnoresCaseHashtable();
     private Hashtable chainCerts = new Hashtable();
     private Hashtable keyCerts = new Hashtable();
+
+
 
     //
     // generic object types
@@ -196,6 +206,26 @@ public class PKCS12KeyStoreSpi
             CertId cId = (CertId)o;
 
             return Arrays.areEqual(id, cId.id);
+        }
+    }
+
+    private static boolean isPBKDF2(ASN1ObjectIdentifier oid)
+    {
+        return oid.equals(NISTObjectIdentifiers.id_aes256_CBC)
+            || oid.equals(NISTObjectIdentifiers.id_aes256_GCM)
+            || oid.equals(NISTObjectIdentifiers.id_aes128_CBC)
+            || oid.equals(NISTObjectIdentifiers.id_aes128_GCM);
+    }
+
+    private static int getKeyLength(ASN1ObjectIdentifier oid)
+    {
+        if (oid.equals(NISTObjectIdentifiers.id_aes256_CBC) || oid.equals(NISTObjectIdentifiers.id_aes256_GCM))
+        {
+            return 32;
+        }
+        else
+        {
+            return 16;
         }
     }
 
@@ -657,11 +687,44 @@ public class PKCS12KeyStoreSpi
             SecretKeyFactory keyFact = helper.createSecretKeyFactory(algorithm);
             PBEParameterSpec defParams = new PBEParameterSpec(
                 pbeParams.getIV(),
-                pbeParams.getIterations().intValue());
+                BigIntegers.intValueExact(pbeParams.getIterations()));
 
             Cipher cipher = helper.createCipher(algorithm);
 
             cipher.init(Cipher.WRAP_MODE, keyFact.generateSecret(pbeSpec), defParams);
+
+            out = cipher.wrap(key);
+        }
+        catch (Exception e)
+        {
+            throw new IOException("exception encrypting data - " + e.toString());
+        }
+
+        return out;
+    }
+
+    protected byte[] wrapKey(
+        EncryptionScheme encAlgId,
+        Key key,
+        PBKDF2Params pbeParams,
+        char[] password)
+        throws IOException
+    {
+        PBEKeySpec pbeSpec = new PBEKeySpec(password, pbeParams.getSalt(),
+            BigIntegers.intValueExact(pbeParams.getIterationCount()),
+            BigIntegers.intValueExact(pbeParams.getKeyLength()) * 8);
+        byte[] out;
+
+        try
+        {
+            SecretKeyFactory keyFact = helper.createSecretKeyFactory("PBKDF2withHMacSHA256");
+
+            Cipher cipher = helper.createCipher(encAlgId.getAlgorithm().getId());
+
+            AlgorithmParameters algParams = AlgorithmParameters.getInstance(encAlgId.getAlgorithm().getId());
+            algParams.init(encAlgId.getParameters().toASN1Primitive().getEncoded());
+
+            cipher.init(Cipher.WRAP_MODE, keyFact.generateSecret(pbeSpec), algParams);
 
             out = cipher.wrap(key);
         }
@@ -691,7 +754,7 @@ public class PKCS12KeyStoreSpi
             {
                 PBEParameterSpec defParams = new PBEParameterSpec(
                     pbeParams.getIV(),
-                    pbeParams.getIterations().intValue());
+                    BigIntegers.intValueExact(pbeParams.getIterations()));
                 PKCS12Key key = new PKCS12Key(password, wrongPKCS12Zero);
 
                 Cipher cipher = helper.createCipher(algorithm.getId());
@@ -743,7 +806,6 @@ public class PKCS12KeyStoreSpi
         }
 
         Cipher cipher = helper.createCipher(alg.getEncryptionScheme().getAlgorithm().getId());
-
         ASN1Encodable encParams = alg.getEncryptionScheme().getParameters();
         if (encParams instanceof ASN1OctetString)
         {
@@ -751,10 +813,30 @@ public class PKCS12KeyStoreSpi
         }
         else
         {
-            // TODO: at the moment it's just GOST, but...
-            GOST28147Parameters gParams = GOST28147Parameters.getInstance(encParams);
+            ASN1Sequence params = ASN1Sequence.getInstance(encParams);
 
-            cipher.init(mode, key, new GOST28147ParameterSpec(gParams.getEncryptionParamSet(), gParams.getIV()));
+            if (params.getObjectAt(1) instanceof ASN1ObjectIdentifier)
+            {
+                // TODO: at the moment it's just GOST, but...
+                GOST28147Parameters gParams = GOST28147Parameters.getInstance(encParams);
+
+                cipher.init(mode, key, new GOST28147ParameterSpec(gParams.getEncryptionParamSet(), gParams.getIV()));
+            }
+            else
+            {
+                AlgorithmParameters algParams = AlgorithmParameters.getInstance(encScheme.getAlgorithm().getId(), "BC");
+
+                try
+                {
+                    algParams.init(params.getEncoded());
+                }
+                catch (IOException e)
+                {
+                    throw new InvalidKeySpecException(e.getMessage());
+                }
+
+                cipher.init(mode, key, algParams);
+            }
         }
         return cipher;
     }
@@ -788,6 +870,9 @@ public class PKCS12KeyStoreSpi
         {
             return;
         }
+
+        boolean noMac = true;
+        boolean noEnc = true;
 
         BufferedInputStream bufIn = new BufferedInputStream(stream);
 
@@ -829,6 +914,7 @@ public class PKCS12KeyStoreSpi
                 throw new NullPointerException("no password supplied when one expected");
             }
 
+            noMac = false;
             MacData mData = bag.getMacData();
             DigestInfo dInfo = mData.getMac();
             macAlgorithm = dInfo.getAlgorithmId();
@@ -870,13 +956,6 @@ public class PKCS12KeyStoreSpi
                 throw new IOException("error constructing MAC: " + e.toString());
             }
         }
-        else if (password != null && password.length != 0)
-        {
-            if (!Properties.isOverrideSet("com.distrimind.bouncycastle.pkcs12.ignore_useless_passwd"))
-            {
-                throw new IOException("password supplied for keystore that does not require one");
-            }
-        }
 
         keys = new IgnoresCaseHashtable();
         localIds = new IgnoresCaseHashtable();
@@ -900,6 +979,7 @@ public class PKCS12KeyStoreSpi
                         if (b.getBagId().equals(pkcs8ShroudedKeyBag))
                         {
                             unmarkedKey = processShroudedKeyBag(b, password, wrongPKCS12Zero);
+                            noEnc = false;
                         }
                         else if (b.getBagId().equals(certBag))
                         {
@@ -924,6 +1004,7 @@ public class PKCS12KeyStoreSpi
                         password, wrongPKCS12Zero, d.getContent().getOctets());
                     ASN1Sequence seq = ASN1Sequence.getInstance(octets);
 
+                    noEnc = false;
                     for (int j = 0; j != seq.size(); j++)
                     {
                         SafeBag b = SafeBag.getInstance(seq.getObjectAt(j));
@@ -1082,12 +1163,23 @@ public class PKCS12KeyStoreSpi
                 }
             }
         }
+
+        if (noMac && noEnc)
+        {
+            if (password != null && password.length != 0)
+            {
+                if (!Properties.isOverrideSet("com.distrimind.bouncycastle.pkcs12.ignore_useless_passwd"))
+                {
+                    throw new IOException("password supplied for keystore that does not require one");
+                }
+            }
+        }
     }
 
     private boolean processShroudedKeyBag(SafeBag b, char[] password, boolean wrongPKCS12Zero)
         throws IOException
     {
-        EncryptedPrivateKeyInfo eIn = EncryptedPrivateKeyInfo.getInstance(b.getBagValue());
+        com.distrimind.bouncycastle.asn1.pkcs.EncryptedPrivateKeyInfo eIn = com.distrimind.bouncycastle.asn1.pkcs.EncryptedPrivateKeyInfo.getInstance(b.getBagValue());
         PrivateKey privKey = unwrapKey(eIn.getEncryptionAlgorithm(), eIn.getEncryptedData(), password, wrongPKCS12Zero);
 
         //
@@ -1166,7 +1258,7 @@ public class PKCS12KeyStoreSpi
     private void processKeyBag(SafeBag b)
         throws IOException
     {
-        PrivateKeyInfo kInfo = PrivateKeyInfo.getInstance(b.getBagValue());
+        com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo kInfo = com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo.getInstance(b.getBagValue());
         PrivateKey privKey = BouncyCastleProvider.getPrivateKey(kInfo);
 
         //
@@ -1229,7 +1321,7 @@ public class PKCS12KeyStoreSpi
 
     private int validateIterationCount(BigInteger i)
     {
-        int count = i.intValue();
+        int count = BigIntegers.intValueExact(i);
 
         if (count < 0)
         {
@@ -1239,15 +1331,40 @@ public class PKCS12KeyStoreSpi
         BigInteger maxValue = Properties.asBigInteger(PKCS12_MAX_IT_COUNT_PROPERTY);
         if (maxValue != null)
         {
-            if (maxValue.intValue() < count)
+            if (BigIntegers.intValueExact(maxValue) < count)
             {
-                throw new IllegalStateException("iteration count " + count + " greater than " + maxValue.intValue());
+                throw new IllegalStateException("iteration count " + count + " greater than "
+                    + BigIntegers.intValueExact(maxValue));
             }
         }
 
         return count;
     }
 
+    private ASN1Primitive getAlgParams(ASN1ObjectIdentifier algorithm)
+    {
+         if (algorithm.equals(NISTObjectIdentifiers.id_aes128_CBC)
+            || algorithm.equals(NISTObjectIdentifiers.id_aes256_CBC))
+         {
+             byte[] iv = new byte[16];
+             
+             random.nextBytes(iv);
+
+             return new DEROctetString(iv);
+         }
+         else if (algorithm.equals(NISTObjectIdentifiers.id_aes128_GCM)
+              || algorithm.equals(NISTObjectIdentifiers.id_aes256_GCM))
+         {
+             byte[] nonce = new byte[12];
+
+             random.nextBytes(nonce);
+
+             return new GCMParameters(nonce, 16).toASN1Primitive();
+         }
+
+         throw new IllegalStateException("unknown encryption OID in getAlgParams()");
+    }
+    
     public void engineStore(LoadStoreParameter param)
         throws IOException,
         NoSuchAlgorithmException, CertificateException
@@ -1371,10 +1488,24 @@ public class PKCS12KeyStoreSpi
 
             String name = (String)ks.nextElement();
             PrivateKey privKey = (PrivateKey)keys.get(name);
-            PKCS12PBEParams kParams = new PKCS12PBEParams(kSalt, MIN_ITERATIONS);
-            byte[] kBytes = wrapKey(keyAlgorithm.getId(), privKey, kParams, password);
-            AlgorithmIdentifier kAlgId = new AlgorithmIdentifier(keyAlgorithm, kParams.toASN1Primitive());
-            EncryptedPrivateKeyInfo kInfo = new EncryptedPrivateKeyInfo(kAlgId, kBytes);
+            AlgorithmIdentifier kAlgId;
+            byte[] kBytes;
+            if (isPBKDF2(keyAlgorithm))
+            {
+                // TODO: keySize hard coded to 256 bits
+                PBKDF2Params kParams = new PBKDF2Params(kSalt, MIN_ITERATIONS, getKeyLength(keyAlgorithm), new AlgorithmIdentifier(PKCSObjectIdentifiers.id_hmacWithSHA256, DERNull.INSTANCE));
+                EncryptionScheme encScheme = new EncryptionScheme(keyAlgorithm, getAlgParams(keyAlgorithm));
+                kAlgId = new AlgorithmIdentifier(PKCSObjectIdentifiers.id_PBES2, new PBES2Parameters(
+                    new KeyDerivationFunc(PKCSObjectIdentifiers.id_PBKDF2, kParams), encScheme));
+                kBytes = wrapKey(encScheme, privKey, kParams, password);
+            }
+            else
+            {
+                PKCS12PBEParams kParams = new PKCS12PBEParams(kSalt, MIN_ITERATIONS);
+                kBytes = wrapKey(keyAlgorithm.getId(), privKey, kParams, password);
+                kAlgId = new AlgorithmIdentifier(keyAlgorithm, kParams.toASN1Primitive());
+            }
+            com.distrimind.bouncycastle.asn1.pkcs.EncryptedPrivateKeyInfo kInfo = new com.distrimind.bouncycastle.asn1.pkcs.EncryptedPrivateKeyInfo(kAlgId, kBytes);
             boolean attrSet = false;
             ASN1EncodableVector kName = new ASN1EncodableVector();
 
@@ -1452,8 +1583,18 @@ public class PKCS12KeyStoreSpi
         random.nextBytes(cSalt);
 
         ASN1EncodableVector certSeq = new ASN1EncodableVector();
-        PKCS12PBEParams cParams = new PKCS12PBEParams(cSalt, MIN_ITERATIONS);
-        AlgorithmIdentifier cAlgId = new AlgorithmIdentifier(certAlgorithm, cParams.toASN1Primitive());
+        AlgorithmIdentifier cAlgId;
+        if (isPBKDF2(certAlgorithm))
+        {
+            PBKDF2Params cParams = new PBKDF2Params(cSalt, MIN_ITERATIONS, getKeyLength(certAlgorithm), new AlgorithmIdentifier(PKCSObjectIdentifiers.id_hmacWithSHA256, DERNull.INSTANCE));
+            cAlgId = new AlgorithmIdentifier(PKCSObjectIdentifiers.id_PBES2, new PBES2Parameters(
+                new KeyDerivationFunc(PKCSObjectIdentifiers.id_PBKDF2, cParams), new EncryptionScheme(certAlgorithm, getAlgParams(certAlgorithm))));
+        }
+        else
+        {
+            PKCS12PBEParams cParams = new PKCS12PBEParams(cSalt, MIN_ITERATIONS);
+            cAlgId = new AlgorithmIdentifier(certAlgorithm, cParams.toASN1Primitive());
+        }
         Hashtable doneCerts = new Hashtable();
 
         Enumeration cs = keys.keys();
@@ -1646,17 +1787,24 @@ public class PKCS12KeyStoreSpi
 
         MacData mData;
 
-        try
+        if (keyAlgorithm.equals(NISTObjectIdentifiers.id_aes256_GCM))
         {
-            byte[] res = calculatePbeMac(macAlgorithm.getAlgorithm(), mSalt, itCount, password, false, data);
-
-            DigestInfo dInfo = new DigestInfo(macAlgorithm, res);
-
-            mData = new MacData(dInfo, mSalt, itCount);
+            mData = null;
         }
-        catch (Exception e)
+        else
         {
-            throw new IOException("error constructing MAC: " + e.toString());
+            try
+            {
+                byte[] res = calculatePbeMac(macAlgorithm.getAlgorithm(), mSalt, itCount, password, false, data);
+
+                DigestInfo dInfo = new DigestInfo(macAlgorithm, res);
+
+                mData = new MacData(dInfo, mSalt, itCount);
+            }
+            catch (Exception e)
+            {
+                throw new IOException("error constructing MAC: " + e.toString());
+            }
         }
 
         //
@@ -1829,6 +1977,24 @@ public class PKCS12KeyStoreSpi
         }
     }
 
+    public static class BCPKCS12KeyStoreAES256
+        extends AdaptingKeyStoreSpi
+    {
+        public BCPKCS12KeyStoreAES256()
+        {
+            super(new BCJcaJceHelper(), new PKCS12KeyStoreSpi(new BCJcaJceHelper(), NISTObjectIdentifiers.id_aes256_CBC, NISTObjectIdentifiers.id_aes128_CBC));
+        }
+    }
+
+    public static class BCPKCS12KeyStoreAES256GCM
+        extends AdaptingKeyStoreSpi
+    {
+        public BCPKCS12KeyStoreAES256GCM()
+        {
+            super(new BCJcaJceHelper(), new PKCS12KeyStoreSpi(new BCJcaJceHelper(), NISTObjectIdentifiers.id_aes256_GCM, NISTObjectIdentifiers.id_aes128_GCM));
+        }
+    }
+
     public static class DefPKCS12KeyStore
         extends AdaptingKeyStoreSpi
     {
@@ -1844,6 +2010,24 @@ public class PKCS12KeyStoreSpi
         public DefPKCS12KeyStore3DES()
         {
             super(new DefaultJcaJceHelper(), new PKCS12KeyStoreSpi(new DefaultJcaJceHelper(), pbeWithSHAAnd3_KeyTripleDES_CBC, pbeWithSHAAnd3_KeyTripleDES_CBC));
+        }
+    }
+
+    public static class DefPKCS12KeyStoreAES256
+        extends AdaptingKeyStoreSpi
+    {
+        public DefPKCS12KeyStoreAES256()
+        {
+            super(new BCJcaJceHelper(), new PKCS12KeyStoreSpi(new BCJcaJceHelper(), NISTObjectIdentifiers.id_aes256_CBC, NISTObjectIdentifiers.id_aes128_CBC));
+        }
+    }
+
+    public static class DefPKCS12KeyStoreAES256GCM
+        extends AdaptingKeyStoreSpi
+    {
+        public DefPKCS12KeyStoreAES256GCM()
+        {
+            super(new BCJcaJceHelper(), new PKCS12KeyStoreSpi(new BCJcaJceHelper(), NISTObjectIdentifiers.id_aes256_GCM, NISTObjectIdentifiers.id_aes128_GCM));
         }
     }
 
@@ -1918,6 +2102,9 @@ public class PKCS12KeyStoreSpi
             keySizes.put(NISTObjectIdentifiers.id_aes128_CBC, Integers.valueOf(128));
             keySizes.put(NISTObjectIdentifiers.id_aes192_CBC, Integers.valueOf(192));
             keySizes.put(NISTObjectIdentifiers.id_aes256_CBC, Integers.valueOf(256));
+
+            keySizes.put(NISTObjectIdentifiers.id_aes128_GCM, Integers.valueOf(128));
+            keySizes.put(NISTObjectIdentifiers.id_aes256_GCM, Integers.valueOf(256));
 
             keySizes.put(NTTObjectIdentifiers.id_camellia128_cbc, Integers.valueOf(128));
             keySizes.put(NTTObjectIdentifiers.id_camellia192_cbc, Integers.valueOf(192));

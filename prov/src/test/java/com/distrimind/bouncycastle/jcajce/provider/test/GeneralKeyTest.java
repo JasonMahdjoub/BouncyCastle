@@ -282,7 +282,6 @@ public class GeneralKeyTest
         assertTrue(priv.toString().contains("    Y: 4f7f2191d7cfc523f8c784e6ea675a379a1fdcff00099cd7ea0bac6727c91f61"));
     }
 
-    @SuppressWarnings("TruthSelfEquals")
     public void testRSA()
         throws Exception
     {
@@ -329,8 +328,8 @@ public class GeneralKeyTest
         
         priv = keyFact.generatePrivate(new RSAPrivateKeySpec(((RSAPrivateKey)priv).getModulus(), ((RSAPrivateKey)priv).getPrivateExponent()));
 
-        assertEquals(priv, priv);
-        assertFalse(priv.equals(pub));
+        assertTrue(priv.equals(priv));
+        assertFalse(priv.equals(pub));//  priv.equals(pub));
 
         doSerialisationCheck(priv);
 
@@ -346,7 +345,6 @@ public class GeneralKeyTest
         assertTrue(privKeyString.contains("    modulus: b54e921ef22076878a9bd0ae78aa11fa2d772385d9033a8f57e6da76751dad3942ce24cd7db19d1154913e4add35c43361e823ebc2b5807613ef9e5d36d280aa7247ea4ea841f1f4f37313d1e61b4e78b5b1fdf334e63e36ce332329b7ccc043e5543aa737d293d499cac6e886178490c2cb83a098ab8c75b319ec4b57daed7da6b9b2979b1a1a9b9b74933b573c8d2fec4ea261661f88822f122afae36d737df934832ce77cb34fd47592a6d70e80d35b445c86bcf87c645cb0ae83404f07d0153119ea97f7170ede32530dd1e0e3bd589bf6fda210bd83483671387626f643c5d844c9b9146812ae895b600a4acdf27937fcb9b1199ee7aa2145ba94a14477"));
     }
 
-    @SuppressWarnings("TruthSelfEquals")
     private void doBasicTest(String algorithm, KeyPair kp)
         throws Exception
     {
@@ -367,8 +365,8 @@ public class GeneralKeyTest
         assertEquals(algorithm, pub.getAlgorithm());
         assertEquals(algorithm, priv.getAlgorithm());
 
-        assertEquals(pub, pub);
-        assertEquals(priv, priv);
+        assertTrue(pub.equals(pub));
+        assertTrue(priv.equals(priv));
 
         assertFalse(pub.equals(priv));
         assertFalse(priv.equals(pub));

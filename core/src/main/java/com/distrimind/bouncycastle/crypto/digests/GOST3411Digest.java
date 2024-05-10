@@ -1,11 +1,11 @@
 package com.distrimind.bouncycastle.crypto.digests;
 
-import com.distrimind.bouncycastle.crypto.engines.GOST28147Engine;
 import com.distrimind.bouncycastle.crypto.BlockCipher;
 import com.distrimind.bouncycastle.crypto.CryptoServiceProperties;
 import com.distrimind.bouncycastle.crypto.CryptoServicePurpose;
 import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
 import com.distrimind.bouncycastle.crypto.ExtendedDigest;
+import com.distrimind.bouncycastle.crypto.engines.GOST28147Engine;
 import com.distrimind.bouncycastle.crypto.params.KeyParameter;
 import com.distrimind.bouncycastle.crypto.params.ParametersWithSBox;
 import com.distrimind.bouncycastle.util.Arrays;

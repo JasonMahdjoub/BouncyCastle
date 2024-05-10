@@ -47,7 +47,7 @@ public class JCERSAPublicKey
     {
         try
         {
-            com.distrimind.bouncycastle.asn1.pkcs.RSAPublicKey pubKey = com.distrimind.bouncycastle.asn1.pkcs.RSAPublicKey.getInstance(info.parsePublicKey());
+            com.distrimind.bouncycastle.asn1.pkcs.RSAPublicKey   pubKey = com.distrimind.bouncycastle.asn1.pkcs.RSAPublicKey.getInstance(info.parsePublicKey());
 
             this.modulus = pubKey.getModulus();
             this.publicExponent = pubKey.getPublicExponent();

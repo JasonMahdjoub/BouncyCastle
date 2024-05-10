@@ -8,13 +8,13 @@ import java.util.Hashtable;
 import java.util.Random;
 import java.util.Set;
 
+import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
+import com.distrimind.bouncycastle.math.Primes;
 import com.distrimind.bouncycastle.math.ec.endo.ECEndomorphism;
 import com.distrimind.bouncycastle.math.ec.endo.GLVEndomorphism;
 import com.distrimind.bouncycastle.math.field.FiniteField;
 import com.distrimind.bouncycastle.math.field.FiniteFields;
 import com.distrimind.bouncycastle.math.raw.Nat;
-import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
-import com.distrimind.bouncycastle.math.Primes;
 import com.distrimind.bouncycastle.util.BigIntegers;
 import com.distrimind.bouncycastle.util.Integers;
 import com.distrimind.bouncycastle.util.Properties;
@@ -845,6 +845,11 @@ public abstract class ECCurve
 
         private static FiniteField buildField(int m, int k1, int k2, int k3)
         {
+            if (m > Properties.asInteger("com.distrimind.bouncycastle.ec.max_f2m_field_size", 1142))  // twice 571
+            {
+                throw new IllegalArgumentException("field size out of range: " + m);
+            }
+
             int[] exponents = (k2 | k3) == 0
                 ? new int[]{ 0, k1, m }
                 : new int[]{ 0, k1, k2, k3, m };
@@ -855,6 +860,15 @@ public abstract class ECCurve
         protected AbstractF2m(int m, int k1, int k2, int k3)
         {
             super(buildField(m, k1, k2, k3));
+
+            if (Properties.isOverrideSet("com.distrimind.bouncycastle.ec.disable"))
+            {
+                throw new UnsupportedOperationException("F2M disabled by \"com.distrimind.bouncycastle.ec.disable\"");
+            }
+            if (Properties.isOverrideSet("com.distrimind.bouncycastle.ec.disable_f2m"))
+            {
+                throw new UnsupportedOperationException("F2M disabled by \"com.distrimind.bouncycastle.ec.disable_f2m\"");
+            }
         }
 
         public ECPoint createPoint(BigInteger x, BigInteger y)
@@ -997,7 +1011,7 @@ public abstract class ECCurve
             }
 
             int m = this.getFieldSize();
-
+            
             // For odd m, use the half-trace 
             if (0 != (m & 1))
             {

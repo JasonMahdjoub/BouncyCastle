@@ -2,13 +2,13 @@ package com.distrimind.bouncycastle.pqc.crypto.ntru;
 
 import java.security.SecureRandom;
 
-import com.distrimind.bouncycastle.pqc.crypto.util.SecretWithEncapsulationImpl;
-import com.distrimind.bouncycastle.pqc.math.ntru.parameters.NTRUParameterSet;
 import com.distrimind.bouncycastle.crypto.EncapsulatedSecretGenerator;
 import com.distrimind.bouncycastle.crypto.SecretWithEncapsulation;
 import com.distrimind.bouncycastle.crypto.digests.SHA3Digest;
 import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
+import com.distrimind.bouncycastle.pqc.crypto.util.SecretWithEncapsulationImpl;
 import com.distrimind.bouncycastle.pqc.math.ntru.Polynomial;
+import com.distrimind.bouncycastle.pqc.math.ntru.parameters.NTRUParameterSet;
 import com.distrimind.bouncycastle.util.Arrays;
 
 /**

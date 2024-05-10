@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import junit.framework.TestCase;
 import com.distrimind.bouncycastle.crypto.Digest;
+import com.distrimind.bouncycastle.crypto.Xof;
 import com.distrimind.bouncycastle.crypto.digests.SHA256Digest;
 import com.distrimind.bouncycastle.crypto.digests.SHA512Digest;
 import com.distrimind.bouncycastle.crypto.digests.SHAKEDigest;

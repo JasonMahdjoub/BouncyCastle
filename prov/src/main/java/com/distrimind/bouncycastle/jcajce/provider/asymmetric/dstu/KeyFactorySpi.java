@@ -14,8 +14,8 @@ import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
 import com.distrimind.bouncycastle.asn1.ua.UAObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
-import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.BaseKeyFactorySpi;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.EC5Util;
+import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.BaseKeyFactorySpi;
 import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
 import com.distrimind.bouncycastle.jce.spec.ECParameterSpec;
 import com.distrimind.bouncycastle.jce.spec.ECPrivateKeySpec;
@@ -62,33 +62,33 @@ public class KeyFactorySpi
                 return new java.security.spec.ECPrivateKeySpec(k.getS(), EC5Util.convertSpec(EC5Util.convertCurve(implicitSpec.getCurve(), implicitSpec.getSeed()), implicitSpec));
             }
         }
-        else if (spec.isAssignableFrom(ECPublicKeySpec.class) && key instanceof ECPublicKey)
+        else if (spec.isAssignableFrom(com.distrimind.bouncycastle.jce.spec.ECPublicKeySpec.class) && key instanceof ECPublicKey)
         {
             ECPublicKey k = (ECPublicKey)key;
             if (k.getParams() != null)
             {
-                return new ECPublicKeySpec(EC5Util.convertPoint(k.getParams(), k.getW()), EC5Util.convertSpec(k.getParams()));
+                return new com.distrimind.bouncycastle.jce.spec.ECPublicKeySpec(EC5Util.convertPoint(k.getParams(), k.getW()), EC5Util.convertSpec(k.getParams()));
             }
             else
             {
                 ECParameterSpec implicitSpec = BouncyCastleProvider.CONFIGURATION.getEcImplicitlyCa();
 
-                return new ECPublicKeySpec(EC5Util.convertPoint(k.getParams(), k.getW()), implicitSpec);
+                return new com.distrimind.bouncycastle.jce.spec.ECPublicKeySpec(EC5Util.convertPoint(k.getParams(), k.getW()), implicitSpec);
             }
         }
-        else if (spec.isAssignableFrom(ECPrivateKeySpec.class) && key instanceof ECPrivateKey)
+        else if (spec.isAssignableFrom(com.distrimind.bouncycastle.jce.spec.ECPrivateKeySpec.class) && key instanceof ECPrivateKey)
         {
             ECPrivateKey k = (ECPrivateKey)key;
 
             if (k.getParams() != null)
             {
-                return new ECPrivateKeySpec(k.getS(), EC5Util.convertSpec(k.getParams()));
+                return new com.distrimind.bouncycastle.jce.spec.ECPrivateKeySpec(k.getS(), EC5Util.convertSpec(k.getParams()));
             }
             else
             {
                 ECParameterSpec implicitSpec = BouncyCastleProvider.CONFIGURATION.getEcImplicitlyCa();
 
-                return new ECPrivateKeySpec(k.getS(), implicitSpec);
+                return new com.distrimind.bouncycastle.jce.spec.ECPrivateKeySpec(k.getS(), implicitSpec);
             }
         }
 

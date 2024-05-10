@@ -8,9 +8,9 @@ import javax.crypto.spec.DHParameterSpec;
 
 import com.distrimind.bouncycastle.asn1.ASN1Encoding;
 import com.distrimind.bouncycastle.asn1.ASN1Primitive;
-import com.distrimind.bouncycastle.asn1.oiw.ElGamalParameter;
-import com.distrimind.bouncycastle.jce.spec.ElGamalParameterSpec;
+import com.distrimind.bouncycastle.internal.asn1.oiw.ElGamalParameter;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseAlgorithmParameters;
+import com.distrimind.bouncycastle.jce.spec.ElGamalParameterSpec;
 
 public class AlgorithmParametersSpi
     extends BaseAlgorithmParameters

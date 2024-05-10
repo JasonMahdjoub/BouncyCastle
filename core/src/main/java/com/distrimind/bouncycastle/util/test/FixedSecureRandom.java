@@ -5,8 +5,8 @@ import java.io.IOException;
 import java.security.Provider;
 import java.security.SecureRandom;
 
-import com.distrimind.bouncycastle.util.encoders.Hex;
 import com.distrimind.bouncycastle.util.Pack;
+import com.distrimind.bouncycastle.util.encoders.Hex;
 
 /**
  * A secure random that returns pre-seeded data to calls of nextBytes() or generateSeed().

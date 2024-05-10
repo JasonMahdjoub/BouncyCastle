@@ -3,10 +3,25 @@ package com.distrimind.bouncycastle.pqc.crypto.util;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.DERNull;
+import com.distrimind.bouncycastle.asn1.bc.BCObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.nist.NISTObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.crypto.Digest;
+import com.distrimind.bouncycastle.crypto.digests.SHA256Digest;
+import com.distrimind.bouncycastle.crypto.digests.SHA512Digest;
+import com.distrimind.bouncycastle.crypto.digests.SHAKEDigest;
+import com.distrimind.bouncycastle.internal.asn1.oiw.OIWObjectIdentifiers;
+import com.distrimind.bouncycastle.pqc.asn1.PQCObjectIdentifiers;
+import com.distrimind.bouncycastle.pqc.asn1.SPHINCS256KeyParams;
+import com.distrimind.bouncycastle.pqc.crypto.bike.BIKEParameters;
+import com.distrimind.bouncycastle.pqc.crypto.cmce.CMCEParameters;
 import com.distrimind.bouncycastle.pqc.crypto.crystals.dilithium.DilithiumParameters;
 import com.distrimind.bouncycastle.pqc.crypto.crystals.kyber.KyberParameters;
 import com.distrimind.bouncycastle.pqc.crypto.falcon.FalconParameters;
 import com.distrimind.bouncycastle.pqc.crypto.frodo.FrodoParameters;
+import com.distrimind.bouncycastle.pqc.crypto.hqc.HQCParameters;
 import com.distrimind.bouncycastle.pqc.crypto.ntru.NTRUParameters;
 import com.distrimind.bouncycastle.pqc.crypto.ntruprime.NTRULPRimeParameters;
 import com.distrimind.bouncycastle.pqc.crypto.ntruprime.SNTRUPrimeParameters;
@@ -17,21 +32,6 @@ import com.distrimind.bouncycastle.pqc.crypto.sphincs.SPHINCSKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.sphincsplus.SPHINCSPlusParameters;
 import com.distrimind.bouncycastle.pqc.crypto.xmss.XMSSKeyParameters;
 import com.distrimind.bouncycastle.pqc.legacy.crypto.qtesla.QTESLASecurityCategory;
-import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
-import com.distrimind.bouncycastle.asn1.DERNull;
-import com.distrimind.bouncycastle.asn1.bc.BCObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.nist.NISTObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import com.distrimind.bouncycastle.crypto.Digest;
-import com.distrimind.bouncycastle.crypto.digests.SHA256Digest;
-import com.distrimind.bouncycastle.crypto.digests.SHA512Digest;
-import com.distrimind.bouncycastle.crypto.digests.SHAKEDigest;
-import com.distrimind.bouncycastle.pqc.asn1.PQCObjectIdentifiers;
-import com.distrimind.bouncycastle.pqc.asn1.SPHINCS256KeyParams;
-import com.distrimind.bouncycastle.pqc.crypto.bike.BIKEParameters;
-import com.distrimind.bouncycastle.pqc.crypto.cmce.CMCEParameters;
-import com.distrimind.bouncycastle.pqc.crypto.hqc.HQCParameters;
 import com.distrimind.bouncycastle.util.Integers;
 
 class Utils
@@ -203,12 +203,16 @@ class Utils
         ntruOids.put(NTRUParameters.ntruhps2048509, BCObjectIdentifiers.ntruhps2048509);
         ntruOids.put(NTRUParameters.ntruhps2048677, BCObjectIdentifiers.ntruhps2048677);
         ntruOids.put(NTRUParameters.ntruhps4096821, BCObjectIdentifiers.ntruhps4096821);
+        ntruOids.put(NTRUParameters.ntruhps40961229, BCObjectIdentifiers.ntruhps40961229);
         ntruOids.put(NTRUParameters.ntruhrss701, BCObjectIdentifiers.ntruhrss701);
+        ntruOids.put(NTRUParameters.ntruhrss1373, BCObjectIdentifiers.ntruhrss1373);
 
         ntruParams.put(BCObjectIdentifiers.ntruhps2048509, NTRUParameters.ntruhps2048509);
         ntruParams.put(BCObjectIdentifiers.ntruhps2048677, NTRUParameters.ntruhps2048677);
         ntruParams.put(BCObjectIdentifiers.ntruhps4096821, NTRUParameters.ntruhps4096821);
+        ntruParams.put(BCObjectIdentifiers.ntruhps40961229, NTRUParameters.ntruhps40961229);
         ntruParams.put(BCObjectIdentifiers.ntruhrss701, NTRUParameters.ntruhrss701);
+        ntruParams.put(BCObjectIdentifiers.ntruhrss1373, NTRUParameters.ntruhrss1373);
 
         falconOids.put(FalconParameters.falcon_512, BCObjectIdentifiers.falcon_512);
         falconOids.put(FalconParameters.falcon_1024, BCObjectIdentifiers.falcon_1024);

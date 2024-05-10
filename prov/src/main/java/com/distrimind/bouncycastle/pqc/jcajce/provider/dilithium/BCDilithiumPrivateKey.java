@@ -7,7 +7,9 @@ import java.io.ObjectOutputStream;
 import com.distrimind.bouncycastle.asn1.ASN1Set;
 import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
 import com.distrimind.bouncycastle.pqc.crypto.crystals.dilithium.DilithiumPrivateKeyParameters;
+import com.distrimind.bouncycastle.pqc.crypto.crystals.dilithium.DilithiumPublicKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.util.PrivateKeyFactory;
+import com.distrimind.bouncycastle.pqc.crypto.util.PrivateKeyInfoFactory;
 import com.distrimind.bouncycastle.pqc.jcajce.interfaces.DilithiumPrivateKey;
 import com.distrimind.bouncycastle.pqc.jcajce.interfaces.DilithiumPublicKey;
 import com.distrimind.bouncycastle.pqc.jcajce.provider.util.KeyUtil;
@@ -51,7 +53,7 @@ public class BCDilithiumPrivateKey
     }
 
     /**
-     * Compare this SPHINCS-256 private key with another object.
+     * Compare this Dilithium private key with another object.
      *
      * @param o the other object
      * @return the result of the comparison

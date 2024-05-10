@@ -36,6 +36,7 @@ import com.distrimind.bouncycastle.jce.provider.X509CRLParser;
 import com.distrimind.bouncycastle.jce.provider.X509CertPairParser;
 import com.distrimind.bouncycastle.jce.provider.X509CertParser;
 import com.distrimind.bouncycastle.util.StoreException;
+import com.distrimind.bouncycastle.util.Strings;
 import com.distrimind.bouncycastle.x509.X509AttributeCertStoreSelector;
 import com.distrimind.bouncycastle.x509.X509AttributeCertificate;
 import com.distrimind.bouncycastle.x509.X509CRLStoreSelector;
@@ -48,10 +49,10 @@ import com.distrimind.bouncycastle.x509.X509CertificatePair;
  * attribute certificates and cross certificates from a LDAP location.
  * <p>
  * At first a search is performed in the ldap*AttributeNames of the
- * {@link X509LDAPCertStoreParameters} with the given
+ * {@link com.distrimind.bouncycastle.jce.X509LDAPCertStoreParameters} with the given
  * information of the subject (for all kind of certificates) or issuer (for
- * CRLs), respectively, if a {@link X509CertStoreSelector} or
- * {@link X509AttributeCertificate} is given with that
+ * CRLs), respectively, if a {@link com.distrimind.bouncycastle.x509.X509CertStoreSelector} or
+ * {@link com.distrimind.bouncycastle.x509.X509AttributeCertificate} is given with that
  * details.
  * </p><p>
  * For the used schemes see:
@@ -113,8 +114,8 @@ public class LDAPStoreHelper
     private String parseDN(String subject, String dNAttributeName)
     {
         String temp = subject;
-        int begin = temp.toLowerCase().indexOf(
-            dNAttributeName.toLowerCase() + "=");
+        int begin = Strings.toLowerCase(temp).indexOf(
+            Strings.toLowerCase(dNAttributeName) + "=");
         if (begin == -1)
         {
             return "";
@@ -249,7 +250,7 @@ public class LDAPStoreHelper
     /**
      * Can use the subject of the forward certificate of the set certificate
      * pair or the subject of the forward
-     * {@link X509CertStoreSelector} of the given
+     * {@link com.distrimind.bouncycastle.x509.X509CertStoreSelector} of the given
      * selector.
      *
      * @param xselector             The selector with the search criteria.

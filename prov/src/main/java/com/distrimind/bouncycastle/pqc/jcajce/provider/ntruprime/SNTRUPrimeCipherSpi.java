@@ -24,7 +24,7 @@ import com.distrimind.bouncycastle.crypto.InvalidCipherTextException;
 import com.distrimind.bouncycastle.crypto.SecretWithEncapsulation;
 import com.distrimind.bouncycastle.crypto.Wrapper;
 import com.distrimind.bouncycastle.crypto.params.KeyParameter;
-import com.distrimind.bouncycastle.jcajce.spec.KEMParameterSpec;
+import com.distrimind.bouncycastle.jcajce.spec.KTSParameterSpec;
 import com.distrimind.bouncycastle.pqc.crypto.ntruprime.SNTRUPrimeKEMExtractor;
 import com.distrimind.bouncycastle.pqc.crypto.ntruprime.SNTRUPrimeKEMGenerator;
 import com.distrimind.bouncycastle.pqc.jcajce.provider.util.WrapUtil;
@@ -36,7 +36,7 @@ class SNTRUPrimeCipherSpi
 {
     private final String algorithmName;
     private SNTRUPrimeKEMGenerator kemGen;
-    private KEMParameterSpec kemParameterSpec;
+    private KTSParameterSpec kemParameterSpec;
     private BCSNTRUPrimePublicKey wrapKey;
     private BCSNTRUPrimePrivateKey unwrapKey;
     private AlgorithmParameters engineParams;
@@ -127,16 +127,16 @@ class SNTRUPrimeCipherSpi
         if (paramSpec == null)
         {
             // TODO: default should probably use shake.
-            kemParameterSpec = new KEMParameterSpec("AES-KWP");
+            kemParameterSpec = new KTSParameterSpec.Builder("AES-KWP", 256).build();
         }
         else
         {
-            if (!(paramSpec instanceof KEMParameterSpec))
+            if (!(paramSpec instanceof KTSParameterSpec))
             {
                 throw new InvalidAlgorithmParameterException(algorithmName + " can only accept KTSParameterSpec");
             }
 
-            kemParameterSpec = (KEMParameterSpec)paramSpec;
+            kemParameterSpec = (KTSParameterSpec)paramSpec;
         }
 
         if (opmode == Cipher.WRAP_MODE)
@@ -178,7 +178,7 @@ class SNTRUPrimeCipherSpi
         {
             try
             {
-                paramSpec = algorithmParameters.getParameterSpec(KEMParameterSpec.class);
+                paramSpec = algorithmParameters.getParameterSpec(KTSParameterSpec.class);
             }
             catch (Exception e)
             {
@@ -232,7 +232,7 @@ class SNTRUPrimeCipherSpi
 
             Wrapper kWrap = WrapUtil.getWrapper(kemParameterSpec.getKeyAlgorithmName());
 
-            KeyParameter keyParameter = new KeyParameter(secEnc.getSecret());
+            KeyParameter keyParameter = new KeyParameter(secEnc.getSecret(), 0, (kemParameterSpec.getKeySize() + 7) / 8);
 
             kWrap.init(true, keyParameter);
 
@@ -277,7 +277,7 @@ class SNTRUPrimeCipherSpi
 
             Wrapper kWrap = WrapUtil.getWrapper(kemParameterSpec.getKeyAlgorithmName());
 
-            KeyParameter keyParameter = new KeyParameter(secret);
+            KeyParameter keyParameter = new KeyParameter(secret, 0, (kemParameterSpec.getKeySize() + 7) / 8);
 
             Arrays.clear(secret);
 
@@ -292,7 +292,7 @@ class SNTRUPrimeCipherSpi
             return rv;
         }
         catch (IllegalArgumentException e)
-        {                          e.printStackTrace();
+        {                        
             throw new NoSuchAlgorithmException("unable to extract KTS secret: " + e.getMessage());
         }
         catch (InvalidCipherTextException e)

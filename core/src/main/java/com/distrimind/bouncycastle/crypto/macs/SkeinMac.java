@@ -1,11 +1,11 @@
 package com.distrimind.bouncycastle.crypto.macs;
 
+import com.distrimind.bouncycastle.crypto.CipherParameters;
+import com.distrimind.bouncycastle.crypto.Mac;
 import com.distrimind.bouncycastle.crypto.digests.SkeinEngine;
 import com.distrimind.bouncycastle.crypto.engines.ThreefishEngine;
 import com.distrimind.bouncycastle.crypto.params.KeyParameter;
 import com.distrimind.bouncycastle.crypto.params.SkeinParameters;
-import com.distrimind.bouncycastle.crypto.CipherParameters;
-import com.distrimind.bouncycastle.crypto.Mac;
 
 /**
  * Implementation of the Skein parameterised MAC function in 256, 512 and 1024 bit block sizes,

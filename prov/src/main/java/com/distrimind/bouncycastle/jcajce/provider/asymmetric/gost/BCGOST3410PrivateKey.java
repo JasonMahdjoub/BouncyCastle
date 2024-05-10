@@ -19,13 +19,13 @@ import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.crypto.params.GOST3410PrivateKeyParameters;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.GOST3410Util;
+import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.PKCS12BagAttributeCarrierImpl;
 import com.distrimind.bouncycastle.jce.interfaces.GOST3410Params;
 import com.distrimind.bouncycastle.jce.interfaces.GOST3410PrivateKey;
 import com.distrimind.bouncycastle.jce.interfaces.PKCS12BagAttributeCarrier;
 import com.distrimind.bouncycastle.jce.spec.GOST3410ParameterSpec;
 import com.distrimind.bouncycastle.jce.spec.GOST3410PrivateKeySpec;
 import com.distrimind.bouncycastle.jce.spec.GOST3410PublicKeyParameterSetSpec;
-import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.PKCS12BagAttributeCarrierImpl;
 
 public class BCGOST3410PrivateKey
     implements GOST3410PrivateKey, PKCS12BagAttributeCarrier
@@ -34,7 +34,7 @@ public class BCGOST3410PrivateKey
 
     private BigInteger          x;
 
-    private transient GOST3410Params gost3410Spec;
+    private transient   GOST3410Params      gost3410Spec;
     private transient   PKCS12BagAttributeCarrier attrCarrier = new PKCS12BagAttributeCarrierImpl();
 
     protected BCGOST3410PrivateKey()
@@ -179,7 +179,7 @@ public class BCGOST3410PrivateKey
 
         return this.getX().equals(other.getX())
             && this.getParameters().getPublicKeyParameters().equals(other.getParameters().getPublicKeyParameters())
-            && this.getParameters().getDigestParamSetOID().equals(other.getParameters().getDigestParamSetOID())
+            && compareObj(this.getParameters().getDigestParamSetOID(), other.getParameters().getDigestParamSetOID())
             && compareObj(this.getParameters().getEncryptionParamSetOID(), other.getParameters().getEncryptionParamSetOID());
     }
 
@@ -208,7 +208,7 @@ public class BCGOST3410PrivateKey
         try
         {
             return GOSTUtil.privateKeyToString("GOST3410", x,
-                ((GOST3410PrivateKeyParameters) GOST3410Util.generatePrivateKeyParameter(this)).getParameters());
+                ((GOST3410PrivateKeyParameters)GOST3410Util.generatePrivateKeyParameter(this)).getParameters());
         }
         catch (InvalidKeyException e)
         {

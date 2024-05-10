@@ -15,7 +15,6 @@ import com.distrimind.bouncycastle.asn1.ASN1Encoding;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.DERNull;
 import com.distrimind.bouncycastle.asn1.nist.NISTObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.teletrust.TeleTrusTObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
@@ -32,6 +31,7 @@ import com.distrimind.bouncycastle.crypto.digests.RIPEMD256Digest;
 import com.distrimind.bouncycastle.crypto.encodings.PKCS1Encoding;
 import com.distrimind.bouncycastle.crypto.engines.RSABlindedEngine;
 import com.distrimind.bouncycastle.crypto.util.DigestFactory;
+import com.distrimind.bouncycastle.internal.asn1.oiw.OIWObjectIdentifiers;
 import com.distrimind.bouncycastle.util.Arrays;
 
 public class DigestSignatureSpi

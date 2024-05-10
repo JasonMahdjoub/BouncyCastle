@@ -14,10 +14,10 @@ import com.distrimind.bouncycastle.asn1.ASN1Set;
 import com.distrimind.bouncycastle.asn1.ASN1TaggedObject;
 import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.pkcs.SignedData;
-import com.distrimind.bouncycastle.x509.util.StreamParsingException;
 import com.distrimind.bouncycastle.x509.X509AttributeCertificate;
 import com.distrimind.bouncycastle.x509.X509StreamParserSpi;
 import com.distrimind.bouncycastle.x509.X509V2AttributeCertificate;
+import com.distrimind.bouncycastle.x509.util.StreamParsingException;
 
 public class X509AttrCertParser
     extends X509StreamParserSpi

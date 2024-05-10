@@ -34,11 +34,11 @@ import com.distrimind.bouncycastle.crypto.params.ECPublicKeyParameters;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.EC5Util;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.ECUtil;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.KeyUtil;
+import com.distrimind.bouncycastle.jcajce.provider.config.ProviderConfiguration;
 import com.distrimind.bouncycastle.jce.interfaces.ECPointEncoder;
 import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
 import com.distrimind.bouncycastle.jce.spec.ECNamedCurveParameterSpec;
 import com.distrimind.bouncycastle.jce.spec.ECNamedCurveSpec;
-import com.distrimind.bouncycastle.jcajce.provider.config.ProviderConfiguration;
 import com.distrimind.bouncycastle.math.ec.ECCurve;
 
 public class BCDSTU4145PublicKey
@@ -207,7 +207,7 @@ public class BCDSTU4145PublicKey
         if (seq.getObjectAt(0) instanceof ASN1Integer)
         {
             x9Params = X9ECParameters.getInstance(seq);
-            spec = new com.distrimind.bouncycastle.jce.spec.ECParameterSpec(x9Params.getCurve(), x9Params.getG(), x9Params.getN(), x9Params.getH(), x9Params.getSeed());
+            spec = new  com.distrimind.bouncycastle.jce.spec.ECParameterSpec(x9Params.getCurve(), x9Params.getG(), x9Params.getN(), x9Params.getH(), x9Params.getSeed());
         }
         else
         {

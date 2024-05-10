@@ -1,5 +1,6 @@
 package com.distrimind.bouncycastle.pqc.math.ntru.parameters;
 
+import com.distrimind.bouncycastle.pqc.math.ntru.HRSS1373Polynomial;
 import com.distrimind.bouncycastle.pqc.math.ntru.HRSSPolynomial;
 import com.distrimind.bouncycastle.pqc.math.ntru.Polynomial;
 
@@ -22,7 +23,7 @@ public abstract class NTRUHRSSParameterSet
     @Override
     public Polynomial createPolynomial()
     {
-        return new HRSSPolynomial(this);
+        return this.n() == 1373 ? new HRSS1373Polynomial(this) : new HRSSPolynomial(this);
     }
 
     @Override

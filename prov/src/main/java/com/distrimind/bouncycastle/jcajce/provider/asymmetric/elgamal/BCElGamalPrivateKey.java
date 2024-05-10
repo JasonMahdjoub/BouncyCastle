@@ -14,16 +14,16 @@ import com.distrimind.bouncycastle.asn1.ASN1Encodable;
 import com.distrimind.bouncycastle.asn1.ASN1Encoding;
 import com.distrimind.bouncycastle.asn1.ASN1Integer;
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
-import com.distrimind.bouncycastle.asn1.oiw.ElGamalParameter;
-import com.distrimind.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
 import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.crypto.params.ElGamalPrivateKeyParameters;
+import com.distrimind.bouncycastle.internal.asn1.oiw.ElGamalParameter;
+import com.distrimind.bouncycastle.internal.asn1.oiw.OIWObjectIdentifiers;
+import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.PKCS12BagAttributeCarrierImpl;
 import com.distrimind.bouncycastle.jce.interfaces.ElGamalPrivateKey;
 import com.distrimind.bouncycastle.jce.interfaces.PKCS12BagAttributeCarrier;
 import com.distrimind.bouncycastle.jce.spec.ElGamalParameterSpec;
 import com.distrimind.bouncycastle.jce.spec.ElGamalPrivateKeySpec;
-import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.PKCS12BagAttributeCarrierImpl;
 
 public class BCElGamalPrivateKey
     implements ElGamalPrivateKey, DHPrivateKey, PKCS12BagAttributeCarrier
@@ -32,7 +32,7 @@ public class BCElGamalPrivateKey
         
     private BigInteger      x;
 
-    private transient ElGamalParameterSpec elSpec;
+    private transient ElGamalParameterSpec   elSpec;
     private transient PKCS12BagAttributeCarrierImpl attrCarrier = new PKCS12BagAttributeCarrierImpl();
 
     protected BCElGamalPrivateKey()

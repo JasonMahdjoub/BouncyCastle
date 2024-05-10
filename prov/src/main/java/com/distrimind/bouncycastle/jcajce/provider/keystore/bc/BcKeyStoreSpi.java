@@ -48,10 +48,10 @@ import com.distrimind.bouncycastle.crypto.io.MacOutputStream;
 import com.distrimind.bouncycastle.crypto.macs.HMac;
 import com.distrimind.bouncycastle.jcajce.io.CipherInputStream;
 import com.distrimind.bouncycastle.jcajce.io.CipherOutputStream;
-import com.distrimind.bouncycastle.jce.interfaces.BCKeyStore;
-import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
 import com.distrimind.bouncycastle.jcajce.util.BCJcaJceHelper;
 import com.distrimind.bouncycastle.jcajce.util.JcaJceHelper;
+import com.distrimind.bouncycastle.jce.interfaces.BCKeyStore;
+import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Properties;
 import com.distrimind.bouncycastle.util.io.Streams;
@@ -155,7 +155,7 @@ public class BcKeyStoreSpi
             dOut.writeInt(iterationCount);
 
             Cipher              cipher = makePBECipher(KEY_CIPHER, Cipher.ENCRYPT_MODE, password, salt, iterationCount);
-            CipherOutputStream cOut = new CipherOutputStream(dOut, cipher);
+            CipherOutputStream  cOut = new CipherOutputStream(dOut, cipher);
 
             dOut = new DataOutputStream(cOut);
 

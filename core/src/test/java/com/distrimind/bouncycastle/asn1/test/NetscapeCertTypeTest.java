@@ -2,7 +2,7 @@ package com.distrimind.bouncycastle.asn1.test;
 
 import java.io.IOException;
 
-import com.distrimind.bouncycastle.asn1.misc.NetscapeCertType;
+import com.distrimind.bouncycastle.internal.asn1.misc.NetscapeCertType;
 import com.distrimind.bouncycastle.util.test.SimpleTest;
 
 public class NetscapeCertTypeTest

@@ -1,8 +1,8 @@
 package com.distrimind.bouncycastle.crypto.macs;
 
-import com.distrimind.bouncycastle.crypto.engines.Zuc128CoreEngine;
 import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.Mac;
+import com.distrimind.bouncycastle.crypto.engines.Zuc128CoreEngine;
 
 /**
  * Zuc128 Mac implementation.

@@ -10,17 +10,17 @@ import java.security.spec.InvalidParameterSpecException;
 import javax.crypto.spec.IvParameterSpec;
 
 import com.distrimind.bouncycastle.asn1.ASN1InputStream;
-import com.distrimind.bouncycastle.asn1.misc.CAST5CBCParameters;
-import com.distrimind.bouncycastle.asn1.misc.MiscObjectIdentifiers;
 import com.distrimind.bouncycastle.crypto.CipherKeyGenerator;
 import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
 import com.distrimind.bouncycastle.crypto.engines.CAST5Engine;
 import com.distrimind.bouncycastle.crypto.modes.CBCBlockCipher;
+import com.distrimind.bouncycastle.internal.asn1.misc.CAST5CBCParameters;
+import com.distrimind.bouncycastle.internal.asn1.misc.MiscObjectIdentifiers;
+import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseAlgorithmParameterGenerator;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseAlgorithmParameters;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseBlockCipher;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.BaseKeyGenerator;
-import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import com.distrimind.bouncycastle.jcajce.provider.util.AlgorithmProvider;
 
 public final class CAST5

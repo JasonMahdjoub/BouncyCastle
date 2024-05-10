@@ -14,12 +14,12 @@ import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
 import com.distrimind.bouncycastle.crypto.params.GOST3410PublicKeyParameters;
 import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.GOST3410Util;
+import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.KeyUtil;
 import com.distrimind.bouncycastle.jce.interfaces.GOST3410Params;
 import com.distrimind.bouncycastle.jce.interfaces.GOST3410PublicKey;
 import com.distrimind.bouncycastle.jce.spec.GOST3410ParameterSpec;
 import com.distrimind.bouncycastle.jce.spec.GOST3410PublicKeyParameterSetSpec;
 import com.distrimind.bouncycastle.jce.spec.GOST3410PublicKeySpec;
-import com.distrimind.bouncycastle.jcajce.provider.asymmetric.util.KeyUtil;
 
 public class BCGOST3410PublicKey
     implements GOST3410PublicKey
@@ -27,7 +27,7 @@ public class BCGOST3410PublicKey
     static final long serialVersionUID = -6251023343619275990L;
 
     private BigInteger      y;
-    private transient GOST3410Params gost3410Spec;
+    private transient GOST3410Params  gost3410Spec;
 
     BCGOST3410PublicKey(
         GOST3410PublicKeySpec spec)
@@ -158,7 +158,7 @@ public class BCGOST3410PublicKey
         try
         {
             return GOSTUtil.publicKeyToString("GOST3410", y,
-                ((GOST3410PublicKeyParameters) GOST3410Util.generatePublicKeyParameter(this)).getParameters());
+                ((GOST3410PublicKeyParameters)GOST3410Util.generatePublicKeyParameter(this)).getParameters());
         }
         catch (InvalidKeyException e)
         {

@@ -1,6 +1,5 @@
 package com.distrimind.bouncycastle.crypto.modes;
 
-import com.distrimind.bouncycastle.crypto.params.AEADParameters;
 import com.distrimind.bouncycastle.crypto.CipherParameters;
 import com.distrimind.bouncycastle.crypto.DataLengthException;
 import com.distrimind.bouncycastle.crypto.InvalidCipherTextException;
@@ -17,7 +16,7 @@ import com.distrimind.bouncycastle.crypto.InvalidCipherTextException;
  * may be output prior to the call to {@link #doFinal(byte[], int)} that results in an authentication
  * failure. The higher level protocol utilising this cipher must ensure the plaintext data is handled 
  * appropriately until the end of data is reached and the entire ciphertext is authenticated.
- * @see AEADParameters
+ * @see com.distrimind.bouncycastle.crypto.params.AEADParameters
  */
 public interface AEADCipher
 {
@@ -89,7 +88,7 @@ public interface AEADCipher
      * @param outOff offset into out to start copying the data at.
      * @return number of bytes written into out.
      * @throws IllegalStateException if the cipher is in an inappropriate state.
-     * @throws InvalidCipherTextException if the MAC fails to match.
+     * @throws com.distrimind.bouncycastle.crypto.InvalidCipherTextException if the MAC fails to match.
      */
     public int doFinal(byte[] out, int outOff)
         throws IllegalStateException, InvalidCipherTextException;

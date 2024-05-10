@@ -4,11 +4,11 @@ import java.math.BigInteger;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.math.ec.ECCurve;
 import com.distrimind.bouncycastle.math.ec.WNafUtil;
-import com.distrimind.bouncycastle.util.encoders.Hex;
-import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.util.Strings;
+import com.distrimind.bouncycastle.util.encoders.Hex;
 
 
 /**

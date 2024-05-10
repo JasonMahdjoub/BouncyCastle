@@ -5,6 +5,30 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.distrimind.bouncycastle.asn1.ASN1BitString;
+import com.distrimind.bouncycastle.asn1.ASN1InputStream;
+import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
+import com.distrimind.bouncycastle.asn1.ASN1OctetString;
+import com.distrimind.bouncycastle.asn1.ASN1Primitive;
+import com.distrimind.bouncycastle.asn1.ASN1Sequence;
+import com.distrimind.bouncycastle.asn1.bc.BCObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
+import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
+import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
+import com.distrimind.bouncycastle.internal.asn1.isara.IsaraObjectIdentifiers;
+import com.distrimind.bouncycastle.pqc.asn1.CMCEPublicKey;
+import com.distrimind.bouncycastle.pqc.asn1.KyberPublicKey;
+import com.distrimind.bouncycastle.pqc.asn1.McElieceCCA2PublicKey;
+import com.distrimind.bouncycastle.pqc.asn1.PQCObjectIdentifiers;
+import com.distrimind.bouncycastle.pqc.asn1.SPHINCS256KeyParams;
+import com.distrimind.bouncycastle.pqc.asn1.XMSSKeyParams;
+import com.distrimind.bouncycastle.pqc.asn1.XMSSMTKeyParams;
+import com.distrimind.bouncycastle.pqc.asn1.XMSSPublicKey;
+import com.distrimind.bouncycastle.pqc.crypto.bike.BIKEParameters;
+import com.distrimind.bouncycastle.pqc.crypto.bike.BIKEPublicKeyParameters;
+import com.distrimind.bouncycastle.pqc.crypto.cmce.CMCEParameters;
+import com.distrimind.bouncycastle.pqc.crypto.cmce.CMCEPublicKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.crystals.dilithium.DilithiumParameters;
 import com.distrimind.bouncycastle.pqc.crypto.crystals.dilithium.DilithiumPublicKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.crystals.kyber.KyberParameters;
@@ -13,6 +37,10 @@ import com.distrimind.bouncycastle.pqc.crypto.falcon.FalconParameters;
 import com.distrimind.bouncycastle.pqc.crypto.falcon.FalconPublicKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.frodo.FrodoParameters;
 import com.distrimind.bouncycastle.pqc.crypto.frodo.FrodoPublicKeyParameters;
+import com.distrimind.bouncycastle.pqc.crypto.hqc.HQCParameters;
+import com.distrimind.bouncycastle.pqc.crypto.hqc.HQCPublicKeyParameters;
+import com.distrimind.bouncycastle.pqc.crypto.lms.HSSPublicKeyParameters;
+import com.distrimind.bouncycastle.pqc.crypto.lms.LMSPublicKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.newhope.NHPublicKeyParameters;
 import com.distrimind.bouncycastle.pqc.crypto.ntru.NTRUParameters;
 import com.distrimind.bouncycastle.pqc.crypto.ntru.NTRUPublicKeyParameters;
@@ -35,34 +63,6 @@ import com.distrimind.bouncycastle.pqc.crypto.xmss.XMSSParameters;
 import com.distrimind.bouncycastle.pqc.crypto.xmss.XMSSPublicKeyParameters;
 import com.distrimind.bouncycastle.pqc.legacy.crypto.mceliece.McElieceCCA2PublicKeyParameters;
 import com.distrimind.bouncycastle.pqc.legacy.crypto.qtesla.QTESLAPublicKeyParameters;
-import com.distrimind.bouncycastle.asn1.ASN1BitString;
-import com.distrimind.bouncycastle.asn1.ASN1InputStream;
-import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
-import com.distrimind.bouncycastle.asn1.ASN1OctetString;
-import com.distrimind.bouncycastle.asn1.ASN1Primitive;
-import com.distrimind.bouncycastle.asn1.ASN1Sequence;
-import com.distrimind.bouncycastle.asn1.bc.BCObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.isara.IsaraObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
-import com.distrimind.bouncycastle.crypto.params.AsymmetricKeyParameter;
-import com.distrimind.bouncycastle.pqc.asn1.CMCEPublicKey;
-import com.distrimind.bouncycastle.pqc.asn1.KyberPublicKey;
-import com.distrimind.bouncycastle.pqc.asn1.McElieceCCA2PublicKey;
-import com.distrimind.bouncycastle.pqc.asn1.PQCObjectIdentifiers;
-import com.distrimind.bouncycastle.pqc.asn1.SPHINCS256KeyParams;
-import com.distrimind.bouncycastle.pqc.asn1.XMSSKeyParams;
-import com.distrimind.bouncycastle.pqc.asn1.XMSSMTKeyParams;
-import com.distrimind.bouncycastle.pqc.asn1.XMSSPublicKey;
-import com.distrimind.bouncycastle.pqc.crypto.bike.BIKEParameters;
-import com.distrimind.bouncycastle.pqc.crypto.bike.BIKEPublicKeyParameters;
-import com.distrimind.bouncycastle.pqc.crypto.cmce.CMCEParameters;
-import com.distrimind.bouncycastle.pqc.crypto.cmce.CMCEPublicKeyParameters;
-import com.distrimind.bouncycastle.pqc.crypto.hqc.HQCParameters;
-import com.distrimind.bouncycastle.pqc.crypto.hqc.HQCPublicKeyParameters;
-import com.distrimind.bouncycastle.pqc.crypto.lms.HSSPublicKeyParameters;
-import com.distrimind.bouncycastle.pqc.crypto.lms.LMSPublicKeyParameters;
 import com.distrimind.bouncycastle.util.Arrays;
 import com.distrimind.bouncycastle.util.Pack;
 
@@ -188,7 +188,9 @@ public class PublicKeyFactory
         converters.put(BCObjectIdentifiers.ntruhps2048509, new NtruConverter());
         converters.put(BCObjectIdentifiers.ntruhps2048677, new NtruConverter());
         converters.put(BCObjectIdentifiers.ntruhps4096821, new NtruConverter());
+        converters.put(BCObjectIdentifiers.ntruhps40961229, new NtruConverter());
         converters.put(BCObjectIdentifiers.ntruhrss701, new NtruConverter());
+        converters.put(BCObjectIdentifiers.ntruhrss1373, new NtruConverter());
         converters.put(BCObjectIdentifiers.falcon_512, new FalconConverter());
         converters.put(BCObjectIdentifiers.falcon_1024, new FalconConverter());
         converters.put(BCObjectIdentifiers.kyber512, new KyberConverter());
@@ -359,7 +361,8 @@ public class PublicKeyFactory
                 ASN1ObjectIdentifier treeDigest = keyParams.getTreeDigest().getAlgorithm();
                 XMSSPublicKey xmssPublicKey = XMSSPublicKey.getInstance(keyInfo.parsePublicKey());
 
-                return new XMSSPublicKeyParameters.Builder(new XMSSParameters(keyParams.getHeight(), Utils.getDigest(treeDigest)))
+                return new XMSSPublicKeyParameters
+                    .Builder(new XMSSParameters(keyParams.getHeight(), Utils.getDigest(treeDigest)))
                     .withPublicSeed(xmssPublicKey.getPublicSeed())
                     .withRoot(xmssPublicKey.getRoot()).build();
             }
@@ -388,7 +391,8 @@ public class PublicKeyFactory
 
                 XMSSPublicKey xmssMtPublicKey = XMSSPublicKey.getInstance(keyInfo.parsePublicKey());
 
-                return new XMSSMTPublicKeyParameters.Builder(new XMSSMTParameters(keyParams.getHeight(), keyParams.getLayers(), Utils.getDigest(treeDigest)))
+                return new XMSSMTPublicKeyParameters
+                    .Builder(new XMSSMTParameters(keyParams.getHeight(), keyParams.getLayers(), Utils.getDigest(treeDigest)))
                     .withPublicSeed(xmssMtPublicKey.getPublicSeed())
                     .withRoot(xmssMtPublicKey.getRoot()).build();
             }

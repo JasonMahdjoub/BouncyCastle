@@ -2,7 +2,6 @@ package com.distrimind.bouncycastle.jce.provider.test.nist;
 
 import java.security.Security;
 
-import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
 import junit.framework.TestCase;
 
 // tests based on https://csrc.nist.gov/CSRC/media/Projects/PKI-Testing/documents/PKITS.pdf
@@ -15,7 +14,7 @@ public class NistCertPathTest2
     {
         if (Security.getProvider("BC") == null)
         {
-            Security.addProvider(new BouncyCastleProvider());
+            Security.addProvider(new com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider());
         }
     }
 

@@ -5,7 +5,6 @@ import java.security.Signature;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
 
-import com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -21,7 +20,7 @@ public class RSA3CertTest
     {
         if (Security.getProvider("BC") == null)
         {
-            Security.addProvider(new BouncyCastleProvider());
+            Security.addProvider(new com.distrimind.bouncycastle.jce.provider.BouncyCastleProvider());
         }
     }
     

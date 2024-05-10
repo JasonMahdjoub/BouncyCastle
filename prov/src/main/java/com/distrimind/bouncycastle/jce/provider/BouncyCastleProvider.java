@@ -15,7 +15,6 @@ import java.util.logging.Logger;
 
 import com.distrimind.bouncycastle.asn1.ASN1ObjectIdentifier;
 import com.distrimind.bouncycastle.asn1.bc.BCObjectIdentifiers;
-import com.distrimind.bouncycastle.asn1.isara.IsaraObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import com.distrimind.bouncycastle.asn1.pkcs.PrivateKeyInfo;
 import com.distrimind.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
@@ -23,6 +22,7 @@ import com.distrimind.bouncycastle.crypto.CryptoServiceConstraintsException;
 import com.distrimind.bouncycastle.crypto.CryptoServiceProperties;
 import com.distrimind.bouncycastle.crypto.CryptoServicePurpose;
 import com.distrimind.bouncycastle.crypto.CryptoServicesRegistrar;
+import com.distrimind.bouncycastle.internal.asn1.isara.IsaraObjectIdentifiers;
 import com.distrimind.bouncycastle.jcajce.provider.config.ConfigurableProvider;
 import com.distrimind.bouncycastle.jcajce.provider.config.ProviderConfiguration;
 import com.distrimind.bouncycastle.jcajce.provider.symmetric.util.ClassUtil;
@@ -74,7 +74,7 @@ public final class BouncyCastleProvider extends Provider
 {
     private static final Logger LOG = Logger.getLogger(BouncyCastleProvider.class.getName());
 
-    private static String info = "BouncyCastle Security Provider v1.77";
+    private static String info = "BouncyCastle Security Provider v1.78.1";
 
     public static final String PROVIDER_NAME = "BC";
 
@@ -121,7 +121,7 @@ public final class BouncyCastleProvider extends Provider
     // later ones configure it.
     private static final String[] ASYMMETRIC_GENERIC =
     {
-        "X509", "IES", "COMPOSITE", "EXTERNAL"
+        "X509", "IES", "COMPOSITE", "EXTERNAL", "CompositeSignatures"
     };
 
     private static final String[] ASYMMETRIC_CIPHERS =
@@ -167,7 +167,7 @@ public final class BouncyCastleProvider extends Provider
      */
     public BouncyCastleProvider()
     {
-        super(PROVIDER_NAME, 1.77, info);
+        super(PROVIDER_NAME, 1.7801, info);
 
         AccessController.doPrivileged(new PrivilegedAction()
         {
@@ -253,8 +253,6 @@ public final class BouncyCastleProvider extends Provider
         put("CertStore.LDAP", "com.distrimind.bouncycastle.jce.provider.X509LDAPCertStoreSpi");
         put("CertStore.Multi", "com.distrimind.bouncycastle.jce.provider.MultiCertStoreSpi");
         put("Alg.Alias.CertStore.X509LDAP", "LDAP");
-
-        getService("SecureRandom", "DEFAULT");  // prime for new SecureRandom() on 1.8 JVMs.
     }
 
     public final Service getService(final String type, final String algorithm)
@@ -521,7 +519,6 @@ public final class BouncyCastleProvider extends Provider
         {
             return new PicnicKeyFactorySpi().generatePublic(publicKeyInfo);
         }
-        
         AsymmetricKeyInfoConverter converter = getAsymmetricKeyInfoConverter(publicKeyInfo.getAlgorithm().getAlgorithm());
 
         if (converter == null)
