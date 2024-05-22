@@ -216,14 +216,6 @@ subprojects {
 					name = 'BouncyCastle recompiled By DistriMind'
 					description = 'Encryption tools'
 					url = 'https://git.distri-mind.fr/BouncyCastle'
-					developers {
-						developer {
-							id = 'jmahdjoub'
-							name = 'Jason Mahdjoub'
-							email = 'jason.mahdjoub@distri-mind.fr'
-							organization = 'DistriMind'
-						}
-					}
 					organization {
 						name = 'DistriMind'
 						url = 'https://github.com/JasonMahdjoub'
